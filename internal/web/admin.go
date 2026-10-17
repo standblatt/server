@@ -283,7 +283,7 @@ func (s *Server) adminLogin(w http.ResponseWriter, r *http.Request) {
 
 // adminLogout clears the admin cookie and redirects to the login page.
 func (s *Server) adminLogout(w http.ResponseWriter, r *http.Request) {
-	http.SetCookie(w, &http.Cookie{Name: adminCookie, Value: "", Path: "/admin", HttpOnly: true, MaxAge: -1})
+	http.SetCookie(w, &http.Cookie{Name: adminCookie, Value: "", Path: "/admin", HttpOnly: true, Secure: secureRequest(r), SameSite: http.SameSiteStrictMode, MaxAge: -1})
 	http.Redirect(w, r, "/admin", http.StatusSeeOther)
 }
 

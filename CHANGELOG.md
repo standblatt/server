@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Built with Go 1.27.2, which fixes an HTTP/2 crash in `net/http` (GO-2026-6617) (by @HB9HIL)
+- The admin logout cookie is `Secure` and `SameSite=Strict` like the login cookie (by @HB9HIL)
+
 ### Added
 - CodeQL code scanning and a `govulncheck` job in CI (by @HB9HIL)
 
