@@ -184,8 +184,6 @@ func TestHelperLinks(t *testing.T) {
 	expect(t, "ammo prints lane sheet", code, 200, b)
 	code, b = e.helper("POST", tenants+"/print", ammo, web.PrintRequest{Document: "result_sheet", RegistrationID: cleo.ID})
 	expect(t, "ammo prints result sheet", code, 403, b)
-	code, b = e.helper("POST", tenants+"/print", ammo, web.PrintRequest{Document: "ranking", ProgrammeID: otherMain})
-	expect(t, "ammo prints a ranking", code, 403, b)
 	code, b = e.helper("POST", tenants+"/print", ammo, web.PrintRequest{Document: "wreath_card", EntryID: dora.Entries[0].ID})
 	expect(t, "ammo prints a wreath card", code, 403, b)
 	code, b = e.helper("PUT", fmt.Sprintf("%s/entries/%d/results", tenants, cleo.Entries[0].ID), ammo, results2(90, 95))

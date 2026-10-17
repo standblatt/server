@@ -6,7 +6,7 @@
 
 ![Rankings](../images/screenshots/rankings.png){ .screenshot }
 
-- **Print ranking** sends the ranking (A4) to the range's printer or opens it as PDF; the CSV export is under the programme in [Statistics](statistics-reports.md).
+- **PDF** opens the ranking (A4) for printing or sharing, **CSV** downloads it for Excel. Rankings do not go to the range's printer.
 - Programmes switched off for kiosk displays are still ranked here and marked *not on kiosk*.
 
 ## Kiosk screens

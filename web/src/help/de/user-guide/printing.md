@@ -8,7 +8,7 @@ Standblatt erzeugt alle Dokumente als PDF:
 | Kontrollstreifen | Etikette 90 × 29 mm | bei der Anmeldung, wird auf die Scheibenkarte geklebt |
 | Resultatblatt | A5 | wenn alle Programme Resultate haben |
 | Kranzkarte | A6, auf vorgedruckte Karten gedruckt | nach Wahl einer Kranzkarte als Auszeichnung |
-| Rangliste | A4 | von der Ranglistenseite aus |
+| Rangliste | A4 | von der Ranglistenseite aus, nur als PDF (geht nicht an den Drucker des Schiessstands) |
 
 Jeder Druckknopf druckt auf dem Drucker des Schiessstands, wenn einer
 eingerichtet ist und sein Druck-Agent online ist; sonst öffnet sich das PDF

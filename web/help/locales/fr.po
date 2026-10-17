@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-17 18:40+0000\n"
+"POT-Creation-Date: 2026-10-17 19:07+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -2804,7 +2804,7 @@ msgid ""
 "| Control strip | label 90 × 29 mm | at registration, stuck on the target card |\n"
 "| Result sheet | A5 | when all programmes have results |\n"
 "| Wreath card | A6, printed onto pre-printed cards | after choosing a wreath card award |\n"
-"| Ranking | A4 | from the rankings page |\n"
+"| Ranking | A4 | from the rankings page, as PDF only (not sent to the range's printer) |\n"
 msgstr ""
 "| Document | Format | Quand |\n"
 "|---|---|---|\n"
@@ -2812,7 +2812,7 @@ msgstr ""
 "| Bande de contrôle | étiquette 90 × 29 mm | à l’inscription, collée sur la carte-cible |\n"
 "| Feuille de résultats | A5 | quand tous les programmes ont des résultats |\n"
 "| Carte-couronne | A6, imprimée sur des cartes préimprimées | après le choix d’une carte-couronne comme distinction |\n"
-"| Classement | A4 | depuis la page des classements |\n"
+"| Classement | A4 | depuis la page des classements, en PDF seulement (pas envoyé à l’imprimante du stand) |\n"
 
 #. type: Plain text
 #: ../src/help/en/user-guide/printing.md:14
@@ -2822,7 +2822,13 @@ msgid ""
 "printed from there. On a phone or tablet the PDF goes to the share sheet "
 "instead (print, save to files, send), so the app stays open; if the phone "
 "asks for another tap first, a note with a **Share** button appears."
-msgstr "Chaque bouton d’impression imprime sur l’imprimante du stand si elle est configurée et que son agent d’impression est en ligne ; sinon le PDF s’ouvre dans le navigateur et peut être imprimé de là. Sur un téléphone ou une tablette, le PDF passe plutôt par le menu de partage (imprimer, enregistrer dans Fichiers, envoyer), l’app reste donc ouverte ; si le téléphone demande d’abord un autre toucher, une note avec le bouton **Partager** apparaît."
+msgstr ""
+"Chaque bouton d’impression imprime sur l’imprimante du stand si elle est "
+"configurée et que son agent d’impression est en ligne ; sinon le PDF s’ouvre "
+"dans le navigateur et peut être imprimé de là. Sur un téléphone ou une "
+"tablette, le PDF passe plutôt par le menu de partage (imprimer, enregistrer "
+"dans Fichiers, envoyer), l’app reste donc ouverte ; si le téléphone demande "
+"d’abord un autre toucher, une note avec le bouton **Partager** apparaît."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/printing.md:15
@@ -3202,13 +3208,9 @@ msgstr "![Classements](../images/screenshots/rankings.png){ .screenshot }"
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/rankings-kiosk.md:11
 msgid ""
-"**Print ranking** sends the ranking (A4) to the range's printer or opens it "
-"as PDF; the CSV export is under the programme in [Statistics](statistics-"
-"reports.md)."
-msgstr ""
-"**Imprimer le classement** envoie le classement (A4) à l’imprimante du stand "
-"ou l’ouvre en PDF ; l’export CSV se trouve sous le programme dans "
-"[Statistiques](statistics-reports.md)."
+"**PDF** opens the ranking (A4) for printing or sharing, **CSV** downloads it "
+"for Excel. Rankings do not go to the range's printer."
+msgstr "**PDF** ouvre le classement (A4) pour l’imprimer ou le partager, **CSV** le télécharge pour Excel. Les classements ne sont pas envoyés à l’imprimante du stand."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/rankings-kiosk.md:11
@@ -4162,10 +4164,9 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/statistics-reports.md:26
 msgid ""
-"Below the reports, the ranking of every programme can be downloaded as CSV."
-msgstr ""
-"Sous les rapports, le classement de chaque programme peut être téléchargé en "
-"CSV."
+"Below the reports, the ranking of every programme can be downloaded as PDF "
+"or CSV."
+msgstr "Sous les rapports, le classement de chaque programme peut être téléchargé en PDF ou en CSV."
 
 #. type: Title #
 #: ../src/help/en/user-guide/users.md:1
@@ -4246,6 +4247,15 @@ msgstr ""
 "plateforme dans le [panneau d’administration](../admin-guide/admin-"
 "panel.md). Un mot de passe oublié se réinitialise avec **Mot de passe "
 "oublié ?** sur la page de connexion si le compte a une adresse e-mail "
+#~ msgid ""
+#~ "**Print ranking** sends the ranking (A4) to the range's printer or opens "
+#~ "it as PDF; the CSV export is under the programme in [Statistics]"
+#~ "(statistics-reports.md)."
+#~ msgstr ""
+#~ "**Imprimer le classement** envoie le classement (A4) à l’imprimante du "
+#~ "stand ou l’ouvre en PDF ; l’export CSV se trouve sous le programme dans "
+#~ "[Statistiques](statistics-reports.md)."
+
 "confirmée, sinon par l’exploitant."
 
 #~ msgid ""

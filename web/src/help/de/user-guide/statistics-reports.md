@@ -29,5 +29,5 @@ Sprache des Anlasses.
 | Abzugebende Auszeichnungen | noch nicht abgeholte Auszeichnungen mit Schütze, Verein, Programm, Art und Wert, dazu das noch auszuzahlende Geld (siehe [Resultate](results.md#handout)) |
 | Scheibenreservationen | die Vereine, die über die [Online-Reservation](online-booking.md) Scheiben angefragt haben, bestätigt oder noch offen, mit Kontakt, Zeitblöcken, Scheibennummern und angemeldeten Schützen |
 
-Unter den Berichten lässt sich die Rangliste jedes Programms als CSV
-herunterladen.
+Unter den Berichten lässt sich die Rangliste jedes Programms als PDF oder
+CSV herunterladen.

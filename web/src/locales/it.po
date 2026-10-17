@@ -2838,10 +2838,6 @@ msgid "Print lane sheet"
 msgstr "Stampa foglio di stand"
 
 #: src/lib/PrintButton.svelte
-msgid "Print ranking"
-msgstr "Stampa classifica"
-
-#: src/lib/PrintButton.svelte
 msgid "Print result sheet"
 msgstr "Stampa foglio dei risultati"
 
@@ -3013,20 +3009,12 @@ msgstr "Rango {0} di {1}"
 msgid "Rank among sessions with {0} shots"
 msgstr "Posizione tra le sessioni da {0} colpi"
 
-#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
-msgid "Ranking (A4)"
-msgstr "Classifica (A4)"
-
 #. placeholder {0}: programmeTitle(p)
 #. placeholder {0}: ranking.title
 #: src/lib/RankingTable.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Ranking {0}"
 msgstr "Classifica {0}"
-
-#: src/lib/PrintButton.svelte
-msgid "Ranking sent to printer"
-msgstr "Classifica inviata alla stampante"
 
 #: src/lib/AppSidebar.svelte
 #: src/routes/kiosk/[token]/+page.svelte

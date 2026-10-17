@@ -23,4 +23,4 @@ Every report is available as **PDF** and **CSV** (UTF-8 with BOM, `;` separated,
 | Awards to hand out | awards not yet collected, with shooter, club, programme, kind and value, plus the cash still to pay out (see [Results](results.md#handout)) |
 | Lane bookings | the clubs that asked for lanes through [online booking](online-booking.md), confirmed or still waiting, with contact, slots, lane numbers and announced shooters |
 
-Below the reports, the ranking of every programme can be downloaded as CSV.
+Below the reports, the ranking of every programme can be downloaded as PDF or CSV.

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 15:52+0200\n"
+"POT-Creation-Date: 2026-10-17 21:03+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -676,11 +676,6 @@ msgstr "Programme introuvable"
 msgid "Programme of the registration not found"
 msgstr "Programme de l'inscription introuvable"
 
-#: internal/web/documents.go internal/web/reports.go
-#, go-format
-msgid "Ranking %s"
-msgstr "Classement %s"
-
 #: internal/web/documents.go internal/web/helpers.go
 #: internal/web/registrations.go internal/web/results.go
 msgid "Registration not found"
@@ -1122,6 +1117,11 @@ msgstr "Stand"
 #: internal/web/reports.go
 msgid "Ranking"
 msgstr "Classement"
+
+#: internal/web/reports.go
+#, go-format
+msgid "Ranking %s"
+msgstr "Classement %s"
 
 #: internal/web/reports.go
 #, go-format

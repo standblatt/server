@@ -8,7 +8,7 @@ Standblatt produce tutti i documenti in PDF:
 | Striscia di controllo | etichetta 90 × 29 mm | all’iscrizione, incollata sulla carta bersaglio |
 | Foglio dei risultati | A5 | quando tutti i programmi hanno risultati |
 | Carta corona | A6, stampata su carte prestampate | dopo la scelta di una carta corona come distinzione |
-| Classifica | A4 | dalla pagina delle classifiche |
+| Classifica | A4 | dalla pagina delle classifiche, solo in PDF (non inviata alla stampante dello stand) |
 
 Ogni pulsante di stampa stampa sulla stampante dello stand se è configurata
 e il suo agente di stampa è online; altrimenti il PDF si apre nel browser e

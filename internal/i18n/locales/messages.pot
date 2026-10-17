@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 15:52+0200\n"
+"POT-Creation-Date: 2026-10-17 21:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -676,11 +676,6 @@ msgstr ""
 msgid "Programme of the registration not found"
 msgstr ""
 
-#: internal/web/documents.go internal/web/reports.go
-#, go-format
-msgid "Ranking %s"
-msgstr ""
-
 #: internal/web/documents.go internal/web/helpers.go
 #: internal/web/registrations.go internal/web/results.go
 msgid "Registration not found"
@@ -1121,6 +1116,11 @@ msgstr ""
 
 #: internal/web/reports.go
 msgid "Ranking"
+msgstr ""
+
+#: internal/web/reports.go
+#, go-format
+msgid "Ranking %s"
 msgstr ""
 
 #: internal/web/reports.go

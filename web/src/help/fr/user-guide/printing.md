@@ -8,7 +8,7 @@ Standblatt produit tous les documents en PDF :
 | Bande de contrôle | étiquette 90 × 29 mm | à l’inscription, collée sur la carte-cible |
 | Feuille de résultats | A5 | quand tous les programmes ont des résultats |
 | Carte-couronne | A6, imprimée sur des cartes préimprimées | après le choix d’une carte-couronne comme distinction |
-| Classement | A4 | depuis la page des classements |
+| Classement | A4 | depuis la page des classements, en PDF seulement (pas envoyé à l’imprimante du stand) |
 
 Chaque bouton d’impression imprime sur l’imprimante du stand si elle est
 configurée et que son agent d’impression est en ligne ; sinon le PDF s’ouvre

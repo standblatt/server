@@ -2586,11 +2586,9 @@ export interface components {
         };
         PrintRequest: {
             /** @enum {string} */
-            document: "lane_sheet" | "control_strip" | "result_sheet" | "wreath_card" | "ranking";
+            document: "lane_sheet" | "control_strip" | "result_sheet" | "wreath_card";
             /** Format: int64 */
             entryId?: number;
-            /** Format: int64 */
-            programmeId?: number;
             /** Format: int64 */
             registrationId?: number;
         };
@@ -2601,7 +2599,7 @@ export interface components {
         };
         PrintSetting: {
             /** @enum {string} */
-            document: "lane_sheet" | "control_strip" | "result_sheet" | "wreath_card" | "ranking";
+            document: "lane_sheet" | "control_strip" | "result_sheet" | "wreath_card";
             options: {
                 [key: string]: string;
             };

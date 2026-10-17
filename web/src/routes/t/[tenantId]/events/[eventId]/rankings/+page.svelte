@@ -3,8 +3,11 @@
 	import { page } from '$app/state';
 	import { createQuery } from '@tanstack/svelte-query';
 	import { api, call } from '$lib/api';
+	import FileSpreadsheet from '@lucide/svelte/icons/file-spreadsheet';
+	import FileText from '@lucide/svelte/icons/file-text';
+	import { Button } from '$lib/components/ui/button';
 	import PageHeader from '$lib/PageHeader.svelte';
-	import PrintButton from '$lib/PrintButton.svelte';
+	import { pdfClick } from '$lib/print';
 	import RankingTable from '$lib/RankingTable.svelte';
 	import { keys } from '$lib/tenant';
 
@@ -25,7 +28,8 @@
 				{#snippet actions()}
 					<div class="flex items-center gap-2">
 						{#if !r.public}<span class="rounded-full border px-2 py-0.5 text-xs text-muted-foreground" title={$t`Not shown on kiosk displays`}>{$t`not on kiosk`}</span>{/if}
-						<PrintButton {tenantId} target={{ document: 'ranking', programmeId: r.programmeId }} />
+						<Button size="sm" variant="outline" href="/api/tenants/{tenantId}/programmes/{r.programmeId}/ranking" target="_blank" onclick={pdfClick}><FileText />PDF</Button>
+						<Button size="sm" variant="outline" href="/api/tenants/{tenantId}/programmes/{r.programmeId}/ranking.csv"><FileSpreadsheet />CSV</Button>
 					</div>
 				{/snippet}
 			</RankingTable>

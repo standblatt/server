@@ -38,8 +38,7 @@
 		{ id: 'lane_sheet', label: $t`Lane sheet (A5)` },
 		{ id: 'control_strip', label: $t`Control strip (label 90 × 29 mm)` },
 		{ id: 'result_sheet', label: $t`Result sheet (A5)` },
-		{ id: 'wreath_card', label: $t`Wreath card (A6, pre-printed)` },
-		{ id: 'ranking', label: $t`Ranking (A4)` }
+		{ id: 'wreath_card', label: $t`Wreath card (A6, pre-printed)` }
 	]);
 	const routedOptions = ['InputSlot', 'PageSize', 'MediaType'];
 

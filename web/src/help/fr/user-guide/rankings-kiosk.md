@@ -6,9 +6,9 @@
 
 ![Classements](../images/screenshots/rankings.png){ .screenshot }
 
-- **Imprimer le classement** envoie le classement (A4) à l’imprimante du
-  stand ou l’ouvre en PDF ; l’export CSV se trouve sous le programme dans
-  [Statistiques](statistics-reports.md).
+- **PDF** ouvre le classement (A4) pour l’imprimer ou le partager, **CSV**
+  le télécharge pour Excel. Les classements ne sont pas envoyés à
+  l’imprimante du stand.
 - Les programmes désactivés pour les écrans kiosque sont quand même classés
   ici et marqués *pas sur le kiosque*.
 

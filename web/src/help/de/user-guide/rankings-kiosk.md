@@ -6,9 +6,9 @@
 
 ![Ranglisten](../images/screenshots/rankings.png){ .screenshot }
 
-- **Rangliste drucken** schickt die Rangliste (A4) an den Drucker des
-  Schiessstands oder öffnet sie als PDF; der CSV-Export steht beim Programm
-  unter [Statistik](statistics-reports.md).
+- **PDF** öffnet die Rangliste (A4) zum Drucken oder Teilen, **CSV** lädt
+  sie für Excel herunter. Ranglisten gehen nicht an den Drucker des
+  Schiessstands.
 - Programme, die für Kiosk-Anzeigen ausgeschaltet sind, werden hier trotzdem
   rangiert und als *nicht im Kiosk* markiert.
 

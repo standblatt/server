@@ -2838,10 +2838,6 @@ msgid "Print lane sheet"
 msgstr "Print lane sheet"
 
 #: src/lib/PrintButton.svelte
-msgid "Print ranking"
-msgstr "Print ranking"
-
-#: src/lib/PrintButton.svelte
 msgid "Print result sheet"
 msgstr "Print result sheet"
 
@@ -3013,20 +3009,12 @@ msgstr "Rank {0} of {1}"
 msgid "Rank among sessions with {0} shots"
 msgstr "Rank among sessions with {0} shots"
 
-#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
-msgid "Ranking (A4)"
-msgstr "Ranking (A4)"
-
 #. placeholder {0}: programmeTitle(p)
 #. placeholder {0}: ranking.title
 #: src/lib/RankingTable.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Ranking {0}"
 msgstr "Ranking {0}"
-
-#: src/lib/PrintButton.svelte
-msgid "Ranking sent to printer"
-msgstr "Ranking sent to printer"
 
 #: src/lib/AppSidebar.svelte
 #: src/routes/kiosk/[token]/+page.svelte

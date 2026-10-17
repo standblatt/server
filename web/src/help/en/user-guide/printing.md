@@ -8,7 +8,7 @@ Standblatt renders all documents as PDF:
 | Control strip | label 90 × 29 mm | at registration, stuck on the target card |
 | Result sheet | A5 | when all programmes have results |
 | Wreath card | A6, printed onto pre-printed cards | after choosing a wreath card award |
-| Ranking | A4 | from the rankings page |
+| Ranking | A4 | from the rankings page, as PDF only (not sent to the range's printer) |
 
 Every Print button prints on the range's printer if one is set up and its print agent is online; otherwise the PDF opens in the browser and can be printed from there. On a phone or tablet the PDF goes to the share sheet instead (print, save to files, send), so the app stays open; if the phone asks for another tap first, a note with a **Share** button appears.
 

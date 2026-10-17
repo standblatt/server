@@ -29,4 +29,5 @@ manifestazione.
 | Distinzioni da consegnare | distinzioni non ancora ritirate, con tiratore, società, programma, tipo e valore, più il denaro ancora da versare (vedi [Risultati](results.md#handout)) |
 | Prenotazioni di bersagli | le società che hanno richiesto bersagli tramite la [prenotazione online](online-booking.md), confermate o in attesa, con contatto, fasce orarie, numeri dei bersagli e tiratori annunciati |
 
-Sotto i rapporti si può scaricare la classifica di ogni programma in CSV.
+Sotto i rapporti si può scaricare la classifica di ogni programma in PDF o
+CSV.

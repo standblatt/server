@@ -42,6 +42,15 @@ test.describe("rankings and kiosk", () => {
     const first = page.locator("section[aria-label='Ranking Main'] tbody tr").first();
     await expect(first).toContainText("Bertson");
     await expect(first).toContainText("190");
+
+    const section = page.locator("section[aria-label='Ranking Main']");
+    await expect(section.locator("button", { hasText: "Print" })).toHaveCount(0);
+    const pdf = c(section, "a", "PDF");
+    const csv = c(section, "a", "CSV");
+    await expect(pdf).toHaveAttribute("href", `/api/tenants/${ids.tenant}/programmes/${ids.main}/ranking`);
+    const type = async (link) => (await page.request.get(await link.getAttribute("href"))).headers()["content-type"];
+    expect(await type(pdf)).toBe("application/pdf");
+    expect(await type(csv)).toContain("text/csv");
   });
 
   test("serves a live kiosk display without login", async ({ page, browser }) => {

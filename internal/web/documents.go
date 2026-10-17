@@ -264,10 +264,7 @@ func (s *Server) renderRanking(ctx context.Context, tenantID, programmeID int64)
 		}
 	}
 	pdf, err := docs.RenderRankingList(list)
-	return rendered{
-		pdf: pdf, filename: filename("Ranking", p.Name, p.Variant), title: i18n.Tf(list.Event.Lang, "Ranking %s", list.Title),
-		document: store.DocRanking, rangeID: printRange(ev, nil), eventID: ev.ID,
-	}, err
+	return rendered{pdf: pdf, filename: filename("Ranking", p.Name, p.Variant)}, err
 }
 
 // PDFOutput is a PDF shown in the browser.
@@ -285,12 +282,11 @@ func pdfOut(r rendered, err error) (*PDFOutput, error) {
 	return &PDFOutput{ContentType: "application/pdf", ContentDisposition: fmt.Sprintf(`inline; filename="%s"`, r.filename), Body: r.pdf}, nil
 }
 
-// PrintRequest names what to print: a registration document, the wreath card of an entry or a ranking.
+// PrintRequest names what to print: a registration document or the wreath card of an entry.
 type PrintRequest struct {
-	Document       string `json:"document" enum:"lane_sheet,control_strip,result_sheet,wreath_card,ranking"`
+	Document       string `json:"document" enum:"lane_sheet,control_strip,result_sheet,wreath_card"`
 	RegistrationID int64  `json:"registrationId,omitempty" required:"false"`
 	EntryID        int64  `json:"entryId,omitempty" required:"false"`
-	ProgrammeID    int64  `json:"programmeId,omitempty" required:"false"`
 }
 
 // PrintResult tells whether the document went to a printer; if not, the client shows the PDF instead.
@@ -356,8 +352,6 @@ func (s *Server) registerDocuments(api huma.API) {
 		switch in.Body.Document {
 		case store.DocWreathCard:
 			r, err = s.renderWreathCard(ctx, in.TenantID, in.Body.EntryID)
-		case store.DocRanking:
-			r, err = s.renderRanking(ctx, in.TenantID, in.Body.ProgrammeID)
 		default:
 			r, err = s.renderRegistrationDoc(ctx, in.TenantID, in.Body.RegistrationID, in.Body.Document)
 		}

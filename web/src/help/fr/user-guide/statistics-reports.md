@@ -30,4 +30,4 @@ langue de la manifestation.
 | Réservations de cibles | les sociétés qui ont demandé des cibles par la [réservation en ligne](online-booking.md), confirmées ou en attente, avec contact, créneaux, numéros de cible et tireurs annoncés |
 
 Sous les rapports, le classement de chaque programme peut être téléchargé en
-CSV.
+PDF ou en CSV.

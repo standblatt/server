@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-17 18:40+0000\n"
+"POT-Creation-Date: 2026-10-17 19:07+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -2776,7 +2776,7 @@ msgid ""
 "| Control strip | label 90 × 29 mm | at registration, stuck on the target card |\n"
 "| Result sheet | A5 | when all programmes have results |\n"
 "| Wreath card | A6, printed onto pre-printed cards | after choosing a wreath card award |\n"
-"| Ranking | A4 | from the rankings page |\n"
+"| Ranking | A4 | from the rankings page, as PDF only (not sent to the range's printer) |\n"
 msgstr ""
 "| Documento | Formato | Quando |\n"
 "|---|---|---|\n"
@@ -2784,7 +2784,7 @@ msgstr ""
 "| Striscia di controllo | etichetta 90 × 29 mm | all’iscrizione, incollata sulla carta bersaglio |\n"
 "| Foglio dei risultati | A5 | quando tutti i programmi hanno risultati |\n"
 "| Carta corona | A6, stampata su carte prestampate | dopo la scelta di una carta corona come distinzione |\n"
-"| Classifica | A4 | dalla pagina delle classifiche |\n"
+"| Classifica | A4 | dalla pagina delle classifiche, solo in PDF (non inviata alla stampante dello stand) |\n"
 
 #. type: Plain text
 #: ../src/help/en/user-guide/printing.md:14
@@ -2794,7 +2794,13 @@ msgid ""
 "printed from there. On a phone or tablet the PDF goes to the share sheet "
 "instead (print, save to files, send), so the app stays open; if the phone "
 "asks for another tap first, a note with a **Share** button appears."
-msgstr "Ogni pulsante di stampa stampa sulla stampante dello stand se è configurata e il suo agente di stampa è online; altrimenti il PDF si apre nel browser e si può stampare da lì. Su telefono o tablet il PDF passa invece al menu di condivisione (stampare, salvare in File, inviare), così l’app resta aperta; se il telefono chiede prima un altro tocco, appare un avviso con il pulsante **Condividi**."
+msgstr ""
+"Ogni pulsante di stampa stampa sulla stampante dello stand se è configurata "
+"e il suo agente di stampa è online; altrimenti il PDF si apre nel browser e "
+"si può stampare da lì. Su telefono o tablet il PDF passa invece al menu di "
+"condivisione (stampare, salvare in File, inviare), così l’app resta aperta; "
+"se il telefono chiede prima un altro tocco, appare un avviso con il pulsante "
+"**Condividi**."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/printing.md:15
@@ -3165,13 +3171,9 @@ msgstr "![Classifiche](../images/screenshots/rankings.png){ .screenshot }"
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/rankings-kiosk.md:11
 msgid ""
-"**Print ranking** sends the ranking (A4) to the range's printer or opens it "
-"as PDF; the CSV export is under the programme in [Statistics](statistics-"
-"reports.md)."
-msgstr ""
-"**Stampa classifica** invia la classifica (A4) alla stampante dello stand o "
-"la apre come PDF; l’esportazione CSV si trova sotto il programma in "
-"[Statistiche](statistics-reports.md)."
+"**PDF** opens the ranking (A4) for printing or sharing, **CSV** downloads it "
+"for Excel. Rankings do not go to the range's printer."
+msgstr "**PDF** apre la classifica (A4) per stamparla o condividerla, **CSV** la scarica per Excel. Le classifiche non vanno alla stampante dello stand."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/rankings-kiosk.md:11
@@ -4123,9 +4125,9 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/statistics-reports.md:26
 msgid ""
-"Below the reports, the ranking of every programme can be downloaded as CSV."
-msgstr ""
-"Sotto i rapporti si può scaricare la classifica di ogni programma in CSV."
+"Below the reports, the ranking of every programme can be downloaded as PDF "
+"or CSV."
+msgstr "Sotto i rapporti si può scaricare la classifica di ogni programma in PDF o CSV."
 
 #. type: Title #
 #: ../src/help/en/user-guide/users.md:1
@@ -4205,6 +4207,15 @@ msgstr ""
 "piattaforma nel [pannello di amministrazione](../admin-guide/admin-"
 "panel.md). Una password dimenticata si reimposta con **Password dimenticata?"
 "** nella pagina di accesso se l’account ha un indirizzo e-mail confermato, "
+#~ msgid ""
+#~ "**Print ranking** sends the ranking (A4) to the range's printer or opens "
+#~ "it as PDF; the CSV export is under the programme in [Statistics]"
+#~ "(statistics-reports.md)."
+#~ msgstr ""
+#~ "**Stampa classifica** invia la classifica (A4) alla stampante dello stand "
+#~ "o la apre come PDF; l’esportazione CSV si trova sotto il programma in "
+#~ "[Statistiche](statistics-reports.md)."
+
 "altrimenti lo fa il gestore."
 
 #~ msgid ""

@@ -6,9 +6,8 @@
 
 ![Classifiche](../images/screenshots/rankings.png){ .screenshot }
 
-- **Stampa classifica** invia la classifica (A4) alla stampante dello stand
-  o la apre come PDF; l’esportazione CSV si trova sotto il programma in
-  [Statistiche](statistics-reports.md).
+- **PDF** apre la classifica (A4) per stamparla o condividerla, **CSV** la
+  scarica per Excel. Le classifiche non vanno alla stampante dello stand.
 - I programmi disattivati per gli schermi chiosco sono comunque classificati
   qui e segnati *non sul chiosco*.
 
