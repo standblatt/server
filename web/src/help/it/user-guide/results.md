@@ -11,6 +11,9 @@ dashboard o scansionando il codice sul foglio di stand.
   supererebbe il massimo della serie, passa al campo successivo, così una
   sequenza come `96 93 97 88` si digita senza mouse.
 - Le serie che contano le mouche hanno un secondo campo.
+- Le serie con colpi singoli mostrano un campo per colpo sotto la serie; la
+  serie diventa la loro somma. Registra ogni colpo o nessuno: senza colpi,
+  il totale della serie si digita come di consueto.
 - ++enter++ o **Salva** salva il programma. I valori sopra il massimo
   vengono segnati e non si possono salvare.
 - Salvare di nuovo sostituisce i risultati; la distinzione scelta resta

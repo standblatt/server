@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 22:44+0200\n"
+"POT-Creation-Date: 2026-10-17 22:52+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -294,8 +294,23 @@ msgstr "Saisissez les %d passes"
 
 #: internal/domain/results.go
 #, go-format
+msgid "Series %d does not record single shots"
+msgstr "La passe %d ne saisit pas de coups individuels"
+
+#: internal/domain/results.go
+#, go-format
 msgid "Series %d does not track mouches"
 msgstr "La passe %d ne compte pas les mouches"
+
+#: internal/domain/results.go
+#, go-format
+msgid "Series %d: a shot cannot be negative"
+msgstr "Passe %d : un coup ne peut pas être négatif"
+
+#: internal/domain/results.go
+#, go-format
+msgid "Series %d: enter all %d shots"
+msgstr "Passe %d : saisir les %d coups"
 
 #: internal/domain/results.go
 #, go-format

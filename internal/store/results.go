@@ -31,7 +31,7 @@ func (s *Store) GetEntry(ctx context.Context, tenantID, entryID int64) (EntryRef
 
 // ListResults returns the series results of all entries of a registration, keyed by entry.
 func (s *Store) ListResults(ctx context.Context, tenantID, registrationID int64) (map[int64][]domain.SeriesResult, error) {
-	rows, err := s.pool.Query(ctx, `SELECT re.entry_id, re.points, re.mouches FROM results re
+	rows, err := s.pool.Query(ctx, `SELECT re.entry_id, re.points, re.mouches, re.shots FROM results re
 		JOIN entries en ON en.id = re.entry_id
 		WHERE en.tenant_id = $1 AND en.registration_id = $2 ORDER BY re.entry_id, re.series_number`, tenantID, registrationID)
 	if err != nil {
@@ -40,7 +40,7 @@ func (s *Store) ListResults(ctx context.Context, tenantID, registrationID int64)
 	out := map[int64][]domain.SeriesResult{}
 	var id int64
 	var r domain.SeriesResult
-	_, err = pgx.ForEachRow(rows, []any{&id, &r.Points, &r.Mouches}, func() error {
+	_, err = pgx.ForEachRow(rows, []any{&id, &r.Points, &r.Mouches, &r.Shots}, func() error {
 		out[id] = append(out[id], r)
 		r = domain.SeriesResult{}
 		return nil
@@ -75,8 +75,8 @@ func replaceResults(ctx context.Context, tx pgx.Tx, entryID int64, results []dom
 		return err
 	}
 	for i, r := range results {
-		if _, err := tx.Exec(ctx, `INSERT INTO results (entry_id, series_number, points, mouches) VALUES ($1, $2, $3, $4)`,
-			entryID, i+1, r.Points, r.Mouches); err != nil {
+		if _, err := tx.Exec(ctx, `INSERT INTO results (entry_id, series_number, points, mouches, shots) VALUES ($1, $2, $3, $4, $5)`,
+			entryID, i+1, r.Points, r.Mouches, r.Shots); err != nil {
 			return err
 		}
 	}

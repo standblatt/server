@@ -58,7 +58,7 @@
 	let barcode = $state(start.barcode ?? '');
 	let countsForClubCompetition = $state(start.countsForClubCompetition ?? false);
 	let showOnRankings = $state(start.showOnRankings ?? true);
-	let series = $state(start.series.map((s) => ({ shots: s.shots, maxPoints: s.maxPoints, name: s.name ?? '', trackMouches: s.trackMouches ?? false })));
+	let series = $state(start.series.map((s) => ({ shots: s.shots, maxPoints: s.maxPoints, name: s.name ?? '', trackMouches: s.trackMouches ?? false, trackShots: s.trackShots ?? false })));
 	let prices = $state(
 		Object.fromEntries(
 			ageCategories.map((c) => {
@@ -85,7 +85,7 @@
 	/** Appends a series that copies the shots, maximum and mouches setting of the last one. */
 	function addSeries() {
 		const last = series[series.length - 1];
-		series.push({ shots: last?.shots ?? 10, maxPoints: last?.maxPoints ?? 100, name: '', trackMouches: last?.trackMouches ?? false });
+		series.push({ shots: last?.shots ?? 10, maxPoints: last?.maxPoints ?? 100, name: '', trackMouches: last?.trackMouches ?? false, trackShots: last?.trackShots ?? false });
 	}
 
 	/** Appends an empty award tier. */
@@ -106,7 +106,7 @@
 				barcode,
 				countsForClubCompetition,
 				showOnRankings,
-				series: series.map((s) => ({ shots: Number(s.shots), maxPoints: Number(s.maxPoints), name: s.name, trackMouches: s.trackMouches })),
+				series: series.map((s) => ({ shots: Number(s.shots), maxPoints: Number(s.maxPoints), name: s.name, trackMouches: s.trackMouches, trackShots: s.trackShots })),
 				prices: ageCategories.filter((c) => prices[c].enabled).map((c) => ({ ageCategory: c, price: Number(prices[c].price) || 0 })),
 				awards: awards.map((a) => ({
 					name: a.name,
@@ -165,7 +165,7 @@
 			<div class="overflow-hidden rounded-md border">
 				<Table.Root>
 					<Table.Header>
-						<Table.Row><Table.Head class="hidden w-10 sm:table-cell">#</Table.Head><Table.Head>{$t`Shots`}</Table.Head><Table.Head class="whitespace-normal">{$t`Max. points`}</Table.Head><Table.Head>{$t`Name`}</Table.Head><Table.Head><span class="sm:hidden" title={$t`Mouches`}>{$t({ message: "M", comment: "Column header: mouches" })}</span><span class="hidden sm:inline">{$t`Mouches`}</span></Table.Head><Table.Head></Table.Head></Table.Row>
+						<Table.Row><Table.Head class="hidden w-10 sm:table-cell">#</Table.Head><Table.Head>{$t`Shots`}</Table.Head><Table.Head class="whitespace-normal">{$t`Max. points`}</Table.Head><Table.Head>{$t`Name`}</Table.Head><Table.Head><span class="sm:hidden" title={$t`Mouches`}>{$t({ message: "M", comment: "Column header: mouches" })}</span><span class="hidden sm:inline">{$t`Mouches`}</span></Table.Head><Table.Head><span class="sm:hidden" title={$t`Single shots`}>{$t({ message: "SH", comment: "Column header: single shots" })}</span><span class="hidden sm:inline">{$t`Single shots`}</span></Table.Head><Table.Head></Table.Head></Table.Row>
 					</Table.Header>
 					<Table.Body>
 						{#each series as s, i (i)}
@@ -175,6 +175,7 @@
 								<Table.Cell><Input class="h-8 w-16 sm:w-24" type="number" min="1" bind:value={s.maxPoints} required disabled={locked} /></Table.Cell>
 								<Table.Cell class="w-full"><Input class="h-8 min-w-16" bind:value={s.name} /></Table.Cell>
 								<Table.Cell><Checkbox bind:checked={s.trackMouches} disabled={locked} aria-label={$t`Track mouches in series ${i + 1}`} /></Table.Cell>
+								<Table.Cell><Checkbox bind:checked={s.trackShots} disabled={locked} aria-label={$t`Record single shots in series ${i + 1}`} /></Table.Cell>
 								<Table.Cell class="text-right">
 									<Button variant="ghost" size="icon-sm" title={$t`Remove series`} aria-label={$t`Remove series ${i + 1}`} onclick={() => series.splice(i, 1)} disabled={locked || series.length === 1}><Trash /></Button>
 								</Table.Cell>

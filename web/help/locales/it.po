@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-17 20:49+0000\n"
+"POT-Creation-Date: 2026-10-17 20:54+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -1973,7 +1973,7 @@ msgstr ""
 "della fonte."
 
 #. type: Title ##
-#: ../src/help/en/reference/rules.md:30 ../src/help/en/user-guide/results.md:18
+#: ../src/help/en/reference/rules.md:30 ../src/help/en/user-guide/results.md:19
 #, no-wrap
 msgid "Awards"
 msgstr "Distinzioni"
@@ -2491,7 +2491,14 @@ msgid ""
 "without a lane and their results are entered as usual. Documents can still "
 "be opened as PDF, but they do not go to a print agent, because print agents "
 "belong to a range."
-msgstr "Una manifestazione non ha bisogno di uno stand, p. es. un programma annuale o un Tiro in campagna i cui risultati arrivano su carta o dall’impianto di segnalazione. Senza stand non ci sono griglia dei bersagli, prenotazioni né prenotazione online; i tiratori vengono iscritti senza bersaglio e i loro risultati si registrano come di consueto. I documenti si aprono ancora in PDF, ma non vanno a un agente di stampa, perché gli agenti di stampa appartengono a uno stand."
+msgstr ""
+"Una manifestazione non ha bisogno di uno stand, p. es. un programma annuale "
+"o un Tiro in campagna i cui risultati arrivano su carta o dall’impianto di "
+"segnalazione. Senza stand non ci sono griglia dei bersagli, prenotazioni né "
+"prenotazione online; i tiratori vengono iscritti senza bersaglio e i loro "
+"risultati si registrano come di consueto. I documenti si aprono ancora in "
+"PDF, ma non vanno a un agente di stampa, perché gli agenti di stampa "
+"appartengono a uno stand."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/events.md:32
@@ -3002,10 +3009,11 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/programmes.md:24
 msgid ""
-"**Series**: shots, maximum points and whether mouches are tracked, per "
-"series."
-msgstr ""
-"**Serie**: colpi, punteggio massimo e se si contano le mouche, per serie."
+"**Series**: shots, maximum points, whether mouches are tracked and whether "
+"**Single shots** are recorded, per series. With single shots, every shot can "
+"be entered and the series is their sum, e.g. to print them onto a form; the "
+"series total alone can still be entered."
+msgstr "**Serie**: colpi, punti massimi, se si contano le mouche e se si registrano i **Colpi singoli**, per serie. Con i colpi singoli si può registrare ogni colpo e la serie ne è la somma, p. es. per stamparli su un modulo; il totale della serie da solo si può ancora registrare."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/programmes.md:24
@@ -3894,7 +3902,7 @@ msgid "Entering series"
 msgstr "Registrare le serie"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/results.md:13
+#: ../src/help/en/user-guide/results.md:14
 msgid ""
 "The cursor starts in the first empty series. As soon as another digit would "
 "exceed the series maximum, it moves on to the next field, so a sequence like "
@@ -3905,12 +3913,20 @@ msgstr ""
 "`96 93 97 88` si digita senza mouse."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/results.md:13
+#: ../src/help/en/user-guide/results.md:14
 msgid "Series that track mouches have a second field for them."
 msgstr "Le serie che contano le mouche hanno un secondo campo."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/results.md:13
+#: ../src/help/en/user-guide/results.md:14
+msgid ""
+"Series with single shots show a field per shot under the series; the series "
+"becomes their sum. Enter every shot or none: without shots, the series total "
+"is typed as usual."
+msgstr "Le serie con colpi singoli mostrano un campo per colpo sotto la serie; la serie diventa la loro somma. Registra ogni colpo o nessuno: senza colpi, il totale della serie si digita come di consueto."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/results.md:14
 msgid ""
 "++enter++ or **Save** stores the programme. Values above the maximum are "
 "marked and cannot be saved."
@@ -3919,7 +3935,7 @@ msgstr ""
 "segnati e non si possono salvare."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/results.md:13
+#: ../src/help/en/user-guide/results.md:14
 msgid ""
 "Saving again replaces the results; the chosen award stays as long as the new "
 "total still reaches it."
@@ -3928,7 +3944,7 @@ msgstr ""
 "il nuovo totale la raggiunge ancora."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/results.md:15
+#: ../src/help/en/user-guide/results.md:16
 msgid ""
 "A combined programme shows which series it takes from its source programme "
 "and fills in automatically once the source has results."
@@ -3937,7 +3953,7 @@ msgstr ""
 "e si riempie automaticamente appena la sorgente ha risultati."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/results.md:17
+#: ../src/help/en/user-guide/results.md:18
 msgid ""
 "When every programme has results, the registration is completed and its lane "
 "is free again. **Print result sheet** prints an A5 summary for the shooter."
@@ -3947,7 +3963,7 @@ msgstr ""
 "riepilogo A5 per il tiratore."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/results.md:21
+#: ../src/help/en/user-guide/results.md:22
 msgid ""
 "Once a programme is complete, the awards the total reaches in the shooter's "
 "age category are listed, the most valuable first; of several wreath cards "
@@ -3969,13 +3985,13 @@ msgstr ""
 "(in cifre e in lettere)."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/results.md:22
+#: ../src/help/en/user-guide/results.md:23
 #, no-wrap
 msgid "Handing out awards {#handout}"
 msgstr "Consegnare le distinzioni {#handout}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/results.md:24
+#: ../src/help/en/user-guide/results.md:25
 msgid ""
 "When the shooter collects the wreath cards, prizes and cash at the desk, "
 "press **Awards handed out** in the results dialog, which lists the awards of "
@@ -4280,6 +4296,12 @@ msgstr ""
 "panel.md). Una password dimenticata si reimposta con **Password dimenticata?"
 "** nella pagina di accesso se l’account ha un indirizzo e-mail confermato, "
 "altrimenti lo fa il gestore."
+
+#~ msgid ""
+#~ "**Series**: shots, maximum points and whether mouches are tracked, per "
+#~ "series."
+#~ msgstr ""
+#~ "**Serie**: colpi, punteggio massimo e se si contano le mouche, per serie."
 
 #~ msgid ""
 #~ "**Lane groups** (optional): parts of the range with another distance, "

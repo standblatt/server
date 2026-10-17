@@ -3140,6 +3140,11 @@ msgstr "Tâches récentes"
 msgid "Recent sessions"
 msgstr "Dernières séances"
 
+#. placeholder {0}: i + 1
+#: src/lib/ProgrammeEditor.svelte
+msgid "Record single shots in series {0}"
+msgstr "Saisir les coups individuels de la passe {0}"
+
 #: src/lib/help/nav.ts
 msgid "Reference"
 msgstr "Référence"
@@ -3542,6 +3547,17 @@ msgstr "Passes ({totalShots} coups, max. {totalPoints} points)"
 msgid "Series {0}"
 msgstr "Passe {0}"
 
+#. placeholder {0}: i + 1
+#. placeholder {1}: j + 1
+#: src/lib/EntryCard.svelte
+msgid "Series {0}, shot {1}"
+msgstr "Passe {0}, coup {1}"
+
+#. placeholder {0}: partial + 1
+#: src/lib/EntryCard.svelte
+msgid "Series {0}: enter every shot or none"
+msgstr "Passe {0} : saisir chaque coup ou aucun"
+
 #: src/routes/my/progress/+page.svelte
 msgid "Series curve"
 msgstr "Courbe des passes"
@@ -3600,6 +3616,11 @@ msgstr "Configuration"
 #: src/routes/t/[tenantId]/users/+page.svelte
 msgid "Several addresses separated by commas or one per line."
 msgstr "Plusieurs adresses séparées par des virgules ou une par ligne."
+
+#. Column header: single shots
+#: src/lib/ProgrammeEditor.svelte
+msgid "SH"
+msgstr "CI"
 
 #: src/lib/print.ts
 msgid "Share"
@@ -3687,6 +3708,11 @@ msgstr "Valeurs des coups"
 msgid "Shots"
 msgstr "Coups"
 
+#. placeholder {0}: i + 1
+#: src/lib/EntryCard.svelte
+msgid "Shots of series {0}"
+msgstr "Coups de la passe {0}"
+
 #: src/routes/my/train/+page.svelte
 msgid "Shots of this series"
 msgstr "Coups de cette passe"
@@ -3731,6 +3757,10 @@ msgstr "L’inscription n’est pas ouverte sur ce serveur."
 #: src/lib/ScheduleEditor.svelte
 msgid "Single days with optional shooting times, e.g. pre-shooting days or the official weekend. The main day is always a shooting day."
 msgstr "Jours isolés avec heures de tir facultatives, p. ex. jours de tir anticipé ou le week-end officiel. Le jour principal est toujours un jour de tir."
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Single shots"
+msgstr "Coups individuels"
 
 #: src/lib/booking/BookingHoursForm.svelte
 msgid "Slot length (minutes)"

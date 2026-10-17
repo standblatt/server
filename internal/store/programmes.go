@@ -55,14 +55,14 @@ func loadProgrammes(ctx context.Context, q querier, where string, args ...any) (
 		byID[list[i].ID] = &list[i]
 	}
 
-	rows, err = q.Query(ctx, `SELECT programme_id, shots, max_points, name, track_mouches FROM programme_series
+	rows, err = q.Query(ctx, `SELECT programme_id, shots, max_points, name, track_mouches, track_shots FROM programme_series
 		WHERE programme_id = ANY($1) ORDER BY programme_id, number`, ids)
 	if err != nil {
 		return nil, err
 	}
 	var pid int64
 	var sr domain.Series
-	if _, err := pgx.ForEachRow(rows, []any{&pid, &sr.Shots, &sr.MaxPoints, &sr.Name, &sr.TrackMouches}, func() error {
+	if _, err := pgx.ForEachRow(rows, []any{&pid, &sr.Shots, &sr.MaxPoints, &sr.Name, &sr.TrackMouches, &sr.TrackShots}, func() error {
 		byID[pid].Series = append(byID[pid].Series, sr)
 		return nil
 	}); err != nil {
@@ -124,8 +124,8 @@ func (s *Store) GetProgramme(ctx context.Context, tenantID, programmeID int64) (
 // insertDefinition inserts the series, prices, award tiers and limits of a definition for a programme.
 func insertDefinition(ctx context.Context, tx pgx.Tx, programmeID int64, d domain.ProgrammeDefinition) error {
 	for i, sr := range d.Series {
-		if _, err := tx.Exec(ctx, `INSERT INTO programme_series (programme_id, number, shots, max_points, name, track_mouches)
-			VALUES ($1, $2, $3, $4, $5, $6)`, programmeID, i+1, sr.Shots, sr.MaxPoints, sr.Name, sr.TrackMouches); err != nil {
+		if _, err := tx.Exec(ctx, `INSERT INTO programme_series (programme_id, number, shots, max_points, name, track_mouches, track_shots)
+			VALUES ($1, $2, $3, $4, $5, $6, $7)`, programmeID, i+1, sr.Shots, sr.MaxPoints, sr.Name, sr.TrackMouches, sr.TrackShots); err != nil {
 			return err
 		}
 	}
@@ -228,7 +228,7 @@ func (s *Store) UpdateProgramme(ctx context.Context, tenantID, programmeID int64
 // updateDefinitionInUse applies the changes allowed while a programme has entries (names, prices, award values,
 // new tiers); ErrInUse if the series change or prices or tiers would be removed.
 func updateDefinitionInUse(ctx context.Context, tx pgx.Tx, programmeID int64, d domain.ProgrammeDefinition) error {
-	rows, err := tx.Query(ctx, `SELECT shots, max_points, name, track_mouches FROM programme_series WHERE programme_id = $1 ORDER BY number`, programmeID)
+	rows, err := tx.Query(ctx, `SELECT shots, max_points, name, track_mouches, track_shots FROM programme_series WHERE programme_id = $1 ORDER BY number`, programmeID)
 	if err != nil {
 		return err
 	}
@@ -240,7 +240,7 @@ func updateDefinitionInUse(ctx context.Context, tx pgx.Tx, programmeID int64, d 
 		return ErrInUse
 	}
 	for i, sr := range d.Series {
-		if sr.Shots != series[i].Shots || sr.MaxPoints != series[i].MaxPoints || sr.TrackMouches != series[i].TrackMouches {
+		if sr.Shots != series[i].Shots || sr.MaxPoints != series[i].MaxPoints || sr.TrackMouches != series[i].TrackMouches || sr.TrackShots != series[i].TrackShots {
 			return ErrInUse
 		}
 		if _, err := tx.Exec(ctx, `UPDATE programme_series SET name = $3 WHERE programme_id = $1 AND number = $2`, programmeID, i+1, sr.Name); err != nil {

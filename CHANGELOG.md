@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Events without a range, e.g. an annual programme whose results are entered afterwards: no lanes, reservations or online booking (by @HB9HIL)
 - Lane sheet and control strip can be switched off per event (by @HB9HIL)
+- Series can record single shots: the series is their sum, and the total alone can still be entered (by @HB9HIL)
 
 ### Fixed
 - The event line in the sidebar no longer ends in a dangling separator (by @HB9HIL)

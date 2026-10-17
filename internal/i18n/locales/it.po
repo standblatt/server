@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 22:44+0200\n"
+"POT-Creation-Date: 2026-10-17 22:52+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -294,8 +294,23 @@ msgstr "Inserisci tutte le %d serie"
 
 #: internal/domain/results.go
 #, go-format
+msgid "Series %d does not record single shots"
+msgstr "La serie %d non registra colpi singoli"
+
+#: internal/domain/results.go
+#, go-format
 msgid "Series %d does not track mouches"
 msgstr "La serie %d non conta le mouches"
+
+#: internal/domain/results.go
+#, go-format
+msgid "Series %d: a shot cannot be negative"
+msgstr "Serie %d: un colpo non può essere negativo"
+
+#: internal/domain/results.go
+#, go-format
+msgid "Series %d: enter all %d shots"
+msgstr "Serie %d: registra tutti i %d colpi"
 
 #: internal/domain/results.go
 #, go-format

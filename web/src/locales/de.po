@@ -3140,6 +3140,11 @@ msgstr "Letzte Aufträge"
 msgid "Recent sessions"
 msgstr "Letzte Einheiten"
 
+#. placeholder {0}: i + 1
+#: src/lib/ProgrammeEditor.svelte
+msgid "Record single shots in series {0}"
+msgstr "Einzelschüsse in Passe {0} erfassen"
+
 #: src/lib/help/nav.ts
 msgid "Reference"
 msgstr "Referenz"
@@ -3542,6 +3547,17 @@ msgstr "Passen ({totalShots} Schüsse, max. {totalPoints} Punkte)"
 msgid "Series {0}"
 msgstr "Passe {0}"
 
+#. placeholder {0}: i + 1
+#. placeholder {1}: j + 1
+#: src/lib/EntryCard.svelte
+msgid "Series {0}, shot {1}"
+msgstr "Passe {0}, Schuss {1}"
+
+#. placeholder {0}: partial + 1
+#: src/lib/EntryCard.svelte
+msgid "Series {0}: enter every shot or none"
+msgstr "Passe {0}: jeden Schuss erfassen oder keinen"
+
 #: src/routes/my/progress/+page.svelte
 msgid "Series curve"
 msgstr "Passenverlauf"
@@ -3600,6 +3616,11 @@ msgstr "Einrichtung"
 #: src/routes/t/[tenantId]/users/+page.svelte
 msgid "Several addresses separated by commas or one per line."
 msgstr "Mehrere Adressen durch Kommas getrennt oder eine pro Zeile."
+
+#. Column header: single shots
+#: src/lib/ProgrammeEditor.svelte
+msgid "SH"
+msgstr "ES"
 
 #: src/lib/print.ts
 msgid "Share"
@@ -3687,6 +3708,11 @@ msgstr "Schusswerte"
 msgid "Shots"
 msgstr "Schüsse"
 
+#. placeholder {0}: i + 1
+#: src/lib/EntryCard.svelte
+msgid "Shots of series {0}"
+msgstr "Schüsse der Passe {0}"
+
 #: src/routes/my/train/+page.svelte
 msgid "Shots of this series"
 msgstr "Schüsse dieser Passe"
@@ -3731,6 +3757,10 @@ msgstr "Die Registrierung ist auf diesem Server nicht offen."
 #: src/lib/ScheduleEditor.svelte
 msgid "Single days with optional shooting times, e.g. pre-shooting days or the official weekend. The main day is always a shooting day."
 msgstr "Einzelne Tage mit optionalen Schiesszeiten, z. B. Vorschiesstage oder das offizielle Wochenende. Der Haupttag ist immer ein Schiesstag."
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Single shots"
+msgstr "Einzelschüsse"
 
 #: src/lib/booking/BookingHoursForm.svelte
 msgid "Slot length (minutes)"

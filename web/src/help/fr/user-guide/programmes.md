@@ -33,8 +33,11 @@ programmes](../images/screenshots/setup.png){ .screenshot }
   électronique (voir [Codes](../reference/codes.md)).
 - **Compte pour le concours de sections** et **Afficher sur les écrans
   kiosque**.
-- **Passes** : coups, maximum de points et si les mouches sont comptées, par
-  passe.
+- **Passes** : coups, points maximum, si les mouches sont comptées et si les
+  **Coups individuels** sont saisis, par passe. Avec les coups individuels,
+  chaque coup peut être saisi et la passe en est la somme, p. ex. pour les
+  imprimer sur un formulaire ; le total de la passe seul peut toujours être
+  saisi.
 - **Prix (CHF)** : seules les catégories d’âge cochées peuvent tirer le
   programme.
 - **Distinctions** : nom, type (carte-couronne, prix en nature ou prix en

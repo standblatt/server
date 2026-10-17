@@ -8,6 +8,7 @@ Open the results of a registration with the **Results** button on the dashboard 
 
 - The cursor starts in the first empty series. As soon as another digit would exceed the series maximum, it moves on to the next field, so a sequence like `96 93 97 88` can be typed without the mouse.
 - Series that track mouches have a second field for them.
+- Series with single shots show a field per shot under the series; the series becomes their sum. Enter every shot or none: without shots, the series total is typed as usual.
 - ++enter++ or **Save** stores the programme. Values above the maximum are marked and cannot be saved.
 - Saving again replaces the results; the chosen award stays as long as the new total still reaches it.
 

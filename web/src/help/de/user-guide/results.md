@@ -11,6 +11,9 @@ oder durch Scannen des Codes auf dem Standblatt.
   das Passenmaximum überschreiten würde, springt er ins nächste Feld, so
   lässt sich eine Folge wie `96 93 97 88` ohne Maus tippen.
 - Passen mit Mouchen haben dafür ein zweites Feld.
+- Passen mit Einzelschüssen zeigen unter der Passe ein Feld pro Schuss; die
+  Passe wird deren Summe. Erfasse jeden Schuss oder keinen: Ohne Schüsse
+  wird das Passentotal wie gewohnt eingetippt.
 - ++enter++ oder **Speichern** speichert das Programm. Werte über dem
   Maximum werden markiert und lassen sich nicht speichern.
 - Erneutes Speichern ersetzt die Resultate; die gewählte Auszeichnung

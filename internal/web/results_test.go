@@ -194,3 +194,33 @@ func TestConcurrentSaves(t *testing.T) {
 		t.Fatalf("results after concurrent saves: %+v", res)
 	}
 }
+
+func TestSingleShotResults(t *testing.T) {
+	e := newEnv(t)
+	f := e.registrationFixture("Shots")
+	e.user("boss", f.tenant, store.RoleAdmin)
+	boss := e.login("boss")
+	ctx := context.Background()
+	p, err := e.st.CreateProgramme(ctx, f.tenant, f.event, domain.ProgrammeDefinition{Name: "Obligatory", Awards: []domain.AwardTier{},
+		Series: []domain.Series{{Shots: 3, MaxPoints: 15, TrackShots: true}}, Prices: []domain.Price{{AgeCategory: domain.Elite, Price: 0}}})
+	if err != nil {
+		t.Fatal(err)
+	}
+	reg, err := e.st.CreateRegistration(ctx, f.tenant, store.NewRegistration{EventID: f.event, ShooterID: f.shooter, AgeCategory: domain.Elite,
+		Programmes: []domain.ProgrammeChoice{{ProgrammeID: p}}})
+	if err != nil {
+		t.Fatal(err)
+	}
+	r, _ := e.st.GetRegistration(ctx, f.tenant, reg)
+	path := fmt.Sprintf("/api/tenants/%d/entries/%d/results", f.tenant, r.Entries[0].ID)
+
+	code, b := e.do(boss, "PUT", path, map[string]any{"series": []map[string]any{{"points": 0, "shots": []float64{5, 4, 5}}}})
+	expect(t, "save shots", code, 200, b)
+	var sheet web.ResultSheet
+	json.Unmarshal(b, &sheet)
+	if res := sheet.Entries[0].Results; len(res) != 1 || res[0].Points != 14 || fmt.Sprint(res[0].Shots) != "[5 4 5]" || sheet.Entries[0].Total != 14 {
+		t.Fatalf("sheet with shots: %s", b)
+	}
+	code, b = e.do(boss, "PUT", path, map[string]any{"series": []map[string]any{{"points": 0, "shots": []float64{5, 4}}}})
+	expect(t, "too few shots", code, 422, b)
+}

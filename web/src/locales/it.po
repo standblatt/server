@@ -3140,6 +3140,11 @@ msgstr "Lavori recenti"
 msgid "Recent sessions"
 msgstr "Ultime sessioni"
 
+#. placeholder {0}: i + 1
+#: src/lib/ProgrammeEditor.svelte
+msgid "Record single shots in series {0}"
+msgstr "Registrare i colpi singoli nella serie {0}"
+
 #: src/lib/help/nav.ts
 msgid "Reference"
 msgstr "Riferimento"
@@ -3542,6 +3547,17 @@ msgstr "Serie ({totalShots} colpi, max. {totalPoints} punti)"
 msgid "Series {0}"
 msgstr "Serie {0}"
 
+#. placeholder {0}: i + 1
+#. placeholder {1}: j + 1
+#: src/lib/EntryCard.svelte
+msgid "Series {0}, shot {1}"
+msgstr "Serie {0}, colpo {1}"
+
+#. placeholder {0}: partial + 1
+#: src/lib/EntryCard.svelte
+msgid "Series {0}: enter every shot or none"
+msgstr "Serie {0}: registra ogni colpo o nessuno"
+
 #: src/routes/my/progress/+page.svelte
 msgid "Series curve"
 msgstr "Andamento delle serie"
@@ -3600,6 +3616,11 @@ msgstr "Configurazione"
 #: src/routes/t/[tenantId]/users/+page.svelte
 msgid "Several addresses separated by commas or one per line."
 msgstr "Più indirizzi separati da virgole o uno per riga."
+
+#. Column header: single shots
+#: src/lib/ProgrammeEditor.svelte
+msgid "SH"
+msgstr "CS"
 
 #: src/lib/print.ts
 msgid "Share"
@@ -3687,6 +3708,11 @@ msgstr "Valori dei colpi"
 msgid "Shots"
 msgstr "Colpi"
 
+#. placeholder {0}: i + 1
+#: src/lib/EntryCard.svelte
+msgid "Shots of series {0}"
+msgstr "Colpi della serie {0}"
+
 #: src/routes/my/train/+page.svelte
 msgid "Shots of this series"
 msgstr "Colpi di questa serie"
@@ -3731,6 +3757,10 @@ msgstr "La registrazione non è aperta su questo server."
 #: src/lib/ScheduleEditor.svelte
 msgid "Single days with optional shooting times, e.g. pre-shooting days or the official weekend. The main day is always a shooting day."
 msgstr "Singoli giorni con orari di tiro facoltativi, p. es. giorni di tiro anticipato o il fine settimana ufficiale. Il giorno principale è sempre un giorno di tiro."
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Single shots"
+msgstr "Colpi singoli"
 
 #: src/lib/booking/BookingHoursForm.svelte
 msgid "Slot length (minutes)"

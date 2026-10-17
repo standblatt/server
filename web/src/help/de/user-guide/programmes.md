@@ -32,8 +32,10 @@ Programme gehören zu einem Anlass und werden im Tab *Programme* seiner
 - **Barcode**: wird für die elektronische Trefferanzeige auf das Standblatt
   gedruckt (siehe [Codes](../reference/codes.md)).
 - **Zählt für die Vereinskonkurrenz** und **Auf Kiosk-Anzeigen zeigen**.
-- **Passen**: Schüsse, Höchstpunktzahl und ob Mouchen erfasst werden, pro
-  Passe.
+- **Passen**: Schüsse, Maximalpunkte, ob Mouchen gezählt und ob
+  **Einzelschüsse** erfasst werden, pro Passe. Mit Einzelschüssen lässt sich
+  jeder Schuss erfassen, und die Passe ist deren Summe, z. B. um sie auf ein
+  Formular zu drucken; das Passentotal allein lässt sich weiterhin erfassen.
 - **Preise (CHF)**: Nur die angekreuzten Alterskategorien dürfen das
   Programm schiessen.
 - **Auszeichnungen**: Name, Art (Kranzkarte, Naturalgabe oder Geldpreis, der

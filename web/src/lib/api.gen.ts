@@ -2962,12 +2962,16 @@ export interface components {
             /** Format: int64 */
             shots: number;
             trackMouches?: boolean;
+            /** @description Every shot can be recorded; the series points are their sum */
+            trackShots?: boolean;
         };
         SeriesResult: {
             /** Format: int64 */
             mouches?: number;
             /** Format: double */
             points: number;
+            /** @description Every shot of the series, for series that track shots; the points become their sum */
+            shots?: number[];
         };
         SeriesStat: {
             /** Format: int64 */

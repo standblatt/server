@@ -18,7 +18,7 @@ Programmes belong to an event and are managed on the *Programmes* tab of its **S
 - **Name** and **Variant**: programmes with the same name are variants of each other; a shooter registers for one of them. The name field suggests the names of the event's programmes, and as soon as the name matches one, the editor says that you are creating a variant and warns when the variant name is empty or already taken.
 - **Barcode**: printed on the lane sheet for electronic scoring (see [Codes](../reference/codes.md)).
 - **Counts for the club competition** and **Show on kiosk displays**.
-- **Series**: shots, maximum points and whether mouches are tracked, per series.
+- **Series**: shots, maximum points, whether mouches are tracked and whether **Single shots** are recorded, per series. With single shots, every shot can be entered and the series is their sum, e.g. to print them onto a form; the series total alone can still be entered.
 - **Prices (CHF)**: only the ticked age categories may shoot the programme.
 - **Awards**: name, kind (wreath card, prize in kind or cash prize paid out in money), value and the minimum total per age category; leave a category empty where the award is not available.
 

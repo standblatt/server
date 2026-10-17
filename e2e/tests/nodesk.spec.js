@@ -60,4 +60,28 @@ test.describe("events without a desk", () => {
     await expect(c(reg, "label", "Print lane sheet")).toHaveCount(0);
     await expect(c(reg, "label", "Print control strip")).toHaveCount(0);
   });
+
+  test("records single shots and sums them into the series", async ({ page }) => {
+    await login(page, admin);
+    const base = `/api/tenants/${ids.tenant}`;
+    ids.shots = (await api(page, "POST", `${base}/events/${ids.event}/programmes`, {
+      name: "Annual stich", showOnRankings: true, series: [{ shots: 3, maxPoints: 30, trackShots: true }, { shots: 2, maxPoints: 20 }],
+      prices: [{ ageCategory: "elite", price: 0 }], awards: [],
+    })).id;
+    const reg = await api(page, "POST", `${base}/events/${ids.event}/registrations`, { shooterId: ids.shooter, programmes: [{ programmeId: ids.shots }] });
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}?results=${reg.id}`);
+    const card = page.locator("section[aria-label='Annual stich']");
+    const shots = card.getByRole("group", { name: "Shots of series 1" });
+    await shots.getByLabel("Series 1, shot 1").fill("10");
+    await shots.getByLabel("Series 1, shot 2").fill("9");
+    await c(card, "button", "Save").click();
+    await expect(c(card, "[role=alert]", "Series 1: enter every shot or none")).toBeVisible();
+    await shots.getByLabel("Series 1, shot 3").fill("8");
+    await expect(card.getByLabel("Series 1", { exact: true })).toHaveValue("27");
+    await card.getByLabel("Series 2", { exact: true }).fill("18");
+    await c(card, "button", "Save").click();
+    await expect(card).toContainText("completed");
+    const sheet = await api(page, "GET", `${base}/registrations/${reg.id}/results`);
+    expect(sheet.entries[0].results).toEqual([{ points: 27, shots: [10, 9, 8] }, { points: 18 }]);
+  });
 });

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 22:44+0200\n"
+"POT-Creation-Date: 2026-10-17 22:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -294,7 +294,22 @@ msgstr ""
 
 #: internal/domain/results.go
 #, go-format
+msgid "Series %d does not record single shots"
+msgstr ""
+
+#: internal/domain/results.go
+#, go-format
 msgid "Series %d does not track mouches"
+msgstr ""
+
+#: internal/domain/results.go
+#, go-format
+msgid "Series %d: a shot cannot be negative"
+msgstr ""
+
+#: internal/domain/results.go
+#, go-format
+msgid "Series %d: enter all %d shots"
 msgstr ""
 
 #: internal/domain/results.go

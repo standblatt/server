@@ -24,14 +24,20 @@
 		onaward: (tierId: number | undefined) => Promise<void>;
 	} = $props();
 
-	type Row = { points: string; mouches: string };
-	/** Form rows (points and mouches as strings) from the saved results of an entry. */
+	type Row = { points: string; mouches: string; shots: string[] };
+	/** Form rows (points, mouches and single shots as strings) from the saved results of an entry. */
 	function rowsFrom(e: EntryResult): Row[] {
-		return e.series.map((_, i) => ({
+		return e.series.map((s, i) => ({
 			points: e.results[i] ? String(e.results[i].points) : '',
-			mouches: e.results[i]?.mouches != null ? String(e.results[i].mouches) : ''
+			mouches: e.results[i]?.mouches != null ? String(e.results[i].mouches) : '',
+			shots: s.trackShots ? Array.from({ length: s.shots }, (_, j) => (e.results[i]?.shots?.[j] != null ? String(e.results[i].shots![j]) : '')) : []
 		}));
 	}
+
+	/** Whether series i has any single shot typed; its points are then the sum of the shots. */
+	const hasShots = (i: number) => rows[i].shots.some((v) => v !== '');
+	/** The points of series i: the sum of its shots when they are typed, else the typed total. */
+	const points = (i: number) => (hasShots(i) ? Math.round(rows[i].shots.reduce((n, v) => n + (Number(v) || 0), 0) * 100) / 100 : Number(rows[i].points) || 0);
 
 	let rows = $state<Row[]>(untrack(() => rowsFrom(entry)));
 	let error = $state('');
@@ -48,9 +54,9 @@
 	});
 
 	const readOnly = $derived(entry.combinedSeries.length > 0);
-	const total = $derived(rows.reduce((n, r) => n + (Number(r.points) || 0), 0));
+	const total = $derived(rows.reduce((n, _, i) => n + points(i), 0));
 	/** Whether the points of series i exceed the series maximum. */
-	const tooHigh = (i: number) => Number(rows[i].points) > entry.series[i].maxPoints;
+	const tooHigh = (i: number) => points(i) > entry.series[i].maxPoints;
 
 	/** Moves focus to the next score input (or the save button) once the typed value cannot grow without exceeding max. */
 	function advance(el: HTMLInputElement, value: string, max: number) {
@@ -65,7 +71,12 @@
 	async function submit(e: SubmitEvent) {
 		e.preventDefault();
 		error = '';
-		if (rows.some((r) => r.points === '')) {
+		const partial = rows.findIndex((r) => hasShots(rows.indexOf(r)) && r.shots.some((v) => v === ''));
+		if (partial >= 0) {
+			error = $t`Series ${partial + 1}: enter every shot or none`;
+			return;
+		}
+		if (rows.some((r, i) => r.points === '' && !hasShots(i))) {
 			error = $t`Enter all series`;
 			return;
 		}
@@ -73,8 +84,9 @@
 		try {
 			await onsave(
 				rows.map((r, i) => ({
-					points: Number(r.points),
-					mouches: entry.series[i].trackMouches && r.mouches !== '' ? Number(r.mouches) : undefined
+					points: points(i),
+					mouches: entry.series[i].trackMouches && r.mouches !== '' ? Number(r.mouches) : undefined,
+					shots: hasShots(i) ? r.shots.map(Number) : undefined
 				}))
 			);
 		} catch (err) {
@@ -119,15 +131,33 @@
 						<div class="grid gap-1.5">
 							<label class="grid gap-1.5 text-sm">
 								<span class="font-medium">{s.name || `S${i + 1}`} <span class="font-normal text-muted-foreground">/{s.maxPoints}</span></span>
-								<Input
-									class="h-12 w-20 text-center text-xl tabular-nums md:text-xl {tooHigh(i) ? 'border-destructive ring-3 ring-destructive/20' : ''}"
-									data-score
-									inputmode="decimal"
-									aria-label={$t`Series ${i + 1}`}
-									bind:value={rows[i].points}
-									oninput={(e) => advance(e.currentTarget, rows[i].points, s.maxPoints)}
-								/>
+								{#if hasShots(i)}
+									<Input class="h-12 w-20 text-center text-xl tabular-nums md:text-xl {tooHigh(i) ? 'border-destructive ring-3 ring-destructive/20' : ''}" aria-label={$t`Series ${i + 1}`} value={points(i)} readonly tabindex={-1} />
+								{:else}
+									<Input
+										class="h-12 w-20 text-center text-xl tabular-nums md:text-xl {tooHigh(i) ? 'border-destructive ring-3 ring-destructive/20' : ''}"
+										data-score={s.trackShots ? undefined : ''}
+										inputmode="decimal"
+										aria-label={$t`Series ${i + 1}`}
+										bind:value={rows[i].points}
+										oninput={(e) => advance(e.currentTarget, rows[i].points, s.maxPoints)}
+									/>
+								{/if}
 							</label>
+							{#if s.trackShots}
+								<div class="flex max-w-[34rem] flex-wrap gap-1" role="group" aria-label={$t`Shots of series ${i + 1}`}>
+									{#each rows[i].shots as _, j (j)}
+										<Input
+											class="h-10 w-12 px-1 text-center tabular-nums"
+											data-score
+											inputmode="decimal"
+											aria-label={$t`Series ${i + 1}, shot ${j + 1}`}
+											bind:value={rows[i].shots[j]}
+											oninput={(e) => advance(e.currentTarget, rows[i].shots[j], s.maxPoints / s.shots)}
+										/>
+									{/each}
+								</div>
+							{/if}
 							{#if s.trackMouches}
 								<label class="grid gap-1 text-xs text-muted-foreground">
 									{$t`Mouches`}

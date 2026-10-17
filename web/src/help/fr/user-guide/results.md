@@ -11,6 +11,9 @@ tableau de bord ou en scannant le code de la feuille de stand.
   dépasserait le maximum de la passe, il passe au champ suivant, si bien
   qu’une suite comme `96 93 97 88` se tape sans souris.
 - Les passes qui comptent les mouches ont un second champ pour elles.
+- Les passes avec coups individuels affichent un champ par coup sous la
+  passe ; la passe en devient la somme. Saisis chaque coup ou aucun : sans
+  coups, le total de la passe se tape comme d’habitude.
 - ++enter++ ou **Enregistrer** enregistre le programme. Les valeurs
   au-dessus du maximum sont marquées et ne peuvent pas être enregistrées.
 - Enregistrer à nouveau remplace les résultats ; la distinction choisie

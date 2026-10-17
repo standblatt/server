@@ -2,13 +2,29 @@ package domain
 
 import (
 	"math"
+	"slices"
 	"sort"
 )
 
 // SeriesResult is the score of one series. Mouches is nil for series that do not track them.
 type SeriesResult struct {
-	Points  float64 `json:"points" minimum:"0"`
-	Mouches *int    `json:"mouches,omitempty" required:"false" minimum:"0"`
+	Points  float64   `json:"points" minimum:"0"`
+	Mouches *int      `json:"mouches,omitempty" required:"false" minimum:"0"`
+	Shots   []float64 `json:"shots,omitempty" required:"false" doc:"Every shot of the series, for series that track shots; the points become their sum"`
+}
+
+// NormalizeResults sets the points of every series that comes with its shots to their sum.
+func NormalizeResults(results []SeriesResult) {
+	for i, r := range results {
+		if len(r.Shots) == 0 {
+			continue
+		}
+		sum := 0.0
+		for _, v := range r.Shots {
+			sum += v
+		}
+		results[i].Points = math.Round(sum*100) / 100
+	}
 }
 
 // ValidateResults checks one result per series against the series definitions.
@@ -21,6 +37,14 @@ func ValidateResults(series []Series, results []SeriesResult) []Problem {
 		s := series[i]
 		if r.Points < 0 || r.Points > float64(s.MaxPoints) || math.IsNaN(r.Points) {
 			errs = append(errs, Problemf("Series %d: points must be between 0 and %d", i+1, s.MaxPoints))
+		}
+		switch {
+		case len(r.Shots) > 0 && !s.TrackShots:
+			errs = append(errs, Problemf("Series %d does not record single shots", i+1))
+		case len(r.Shots) > 0 && len(r.Shots) != s.Shots:
+			errs = append(errs, Problemf("Series %d: enter all %d shots", i+1, s.Shots))
+		case slices.ContainsFunc(r.Shots, func(v float64) bool { return v < 0 || math.IsNaN(v) }):
+			errs = append(errs, Problemf("Series %d: a shot cannot be negative", i+1))
 		}
 		switch {
 		case r.Mouches != nil && !s.TrackMouches:

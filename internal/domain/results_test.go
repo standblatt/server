@@ -26,6 +26,32 @@ func TestValidateResults(t *testing.T) {
 	}
 }
 
+func TestSingleShots(t *testing.T) {
+	series := []Series{{Shots: 3, MaxPoints: 30, TrackShots: true}, {Shots: 2, MaxPoints: 20}}
+	results := []SeriesResult{{Points: 1, Shots: []float64{10, 9.5, 8}}, {Points: 17}}
+	NormalizeResults(results)
+	if results[0].Points != 27.5 || results[1].Points != 17 {
+		t.Fatalf("points from shots: %+v", results)
+	}
+	if errs := ValidateResults(series, results); len(errs) != 0 {
+		t.Fatalf("valid shots rejected: %v", errs)
+	}
+	if errs := ValidateResults(series, []SeriesResult{{Points: 25}, {Points: 17}}); len(errs) != 0 {
+		t.Fatalf("a series total without its shots is allowed: %v", errs)
+	}
+	cases := map[string][]SeriesResult{
+		"Series 1: enter all 3 shots":           {{Shots: []float64{10, 10}}, {Points: 1}},
+		"Series 2 does not record single shots": {{Points: 1}, {Shots: []float64{9, 9}}},
+		"Series 1: a shot cannot be negative":   {{Shots: []float64{10, -1, 9}}, {Points: 1}},
+	}
+	for want, results := range cases {
+		NormalizeResults(results)
+		if errs := ValidateResults(series, results); !strings.Contains(Join(errs, "|"), want) {
+			t.Errorf("%s: got %v", want, errs)
+		}
+	}
+}
+
 func TestTotalsAndCombination(t *testing.T) {
 	results := []SeriesResult{{Points: 95}, {Points: 88.1, Mouches: ptr(2)}, {Points: 91.2}, {Points: 97, Mouches: ptr(1)}}
 	if p, m := Totals(results); p != 371.3 || m != 3 {

@@ -173,6 +173,7 @@ func (s *Server) registerResults(api huma.API) {
 		if err != nil {
 			return nil, err
 		}
+		domain.NormalizeResults(in.Body.Series)
 		if errs := domain.ValidateResults(p.Series, in.Body.Series); len(errs) > 0 {
 			return nil, invalidList(errs)
 		}

@@ -21,6 +21,7 @@ type Series struct {
 	MaxPoints    int    `json:"maxPoints" minimum:"1"`
 	Name         string `json:"name,omitempty" required:"false"`
 	TrackMouches bool   `json:"trackMouches,omitempty" required:"false"`
+	TrackShots   bool   `json:"trackShots,omitempty" required:"false" doc:"Every shot can be recorded; the series points are their sum"`
 }
 
 // Price is what a shooter of an age category pays; categories without a price may not shoot the programme.

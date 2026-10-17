@@ -3140,6 +3140,11 @@ msgstr "Recent jobs"
 msgid "Recent sessions"
 msgstr "Recent sessions"
 
+#. placeholder {0}: i + 1
+#: src/lib/ProgrammeEditor.svelte
+msgid "Record single shots in series {0}"
+msgstr "Record single shots in series {0}"
+
 #: src/lib/help/nav.ts
 msgid "Reference"
 msgstr "Reference"
@@ -3542,6 +3547,17 @@ msgstr "Series ({totalShots} shots, max. {totalPoints} points)"
 msgid "Series {0}"
 msgstr "Series {0}"
 
+#. placeholder {0}: i + 1
+#. placeholder {1}: j + 1
+#: src/lib/EntryCard.svelte
+msgid "Series {0}, shot {1}"
+msgstr "Series {0}, shot {1}"
+
+#. placeholder {0}: partial + 1
+#: src/lib/EntryCard.svelte
+msgid "Series {0}: enter every shot or none"
+msgstr "Series {0}: enter every shot or none"
+
 #: src/routes/my/progress/+page.svelte
 msgid "Series curve"
 msgstr "Series curve"
@@ -3600,6 +3616,11 @@ msgstr "Setup"
 #: src/routes/t/[tenantId]/users/+page.svelte
 msgid "Several addresses separated by commas or one per line."
 msgstr "Several addresses separated by commas or one per line."
+
+#. Column header: single shots
+#: src/lib/ProgrammeEditor.svelte
+msgid "SH"
+msgstr "SH"
 
 #: src/lib/print.ts
 msgid "Share"
@@ -3687,6 +3708,11 @@ msgstr "Shot values"
 msgid "Shots"
 msgstr "Shots"
 
+#. placeholder {0}: i + 1
+#: src/lib/EntryCard.svelte
+msgid "Shots of series {0}"
+msgstr "Shots of series {0}"
+
 #: src/routes/my/train/+page.svelte
 msgid "Shots of this series"
 msgstr "Shots of this series"
@@ -3731,6 +3757,10 @@ msgstr "Sign-up is not open on this server."
 #: src/lib/ScheduleEditor.svelte
 msgid "Single days with optional shooting times, e.g. pre-shooting days or the official weekend. The main day is always a shooting day."
 msgstr "Single days with optional shooting times, e.g. pre-shooting days or the official weekend. The main day is always a shooting day."
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Single shots"
+msgstr "Single shots"
 
 #: src/lib/booking/BookingHoursForm.svelte
 msgid "Slot length (minutes)"
