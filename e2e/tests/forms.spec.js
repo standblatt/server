@@ -57,6 +57,7 @@ test.describe("print forms", () => {
     expect(layout.elements).toMatchObject([{ value: "{{shooter.name}}", y: 13 }, { value: "{{s1.shot#}}", repeat: 3, dx: 9 }]);
     const preview = await page.request.get(`/api/tenants/${ids.tenant}/layouts/${ids.layout}/preview`);
     expect(preview.headers()["content-type"]).toBe("application/pdf");
+    expect(preview.headers()["x-frame-options"]).toBe("SAMEORIGIN");
   });
 
   test("prints the results onto the form of the programme", async ({ page }) => {

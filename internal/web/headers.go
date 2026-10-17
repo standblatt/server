@@ -24,8 +24,15 @@ func scriptHashes(docs ...[]byte) []string {
 	return out
 }
 
+// framable reports whether a path may be shown in a frame of the app itself: the preview PDF of print forms,
+// which the form editor shows next to the elements.
+func framable(path string) bool {
+	return strings.Contains(path, "/layouts/") && strings.HasSuffix(path, "/preview")
+}
+
 // secureHeaders adds the browser security headers to every response. Inline scripts are
-// allowed by hash only: the SvelteKit start script and the admin panel's scripts.
+// allowed by hash only: the SvelteKit start script and the admin panel's scripts. No page may be framed,
+// except framable ones by the app itself.
 func (s *Server) secureHeaders(next http.Handler) http.Handler {
 	index, _ := fs.ReadFile(s.UI, "index.html")
 	head, _ := templateFS.ReadFile("templates/head.html")
@@ -44,11 +51,17 @@ func (s *Server) secureHeaders(next http.Handler) http.Handler {
 		"form-action 'self'",
 		"frame-ancestors 'none'",
 	}, "; ")
+	sameOrigin := strings.Replace(csp, "frame-ancestors 'none'", "frame-ancestors 'self'", 1)
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		h := w.Header()
-		h.Set("Content-Security-Policy", csp)
 		h.Set("X-Content-Type-Options", "nosniff")
-		h.Set("X-Frame-Options", "DENY")
+		if framable(r.URL.Path) {
+			h.Set("Content-Security-Policy", sameOrigin)
+			h.Set("X-Frame-Options", "SAMEORIGIN")
+		} else {
+			h.Set("Content-Security-Policy", csp)
+			h.Set("X-Frame-Options", "DENY")
+		}
 		h.Set("Cross-Origin-Opener-Policy", "same-origin")
 		h.Set("Cross-Origin-Resource-Policy", "same-origin")
 		h.Set("Referrer-Policy", "strict-origin-when-cross-origin")
