@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.18.0] - 2026-10-18
+
 ### Added
 - Events without a range, e.g. an annual programme whose results are entered afterwards: no lanes, reservations or online booking (by @HB9HIL)
 - Lane sheet and control strip can be switched off per event (by @HB9HIL)
