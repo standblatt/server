@@ -99,7 +99,7 @@ jobs:
       - uses: actions/setup-go@v6
         with:
           go-version-file: go.mod
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v8
         with:
           name: webui
           path: internal/webui/dist/
@@ -155,7 +155,7 @@ jobs:
       BASE_URL: http://localhost:8080
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v8
         with:
           name: binary
           path: bin/
@@ -193,7 +193,7 @@ jobs:
       IMAGE: ghcr.io/${{ github.repository }}
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v8
         with:
           name: binary
           path: bin/
@@ -239,7 +239,7 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v8
         with:
           name: print-agent
           path: bin/
