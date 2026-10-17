@@ -13,7 +13,8 @@
 			lane_sheet: [$t`Print lane sheet`, $t`Lane sheet sent to printer`],
 			control_strip: [$t`Print control strip`, $t`Control strip sent to printer`],
 			result_sheet: [$t`Print result sheet`, $t`Result sheet sent to printer`],
-			wreath_card: [$t`Print wreath card`, $t`Wreath card sent to printer`]
+			wreath_card: [$t`Print wreath card`, $t`Wreath card sent to printer`],
+			form: [$t`Print onto form`, $t`Form sent to printer`]
 		}[target.document]
 	);
 

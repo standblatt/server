@@ -27,6 +27,7 @@ Once shooters are registered for a programme, the **series** are fixed so result
 - **Active**: inactive programmes cannot be chosen for new registrations; existing ones keep them.
 - **Combinable with**: the programme whose series this one may take at registration.
 - **Range** (events on several ranges): the range the programme is shot on, e.g. *Pistol 50 m*; the registration then offers only its lanes and kiosk displays group the rankings by range. *any* leaves it open. Programmes of different ranges need separate registrations.
+- **Print form** (when the club has [print forms](print-forms.md)): the form the results of the programme are printed onto; *none* prints no form.
 - **Special prizes** (see below).
 
 **Export** downloads the programme as a file; **Delete** is only possible while nobody is registered.

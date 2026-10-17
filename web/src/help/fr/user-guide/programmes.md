@@ -61,6 +61,9 @@ cours :
   propose alors que ses cibles et les écrans kiosque groupent les
   classements par stand. *indifférent* laisse le choix ouvert. Des
   programmes de stands différents demandent des inscriptions séparées.
+- **Modèle d’impression** (quand la société a des [modèles
+  d’impression](print-forms.md)) : le modèle sur lequel les résultats du
+  programme sont imprimés ; *aucun* n’imprime pas de modèle.
 - **Prix spéciaux** (voir ci-dessous).
 
 **Exporter** télécharge le programme en fichier ; **Supprimer** n’est possible que tant que personne n’est inscrit.

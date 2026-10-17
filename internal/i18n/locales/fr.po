@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 23:12+0200\n"
+"POT-Creation-Date: 2026-10-17 23:22+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -682,7 +682,8 @@ msgstr "Tous les programmes n'ont pas encore de résultats"
 msgid "Programme not found"
 msgstr "Programme introuvable"
 
-#: internal/web/documents.go internal/web/helpers.go internal/web/results.go
+#: internal/web/documents.go internal/web/forms.go internal/web/helpers.go
+#: internal/web/results.go
 msgid "Programme of the registration not found"
 msgstr "Programme de l'inscription introuvable"
 
@@ -721,6 +722,30 @@ msgstr "Vétérans"
 #, go-format
 msgid "Wreath card %s"
 msgstr "Carte-couronne %s"
+
+#: internal/web/forms.go
+msgid "A print form with this name already exists"
+msgstr "Un modèle d’impression de ce nom existe déjà"
+
+#: internal/web/forms.go
+msgid "Print form not found"
+msgstr "Modèle d’impression introuvable"
+
+#: internal/web/forms.go
+msgid "Programme or print form not found"
+msgstr "Programme ou modèle d’impression introuvable"
+
+#: internal/web/forms.go
+msgid "The scan is larger than 4 MB"
+msgstr "Le scan dépasse 4 Mo"
+
+#: internal/web/forms.go
+msgid "The scan must be a PNG or JPEG image"
+msgstr "Le scan doit être une image PNG ou JPEG"
+
+#: internal/web/forms.go
+msgid "This programme has no print form"
+msgstr "Ce programme n’a pas de modèle d’impression"
 
 #: internal/web/helpers.go
 msgid "Choose a range of the event for the scorer"

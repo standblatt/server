@@ -12,6 +12,7 @@
 		tenantId,
 		readonly = false,
 		print = true,
+		printForm = print,
 		onsave,
 		onaward
 	}: {
@@ -20,6 +21,8 @@
 		readonly?: boolean;
 		/** Show the wreath card print button (not for helper links). */
 		print?: boolean;
+		/** Show the print form button when the programme has a form. */
+		printForm?: boolean;
 		onsave: (series: SeriesResult[]) => Promise<void>;
 		onaward: (tierId: number | undefined) => Promise<void>;
 	} = $props();
@@ -179,6 +182,7 @@
 		{/if}
 
 		{#if entry.status === 'completed'}
+			{#if printForm && entry.form}<div class="mt-3"><PrintButton {tenantId} target={{ document: 'form', entryId: entry.entryId }} /></div>{/if}
 			<div class="mt-4 border-t pt-3">
 				{#if entry.eligibleAwards.length === 0}
 					<p class="text-sm text-muted-foreground">{$t`No award reached.`}</p>

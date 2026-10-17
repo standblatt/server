@@ -857,6 +857,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/tenants/{tenantId}/entries/{entryId}/form": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** The results of an entry printed onto the form of its programme */
+        get: operations["entry-form"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/tenants/{tenantId}/entries/{entryId}/results": {
         parameters: {
             query?: never;
@@ -1309,6 +1326,90 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/tenants/{tenantId}/layouts": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["list-layouts"];
+        put?: never;
+        post: operations["create-layout"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/tenants/{tenantId}/layouts/fields": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** The placeholders of print forms with example values */
+        get: operations["list-layout-fields"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/tenants/{tenantId}/layouts/{layoutId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["get-layout"];
+        put: operations["update-layout"];
+        post?: never;
+        /** Delete a print form; programmes that use it no longer print a form */
+        delete: operations["delete-layout"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/tenants/{tenantId}/layouts/{layoutId}/background": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Store a scan of the empty form (PNG or JPEG) for the preview; it is never printed */
+        put: operations["set-layout-background"];
+        post?: never;
+        delete: operations["delete-layout-background"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/tenants/{tenantId}/layouts/{layoutId}/preview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** The form with the scan of the empty form behind it */
+        get: operations["preview-layout"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/tenants/{tenantId}/print": {
         parameters: {
             query?: never;
@@ -1399,6 +1500,23 @@ export interface paths {
         };
         get: operations["export-programme"];
         put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/tenants/{tenantId}/programmes/{programmeId}/form": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Choose the print form of a programme; allowed while shooters are registered */
+        put: operations["set-programme-form"];
         post?: never;
         delete?: never;
         options?: never;
@@ -2262,6 +2380,39 @@ export interface components {
             error?: string;
             ok: boolean;
         };
+        Element: {
+            /** @enum {string} */
+            align?: "L" | "C" | "R" | "";
+            bold?: boolean;
+            /** Format: double */
+            dx?: number;
+            /** Format: double */
+            dy?: number;
+            /**
+             * Format: double
+             * @description Height; QR codes are W×W
+             */
+            h?: number;
+            /** Format: int64 */
+            repeat?: number;
+            /**
+             * Format: double
+             * @description Font size in points, 10 when 0
+             */
+            size?: number;
+            /** @enum {string} */
+            type: "text" | "qr" | "barcode" | "line";
+            value?: string;
+            /**
+             * Format: double
+             * @description Width; 0 lets text run to the right edge
+             */
+            w?: number;
+            /** Format: double */
+            x: number;
+            /** Format: double */
+            y: number;
+        };
         EnableInBody: {
             /** @description Current code from the app, proves the secret was saved */
             code: string;
@@ -2286,6 +2437,8 @@ export interface components {
             eligibleAwards: components["schemas"]["Tier"][];
             /** Format: int64 */
             entryId: number;
+            /** @description The programme has a print form for its results */
+            form: boolean;
             /** Format: int64 */
             maxPoints: number;
             /** Format: int64 */
@@ -2430,6 +2583,13 @@ export interface components {
         ForgotInputBody: {
             email: string;
         };
+        FormInBody: {
+            /**
+             * Format: int64
+             * @description A print form of the club; leave out for none
+             */
+            layoutId?: number;
+        };
         FromTemplateInBody: {
             /** Format: int64 */
             templateId: number;
@@ -2557,6 +2717,40 @@ export interface components {
             since?: string;
             /** @enum {string} */
             state: "free" | "disabled" | "occupied" | "reserved";
+        };
+        Layout: {
+            elements: components["schemas"]["Element"][];
+            /** @description A scan of the empty form is stored for the preview */
+            hasBackground: boolean;
+            /** Format: double */
+            height: number;
+            /** Format: int64 */
+            id: number;
+            name: string;
+            /** Format: double */
+            offsetX?: number;
+            /** Format: double */
+            offsetY?: number;
+            /** Format: date-time */
+            updatedAt: string;
+            /** Format: double */
+            width: number;
+        };
+        LayoutField: {
+            example: string;
+            key: string;
+        };
+        LayoutInput: {
+            elements: components["schemas"]["Element"][];
+            /** Format: double */
+            height: number;
+            name: string;
+            /** Format: double */
+            offsetX?: number;
+            /** Format: double */
+            offsetY?: number;
+            /** Format: double */
+            width: number;
         };
         LocaleInputBody: {
             /** @enum {string} */
@@ -2689,7 +2883,7 @@ export interface components {
         };
         PrintRequest: {
             /** @enum {string} */
-            document: "lane_sheet" | "control_strip" | "result_sheet" | "wreath_card";
+            document: "lane_sheet" | "control_strip" | "result_sheet" | "wreath_card" | "form";
             /** Format: int64 */
             entryId?: number;
             /** Format: int64 */
@@ -2702,7 +2896,7 @@ export interface components {
         };
         PrintSetting: {
             /** @enum {string} */
-            document: "lane_sheet" | "control_strip" | "result_sheet" | "wreath_card";
+            document: "lane_sheet" | "control_strip" | "result_sheet" | "wreath_card" | "form";
             options: {
                 [key: string]: string;
             };
@@ -2743,6 +2937,11 @@ export interface components {
             id: number;
             /** @description Shooters are registered: series are fixed, age categories and awards can only be added */
             inUse: boolean;
+            /**
+             * Format: int64
+             * @description Print form the results of the programme are printed onto
+             */
+            layoutId?: number;
             /** Format: int64 */
             maxPoints: number;
             name: string;
@@ -5330,6 +5529,40 @@ export interface operations {
             };
         };
     };
+    "entry-form": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                entryId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description PDF */
+            200: {
+                headers: {
+                    "Content-Disposition"?: string;
+                    "Content-Type"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/pdf": unknown;
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
     "save-results": {
         parameters: {
             query?: never;
@@ -6545,6 +6778,305 @@ export interface operations {
             };
         };
     };
+    "list-layouts": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Layout"][];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "create-layout": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["LayoutInput"];
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Layout"];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "list-layout-fields": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LayoutField"][];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "get-layout": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                layoutId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Layout"];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "update-layout": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                layoutId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["LayoutInput"];
+            };
+        };
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "delete-layout": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                layoutId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "set-layout-background": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                layoutId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "multipart/form-data": {
+                    /** Format: binary */
+                    file: string;
+                };
+            };
+        };
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "delete-layout-background": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                layoutId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "preview-layout": {
+        parameters: {
+            query?: {
+                /** @description Fill in the results of this entry instead of made-up values */
+                entryId?: number;
+                /** @description Render as printed: with the printer offset and without the background */
+                print?: boolean;
+            };
+            header?: never;
+            path: {
+                tenantId: number;
+                layoutId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description PDF */
+            200: {
+                headers: {
+                    "Content-Disposition"?: string;
+                    "Content-Type"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/pdf": unknown;
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
     print: {
         parameters: {
             query?: never;
@@ -6795,6 +7327,40 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["ProgrammeExport"];
                 };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "set-programme-form": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                programmeId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FormInBody"];
+            };
+        };
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Error */
             default: {

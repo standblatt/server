@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-17 21:14+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-17 21:29+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
 #: ../src/help/en/getting-started/concepts.md:1
@@ -1408,7 +1408,7 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/help/en/reference/rules.md:56
-#: ../src/help/en/user-guide/programmes.md:34
+#: ../src/help/en/user-guide/programmes.md:35
 #, markdown-text, no-wrap
 msgid "Special prizes {#special-prizes}"
 msgstr ""
@@ -1853,57 +1853,159 @@ msgid "Standblatt renders all documents as PDF:"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/printing.md:12
+#: ../src/help/en/user-guide/printing.md:13
 #, markdown-text, no-wrap
-msgid "| Document | Format | When |\n|---|---|---|\n| Lane sheet | A5 | at registration, with QR code and programme barcodes |\n| Control strip | label 90 × 29 mm | at registration, stuck on the target card |\n| Result sheet | A5 | when all programmes have results |\n| Wreath card | A6, printed onto pre-printed cards | after choosing a wreath card award |\n| Ranking | A4 | from the rankings page, as PDF only (not sent to the range's printer) |\n"
+msgid "| Document | Format | When |\n|---|---|---|\n| Lane sheet | A5 | at registration, with QR code and programme barcodes |\n| Control strip | label 90 × 29 mm | at registration, stuck on the target card |\n| Result sheet | A5 | when all programmes have results |\n| Wreath card | A6, printed onto pre-printed cards | after choosing a wreath card award |\n| Print form | any size, printed onto pre-printed sheets | for programmes with a [print form](print-forms.md), once the results are in |\n| Ranking | A4 | from the rankings page, as PDF only (not sent to the range's printer) |\n"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/printing.md:14
+#: ../src/help/en/user-guide/printing.md:15
 #, markdown-text
 msgid "Every Print button prints on the range's printer if one is set up and its print agent is online; otherwise the PDF opens in the browser and can be printed from there. On a phone or tablet the PDF goes to the share sheet instead (print, save to files, send), so the app stays open; if the phone asks for another tap first, a note with a **Share** button appears."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/printing.md:15
+#: ../src/help/en/user-guide/printing.md:16
 #, markdown-text, no-wrap
 msgid "Setting up printers"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/printing.md:18
+#: ../src/help/en/user-guide/printing.md:19
 #, markdown-text, no-wrap
 msgid "**Ranges → Printing** (admins):\n"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/printing.md:20
+#: ../src/help/en/user-guide/printing.md:21
 #, markdown-text
 msgid "![Printing](../images/screenshots/printing.png){ .screenshot }"
 msgstr ""
 
 #. type: Bullet: '1. '
-#: ../src/help/en/user-guide/printing.md:24
+#: ../src/help/en/user-guide/printing.md:25
 #, markdown-text
 msgid "**Add print agent**, give it a name and copy the token. Install the agent on a computer next to the printers (see [Print agent](../admin-guide/print-agent.md)). One computer can serve several ranges, e.g. *Pistol 25 m* and *Pistol 50 m*: add an agent on each range and give the agent both tokens, separated by a comma."
 msgstr ""
 
 #. type: Bullet: '2. '
-#: ../src/help/en/user-guide/printing.md:24
+#: ../src/help/en/user-guide/printing.md:25
 #, markdown-text
 msgid "Once the agent is online, it reports its printers. Choose the printer for each document and its options (tray, paper size, media type, further `lp` options such as `fit-to-page`)."
 msgstr ""
 
 #. type: Bullet: '3. '
-#: ../src/help/en/user-guide/printing.md:24
+#: ../src/help/en/user-guide/printing.md:25
 #, markdown-text
 msgid "**Recent jobs** shows what was printed and whether it worked."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/printing.md:25
+#: ../src/help/en/user-guide/printing.md:26
 #, markdown-text
 msgid "A job that the agent does not confirm within two minutes is retried; after three attempts it fails. **revoke** removes an agent immediately."
+msgstr ""
+
+#. type: Title #
+#: ../src/help/en/user-guide/print-forms.md:1
+#, markdown-text, no-wrap
+msgid "Print forms"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:4
+#, markdown-text
+msgid "A print form puts results onto a pre-printed sheet, e.g. the lane sheets the army supplies for the obligatory programme: the shots are entered at the lane or afterwards, and the sheet is printed instead of filled in by hand. Filling in sheets by hand stays possible; print forms are optional."
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/print-forms.md:5
+#, markdown-text, no-wrap
+msgid "Create a form {#create}"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:8
+#, markdown-text, no-wrap
+msgid "**Print forms** (admins, in the club part of the sidebar) lists the forms of the club. **New print form** asks for a name and a paper size, then opens the editor:\n"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/print-forms.md:16
+#, markdown-text
+msgid "**Width** and **Height** of the sheet in millimetres."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/print-forms.md:16
+#, markdown-text
+msgid "**Scan of the empty form**: a PNG or JPEG of the whole sheet. It appears behind the **Preview** so the fields can be placed onto the boxes of the form; it is never printed."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/print-forms.md:16
+#, markdown-text
+msgid "**Elements**: what is printed where. **x** and **y** are millimetres from the top left corner, **Width** and **Height** the size (a width of 0 lets text run to the right edge), **Size** the font size in points."
+msgstr ""
+
+#. type: Bullet: '  - '
+#: ../src/help/en/user-guide/print-forms.md:16
+#, markdown-text
+msgid "*Text* prints its **Value**, in which placeholders are replaced, e.g. `{{shooter.name}}` or `{{total}}`."
+msgstr ""
+
+#. type: Bullet: '  - '
+#: ../src/help/en/user-guide/print-forms.md:16
+#, markdown-text
+msgid "*QR* and *Barcode* print their value as a code, *Line* draws a line from x/y by width/height."
+msgstr ""
+
+#. type: Bullet: '  - '
+#: ../src/help/en/user-guide/print-forms.md:16
+#, markdown-text
+msgid "**Repeat** prints the element several times, moved by **dx** and **dy** each time; `#` in a placeholder counts 1, 2, 3, …. One element `{{s1.shot#}}` with repeat 10 and dx 8 fills the ten shot boxes of series 1."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/print-forms.md:16
+#, markdown-text
+msgid "**Placeholders** lists every value with an example; a click adds it to the element edited last."
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:18
+#, markdown-text, no-wrap
+msgid "**Save** refreshes the preview, which shows made-up values.\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/print-forms.md:19
+#, markdown-text, no-wrap
+msgid "Calibrate the printer {#calibrate}"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:22
+#, markdown-text
+msgid "Printers rarely print exactly where they should. Print a sheet with **Test print**, measure how far the values are off and enter it as **Printer offset right** and **Printer offset down** (negative to move left or up). The offset applies to every element; the preview ignores it."
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/print-forms.md:23
+#, markdown-text, no-wrap
+msgid "Use a form {#use}"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:26
+#, markdown-text
+msgid "On the *Programmes* tab of the event's **Setup**, choose the **Print form** of a programme; this works while shooters are registered. Every completed programme then offers **Print onto form** in the results: at the desk, on the **Enter results** page and on scorer links at the lane (see [Helpers](helpers.md)). With a print agent and a printer chosen for *Print forms* under **Ranges → Printing**, the sheet goes to that printer (e.g. its manual feed), otherwise the PDF opens (see [Printing](printing.md))."
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:27
+#, markdown-text, no-wrap
+msgid "**Export** downloads a form as a file and **Import** reads it again, e.g. to share a form with another club.\n"
 msgstr ""
 
 #. type: Title ##
@@ -2010,49 +2112,55 @@ msgid "Once shooters are registered for a programme, the **series** are fixed so
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:31
+#: ../src/help/en/user-guide/programmes.md:32
 #, markdown-text
 msgid "**Active**: inactive programmes cannot be chosen for new registrations; existing ones keep them."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:31
+#: ../src/help/en/user-guide/programmes.md:32
 #, markdown-text
 msgid "**Combinable with**: the programme whose series this one may take at registration."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:31
+#: ../src/help/en/user-guide/programmes.md:32
 #, markdown-text
 msgid "**Range** (events on several ranges): the range the programme is shot on, e.g. *Pistol 50 m*; the registration then offers only its lanes and kiosk displays group the rankings by range. *any* leaves it open. Programmes of different ranges need separate registrations."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:31
+#: ../src/help/en/user-guide/programmes.md:32
+#, markdown-text
+msgid "**Print form** (when the club has [print forms](print-forms.md)): the form the results of the programme are printed onto; *none* prints no form."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/programmes.md:32
 #, markdown-text
 msgid "**Special prizes** (see below)."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/programmes.md:33
+#: ../src/help/en/user-guide/programmes.md:34
 #, markdown-text, no-wrap
 msgid "**Export** downloads the programme as a file; **Delete** is only possible while nobody is registered.\n"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/programmes.md:37
+#: ../src/help/en/user-guide/programmes.md:38
 #, markdown-text, no-wrap
 msgid "**Special prizes** in the programme menu awards the best ranks of every age category, for example ranks 1–3 in every category with at least 10 participants, counting only shooters whose club has at least 4 participants in this programme. Skipped shooters make room for the next one. The exact rule is in [Competition rules](../reference/rules.md#special-prizes); the winners are in the report *Special prizes* under [Statistics](statistics-reports.md).\n"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/programmes.md:39
+#: ../src/help/en/user-guide/programmes.md:40
 #, markdown-text
 msgid "![Special prizes dialog](../images/screenshots/special-prizes.png){ .screenshot }"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/programmes.md:40
+#: ../src/help/en/user-guide/programmes.md:41
 #, markdown-text
 msgid "Ranks 0 turns special prizes off. The settings can be changed at any time, also after the event."
 msgstr ""

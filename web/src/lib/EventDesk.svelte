@@ -495,7 +495,7 @@
 {/if}
 
 {#if dialog?.kind === 'results' && can.results}
-	{#key dialog.id}<ResultsDialog {tenantId} {eventId} registrationId={dialog.id} canEdit={can.assign} canPrint={can.print} canIssue={can.awards} canRevoke={can.revoke} onclose={close} onedit={openRegistration} />{/key}
+	{#key dialog.id}<ResultsDialog {tenantId} {eventId} registrationId={dialog.id} canEdit={can.assign} canPrint={can.print} canPrintForm={can.forms} canIssue={can.awards} canRevoke={can.revoke} onclose={close} onedit={openRegistration} />{/key}
 {:else if dialog?.kind === 'edit' && can.assign}
 	{#key dialog.id}<RegistrationDialog {tenantId} {eventId} registrationId={dialog.id} lanesOnly={!can.register} onclose={close} onresults={openResults} />{/key}
 {:else if dialog?.kind === 'new' && can.register}

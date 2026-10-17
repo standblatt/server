@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-17 21:14+0000\n"
+"POT-Creation-Date: 2026-10-17 21:29+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -1740,8 +1740,7 @@ msgstr "Resultate {#results}"
 #: ../src/help/en/reference/csv-import.md:27
 #, no-wrap
 msgid "**Import CSV** on an event's **Enter results** page reads results (see [Enter results](../user-guide/results-entry.md#import)):\n"
-msgstr ""
-"**CSV importieren** auf der Seite **Resultate erfassen** eines Anlasses liest Resultate (siehe [Resultate erfassen](../user-guide/results-entry.md#import)):\n"
+msgstr "**CSV importieren** auf der Seite **Resultate erfassen** eines Anlasses liest Resultate (siehe [Resultate erfassen](../user-guide/results-entry.md#import)):\n"
 
 #. type: Fenced code block (text)
 #: ../src/help/en/reference/csv-import.md:28
@@ -1784,14 +1783,18 @@ msgstr ""
 msgid ""
 "A shooter can have results in a programme only once; a line for results that "
 "exist already is an error."
-msgstr "Ein Schütze kann in einem Programm nur einmal Resultate haben; eine Zeile für schon vorhandene Resultate ist ein Fehler."
+msgstr ""
+"Ein Schütze kann in einem Programm nur einmal Resultate haben; eine Zeile "
+"für schon vorhandene Resultate ist ein Fehler."
 
 #. type: Bullet: '- '
 #: ../src/help/en/reference/csv-import.md:45
 msgid ""
 "If the shooter is registered for the programme without results, the results "
 "go into that registration."
-msgstr "Ist der Schütze ohne Resultate für das Programm angemeldet, gehen die Resultate in diese Anmeldung."
+msgstr ""
+"Ist der Schütze ohne Resultate für das Programm angemeldet, gehen die "
+"Resultate in diese Anmeldung."
 
 #. type: Title #
 #: ../src/help/en/reference/programme-file.md:1
@@ -2178,7 +2181,7 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/help/en/reference/rules.md:56
-#: ../src/help/en/user-guide/programmes.md:34
+#: ../src/help/en/user-guide/programmes.md:35
 #, no-wrap
 msgid "Special prizes {#special-prizes}"
 msgstr "Sonderpreise {#special-prizes}"
@@ -2874,7 +2877,7 @@ msgid "Standblatt renders all documents as PDF:"
 msgstr "Standblatt erzeugt alle Dokumente als PDF:"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/printing.md:12
+#: ../src/help/en/user-guide/printing.md:13
 #, no-wrap
 msgid ""
 "| Document | Format | When |\n"
@@ -2883,6 +2886,7 @@ msgid ""
 "| Control strip | label 90 × 29 mm | at registration, stuck on the target card |\n"
 "| Result sheet | A5 | when all programmes have results |\n"
 "| Wreath card | A6, printed onto pre-printed cards | after choosing a wreath card award |\n"
+"| Print form | any size, printed onto pre-printed sheets | for programmes with a [print form](print-forms.md), once the results are in |\n"
 "| Ranking | A4 | from the rankings page, as PDF only (not sent to the range's printer) |\n"
 msgstr ""
 "| Dokument | Format | Wann |\n"
@@ -2891,10 +2895,11 @@ msgstr ""
 "| Kontrollstreifen | Etikette 90 × 29 mm | bei der Anmeldung, wird auf die Scheibenkarte geklebt |\n"
 "| Resultatblatt | A5 | wenn alle Programme Resultate haben |\n"
 "| Kranzkarte | A6, auf vorgedruckte Karten gedruckt | nach Wahl einer Kranzkarte als Auszeichnung |\n"
+"| Druckvorlage | jede Grösse, auf vorgedruckte Blätter gedruckt | bei Programmen mit einer [Druckvorlage](print-forms.md), sobald die Resultate da sind |\n"
 "| Rangliste | A4 | von der Ranglistenseite aus, nur als PDF (geht nicht an den Drucker des Schiessstands) |\n"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/printing.md:14
+#: ../src/help/en/user-guide/printing.md:15
 msgid ""
 "Every Print button prints on the range's printer if one is set up and its "
 "print agent is online; otherwise the PDF opens in the browser and can be "
@@ -2910,24 +2915,24 @@ msgstr ""
 "erscheint ein Hinweis mit dem Button **Teilen**."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/printing.md:15
+#: ../src/help/en/user-guide/printing.md:16
 #, no-wrap
 msgid "Setting up printers"
 msgstr "Drucker einrichten"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/printing.md:18
+#: ../src/help/en/user-guide/printing.md:19
 #, no-wrap
 msgid "**Ranges → Printing** (admins):\n"
 msgstr "**Schiessstände → Drucken** (Admins):\n"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/printing.md:20
+#: ../src/help/en/user-guide/printing.md:21
 msgid "![Printing](../images/screenshots/printing.png){ .screenshot }"
 msgstr "![Drucken](../images/screenshots/printing.png){ .screenshot }"
 
 #. type: Bullet: '1. '
-#: ../src/help/en/user-guide/printing.md:24
+#: ../src/help/en/user-guide/printing.md:25
 msgid ""
 "**Add print agent**, give it a name and copy the token. Install the agent on "
 "a computer next to the printers (see [Print agent](../admin-guide/print-"
@@ -2942,7 +2947,7 @@ msgstr ""
 "einen Agenten hinzu und gib dem Agenten beide Tokens, durch Komma getrennt."
 
 #. type: Bullet: '2. '
-#: ../src/help/en/user-guide/printing.md:24
+#: ../src/help/en/user-guide/printing.md:25
 msgid ""
 "Once the agent is online, it reports its printers. Choose the printer for "
 "each document and its options (tray, paper size, media type, further `lp` "
@@ -2953,12 +2958,12 @@ msgstr ""
 "weitere `lp`-Optionen wie `fit-to-page`)."
 
 #. type: Bullet: '3. '
-#: ../src/help/en/user-guide/printing.md:24
+#: ../src/help/en/user-guide/printing.md:25
 msgid "**Recent jobs** shows what was printed and whether it worked."
 msgstr "**Letzte Aufträge** zeigt, was gedruckt wurde und ob es geklappt hat."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/printing.md:25
+#: ../src/help/en/user-guide/printing.md:26
 msgid ""
 "A job that the agent does not confirm within two minutes is retried; after "
 "three attempts it fails. **revoke** removes an agent immediately."
@@ -2966,6 +2971,131 @@ msgstr ""
 "Ein Auftrag, den der Agent nicht innert zwei Minuten bestätigt, wird "
 "wiederholt; nach drei Versuchen schlägt er fehl. **widerrufen** entfernt "
 "einen Agenten sofort."
+
+#. type: Title #
+#: ../src/help/en/user-guide/print-forms.md:1
+#, no-wrap
+msgid "Print forms"
+msgstr "Druckvorlagen"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:4
+msgid ""
+"A print form puts results onto a pre-printed sheet, e.g. the lane sheets the "
+"army supplies for the obligatory programme: the shots are entered at the "
+"lane or afterwards, and the sheet is printed instead of filled in by hand. "
+"Filling in sheets by hand stays possible; print forms are optional."
+msgstr "Eine Druckvorlage bringt Resultate auf ein vorgedrucktes Blatt, z. B. die Standblätter, die die Armee für das Obligatorische Programm liefert: Die Schüsse werden an der Scheibe oder nachträglich erfasst, und das Blatt wird gedruckt statt von Hand ausgefüllt. Von Hand ausfüllen bleibt möglich; Druckvorlagen sind freiwillig."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/print-forms.md:5
+#, no-wrap
+msgid "Create a form {#create}"
+msgstr "Eine Vorlage erstellen {#create}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:8
+#, no-wrap
+msgid "**Print forms** (admins, in the club part of the sidebar) lists the forms of the club. **New print form** asks for a name and a paper size, then opens the editor:\n"
+msgstr ""
+"**Druckvorlagen** (Admins, im Vereinsteil der Seitenleiste) listet die Vorlagen des Vereins. **Neue Druckvorlage** fragt nach Name und Papiergrösse und öffnet dann den Editor:\n"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/print-forms.md:16
+msgid "**Width** and **Height** of the sheet in millimetres."
+msgstr "**Breite** und **Höhe** des Blatts in Millimetern."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/print-forms.md:16
+msgid ""
+"**Scan of the empty form**: a PNG or JPEG of the whole sheet. It appears "
+"behind the **Preview** so the fields can be placed onto the boxes of the "
+"form; it is never printed."
+msgstr "**Scan des leeren Formulars**: ein PNG oder JPEG des ganzen Blatts. Er erscheint hinter der **Vorschau**, damit sich die Felder auf die Kästchen des Formulars setzen lassen; gedruckt wird er nie."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/print-forms.md:16
+msgid ""
+"**Elements**: what is printed where. **x** and **y** are millimetres from "
+"the top left corner, **Width** and **Height** the size (a width of 0 lets "
+"text run to the right edge), **Size** the font size in points."
+msgstr "**Elemente**: was wo gedruckt wird. **x** und **y** sind Millimeter ab der oberen linken Ecke, **Breite** und **Höhe** die Grösse (Breite 0 lässt Text bis zum rechten Rand laufen), **Grösse** die Schriftgrösse in Punkt."
+
+#. type: Bullet: '  - '
+#: ../src/help/en/user-guide/print-forms.md:16
+msgid ""
+"*Text* prints its **Value**, in which placeholders are replaced, e.g. "
+"`{{shooter.name}}` or `{{total}}`."
+msgstr "*Text* druckt seinen **Wert**, in dem Platzhalter ersetzt werden, z. B. `{{shooter.name}}` oder `{{total}}`."
+
+#. type: Bullet: '  - '
+#: ../src/help/en/user-guide/print-forms.md:16
+msgid ""
+"*QR* and *Barcode* print their value as a code, *Line* draws a line from x/y "
+"by width/height."
+msgstr "*QR* und *Barcode* drucken ihren Wert als Code, *Linie* zieht eine Linie von x/y um Breite/Höhe."
+
+#. type: Bullet: '  - '
+#: ../src/help/en/user-guide/print-forms.md:16
+msgid ""
+"**Repeat** prints the element several times, moved by **dx** and **dy** each "
+"time; `#` in a placeholder counts 1, 2, 3, …. One element `{{s1.shot#}}` "
+"with repeat 10 and dx 8 fills the ten shot boxes of series 1."
+msgstr "**Wiederholung** druckt das Element mehrmals, jedes Mal um **dx** und **dy** verschoben; `#` in einem Platzhalter zählt 1, 2, 3, …. Ein Element `{{s1.shot#}}` mit Wiederholung 10 und dx 8 füllt die zehn Schusskästchen der Passe 1."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/print-forms.md:16
+msgid ""
+"**Placeholders** lists every value with an example; a click adds it to the "
+"element edited last."
+msgstr "**Platzhalter** listet jeden Wert mit einem Beispiel; ein Klick fügt ihn dem zuletzt bearbeiteten Element hinzu."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:18
+#, no-wrap
+msgid "**Save** refreshes the preview, which shows made-up values.\n"
+msgstr ""
+"**Speichern** aktualisiert die Vorschau, die erfundene Werte zeigt.\n"
+
+#. type: Title ##
+#: ../src/help/en/user-guide/print-forms.md:19
+#, no-wrap
+msgid "Calibrate the printer {#calibrate}"
+msgstr "Den Drucker kalibrieren {#calibrate}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:22
+msgid ""
+"Printers rarely print exactly where they should. Print a sheet with **Test "
+"print**, measure how far the values are off and enter it as **Printer offset "
+"right** and **Printer offset down** (negative to move left or up). The "
+"offset applies to every element; the preview ignores it."
+msgstr "Drucker drucken selten genau dort, wo sie sollen. Drucke ein Blatt mit **Testdruck**, miss, wie weit die Werte daneben liegen, und trage es als **Druckerversatz nach rechts** und **Druckerversatz nach unten** ein (negativ für links oder oben). Der Versatz gilt für alle Elemente; die Vorschau ignoriert ihn."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/print-forms.md:23
+#, no-wrap
+msgid "Use a form {#use}"
+msgstr "Eine Vorlage verwenden {#use}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:26
+msgid ""
+"On the *Programmes* tab of the event's **Setup**, choose the **Print form** "
+"of a programme; this works while shooters are registered. Every completed "
+"programme then offers **Print onto form** in the results: at the desk, on "
+"the **Enter results** page and on scorer links at the lane (see [Helpers]"
+"(helpers.md)). With a print agent and a printer chosen for *Print forms* "
+"under **Ranges → Printing**, the sheet goes to that printer (e.g. its manual "
+"feed), otherwise the PDF opens (see [Printing](printing.md))."
+msgstr "Wähle im Tab *Programme* der **Einrichtung** des Anlasses die **Druckvorlage** eines Programms; das geht auch, wenn schon Schützen angemeldet sind. Jedes abgeschlossene Programm bietet dann in den Resultaten **Auf Vorlage drucken** an: am Desk, auf der Seite **Resultate erfassen** und über Schreiber-Links an der Scheibe (siehe [Helfer](helpers.md)). Mit einem Druck-Agenten und einem Drucker für *Druckvorlagen* unter **Schiessstände → Drucken** geht das Blatt an diesen Drucker (z. B. an seinen manuellen Einzug), sonst öffnet sich das PDF (siehe [Drucken](printing.md))."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:27
+#, no-wrap
+msgid "**Export** downloads a form as a file and **Import** reads it again, e.g. to share a form with another club.\n"
+msgstr ""
+"**Exportieren** lädt eine Vorlage als Datei herunter und **Importieren** liest sie wieder ein, z. B. um eine Vorlage mit einem anderen Verein zu teilen.\n"
 
 #. type: Title ##
 #: ../src/help/en/user-guide/programmes.md:1
@@ -3127,7 +3257,7 @@ msgstr ""
 "geht ausserdem:"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:31
+#: ../src/help/en/user-guide/programmes.md:32
 msgid ""
 "**Active**: inactive programmes cannot be chosen for new registrations; "
 "existing ones keep them."
@@ -3136,7 +3266,7 @@ msgstr ""
 "bestehende behalten sie."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:31
+#: ../src/help/en/user-guide/programmes.md:32
 msgid ""
 "**Combinable with**: the programme whose series this one may take at "
 "registration."
@@ -3145,7 +3275,7 @@ msgstr ""
 "übernehmen darf."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:31
+#: ../src/help/en/user-guide/programmes.md:32
 msgid ""
 "**Range** (events on several ranges): the range the programme is shot on, "
 "e.g. *Pistol 50 m*; the registration then offers only its lanes and kiosk "
@@ -3159,24 +3289,31 @@ msgstr ""
 "getrennte Anmeldungen."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:31
+#: ../src/help/en/user-guide/programmes.md:32
+msgid ""
+"**Print form** (when the club has [print forms](print-forms.md)): the form "
+"the results of the programme are printed onto; *none* prints no form."
+msgstr "**Druckvorlage** (wenn der Verein [Druckvorlagen](print-forms.md) hat): die Vorlage, auf die die Resultate des Programms gedruckt werden; *keine* druckt keine Vorlage."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/programmes.md:32
 msgid "**Special prizes** (see below)."
 msgstr "**Sonderpreise** (siehe unten)."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/programmes.md:33
+#: ../src/help/en/user-guide/programmes.md:34
 #, no-wrap
 msgid "**Export** downloads the programme as a file; **Delete** is only possible while nobody is registered.\n"
 msgstr "**Exportieren** lädt das Programm als Datei herunter; **Löschen** geht nur, solange niemand angemeldet ist.\n"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/programmes.md:37
+#: ../src/help/en/user-guide/programmes.md:38
 #, no-wrap
 msgid "**Special prizes** in the programme menu awards the best ranks of every age category, for example ranks 1–3 in every category with at least 10 participants, counting only shooters whose club has at least 4 participants in this programme. Skipped shooters make room for the next one. The exact rule is in [Competition rules](../reference/rules.md#special-prizes); the winners are in the report *Special prizes* under [Statistics](statistics-reports.md).\n"
 msgstr "**Sonderpreise** im Programmmenü zeichnet die besten Ränge jeder Alterskategorie aus, zum Beispiel die Ränge 1–3 in jeder Kategorie mit mindestens 10 Teilnehmern, wobei nur Schützen zählen, deren Verein mindestens 4 Teilnehmer in diesem Programm hat. Übersprungene Schützen machen dem nächsten Platz. Die genaue Regel steht in den [Wettkampfregeln](../reference/rules.md#special-prizes); die Gewinner stehen im Bericht *Sonderpreise* unter [Statistik](statistics-reports.md).\n"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/programmes.md:39
+#: ../src/help/en/user-guide/programmes.md:40
 msgid ""
 "![Special prizes dialog](../images/screenshots/special-prizes.png)"
 "{ .screenshot }"
@@ -3185,7 +3322,7 @@ msgstr ""
 "{ .screenshot }"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/programmes.md:40
+#: ../src/help/en/user-guide/programmes.md:41
 msgid ""
 "Ranks 0 turns special prizes off. The settings can be changed at any time, "
 "also after the event."
@@ -4137,7 +4274,11 @@ msgid ""
 "**Afterwards** on **Enter results** in the event's sidebar, shooter by "
 "shooter, e.g. from paper sheets or the display of the scoring system, or as "
 "a file exported from the scoring system. This page describes both."
-msgstr "**Nachträglich** unter **Resultate erfassen** in der Seitenleiste des Anlasses, Schütze für Schütze, z. B. von Papierblättern oder der Anzeige der Trefferanzeige, oder als Datei aus der Trefferanzeige. Diese Seite beschreibt beides."
+msgstr ""
+"**Nachträglich** unter **Resultate erfassen** in der Seitenleiste des "
+"Anlasses, Schütze für Schütze, z. B. von Papierblättern oder der Anzeige der "
+"Trefferanzeige, oder als Datei aus der Trefferanzeige. Diese Seite "
+"beschreibt beides."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/results-entry.md:9
@@ -4179,7 +4320,9 @@ msgid ""
 "this programme and has no results yet, the results go into that "
 "registration; otherwise a registration without a lane is created, already "
 "completed. A shooter can have results in a programme only once."
-msgstr "Ein Schütze kann in einem Programm nur einmal Resultate haben; eine Zeile für schon vorhandene Resultate ist ein Fehler."
+msgstr ""
+"Ein Schütze kann in einem Programm nur einmal Resultate haben; eine Zeile "
+"für schon vorhandene Resultate ist ein Fehler."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/results-entry.md:18
@@ -4201,8 +4344,7 @@ msgstr "Import aus einer Datei {#import}"
 #: ../src/help/en/user-guide/results-entry.md:21
 #, no-wrap
 msgid "**Import CSV** (admins) on **Enter results** reads a file with one line per shooter and programme, e.g. exported from the scoring system or typed in a spreadsheet; the columns are described under [CSV import](../reference/csv-import.md#results). Every line is checked first: with any error nothing is imported, and the dialog lists the lines to fix. Shooters who are not in the master data are created; a club must already be in the club list.\n"
-msgstr ""
-"**CSV importieren** (Admins) unter **Resultate erfassen** liest eine Datei mit einer Zeile pro Schütze und Programm, z. B. aus der Trefferanzeige exportiert oder in einer Tabellenkalkulation getippt; die Spalten stehen unter [CSV-Import](../reference/csv-import.md#results). Jede Zeile wird zuerst geprüft: Bei einem Fehler wird nichts importiert, und der Dialog listet die zu korrigierenden Zeilen. Schützen, die nicht in den Stammdaten sind, werden angelegt; ein Verein muss schon in der Vereinsliste stehen.\n"
+msgstr "**CSV importieren** (Admins) unter **Resultate erfassen** liest eine Datei mit einer Zeile pro Schütze und Programm, z. B. aus der Trefferanzeige exportiert oder in einer Tabellenkalkulation getippt; die Spalten stehen unter [CSV-Import](../reference/csv-import.md#results). Jede Zeile wird zuerst geprüft: Bei einem Fehler wird nichts importiert, und der Dialog listet die zu korrigierenden Zeilen. Schützen, die nicht in den Stammdaten sind, werden angelegt; ein Verein muss schon in der Vereinsliste stehen.\n"
 
 #. type: Title #
 #: ../src/help/en/user-guide/shooters-clubs.md:1

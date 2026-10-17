@@ -5,12 +5,18 @@ import { i18n } from './locale.svelte';
 
 export type PrintTarget =
 	| { document: 'lane_sheet' | 'control_strip' | 'result_sheet'; registrationId: number }
-	| { document: 'wreath_card'; entryId: number };
+	| { document: 'wreath_card' | 'form'; entryId: number };
 
 /** API URL of the PDF for a print target. */
 export function pdfUrl(tenantId: number, t: PrintTarget): string {
-	if (t.document === 'wreath_card') return `/api/tenants/${tenantId}/entries/${t.entryId}/wreath-card`;
-	return `/api/tenants/${tenantId}/registrations/${t.registrationId}/documents/${t.document}`;
+	switch (t.document) {
+		case 'wreath_card':
+			return `/api/tenants/${tenantId}/entries/${t.entryId}/wreath-card`;
+		case 'form':
+			return `/api/tenants/${tenantId}/entries/${t.entryId}/form`;
+		default:
+			return `/api/tenants/${tenantId}/registrations/${t.registrationId}/documents/${t.document}`;
+	}
 }
 
 /** printDocument sends a document to the range's printer; without a printer or agent it opens the PDF instead. */

@@ -19,6 +19,7 @@
 	import { meQuery } from '$lib/me';
 	import NewShooterDialog from '$lib/NewShooterDialog.svelte';
 	import PageHeader from '$lib/PageHeader.svelte';
+	import PrintButton from '$lib/PrintButton.svelte';
 	import { eventQuery, keys, programmesQuery } from '$lib/tenant';
 
 	const tenantId = $derived(Number(page.params.tenantId));
@@ -82,7 +83,7 @@
 	let clubId = $state(0);
 	let programmeId = $state(0);
 	let creating = $state(false);
-	let entered = $state<{ registrationId: number; name: string; title: string; total: number }[]>([]);
+	let entered = $state<{ registrationId: number; entryId: number; form: boolean; name: string; title: string; total: number }[]>([]);
 
 	$effect(() => {
 		if (!programmeId && active.length) programmeId = active[0].id;
@@ -91,7 +92,7 @@
 	/** An empty result card for the chosen programme; EntryCard fills it. */
 	const blank = $derived<EntryResult | null>(
 		programme
-			? { entryId: 0, programmeId: programme.id, title: programmeTitle(programme), status: 'pending', series: programme.series, maxPoints: programme.maxPoints, combinedSeries: [], results: [], total: 0, mouches: 0, eligibleAwards: [] }
+			? { entryId: 0, programmeId: programme.id, title: programmeTitle(programme), status: 'pending', series: programme.series, maxPoints: programme.maxPoints, combinedSeries: [], results: [], total: 0, mouches: 0, eligibleAwards: [], form: false }
 			: null
 	);
 
@@ -130,7 +131,7 @@
 		);
 		const entry = sheet.entries.find((e) => e.programmeId === programmeId);
 		const name = `${sh.lastname} ${sh.firstname}`;
-		entered = [{ registrationId: sheet.registration.id, name, title: entry?.title ?? '', total: entry?.total ?? 0 }, ...entered];
+		entered = [{ registrationId: sheet.registration.id, entryId: entry?.entryId ?? 0, form: !!entry?.form, name, title: entry?.title ?? '', total: entry?.total ?? 0 }, ...entered];
 		toast.success($t`${name}: ${entry?.total ?? 0} points saved`);
 		shooter = null;
 		await queryClient.invalidateQueries({ queryKey: ['tenants', tenantId, 'events', eventId] });
@@ -204,6 +205,7 @@
 								<Table.Cell class="whitespace-normal"><a class="font-medium hover:underline" href="/t/{tenantId}/events/{eventId}?results={r.registrationId}">{r.name}</a></Table.Cell>
 								<Table.Cell class="hidden sm:table-cell">{r.title}</Table.Cell>
 								<Table.Cell class="text-right font-semibold tabular-nums">{r.total}</Table.Cell>
+								<Table.Cell class="w-0 text-right">{#if r.form}<PrintButton {tenantId} target={{ document: 'form', entryId: r.entryId }} />{/if}</Table.Cell>
 							</Table.Row>
 						{/each}
 					</Table.Body>

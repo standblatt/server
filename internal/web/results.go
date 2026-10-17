@@ -33,6 +33,7 @@ type EntryResult struct {
 	Mouches        int                   `json:"mouches"`
 	Award          *domain.Tier          `json:"award,omitempty"`
 	EligibleAwards []domain.Tier         `json:"eligibleAwards"`
+	Form           bool                  `json:"form" doc:"The programme has a print form for its results"`
 }
 
 // ResultSheet is a registration with the results of all its programmes.
@@ -79,7 +80,7 @@ func (s *Server) resultSheet(ctx context.Context, tenantID, registrationID int64
 		er := EntryResult{
 			EntryID: e.ID, ProgrammeID: p.ID, Title: programmeTitle(p.Name, p.Variant), Status: e.Status,
 			Series: p.Series, MaxPoints: p.MaxPoints, CombinedSeries: e.CombinedSeries,
-			Results: results[e.ID], EligibleAwards: []domain.Tier{},
+			Results: results[e.ID], EligibleAwards: []domain.Tier{}, Form: p.LayoutID != nil,
 		}
 		if er.Results == nil {
 			er.Results = []domain.SeriesResult{}

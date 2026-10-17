@@ -282,9 +282,9 @@ func pdfOut(r rendered, err error) (*PDFOutput, error) {
 	return &PDFOutput{ContentType: "application/pdf", ContentDisposition: fmt.Sprintf(`inline; filename="%s"`, r.filename), Body: r.pdf}, nil
 }
 
-// PrintRequest names what to print: a registration document or the wreath card of an entry.
+// PrintRequest names what to print: a registration document, or the wreath card or print form of an entry.
 type PrintRequest struct {
-	Document       string `json:"document" enum:"lane_sheet,control_strip,result_sheet,wreath_card"`
+	Document       string `json:"document" enum:"lane_sheet,control_strip,result_sheet,wreath_card,form"`
 	RegistrationID int64  `json:"registrationId,omitempty" required:"false"`
 	EntryID        int64  `json:"entryId,omitempty" required:"false"`
 }
@@ -312,7 +312,7 @@ func (s *Server) registerDocuments(api huma.API) {
 			if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
 				return nil, err
 			}
-			if err := s.helperDocument(ctx, in.TenantID, in.RegistrationID, in.Document); err != nil {
+			if err := s.helperDocument(ctx, in.TenantID, in.RegistrationID, 0, in.Document); err != nil {
 				return nil, err
 			}
 			return pdfOut(s.renderRegistrationDoc(ctx, in.TenantID, in.RegistrationID, in.Document))
@@ -344,7 +344,7 @@ func (s *Server) registerDocuments(api huma.API) {
 		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
 			return nil, err
 		}
-		if err := s.helperDocument(ctx, in.TenantID, in.Body.RegistrationID, in.Body.Document); err != nil {
+		if err := s.helperDocument(ctx, in.TenantID, in.Body.RegistrationID, in.Body.EntryID, in.Body.Document); err != nil {
 			return nil, err
 		}
 		var r rendered
@@ -352,6 +352,8 @@ func (s *Server) registerDocuments(api huma.API) {
 		switch in.Body.Document {
 		case store.DocWreathCard:
 			r, err = s.renderWreathCard(ctx, in.TenantID, in.Body.EntryID)
+		case store.DocForm:
+			r, err = s.renderForm(ctx, in.TenantID, in.Body.EntryID)
 		default:
 			r, err = s.renderRegistrationDoc(ctx, in.TenantID, in.Body.RegistrationID, in.Body.Document)
 		}

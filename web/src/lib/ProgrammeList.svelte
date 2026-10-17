@@ -141,6 +141,18 @@
 			return '';
 		});
 	const ranges = $derived(event.data?.ranges ?? []);
+	const layouts = createQuery(() => ({
+		queryKey: ['tenants', tenantId, 'layouts'],
+		queryFn: () => call(api.GET('/api/tenants/{tenantId}/layouts', { params: { path: { tenantId } } }))
+	}));
+
+	/** Chooses the print form of a programme (its ID) or none (""). */
+	const setForm = (p: Programme, value: string) =>
+		run(async () => {
+			const body = value ? { layoutId: Number(value) } : {};
+			await call(api.PUT('/api/tenants/{tenantId}/programmes/{programmeId}/form', { params: { path: { tenantId, programmeId: p.id } }, body }));
+			return '';
+		});
 
 	/** Sets the programme it can be combined with (0 = none). */
 	const setCombination = (p: Programme, target: number) =>
@@ -205,6 +217,7 @@
 			<Table.Head class="hidden sm:table-cell">{$t`Awards`}</Table.Head>
 			<Table.Head class="hidden sm:table-cell">{$t`Combinable with`}</Table.Head>
 			{#if ranges.length > 1}<Table.Head class="hidden sm:table-cell">{$t`Range`}</Table.Head>{/if}
+			{#if layouts.data?.length}<Table.Head class="hidden md:table-cell">{$t`Print form`}</Table.Head>{/if}
 			<Table.Head>{$t`Active`}</Table.Head>
 			<Table.Head class="w-10"></Table.Head>
 		</Table.Row>
@@ -241,6 +254,18 @@
 							</NativeSelect.Root>
 						{:else}
 							{ranges.find((r) => r.id === p.rangeId)?.name ?? $t`any`}
+						{/if}
+					</Table.Cell>
+				{/if}
+				{#if layouts.data?.length}
+					<Table.Cell class="hidden md:table-cell">
+						{#if isAdmin}
+							<NativeSelect.Root size="sm" value={String(p.layoutId ?? '')} onchange={(e) => setForm(p, e.currentTarget.value)} aria-label={$t`Print form`}>
+								<NativeSelect.Option value="">{$t`none`}</NativeSelect.Option>
+								{#each layouts.data as l (l.id)}<NativeSelect.Option value={String(l.id)}>{l.name}</NativeSelect.Option>{/each}
+							</NativeSelect.Root>
+						{:else}
+							{layouts.data.find((l) => l.id === p.layoutId)?.name ?? '–'}
 						{/if}
 					</Table.Cell>
 				{/if}

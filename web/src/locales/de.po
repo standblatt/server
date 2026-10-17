@@ -395,6 +395,10 @@ msgstr "{name}: {0} Punkte gespeichert"
 msgid "{standard} shots"
 msgstr "{standard} Schuss"
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "{text} copied"
+msgstr "{text} kopiert"
+
 #. js-lingui:icu=%7Bwaiting%2C+plural%2C+one+%7BTake+over+%23+shooter%7D+other+%7BTake+over+%23+shooters%7D%7D&pluralize_on=waiting
 #: src/lib/BookingRequests.svelte
 msgid "Take over # shooter"
@@ -442,6 +446,22 @@ msgstr "Ein neuer Anlass mit denselben Einstellungen und Programmen, ohne Anmeld
 #: src/lib/UpdateNotice.svelte
 msgid "A new version of Standblatt is available."
 msgstr "Eine neue Version von Standblatt ist verfügbar."
+
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "A4 portrait (210 × 297 mm)"
+msgstr "A4 hoch (210 × 297 mm)"
+
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "A5 landscape (210 × 148 mm)"
+msgstr "A5 quer (210 × 148 mm)"
+
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "A5 portrait (148 × 210 mm)"
+msgstr "A5 hoch (148 × 210 mm)"
+
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "A6 portrait (105 × 148 mm)"
+msgstr "A6 hoch (105 × 148 mm)"
 
 #: src/lib/AppSidebar.svelte
 #: src/routes/+page.svelte
@@ -498,6 +518,10 @@ msgstr "Verein hinzufügen"
 #: src/lib/ScheduleEditor.svelte
 msgid "Add day"
 msgstr "Tag hinzufügen"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Add element"
+msgstr "Element hinzufügen"
 
 #: src/lib/ProgrammeList.svelte
 msgid "Add from …"
@@ -583,6 +607,15 @@ msgstr "Luftpistole 10 m"
 #: src/routes/my/settings/+page.svelte
 msgid "Air rifle 10 m"
 msgstr "Luftgewehr 10 m"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Align"
+msgstr "Ausrichtung"
+
+#. placeholder {0}: i + 1
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Alignment of element {0}"
+msgstr "Ausrichtung von Element {0}"
 
 #: src/routes/my/+page.svelte
 #: src/routes/my/log/+page.svelte
@@ -773,6 +806,7 @@ msgid "Back to the log"
 msgstr "Zurück zum Logbuch"
 
 #: src/lib/ProgrammeEditor.svelte
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Barcode"
 msgstr "Barcode"
 
@@ -791,6 +825,15 @@ msgstr "Geburtsdatum"
 #: src/lib/booking/ShooterList.svelte
 msgid "Birthday of shooter {0}"
 msgstr "Geburtsdatum von Schütze {0}"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Bold"
+msgstr "Fett"
+
+#. placeholder {0}: i + 1
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Bold element {0}"
+msgstr "Element {0} fett"
 
 #: src/routes/b/[code]/+page.svelte
 msgid "Book lanes"
@@ -834,6 +877,10 @@ msgstr "Bis (optional)"
 msgid "by {0}"
 msgstr "von {0}"
 
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Can be changed to any size in millimetres later."
+msgstr "Lässt sich später auf jede Grösse in Millimetern ändern."
+
 #: src/lib/ConfirmHost.svelte
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -866,6 +913,10 @@ msgstr "Kat."
 #: src/lib/EventDesk.svelte
 msgid "Category"
 msgstr "Kategorie"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "centre"
+msgstr "zentriert"
 
 #: src/routes/my/progress/+page.svelte
 msgid "Centre and size of your group"
@@ -921,6 +972,10 @@ msgstr "Ort"
 #: src/lib/RegistrationForm.svelte
 msgid "clear"
 msgstr "leeren"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Click to add one to the element edited last. With Repeat, # counts 1, 2, 3 …: s1.shot# prints the shots of series 1 one after the other."
+msgstr "Klicken fügt ihn dem zuletzt bearbeiteten Element hinzu. Mit Wiederholung zählt # 1, 2, 3 …: s1.shot# druckt die Schüsse der Passe 1 nacheinander."
 
 #: src/lib/components/ui/dialog/dialog-content.svelte
 #: src/lib/components/ui/dialog/dialog-footer.svelte
@@ -1193,6 +1248,7 @@ msgstr "Zählt für die Vereinskonkurrenz"
 #: src/lib/NewShooterDialog.svelte
 #: src/lib/ProgrammeSheet.svelte
 #: src/routes/t/[tenantId]/+page.svelte
+#: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Create"
 msgstr "Erstellen"
 
@@ -1307,9 +1363,15 @@ msgstr "Standard ({0})"
 #: src/routes/t/[tenantId]/clubs/+page.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/forms/+page.svelte
 #: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "Delete"
 msgstr "Löschen"
+
+#. placeholder {0}: l.name
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Delete {0}"
+msgstr "{0} löschen"
 
 #: src/lib/AccountSettings.svelte
 msgid "Delete account"
@@ -1328,6 +1390,11 @@ msgstr "Disziplin «{0}» löschen?"
 #: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
 msgid "Delete event?"
 msgstr "Anlass löschen?"
+
+#. placeholder {0}: l.name
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Delete print form \"{0}\"?"
+msgstr "Druckvorlage «{0}» löschen?"
 
 #: src/lib/ProgrammeList.svelte
 msgid "Delete programme?"
@@ -1453,6 +1520,25 @@ msgstr "Fertig"
 msgid "down"
 msgstr "unten"
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Duplicate"
+msgstr "Duplizieren"
+
+#. placeholder {0}: i + 1
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Duplicate element {0}"
+msgstr "Element {0} duplizieren"
+
+#. placeholder {0}: i + 1
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "dx of element {0}"
+msgstr "dx von Element {0}"
+
+#. placeholder {0}: i + 1
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "dy of element {0}"
+msgstr "dy von Element {0}"
+
 #: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
 msgid "e.g. 5 or 1, 5, 7-10"
 msgstr "z. B. 5 oder 1, 5, 7-10"
@@ -1508,6 +1594,16 @@ msgstr "Anmeldung bearbeiten"
 #: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
 msgid "Edit reservation"
 msgstr "Reservation bearbeiten"
+
+#. placeholder {0}: i + 1
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Element {0}"
+msgstr "Element {0}"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Elements"
+msgstr "Elemente"
 
 #: src/lib/labels.ts
 msgid "Elite"
@@ -1654,8 +1750,14 @@ msgid "expires {0}"
 msgstr "läuft ab am {0}"
 
 #: src/lib/ProgrammeList.svelte
+#: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Export"
 msgstr "Exportieren"
+
+#. placeholder {0}: l.name
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Export {0}"
+msgstr "{0} exportieren"
 
 #: src/routes/my/settings/+page.svelte
 msgid "Export all sessions (CSV)"
@@ -1721,6 +1823,11 @@ msgstr "Vorname"
 msgid "First name of shooter {0}"
 msgstr "Vorname von Schütze {0}"
 
+#. placeholder {0}: i + 1
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Font size of element {0}"
+msgstr "Schriftgrösse von Element {0}"
+
 #: src/lib/ProgrammeEditor.svelte
 msgid "For a variant, pick the name of an existing programme: a shooter registers for only one programme of the same name."
 msgstr "Für eine Variante den Namen eines bestehenden Programms wählen: ein Schütze meldet sich nur für ein Programm gleichen Namens an."
@@ -1745,6 +1852,10 @@ msgstr "Für eigene Skripte und Tools: Mit einem Token können sie über die API
 #: src/routes/login/+page.svelte
 msgid "Forgot your password?"
 msgstr "Passwort vergessen?"
+
+#: src/lib/PrintButton.svelte
+msgid "Form sent to printer"
+msgstr "Druckvorlage an Drucker gesendet"
 
 #: src/routes/my/log/+page.svelte
 msgid "Found by your license number and birthday in closed competitions run with Standblatt."
@@ -1813,6 +1924,19 @@ msgstr "Kopfzeile mit <0>license</0> oder <1>firstname</1> und <2>lastname</2> (
 msgid "Header row with the columns <0>firstname</0> and <1>lastname</1>, optionally <2>license</2>, <3>birthday</3>, <4>postalcode</4>, <5>city</5> and <6>club</6>; separated by <7>;</7> or <8>,</8>. One line per shooter and club. Shooters are matched by license number (or name and birthday without one); nothing is deleted."
 msgstr "Kopfzeile mit den Spalten <0>firstname</0> und <1>lastname</1>, optional <2>license</2>, <3>birthday</3>, <4>postalcode</4>, <5>city</5> und <6>club</6>; getrennt durch <7>;</7> oder <8>,</8>. Eine Zeile pro Schütze und Verein. Schützen werden über die Lizenznummer zugeordnet (ohne Lizenz über Name und Geburtsdatum); gelöscht wird nichts."
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Height"
+msgstr "Höhe"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Height (mm)"
+msgstr "Höhe (mm)"
+
+#. placeholder {0}: i + 1
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Height of element {0}"
+msgstr "Höhe von Element {0}"
+
 #: src/routes/my/+page.svelte
 msgid "Hello"
 msgstr "Hallo"
@@ -1866,9 +1990,14 @@ msgid "If an account uses {email}, we sent a link to choose a new password. Chec
 msgstr "Falls ein Konto {email} verwendet, haben wir einen Link zum Festlegen eines neuen Passworts gesendet. Schau in dein Postfach."
 
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
+#: src/routes/t/[tenantId]/forms/+page.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "Import"
 msgstr "Importieren"
+
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Import a print form"
+msgstr "Druckvorlage importieren"
 
 #: src/lib/ProgrammeList.svelte
 msgid "Import a programme file"
@@ -2147,6 +2276,7 @@ msgid "last used {0}"
 msgstr "zuletzt verwendet am {0}"
 
 #: src/lib/my/GroupInfo.svelte
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "left"
 msgstr "links"
 
@@ -2195,6 +2325,10 @@ msgstr "Hell"
 #: src/lib/ThemeToggle.svelte
 msgid "Light theme"
 msgstr "Helles Design"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Line"
+msgstr "Linie"
 
 #. placeholder {0}: e.line
 #. placeholder {1}: e.message
@@ -2381,6 +2515,10 @@ msgstr "Mouches"
 msgid "Mouches series {0}"
 msgstr "Mouches Passe {0}"
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Moves everything when the printer prints off target."
+msgstr "Verschiebt alles, wenn der Drucker daneben druckt."
+
 #: src/lib/AppSidebar.svelte
 #: src/lib/help/nav.ts
 #: src/routes/+page.svelte
@@ -2395,6 +2533,8 @@ msgstr "Mein Training"
 #: src/routes/t/[tenantId]/+page.svelte
 #: src/routes/t/[tenantId]/clubs/+page.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+#: src/routes/t/[tenantId]/forms/+page.svelte
 #: src/routes/t/[tenantId]/ranges/+page.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "Name"
@@ -2471,6 +2611,10 @@ msgstr "Neue Personen erhalten eine E-Mail mit einem Link zum Setzen des Passwor
 #: src/lib/my/Result.svelte
 msgid "New personal best!"
 msgstr "Neue Bestleistung!"
+
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "New print form"
+msgstr "Neue Druckvorlage"
 
 #: src/lib/ProgrammeList.svelte
 #: src/lib/ProgrammeSheet.svelte
@@ -2553,6 +2697,10 @@ msgstr "Keine Verbindung. Änderungen werden erst gespeichert, wenn du wieder on
 msgid "No connection. Nothing was saved."
 msgstr "Keine Verbindung. Es wurde nichts gespeichert."
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "No elements yet."
+msgstr "Noch keine Elemente."
+
 #: src/lib/AccountSettings.svelte
 msgid "No email address yet"
 msgstr "Noch keine E-Mail-Adresse"
@@ -2572,6 +2720,10 @@ msgstr "Keine Scheibe: der Schütze wartet."
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "No print agent yet."
 msgstr "Noch kein Druck-Agent."
+
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "No print forms yet."
+msgstr "Noch keine Druckvorlagen."
 
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "No print jobs yet."
@@ -2648,6 +2800,7 @@ msgid "Nobody is waiting."
 msgstr "Niemand wartet."
 
 #: src/lib/EventForm.svelte
+#: src/lib/ProgrammeList.svelte
 #: src/lib/RegistrationForm.svelte
 msgid "none"
 msgstr "keiner"
@@ -2815,6 +2968,10 @@ msgstr "Eigene Disziplin"
 msgid "Pages"
 msgstr "Seiten"
 
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Paper size"
+msgstr "Papiergrösse"
+
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Participants"
 msgstr "Teilnehmer"
@@ -2892,6 +3049,10 @@ msgstr "Pistole Präzision 25/50 m"
 msgid "Place {0} of your {1} sessions with {2} shots"
 msgstr "Platz {0} deiner {1} Einheiten mit {2} Schuss"
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Placeholders"
+msgstr "Platzhalter"
+
 #: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
 msgid "planned"
 msgstr "geplant"
@@ -2900,6 +3061,10 @@ msgstr "geplant"
 #: src/lib/my/Notices.svelte
 msgid "Please confirm your email address {0} with the link we sent you."
 msgstr "Bitte bestätige deine E-Mail-Adresse {0} mit dem Link, den wir dir gesendet haben."
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "PNG or JPEG of the whole sheet; only shown in the preview, never printed."
+msgstr "PNG oder JPEG des ganzen Blatts; nur in der Vorschau sichtbar, nie gedruckt."
 
 #: src/routes/my/log/[id]/+page.svelte
 msgid "Points per shot by series"
@@ -2927,9 +3092,17 @@ msgstr "Punkte pro Schuss jeder Einheit, die älteste links."
 msgid "Points per shot of sessions with a tag compared with your average."
 msgstr "Punkte pro Schuss der Einheiten mit einem Tag im Vergleich zu deinem Schnitt."
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Positions and sizes in millimetres from the top left corner of the sheet."
+msgstr "Positionen und Grössen in Millimetern ab der oberen linken Ecke des Blatts."
+
 #: src/lib/ShooterForm.svelte
 msgid "Postal code"
 msgstr "PLZ"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Preview"
+msgstr "Vorschau"
 
 #: src/lib/Pager.svelte
 msgid "Previous page"
@@ -2961,10 +3134,37 @@ msgstr "Druck-Agents"
 msgid "Print control strip"
 msgstr "Kontrollstreifen drucken"
 
+#: src/lib/ProgrammeList.svelte
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Print form"
+msgstr "Druckvorlage"
+
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Print form deleted"
+msgstr "Druckvorlage gelöscht"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Print form saved"
+msgstr "Druckvorlage gespeichert"
+
+#: src/lib/AppSidebar.svelte
+#: src/routes/t/[tenantId]/+layout.svelte
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Print forms"
+msgstr "Druckvorlagen"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Print forms (pre-printed)"
+msgstr "Druckvorlagen (vorgedruckt)"
+
 #: src/lib/PrintButton.svelte
 #: src/lib/RegistrationDialog.svelte
 msgid "Print lane sheet"
 msgstr "Standblatt drucken"
+
+#: src/lib/PrintButton.svelte
+msgid "Print onto form"
+msgstr "Auf Vorlage drucken"
 
 #: src/lib/PrintButton.svelte
 msgid "Print result sheet"
@@ -2986,6 +3186,14 @@ msgstr "Drucker"
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Printer for {0}"
 msgstr "Drucker für {0}"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Printer offset down (mm)"
+msgstr "Druckerversatz nach unten (mm)"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Printer offset right (mm)"
+msgstr "Druckerversatz nach rechts (mm)"
 
 #: src/lib/labels.ts
 msgid "printing"
@@ -3050,6 +3258,10 @@ msgstr "Programme"
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "programmes sold"
 msgstr "verkaufte Programme"
+
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Programmes that use it no longer print a form."
+msgstr "Programme, die sie nutzen, drucken danach keine Vorlage mehr."
 
 #: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
 msgid "Programmes, event settings and kiosk displays."
@@ -3238,6 +3450,7 @@ msgid "Reload"
 msgstr "Neu laden"
 
 #: src/routes/my/progress/+page.svelte
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 #: src/routes/t/[tenantId]/users/+page.svelte
 msgid "Remove"
 msgstr "Entfernen"
@@ -3265,6 +3478,11 @@ msgstr "Auszeichnung {0} entfernen"
 msgid "Remove day"
 msgstr "Tag entfernen"
 
+#. placeholder {0}: i + 1
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Remove element {0}"
+msgstr "Element {0} entfernen"
+
 #: src/lib/ProgrammeEditor.svelte
 #: src/routes/my/train/+page.svelte
 msgid "Remove series"
@@ -3279,6 +3497,10 @@ msgstr "Passe {0} entfernen"
 #: src/lib/booking/ShooterList.svelte
 msgid "Remove shooter {0}"
 msgstr "Schütze {0} entfernen"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Remove the scan"
+msgstr "Scan entfernen"
 
 #: src/lib/ScheduleEditor.svelte
 msgid "Remove time"
@@ -3299,6 +3521,15 @@ msgstr "Wiedereröffnen"
 #: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
 msgid "Reopen this event"
 msgstr "Diesen Anlass wiedereröffnen"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Repeat"
+msgstr "Wiederholung"
+
+#. placeholder {0}: i + 1
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Repeat element {0}"
+msgstr "Element {0} wiederholen"
 
 #: src/routes/b/manage/[token]/+page.svelte
 msgid "Request cancelled"
@@ -3453,6 +3684,7 @@ msgid "Rifle 50 m"
 msgstr "Gewehr 50 m"
 
 #: src/lib/my/GroupInfo.svelte
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "right"
 msgstr "rechts"
 
@@ -3482,6 +3714,7 @@ msgstr "P{0}"
 #: src/routes/t/[tenantId]/clubs/+page.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 #: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "Save"
@@ -3510,6 +3743,10 @@ msgstr "Auf diesem Gerät gespeichert"
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Saved."
 msgstr "Gespeichert."
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Scan of the empty form"
+msgstr "Scan des leeren Formulars"
 
 #: src/lib/TwoFactor.svelte
 msgid "Scan the code with Google Authenticator, Aegis, 1Password or a similar app, then enter the code it shows."
@@ -3817,6 +4054,11 @@ msgstr "Einzelne Tage mit optionalen Schiesszeiten, z. B. Vorschiesstage oder da
 msgid "Single shots"
 msgstr "Einzelschüsse"
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Size"
+msgstr "Grösse"
+
 #: src/lib/booking/BookingHoursForm.svelte
 msgid "Slot length (minutes)"
 msgstr "Länge eines Zeitblocks (Minuten)"
@@ -3967,6 +4209,18 @@ msgstr "Scheibe"
 msgid "Target face for tapping hits"
 msgstr "Scheibenbild zum Antippen der Treffer"
 
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Templates that print results onto pre-printed sheets, e.g. the army's lane sheets."
+msgstr "Vorlagen, die Resultate auf vorgedruckte Blätter drucken, z. B. die Standblätter der Armee."
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Test print"
+msgstr "Testdruck"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Text"
+msgstr "Text"
+
 #: src/routes/verify/+page.svelte
 msgid "Thank you. Time for a training!"
 msgstr "Danke. Zeit für ein Training!"
@@ -4029,6 +4283,10 @@ msgstr "Der Anmeldeschluss für die Online-Reservation ist vorbei. Wende dich an
 #: src/routes/b/manage/[token]/+page.svelte
 msgid "The deadline has passed. Contact the organizer for changes."
 msgstr "Der Anmeldeschluss ist vorbei. Für Änderungen wende dich an den Organisator."
+
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "The file is not a print form."
+msgstr "Die Datei ist keine Druckvorlage."
 
 #: src/lib/ProgrammeList.svelte
 msgid "The file is not valid JSON"
@@ -4205,9 +4463,18 @@ msgstr "Training"
 msgid "Trend"
 msgstr "Trend"
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Type"
+msgstr "Typ"
+
 #: src/routes/my/train/+page.svelte
 msgid "Type 97 for 9.7 and 104 for 10.4."
 msgstr "Tippe 97 für 9.7 und 104 für 10.4."
+
+#. placeholder {0}: i + 1
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Type of element {0}"
+msgstr "Typ von Element {0}"
 
 #: src/routes/my/+page.svelte
 msgid "Type the series totals — or every shot, or tap the hits on the target."
@@ -4229,6 +4496,10 @@ msgstr "oben"
 #: src/routes/t/[tenantId]/+page.svelte
 msgid "Upcoming"
 msgstr "Kommend"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Upload a scan"
+msgstr "Scan hochladen"
 
 #: src/lib/RegistrationForm.svelte
 msgid "Use lane"
@@ -4254,12 +4525,18 @@ msgid "Users"
 msgstr "Benutzer"
 
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Value"
 msgstr "Wert"
 
 #: src/lib/ProgrammeEditor.svelte
 msgid "Value (CHF)"
 msgstr "Wert (CHF)"
+
+#. placeholder {0}: i + 1
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Value of element {0}"
+msgstr "Wert von Element {0}"
 
 #: src/lib/ProgrammeEditor.svelte
 msgid "Variant"
@@ -4368,9 +4645,26 @@ msgstr "Wo"
 msgid "Where to?"
 msgstr "Wohin?"
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Width"
+msgstr "Breite"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Width (mm)"
+msgstr "Breite (mm)"
+
+#. placeholder {0}: i + 1
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Width of element {0}"
+msgstr "Breite von Element {0}"
+
 #: src/lib/AccountSettings.svelte
 msgid "With a confirmed email address you can reset a forgotten password yourself."
 msgstr "Mit einer bestätigten E-Mail-Adresse kannst du ein vergessenes Passwort selbst zurücksetzen."
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "With made-up values and the scan, without the printer offset. Save to refresh."
+msgstr "Mit erfundenen Werten und dem Scan, ohne Druckerversatz. Speichern aktualisiert sie."
 
 #: src/routes/login/+page.svelte
 msgid "With your email address, or the user name your club admin gave you."
@@ -4396,6 +4690,16 @@ msgstr "Kranzkarte an Drucker gesendet"
 #: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "Write lanes like 1-10, 12"
 msgstr "Scheiben so schreiben: 1-10, 12"
+
+#. placeholder {0}: i + 1
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "x of element {0}"
+msgstr "x von Element {0}"
+
+#. placeholder {0}: i + 1
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "y of element {0}"
+msgstr "y von Element {0}"
 
 #: src/lib/RankingTable.svelte
 msgid "Year"

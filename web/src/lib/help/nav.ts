@@ -28,6 +28,7 @@ export const nav: { label: MessageDescriptor; pages: string[] }[] = [
 			'user-guide/shooters-clubs',
 			'user-guide/ranges',
 			'user-guide/printing',
+			'user-guide/print-forms',
 			'user-guide/users',
 			'user-guide/login-language'
 		]

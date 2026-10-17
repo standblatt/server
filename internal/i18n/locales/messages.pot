@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 23:12+0200\n"
+"POT-Creation-Date: 2026-10-17 23:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -682,7 +682,8 @@ msgstr ""
 msgid "Programme not found"
 msgstr ""
 
-#: internal/web/documents.go internal/web/helpers.go internal/web/results.go
+#: internal/web/documents.go internal/web/forms.go internal/web/helpers.go
+#: internal/web/results.go
 msgid "Programme of the registration not found"
 msgstr ""
 
@@ -720,6 +721,30 @@ msgstr ""
 #: internal/web/documents.go
 #, go-format
 msgid "Wreath card %s"
+msgstr ""
+
+#: internal/web/forms.go
+msgid "A print form with this name already exists"
+msgstr ""
+
+#: internal/web/forms.go
+msgid "Print form not found"
+msgstr ""
+
+#: internal/web/forms.go
+msgid "Programme or print form not found"
+msgstr ""
+
+#: internal/web/forms.go
+msgid "The scan is larger than 4 MB"
+msgstr ""
+
+#: internal/web/forms.go
+msgid "The scan must be a PNG or JPEG image"
+msgstr ""
+
+#: internal/web/forms.go
+msgid "This programme has no print form"
 msgstr ""
 
 #: internal/web/helpers.go

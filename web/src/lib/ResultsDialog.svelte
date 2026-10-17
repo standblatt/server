@@ -21,6 +21,7 @@
 		registrationId,
 		canEdit = true,
 		canPrint = true,
+		canPrintForm = true,
 		canIssue = true,
 		canRevoke = true,
 		onclose,
@@ -32,6 +33,7 @@
 		/** Helper links cannot edit the registration or print. */
 		canEdit?: boolean;
 		canPrint?: boolean;
+		canPrintForm?: boolean;
 		canIssue?: boolean;
 		canRevoke?: boolean;
 		onclose: () => void;
@@ -122,7 +124,7 @@
 		<div bind:this={body} class="grid min-h-0 flex-1 gap-4 overflow-y-auto bg-muted/30 p-4 sm:p-6">
 			{#if sheet.data}
 				{#each sheet.data.entries as entry (entry.entryId)}
-					<EntryCard {entry} {tenantId} readonly={!!event.data?.archivedAt} print={canPrint} onsave={(s) => save(entry.entryId, s)} onaward={(t) => award(entry.entryId, t)} />
+					<EntryCard {entry} {tenantId} readonly={!!event.data?.archivedAt} print={canPrint} printForm={canPrintForm} onsave={(s) => save(entry.entryId, s)} onaward={(t) => award(entry.entryId, t)} />
 				{/each}
 			{:else if sheet.error}
 				<p class="text-sm text-destructive">{sheet.error.message}</p>

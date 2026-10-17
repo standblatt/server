@@ -7,6 +7,7 @@
 	import CalendarClock from '@lucide/svelte/icons/calendar-clock';
 	import CalendarDays from '@lucide/svelte/icons/calendar-days';
 	import Check from '@lucide/svelte/icons/check';
+	import ScrollText from '@lucide/svelte/icons/scroll-text';
 	import ClipboardPen from '@lucide/svelte/icons/clipboard-pen';
 	import CircleHelp from '@lucide/svelte/icons/circle-help';
 	import ChevronsUpDown from '@lucide/svelte/icons/chevrons-up-down';
@@ -80,7 +81,8 @@
 		...(isAdmin
 			? [
 					{ href: `${base}/ranges`, label: $t`Ranges`, icon: Crosshair },
-					{ href: `${base}/users`, label: $t`Users`, icon: UserCog }
+					{ href: `${base}/users`, label: $t`Users`, icon: UserCog },
+					{ href: `${base}/forms`, label: $t`Print forms`, icon: ScrollText }
 				]
 			: [])
 	]);

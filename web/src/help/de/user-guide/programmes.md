@@ -59,6 +59,9 @@ geht ausserdem:
   nur seine Scheiben an, und Kiosk-Bildschirme gruppieren die Ranglisten
   nach Stand. *beliebig* lässt es offen. Programme verschiedener Stände
   brauchen getrennte Anmeldungen.
+- **Druckvorlage** (wenn der Verein [Druckvorlagen](print-forms.md) hat):
+  die Vorlage, auf die die Resultate des Programms gedruckt werden; *keine*
+  druckt keine Vorlage.
 - **Sonderpreise** (siehe unten).
 
 **Exportieren** lädt das Programm als Datei herunter; **Löschen** geht nur, solange niemand angemeldet ist.

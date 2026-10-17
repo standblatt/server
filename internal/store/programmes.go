@@ -16,6 +16,7 @@ type Programme struct {
 	Active           bool                     `json:"active"`
 	CombinableWithID *int64                   `json:"combinableWithId,omitempty" doc:"Programme whose series this one may take at registration"`
 	RangeID          *int64                   `json:"rangeId,omitempty" doc:"Range the programme is shot on; unset means any range of the event"`
+	LayoutID         *int64                   `json:"layoutId,omitempty" doc:"Print form the results of the programme are printed onto"`
 	Shots            int                      `json:"shots"`
 	MaxPoints        int                      `json:"maxPoints"`
 	SpecialPrizes    domain.SpecialPrizeRules `json:"specialPrizes"`
@@ -31,7 +32,7 @@ type ProgrammeTemplate struct {
 
 // loadProgrammes loads the programmes matching the WHERE fragment with their series, prices and award tiers.
 func loadProgrammes(ctx context.Context, q querier, where string, args ...any) ([]Programme, error) {
-	rows, err := q.Query(ctx, `SELECT id, event_id, active, combinable_with_id, range_id, name, variant, description, barcode,
+	rows, err := q.Query(ctx, `SELECT id, event_id, active, combinable_with_id, range_id, layout_id, name, variant, description, barcode,
 			counts_for_club_competition, show_on_rankings, prize_ranks, prize_min_category, prize_min_club,
 			EXISTS (SELECT 1 FROM entries e WHERE e.programme_id = p.id)
 		FROM programmes p WHERE `+where+` ORDER BY lower(name), lower(variant), id`, args...)
@@ -40,7 +41,7 @@ func loadProgrammes(ctx context.Context, q querier, where string, args ...any) (
 	}
 	list, err := pgx.CollectRows(rows, func(row pgx.CollectableRow) (Programme, error) {
 		var p Programme
-		err := row.Scan(&p.ID, &p.EventID, &p.Active, &p.CombinableWithID, &p.RangeID, &p.Name, &p.Variant, &p.Description, &p.Barcode,
+		err := row.Scan(&p.ID, &p.EventID, &p.Active, &p.CombinableWithID, &p.RangeID, &p.LayoutID, &p.Name, &p.Variant, &p.Description, &p.Barcode,
 			&p.CountsForClubCompetition, &p.ShowOnRankings, &p.SpecialPrizes.Ranks, &p.SpecialPrizes.MinCategory, &p.SpecialPrizes.MinClub, &p.InUse)
 		return p, err
 	})
@@ -387,7 +388,7 @@ func (s *Store) CopyEvent(ctx context.Context, tenantID, fromEventID int64, name
 }
 
 // copyProgrammes copies the programmes of one event into another, skipping names that exist there, with combinations,
-// special prizes, active flag and range; it returns how many were copied.
+// special prizes, active flag, range and print form; it returns how many were copied.
 func copyProgrammes(ctx context.Context, tx pgx.Tx, tenantID, fromEventID, toEventID int64) (int, error) {
 	src, err := loadProgrammes(ctx, tx, "tenant_id = $1 AND event_id = $2", tenantID, fromEventID)
 	if err != nil {
@@ -409,9 +410,10 @@ func copyProgrammes(ctx context.Context, tx pgx.Tx, tenantID, fromEventID, toEve
 			return 0, err
 		}
 		if _, err := tx.Exec(ctx, `UPDATE programmes SET active = $2, prize_ranks = $3, prize_min_category = $4, prize_min_club = $5,
-				range_id = (SELECT $7::bigint WHERE EXISTS (SELECT 1 FROM event_ranges er WHERE er.event_id = $6 AND er.range_id = $7))
+				range_id = (SELECT $7::bigint WHERE EXISTS (SELECT 1 FROM event_ranges er WHERE er.event_id = $6 AND er.range_id = $7)),
+				layout_id = $8
 			WHERE id = $1`,
-			id, p.Active, p.SpecialPrizes.Ranks, p.SpecialPrizes.MinCategory, p.SpecialPrizes.MinClub, toEventID, p.RangeID); err != nil {
+			id, p.Active, p.SpecialPrizes.Ranks, p.SpecialPrizes.MinCategory, p.SpecialPrizes.MinClub, toEventID, p.RangeID, p.LayoutID); err != nil {
 			return 0, err
 		}
 		newID[p.ID] = id

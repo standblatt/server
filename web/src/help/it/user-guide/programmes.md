@@ -58,6 +58,9 @@ disponibile:
   bersagli e gli schermi chiosco raggruppano le classifiche per
   stand. *qualsiasi* lascia la scelta aperta. Programmi di stand diversi
   richiedono iscrizioni separate.
+- **Modello di stampa** (quando la società ha dei [modelli di
+  stampa](print-forms.md)): il modello su cui vengono stampati i risultati
+  del programma; *nessuno* non stampa alcun modello.
 - **Premi speciali** (vedi sotto).
 
 **Esporta** scarica il programma come file; **Elimina** è possibile solo finché nessuno è iscritto.

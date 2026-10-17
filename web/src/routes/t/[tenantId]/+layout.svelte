@@ -45,6 +45,7 @@
 		clubs: $t`Clubs`,
 		ranges: $t`Ranges`,
 		users: $t`Users`,
+		forms: $t`Print forms`,
 		printing: $t`Printing`
 	});
 	const crumbs = $derived.by(() => {
