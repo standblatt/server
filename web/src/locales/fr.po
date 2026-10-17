@@ -43,6 +43,14 @@ msgstr "« {name} » n’est pas encore dans la liste des sociétés."
 msgid "“{name}” will be added as a new club."
 msgstr "« {name} » sera ajoutée comme nouvelle société."
 
+#. placeholder {0}: sel.length
+#. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+element+selected%7D+other+%7B%23+elements+selected%7D%7D&pluralize_on=0
+#: src/lib/forms/Properties.svelte
+msgid "# element selected"
+msgid_plural "# elements selected"
+msgstr[0] "# élément sélectionné"
+msgstr[1] "# éléments sélectionnés"
+
 #. placeholder {0}: it.lanes
 #. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+lane%7D+other+%7B%23+lanes%7D%7D&pluralize_on=0
 #: src/lib/BookingRequests.svelte
@@ -391,13 +399,13 @@ msgstr "{name} quitte {where}."
 msgid "{name}: {0} points saved"
 msgstr "{name} : {0} points enregistrés"
 
+#: src/lib/forms/Palette.svelte
+msgid "{shots} boxes"
+msgstr "{shots} cases"
+
 #: src/routes/my/progress/+page.svelte
 msgid "{standard} shots"
 msgstr "{standard} coups"
-
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "{text} copied"
-msgstr "{text} copié"
 
 #. js-lingui:icu=%7Bwaiting%2C+plural%2C+one+%7BTake+over+%23+shooter%7D+other+%7BTake+over+%23+shooters%7D%7D&pluralize_on=waiting
 #: src/lib/BookingRequests.svelte
@@ -519,10 +527,6 @@ msgstr "Ajouter une société"
 msgid "Add day"
 msgstr "Ajouter un jour"
 
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "Add element"
-msgstr "Ajouter un élément"
-
 #: src/lib/ProgrammeList.svelte
 msgid "Add from …"
 msgstr "Ajouter depuis …"
@@ -590,6 +594,10 @@ msgstr "Admin"
 msgid "Age categories"
 msgstr "Catégories d’âge"
 
+#: src/lib/forms/Palette.svelte
+msgid "Age category"
+msgstr "Catégorie d’âge"
+
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Agent name"
 msgstr "Nom de l’agent"
@@ -608,14 +616,37 @@ msgstr "Pistolet à air comprimé 10 m"
 msgid "Air rifle 10 m"
 msgstr "Carabine à air comprimé 10 m"
 
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+#: src/lib/forms/Stage.svelte
 msgid "Align"
 msgstr "Alignement"
 
-#. placeholder {0}: i + 1
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "Alignment of element {0}"
-msgstr "Alignement de l’élément {0}"
+#: src/lib/forms/Stage.svelte
+msgid "Align bottom edges"
+msgstr "Aligner les bords inférieurs"
+
+#: src/lib/forms/Stage.svelte
+msgid "Align horizontal centres"
+msgstr "Centrer horizontalement"
+
+#: src/lib/forms/Stage.svelte
+msgid "Align left edges"
+msgstr "Aligner les bords gauches"
+
+#: src/lib/forms/Stage.svelte
+msgid "Align right edges"
+msgstr "Aligner les bords droits"
+
+#: src/lib/forms/Stage.svelte
+msgid "Align top edges"
+msgstr "Aligner les bords supérieurs"
+
+#: src/lib/forms/Stage.svelte
+msgid "Align vertical centres"
+msgstr "Centrer verticalement"
+
+#: src/lib/forms/Properties.svelte
+msgid "Alignment"
+msgstr "Alignement"
 
 #: src/routes/my/+page.svelte
 #: src/routes/my/log/+page.svelte
@@ -663,6 +694,10 @@ msgstr "déjà inscrit"
 #: src/lib/RegistrationDialog.svelte
 msgid "Already registered at this event. Programmes already booked cannot be chosen again."
 msgstr "Déjà inscrit à cette manifestation. Les programmes déjà réservés ne peuvent pas être choisis à nouveau."
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Alt: no snapping · Shift: add to the selection"
+msgstr "Alt : sans magnétisme · Maj : ajouter à la sélection"
 
 #: src/lib/EventDesk.svelte
 msgid "ammo"
@@ -742,6 +777,7 @@ msgstr "Moyenne"
 msgid "Average of 5"
 msgstr "Moyenne de 5"
 
+#: src/lib/forms/Palette.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Award"
 msgstr "Distinction"
@@ -797,6 +833,10 @@ msgstr "Distinctions à remettre"
 msgid "Back"
 msgstr "Retour"
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Back to 100 %"
+msgstr "Revenir à 100 %"
+
 #: src/routes/forgot-password/+page.svelte
 msgid "Back to log in"
 msgstr "Retour à la connexion"
@@ -805,8 +845,9 @@ msgstr "Retour à la connexion"
 msgid "Back to the log"
 msgstr "Retour au journal"
 
+#: src/lib/forms/Palette.svelte
+#: src/lib/forms/Properties.svelte
 #: src/lib/ProgrammeEditor.svelte
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Barcode"
 msgstr "Code-barres"
 
@@ -815,6 +856,7 @@ msgid "Best"
 msgstr "Meilleur"
 
 #: src/lib/booking/ShooterList.svelte
+#: src/lib/forms/Palette.svelte
 #: src/lib/ShooterForm.svelte
 #: src/routes/my/settings/+page.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
@@ -826,14 +868,9 @@ msgstr "Date de naissance"
 msgid "Birthday of shooter {0}"
 msgstr "Date de naissance du tireur {0}"
 
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+#: src/lib/forms/Properties.svelte
 msgid "Bold"
 msgstr "Gras"
-
-#. placeholder {0}: i + 1
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "Bold element {0}"
-msgstr "Élément {0} en gras"
 
 #: src/routes/b/[code]/+page.svelte
 msgid "Book lanes"
@@ -863,6 +900,10 @@ msgstr "Pause de"
 #: src/lib/booking/BookingHoursForm.svelte
 msgid "Break until"
 msgstr "Pause jusqu’à"
+
+#: src/lib/forms/Stage.svelte
+msgid "Bring to front"
+msgstr "Mettre au premier plan"
 
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "browser (PDF)"
@@ -914,13 +955,21 @@ msgstr "Cat."
 msgid "Category"
 msgstr "Catégorie"
 
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+#: src/lib/forms/Properties.svelte
 msgid "centre"
 msgstr "centré"
 
 #: src/routes/my/progress/+page.svelte
 msgid "Centre and size of your group"
 msgstr "Centre et taille de ton groupement"
+
+#: src/lib/forms/Stage.svelte
+msgid "Centre on the sheet horizontally"
+msgstr "Centrer horizontalement sur la feuille"
+
+#: src/lib/forms/Stage.svelte
+msgid "Centre on the sheet vertically"
+msgstr "Centrer verticalement sur la feuille"
 
 #: src/lib/AccountSettings.svelte
 #: src/routes/b/manage/[token]/+page.svelte
@@ -964,6 +1013,7 @@ msgstr "Choisis au moins une autorisation."
 msgid "Choose at least one slot."
 msgstr "Choisis au moins un créneau."
 
+#: src/lib/forms/Palette.svelte
 #: src/lib/ShooterForm.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "City"
@@ -973,9 +1023,9 @@ msgstr "Localité"
 msgid "clear"
 msgstr "vider"
 
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "Click to add one to the element edited last. With Repeat, # counts 1, 2, 3 …: s1.shot# prints the shots of series 1 one after the other."
-msgstr "Un clic l’ajoute à l’élément modifié en dernier. Avec la répétition, # compte 1, 2, 3 … : s1.shot# imprime les coups de la passe 1 l’un après l’autre."
+#: src/lib/forms/Palette.svelte
+msgid "Click to add, or drag onto the sheet"
+msgstr "Cliquer pour ajouter, ou glisser sur la feuille"
 
 #: src/lib/components/ui/dialog/dialog-content.svelte
 #: src/lib/components/ui/dialog/dialog-footer.svelte
@@ -1013,6 +1063,7 @@ msgstr "Clôturée le {0} : les classements sont publiés, tout reste visible, m
 #: src/lib/booking/BookingForm.svelte
 #: src/lib/BookingRequests.svelte
 #: src/lib/ClubPicker.svelte
+#: src/lib/forms/Palette.svelte
 #: src/lib/NewShooterDialog.svelte
 #: src/lib/RankingTable.svelte
 #: src/lib/RegistrationForm.svelte
@@ -1030,6 +1081,10 @@ msgstr "Société « {name} » créée"
 #: src/lib/booking/BookingForm.svelte
 msgid "Club and contact"
 msgstr "Société et contact"
+
+#: src/lib/forms/Palette.svelte
+msgid "Club and event"
+msgstr "Société et manifestation"
 
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Club competition"
@@ -1315,6 +1370,7 @@ msgid "Dashboard"
 msgstr "Tableau de bord"
 
 #: src/lib/EventForm.svelte
+#: src/lib/forms/Palette.svelte
 #: src/routes/t/[tenantId]/+page.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
 msgid "Date"
@@ -1354,6 +1410,8 @@ msgstr "refusée"
 msgid "default ({0})"
 msgstr "par défaut ({0})"
 
+#: src/lib/forms/Properties.svelte
+#: src/lib/forms/Stage.svelte
 #: src/lib/ProgrammeList.svelte
 #: src/lib/RegistrationDialog.svelte
 #: src/lib/ShooterSheet.svelte
@@ -1491,6 +1549,14 @@ msgstr "Nom de l’affichage, p. ex. Halle 1"
 msgid "Displays the mobile sidebar."
 msgstr "Affiche la barre latérale mobile."
 
+#: src/lib/forms/Stage.svelte
+msgid "Distribute horizontally"
+msgstr "Répartir horizontalement"
+
+#: src/lib/forms/Stage.svelte
+msgid "Distribute vertically"
+msgstr "Répartir verticalement"
+
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Document"
 msgstr "Document"
@@ -1521,27 +1587,25 @@ msgid "down"
 msgstr "en bas"
 
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "Drag elements, resize them at the corner, move the selected one with the arrow keys (Shift: 5 mm). Double-click the empty sheet to add text there."
-msgstr "Fais glisser les éléments, redimensionne-les par le coin, déplace l’élément choisi avec les flèches (Maj : 5 mm). Un double-clic sur la feuille vide y ajoute du texte."
+msgid "Drag fields onto the sheet; positions and sizes are in millimetres from the top left corner."
+msgstr "Glissez les champs sur la feuille ; positions et tailles en millimètres depuis le coin supérieur gauche."
 
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+#: src/lib/forms/Stage.svelte
+msgid "Drag to change the spacing"
+msgstr "Glisser pour modifier l’espacement"
+
+#: src/lib/forms/Properties.svelte
+#: src/lib/forms/Stage.svelte
 msgid "Duplicate"
 msgstr "Dupliquer"
 
-#. placeholder {0}: i + 1
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "Duplicate element {0}"
-msgstr "Dupliquer l’élément {0}"
+#: src/lib/forms/Properties.svelte
+msgid "dx (mm)"
+msgstr "dx (mm)"
 
-#. placeholder {0}: i + 1
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "dx of element {0}"
-msgstr "dx de l’élément {0}"
-
-#. placeholder {0}: i + 1
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "dy of element {0}"
-msgstr "dy de l’élément {0}"
+#: src/lib/forms/Properties.svelte
+msgid "dy (mm)"
+msgstr "dy (mm)"
 
 #: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
 msgid "e.g. 5 or 1, 5, 7-10"
@@ -1599,13 +1663,7 @@ msgstr "Modifier l’inscription"
 msgid "Edit reservation"
 msgstr "Modifier la réservation"
 
-#. placeholder {0}: i + 1
-#: src/lib/LayoutCanvas.svelte
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "Element {0}"
-msgstr "Élément {0}"
-
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+#: src/lib/forms/Palette.svelte
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Elements"
 msgstr "Éléments"
@@ -1693,6 +1751,7 @@ msgid "Entries"
 msgstr "Programmes"
 
 #: src/lib/AppSidebar.svelte
+#: src/lib/forms/Palette.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
 msgid "Event"
 msgstr "Manifestation"
@@ -1784,6 +1843,10 @@ msgstr "échoué"
 msgid "Fewer shots"
 msgstr "Moins de coups"
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Fields"
+msgstr "Champs"
+
 #: src/routes/t/[tenantId]/clubs/+page.svelte
 msgid "Filter"
 msgstr "Filtrer"
@@ -1817,6 +1880,7 @@ msgid "First day"
 msgstr "Premier jour"
 
 #: src/lib/booking/ShooterList.svelte
+#: src/lib/forms/Palette.svelte
 #: src/lib/ShooterForm.svelte
 #: src/routes/my/settings/+page.svelte
 #: src/routes/signup/+page.svelte
@@ -1828,10 +1892,9 @@ msgstr "Prénom"
 msgid "First name of shooter {0}"
 msgstr "Prénom du tireur {0}"
 
-#. placeholder {0}: i + 1
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "Font size of element {0}"
-msgstr "Taille de police de l’élément {0}"
+#: src/lib/forms/Properties.svelte
+msgid "Font size (pt)"
+msgstr "Taille de police (pt)"
 
 #: src/lib/ProgrammeEditor.svelte
 msgid "For a variant, pick the name of an existing programme: a shooter registers for only one programme of the same name."
@@ -1857,6 +1920,10 @@ msgstr "Pour tes propres scripts et outils : un jeton leur permet de lire ou d�
 #: src/routes/login/+page.svelte
 msgid "Forgot your password?"
 msgstr "Mot de passe oublié ?"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Form"
+msgstr "Modèle"
 
 #: src/lib/PrintButton.svelte
 msgid "Form sent to printer"
@@ -1929,18 +1996,10 @@ msgstr "Ligne d’en-tête avec <0>license</0> ou <1>firstname</1> et <2>lastnam
 msgid "Header row with the columns <0>firstname</0> and <1>lastname</1>, optionally <2>license</2>, <3>birthday</3>, <4>postalcode</4>, <5>city</5> and <6>club</6>; separated by <7>;</7> or <8>,</8>. One line per shooter and club. Shooters are matched by license number (or name and birthday without one); nothing is deleted."
 msgstr "Ligne d’en-tête avec les colonnes <0>firstname</0> et <1>lastname</1>, en option <2>license</2>, <3>birthday</3>, <4>postalcode</4>, <5>city</5> et <6>club</6> ; séparées par <7>;</7> ou <8>,</8>. Une ligne par tireur et société. Les tireurs sont identifiés par leur numéro de licence (sans licence : par nom et date de naissance) ; rien n’est supprimé."
 
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "Height"
-msgstr "Hauteur"
-
+#: src/lib/forms/Properties.svelte
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Height (mm)"
 msgstr "Hauteur (mm)"
-
-#. placeholder {0}: i + 1
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "Height of element {0}"
-msgstr "Hauteur de l’élément {0}"
 
 #: src/routes/my/+page.svelte
 msgid "Hello"
@@ -2131,6 +2190,7 @@ msgid "known"
 msgstr "connu"
 
 #: src/lib/EventDesk.svelte
+#: src/lib/forms/Palette.svelte
 #: src/lib/RegistrationForm.svelte
 msgid "Lane"
 msgstr "Cible"
@@ -2255,6 +2315,7 @@ msgid "Last day"
 msgstr "Dernier jour"
 
 #: src/lib/booking/ShooterList.svelte
+#: src/lib/forms/Palette.svelte
 #: src/lib/ShooterForm.svelte
 #: src/routes/my/settings/+page.svelte
 #: src/routes/signup/+page.svelte
@@ -2280,10 +2341,26 @@ msgstr "vu la dernière fois {0}"
 msgid "last used {0}"
 msgstr "utilisé le {0}"
 
-#: src/lib/my/GroupInfo.svelte
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Leave"
+msgstr "Quitter"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Leave without saving?"
+msgstr "Quitter sans enregistrer ?"
+
+#: src/lib/forms/Properties.svelte
+#: src/lib/my/GroupInfo.svelte
 msgid "left"
 msgstr "à gauche"
+
+#: src/lib/forms/Properties.svelte
+msgid "Length x (mm)"
+msgstr "Longueur x (mm)"
+
+#: src/lib/forms/Properties.svelte
+msgid "Length y (mm)"
+msgstr "Longueur y (mm)"
 
 #: src/lib/ProgrammeList.svelte
 msgid "Library template"
@@ -2313,6 +2390,7 @@ msgstr "Licence {0}"
 msgid "License {0} · born {1}"
 msgstr "Licence {0} · né(e) {1}"
 
+#: src/lib/forms/Palette.svelte
 #: src/lib/ShooterForm.svelte
 #: src/routes/my/settings/+page.svelte
 msgid "License number"
@@ -2331,7 +2409,8 @@ msgstr "Clair"
 msgid "Light theme"
 msgstr "Thème clair"
 
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+#: src/lib/forms/Palette.svelte
+#: src/lib/forms/Properties.svelte
 msgid "Line"
 msgstr "Ligne"
 
@@ -2511,6 +2590,7 @@ msgid "More shots"
 msgstr "Plus de coups"
 
 #: src/lib/EntryCard.svelte
+#: src/lib/forms/Palette.svelte
 #: src/lib/ProgrammeEditor.svelte
 msgid "Mouches"
 msgstr "Mouches"
@@ -2520,9 +2600,13 @@ msgstr "Mouches"
 msgid "Mouches series {0}"
 msgstr "Mouches passe {0}"
 
+#: src/lib/forms/Palette.svelte
+msgid "Mouches series {n}"
+msgstr "Mouches passe {n}"
+
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "Moves everything when the printer prints off target."
-msgstr "Décale tout quand l’imprimante imprime à côté."
+msgid "Moves everything when the printer prints off target; check it with a test print."
+msgstr "Décale tout lorsque l’imprimante imprime à côté ; à vérifier avec une impression test."
 
 #: src/lib/AppSidebar.svelte
 #: src/lib/help/nav.ts
@@ -2531,6 +2615,7 @@ msgid "My training"
 msgstr "Mon entraînement"
 
 #: src/lib/EventForm.svelte
+#: src/lib/forms/Palette.svelte
 #: src/lib/my/ApiTokens.svelte
 #: src/lib/ProgrammeEditor.svelte
 #: src/lib/RankingTable.svelte
@@ -2702,13 +2787,13 @@ msgstr "Pas de connexion. Les modifications ne sont enregistrées que lorsque tu
 msgid "No connection. Nothing was saved."
 msgstr "Pas de connexion. Rien n’a été enregistré."
 
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "No elements yet."
-msgstr "Pas encore d’éléments."
-
 #: src/lib/AccountSettings.svelte
 msgid "No email address yet"
 msgstr "Pas encore d’adresse e-mail"
+
+#: src/lib/forms/Palette.svelte
+msgid "No field matches."
+msgstr "Aucun champ ne correspond."
 
 #: src/lib/HelperCodes.svelte
 msgid "No helper links."
@@ -2934,6 +3019,7 @@ msgid "Options"
 msgstr "Options"
 
 #: src/lib/EventForm.svelte
+#: src/lib/forms/Palette.svelte
 #: src/routes/t/[tenantId]/+page.svelte
 msgid "Organizer"
 msgstr "Organisateur"
@@ -2968,6 +3054,10 @@ msgstr "Hors service : {0}"
 #: src/routes/my/settings/+page.svelte
 msgid "Own discipline"
 msgstr "Discipline personnalisée"
+
+#: src/lib/forms/Palette.svelte
+msgid "Own text"
+msgstr "Texte libre"
 
 #: src/lib/Pager.svelte
 msgid "Pages"
@@ -3058,9 +3148,9 @@ msgstr "Pistolet précision 25/50 m"
 msgid "Place {0} of your {1} sessions with {2} shots"
 msgstr "Place {0} de tes {1} séances de {2} coups"
 
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "Placeholders"
-msgstr "Espaces réservés"
+#: src/lib/forms/Properties.svelte
+msgid "Placeholders in double curly braces are filled in when printing; add them from the fields."
+msgstr "Les espaces réservés entre doubles accolades sont remplis à l’impression ; ajoutez-les depuis les champs."
 
 #: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
 msgid "planned"
@@ -3072,8 +3162,8 @@ msgid "Please confirm your email address {0} with the link we sent you."
 msgstr "Merci de confirmer ton adresse e-mail {0} avec le lien que nous t’avons envoyé."
 
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "PNG or JPEG of the whole sheet; only shown in the preview, never printed."
-msgstr "PNG ou JPEG de la feuille entière ; visible seulement dans l’aperçu, jamais imprimé."
+msgid "PNG or JPEG of the whole sheet; only shown while editing, never printed."
+msgstr "PNG ou JPEG de toute la feuille ; affiché seulement pendant l’édition, jamais imprimé."
 
 #: src/routes/my/log/[id]/+page.svelte
 msgid "Points per shot by series"
@@ -3101,17 +3191,10 @@ msgstr "Points par coup de chaque séance, la plus ancienne à gauche."
 msgid "Points per shot of sessions with a tag compared with your average."
 msgstr "Points par coup des séances avec un tag, comparés à ta moyenne."
 
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "Positions and sizes in millimetres from the top left corner of the sheet."
-msgstr "Positions et tailles en millimètres depuis le coin supérieur gauche de la feuille."
-
+#: src/lib/forms/Palette.svelte
 #: src/lib/ShooterForm.svelte
 msgid "Postal code"
 msgstr "NPA"
-
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "Preview"
-msgstr "Aperçu"
 
 #: src/lib/Pager.svelte
 msgid "Previous page"
@@ -3219,6 +3302,10 @@ msgstr "Impression"
 msgid "Printing · {0}"
 msgstr "Impression · {0}"
 
+#: src/lib/forms/Properties.svelte
+msgid "Prints the element several times, moved by dx/dy; # in a placeholder counts 1, 2, 3 …"
+msgstr "Imprime l’élément plusieurs fois, décalé de dx/dy ; # dans un espace réservé compte 1, 2, 3 …"
+
 #: src/lib/ProgrammeEditor.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Prize in kind"
@@ -3232,6 +3319,7 @@ msgstr "Profil"
 msgid "Profile saved"
 msgstr "Profil enregistré"
 
+#: src/lib/forms/Palette.svelte
 #: src/lib/ProgrammeList.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
@@ -3285,9 +3373,19 @@ msgstr "Progression"
 msgid "Progress compares your results between weapons."
 msgstr "La progression compare tes résultats entre les armes."
 
+#: src/lib/forms/Properties.svelte
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Properties"
+msgstr "Propriétés"
+
 #: src/lib/TwoFactor.svelte
 msgid "Protect your login with a code from an authenticator app (TOTP)."
 msgstr "Protège ta connexion avec un code d’une app d’authentification (TOTP)."
+
+#: src/lib/forms/Palette.svelte
+#: src/lib/forms/Properties.svelte
+msgid "QR code"
+msgstr "Code QR"
 
 #: src/lib/TwoFactor.svelte
 msgid "QR code for the authenticator app"
@@ -3412,6 +3510,14 @@ msgstr "Dernières séances"
 msgid "Record single shots in series {0}"
 msgstr "Saisir les coups individuels de la passe {0}"
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Redo"
+msgstr "Rétablir"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Redo (Ctrl+Y)"
+msgstr "Rétablir (Ctrl+Y)"
+
 #: src/lib/help/nav.ts
 msgid "Reference"
 msgstr "Référence"
@@ -3433,6 +3539,10 @@ msgstr "inscrit"
 #: src/lib/RegistrationDialog.svelte
 msgid "Registration deleted"
 msgstr "Inscription supprimée"
+
+#: src/lib/forms/Palette.svelte
+msgid "Registration number"
+msgstr "Numéro d’inscription"
 
 #: src/lib/RegistrationDialog.svelte
 msgid "Registration saved"
@@ -3459,7 +3569,6 @@ msgid "Reload"
 msgstr "Recharger"
 
 #: src/routes/my/progress/+page.svelte
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 #: src/routes/t/[tenantId]/users/+page.svelte
 msgid "Remove"
 msgstr "Retirer"
@@ -3486,11 +3595,6 @@ msgstr "Supprimer la distinction {0}"
 #: src/lib/ScheduleEditor.svelte
 msgid "Remove day"
 msgstr "Retirer le jour"
-
-#. placeholder {0}: i + 1
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "Remove element {0}"
-msgstr "Retirer l’élément {0}"
 
 #: src/lib/ProgrammeEditor.svelte
 #: src/routes/my/train/+page.svelte
@@ -3531,14 +3635,9 @@ msgstr "Rouvrir"
 msgid "Reopen this event"
 msgstr "Rouvrir cette manifestation"
 
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+#: src/lib/forms/Properties.svelte
 msgid "Repeat"
 msgstr "Répétition"
-
-#. placeholder {0}: i + 1
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "Repeat element {0}"
-msgstr "Répéter l’élément {0}"
 
 #: src/routes/b/manage/[token]/+page.svelte
 msgid "Request cancelled"
@@ -3603,11 +3702,7 @@ msgstr "Les cibles réservées sont libérées. Cette action est définitive."
 msgid "reserved: {0}"
 msgstr "réservée : {0}"
 
-#. placeholder {0}: i + 1
-#: src/lib/LayoutCanvas.svelte
-msgid "Resize element {0}"
-msgstr "Redimensionner l’élément {0}"
-
+#: src/lib/forms/Palette.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Result"
 msgstr "Résultat"
@@ -3697,8 +3792,8 @@ msgstr "Fusil 300 m"
 msgid "Rifle 50 m"
 msgstr "Carabine 50 m"
 
+#: src/lib/forms/Properties.svelte
 #: src/lib/my/GroupInfo.svelte
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "right"
 msgstr "à droite"
 
@@ -3774,6 +3869,10 @@ msgstr "Cibarre"
 msgid "Scripts using this token stop working at once."
 msgstr "Les scripts qui utilisent ce jeton cessent immédiatement de fonctionner."
 
+#: src/lib/forms/Palette.svelte
+msgid "Search fields"
+msgstr "Rechercher des champs"
+
 #: src/lib/help/HelpNav.svelte
 msgid "Search results"
 msgstr "Résultats de recherche"
@@ -3801,6 +3900,10 @@ msgstr "Deuxième facteur activé"
 #: src/routes/my/+page.svelte
 msgid "See right away how the session compares and where you improve."
 msgstr "Vois tout de suite comment la séance se compare et où tu progresses."
+
+#: src/lib/forms/Properties.svelte
+msgid "Select an element on the sheet, or add one from the fields. Right-click for more."
+msgstr "Sélectionnez un élément sur la feuille ou ajoutez-en un depuis les champs. Clic droit pour plus."
 
 #: src/lib/AccountSettings.svelte
 #: src/lib/my/Notices.svelte
@@ -3858,6 +3961,10 @@ msgstr "Passe {0}, coup {1}"
 #: src/lib/EntryCard.svelte
 msgid "Series {0}: enter every shot or none"
 msgstr "Passe {0} : saisir chaque coup ou aucun"
+
+#: src/lib/forms/Palette.svelte
+msgid "Series {n}"
+msgstr "Passe {n}"
 
 #: src/routes/my/progress/+page.svelte
 msgid "Series curve"
@@ -3931,7 +4038,7 @@ msgstr "Partager"
 msgid "Share of every value over {shotsLogged} logged shots."
 msgstr "Part de chaque valeur sur les {shotsLogged} coups enregistrés."
 
-#: src/lib/LayoutCanvas.svelte
+#: src/lib/forms/Stage.svelte
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Sheet"
 msgstr "Feuille"
@@ -3945,6 +4052,7 @@ msgid "Shoot something else, like a field programme? Add your own discipline wit
 msgstr "Tu tires autre chose, par exemple un programme de tir de campagne ? Ajoute ta propre discipline avec son format et son comptage."
 
 #: src/lib/EventDesk.svelte
+#: src/lib/forms/Palette.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 msgid "Shooter"
 msgstr "Tireur"
@@ -4024,6 +4132,10 @@ msgstr "Coups"
 msgid "Shots of series {0}"
 msgstr "Coups de la passe {0}"
 
+#: src/lib/forms/Palette.svelte
+msgid "Shots of series {n}"
+msgstr "Coups passe {n}"
+
 #: src/routes/my/train/+page.svelte
 msgid "Shots of this series"
 msgstr "Coups de cette passe"
@@ -4035,6 +4147,10 @@ msgstr "Coups par passe"
 #: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
 msgid "Show as reserved (minutes before)"
 msgstr "Afficher comme réservée (minutes avant)"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Show field names"
+msgstr "Afficher les noms des champs"
 
 #: src/lib/EventForm.svelte
 msgid "Show lane status on the rankings"
@@ -4069,11 +4185,11 @@ msgstr "L’inscription n’est pas ouverte sur ce serveur."
 msgid "Single days with optional shooting times, e.g. pre-shooting days or the official weekend. The main day is always a shooting day."
 msgstr "Jours isolés avec heures de tir facultatives, p. ex. jours de tir anticipé ou le week-end officiel. Le jour principal est toujours un jour de tir."
 
+#: src/lib/forms/Palette.svelte
 #: src/lib/ProgrammeEditor.svelte
 msgid "Single shots"
 msgstr "Coups individuels"
 
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Size"
 msgstr "Taille"
@@ -4111,6 +4227,7 @@ msgstr "Prix spéciaux : {0}"
 msgid "Special prizes: ranks 1–{0}"
 msgstr "Prix spéciaux : rangs 1–{0}"
 
+#: src/lib/forms/Palette.svelte
 #: src/routes/t/[tenantId]/clubs/+page.svelte
 msgid "SSV number"
 msgstr "Numéro FST"
@@ -4236,7 +4353,8 @@ msgstr "Modèles qui impriment les résultats sur des feuilles préimprimées, p
 msgid "Test print"
 msgstr "Impression d’essai"
 
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+#: src/lib/forms/Palette.svelte
+#: src/lib/forms/Properties.svelte
 msgid "Text"
 msgstr "Texte"
 
@@ -4331,6 +4449,10 @@ msgstr "Le PDF est prêt."
 msgid "The print agent runs on a computer next to the printers (e.g. a Raspberry Pi with CUPS). It connects to Standblatt, reports the printers and prints the jobs of this range."
 msgstr "L’agent d’impression tourne sur un ordinateur près des imprimantes (p. ex. un Raspberry Pi avec CUPS). Il se connecte à Standblatt, annonce les imprimantes et imprime les tâches de ce stand."
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "The print form has changes that are not saved yet."
+msgstr "Le modèle d’impression a des modifications non enregistrées."
+
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "The printers appear here once an agent has connected."
 msgstr "Les imprimantes apparaissent ici dès qu’un agent s’est connecté."
@@ -4416,6 +4538,10 @@ msgstr "Coche chaque stand sur lequel se tire la manifestation. Sans stand : une
 msgid "Time"
 msgstr "Heure"
 
+#: src/lib/forms/Properties.svelte
+msgid "Times"
+msgstr "Nombre"
+
 #: src/lib/my/GroupInfo.svelte
 msgid "Tip: if this shows up again and again, adjust your sight {sight} — or look at your hold and trigger first."
 msgstr "Astuce : si cela revient sans cesse, corrige ta mire {sight} – ou vérifie d’abord ta tenue et ta détente."
@@ -4428,6 +4554,7 @@ msgstr "Astuce : touche tes impacts sur la cible en enregistrant une séance et 
 msgid "To"
 msgstr "À"
 
+#: src/lib/forms/Palette.svelte
 #: src/routes/my/+layout.svelte
 #: src/routes/my/+page.svelte
 #: src/routes/t/[tenantId]/+page.svelte
@@ -4443,6 +4570,7 @@ msgstr "Afficher/masquer la barre latérale"
 msgid "Token revoked"
 msgstr "Jeton révoqué"
 
+#: src/lib/forms/Palette.svelte
 #: src/lib/RankingTable.svelte
 #: src/routes/my/log/[id]/+page.svelte
 msgid "Total"
@@ -4482,7 +4610,7 @@ msgstr "Entraînement"
 msgid "Trend"
 msgstr "Tendance"
 
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+#: src/lib/forms/Properties.svelte
 msgid "Type"
 msgstr "Type"
 
@@ -4490,18 +4618,18 @@ msgstr "Type"
 msgid "Type 97 for 9.7 and 104 for 10.4."
 msgstr "Saisis 97 pour 9.7 et 104 pour 10.4."
 
-#. placeholder {0}: i + 1
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "Type of element {0}"
-msgstr "Type de l’élément {0}"
-
 #: src/routes/my/+page.svelte
 msgid "Type the series totals — or every shot, or tap the hits on the target."
 msgstr "Saisis les totaux des passes – ou chaque coup, ou touche les impacts sur la cible."
 
 #: src/routes/my/train/+page.svelte
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Undo"
 msgstr "Annuler"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Undo (Ctrl+Z)"
+msgstr "Annuler (Ctrl+Z)"
 
 #. placeholder {0}: l.reservedUntil ? new Date(l.reservedUntil).toLocaleTimeString(intlLocale(), { hour: '2-digit', minute: '2-digit' }) : ''
 #: src/lib/EventDesk.svelte
@@ -4543,19 +4671,14 @@ msgstr "Nom d’utilisateur"
 msgid "Users"
 msgstr "Utilisateurs"
 
+#: src/lib/forms/Properties.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Value"
 msgstr "Valeur"
 
 #: src/lib/ProgrammeEditor.svelte
 msgid "Value (CHF)"
 msgstr "Valeur (CHF)"
-
-#. placeholder {0}: i + 1
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "Value of element {0}"
-msgstr "Valeur de l’élément {0}"
 
 #: src/lib/ProgrammeEditor.svelte
 msgid "Variant"
@@ -4664,26 +4787,14 @@ msgstr "Où"
 msgid "Where to?"
 msgstr "Où aller ?"
 
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "Width"
-msgstr "Largeur"
-
+#: src/lib/forms/Properties.svelte
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Width (mm)"
 msgstr "Largeur (mm)"
 
-#. placeholder {0}: i + 1
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "Width of element {0}"
-msgstr "Largeur de l’élément {0}"
-
 #: src/lib/AccountSettings.svelte
 msgid "With a confirmed email address you can reset a forgotten password yourself."
 msgstr "Avec une adresse e-mail confirmée, tu peux réinitialiser toi-même un mot de passe oublié."
-
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "With made-up values and the scan, without the printer offset. Save to refresh."
-msgstr "Avec des valeurs inventées et le scan, sans décalage de l’imprimante. Enregistrer l’actualise."
 
 #: src/routes/login/+page.svelte
 msgid "With your email address, or the user name your club admin gave you."
@@ -4710,19 +4821,21 @@ msgstr "Carte-couronne envoyée à l’imprimante"
 msgid "Write lanes like 1-10, 12"
 msgstr "Écrire les cibles ainsi : 1-10, 12"
 
-#. placeholder {0}: i + 1
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "x of element {0}"
-msgstr "x de l’élément {0}"
+#: src/lib/forms/Properties.svelte
+msgid "x (mm)"
+msgstr "x (mm)"
 
-#. placeholder {0}: i + 1
-#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
-msgid "y of element {0}"
-msgstr "y de l’élément {0}"
+#: src/lib/forms/Properties.svelte
+msgid "y (mm)"
+msgstr "y (mm)"
 
 #: src/lib/RankingTable.svelte
 msgid "Year"
 msgstr "Année"
+
+#: src/lib/forms/Palette.svelte
+msgid "Year of birth"
+msgstr "Année de naissance"
 
 #: src/lib/my/Result.svelte
 msgid "You are offline. The session is uploaded automatically as soon as you are back online."
@@ -4810,9 +4923,11 @@ msgid "Your unfinished session is back."
 msgstr "Ta séance inachevée est de retour."
 
 #: src/routes/my/train/+page.svelte
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Zoom in"
 msgstr "Agrandir"
 
 #: src/routes/my/train/+page.svelte
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Zoom out"
 msgstr "Réduire"

@@ -8,36 +8,63 @@ possible ; les modèles sont facultatifs.
 
 ## Créer un modèle {#create}
 
-**Modèles d’impression** (admins, dans la partie société de la barre latérale) liste les modèles de la société. **Nouveau modèle d’impression** demande un nom et un format de papier, puis ouvre l’éditeur :
+**Modèles d’impression** (admins, dans la partie société de la barre latérale) liste les modèles de la société. **Nouveau modèle d’impression** demande un nom et un format de papier, puis ouvre l’éditeur. Il a trois colonnes :
 
-- **Largeur** et **Hauteur** de la feuille en millimètres.
-- **Scan du formulaire vide** : un PNG ou JPEG de la feuille entière. Il
-  apparaît derrière l’**Aperçu** pour placer les champs sur les cases du
-  formulaire ; il n’est jamais imprimé.
-- **Éléments** : ce qui est imprimé et où. **x** et **y** sont des
-  millimètres depuis le coin supérieur gauche, **Largeur** et **Hauteur** la
-  taille (une largeur de 0 laisse le texte aller jusqu’au bord droit),
-  **Taille** la taille de police en points.
-  - *Texte* imprime sa **Valeur**, dans laquelle les espaces réservés sont
-    remplacés, p. ex. `{{shooter.name}}` ou `{{total}}`.
-  - *QR* et *Code-barres* impriment leur valeur sous forme de code, *Ligne*
-    trace une ligne depuis x/y sur la largeur/hauteur.
-  - **Répétition** imprime l’élément plusieurs fois, décalé chaque fois de
-    **dx** et **dy** ; `#` dans un espace réservé compte 1, 2, 3, …. Un
-    élément `{{s1.shot#}}` avec une répétition de 10 et dx 8 remplit les dix
-    cases de coups de la passe 1.
-- **Espaces réservés** liste chaque valeur avec un exemple ; un clic
-  l’ajoute à l’élément modifié en dernier.
+- À gauche, les **Champs** : tout ce qu’un modèle peut imprimer, par
+  groupes, chacun avec un exemple, et une recherche. Un clic ajoute le champ
+  sous l’élément le plus bas ; glissé sur la feuille, il se place là où on
+  le lâche.
+  - *Texte libre* imprime un texte fixe, *Code QR* et *Code-barres*
+    impriment leur valeur sous forme de code, *Ligne* trace une ligne.
+  - *Tireur*, *Société et manifestation* et *Résultat* impriment chacun une
+    valeur, p. ex. le nom, le total ou les points d’une passe.
+  - *Coups individuels* ajoute toute une rangée de cases de coups : *Coups
+    passe 1* est un élément `{{s1.shot#}}` répété une fois par coup, à 8 mm
+    d’intervalle.
+- Au milieu, la **Feuille** montre le modèle à l’échelle sur le scan, avec
+  des valeurs inventées ; **Afficher les noms des champs** montre les
+  espaces réservés à la place. Des règles en millimètres longent le haut et
+  la gauche, le zoom va de 50 à 200 %.
+- À droite, les **Propriétés** modifient précisément l’élément sélectionné :
+  sa **Valeur** (les espaces réservés comme `{{shooter.name}}` sont remplis
+  à l’impression), **x** et **y** en millimètres depuis le coin supérieur
+  gauche, **Largeur** et **Hauteur** (avec une largeur de 0, le texte va
+  jusqu’au bord droit), **Taille de police**, **Gras** et
+  **Alignement**. **Répétition** l’imprime plusieurs fois, décalé chaque
+  fois de **dx** et **dy** ; `#` dans un espace réservé compte 1, 2, 3,
+  …. En dessous, le **Modèle** fixe le nom, la taille de la feuille, le
+  décalage de l’imprimante et le **Scan du formulaire vide** : un PNG ou
+  JPEG de toute la feuille qui apparaît derrière la feuille pour placer les
+  champs sur les cases du formulaire ; il n’est jamais imprimé.
 
-La **Feuille** montre le modèle à l’échelle sur le scan, avec des valeurs
-inventées. Fais glisser un élément pour le déplacer et son coin pour le
-redimensionner ; les flèches déplacent l’élément choisi d’un
-demi-millimètre, avec Maj de cinq, et un double-clic sur la feuille vide y
-ajoute un texte. Les positions s’alignent sur le demi-millimètre. Le tableau
-et la feuille montrent les mêmes éléments : choisis-en un sur la feuille et
-ajuste ses valeurs exactes dans le tableau, ou l’inverse.
+**Enregistrer** enregistre le modèle ; un point sur le bouton signale des modifications non enregistrées, et quitter la page avec elles demande d’abord une confirmation. **Aperçu PDF** ouvre le modèle exactement tel que le PDF le rend, ce qui peut différer légèrement de la feuille dans le navigateur.
 
-**Enregistrer** enregistre le modèle. **Aperçu PDF** montre le modèle exactement comme le PDF le rend, ce qui peut différer légèrement de la feuille dans le navigateur.
+## Disposer les éléments {#arrange}
+
+- On **déplace** un élément en le glissant et on le **redimensionne** par
+  son coin. Le point rose sur la dernière case d’un élément répété règle
+  l’espacement.
+- Pendant le déplacement, l’élément **s’aimante** aux bords et aux centres
+  des autres éléments et de la feuille, et un repère rose montre la ligne ;
+  ailleurs, il s’aligne sur des millimètres entiers. Avec la touche Alt
+  enfoncée, on le place librement.
+- **Sélectionner plusieurs** avec Maj ou Ctrl et un clic, ou en traçant un
+  cadre autour d’eux sur la feuille vide. Les glisser les déplace ensemble ;
+  taille de police, gras et alignement s’appliquent alors à tous.
+- Un **clic droit** ouvre le menu : *Dupliquer*, *Mettre au premier plan*,
+  *Alignement* (bords, centres, répartir uniformément), *Centrer sur la
+  feuille* et *Supprimer*.
+
+| Touche | Effet |
+|---|---|
+| Flèches | déplacent la sélection de 0.5 mm, avec Maj de 5 mm |
+| Ctrl+Z / Ctrl+Y | annuler / rétablir |
+| Ctrl+A | tout sélectionner |
+| Ctrl+D | dupliquer |
+| Suppr | supprimer la sélection |
+| Échap | annuler la sélection |
+| Ctrl+S | enregistrer |
+| Ctrl+molette | zoomer |
 
 ## Calibrer l’imprimante {#calibrate}
 

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-17 21:50+0000\n"
+"POT-Creation-Date: 2026-10-17 22:19+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -48,12 +48,7 @@ msgstr "Gli **utenti** sono account personali. Un account può appartenere a pi�
 
 #. type: Plain text
 #: ../src/help/en/getting-started/concepts.md:13
-#, fuzzy, no-wrap
-#| msgid ""
-#| "| Role | Can |\n"
-#| "|---|---|\n"
-#| "| **Admin** | everything: ranges, events, programmes, kiosk links, users of the club, special prizes, archiving |\n"
-#| "| **Staff** | run events: register shooters, enter results, print, reservations; read everything else |\n"
+#, no-wrap
 msgid ""
 "| Role | Can |\n"
 "|---|---|\n"
@@ -62,7 +57,7 @@ msgid ""
 msgstr ""
 "| Ruolo | Può |\n"
 "|---|---|\n"
-"| **Admin** | tutto: stand di tiro, manifestazioni, programmi, link chiosco, utenti della società, premi speciali, archiviazione |\n"
+"| **Admin** | tutto: stand di tiro, manifestazioni, programmi, link chiosco, utenti della società, premi speciali, chiusura delle manifestazioni |\n"
 "| **Personale** | condurre le manifestazioni: iscrivere tiratori, registrare risultati, stampare, prenotazioni; leggere tutto il resto |\n"
 
 #. type: Title ##
@@ -2993,101 +2988,140 @@ msgstr "Creare un modello {#create}"
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:8
 #, no-wrap
-msgid "**Print forms** (admins, in the club part of the sidebar) lists the forms of the club. **New print form** asks for a name and a paper size, then opens the editor:\n"
-msgstr "**Modelli di stampa** (admin, nella parte società della barra laterale) elenca i modelli della società. **Nuovo modello di stampa** chiede nome e formato della carta, poi apre l’editor:\n"
-
-#. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:16
-msgid "**Width** and **Height** of the sheet in millimetres."
-msgstr "**Larghezza** e **Altezza** del foglio in millimetri."
-
-#. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:16
-msgid ""
-"**Scan of the empty form**: a PNG or JPEG of the whole sheet. It appears "
-"behind the **Preview** so the fields can be placed onto the boxes of the "
-"form; it is never printed."
+msgid "**Print forms** (admins, in the club part of the sidebar) lists the forms of the club. **New print form** asks for a name and a paper size, then opens the editor. It has three columns:\n"
 msgstr ""
-"**Scansione del modulo vuoto**: un PNG o JPEG dell’intero foglio. Appare "
-"dietro l’**Anteprima** per posizionare i campi sulle caselle del modulo; non "
-"viene mai stampata."
+"**Modelli di stampa** (admin, nella parte società della barra laterale) elenca i modelli della società. **Nuovo modello di stampa** chiede un nome e un formato di carta, poi apre l’editor. Ha tre colonne:\n"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:16
+#: ../src/help/en/user-guide/print-forms.md:15
 msgid ""
-"**Elements**: what is printed where. **x** and **y** are millimetres from "
-"the top left corner, **Width** and **Height** the size (a width of 0 lets "
-"text run to the right edge), **Size** the font size in points."
-msgstr ""
-"**Elementi**: cosa viene stampato e dove. **x** e **y** sono millimetri "
-"dall’angolo superiore sinistro, **Larghezza** e **Altezza** la dimensione "
-"(una larghezza di 0 lascia il testo fino al bordo destro), **Dimensione** la "
-"dimensione del carattere in punti."
+"**Fields** on the left: everything a form can print, in groups, with an "
+"example each and a search. A click adds the field below the lowest element; "
+"dragging it onto the sheet puts it where you drop it."
+msgstr "A sinistra i **Campi**: tutto ciò che un modello può stampare, in gruppi, ognuno con un esempio, e una ricerca. Un clic aggiunge il campo sotto l’elemento più in basso; trascinato sul foglio, finisce dove lo si rilascia."
 
 #. type: Bullet: '  - '
-#: ../src/help/en/user-guide/print-forms.md:16
+#: ../src/help/en/user-guide/print-forms.md:15
 msgid ""
-"*Text* prints its **Value**, in which placeholders are replaced, e.g. "
-"`{{shooter.name}}` or `{{total}}`."
-msgstr ""
-"*Testo* stampa il suo **Valore**, in cui i segnaposto vengono sostituiti, p. "
-"es. `{{shooter.name}}` o `{{total}}`."
+"*Own text* prints fixed text, *QR code* and *Barcode* print their value as a "
+"code, *Line* draws a line."
+msgstr "*Testo libero* stampa un testo fisso, *Codice QR* e *Codice a barre* stampano il loro valore come codice, *Linea* traccia una linea."
 
 #. type: Bullet: '  - '
-#: ../src/help/en/user-guide/print-forms.md:16
+#: ../src/help/en/user-guide/print-forms.md:15
 msgid ""
-"*QR* and *Barcode* print their value as a code, *Line* draws a line from x/y "
-"by width/height."
-msgstr ""
-"*QR* e *Codice a barre* stampano il loro valore come codice, *Linea* traccia "
-"una linea da x/y per larghezza/altezza."
+"*Shooter*, *Club and event* and *Result* print one value each, e.g. the "
+"name, the total or the points of a series."
+msgstr "*Tiratore*, *Società e manifestazione* e *Risultato* stampano un valore ciascuno, p. es. il nome, il totale o i punti di una serie."
 
 #. type: Bullet: '  - '
-#: ../src/help/en/user-guide/print-forms.md:16
+#: ../src/help/en/user-guide/print-forms.md:15
 msgid ""
-"**Repeat** prints the element several times, moved by **dx** and **dy** each "
-"time; `#` in a placeholder counts 1, 2, 3, …. One element `{{s1.shot#}}` "
-"with repeat 10 and dx 8 fills the ten shot boxes of series 1."
-msgstr ""
-"**Ripetizione** stampa l’elemento più volte, spostato ogni volta di **dx** e "
-"**dy**; `#` in un segnaposto conta 1, 2, 3, …. Un elemento `{{s1.shot#}}` "
-"con ripetizione 10 e dx 8 riempie le dieci caselle dei colpi della serie 1."
+"*Single shots* adds a whole row of shot boxes: *Shots of series 1* is one "
+"element `{{s1.shot#}}` repeated once per shot, 8 mm apart."
+msgstr "*Colpi singoli* aggiunge un’intera fila di caselle per i colpi: *Colpi serie 1* è un elemento `{{s1.shot#}}` ripetuto una volta per colpo, a 8 mm di distanza."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:16
+#: ../src/help/en/user-guide/print-forms.md:15
 msgid ""
-"**Placeholders** lists every value with an example; a click adds it to the "
-"element edited last."
-msgstr ""
-"**Segnaposto** elenca ogni valore con un esempio; un clic lo aggiunge "
-"all’ultimo elemento modificato."
+"The **Sheet** in the middle shows the form true to scale over the scan, with "
+"made-up values; **Show field names** shows the placeholders instead. Rulers "
+"in millimetres run along the top and the left, the zoom goes from 50 to 200 "
+"%."
+msgstr "Al centro il **Foglio** mostra il modello in scala sopra la scansione, con valori inventati; **Mostra i nomi dei campi** mostra invece i segnaposto. In alto e a sinistra corrono righelli in millimetri, lo zoom va dal 50 al 200 %."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/print-forms.md:15
+msgid ""
+"**Properties** on the right edit the selected element exactly: its **Value** "
+"(placeholders such as `{{shooter.name}}` are filled in when printing), **x** "
+"and **y** in millimetres from the top left corner, **Width** and **Height** "
+"(a width of 0 lets text run to the right edge), **Font size**, **Bold** and "
+"**Alignment**. **Repeat** prints it several times, moved by **dx** and "
+"**dy** each time; `#` in a placeholder counts 1, 2, 3, …. Below, the "
+"**Form** sets the name, the size of the sheet, the printer offset and the "
+"**Scan of the empty form**: a PNG or JPEG of the whole sheet that appears "
+"behind the sheet so the fields can be placed onto the boxes of the form; it "
+"is never printed."
+msgstr "A destra le **Proprietà** modificano con precisione l’elemento selezionato: il suo **Valore** (i segnaposto come `{{shooter.name}}` vengono compilati in stampa), **x** e **y** in millimetri dall’angolo in alto a sinistra, **Larghezza** e **Altezza** (con larghezza 0 il testo arriva fino al bordo destro), **Dimensione carattere**, **Grassetto** e **Allineamento**. **Ripetizione** lo stampa più volte, spostato ogni volta di **dx** e **dy**; `#` in un segnaposto conta 1, 2, 3, …. Sotto, il **Modello** imposta il nome, la dimensione del foglio, lo spostamento della stampante e la **Scansione del modulo vuoto**: un PNG o JPEG dell’intero foglio che appare dietro il foglio per posizionare i campi sulle caselle del modulo; non viene mai stampato."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:18
-msgid ""
-"The **Sheet** shows the form true to scale over the scan, with made-up "
-"values. Drag an element to move it and its corner to resize it; the arrow "
-"keys move the selected element by half a millimetre, with Shift by five, and "
-"a double click on the empty sheet adds a text there. Positions snap to half "
-"millimetres. The table and the sheet show the same elements: select one on "
-"the sheet and edit its exact values in the table, or the other way round."
-msgstr "Il **Foglio** mostra il modello in scala sopra la scansione, con valori inventati. Trascina un elemento per spostarlo e il suo angolo per ridimensionarlo; le frecce spostano l’elemento scelto di mezzo millimetro, con Maiusc di cinque, e un doppio clic sul foglio vuoto vi aggiunge un testo. Le posizioni si agganciano al mezzo millimetro. Tabella e foglio mostrano gli stessi elementi: scegline uno sul foglio e modifica i suoi valori esatti nella tabella, o viceversa."
-
-#. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:20
+#: ../src/help/en/user-guide/print-forms.md:17
 #, no-wrap
-msgid "**Save** stores the form. **PDF preview** shows the form exactly as the PDF renders it, which can differ slightly from the sheet in the browser.\n"
+msgid "**Save** stores the form; a dot on the button shows unsaved changes, and leaving the page with them asks first. **PDF preview** opens the form exactly as the PDF renders it, which can differ slightly from the sheet in the browser.\n"
 msgstr ""
-"**Salva** salva il modello. **Anteprima PDF** mostra il modello esattamente come lo rende il PDF, che può differire leggermente dal foglio nel browser.\n"
+"**Salva** salva il modello; un punto sul pulsante indica modifiche non salvate, e lasciando la pagina con esse viene chiesta prima una conferma. **Anteprima PDF** apre il modello esattamente come lo rende il PDF, che può differire leggermente dal foglio nel browser.\n"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:21
+#: ../src/help/en/user-guide/print-forms.md:18
+#, no-wrap
+msgid "Arrange the elements {#arrange}"
+msgstr "Disporre gli elementi {#arrange}"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/print-forms.md:24
+msgid ""
+"**Move** an element by dragging it, **resize** it by its corner. The pink "
+"dot on the last box of a repeated element drags the spacing."
+msgstr "Un elemento si **sposta** trascinandolo e si **ridimensiona** dal suo angolo. Il punto rosa sull’ultima casella di un elemento ripetuto regola la spaziatura."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/print-forms.md:24
+msgid ""
+"While moving, the element **snaps** to the edges and centres of the other "
+"elements and of the sheet, and a pink guide shows the line; elsewhere it "
+"snaps to whole millimetres. Hold Alt to place it freely."
+msgstr "Durante lo spostamento l’elemento si **aggancia** ai bordi e ai centri degli altri elementi e del foglio, e una guida rosa mostra la linea; altrimenti si aggancia ai millimetri interi. Tenendo premuto Alt lo si posiziona liberamente."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/print-forms.md:24
+msgid ""
+"**Select several** with Shift or Ctrl and a click, or draw a frame around "
+"them on the empty sheet. Dragging moves them together; font size, bold and "
+"alignment then apply to all of them."
+msgstr "**Selezionarne diversi** con Maiusc o Ctrl e un clic, oppure tracciando un riquadro attorno a loro sul foglio vuoto. Trascinandoli si spostano insieme; dimensione carattere, grassetto e allineamento valgono allora per tutti."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/print-forms.md:24
+msgid ""
+"A **right click** opens the menu: *Duplicate*, *Bring to front*, *Align* "
+"(edges, centres, distribute evenly), *Centre on the sheet* and *Delete*."
+msgstr "Un **clic destro** apre il menu: *Duplica*, *Porta in primo piano*, *Allineamento* (bordi, centri, distribuire uniformemente), *Centra sul foglio* ed *Elimina*."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:35
+#, no-wrap
+msgid ""
+"| Key | Does |\n"
+"|---|---|\n"
+"| Arrow keys | move the selection by 0.5 mm, with Shift by 5 mm |\n"
+"| Ctrl+Z / Ctrl+Y | undo / redo |\n"
+"| Ctrl+A | select everything |\n"
+"| Ctrl+D | duplicate |\n"
+"| Delete | delete the selection |\n"
+"| Esc | clear the selection |\n"
+"| Ctrl+S | save |\n"
+"| Ctrl+mouse wheel | zoom |\n"
+msgstr ""
+"| Tasto | Effetto |\n"
+"|---|---|\n"
+"| Frecce | spostano la selezione di 0.5 mm, con Maiusc di 5 mm |\n"
+"| Ctrl+Z / Ctrl+Y | annulla / ripeti |\n"
+"| Ctrl+A | seleziona tutto |\n"
+"| Ctrl+D | duplica |\n"
+"| Canc | elimina la selezione |\n"
+"| Esc | annulla la selezione |\n"
+"| Ctrl+S | salva |\n"
+"| Ctrl+rotellina | zoom |\n"
+
+#. type: Title ##
+#: ../src/help/en/user-guide/print-forms.md:36
 #, no-wrap
 msgid "Calibrate the printer {#calibrate}"
 msgstr "Calibrare la stampante {#calibrate}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:24
+#: ../src/help/en/user-guide/print-forms.md:39
 msgid ""
 "Printers rarely print exactly where they should. Print a sheet with **Test "
 "print**, measure how far the values are off and enter it as **Printer offset "
@@ -3101,13 +3135,13 @@ msgstr ""
 "vale per tutti gli elementi; l’anteprima lo ignora."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:25
+#: ../src/help/en/user-guide/print-forms.md:40
 #, no-wrap
 msgid "Use a form {#use}"
 msgstr "Usare un modello {#use}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:28
+#: ../src/help/en/user-guide/print-forms.md:43
 msgid ""
 "On the *Programmes* tab of the event's **Setup**, choose the **Print form** "
 "of a programme; this works while shooters are registered. Every completed "
@@ -3127,7 +3161,7 @@ msgstr ""
 "manuale), altrimenti si apre il PDF (vedi [Stampa](printing.md))."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:29
+#: ../src/help/en/user-guide/print-forms.md:44
 #, no-wrap
 msgid "**Export** downloads a form as a file and **Import** reads it again, e.g. to share a form with another club.\n"
 msgstr "**Esporta** scarica un modello come file e **Importa** lo rilegge, p. es. per condividere un modello con un’altra società.\n"
@@ -4659,6 +4693,70 @@ msgstr ""
 "panel.md). Una password dimenticata si reimposta con **Password dimenticata?"
 "** nella pagina di accesso se l’account ha un indirizzo e-mail confermato, "
 "altrimenti lo fa il gestore."
+
+#~ msgid "**Width** and **Height** of the sheet in millimetres."
+#~ msgstr "**Larghezza** e **Altezza** del foglio in millimetri."
+
+#~ msgid ""
+#~ "**Scan of the empty form**: a PNG or JPEG of the whole sheet. It appears "
+#~ "behind the **Preview** so the fields can be placed onto the boxes of the "
+#~ "form; it is never printed."
+#~ msgstr ""
+#~ "**Scansione del modulo vuoto**: un PNG o JPEG dell’intero foglio. Appare "
+#~ "dietro l’**Anteprima** per posizionare i campi sulle caselle del modulo; "
+#~ "non viene mai stampata."
+
+#~ msgid ""
+#~ "**Elements**: what is printed where. **x** and **y** are millimetres from "
+#~ "the top left corner, **Width** and **Height** the size (a width of 0 lets "
+#~ "text run to the right edge), **Size** the font size in points."
+#~ msgstr ""
+#~ "**Elementi**: cosa viene stampato e dove. **x** e **y** sono millimetri "
+#~ "dall’angolo superiore sinistro, **Larghezza** e **Altezza** la dimensione "
+#~ "(una larghezza di 0 lascia il testo fino al bordo destro), **Dimensione** "
+#~ "la dimensione del carattere in punti."
+
+#~ msgid ""
+#~ "*Text* prints its **Value**, in which placeholders are replaced, e.g. "
+#~ "`{{shooter.name}}` or `{{total}}`."
+#~ msgstr ""
+#~ "*Testo* stampa il suo **Valore**, in cui i segnaposto vengono sostituiti, "
+#~ "p. es. `{{shooter.name}}` o `{{total}}`."
+
+#~ msgid ""
+#~ "**Repeat** prints the element several times, moved by **dx** and **dy** "
+#~ "each time; `#` in a placeholder counts 1, 2, 3, …. One element "
+#~ "`{{s1.shot#}}` with repeat 10 and dx 8 fills the ten shot boxes of series "
+#~ "1."
+#~ msgstr ""
+#~ "**Ripetizione** stampa l’elemento più volte, spostato ogni volta di "
+#~ "**dx** e **dy**; `#` in un segnaposto conta 1, 2, 3, …. Un elemento "
+#~ "`{{s1.shot#}}` con ripetizione 10 e dx 8 riempie le dieci caselle dei "
+#~ "colpi della serie 1."
+
+#~ msgid ""
+#~ "**Placeholders** lists every value with an example; a click adds it to "
+#~ "the element edited last."
+#~ msgstr ""
+#~ "**Segnaposto** elenca ogni valore con un esempio; un clic lo aggiunge "
+#~ "all’ultimo elemento modificato."
+
+#~ msgid ""
+#~ "The **Sheet** shows the form true to scale over the scan, with made-up "
+#~ "values. Drag an element to move it and its corner to resize it; the arrow "
+#~ "keys move the selected element by half a millimetre, with Shift by five, "
+#~ "and a double click on the empty sheet adds a text there. Positions snap "
+#~ "to half millimetres. The table and the sheet show the same elements: "
+#~ "select one on the sheet and edit its exact values in the table, or the "
+#~ "other way round."
+#~ msgstr ""
+#~ "Il **Foglio** mostra il modello in scala sopra la scansione, con valori "
+#~ "inventati. Trascina un elemento per spostarlo e il suo angolo per "
+#~ "ridimensionarlo; le frecce spostano l’elemento scelto di mezzo "
+#~ "millimetro, con Maiusc di cinque, e un doppio clic sul foglio vuoto vi "
+#~ "aggiunge un testo. Le posizioni si agganciano al mezzo millimetro. "
+#~ "Tabella e foglio mostrano gli stessi elementi: scegline uno sul foglio e "
+#~ "modifica i suoi valori esatti nella tabella, o viceversa."
 
 #, no-wrap
 #~ msgid "**Save** refreshes the preview, which shows made-up values.\n"

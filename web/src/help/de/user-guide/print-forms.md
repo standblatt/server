@@ -8,35 +8,63 @@ Druckvorlagen sind freiwillig.
 
 ## Eine Vorlage erstellen {#create}
 
-**Druckvorlagen** (Admins, im Vereinsteil der Seitenleiste) listet die Vorlagen des Vereins. **Neue Druckvorlage** fragt nach Name und Papiergrösse und öffnet dann den Editor:
+**Druckvorlagen** (Admins, im Vereinsteil der Seitenleiste) listet die Vorlagen des Vereins. **Neue Druckvorlage** fragt nach einem Namen und einem Papierformat und öffnet dann den Editor. Er hat drei Spalten:
 
-- **Breite** und **Höhe** des Blatts in Millimetern.
-- **Scan des leeren Formulars**: ein PNG oder JPEG des ganzen Blatts. Er
-  erscheint hinter der **Vorschau**, damit sich die Felder auf die Kästchen
-  des Formulars setzen lassen; gedruckt wird er nie.
-- **Elemente**: was wo gedruckt wird. **x** und **y** sind Millimeter ab der
-  oberen linken Ecke, **Breite** und **Höhe** die Grösse (Breite 0 lässt
-  Text bis zum rechten Rand laufen), **Grösse** die Schriftgrösse in Punkt.
-  - *Text* druckt seinen **Wert**, in dem Platzhalter ersetzt werden,
-    z. B. `{{shooter.name}}` oder `{{total}}`.
-  - *QR* und *Barcode* drucken ihren Wert als Code, *Linie* zieht eine Linie
-    von x/y um Breite/Höhe.
-  - **Wiederholung** druckt das Element mehrmals, jedes Mal um **dx** und
-    **dy** verschoben; `#` in einem Platzhalter zählt 1, 2, 3, …. Ein
-    Element `{{s1.shot#}}` mit Wiederholung 10 und dx 8 füllt die zehn
-    Schusskästchen der Passe 1.
-- **Platzhalter** listet jeden Wert mit einem Beispiel; ein Klick fügt ihn
-  dem zuletzt bearbeiteten Element hinzu.
+- Links die **Felder**: alles, was eine Vorlage drucken kann, in Gruppen, je
+  mit einem Beispiel, und eine Suche. Ein Klick fügt das Feld unter dem
+  untersten Element ein; aufs Blatt gezogen landet es dort, wo man es
+  loslässt.
+  - *Eigener Text* druckt festen Text, *QR-Code* und *Barcode* drucken ihren
+    Wert als Code, *Linie* zieht eine Linie.
+  - *Schütze*, *Verein und Anlass* und *Resultat* drucken je einen Wert,
+    z. B. den Namen, das Total oder die Punkte einer Passe.
+  - *Einzelschüsse* fügt eine ganze Reihe Schusskästchen ein: *Schüsse Passe
+    1* ist ein Element `{{s1.shot#}}`, einmal pro Schuss wiederholt, 8 mm
+    auseinander.
+- Das **Blatt** in der Mitte zeigt die Vorlage massstabgetreu über dem Scan,
+  mit erfundenen Werten; **Feldnamen zeigen** zeigt stattdessen die
+  Platzhalter. Oben und links laufen Lineale in Millimetern, der Zoom reicht
+  von 50 bis 200 %.
+- Rechts bearbeiten die **Eigenschaften** das gewählte Element genau: seinen
+  **Wert** (Platzhalter wie `{{shooter.name}}` werden beim Drucken
+  ausgefüllt), **x** und **y** in Millimetern ab der oberen linken Ecke,
+  **Breite** und **Höhe** (bei Breite 0 läuft Text bis zum rechten Rand),
+  **Schriftgrösse**, **Fett** und **Ausrichtung**. **Wiederholung** druckt
+  es mehrmals, jedes Mal um **dx** und **dy** verschoben; `#` in einem
+  Platzhalter zählt 1, 2, 3, …. Darunter legt die **Vorlage** den Namen, die
+  Grösse des Blatts, den Druckversatz und den **Scan des leeren Formulars**
+  fest: ein PNG oder JPEG des ganzen Blatts, das hinter dem Blatt erscheint,
+  damit die Felder auf die Kästchen des Formulars gesetzt werden können; es
+  wird nie gedruckt.
 
-Das **Blatt** zeigt die Vorlage massstäblich über dem Scan, mit erfundenen
-Werten. Ziehe ein Element, um es zu verschieben, und seine Ecke, um die
-Grösse zu ändern; die Pfeiltasten verschieben das gewählte Element um einen
-halben Millimeter, mit Shift um fünf, und ein Doppelklick aufs leere Blatt
-fügt dort einen Text ein. Positionen rasten auf halbe Millimeter
-ein. Tabelle und Blatt zeigen dieselben Elemente: Wähle eines auf dem Blatt
-und passe seine genauen Werte in der Tabelle an, oder umgekehrt.
+**Speichern** speichert die Vorlage; ein Punkt auf dem Knopf zeigt ungespeicherte Änderungen, und wer die Seite mit ihnen verlässt, wird zuerst gefragt. **PDF-Vorschau** öffnet die Vorlage genau so, wie das PDF sie darstellt; das kann leicht vom Blatt im Browser abweichen.
 
-**Speichern** speichert die Vorlage. **PDF-Vorschau** zeigt die Vorlage genau so, wie das PDF sie darstellt; das kann leicht vom Blatt im Browser abweichen.
+## Elemente anordnen {#arrange}
+
+- Ein Element wird durch Ziehen **verschoben** und an seiner Ecke **in der
+  Grösse geändert**. Der pinke Punkt am letzten Kästchen eines wiederholten
+  Elements zieht den Abstand auf.
+- Beim Verschieben **rastet** das Element an den Kanten und Mitten der
+  anderen Elemente und des Blatts ein, eine pinke Hilfslinie zeigt die
+  Linie; sonst rastet es auf ganze Millimeter. Mit gedrückter Alt-Taste
+  lässt es sich frei setzen.
+- **Mehrere auswählen** mit Shift oder Ctrl und einem Klick, oder auf dem
+  leeren Blatt einen Rahmen um sie ziehen. Ziehen verschiebt sie gemeinsam;
+  Schriftgrösse, Fett und Ausrichtung gelten dann für alle.
+- Ein **Rechtsklick** öffnet das Menü: *Duplizieren*, *In den Vordergrund*,
+  *Ausrichtung* (Kanten, Mitten, gleichmässig verteilen), *Auf dem Blatt
+  zentrieren* und *Löschen*.
+
+| Taste | Wirkung |
+|---|---|
+| Pfeiltasten | verschieben die Auswahl um 0.5 mm, mit Shift um 5 mm |
+| Ctrl+Z / Ctrl+Y | rückgängig / wiederholen |
+| Ctrl+A | alles auswählen |
+| Ctrl+D | duplizieren |
+| Entf | Auswahl löschen |
+| Esc | Auswahl aufheben |
+| Ctrl+S | speichern |
+| Ctrl+Mausrad | zoomen |
 
 ## Den Drucker kalibrieren {#calibrate}
 

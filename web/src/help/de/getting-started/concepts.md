@@ -9,10 +9,10 @@ legt Vereine und Benutzerkonten im
 
 **Benutzer** sind persönliche Konten. Ein Konto kann zu mehreren Vereinen gehören, mit einer Rolle pro Verein:
 
-| Role | Can |
+| Rolle | Darf |
 |---|---|
-| **Admin** | everything: ranges, events, programmes, kiosk links, users of the club, special prizes, closing events |
-| **Staff** | run events: register shooters, enter results, print, reservations; read everything else |
+| **Admin** | alles: Schiessstände, Anlässe, Programme, Kiosk-Links, Benutzer des Vereins, Sonderpreise, Anlässe abschliessen |
+| **Personal** | Anlässe durchführen: Schützen anmelden, Resultate erfassen, drucken, Reservationen; alles andere lesen |
 
 ## Schiessstände und Scheiben
 

@@ -4,19 +4,34 @@ A print form puts results onto a pre-printed sheet, e.g. the lane sheets the arm
 
 ## Create a form {#create}
 
-**Print forms** (admins, in the club part of the sidebar) lists the forms of the club. **New print form** asks for a name and a paper size, then opens the editor:
+**Print forms** (admins, in the club part of the sidebar) lists the forms of the club. **New print form** asks for a name and a paper size, then opens the editor. It has three columns:
 
-- **Width** and **Height** of the sheet in millimetres.
-- **Scan of the empty form**: a PNG or JPEG of the whole sheet. It appears behind the **Preview** so the fields can be placed onto the boxes of the form; it is never printed.
-- **Elements**: what is printed where. **x** and **y** are millimetres from the top left corner, **Width** and **Height** the size (a width of 0 lets text run to the right edge), **Size** the font size in points.
-  - *Text* prints its **Value**, in which placeholders are replaced, e.g. `{{shooter.name}}` or `{{total}}`.
-  - *QR* and *Barcode* print their value as a code, *Line* draws a line from x/y by width/height.
-  - **Repeat** prints the element several times, moved by **dx** and **dy** each time; `#` in a placeholder counts 1, 2, 3, …. One element `{{s1.shot#}}` with repeat 10 and dx 8 fills the ten shot boxes of series 1.
-- **Placeholders** lists every value with an example; a click adds it to the element edited last.
+- **Fields** on the left: everything a form can print, in groups, with an example each and a search. A click adds the field below the lowest element; dragging it onto the sheet puts it where you drop it.
+  - *Own text* prints fixed text, *QR code* and *Barcode* print their value as a code, *Line* draws a line.
+  - *Shooter*, *Club and event* and *Result* print one value each, e.g. the name, the total or the points of a series.
+  - *Single shots* adds a whole row of shot boxes: *Shots of series 1* is one element `{{s1.shot#}}` repeated once per shot, 8 mm apart.
+- The **Sheet** in the middle shows the form true to scale over the scan, with made-up values; **Show field names** shows the placeholders instead. Rulers in millimetres run along the top and the left, the zoom goes from 50 to 200 %.
+- **Properties** on the right edit the selected element exactly: its **Value** (placeholders such as `{{shooter.name}}` are filled in when printing), **x** and **y** in millimetres from the top left corner, **Width** and **Height** (a width of 0 lets text run to the right edge), **Font size**, **Bold** and **Alignment**. **Repeat** prints it several times, moved by **dx** and **dy** each time; `#` in a placeholder counts 1, 2, 3, …. Below, the **Form** sets the name, the size of the sheet, the printer offset and the **Scan of the empty form**: a PNG or JPEG of the whole sheet that appears behind the sheet so the fields can be placed onto the boxes of the form; it is never printed.
 
-The **Sheet** shows the form true to scale over the scan, with made-up values. Drag an element to move it and its corner to resize it; the arrow keys move the selected element by half a millimetre, with Shift by five, and a double click on the empty sheet adds a text there. Positions snap to half millimetres. The table and the sheet show the same elements: select one on the sheet and edit its exact values in the table, or the other way round.
+**Save** stores the form; a dot on the button shows unsaved changes, and leaving the page with them asks first. **PDF preview** opens the form exactly as the PDF renders it, which can differ slightly from the sheet in the browser.
 
-**Save** stores the form. **PDF preview** shows the form exactly as the PDF renders it, which can differ slightly from the sheet in the browser.
+## Arrange the elements {#arrange}
+
+- **Move** an element by dragging it, **resize** it by its corner. The pink dot on the last box of a repeated element drags the spacing.
+- While moving, the element **snaps** to the edges and centres of the other elements and of the sheet, and a pink guide shows the line; elsewhere it snaps to whole millimetres. Hold Alt to place it freely.
+- **Select several** with Shift or Ctrl and a click, or draw a frame around them on the empty sheet. Dragging moves them together; font size, bold and alignment then apply to all of them.
+- A **right click** opens the menu: *Duplicate*, *Bring to front*, *Align* (edges, centres, distribute evenly), *Centre on the sheet* and *Delete*.
+
+| Key | Does |
+|---|---|
+| Arrow keys | move the selection by 0.5 mm, with Shift by 5 mm |
+| Ctrl+Z / Ctrl+Y | undo / redo |
+| Ctrl+A | select everything |
+| Ctrl+D | duplicate |
+| Delete | delete the selection |
+| Esc | clear the selection |
+| Ctrl+S | save |
+| Ctrl+mouse wheel | zoom |
 
 ## Calibrate the printer {#calibrate}
 

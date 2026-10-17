@@ -10,10 +10,10 @@ d’administration](../admin-guide/admin-panel.md).
 
 Les **utilisateurs** sont des comptes personnels. Un compte peut appartenir à plusieurs sociétés, avec un rôle par société :
 
-| Role | Can |
+| Rôle | Peut |
 |---|---|
-| **Admin** | everything: ranges, events, programmes, kiosk links, users of the club, special prizes, closing events |
-| **Staff** | run events: register shooters, enter results, print, reservations; read everything else |
+| **Admin** | tout : stands de tir, manifestations, programmes, liens kiosque, utilisateurs de la société, prix spéciaux, clôture des manifestations |
+| **Personnel** | conduire les manifestations : inscrire des tireurs, saisir des résultats, imprimer, réservations ; lire tout le reste |
 
 ## Stands de tir et cibles
 

@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-17 21:50+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-17 22:19+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
 #: ../src/help/en/getting-started/concepts.md:1
@@ -1927,89 +1927,113 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:8
 #, markdown-text, no-wrap
-msgid "**Print forms** (admins, in the club part of the sidebar) lists the forms of the club. **New print form** asks for a name and a paper size, then opens the editor:\n"
+msgid "**Print forms** (admins, in the club part of the sidebar) lists the forms of the club. **New print form** asks for a name and a paper size, then opens the editor. It has three columns:\n"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:16
+#: ../src/help/en/user-guide/print-forms.md:15
 #, markdown-text
-msgid "**Width** and **Height** of the sheet in millimetres."
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:16
-#, markdown-text
-msgid "**Scan of the empty form**: a PNG or JPEG of the whole sheet. It appears behind the **Preview** so the fields can be placed onto the boxes of the form; it is never printed."
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:16
-#, markdown-text
-msgid "**Elements**: what is printed where. **x** and **y** are millimetres from the top left corner, **Width** and **Height** the size (a width of 0 lets text run to the right edge), **Size** the font size in points."
+msgid "**Fields** on the left: everything a form can print, in groups, with an example each and a search. A click adds the field below the lowest element; dragging it onto the sheet puts it where you drop it."
 msgstr ""
 
 #. type: Bullet: '  - '
-#: ../src/help/en/user-guide/print-forms.md:16
+#: ../src/help/en/user-guide/print-forms.md:15
 #, markdown-text
-msgid "*Text* prints its **Value**, in which placeholders are replaced, e.g. `{{shooter.name}}` or `{{total}}`."
+msgid "*Own text* prints fixed text, *QR code* and *Barcode* print their value as a code, *Line* draws a line."
 msgstr ""
 
 #. type: Bullet: '  - '
-#: ../src/help/en/user-guide/print-forms.md:16
+#: ../src/help/en/user-guide/print-forms.md:15
 #, markdown-text
-msgid "*QR* and *Barcode* print their value as a code, *Line* draws a line from x/y by width/height."
+msgid "*Shooter*, *Club and event* and *Result* print one value each, e.g. the name, the total or the points of a series."
 msgstr ""
 
 #. type: Bullet: '  - '
-#: ../src/help/en/user-guide/print-forms.md:16
+#: ../src/help/en/user-guide/print-forms.md:15
 #, markdown-text
-msgid "**Repeat** prints the element several times, moved by **dx** and **dy** each time; `#` in a placeholder counts 1, 2, 3, …. One element `{{s1.shot#}}` with repeat 10 and dx 8 fills the ten shot boxes of series 1."
+msgid "*Single shots* adds a whole row of shot boxes: *Shots of series 1* is one element `{{s1.shot#}}` repeated once per shot, 8 mm apart."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:16
+#: ../src/help/en/user-guide/print-forms.md:15
 #, markdown-text
-msgid "**Placeholders** lists every value with an example; a click adds it to the element edited last."
+msgid "The **Sheet** in the middle shows the form true to scale over the scan, with made-up values; **Show field names** shows the placeholders instead. Rulers in millimetres run along the top and the left, the zoom goes from 50 to 200 %."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/print-forms.md:15
+#, markdown-text
+msgid "**Properties** on the right edit the selected element exactly: its **Value** (placeholders such as `{{shooter.name}}` are filled in when printing), **x** and **y** in millimetres from the top left corner, **Width** and **Height** (a width of 0 lets text run to the right edge), **Font size**, **Bold** and **Alignment**. **Repeat** prints it several times, moved by **dx** and **dy** each time; `#` in a placeholder counts 1, 2, 3, …. Below, the **Form** sets the name, the size of the sheet, the printer offset and the **Scan of the empty form**: a PNG or JPEG of the whole sheet that appears behind the sheet so the fields can be placed onto the boxes of the form; it is never printed."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:18
-#, markdown-text
-msgid "The **Sheet** shows the form true to scale over the scan, with made-up values. Drag an element to move it and its corner to resize it; the arrow keys move the selected element by half a millimetre, with Shift by five, and a double click on the empty sheet adds a text there. Positions snap to half millimetres. The table and the sheet show the same elements: select one on the sheet and edit its exact values in the table, or the other way round."
-msgstr ""
-
-#. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:20
+#: ../src/help/en/user-guide/print-forms.md:17
 #, markdown-text, no-wrap
-msgid "**Save** stores the form. **PDF preview** shows the form exactly as the PDF renders it, which can differ slightly from the sheet in the browser.\n"
+msgid "**Save** stores the form; a dot on the button shows unsaved changes, and leaving the page with them asks first. **PDF preview** opens the form exactly as the PDF renders it, which can differ slightly from the sheet in the browser.\n"
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:21
+#: ../src/help/en/user-guide/print-forms.md:18
+#, markdown-text, no-wrap
+msgid "Arrange the elements {#arrange}"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/print-forms.md:24
+#, markdown-text
+msgid "**Move** an element by dragging it, **resize** it by its corner. The pink dot on the last box of a repeated element drags the spacing."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/print-forms.md:24
+#, markdown-text
+msgid "While moving, the element **snaps** to the edges and centres of the other elements and of the sheet, and a pink guide shows the line; elsewhere it snaps to whole millimetres. Hold Alt to place it freely."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/print-forms.md:24
+#, markdown-text
+msgid "**Select several** with Shift or Ctrl and a click, or draw a frame around them on the empty sheet. Dragging moves them together; font size, bold and alignment then apply to all of them."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/print-forms.md:24
+#, markdown-text
+msgid "A **right click** opens the menu: *Duplicate*, *Bring to front*, *Align* (edges, centres, distribute evenly), *Centre on the sheet* and *Delete*."
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:35
+#, markdown-text, no-wrap
+msgid "| Key | Does |\n|---|---|\n| Arrow keys | move the selection by 0.5 mm, with Shift by 5 mm |\n| Ctrl+Z / Ctrl+Y | undo / redo |\n| Ctrl+A | select everything |\n| Ctrl+D | duplicate |\n| Delete | delete the selection |\n| Esc | clear the selection |\n| Ctrl+S | save |\n| Ctrl+mouse wheel | zoom |\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/print-forms.md:36
 #, markdown-text, no-wrap
 msgid "Calibrate the printer {#calibrate}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:24
+#: ../src/help/en/user-guide/print-forms.md:39
 #, markdown-text
 msgid "Printers rarely print exactly where they should. Print a sheet with **Test print**, measure how far the values are off and enter it as **Printer offset right** and **Printer offset down** (negative to move left or up). The offset applies to every element; the preview ignores it."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:25
+#: ../src/help/en/user-guide/print-forms.md:40
 #, markdown-text, no-wrap
 msgid "Use a form {#use}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:28
+#: ../src/help/en/user-guide/print-forms.md:43
 #, markdown-text
 msgid "On the *Programmes* tab of the event's **Setup**, choose the **Print form** of a programme; this works while shooters are registered. Every completed programme then offers **Print onto form** in the results: at the desk, on the **Enter results** page and on scorer links at the lane (see [Helpers](helpers.md)). With a print agent and a printer chosen for *Print forms* under **Ranges → Printing**, the sheet goes to that printer (e.g. its manual feed), otherwise the PDF opens (see [Printing](printing.md))."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:29
+#: ../src/help/en/user-guide/print-forms.md:44
 #, markdown-text, no-wrap
 msgid "**Export** downloads a form as a file and **Import** reads it again, e.g. to share a form with another club.\n"
 msgstr ""

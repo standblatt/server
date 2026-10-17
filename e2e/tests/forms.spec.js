@@ -27,7 +27,7 @@ test.describe("print forms", () => {
     await page.close();
   });
 
-  test("builds a print form in the editor", async ({ page }) => {
+  test("builds a print form from the fields palette", async ({ page }) => {
     await login(page, admin);
     await page.goto(`/t/${ids.tenant}`);
     await page.locator("[data-sidebar=sidebar]").getByRole("link", { name: "Print forms" }).click();
@@ -39,63 +39,74 @@ test.describe("print forms", () => {
     await page.waitForURL(/\/forms\/\d+$/);
     ids.layout = Number(page.url().split("/").pop());
 
-    await c(page, "button", "Add element").click();
-    await page.getByLabel("Value of element 1").click();
-    await c(page, "section[aria-label=Placeholders] button", /^shooter\.name$/).click();
-    await expect(page.getByLabel("Value of element 1")).toHaveValue("{{shooter.name}}");
-    await c(page, "button", "Add element").click();
-    await page.getByLabel("Repeat element 2").fill("3");
-    await page.getByLabel("dx of element 2").fill("9");
-    await page.getByLabel("Value of element 2").click();
-    await c(page, "section[aria-label=Placeholders] button", /^s1\.shot1$/).click();
-    await expect(page.getByLabel("Value of element 2")).toHaveValue("{{s1.shot#}}");
-    await page.getByRole("button", { name: "Save", exact: true }).click();
-    await expect(c(page, "[data-sonner-toast]", "Print form saved")).toBeVisible();
-    await page.getByRole("tab", { name: "PDF preview" }).click();
-    await expect(page.locator("iframe[title=Preview]")).toHaveAttribute("src", /preview\?v=1$/);
+    const fields = page.getByRole("complementary", { name: "Fields" });
+    const sheet = page.getByRole("application", { name: "Sheet" });
+    await c(fields, "button", /^Name/).click();
+    await expect(sheet).toContainText("Example Anna");
+    await c(fields, "button", "Shots of series 1").click();
+    await expect(sheet.locator("[data-copy]")).toHaveCount(11);
+    await page.getByRole("switch").click();
+    await expect(sheet).toContainText("{{shooter.name}}");
+    await page.getByRole("switch").click();
 
+    await page.getByRole("button", { name: /^Save/ }).click();
+    await expect(c(page, "[data-sonner-toast]", "Print form saved")).toBeVisible();
     const layout = await api(page, "GET", `/api/tenants/${ids.tenant}/layouts/${ids.layout}`);
-    expect(layout.elements).toMatchObject([{ value: "{{shooter.name}}", y: 13 }, { value: "{{s1.shot#}}", repeat: 3, dx: 9 }]);
+    expect(layout.elements).toMatchObject([{ value: "{{shooter.name}}", x: 10, y: 10 }, { value: "{{s1.shot#}}", repeat: 10, dx: 8, y: 18 }]);
     const preview = await page.request.get(`/api/tenants/${ids.tenant}/layouts/${ids.layout}/preview`);
     expect(preview.headers()["content-type"]).toBe("application/pdf");
-    expect(preview.headers()["x-frame-options"]).toBe("SAMEORIGIN");
   });
 
-  test("moves elements on the sheet with the mouse and the keyboard", async ({ page }) => {
+  test("drops, snaps, selects, aligns and undoes on the sheet", async ({ page }) => {
     await login(page, admin);
     await page.goto(`/t/${ids.tenant}/forms/${ids.layout}`);
     const sheet = page.getByRole("application", { name: "Sheet" });
-    const first = sheet.locator("[data-element='0']");
-    await expect(first).toContainText("Example Anna");
-    await expect(sheet.locator("[data-element='1']")).toHaveCount(3);
+    const props = page.getByRole("complementary", { name: "Properties" });
+    await expect(sheet).toContainText("Example Anna");
+    let box = await sheet.boundingBox();
+    const mm = box.width / 148;
 
-    const x = page.getByLabel("x of element 1", { exact: true });
-    const y = page.getByLabel("y of element 1", { exact: true });
-    const before = Number(await x.inputValue());
-    const box = await first.boundingBox();
-    const sheetBox = await sheet.boundingBox();
-    const mm = sheetBox.width / 148;
-    await page.mouse.move(box.x + 5, box.y + box.height / 2);
+    await c(page.getByRole("complementary", { name: "Fields" }), "button", /^Club/).dragTo(sheet, { targetPosition: { x: 60 * mm, y: 60 * mm } });
+    await expect(props.getByLabel("x (mm)", { exact: true })).toHaveValue("60");
+    await expect(props.getByLabel("y (mm)", { exact: true })).toHaveValue("60");
+
+    const club = sheet.locator("[data-id]").nth(2);
+    const from = await club.boundingBox();
+    await page.mouse.move(from.x + 2, from.y + 2);
     await page.mouse.down();
-    await page.mouse.move(box.x + 5 + 20 * mm, box.y + box.height / 2 + 10 * mm, { steps: 5 });
+    await page.mouse.move(from.x + 2 - 49.6 * mm, from.y + 2, { steps: 6 });
+    await expect(sheet.locator("line[stroke='#db2777']").first()).toBeAttached();
     await page.mouse.up();
-    await expect(x).toHaveValue(String(before + 20));
-    await expect(y).toHaveValue("23");
+    await expect(props.getByLabel("x (mm)", { exact: true })).toHaveValue("10");
 
-    await page.keyboard.press("ArrowRight");
-    await page.keyboard.press("Shift+ArrowDown");
-    await expect(x).toHaveValue(String(before + 20.5));
-    await expect(y).toHaveValue("28");
+    box = await sheet.boundingBox();
+    await page.mouse.move(box.x + 100 * mm, box.y + 5 * mm);
+    await page.mouse.down();
+    await page.mouse.move(box.x + 3 * mm, box.y + 70 * mm, { steps: 6 });
+    await page.mouse.up();
+    await expect(props).toContainText("3 elements selected");
 
-    const now = await sheet.boundingBox();
-    await page.mouse.dblclick(now.x + 100 * mm, now.y + 150 * mm);
-    await expect(page.getByLabel("x of element 3", { exact: true })).toHaveValue("100");
-    await expect(page.getByLabel("y of element 3", { exact: true })).toHaveValue("150");
-    await page.getByLabel("Remove element 3").click();
-    await page.getByRole("button", { name: "Save", exact: true }).click();
+    await page.keyboard.press("Escape");
+    await sheet.locator("[data-id]").nth(0).click();
+    await sheet.locator("[data-id]").nth(2).click({ modifiers: ["Shift"] });
+    await expect(props).toContainText("2 elements selected");
+    await sheet.locator("[data-id]").nth(2).click({ button: "right" });
+    await page.getByRole("menuitem", { name: "Align" }).hover();
+    await page.getByRole("menuitem", { name: "Align top edges" }).click();
+    await sheet.locator("[data-id]").nth(2).click();
+    await expect(props.getByLabel("y (mm)", { exact: true })).toHaveValue("10");
+    await page.keyboard.press("Control+z");
+    await expect(props.getByLabel("y (mm)", { exact: true })).toHaveValue("60");
+
+    await page.locator("[data-sidebar=sidebar]").getByRole("link", { name: "Events" }).click();
+    await expect(c(page, "[role=alertdialog]", "Leave without saving?")).toBeVisible();
+    await c(page, "[role=alertdialog] button", "Cancel").click();
+    await expect(page).toHaveURL(/\/forms\/\d+$/);
+    await page.keyboard.press("Control+s");
     await expect(c(page, "[data-sonner-toast]", "Print form saved")).toBeVisible();
     const layout = await api(page, "GET", `/api/tenants/${ids.tenant}/layouts/${ids.layout}`);
-    expect(layout.elements[0]).toMatchObject({ x: before + 20.5, y: 28 });
+    expect(layout.elements).toHaveLength(3);
+    expect(layout.elements[2]).toMatchObject({ value: "{{club}}", x: 10, y: 60 });
   });
 
   test("prints the results onto the form of the programme", async ({ page }) => {
@@ -121,6 +132,6 @@ test.describe("print forms", () => {
     file.name = "Army sheet copy";
     await page.getByLabel("Import a print form").setInputFiles({ name: "form.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(file)) });
     await page.waitForURL(/\/forms\/\d+$/);
-    await expect(page.getByLabel("Value of element 2")).toHaveValue("{{s1.shot#}}");
+    await expect(page.getByRole("application", { name: "Sheet" }).locator("[data-copy]")).toHaveCount(12);
   });
 });

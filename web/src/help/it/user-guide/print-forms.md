@@ -8,36 +8,64 @@ modelli sono facoltativi.
 
 ## Creare un modello {#create}
 
-**Modelli di stampa** (admin, nella parte società della barra laterale) elenca i modelli della società. **Nuovo modello di stampa** chiede nome e formato della carta, poi apre l’editor:
+**Modelli di stampa** (admin, nella parte società della barra laterale) elenca i modelli della società. **Nuovo modello di stampa** chiede un nome e un formato di carta, poi apre l’editor. Ha tre colonne:
 
-- **Larghezza** e **Altezza** del foglio in millimetri.
-- **Scansione del modulo vuoto**: un PNG o JPEG dell’intero foglio. Appare
-  dietro l’**Anteprima** per posizionare i campi sulle caselle del modulo;
-  non viene mai stampata.
-- **Elementi**: cosa viene stampato e dove. **x** e **y** sono millimetri
-  dall’angolo superiore sinistro, **Larghezza** e **Altezza** la dimensione
-  (una larghezza di 0 lascia il testo fino al bordo destro), **Dimensione**
-  la dimensione del carattere in punti.
-  - *Testo* stampa il suo **Valore**, in cui i segnaposto vengono
-    sostituiti, p. es. `{{shooter.name}}` o `{{total}}`.
-  - *QR* e *Codice a barre* stampano il loro valore come codice, *Linea*
-    traccia una linea da x/y per larghezza/altezza.
-  - **Ripetizione** stampa l’elemento più volte, spostato ogni volta di
-    **dx** e **dy**; `#` in un segnaposto conta 1, 2, 3, …. Un elemento
-    `{{s1.shot#}}` con ripetizione 10 e dx 8 riempie le dieci caselle dei
-    colpi della serie 1.
-- **Segnaposto** elenca ogni valore con un esempio; un clic lo aggiunge
-  all’ultimo elemento modificato.
+- A sinistra i **Campi**: tutto ciò che un modello può stampare, in gruppi,
+  ognuno con un esempio, e una ricerca. Un clic aggiunge il campo sotto
+  l’elemento più in basso; trascinato sul foglio, finisce dove lo si
+  rilascia.
+  - *Testo libero* stampa un testo fisso, *Codice QR* e *Codice a barre*
+    stampano il loro valore come codice, *Linea* traccia una linea.
+  - *Tiratore*, *Società e manifestazione* e *Risultato* stampano un valore
+    ciascuno, p. es. il nome, il totale o i punti di una serie.
+  - *Colpi singoli* aggiunge un’intera fila di caselle per i colpi: *Colpi
+    serie 1* è un elemento `{{s1.shot#}}` ripetuto una volta per colpo, a 8
+    mm di distanza.
+- Al centro il **Foglio** mostra il modello in scala sopra la scansione, con
+  valori inventati; **Mostra i nomi dei campi** mostra invece i
+  segnaposto. In alto e a sinistra corrono righelli in millimetri, lo zoom
+  va dal 50 al 200 %.
+- A destra le **Proprietà** modificano con precisione l’elemento
+  selezionato: il suo **Valore** (i segnaposto come `{{shooter.name}}`
+  vengono compilati in stampa), **x** e **y** in millimetri dall’angolo in
+  alto a sinistra, **Larghezza** e **Altezza** (con larghezza 0 il testo
+  arriva fino al bordo destro), **Dimensione carattere**, **Grassetto** e
+  **Allineamento**. **Ripetizione** lo stampa più volte, spostato ogni volta
+  di **dx** e **dy**; `#` in un segnaposto conta 1, 2, 3, …. Sotto, il
+  **Modello** imposta il nome, la dimensione del foglio, lo spostamento
+  della stampante e la **Scansione del modulo vuoto**: un PNG o JPEG
+  dell’intero foglio che appare dietro il foglio per posizionare i campi
+  sulle caselle del modulo; non viene mai stampato.
 
-Il **Foglio** mostra il modello in scala sopra la scansione, con valori
-inventati. Trascina un elemento per spostarlo e il suo angolo per
-ridimensionarlo; le frecce spostano l’elemento scelto di mezzo millimetro,
-con Maiusc di cinque, e un doppio clic sul foglio vuoto vi aggiunge un
-testo. Le posizioni si agganciano al mezzo millimetro. Tabella e foglio
-mostrano gli stessi elementi: scegline uno sul foglio e modifica i suoi
-valori esatti nella tabella, o viceversa.
+**Salva** salva il modello; un punto sul pulsante indica modifiche non salvate, e lasciando la pagina con esse viene chiesta prima una conferma. **Anteprima PDF** apre il modello esattamente come lo rende il PDF, che può differire leggermente dal foglio nel browser.
 
-**Salva** salva il modello. **Anteprima PDF** mostra il modello esattamente come lo rende il PDF, che può differire leggermente dal foglio nel browser.
+## Disporre gli elementi {#arrange}
+
+- Un elemento si **sposta** trascinandolo e si **ridimensiona** dal suo
+  angolo. Il punto rosa sull’ultima casella di un elemento ripetuto regola
+  la spaziatura.
+- Durante lo spostamento l’elemento si **aggancia** ai bordi e ai centri
+  degli altri elementi e del foglio, e una guida rosa mostra la linea;
+  altrimenti si aggancia ai millimetri interi. Tenendo premuto Alt lo si
+  posiziona liberamente.
+- **Selezionarne diversi** con Maiusc o Ctrl e un clic, oppure tracciando un
+  riquadro attorno a loro sul foglio vuoto. Trascinandoli si spostano
+  insieme; dimensione carattere, grassetto e allineamento valgono allora per
+  tutti.
+- Un **clic destro** apre il menu: *Duplica*, *Porta in primo piano*,
+  *Allineamento* (bordi, centri, distribuire uniformemente), *Centra sul
+  foglio* ed *Elimina*.
+
+| Tasto | Effetto |
+|---|---|
+| Frecce | spostano la selezione di 0.5 mm, con Maiusc di 5 mm |
+| Ctrl+Z / Ctrl+Y | annulla / ripeti |
+| Ctrl+A | seleziona tutto |
+| Ctrl+D | duplica |
+| Canc | elimina la selezione |
+| Esc | annulla la selezione |
+| Ctrl+S | salva |
+| Ctrl+rotellina | zoom |
 
 ## Calibrare la stampante {#calibrate}
 

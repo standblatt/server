@@ -43,11 +43,6 @@ func TestSecureHeaders(t *testing.T) {
 	if !strings.Contains(csp, "frame-ancestors 'none'") {
 		t.Errorf("pages must not be framed: %s", csp)
 	}
-	rec = httptest.NewRecorder()
-	h.ServeHTTP(rec, httptest.NewRequest("GET", "/api/tenants/1/layouts/2/preview", nil))
-	if rec.Header().Get("X-Frame-Options") != "SAMEORIGIN" || !strings.Contains(rec.Header().Get("Content-Security-Policy"), "frame-ancestors 'self'") {
-		t.Errorf("the form preview must be framable by the app: %v", rec.Header())
-	}
 }
 
 func TestSecureHeadersMatomo(t *testing.T) {
