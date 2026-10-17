@@ -5,15 +5,16 @@
 	import UserPlus from '@lucide/svelte/icons/user-plus';
 	import X from '@lucide/svelte/icons/x';
 	import { toast } from 'svelte-sonner';
-	import { api, call, type BookingRequest, type Event } from './api';
+	import { api, call, type BookingRequest, type Club, type Event } from './api';
 	import { slotDay, slotTime } from './booking';
 	import { formatLanes } from './format';
 	import BookingStatus from './booking/BookingStatus.svelte';
+	import ClubSelect from './ClubSelect.svelte';
 	import { Button } from './components/ui/button';
 	import * as Dialog from './components/ui/dialog';
 	import { Textarea } from './components/ui/textarea';
 	import FormError from './FormError.svelte';
-	import { bookingRequestsQuery, keys } from './tenant';
+	import { bookingRequestsQuery, clubsQuery, keys } from './tenant';
 
 	let { tenantId, event, isAdmin }: { tenantId: number; event: Event; isAdmin: boolean } = $props();
 
@@ -27,6 +28,9 @@
 	/** Name of a range of the event. */
 	const rangeName = (id: number) => event.ranges.find((r) => r.id === id)?.name ?? '';
 	const tz = $derived(event.timezone);
+	const clubs = clubsQuery(() => tenantId);
+	/** Name of a club of the master data. */
+	const clubName = (id: number) => clubs.data?.find((c) => c.id === id)?.name ?? '';
 
 	/** Reloads requests, reservations and lanes after a decision. */
 	async function reload() {
@@ -35,16 +39,44 @@
 		await queryClient.invalidateQueries({ queryKey: keys.lanes(tenantId, event.id) });
 	}
 
-	/** Runs a decision on a request and shows its result or error as a toast. */
-	async function decide(r: BookingRequest, action: 'confirm' | 'shooters', done: string) {
+	/** Takes the shooters added after the confirmation into the master data. */
+	async function adopt(r: BookingRequest) {
 		try {
-			const params = { params: { path: { tenantId, requestId: r.id } } };
-			if (action === 'confirm') await call(api.POST('/api/tenants/{tenantId}/booking-requests/{requestId}/confirm', params));
-			else await call(api.POST('/api/tenants/{tenantId}/booking-requests/{requestId}/shooters', params));
-			toast.success(done);
+			await call(api.POST('/api/tenants/{tenantId}/booking-requests/{requestId}/shooters', { params: { path: { tenantId, requestId: r.id } } }));
+			toast.success($t`Shooters taken over`);
 			await reload();
 		} catch (err) {
 			toast.error((err as Error).message);
+		}
+	}
+
+	let confirming = $state<BookingRequest | null>(null);
+	let suggested = $state<Club[]>([]);
+	let clubChoice = $state('');
+
+	/** Opens the confirmation with the club of the master data that matches the request, or the similar ones. */
+	async function openConfirm(r: BookingRequest) {
+		error = '';
+		const m = await call(api.GET('/api/tenants/{tenantId}/clubs/similar', { params: { path: { tenantId }, query: { name: r.club } } }));
+		suggested = [...(m.match ? [m.match] : []), ...m.similar];
+		clubChoice = m.match ? String(m.match.id) : m.similar.length ? '' : 'new';
+		confirming = r;
+	}
+
+	/** Confirms the request in the dialog with the chosen club. */
+	async function confirm(e: SubmitEvent) {
+		e.preventDefault();
+		if (!confirming) return;
+		error = '';
+		try {
+			const body = clubChoice === 'new' ? {} : { clubId: Number(clubChoice) };
+			await call(api.POST('/api/tenants/{tenantId}/booking-requests/{requestId}/confirm', { params: { path: { tenantId, requestId: confirming.id } }, body }));
+			toast.success($t`Request confirmed`);
+			confirming = null;
+			await reload();
+			await queryClient.invalidateQueries({ queryKey: keys.clubs(tenantId) });
+		} catch (err) {
+			error = (err as Error).message;
 		}
 	}
 
@@ -82,10 +114,10 @@
 					{#if isAdmin}
 						<div class="ml-auto flex flex-wrap gap-2">
 							{#if r.status === 'pending'}
-								<Button size="sm" onclick={() => decide(r, 'confirm', $t`Request confirmed`)}><Check />{$t`Confirm`}</Button>
+								<Button size="sm" onclick={() => openConfirm(r)}><Check />{$t`Confirm`}</Button>
 							{/if}
 							{#if r.status === 'confirmed' && waiting > 0}
-								<Button size="sm" variant="outline" onclick={() => decide(r, 'shooters', $t`Shooters taken over`)}><UserPlus />{$plural(waiting, { one: 'Take over # shooter', other: 'Take over # shooters' })}</Button>
+								<Button size="sm" variant="outline" onclick={() => adopt(r)}><UserPlus />{$plural(waiting, { one: 'Take over # shooter', other: 'Take over # shooters' })}</Button>
 							{/if}
 							{#if r.status === 'pending' || r.status === 'confirmed'}
 								<Button size="sm" variant="outline" onclick={() => ((declining = r), (error = ''))}><X />{$t`Decline`}</Button>
@@ -93,6 +125,7 @@
 						</div>
 					{/if}
 				</div>
+				{#if r.clubId && clubName(r.clubId) !== r.club}<p class="text-muted-foreground">{$t`Club in the master data: ${clubName(r.clubId)}`}</p>{/if}
 				{#if r.note}<p class="rounded-md bg-muted px-3 py-2">{r.note}</p>{/if}
 				<ul class="grid gap-1">
 					{#each r.items as it (`${it.rangeId}-${it.start}`)}
@@ -138,6 +171,22 @@
 				<Textarea bind:value={reason} rows={3} maxlength={1000} aria-label={$t`Reason`} placeholder={$t`Reason (optional)`} />
 				<FormError message={error} />
 				<Dialog.Footer><Button type="submit" variant="destructive">{$t`Decline`}</Button></Dialog.Footer>
+			</form>
+		{/if}
+	</Dialog.Content>
+</Dialog.Root>
+
+<Dialog.Root open={confirming !== null} onOpenChange={(o) => !o && (confirming = null)}>
+	<Dialog.Content class="sm:max-w-md">
+		{#if confirming}
+			<Dialog.Header>
+				<Dialog.Title>{$t`Confirm request of ${confirming.club}`}</Dialog.Title>
+				<Dialog.Description>{$t`Free lanes are reserved for every slot. The announced shooters join this club of the master data:`}</Dialog.Description>
+			</Dialog.Header>
+			<form class="grid gap-4" onsubmit={confirm}>
+				<ClubSelect {tenantId} name={confirming.club} {suggested} bind:value={clubChoice} label={$t`Club`} />
+				<FormError message={error} />
+				<Dialog.Footer><Button type="submit"><Check />{$t`Confirm`}</Button></Dialog.Footer>
 			</form>
 		{/if}
 	</Dialog.Content>

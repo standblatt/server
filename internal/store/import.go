@@ -7,10 +7,12 @@ import (
 	"github.com/jackc/pgx/v5"
 )
 
-// ImportRow is one line of a shooter import: a shooter and optionally one of their clubs.
+// ImportRow is one line of a shooter import: a shooter and optionally one of their clubs, either an existing one
+// (ClubID) or a new one to create by name (Club).
 type ImportRow struct {
 	ShooterInput
-	Club string
+	Club   string
+	ClubID int64
 }
 
 // ImportResult counts what an import changed.
@@ -23,7 +25,7 @@ type ImportResult struct {
 
 // ImportShooters merges rows into a tenant's master data in one transaction. Shooters are matched by
 // license number, or by name and birthday when the row has none; empty fields keep the stored value.
-// Missing clubs are created. Nothing is deleted.
+// Clubs named without an ID are found regardless of case and spaces or created. Nothing is deleted.
 func (s *Store) ImportShooters(ctx context.Context, tenantID int64, rows []ImportRow) (ImportResult, error) {
 	var res ImportResult
 	err := pgx.BeginFunc(ctx, s.pool, func(tx pgx.Tx) error {
@@ -42,10 +44,13 @@ func (s *Store) ImportShooters(ctx context.Context, tenantID int64, rows []Impor
 				res.Updated++
 				seen[id] = true
 			}
-			if r.Club == "" {
+			if r.Club == "" && r.ClubID == 0 {
 				continue
 			}
-			clubID, ok := clubs[r.Club]
+			clubID, ok := r.ClubID, r.ClubID != 0
+			if !ok {
+				clubID, ok = clubs[r.Club]
+			}
 			if !ok {
 				var newClub bool
 				if clubID, newClub, err = ensureClub(ctx, tx, tenantID, r.Club); err != nil {

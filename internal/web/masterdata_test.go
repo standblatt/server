@@ -2,6 +2,7 @@ package web_test
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -13,12 +14,15 @@ import (
 	"github.com/standblatt/server/internal/web"
 )
 
-func (e *env) upload(c *http.Client, path, content string) (int, []byte) {
+func (e *env) upload(c *http.Client, path, content string, clubs ...string) (int, []byte) {
 	e.t.Helper()
 	var buf bytes.Buffer
 	w := multipart.NewWriter(&buf)
 	part, _ := w.CreateFormFile("file", "shooters.csv")
 	part.Write([]byte(content))
+	for _, m := range clubs {
+		w.WriteField("clubs", m)
+	}
 	w.Close()
 	req, _ := http.NewRequest("POST", e.srv.URL+path, &buf)
 	req.Header.Set("Content-Type", w.FormDataContentType())
@@ -121,7 +125,22 @@ func TestShooterImport(t *testing.T) {
 		t.Fatalf("report with errors: %+v", rep)
 	}
 
+	code, b = e.do(admin, "POST", fmt.Sprintf("/api/tenants/%d/clubs", tid), map[string]any{"name": "Sargans-Wartau"})
+	expect(t, "create a similar club", code, 201, b)
 	code, b = e.upload(admin, path, good)
+	expect(t, "import with an unknown club", code, 200, b)
+	rep = web.ImportReport{}
+	json.Unmarshal(b, &rep)
+	if rep.Created != 0 || len(rep.UnknownClubs) != 1 || rep.UnknownClubs[0].Name != "Sargans" || len(rep.UnknownClubs[0].Similar) != 1 {
+		t.Fatalf("report with an unknown club: %s", b)
+	}
+
+	foreign := e.tenant("Other")
+	fc, _ := e.st.CreateClub(context.Background(), foreign, store.ClubInput{Name: "Foreign"})
+	code, b = e.upload(admin, path, good, fmt.Sprintf(`{"Sargans": %d}`, fc.ID))
+	expect(t, "map to a club of another tenant", code, 422, b)
+
+	code, b = e.upload(admin, path, good, `{"Sargans": 0}`)
 	expect(t, "import", code, 200, b)
 	rep = web.ImportReport{}
 	json.Unmarshal(b, &rep)
@@ -129,6 +148,48 @@ func TestShooterImport(t *testing.T) {
 		t.Fatalf("report: %+v", rep)
 	}
 
+	code, b = e.upload(admin, path, "firstname;lastname;club\nNew;Member; SARGANS\nOther;Member;Sargans-Wartau\n")
+	expect(t, "import into existing clubs", code, 200, b)
+	rep = web.ImportReport{}
+	json.Unmarshal(b, &rep)
+	if rep.Created != 2 || rep.ClubsCreated != 0 || len(rep.UnknownClubs) != 0 {
+		t.Fatalf("clubs matched regardless of case: %s", b)
+	}
+
 	code, b = e.upload(admin, path, "city\nBern\n")
 	expect(t, "bad header", code, 422, b)
+}
+
+func TestClubMatchAndMerge(t *testing.T) {
+	e := newEnv(t)
+	tid, other := e.tenant("Club"), e.tenant("Other")
+	e.user("boss", tid, store.RoleAdmin)
+	e.user("helper", tid, store.RoleStaff)
+	e.user("stranger", other, store.RoleAdmin)
+	admin, staff := e.login("boss"), e.login("helper")
+	ctx := context.Background()
+	hill, _ := e.st.CreateClub(ctx, tid, store.ClubInput{Name: "SG Hilltown"})
+	typo, _ := e.st.CreateClub(ctx, tid, store.ClubInput{Name: "SG Hiltown"})
+	base := fmt.Sprintf("/api/tenants/%d/clubs", tid)
+
+	code, b := e.do(staff, "GET", base+"/similar?name=sg%20hilltown", nil)
+	expect(t, "staff matches a club", code, 200, b)
+	var m web.ClubMatch
+	json.Unmarshal(b, &m)
+	if m.Match == nil || m.Match.ID != hill.ID || len(m.Similar) != 1 || m.Similar[0].ID != typo.ID {
+		t.Fatalf("match: %s", b)
+	}
+	code, b = e.do(admin, "POST", base, map[string]any{"name": "sg HILLTOWN"})
+	expect(t, "create a club differing in case", code, 409, b)
+
+	merge := fmt.Sprintf("%s/%d/merge", base, typo.ID)
+	code, b = e.do(staff, "POST", merge, map[string]any{"intoId": hill.ID})
+	expect(t, "staff merges", code, 403, b)
+	code, b = e.do(e.login("stranger"), "POST", fmt.Sprintf("/api/tenants/%d/clubs/%d/merge", other, typo.ID), map[string]any{"intoId": hill.ID})
+	expect(t, "other tenant merges", code, 404, b)
+	code, b = e.do(admin, "POST", merge, map[string]any{"intoId": hill.ID})
+	expect(t, "merge", code, 204, b)
+	if clubs, _ := e.st.ListClubs(ctx, tid); len(clubs) != 1 || clubs[0].ID != hill.ID {
+		t.Fatalf("clubs after merge: %+v", clubs)
+	}
 }

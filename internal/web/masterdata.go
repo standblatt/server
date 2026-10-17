@@ -2,12 +2,14 @@ package web
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"net/http"
 	"strings"
 
 	"github.com/danielgtaylor/huma/v2"
 
+	"github.com/standblatt/server/internal/domain"
 	"github.com/standblatt/server/internal/store"
 )
 
@@ -34,13 +36,70 @@ type ShooterClubPath struct {
 type ShooterCreate struct {
 	store.ShooterInput
 	ClubIDs   []int64  `json:"clubIds" required:"false"`
-	ClubNames []string `json:"clubNames" required:"false" doc:"Clubs to find by exact name or create"`
+	ClubNames []string `json:"clubNames" required:"false" doc:"Clubs to find by name regardless of case and spaces, or create"`
 }
 
-// ImportReport is the outcome of a shooter import. Nothing is imported when Errors is not empty.
+// ImportReport is the outcome of a shooter import. Nothing is imported when Errors or UnknownClubs is not empty.
 type ImportReport struct {
 	store.ImportResult
-	Errors []ImportLineError `json:"errors"`
+	Errors       []ImportLineError `json:"errors"`
+	UnknownClubs []UnknownClub     `json:"unknownClubs" doc:"Clubs of the file that match none of the master data; map them with the clubs field"`
+}
+
+// UnknownClub is a club name of an import that needs a decision: an existing club or a new one.
+type UnknownClub struct {
+	Name    string       `json:"name"`
+	Similar []store.Club `json:"similar" doc:"Clubs with a similar name, best first"`
+}
+
+// ClubMatch is how a typed club name relates to the clubs of the master data.
+type ClubMatch struct {
+	Match   *store.Club  `json:"match,omitempty" doc:"The club with this name regardless of case and spaces"`
+	Similar []store.Club `json:"similar" doc:"Other clubs with a similar name, best first"`
+}
+
+// matchClub finds the club with the name's key and the similar ones among clubs.
+func matchClub(name string, clubs []store.Club) ClubMatch {
+	m := ClubMatch{Similar: []store.Club{}}
+	names := make([]string, len(clubs))
+	for i, c := range clubs {
+		names[i] = c.Name
+		if m.Match == nil && domain.ClubKey(c.Name) == domain.ClubKey(name) {
+			m.Match = &clubs[i]
+		}
+	}
+	for _, i := range domain.SimilarClubs(name, names) {
+		m.Similar = append(m.Similar, clubs[i])
+	}
+	return m
+}
+
+// resolveImportClubs sets the club of every row that names one: the club with its key, else the one mapped to its
+// name (0 keeps the name, so the import creates it). Names that are neither come back with their similar clubs.
+func resolveImportClubs(rows []store.ImportRow, clubs []store.Club, mapped map[string]int64) ([]UnknownClub, error) {
+	ids := map[int64]bool{}
+	for _, c := range clubs {
+		ids[c.ID] = true
+	}
+	unknown := []UnknownClub{}
+	seen := map[string]bool{}
+	for i, r := range rows {
+		if r.Club == "" {
+			continue
+		}
+		if m := matchClub(r.Club, clubs); m.Match != nil {
+			rows[i].ClubID = m.Match.ID
+		} else if id, ok := mapped[r.Club]; ok {
+			if id != 0 && !ids[id] {
+				return nil, invalid("Club %d not found", id)
+			}
+			rows[i].ClubID = id
+		} else if !seen[r.Club] {
+			seen[r.Club] = true
+			unknown = append(unknown, UnknownClub{Name: r.Club, Similar: m.Similar})
+		}
+	}
+	return unknown, nil
 }
 
 const maxImportBytes = 10 << 20
@@ -105,6 +164,38 @@ func (s *Server) registerMasterData(api huma.API) {
 			return nil, conflict("A club with this name already exists")
 		}
 		return &clubOut{Body: c}, err
+	})
+
+	type similarIn struct {
+		TenantPath
+		Name string `query:"name" required:"true" doc:"A club name as typed"`
+	}
+	huma.Register(api, huma.Operation{
+		OperationID: "match-club", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/clubs/similar", Tags: []string{"clubs"},
+		Summary: "The club with this name regardless of case and spaces, and the clubs with a similar name",
+	}, func(ctx context.Context, in *similarIn) (*struct{ Body ClubMatch }, error) {
+		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+			return nil, err
+		}
+		clubs, err := s.Store.ListClubs(ctx, in.TenantID)
+		return &struct{ Body ClubMatch }{Body: matchClub(in.Name, clubs)}, err
+	})
+
+	type mergeIn struct {
+		ClubPath
+		Body struct {
+			IntoID int64 `json:"intoId" doc:"The club that stays"`
+		}
+	}
+	huma.Register(api, huma.Operation{
+		OperationID: "merge-club", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/clubs/{clubId}/merge", Tags: []string{"clubs"},
+		Summary:       "Merge the club into another: shooters, registrations (of closed events too) and booking requests move, the club is deleted",
+		DefaultStatus: http.StatusNoContent,
+	}, func(ctx context.Context, in *mergeIn) (*struct{}, error) {
+		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+			return nil, err
+		}
+		return nil, notFound(s.Store.MergeClubs(ctx, in.TenantID, in.ClubID, in.Body.IntoID), "Club not found")
 	})
 
 	type clubUpdateIn struct {
@@ -281,7 +372,8 @@ func (s *Server) registerMasterData(api huma.API) {
 	type importIn struct {
 		TenantPath
 		RawBody huma.MultipartFormFiles[struct {
-			File huma.FormFile `form:"file" contentType:"text/csv,text/plain,application/vnd.ms-excel,application/octet-stream" required:"true"`
+			File  huma.FormFile `form:"file" contentType:"text/csv,text/plain,application/vnd.ms-excel,application/octet-stream" required:"true"`
+			Clubs string        `form:"clubs" required:"false" doc:"JSON object mapping club names of the file to club IDs; 0 creates the club"`
 		}]
 	}
 	type importOut struct{ Body ImportReport }
@@ -293,17 +385,30 @@ func (s *Server) registerMasterData(api huma.API) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
 			return nil, err
 		}
-		f := in.RawBody.Data().File
-		rows, lineErrs, err := parseShooterCSV(f)
+		data := in.RawBody.Data()
+		rows, lineErrs, err := parseShooterCSV(data.File)
 		if err != nil {
 			return nil, invalid(err.Error())
 		}
-		out := &importOut{Body: ImportReport{Errors: lineErrs}}
+		out := &importOut{Body: ImportReport{Errors: lineErrs, UnknownClubs: []UnknownClub{}}}
 		if out.Body.Errors == nil {
 			out.Body.Errors = []ImportLineError{}
 		}
 		if len(lineErrs) > 0 {
 			return out, nil
+		}
+		mapped := map[string]int64{}
+		if data.Clubs != "" {
+			if err := json.Unmarshal([]byte(data.Clubs), &mapped); err != nil {
+				return nil, invalid("The club mapping is not valid JSON")
+			}
+		}
+		clubs, err := s.Store.ListClubs(ctx, in.TenantID)
+		if err != nil {
+			return nil, err
+		}
+		if out.Body.UnknownClubs, err = resolveImportClubs(rows, clubs, mapped); err != nil || len(out.Body.UnknownClubs) > 0 {
+			return out, err
 		}
 		res, err := s.Store.ImportShooters(ctx, in.TenantID, rows)
 		if err != nil {

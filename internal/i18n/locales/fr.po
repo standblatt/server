@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 21:32+0200\n"
+"POT-Creation-Date: 2026-10-17 21:54+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -600,6 +600,10 @@ msgid "Request not found"
 msgstr "Demande introuvable"
 
 #: internal/web/booking.go
+msgid "Request or club not found"
+msgstr "Demande ou société introuvable"
+
+#: internal/web/booking.go
 #, go-format
 msgid "Shooters announced: %d"
 msgstr "Tireurs annoncés : %d"
@@ -769,6 +773,11 @@ msgid "Assignment not found"
 msgstr "Attribution introuvable"
 
 #: internal/web/masterdata.go
+#, go-format
+msgid "Club %d not found"
+msgstr "Société %d introuvable"
+
+#: internal/web/masterdata.go
 msgid "Club is missing"
 msgstr "La société manque"
 
@@ -787,6 +796,10 @@ msgstr "Tireur introuvable"
 #: internal/web/masterdata.go
 msgid "Shooter or club not found"
 msgstr "Tireur ou société introuvable"
+
+#: internal/web/masterdata.go
+msgid "The club mapping is not valid JSON"
+msgstr "L’attribution des sociétés n’est pas un JSON valide"
 
 #: internal/web/masterdata.go
 msgid "The shooter has registrations and cannot be deleted"

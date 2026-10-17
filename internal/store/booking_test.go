@@ -56,15 +56,15 @@ func TestBookingConfirm(t *testing.T) {
 		t.Fatalf("request: %+v / %s", req, knownFlags)
 	}
 
-	if err := st.ConfirmBooking(ctx, tid, id); err != nil {
+	if err := st.ConfirmBooking(ctx, tid, id, nil); err != nil {
 		t.Fatal(err)
 	}
-	if err := st.ConfirmBooking(ctx, tid, id); !errors.Is(err, store.ErrNotPending) {
+	if err := st.ConfirmBooking(ctx, tid, id, nil); !errors.Is(err, store.ErrNotPending) {
 		t.Fatalf("confirm twice: %v", err)
 	}
 	req, _ = st.GetBookingRequest(ctx, tid, id)
-	if req.Status != store.BookingConfirmed || fmt.Sprint(req.Items[0].Assigned) != "[3 4 5]" {
-		t.Fatalf("confirmed: %+v", req.Items)
+	if req.Status != store.BookingConfirmed || fmt.Sprint(req.Items[0].Assigned) != "[3 4 5]" || req.ClubID == nil || *req.ClubID != guests {
+		t.Fatalf("confirmed: %+v", req)
 	}
 	anna, _ := st.GetShooter(ctx, tid, known)
 	bert, _ := st.GetShooter(ctx, tid, byName)
@@ -93,7 +93,7 @@ func TestBookingConfirm(t *testing.T) {
 	other, _ := st.CreateBookingRequest(ctx, tid, ev, store.BookingRequestInput{Club: "Other", Contact: "Max", Email: "max@example.org",
 		Items: []domain.BookingItem{slot(9, 1), slot(8, 2)}}, "hash-2")
 	var full *store.FullSlotError
-	if err := st.ConfirmBooking(ctx, tid, other); !errors.As(err, &full) || full.Free != 1 || !full.Item.Start.Equal(at(8)) {
+	if err := st.ConfirmBooking(ctx, tid, other, nil); !errors.As(err, &full) || full.Free != 1 || !full.Item.Start.Equal(at(8)) {
 		t.Fatalf("full slot: %v", err)
 	}
 	if req, _ := st.GetBookingRequest(ctx, tid, other); req.Status != store.BookingPending || len(req.Items[1].Assigned) != 0 {
@@ -105,8 +105,14 @@ func TestBookingConfirm(t *testing.T) {
 	if reopened, err := st.UpdateBookingRequest(ctx, tid, id, in); err != nil || !reopened {
 		t.Fatalf("update items: %v %v", reopened, err)
 	}
-	if err := st.ConfirmBooking(ctx, tid, other); err != nil {
+	if err := st.ConfirmBooking(ctx, tid, other, &guests); err != nil {
 		t.Fatalf("lanes not freed: %v", err)
+	}
+	if req, _ := st.GetBookingRequest(ctx, tid, other); req.ClubID == nil || *req.ClubID != guests {
+		t.Fatalf("chosen club not kept: %+v", req)
+	}
+	if clubs, _ := st.ListClubs(ctx, tid); len(clubs) != 1 {
+		t.Fatalf("a club was created although one was chosen: %+v", clubs)
 	}
 	if err := st.CancelBookingRequest(ctx, tid, other); err != nil {
 		t.Fatal(err)

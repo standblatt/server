@@ -114,12 +114,21 @@ func TestOnlineBooking(t *testing.T) {
 	code, b = e.do(e.login("stranger"), "POST", fmt.Sprintf("/api/tenants/%d/booking-requests/%d/confirm", other, list[0].ID), nil)
 	expect(t, "other tenant confirms", code, 404, b)
 
-	code, b = e.do(admin, "POST", reqPath+"/confirm", nil)
+	foreign, _ := e.st.EnsureClub(context.Background(), other, "Foreign")
+	code, b = e.do(admin, "POST", reqPath+"/confirm", map[string]any{"clubId": foreign})
+	expect(t, "confirm with a club of another tenant", code, 404, b)
+
+	home, _ := e.st.EnsureClub(context.Background(), tid, "Home shooters")
+	code, b = e.do(admin, "POST", reqPath+"/confirm", map[string]any{"clubId": home})
 	expect(t, "confirm", code, 200, b)
 	var confirmed store.BookingRequest
 	json.Unmarshal(b, &confirmed)
-	if confirmed.Status != store.BookingConfirmed || fmt.Sprint(confirmed.Items[0].Assigned) != "[1 2 3]" || confirmed.Shooters[0].ShooterID == nil {
+	if confirmed.Status != store.BookingConfirmed || fmt.Sprint(confirmed.Items[0].Assigned) != "[1 2 3]" || confirmed.Shooters[0].ShooterID == nil ||
+		confirmed.ClubID == nil || *confirmed.ClubID != home {
 		t.Fatalf("confirmed: %s", b)
+	}
+	if sh, _ := e.st.GetShooter(context.Background(), tid, *confirmed.Shooters[0].ShooterID); len(sh.Clubs) != 1 || sh.Clubs[0].ID != home {
+		t.Fatalf("shooter not in the chosen club: %+v", sh.Clubs)
 	}
 	if msg := box.mailTo(t, "ida@example.org"); !strings.Contains(msg.Body, "Lanes: 3 (1-3)") {
 		t.Fatalf("confirmation mail: %+v", msg)

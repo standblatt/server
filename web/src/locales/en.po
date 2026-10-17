@@ -35,6 +35,14 @@ msgstr "\"{0}\" is removed and its lanes are free again."
 msgid "\"{0}\" stops working immediately."
 msgstr "\"{0}\" stops working immediately."
 
+#: src/lib/ClubPicker.svelte
+msgid "“{name}” is not in the club list yet."
+msgstr "“{name}” is not in the club list yet."
+
+#: src/lib/ClubPicker.svelte
+msgid "“{name}” will be added as a new club."
+msgstr "“{name}” will be added as a new club."
+
 #. placeholder {0}: it.lanes
 #. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+lane%7D+other+%7B%23+lanes%7D%7D&pluralize_on=0
 #: src/lib/BookingRequests.svelte
@@ -880,6 +888,10 @@ msgstr "Change password"
 msgid "Changed; waiting for a new confirmation"
 msgstr "Changed; waiting for a new confirmation"
 
+#: src/lib/ClubSelect.svelte
+msgid "Choose a club"
+msgstr "Choose a club"
+
 #: src/lib/ProgrammeList.svelte
 msgid "Choose a template …"
 msgstr "Choose a template …"
@@ -939,6 +951,9 @@ msgstr "Closed on {0}: the rankings are released, everything stays visible, but 
 
 #: src/lib/AppSidebar.svelte
 #: src/lib/booking/BookingForm.svelte
+#: src/lib/BookingRequests.svelte
+#: src/lib/ClubPicker.svelte
+#: src/lib/NewShooterDialog.svelte
 #: src/lib/RankingTable.svelte
 #: src/lib/RegistrationForm.svelte
 #: src/routes/my/+layout.svelte
@@ -950,11 +965,6 @@ msgstr "Club"
 #: src/routes/t/[tenantId]/clubs/+page.svelte
 msgid "Club \"{name}\" created"
 msgstr "Club \"{name}\" created"
-
-#: src/lib/NewShooterDialog.svelte
-#: src/lib/ShooterSheet.svelte
-msgid "Club (existing or new)"
-msgstr "Club (existing or new)"
 
 #: src/lib/booking/BookingForm.svelte
 msgid "Club and contact"
@@ -972,6 +982,16 @@ msgstr "Club deleted"
 msgid "Club excluded from the club competition"
 msgstr "Club excluded from the club competition"
 
+#. placeholder {0}: u.name
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "Club for {0}"
+msgstr "Club for {0}"
+
+#. placeholder {0}: clubName(r.clubId)
+#: src/lib/BookingRequests.svelte
+msgid "Club in the master data: {0}"
+msgstr "Club in the master data: {0}"
+
 #: src/routes/t/[tenantId]/+layout.svelte
 msgid "Club not found. <0>Back to the list</0>"
 msgstr "Club not found. <0>Back to the list</0>"
@@ -984,6 +1004,10 @@ msgstr "Club participants"
 msgid "Club saved"
 msgstr "Club saved"
 
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+msgid "Club that stays"
+msgstr "Club that stays"
+
 #: src/lib/AppSidebar.svelte
 #: src/lib/ShooterSheet.svelte
 #: src/routes/t/[tenantId]/+layout.svelte
@@ -991,6 +1015,10 @@ msgstr "Club saved"
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "Clubs"
 msgstr "Clubs"
+
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+msgid "Clubs merged"
+msgstr "Clubs merged"
 
 #: src/routes/t/[tenantId]/clubs/+page.svelte
 msgid "Clubs that shooters belong to; used for registrations and the club competition."
@@ -1047,6 +1075,11 @@ msgstr "Completed"
 #: src/lib/BookingRequests.svelte
 msgid "Confirm"
 msgstr "Confirm"
+
+#. placeholder {0}: confirming.club
+#: src/lib/BookingRequests.svelte
+msgid "Confirm request of {0}"
+msgstr "Confirm request of {0}"
 
 #: src/lib/AccountSettings.svelte
 #: src/lib/booking/BookingStatus.svelte
@@ -1185,6 +1218,10 @@ msgstr "Create helper link"
 #: src/lib/KioskTokens.svelte
 msgid "Create kiosk link"
 msgstr "Create kiosk link"
+
+#: src/lib/ClubPicker.svelte
+msgid "Create new club “{name}”"
+msgstr "Create new club “{name}”"
 
 #: src/lib/my/ApiTokens.svelte
 msgid "Create token"
@@ -1337,6 +1374,10 @@ msgstr "Description"
 #: src/lib/my/Result.svelte
 msgid "Details"
 msgstr "Details"
+
+#: src/lib/ClubPicker.svelte
+msgid "Did you mean"
+msgstr "Did you mean"
 
 #: src/lib/my/Notices.svelte
 #: src/routes/my/train/+page.svelte
@@ -1660,6 +1701,10 @@ msgstr "First name of shooter {0}"
 msgid "For a variant, pick the name of an existing programme: a shooter registers for only one programme of the same name."
 msgstr "For a variant, pick the name of an existing programme: a shooter registers for only one programme of the same name."
 
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+msgid "For duplicates: the club that stays keeps its name and gets the shooters, registrations and booking requests of this one."
+msgstr "For duplicates: the club that stays keeps its name and gets the shooters, registrations and booking requests of this one."
+
 #: src/lib/ScheduleEditor.svelte
 msgid "For events that run over weeks or months, like the Feldschiessen."
 msgstr "For events that run over weeks or months, like the Feldschiessen."
@@ -1686,6 +1731,10 @@ msgstr "Found by your license number and birthday in closed competitions run wit
 #: src/routes/kiosk/[token]/+page.svelte
 msgid "free"
 msgstr "free"
+
+#: src/lib/BookingRequests.svelte
+msgid "Free lanes are reserved for every slot. The announced shooters join this club of the master data:"
+msgstr "Free lanes are reserved for every slot. The announced shooters join this club of the master data:"
 
 #: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
 msgid "From"
@@ -1872,6 +1921,12 @@ msgstr "It is shown only this once. Send it as \"Authorization: Bearer <token>\"
 #: src/routes/my/settings/+page.svelte
 msgid "Its sessions stay in your log, without a weapon."
 msgstr "Its sessions stay in your log, without a weapon."
+
+#. placeholder {0}: into.name
+#. placeholder {1}: from.name
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+msgid "Its shooters and registrations, including those of closed events, then belong to \"{0}\". \"{1}\" is deleted."
+msgstr "Its shooters and registrations, including those of closed events, then belong to \"{0}\". \"{1}\" is deleted."
 
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Key figures"
@@ -2218,6 +2273,25 @@ msgstr "max. {0}"
 msgid "Max. points"
 msgstr "Max. points"
 
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+msgid "Merge"
+msgstr "Merge"
+
+#. placeholder {0}: from.name
+#. placeholder {1}: into.name
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+msgid "Merge \"{0}\" into \"{1}\"?"
+msgstr "Merge \"{0}\" into \"{1}\"?"
+
+#. placeholder {0}: merging.name
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+msgid "Merge \"{0}\" into…"
+msgstr "Merge \"{0}\" into…"
+
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+msgid "Merge into…"
+msgstr "Merge into…"
+
 #: src/lib/ProgrammeList.svelte
 msgid "Minimum participants of the club in this programme"
 msgstr "Minimum participants of the club in this programme"
@@ -2317,6 +2391,10 @@ msgstr "New API token"
 #: src/routes/t/[tenantId]/clubs/+page.svelte
 msgid "New club"
 msgstr "New club"
+
+#: src/lib/ClubSelect.svelte
+msgid "New club “{name}”"
+msgstr "New club “{name}”"
 
 #: src/lib/SetupChecklist.svelte
 #: src/routes/t/[tenantId]/+page.svelte
@@ -2566,6 +2644,10 @@ msgid "Nothing found."
 msgstr "Nothing found."
 
 #: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "Nothing imported yet: these clubs are not in the club list. Choose an existing club or a new one for each, then import again."
+msgstr "Nothing imported yet: these clubs are not in the club list. Choose an existing club or a new one for each, then import again."
+
+#: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "Nothing imported, please fix these lines:"
 msgstr "Nothing imported, please fix these lines:"
 
@@ -2648,6 +2730,10 @@ msgstr "Options"
 msgid "Organizer"
 msgstr "Organizer"
 
+#: src/lib/ClubSelect.svelte
+msgid "Other clubs"
+msgstr "Other clubs"
+
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "out of competition"
 msgstr "out of competition"
@@ -2727,6 +2813,11 @@ msgstr "Personal best"
 #: src/lib/booking/BookingForm.svelte
 msgid "Phone"
 msgstr "Phone"
+
+#: src/lib/NewShooterDialog.svelte
+#: src/lib/ShooterSheet.svelte
+msgid "Pick an existing club or confirm the new one."
+msgstr "Pick an existing club or confirm the new one."
 
 #: src/lib/my.svelte.ts
 msgid "Pistol 25 m"
@@ -3701,6 +3792,10 @@ msgstr "Status"
 #: src/routes/login/+page.svelte
 msgid "Stay logged in for 90 days"
 msgstr "Stay logged in for 90 days"
+
+#: src/lib/ClubSelect.svelte
+msgid "Suggested"
+msgstr "Suggested"
 
 #: src/lib/AuthShell.svelte
 msgid "Swiss SSV rules"

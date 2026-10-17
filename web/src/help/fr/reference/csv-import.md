@@ -16,7 +16,7 @@ license;firstname;lastname;birthday;postalcode;city;club
 | `license` | non | aussi `licensenumber` ; les numéros purement numériques sont complétés à six chiffres |
 | `birthday` | non | `YYYY-MM-DD` ou `DD.MM.YYYY` |
 | `postalcode`, `city` | non | |
-| `club` | non | la société du tireur ; les sociétés manquantes sont créées |
+| `club` | non | la société du tireur, comparée sans tenir compte des majuscules ni des espaces |
 
 - Une ligne par tireur et société ; un tireur dans deux sociétés apparaît
   deux fois.
@@ -25,3 +25,7 @@ license;firstname;lastname;birthday;postalcode;city;club
   rien n’est supprimé.
 - Un fichier avec des lignes invalides est refusé en entier, avec la liste
   des lignes à corriger.
+- Les sociétés absentes de la liste arrêtent l’import avant que quoi que ce
+  soit ne soit enregistré : choisis pour chacune une société existante (les
+  noms semblables sont proposés) ou une nouvelle, puis clique à nouveau sur
+  **Importer**.

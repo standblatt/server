@@ -78,8 +78,12 @@ func TestTenantIsolation(t *testing.T) {
 	if _, err := st.GetBookingRequest(ctx, b, reqA); !errors.Is(err, store.ErrNotFound) {
 		t.Fatalf("GetBookingRequest across tenants: %v", err)
 	}
-	if err := st.ConfirmBooking(ctx, b, reqA); !errors.Is(err, store.ErrNotFound) {
+	if err := st.ConfirmBooking(ctx, b, reqA, nil); !errors.Is(err, store.ErrNotFound) {
 		t.Fatalf("ConfirmBooking across tenants: %v", err)
+	}
+	clubB, _ := st.EnsureClub(ctx, b, "Club of B")
+	if err := st.ConfirmBooking(ctx, a, reqA, &clubB); !errors.Is(err, store.ErrNotFound) {
+		t.Fatalf("ConfirmBooking with a club of another tenant: %v", err)
 	}
 	if err := st.DeclineBookingRequest(ctx, b, reqA, ""); !errors.Is(err, store.ErrNotFound) {
 		t.Fatalf("DeclineBookingRequest across tenants: %v", err)

@@ -71,12 +71,17 @@ réservations](../images/screenshots/booking-requests.png){ .screenshot }
   envoie les numéros de cible à la société. Si un créneau a trop peu de
   cibles libres, rien n’est réservé et le message nomme le créneau ; déplace
   une réservation ou refuse.
-- **Confirmer** reprend aussi les tireurs dans les données de base : un
-  tireur est trouvé par sa licence, sinon par nom et date de naissance, et
-  créé autrement ; la société est créée au besoin. Les tireurs existants ne
-  sont jamais écrasés, car la liste vient d’un formulaire public ; seule une
-  date de naissance ou une licence manquante est complétée. Les tireurs
-  ajoutés après la confirmation sont repris avec **Reprendre des tireurs**.
+- **Confirmer** demande d’abord à quelle **Société** des données de base la
+  demande appartient, car la société a saisi son nom elle-même : la société
+  du même nom est déjà choisie, les sociétés au nom semblable sont proposées
+  et *Nouvelle société* la crée. La demande affiche ensuite la société
+  attribuée.
+- **Confirmer** reprend aussi les tireurs dans les données de base, dans
+  cette société : un tireur est trouvé par sa licence, sinon par nom et date
+  de naissance, et créé autrement. Les tireurs existants ne sont jamais
+  écrasés, car la liste vient d’un formulaire public ; seule une date de
+  naissance ou une licence manquante est complétée. Les tireurs ajoutés
+  après la confirmation sont repris avec **Reprendre des tireurs**.
 - **Refuser** demande un motif facultatif, que la société reçoit par
   e-mail. Les cibles que la demande occupait sont de nouveau libres.
 

@@ -36,7 +36,8 @@ Every admin with an email gets a mail for each new, changed or cancelled request
 ![Booking requests on the reservations page](../images/screenshots/booking-requests.png){ .screenshot }
 
 - **Confirm** gives each slot free lanes of its range, neighbours where possible, as an ordinary reservation named after the club, and mails the lane numbers to the club. When a slot has too few free lanes, nothing is reserved and the message names the slot; move a reservation or decline.
-- **Confirm** also takes the shooters into the master data: a shooter is found by licence, else by name and birthday, and created otherwise; the club is created when needed. Existing shooters are never overwritten, because the list comes from a public form; only a missing birthday or licence is filled in. Shooters added after the confirmation are taken over with **Take over shooters**.
+- **Confirm** first asks which **Club** of the master data the request belongs to, because the club typed its name itself: the club with the same name is chosen already, clubs with a similar name are suggested, and *New club* creates it. The request then shows the club it was matched to.
+- **Confirm** also takes the shooters into the master data, in that club: a shooter is found by licence, else by name and birthday, and created otherwise. Existing shooters are never overwritten, because the list comes from a public form; only a missing birthday or licence is filled in. Shooters added after the confirmation are taken over with **Take over shooters**.
 - **Decline** asks for an optional reason, which goes to the club by mail. Lanes the request held are free again.
 
 The reserved lanes are ordinary [reservations](reservations.md): change their lane numbers there if needed. At the event, the shooters are found with the normal search at the registration desk. The report *Lane bookings* under [Statistics and reports](statistics-reports.md) lists every club with its slots, lanes and shooters.

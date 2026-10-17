@@ -526,12 +526,14 @@ func (s *Server) registerBookingAdmin(api huma.API) {
 		return &struct{ Body []store.BookingRequest }{Body: list}, err
 	})
 
-	decide := func(op, suffix, summary string, run func(ctx context.Context, tenantID int64, req store.BookingRequest, ev store.Event, reason string) error) {
+	type decision struct {
+		Reason string `json:"reason,omitempty" required:"false" maxLength:"1000" doc:"Declining: told to the club"`
+		ClubID *int64 `json:"clubId,omitempty" required:"false" doc:"Confirming: the club of the master data the shooters join; without one the club of the request's name, created if missing"`
+	}
+	decide := func(op, suffix, summary string, run func(ctx context.Context, tenantID int64, req store.BookingRequest, ev store.Event, d decision) error) {
 		type decideIn struct {
 			BookingRequestPath
-			Body *struct {
-				Reason string `json:"reason,omitempty" required:"false" maxLength:"1000" doc:"Declining: told to the club"`
-			}
+			Body *decision
 		}
 		huma.Register(api, huma.Operation{
 			OperationID: op, Method: http.MethodPost, Path: "/api/tenants/{tenantId}/booking-requests/{requestId}/" + suffix, Tags: []string{"booking"},
@@ -548,11 +550,12 @@ func (s *Server) registerBookingAdmin(api huma.API) {
 			if err != nil {
 				return nil, err
 			}
-			reason := ""
+			var d decision
 			if in.Body != nil {
-				reason = strings.TrimSpace(in.Body.Reason)
+				d = *in.Body
+				d.Reason = strings.TrimSpace(d.Reason)
 			}
-			if err := run(ctx, in.TenantID, req, ev, reason); err != nil {
+			if err := run(ctx, in.TenantID, req, ev, d); err != nil {
 				return nil, bookingErr(ev, err)
 			}
 			req, err = s.Store.GetBookingRequest(ctx, in.TenantID, in.RequestID)
@@ -561,8 +564,11 @@ func (s *Server) registerBookingAdmin(api huma.API) {
 	}
 
 	decide("confirm-booking-request", "confirm", "Reserve free lanes for every slot and take the shooters into the master data",
-		func(ctx context.Context, tenantID int64, req store.BookingRequest, ev store.Event, _ string) error {
-			if err := s.Store.ConfirmBooking(ctx, tenantID, req.ID); err != nil {
+		func(ctx context.Context, tenantID int64, req store.BookingRequest, ev store.Event, d decision) error {
+			if err := s.Store.ConfirmBooking(ctx, tenantID, req.ID, d.ClubID); err != nil {
+				if d.ClubID != nil {
+					return notFound(err, "Request or club not found")
+				}
 				return err
 			}
 			req, err := s.Store.GetBookingRequest(ctx, tenantID, req.ID)
@@ -577,7 +583,8 @@ func (s *Server) registerBookingAdmin(api huma.API) {
 		})
 
 	decide("decline-booking-request", "decline", "Decline a request; lanes it held are free again",
-		func(ctx context.Context, tenantID int64, req store.BookingRequest, ev store.Event, reason string) error {
+		func(ctx context.Context, tenantID int64, req store.BookingRequest, ev store.Event, d decision) error {
+			reason := d.Reason
 			if err := s.Store.DeclineBookingRequest(ctx, tenantID, req.ID, reason); err != nil {
 				return err
 			}
@@ -592,7 +599,7 @@ func (s *Server) registerBookingAdmin(api huma.API) {
 		})
 
 	decide("adopt-booking-shooters", "shooters", "Take shooters added after the confirmation into the master data",
-		func(ctx context.Context, tenantID int64, req store.BookingRequest, ev store.Event, _ string) error {
+		func(ctx context.Context, tenantID int64, req store.BookingRequest, ev store.Event, _ decision) error {
 			if err := s.Store.AdoptBookingShooters(ctx, tenantID, req.ID); err != nil {
 				return err
 			}

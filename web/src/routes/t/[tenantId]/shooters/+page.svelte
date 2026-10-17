@@ -18,6 +18,7 @@
 	import NewShooterDialog from '$lib/NewShooterDialog.svelte';
 	import Pager from '$lib/Pager.svelte';
 	import PageHeader from '$lib/PageHeader.svelte';
+	import ClubSelect from '$lib/ClubSelect.svelte';
 	import ShooterSheet from '$lib/ShooterSheet.svelte';
 	import { clubsQuery, keys } from '$lib/tenant';
 
@@ -66,16 +67,20 @@
 	let report = $state<ImportReport | null>(null);
 	let importError = $state('');
 	let busy = $state(false);
-	/** Uploads the CSV file and shows the import report. */
+	/** Choice per unknown club of the file: an ID, "new" or "" while undecided. */
+	let clubMap = $state<Record<string, string>>({});
+	/** Uploads the CSV file with the clubs mapped so far and shows the import report or the clubs still to map. */
 	async function importCSV(e: SubmitEvent) {
 		e.preventDefault();
 		if (!file?.[0]) return;
 		busy = true;
 		importError = '';
+		const mapped = Object.fromEntries(Object.entries(clubMap).map(([name, v]) => [name, v === 'new' ? 0 : Number(v)]));
 		report = null;
 		try {
 			const form = new FormData();
 			form.append('file', file[0]);
+			form.append('clubs', JSON.stringify(mapped));
 			report = await call(
 				api.POST('/api/tenants/{tenantId}/shooters/import', {
 					params: { path: { tenantId } },
@@ -83,6 +88,7 @@
 					bodySerializer: () => form
 				})
 			);
+			for (const u of report.unknownClubs) clubMap[u.name] ??= u.similar.length ? '' : 'new';
 			await queryClient.invalidateQueries({ queryKey: keys.clubs(tenantId) });
 			await queryClient.invalidateQueries({ queryKey: keys.shooters(tenantId) });
 		} catch (err) {
@@ -95,7 +101,7 @@
 
 <PageHeader help="user-guide/shooters-clubs" title={$t`Shooters`} description={$t`Master data of the people who shoot for this club.`}>
 	{#snippet actions()}
-		{#if isAdmin}<Button variant="outline" onclick={() => ((importing = true), (report = null), (importError = ''))}><FileUp />{$t`Import CSV`}</Button>{/if}
+		{#if isAdmin}<Button variant="outline" onclick={() => ((importing = true), (report = null), (importError = ''), (clubMap = {}))}><FileUp />{$t`Import CSV`}</Button>{/if}
 		<Button onclick={() => (creating = true)}><UserPlus />{$t`New shooter`}</Button>
 	{/snippet}
 </PageHeader>
@@ -156,12 +162,25 @@
 				>
 			</Dialog.Description>
 		</Dialog.Header>
-		<form class="flex flex-wrap items-center gap-2" onsubmit={importCSV}>
-			<Input class="flex-1" type="file" name="file" accept=".csv,text/csv" bind:files={file} required />
-			<Button type="submit" disabled={busy}>{$t`Import`}</Button>
+		<form class="grid gap-3" onsubmit={importCSV}>
+			<div class="flex flex-wrap items-center gap-2">
+				<Input class="flex-1" type="file" name="file" accept=".csv,text/csv" bind:files={file} onchange={() => ((report = null), (clubMap = {}))} required />
+				<Button type="submit" disabled={busy}>{$t`Import`}</Button>
+			</div>
+			{#if report?.unknownClubs.length}
+				<div class="grid gap-2 rounded-md border bg-muted/40 p-3 text-sm" role="status">
+					<p class="font-medium">{$t`Nothing imported yet: these clubs are not in the club list. Choose an existing club or a new one for each, then import again.`}</p>
+					{#each report.unknownClubs as u (u.name)}
+						<div class="grid items-center gap-1 sm:grid-cols-2 sm:gap-3 *:min-w-0">
+							<span class="font-medium break-words">{u.name}</span>
+							<ClubSelect {tenantId} name={u.name} suggested={u.similar} bind:value={clubMap[u.name]} label={$t`Club for ${u.name}`} />
+						</div>
+					{/each}
+				</div>
+			{/if}
 		</form>
 		<FormError message={importError} />
-		{#if report}
+		{#if report && !report.unknownClubs.length}
 			{#if report.errors.length > 0}
 				<div class="rounded-md bg-destructive/10 px-3 py-2 text-sm text-destructive" role="alert">
 					<p class="font-medium">{$t`Nothing imported, please fix these lines:`}</p>

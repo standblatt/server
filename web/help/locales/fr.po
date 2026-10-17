@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-17 19:38+0000\n"
+"POT-Creation-Date: 2026-10-17 20:01+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -1693,7 +1693,7 @@ msgid ""
 "| `license` | no | also `licensenumber`; purely numeric numbers are padded to six digits |\n"
 "| `birthday` | no | `YYYY-MM-DD` or `DD.MM.YYYY` |\n"
 "| `postalcode`, `city` | no | |\n"
-"| `club` | no | the shooter's club; missing clubs are created |\n"
+"| `club` | no | the shooter's club, matched regardless of upper case and spaces |\n"
 msgstr ""
 "| Colonne | Obligatoire | Remarques |\n"
 "|---|---|---|\n"
@@ -1702,17 +1702,17 @@ msgstr ""
 "| `license` | non | aussi `licensenumber` ; les numéros purement numériques sont complétés à six chiffres |\n"
 "| `birthday` | non | `YYYY-MM-DD` ou `DD.MM.YYYY` |\n"
 "| `postalcode`, `city` | non | |\n"
-"| `club` | non | la société du tireur ; les sociétés manquantes sont créées |\n"
+"| `club` | non | la société du tireur, comparée sans tenir compte des majuscules ni des espaces |\n"
 
 #. type: Bullet: '- '
-#: ../src/help/en/reference/csv-import.md:21
+#: ../src/help/en/reference/csv-import.md:22
 msgid "One line per shooter and club; a shooter in two clubs appears twice."
 msgstr ""
 "Une ligne par tireur et société ; un tireur dans deux sociétés apparaît deux "
 "fois."
 
 #. type: Bullet: '- '
-#: ../src/help/en/reference/csv-import.md:21
+#: ../src/help/en/reference/csv-import.md:22
 msgid ""
 "Shooters are matched by license number, or by name and birthday when there "
 "is none. Existing shooters are updated, nothing is deleted."
@@ -1722,13 +1722,21 @@ msgstr ""
 "n’est supprimé."
 
 #. type: Bullet: '- '
-#: ../src/help/en/reference/csv-import.md:21
+#: ../src/help/en/reference/csv-import.md:22
 msgid ""
 "A file with invalid lines is rejected as a whole, with the list of lines to "
 "fix."
 msgstr ""
 "Un fichier avec des lignes invalides est refusé en entier, avec la liste des "
 "lignes à corriger."
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/csv-import.md:22
+msgid ""
+"Clubs that are not in the club list stop the import before anything is "
+"stored: for each one, choose an existing club (similar names are suggested) "
+"or a new one, then **Import** again."
+msgstr "Les sociétés absentes de la liste arrêtent l’import avant que quoi que ce soit ne soit enregistré : choisis pour chacune une société existante (les noms semblables sont proposés) ou une nouvelle, puis clique à nouveau sur **Importer**."
 
 #. type: Title #
 #: ../src/help/en/reference/programme-file.md:1
@@ -2855,7 +2863,13 @@ msgid ""
 "agent.md)). One computer can serve several ranges, e.g. *Pistol 25 m* and "
 "*Pistol 50 m*: add an agent on each range and give the agent both tokens, "
 "separated by a comma."
-msgstr "**Ajouter un agent d’impression**, donne-lui un nom et copie le jeton. Installe l’agent sur un ordinateur près des imprimantes (voir [Agent d’impression](../admin-guide/print-agent.md)). Un ordinateur peut servir plusieurs stands, p. ex. *Pistolet 25 m* et *Pistolet 50 m* : ajoute un agent sur chaque stand et donne à l’agent les deux jetons, séparés par une virgule."
+msgstr ""
+"**Ajouter un agent d’impression**, donne-lui un nom et copie le jeton. "
+"Installe l’agent sur un ordinateur près des imprimantes (voir [Agent "
+"d’impression](../admin-guide/print-agent.md)). Un ordinateur peut servir "
+"plusieurs stands, p. ex. *Pistolet 25 m* et *Pistolet 50 m* : ajoute un "
+"agent sur chaque stand et donne à l’agent les deux jetons, séparés par une "
+"virgule."
 
 #. type: Bullet: '2. '
 #: ../src/help/en/user-guide/printing.md:24
@@ -3068,7 +3082,12 @@ msgid ""
 "e.g. *Pistol 50 m*; the registration then offers only its lanes and kiosk "
 "displays group the rankings by range. *any* leaves it open. Programmes of "
 "different ranges need separate registrations."
-msgstr "**Stand de tir** (manifestations sur plusieurs stands) : le stand sur lequel le programme se tire, p. ex. *Pistolet 50 m* ; l’inscription ne propose alors que ses cibles et les écrans kiosque groupent les classements par stand. *indifférent* laisse le choix ouvert. Des programmes de stands différents demandent des inscriptions séparées."
+msgstr ""
+"**Stand de tir** (manifestations sur plusieurs stands) : le stand sur lequel "
+"le programme se tire, p. ex. *Pistolet 50 m* ; l’inscription ne propose "
+"alors que ses cibles et les écrans kiosque groupent les classements par "
+"stand. *indifférent* laisse le choix ouvert. Des programmes de stands "
+"différents demandent des inscriptions séparées."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/programmes.md:31
@@ -3145,7 +3164,13 @@ msgid ""
 "shot on both (see [Events](events.md)), a programme can be tied to one of "
 "them (see [Programmes](programmes.md)), and one print agent can serve both "
 "(see [Printing](printing.md))."
-msgstr "**Distances** : une halle avec des cibles à 25 m et à 50 m se saisit comme deux stands, p. ex. *Pistolet 25 m* et *Pistolet 50 m*, chacun avec des cibles à partir de 1. Une manifestation peut se tirer sur les deux (voir [Manifestations](events.md)), un programme peut être lié à l’un d’eux (voir [Programmes](programmes.md)) et un agent d’impression peut servir les deux (voir [Impression](printing.md))."
+msgstr ""
+"**Distances** : une halle avec des cibles à 25 m et à 50 m se saisit comme "
+"deux stands, p. ex. *Pistolet 25 m* et *Pistolet 50 m*, chacun avec des "
+"cibles à partir de 1. Une manifestation peut se tirer sur les deux (voir "
+"[Manifestations](events.md)), un programme peut être lié à l’un d’eux (voir "
+"[Programmes](programmes.md)) et un agent d’impression peut servir les deux "
+"(voir [Impression](printing.md))."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/ranges.md:11
@@ -3797,7 +3822,7 @@ msgstr ""
 "screenshots/booking-requests.png){ .screenshot }"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:41
+#: ../src/help/en/user-guide/online-booking.md:42
 msgid ""
 "**Confirm** gives each slot free lanes of its range, neighbours where "
 "possible, as an ordinary reservation named after the club, and mails the "
@@ -3811,24 +3836,27 @@ msgstr ""
 "réservation ou refuse."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:41
+#: ../src/help/en/user-guide/online-booking.md:42
 msgid ""
-"**Confirm** also takes the shooters into the master data: a shooter is found "
-"by licence, else by name and birthday, and created otherwise; the club is "
-"created when needed. Existing shooters are never overwritten, because the "
-"list comes from a public form; only a missing birthday or licence is filled "
-"in. Shooters added after the confirmation are taken over with **Take over "
-"shooters**."
-msgstr ""
-"**Confirmer** reprend aussi les tireurs dans les données de base : un tireur "
-"est trouvé par sa licence, sinon par nom et date de naissance, et créé "
-"autrement ; la société est créée au besoin. Les tireurs existants ne sont "
-"jamais écrasés, car la liste vient d’un formulaire public ; seule une date "
-"de naissance ou une licence manquante est complétée. Les tireurs ajoutés "
-"après la confirmation sont repris avec **Reprendre des tireurs**."
+"**Confirm** first asks which **Club** of the master data the request belongs "
+"to, because the club typed its name itself: the club with the same name is "
+"chosen already, clubs with a similar name are suggested, and *New club* "
+"creates it. The request then shows the club it was matched to."
+msgstr "**Confirmer** demande d’abord à quelle **Société** des données de base la demande appartient, car la société a saisi son nom elle-même : la société du même nom est déjà choisie, les sociétés au nom semblable sont proposées et *Nouvelle société* la crée. La demande affiche ensuite la société attribuée."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:41
+#: ../src/help/en/user-guide/online-booking.md:42
+msgid ""
+"**Confirm** also takes the shooters into the master data, in that club: a "
+"shooter is found by licence, else by name and birthday, and created "
+"otherwise. Existing shooters are never overwritten, because the list comes "
+"from a public form; only a missing birthday or licence is filled in. "
+"Shooters added after the confirmation are taken over with **Take over "
+"shooters**."
+msgstr "**Confirmer** reprend aussi les tireurs dans les données de base, dans cette société : un tireur est trouvé par sa licence, sinon par nom et date de naissance, et créé autrement. Les tireurs existants ne sont jamais écrasés, car la liste vient d’un formulaire public ; seule une date de naissance ou une licence manquante est complétée. Les tireurs ajoutés après la confirmation sont repris avec **Reprendre des tireurs**."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/online-booking.md:42
 msgid ""
 "**Decline** asks for an optional reason, which goes to the club by mail. "
 "Lanes the request held are free again."
@@ -3837,7 +3865,7 @@ msgstr ""
 "Les cibles que la demande occupait sont de nouveau libres."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/online-booking.md:42
+#: ../src/help/en/user-guide/online-booking.md:43
 msgid ""
 "The reserved lanes are ordinary [reservations](reservations.md): change "
 "their lane numbers there if needed. At the event, the shooters are found "
@@ -4010,7 +4038,7 @@ msgid "![Shooters](../images/screenshots/shooters.png){ .screenshot }"
 msgstr "![Tireurs](../images/screenshots/shooters.png){ .screenshot }"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/shooters-clubs.md:13
+#: ../src/help/en/user-guide/shooters-clubs.md:14
 msgid ""
 "**Search** works like on the dashboard: license number (leading zeros "
 "optional), part of a name, or first and last name in either order. The list "
@@ -4023,7 +4051,7 @@ msgstr ""
 "sociétés 50 sociétés ; les flèches en dessous tournent les pages."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/shooters-clubs.md:13
+#: ../src/help/en/user-guide/shooters-clubs.md:14
 msgid ""
 "Clicking a shooter opens the details: name, license number, birthday, "
 "address and the clubs the shooter belongs to."
@@ -4032,7 +4060,17 @@ msgstr ""
 "naissance, adresse et les sociétés auxquelles il appartient."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/shooters-clubs.md:13
+#: ../src/help/en/user-guide/shooters-clubs.md:14
+msgid ""
+"**Club** (new shooter, or adding a club in the details) suggests the clubs "
+"of the list. A name that matches a club regardless of upper case and spaces "
+"is that club. Any other name shows *is not in the club list yet* with "
+"similar clubs under *Did you mean*; a new club is only created after "
+"**Create new club**, so a typo does not become a second club."
+msgstr "**Société** (nouveau tireur ou ajout d’une société dans les détails) propose les sociétés de la liste. Un nom qui correspond à une société sans tenir compte des majuscules ni des espaces est cette société. Tout autre nom affiche *n’est pas encore dans la liste des sociétés* avec les sociétés semblables sous *Voulais-tu dire* ; une nouvelle société n’est créée qu’avec **Créer la nouvelle société**, ainsi une faute de frappe ne devient pas une deuxième société."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/shooters-clubs.md:14
 msgid ""
 "**Import** (admins) reads a CSV file, see [CSV import](../reference/csv-"
 "import.md)."
@@ -4041,26 +4079,34 @@ msgstr ""
 "import.md)."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/shooters-clubs.md:13
+#: ../src/help/en/user-guide/shooters-clubs.md:14
 msgid "Shooters with registrations cannot be deleted."
 msgstr "Les tireurs avec des inscriptions ne peuvent pas être supprimés."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/shooters-clubs.md:14
+#: ../src/help/en/user-guide/shooters-clubs.md:15
 #, no-wrap
 msgid "Clubs"
 msgstr "Sociétés"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/shooters-clubs.md:17
+#: ../src/help/en/user-guide/shooters-clubs.md:18
 msgid "![Clubs](../images/screenshots/clubs.png){ .screenshot }"
 msgstr "![Sociétés](../images/screenshots/clubs.png){ .screenshot }"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/shooters-clubs.md:18
+#: ../src/help/en/user-guide/shooters-clubs.md:20
 #, no-wrap
-msgid "**Clubs** are the clubs shooters belong to, with their SSV number. They appear in registrations, rankings and the club competition. A shooter can belong to several clubs and registers for one of them. Clubs used by registrations cannot be deleted.\n"
-msgstr "Les **sociétés** sont les sociétés auxquelles appartiennent les tireurs, avec leur numéro FST. Elles apparaissent dans les inscriptions, les classements et le concours de sections. Un tireur peut appartenir à plusieurs sociétés et s’inscrit pour l’une d’elles. Les sociétés utilisées par des inscriptions ne peuvent pas être supprimées.\n"
+msgid "**Clubs** are the clubs shooters belong to, with their SSV number. They appear in registrations, rankings and the club competition. A shooter can belong to several clubs and registers for one of them. Clubs used by registrations cannot be deleted, and two clubs cannot have the same name regardless of upper case and spaces.\n"
+msgstr ""
+"Les **sociétés** sont les sociétés auxquelles appartiennent les tireurs, avec leur numéro FST. Elles apparaissent dans les inscriptions, les classements et le concours de sections. Un tireur peut appartenir à plusieurs sociétés et s’inscrit pour l’une d’elles. Les sociétés utilisées par des inscriptions ne peuvent pas être supprimées, et deux sociétés ne peuvent pas porter le même nom, même avec d’autres majuscules ou espaces.\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/shooters-clubs.md:21
+#, no-wrap
+msgid "**Merge into…** (admins) cleans up a duplicate, e.g. *S.G. Hiltown* next to *SG Hilltown*: choose the club that stays (clubs with a similar name come first). It keeps its name and gets the shooters, registrations and booking requests of the other one, including those of closed events, so their rankings show the club that stays; the SSV number is taken over when it has none. The other club is deleted.\n"
+msgstr ""
+"**Fusionner avec…** (admins) supprime un doublon, p. ex. *S.G. Hiltown* à côté de *SG Hilltown* : choisis la société qui reste (les sociétés au nom semblable viennent en premier). Elle garde son nom et reçoit les tireurs, inscriptions et demandes de réservation de l’autre, y compris ceux des manifestations clôturées, si bien que leurs classements affichent la société qui reste ; le numéro FST est repris si elle n’en a pas. L’autre société est supprimée.\n"
 
 #. type: Title #
 #: ../src/help/en/user-guide/statistics-reports.md:1

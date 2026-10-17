@@ -791,6 +791,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/tenants/{tenantId}/clubs/similar": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** The club with this name regardless of case and spaces, and the clubs with a similar name */
+        get: operations["match-club"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/tenants/{tenantId}/clubs/{clubId}": {
         parameters: {
             query?: never;
@@ -802,6 +819,23 @@ export interface paths {
         put: operations["update-club"];
         post?: never;
         delete: operations["delete-club"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/tenants/{tenantId}/clubs/{clubId}/merge": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Merge the club into another: shooters, registrations (of closed events too) and booking requests move, the club is deleted */
+        post: operations["merge-club"];
+        delete?: never;
         options?: never;
         head?: never;
         patch?: never;
@@ -1889,6 +1923,11 @@ export interface components {
         };
         BookingRequest: {
             club: string;
+            /**
+             * Format: int64
+             * @description Club of the master data the request was matched to on confirmation
+             */
+            clubId?: number;
             contact: string;
             /** Format: date-time */
             createdAt: string;
@@ -2023,6 +2062,12 @@ export interface components {
             name: string;
             ssvNumber?: string;
         };
+        ClubMatch: {
+            /** @description The club with this name regardless of case and spaces */
+            match?: components["schemas"]["Club"];
+            /** @description Other clubs with a similar name, best first */
+            similar: components["schemas"]["Club"][];
+        };
         ClubRef: {
             /** Format: int64 */
             id: number;
@@ -2129,7 +2174,12 @@ export interface components {
             /** Format: double */
             revenue: number;
         };
-        DecideInBody: {
+        Decision: {
+            /**
+             * Format: int64
+             * @description Confirming: the club of the master data the shooters join; without one the club of the request's name, created if missing
+             */
+            clubId?: number;
             /** @description Declining: told to the club */
             reason?: string;
         };
@@ -2405,6 +2455,8 @@ export interface components {
             errors: components["schemas"]["ImportLineError"][];
             /** Format: int64 */
             links: number;
+            /** @description Clubs of the file that match none of the master data; map them with the clubs field */
+            unknownClubs: components["schemas"]["UnknownClub"][];
             /** Format: int64 */
             updated: number;
         };
@@ -2507,6 +2559,13 @@ export interface components {
             /** Format: int64 */
             tenantId: number;
             tenantName: string;
+        };
+        MergeInBody: {
+            /**
+             * Format: int64
+             * @description The club that stays
+             */
+            intoId: number;
         };
         MyOverview: {
             /**
@@ -2948,7 +3007,7 @@ export interface components {
             birthday?: string;
             city?: string;
             clubIds?: number[];
-            /** @description Clubs to find by exact name or create */
+            /** @description Clubs to find by name regardless of case and spaces, or create */
             clubNames?: string[];
             firstname: string;
             lastname: string;
@@ -3179,6 +3238,11 @@ export interface components {
             training: number | null;
             /** @description One line per weapon used in the discipline */
             weapons: components["schemas"]["WeaponStat"][];
+        };
+        UnknownClub: {
+            name: string;
+            /** @description Clubs with a similar name, best first */
+            similar: components["schemas"]["Club"][];
         };
         User: {
             /** Format: date-time */
@@ -4868,7 +4932,7 @@ export interface operations {
         };
         requestBody?: {
             content: {
-                "application/json": components["schemas"]["DecideInBody"];
+                "application/json": components["schemas"]["Decision"];
             };
         };
         responses: {
@@ -4904,7 +4968,7 @@ export interface operations {
         };
         requestBody?: {
             content: {
-                "application/json": components["schemas"]["DecideInBody"];
+                "application/json": components["schemas"]["Decision"];
             };
         };
         responses: {
@@ -4940,7 +5004,7 @@ export interface operations {
         };
         requestBody?: {
             content: {
-                "application/json": components["schemas"]["DecideInBody"];
+                "application/json": components["schemas"]["Decision"];
             };
         };
         responses: {
@@ -5030,6 +5094,40 @@ export interface operations {
             };
         };
     };
+    "match-club": {
+        parameters: {
+            query: {
+                /** @description A club name as typed */
+                name: string;
+            };
+            header?: never;
+            path: {
+                tenantId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ClubMatch"];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
     "update-club": {
         parameters: {
             query?: never;
@@ -5075,6 +5173,40 @@ export interface operations {
             cookie?: never;
         };
         requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "merge-club": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                clubId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MergeInBody"];
+            };
+        };
         responses: {
             /** @description No Content */
             204: {
@@ -7503,6 +7635,8 @@ export interface operations {
         requestBody?: {
             content: {
                 "multipart/form-data": {
+                    /** @description JSON object mapping club names of the file to club IDs; 0 creates the club */
+                    clubs?: string;
                     /** Format: binary */
                     file: string;
                 };

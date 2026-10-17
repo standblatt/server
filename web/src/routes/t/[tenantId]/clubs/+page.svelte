@@ -4,6 +4,7 @@
 	import { useQueryClient } from '@tanstack/svelte-query';
 	import { api, call, type Club } from '$lib/api';
 	import MoreHorizontal from '@lucide/svelte/icons/ellipsis';
+	import Merge from '@lucide/svelte/icons/merge';
 	import Pencil from '@lucide/svelte/icons/pencil';
 	import Plus from '@lucide/svelte/icons/plus';
 	import Trash from '@lucide/svelte/icons/trash-2';
@@ -13,6 +14,7 @@
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { Input } from '$lib/components/ui/input';
 	import * as Table from '$lib/components/ui/table';
+	import ClubSelect from '$lib/ClubSelect.svelte';
 	import { ask } from '$lib/confirm.svelte';
 	import FormError from '$lib/FormError.svelte';
 	import FormField from '$lib/FormField.svelte';
@@ -66,6 +68,38 @@
 		}
 	}
 
+	let merging = $state<Club | null>(null);
+	let suggested = $state<Club[]>([]);
+	let intoChoice = $state('');
+	let mergeError = $state('');
+
+	/** Opens the merge dialog with the clubs whose name looks like this one's on top. */
+	async function openMerge(c: Club) {
+		const m = await call(api.GET('/api/tenants/{tenantId}/clubs/similar', { params: { path: { tenantId }, query: { name: c.name } } }));
+		suggested = m.similar;
+		intoChoice = '';
+		mergeError = '';
+		merging = c;
+	}
+
+	/** Merges the club in the dialog into the chosen one after a confirmation. */
+	async function merge(e: SubmitEvent) {
+		e.preventDefault();
+		const from = merging;
+		const into = clubs.data?.find((c) => c.id === Number(intoChoice));
+		if (!from || !into) return;
+		if (!(await ask({ title: $t`Merge "${from.name}" into "${into.name}"?`, description: $t`Its shooters and registrations, including those of closed events, then belong to "${into.name}". "${from.name}" is deleted.`, action: $t`Merge` }))) return;
+		mergeError = '';
+		try {
+			await call(api.POST('/api/tenants/{tenantId}/clubs/{clubId}/merge', { params: { path: { tenantId, clubId: from.id } }, body: { intoId: into.id } }));
+			merging = null;
+			toast.success($t`Clubs merged`);
+			await queryClient.invalidateQueries({ queryKey: ['tenants', tenantId] });
+		} catch (err) {
+			mergeError = (err as Error).message;
+		}
+	}
+
 	/** Deletes a club after confirmation; its shooters stay. */
 	async function remove(c: Club) {
 		if (!(await ask({ title: $t`Delete club "${c.name}"?`, description: $plural(c.shooterCount, { one: '# shooter assignment is removed, the shooter stays.', other: '# shooter assignments are removed, the shooters stay.' }), action: $t`Delete`, destructive: true }))) return;
@@ -110,6 +144,7 @@
 								</DropdownMenu.Trigger>
 								<DropdownMenu.Content align="end">
 									<DropdownMenu.Item onSelect={() => edit(c)}><Pencil />{$t`Edit`}</DropdownMenu.Item>
+									<DropdownMenu.Item onSelect={() => openMerge(c)}><Merge />{$t`Merge into…`}</DropdownMenu.Item>
 									<DropdownMenu.Separator />
 									<DropdownMenu.Item variant="destructive" onSelect={() => remove(c)}><Trash />{$t`Delete`}</DropdownMenu.Item>
 								</DropdownMenu.Content>
@@ -134,5 +169,21 @@
 			<FormError message={error} />
 			<Dialog.Footer><Button type="submit">{$t`Save`}</Button></Dialog.Footer>
 		</form>
+	</Dialog.Content>
+</Dialog.Root>
+
+<Dialog.Root open={merging !== null} onOpenChange={(o) => !o && (merging = null)}>
+	<Dialog.Content class="sm:max-w-md">
+		{#if merging}
+			<Dialog.Header>
+				<Dialog.Title>{$t`Merge "${merging.name}" into…`}</Dialog.Title>
+				<Dialog.Description>{$t`For duplicates: the club that stays keeps its name and gets the shooters, registrations and booking requests of this one.`}</Dialog.Description>
+			</Dialog.Header>
+			<form class="grid gap-4" onsubmit={merge}>
+				<ClubSelect {tenantId} name={merging.name} {suggested} bind:value={intoChoice} allowNew={false} exclude={merging.id} label={$t`Club that stays`} />
+				<FormError message={mergeError} />
+				<Dialog.Footer><Button type="submit"><Merge />{$t`Merge`}</Button></Dialog.Footer>
+			</form>
+		{/if}
 	</Dialog.Content>
 </Dialog.Root>

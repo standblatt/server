@@ -14,8 +14,9 @@ license;firstname;lastname;birthday;postalcode;city;club
 | `license` | no | also `licensenumber`; purely numeric numbers are padded to six digits |
 | `birthday` | no | `YYYY-MM-DD` or `DD.MM.YYYY` |
 | `postalcode`, `city` | no | |
-| `club` | no | the shooter's club; missing clubs are created |
+| `club` | no | the shooter's club, matched regardless of upper case and spaces |
 
 - One line per shooter and club; a shooter in two clubs appears twice.
 - Shooters are matched by license number, or by name and birthday when there is none. Existing shooters are updated, nothing is deleted.
 - A file with invalid lines is rejected as a whole, with the list of lines to fix.
+- Clubs that are not in the club list stop the import before anything is stored: for each one, choose an existing club (similar names are suggested) or a new one, then **Import** again.

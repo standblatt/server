@@ -3,11 +3,11 @@
 	import { useQueryClient } from '@tanstack/svelte-query';
 	import { toast } from 'svelte-sonner';
 	import { api, call, type Shooter, type ShooterInput } from './api';
+	import ClubPicker from './ClubPicker.svelte';
 	import * as Dialog from './components/ui/dialog';
-	import { Input } from './components/ui/input';
 	import FormField from './FormField.svelte';
 	import ShooterForm from './ShooterForm.svelte';
-	import { clubsQuery, keys } from './tenant';
+	import { keys } from './tenant';
 
 	let {
 		tenantId,
@@ -17,11 +17,12 @@
 	}: { tenantId: number; open?: boolean; submitLabel?: string; oncreated: (s: Shooter) => void } = $props();
 
 	const queryClient = useQueryClient();
-	const clubs = clubsQuery(() => tenantId);
 	let club = $state('');
+	let clubReady = $state(true);
 
 	/** Creates the shooter with the optional club, refreshes clubs and shooters and closes the dialog. */
 	async function create(input: ShooterInput) {
+		if (!clubReady) throw new Error($t`Pick an existing club or confirm the new one.`);
 		const sh = await call(
 			api.POST('/api/tenants/{tenantId}/shooters', {
 				params: { path: { tenantId } },
@@ -43,10 +44,9 @@
 			<Dialog.Title>{$t`New shooter`}</Dialog.Title>
 			<Dialog.Description>{$t`Master data of this club. License number, birthday and address are optional.`}</Dialog.Description>
 		</Dialog.Header>
-		<FormField label={$t`Club (existing or new)`}>
-			<Input list="club-names" bind:value={club} placeholder={$t`Club (existing or new)`} />
+		<FormField label={$t`Club`}>
+			<ClubPicker {tenantId} id="new-shooter-club" bind:value={club} bind:ready={clubReady} />
 		</FormField>
-		<datalist id="club-names">{#each clubs.data ?? [] as c (c.id)}<option value={c.name}></option>{/each}</datalist>
 		{#if open}<ShooterForm submitLabel={submitLabel ?? $t`Create`} onsubmit={create} />{/if}
 	</Dialog.Content>
 </Dialog.Root>

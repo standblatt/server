@@ -7,24 +7,24 @@
 	import { api, call, type ShooterInput } from './api';
 	import { Badge } from './components/ui/badge';
 	import { Button } from './components/ui/button';
-	import { Input } from './components/ui/input';
 	import * as Sheet from './components/ui/sheet';
 	import { ask } from './confirm.svelte';
 	import FormError from './FormError.svelte';
 	import { formatDate } from './format';
 	import ShooterForm from './ShooterForm.svelte';
-	import { clubsQuery, keys } from './tenant';
+	import ClubPicker from './ClubPicker.svelte';
+	import { keys } from './tenant';
 
 	let { tenantId, shooterId, isAdmin, onclose }: { tenantId: number; shooterId: number; isAdmin: boolean; onclose: () => void } = $props();
 
 	const queryClient = useQueryClient();
-	const clubs = clubsQuery(() => tenantId);
 	const shooter = createQuery(() => ({
 		queryKey: keys.shooter(tenantId, shooterId),
 		queryFn: () => call(api.GET('/api/tenants/{tenantId}/shooters/{shooterId}', { params: { path: { tenantId, shooterId } } }))
 	}));
 	const p = $derived({ params: { path: { tenantId, shooterId } } });
 	let clubName = $state('');
+	let clubReady = $state(true);
 	let clubError = $state('');
 
 	/** Invalidates the shooters and clubs of the tenant. */
@@ -44,6 +44,10 @@
 	async function addClub(e: SubmitEvent) {
 		e.preventDefault();
 		clubError = '';
+		if (!clubReady) {
+			clubError = $t`Pick an existing club or confirm the new one.`;
+			return;
+		}
 		try {
 			await call(api.POST('/api/tenants/{tenantId}/shooters/{shooterId}/clubs', { ...p, body: { clubName: clubName.trim() } }));
 			clubName = '';
@@ -95,9 +99,8 @@
 							<span class="text-sm text-muted-foreground">{$t`No club assigned.`}</span>
 						{/each}
 					</div>
-					<form class="flex gap-2" onsubmit={addClub}>
-						<Input list="sheet-club-names" placeholder={$t`Club (existing or new)`} bind:value={clubName} required />
-						<datalist id="sheet-club-names">{#each clubs.data ?? [] as c (c.id)}<option value={c.name}></option>{/each}</datalist>
+					<form class="grid grid-cols-[1fr_auto] items-start gap-2 *:min-w-0" onsubmit={addClub}>
+						<div><ClubPicker {tenantId} id="sheet-club" bind:value={clubName} bind:ready={clubReady} required /></div>
 						<Button type="submit" variant="outline">{$t`Add club`}</Button>
 					</form>
 					<FormError message={clubError} class="mt-2" />

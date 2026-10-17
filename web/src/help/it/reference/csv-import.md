@@ -16,7 +16,7 @@ license;firstname;lastname;birthday;postalcode;city;club
 | `license` | no | anche `licensenumber`; i numeri puramente numerici vengono completati a sei cifre |
 | `birthday` | no | `YYYY-MM-DD` o `DD.MM.YYYY` |
 | `postalcode`, `city` | no | |
-| `club` | no | la società del tiratore; le società mancanti vengono create |
+| `club` | no | la società del tiratore, confrontata senza tenere conto di maiuscole e spazi |
 
 - Una riga per tiratore e società; un tiratore in due società compare due
   volte.
@@ -25,3 +25,6 @@ license;firstname;lastname;birthday;postalcode;city;club
   eliminato.
 - Un file con righe non valide viene rifiutato per intero, con l’elenco
   delle righe da correggere.
+- Le società che non sono nell’elenco fermano l’importazione prima che venga
+  salvato qualcosa: scegli per ognuna una società esistente (i nomi simili
+  vengono proposti) o una nuova, poi clicca di nuovo su **Importa**.

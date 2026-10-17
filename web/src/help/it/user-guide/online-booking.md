@@ -71,13 +71,17 @@ prenotazioni](../images/screenshots/booking-requests.png){ .screenshot }
   società, e invia i numeri dei bersagli alla società. Se una fascia ha
   troppo pochi bersagli liberi non viene riservato nulla e il messaggio
   indica la fascia; sposta una prenotazione o rifiuta.
-- **Conferma** riprende anche i tiratori nei dati di base: un tiratore viene
-  trovato tramite la licenza, altrimenti tramite nome e data di nascita, e
-  creato in caso contrario; la società viene creata se serve. I tiratori
-  esistenti non vengono mai sovrascritti, perché la lista viene da un modulo
-  pubblico; si completa solo una data di nascita o una licenza mancante. I
-  tiratori aggiunti dopo la conferma si riprendono con **Riprendi
-  tiratori**.
+- **Conferma** chiede prima a quale **Società** dei dati di base appartiene
+  la richiesta, perché la società ha digitato il nome da sé: la società con
+  lo stesso nome è già scelta, le società con un nome simile vengono
+  proposte e *Nuova società* la crea. La richiesta mostra poi la società
+  attribuita.
+- **Conferma** riprende anche i tiratori nei dati di base, in quella
+  società: un tiratore viene trovato tramite la licenza, altrimenti tramite
+  nome e data di nascita, e creato in caso contrario. I tiratori esistenti
+  non vengono mai sovrascritti, perché la lista viene da un modulo pubblico;
+  si completa solo una data di nascita o una licenza mancante. I tiratori
+  aggiunti dopo la conferma si riprendono con **Riprendi tiratori**.
 - **Rifiuta** chiede un motivo facoltativo, che la società riceve via
   e-mail. I bersagli occupati dalla richiesta tornano liberi.
 

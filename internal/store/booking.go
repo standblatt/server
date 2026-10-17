@@ -28,6 +28,7 @@ type BookingRequest struct {
 	ID            int64                `json:"id"`
 	EventID       int64                `json:"eventId"`
 	Club          string               `json:"club"`
+	ClubID        *int64               `json:"clubId,omitempty" doc:"Club of the master data the request was matched to on confirmation"`
 	Contact       string               `json:"contact"`
 	Email         string               `json:"email"`
 	Phone         string               `json:"phone"`
@@ -219,7 +220,7 @@ func syncBookingShooters(ctx context.Context, tx pgx.Tx, tenantID, requestID int
 	return err
 }
 
-const bookingRequestCols = `r.id, r.event_id, r.club, r.contact, r.email, r.phone, r.note, r.status, r.decline_reason,
+const bookingRequestCols = `r.id, r.event_id, r.club, r.club_id, r.contact, r.email, r.phone, r.note, r.status, r.decline_reason,
 	r.created_at, r.updated_at, r.decided_at,
 	coalesce((SELECT json_agg(json_build_object('rangeId', i.range_id, 'start', i.starts_at, 'end', i.ends_at, 'lanes', i.lanes,
 		'assigned', coalesce((SELECT array_agg(l ORDER BY l) FROM reservations rv, unnest(rv.lanes) l WHERE rv.booking_item_id = i.id), '{}'))
@@ -340,9 +341,11 @@ func (s *Store) closeBooking(ctx context.Context, tenantID, id int64, status Boo
 }
 
 // ConfirmBooking confirms a pending request: every item gets free lanes of its range (neighbours preferred) as a
-// reservation described with the club, and the shooters are taken into the master data. The ranges are locked like
-// SaveReservation does; a *FullSlotError names the first item that found too few lanes, and nothing is stored then.
-func (s *Store) ConfirmBooking(ctx context.Context, tenantID, id int64) error {
+// reservation described with the club, and the shooters are taken into the master data with clubID, or without
+// one with the club of the request's name (regardless of case and spaces, created if missing). The ranges are locked
+// like SaveReservation does; a *FullSlotError names the first item that found too few lanes, and nothing is stored
+// then. ErrNotFound if the request or the club is not the tenant's.
+func (s *Store) ConfirmBooking(ctx context.Context, tenantID, id int64, clubID *int64) error {
 	err := pgx.BeginFunc(ctx, s.pool, func(tx pgx.Tx) error {
 		var status BookingStatus
 		var club string
@@ -396,11 +399,15 @@ func (s *Store) ConfirmBooking(ctx context.Context, tenantID, id int64) error {
 				return err
 			}
 		}
-		if _, err := tx.Exec(ctx, `UPDATE booking_requests SET status = 'confirmed', decline_reason = '', decided_at = now(), updated_at = now()
-			WHERE tenant_id = $1 AND id = $2`, tenantID, id); err != nil {
+		cid, err := requestClub(ctx, tx, tenantID, club, clubID)
+		if err != nil {
 			return err
 		}
-		return adoptBookingShooters(ctx, tx, tenantID, id, club)
+		if _, err := tx.Exec(ctx, `UPDATE booking_requests SET status = 'confirmed', decline_reason = '', decided_at = now(), updated_at = now(),
+			club_id = $3 WHERE tenant_id = $1 AND id = $2`, tenantID, id, cid); err != nil {
+			return err
+		}
+		return adoptBookingShooters(ctx, tx, tenantID, id, cid)
 	})
 	var full *FullSlotError
 	if errors.As(err, &full) || errors.Is(err, ErrNotPending) {
@@ -409,17 +416,26 @@ func (s *Store) ConfirmBooking(ctx context.Context, tenantID, id int64) error {
 	return mapErr(err)
 }
 
-// AdoptBookingShooters takes the shooters of a confirmed request that are not linked yet into the master data.
+// AdoptBookingShooters takes the shooters of a confirmed request that are not linked yet into the master data,
+// with the club the request was matched to.
 func (s *Store) AdoptBookingShooters(ctx context.Context, tenantID, id int64) error {
 	err := pgx.BeginFunc(ctx, s.pool, func(tx pgx.Tx) error {
 		var status BookingStatus
-		var club string
-		if err := tx.QueryRow(ctx, `SELECT status, club FROM booking_requests WHERE tenant_id = $1 AND id = $2 FOR UPDATE`,
-			tenantID, id).Scan(&status, &club); err != nil {
+		var name string
+		var clubID *int64
+		if err := tx.QueryRow(ctx, `SELECT status, club, club_id FROM booking_requests WHERE tenant_id = $1 AND id = $2 FOR UPDATE`,
+			tenantID, id).Scan(&status, &name, &clubID); err != nil {
 			return err
 		}
 		if status != BookingConfirmed {
 			return ErrNotPending
+		}
+		club, err := requestClub(ctx, tx, tenantID, name, clubID)
+		if err != nil {
+			return err
+		}
+		if _, err := tx.Exec(ctx, `UPDATE booking_requests SET club_id = $3 WHERE tenant_id = $1 AND id = $2`, tenantID, id, club); err != nil {
+			return err
 		}
 		return adoptBookingShooters(ctx, tx, tenantID, id, club)
 	})
@@ -429,11 +445,27 @@ func (s *Store) AdoptBookingShooters(ctx context.Context, tenantID, id int64) er
 	return mapErr(err)
 }
 
-// adoptBookingShooters links every unlinked shooter of a request to the master data and to the club (found by name
-// regardless of case, else created). A shooter is found by licence (leading zeros ignored), else by name and
-// birthday, and created otherwise. Found shooters are never overwritten: the list comes from a public form, so only
-// a missing birthday or licence is filled in.
-func adoptBookingShooters(ctx context.Context, tx pgx.Tx, tenantID, requestID int64, club string) error {
+// requestClub returns clubID after checking that it is the tenant's (ErrNotFound otherwise), or without one the
+// club of the request's name, created if missing.
+func requestClub(ctx context.Context, tx pgx.Tx, tenantID int64, name string, clubID *int64) (int64, error) {
+	if clubID == nil {
+		id, _, err := ensureClub(ctx, tx, tenantID, strings.TrimSpace(name))
+		return id, err
+	}
+	var ok bool
+	if err := tx.QueryRow(ctx, `SELECT EXISTS (SELECT 1 FROM clubs WHERE tenant_id = $1 AND id = $2)`, tenantID, *clubID).Scan(&ok); err != nil {
+		return 0, err
+	}
+	if !ok {
+		return 0, ErrNotFound
+	}
+	return *clubID, nil
+}
+
+// adoptBookingShooters links every unlinked shooter of a request to the master data and to clubID. A shooter is
+// found by licence (leading zeros ignored), else by name and birthday, and created otherwise. Found shooters are
+// never overwritten: the list comes from a public form, so only a missing birthday or licence is filled in.
+func adoptBookingShooters(ctx context.Context, tx pgx.Tx, tenantID, requestID, clubID int64) error {
 	rows, err := tx.Query(ctx, `SELECT id, firstname, lastname, birthday::text, license_number FROM booking_shooters
 		WHERE tenant_id = $1 AND request_id = $2 AND shooter_id IS NULL ORDER BY id`, tenantID, requestID)
 	if err != nil {
@@ -449,14 +481,6 @@ func adoptBookingShooters(ctx context.Context, tx pgx.Tx, tenantID, requestID in
 		return x, err
 	})
 	if err != nil || len(list) == 0 {
-		return err
-	}
-	var clubID int64
-	err = tx.QueryRow(ctx, `SELECT id FROM clubs WHERE tenant_id = $1 AND lower(name) = lower($2) ORDER BY id LIMIT 1`, tenantID, strings.TrimSpace(club)).Scan(&clubID)
-	if errors.Is(err, pgx.ErrNoRows) {
-		clubID, _, err = ensureClub(ctx, tx, tenantID, strings.TrimSpace(club))
-	}
-	if err != nil {
 		return err
 	}
 	for _, b := range list {

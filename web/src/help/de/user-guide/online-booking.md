@@ -69,12 +69,17 @@ Reservationen](../images/screenshots/booking-requests.png){ .screenshot }
   Vereins, und schickt dem Verein die Scheibennummern per Mail. Hat ein
   Zeitblock zu wenige freie Scheiben, wird nichts reserviert und die Meldung
   nennt den Zeitblock; verschiebe eine Reservation oder lehne ab.
-- **Bestätigen** übernimmt auch die Schützen in die Stammdaten: ein Schütze
-  wird über die Lizenz gefunden, sonst über Name und Geburtsdatum, und
-  andernfalls angelegt; der Verein wird bei Bedarf erstellt. Bestehende
-  Schützen werden nie überschrieben, weil die Liste aus einem öffentlichen
-  Formular stammt; nur ein fehlendes Geburtsdatum oder eine fehlende Lizenz
-  wird ergänzt. Schützen, die nach der Bestätigung dazukommen, übernimmt
+- **Bestätigen** fragt zuerst, zu welchem **Verein** der Stammdaten die
+  Anfrage gehört, weil der Verein seinen Namen selbst eingetippt hat: Der
+  Verein mit gleichem Namen ist schon ausgewählt, Vereine mit ähnlichem
+  Namen werden vorgeschlagen, und *Neuer Verein* legt ihn an. Die Anfrage
+  zeigt danach den zugeordneten Verein.
+- **Bestätigen** übernimmt auch die Schützen in die Stammdaten, in diesen
+  Verein: ein Schütze wird über die Lizenz gefunden, sonst über Name und
+  Geburtsdatum, und andernfalls angelegt. Bestehende Schützen werden nie
+  überschrieben, weil die Liste aus einem öffentlichen Formular stammt; nur
+  ein fehlendes Geburtsdatum oder eine fehlende Lizenz wird
+  ergänzt. Schützen, die nach der Bestätigung dazukommen, übernimmt
   **Schützen übernehmen**.
 - **Ablehnen** fragt nach einer optionalen Begründung, die der Verein per
   Mail erhält. Scheiben, die die Anfrage hatte, sind wieder frei.

@@ -70,13 +70,18 @@ test.describe("online booking", () => {
     await expect(request).toContainText("waiting for confirmation");
     await c(request, "summary", "1 shooter announced").click();
     await expect(request).toContainText("new");
+    await api(page, "POST", `/api/tenants/${ids.tenant}/clubs`, { name: `${guest} 1920` });
     await c(request, "button", "Confirm").click();
+    const dialog = page.getByRole("dialog");
+    await dialog.getByLabel("Club").selectOption({ label: `${guest} 1920` });
+    await c(dialog, "button", "Confirm").click();
     await expect(request).toContainText("confirmed");
+    await expect(request).toContainText(`Club in the master data: ${guest} 1920`);
     await expect(request).toContainText("lanes 1, 2");
     await expect(page.locator(`[aria-label='Reservation ${guest}']`)).toContainText("lanes 1, 2");
     await page.goto(`/t/${ids.tenant}/shooters`);
     await page.getByPlaceholder("License number or name").fill("Gino Gast");
-    await expect(c(page, "tr", "Gast")).toContainText(guest);
+    await expect(c(page, "tr", "Gast")).toContainText(`${guest} 1920`);
   });
 
   test("the club cancels through its manage link", async ({ browser }) => {

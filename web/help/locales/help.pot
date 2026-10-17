@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-17 19:38+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-17 20:01+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
 #: ../src/help/en/getting-started/concepts.md:1
@@ -1097,25 +1097,31 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/reference/csv-import.md:18
 #, markdown-text, no-wrap
-msgid "| Column | Required | Notes |\n|---|---|---|\n| `firstname` | yes | |\n| `lastname` | yes | |\n| `license` | no | also `licensenumber`; purely numeric numbers are padded to six digits |\n| `birthday` | no | `YYYY-MM-DD` or `DD.MM.YYYY` |\n| `postalcode`, `city` | no | |\n| `club` | no | the shooter's club; missing clubs are created |\n"
+msgid "| Column | Required | Notes |\n|---|---|---|\n| `firstname` | yes | |\n| `lastname` | yes | |\n| `license` | no | also `licensenumber`; purely numeric numbers are padded to six digits |\n| `birthday` | no | `YYYY-MM-DD` or `DD.MM.YYYY` |\n| `postalcode`, `city` | no | |\n| `club` | no | the shooter's club, matched regardless of upper case and spaces |\n"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/reference/csv-import.md:21
+#: ../src/help/en/reference/csv-import.md:22
 #, markdown-text
 msgid "One line per shooter and club; a shooter in two clubs appears twice."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/reference/csv-import.md:21
+#: ../src/help/en/reference/csv-import.md:22
 #, markdown-text
 msgid "Shooters are matched by license number, or by name and birthday when there is none. Existing shooters are updated, nothing is deleted."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/reference/csv-import.md:21
+#: ../src/help/en/reference/csv-import.md:22
 #, markdown-text
 msgid "A file with invalid lines is rejected as a whole, with the list of lines to fix."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/csv-import.md:22
+#, markdown-text
+msgid "Clubs that are not in the club list stop the import before anything is stored: for each one, choose an existing club (similar names are suggested) or a new one, then **Import** again."
 msgstr ""
 
 #. type: Title #
@@ -2496,25 +2502,31 @@ msgid "![Booking requests on the reservations page](../images/screenshots/bookin
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:41
+#: ../src/help/en/user-guide/online-booking.md:42
 #, markdown-text
 msgid "**Confirm** gives each slot free lanes of its range, neighbours where possible, as an ordinary reservation named after the club, and mails the lane numbers to the club. When a slot has too few free lanes, nothing is reserved and the message names the slot; move a reservation or decline."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:41
+#: ../src/help/en/user-guide/online-booking.md:42
 #, markdown-text
-msgid "**Confirm** also takes the shooters into the master data: a shooter is found by licence, else by name and birthday, and created otherwise; the club is created when needed. Existing shooters are never overwritten, because the list comes from a public form; only a missing birthday or licence is filled in. Shooters added after the confirmation are taken over with **Take over shooters**."
+msgid "**Confirm** first asks which **Club** of the master data the request belongs to, because the club typed its name itself: the club with the same name is chosen already, clubs with a similar name are suggested, and *New club* creates it. The request then shows the club it was matched to."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:41
+#: ../src/help/en/user-guide/online-booking.md:42
+#, markdown-text
+msgid "**Confirm** also takes the shooters into the master data, in that club: a shooter is found by licence, else by name and birthday, and created otherwise. Existing shooters are never overwritten, because the list comes from a public form; only a missing birthday or licence is filled in. Shooters added after the confirmation are taken over with **Take over shooters**."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/online-booking.md:42
 #, markdown-text
 msgid "**Decline** asks for an optional reason, which goes to the club by mail. Lanes the request held are free again."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/online-booking.md:42
+#: ../src/help/en/user-guide/online-booking.md:43
 #, markdown-text
 msgid "The reserved lanes are ordinary [reservations](reservations.md): change their lane numbers there if needed. At the event, the shooters are found with the normal search at the registration desk. The report *Lane bookings* under [Statistics and reports](statistics-reports.md) lists every club with its slots, lanes and shooters."
 msgstr ""
@@ -2616,45 +2628,57 @@ msgid "![Shooters](../images/screenshots/shooters.png){ .screenshot }"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/shooters-clubs.md:13
+#: ../src/help/en/user-guide/shooters-clubs.md:14
 #, markdown-text
 msgid "**Search** works like on the dashboard: license number (leading zeros optional), part of a name, or first and last name in either order. The list shows 50 shooters per page, the club list 50 clubs; the arrows below turn the pages."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/shooters-clubs.md:13
+#: ../src/help/en/user-guide/shooters-clubs.md:14
 #, markdown-text
 msgid "Clicking a shooter opens the details: name, license number, birthday, address and the clubs the shooter belongs to."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/shooters-clubs.md:13
+#: ../src/help/en/user-guide/shooters-clubs.md:14
+#, markdown-text
+msgid "**Club** (new shooter, or adding a club in the details) suggests the clubs of the list. A name that matches a club regardless of upper case and spaces is that club. Any other name shows *is not in the club list yet* with similar clubs under *Did you mean*; a new club is only created after **Create new club**, so a typo does not become a second club."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/shooters-clubs.md:14
 #, markdown-text
 msgid "**Import** (admins) reads a CSV file, see [CSV import](../reference/csv-import.md)."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/shooters-clubs.md:13
+#: ../src/help/en/user-guide/shooters-clubs.md:14
 #, markdown-text
 msgid "Shooters with registrations cannot be deleted."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/shooters-clubs.md:14
+#: ../src/help/en/user-guide/shooters-clubs.md:15
 #, markdown-text, no-wrap
 msgid "Clubs"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/shooters-clubs.md:17
+#: ../src/help/en/user-guide/shooters-clubs.md:18
 #, markdown-text
 msgid "![Clubs](../images/screenshots/clubs.png){ .screenshot }"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/shooters-clubs.md:18
+#: ../src/help/en/user-guide/shooters-clubs.md:20
 #, markdown-text, no-wrap
-msgid "**Clubs** are the clubs shooters belong to, with their SSV number. They appear in registrations, rankings and the club competition. A shooter can belong to several clubs and registers for one of them. Clubs used by registrations cannot be deleted.\n"
+msgid "**Clubs** are the clubs shooters belong to, with their SSV number. They appear in registrations, rankings and the club competition. A shooter can belong to several clubs and registers for one of them. Clubs used by registrations cannot be deleted, and two clubs cannot have the same name regardless of upper case and spaces.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/shooters-clubs.md:21
+#, markdown-text, no-wrap
+msgid "**Merge into…** (admins) cleans up a duplicate, e.g. *S.G. Hiltown* next to *SG Hilltown*: choose the club that stays (clubs with a similar name come first). It keeps its name and gets the shooters, registrations and booking requests of the other one, including those of closed events, so their rankings show the club that stays; the SSV number is taken over when it has none. The other club is deleted.\n"
 msgstr ""
 
 #. type: Title #
