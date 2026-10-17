@@ -2203,6 +2203,8 @@ msgid "Login"
 msgstr "Connexion"
 
 #. Column header: mouches
+#. Column header: mouches
+#: src/lib/ProgrammeEditor.svelte
 #: src/lib/RankingTable.svelte
 msgid "M"
 msgstr "M"
@@ -2675,6 +2677,11 @@ msgstr "hors service"
 #: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "Out of service"
 msgstr "Hors service"
+
+#. placeholder {0}: formatLanes(s.disabledLanes)
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Out of service: {0}"
+msgstr "Hors service : {0}"
 
 #: src/routes/my/settings/+page.svelte
 msgid "Own discipline"
@@ -3526,6 +3533,10 @@ msgstr "Configuration"
 msgid "Several addresses separated by commas or one per line."
 msgstr "Plusieurs adresses séparées par des virgules ou une par ligne."
 
+#: src/lib/print.ts
+msgid "Share"
+msgstr "Partager"
+
 #: src/routes/my/progress/+page.svelte
 msgid "Share of every value over {shotsLogged} logged shots."
 msgstr "Part de chaque valeur sur les {shotsLogged} coups enregistrés."
@@ -3877,6 +3888,10 @@ msgstr "Le jour principal. Les catégories d’âge suivent la règle FST : ann�
 #: src/lib/EventForm.svelte
 msgid "The organizer hands out the ammunition (Ammo button on the dashboard)"
 msgstr "L’organisateur remet la munition (bouton Munition sur le tableau de bord)"
+
+#: src/lib/print.ts
+msgid "The PDF is ready."
+msgstr "Le PDF est prêt."
 
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "The print agent runs on a computer next to the printers (e.g. a Raspberry Pi with CUPS). It connects to Standblatt, reports the printers and prints the jobs of this range."

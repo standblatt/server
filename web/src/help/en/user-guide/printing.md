@@ -10,7 +10,7 @@ Standblatt renders all documents as PDF:
 | Wreath card | A6, printed onto pre-printed cards | after choosing a wreath card award |
 | Ranking | A4 | from the rankings page |
 
-Every Print button prints on the range's printer if one is set up and its print agent is online; otherwise the PDF opens in the browser and can be printed from there.
+Every Print button prints on the range's printer if one is set up and its print agent is online; otherwise the PDF opens in the browser and can be printed from there. On a phone or tablet the PDF goes to the share sheet instead (print, save to files, send), so the app stays open; if the phone asks for another tap first, a note with a **Share** button appears.
 
 ## Setting up printers
 

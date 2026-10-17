@@ -12,7 +12,10 @@ Standblatt produit tous les documents en PDF :
 
 Chaque bouton d’impression imprime sur l’imprimante du stand si elle est
 configurée et que son agent d’impression est en ligne ; sinon le PDF s’ouvre
-dans le navigateur et peut être imprimé de là.
+dans le navigateur et peut être imprimé de là. Sur un téléphone ou une
+tablette, le PDF passe plutôt par le menu de partage (imprimer, enregistrer
+dans Fichiers, envoyer), l’app reste donc ouverte ; si le téléphone demande
+d’abord un autre toucher, une note avec le bouton **Partager** apparaît.
 
 ## Configurer les imprimantes
 

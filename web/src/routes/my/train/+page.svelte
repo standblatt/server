@@ -323,7 +323,7 @@
 			</div>
 		</div>
 
-		<div class="flex items-center gap-1.5 overflow-x-auto px-4 py-3 [scrollbar-width:none]" role="tablist" aria-label={$t`Series`}>
+		<div class="flex items-center gap-1.5 overflow-x-auto px-4 py-3 [scrollbar-width:none]" data-swipe role="tablist" aria-label={$t`Series`}>
 			{#each draft.series as s, i (i)}
 				<button
 					type="button"

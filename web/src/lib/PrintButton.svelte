@@ -4,7 +4,7 @@
 	import Printer from '@lucide/svelte/icons/printer';
 	import { toast } from 'svelte-sonner';
 	import { Button } from './components/ui/button';
-	import { pdfUrl, printDocument, type PrintTarget } from './print';
+	import { pdfClick, pdfUrl, printDocument, type PrintTarget } from './print';
 
 	let { tenantId, target }: { tenantId: number; target: PrintTarget } = $props();
 
@@ -30,5 +30,5 @@
 
 <span class="inline-flex items-center">
 	<Button size="sm" variant="outline" class="rounded-r-none" onclick={print}><Printer />{text[0]}</Button>
-	<Button size="sm" variant="outline" class="-ml-px rounded-l-none" href={pdfUrl(tenantId, target)} target="_blank" title={$t`Open as PDF`}><FileText />PDF</Button>
+	<Button size="sm" variant="outline" class="-ml-px rounded-l-none" href={pdfUrl(tenantId, target)} target="_blank" onclick={pdfClick} title={$t`Open as PDF`}><FileText />PDF</Button>
 </span>

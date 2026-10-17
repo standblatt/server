@@ -205,11 +205,11 @@
 	<Table.Header>
 		<Table.Row>
 			<Table.Head>{$t`Programme`}</Table.Head>
-			<Table.Head>{$t`Shots`}</Table.Head>
-			<Table.Head>{$t`Prices`}</Table.Head>
-			<Table.Head>{$t`Awards`}</Table.Head>
-			<Table.Head>{$t`Combinable with`}</Table.Head>
-			{#if places.length > 1}<Table.Head>{$t`Range`}</Table.Head>{/if}
+			<Table.Head class="hidden sm:table-cell">{$t`Shots`}</Table.Head>
+			<Table.Head class="hidden sm:table-cell">{$t`Prices`}</Table.Head>
+			<Table.Head class="hidden sm:table-cell">{$t`Awards`}</Table.Head>
+			<Table.Head class="hidden sm:table-cell">{$t`Combinable with`}</Table.Head>
+			{#if places.length > 1}<Table.Head class="hidden sm:table-cell">{$t`Range`}</Table.Head>{/if}
 			<Table.Head>{$t`Active`}</Table.Head>
 			<Table.Head class="w-10"></Table.Head>
 		</Table.Row>
@@ -217,14 +217,17 @@
 	<Table.Body>
 		{#each programmes.data ?? [] as p (p.id)}
 			<Table.Row class={p.active ? '' : 'opacity-50'}>
-				<Table.Cell class="font-medium">{programmeTitle(p)}</Table.Cell>
-				<Table.Cell class="tabular-nums">{$t`${p.shots} / ${p.maxPoints} pts`}</Table.Cell>
-				<Table.Cell class="max-w-64 truncate" title={priceRange(p)}>{priceRange(p)}</Table.Cell>
 				<Table.Cell class="whitespace-normal">
+					<div class="font-medium">{programmeTitle(p)}</div>
+					<div class="text-xs text-muted-foreground sm:hidden">{$t`${p.shots} / ${p.maxPoints} pts`} · {priceRange(p)}</div>
+				</Table.Cell>
+				<Table.Cell class="hidden sm:table-cell tabular-nums">{$t`${p.shots} / ${p.maxPoints} pts`}</Table.Cell>
+				<Table.Cell class="hidden sm:table-cell max-w-64 truncate" title={priceRange(p)}>{priceRange(p)}</Table.Cell>
+				<Table.Cell class="hidden sm:table-cell whitespace-normal">
 					{p.awards.map((a) => a.name).join(', ') || '–'}
 					{#if p.specialPrizes.ranks}<div class="text-xs text-muted-foreground">{$t`Special prizes: ranks 1–${p.specialPrizes.ranks}`}</div>{/if}
 				</Table.Cell>
-				<Table.Cell>
+				<Table.Cell class="hidden sm:table-cell">
 					{#if isAdmin}
 						<NativeSelect.Root size="sm" value={p.combinableWithId ?? 0} onchange={(e) => setCombination(p, Number(e.currentTarget.value))} aria-label={$t`Combinable with`}>
 							<NativeSelect.Option value={0}>–</NativeSelect.Option>
@@ -235,7 +238,7 @@
 					{/if}
 				</Table.Cell>
 				{#if places.length > 1}
-					<Table.Cell>
+					<Table.Cell class="hidden sm:table-cell">
 						{#if isAdmin}
 							<NativeSelect.Root size="sm" value={placeOf(p)} onchange={(e) => setRange(p, e.currentTarget.value)} aria-label={$t`Range`}>
 								<NativeSelect.Option value="">{$t`any`}</NativeSelect.Option>

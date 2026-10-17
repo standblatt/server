@@ -86,18 +86,21 @@
 <div class="overflow-hidden rounded-lg border bg-card">
 	<Table.Root>
 		<Table.Header>
-			<Table.Row><Table.Head>{$t`Name`}</Table.Head><Table.Head class="text-right">{$t`Lanes`}</Table.Head><Table.Head>{$t`Lane groups`}</Table.Head><Table.Head>{$t`Out of service`}</Table.Head><Table.Head></Table.Head></Table.Row>
+			<Table.Row><Table.Head>{$t`Name`}</Table.Head><Table.Head class="text-right">{$t`Lanes`}</Table.Head><Table.Head class="hidden sm:table-cell">{$t`Lane groups`}</Table.Head><Table.Head class="hidden sm:table-cell">{$t`Out of service`}</Table.Head><Table.Head></Table.Head></Table.Row>
 		</Table.Header>
 		<Table.Body>
 			{#each ranges.data ?? [] as s (s.id)}
 				<Table.Row>
-					<Table.Cell class="font-medium">{s.name}</Table.Cell>
+					<Table.Cell class="whitespace-normal">
+						<div class="font-medium">{s.name}</div>
+						<div class="text-xs text-muted-foreground sm:hidden">{[...s.groups.map((g) => `${g.name}: ${formatLanes(g.lanes)}`), s.disabledLanes.length ? $t`Out of service: ${formatLanes(s.disabledLanes)}` : ''].filter(Boolean).join(' · ')}</div>
+					</Table.Cell>
 					<Table.Cell class="text-right tabular-nums">{s.laneCount}</Table.Cell>
-					<Table.Cell>{s.groups.map((g) => `${g.name}: ${formatLanes(g.lanes)}`).join(' · ') || '–'}</Table.Cell>
-					<Table.Cell>{formatLanes(s.disabledLanes) || '–'}</Table.Cell>
+					<Table.Cell class="hidden sm:table-cell">{s.groups.map((g) => `${g.name}: ${formatLanes(g.lanes)}`).join(' · ') || '–'}</Table.Cell>
+					<Table.Cell class="hidden sm:table-cell">{formatLanes(s.disabledLanes) || '–'}</Table.Cell>
 					<Table.Cell>
 						<div class="flex justify-end gap-1">
-							<Button size="sm" variant="outline" href="/t/{tenantId}/ranges/{s.id}/printing"><Printer />{$t`Printing`}</Button>
+							<Button size="sm" variant="outline" href="/t/{tenantId}/ranges/{s.id}/printing" aria-label={$t`Printing`}><Printer /><span class="hidden sm:inline">{$t`Printing`}</span></Button>
 							<DropdownMenu.Root>
 								<DropdownMenu.Trigger>
 									{#snippet child({ props })}<Button variant="ghost" size="icon-sm" aria-label={$t`Actions for ${s.name}`} {...props}><MoreHorizontal /></Button>{/snippet}

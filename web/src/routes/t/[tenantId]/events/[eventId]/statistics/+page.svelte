@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { pdfClick } from '$lib/print';
 	import { t } from 'lingui-for-svelte/macro';
 	import { page } from '$app/state';
 	import { createQuery } from '@tanstack/svelte-query';
@@ -81,10 +82,10 @@
 			<section class="overflow-hidden rounded-lg border bg-card">
 				{@render panelHead($t`Programmes`)}
 				<Table.Root>
-					<Table.Header><Table.Row><Table.Head>{$t`Programme`}</Table.Head><Table.Head class="text-right">{$t({ message: "Entries", comment: "Number of programmes shot" })}</Table.Head><Table.Head class="text-right">{$t`Completed`}</Table.Head><Table.Head class="text-right">{$t`Revenue`}</Table.Head></Table.Row></Table.Header>
+					<Table.Header><Table.Row><Table.Head>{$t`Programme`}</Table.Head><Table.Head class="text-right">{$t({ message: "Entries", comment: "Number of programmes shot" })}</Table.Head><Table.Head class="hidden sm:table-cell text-right">{$t`Completed`}</Table.Head><Table.Head class="text-right">{$t`Revenue`}</Table.Head></Table.Row></Table.Header>
 					<Table.Body>
 						{#each s.programmes as p (p.programmeId)}
-							<Table.Row><Table.Cell class="font-medium">{p.title}</Table.Cell><Table.Cell class="text-right tabular-nums">{p.entries}</Table.Cell><Table.Cell class="text-right tabular-nums">{p.completed}</Table.Cell><Table.Cell class="text-right tabular-nums">{chf(p.revenue)}</Table.Cell></Table.Row>
+							<Table.Row><Table.Cell class="font-medium whitespace-normal">{p.title}</Table.Cell><Table.Cell class="text-right tabular-nums">{p.entries}</Table.Cell><Table.Cell class="hidden sm:table-cell text-right tabular-nums">{p.completed}</Table.Cell><Table.Cell class="text-right tabular-nums">{chf(p.revenue)}</Table.Cell></Table.Row>
 						{/each}
 					</Table.Body>
 				</Table.Root>
@@ -122,10 +123,10 @@
 			<section class="overflow-hidden rounded-lg border bg-card">
 				{@render panelHead($t`Awards`)}
 				<Table.Root>
-					<Table.Header><Table.Row><Table.Head>{$t`Programme`}</Table.Head><Table.Head>{$t`Award`}</Table.Head><Table.Head>{$t`Kind`}</Table.Head><Table.Head class="text-right">{$t`Count`}</Table.Head><Table.Head class="text-right">{$t`Value`}</Table.Head></Table.Row></Table.Header>
+					<Table.Header><Table.Row><Table.Head class="hidden sm:table-cell">{$t`Programme`}</Table.Head><Table.Head>{$t`Award`}</Table.Head><Table.Head class="hidden sm:table-cell">{$t`Kind`}</Table.Head><Table.Head class="text-right">{$t`Count`}</Table.Head><Table.Head class="text-right">{$t`Value`}</Table.Head></Table.Row></Table.Header>
 					<Table.Body>
 						{#each s.awards as a, i (i)}
-							<Table.Row><Table.Cell>{a.programme}</Table.Cell><Table.Cell class="font-medium">{a.name}</Table.Cell><Table.Cell>{kind(a.kind)}</Table.Cell><Table.Cell class="text-right tabular-nums">{a.count}</Table.Cell><Table.Cell class="text-right tabular-nums">{chf(a.total)}</Table.Cell></Table.Row>
+							<Table.Row><Table.Cell class="hidden sm:table-cell">{a.programme}</Table.Cell><Table.Cell class="whitespace-normal"><div class="font-medium">{a.name}</div><div class="text-xs text-muted-foreground sm:hidden">{a.programme} · {kind(a.kind)}</div></Table.Cell><Table.Cell class="hidden sm:table-cell">{kind(a.kind)}</Table.Cell><Table.Cell class="text-right tabular-nums">{a.count}</Table.Cell><Table.Cell class="text-right tabular-nums">{chf(a.total)}</Table.Cell></Table.Row>
 						{:else}
 							<Table.Row><Table.Cell colspan={5} class="py-6 text-center text-muted-foreground">{$t`No awards given yet.`}</Table.Cell></Table.Row>
 						{/each}
@@ -142,14 +143,14 @@
 					<Table.Body>
 						{#each club.data.ranked as c (c.clubId)}
 							<Table.Row class={c.excluded ? 'opacity-50' : ''}>
-								<Table.Cell>{c.excluded ? $t`out of competition` : c.rank}</Table.Cell>
-								<Table.Cell class="font-medium">{c.name}</Table.Cell>
+								<Table.Cell class="whitespace-normal">{c.excluded ? $t`out of competition` : c.rank}</Table.Cell>
+								<Table.Cell class="font-medium whitespace-normal">{c.name}</Table.Cell>
 								<Table.Cell class="text-right tabular-nums">{c.result.toFixed(3)}</Table.Cell>
 								<Table.Cell class="text-right tabular-nums">{c.participants}</Table.Cell>
 							</Table.Row>
 						{/each}
 						{#each club.data.unranked as c (c.clubId)}
-							<Table.Row class="text-muted-foreground"><Table.Cell>{$t`not ranked`}</Table.Cell><Table.Cell>{c.name}</Table.Cell><Table.Cell></Table.Cell><Table.Cell class="text-right tabular-nums">{c.participants}</Table.Cell></Table.Row>
+							<Table.Row class="text-muted-foreground"><Table.Cell class="whitespace-normal">{$t`not ranked`}</Table.Cell><Table.Cell class="whitespace-normal">{c.name}</Table.Cell><Table.Cell></Table.Cell><Table.Cell class="text-right tabular-nums">{c.participants}</Table.Cell></Table.Row>
 						{/each}
 					</Table.Body>
 				</Table.Root>
@@ -162,7 +163,7 @@
 				{#each reports as r (r.id)}
 					<li class="flex items-center gap-2 px-4 py-2 text-sm">
 						<span class="mr-auto">{r.label}</span>
-						<Button size="sm" variant="outline" href={reportUrl(r.id, 'pdf')} target="_blank"><FileText />PDF</Button>
+						<Button size="sm" variant="outline" href={reportUrl(r.id, 'pdf')} target="_blank" onclick={pdfClick}><FileText />PDF</Button>
 						<Button size="sm" variant="outline" href={reportUrl(r.id, 'csv')}><FileSpreadsheet />CSV</Button>
 					</li>
 				{/each}
@@ -170,7 +171,7 @@
 					{#if p.showOnRankings}
 						<li class="flex items-center gap-2 px-4 py-2 text-sm">
 							<span class="mr-auto">{$t`Ranking ${programmeTitle(p)}`}</span>
-							<Button size="sm" variant="outline" href="/api/tenants/{tenantId}/programmes/{p.id}/ranking" target="_blank"><FileText />PDF</Button>
+							<Button size="sm" variant="outline" href="/api/tenants/{tenantId}/programmes/{p.id}/ranking" target="_blank" onclick={pdfClick}><FileText />PDF</Button>
 							<Button size="sm" variant="outline" href="/api/tenants/{tenantId}/programmes/{p.id}/ranking.csv"><FileSpreadsheet />CSV</Button>
 						</li>
 					{/if}

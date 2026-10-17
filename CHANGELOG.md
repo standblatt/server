@@ -10,7 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Club pages and helper links show a bar while there is no connection (by @HB9HIL)
 
+### Changed
+- On phones and tablets PDFs go to the share sheet instead of a new tab (by @HB9HIL)
+- On phones tables show their main columns with the rest below the name, and the setup tabs become a list, so no page scrolls sideways (by @HB9HIL)
+
 ### Fixed
+- PDF links on helper pages work (they were sent without the helper code) (by @HB9HIL)
 - On phones the sidebar closes after choosing a page (by @HB9HIL)
 - Installed on an iPhone, the app keeps its headers below the status bar and nothing scrolls behind it (by @HB9HIL)
 - Training sessions saved offline are no longer lost when the login expired or the upload is refused, stay with the account that typed them, and the app opens offline (by @HB9HIL)

@@ -94,13 +94,13 @@
 	</div>
 	<Table.Root>
 		<Table.Header>
-			<Table.Row><Table.Head>{$t`Name`}</Table.Head><Table.Head>{$t`SSV number`}</Table.Head><Table.Head class="text-right">{$t`Shooters`}</Table.Head><Table.Head class="w-10"></Table.Head></Table.Row>
+			<Table.Row><Table.Head>{$t`Name`}</Table.Head><Table.Head class="hidden sm:table-cell">{$t`SSV number`}</Table.Head><Table.Head class="text-right">{$t`Shooters`}</Table.Head><Table.Head class="w-10"></Table.Head></Table.Row>
 		</Table.Header>
 		<Table.Body>
 			{#each pageOf(shown, pageNo, pageSize) as c (c.id)}
 				<Table.Row>
-					<Table.Cell class="font-medium">{c.name}</Table.Cell>
-					<Table.Cell class="font-mono text-xs">{c.ssvNumber || '–'}</Table.Cell>
+					<Table.Cell class="font-medium whitespace-normal">{c.name}</Table.Cell>
+					<Table.Cell class="hidden sm:table-cell font-mono text-xs">{c.ssvNumber || '–'}</Table.Cell>
 					<Table.Cell class="text-right tabular-nums">{c.shooterCount}</Table.Cell>
 					<Table.Cell class="text-right">
 						{#if isAdmin}

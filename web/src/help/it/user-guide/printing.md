@@ -12,7 +12,10 @@ Standblatt produce tutti i documenti in PDF:
 
 Ogni pulsante di stampa stampa sulla stampante dello stand se è configurata
 e il suo agente di stampa è online; altrimenti il PDF si apre nel browser e
-si può stampare da lì.
+si può stampare da lì. Su telefono o tablet il PDF passa invece al menu di
+condivisione (stampare, salvare in File, inviare), così l’app resta aperta;
+se il telefono chiede prima un altro tocco, appare un avviso con il pulsante
+**Condividi**.
 
 ## Configurare le stampanti
 

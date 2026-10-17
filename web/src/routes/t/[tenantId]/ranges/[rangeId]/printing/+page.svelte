@@ -152,12 +152,12 @@
 				{#if printers.length === 0}<p class="text-xs text-muted-foreground">{$t`The printers appear here once an agent has connected.`}</p>{/if}
 			</div>
 			<Table.Root>
-				<Table.Header><Table.Row><Table.Head>{$t`Document`}</Table.Head><Table.Head>{$t`Printer`}</Table.Head><Table.Head>{$t`Options`}</Table.Head><Table.Head></Table.Head></Table.Row></Table.Header>
+				<Table.Header class="max-sm:hidden"><Table.Row><Table.Head>{$t`Document`}</Table.Head><Table.Head>{$t`Printer`}</Table.Head><Table.Head>{$t`Options`}</Table.Head><Table.Head></Table.Head></Table.Row></Table.Header>
 				<Table.Body>
 					{#each documents as d (d.id)}
 						{#if drafts[d.id]}
 							{@const pr = printers.find((x) => x.name === drafts[d.id].printer)}
-							<Table.Row>
+							<Table.Row class="max-sm:flex max-sm:flex-col max-sm:gap-1 max-sm:py-2">
 								<Table.Cell class="font-medium">{d.label}</Table.Cell>
 								<Table.Cell>
 									<NativeSelect.Root size="sm" bind:value={drafts[d.id].printer} aria-label={$t`Printer for ${d.label}`}>
@@ -177,10 +177,10 @@
 												</NativeSelect.Root>
 											</label>
 										{/each}
-										<Input class="h-8 w-56" placeholder={$t`more lp options, e.g. fit-to-page`} bind:value={drafts[d.id].extra} aria-label={$t`More options for ${d.label}`} />
+										<Input class="h-8 w-56 max-sm:w-full" placeholder={$t`more lp options, e.g. fit-to-page`} bind:value={drafts[d.id].extra} aria-label={$t`More options for ${d.label}`} />
 									</div>
 								</Table.Cell>
-								<Table.Cell class="text-right"><Button size="sm" variant="outline" onclick={() => save(d.id)}>{$t`Save`}</Button></Table.Cell>
+								<Table.Cell class="text-right max-sm:text-left"><Button size="sm" variant="outline" onclick={() => save(d.id)}>{$t`Save`}</Button></Table.Cell>
 							</Table.Row>
 						{/if}
 					{/each}
@@ -192,13 +192,13 @@
 		<section class="overflow-hidden rounded-lg border bg-card">
 			<div class="border-b px-4 py-3"><h2 class="text-sm font-semibold">{$t`Recent jobs`}</h2></div>
 			<Table.Root>
-				<Table.Header><Table.Row><Table.Head>{$t`Time`}</Table.Head><Table.Head>{$t`Document`}</Table.Head><Table.Head>{$t`Printer`}</Table.Head><Table.Head>{$t`Status`}</Table.Head></Table.Row></Table.Header>
+				<Table.Header><Table.Row><Table.Head>{$t`Time`}</Table.Head><Table.Head>{$t`Document`}</Table.Head><Table.Head class="hidden sm:table-cell">{$t`Printer`}</Table.Head><Table.Head>{$t`Status`}</Table.Head></Table.Row></Table.Header>
 				<Table.Body>
 					{#each jobs.data ?? [] as j (j.id)}
 						<Table.Row>
 							<Table.Cell class="tabular-nums">{new Date(j.createdAt).toLocaleTimeString(intlLocale())}</Table.Cell>
-							<Table.Cell>{j.title}</Table.Cell>
-							<Table.Cell>{j.printer}</Table.Cell>
+							<Table.Cell class="whitespace-normal">{j.title}</Table.Cell>
+							<Table.Cell class="hidden sm:table-cell">{j.printer}</Table.Cell>
 							<Table.Cell>
 								<Badge
 									variant="outline"

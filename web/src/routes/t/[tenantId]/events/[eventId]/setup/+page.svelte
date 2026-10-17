@@ -2,6 +2,7 @@
 	import { t } from 'lingui-for-svelte/macro';
 	import type { Snippet } from 'svelte';
 	import { goto } from '$app/navigation';
+	import * as NativeSelect from '$lib/components/ui/native-select';
 	import { page } from '$app/state';
 	import { useQueryClient } from '@tanstack/svelte-query';
 	import Archive from '@lucide/svelte/icons/archive';
@@ -141,7 +142,10 @@
 {#if event.data}
 	{@const ev = event.data}
 	{#if isAdmin}
-		<div class="mb-4 flex gap-1 overflow-x-auto border-b" role="tablist" aria-label={$t`Setup`}>
+		<NativeSelect.Root class="mb-4 w-full sm:hidden" value={tab} onchange={(e) => goto(`?tab=${e.currentTarget.value}`, { replaceState: true, noScroll: true })} aria-label={$t`Setup`}>
+			{#each tabs as [key, label] (key)}<NativeSelect.Option value={key}>{label}</NativeSelect.Option>{/each}
+		</NativeSelect.Root>
+		<div class="mb-4 hidden gap-1 overflow-x-auto border-b sm:flex" role="tablist" aria-label={$t`Setup`}>
 			{#each tabs as [key, label] (key)}
 				<a
 					href="?tab={key}"

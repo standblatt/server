@@ -97,15 +97,15 @@
 	<div class="overflow-hidden rounded-lg border bg-card">
 		<Table.Root>
 			<Table.Header>
-				<Table.Row><Table.Head class="w-32">{$t`Date`}</Table.Head><Table.Head>{$t`Name`}</Table.Head><Table.Head>{$t`Range`}</Table.Head><Table.Head>{$t`Organizer`}</Table.Head></Table.Row>
+				<Table.Row><Table.Head class="sm:w-32">{$t`Date`}</Table.Head><Table.Head>{$t`Name`}</Table.Head><Table.Head class="hidden sm:table-cell">{$t`Range`}</Table.Head><Table.Head class="hidden sm:table-cell">{$t`Organizer`}</Table.Head></Table.Row>
 			</Table.Header>
 			<Table.Body>
 				{#each list as ev (ev.id)}
 					<Table.Row class="cursor-pointer" onclick={() => goto(`/t/${tenantId}/events/${ev.id}`)}>
 						<Table.Cell class="tabular-nums {muted ? 'text-muted-foreground' : ''}">{formatDays(ev.days, ev.startsOn)}</Table.Cell>
-						<Table.Cell><a class="font-medium hover:underline" href="/t/{tenantId}/events/{ev.id}">{ev.name}</a></Table.Cell>
-						<Table.Cell>{rangeNames(ev.ranges)}</Table.Cell>
-						<Table.Cell class="text-muted-foreground">{ev.organizer || '–'}</Table.Cell>
+						<Table.Cell class="whitespace-normal"><a class="font-medium hover:underline" href="/t/{tenantId}/events/{ev.id}">{ev.name}</a><div class="text-xs text-muted-foreground sm:hidden">{rangeNames(ev.ranges)}</div></Table.Cell>
+						<Table.Cell class="hidden sm:table-cell">{rangeNames(ev.ranges)}</Table.Cell>
+						<Table.Cell class="hidden sm:table-cell text-muted-foreground">{ev.organizer || '–'}</Table.Cell>
 					</Table.Row>
 				{/each}
 			</Table.Body>

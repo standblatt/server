@@ -12,7 +12,10 @@ Standblatt erzeugt alle Dokumente als PDF:
 
 Jeder Druckknopf druckt auf dem Drucker des Schiessstands, wenn einer
 eingerichtet ist und sein Druck-Agent online ist; sonst öffnet sich das PDF
-im Browser und lässt sich von dort drucken.
+im Browser und lässt sich von dort drucken. Auf Handy oder Tablet geht das
+PDF stattdessen ins Teilen-Menü (drucken, in Dateien sichern, senden),
+sodass die App offen bleibt; verlangt das Handy zuerst einen weiteren Tipp,
+erscheint ein Hinweis mit dem Button **Teilen**.
 
 ## Drucker einrichten
 

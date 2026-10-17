@@ -55,7 +55,7 @@
 			</span>
 		{/if}
 	</div>
-	<div class="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 [scrollbar-width:none]">
+	<div class="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 [scrollbar-width:none]" data-swipe>
 		{#each ordered as d, i (d.id)}
 			<a
 				href="/my/train?d={d.id}"

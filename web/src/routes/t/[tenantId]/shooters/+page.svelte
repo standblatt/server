@@ -114,16 +114,19 @@
 	</div>
 	<Table.Root>
 		<Table.Header>
-			<Table.Row><Table.Head class="w-28">{$t`License`}</Table.Head><Table.Head>{$t`Name`}</Table.Head><Table.Head>{$t`Birthday`}</Table.Head><Table.Head class="hidden md:table-cell">{$t`City`}</Table.Head><Table.Head>{$t`Clubs`}</Table.Head></Table.Row>
+			<Table.Row><Table.Head class="hidden sm:table-cell w-28">{$t`License`}</Table.Head><Table.Head>{$t`Name`}</Table.Head><Table.Head class="hidden sm:table-cell">{$t`Birthday`}</Table.Head><Table.Head class="hidden md:table-cell">{$t`City`}</Table.Head><Table.Head class="hidden sm:table-cell">{$t`Clubs`}</Table.Head></Table.Row>
 		</Table.Header>
 		<Table.Body>
 			{#each results.data?.items ?? [] as sh (sh.id)}
 				<Table.Row class="cursor-pointer" onclick={() => openShooter(sh.id)}>
-					<Table.Cell class="font-mono text-xs">{sh.licenseNumber || '–'}</Table.Cell>
-					<Table.Cell><a class="font-medium hover:underline" href="?shooter={sh.id}" data-sveltekit-noscroll>{sh.lastname} {sh.firstname}</a></Table.Cell>
-					<Table.Cell class="tabular-nums">{sh.birthday ? formatDate(sh.birthday) : '–'}</Table.Cell>
+					<Table.Cell class="hidden sm:table-cell font-mono text-xs">{sh.licenseNumber || '–'}</Table.Cell>
+					<Table.Cell class="whitespace-normal">
+						<a class="font-medium hover:underline" href="?shooter={sh.id}" data-sveltekit-noscroll>{sh.lastname} {sh.firstname}</a>
+						<div class="text-xs text-muted-foreground sm:hidden">{[sh.licenseNumber, sh.birthday && formatDate(sh.birthday), ...sh.clubs.map((c) => c.name)].filter(Boolean).join(' · ')}</div>
+					</Table.Cell>
+					<Table.Cell class="hidden sm:table-cell tabular-nums">{sh.birthday ? formatDate(sh.birthday) : '–'}</Table.Cell>
 					<Table.Cell class="hidden md:table-cell">{[sh.postalcode, sh.city].filter(Boolean).join(' ') || '–'}</Table.Cell>
-					<Table.Cell class="text-muted-foreground">{sh.clubs.map((c) => c.name).join(', ') || '–'}</Table.Cell>
+					<Table.Cell class="hidden sm:table-cell text-muted-foreground">{sh.clubs.map((c) => c.name).join(', ') || '–'}</Table.Cell>
 				</Table.Row>
 			{:else}
 				<Table.Row>

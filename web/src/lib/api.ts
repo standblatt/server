@@ -94,3 +94,14 @@ export async function call<T>(p: Promise<Result<T>>): Promise<T> {
 	const detail = (error as { detail?: string } | undefined)?.detail;
 	throw new ApiError(response.status, detail || response.statusText);
 }
+
+/** Fetches a file the API serves (a PDF, a CSV) with the helper code if any, named after its Content-Disposition; throws like call(). */
+export async function fetchFile(url: string): Promise<File> {
+	const code = helperCode();
+	const res = await fetch(url, { headers: { 'Accept-Language': currentLocale(), ...(code ? { Authorization: `Bearer ${code}` } : {}) } }).catch(() => {
+		throw new OfflineError(i18n._(noConnection));
+	});
+	if (!res.ok) throw new ApiError(res.status, ((await res.json().catch(() => ({}))) as { detail?: string }).detail || res.statusText);
+	const name = /filename="?([^";]+)"?/.exec(res.headers.get('Content-Disposition') ?? '')?.[1] ?? 'document.pdf';
+	return new File([await res.blob()], name, { type: res.headers.get('Content-Type') ?? 'application/octet-stream' });
+}

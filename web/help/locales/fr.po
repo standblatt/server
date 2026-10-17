@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-17 18:07+0000\n"
+"POT-Creation-Date: 2026-10-17 18:40+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -1310,14 +1310,23 @@ msgid ""
 "for example because its discipline was deleted, a note shows the reason and "
 "you can **Discard** it. Only new sessions can be saved offline; changing a "
 "session needs a connection."
-msgstr "Les séances en attente appartiennent au compte qui les a saisies. Si ta connexion a expiré entre-temps, reconnecte-toi et elles sont envoyées ; une autre personne qui se connecte sur le même appareil ne les reçoit pas. Si le serveur en refuse une, par exemple parce que sa discipline a été supprimée, une note en indique la raison et tu peux l’**Abandonner**. Seules les nouvelles séances peuvent être enregistrées hors ligne ; modifier une séance nécessite une connexion."
+msgstr ""
+"Les séances en attente appartiennent au compte qui les a saisies. Si ta "
+"connexion a expiré entre-temps, reconnecte-toi et elles sont envoyées ; une "
+"autre personne qui se connecte sur le même appareil ne les reçoit pas. Si le "
+"serveur en refuse une, par exemple parce que sa discipline a été supprimée, "
+"une note en indique la raison et tu peux l’**Abandonner**. Seules les "
+"nouvelles séances peuvent être enregistrées hors ligne ; modifier une séance "
+"nécessite une connexion."
 
 #. type: Plain text
 #: ../src/help/en/my-training/logging.md:52
 msgid ""
 "Once you opened the app online, it also opens without a connection and shows "
 "your last data."
-msgstr "Une fois l’app ouverte en ligne, elle s’ouvre aussi sans connexion et affiche tes dernières données."
+msgstr ""
+"Une fois l’app ouverte en ligne, elle s’ouvre aussi sans connexion et "
+"affiche tes dernières données."
 
 #. type: Title ##
 #: ../src/help/en/my-training/logging.md:53
@@ -2297,7 +2306,14 @@ msgid ""
 "catches up by itself. Without a connection a red bar says so; nothing can be "
 "saved then, but open dialogs keep what you typed, so you can save again once "
 "you are back online."
-msgstr "Tout se met à jour en direct : un résultat saisi sur un autre ordinateur ou une réservation qui commence apparaît sans recharger. Le point à côté de **live** dans l’en-tête montre la connexion ; après une interruption du réseau, la page se met à jour d’elle-même. Sans connexion, une barre rouge le signale ; rien ne peut alors être enregistré, mais les dialogues ouverts gardent ce que tu as saisi, pour que tu puisses enregistrer à nouveau dès que tu es de retour en ligne."
+msgstr ""
+"Tout se met à jour en direct : un résultat saisi sur un autre ordinateur ou "
+"une réservation qui commence apparaît sans recharger. Le point à côté de "
+"**live** dans l’en-tête montre la connexion ; après une interruption du "
+"réseau, la page se met à jour d’elle-même. Sans connexion, une barre rouge "
+"le signale ; rien ne peut alors être enregistré, mais les dialogues ouverts "
+"gardent ce que tu as saisi, pour que tu puisses enregistrer à nouveau dès "
+"que tu es de retour en ligne."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/dashboard.md:16
@@ -2803,11 +2819,10 @@ msgstr ""
 msgid ""
 "Every Print button prints on the range's printer if one is set up and its "
 "print agent is online; otherwise the PDF opens in the browser and can be "
-"printed from there."
-msgstr ""
-"Chaque bouton d’impression imprime sur l’imprimante du stand si elle est "
-"configurée et que son agent d’impression est en ligne ; sinon le PDF s’ouvre "
-"dans le navigateur et peut être imprimé de là."
+"printed from there. On a phone or tablet the PDF goes to the share sheet "
+"instead (print, save to files, send), so the app stays open; if the phone "
+"asks for another tap first, a note with a **Share** button appears."
+msgstr "Chaque bouton d’impression imprime sur l’imprimante du stand si elle est configurée et que son agent d’impression est en ligne ; sinon le PDF s’ouvre dans le navigateur et peut être imprimé de là. Sur un téléphone ou une tablette, le PDF passe plutôt par le menu de partage (imprimer, enregistrer dans Fichiers, envoyer), l’app reste donc ouverte ; si le téléphone demande d’abord un autre toucher, une note avec le bouton **Partager** apparaît."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/printing.md:15

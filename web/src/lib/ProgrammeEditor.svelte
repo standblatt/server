@@ -165,15 +165,15 @@
 			<div class="overflow-hidden rounded-md border">
 				<Table.Root>
 					<Table.Header>
-						<Table.Row><Table.Head class="w-10">#</Table.Head><Table.Head>{$t`Shots`}</Table.Head><Table.Head>{$t`Max. points`}</Table.Head><Table.Head>{$t`Name`}</Table.Head><Table.Head>{$t`Mouches`}</Table.Head><Table.Head></Table.Head></Table.Row>
+						<Table.Row><Table.Head class="hidden w-10 sm:table-cell">#</Table.Head><Table.Head>{$t`Shots`}</Table.Head><Table.Head class="whitespace-normal">{$t`Max. points`}</Table.Head><Table.Head>{$t`Name`}</Table.Head><Table.Head><span class="sm:hidden" title={$t`Mouches`}>{$t({ message: "M", comment: "Column header: mouches" })}</span><span class="hidden sm:inline">{$t`Mouches`}</span></Table.Head><Table.Head></Table.Head></Table.Row>
 					</Table.Header>
 					<Table.Body>
 						{#each series as s, i (i)}
 							<Table.Row>
-								<Table.Cell class="text-muted-foreground">{i + 1}</Table.Cell>
-								<Table.Cell><Input class="h-8 w-20" type="number" min="1" max="100" bind:value={s.shots} required disabled={locked} /></Table.Cell>
-								<Table.Cell><Input class="h-8 w-24" type="number" min="1" bind:value={s.maxPoints} required disabled={locked} /></Table.Cell>
-								<Table.Cell><Input class="h-8" bind:value={s.name} /></Table.Cell>
+								<Table.Cell class="hidden text-muted-foreground sm:table-cell">{i + 1}</Table.Cell>
+								<Table.Cell><Input class="h-8 w-14 sm:w-20" type="number" min="1" max="100" bind:value={s.shots} required disabled={locked} /></Table.Cell>
+								<Table.Cell><Input class="h-8 w-16 sm:w-24" type="number" min="1" bind:value={s.maxPoints} required disabled={locked} /></Table.Cell>
+								<Table.Cell class="w-full"><Input class="h-8 min-w-16" bind:value={s.name} /></Table.Cell>
 								<Table.Cell><Checkbox bind:checked={s.trackMouches} disabled={locked} aria-label={$t`Track mouches in series ${i + 1}`} /></Table.Cell>
 								<Table.Cell class="text-right">
 									<Button variant="ghost" size="icon-sm" title={$t`Remove series`} aria-label={$t`Remove series ${i + 1}`} onclick={() => series.splice(i, 1)} disabled={locked || series.length === 1}><Trash /></Button>

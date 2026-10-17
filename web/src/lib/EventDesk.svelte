@@ -359,13 +359,13 @@
 								<div class="text-lg font-semibold">{r.lane}</div>
 								<div class="text-xs whitespace-nowrap text-muted-foreground">{since(r.startedAt)}</div>
 							</Table.Cell>
-							<Table.Cell>{@render shooter(r)}</Table.Cell>
+							<Table.Cell class="whitespace-normal">{@render shooter(r)}</Table.Cell>
 							<Table.Cell class="hidden 2xl:table-cell">{$t(ageCategoryLabel(r.ageCategory))}</Table.Cell>
 							<Table.Cell class="hidden whitespace-normal lg:table-cell">{programmeNames(r)}</Table.Cell>
 							<Table.Cell onclick={(e: MouseEvent) => e.stopPropagation()}>
 								<div class="flex items-center justify-end gap-1.5">
 									{@render ammo(r)}
-									{#if can.results}<Button size="sm" href="{base}?results={r.id}" data-sveltekit-noscroll data-sveltekit-keepfocus><ListChecks />{$t`Results`}</Button>{/if}
+									{#if can.results}<Button size="sm" href="{base}?results={r.id}" data-sveltekit-noscroll data-sveltekit-keepfocus title={$t`Results`}><ListChecks /><span class="sr-only sm:not-sr-only">{$t`Results`}</span></Button>{/if}
 									{#if can.assign}<Button size="sm" variant="outline" title={$t`Edit registration`} onclick={() => openRegistration(r.id)}><Pencil /><span class="sr-only xl:not-sr-only">{$t`Edit`}</span></Button>{/if}
 									{#if can.finish && !archived}<Button size="sm" variant="outline" title={$t`Finish shooting`} onclick={() => finish(r)}><Flag /><span class="sr-only xl:not-sr-only">{$t`Finish`}</span></Button>{/if}
 								</div>
@@ -387,17 +387,17 @@
 							<Table.Head>{$t`Shooter`}</Table.Head>
 							<Table.Head class="hidden md:table-cell">{$t`Category`}</Table.Head>
 							<Table.Head class="hidden lg:table-cell">{$t`Programmes`}</Table.Head>
-							<Table.Head>{$t`Waiting`}</Table.Head>
+							<Table.Head class="hidden sm:table-cell">{$t`Waiting`}</Table.Head>
 							<Table.Head></Table.Head>
 						</Table.Row>
 					</Table.Header>
 					<Table.Body>
 						{#each pageOf(waiting, waitingPage, pageSize) as r (r.id)}
 							<Table.Row class={can.assign ? 'cursor-pointer' : ''} onclick={() => can.assign && openRegistration(r.id)}>
-								<Table.Cell>{@render shooter(r)}</Table.Cell>
+								<Table.Cell class="whitespace-normal">{@render shooter(r)}</Table.Cell>
 								<Table.Cell class="hidden md:table-cell">{$t(ageCategoryLabel(r.ageCategory))}</Table.Cell>
 								<Table.Cell class="hidden whitespace-normal lg:table-cell">{programmeNames(r)}</Table.Cell>
-								<Table.Cell class="text-muted-foreground tabular-nums">{waitingFor(r.registeredAt)}</Table.Cell>
+								<Table.Cell class="hidden text-muted-foreground tabular-nums sm:table-cell">{waitingFor(r.registeredAt)}</Table.Cell>
 								<Table.Cell onclick={(e: MouseEvent) => e.stopPropagation()}>
 									<div class="flex items-center justify-end gap-1.5">
 										{@render ammo(r)}
@@ -426,20 +426,20 @@
 							<Table.Head class="hidden lg:table-cell">{$t`Programmes`}</Table.Head>
 							<Table.Head>{$t`Results`}</Table.Head>
 							<Table.Head>{$t`Awards`}</Table.Head>
-							<Table.Head></Table.Head>
+							<Table.Head class="hidden sm:table-cell"></Table.Head>
 						</Table.Row>
 					</Table.Header>
 					<Table.Body>
 						{#each pageOf(completed, completedPage, pageSize) as r (r.id)}
 							<Table.Row class={can.results ? 'cursor-pointer' : ''} onclick={() => can.results && openResults(r.id)}>
-								<Table.Cell>{@render shooter(r)}</Table.Cell>
+								<Table.Cell class="whitespace-normal">{@render shooter(r)}</Table.Cell>
 								<Table.Cell class="hidden md:table-cell">{$t(ageCategoryLabel(r.ageCategory))}</Table.Cell>
 								<Table.Cell class="hidden whitespace-normal lg:table-cell">{programmeNames(r)}</Table.Cell>
 								<Table.Cell>
 									{#if missingResults(r)}<Badge variant="outline" class="border-amber-500/50 text-amber-700 dark:text-amber-400">{$t`missing`}</Badge>{:else}<Badge variant="outline" class="border-emerald-500/50 text-emerald-700 dark:text-emerald-400">{$t`complete`}</Badge>{/if}
 								</Table.Cell>
 								<Table.Cell onclick={(e: MouseEvent) => e.stopPropagation()}><div class="flex flex-wrap items-center gap-1.5">{@render awards(r)}</div></Table.Cell>
-								<Table.Cell class="text-right">{#if can.results}<Button size="sm" variant="outline" href="{base}?results={r.id}" data-sveltekit-noscroll data-sveltekit-keepfocus>{$t`Results`}</Button>{/if}</Table.Cell>
+								<Table.Cell class="hidden text-right sm:table-cell">{#if can.results}<Button size="sm" variant="outline" href="{base}?results={r.id}" data-sveltekit-noscroll data-sveltekit-keepfocus>{$t`Results`}</Button>{/if}</Table.Cell>
 							</Table.Row>
 						{:else}
 							<Table.Row><Table.Cell colspan={6} class="py-6 text-center text-muted-foreground">{$t`Nobody has finished yet.`}</Table.Cell></Table.Row>

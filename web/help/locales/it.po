@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-17 18:07+0000\n"
+"POT-Creation-Date: 2026-10-17 18:40+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -1298,14 +1298,23 @@ msgid ""
 "for example because its discipline was deleted, a note shows the reason and "
 "you can **Discard** it. Only new sessions can be saved offline; changing a "
 "session needs a connection."
-msgstr "Le sessioni in attesa appartengono all’account che le ha inserite. Se nel frattempo il tuo login è scaduto, accedi di nuovo e verranno caricate; un’altra persona che accede sullo stesso dispositivo non le riceve. Se il server ne rifiuta una, per esempio perché la sua disciplina è stata eliminata, un avviso ne mostra il motivo e puoi eliminarla con **Scarta**. Offline si possono salvare solo sessioni nuove; per modificare una sessione serve una connessione."
+msgstr ""
+"Le sessioni in attesa appartengono all’account che le ha inserite. Se nel "
+"frattempo il tuo login è scaduto, accedi di nuovo e verranno caricate; "
+"un’altra persona che accede sullo stesso dispositivo non le riceve. Se il "
+"server ne rifiuta una, per esempio perché la sua disciplina è stata "
+"eliminata, un avviso ne mostra il motivo e puoi eliminarla con **Scarta**. "
+"Offline si possono salvare solo sessioni nuove; per modificare una sessione "
+"serve una connessione."
 
 #. type: Plain text
 #: ../src/help/en/my-training/logging.md:52
 msgid ""
 "Once you opened the app online, it also opens without a connection and shows "
 "your last data."
-msgstr "Dopo aver aperto l’app online una volta, si apre anche senza connessione e mostra i tuoi ultimi dati."
+msgstr ""
+"Dopo aver aperto l’app online una volta, si apre anche senza connessione e "
+"mostra i tuoi ultimi dati."
 
 #. type: Title ##
 #: ../src/help/en/my-training/logging.md:53
@@ -2277,7 +2286,13 @@ msgid ""
 "catches up by itself. Without a connection a red bar says so; nothing can be "
 "saved then, but open dialogs keep what you typed, so you can save again once "
 "you are back online."
-msgstr "Tutto si aggiorna in tempo reale: un risultato inserito su un altro computer o una prenotazione che inizia appare senza ricaricare. Il punto accanto a **live** nell’intestazione mostra la connessione; dopo un’interruzione di rete la pagina si aggiorna da sola. Senza connessione una barra rossa lo segnala; allora non si può salvare nulla, ma i dialoghi aperti mantengono ciò che hai inserito, così puoi salvare di nuovo appena sei di nuovo online."
+msgstr ""
+"Tutto si aggiorna in tempo reale: un risultato inserito su un altro computer "
+"o una prenotazione che inizia appare senza ricaricare. Il punto accanto a "
+"**live** nell’intestazione mostra la connessione; dopo un’interruzione di "
+"rete la pagina si aggiorna da sola. Senza connessione una barra rossa lo "
+"segnala; allora non si può salvare nulla, ma i dialoghi aperti mantengono "
+"ciò che hai inserito, così puoi salvare di nuovo appena sei di nuovo online."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/dashboard.md:16
@@ -2776,11 +2791,10 @@ msgstr ""
 msgid ""
 "Every Print button prints on the range's printer if one is set up and its "
 "print agent is online; otherwise the PDF opens in the browser and can be "
-"printed from there."
-msgstr ""
-"Ogni pulsante di stampa stampa sulla stampante dello stand se è configurata "
-"e il suo agente di stampa è online; altrimenti il PDF si apre nel browser e "
-"si può stampare da lì."
+"printed from there. On a phone or tablet the PDF goes to the share sheet "
+"instead (print, save to files, send), so the app stays open; if the phone "
+"asks for another tap first, a note with a **Share** button appears."
+msgstr "Ogni pulsante di stampa stampa sulla stampante dello stand se è configurata e il suo agente di stampa è online; altrimenti il PDF si apre nel browser e si può stampare da lì. Su telefono o tablet il PDF passa invece al menu di condivisione (stampare, salvare in File, inviare), così l’app resta aperta; se il telefono chiede prima un altro tocco, appare un avviso con il pulsante **Condividi**."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/printing.md:15

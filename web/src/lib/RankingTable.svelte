@@ -23,10 +23,10 @@
 			<Table.Row>
 				<Table.Head class="w-14">{$t`Rank`}</Table.Head>
 				<Table.Head>{$t`Name`}</Table.Head>
-				<Table.Head>{$t`Year`}</Table.Head>
-				<Table.Head>{$t`Cat.`}</Table.Head>
-				<Table.Head>{$t`Club`}</Table.Head>
-				{#each Array(ranking.seriesCount) as _, i (i)}<Table.Head class="text-right">{$t`S${i + 1}`}</Table.Head>{/each}
+				<Table.Head class="hidden sm:table-cell">{$t`Year`}</Table.Head>
+				<Table.Head class="hidden sm:table-cell">{$t`Cat.`}</Table.Head>
+				<Table.Head class="hidden sm:table-cell">{$t`Club`}</Table.Head>
+				{#each Array(ranking.seriesCount) as _, i (i)}<Table.Head class="hidden sm:table-cell text-right">{$t`S${i + 1}`}</Table.Head>{/each}
 				<Table.Head class="text-right">{$t`Total`}</Table.Head>
 				{#if ranking.tracksMouches}<Table.Head class="text-right">{$t({ message: "M", comment: "Column header: mouches" })}</Table.Head>{/if}
 			</Table.Row>
@@ -37,11 +37,14 @@
 					<Table.Cell>
 						<span class="inline-flex size-7 items-center justify-center rounded-full font-semibold {podium[l.rank - 1] ?? 'text-muted-foreground'}">{l.rank}</span>
 					</Table.Cell>
-					<Table.Cell class="whitespace-nowrap"><span class="font-semibold">{l.lastname}</span> {l.firstname}</Table.Cell>
-					<Table.Cell>{l.birthYear || '–'}</Table.Cell>
-					<Table.Cell>{ageCategoryShort[l.category]}</Table.Cell>
-					<Table.Cell class="max-w-48 truncate">{l.club}</Table.Cell>
-					{#each Array(ranking.seriesCount) as _, i (i)}<Table.Cell class="text-right text-muted-foreground">{l.series[i] !== undefined ? fmt(l.series[i]) : '–'}</Table.Cell>{/each}
+					<Table.Cell class="max-sm:whitespace-normal sm:whitespace-nowrap">
+						<span class="font-semibold">{l.lastname}</span> {l.firstname}
+						<div class="text-xs text-muted-foreground sm:hidden">{[l.birthYear, ageCategoryShort[l.category], l.club].filter(Boolean).join(' · ')}</div>
+					</Table.Cell>
+					<Table.Cell class="hidden sm:table-cell">{l.birthYear || '–'}</Table.Cell>
+					<Table.Cell class="hidden sm:table-cell">{ageCategoryShort[l.category]}</Table.Cell>
+					<Table.Cell class="hidden sm:table-cell max-w-48 truncate">{l.club}</Table.Cell>
+					{#each Array(ranking.seriesCount) as _, i (i)}<Table.Cell class="hidden sm:table-cell text-right text-muted-foreground">{l.series[i] !== undefined ? fmt(l.series[i]) : '–'}</Table.Cell>{/each}
 					<Table.Cell class="text-right font-semibold">{fmt(l.total)}</Table.Cell>
 					{#if ranking.tracksMouches}<Table.Cell class="text-right">{l.mouches}</Table.Cell>{/if}
 				</Table.Row>
