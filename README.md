@@ -1,6 +1,6 @@
 # Standblatt
 
-Competition management for shooting ranges (Swiss SSV rules): registration, lane assignment, result entry, awards, rankings, club competition and accounting. A single Go server with an embedded SvelteKit app; PostgreSQL is the only dependency.
+Competition management for shooting ranges (Swiss SSV rules): registration, lane assignment, result entry, awards, rankings, club competition and accounting. A single Go server with an embedded SvelteKit app; PostgreSQL is the only dependency. Website: [www.standblatt.ch](https://www.standblatt.ch).
 
 > Standblatt is under active development; the first clubs use it from 2027. Expect changes until 1.0.
 
