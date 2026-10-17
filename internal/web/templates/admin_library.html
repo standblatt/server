@@ -1,0 +1,33 @@
+{{template "head" .}}{{template "shell" .}}
+<div class="page-head">
+<div><h1>{{T "Programme library"}}</h1><p>{{T "Clubs can add these templates to their events. Upload a programme export file; a template with the same name and variant is replaced."}}</p></div>
+<form method="post" action="/admin/templates" enctype="multipart/form-data" class="row">
+<input type="file" name="file" accept=".json,application/json" required>
+<button class="primary">{{T "Upload template"}}</button>
+</form>
+</div>
+{{template "alerts" .}}
+<section class="card">
+<div class="table-wrap">
+<table>
+<thead><tr><th>{{T "Name"}}</th><th>{{T "Variant"}}</th><th class="num">{{T "Series"}}</th><th class="num">{{T "Shots"}}</th><th></th></tr></thead>
+<tbody>
+{{range .Templates}}
+<tr>
+<td><strong>{{.Definition.Name}}</strong></td>
+<td>{{with .Definition.Variant}}{{.}}{{else}}<span class="muted">–</span>{{end}}</td>
+<td class="num">{{len .Definition.Series}}</td>
+<td class="num">{{.Definition.Shots}}</td>
+<td class="actions">
+<a class="btn ghost" href="/admin/templates/{{.ID}}">{{T "download"}}</a>
+<form class="inline" method="post" action="/admin/templates/{{.ID}}/delete" data-confirm="{{Tf "Delete template %s?" .Definition.Name}}"><button class="ghost danger">{{T "delete"}}</button></form>
+</td>
+</tr>
+{{else}}
+<tr><td colspan="5" class="muted">{{T "No templates yet"}}</td></tr>
+{{end}}
+</tbody>
+</table>
+</div>
+</section>
+{{template "end" .}}

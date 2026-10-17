@@ -1,0 +1,4339 @@
+# Italian translations of the Standblatt documentation
+# Copyright (C) 2026 Standblatt
+# This file is distributed under the same license as Standblatt.
+# Translated with Claude, reviewed by the Standblatt maintainers.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: standblatt-docs\n"
+"POT-Creation-Date: 2026-10-17 14:33+0000\n"
+"PO-Revision-Date: 2026-10-15 16:49+0000\n"
+"Last-Translator: \n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Title #
+#: ../src/help/en/getting-started/concepts.md:1
+#, no-wrap
+msgid "Concepts"
+msgstr "Concetti"
+
+#. type: Title ##
+#: ../src/help/en/getting-started/concepts.md:3
+#, no-wrap
+msgid "Clubs, users and roles {#clubs-users-and-roles}"
+msgstr "Società, utenti e ruoli {#clubs-users-and-roles}"
+
+#. type: Plain text
+#: ../src/help/en/getting-started/concepts.md:6
+msgid ""
+"A **club** is a tenant: everything in Standblatt belongs to exactly one "
+"club, and clubs never see each other's data. The platform operator creates "
+"clubs and user accounts in the [admin panel](../admin-guide/admin-panel.md)."
+msgstr ""
+"Una **società** è un mandante: tutto in Standblatt appartiene esattamente a "
+"una società, e le società non vedono mai i dati delle altre. Il gestore "
+"della piattaforma crea società e account utente nel [pannello di "
+"amministrazione](../admin-guide/admin-panel.md)."
+
+#. type: Plain text
+#: ../src/help/en/getting-started/concepts.md:8
+#, no-wrap
+msgid "**Users** are personal accounts. One account can belong to several clubs, with one role per club:\n"
+msgstr "Gli **utenti** sono account personali. Un account può appartenere a più società, con un ruolo per società:\n"
+
+#. type: Plain text
+#: ../src/help/en/getting-started/concepts.md:13
+#, fuzzy, no-wrap
+#| msgid ""
+#| "| Role | Can |\n"
+#| "|---|---|\n"
+#| "| **Admin** | everything: ranges, events, programmes, kiosk links, users of the club, special prizes, archiving |\n"
+#| "| **Staff** | run events: register shooters, enter results, print, reservations; read everything else |\n"
+msgid ""
+"| Role | Can |\n"
+"|---|---|\n"
+"| **Admin** | everything: ranges, events, programmes, kiosk links, users of the club, special prizes, closing events |\n"
+"| **Staff** | run events: register shooters, enter results, print, reservations; read everything else |\n"
+msgstr ""
+"| Ruolo | Può |\n"
+"|---|---|\n"
+"| **Admin** | tutto: stand di tiro, manifestazioni, programmi, link chiosco, utenti della società, premi speciali, archiviazione |\n"
+"| **Personale** | condurre le manifestazioni: iscrivere tiratori, registrare risultati, stampare, prenotazioni; leggere tutto il resto |\n"
+
+#. type: Title ##
+#: ../src/help/en/getting-started/concepts.md:14
+#, no-wrap
+msgid "Ranges and lanes"
+msgstr "Stand di tiro e bersagli"
+
+#. type: Plain text
+#: ../src/help/en/getting-started/concepts.md:17
+msgid ""
+"A **range** (German *Stand*) is a shooting range of the club with a number "
+"of **lanes** (*Scheiben*). Lanes can be marked out of service. Printers and "
+"the print agent belong to a range."
+msgstr ""
+"Uno **stand di tiro** (inglese *range*) è uno stand della società con un "
+"certo numero di **bersagli** (*lanes*). I bersagli possono essere segnati "
+"fuori servizio. Le stampanti e l’agente di stampa appartengono a uno stand."
+
+#. type: Title ##
+#: ../src/help/en/getting-started/concepts.md:18
+#, no-wrap
+msgid "Events and programmes"
+msgstr "Manifestazioni e programmi"
+
+#. type: Plain text
+#: ../src/help/en/getting-started/concepts.md:21
+msgid ""
+"An **event** (*Anlass*) is a competition on one or more ranges on one or "
+"more days (the date is the main day; further days cover pre-shooting and "
+"multi-day events). It has a language, which is used for printed documents "
+"and kiosk screens, and a few settings such as the club excluded from the "
+"club competition."
+msgstr ""
+"Una **manifestazione** (inglese *event*) è una gara su uno o più stand di "
+"tiro in uno o più giorni (la data è il giorno principale; gli altri giorni "
+"coprono il tiro anticipato e le manifestazioni di più giorni). Ha una "
+"lingua, usata per i documenti stampati e gli schermi chiosco, e alcune "
+"impostazioni come la società esclusa dal concorso di sezione."
+
+#. type: Plain text
+#: ../src/help/en/getting-started/concepts.md:23
+msgid ""
+"An event offers **programmes** (*Stiche*): each programme has **series** "
+"(*Passen*) with a number of shots and maximum points, **prices** per age "
+"category and **award tiers** (wreath cards or prizes in kind) with a minimum "
+"total per age category. Programmes with the same name are **variants** (for "
+"example *Sport* and *Supported*); a shooter shoots one variant. A programme "
+"can be **combinable** with another programme: it then takes some of its "
+"series from that programme instead of being shot separately."
+msgstr ""
+"Una manifestazione offre **programmi**: ogni programma ha **serie** con un "
+"numero di colpi e un punteggio massimo, **prezzi** per categoria d’età e "
+"**livelli di distinzione** (carte corona o premi in natura) con un totale "
+"minimo per categoria d’età. I programmi con lo stesso nome sono **varianti** "
+"(per esempio *Sport* e *Appoggiato*); un tiratore tira una sola variante. Un "
+"programma può essere **combinabile** con un altro: prende allora alcune "
+"serie da quel programma invece di essere tirato separatamente."
+
+#. type: Title ##
+#: ../src/help/en/getting-started/concepts.md:24
+#, no-wrap
+msgid "Shooters, registrations and entries"
+msgstr "Tiratori, iscrizioni e partecipazioni"
+
+#. type: Plain text
+#: ../src/help/en/getting-started/concepts.md:27
+#, no-wrap
+msgid "**Shooters** are the people who shoot. Each club keeps its own shooter master data, together with the **clubs** shooters belong to (the shooter's own club, not to be confused with the tenant club).\n"
+msgstr "I **tiratori** sono le persone che tirano. Ogni società gestisce i propri dati di base dei tiratori, insieme alle **società** a cui appartengono (la società del tiratore, da non confondere con la società che usa Standblatt).\n"
+
+#. type: Plain text
+#: ../src/help/en/getting-started/concepts.md:29
+msgid ""
+"A **registration** puts a shooter on the event, optionally on a lane, with "
+"one or more programmes. Each programme of a registration is an **entry**. A "
+"registration is *registered* (waiting), *shooting* (on a lane) or "
+"*completed* (all programmes have results; the lane is free again)."
+msgstr ""
+"Un’**iscrizione** porta un tiratore alla manifestazione, eventualmente su un "
+"bersaglio, con uno o più programmi. Ogni programma di un’iscrizione è una "
+"**partecipazione** (*entry*). Un’iscrizione è *iscritta* (in attesa), *al "
+"tiro* (su un bersaglio) o *conclusa* (tutti i programmi hanno risultati; il "
+"bersaglio è di nuovo libero)."
+
+#. type: Title ##
+#: ../src/help/en/getting-started/concepts.md:30
+#, no-wrap
+msgid "Results, awards and rankings"
+msgstr "Risultati, distinzioni e classifiche"
+
+#. type: Plain text
+#: ../src/help/en/getting-started/concepts.md:33
+#, no-wrap
+msgid "**Results** are the points per series, optionally with mouches (inner tens). Once all series are in, the shooter may receive one of the **awards** the total reaches in the shooter's age category. **Rankings** order all results of a programme by the [SSV rules](../reference/rules.md#ranking).\n"
+msgstr "I **risultati** sono i punti per serie, facoltativamente con mouche (dieci interni). Quando tutte le serie sono registrate, il tiratore può ricevere una delle **distinzioni** che il suo totale raggiunge nella sua categoria d’età. Le **classifiche** ordinano tutti i risultati di un programma secondo le [regole della FST](../reference/rules.md#ranking).\n"
+
+#. type: Title ##
+#: ../src/help/en/getting-started/concepts.md:34
+#, no-wrap
+msgid "Age categories {#age-categories}"
+msgstr "Categorie d’età {#age-categories}"
+
+#. type: Plain text
+#: ../src/help/en/getting-started/concepts.md:37
+msgid "The age category follows from the birth year and the year of the event:"
+msgstr ""
+"La categoria d’età risulta dall’anno di nascita e dall’anno della "
+"manifestazione:"
+
+#. type: Plain text
+#: ../src/help/en/getting-started/concepts.md:50
+#, no-wrap
+msgid ""
+"| Category | Short | Age in the event year |\n"
+"|---|---|---|\n"
+"| U10 | U10 | up to 9 |\n"
+"| U13 | U13 | 10–12 |\n"
+"| U15 | U15 | 13–14 |\n"
+"| U17 | U17 | 15–16 |\n"
+"| U19 | U19 | 17–18 |\n"
+"| U21 | U21 | 19–20 |\n"
+"| Elite | E | 21–45 |\n"
+"| Senior | S | 46–59 |\n"
+"| Veteran | V | 60–69 |\n"
+"| Senior veteran | SV | 70 and older |\n"
+msgstr ""
+"| Categoria | Abbr. | Età nell’anno della manifestazione |\n"
+"|---|---|---|\n"
+"| U10 | U10 | fino a 9 |\n"
+"| U13 | U13 | 10–12 |\n"
+"| U15 | U15 | 13–14 |\n"
+"| U17 | U17 | 15–16 |\n"
+"| U19 | U19 | 17–18 |\n"
+"| U21 | U21 | 19–20 |\n"
+"| Élite | E | 21–45 |\n"
+"| Seniori | S | 46–59 |\n"
+"| Veterani | V | 60–69 |\n"
+"| Seniori-veterani | SV | 70 e oltre |\n"
+
+#. type: Plain text
+#: ../src/help/en/getting-started/concepts.md:52
+msgid "A shooter without a birthday counts as Elite."
+msgstr "Un tiratore senza data di nascita conta come élite."
+
+#. type: Title ##
+#: ../src/help/en/getting-started/concepts.md:53
+#, no-wrap
+msgid "Glossary"
+msgstr "Glossario"
+
+#. type: Plain text
+#: ../src/help/en/getting-started/concepts.md:67
+#, no-wrap
+msgid ""
+"| English (Standblatt) | German | French | Italian |\n"
+"|---|---|---|---|\n"
+"| Range | Stand | Stand | Stand |\n"
+"| Lane | Scheibe | Cible | Bersaglio |\n"
+"| Event | Anlass | Manifestation | Manifestazione |\n"
+"| Programme | Stich / Programm | Programme | Programma |\n"
+"| Series | Passe | Passe | Serie |\n"
+"| Award | Auszeichnung | Distinction | Distinzione |\n"
+"| Wreath card | Kranzkarte | Carte-couronne | Carta corona |\n"
+"| Prize in kind | Naturalgabe | Prix en nature | Premio in natura |\n"
+"| Club competition | Vereinskonkurrenz | Concours de sections | Concorso di sezione |\n"
+"| Lane sheet | Standblatt | Feuille de stand | Foglio di stand |\n"
+"| Control strip | Kontrollstreifen | Bande de contrôle | Striscia di controllo |\n"
+msgstr ""
+"| Inglese (Standblatt) | Tedesco | Francese | Italiano |\n"
+"|---|---|---|---|\n"
+"| Range | Stand | Stand | Stand |\n"
+"| Lane | Scheibe | Cible | Bersaglio |\n"
+"| Event | Anlass | Manifestation | Manifestazione |\n"
+"| Programme | Stich / Programm | Programme | Programma |\n"
+"| Series | Passe | Passe | Serie |\n"
+"| Award | Auszeichnung | Distinction | Distinzione |\n"
+"| Wreath card | Kranzkarte | Carte-couronne | Carta corona |\n"
+"| Prize in kind | Naturalgabe | Prix en nature | Premio in natura |\n"
+"| Club competition | Vereinskonkurrenz | Concours de sections | Concorso di sezione |\n"
+"| Lane sheet | Standblatt | Feuille de stand | Foglio di stand |\n"
+"| Control strip | Kontrollstreifen | Bande de contrôle | Striscia di controllo |\n"
+
+#. type: Title #
+#: ../src/help/en/getting-started/first-event.md:1
+#, no-wrap
+msgid "Your first event"
+msgstr "La tua prima manifestazione"
+
+#. type: Plain text
+#: ../src/help/en/getting-started/first-event.md:4
+msgid ""
+"This walk-through takes a club from an empty account to a running "
+"competition. It assumes the platform operator has created the club and your "
+"account as its admin (see [Admin panel](../admin-guide/admin-panel.md))."
+msgstr ""
+"Questa guida porta una società da un account vuoto a una gara in corso. "
+"Presuppone che il gestore della piattaforma abbia creato la società e il tuo "
+"account come admin (vedi [pannello di amministrazione](../admin-guide/admin-"
+"panel.md))."
+
+#. type: Title ##
+#: ../src/help/en/getting-started/first-event.md:5
+#, no-wrap
+msgid "1. Log in"
+msgstr "1. Accedere"
+
+#. type: Plain text
+#: ../src/help/en/getting-started/first-event.md:8
+msgid ""
+"Open the app, log in with the account you were given and pick your language "
+"in the user menu at the bottom of the sidebar."
+msgstr ""
+"Apri l’app, accedi con l’account ricevuto e scegli la tua lingua nel menu "
+"utente in fondo alla barra laterale."
+
+#. type: Plain text
+#: ../src/help/en/getting-started/first-event.md:10
+msgid ""
+"As long as the club has no event, the **Events** page shows a **Getting "
+"started** checklist with the steps below; each open step has a button that "
+"takes you there. An event without active programmes shows the same checklist "
+"instead of its dashboard."
+msgstr ""
+"Finché la società non ha manifestazioni, la pagina **Manifestazioni** mostra "
+"una lista **Primi passi** con i passi qui sotto; ogni passo aperto ha un "
+"pulsante che ti ci porta. Una manifestazione senza programmi attivi mostra "
+"la stessa lista invece della sua dashboard."
+
+#. type: Plain text
+#: ../src/help/en/getting-started/first-event.md:12
+#: ../src/help/en/user-guide/login-language.md:10
+msgid "![Login](../images/screenshots/login.png){ .screenshot }"
+msgstr "![Login](../images/screenshots/login.png){ .screenshot }"
+
+#. type: Title ##
+#: ../src/help/en/getting-started/first-event.md:13
+#, no-wrap
+msgid "2. Set up the range"
+msgstr "2. Configurare lo stand di tiro"
+
+#. type: Plain text
+#: ../src/help/en/getting-started/first-event.md:16
+msgid ""
+"Under **Ranges**, create the range with its number of lanes and mark lanes "
+"that are out of service. If you print at the range, add a print agent later "
+"(see [Printing](../user-guide/printing.md))."
+msgstr ""
+"In **Stand di tiro** crea lo stand con il suo numero di bersagli e segna i "
+"bersagli fuori servizio. Se stampi allo stand, aggiungi più tardi un agente "
+"di stampa (vedi [Stampa](../user-guide/printing.md))."
+
+#. type: Title ##
+#: ../src/help/en/getting-started/first-event.md:17
+#, no-wrap
+msgid "3. Load the shooters"
+msgstr "3. Caricare i tiratori"
+
+#. type: Plain text
+#: ../src/help/en/getting-started/first-event.md:20
+msgid ""
+"Under **Shooters**, import your shooter list as a CSV file (see [CSV import]"
+"(../reference/csv-import.md)) or create shooters one by one. Shooters can "
+"also be created at the desk during the event."
+msgstr ""
+"In **Tiratori** importa la tua lista di tiratori come file CSV (vedi "
+"[Importazione CSV](../reference/csv-import.md)) o crea i tiratori uno per "
+"uno. I tiratori si possono anche registrare all’accoglienza durante la "
+"manifestazione."
+
+#. type: Title ##
+#: ../src/help/en/getting-started/first-event.md:21
+#, no-wrap
+msgid "4. Create the event"
+msgstr "4. Creare la manifestazione"
+
+#. type: Plain text
+#: ../src/help/en/getting-started/first-event.md:24
+msgid ""
+"Under **Events**, create the event: name, date, range, organizer and the "
+"language of documents and kiosk screens. If you held the event last year, "
+"open last year's event and use **Copy for next year** instead: it takes over "
+"the settings and all programmes."
+msgstr ""
+"In **Manifestazioni** crea la manifestazione: nome, data, stand, "
+"organizzatore e lingua dei documenti e degli schermi chiosco. Se hai già "
+"organizzato la manifestazione l’anno scorso, apri quella dell’anno scorso e "
+"usa invece **Copia per l’anno prossimo**: riprende le impostazioni e tutti i "
+"programmi."
+
+#. type: Plain text
+#: ../src/help/en/getting-started/first-event.md:26
+msgid ""
+"![The events of a club](../images/screenshots/events.png){ .screenshot }"
+msgstr ""
+"![Le manifestazioni di una società](../images/screenshots/events.png)"
+"{ .screenshot }"
+
+#. type: Title ##
+#: ../src/help/en/getting-started/first-event.md:27
+#, no-wrap
+msgid "5. Add the programmes"
+msgstr "5. Aggiungere i programmi"
+
+#. type: Plain text
+#: ../src/help/en/getting-started/first-event.md:30
+msgid ""
+"In the event's **Setup**, add the programmes: from the editor, from the "
+"programme library, from a programme file or by copying them from an earlier "
+"event. Check prices, award tiers, variants and combinations, and set up "
+"[special prizes](../user-guide/programmes.md#special-prizes) if your event "
+"awards them."
+msgstr ""
+"Nella **Configurazione** della manifestazione aggiungi i programmi: con "
+"l’editor, dalla biblioteca dei programmi, da un file di programma o "
+"copiandoli da una manifestazione precedente. Controlla prezzi, livelli di "
+"distinzione, varianti e combinazioni, e imposta i [premi speciali](../user-"
+"guide/programmes.md#special-prizes) se la tua manifestazione ne assegna."
+
+#. type: Plain text
+#: ../src/help/en/getting-started/first-event.md:32
+msgid "![Event setup](../images/screenshots/setup.png){ .screenshot }"
+msgstr ""
+"![Configurazione della manifestazione](../images/screenshots/setup.png)"
+"{ .screenshot }"
+
+#. type: Title ##
+#: ../src/help/en/getting-started/first-event.md:33
+#, no-wrap
+msgid "6. Kiosk screens and printers"
+msgstr "6. Schermi chiosco e stampanti"
+
+#. type: Plain text
+#: ../src/help/en/getting-started/first-event.md:36
+msgid ""
+"Still in Setup, on the *Kiosk displays* tab, create a kiosk link for each "
+"screen in the hall (see [Rankings and kiosk](../user-guide/rankings-"
+"kiosk.md)). Under Ranges → Printing, assign a printer to each document (see "
+"[Printing](../user-guide/printing.md))."
+msgstr ""
+"Sempre nella configurazione, nella scheda *Display chiosco*, crea un link "
+"chiosco per ogni schermo della sala (vedi [Classifiche e chiosco](../user-"
+"guide/rankings-kiosk.md)). In Stand di tiro → Stampa assegna una stampante a "
+"ogni documento (vedi [Stampa](../user-guide/printing.md))."
+
+#. type: Title ##
+#: ../src/help/en/getting-started/first-event.md:37
+#, no-wrap
+msgid "7. Run the event"
+msgstr "7. Condurre la manifestazione"
+
+#. type: Plain text
+#: ../src/help/en/getting-started/first-event.md:40
+msgid ""
+"On the **Dashboard**, press ++f4++, search the shooter, register them on a "
+"lane and let the lane sheet print. Enter the results when the shooter hands "
+"in the targets; the rankings and kiosk screens update immediately. See "
+"[Dashboard](../user-guide/dashboard.md), [Registrations](../user-guide/"
+"registrations.md) and [Results](../user-guide/results.md)."
+msgstr ""
+"Nella **Dashboard** premi ++f4++, cerca il tiratore, iscrivilo su un "
+"bersaglio e lascia stampare il foglio di stand. Registra i risultati quando "
+"il tiratore consegna i bersagli; classifiche e schermi chiosco si aggiornano "
+"subito. Vedi [Dashboard](../user-guide/dashboard.md), [Iscrizioni](../user-"
+"guide/registrations.md) e [Risultati](../user-guide/results.md)."
+
+#. type: Title ##
+#: ../src/help/en/getting-started/first-event.md:41
+#, no-wrap
+msgid "8. After the event"
+msgstr "8. Dopo la manifestazione"
+
+#. type: Plain text
+#: ../src/help/en/getting-started/first-event.md:43
+msgid ""
+"Under **Statistics**, download the reports (financial report, awards, club "
+"competition, special prizes …). When everything is settled, **close** the "
+"event in Setup (*Copy & close* tab): the rankings are released to the "
+"shooters' personal training logs, and the event stays readable but can no "
+"longer be changed."
+msgstr ""
+"In **Statistiche** scarichi i rapporti (rapporto finanziario, distinzioni, "
+"gara di società, premi speciali …). Quando tutto è sistemato, **chiudi** la "
+"manifestazione nella configurazione (scheda *Copia e chiudi*): le "
+"classifiche vengono pubblicate nel diario di allenamento personale dei "
+"tiratori e la manifestazione resta leggibile ma non può più essere "
+"modificata."
+
+#. type: Title #
+#: ../src/help/en/index.md:1
+#, no-wrap
+msgid "Standblatt"
+msgstr "Standblatt"
+
+#. type: Plain text
+#: ../src/help/en/index.md:4
+msgid ""
+"Standblatt runs shooting competitions at the range: registration, lane "
+"assignment, result entry, awards, live rankings and the paperwork "
+"afterwards. It follows the rules of the Swiss Shooting Sport Federation (SSV/"
+"FST) and is used by clubs for events like an air pistol championship."
+msgstr ""
+"Standblatt gestisce le gare di tiro allo stand: iscrizione, assegnazione dei "
+"bersagli, registrazione dei risultati, distinzioni, classifiche in diretta e "
+"le pratiche successive. Segue le regole della Federazione sportiva svizzera "
+"di tiro (FST/SSV) ed è usato dalle società per manifestazioni come un "
+"campionato di pistola ad aria compressa."
+
+#. type: Plain text
+#: ../src/help/en/index.md:6
+msgid ""
+"With [My training](my-training/index.md) every shooter also gets a personal "
+"shooting diary on the phone: log a session in seconds, see the trend, the "
+"best series and where the group sits."
+msgstr ""
+"Con [Il mio allenamento](my-training/index.md) ogni tiratore riceve anche un "
+"diario di tiro personale sul telefono: registrare una sessione in pochi "
+"secondi, vedere la tendenza, la serie migliore e dove si trova il gruppo."
+
+#. type: Plain text
+#: ../src/help/en/index.md:8
+msgid "![The event dashboard](images/screenshots/dashboard.png){ .screenshot }"
+msgstr ""
+"![La dashboard di una manifestazione](images/screenshots/dashboard.png)"
+"{ .screenshot }"
+
+#. type: Title ##
+#: ../src/help/en/index.md:9
+#, no-wrap
+msgid "What it does"
+msgstr "Cosa fa"
+
+#. type: Bullet: '- '
+#: ../src/help/en/index.md:18
+msgid ""
+"**Registration at the desk**: find a shooter by name, license number or a "
+"scanned code, pick a lane and the programmes, print the lane sheet and the "
+"control strip."
+msgstr ""
+"**Iscrizione all’accoglienza**: trovare un tiratore per nome, numero di "
+"licenza o codice scansionato, scegliere bersaglio e programmi, stampare "
+"foglio di stand e striscia di controllo."
+
+#. type: Bullet: '- '
+#: ../src/help/en/index.md:18
+msgid ""
+"**Results**: enter the series, the totals and awards follow the programme's "
+"rules; combined programmes take their series from another programme."
+msgstr ""
+"**Risultati**: registrare le serie, totali e distinzioni seguono le regole "
+"del programma; i programmi combinati prendono le loro serie da un altro "
+"programma."
+
+#. type: Bullet: '- '
+#: ../src/help/en/index.md:18
+msgid ""
+"**Live rankings**: ranked by the SSV rules, on the staff pages and on kiosk "
+"screens in the hall, updated the moment a result is saved."
+msgstr ""
+"**Classifiche in diretta**: ordinate secondo le regole della FST, sulle "
+"pagine del personale e sugli schermi chiosco della sala, aggiornate nel "
+"momento in cui un risultato viene salvato."
+
+#. type: Bullet: '- '
+#: ../src/help/en/index.md:18
+msgid ""
+"**Documents**: lane sheets, control strips, result sheets, wreath cards and "
+"rankings as PDF, printed at the range through a small print agent."
+msgstr ""
+"**Documenti**: fogli di stand, strisce di controllo, fogli dei risultati, "
+"carte corona e classifiche in PDF, stampati allo stand tramite un piccolo "
+"agente di stampa."
+
+#. type: Bullet: '- '
+#: ../src/help/en/index.md:18
+msgid ""
+"**Reports**: statistics, club competition, revenue, awards, special prizes, "
+"all as PDF and CSV."
+msgstr ""
+"**Rapporti**: statistiche, concorso di sezione, entrate, distinzioni, premi "
+"speciali, tutto in PDF e CSV."
+
+#. type: Bullet: '- '
+#: ../src/help/en/index.md:18
+msgid ""
+"**My training**: a personal training log with fast capture, hits on the "
+"target, progress and goals; competition results from Standblatt events are "
+"added with one tap."
+msgstr ""
+"**Il mio allenamento**: un diario di allenamento personale con registrazione "
+"rapida, colpi sul bersaglio, progressi e obiettivi; i risultati di gara "
+"delle manifestazioni Standblatt si aggiungono con un tocco."
+
+#. type: Bullet: '- '
+#: ../src/help/en/index.md:18
+msgid ""
+"**Every club for itself**: each club keeps its own shooters, ranges, events "
+"and users. The interface is available in English, German, French and Italian."
+msgstr ""
+"**Ogni società per sé**: ogni società gestisce i propri tiratori, stand, "
+"manifestazioni e utenti. L’interfaccia è disponibile in inglese, tedesco, "
+"francese e italiano."
+
+#. type: Title ##
+#: ../src/help/en/index.md:19
+#, no-wrap
+msgid "Where to start"
+msgstr "Da dove iniziare"
+
+#. type: Plain text
+#: ../src/help/en/index.md:22
+#, no-wrap
+msgid "<div class=\"grid cards\" markdown>\n"
+msgstr "<div class=\"grid cards\" markdown>\n"
+
+#. type: Bullet: '- '
+#: ../src/help/en/index.md:28
+msgid ""
+"**[Concepts](getting-started/concepts.md)**: the words Standblatt uses and "
+"how they fit together."
+msgstr ""
+"**[Concetti](getting-started/concepts.md)**: le parole che Standblatt usa e "
+"come si collegano."
+
+#. type: Bullet: '- '
+#: ../src/help/en/index.md:28
+msgid ""
+"**[Your first event](getting-started/first-event.md)**: from an empty club "
+"to a running competition."
+msgstr ""
+"**[La tua prima manifestazione](getting-started/first-event.md)**: da una "
+"società vuota a una gara in corso."
+
+#. type: Bullet: '- '
+#: ../src/help/en/index.md:28
+msgid ""
+"**[My training](my-training/index.md)**: the personal training log for every "
+"shooter."
+msgstr ""
+"**[Il mio allenamento](my-training/index.md)**: il diario di allenamento "
+"personale di ogni tiratore."
+
+#. type: Bullet: '- '
+#: ../src/help/en/index.md:28
+msgid ""
+"**[User guide](user-guide/dashboard.md)**: day-to-day work for club admins "
+"and staff."
+msgstr ""
+"**[Guida per l’utente](user-guide/dashboard.md)**: il lavoro quotidiano di "
+"admin e personale della società."
+
+#. type: Bullet: '- '
+#: ../src/help/en/index.md:28
+msgid ""
+"**[Reference](reference/rules.md)**: the competition rules as implemented."
+msgstr ""
+"**[Riferimento](reference/rules.md)**: le regole di gara come sono "
+"implementate."
+
+#. type: Plain text
+#: ../src/help/en/index.md:29 ../src/help/en/my-training/index.md:12
+#, no-wrap
+msgid "</div>\n"
+msgstr "</div>\n"
+
+#. type: Title #
+#: ../src/help/en/my-training/account.md:1
+#, no-wrap
+msgid "Account"
+msgstr "Account"
+
+#. type: Plain text
+#: ../src/help/en/my-training/account.md:4
+msgid ""
+"Every Standblatt user has My training: club users open it from the start "
+"page or the user menu, shooters without a club sign up themselves. Email "
+"address, password, language, second factor and deleting the account live on "
+"the [Account](../user-guide/login-language.md#account) page, which "
+"**Account** in the sidebar or **Settings → Account** opens."
+msgstr ""
+"Ogni utente di Standblatt ha Il mio allenamento: gli utenti di una società "
+"lo aprono dalla pagina iniziale o dal menu utente, i tiratori senza società "
+"si registrano da soli. Indirizzo e-mail, password, lingua, secondo fattore "
+"ed eliminazione dell’account si trovano nella pagina [Account](../user-guide/"
+"login-language.md#account), che si apre con **Account** nella barra laterale "
+"o con **Impostazioni → Account**."
+
+#. type: Title ##
+#: ../src/help/en/my-training/account.md:5
+#, no-wrap
+msgid "Sign up"
+msgstr "Registrarsi"
+
+#. type: Plain text
+#: ../src/help/en/my-training/account.md:8
+msgid ""
+"Open **Create an account** on the login page. You need your name, your email "
+"address and a password of at least 10 characters. You are logged in right "
+"away."
+msgstr ""
+"Apri **Crea un account** nella pagina di accesso. Ti servono il tuo nome, il "
+"tuo indirizzo e-mail e una password di almeno 10 caratteri. Sei subito "
+"connesso."
+
+#. type: Plain text
+#: ../src/help/en/my-training/account.md:10
+msgid "![Sign-up](../images/screenshots/my-signup.png){ .screenshot .phone }"
+msgstr ""
+"![Registrazione](../images/screenshots/my-signup.png){ .screenshot .phone }"
+
+#. type: Plain text
+#: ../src/help/en/my-training/account.md:12
+msgid ""
+"Standblatt sends you a link to confirm your email address. Until you confirm "
+"it, a note on the Today page reminds you; **Send again** sends a new link. "
+"The link is valid for seven days."
+msgstr ""
+"Standblatt ti invia un link per confermare il tuo indirizzo e-mail. Finché "
+"non lo confermi, un avviso nella pagina Oggi te lo ricorda; **Invia di "
+"nuovo** invia un nuovo link. Il link è valido sette giorni."
+
+#. type: Plain text
+#: ../src/help/en/my-training/account.md:14
+msgid ""
+"Forgot your password? Use **Forgot your password?** on the login page. You "
+"get a link that is valid for one hour. Setting a new password logs you out "
+"everywhere. Logged in, you change the password under [Account](../user-guide/"
+"login-language.md#account)."
+msgstr ""
+"Password dimenticata? Usa **Password dimenticata?** nella pagina di accesso. "
+"Ricevi un link valido un’ora. Impostare una nuova password ti disconnette "
+"ovunque. Da connesso cambi la password sotto [Account](../user-guide/login-"
+"language.md#account)."
+
+#. type: Plain text
+#: ../src/help/en/my-training/account.md:16
+msgid ""
+"Accounts created by a club admin log in with their user name instead of an "
+"email; they can add an email address under **Settings → Email**."
+msgstr ""
+"Gli account creati da un admin della società accedono con il loro nome "
+"utente invece di un’e-mail; possono aggiungere un indirizzo e-mail in "
+"**Impostazioni → E-mail**."
+
+#. type: Title ##
+#: ../src/help/en/my-training/account.md:17
+#, no-wrap
+msgid "Profile and competition results {#competitions}"
+msgstr "Profilo e risultati di gara {#competitions}"
+
+#. type: Plain text
+#: ../src/help/en/my-training/account.md:20
+msgid ""
+"Under **Settings → Profile** you can enter your **birthday** and **license "
+"number**. With both, Standblatt finds your results from events run with "
+"Standblatt by any club, for example the club championship. They show up in "
+"the **Log** under *Your competition results* once the club has closed the "
+"event, that is, once the ranking is final. Each result carries your **rank** "
+"in the programme (for example *Rank 12 of 87*). Choose the discipline and "
+"tap **Add**, or **Add all**. Added results become competition sessions with "
+"their series and keep the rank."
+msgstr ""
+"In **Impostazioni → Profilo** puoi inserire la tua **data di nascita** e il "
+"tuo **numero di licenza**. Con entrambi Standblatt trova i tuoi risultati "
+"delle manifestazioni svolte con Standblatt da qualsiasi società, per esempio "
+"il campionato sociale. Compaiono nel **Diario** sotto *I tuoi risultati di "
+"gara* non appena la società ha chiuso la manifestazione, cioè quando la "
+"classifica è definitiva. Ogni risultato riporta il tuo **rango** nel "
+"programma (per esempio *Rango 12 di 87*). Scegli la disciplina e tocca "
+"**Aggiungi** oppure **Aggiungi tutti**. I risultati aggiunti diventano "
+"sessioni di gara con le loro serie e mantengono il rango."
+
+#. type: Title ##
+#: ../src/help/en/my-training/account.md:21
+#, no-wrap
+msgid "Own disciplines"
+msgstr "Discipline personalizzate"
+
+#. type: Plain text
+#: ../src/help/en/my-training/account.md:24
+msgid ""
+"Six disciplines are built in: air pistol and air rifle 10 m, pistol 25 m and "
+"50 m, rifle 50 m and 300 m. For anything else, e.g. a field programme, add "
+"**Own discipline** in the settings with:"
+msgstr ""
+"Sei discipline sono integrate: pistola e carabina ad aria compressa 10 m, "
+"pistola 25 m e 50 m, fucile 50 m e 300 m. Per tutto il resto, p. es. un tiro "
+"in campagna, aggiungi una **Disciplina personalizzata** nelle impostazioni "
+"con:"
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/account.md:28
+msgid "the usual number of series and shots per series,"
+msgstr "il numero abituale di serie e di colpi per serie,"
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/account.md:28
+msgid "whole or decimal (up to 10.9) scoring and the highest value of a shot,"
+msgstr ""
+"un punteggio intero o al decimo (fino a 10.9) e il valore massimo di un "
+"colpo,"
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/account.md:28
+msgid "optionally a target face for tapping hits."
+msgstr "facoltativamente un bersaglio per toccare i colpi."
+
+#. type: Title ##
+#: ../src/help/en/my-training/account.md:29
+#, no-wrap
+msgid "Weapons {#weapons}"
+msgstr "Armi {#weapons}"
+
+#. type: Plain text
+#: ../src/help/en/my-training/account.md:32
+msgid ""
+"Shoot more than one gun, e.g. two air pistols? Add them under **Settings → "
+"Weapons** with a name of your choice; the calibre does not matter. Choose "
+"the weapon when you save a session and [Progress](progress.md#weapons-"
+"compared) compares them. Renaming a weapon keeps its sessions. Deleting it "
+"keeps the sessions too, they just have no weapon any more."
+msgstr ""
+"Tiri con più di un’arma, p. es. due pistole ad aria? Aggiungile in "
+"**Impostazioni → Armi** con un nome a tua scelta; il calibro non conta. "
+"Scegli l’arma quando salvi una sessione e i [Progressi](progress.md#weapons-"
+"compared) le confrontano. Rinominare un’arma mantiene le sue sessioni. Anche "
+"eliminarla, semplicemente non hanno più un’arma."
+
+#. type: Title ##
+#: ../src/help/en/my-training/account.md:33
+#, no-wrap
+msgid "API tokens"
+msgstr "Token API"
+
+#. type: Plain text
+#: ../src/help/en/my-training/account.md:36
+msgid ""
+"Want to import sessions from another app or analyse your log with your own "
+"script? Create a token under **Settings → API tokens**:"
+msgstr ""
+"Vuoi importare sessioni da un’altra app o analizzare il tuo diario con un "
+"tuo script? Crea un token in **Impostazioni → Token API**:"
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/account.md:40
+msgid "a **name** that tells you later what uses it,"
+msgstr "un **nome** che ti dirà più tardi chi lo usa,"
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/account.md:40
+msgid "the **permissions**: *Read sessions* and/or *Log and change sessions*,"
+msgstr ""
+"le **autorizzazioni**: *Leggere le sessioni* e/o *Registrare e modificare "
+"sessioni*,"
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/account.md:40
+msgid "when it **expires**: in 30 or 90 days, in a year, or never."
+msgstr "quando **scade**: tra 30 o 90 giorni, tra un anno o mai."
+
+#. type: Plain text
+#: ../src/help/en/my-training/account.md:42
+msgid ""
+"The token (`sb_…`) is shown only once; copy it right away. Scripts send it "
+"as `Authorization: Bearer sb_…` (or `X-API-Key: sb_…`). It works for your "
+"sessions, disciplines, weapons, goals, statistics and the export, but never "
+"for your password, email, account or other tokens, and never for club data. "
+"The list shows when each token was last used; revoking one stops it at once. "
+"See the [API reference](../developer/api.md) for the endpoints."
+msgstr ""
+"Il token (`sb_…`) viene mostrato una sola volta; copialo subito. Gli script "
+"lo inviano come `Authorization: Bearer sb_…` (o `X-API-Key: sb_…`). Vale per "
+"le tue sessioni, discipline, armi, obiettivi, statistiche e l’esportazione, "
+"ma mai per la tua password, la tua e-mail, il tuo account o altri token, né "
+"per i dati della società. L’elenco mostra quando ogni token è stato usato "
+"l’ultima volta; revocarlo lo ferma subito. Gli endpoint sono nel "
+"[riferimento dell’API](../developer/api.md)."
+
+#. type: Title ##
+#: ../src/help/en/my-training/account.md:43
+#, no-wrap
+msgid "Install the app"
+msgstr "Installare l’app"
+
+#. type: Plain text
+#: ../src/help/en/my-training/account.md:46
+msgid "Standblatt is a web app that can be installed:"
+msgstr "Standblatt è un’app web che si può installare:"
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/account.md:49
+msgid ""
+"**Android / Chrome**: Settings → **Install**, or *Add to home screen* in the "
+"browser menu."
+msgstr ""
+"**Android / Chrome**: Impostazioni → **Installa**, oppure *Aggiungi a "
+"schermata Home* nel menu del browser."
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/account.md:49
+msgid "**iPhone**: Share → *Add to Home Screen*."
+msgstr "**iPhone**: Condividi → *Aggiungi alla schermata Home*."
+
+#. type: Plain text
+#: ../src/help/en/my-training/account.md:51
+msgid ""
+"Installed, it starts full screen. A long press on the icon offers *Start "
+"training*."
+msgstr ""
+"Installata, si avvia a schermo intero. Una pressione lunga sull’icona offre "
+"*Inizia l’allenamento*."
+
+#. type: Title ##
+#: ../src/help/en/my-training/account.md:52
+#, no-wrap
+msgid "Your data"
+msgstr "I tuoi dati"
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/account.md:55
+msgid "**Export all sessions (CSV)** downloads every series of every session."
+msgstr ""
+"**Esporta tutte le sessioni (CSV)** scarica ogni serie di ogni sessione."
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/account.md:55
+msgid ""
+"**Delete account** removes the account with all sessions, goals and settings "
+"after you enter your password. Accounts that belong to a club must first be "
+"removed from the club by its admin."
+msgstr ""
+"**Elimina account** rimuove l’account con tutte le sessioni, gli obiettivi e "
+"le impostazioni dopo che hai inserito la password. Gli account che "
+"appartengono a una società devono prima essere rimossi dalla società dal suo "
+"admin."
+
+#. type: Title #
+#: ../src/help/en/my-training/index.md:1
+#, no-wrap
+msgid "My training"
+msgstr "Il mio allenamento"
+
+#. type: Plain text
+#: ../src/help/en/my-training/index.md:4
+msgid ""
+"My training is a personal shooting diary. Every shooter can use it, whether "
+"or not their club runs events with Standblatt. It answers one question: "
+"**does my training work?**"
+msgstr ""
+"Il mio allenamento è un diario di tiro personale. Ogni tiratore può usarlo, "
+"che la sua società organizzi manifestazioni con Standblatt o no. Risponde a "
+"una domanda: **il mio allenamento funziona?**"
+
+#. type: Plain text
+#: ../src/help/en/my-training/index.md:6
+#, no-wrap
+msgid "<div class=\"grid\" markdown>\n"
+msgstr "<div class=\"grid\" markdown>\n"
+
+#. type: Plain text
+#: ../src/help/en/my-training/index.md:8
+msgid ""
+"![Today on a phone](../images/screenshots/my-today.png){ .screenshot .phone }"
+msgstr ""
+"![Oggi su un telefono](../images/screenshots/my-today.png)"
+"{ .screenshot .phone }"
+
+#. type: Plain text
+#: ../src/help/en/my-training/index.md:10
+msgid ""
+"![Progress of a discipline](../images/screenshots/my-progress.png)"
+"{ .screenshot .phone }"
+msgstr ""
+"![Progressi di una disciplina](../images/screenshots/my-progress.png)"
+"{ .screenshot .phone }"
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/index.md:20
+msgid ""
+"**Logging takes seconds.** After a session you tap the + button, type the "
+"series totals on the number pad and save. Standblatt moves on to the next "
+"series by itself."
+msgstr ""
+"**Registrare richiede pochi secondi.** Dopo l’allenamento tocchi il pulsante "
+"+, digiti i totali delle serie sul tastierino e salvi. Standblatt passa da "
+"solo alla serie successiva."
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/index.md:20
+msgid ""
+"**As detailed as you like.** Log only the series totals, every shot value, "
+"or tap every hit on the target. You can switch per series."
+msgstr ""
+"**Dettagliato quanto vuoi.** Registra solo i totali delle serie, il valore "
+"di ogni colpo o tocca ogni colpo sul bersaglio. Puoi cambiare a ogni serie."
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/index.md:20
+msgid ""
+"**Feedback right away.** After saving you see how the session ranks among "
+"your sessions of the same length and how it compares with your last 30 days."
+msgstr ""
+"**Riscontro immediato.** Dopo il salvataggio vedi come si posiziona la "
+"sessione tra le tue sessioni della stessa lunghezza e come si confronta con "
+"i tuoi ultimi 30 giorni."
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/index.md:20
+msgid ""
+"**Progress you can read.** Trend, personal best, goal, series curve, shot "
+"values, the size and centre of your group, what your tags tell you and how "
+"your weapons compare."
+msgstr ""
+"**Progressi leggibili.** Tendenza, record personale, obiettivo, andamento "
+"delle serie, valori dei colpi, dimensione e centro del tuo gruppo, cosa "
+"dicono i tuoi tag e come si confrontano le tue armi."
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/index.md:20
+msgid ""
+"**Competitions come for free.** Results from events run with Standblatt are "
+"found by your license number and birthday once the club closes the event, "
+"and added with one tap, rank included."
+msgstr ""
+"**Le gare sono gratis.** I risultati delle manifestazioni svolte con "
+"Standblatt vengono trovati tramite il tuo numero di licenza e la data di "
+"nascita non appena la società chiude la manifestazione, e aggiunti con un "
+"tocco, rango incluso."
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/index.md:20
+msgid ""
+"**Works at the range.** Install it on the home screen. Without signal, "
+"sessions are kept on the phone and uploaded later."
+msgstr ""
+"**Funziona allo stand.** Installalo nella schermata Home. Senza segnale le "
+"sessioni restano sul telefono e vengono caricate più tardi."
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/index.md:20
+msgid ""
+"**Your data stays yours.** Export everything as CSV at any time and delete "
+"your account whenever you want."
+msgstr ""
+"**I tuoi dati restano tuoi.** Esporta tutto in CSV in qualsiasi momento, ed "
+"elimina il tuo account quando vuoi."
+
+#. type: Title ##
+#: ../src/help/en/my-training/index.md:21
+#, no-wrap
+msgid "Pages"
+msgstr "Pagine"
+
+#. type: Plain text
+#: ../src/help/en/my-training/index.md:29
+#, no-wrap
+msgid ""
+"| Page | What it is for |\n"
+"|---|---|\n"
+"| **Today** | start a session, this week's activity, your recent trend and sessions |\n"
+"| **Log** | every session, filtered by discipline and kind, competition results waiting to be added |\n"
+"| **Progress** | the analysis of one discipline, see [Progress explained](progress.md) |\n"
+"| **Settings** | profile (name, birthday and license number for the competition match), own disciplines, weapons, app, API tokens, export; **Account** for email, password, language, second factor and deleting the account |\n"
+msgstr ""
+"| Pagina | A cosa serve |\n"
+"|---|---|\n"
+"| **Oggi** | avviare una sessione, l’attività della settimana, la tua tendenza e le ultime sessioni |\n"
+"| **Diario** | ogni sessione, filtrata per disciplina e tipo, i risultati di gara da aggiungere |\n"
+"| **Progressi** | l’analisi di una disciplina, vedi [I progressi spiegati](progress.md) |\n"
+"| **Impostazioni** | profilo (nome, data di nascita e numero di licenza per l’abbinamento delle gare), discipline personalizzate, armi, app, token API, esportazione; **Account** per e-mail, password, lingua, secondo fattore ed eliminazione dell’account |\n"
+
+#. type: Plain text
+#: ../src/help/en/my-training/index.md:31
+msgid ""
+"On a phone the pages are in the bar at the bottom, with the + button in the "
+"middle. On a larger screen they are in the sidebar."
+msgstr ""
+"Sul telefono le pagine sono nella barra in basso, con il pulsante + al "
+"centro. Su uno schermo più grande sono nella barra laterale."
+
+#. type: Title ##
+#: ../src/help/en/my-training/index.md:32
+#, no-wrap
+msgid "Access and price"
+msgstr "Accesso e prezzo"
+
+#. type: Plain text
+#: ../src/help/en/my-training/index.md:35
+msgid "My training is free for every user of the server."
+msgstr "Il mio allenamento è gratuito per ogni utente del server."
+
+#. type: Plain text
+#: ../src/help/en/my-training/index.md:36
+msgid ""
+"Club staff accounts can use My training too: open **My training** in the "
+"user menu of the club sidebar."
+msgstr ""
+"Anche gli account del personale della società possono usare Il mio "
+"allenamento: apri **Il mio allenamento** nel menu utente della barra "
+"laterale della società."
+
+#. type: Title #
+#: ../src/help/en/my-training/logging.md:1
+#, no-wrap
+msgid "Logging a session"
+msgstr "Registrare una sessione"
+
+#. type: Plain text
+#: ../src/help/en/my-training/logging.md:4
+msgid ""
+"Tap the **+** button, or a discipline under **Start training** on the Today "
+"page. The session opens full screen with your last discipline already "
+"selected."
+msgstr ""
+"Tocca il pulsante **+** o una disciplina sotto **Inizia l’allenamento** "
+"nella pagina Oggi. La sessione si apre a schermo intero con la tua ultima "
+"disciplina già selezionata."
+
+#. type: Plain text
+#: ../src/help/en/my-training/logging.md:6
+msgid ""
+"![Series totals on the number pad](../images/screenshots/my-train-series.png)"
+"{ .screenshot .phone }"
+msgstr ""
+"![Totali delle serie sul tastierino](../images/screenshots/my-train-"
+"series.png){ .screenshot .phone }"
+
+#. type: Plain text
+#: ../src/help/en/my-training/logging.md:8
+msgid ""
+"At the top you see the running total, the number of shots and the average "
+"per shot. Below that is a chip for every series. Tap a chip to correct that "
+"series, tap **+** to add one, or use **Remove series** for the current one. "
+"The minus and plus next to \"10 shots\" change the number of shots of the "
+"current series, e.g. for a 5-shot series at 25 m."
+msgstr ""
+"In alto vedi il totale progressivo, il numero di colpi e la media per colpo. "
+"Sotto c’è un riquadro per ogni serie. Tocca un riquadro per correggere "
+"quella serie, **+** per aggiungerne una, o **Rimuovi serie** per quella "
+"attuale. Il meno e il più accanto a «10 colpi» cambiano il numero di colpi "
+"della serie attuale, p. es. per una serie da 5 colpi a 25 m."
+
+#. type: Title ##
+#: ../src/help/en/my-training/logging.md:9
+#, no-wrap
+msgid "Three ways to enter a series"
+msgstr "Tre modi per inserire una serie"
+
+#. type: Plain text
+#: ../src/help/en/my-training/logging.md:12
+msgid ""
+"Choose the input for the current series at the top right. You can mix them "
+"in one session, e.g. totals for the first four series and every shot for the "
+"last two."
+msgstr ""
+"Scegli in alto a destra l’inserimento per la serie attuale. Puoi mescolarli "
+"in una sessione, p. es. i totali per le prime quattro serie e ogni colpo per "
+"le ultime due."
+
+#. type: Plain text
+#: ../src/help/en/my-training/logging.md:15
+#, no-wrap
+msgid ""
+"**Series**\n"
+": Type the series total. As soon as no further digit could make the number valid, Standblatt takes it and jumps to the next series. \"9\", \"3\" gives 93 and moves on; a 100 needs \"1\", \"0\", \"0\". With decimal scoring the point is added for you: \"1\", \"0\", \"2\", \"7\" gives 102.7. **Next** takes the number as it is.\n"
+msgstr ""
+"**Serie**\n"
+": Digita il totale della serie. Appena nessuna cifra in più potrebbe rendere valido il numero, Standblatt lo prende e passa alla serie successiva. «9», «3» dà 93 e prosegue; un 100 richiede «1», «0», «0». Con il punteggio al decimo il punto viene messo per te: «1», «0», «2», «7» dà 102.7. **Avanti** prende il numero così com’è.\n"
+
+#. type: Plain text
+#: ../src/help/en/my-training/logging.md:18
+#, no-wrap
+msgid ""
+"**Shots**\n"
+": Tap the value of every shot. With decimal scoring type two digits, e.g. \"9\", \"7\" for 9.7, or three for a ten, e.g. \"1\", \"0\", \"4\" for 10.4. After the last shot of a series the next series starts.\n"
+msgstr ""
+"**Colpi**\n"
+": Tocca il valore di ogni colpo. Con il punteggio al decimo digita due cifre, p. es. «9», «7» per 9.7, o tre per un dieci, p. es. «1», «0», «4» per 10.4. Dopo l’ultimo colpo di una serie inizia la serie successiva.\n"
+
+#. type: Plain text
+#: ../src/help/en/my-training/logging.md:21
+#, no-wrap
+msgid ""
+"**Target**\n"
+": Tap where every shot hit. Standblatt computes the value from the target face of the discipline, with decimals if the discipline is scored that way. The magnifier switches between the black and the whole target. This is the only way to get the [group analysis](progress.md#group).\n"
+msgstr ""
+"**Bersaglio**\n"
+": Tocca dove ha colpito ogni colpo. Standblatt calcola il valore dal bersaglio della disciplina, con i decimi se la disciplina è valutata così. La lente passa dal nero all’intero bersaglio. È l’unico modo per ottenere l’[analisi del gruppo](progress.md#group).\n"
+
+#. type: Plain text
+#: ../src/help/en/my-training/logging.md:23
+msgid ""
+"![Tapping hits on the target](../images/screenshots/my-train-target.png)"
+"{ .screenshot .phone }"
+msgstr ""
+"![Toccare i colpi sul bersaglio](../images/screenshots/my-train-target.png)"
+"{ .screenshot .phone }"
+
+#. type: Plain text
+#: ../src/help/en/my-training/logging.md:25
+msgid ""
+"On a computer you can type the digits, **Backspace** and **Enter** on the "
+"keyboard."
+msgstr ""
+"Al computer puoi digitare le cifre, **Backspace** e **Invio** sulla tastiera."
+
+#. type: Title ##
+#: ../src/help/en/my-training/logging.md:26
+#, no-wrap
+msgid "Save"
+msgstr "Salvare"
+
+#. type: Plain text
+#: ../src/help/en/my-training/logging.md:29
+msgid ""
+"When the last series is complete, or when you tap **Finish**, the save sheet "
+"opens. Everything in it is optional:"
+msgstr ""
+"Quando l’ultima serie è completa, o quando tocchi **Termina**, si apre la "
+"finestra di salvataggio. Tutto è facoltativo:"
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/logging.md:35
+msgid ""
+"**Training or competition**: competitions appear as their own dots in the "
+"trend and are compared with your training."
+msgstr ""
+"**Allenamento o gara**: le gare compaiono come punti propri nella tendenza e "
+"vengono confrontate con il tuo allenamento."
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/logging.md:35
+msgid ""
+"**Weapon**: which of your [weapons](account.md#weapons) you shot with. A new "
+"session starts with the weapon of your last session in the same discipline; "
+"tap it again to clear it, or add a new weapon right there."
+msgstr ""
+"**Arma**: con quale delle tue [armi](account.md#weapons) hai tirato. Una "
+"nuova sessione inizia con l’arma della tua ultima sessione nella stessa "
+"disciplina; toccala di nuovo per toglierla, o aggiungi lì stesso una nuova "
+"arma."
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/logging.md:35
+msgid "**How did it feel?**: five faces from bad to great."
+msgstr "**Come ti è sembrato?**: cinque facce, da male a ottimo."
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/logging.md:35
+msgid ""
+"**Tags**: short words for what was special, e.g. *new grip*, *tired*, *new "
+"pellets*. Progress compares the sessions with a tag to your average."
+msgstr ""
+"**Tag**: brevi parole per ciò che è stato particolare, p. es. *nuova "
+"impugnatura*, *stanco*, *nuovi piombini*. I progressi confrontano le "
+"sessioni con un tag con la tua media."
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/logging.md:35
+msgid ""
+"**When**, **where**, **notes**. *Where* starts with the place of your last "
+"training."
+msgstr ""
+"**Quando**, **Dove**, **Note**. *Dove* riprende il luogo del tuo ultimo "
+"allenamento."
+
+#. type: Plain text
+#: ../src/help/en/my-training/logging.md:37
+msgid ""
+"![After saving](../images/screenshots/my-result.png){ .screenshot .phone }"
+msgstr ""
+"![Dopo il salvataggio](../images/screenshots/my-result.png)"
+"{ .screenshot .phone }"
+
+#. type: Plain text
+#: ../src/help/en/my-training/logging.md:39
+msgid "After saving Standblatt tells you right away:"
+msgstr "Dopo il salvataggio Standblatt ti dice subito:"
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/logging.md:42
+msgid ""
+"whether the session is a **new personal best**, or which place it takes "
+"among your sessions with the same number of shots;"
+msgstr ""
+"se la sessione è un **nuovo record personale**, o quale posto occupa tra le "
+"tue sessioni con lo stesso numero di colpi;"
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/logging.md:42
+msgid ""
+"how many points per shot it is above or below the average of the **30 days "
+"before**."
+msgstr ""
+"di quanti punti per colpo è sopra o sotto la media dei **30 giorni "
+"precedenti**."
+
+#. type: Title ##
+#: ../src/help/en/my-training/logging.md:43
+#, no-wrap
+msgid "Unfinished sessions and offline"
+msgstr "Sessioni incompiute e offline"
+
+#. type: Plain text
+#: ../src/help/en/my-training/logging.md:46
+msgid ""
+"The session is kept on the device while you type. If you close the browser "
+"or the phone locks, it comes back the next time you start a session."
+msgstr ""
+"La sessione viene conservata sul dispositivo mentre digiti. Se chiudi il "
+"browser o il telefono si blocca, torna la prossima volta che avvii una "
+"sessione."
+
+#. type: Plain text
+#: ../src/help/en/my-training/logging.md:48
+msgid ""
+"If there is no connection when you save, the session is kept on the device "
+"and uploaded as soon as you are online again. A note on the Today page shows "
+"how many sessions are waiting. A retried upload never creates a session "
+"twice."
+msgstr ""
+"Se al salvataggio non c’è connessione, la sessione resta sul dispositivo e "
+"viene caricata appena sei di nuovo online. Un avviso nella pagina Oggi "
+"mostra quante sessioni sono in attesa. Un caricamento ripetuto non crea mai "
+"una sessione doppia."
+
+#. type: Title ##
+#: ../src/help/en/my-training/logging.md:49
+#, no-wrap
+msgid "Changing or deleting a session"
+msgstr "Modificare o eliminare una sessione"
+
+#. type: Plain text
+#: ../src/help/en/my-training/logging.md:51
+msgid ""
+"Open the session in the **Log** and use the pencil to change it, or the bin "
+"to delete it."
+msgstr ""
+"Apri la sessione nel **Diario** e usa la matita per modificarla, o il "
+"cestino per eliminarla."
+
+#. type: Title #
+#: ../src/help/en/my-training/progress.md:1
+#, no-wrap
+msgid "Progress explained"
+msgstr "I progressi spiegati"
+
+#. type: Plain text
+#: ../src/help/en/my-training/progress.md:4
+#, no-wrap
+msgid "**Progress** analyses all sessions of one discipline; choose it at the top right. Everything is computed from the sessions in your log, nothing is estimated.\n"
+msgstr "**Progressi** analizza tutte le sessioni di una disciplina; sceglila in alto a destra. Tutto è calcolato dalle sessioni del tuo diario, niente è stimato.\n"
+
+#. type: Plain text
+#: ../src/help/en/my-training/progress.md:6
+msgid ""
+"![Progress](../images/screenshots/my-progress.png){ .screenshot .phone }"
+msgstr ""
+"![Progressi](../images/screenshots/my-progress.png){ .screenshot .phone }"
+
+#. type: Title ##
+#: ../src/help/en/my-training/progress.md:7
+#, no-wrap
+msgid "Points per shot"
+msgstr "Punti per colpo"
+
+#. type: Plain text
+#: ../src/help/en/my-training/progress.md:10
+msgid ""
+"Sessions differ in length: a 50-shot match, two series after work, a 40-shot "
+"competition. Standblatt compares them by **points per shot**, the total "
+"divided by the number of shots. 9.30 per shot is 465 over 50 shots."
+msgstr ""
+"Le sessioni hanno lunghezze diverse: un match da 50 colpi, due serie dopo il "
+"lavoro, una gara da 40 colpi. Standblatt le confronta tramite i **punti per "
+"colpo**, il totale diviso per il numero di colpi. 9.30 per colpo fanno 465 "
+"su 50 colpi."
+
+#. type: Title ##
+#: ../src/help/en/my-training/progress.md:11
+#, no-wrap
+msgid "Key figures"
+msgstr "Cifre chiave"
+
+#. type: Plain text
+#: ../src/help/en/my-training/progress.md:15
+#, no-wrap
+msgid ""
+"**Last 30 days**\n"
+": points per shot over all sessions of the last 30 days. The arrow shows the change against the 30 days before.\n"
+msgstr ""
+"**Ultimi 30 giorni**\n"
+": punti per colpo su tutte le sessioni degli ultimi 30 giorni. La freccia mostra la variazione rispetto ai 30 giorni precedenti.\n"
+
+#. type: Plain text
+#: ../src/help/en/my-training/progress.md:18
+#, no-wrap
+msgid ""
+"**Personal best**\n"
+": the highest total among sessions with the standard number of shots of the discipline, e.g. 60 for air pistol. Tap it to open the session.\n"
+msgstr ""
+"**Record personale**\n"
+": il totale più alto tra le sessioni con il numero di colpi standard della disciplina, p. es. 60 per la pistola ad aria. Toccalo per aprire la sessione.\n"
+
+#. type: Plain text
+#: ../src/help/en/my-training/progress.md:21
+#, no-wrap
+msgid ""
+"**Sessions**\n"
+": number of sessions and shots logged in this discipline.\n"
+msgstr ""
+"**Sessioni**\n"
+": numero di sessioni e colpi registrati in questa disciplina.\n"
+
+#. type: Plain text
+#: ../src/help/en/my-training/progress.md:24
+#, no-wrap
+msgid ""
+"**Competition vs. training**\n"
+": points per shot in competitions minus points per shot in training. A negative number means you lose points under pressure.\n"
+msgstr ""
+"**Gara vs allenamento**\n"
+": punti per colpo in gara meno punti per colpo in allenamento. Un numero negativo significa che sotto pressione perdi punti.\n"
+
+#. type: Title ##
+#: ../src/help/en/my-training/progress.md:25
+#, no-wrap
+msgid "Trend"
+msgstr "Tendenza"
+
+#. type: Plain text
+#: ../src/help/en/my-training/progress.md:28
+msgid ""
+"Every session is a dot, competitions in amber. The line is the moving "
+"average of the last five sessions, so a single bad day does not hide the "
+"direction. A dashed line shows your goal."
+msgstr ""
+"Ogni sessione è un punto, le gare in ambra. La linea è la media mobile delle "
+"ultime cinque sessioni, così una sola giornata storta non nasconde la "
+"direzione. Una linea tratteggiata mostra il tuo obiettivo."
+
+#. type: Title ##
+#: ../src/help/en/my-training/progress.md:29
+#, no-wrap
+msgid "Goal"
+msgstr "Obiettivo"
+
+#. type: Plain text
+#: ../src/help/en/my-training/progress.md:32
+msgid ""
+"Set the total you want to reach over the standard number of shots, "
+"optionally with a date. The bar compares it with your last 30 days and tells "
+"you how much is missing per shot."
+msgstr ""
+"Imposta il totale che vuoi raggiungere sul numero di colpi standard, "
+"facoltativamente con una data. La barra lo confronta con i tuoi ultimi 30 "
+"giorni e ti dice quanto manca ancora per colpo."
+
+#. type: Title ##
+#: ../src/help/en/my-training/progress.md:33
+#, no-wrap
+msgid "Series curve"
+msgstr "Andamento delle serie"
+
+#. type: Plain text
+#: ../src/help/en/my-training/progress.md:36
+msgid ""
+"Points per shot of the first, second, third … series over all sessions. It "
+"shows whether you need a series to warm up, or lose concentration towards "
+"the end. The strongest series is highlighted."
+msgstr ""
+"Punti per colpo della prima, seconda, terza … serie su tutte le sessioni. "
+"Mostra se ti serve una serie per scaldarti o se perdi concentrazione verso "
+"la fine. La serie migliore è evidenziata."
+
+#. type: Title ##
+#: ../src/help/en/my-training/progress.md:37
+#, no-wrap
+msgid "Shot values"
+msgstr "Valori dei colpi"
+
+#. type: Plain text
+#: ../src/help/en/my-training/progress.md:40
+msgid ""
+"How often each value occurred, from the sessions where you logged every shot "
+"or tapped the hits. Decimal values count towards their whole number, so 9.7 "
+"counts as a 9."
+msgstr ""
+"Quante volte è comparso ogni valore, dalle sessioni in cui hai registrato "
+"ogni colpo o toccato i colpi. I valori al decimo contano per il loro numero "
+"intero, quindi un 9.7 conta come 9."
+
+#. type: Title ##
+#: ../src/help/en/my-training/progress.md:41
+#, no-wrap
+msgid "Group {#group}"
+msgstr "Gruppo {#group}"
+
+#. type: Plain text
+#: ../src/help/en/my-training/progress.md:44
+msgid ""
+"From the hits you tapped on the target in your last ten sessions with hits:"
+msgstr ""
+"Dai colpi che hai toccato sul bersaglio nelle tue ultime dieci sessioni con "
+"colpi:"
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/progress.md:48
+msgid ""
+"**Group size** is twice the average distance of your hits from their centre, "
+"in mm. It is a robust measure of how tight you shoot."
+msgstr ""
+"La **dimensione del gruppo** è il doppio della distanza media dei tuoi colpi "
+"dal loro centro, in mm. È una misura robusta di quanto stretto tiri."
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/progress.md:48
+msgid ""
+"**Off centre** is the distance of that centre from the middle of the target."
+msgstr ""
+"**Fuori centro** è la distanza di quel centro dal centro del bersaglio."
+
+#. type: Bullet: '- '
+#: ../src/help/en/my-training/progress.md:48
+msgid ""
+"If the centre sits clearly to one side, Standblatt tells you which way to "
+"adjust the sight. Check your hold and trigger first."
+msgstr ""
+"Se il centro sta chiaramente da un lato, Standblatt ti dice in quale "
+"direzione regolare la mira. Controlla prima la tenuta e lo scatto."
+
+#. type: Plain text
+#: ../src/help/en/my-training/progress.md:50
+msgid ""
+"![Group on the target](../images/screenshots/my-session.png)"
+"{ .screenshot .phone }"
+msgstr ""
+"![Gruppo sul bersaglio](../images/screenshots/my-session.png)"
+"{ .screenshot .phone }"
+
+#. type: Title ##
+#: ../src/help/en/my-training/progress.md:51
+#, no-wrap
+msgid "Weapons compared {#weapons-compared}"
+msgstr "Armi a confronto {#weapons-compared}"
+
+#. type: Plain text
+#: ../src/help/en/my-training/progress.md:54
+msgid ""
+"As soon as sessions of a discipline were shot with at least two of your "
+"weapons, a table compares them: the points per shot of all their sessions, "
+"of the last 30 days and the best total over the full match. The weapon with "
+"the highest average is on top. Sessions without a weapon are not part of it."
+msgstr ""
+"Appena sessioni di una disciplina sono state tirate con almeno due delle tue "
+"armi, una tabella le confronta: i punti per colpo di tutte le loro sessioni, "
+"degli ultimi 30 giorni e il miglior totale sul match completo. L’arma con la "
+"media più alta è in cima. Le sessioni senza arma non contano."
+
+#. type: Plain text
+#: ../src/help/en/my-training/progress.md:56
+msgid ""
+"![Two air pistols compared](../images/screenshots/my-weapons.png)"
+"{ .screenshot .phone }"
+msgstr ""
+"![Due pistole ad aria a confronto](../images/screenshots/my-weapons.png)"
+"{ .screenshot .phone }"
+
+#. type: Plain text
+#: ../src/help/en/my-training/progress.md:58
+msgid ""
+"Tap a weapon, or choose it in the weapon list at the top, and every figure "
+"on the page (key figures, trend, series curve, shot values and group) only "
+"counts the sessions shot with it. *All weapons* shows everything again."
+msgstr ""
+"Tocca un’arma o sceglila in alto nell’elenco delle armi, e ogni cifra della "
+"pagina (cifre chiave, tendenza, andamento delle serie, valori dei colpi e "
+"gruppo) conta solo le sessioni tirate con essa. *Tutte le armi* mostra di "
+"nuovo tutto."
+
+#. type: Title ##
+#: ../src/help/en/my-training/progress.md:59
+#, no-wrap
+msgid "What your tags tell you"
+msgstr "Cosa dicono i tuoi tag"
+
+#. type: Plain text
+#: ../src/help/en/my-training/progress.md:61
+msgid ""
+"For every tag used on at least two sessions: the points per shot of those "
+"sessions and the difference to your overall average. Sorted from the best to "
+"the worst, this is where you find out whether the new grip pays off."
+msgstr ""
+"Per ogni tag usato in almeno due sessioni: i punti per colpo di quelle "
+"sessioni e la differenza dalla tua media generale. Ordinato dal migliore al "
+"peggiore, qui scopri se la nuova impugnatura vale la pena."
+
+#. type: Title #
+#: ../src/help/en/reference/codes.md:1
+#, no-wrap
+msgid "Codes and barcodes"
+msgstr "Codici e codici a barre"
+
+#. type: Title ##
+#: ../src/help/en/reference/codes.md:3
+#, no-wrap
+msgid "Registration code (QR)"
+msgstr "Codice d’iscrizione (QR)"
+
+#. type: Plain text
+#: ../src/help/en/reference/codes.md:6
+msgid "Lane sheets and control strips carry a QR code with"
+msgstr "I fogli di stand e le strisce di controllo portano un codice QR con"
+
+#. type: Fenced code block (text)
+#: ../src/help/en/reference/codes.md:7
+#, no-wrap
+msgid "REGCODEAAAA<registration>AAAAL<license or 0>\n"
+msgstr "REGCODEAAAA<iscrizione>AAAAL<licenza o 0>\n"
+
+#. type: Plain text
+#: ../src/help/en/reference/codes.md:12
+msgid ""
+"for example `REGCODEAAAA42AAAAL100109`. A hand scanner types it into the "
+"search field of the dashboard and presses Enter; Standblatt opens the "
+"results of that registration. The license part guards against a code from "
+"another shooter; a code of another event is refused."
+msgstr ""
+"per esempio `REGCODEAAAA42AAAAL100109`. Uno scanner manuale lo digita nel "
+"campo di ricerca della dashboard e preme Invio; Standblatt apre i risultati "
+"di quell’iscrizione. La parte della licenza protegge dal codice di un altro "
+"tiratore; un codice di un’altra manifestazione viene rifiutato."
+
+#. type: Title ##
+#: ../src/help/en/reference/codes.md:13
+#, no-wrap
+msgid "Programme barcode (Interleaved 2 of 5)"
+msgstr "Codice a barre del programma (Interleaved 2 of 5)"
+
+#. type: Plain text
+#: ../src/help/en/reference/codes.md:15
+msgid ""
+"A programme can have a barcode, printed as Interleaved 2 of 5 next to the "
+"programme on the lane sheet (only the digits count, padded to an even number "
+"of digits). Electronic scoring systems use it to pick the programme."
+msgstr ""
+"Un programma può avere un codice a barre, stampato come Interleaved 2 of 5 "
+"accanto al programma sul foglio di stand (contano solo le cifre, completate "
+"a un numero pari). I sistemi di segnalazione elettronica lo usano per "
+"scegliere il programma."
+
+#. type: Title #
+#: ../src/help/en/reference/csv-import.md:1
+#, no-wrap
+msgid "CSV import"
+msgstr "Importazione CSV"
+
+#. type: Plain text
+#: ../src/help/en/reference/csv-import.md:4
+msgid ""
+"Club admins import shooters on the **Shooters** page. The file needs a "
+"header row; the separator (`;` or `,`) is taken from it."
+msgstr ""
+"Gli admin della società importano i tiratori nella pagina **Tiratori**. Il "
+"file ha bisogno di una riga d’intestazione; il separatore (`;` o `,`) viene "
+"preso da essa."
+
+#. type: Fenced code block (text)
+#: ../src/help/en/reference/csv-import.md:5
+#, no-wrap
+msgid ""
+"license;firstname;lastname;birthday;postalcode;city;club\n"
+"100100;Sandra;Example;1969-06-02;9050;Appenzell;PS Example\n"
+msgstr ""
+"license;firstname;lastname;birthday;postalcode;city;club\n"
+"100100;Sandra;Example;1969-06-02;9050;Appenzell;PS Example\n"
+
+#. type: Plain text
+#: ../src/help/en/reference/csv-import.md:18
+#, no-wrap
+msgid ""
+"| Column | Required | Notes |\n"
+"|---|---|---|\n"
+"| `firstname` | yes | |\n"
+"| `lastname` | yes | |\n"
+"| `license` | no | also `licensenumber`; purely numeric numbers are padded to six digits |\n"
+"| `birthday` | no | `YYYY-MM-DD` or `DD.MM.YYYY` |\n"
+"| `postalcode`, `city` | no | |\n"
+"| `club` | no | the shooter's club; missing clubs are created |\n"
+msgstr ""
+"| Colonna | Obbligatoria | Note |\n"
+"|---|---|---|\n"
+"| `firstname` | sì | |\n"
+"| `lastname` | sì | |\n"
+"| `license` | no | anche `licensenumber`; i numeri puramente numerici vengono completati a sei cifre |\n"
+"| `birthday` | no | `YYYY-MM-DD` o `DD.MM.YYYY` |\n"
+"| `postalcode`, `city` | no | |\n"
+"| `club` | no | la società del tiratore; le società mancanti vengono create |\n"
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/csv-import.md:21
+msgid "One line per shooter and club; a shooter in two clubs appears twice."
+msgstr ""
+"Una riga per tiratore e società; un tiratore in due società compare due "
+"volte."
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/csv-import.md:21
+msgid ""
+"Shooters are matched by license number, or by name and birthday when there "
+"is none. Existing shooters are updated, nothing is deleted."
+msgstr ""
+"I tiratori vengono riconosciuti dal numero di licenza, o da nome e data di "
+"nascita se manca. I tiratori esistenti vengono aggiornati, niente viene "
+"eliminato."
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/csv-import.md:21
+msgid ""
+"A file with invalid lines is rejected as a whole, with the list of lines to "
+"fix."
+msgstr ""
+"Un file con righe non valide viene rifiutato per intero, con l’elenco delle "
+"righe da correggere."
+
+#. type: Title #
+#: ../src/help/en/reference/programme-file.md:1
+#, no-wrap
+msgid "Programme file"
+msgstr "File di programma"
+
+#. type: Plain text
+#: ../src/help/en/reference/programme-file.md:4
+#, no-wrap
+msgid "**Export** in the programme menu downloads a programme as `<name>.programme.json`; **Programme file** under *Add from …* imports it into another event or another club. The platform operator uploads the same files to the global programme library.\n"
+msgstr "**Esporta** nel menu del programma scarica un programma come `<name>.programme.json`; **File di programma** sotto *Aggiungi da …* lo importa in un’altra manifestazione o in un’altra società. Il gestore della piattaforma carica gli stessi file nella biblioteca globale dei programmi.\n"
+
+#. type: Fenced code block (json)
+#: ../src/help/en/reference/programme-file.md:5
+#, no-wrap
+msgid ""
+"{\n"
+"  \"format\": \"standblatt.programme\",\n"
+"  \"version\": 1,\n"
+"  \"programme\": {\n"
+"    \"name\": \"Championship\",\n"
+"    \"variant\": \"Sport\",\n"
+"    \"description\": \"\",\n"
+"    \"barcode\": \"700005002334864165956154\",\n"
+"    \"countsForClubCompetition\": true,\n"
+"    \"showOnRankings\": true,\n"
+"    \"series\": [\n"
+"      { \"shots\": 10, \"maxPoints\": 100, \"trackMouches\": false, \"name\": \"\" }\n"
+"    ],\n"
+"    \"prices\": [\n"
+"      { \"ageCategory\": \"elite\", \"price\": 20 }\n"
+"    ],\n"
+"    \"awards\": [\n"
+"      {\n"
+"        \"name\": \"Wreath card CHF 10\",\n"
+"        \"kind\": \"card\",\n"
+"        \"value\": 10,\n"
+"        \"limits\": [{ \"ageCategory\": \"elite\", \"points\": 370 }]\n"
+"      }\n"
+"    ]\n"
+"  }\n"
+"}\n"
+msgstr ""
+"{\n"
+"  \"format\": \"standblatt.programme\",\n"
+"  \"version\": 1,\n"
+"  \"programme\": {\n"
+"    \"name\": \"Championship\",\n"
+"    \"variant\": \"Sport\",\n"
+"    \"description\": \"\",\n"
+"    \"barcode\": \"700005002334864165956154\",\n"
+"    \"countsForClubCompetition\": true,\n"
+"    \"showOnRankings\": true,\n"
+"    \"series\": [\n"
+"      { \"shots\": 10, \"maxPoints\": 100, \"trackMouches\": false, \"name\": \"\" }\n"
+"    ],\n"
+"    \"prices\": [\n"
+"      { \"ageCategory\": \"elite\", \"price\": 20 }\n"
+"    ],\n"
+"    \"awards\": [\n"
+"      {\n"
+"        \"name\": \"Wreath card CHF 10\",\n"
+"        \"kind\": \"card\",\n"
+"        \"value\": 10,\n"
+"        \"limits\": [{ \"ageCategory\": \"elite\", \"points\": 370 }]\n"
+"      }\n"
+"    ]\n"
+"  }\n"
+"}\n"
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/programme-file.md:37
+msgid ""
+"`ageCategory` is one of `u10`, `u13`, `u15`, `u17`, `u19`, `u21`, `elite`, "
+"`senior`, `veteran`, `senior_veteran`."
+msgstr ""
+"`ageCategory` è uno tra `u10`, `u13`, `u15`, `u17`, `u19`, `u21`, `elite`, "
+"`senior`, `veteran`, `senior_veteran`."
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/programme-file.md:37
+msgid "`kind` is `card` (wreath card, printed) or `natural` (prize in kind)."
+msgstr ""
+"`kind` è `card` (carta corona, stampata) o `natural` (premio in natura)."
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/programme-file.md:37
+msgid "`showOnRankings` is the *Show on kiosk displays* switch."
+msgstr "`showOnRankings` è l’interruttore *Mostra sugli schermi chiosco*."
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/programme-file.md:37
+msgid ""
+"Combinations and special prizes are settings of the programme within an "
+"event and are not part of the file; copying programmes from an earlier event "
+"keeps them."
+msgstr ""
+"Combinazioni e premi speciali sono impostazioni del programma all’interno di "
+"una manifestazione e non fanno parte del file; copiare i programmi da una "
+"manifestazione precedente li mantiene."
+
+#. type: Title #
+#: ../src/help/en/reference/rules.md:1
+#, no-wrap
+msgid "Competition rules"
+msgstr "Regole di gara"
+
+#. type: Plain text
+#: ../src/help/en/reference/rules.md:4
+msgid ""
+"This page describes the rules exactly as Standblatt implements them. They "
+"live in `internal/domain` and are covered by unit tests."
+msgstr ""
+"Questa pagina descrive le regole esattamente come Standblatt le implementa. "
+"Si trovano in `internal/domain` e sono coperte da test unitari."
+
+#. type: Title ##
+#: ../src/help/en/reference/rules.md:5
+#, no-wrap
+msgid "Age category"
+msgstr "Categoria d’età"
+
+#. type: Plain text
+#: ../src/help/en/reference/rules.md:8
+msgid ""
+"The category follows from *event year − birth year*; see the table in "
+"[Concepts](../getting-started/concepts.md#age-categories). Without a "
+"birthday a shooter counts as Elite. The category is fixed when the shooter "
+"registers."
+msgstr ""
+"La categoria risulta da *anno della manifestazione − anno di nascita*; vedi "
+"la tabella in [Concetti](../getting-started/concepts.md#age-categories). "
+"Senza data di nascita un tiratore conta come élite. La categoria viene "
+"fissata all’iscrizione."
+
+#. type: Title ##
+#: ../src/help/en/reference/rules.md:9
+#, no-wrap
+msgid "Registration"
+msgstr "Iscrizione"
+
+#. type: Plain text
+#: ../src/help/en/reference/rules.md:12
+msgid "A registration is refused when:"
+msgstr "Un’iscrizione viene rifiutata quando:"
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/rules.md:19
+msgid ""
+"a programme does not belong to the event, is chosen twice or is not active;"
+msgstr ""
+"un programma non appartiene alla manifestazione, è scelto due volte o non è "
+"attivo;"
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/rules.md:19
+msgid ""
+"a programme has no price for the shooter's age category (\"not open to the "
+"age category\");"
+msgstr ""
+"un programma non ha un prezzo per la categoria d’età del tiratore («non per "
+"questa categoria d’età»);"
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/rules.md:19
+msgid "two variants of the same programme are chosen;"
+msgstr "sono scelte due varianti dello stesso programma;"
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/rules.md:19
+msgid ""
+"a programme takes series from another programme that is not chosen, or the "
+"number of picked series does not match;"
+msgstr ""
+"un programma prende serie da un altro programma che non è scelto, o il "
+"numero di serie scelte non corrisponde;"
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/rules.md:19
+msgid "the lane is taken by another active registration or is out of service;"
+msgstr ""
+"il bersaglio è occupato da un’altra iscrizione attiva o fuori servizio;"
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/rules.md:19
+msgid ""
+"the shooter is already registered for one of the programmes at this event (a "
+"shooter shoots each programme once per event; another variant in a separate "
+"registration is fine)."
+msgstr ""
+"il tiratore è già iscritto a uno dei programmi di questa manifestazione (un "
+"tiratore tira ogni programma una volta per manifestazione; un’altra variante "
+"in un’iscrizione separata è ammessa)."
+
+#. type: Plain text
+#: ../src/help/en/reference/rules.md:21
+msgid "A reserved lane can still be used after a confirmation."
+msgstr "Un bersaglio prenotato si può comunque usare dopo una conferma."
+
+#. type: Title #
+#: ../src/help/en/reference/rules.md:22 ../src/help/en/user-guide/results.md:1
+#, no-wrap
+msgid "Results"
+msgstr "Risultati"
+
+#. type: Plain text
+#: ../src/help/en/reference/rules.md:25
+msgid ""
+"Every series must be entered. Points lie between 0 and the series maximum "
+"(by default shots × 10), mouches between 0 and the number of shots, and only "
+"on series that track mouches. Saving results gives the most valuable award "
+"the total reaches; saving them again keeps the chosen award as long as the "
+"new total still reaches it, otherwise the most valuable one reached. Once "
+"every programme of a registration has results, the registration is completed "
+"and its lane becomes free."
+msgstr ""
+"Ogni serie deve essere registrata. I punti sono tra 0 e il massimo della "
+"serie (per default colpi × 10), le mouche tra 0 e il numero di colpi, e solo "
+"sulle serie che contano le mouche. Il salvataggio dei risultati assegna la "
+"distinzione più preziosa raggiunta; un nuovo salvataggio mantiene la "
+"distinzione scelta finché il nuovo totale la raggiunge ancora, altrimenti la "
+"più preziosa raggiunta. Appena ogni programma di un’iscrizione ha risultati, "
+"l’iscrizione è conclusa e il suo bersaglio si libera."
+
+#. type: Title ###
+#: ../src/help/en/reference/rules.md:26
+#, no-wrap
+msgid "Combinations"
+msgstr "Combinazioni"
+
+#. type: Plain text
+#: ../src/help/en/reference/rules.md:29
+msgid ""
+"A programme marked *combinable with* another programme can take series from "
+"it: at registration the shooter picks which series (for example series 2 and "
+"3 of a four-series programme for a two-series programme). The picked series "
+"are copied in ascending order and renumbered from 1; the combined programme "
+"cannot be edited on its own and follows every change of the source."
+msgstr ""
+"Un programma segnato come *combinabile con* un altro programma può prenderne "
+"delle serie: all’iscrizione il tiratore sceglie quali (per esempio le serie "
+"2 e 3 di un programma a quattro serie per un programma a due serie). Le "
+"serie scelte vengono copiate in ordine crescente e rinumerate da 1; il "
+"programma combinato non si può modificare da solo e segue ogni modifica "
+"della fonte."
+
+#. type: Title ##
+#: ../src/help/en/reference/rules.md:30 ../src/help/en/user-guide/results.md:18
+#, no-wrap
+msgid "Awards"
+msgstr "Distinzioni"
+
+#. type: Plain text
+#: ../src/help/en/reference/rules.md:33
+msgid ""
+"An award tier is available to an age category only if it has a limit for it. "
+"A shooter can choose any tier whose limit the total reaches; the most "
+"valuable tier is listed first and given by default when the results are "
+"saved. The server checks the choice."
+msgstr ""
+"Un livello di distinzione è disponibile per una categoria d’età solo se ha "
+"un limite per essa. Un tiratore può scegliere qualsiasi livello di cui il "
+"suo totale raggiunge il limite; il livello più prezioso è in cima e viene "
+"assegnato per default al salvataggio dei risultati. Il server verifica la "
+"scelta."
+
+#. type: Title ##
+#: ../src/help/en/reference/rules.md:34
+#, no-wrap
+msgid "Ranking {#ranking}"
+msgstr "Classifica {#ranking}"
+
+#. type: Plain text
+#: ../src/help/en/reference/rules.md:37
+msgid "All results of a programme are ordered by:"
+msgstr "Tutti i risultati di un programma sono ordinati per:"
+
+#. type: Bullet: '1. '
+#: ../src/help/en/reference/rules.md:42
+msgid "higher total;"
+msgstr "totale più alto;"
+
+#. type: Bullet: '2. '
+#: ../src/help/en/reference/rules.md:42
+msgid ""
+"the series compared from the last one backwards (the better last series "
+"wins, then the second-to-last, …);"
+msgstr ""
+"le serie confrontate dall’ultima all’indietro (vince l’ultima serie "
+"migliore, poi la penultima, …);"
+
+#. type: Bullet: '3. '
+#: ../src/help/en/reference/rules.md:42
+msgid "more mouches;"
+msgstr "più mouche;"
+
+#. type: Bullet: '4. '
+#: ../src/help/en/reference/rules.md:42
+msgid ""
+"age: among juniors (U10–U21) the younger shooter first, among the others the "
+"older shooter first; non-juniors rank before juniors."
+msgstr ""
+"età: tra i juniori (U10–U21) prima il più giovane, tra gli altri prima il "
+"più anziano; i non juniori vengono prima dei juniori."
+
+#. type: Plain text
+#: ../src/help/en/reference/rules.md:44
+msgid ""
+"Ranks are consecutive (1, 2, 3, … even on equal results). The same ranking "
+"feeds the staff pages, kiosk screens, the ranking PDF and CSV, and special "
+"prizes. It was checked against the published rankings of the 2026 Appenzell "
+"air pistol championship: identical on all 260 lines."
+msgstr ""
+"I ranghi sono consecutivi (1, 2, 3, … anche a parità di risultato). La "
+"stessa classifica alimenta le pagine del personale, gli schermi chiosco, il "
+"PDF e il CSV della classifica e i premi speciali. È stata verificata con le "
+"classifiche pubblicate del campionato appenzellese di pistola ad aria 2026: "
+"identica su tutte le 260 righe."
+
+#. type: Title ##
+#: ../src/help/en/reference/rules.md:45
+#, no-wrap
+msgid "Club competition {#club-competition}"
+msgstr "Concorso di sezione {#club-competition}"
+
+#. type: Plain text
+#: ../src/help/en/reference/rules.md:48
+msgid ""
+"Only programmes marked *counts for the club competition* take part, and only "
+"completed results of shooters with a club."
+msgstr ""
+"Partecipano solo i programmi segnati *conta per il concorso di sezione*, e "
+"solo i risultati conclusi di tiratori con una società."
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/rules.md:55
+msgid "The score of a result is the sum of its first two series."
+msgstr "Il valore di un risultato è la somma delle sue prime due serie."
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/rules.md:55
+msgid "A club with fewer than 5 participants is listed as *not ranked*."
+msgstr ""
+"Una società con meno di 5 partecipanti è elencata come *non classificata*."
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/rules.md:55
+msgid ""
+"Of *n* participants the best *max(5, ⌊n/2⌋)* are mandatory, the rest are "
+"optional."
+msgstr ""
+"Su *n* partecipanti i migliori *max(5, ⌊n/2⌋)* sono obbligatori, gli altri "
+"facoltativi."
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/rules.md:55
+msgid ""
+"Result = ⌊(Σ mandatory + 0.02 × Σ optional) / number of mandatory × 1000⌋ / "
+"1000, i.e. truncated to three decimals."
+msgstr ""
+"Risultato = ⌊(Σ obbligatori + 0.02 × Σ facoltativi) / numero di obbligatori "
+"× 1000⌋ / 1000, cioè troncato a tre decimali."
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/rules.md:55
+msgid ""
+"Ties: more participants first, then the sorted scores compared one by one."
+msgstr ""
+"Parità: prima più partecipanti, poi i valori ordinati confrontati uno a uno."
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/rules.md:55
+msgid ""
+"The club excluded in the event settings (usually the host) keeps its place "
+"in the list but gets no rank (\"out of competition\")."
+msgstr ""
+"La società esclusa nelle impostazioni della manifestazione (di solito "
+"l’organizzatrice) mantiene il suo posto nell’elenco ma non riceve un rango "
+"(«fuori concorso»)."
+
+#. type: Title ##
+#: ../src/help/en/reference/rules.md:56
+#: ../src/help/en/user-guide/programmes.md:34
+#, no-wrap
+msgid "Special prizes {#special-prizes}"
+msgstr "Premi speciali {#special-prizes}"
+
+#. type: Plain text
+#: ../src/help/en/reference/rules.md:59
+msgid ""
+"A programme can award special prizes to the best ranks of every age "
+"category. Three numbers define them:"
+msgstr ""
+"Un programma può assegnare premi speciali ai migliori ranghi di ogni "
+"categoria d’età. Tre numeri li definiscono:"
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/rules.md:63
+msgid "**Ranks per category**, e.g. 3;"
+msgstr "**Ranghi per categoria**, p. es. 3;"
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/rules.md:63
+msgid "**minimum participants per category** in this programme, e.g. 10;"
+msgstr "**partecipanti minimi per categoria** in questo programma, p. es. 10;"
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/rules.md:63
+msgid ""
+"**minimum participants of the shooter's club** in the same programme, e.g. 4."
+msgstr ""
+"**partecipanti minimi della società del tiratore** nello stesso programma, "
+"p. es. 4."
+
+#. type: Plain text
+#: ../src/help/en/reference/rules.md:65
+msgid ""
+"Per age category with enough participants, the first shooters in ranking "
+"order whose club has enough participants win; shooters whose club has too "
+"few are skipped and the next one moves up. Shooters without a club are not "
+"eligible unless the club minimum is 0. The report lists both the winners and "
+"the skipped shooters with the reason."
+msgstr ""
+"Per ogni categoria d’età con abbastanza partecipanti vincono i primi "
+"tiratori in ordine di classifica la cui società ha abbastanza partecipanti; "
+"i tiratori la cui società ne ha troppo pochi vengono saltati e sale il "
+"successivo. I tiratori senza società non sono ammessi, salvo che il minimo "
+"per società sia 0. Il rapporto elenca sia i vincitori sia i tiratori saltati "
+"con il motivo."
+
+#. type: Plain text
+#: ../src/help/en/reference/rules.md:68
+#, no-wrap
+msgid ""
+"!!! example \"Appenzell air pistol championship\"\n"
+"    The brochure says: *\"In every category, ranks 1–3 receive a special prize, provided the category has at least 10 participants and the shooter's club at least 4.\"* That is ranks 3, category minimum 10, club minimum 4. Applied to the 2026 results, the rule reproduces the hand-made winner list.\n"
+msgstr ""
+"!!! example \"Campionato appenzellese di pistola ad aria\"\n"
+"    Il bando dice: *«In ogni categoria i ranghi 1–3 ricevono un premio speciale, purché la categoria abbia almeno 10 partecipanti e la società del tiratore almeno 4.»* Cioè ranghi 3, minimo di categoria 10, minimo di società 4. Applicata ai risultati 2026, la regola riproduce la lista dei vincitori fatta a mano.\n"
+
+#. type: Title ##
+#: ../src/help/en/reference/rules.md:69
+#, no-wrap
+msgid "Lane lists"
+msgstr "Elenchi di bersagli"
+
+#. type: Plain text
+#: ../src/help/en/reference/rules.md:72
+msgid ""
+"Lanes are written as a list of numbers and ranges: `1, 5, 7-10`. Standblatt "
+"prints them compactly, turning runs of three or more into ranges (`1-3, 5, "
+"7, 8`)."
+msgstr ""
+"I bersagli si scrivono come elenco di numeri e intervalli: `1, 5, 7-10`. "
+"Standblatt li mostra in forma compatta e trasforma le sequenze di tre o più "
+"in intervalli (`1-3, 5, 7, 8`)."
+
+#. type: Title ##
+#: ../src/help/en/reference/rules.md:73
+#, no-wrap
+msgid "Money and numbers"
+msgstr "Importi e numeri"
+
+#. type: Plain text
+#: ../src/help/en/reference/rules.md:75
+msgid ""
+"Amounts are shown as `CHF 1'234.50`, dates as `dd.mm.yyyy`. On wreath cards "
+"the value can be printed in words in the event's language, e.g. "
+"*Fünfundzwanzig Franken*, *Septante et un francs*, *Ventitré franchi*."
+msgstr ""
+"Gli importi sono mostrati come `CHF 1'234.50`, le date come `dd.mm.yyyy`. "
+"Sulle carte corona il valore può essere stampato in lettere nella lingua "
+"della manifestazione, p. es. *Fünfundzwanzig Franken*, *Septante et un "
+"francs*, *Ventitré franchi*."
+
+#. type: Title #
+#: ../src/help/en/user-guide/dashboard.md:1
+#, no-wrap
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/dashboard.md:4
+msgid ""
+"The dashboard is the desk view of an event: who is shooting on which lane, "
+"who is waiting, who is done."
+msgstr ""
+"La dashboard è la vista dell’accoglienza di una manifestazione: chi tira su "
+"quale bersaglio, chi aspetta, chi ha finito."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/dashboard.md:6
+msgid "![Dashboard](../images/screenshots/dashboard.png){ .screenshot }"
+msgstr "![Dashboard](../images/screenshots/dashboard.png){ .screenshot }"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/dashboard.md:13
+msgid ""
+"**Shooting**: registrations on a lane, with the time since they started, the "
+"buttons **Results**, **Edit** and **Finish**. When the event setting *The "
+"organizer hands out the ammunition* is on, **Ammo** records that it was "
+"handed out and a green *ammo* badge shows it afterwards (see [Helpers]"
+"(helpers.md))."
+msgstr ""
+"**Al tiro**: iscrizioni su un bersaglio, con il tempo dall’inizio, i "
+"pulsanti **Risultati**, **Modifica** e **Termina**. Se l’impostazione della "
+"manifestazione *L’organizzatore consegna le munizioni* è attiva, "
+"**Munizione** registra che sono state consegnate e poi lo mostra un badge "
+"verde *munizione* (vedi [Aiutanti](helpers.md))."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/dashboard.md:13
+msgid ""
+"**Waiting**: registrations without a lane (for example when all lanes are "
+"taken)."
+msgstr ""
+"**In attesa**: iscrizioni senza bersaglio (per esempio quando tutti i "
+"bersagli sono occupati)."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/dashboard.md:13
+msgid ""
+"**Completed**: registrations whose programmes all have results, with an "
+"*awards to hand out* badge that opens the results dialog for the handout, or "
+"*awards handed out* afterwards (see [Results](results.md#handout))."
+msgstr ""
+"**Terminati**: iscrizioni i cui programmi hanno tutti i risultati, con il "
+"badge *distinzioni da consegnare*, che apre il dialogo dei risultati per la "
+"consegna, o poi *distinzioni consegnate* (vedi [Risultati]"
+"(results.md#handout))."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/dashboard.md:13
+msgid ""
+"**Lanes**: every lane is *free*, *occupied* (with the shooter), *reserved* "
+"(with the reservation and its end) or *out of service*. A reservation shows "
+"from its lead time on. An event on several ranges shows one grid per range, "
+"and the registration dialog groups the lanes by range; a shooter who moves "
+"to another range is finished and registered again there."
+msgstr ""
+"**Bersagli**: ogni bersaglio è *libero*, *occupato* (con il tiratore), "
+"*prenotato* (con la prenotazione e la sua fine) o *fuori servizio*. Una "
+"prenotazione compare a partire dal suo anticipo. Una manifestazione su più "
+"stand mostra una griglia per stand, e la finestra d’iscrizione raggruppa i "
+"bersagli per stand; un tiratore che passa a un altro stand viene concluso e "
+"iscritto di nuovo lì."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/dashboard.md:13
+msgid ""
+"The figures at the top count waiting, shooting and completed registrations."
+msgstr "Le cifre in alto contano le iscrizioni in attesa, al tiro e concluse."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/dashboard.md:13
+msgid ""
+"*Waiting* and *Completed* show 50 registrations per page; the arrows below "
+"the list turn the pages."
+msgstr "*In attesa* e *Concluso* mostrano 50 iscrizioni per pagina; le frecce sotto l’elenco sfogliano le pagine."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/dashboard.md:15
+msgid ""
+"Everything updates live: a result entered at another computer or a "
+"reservation that starts appears without reloading. The dot next to **live** "
+"in the header shows the connection; after a network interruption the page "
+"catches up by itself."
+msgstr ""
+"Tutto si aggiorna in diretta: un risultato registrato su un altro computer o "
+"una prenotazione che inizia compare senza ricaricare. Il punto accanto a "
+"**in diretta** nell’intestazione mostra la connessione; dopo un’interruzione "
+"di rete la pagina si aggiorna da sola."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/dashboard.md:16
+#, no-wrap
+msgid "Search and scan"
+msgstr "Cercare e scansionare"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/dashboard.md:19
+msgid "Press ++f4++ anywhere on the dashboard to jump into the search field."
+msgstr ""
+"Premi ++f4++ in un punto qualsiasi della dashboard per saltare al campo di "
+"ricerca."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/dashboard.md:21
+msgid "![Search](../images/screenshots/search.png){ .screenshot }"
+msgstr "![Ricerca](../images/screenshots/search.png){ .screenshot }"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/dashboard.md:26
+msgid ""
+"Type a **license number** (digits only, leading zeros optional), a **name** "
+"(part of first or last name) or **first and last name** in either order."
+msgstr ""
+"Digita un **numero di licenza** (solo cifre, zeri iniziali facoltativi), un "
+"**nome** (parte del nome o del cognome) o **nome e cognome** in qualsiasi "
+"ordine."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/dashboard.md:26
+msgid ""
+"Each hit offers **Register for &lt;club&gt;** for every club of the shooter, "
+"or **Open registration** if the shooter is currently registered."
+msgstr ""
+"Ogni risultato offre **Iscrivi &lt;società&gt;** per ogni società del "
+"tiratore, o **Apri iscrizione** se il tiratore è attualmente iscritto."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/dashboard.md:26
+msgid ""
+"**New shooter** creates a shooter and opens the registration right away."
+msgstr "**Nuovo tiratore** crea un tiratore e apre subito l’iscrizione."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/dashboard.md:26
+msgid ""
+"A hand scanner reading the [registration code](../reference/codes.md) on a "
+"lane sheet or control strip types the code and Enter: the results of that "
+"registration open directly."
+msgstr ""
+"Uno scanner manuale che legge il [codice d’iscrizione](../reference/"
+"codes.md) su un foglio di stand o una striscia di controllo digita il codice "
+"e Invio: i risultati di quell’iscrizione si aprono direttamente."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/dashboard.md:27
+#, no-wrap
+msgid "Finish shooting"
+msgstr "Terminare il tiro"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/dashboard.md:30
+#, no-wrap
+msgid "**Finish** ends a registration before all results are in, for example when a shooter gives up or hands in the targets later. The registration moves to *Completed* and its lane becomes free; missing results can still be entered.\n"
+msgstr "**Termina** chiude un’iscrizione prima che tutti i risultati siano presenti, per esempio quando un tiratore rinuncia o consegna i bersagli più tardi. L’iscrizione passa a *Concluso* e il suo bersaglio si libera; i risultati mancanti si possono ancora registrare.\n"
+
+#. type: Title ##
+#: ../src/help/en/user-guide/dashboard.md:31
+#, no-wrap
+msgid "Dark mode"
+msgstr "Tema scuro"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/dashboard.md:34
+msgid ""
+"The sun/moon button in the header switches between light and dark mode; the "
+"choice is kept in the browser."
+msgstr ""
+"Il pulsante sole/luna nell’intestazione passa dal tema chiaro a quello "
+"scuro; la scelta resta salvata nel browser."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/dashboard.md:35
+msgid ""
+"![Dashboard in dark mode](../images/screenshots/dashboard-dark.png)"
+"{ .screenshot }"
+msgstr ""
+"![Dashboard con tema scuro](../images/screenshots/dashboard-dark.png)"
+"{ .screenshot }"
+
+#. type: Title #
+#: ../src/help/en/user-guide/events.md:1
+#, no-wrap
+msgid "Events"
+msgstr "Manifestazioni"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:4
+#, no-wrap
+msgid "**Events** lists the events of the club in the groups *Today* (between the first and the last shooting day), *Upcoming*, *Past* and *Closed*; admins create new ones there. Opening an event shows its dashboard, reservations, rankings, statistics and setup in the sidebar; *Change event* at the top of the sidebar returns to the list.\n"
+msgstr "**Manifestazioni** elenca le manifestazioni della società nei gruppi *Oggi* (tra il primo e l’ultimo giorno di tiro), *Prossime*, *Passate* e *Chiuse*; gli admin ne creano di nuove qui. Aprendo una manifestazione la barra laterale mostra dashboard, prenotazioni, classifiche, statistiche e configurazione; *Cambia manifestazione* in alto nella barra laterale riporta all’elenco.\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:6
+msgid "![Events](../images/screenshots/events.png){ .screenshot }"
+msgstr "![Manifestazioni](../images/screenshots/events.png){ .screenshot }"
+
+#. type: Title ##
+#: ../src/help/en/user-guide/events.md:7
+#, no-wrap
+msgid "Settings {#settings}"
+msgstr "Impostazioni {#settings}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:10
+msgid ""
+"The event's **Setup** has five tabs: *Programmes* (see [Programmes]"
+"(programmes.md)), *Event*, *Kiosk displays* (see [Rankings and kiosk]"
+"(rankings-kiosk.md)), *Helpers* (see [Helpers](helpers.md)) and *Copy & "
+"close*. Staff only see the programmes."
+msgstr ""
+"La **Configurazione** della manifestazione ha cinque schede: *Programmi* "
+"(vedi [Programmi](programmes.md)), *Manifestazione*, *Display chiosco* (vedi "
+"[Classifiche e chiosco](rankings-kiosk.md)), *Aiutanti* (vedi [Aiutanti]"
+"(helpers.md)) e *Copia e chiudi*. I collaboratori vedono solo i programmi."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:12
+msgid "The *Event* tab holds the settings (admins):"
+msgstr "La scheda *Manifestazione* contiene le impostazioni (admin):"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:24
+#, no-wrap
+msgid ""
+"| Setting | Meaning |\n"
+"|---|---|\n"
+"| Name, Date, Ranges | the date is the main day; its year sets the age categories (SSV: competition year minus year of birth, the day itself does not matter, which counts for pre-shooting days in December before a January event); tick every range the event is shot on |\n"
+"| Shooting days | single days with optional shooting times, for pre-shooting days and multi-day events (registrations count on the day they are made); the main day is always one |\n"
+"| Period (season) | for events over weeks or months, e.g. the Feldschiessen from the opening of the range until 31 August: first and last day, plus the weekdays with their shooting times; no weekday ticked means every day. Single days, e.g. the official weekend, add to the period or replace its times on that date |\n"
+"| Organizer | printed on documents |\n"
+"| Language of documents and kiosk | language of PDFs, CSV exports and kiosk screens, independent of each user's interface language |\n"
+"| Club excluded from the club competition | usually the host club; listed as *out of competition* |\n"
+"| Show lane status on the rankings | kiosk screens show the lanes |\n"
+"| Print the award value on wreath cards | value in figures and words on the card |\n"
+"| The organizer hands out the ammunition | shows the **Ammo** button on the dashboard and for the ammunition desk (see [Helpers](helpers.md)); off for events where shooters bring their own, e.g. air pistol and air rifle |\n"
+msgstr ""
+"| Impostazione | Significato |\n"
+"|---|---|\n"
+"| Nome, data, stand | la data è il giorno principale; il suo anno fissa le categorie d’età (FST: anno della gara meno anno di nascita, il giorno in sé non conta, il che vale per il tiro anticipato di dicembre prima di una manifestazione di gennaio); spuntare ogni stand su cui si tira la manifestazione |\n"
+"| Giorni di tiro | singoli giorni con orari di tiro facoltativi, per il tiro anticipato e le manifestazioni di più giorni (le iscrizioni contano il giorno in cui vengono fatte); il giorno principale è sempre uno di essi |\n"
+"| Periodo (stagione) | per manifestazioni di settimane o mesi, p. es. il Tiro in campagna dall’apertura dello stand fino al 31 agosto: primo e ultimo giorno, più i giorni della settimana con i loro orari di tiro; nessun giorno spuntato significa ogni giorno. I singoli giorni, p. es. il fine settimana ufficiale, si aggiungono al periodo o ne sostituiscono gli orari in quella data |\n"
+"| Organizzatore | stampato sui documenti |\n"
+"| Lingua dei documenti e del chiosco | lingua dei PDF, delle esportazioni CSV e degli schermi chiosco, indipendente dalla lingua d’interfaccia di ogni utente |\n"
+"| Società esclusa dal concorso di sezione | di solito la società organizzatrice; elencata come *fuori concorso* |\n"
+"| Mostra lo stato dei bersagli sulle classifiche | gli schermi chiosco mostrano i bersagli |\n"
+"| Stampa il valore della distinzione sulle carte corona | valore in cifre e in lettere sulla carta |\n"
+"| L’organizzatore consegna le munizioni | mostra il pulsante **Munizione** nella dashboard e per la distribuzione munizioni (vedi [Aiutanti](helpers.md)); disattivato per le manifestazioni in cui i tiratori portano le proprie, ad es. pistola e carabina ad aria compressa |\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:26
+msgid ""
+"Shooting times also give the online booking its slots, unless the booking "
+"sets other hours for a day (see [Online booking](online-booking.md))."
+msgstr ""
+"Gli orari di tiro danno anche alla prenotazione online le sue fasce, a meno "
+"che la prenotazione fissi altri orari per un giorno (vedi [prenotazione "
+"online](online-booking.md))."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/events.md:27
+#, no-wrap
+msgid "Copy for next year"
+msgstr "Copia per l’anno prossimo"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:30
+msgid ""
+"On the *Copy & close* tab, **Copy for next year** creates a new event with "
+"the same ranges, organizer, language, settings and all programmes, including "
+"prices, awards, combinations and special prizes; the shooting days and the "
+"period move with the date, weekly shooting times stay on their weekdays. "
+"Registrations, results and kiosk links are not copied. The dialog suggests "
+"the name with the year (and a leading number like *42.*) counted up and the "
+"date one year later; adjust both as needed."
+msgstr ""
+"Nella scheda *Copia e chiudi*, **Copia per l’anno prossimo** crea una nuova "
+"manifestazione con gli stessi stand, organizzatore, lingua, impostazioni e "
+"tutti i programmi, compresi prezzi, distinzioni, combinazioni e premi "
+"speciali; i giorni di tiro e il periodo si spostano con la data, gli orari "
+"di tiro settimanali restano sui loro giorni della settimana. Iscrizioni, "
+"risultati e link chiosco non vengono copiati. La finestra propone il nome "
+"con l’anno (e un numero iniziale come *42.*) incrementato e la data un anno "
+"dopo; adatta entrambi se necessario."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:32
+msgid "![Copy an event](../images/screenshots/copy-event.png){ .screenshot }"
+msgstr ""
+"![Copiare una manifestazione](../images/screenshots/copy-event.png)"
+"{ .screenshot }"
+
+#. type: Title ##
+#: ../src/help/en/user-guide/events.md:33
+#, no-wrap
+msgid "Close {#close}"
+msgstr "Chiudere {#close}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:36
+msgid ""
+"When an event is over and the rankings are checked, **Close** it on the "
+"*Copy & close* tab. Closing releases the rankings: shooters with a [personal "
+"training log](../my-training/account.md#competitions) now find their results "
+"of this event, with their rank in the programme, and can add them to their "
+"log. Everything stays visible (dashboard, results, rankings, reports, "
+"documents), but registrations, results, awards, programmes and settings can "
+"no longer be changed. A banner on every page of the event says so. "
+"**Reopen** makes it editable again; results that shooters already added to "
+"their logs stay there. Copying a closed event for next year works."
+msgstr ""
+"Quando la manifestazione è finita e le classifiche sono controllate, "
+"**chiudila** nella scheda *Copia e chiudi* (**Chiudi la manifestazione**). "
+"La chiusura pubblica le classifiche: i tiratori con un [diario di "
+"allenamento personale](../my-training/account.md#competitions) trovano ora i "
+"loro risultati di questa manifestazione, con il rango nel programma, e "
+"possono aggiungerli al diario. Tutto resta visibile (dashboard, risultati, "
+"classifiche, rapporti, documenti), ma iscrizioni, risultati, distinzioni, "
+"programmi e impostazioni non possono più essere modificati. Un banner su "
+"ogni pagina della manifestazione lo segnala. **Riapri** la rende di nuovo "
+"modificabile; i risultati che i tiratori hanno già aggiunto al diario "
+"restano. Copiare una manifestazione chiusa per l’anno prossimo funziona."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/events.md:37
+#, no-wrap
+msgid "Delete"
+msgstr "Eliminare"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:39
+#, no-wrap
+msgid "**Delete** (on the *Copy & close* tab) removes an event, but only while nobody is registered for it.\n"
+msgstr "**Elimina** (nella scheda *Copia e chiudi*) rimuove una manifestazione, ma solo finché nessuno è iscritto.\n"
+
+#. type: Title #
+#: ../src/help/en/user-guide/login-language.md:1
+#, no-wrap
+msgid "Login and language"
+msgstr "Accesso e lingua"
+
+#. type: Title ##
+#: ../src/help/en/user-guide/login-language.md:3
+#, no-wrap
+msgid "Logging in"
+msgstr "Accedere"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:6
+msgid ""
+"Log in with the user name (or email address) and password you received from "
+"your club admin or the platform operator. Club accounts are not created by "
+"sign-up; only [My training](../my-training/account.md) has its own sign-up. "
+"Forgot your password? If your account has a confirmed email address, use "
+"**Forgot your password?** on the login page; otherwise ask the operator to "
+"set a new password in the [admin panel](../admin-guide/admin-panel.md). "
+"Logged in, you change it yourself under [Account](#account)."
+msgstr ""
+"Accedi con il nome utente (o l’indirizzo e-mail) e la password ricevuti "
+"dall’admin della tua società o dal gestore della piattaforma. Gli account "
+"della società non nascono da una registrazione; solo [Il mio allenamento](../"
+"my-training/account.md) ha una sua registrazione. Password dimenticata? Se "
+"il tuo account ha un indirizzo e-mail confermato, usa **Password dimenticata?"
+"** nella pagina di accesso; altrimenti chiedi al gestore di impostare una "
+"nuova password nel [pannello di amministrazione](../admin-guide/admin-"
+"panel.md). Da connesso la cambi da solo sotto [Account](#account)."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:8
+msgid ""
+"After the login you land on the start page with a card for every club you "
+"belong to and one for [My training](../my-training/index.md), which every "
+"user has; **Account** and **Log out** are below the cards. Without a club "
+"membership the start page takes you straight to My training."
+msgstr ""
+"Dopo l’accesso arrivi alla pagina iniziale con una scheda per ogni società a "
+"cui appartieni e una per [Il mio allenamento](../my-training/index.md), che "
+"ogni utente ha; **Account** ed **Esci** si trovano sotto le schede. Senza "
+"società la pagina iniziale porta direttamente a Il mio allenamento."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:12
+msgid "![Start page](../images/screenshots/home.png){ .screenshot }"
+msgstr "![Pagina iniziale](../images/screenshots/home.png){ .screenshot }"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:14
+msgid ""
+"A login stays valid for seven days of inactivity and at most 30 days; with "
+"**Stay logged in for 90 days** ticked, it lasts 90 days on that device. "
+"After too many failed attempts, logins from the same address are blocked for "
+"a while."
+msgstr ""
+"Un accesso resta valido sette giorni senza attività e al massimo 30 giorni; "
+"con **Resta connesso per 90 giorni** spuntato, dura 90 giorni su quel "
+"dispositivo. Dopo troppi tentativi falliti, gli accessi dallo stesso "
+"indirizzo vengono bloccati per un po’."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:16
+msgid ""
+"If your account belongs to several clubs, you choose the club after logging "
+"in; **Switch club** in the user menu goes back to that choice."
+msgstr ""
+"Se il tuo account appartiene a più società, scegli la società dopo "
+"l’accesso; **Cambia società** nel menu utente riporta a questa scelta."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/login-language.md:17
+#, no-wrap
+msgid "Account {#account}"
+msgstr "Account {#account}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:20
+#, no-wrap
+msgid "**Account** in the user menu (bottom of the sidebar), on the start page and in My training's sidebar opens your account settings:\n"
+msgstr "**Account** nel menu utente (in fondo alla barra laterale), nella pagina iniziale e nella barra laterale di Il mio allenamento apre le impostazioni del tuo account:\n"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/login-language.md:26
+msgid ""
+"**Login**: your user name (it cannot be changed) and your email address. "
+"**Add** or **Change** asks for your password and sends a confirmation link; "
+"until you confirm, the address counts as *not confirmed* and **Send again** "
+"sends a new link. A confirmed address lets you reset a forgotten password "
+"yourself."
+msgstr ""
+"**Accesso**: il tuo nome utente (non si può cambiare) e il tuo indirizzo e-"
+"mail. **Aggiungi** o **Cambia** chiede la tua password e invia un link di "
+"conferma; finché non confermi, l’indirizzo conta come *non confermato* e "
+"**Invia di nuovo** manda un nuovo link. Un indirizzo confermato ti permette "
+"di reimpostare da solo una password dimenticata."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/login-language.md:26
+msgid ""
+"**Password**: enter the current and the new password (at least 10 "
+"characters). Other devices are logged out, the one you are on stays."
+msgstr ""
+"**Password**: inserisci la password attuale e quella nuova (almeno 10 "
+"caratteri). Gli altri dispositivi vengono disconnessi, quello che stai "
+"usando resta connesso."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/login-language.md:26
+msgid ""
+"**Language and theme**: the interface language of your account and light or "
+"dark mode."
+msgstr ""
+"**Lingua e aspetto**: la lingua dell’interfaccia del tuo account e la "
+"modalità chiara o scura."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/login-language.md:26
+msgid "**Second factor**: see below."
+msgstr "**Secondo fattore**: vedi sotto."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/login-language.md:26
+msgid ""
+"**Delete account**: only for accounts that belong to no club; the training "
+"log, goals and settings are deleted for good. Club accounts are removed by "
+"the club admin."
+msgstr ""
+"**Elimina account**: solo per account senza società; diario di allenamento, "
+"obiettivi e impostazioni vengono eliminati definitivamente. Gli account di "
+"società li rimuove l’admin della società."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:28
+msgid "![Account](../images/screenshots/account.png){ .screenshot }"
+msgstr "![Account](../images/screenshots/account.png){ .screenshot }"
+
+#. type: Title ##
+#: ../src/help/en/user-guide/login-language.md:29
+#, no-wrap
+msgid "Second factor {#totp}"
+msgstr "Secondo fattore {#totp}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:32
+msgid ""
+"An authenticator app (Google Authenticator, Aegis, 1Password and the like) "
+"can protect your login: after the password, Standblatt asks for the six-"
+"digit code the app shows. Set it up under [Account](#account): **Set up**, "
+"scan the QR code, enter the current code, **Switch on**. **Switch off** asks "
+"for your password. Lost the phone? The operator can reset the second factor "
+"in the [admin panel](../admin-guide/admin-panel.md). The operator can also "
+"switch the feature off for the whole server."
+msgstr ""
+"Un’app di autenticazione (Google Authenticator, Aegis, 1Password e simili) "
+"può proteggere il tuo accesso: dopo la password, Standblatt chiede il codice "
+"a sei cifre mostrato dall’app. Configurala sotto [Account](#account): "
+"**Configura**, scansiona il codice QR, inserisci il codice attuale, "
+"**Attiva**. **Disattiva** chiede la tua password. Telefono perso? Il gestore "
+"può azzerare il secondo fattore nel [pannello di amministrazione](../admin-"
+"guide/admin-panel.md). Il gestore può anche disattivare la funzione per "
+"tutto il server."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/login-language.md:33
+#, no-wrap
+msgid "Language"
+msgstr "Lingua"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:36
+msgid ""
+"The interface is available in English, German, French and Italian. Without a "
+"choice, Standblatt follows the browser's language. **Language** in the user "
+"menu (bottom of the sidebar) sets it for your account on every device."
+msgstr ""
+"L’interfaccia è disponibile in inglese, tedesco, francese e italiano. Senza "
+"una scelta, Standblatt segue la lingua del browser. **Lingua** nel menu "
+"utente (in fondo alla barra laterale) la imposta per il tuo account su ogni "
+"dispositivo."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:38
+msgid ""
+"Printed documents, CSV exports and kiosk screens do not follow your choice "
+"but the language of the event, so that every printout of an event looks the "
+"same (see [Events](events.md#settings))."
+msgstr ""
+"I documenti stampati, le esportazioni CSV e gli schermi chiosco non seguono "
+"la tua scelta ma la lingua della manifestazione, così ogni stampa di una "
+"manifestazione ha lo stesso aspetto (vedi [Manifestazioni]"
+"(events.md#settings))."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/login-language.md:39
+#, no-wrap
+msgid "Version"
+msgstr "Versione"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:41
+msgid ""
+"The bottom of the sidebar shows the version of the server, which helps when "
+"reporting a problem; in My training on a phone it is under **Settings**. "
+"When a new version is released, open pages offer **Reload** within a minute "
+"and load it on the next page change at the latest."
+msgstr ""
+"In fondo alla barra laterale c’è la versione del server, utile per segnalare "
+"un problema; in Il mio allenamento sul telefono si trova in "
+"**Impostazioni**. Quando esce una nuova versione, le pagine aperte offrono "
+"**Ricarica** entro un minuto e la caricano al più tardi al prossimo cambio "
+"di pagina."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/printing.md:1
+#: ../src/help/en/user-guide/registrations.md:26
+#, no-wrap
+msgid "Printing"
+msgstr "Stampa"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/printing.md:4
+msgid "Standblatt renders all documents as PDF:"
+msgstr "Standblatt produce tutti i documenti in PDF:"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/printing.md:12
+#, no-wrap
+msgid ""
+"| Document | Format | When |\n"
+"|---|---|---|\n"
+"| Lane sheet | A5 | at registration, with QR code and programme barcodes |\n"
+"| Control strip | label 90 × 29 mm | at registration, stuck on the target card |\n"
+"| Result sheet | A5 | when all programmes have results |\n"
+"| Wreath card | A6, printed onto pre-printed cards | after choosing a wreath card award |\n"
+"| Ranking | A4 | from the rankings page |\n"
+msgstr ""
+"| Documento | Formato | Quando |\n"
+"|---|---|---|\n"
+"| Foglio di stand | A5 | all’iscrizione, con codice QR e codici a barre dei programmi |\n"
+"| Striscia di controllo | etichetta 90 × 29 mm | all’iscrizione, incollata sulla carta bersaglio |\n"
+"| Foglio dei risultati | A5 | quando tutti i programmi hanno risultati |\n"
+"| Carta corona | A6, stampata su carte prestampate | dopo la scelta di una carta corona come distinzione |\n"
+"| Classifica | A4 | dalla pagina delle classifiche |\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/printing.md:14
+msgid ""
+"Every Print button prints on the range's printer if one is set up and its "
+"print agent is online; otherwise the PDF opens in the browser and can be "
+"printed from there."
+msgstr ""
+"Ogni pulsante di stampa stampa sulla stampante dello stand se è configurata "
+"e il suo agente di stampa è online; altrimenti il PDF si apre nel browser e "
+"si può stampare da lì."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/printing.md:15
+#, no-wrap
+msgid "Setting up printers"
+msgstr "Configurare le stampanti"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/printing.md:18
+#, no-wrap
+msgid "**Ranges → Printing** (admins):\n"
+msgstr "**Stand di tiro → Stampa** (admin):\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/printing.md:20
+msgid "![Printing](../images/screenshots/printing.png){ .screenshot }"
+msgstr "![Stampa](../images/screenshots/printing.png){ .screenshot }"
+
+#. type: Bullet: '1. '
+#: ../src/help/en/user-guide/printing.md:24
+msgid ""
+"**Add print agent**, give it a name and copy the token. Install the agent on "
+"a computer next to the printers (see [Print agent](../admin-guide/print-"
+"agent.md))."
+msgstr ""
+"**Aggiungi agente di stampa**, dagli un nome e copia il token. Installa "
+"l’agente su un computer vicino alle stampanti (vedi [Agente di stampa](../"
+"admin-guide/print-agent.md))."
+
+#. type: Bullet: '2. '
+#: ../src/help/en/user-guide/printing.md:24
+msgid ""
+"Once the agent is online, it reports its printers. Choose the printer for "
+"each document and its options (tray, paper size, media type, further `lp` "
+"options such as `fit-to-page`)."
+msgstr ""
+"Appena l’agente è online, comunica le sue stampanti. Scegli per ogni "
+"documento la stampante e le sue opzioni (cassetto, formato carta, tipo di "
+"supporto, altre opzioni `lp` come `fit-to-page`)."
+
+#. type: Bullet: '3. '
+#: ../src/help/en/user-guide/printing.md:24
+msgid "**Recent jobs** shows what was printed and whether it worked."
+msgstr "**Lavori recenti** mostra cosa è stato stampato e se ha funzionato."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/printing.md:25
+msgid ""
+"A job that the agent does not confirm within two minutes is retried; after "
+"three attempts it fails. **revoke** removes an agent immediately."
+msgstr ""
+"Un lavoro che l’agente non conferma entro due minuti viene ripetuto; dopo "
+"tre tentativi fallisce. **revoca** rimuove subito un agente."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/programmes.md:1
+#: ../src/help/en/user-guide/registrations.md:14
+#, no-wrap
+msgid "Programmes"
+msgstr "Programmi"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/programmes.md:4
+msgid ""
+"Programmes belong to an event and are managed on the *Programmes* tab of its "
+"**Setup** (admins only)."
+msgstr ""
+"I programmi appartengono a una manifestazione e si gestiscono nella scheda "
+"*Programmi* della sua **Configurazione** (solo admin)."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/programmes.md:6
+msgid ""
+"![Setup with the programme list](../images/screenshots/setup.png)"
+"{ .screenshot }"
+msgstr ""
+"![Configurazione con l’elenco dei programmi](../images/screenshots/setup.png)"
+"{ .screenshot }"
+
+#. type: Title ##
+#: ../src/help/en/user-guide/programmes.md:7
+#, no-wrap
+msgid "Adding programmes"
+msgstr "Aggiungere programmi"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/programmes.md:13
+msgid "**New programme** opens the editor."
+msgstr "**Nuovo programma** apre l’editor."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/programmes.md:13
+msgid ""
+"**Add from … → Programme library**: a template of the global library, "
+"maintained by the platform operator."
+msgstr ""
+"**Aggiungi da … → Biblioteca dei programmi**: un modello della biblioteca "
+"globale, curata dal gestore della piattaforma."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/programmes.md:13
+msgid ""
+"**Add from … → Earlier event**: copies all programmes of another event of "
+"the club, including combinations and special prizes. Programmes whose name "
+"and variant already exist are skipped."
+msgstr ""
+"**Aggiungi da … → Manifestazione precedente**: copia tutti i programmi di "
+"un’altra manifestazione della società, comprese combinazioni e premi "
+"speciali. I programmi il cui nome e variante esistono già vengono saltati."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/programmes.md:13
+msgid ""
+"**Add from … → Programme file**: imports a [programme file](../reference/"
+"programme-file.md) exported from another event or club."
+msgstr ""
+"**Aggiungi da … → File di programma**: importa un [file di programma](../"
+"reference/programme-file.md) esportato da un’altra manifestazione o società."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/programmes.md:14
+#, no-wrap
+msgid "The editor"
+msgstr "L’editor"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/programmes.md:17
+msgid ""
+"![Programme editor](../images/screenshots/programme-editor.png)"
+"{ .screenshot }"
+msgstr ""
+"![Editor del programma](../images/screenshots/programme-editor.png)"
+"{ .screenshot }"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/programmes.md:24
+msgid ""
+"**Name** and **Variant**: programmes with the same name are variants of each "
+"other; a shooter registers for one of them. The name field suggests the "
+"names of the event's programmes, and as soon as the name matches one, the "
+"editor says that you are creating a variant and warns when the variant name "
+"is empty or already taken."
+msgstr ""
+"**Nome** e **Variante**: i programmi con lo stesso nome sono varianti l’uno "
+"dell’altro; un tiratore si iscrive a una di esse. Il campo del nome propone "
+"i nomi dei programmi della manifestazione, e appena il nome corrisponde a "
+"uno di essi l’editor dice che stai creando una variante e avvisa se il nome "
+"della variante è vuoto o già usato."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/programmes.md:24
+msgid ""
+"**Barcode**: printed on the lane sheet for electronic scoring (see [Codes]"
+"(../reference/codes.md))."
+msgstr ""
+"**Codice a barre**: stampato sul foglio di stand per la segnalazione "
+"elettronica (vedi [Codici](../reference/codes.md))."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/programmes.md:24
+msgid "**Counts for the club competition** and **Show on kiosk displays**."
+msgstr ""
+"**Conta per il concorso di sezione** e **Mostra sugli schermi chiosco**."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/programmes.md:24
+msgid ""
+"**Series**: shots, maximum points and whether mouches are tracked, per "
+"series."
+msgstr ""
+"**Serie**: colpi, punteggio massimo e se si contano le mouche, per serie."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/programmes.md:24
+msgid ""
+"**Prices (CHF)**: only the ticked age categories may shoot the programme."
+msgstr ""
+"**Prezzi (CHF)**: solo le categorie d’età spuntate possono tirare il "
+"programma."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/programmes.md:24
+msgid ""
+"**Awards**: name, kind (wreath card, prize in kind or cash prize paid out in "
+"money), value and the minimum total per age category; leave a category empty "
+"where the award is not available."
+msgstr ""
+"**Distinzioni**: nome, tipo (carta corona, premio in natura o premio in "
+"denaro pagato in contanti), valore e totale minimo per categoria d’età; "
+"lascia vuota una categoria dove la distinzione non è disponibile."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/programmes.md:26
+msgid ""
+"Once shooters are registered for a programme, the **series** are fixed so "
+"results keep their meaning; the editor says so and greys them out. "
+"Everything else can still be changed: name, variant, description, barcode, "
+"the flags, prices, series names, award names, values and limits. Age "
+"categories and awards can be **added** but not removed. Also available on a "
+"programme in use:"
+msgstr ""
+"Non appena dei tiratori sono iscritti a un programma, le **serie** sono "
+"fisse perché i risultati mantengano il loro significato; l'editor lo segnala "
+"e le disattiva. Tutto il resto resta modificabile: nome, variante, "
+"descrizione, codice a barre, le opzioni, prezzi, nomi delle serie, nomi, "
+"valori e limiti delle distinzioni. Categorie d'età e distinzioni possono "
+"essere **aggiunte** ma non rimosse. Su un programma in uso è inoltre "
+"disponibile:"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/programmes.md:31
+msgid ""
+"**Active**: inactive programmes cannot be chosen for new registrations; "
+"existing ones keep them."
+msgstr ""
+"**Attivo**: i programmi inattivi non si possono scegliere per nuove "
+"iscrizioni; quelle esistenti li mantengono."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/programmes.md:31
+msgid ""
+"**Combinable with**: the programme whose series this one may take at "
+"registration."
+msgstr ""
+"**Combinabile con**: il programma di cui questo può prendere le serie "
+"all’iscrizione."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/programmes.md:31
+msgid ""
+"**Range** (events on several ranges or ranges with lane groups): the range "
+"or lane group the programme is shot on, e.g. *Pistol · 50 m*; the "
+"registration then offers only those lanes and kiosk displays group the "
+"rankings by range. *any* leaves it open. Programmes of different groups need "
+"separate registrations."
+msgstr ""
+"**Stand** (manifestazioni su più stand o stand con gruppi di bersagli): lo "
+"stand o il gruppo di bersagli su cui si tira il programma, p. es. *Pistola · "
+"50 m*; l’iscrizione offre allora solo quei bersagli e gli schermi chiosco "
+"raggruppano le classifiche per stand. *qualsiasi* lascia la scelta aperta. "
+"Programmi di gruppi diversi richiedono iscrizioni separate."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/programmes.md:31
+msgid "**Special prizes** (see below)."
+msgstr "**Premi speciali** (vedi sotto)."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/programmes.md:33
+#, no-wrap
+msgid "**Export** downloads the programme as a file; **Delete** is only possible while nobody is registered.\n"
+msgstr "**Esporta** scarica il programma come file; **Elimina** è possibile solo finché nessuno è iscritto.\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/programmes.md:37
+#, no-wrap
+msgid "**Special prizes** in the programme menu awards the best ranks of every age category, for example ranks 1–3 in every category with at least 10 participants, counting only shooters whose club has at least 4 participants in this programme. Skipped shooters make room for the next one. The exact rule is in [Competition rules](../reference/rules.md#special-prizes); the winners are in the report *Special prizes* under [Statistics](statistics-reports.md).\n"
+msgstr "**Premi speciali** nel menu del programma premia i migliori ranghi di ogni categoria d’età, per esempio i ranghi 1–3 in ogni categoria con almeno 10 partecipanti, contando solo i tiratori la cui società ha almeno 4 partecipanti in questo programma. I tiratori saltati lasciano posto al successivo. La regola esatta è nelle [regole di gara](../reference/rules.md#special-prizes); i vincitori sono nel rapporto *Premi speciali* in [Statistiche](statistics-reports.md).\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/programmes.md:39
+msgid ""
+"![Special prizes dialog](../images/screenshots/special-prizes.png)"
+"{ .screenshot }"
+msgstr ""
+"![Finestra dei premi speciali](../images/screenshots/special-prizes.png)"
+"{ .screenshot }"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/programmes.md:40
+msgid ""
+"Ranks 0 turns special prizes off. The settings can be changed at any time, "
+"also after the event."
+msgstr ""
+"Ranghi 0 disattiva i premi speciali. Le impostazioni si possono cambiare in "
+"qualsiasi momento, anche dopo la manifestazione."
+
+#. type: Title #
+#: ../src/help/en/user-guide/ranges.md:1
+#, no-wrap
+msgid "Ranges"
+msgstr "Stand di tiro"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/ranges.md:4
+#, no-wrap
+msgid "**Ranges** (admins) lists the shooting ranges of the club.\n"
+msgstr "**Stand di tiro** (admin) elenca gli stand di tiro della società.\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/ranges.md:6
+msgid "![Ranges](../images/screenshots/ranges.png){ .screenshot }"
+msgstr "![Stand di tiro](../images/screenshots/ranges.png){ .screenshot }"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/ranges.md:11
+msgid "**Name** and **Number of lanes**."
+msgstr "**Nome** e **Numero di bersagli**."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/ranges.md:11
+msgid ""
+"**Out of service**: lane numbers that cannot be used, e.g. `3, 7`. They show "
+"grey on the dashboard and cannot be assigned."
+msgstr ""
+"**Fuori servizio**: numeri di bersagli non utilizzabili, p. es. `3, 7`. "
+"Compaiono grigi nella dashboard e non si possono assegnare."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/ranges.md:11
+msgid ""
+"**Lane groups** (optional): parts of the range with another distance, e.g. a "
+"pistol range with `1-10` as *25 m* and `11-15` as *50 m*. The range stays "
+"one range with one print agent and shared reservations; the dashboard and "
+"kiosk show the groups as headings, and a programme tied to a group only "
+"offers its lanes at registration (see [Programmes](programmes.md)). A group "
+"used by programmes cannot be removed."
+msgstr ""
+"**Gruppi di bersagli** (facoltativo): parti dello stand a un’altra distanza, "
+"p. es. uno stand pistola con `1-10` come *25 m* e `11-15` come *50 m*. Lo "
+"stand resta un solo stand con un agente di stampa e prenotazioni comuni; "
+"dashboard e chiosco mostrano i gruppi come titoli, e un programma legato a "
+"un gruppo offre all’iscrizione solo i suoi bersagli (vedi [Programmi]"
+"(programmes.md)). Un gruppo usato da programmi non si può rimuovere."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/ranges.md:11
+msgid ""
+"**Printing** opens the printers and print agents of the range (see [Printing]"
+"(printing.md))."
+msgstr ""
+"**Stampa** apre le stampanti e gli agenti di stampa dello stand (vedi "
+"[Stampa](printing.md))."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/ranges.md:12
+msgid ""
+"A range with events cannot be deleted. Lane reservations belong to the range "
+"and show in all of its events (see [Reservations](reservations.md))."
+msgstr ""
+"Uno stand con manifestazioni non si può eliminare. Le prenotazioni dei "
+"bersagli appartengono allo stand e compaiono in tutte le sue manifestazioni "
+"(vedi [Prenotazioni](reservations.md))."
+
+#. type: Title #
+#: ../src/help/en/user-guide/rankings-kiosk.md:1
+#, no-wrap
+msgid "Rankings and kiosk"
+msgstr "Classifiche e chiosco"
+
+#. type: Title ##
+#: ../src/help/en/user-guide/rankings-kiosk.md:3
+#, no-wrap
+msgid "Rankings"
+msgstr "Classifiche"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/rankings-kiosk.md:6
+#, no-wrap
+msgid "**Rankings** shows a live ranking per programme, ordered by the [SSV rules](../reference/rules.md#ranking). The first three ranks are highlighted.\n"
+msgstr "**Classifiche** mostra una classifica in diretta per programma, ordinata secondo le [regole della FST](../reference/rules.md#ranking). I primi tre ranghi sono evidenziati.\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/rankings-kiosk.md:8
+msgid "![Rankings](../images/screenshots/rankings.png){ .screenshot }"
+msgstr "![Classifiche](../images/screenshots/rankings.png){ .screenshot }"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/rankings-kiosk.md:11
+msgid ""
+"**Print ranking** sends the ranking (A4) to the range's printer or opens it "
+"as PDF; the CSV export is under the programme in [Statistics](statistics-"
+"reports.md)."
+msgstr ""
+"**Stampa classifica** invia la classifica (A4) alla stampante dello stand o "
+"la apre come PDF; l’esportazione CSV si trova sotto il programma in "
+"[Statistiche](statistics-reports.md)."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/rankings-kiosk.md:11
+msgid ""
+"Programmes switched off for kiosk displays are still ranked here and marked "
+"*not on kiosk*."
+msgstr ""
+"I programmi disattivati per gli schermi chiosco sono comunque classificati "
+"qui e segnati *non sul chiosco*."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/rankings-kiosk.md:12
+#, no-wrap
+msgid "Kiosk screens"
+msgstr "Schermi chiosco"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/rankings-kiosk.md:15
+msgid ""
+"A kiosk link shows the rankings of one event on a screen in the hall, "
+"without login. Create one on the *Kiosk displays* tab of the event's "
+"**Setup**:"
+msgstr ""
+"Un link chiosco mostra le classifiche di una manifestazione su uno schermo "
+"della sala, senza accesso. Creane uno nella scheda *Display chiosco* della "
+"**Configurazione** della manifestazione:"
+
+#. type: Bullet: '1. '
+#: ../src/help/en/user-guide/rankings-kiosk.md:19
+msgid ""
+"Enter a name for the screen (e.g. *Hall 1*), choose **Dark** or **Light** "
+"and optionally a language."
+msgstr ""
+"Inserisci un nome per lo schermo (p. es. *Sala 1*), scegli **Scuro** o "
+"**Chiaro** e, se vuoi, una lingua."
+
+#. type: Bullet: '2. '
+#: ../src/help/en/user-guide/rankings-kiosk.md:19
+msgid "**Create kiosk link**; copy the link. It is shown only once."
+msgstr "**Crea link chiosco**; copia il link. Viene mostrato una sola volta."
+
+#. type: Bullet: '3. '
+#: ../src/help/en/user-guide/rankings-kiosk.md:19
+msgid "Open the link in a browser on the screen, ideally in full screen."
+msgstr "Apri il link in un browser sullo schermo, idealmente a schermo intero."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/rankings-kiosk.md:21
+msgid "![Kiosk screen](../images/screenshots/kiosk.png){ .screenshot }"
+msgstr "![Schermo chiosco](../images/screenshots/kiosk.png){ .screenshot }"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/rankings-kiosk.md:25
+msgid ""
+"The kiosk shows only programmes with *Show on kiosk displays* switched on, "
+"and the lane status if the event setting *Show lane status on the rankings* "
+"is on."
+msgstr ""
+"Il chiosco mostra solo i programmi con *Mostra sugli schermi chiosco* "
+"attivo, e lo stato dei bersagli se l’impostazione *Mostra lo stato dei "
+"bersagli sulle classifiche* della manifestazione è attiva."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/rankings-kiosk.md:25
+msgid ""
+"The language is the event's language unless the link carries another one (`?"
+"language=de`, `fr`, `it`, `en`); the theme comes from `?theme=dark` or `?"
+"theme=light`. On an event with several ranges, `?range=<id>` (chosen when "
+"creating the link) limits the display to that range: its lanes, its "
+"programmes and the programmes without a range."
+msgstr ""
+"La lingua è quella della manifestazione, salvo che il link ne indichi "
+"un’altra (`?language=de`, `fr`, `it`, `en`); il tema viene da `?theme=dark` "
+"o `?theme=light`. Per una manifestazione su più stand, `?range=<id>` (scelto "
+"alla creazione del link) limita la visualizzazione a quello stand: i suoi "
+"bersagli, i suoi programmi e i programmi senza stand."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/rankings-kiosk.md:25
+msgid ""
+"The screen updates live and reconnects by itself after a network "
+"interruption. When a new version of Standblatt is released, it reloads by "
+"itself."
+msgstr ""
+"Lo schermo si aggiorna in diretta e si ricollega da solo dopo "
+"un’interruzione di rete. A una nuova versione di Standblatt si ricarica da "
+"solo."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/rankings-kiosk.md:25
+msgid ""
+"**revoke** in the list stops a link immediately. *last seen* tells when a "
+"screen last fetched data."
+msgstr ""
+"**revoca** nell’elenco ferma subito un link. *visto l’ultima volta* indica "
+"quando uno schermo ha preso dati l’ultima volta."
+
+#. type: Title #
+#: ../src/help/en/user-guide/helpers.md:1
+#, no-wrap
+msgid "Helpers"
+msgstr "Aiutanti"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/helpers.md:4
+msgid ""
+"Helpers at the event (scorers, the ammunition desk, the results office) work "
+"with a **helper link** instead of a login. A helper link opens a reduced "
+"desk of one event on any phone or laptop; admins create the links on the "
+"*Helpers* tab of the event's **Setup** and revoke them when the event is "
+"over."
+msgstr ""
+"Gli aiutanti alla manifestazione (marcatori, distribuzione munizioni, "
+"ufficio risultati) lavorano con un **link aiutante** invece di un login. Un "
+"link aiutante apre su qualsiasi telefono o portatile una vista ridotta di "
+"una manifestazione; gli admin creano i link nella scheda *Aiutanti* della "
+"**Configurazione** della manifestazione e li revocano quando è finita."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/helpers.md:6
+msgid ""
+"![Scorer's helper page on a phone](../images/screenshots/helper-scorer.png)"
+"{ .screenshot .phone }"
+msgstr ""
+"![Pagina aiutante del marcatore su un telefono](../images/screenshots/helper-"
+"scorer.png){ .screenshot .phone }"
+
+#. type: Title ##
+#: ../src/help/en/user-guide/helpers.md:7
+#, no-wrap
+msgid "Roles {#roles}"
+msgstr "Ruoli {#roles}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/helpers.md:14
+#, no-wrap
+msgid ""
+"| Role | Sees | Can |\n"
+"|---|---|---|\n"
+"| **Scorer** | the lane grid of their own lanes, the shooters on them | enter results and awards, **Finish** a shooter |\n"
+"| **Ammunition desk** | the search box, the waiting list, the shooters on all lanes | mark the ammunition as issued (**Ammo**), assign a lane to a waiting shooter, print the lane sheet |\n"
+"| **Results clerk** | the search box, the shooters on all lanes, the completed list | enter results and awards on every lane |\n"
+msgstr ""
+"| Ruolo | Vede | Può |\n"
+"|---|---|---|\n"
+"| **Marcatore** | la griglia dei propri bersagli, i tiratori su di essi | registrare risultati e distinzioni, **Terminare** un tiratore |\n"
+"| **Distribuzione munizioni** | il campo di ricerca, la lista d’attesa, i tiratori su tutti i bersagli | segnare le munizioni come consegnate (**Munizione**), assegnare un bersaglio a un tiratore in attesa, stampare il foglio di stand |\n"
+"| **Registrazione risultati** | il campo di ricerca, i tiratori su tutti i bersagli, l’elenco dei terminati | registrare risultati e distinzioni su ogni bersaglio |\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/helpers.md:16
+msgid ""
+"Everything else stays with the club's users: registering shooters, editing "
+"programmes, rankings, statistics, deleting."
+msgstr ""
+"Tutto il resto resta agli utenti della società: iscrivere tiratori, "
+"modificare programmi, classifiche, statistiche, eliminare."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/helpers.md:17
+#, no-wrap
+msgid "Creating a link {#create}"
+msgstr "Creare un link {#create}"
+
+#. type: Bullet: '1. '
+#: ../src/help/en/user-guide/helpers.md:22
+msgid ""
+"Enter a name (who gets the link, e.g. *Scorer range A*), choose the role "
+"and, for a scorer, the range and the lanes (`1-5, 8`). One scorer usually "
+"looks after several lanes."
+msgstr ""
+"Inserisci un nome (chi riceve il link, ad es. *Marcatore poligono A*), "
+"scegli il ruolo e, per un marcatore, il poligono e i bersagli (`1-5, 8`). Un "
+"marcatore di solito segue più bersagli."
+
+#. type: Bullet: '2. '
+#: ../src/help/en/user-guide/helpers.md:22
+msgid ""
+"**Create helper link**; copy the link and send it to the helper (e.g. by "
+"messenger). It is shown only once."
+msgstr ""
+"**Crea link aiutante**; copia il link e mandalo all’aiutante (ad es. via "
+"messaggistica). Viene mostrato una sola volta."
+
+#. type: Bullet: '3. '
+#: ../src/help/en/user-guide/helpers.md:22
+msgid ""
+"The helper opens the link; it stays valid until it is revoked or the event "
+"is deleted. `?language=de` (`fr`, `it`, `en`) overrides the event's language."
+msgstr ""
+"L’aiutante apre il link; resta valido finché non viene revocato o la "
+"manifestazione eliminata. `?language=de` (`fr`, `it`, `en`) sovrascrive la "
+"lingua della manifestazione."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/helpers.md:24
+#, no-wrap
+msgid "**revoke** in the list stops a link immediately; *last seen* tells when it was last used. A scorer who opens a shooter on another lane gets *This lane is not yours*.\n"
+msgstr "**revoca** nell’elenco ferma subito un link; *visto l’ultima volta* indica quando è stato usato l’ultima volta. Un marcatore che apre un tiratore su un altro bersaglio riceve *Questo bersaglio non è il tuo*.\n"
+
+#. type: Title ##
+#: ../src/help/en/user-guide/helpers.md:25
+#, no-wrap
+msgid "Ammunition {#ammunition}"
+msgstr "Munizioni {#ammunition}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/helpers.md:27
+#, no-wrap
+msgid "**Ammo** on a waiting or shooting registration records the time the ammunition was handed out; the button exists only when the event setting *The organizer hands out the ammunition* is on (air pistol and air rifle shooters usually bring their own). The dashboard shows a green *ammo* badge on such registrations, so the desk and the range officer see at a glance who has been served.\n"
+msgstr "**Munizione** su un’iscrizione in attesa o al tiro registra l’ora in cui le munizioni sono state consegnate; il pulsante esiste solo se l’impostazione della manifestazione *L’organizzatore consegna le munizioni* è attiva (i tiratori di pistola e carabina ad aria compressa di solito portano le proprie). La dashboard mostra un badge verde *munizione* su queste iscrizioni, così distribuzione e rangeur vedono a colpo d’occhio chi è stato servito.\n"
+
+#. type: Title #
+#: ../src/help/en/user-guide/registrations.md:1
+#, no-wrap
+msgid "Registrations"
+msgstr "Iscrizioni"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/registrations.md:4
+msgid ""
+"A registration puts a shooter on a lane with the programmes they shoot. Open "
+"it from the dashboard search (**Register for …**)."
+msgstr ""
+"Un’iscrizione mette un tiratore su un bersaglio con i programmi che tira. "
+"Aprila dalla ricerca nella dashboard (**Iscrivi …**)."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/registrations.md:6
+msgid ""
+"![Registration dialog](../images/screenshots/registration.png){ .screenshot }"
+msgstr ""
+"![Finestra d’iscrizione](../images/screenshots/registration.png)"
+"{ .screenshot }"
+
+#. type: Title ##
+#: ../src/help/en/user-guide/registrations.md:7
+#, no-wrap
+msgid "Lane"
+msgstr "Bersaglio"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/registrations.md:10
+msgid ""
+"Pick a free lane in the grid, or leave it empty: the shooter then waits "
+"until you assign a lane by editing the registration."
+msgstr ""
+"Scegli un bersaglio libero nella griglia o lascia vuoto: il tiratore aspetta "
+"allora che tu gli assegni un bersaglio modificando l’iscrizione."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/registrations.md:13
+msgid "Occupied and out-of-service lanes cannot be picked."
+msgstr "I bersagli occupati e quelli fuori servizio non si possono scegliere."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/registrations.md:13
+msgid "A reserved lane asks for confirmation before it is used."
+msgstr "Un bersaglio prenotato chiede una conferma prima di essere usato."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/registrations.md:17
+msgid ""
+"The programmes of the event with their price for the shooter's age category. "
+"Programmes without a price for that category are greyed out (*not for this "
+"age category*)."
+msgstr ""
+"I programmi della manifestazione con il loro prezzo per la categoria d’età "
+"del tiratore. I programmi senza prezzo per quella categoria sono in grigio "
+"(*non per questa categoria d’età*)."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/registrations.md:21
+msgid "**Variants** (same programme name) appear as a choice of one."
+msgstr ""
+"Le **varianti** (stesso nome di programma) compaiono come scelta singola."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/registrations.md:21
+msgid ""
+"A **combinable** programme offers *take N series from …*: tick it and pick "
+"exactly N series of the other programme. The other programme is added "
+"automatically if it is not chosen yet."
+msgstr ""
+"Un programma **combinabile** offre *prendi N serie da …*: spuntalo e scegli "
+"esattamente N serie dell’altro programma. L’altro programma viene aggiunto "
+"automaticamente se non è ancora scelto."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/registrations.md:21
+msgid "The **total** at the bottom adds up the prices."
+msgstr "Il **totale** in basso somma i prezzi."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/registrations.md:22
+#, no-wrap
+msgid "Shooter already registered"
+msgstr "Tiratore già iscritto"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/registrations.md:25
+msgid ""
+"If the shooter is or was registered at this event before, a notice lists "
+"those registrations with their programmes and a link to open them. "
+"Programmes already booked are locked (*already registered*); a shooter may "
+"still shoot another variant in a separate registration."
+msgstr ""
+"Se il tiratore è o era già iscritto a questa manifestazione, un avviso "
+"elenca quelle iscrizioni con i loro programmi e un link per aprirle. I "
+"programmi già prenotati sono bloccati (*già iscritto*); un tiratore può "
+"comunque tirare un’altra variante in un’iscrizione separata."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/registrations.md:29
+#, no-wrap
+msgid "*Print lane sheet* and *Print control strip* are ticked by default: the documents print on the range's printers right after registering, or open as PDF if no printer is set up (see [Printing](printing.md)).\n"
+msgstr "*Stampa foglio di stand* e *Stampa striscia di controllo* sono spuntati per default: i documenti vengono stampati sulle stampanti dello stand subito dopo l’iscrizione, o si aprono come PDF se non è configurata alcuna stampante (vedi [Stampa](printing.md)).\n"
+
+#. type: Title ##
+#: ../src/help/en/user-guide/registrations.md:30
+#, no-wrap
+msgid "Editing and deleting"
+msgstr "Modificare ed eliminare"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/registrations.md:32
+msgid ""
+"Open a registration from the dashboard (**Edit**) or from the results (*Edit "
+"registration*) to change the lane or the programmes. Programmes that already "
+"have results cannot be removed; changing the picked series of a combination "
+"copies the new series. **Delete** removes the registration with its results "
+"after a confirmation."
+msgstr ""
+"Apri un’iscrizione dalla dashboard (**Modifica**) o dai risultati (*Modifica "
+"iscrizione*) per cambiare bersaglio o programmi. I programmi che hanno già "
+"risultati non si possono rimuovere; cambiare le serie scelte di una "
+"combinazione copia le nuove serie. **Elimina** rimuove l’iscrizione con i "
+"suoi risultati dopo una conferma."
+
+#. type: Title #
+#: ../src/help/en/user-guide/reservations.md:1
+#, no-wrap
+msgid "Reservations"
+msgstr "Prenotazioni"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/reservations.md:4
+#, no-wrap
+msgid "**Reservations** blocks lanes of the event's range for a time, for example for a training or a group.\n"
+msgstr "**Prenotazioni** blocca bersagli dello stand della manifestazione per un periodo, per esempio per un allenamento o un gruppo.\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/reservations.md:6
+msgid "![Reservations](../images/screenshots/reservations.png){ .screenshot }"
+msgstr "![Prenotazioni](../images/screenshots/reservations.png){ .screenshot }"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/reservations.md:10
+msgid "**Lanes**: a list like `5` or `1, 5, 7-10`."
+msgstr "**Bersagli**: un elenco come `5` o `1, 5, 7-10`."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/reservations.md:10
+msgid ""
+"**From** and **To**: the time span. Reservations on the same lane may not "
+"overlap; back-to-back is fine."
+msgstr ""
+"**Da** e **A**: il periodo. Le prenotazioni sullo stesso bersaglio non "
+"possono sovrapporsi; una dopo l’altra va bene."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/reservations.md:10
+msgid ""
+"**Show as reserved (minutes before)**: lead time from which the lanes show "
+"as reserved on the dashboard and kiosk."
+msgstr ""
+"**Mostra come prenotato (minuti prima)**: anticipo a partire dal quale i "
+"bersagli compaiono prenotati nella dashboard e nel chiosco."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/reservations.md:12
+msgid ""
+"Reservations belong to the range, so they appear in every event on that "
+"range. Reserved lanes can still be assigned to a shooter after a "
+"confirmation. The server announces the start and end of reservations by "
+"itself, so screens change without reloading."
+msgstr ""
+"Le prenotazioni appartengono allo stand e compaiono quindi in ogni "
+"manifestazione su quello stand. I bersagli prenotati si possono comunque "
+"assegnare a un tiratore dopo una conferma. Il server annuncia da sé inizio e "
+"fine delle prenotazioni, così gli schermi cambiano senza ricaricare."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/reservations.md:13
+msgid ""
+"Requests that external clubs send through [online booking](online-"
+"booking.md) are listed above the reservations; once confirmed, they become "
+"ordinary reservations named after the club."
+msgstr ""
+"Le richieste che le società esterne inviano tramite la [prenotazione online]"
+"(online-booking.md) compaiono sopra le prenotazioni; una volta confermate "
+"diventano prenotazioni ordinarie a nome della società."
+
+#. type: Title #
+#: ../src/help/en/user-guide/online-booking.md:1
+#, no-wrap
+msgid "Online booking"
+msgstr "Prenotazione online"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/online-booking.md:4
+msgid ""
+"With **online booking**, external clubs ask for lanes themselves. The "
+"organizer puts a link into the invitation; a club picks the time slots it "
+"wants, says how many lanes it needs in each and announces its shooters. An "
+"admin confirms or declines every request."
+msgstr ""
+"Con la **prenotazione online** le società esterne richiedono da sé i "
+"bersagli. L’organizzatore inserisce un link nell’invito; una società sceglie "
+"le fasce orarie desiderate, indica quanti bersagli le servono in ciascuna e "
+"annuncia i suoi tiratori. Un admin conferma o rifiuta ogni richiesta."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/online-booking.md:5
+#, no-wrap
+msgid "Switching it on {#setup}"
+msgstr "Attivare {#setup}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/online-booking.md:8
+msgid ""
+"On the *Online booking* tab of the event's **Setup**, **Switch on** is all "
+"it takes. The tab then shows the link with a QR code for the invitation and "
+"the slots it offers."
+msgstr ""
+"Nella scheda *Prenotazione online* della **Configurazione** della "
+"manifestazione basta **Attiva**. La scheda mostra poi il link con un codice "
+"QR per l’invito e le fasce orarie offerte."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/online-booking.md:10
+msgid ""
+"![Online booking in the setup](../images/screenshots/booking-setup.png)"
+"{ .screenshot }"
+msgstr ""
+"![Prenotazione online nella configurazione](../images/screenshots/booking-"
+"setup.png){ .screenshot }"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/online-booking.md:12
+msgid ""
+"Without changes, every day of the event is open during its shooting times "
+"(see [Events](events.md#settings)), or from 08:00 to 17:00 when it has none, "
+"in slots of 30 minutes, and requests are accepted until 14 days before the "
+"first day. **Adjust** changes this:"
+msgstr ""
+"Senza modifiche, ogni giorno della manifestazione è aperto durante i suoi "
+"orari di tiro (vedi [Manifestazioni](events.md#settings)), altrimenti dalle "
+"08:00 alle 17:00, in fasce di 30 minuti, e le richieste sono accettate fino "
+"a 14 giorni prima del primo giorno. **Adatta** lo cambia:"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/online-booking.md:19
+msgid ""
+"**Shooting from** and **Shooting until**: the hours of every day without "
+"shooting times."
+msgstr ""
+"**Tiro dalle** e **Tiro fino alle**: gli orari di ogni giorno senza orari di "
+"tiro."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/online-booking.md:19
+msgid "**Break from** and **Break until**: an optional break, e.g. for lunch."
+msgstr ""
+"**Pausa dalle** e **Pausa fino alle**: una pausa facoltativa, p. es. a "
+"mezzogiorno."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/online-booking.md:19
+msgid "**Slot length (minutes)**: how long one slot is."
+msgstr ""
+"**Durata di una fascia oraria (minuti)**: quanto dura una fascia oraria."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/online-booking.md:19
+msgid "**Lanes per slot and club**: a limit per request; empty means no limit."
+msgstr ""
+"**Bersagli per fascia oraria e società**: un limite per richiesta; vuoto "
+"significa nessun limite."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/online-booking.md:19
+msgid "**Deadline**: the last day clubs can ask or change their request."
+msgstr ""
+"**Termine d’iscrizione**: l’ultimo giorno in cui le società possono "
+"richiedere o modificare la richiesta."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/online-booking.md:19
+msgid ""
+"**Days with other hours**: one line per day of the event, e.g. Friday 17:00–"
+"20:00. The days come from the event and follow it when you add or remove one."
+msgstr ""
+"**Giorni con altri orari**: una riga per giorno della manifestazione, p. es. "
+"venerdì 17:00–20:00. I giorni vengono dalla manifestazione e la seguono "
+"quando ne aggiungi o togli uno."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/online-booking.md:21
+#, no-wrap
+msgid "**New link** replaces the link; the old one stops working. **Switch off** closes the booking; requests and confirmed reservations stay. *Copy for next year* takes the hours along, but not the link and not the deadline.\n"
+msgstr "**Nuovo link** sostituisce il link; quello vecchio smette di funzionare. **Disattiva** chiude la prenotazione; le richieste e le prenotazioni confermate restano. *Copia per l’anno prossimo* riprende gli orari, ma né il link né il termine.\n"
+
+#. type: Title ##
+#: ../src/help/en/user-guide/online-booking.md:22
+#, no-wrap
+msgid "What a club sees {#club}"
+msgstr "Cosa vede una società {#club}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/online-booking.md:25
+msgid ""
+"The link opens a page without login. It shows the event, the deadline and "
+"every slot with the lanes still free on each range. Only confirmed "
+"reservations count; names of other clubs are never shown."
+msgstr ""
+"Il link apre una pagina senza login. Mostra la manifestazione, il termine e "
+"ogni fascia oraria con i bersagli ancora liberi per poligono. Contano solo "
+"le prenotazioni confermate; i nomi delle altre società non vengono mai "
+"mostrati."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/online-booking.md:27
+msgid ""
+"![The booking page of a club](../images/screenshots/booking-public.png)"
+"{ .screenshot }"
+msgstr ""
+"![La pagina di prenotazione di una società](../images/screenshots/booking-"
+"public.png){ .screenshot }"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/online-booking.md:29
+msgid ""
+"The club enters the number of lanes per slot, its name, a contact person, "
+"email and phone, and its **Shooters**: last name, first name, birthday and "
+"optionally the licence. **Paste list** takes rows copied from Excel (last "
+"name, first name, birthday, licence). The shooter list can follow later; "
+"programmes are chosen at the range as usual."
+msgstr ""
+"La società inserisce il numero di bersagli per fascia oraria, il suo nome, "
+"una persona di contatto, e-mail e telefono, e i suoi **Tiratori**: cognome, "
+"nome, data di nascita e facoltativamente la licenza. **Incolla lista** "
+"riprende righe copiate da Excel (cognome, nome, data di nascita, licenza). "
+"La lista dei tiratori può seguire più tardi; i programmi si scelgono al "
+"poligono come sempre."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/online-booking.md:31
+msgid ""
+"After **Send request**, the club gets a mail with a personal link. Through "
+"it, it can check the status, change the request or cancel it until the "
+"deadline. Changing the slots of a confirmed request releases its lanes and "
+"the request waits for a new confirmation; adding shooters keeps it confirmed."
+msgstr ""
+"Dopo **Invia la richiesta** la società riceve un’e-mail con un link "
+"personale. Tramite questo può vedere lo stato, modificare o annullare la "
+"richiesta fino al termine. Cambiare le fasce orarie di una richiesta "
+"confermata libera i suoi bersagli e la richiesta attende una nuova conferma; "
+"aggiungere tiratori la lascia confermata."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/online-booking.md:32
+#, no-wrap
+msgid "Confirming requests {#confirm}"
+msgstr "Confermare le richieste {#confirm}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/online-booking.md:35
+msgid ""
+"Every admin with an email gets a mail for each new, changed or cancelled "
+"request. The requests are listed at the top of **Reservations**; the sidebar "
+"shows how many are waiting."
+msgstr ""
+"Ogni admin con un’e-mail riceve un messaggio per ogni richiesta nuova, "
+"modificata o annullata. Le richieste compaiono in cima a **Prenotazioni**; "
+"la barra laterale indica quante sono in attesa."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/online-booking.md:37
+msgid ""
+"![Booking requests on the reservations page](../images/screenshots/booking-"
+"requests.png){ .screenshot }"
+msgstr ""
+"![Richieste di prenotazione sulla pagina delle prenotazioni](../images/"
+"screenshots/booking-requests.png){ .screenshot }"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/online-booking.md:41
+msgid ""
+"**Confirm** gives each slot free lanes of its range, neighbours where "
+"possible, as an ordinary reservation named after the club, and mails the "
+"lane numbers to the club. When a slot has too few free lanes, nothing is "
+"reserved and the message names the slot; move a reservation or decline."
+msgstr ""
+"**Conferma** assegna a ogni fascia oraria bersagli liberi del suo poligono, "
+"possibilmente vicini, come prenotazione ordinaria a nome della società, e "
+"invia i numeri dei bersagli alla società. Se una fascia ha troppo pochi "
+"bersagli liberi non viene riservato nulla e il messaggio indica la fascia; "
+"sposta una prenotazione o rifiuta."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/online-booking.md:41
+msgid ""
+"**Confirm** also takes the shooters into the master data: a shooter is found "
+"by licence, else by name and birthday, and created otherwise; the club is "
+"created when needed. Existing shooters are never overwritten, because the "
+"list comes from a public form; only a missing birthday or licence is filled "
+"in. Shooters added after the confirmation are taken over with **Take over "
+"shooters**."
+msgstr ""
+"**Conferma** riprende anche i tiratori nei dati di base: un tiratore viene "
+"trovato tramite la licenza, altrimenti tramite nome e data di nascita, e "
+"creato in caso contrario; la società viene creata se serve. I tiratori "
+"esistenti non vengono mai sovrascritti, perché la lista viene da un modulo "
+"pubblico; si completa solo una data di nascita o una licenza mancante. I "
+"tiratori aggiunti dopo la conferma si riprendono con **Riprendi tiratori**."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/online-booking.md:41
+msgid ""
+"**Decline** asks for an optional reason, which goes to the club by mail. "
+"Lanes the request held are free again."
+msgstr ""
+"**Rifiuta** chiede un motivo facoltativo, che la società riceve via e-mail. "
+"I bersagli occupati dalla richiesta tornano liberi."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/online-booking.md:42
+msgid ""
+"The reserved lanes are ordinary [reservations](reservations.md): change "
+"their lane numbers there if needed. At the event, the shooters are found "
+"with the normal search at the registration desk. The report *Lane bookings* "
+"under [Statistics and reports](statistics-reports.md) lists every club with "
+"its slots, lanes and shooters."
+msgstr ""
+"I bersagli riservati sono normali [prenotazioni](reservations.md): modifica "
+"lì i numeri dei bersagli se serve. Durante la manifestazione l’iscrizione "
+"trova i tiratori con la ricerca normale. Il rapporto *Prenotazioni di "
+"bersagli* in [Statistiche e rapporti](statistics-reports.md) elenca ogni "
+"società con le sue fasce orarie, i bersagli e i tiratori."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/results.md:4
+msgid ""
+"Open the results of a registration with the **Results** button on the "
+"dashboard or by scanning the code on the lane sheet."
+msgstr ""
+"Apri i risultati di un’iscrizione con il pulsante **Risultati** nella "
+"dashboard o scansionando il codice sul foglio di stand."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/results.md:6
+msgid "![Results dialog](../images/screenshots/results.png){ .screenshot }"
+msgstr ""
+"![Finestra dei risultati](../images/screenshots/results.png){ .screenshot }"
+
+#. type: Title ##
+#: ../src/help/en/user-guide/results.md:7
+#, no-wrap
+msgid "Entering series"
+msgstr "Registrare le serie"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/results.md:13
+msgid ""
+"The cursor starts in the first empty series. As soon as another digit would "
+"exceed the series maximum, it moves on to the next field, so a sequence like "
+"`96 93 97 88` can be typed without the mouse."
+msgstr ""
+"Il cursore parte dalla prima serie vuota. Appena un’altra cifra supererebbe "
+"il massimo della serie, passa al campo successivo, così una sequenza come "
+"`96 93 97 88` si digita senza mouse."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/results.md:13
+msgid "Series that track mouches have a second field for them."
+msgstr "Le serie che contano le mouche hanno un secondo campo."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/results.md:13
+msgid ""
+"++enter++ or **Save** stores the programme. Values above the maximum are "
+"marked and cannot be saved."
+msgstr ""
+"++enter++ o **Salva** salva il programma. I valori sopra il massimo vengono "
+"segnati e non si possono salvare."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/results.md:13
+msgid ""
+"Saving again replaces the results; the chosen award stays as long as the new "
+"total still reaches it."
+msgstr ""
+"Salvare di nuovo sostituisce i risultati; la distinzione scelta resta finché "
+"il nuovo totale la raggiunge ancora."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/results.md:15
+msgid ""
+"A combined programme shows which series it takes from its source programme "
+"and fills in automatically once the source has results."
+msgstr ""
+"Un programma combinato mostra quali serie prende dal suo programma sorgente "
+"e si riempie automaticamente appena la sorgente ha risultati."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/results.md:17
+msgid ""
+"When every programme has results, the registration is completed and its lane "
+"is free again. **Print result sheet** prints an A5 summary for the shooter."
+msgstr ""
+"Quando ogni programma ha risultati, l’iscrizione è conclusa e il suo "
+"bersaglio di nuovo libero. **Stampa foglio dei risultati** stampa un "
+"riepilogo A5 per il tiratore."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/results.md:21
+msgid ""
+"Once a programme is complete, the awards the total reaches in the shooter's "
+"age category are listed, the most valuable first; of several wreath cards "
+"(or several prizes in kind) only the most valuable one reached is offered. "
+"Saving the results already gives the most valuable one; picking another one "
+"saves it at once. For a wreath card, **Print wreath card** prints the "
+"shooter's data onto a pre-printed A6 card; the value is printed only if the "
+"event setting *Print the award value on wreath cards* is on (in figures and "
+"in words)."
+msgstr ""
+"Appena un programma è completo, vengono elencate le distinzioni che il "
+"totale raggiunge nella categoria d’età del tiratore, la più preziosa per "
+"prima; di più carte corona (o più premi in natura) viene offerta solo la più "
+"preziosa raggiunta. Già il salvataggio dei risultati assegna la più "
+"preziosa; se ne scegli un’altra, viene salvata subito. Per una carta corona, "
+"**Stampa carta corona** stampa i dati del tiratore su una carta A6 "
+"prestampata; il valore viene stampato solo se l’impostazione *Stampa il "
+"valore della distinzione sulle carte corona* della manifestazione è attiva "
+"(in cifre e in lettere)."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/results.md:22
+#, no-wrap
+msgid "Handing out awards {#handout}"
+msgstr "Consegnare le distinzioni {#handout}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/results.md:24
+msgid ""
+"When the shooter collects the wreath cards, prizes and cash at the desk, "
+"press **Awards handed out** in the results dialog, which lists the awards of "
+"every programme; the *awards to hand out* badge in the *Completed* list of "
+"the dashboard opens that dialog. The registration then carries the time of "
+"the handout and a green *awards handed out* badge; until then it shows "
+"*awards to hand out*. A wrong click is taken back with **Take back** in the "
+"results dialog or by clicking the green badge on the dashboard (club members "
+"only, not helper links); the same works for the *ammo* badge. The report "
+"**Awards to hand out** (see [Statistics and reports](statistics-reports.md)) "
+"lists what is still open and the cash to pay out. A results clerk with a "
+"[helper link](helpers.md) may mark awards as handed out too."
+msgstr ""
+"Quando il tiratore ritira carte corona, premi e denaro allo sportello, premi "
+"**Distinzioni consegnate** nel dialogo dei risultati, che elenca le "
+"distinzioni di ogni programma; il badge *distinzioni da consegnare* "
+"nell’elenco *Terminati* della dashboard apre questo dialogo. L’iscrizione "
+"porta allora l’ora della consegna e un badge verde *distinzioni consegnate*; "
+"fino ad allora mostra *distinzioni da consegnare*. Un clic sbagliato si "
+"annulla con **Annulla** nel dialogo dei risultati o cliccando sul badge "
+"verde nella dashboard (solo membri della società, non i link aiutante); lo "
+"stesso vale per il badge *munizione*. Il rapporto **Distinzioni da "
+"consegnare** (vedi [Statistiche e rapporti](statistics-reports.md)) elenca "
+"ciò che è ancora aperto e il denaro da versare. Anche la registrazione "
+"risultati con un [link aiutante](helpers.md) può segnare le distinzioni come "
+"consegnate."
+
+#. type: Title #
+#: ../src/help/en/user-guide/shooters-clubs.md:1
+#, no-wrap
+msgid "Shooters and clubs"
+msgstr "Tiratori e società"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/shooters-clubs.md:4
+msgid ""
+"Each club keeps its own shooter master data; nothing is shared with other "
+"clubs."
+msgstr ""
+"Ogni società gestisce i propri dati di base dei tiratori; niente è condiviso "
+"con altre società."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/shooters-clubs.md:5
+#, no-wrap
+msgid "Shooters"
+msgstr "Tiratori"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/shooters-clubs.md:8
+msgid "![Shooters](../images/screenshots/shooters.png){ .screenshot }"
+msgstr "![Tiratori](../images/screenshots/shooters.png){ .screenshot }"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/shooters-clubs.md:13
+msgid ""
+"**Search** works like on the dashboard: license number (leading zeros "
+"optional), part of a name, or first and last name in either order. The list "
+"shows 50 shooters per page, the club list 50 clubs; the arrows below turn "
+"the pages."
+msgstr "La **ricerca** funziona come nella dashboard: numero di licenza (zeri iniziali facoltativi), parte di un nome, o nome e cognome in qualsiasi ordine. L’elenco mostra 50 tiratori per pagina, l’elenco delle società 50 società; le frecce sotto sfogliano le pagine."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/shooters-clubs.md:13
+msgid ""
+"Clicking a shooter opens the details: name, license number, birthday, "
+"address and the clubs the shooter belongs to."
+msgstr ""
+"Un clic su un tiratore apre i dettagli: nome, numero di licenza, data di "
+"nascita, indirizzo e le società a cui appartiene."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/shooters-clubs.md:13
+msgid ""
+"**Import** (admins) reads a CSV file, see [CSV import](../reference/csv-"
+"import.md)."
+msgstr ""
+"**Importa** (admin) legge un file CSV, vedi [Importazione CSV](../reference/"
+"csv-import.md)."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/shooters-clubs.md:13
+msgid "Shooters with registrations cannot be deleted."
+msgstr "I tiratori con iscrizioni non si possono eliminare."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/shooters-clubs.md:14
+#, no-wrap
+msgid "Clubs"
+msgstr "Società"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/shooters-clubs.md:17
+msgid "![Clubs](../images/screenshots/clubs.png){ .screenshot }"
+msgstr "![Società](../images/screenshots/clubs.png){ .screenshot }"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/shooters-clubs.md:18
+#, no-wrap
+msgid "**Clubs** are the clubs shooters belong to, with their SSV number. They appear in registrations, rankings and the club competition. A shooter can belong to several clubs and registers for one of them. Clubs used by registrations cannot be deleted.\n"
+msgstr "Le **società** sono le società a cui appartengono i tiratori, con il loro numero FST. Compaiono nelle iscrizioni, nelle classifiche e nel concorso di sezione. Un tiratore può appartenere a più società e si iscrive per una di esse. Le società usate da iscrizioni non si possono eliminare.\n"
+
+#. type: Title #
+#: ../src/help/en/user-guide/statistics-reports.md:1
+#, no-wrap
+msgid "Statistics and reports"
+msgstr "Statistiche e rapporti"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/statistics-reports.md:4
+#, no-wrap
+msgid "**Statistics** shows the key figures of the event and offers all reports.\n"
+msgstr "**Statistiche** mostra le cifre chiave della manifestazione e offre tutti i rapporti.\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/statistics-reports.md:6
+msgid "![Statistics](../images/screenshots/statistics.png){ .screenshot }"
+msgstr "![Statistiche](../images/screenshots/statistics.png){ .screenshot }"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/statistics-reports.md:10
+msgid ""
+"Registrations, completion rate, programmes sold, revenue, awards and their "
+"value."
+msgstr ""
+"Iscrizioni, tasso di completamento, programmi venduti, entrate, distinzioni "
+"e il loro valore."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/statistics-reports.md:10
+msgid ""
+"Participation and revenue per programme, registrations per age category, "
+"awards given."
+msgstr ""
+"Partecipazione ed entrate per programma, iscrizioni per categoria d’età, "
+"distinzioni assegnate."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/statistics-reports.md:10
+msgid ""
+"The **club competition** with ranked, out-of-competition and not ranked "
+"clubs (rules: [Club competition](../reference/rules.md#club-competition))."
+msgstr ""
+"Il **concorso di sezione** con le società classificate, fuori concorso e non "
+"classificate (regole: [Concorso di sezione](../reference/rules.md#club-"
+"competition))."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/statistics-reports.md:11
+#, no-wrap
+msgid "Reports"
+msgstr "Rapporti"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/statistics-reports.md:14
+msgid ""
+"Every report is available as **PDF** and **CSV** (UTF-8 with BOM, `;` "
+"separated, opens directly in Excel). Texts follow the language of the event."
+msgstr ""
+"Ogni rapporto è disponibile in **PDF** e **CSV** (UTF-8 con BOM, separato da "
+"`;`, si apre direttamente in Excel). I testi seguono la lingua della "
+"manifestazione."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/statistics-reports.md:25
+#, no-wrap
+msgid ""
+"| Report | Content |\n"
+"|---|---|\n"
+"| Financial report | revenue per programme, awards with their value |\n"
+"| Revenue by programme and age category | participants, price and subtotal per programme and category |\n"
+"| Awards | every award given, with shooter, club, programme, value and result |\n"
+"| Club competition | ranking, out of competition and not ranked clubs |\n"
+"| Club participants | participants per club, programme and age category |\n"
+"| Special prizes | winners per programme and age category, skipped shooters with the reason (see [Programmes](programmes.md#special-prizes)) |\n"
+"| Awards to hand out | awards not yet collected, with shooter, club, programme, kind and value, plus the cash still to pay out (see [Results](results.md#handout)) |\n"
+"| Lane bookings | the clubs that asked for lanes through [online booking](online-booking.md), confirmed or still waiting, with contact, slots, lane numbers and announced shooters |\n"
+msgstr ""
+"| Rapporto | Contenuto |\n"
+"|---|---|\n"
+"| Rapporto finanziario | entrate per programma, distinzioni con il loro valore |\n"
+"| Entrate per programma e categoria d’età | partecipanti, prezzo e subtotale per programma e categoria |\n"
+"| Distinzioni | ogni distinzione assegnata, con tiratore, società, programma, valore e risultato |\n"
+"| Concorso di sezione | classifica, società fuori concorso e non classificate |\n"
+"| Partecipanti per società | partecipanti per società, programma e categoria d’età |\n"
+"| Premi speciali | vincitori per programma e categoria d’età, tiratori saltati con il motivo (vedi [Programmi](programmes.md#special-prizes)) |\n"
+"| Distinzioni da consegnare | distinzioni non ancora ritirate, con tiratore, società, programma, tipo e valore, più il denaro ancora da versare (vedi [Risultati](results.md#handout)) |\n"
+"| Prenotazioni di bersagli | le società che hanno richiesto bersagli tramite la [prenotazione online](online-booking.md), confermate o in attesa, con contatto, fasce orarie, numeri dei bersagli e tiratori annunciati |\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/statistics-reports.md:26
+msgid ""
+"Below the reports, the ranking of every programme can be downloaded as CSV."
+msgstr ""
+"Sotto i rapporti si può scaricare la classifica di ogni programma in CSV."
+
+#. type: Title #
+#: ../src/help/en/user-guide/users.md:1
+#, no-wrap
+msgid "Users"
+msgstr "Utenti"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/users.md:4
+#, no-wrap
+msgid "**Users** (admins only) lists the accounts with access to the club and their role.\n"
+msgstr "**Utenti** (solo admin) elenca gli account con accesso alla società e il loro ruolo.\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/users.md:6
+msgid "![Users](../images/screenshots/users.png){ .screenshot }"
+msgstr "![Utenti](../images/screenshots/users.png){ .screenshot }"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/users.md:11
+msgid ""
+"**Invite by email**: paste one or many addresses (comma separated or one per "
+"line, up to 300) and choose the role. People without an account get a mail "
+"with a link to set their password (valid for seven days) and then log in "
+"with their email address; existing accounts are added to the club and told "
+"by mail. The list under the form says what happened to each address. Mails "
+"leave at about four per second, so a large list takes a minute."
+msgstr ""
+"**Invita via e-mail**: incolla uno o più indirizzi (separati da virgole o "
+"uno per riga, fino a 300) e scegli il ruolo. Le persone senza account "
+"ricevono un’e-mail con un link per impostare la password (valido sette "
+"giorni) e poi accedono con il loro indirizzo e-mail; gli account esistenti "
+"vengono aggiunti alla società e informati via e-mail. L’elenco sotto il "
+"modulo mostra cosa è successo a ogni indirizzo. Le e-mail partono a circa "
+"quattro al secondo, quindi un elenco grande richiede un minuto."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/users.md:11
+msgid ""
+"**Add user**: the older way for an account without email: an existing "
+"account is added by its user name; for a new account also enter a password "
+"(at least 10 characters)."
+msgstr ""
+"**Aggiungi utente**: il vecchio modo per un account senza e-mail: un account "
+"esistente viene aggiunto tramite il nome utente; per un nuovo account "
+"inserisci anche una password (almeno 10 caratteri)."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/users.md:11
+msgid ""
+"**Role**: *Admin* manages ranges, events, programmes and users; *Staff* runs "
+"the events (see [Concepts](../getting-started/concepts.md#clubs-users-and-"
+"roles))."
+msgstr ""
+"**Ruolo**: *Admin* gestisce stand, manifestazioni, programmi e utenti; "
+"*Personale* conduce le manifestazioni (vedi [Concetti](../getting-started/"
+"concepts.md#clubs-users-and-roles))."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/users.md:11
+msgid ""
+"**Remove** takes away the access to this club; the account itself stays and "
+"keeps its other clubs."
+msgstr ""
+"**Rimuovi** toglie l’accesso a questa società; l’account stesso resta e "
+"mantiene le sue altre società."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/users.md:12
+msgid ""
+"Accounts are global: deleting an account is done by the platform operator in "
+"the [admin panel](../admin-guide/admin-panel.md). A forgotten password is "
+"reset with **Forgot your password?** on the login page if the account has a "
+"confirmed email address, otherwise by the operator."
+msgstr ""
+"Gli account sono globali: un account viene eliminato dal gestore della "
+"piattaforma nel [pannello di amministrazione](../admin-guide/admin-"
+"panel.md). Una password dimenticata si reimposta con **Password dimenticata?"
+"** nella pagina di accesso se l’account ha un indirizzo e-mail confermato, "
+"altrimenti lo fa il gestore."
+
+#~ msgid ""
+#~ "**[Admin guide](admin-guide/installation.md)**: installing and running "
+#~ "Standblatt."
+#~ msgstr ""
+#~ "**[Esercizio](admin-guide/installation.md)**: installare e gestire "
+#~ "Standblatt (in inglese)."
+
+#~ msgid ""
+#~ "**[Developer](developer/architecture.md)**: architecture, development and "
+#~ "releases."
+#~ msgstr ""
+#~ "**[Sviluppo](developer/architecture.md)**: architettura, sviluppo e "
+#~ "rilasci (in inglese)."
+
+#, no-wrap
+#~ msgid "Archive"
+#~ msgstr "Archiviare"
+
+#, no-wrap
+#~ msgid "Account and subscription"
+#~ msgstr "Account e abbonamento"
+
+#, no-wrap
+#~ msgid "Subscription"
+#~ msgstr "Abbonamento"
+
+#, no-wrap
+#~ msgid "**Settings → Subscription** shows what you have:\n"
+#~ msgstr "**Impostazioni → Abbonamento** mostra cosa hai:\n"
+
+#, no-wrap
+#~ msgid ""
+#~ "| Plan | Meaning |\n"
+#~ "|---|---|\n"
+#~ "| Free trial | every feature until the date shown |\n"
+#~ "| Subscription | you pay monthly; **Manage subscription** changes the card or cancels |\n"
+#~ "| Club | your club pays for you through a member plan |\n"
+#~ "| Everything is included | this server does not charge |\n"
+#~ msgstr ""
+#~ "| Piano | Significato |\n"
+#~ "|---|---|\n"
+#~ "| Prova gratuita | tutte le funzioni fino alla data indicata |\n"
+#~ "| Abbonamento | paghi ogni mese; **Gestisci abbonamento** cambia la carta o disdice |\n"
+#~ "| Società | la tua società paga per te tramite un piano soci |\n"
+#~ "| Tutto incluso | questo server non fa pagare nulla |\n"
+
+#~ msgid ""
+#~ "Without an active plan your sessions stay readable and you can export "
+#~ "them; logging new sessions and the progress analysis are locked until you "
+#~ "subscribe. Payment runs through Stripe (cards, TWINT) if the operator has "
+#~ "set it up; otherwise the operator can activate a subscription for you, "
+#~ "e.g. against an invoice."
+#~ msgstr ""
+#~ "Senza un piano attivo le tue sessioni restano leggibili e puoi "
+#~ "esportarle; registrare nuove sessioni e l’analisi dei progressi sono "
+#~ "bloccate finché non ti abboni. Il pagamento avviene tramite Stripe "
+#~ "(carte, TWINT) se il gestore l’ha configurato; altrimenti il gestore può "
+#~ "attivare un abbonamento per te, p. es. contro fattura."
+
+#, no-wrap
+#~ msgid "Paid by your club"
+#~ msgstr "Pagato dalla tua società"
+
+#~ msgid ""
+#~ "If your club has a [member plan](../user-guide/member-plan.md), the club "
+#~ "admin enters your email address and you get a mail. Sign up, or log in, "
+#~ "with exactly that address and confirm it. From then on Settings says that "
+#~ "your club pays."
+#~ msgstr ""
+#~ "Se la tua società ha un [piano soci](../user-guide/member-plan.md), "
+#~ "l’admin della società inserisce il tuo indirizzo e-mail e ricevi un’e-"
+#~ "mail. Registrati o accedi esattamente con quell’indirizzo e confermalo. "
+#~ "Da allora le impostazioni indicano che paga la tua società."
+
+#~ msgid ""
+#~ "Depending on the server, My training is free or needs a subscription; see "
+#~ "[Account and subscription](account.md)."
+#~ msgstr ""
+#~ "A seconda del server, Il mio allenamento è gratuito o richiede un "
+#~ "abbonamento; vedi [Account e abbonamento](account.md)."
+
+#~ msgid "A new account starts with a **free trial** of every feature."
+#~ msgstr ""
+#~ "Un nuovo account inizia con una **prova gratuita** di tutte le funzioni."
+
+#~ msgid ""
+#~ "After that you either subscribe yourself or your **club pays** for you "
+#~ "through a [member plan](../user-guide/member-plan.md)."
+#~ msgstr ""
+#~ "Poi o ti abboni tu, o la tua **società paga** per te tramite un [piano "
+#~ "soci](../user-guide/member-plan.md)."
+
+#~ msgid ""
+#~ "Without an active subscription your log stays readable and exportable. "
+#~ "Only new sessions and the progress analysis are locked."
+#~ msgstr ""
+#~ "Senza abbonamento attivo il tuo diario resta leggibile ed esportabile. "
+#~ "Solo le nuove sessioni e l’analisi dei progressi sono bloccate."
+
+#, no-wrap
+#~ msgid "Member plan"
+#~ msgstr "Piano soci"
+
+#~ msgid ""
+#~ "With a member plan your club pays for [My training](../my-training/"
+#~ "index.md) for its members at a club price. The page is shown to club "
+#~ "admins under **Club → Member plan** when the server charges for My "
+#~ "training."
+#~ msgstr ""
+#~ "Con un piano soci la tua società paga [Il mio allenamento](../my-training/"
+#~ "index.md) per i suoi soci a un prezzo di società. La pagina compare per "
+#~ "gli admin della società in **Società → Piano soci** quando il server fa "
+#~ "pagare Il mio allenamento."
+
+#~ msgid "![Member plan](../images/screenshots/member-plan.png){ .screenshot }"
+#~ msgstr "![Piano soci](../images/screenshots/member-plan.png){ .screenshot }"
+
+#~ msgid ""
+#~ "Order the plan from the Standblatt operator: number of seats and the "
+#~ "period. The operator enters it in the [admin panel](../admin-guide/admin-"
+#~ "panel.md); the page then shows the seats used and the date paid until."
+#~ msgstr ""
+#~ "Ordina il piano al gestore di Standblatt: numero di posti e periodo. Il "
+#~ "gestore lo inserisce nel [pannello di amministrazione](../admin-guide/"
+#~ "admin-panel.md); la pagina mostra poi i posti usati e la data fino alla "
+#~ "quale è pagato."
+
+#~ msgid ""
+#~ "Paste the email addresses of your members, one per line, and **Add**. "
+#~ "Every new address gets a mail with a link to sign up."
+#~ msgstr ""
+#~ "Incolla gli indirizzi e-mail dei tuoi soci, uno per riga, e clicca "
+#~ "**Aggiungi**. Ogni nuovo indirizzo riceve un’e-mail con un link per "
+#~ "registrarsi."
+
+#~ msgid ""
+#~ "A member is **active** as soon as an account with that address exists and "
+#~ "the address is confirmed. Until then the list says *not signed up yet*."
+#~ msgstr ""
+#~ "Un socio è **attivo** appena esiste un account con quell’indirizzo e "
+#~ "l’indirizzo è confermato. Fino ad allora l’elenco indica *non ancora "
+#~ "registrato*."
+
+#, no-wrap
+#~ msgid "**Remove** frees a seat. The member keeps their log, but needs an own subscription to keep logging.\n"
+#~ msgstr "**Rimuovi** libera un posto. Il socio mantiene il suo diario, ma ha bisogno di un proprio abbonamento per continuare a registrare.\n"
+
+#, no-wrap
+#~ msgid ""
+#~ "!!! note\n"
+#~ "    Only confirmed email addresses count, so nobody can take a seat by signing up with somebody else's address.\n"
+#~ msgstr ""
+#~ "!!! note\n"
+#~ "    Contano solo gli indirizzi e-mail confermati, così nessuno può occupare un posto registrandosi con l’indirizzo di un’altra persona.\n"
+
+#~ msgid "**Completed**: registrations whose programmes all have results."
+#~ msgstr "**Concluso**: iscrizioni i cui programmi hanno tutti risultati."
+
+#~ msgid ""
+#~ "Once shooters are registered for a programme, its definition is locked so "
+#~ "results and awards stay consistent. The following still work on a "
+#~ "programme in use:"
+#~ msgstr ""
+#~ "Appena dei tiratori sono iscritti a un programma, la sua definizione è "
+#~ "bloccata perché risultati e distinzioni restino coerenti. Su un programma "
+#~ "in uso funziona ancora:"

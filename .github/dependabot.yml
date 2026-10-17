@@ -1,0 +1,61 @@
+version: 2
+updates:
+  - package-ecosystem: gomod
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      go:
+        update-types: [minor, patch]
+    ignore:
+      - dependency-name: go
+        versions: [">= 1.28"]
+
+  - package-ecosystem: npm
+    directory: /web
+    schedule:
+      interval: weekly
+    groups:
+      web:
+        update-types: [minor, patch]
+    ignore:
+      # Kit 3 treats every file under a path containing /server/ as server-only.
+      - dependency-name: "@sveltejs/kit"
+        versions: [">= 3"]
+      - dependency-name: "@sveltejs/adapter-static"
+        versions: [">= 4"]
+      # svelte-check supports TypeScript up to 6.
+      - dependency-name: typescript
+        versions: [">= 7"]
+
+  # The only source of the Playwright version: the Makefile and CI read it from e2e/package.json.
+  - package-ecosystem: npm
+    directory: /e2e
+    schedule:
+      interval: weekly
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        update-types: [minor, patch]
+
+  - package-ecosystem: docker
+    directory: /docker
+    schedule:
+      interval: weekly
+    ignore:
+      - dependency-name: golang
+        versions: [">= 1.28"]
+      - dependency-name: node
+        versions: [">= 27"]
+
+  - package-ecosystem: docker-compose
+    directory: /docker
+    schedule:
+      interval: weekly
+    ignore:
+      - dependency-name: postgres
+        versions: [">= 19"]

@@ -1,0 +1,74 @@
+# Programmes
+
+Les programmes appartiennent à une manifestation et se gèrent dans l’onglet
+*Programmes* de sa **Configuration** (admins seulement).
+
+![Configuration avec la liste des
+programmes](../images/screenshots/setup.png){ .screenshot }
+
+## Ajouter des programmes
+
+- **Nouveau programme** ouvre l’éditeur.
+- **Ajouter depuis … → Bibliothèque de programmes** : un modèle de la
+  bibliothèque globale, tenue par l’exploitant de la plateforme.
+- **Ajouter depuis … → Manifestation précédente** : copie tous les
+  programmes d’une autre manifestation de la société, y compris combinaisons
+  et prix spéciaux. Les programmes dont le nom et la variante existent déjà
+  sont sautés.
+- **Ajouter depuis … → Fichier de programme** : importe un [fichier de
+  programme](../reference/programme-file.md) exporté d’une autre
+  manifestation ou société.
+
+## L’éditeur
+
+![Éditeur de programme](../images/screenshots/programme-editor.png){
+.screenshot }
+
+- **Nom** et **Variante** : les programmes de même nom sont des variantes
+  les uns des autres ; un tireur s’inscrit à l’une d’elles. Le champ du nom
+  propose les noms des programmes de la manifestation, et dès que le nom
+  correspond à l’un d’eux, l’éditeur indique que tu crées une variante et
+  avertit si le nom de variante est vide ou déjà pris.
+- **Code-barres** : imprimé sur la feuille de stand pour le marquage
+  électronique (voir [Codes](../reference/codes.md)).
+- **Compte pour le concours de sections** et **Afficher sur les écrans
+  kiosque**.
+- **Passes** : coups, maximum de points et si les mouches sont comptées, par
+  passe.
+- **Prix (CHF)** : seules les catégories d’âge cochées peuvent tirer le
+  programme.
+- **Distinctions** : nom, type (carte-couronne, prix en nature ou prix en
+  espèces versé en argent), valeur et total minimal par catégorie d’âge ;
+  laisse une catégorie vide là où la distinction n’est pas disponible.
+
+Dès que des tireurs sont inscrits à un programme, les **passes** sont figées
+pour que les résultats gardent leur sens ; l'éditeur l'indique et les
+grise. Tout le reste reste modifiable : nom, variante, description,
+code-barres, les options, prix, noms des passes, noms, valeurs et limites
+des distinctions. Les catégories d'âge et les distinctions peuvent être
+**ajoutées** mais pas retirées. Également disponible sur un programme en
+cours :
+
+- **Actif** : les programmes inactifs ne peuvent pas être choisis pour de
+  nouvelles inscriptions ; les inscriptions existantes les gardent.
+- **Combinable avec** : le programme dont celui-ci peut reprendre les passes
+  à l’inscription.
+- **Stand** (manifestations sur plusieurs stands ou stands avec groupes de
+  cibles) : le stand ou le groupe de cibles sur lequel le programme se tire,
+  p. ex. *Pistolet · 50 m* ; l’inscription ne propose alors que ces cibles
+  et les écrans kiosque groupent les classements par stand. *indifférent*
+  laisse le choix ouvert. Des programmes de groupes différents demandent des
+  inscriptions séparées.
+- **Prix spéciaux** (voir ci-dessous).
+
+**Exporter** télécharge le programme en fichier ; **Supprimer** n’est possible que tant que personne n’est inscrit.
+
+## Prix spéciaux {#special-prizes}
+
+**Prix spéciaux** dans le menu du programme récompense les meilleurs rangs de chaque catégorie d’âge, par exemple les rangs 1 à 3 dans chaque catégorie d’au moins 10 participants, en ne comptant que les tireurs dont la société a au moins 4 participants dans ce programme. Les tireurs sautés laissent la place au suivant. La règle exacte figure dans les [règles de concours](../reference/rules.md#special-prizes) ; les gagnants sont dans le rapport *Prix spéciaux* sous [Statistiques](statistics-reports.md).
+
+![Fenêtre des prix spéciaux](../images/screenshots/special-prizes.png){
+.screenshot }
+
+Rangs 0 désactive les prix spéciaux. Les réglages peuvent être modifiés à
+tout moment, même après la manifestation.

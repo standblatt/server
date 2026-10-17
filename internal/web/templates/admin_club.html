@@ -1,0 +1,62 @@
+{{template "head" .}}{{template "shell" .}}
+<div class="page-head">
+<div>
+<div class="crumbs"><a href="/admin/clubs">{{T "Clubs"}}</a> / </div>
+<h1>{{.Tenant.Name}}</h1>
+<p>{{Tf "Created on %s" (.Tenant.CreatedAt.Format "02.01.2006")}} · ID {{.Tenant.ID}}</p>
+</div>
+<form method="post" action="/admin/clubs/{{.Tenant.ID}}/delete" data-confirm="{{Tf "Delete club %s with all its data? This cannot be undone." .Tenant.Name}}"><button class="danger">{{T "Delete club"}}</button></form>
+</div>
+{{template "alerts" .}}
+<div class="grid2">
+<section class="card">
+<div class="card-head">
+<div><h2>{{T "Users"}}</h2><p>{{T "Assign users as admin or staff by user name or email address."}}</p></div>
+</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>{{T "Name"}}</th><th>{{T "Role"}}</th><th></th></tr></thead>
+<tbody>
+{{$tid := .Tenant.ID}}
+{{range .Members}}
+<tr>
+<td><a href="/admin/users/{{.UserID}}"><strong>{{.Name}}</strong></a>{{if and .Email (ne .Email .Name)}}<div class="muted">{{.Email}}</div>{{end}}</td>
+<td><span class="badge {{.Role}}">{{.Role}}</span></td>
+<td class="actions"><form class="inline" method="post" action="/admin/clubs/{{$tid}}/members/delete"><input type="hidden" name="user" value="{{.UserID}}"><button class="ghost small danger">{{T "remove"}}</button></form></td>
+</tr>
+{{else}}
+<tr><td colspan="3" class="muted">{{T "No users"}}</td></tr>
+{{end}}
+</tbody>
+</table>
+</div>
+<div class="card-body">
+<form method="post" action="/admin/clubs/{{.Tenant.ID}}/members" class="row">
+<input name="user" placeholder="{{T "User name or email"}}" required>
+<select name="role"><option value="admin">admin</option><option value="staff">staff</option></select>
+<button>{{T "assign"}}</button>
+</form>
+</div>
+</section>
+
+<section class="card">
+<div class="card-head"><div><h2>{{T "Events"}}</h2><p>{{T "Newest first. Archived events are read-only."}}</p></div></div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>{{T "Event"}}</th><th>{{T "Date"}}</th><th>{{T "Status"}}</th></tr></thead>
+<tbody>
+{{range .Events}}
+<tr>
+<td><strong>{{.Name}}</strong><div class="muted">{{.Organizer}}</div></td>
+<td>{{.StartsOn}}</td>
+<td>{{if .ArchivedAt}}<span class="badge">{{T "archived"}}</span>{{else}}<span class="badge staff">{{T "open"}}</span>{{end}}</td>
+</tr>
+{{else}}
+<tr><td colspan="3" class="muted">{{T "No events yet"}}</td></tr>
+{{end}}
+</tbody>
+</table>
+</div>
+</section>
+</div>
+{{template "end" .}}

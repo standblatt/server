@@ -1,0 +1,10 @@
+.git
+.env
+bin
+database_seeds
+e2e
+helm
+internal/webui/dist
+**/node_modules
+web/.svelte-kit
+tmp

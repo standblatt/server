@@ -1,0 +1,12 @@
+.env
+/bin/
+/internal/webui/dist/
+node_modules/
+/database_seeds/*.sql
+/database_seeds/*.csv
+/e2e/node_modules/
+/e2e/test-results/
+.DS_Store
+.idea/
+.vscode/
+/tmp/

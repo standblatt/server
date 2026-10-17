@@ -1,0 +1,18 @@
+{{template "head" .}}
+<div class="login">
+<div class="login-side">
+<div class="brand"><span class="logo"></span><span>Standblatt<small>Admin</small></span></div>
+<p class="claim">{{T "Platform administration: clubs, users and the programme library."}}</p>
+<p class="muted">{{T "Not part of the club app."}}</p>
+</div>
+<div class="login-main">
+<form class="login-box" method="post" action="/admin/login">
+<h1>{{T "Admin login"}}</h1>
+{{template "alerts" .}}
+<label>{{T "Token"}} <input name="token" type="password" autocomplete="off" autofocus required></label>
+<button class="primary">{{T "Log in"}}</button>
+</form>
+</div>
+</div>
+</body>
+</html>

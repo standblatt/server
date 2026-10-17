@@ -1,0 +1,12 @@
+#!/bin/sh
+# Runs `make prepare` before every commit (git commit --no-verify skips it). Generated changes cannot join the
+# running commit without staging foreign hunks, so the commit stops when prepare changed files.
+state() { git ls-files -z --modified --others --exclude-standard | xargs -0 -r sha1sum 2>/dev/null; }
+before=$(state)
+make -s prepare || { echo "pre-commit: make prepare failed"; exit 1; }
+changed=$(printf '%s\n%s\n' "$before" "$(state)" | sort | uniq -u | awk '{print $2}' | sort -u)
+if [ -n "$changed" ]; then
+	echo "pre-commit: make prepare changed these files; review and stage them, then commit again:"
+	echo "$changed"
+	exit 1
+fi

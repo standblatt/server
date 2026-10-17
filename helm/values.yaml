@@ -1,0 +1,57 @@
+image:
+  repository: ""
+  tag: ""
+  pullPolicy: Always
+
+imagePullSecrets: []
+
+# Existing Secret in the release namespace; every key becomes an environment variable (DATABASE_URL, STANDBLATT_ADMIN_TOKEN).
+envFromSecret: ""
+
+env:
+  STANDBLATT_TRUST_PROXY: "true"
+  STANDBLATT_LOG_LEVEL: info
+
+web:
+  replicas: 2
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      memory: 256Mi
+
+service:
+  port: 80
+
+# Needs the Prometheus operator CRD.
+metrics:
+  podMonitor:
+    enabled: false
+    labels: {}
+
+ingress:
+  enabled: true
+  className: traefik
+  hosts: []
+  annotations: {}
+  tls:
+    enabled: true
+    # cert-manager ClusterIssuer. Empty: Traefik's default certificate.
+    clusterIssuer: letsencrypt
+    secretName: ""
+
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 65532
+  runAsGroup: 65532
+  seccompProfile:
+    type: RuntimeDefault
+
+securityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  capabilities:
+    drop: [ALL]
+
+priorityClassName: ""

@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "playwright test --project=e2e"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1"
+  }
+}

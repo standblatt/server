@@ -1,0 +1,4290 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-10-14 18:52+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+
+#. placeholder {0}: event.data?.name ?? ''
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "\"{0}\" is deleted. Events with registrations cannot be deleted."
+msgstr "\"{0}\" is deleted. Events with registrations cannot be deleted."
+
+#. placeholder {0}: event.data?.name ?? ''
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "\"{0}\" is final: the rankings are released and the results appear in the shooters' personal training logs with their rank. Nothing can be changed until the event is reopened."
+msgstr "\"{0}\" is final: the rankings are released and the results appear in the shooters' personal training logs with their rank. Nothing can be changed until the event is reopened."
+
+#. placeholder {0}: r.description
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "\"{0}\" is removed and its lanes are free again."
+msgstr "\"{0}\" is removed and its lanes are free again."
+
+#. placeholder {0}: c.name
+#. placeholder {0}: k.name
+#: src/lib/HelperCodes.svelte
+#: src/lib/KioskTokens.svelte
+msgid "\"{0}\" stops working immediately."
+msgstr "\"{0}\" stops working immediately."
+
+#. placeholder {0}: it.lanes
+#. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+lane%7D+other+%7B%23+lanes%7D%7D&pluralize_on=0
+#: src/lib/BookingRequests.svelte
+msgid "# lane"
+msgid_plural "# lanes"
+msgstr[0] "# lane"
+msgstr[1] "# lanes"
+
+#. placeholder {0}: item.badge
+#. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+open+request%7D+other+%7B%23+open+requests%7D%7D&pluralize_on=0
+#: src/lib/AppSidebar.svelte
+msgid "# open request"
+msgid_plural "# open requests"
+msgstr[0] "# open request"
+msgstr[1] "# open requests"
+
+#. placeholder {0}: a.printers.length
+#. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+printer%7D+other+%7B%23+printers%7D%7D&pluralize_on=0
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "# printer"
+msgid_plural "# printers"
+msgstr[0] "# printer"
+msgstr[1] "# printers"
+
+#. placeholder {0}: outbox.count
+#. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+session+is+saved+on+this+device+and+will+be+uploaded+when+you+are+online.%7D+other+%7B%23+sessions+are+saved+on+this+device+and+will+be+uploaded+when+you+are+online.%7D%7D&pluralize_on=0
+#: src/lib/my/Notices.svelte
+msgid "# session is saved on this device and will be uploaded when you are online."
+msgid_plural "# sessions are saved on this device and will be uploaded when you are online."
+msgstr[0] "# session is saved on this device and will be uploaded when you are online."
+msgstr[1] "# sessions are saved on this device and will be uploaded when you are online."
+
+#. placeholder {0}: r.shooters.length
+#. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+shooter+announced%7D+other+%7B%23+shooters+announced%7D%7D&pluralize_on=0
+#: src/lib/BookingRequests.svelte
+msgid "# shooter announced"
+msgid_plural "# shooters announced"
+msgstr[0] "# shooter announced"
+msgstr[1] "# shooters announced"
+
+#. placeholder {0}: c.shooterCount
+#. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+shooter+assignment+is+removed%2C+the+shooter+stays.%7D+other+%7B%23+shooter+assignments+are+removed%2C+the+shooters+stay.%7D%7D&pluralize_on=0
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+msgid "# shooter assignment is removed, the shooter stays."
+msgid_plural "# shooter assignments are removed, the shooters stay."
+msgstr[0] "# shooter assignment is removed, the shooter stays."
+msgstr[1] "# shooter assignments are removed, the shooters stay."
+
+#. placeholder {0}: preview.length
+#. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+shooter+recognised%7D+other+%7B%23+shooters+recognised%7D%7D&pluralize_on=0
+#: src/lib/booking/ShooterList.svelte
+msgid "# shooter recognised"
+msgid_plural "# shooters recognised"
+msgstr[0] "# shooter recognised"
+msgstr[1] "# shooters recognised"
+
+#. placeholder {0}: ranking.lines.length
+#. placeholder {0}: results.data.total
+#. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+shooter%7D+other+%7B%23+shooters%7D%7D&pluralize_on=0
+#: src/lib/RankingTable.svelte
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "# shooter"
+msgid_plural "# shooters"
+msgstr[0] "# shooter"
+msgstr[1] "# shooters"
+
+#. placeholder {0}: cur.shots
+#. placeholder {0}: data.week.shots
+#. placeholder {0}: sum.shots
+#. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+shot%7D+other+%7B%23+shots%7D%7D&pluralize_on=0
+#: src/routes/my/+page.svelte
+#: src/routes/my/train/+page.svelte
+msgid "# shot"
+msgid_plural "# shots"
+msgstr[0] "# shot"
+msgstr[1] "# shots"
+
+#. placeholder {0}: p.count
+#. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+slot%7D+other+%7B%23+slots%7D%7D&pluralize_on=0
+#: src/lib/BookingSettings.svelte
+msgid "# slot"
+msgid_plural "# slots"
+msgstr[0] "# slot"
+msgstr[1] "# slots"
+
+#. placeholder {0}: data.week.sessions
+#. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+training+this+week%7D+other+%7B%23+trainings+this+week%7D%7D&pluralize_on=0
+#: src/routes/my/+page.svelte
+msgid "# training this week"
+msgid_plural "# trainings this week"
+msgstr[0] "# training this week"
+msgstr[1] "# trainings this week"
+
+#. placeholder {0}: data.week.streak
+#. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+week+in+a+row%7D+other+%7B%23+weeks+in+a+row%7D%7D&pluralize_on=0
+#: src/routes/my/+page.svelte
+msgid "# week in a row"
+msgid_plural "# weeks in a row"
+msgstr[0] "# week in a row"
+msgstr[1] "# weeks in a row"
+
+#. placeholder {0}: ids.length
+#. js-lingui:icu=%7B0%2C+plural%2C+one+%7BCompetition+added+to+your+log%7D+other+%7B%23+competitions+added+to+your+log%7D%7D&pluralize_on=0
+#: src/routes/my/log/+page.svelte
+msgid "Competition added to your log"
+msgid_plural "# competitions added to your log"
+msgstr[0] "Competition added to your log"
+msgstr[1] "# competitions added to your log"
+
+#. placeholder {0}: r.copied
+#. js-lingui:icu=%7B0%2C+plural%2C+one+%7BCopied+%23+programme.%7D+other+%7BCopied+%23+programmes.%7D%7D&pluralize_on=0
+#: src/lib/ProgrammeList.svelte
+msgid "Copied # programme."
+msgid_plural "Copied # programmes."
+msgstr[0] "Copied # programme."
+msgstr[1] "Copied # programmes."
+
+#. placeholder {0}: data.competitions
+#. js-lingui:icu=%7B0%2C+plural%2C+one+%7BWe+found+%23+competition+result+of+yours.+Add+it+to+your+log+with+one+tap.%7D+other+%7BWe+found+%23+competition+results+of+yours.+Add+them+to+your+log+with+one+tap.%7D%7D&pluralize_on=0
+#: src/routes/my/+page.svelte
+msgid "We found # competition result of yours. Add it to your log with one tap."
+msgid_plural "We found # competition results of yours. Add them to your log with one tap."
+msgstr[0] "We found # competition result of yours. Add it to your log with one tap."
+msgstr[1] "We found # competition results of yours. Add them to your log with one tap."
+
+#. placeholder {0}: event.data.name
+#: src/routes/kiosk/[token]/+page.svelte
+msgid "{0} – Rankings"
+msgstr "{0} – Rankings"
+
+#. placeholder {0}: s.name
+#. placeholder {1}: s.laneCount
+#: src/lib/EventForm.svelte
+msgid "{0} ({1} lanes)"
+msgstr "{0} ({1} lanes)"
+
+#. placeholder {0}: drafts[d.id].printer
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "{0} (offline)"
+msgstr "{0} (offline)"
+
+#. placeholder {0}: sh.firstname
+#. placeholder {1}: sh.lastname
+#: src/lib/NewShooterDialog.svelte
+msgid "{0} {1} created"
+msgstr "{0} {1} created"
+
+#. placeholder {0}: reg.shooter.firstname
+#. placeholder {1}: reg.shooter.lastname
+#: src/lib/RegistrationDialog.svelte
+msgid "{0} {1} registered"
+msgstr "{0} {1} registered"
+
+#. placeholder {0}: reg.shooter.firstname
+#. placeholder {1}: reg.shooter.lastname
+#. placeholder {2}: rangeName(reg.rangeId)
+#. placeholder {3}: reg.lane
+#: src/lib/RegistrationDialog.svelte
+msgid "{0} {1} registered on {2}, lane {3}"
+msgstr "{0} {1} registered on {2}, lane {3}"
+
+#. placeholder {0}: reg.shooter.firstname
+#. placeholder {1}: reg.shooter.lastname
+#. placeholder {2}: reg.lane
+#: src/lib/RegistrationDialog.svelte
+msgid "{0} {1} registered on lane {2}"
+msgstr "{0} {1} registered on lane {2}"
+
+#. placeholder {0}: p.shots
+#. placeholder {1}: p.maxPoints
+#: src/lib/ProgrammeList.svelte
+msgid "{0} / {1} pts"
+msgstr "{0} / {1} pts"
+
+#. placeholder {0}: dayLabel(d)
+#: src/lib/booking/BookingHoursForm.svelte
+msgid "{0} from"
+msgstr "{0} from"
+
+#. placeholder {0}: Math.floor(min / 60)
+#. placeholder {1}: min % 60
+#: src/lib/EventDesk.svelte
+msgid "{0} h {1} min"
+msgstr "{0} h {1} min"
+
+#. placeholder {0}: programmeTitle(p)
+#: src/lib/ProgrammeList.svelte
+msgid "{0} is deleted with its series, prices and awards."
+msgstr "{0} is deleted with its series, prices and awards."
+
+#. placeholder {0}: m.name
+#. placeholder {1}: _i18n._(roleLabel(r))
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "{0} is now {1}"
+msgstr "{0} is now {1}"
+
+#. placeholder {0}: fmt(Math.abs(group.y), 1)
+#: src/lib/my/GroupInfo.svelte
+msgid "{0} mm high"
+msgstr "{0} mm high"
+
+#. placeholder {0}: fmt(Math.abs(group.x), 1)
+#: src/lib/my/GroupInfo.svelte
+msgid "{0} mm left"
+msgstr "{0} mm left"
+
+#. placeholder {0}: fmt(Math.abs(group.y), 1)
+#: src/lib/my/GroupInfo.svelte
+msgid "{0} mm low"
+msgstr "{0} mm low"
+
+#. placeholder {0}: fmt(Math.abs(group.x), 1)
+#: src/lib/my/GroupInfo.svelte
+msgid "{0} mm right"
+msgstr "{0} mm right"
+
+#. placeholder {0}: fmtTotal(goal.targetTotal)
+#: src/routes/my/progress/+page.svelte
+msgid "{0} over {standard} shots"
+msgstr "{0} over {standard} shots"
+
+#. placeholder {0}: fmt(-f.delta, 2)
+#: src/lib/my/Result.svelte
+msgid "{0} per shot below your last 30 days"
+msgstr "{0} per shot below your last 30 days"
+
+#. placeholder {0}: fmt(f.delta, 2)
+#: src/lib/my/Result.svelte
+msgid "{0} per shot better than your last 30 days"
+msgstr "{0} per shot better than your last 30 days"
+
+#. placeholder {0}: m.name
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "{0} removed"
+msgstr "{0} removed"
+
+#. placeholder {0}: tag.sessions
+#. placeholder {0}: w.sessions
+#: src/routes/my/progress/+page.svelte
+msgid "{0} sessions"
+msgstr "{0} sessions"
+
+#. placeholder {0}: ranking.shots
+#. placeholder {0}: st.shots
+#: src/lib/RankingTable.svelte
+#: src/routes/my/progress/+page.svelte
+msgid "{0} shots"
+msgstr "{0} shots"
+
+#. placeholder {0}: session.shots
+#. placeholder {1}: fmt(perShot, 2)
+#: src/lib/my/SessionRow.svelte
+msgid "{0} shots · Ø {1}"
+msgstr "{0} shots · Ø {1}"
+
+#. placeholder {0}: s.shots
+#. placeholder {1}: fmt(s.shots ? s.total / s.shots : 0, 2)
+#: src/lib/my/Result.svelte
+msgid "{0} shots · Ø {1} per shot"
+msgstr "{0} shots · Ø {1} per shot"
+
+#. placeholder {0}: fmt(goal.targetTotal - now, 1)
+#: src/routes/my/+page.svelte
+msgid "{0} to go"
+msgstr "{0} to go"
+
+#. placeholder {0}: dayLabel(d)
+#: src/lib/booking/BookingHoursForm.svelte
+msgid "{0} until"
+msgstr "{0} until"
+
+#: src/lib/EventDesk.svelte
+msgid "{at} · click to take back"
+msgstr "{at} · click to take back"
+
+#. js-lingui:icu=%7Bchosen%2C+plural%2C+one+%7B%23+slot+chosen%7D+other+%7B%23+slots+chosen%7D%7D&pluralize_on=chosen
+#: src/lib/booking/BookingForm.svelte
+msgid "# slot chosen"
+msgid_plural "# slots chosen"
+msgstr[0] "# slot chosen"
+msgstr[1] "# slots chosen"
+
+#. js-lingui:icu=%7Bcount%2C+plural%2C+one+%7B%23+shooting+day%7D+other+%7B%23+shooting+days%7D%7D&pluralize_on=count
+#: src/lib/ScheduleEditor.svelte
+msgid "# shooting day"
+msgid_plural "# shooting days"
+msgstr[0] "# shooting day"
+msgstr[1] "# shooting days"
+
+#: src/lib/booking/BookingForm.svelte
+msgid "{free} free"
+msgstr "{free} free"
+
+#: src/lib/Pager.svelte
+msgid "{from}–{to} of {total}"
+msgstr "{from}–{to} of {total}"
+
+#: src/lib/ScheduleEditor.svelte
+msgid "{label} from"
+msgstr "{label} from"
+
+#: src/lib/ScheduleEditor.svelte
+msgid "{label} until"
+msgstr "{label} until"
+
+#: src/lib/EventDesk.svelte
+msgid "{min} min"
+msgstr "{min} min"
+
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "{name} added"
+msgstr "{name} added"
+
+#: src/lib/EventDesk.svelte
+msgid "{name} counts as not served again."
+msgstr "{name} counts as not served again."
+
+#: src/lib/ShooterSheet.svelte
+msgid "{name} deleted"
+msgstr "{name} deleted"
+
+#: src/lib/EventDesk.svelte
+#: src/lib/RegistrationDialog.svelte
+msgid "{name} finished"
+msgstr "{name} finished"
+
+#: src/lib/ShooterSheet.svelte
+msgid "{name} is deleted. Shooters with registrations cannot be deleted."
+msgstr "{name} is deleted. Shooters with registrations cannot be deleted."
+
+#: src/lib/EventDesk.svelte
+#: src/lib/RegistrationDialog.svelte
+msgid "{name} leaves {where}."
+msgstr "{name} leaves {where}."
+
+#: src/routes/my/progress/+page.svelte
+msgid "{standard} shots"
+msgstr "{standard} shots"
+
+#. js-lingui:icu=%7Bwaiting%2C+plural%2C+one+%7BTake+over+%23+shooter%7D+other+%7BTake+over+%23+shooters%7D%7D&pluralize_on=waiting
+#: src/lib/BookingRequests.svelte
+msgid "Take over # shooter"
+msgid_plural "Take over # shooters"
+msgstr[0] "Take over # shooter"
+msgstr[1] "Take over # shooters"
+
+#. placeholder {0}: fmtTotal(projected(recent ?? st.perShot, main))
+#: src/routes/my/+page.svelte
+msgid "≙ {0} of {standard} shots"
+msgstr "≙ {0} of {standard} shots"
+
+#: src/lib/ProgrammeList.svelte
+msgid "0 turns special prizes off."
+msgstr "0 turns special prizes off."
+
+#: src/routes/my/progress/+page.svelte
+msgid "30 days"
+msgstr "30 days"
+
+#: src/lib/SetupChecklist.svelte
+msgid "A few steps before the first shooter can register."
+msgstr "A few steps before the first shooter can register."
+
+#: src/routes/my/progress/+page.svelte
+msgid "A goal gives every session a meaning. Set the total you want to reach."
+msgstr "A goal gives every session a meaning. Set the total you want to reach."
+
+#: src/lib/HelperCodes.svelte
+msgid "A helper link opens a reduced desk for this event without login: scorers enter the results of their lanes, the ammunition desk issues ammunition, assigns lanes and prints lane sheets, results clerks enter results on every lane."
+msgstr "A helper link opens a reduced desk for this event without login: scorers enter the results of their lanes, the ammunition desk issues ammunition, assigns lanes and prints lane sheets, results clerks enter results on every lane."
+
+#: src/lib/ProgrammeList.svelte
+msgid "A JSON file exported from Standblatt (format standblatt.programme v1)."
+msgstr "A JSON file exported from Standblatt (format standblatt.programme v1)."
+
+#: src/lib/KioskTokens.svelte
+msgid "A kiosk link shows the live rankings of this event without login. Anyone with the link can see them."
+msgstr "A kiosk link shows the live rankings of this event without login. Anyone with the link can see them."
+
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "A new event with the same settings and programmes, without registrations."
+msgstr "A new event with the same settings and programmes, without registrations."
+
+#: src/lib/UpdateNotice.svelte
+msgid "A new version of Standblatt is available."
+msgstr "A new version of Standblatt is available."
+
+#: src/lib/AppSidebar.svelte
+#: src/routes/+page.svelte
+#: src/routes/account/+page.svelte
+#: src/routes/my/+layout.svelte
+#: src/routes/my/settings/+page.svelte
+msgid "Account"
+msgstr "Account"
+
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "Accounts with access to this club. Admins manage ranges, events and users; staff run the events."
+msgstr "Accounts with access to this club. Admins manage ranges, events and users; staff run the events."
+
+#. placeholder {0}: c.name
+#. placeholder {0}: programmeTitle(p)
+#. placeholder {0}: r.description
+#: src/lib/ProgrammeList.svelte
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Actions for {0}"
+msgstr "Actions for {0}"
+
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "active"
+msgstr "active"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Active"
+msgstr "Active"
+
+#: src/lib/AccountSettings.svelte
+#: src/routes/my/log/+page.svelte
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "Add"
+msgstr "Add"
+
+#: src/lib/SetupChecklist.svelte
+msgid "Add a range"
+msgstr "Add a range"
+
+#: src/routes/my/log/+page.svelte
+msgid "Add all"
+msgstr "Add all"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Add award"
+msgstr "Add award"
+
+#: src/lib/ShooterSheet.svelte
+msgid "Add club"
+msgstr "Add club"
+
+#: src/lib/ScheduleEditor.svelte
+msgid "Add day"
+msgstr "Add day"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Add from …"
+msgstr "Add from …"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Add from library"
+msgstr "Add from library"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Add from the library"
+msgstr "Add from the library"
+
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Add group"
+msgstr "Add group"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Add print agent"
+msgstr "Add print agent"
+
+#: src/lib/ProgrammeEditor.svelte
+#: src/routes/my/train/+page.svelte
+msgid "Add series"
+msgstr "Add series"
+
+#: src/lib/booking/ShooterList.svelte
+msgid "Add shooter"
+msgstr "Add shooter"
+
+#: src/routes/my/settings/+page.svelte
+msgid "Add Standblatt to your home screen from the browser menu."
+msgstr "Add Standblatt to your home screen from the browser menu."
+
+#: src/lib/my/Finish.svelte
+msgid "Add tag"
+msgstr "Add tag"
+
+#: src/lib/booking/ShooterList.svelte
+msgid "Add to the list"
+msgstr "Add to the list"
+
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "Add user"
+msgstr "Add user"
+
+#: src/lib/my/Finish.svelte
+#: src/routes/my/settings/+page.svelte
+msgid "Add weapon"
+msgstr "Add weapon"
+
+#. placeholder {0}: programmeTitle(p)
+#: src/lib/ProgrammeList.svelte
+msgid "Added {0} from the library."
+msgstr "Added {0} from the library."
+
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "added to the club"
+msgstr "added to the club"
+
+#: src/lib/booking/BookingHoursForm.svelte
+msgid "Adjust"
+msgstr "Adjust"
+
+#: src/lib/labels.ts
+msgid "Admin"
+msgstr "Admin"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Age categories"
+msgstr "Age categories"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Agent name"
+msgstr "Agent name"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Agent name, e.g. Pi hall 1"
+msgstr "Agent name, e.g. Pi hall 1"
+
+#: src/lib/my.svelte.ts
+#: src/routes/my/settings/+page.svelte
+msgid "Air pistol 10 m"
+msgstr "Air pistol 10 m"
+
+#: src/lib/my.svelte.ts
+#: src/routes/my/settings/+page.svelte
+msgid "Air rifle 10 m"
+msgstr "Air rifle 10 m"
+
+#: src/routes/my/+page.svelte
+#: src/routes/my/log/+page.svelte
+msgid "All"
+msgstr "All"
+
+#: src/routes/my/+layout.svelte
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "All clubs"
+msgstr "All clubs"
+
+#: src/routes/my/log/+page.svelte
+msgid "All disciplines"
+msgstr "All disciplines"
+
+#: src/lib/ResultsDialog.svelte
+msgid "All programmes have results."
+msgstr "All programmes have results."
+
+#: src/lib/KioskTokens.svelte
+#: src/routes/kiosk/[token]/+page.svelte
+msgid "All ranges"
+msgstr "All ranges"
+
+#: src/routes/my/progress/+page.svelte
+msgid "All weapons"
+msgstr "All weapons"
+
+#: src/lib/AccountSettings.svelte
+msgid "All your sessions, goals and settings are deleted for good. Export them first if you want to keep them."
+msgstr "All your sessions, goals and settings are deleted for good. Export them first if you want to keep them."
+
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "already a member"
+msgstr "already a member"
+
+#: src/routes/signup/+page.svelte
+msgid "Already have an account?"
+msgstr "Already have an account?"
+
+#: src/lib/RegistrationForm.svelte
+msgid "already registered"
+msgstr "already registered"
+
+#: src/lib/RegistrationDialog.svelte
+msgid "Already registered at this event. Programmes already booked cannot be chosen again."
+msgstr "Already registered at this event. Programmes already booked cannot be chosen again."
+
+#: src/lib/EventDesk.svelte
+msgid "ammo"
+msgstr "ammo"
+
+#: src/lib/EventDesk.svelte
+msgid "Ammo"
+msgstr "Ammo"
+
+#: src/lib/labels.ts
+msgid "Ammunition desk"
+msgstr "Ammunition desk"
+
+#: src/lib/EventDesk.svelte
+msgid "Ammunition issued"
+msgstr "Ammunition issued"
+
+#. placeholder {0}: r.shooter.firstname
+#. placeholder {1}: r.shooter.lastname
+#: src/lib/EventDesk.svelte
+msgid "Ammunition issued to {0} {1}"
+msgstr "Ammunition issued to {0} {1}"
+
+#: src/lib/SetupChecklist.svelte
+msgid "An administrator of your club still has to finish these steps."
+msgstr "An administrator of your club still has to finish these steps."
+
+#: src/lib/booking/BookingForm.svelte
+msgid "Announce your shooters so they are found quickly at the registration desk. Programmes are chosen at the range."
+msgstr "Announce your shooters so they are found quickly at the registration desk. Programmes are chosen at the range."
+
+#: src/lib/my/Result.svelte
+msgid "Another session"
+msgstr "Another session"
+
+#: src/lib/ProgrammeList.svelte
+msgid "any"
+msgstr "any"
+
+#: src/lib/my/ApiTokens.svelte
+msgid "API tokens"
+msgstr "API tokens"
+
+#: src/routes/my/settings/+page.svelte
+msgid "App"
+msgstr "App"
+
+#. placeholder {0}: deadlineDay(ev.deadline, ev.timezone)
+#: src/routes/b/[code]/+page.svelte
+msgid "Ask for lanes until {0}. The organizer confirms your request by mail."
+msgstr "Ask for lanes until {0}. The organizer confirms your request by mail."
+
+#: src/lib/EventDesk.svelte
+msgid "Assign lane"
+msgstr "Assign lane"
+
+#: src/lib/AccountSettings.svelte
+#: src/routes/reset-password/+page.svelte
+#: src/routes/signup/+page.svelte
+msgid "At least 10 characters."
+msgstr "At least 10 characters."
+
+#. placeholder {0}: info.maxLanes
+#: src/lib/booking/BookingForm.svelte
+msgid "At most {0} lanes per slot."
+msgstr "At most {0} lanes per slot."
+
+#: src/lib/help/nav.ts
+msgid "At the event"
+msgstr "At the event"
+
+#: src/routes/my/progress/+page.svelte
+msgid "Average"
+msgstr "Average"
+
+#: src/routes/my/progress/+page.svelte
+msgid "Average of 5"
+msgstr "Average of 5"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Award"
+msgstr "Award"
+
+#: src/lib/EntryCard.svelte
+msgid "Award (choose one)"
+msgstr "Award (choose one)"
+
+#. placeholder {0}: i + 1
+#: src/lib/ProgrammeEditor.svelte
+msgid "Award {0}"
+msgstr "Award {0}"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "award value"
+msgstr "award value"
+
+#. placeholder {0}: entry.award.name
+#: src/lib/EntryCard.svelte
+msgid "Award: {0}"
+msgstr "Award: {0}"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "awards"
+msgstr "awards"
+
+#: src/lib/EventDesk.svelte
+#: src/lib/ProgrammeEditor.svelte
+#: src/lib/ProgrammeList.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Awards"
+msgstr "Awards"
+
+#: src/lib/EventDesk.svelte
+#: src/lib/ResultsDialog.svelte
+msgid "awards handed out"
+msgstr "awards handed out"
+
+#: src/lib/ResultsDialog.svelte
+msgid "Awards handed out"
+msgstr "Awards handed out"
+
+#: src/lib/EventDesk.svelte
+msgid "awards to hand out"
+msgstr "awards to hand out"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Awards to hand out"
+msgstr "Awards to hand out"
+
+#: src/routes/account/+page.svelte
+#: src/routes/my/log/[id]/+page.svelte
+msgid "Back"
+msgstr "Back"
+
+#: src/routes/forgot-password/+page.svelte
+msgid "Back to log in"
+msgstr "Back to log in"
+
+#: src/routes/my/log/[id]/+page.svelte
+msgid "Back to the log"
+msgstr "Back to the log"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Barcode"
+msgstr "Barcode"
+
+#: src/routes/my/progress/+page.svelte
+msgid "Best"
+msgstr "Best"
+
+#: src/lib/booking/ShooterList.svelte
+#: src/lib/ShooterForm.svelte
+#: src/routes/my/settings/+page.svelte
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "Birthday"
+msgstr "Birthday"
+
+#. placeholder {0}: i + 1
+#: src/lib/booking/ShooterList.svelte
+msgid "Birthday of shooter {0}"
+msgstr "Birthday of shooter {0}"
+
+#: src/routes/b/[code]/+page.svelte
+msgid "Book lanes"
+msgstr "Book lanes"
+
+#: src/lib/BookingSettings.svelte
+msgid "Booking link"
+msgstr "Booking link"
+
+#: src/lib/BookingRequests.svelte
+msgid "Booking requests"
+msgstr "Booking requests"
+
+#: src/lib/booking/BookingHoursForm.svelte
+msgid "Booking settings saved"
+msgstr "Booking settings saved"
+
+#. placeholder {0}: shooter.birthday ? formatDate(shooter.birthday) : '–'
+#: src/lib/RegistrationForm.svelte
+msgid "born {0}"
+msgstr "born {0}"
+
+#: src/lib/booking/BookingHoursForm.svelte
+msgid "Break from"
+msgstr "Break from"
+
+#: src/lib/booking/BookingHoursForm.svelte
+msgid "Break until"
+msgstr "Break until"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "browser (PDF)"
+msgstr "browser (PDF)"
+
+#: src/routes/my/progress/+page.svelte
+msgid "By (optional)"
+msgstr "By (optional)"
+
+#. placeholder {0}: formatDate(goal.dueOn)
+#: src/routes/my/progress/+page.svelte
+msgid "by {0}"
+msgstr "by {0}"
+
+#: src/lib/ConfirmHost.svelte
+msgid "Cancel"
+msgstr "Cancel"
+
+#: src/routes/b/manage/[token]/+page.svelte
+msgid "Cancel request"
+msgstr "Cancel request"
+
+#: src/routes/b/manage/[token]/+page.svelte
+msgid "Cancel request?"
+msgstr "Cancel request?"
+
+#: src/lib/booking/BookingStatus.svelte
+msgid "cancelled"
+msgstr "cancelled"
+
+#: src/lib/TwoFactor.svelte
+msgid "Cannot scan? Enter this key:"
+msgstr "Cannot scan? Enter this key:"
+
+#: src/lib/ProgrammeEditor.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Cash prize"
+msgstr "Cash prize"
+
+#: src/lib/RankingTable.svelte
+msgid "Cat."
+msgstr "Cat."
+
+#: src/lib/EventDesk.svelte
+msgid "Category"
+msgstr "Category"
+
+#: src/routes/my/progress/+page.svelte
+msgid "Centre and size of your group"
+msgstr "Centre and size of your group"
+
+#: src/lib/AccountSettings.svelte
+#: src/routes/b/manage/[token]/+page.svelte
+#: src/routes/my/progress/+page.svelte
+msgid "Change"
+msgstr "Change"
+
+#: src/routes/b/manage/[token]/+page.svelte
+msgid "Change confirmed slots?"
+msgstr "Change confirmed slots?"
+
+#: src/lib/AppSidebar.svelte
+msgid "Change event"
+msgstr "Change event"
+
+#: src/lib/AccountSettings.svelte
+msgid "Change password"
+msgstr "Change password"
+
+#: src/routes/b/manage/[token]/+page.svelte
+msgid "Changed; waiting for a new confirmation"
+msgstr "Changed; waiting for a new confirmation"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Choose a template …"
+msgstr "Choose a template …"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Choose an event …"
+msgstr "Choose an event …"
+
+#: src/lib/my/ApiTokens.svelte
+msgid "Choose at least one permission."
+msgstr "Choose at least one permission."
+
+#: src/lib/booking/BookingForm.svelte
+msgid "Choose at least one slot."
+msgstr "Choose at least one slot."
+
+#: src/lib/ShooterForm.svelte
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "City"
+msgstr "City"
+
+#: src/lib/RegistrationForm.svelte
+msgid "clear"
+msgstr "clear"
+
+#: src/lib/components/ui/dialog/dialog-content.svelte
+#: src/lib/components/ui/dialog/dialog-footer.svelte
+#: src/lib/components/ui/sheet/sheet-content.svelte
+#: src/routes/my/train/+page.svelte
+msgid "Close"
+msgstr "Close"
+
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Close event"
+msgstr "Close event"
+
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Close event?"
+msgstr "Close event?"
+
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Close this event"
+msgstr "Close this event"
+
+#: src/lib/AppSidebar.svelte
+msgid "closed"
+msgstr "closed"
+
+#: src/routes/t/[tenantId]/+page.svelte
+msgid "Closed"
+msgstr "Closed"
+
+#. placeholder {0}: new Date(event.data.archivedAt).toLocaleDateString(intlLocale())
+#: src/routes/t/[tenantId]/events/[eventId]/+layout.svelte
+msgid "Closed on {0}: the rankings are released, everything stays visible, but nothing can be changed."
+msgstr "Closed on {0}: the rankings are released, everything stays visible, but nothing can be changed."
+
+#: src/lib/AppSidebar.svelte
+#: src/lib/booking/BookingForm.svelte
+#: src/lib/RankingTable.svelte
+#: src/lib/RegistrationForm.svelte
+#: src/routes/my/+layout.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "Club"
+msgstr "Club"
+
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+msgid "Club \"{name}\" created"
+msgstr "Club \"{name}\" created"
+
+#: src/lib/NewShooterDialog.svelte
+#: src/lib/ShooterSheet.svelte
+msgid "Club (existing or new)"
+msgstr "Club (existing or new)"
+
+#: src/lib/booking/BookingForm.svelte
+msgid "Club and contact"
+msgstr "Club and contact"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Club competition"
+msgstr "Club competition"
+
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+msgid "Club deleted"
+msgstr "Club deleted"
+
+#: src/lib/EventForm.svelte
+msgid "Club excluded from the club competition"
+msgstr "Club excluded from the club competition"
+
+#: src/routes/t/[tenantId]/+layout.svelte
+msgid "Club not found. <0>Back to the list</0>"
+msgstr "Club not found. <0>Back to the list</0>"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Club participants"
+msgstr "Club participants"
+
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+msgid "Club saved"
+msgstr "Club saved"
+
+#: src/lib/AppSidebar.svelte
+#: src/lib/ShooterSheet.svelte
+#: src/routes/t/[tenantId]/+layout.svelte
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "Clubs"
+msgstr "Clubs"
+
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+msgid "Clubs that shooters belong to; used for registrations and the club competition."
+msgstr "Clubs that shooters belong to; used for registrations and the club competition."
+
+#: src/lib/TwoFactor.svelte
+msgid "Code from the app"
+msgstr "Code from the app"
+
+#: src/routes/login/+page.svelte
+msgid "Code from your authenticator app"
+msgstr "Code from your authenticator app"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Combinable with"
+msgstr "Combinable with"
+
+#: src/lib/my.svelte.ts
+#: src/lib/my/Finish.svelte
+#: src/lib/my/SessionRow.svelte
+#: src/routes/my/log/+page.svelte
+#: src/routes/my/progress/+page.svelte
+msgid "Competition"
+msgstr "Competition"
+
+#: src/routes/my/progress/+page.svelte
+msgid "Competition vs. training"
+msgstr "Competition vs. training"
+
+#: src/lib/AuthShell.svelte
+msgid "Competitions for clubs, a training log for shooters."
+msgstr "Competitions for clubs, a training log for shooters."
+
+#: src/routes/t/[tenantId]/+page.svelte
+msgid "Competitions of this club; choose one to open its dashboard."
+msgstr "Competitions of this club; choose one to open its dashboard."
+
+#: src/lib/EventDesk.svelte
+msgid "complete"
+msgstr "complete"
+
+#: src/lib/EntryCard.svelte
+#: src/lib/EventDesk.svelte
+#: src/lib/labels.ts
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "completed"
+msgstr "completed"
+
+#: src/lib/EventDesk.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Completed"
+msgstr "Completed"
+
+#: src/lib/BookingRequests.svelte
+msgid "Confirm"
+msgstr "Confirm"
+
+#: src/lib/AccountSettings.svelte
+#: src/lib/booking/BookingStatus.svelte
+msgid "confirmed"
+msgstr "confirmed"
+
+#: src/routes/verify/+page.svelte
+msgid "Confirming …"
+msgstr "Confirming …"
+
+#: src/lib/booking/BookingForm.svelte
+msgid "Contact person"
+msgstr "Contact person"
+
+#: src/routes/help/[...path]/+page.svelte
+msgid "Contents"
+msgstr "Contents"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Control strip (label 90 × 29 mm)"
+msgstr "Control strip (label 90 × 29 mm)"
+
+#: src/lib/PrintButton.svelte
+msgid "Control strip sent to printer"
+msgstr "Control strip sent to printer"
+
+#: src/lib/my/ApiTokens.svelte
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Copied"
+msgstr "Copied"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Copies a template of the programme library into this event."
+msgstr "Copies a template of the programme library into this event."
+
+#: src/lib/ProgrammeList.svelte
+msgid "Copies all programmes of the chosen event."
+msgstr "Copies all programmes of the chosen event."
+
+#: src/lib/HelperCodes.svelte
+#: src/lib/KioskTokens.svelte
+msgid "copy"
+msgstr "copy"
+
+#: src/lib/my/ApiTokens.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Copy"
+msgstr "Copy"
+
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Copy & close"
+msgstr "Copy & close"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Copy all programmes"
+msgstr "Copy all programmes"
+
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Copy event"
+msgstr "Copy event"
+
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Copy for next year"
+msgstr "Copy for next year"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Copy from an earlier event"
+msgstr "Copy from an earlier event"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Copy from event"
+msgstr "Copy from event"
+
+#: src/lib/BookingSettings.svelte
+msgid "Copy link"
+msgstr "Copy link"
+
+#: src/lib/booking/ShooterList.svelte
+msgid "Copy the rows from Excel or a text file: last name, first name, birthday (e.g. 01.05.1990), licence. One shooter per line."
+msgstr "Copy the rows from Excel or a text file: last name, first name, birthday (e.g. 01.05.1990), licence. One shooter per line."
+
+#: src/lib/my/ApiTokens.svelte
+msgid "Copy your token now"
+msgstr "Copy your token now"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Count"
+msgstr "Count"
+
+#. placeholder {0}: club.data.programmes.join(', ')
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Counted: {0}"
+msgstr "Counted: {0}"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Counts for the club competition"
+msgstr "Counts for the club competition"
+
+#: src/lib/NewShooterDialog.svelte
+#: src/lib/ProgrammeSheet.svelte
+#: src/routes/t/[tenantId]/+page.svelte
+msgid "Create"
+msgstr "Create"
+
+#: src/lib/EventForm.svelte
+msgid "Create a range first."
+msgstr "Create a range first."
+
+#: src/routes/signup/+page.svelte
+msgid "Create account"
+msgstr "Create account"
+
+#: src/routes/login/+page.svelte
+#: src/routes/signup/+page.svelte
+msgid "Create an account"
+msgstr "Create an account"
+
+#: src/lib/SetupChecklist.svelte
+msgid "Create an event"
+msgstr "Create an event"
+
+#: src/lib/EventDesk.svelte
+msgid "Create and register"
+msgstr "Create and register"
+
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Create copy"
+msgstr "Create copy"
+
+#: src/lib/HelperCodes.svelte
+msgid "Create helper link"
+msgstr "Create helper link"
+
+#: src/lib/KioskTokens.svelte
+msgid "Create kiosk link"
+msgstr "Create kiosk link"
+
+#: src/lib/my/ApiTokens.svelte
+msgid "Create token"
+msgstr "Create token"
+
+#: src/routes/my/log/+page.svelte
+msgid "CSV"
+msgstr "CSV"
+
+#: src/lib/AccountSettings.svelte
+msgid "Current password"
+msgstr "Current password"
+
+#: src/lib/KioskTokens.svelte
+msgid "Dark"
+msgstr "Dark"
+
+#: src/lib/ThemeToggle.svelte
+msgid "Dark theme"
+msgstr "Dark theme"
+
+#: src/lib/AppSidebar.svelte
+#: src/routes/t/[tenantId]/+layout.svelte
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: src/lib/EventForm.svelte
+#: src/routes/t/[tenantId]/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Date"
+msgstr "Date"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Day"
+msgstr "Day"
+
+#: src/lib/booking/BookingHoursForm.svelte
+msgid "Days with other hours"
+msgstr "Days with other hours"
+
+#: src/lib/booking/BookingHoursForm.svelte
+msgid "Deadline"
+msgstr "Deadline"
+
+#: src/routes/my/settings/+page.svelte
+msgid "Decimal scoring (10.9)"
+msgstr "Decimal scoring (10.9)"
+
+#: src/lib/BookingRequests.svelte
+msgid "Decline"
+msgstr "Decline"
+
+#. placeholder {0}: declining.club
+#: src/lib/BookingRequests.svelte
+msgid "Decline request of {0}?"
+msgstr "Decline request of {0}?"
+
+#: src/lib/booking/BookingStatus.svelte
+msgid "declined"
+msgstr "declined"
+
+#. placeholder {0}: o.default ?? ''
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "default ({0})"
+msgstr "default ({0})"
+
+#: src/lib/ProgrammeList.svelte
+#: src/lib/RegistrationDialog.svelte
+#: src/lib/ShooterSheet.svelte
+#: src/routes/my/log/[id]/+page.svelte
+#: src/routes/my/settings/+page.svelte
+#: src/routes/my/train/+page.svelte
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Delete"
+msgstr "Delete"
+
+#: src/lib/AccountSettings.svelte
+msgid "Delete account"
+msgstr "Delete account"
+
+#. placeholder {0}: c.name
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+msgid "Delete club \"{0}\"?"
+msgstr "Delete club \"{0}\"?"
+
+#. placeholder {0}: d.name
+#: src/routes/my/settings/+page.svelte
+msgid "Delete discipline \"{0}\"?"
+msgstr "Delete discipline \"{0}\"?"
+
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Delete event?"
+msgstr "Delete event?"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Delete programme?"
+msgstr "Delete programme?"
+
+#. placeholder {0}: s.name
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Delete range \"{0}\"?"
+msgstr "Delete range \"{0}\"?"
+
+#: src/lib/RegistrationDialog.svelte
+msgid "Delete registration?"
+msgstr "Delete registration?"
+
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "Delete reservation?"
+msgstr "Delete reservation?"
+
+#: src/lib/ShooterSheet.svelte
+msgid "Delete shooter"
+msgstr "Delete shooter"
+
+#: src/lib/ShooterSheet.svelte
+msgid "Delete shooter?"
+msgstr "Delete shooter?"
+
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Delete this event"
+msgstr "Delete this event"
+
+#: src/routes/my/log/[id]/+page.svelte
+msgid "Delete this session?"
+msgstr "Delete this session?"
+
+#. placeholder {0}: w.name
+#: src/routes/my/settings/+page.svelte
+msgid "Delete weapon \"{0}\"?"
+msgstr "Delete weapon \"{0}\"?"
+
+#: src/lib/AccountSettings.svelte
+msgid "Delete your account?"
+msgstr "Delete your account?"
+
+#. placeholder {0}: programmeTitle(p)
+#: src/lib/ProgrammeList.svelte
+msgid "Deleted {0}."
+msgstr "Deleted {0}."
+
+#: src/lib/ProgrammeEditor.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "Description"
+msgstr "Description"
+
+#: src/lib/my/Result.svelte
+msgid "Details"
+msgstr "Details"
+
+#: src/routes/my/train/+page.svelte
+msgid "Discard"
+msgstr "Discard"
+
+#: src/routes/my/train/+page.svelte
+msgid "Discard this session?"
+msgstr "Discard this session?"
+
+#: src/routes/my/log/+page.svelte
+#: src/routes/my/progress/+page.svelte
+#: src/routes/my/train/+page.svelte
+msgid "Discipline"
+msgstr "Discipline"
+
+#: src/routes/my/settings/+page.svelte
+msgid "Disciplines"
+msgstr "Disciplines"
+
+#: src/lib/KioskTokens.svelte
+msgid "Display name"
+msgstr "Display name"
+
+#: src/lib/KioskTokens.svelte
+msgid "Display name, e.g. Hall 1"
+msgstr "Display name, e.g. Hall 1"
+
+#: src/lib/components/ui/sidebar/sidebar.svelte
+msgid "Displays the mobile sidebar."
+msgstr "Displays the mobile sidebar."
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Document"
+msgstr "Document"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Documents"
+msgstr "Documents"
+
+#: src/lib/my/ApiTokens.svelte
+msgid "does not expire"
+msgstr "does not expire"
+
+#: src/lib/labels.ts
+msgid "done"
+msgstr "done"
+
+#: src/lib/my/Result.svelte
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Done"
+msgstr "Done"
+
+#: src/lib/my/GroupInfo.svelte
+msgid "down"
+msgstr "down"
+
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "e.g. 5 or 1, 5, 7-10"
+msgstr "e.g. 5 or 1, 5, 7-10"
+
+#: src/lib/my/ApiTokens.svelte
+msgid "e.g. import script"
+msgstr "e.g. import script"
+
+#: src/routes/my/settings/+page.svelte
+msgid "e.g. Steyr EVO 10"
+msgstr "e.g. Steyr EVO 10"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "e.g. Stgw 90"
+msgstr "e.g. Stgw 90"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Earlier event"
+msgstr "Earlier event"
+
+#: src/lib/EventDesk.svelte
+#: src/lib/ProgrammeList.svelte
+#: src/routes/my/log/[id]/+page.svelte
+#: src/routes/my/settings/+page.svelte
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Edit"
+msgstr "Edit"
+
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+msgid "Edit club"
+msgstr "Edit club"
+
+#: src/routes/my/settings/+page.svelte
+msgid "Edit discipline"
+msgstr "Edit discipline"
+
+#: src/lib/ProgrammeSheet.svelte
+msgid "Edit programme"
+msgstr "Edit programme"
+
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Edit range"
+msgstr "Edit range"
+
+#: src/lib/EventDesk.svelte
+#: src/lib/RegistrationDialog.svelte
+#: src/lib/ResultsDialog.svelte
+msgid "Edit registration"
+msgstr "Edit registration"
+
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "Edit reservation"
+msgstr "Edit reservation"
+
+#: src/lib/labels.ts
+msgid "Elite"
+msgstr "Elite"
+
+#: src/lib/AccountSettings.svelte
+#: src/lib/booking/BookingForm.svelte
+#: src/routes/forgot-password/+page.svelte
+#: src/routes/signup/+page.svelte
+msgid "Email"
+msgstr "Email"
+
+#: src/lib/AccountSettings.svelte
+msgid "Email address"
+msgstr "Email address"
+
+#: src/routes/verify/+page.svelte
+msgid "Email address confirmed"
+msgstr "Email address confirmed"
+
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "Email addresses"
+msgstr "Email addresses"
+
+#: src/routes/login/+page.svelte
+msgid "Email or user name"
+msgstr "Email or user name"
+
+#: src/routes/my/settings/+page.svelte
+msgid "Email, password, language, second factor."
+msgstr "Email, password, language, second factor."
+
+#: src/lib/booking/BookingHoursForm.svelte
+msgid "Empty: 14 days before the first day"
+msgstr "Empty: 14 days before the first day"
+
+#: src/lib/booking/BookingHoursForm.svelte
+msgid "Empty: no break"
+msgstr "Empty: no break"
+
+#: src/lib/booking/BookingHoursForm.svelte
+msgid "Empty: no limit"
+msgstr "Empty: no limit"
+
+#: src/lib/booking/BookingHoursForm.svelte
+msgid "Empty: the shooting times of the day, else 08:00"
+msgstr "Empty: the shooting times of the day, else 08:00"
+
+#: src/lib/booking/BookingHoursForm.svelte
+msgid "Empty: the shooting times of the day, else 17:00"
+msgstr "Empty: the shooting times of the day, else 17:00"
+
+#: src/lib/EntryCard.svelte
+msgid "Enter all series"
+msgstr "Enter all series"
+
+#: src/routes/my/train/+page.svelte
+msgid "Enter at least one series."
+msgstr "Enter at least one series."
+
+#: src/lib/booking/BookingForm.svelte
+msgid "Enter how many lanes you need in each slot. The organizer assigns the lane numbers when confirming."
+msgstr "Enter how many lanes you need in each slot. The organizer assigns the lane numbers when confirming."
+
+#: src/routes/forgot-password/+page.svelte
+msgid "Enter your email address and we send you a link to choose a new one. Club accounts without email: ask your club admin."
+msgstr "Enter your email address and we send you a link to choose a new one. Club accounts without email: ask your club admin."
+
+#. Number of programmes shot
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Entries"
+msgstr "Entries"
+
+#: src/lib/AppSidebar.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Event"
+msgstr "Event"
+
+#. placeholder {0}: ev.name
+#: src/routes/t/[tenantId]/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Event \"{0}\" created"
+msgstr "Event \"{0}\" created"
+
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Event closed"
+msgstr "Event closed"
+
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Event deleted"
+msgstr "Event deleted"
+
+#: src/lib/KioskTokens.svelte
+msgid "Event language"
+msgstr "Event language"
+
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Event reopened"
+msgstr "Event reopened"
+
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Event saved"
+msgstr "Event saved"
+
+#: src/lib/AppSidebar.svelte
+#: src/routes/t/[tenantId]/+layout.svelte
+#: src/routes/t/[tenantId]/+page.svelte
+msgid "Events"
+msgstr "Events"
+
+#: src/routes/my/log/+page.svelte
+msgid "Every training and competition you logged."
+msgstr "Every training and competition you logged."
+
+#: src/lib/my/Finish.svelte
+msgid "Everything below is optional — but it is what makes your analysis smart."
+msgstr "Everything below is optional — but it is what makes your analysis smart."
+
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "Existing accounts are added by name; new accounts need a password."
+msgstr "Existing accounts are added by name; new accounts need a password."
+
+#: src/lib/my/ApiTokens.svelte
+msgid "expired"
+msgstr "expired"
+
+#: src/lib/my/ApiTokens.svelte
+msgid "Expires"
+msgstr "Expires"
+
+#. placeholder {0}: formatDate(tok.expiresAt)
+#: src/lib/my/ApiTokens.svelte
+msgid "expires {0}"
+msgstr "expires {0}"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Export"
+msgstr "Export"
+
+#: src/routes/my/settings/+page.svelte
+msgid "Export all sessions (CSV)"
+msgstr "Export all sessions (CSV)"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Exports"
+msgstr "Exports"
+
+#: src/lib/BookingSettings.svelte
+msgid "External clubs ask for lanes through a link in your invitation and announce their shooters. You confirm each request."
+msgstr "External clubs ask for lanes through a link in your invitation and announce their shooters. You confirm each request."
+
+#: src/lib/labels.ts
+msgid "failed"
+msgstr "failed"
+
+#: src/routes/my/train/+page.svelte
+msgid "Fewer shots"
+msgstr "Fewer shots"
+
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+msgid "Filter"
+msgstr "Filter"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Financial report"
+msgstr "Financial report"
+
+#: src/lib/EventDesk.svelte
+#: src/lib/RegistrationDialog.svelte
+#: src/routes/my/train/+page.svelte
+msgid "Finish"
+msgstr "Finish"
+
+#: src/lib/EventDesk.svelte
+#: src/lib/RegistrationDialog.svelte
+msgid "Finish shooting"
+msgstr "Finish shooting"
+
+#: src/lib/EventDesk.svelte
+#: src/lib/RegistrationDialog.svelte
+msgid "Finish shooting?"
+msgstr "Finish shooting?"
+
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "finished"
+msgstr "finished"
+
+#: src/lib/ScheduleEditor.svelte
+msgid "First day"
+msgstr "First day"
+
+#: src/lib/booking/ShooterList.svelte
+#: src/lib/ShooterForm.svelte
+#: src/routes/my/settings/+page.svelte
+#: src/routes/signup/+page.svelte
+msgid "First name"
+msgstr "First name"
+
+#. placeholder {0}: i + 1
+#: src/lib/booking/ShooterList.svelte
+msgid "First name of shooter {0}"
+msgstr "First name of shooter {0}"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "For a variant, pick the name of an existing programme: a shooter registers for only one programme of the same name."
+msgstr "For a variant, pick the name of an existing programme: a shooter registers for only one programme of the same name."
+
+#: src/lib/ScheduleEditor.svelte
+msgid "For events that run over weeks or months, like the Feldschiessen."
+msgstr "For events that run over weeks or months, like the Feldschiessen."
+
+#: src/lib/my/Finish.svelte
+msgid "For example equipment, conditions or what you worked on. Progress compares your results by tag."
+msgstr "For example equipment, conditions or what you worked on. Progress compares your results by tag."
+
+#: src/lib/my/ApiTokens.svelte
+msgid "For your own scripts and tools: a token lets them read or log sessions through the API, without your password."
+msgstr "For your own scripts and tools: a token lets them read or log sessions through the API, without your password."
+
+#: src/routes/forgot-password/+page.svelte
+#: src/routes/login/+page.svelte
+msgid "Forgot your password?"
+msgstr "Forgot your password?"
+
+#: src/routes/my/log/+page.svelte
+msgid "Found by your license number and birthday in closed competitions run with Standblatt."
+msgstr "Found by your license number and birthday in closed competitions run with Standblatt."
+
+#: src/lib/EventDesk.svelte
+#: src/lib/RegistrationForm.svelte
+#: src/routes/kiosk/[token]/+page.svelte
+msgid "free"
+msgstr "free"
+
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "From"
+msgstr "From"
+
+#: src/lib/booking/BookingForm.svelte
+msgid "full"
+msgstr "full"
+
+#: src/routes/kiosk/[token]/+page.svelte
+msgid "Fullscreen"
+msgstr "Fullscreen"
+
+#: src/lib/SetupChecklist.svelte
+msgid "Getting started"
+msgstr "Getting started"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Give each variant its own variant name."
+msgstr "Give each variant its own variant name."
+
+#: src/routes/my/progress/+page.svelte
+msgid "Goal"
+msgstr "Goal"
+
+#. placeholder {0}: fmtTotal(goal.targetTotal)
+#: src/routes/my/+page.svelte
+msgid "Goal {0}"
+msgstr "Goal {0}"
+
+#: src/routes/my/+page.svelte
+msgid "Good evening"
+msgstr "Good evening"
+
+#: src/routes/my/+page.svelte
+msgid "Good morning"
+msgstr "Good morning"
+
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Group name"
+msgstr "Group name"
+
+#: src/lib/my/GroupInfo.svelte
+msgid "Group size"
+msgstr "Group size"
+
+#: src/lib/my/GroupInfo.svelte
+msgid "Group size is twice the average distance of your hits from their centre."
+msgstr "Group size is twice the average distance of your hits from their centre."
+
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "Header row with the columns <0>firstname</0> and <1>lastname</1>, optionally <2>license</2>, <3>birthday</3>, <4>postalcode</4>, <5>city</5> and <6>club</6>; separated by <7>;</7> or <8>,</8>. One line per shooter and club. Shooters are matched by license number (or name and birthday without one); nothing is deleted."
+msgstr "Header row with the columns <0>firstname</0> and <1>lastname</1>, optionally <2>license</2>, <3>birthday</3>, <4>postalcode</4>, <5>city</5> and <6>club</6>; separated by <7>;</7> or <8>,</8>. One line per shooter and club. Shooters are matched by license number (or name and birthday without one); nothing is deleted."
+
+#: src/routes/my/+page.svelte
+msgid "Hello"
+msgstr "Hello"
+
+#: src/lib/AppSidebar.svelte
+#: src/lib/help/HelpArticle.svelte
+#: src/lib/help/HelpButton.svelte
+#: src/routes/my/+layout.svelte
+msgid "Help"
+msgstr "Help"
+
+#: src/lib/help/HelpNav.svelte
+msgid "Help pages"
+msgstr "Help pages"
+
+#: src/lib/HelperCodes.svelte
+msgid "Helper link (shown only now):"
+msgstr "Helper link (shown only now):"
+
+#: src/lib/HelperCodes.svelte
+msgid "Helper name"
+msgstr "Helper name"
+
+#: src/lib/HelperCodes.svelte
+msgid "Helper name, e.g. Scorer range A"
+msgstr "Helper name, e.g. Scorer range A"
+
+#: src/lib/HelperCodes.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Helpers"
+msgstr "Helpers"
+
+#: src/routes/my/settings/+page.svelte
+msgid "Highest value of a shot"
+msgstr "Highest value of a shot"
+
+#: src/routes/my/log/[id]/+page.svelte
+msgid "Hits of this session"
+msgstr "Hits of this session"
+
+#: src/lib/my/Finish.svelte
+msgid "How did it feel?"
+msgstr "How did it feel?"
+
+#: src/routes/b/[code]/+page.svelte
+msgid "How does this work?"
+msgstr "How does this work?"
+
+#: src/routes/forgot-password/+page.svelte
+msgid "If an account uses {email}, we sent a link to choose a new password. Check your inbox."
+msgstr "If an account uses {email}, we sent a link to choose a new password. Check your inbox."
+
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "Import"
+msgstr "Import"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Import a programme file"
+msgstr "Import a programme file"
+
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "Import CSV"
+msgstr "Import CSV"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Import programme file"
+msgstr "Import programme file"
+
+#: src/lib/SetupChecklist.svelte
+msgid "Import shooters (optional)"
+msgstr "Import shooters (optional)"
+
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "Import shooters from CSV"
+msgstr "Import shooters from CSV"
+
+#: src/lib/SetupChecklist.svelte
+msgid "Import your members from a CSV file. Shooters can also be added during registration."
+msgstr "Import your members from a CSV file. Shooters can also be added during registration."
+
+#. placeholder {0}: programmeTitle(p)
+#: src/lib/ProgrammeList.svelte
+msgid "Imported {0}."
+msgstr "Imported {0}."
+
+#. placeholder {0}: report.created
+#. placeholder {1}: report.updated
+#. placeholder {2}: report.clubsCreated
+#. placeholder {3}: report.links
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "Imported: {0} new, {1} updated, {2} new clubs, {3} club assignments."
+msgstr "Imported: {0} new, {1} updated, {2} new clubs, {3} club assignments."
+
+#: src/lib/my/ApiTokens.svelte
+msgid "in 30 days"
+msgstr "in 30 days"
+
+#: src/lib/my/ApiTokens.svelte
+msgid "in 90 days"
+msgstr "in 90 days"
+
+#: src/lib/my/ApiTokens.svelte
+msgid "in a year"
+msgstr "in a year"
+
+#: src/lib/BookingRequests.svelte
+msgid "in master data"
+msgstr "in master data"
+
+#: src/routes/my/train/+page.svelte
+msgid "Input"
+msgstr "Input"
+
+#: src/routes/my/settings/+page.svelte
+msgid "Install"
+msgstr "Install"
+
+#: src/routes/my/settings/+page.svelte
+msgid "Install Standblatt on this device to start a session with one tap."
+msgstr "Install Standblatt on this device to start a session with one tap."
+
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "Invite by email"
+msgstr "Invite by email"
+
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "invited by mail"
+msgstr "invited by mail"
+
+#: src/lib/my/ApiTokens.svelte
+msgid "It is shown only this once. Send it as \"Authorization: Bearer <token>\"."
+msgstr "It is shown only this once. Send it as \"Authorization: Bearer <token>\"."
+
+#: src/routes/my/settings/+page.svelte
+msgid "Its sessions stay in your log, without a weapon."
+msgstr "Its sessions stay in your log, without a weapon."
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Key figures"
+msgstr "Key figures"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Key figures, club competition and exports of this event."
+msgstr "Key figures, club competition and exports of this event."
+
+#: src/lib/my/Finish.svelte
+#: src/lib/ProgrammeEditor.svelte
+#: src/routes/my/log/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Kind"
+msgstr "Kind"
+
+#: src/lib/KioskTokens.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Kiosk displays"
+msgstr "Kiosk displays"
+
+#: src/lib/KioskTokens.svelte
+msgid "Kiosk link (shown only now):"
+msgstr "Kiosk link (shown only now):"
+
+#: src/lib/BookingRequests.svelte
+msgid "known"
+msgstr "known"
+
+#: src/lib/EventDesk.svelte
+#: src/lib/RegistrationForm.svelte
+msgid "Lane"
+msgstr "Lane"
+
+#. placeholder {0}: r.lane
+#: src/lib/ResultsDialog.svelte
+msgid "lane {0}"
+msgstr "lane {0}"
+
+#. placeholder {0}: r.lane
+#. placeholder {0}: reg.lane
+#: src/lib/EventDesk.svelte
+#: src/lib/RegistrationDialog.svelte
+msgid "Lane {0}"
+msgstr "Lane {0}"
+
+#. placeholder {0}: l.lane
+#: src/lib/RegistrationForm.svelte
+msgid "Lane {0} is reserved"
+msgstr "Lane {0} is reserved"
+
+#. placeholder {0}: l.lane
+#. placeholder {1}: l.shooterName ?? ''
+#. placeholder {1}: l.state === 'disabled' ? _i18n._( /** i18n */ { id: "JehK4j", message: "out of service" }) : _i18n._( /** i18n */ { id: "XXvnX-", message: "free" })
+#. placeholder {1}: laneText(l)
+#: src/lib/EventDesk.svelte
+#: src/routes/kiosk/[token]/+page.svelte
+msgid "Lane {0}: {1}"
+msgstr "Lane {0}: {1}"
+
+#. placeholder {0}: l.lane
+#: src/lib/EventDesk.svelte
+msgid "Lane {0}: reserved"
+msgstr "Lane {0}: reserved"
+
+#: src/lib/RegistrationForm.svelte
+msgid "Lane {lane}"
+msgstr "Lane {lane}"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Lane bookings"
+msgstr "Lane bookings"
+
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Lane groups"
+msgstr "Lane groups"
+
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Lane numbers, e.g. 3, 7"
+msgstr "Lane numbers, e.g. 3, 7"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Lane sheet (A5)"
+msgstr "Lane sheet (A5)"
+
+#: src/lib/PrintButton.svelte
+msgid "Lane sheet sent to printer"
+msgstr "Lane sheet sent to printer"
+
+#: src/routes/kiosk/[token]/+page.svelte
+msgid "Lane status"
+msgstr "Lane status"
+
+#: src/lib/booking/BookingForm.svelte
+#: src/lib/EventDesk.svelte
+#: src/lib/HelperCodes.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Lanes"
+msgstr "Lanes"
+
+#. placeholder {0}: formatLanes(it.assigned)
+#. placeholder {0}: r.lanesText
+#: src/lib/BookingRequests.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "lanes {0}"
+msgstr "lanes {0}"
+
+#. placeholder {0}: g.name
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Lanes of {0}"
+msgstr "Lanes of {0}"
+
+#. placeholder {0}: r.name
+#. placeholder {1}: slotTime(sl.start, info.timezone)
+#: src/lib/booking/BookingForm.svelte
+msgid "Lanes on {0} at {1}"
+msgstr "Lanes on {0} at {1}"
+
+#: src/lib/booking/BookingHoursForm.svelte
+msgid "Lanes per slot and club"
+msgstr "Lanes per slot and club"
+
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "Lanes reserved for trainings or groups; they show as reserved from the lead time on."
+msgstr "Lanes reserved for trainings or groups; they show as reserved from the lead time on."
+
+#: src/lib/HelperCodes.svelte
+msgid "Lanes, e.g. 1-5, 8"
+msgstr "Lanes, e.g. 1-5, 8"
+
+#: src/lib/AccountSettings.svelte
+#: src/lib/AppSidebar.svelte
+#: src/lib/KioskTokens.svelte
+#: src/lib/PublicShell.svelte
+msgid "Language"
+msgstr "Language"
+
+#: src/lib/AccountSettings.svelte
+msgid "Language and theme"
+msgstr "Language and theme"
+
+#: src/lib/EventForm.svelte
+msgid "Language of documents and kiosk"
+msgstr "Language of documents and kiosk"
+
+#: src/routes/my/+page.svelte
+msgid "last 30 days"
+msgstr "last 30 days"
+
+#: src/routes/my/progress/+page.svelte
+msgid "Last 30 days"
+msgstr "Last 30 days"
+
+#: src/lib/ScheduleEditor.svelte
+msgid "Last day"
+msgstr "Last day"
+
+#: src/lib/booking/ShooterList.svelte
+#: src/lib/ShooterForm.svelte
+#: src/routes/my/settings/+page.svelte
+#: src/routes/signup/+page.svelte
+msgid "Last name"
+msgstr "Last name"
+
+#. placeholder {0}: i + 1
+#: src/lib/booking/ShooterList.svelte
+msgid "Last name of shooter {0}"
+msgstr "Last name of shooter {0}"
+
+#. placeholder {0}: new Date(a.lastSeenAt).toLocaleString(intlLocale())
+#. placeholder {0}: new Date(c.lastUsedAt).toLocaleString(intlLocale())
+#. placeholder {0}: new Date(k.lastUsedAt).toLocaleString(intlLocale())
+#: src/lib/HelperCodes.svelte
+#: src/lib/KioskTokens.svelte
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "last seen {0}"
+msgstr "last seen {0}"
+
+#. placeholder {0}: formatDate(tok.lastUsedAt)
+#: src/lib/my/ApiTokens.svelte
+msgid "last used {0}"
+msgstr "last used {0}"
+
+#: src/lib/my/GroupInfo.svelte
+msgid "left"
+msgstr "left"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Library template"
+msgstr "Library template"
+
+#: src/lib/booking/ShooterList.svelte
+msgid "Licence (optional)"
+msgstr "Licence (optional)"
+
+#. placeholder {0}: i + 1
+#: src/lib/booking/ShooterList.svelte
+msgid "Licence of shooter {0}"
+msgstr "Licence of shooter {0}"
+
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "License"
+msgstr "License"
+
+#. placeholder {0}: shooter.licenseNumber || '–'
+#: src/lib/RegistrationForm.svelte
+msgid "License {0}"
+msgstr "License {0}"
+
+#. placeholder {0}: sh.licenseNumber || '–'
+#. placeholder {1}: sh.birthday ? formatDate(sh.birthday) : '–'
+#: src/lib/ShooterSheet.svelte
+msgid "License {0} · born {1}"
+msgstr "License {0} · born {1}"
+
+#: src/lib/ShooterForm.svelte
+#: src/routes/my/settings/+page.svelte
+msgid "License number"
+msgstr "License number"
+
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "License number or name"
+msgstr "License number or name"
+
+#: src/lib/KioskTokens.svelte
+msgid "Light"
+msgstr "Light"
+
+#: src/lib/ThemeToggle.svelte
+msgid "Light theme"
+msgstr "Light theme"
+
+#. placeholder {0}: e.line
+#. placeholder {1}: e.message
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "Line {0}: {1}"
+msgstr "Line {0}: {1}"
+
+#: src/lib/BookingSettings.svelte
+#: src/lib/HelperCodes.svelte
+#: src/lib/KioskTokens.svelte
+msgid "Link copied"
+msgstr "Link copied"
+
+#: src/lib/BookingSettings.svelte
+msgid "Link for the invitation"
+msgstr "Link for the invitation"
+
+#: src/lib/booking/ShooterList.svelte
+msgid "List of shooters"
+msgstr "List of shooters"
+
+#: src/lib/labels.ts
+msgid "live"
+msgstr "live"
+
+#: src/routes/t/[tenantId]/events/[eventId]/rankings/+page.svelte
+msgid "Live rankings per programme, ranked by the SSV rules."
+msgstr "Live rankings per programme, ranked by the SSV rules."
+
+#: src/routes/t/[tenantId]/+layout.svelte
+msgid "Live updates"
+msgstr "Live updates"
+
+#: src/lib/RegistrationDialog.svelte
+#: src/lib/ResultsDialog.svelte
+#: src/routes/+page.svelte
+#: src/routes/h/[code]/+page.svelte
+#: src/routes/kiosk/[token]/+page.svelte
+#: src/routes/t/[tenantId]/+page.svelte
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "Loading …"
+msgstr "Loading …"
+
+#: src/lib/help/HelpArticle.svelte
+msgid "Loading…"
+msgstr "Loading…"
+
+#: src/lib/my/Result.svelte
+#: src/routes/my/+layout.svelte
+#: src/routes/my/log/+page.svelte
+msgid "Log"
+msgstr "Log"
+
+#: src/lib/my/ApiTokens.svelte
+msgid "Log and change sessions"
+msgstr "Log and change sessions"
+
+#: src/routes/login/+page.svelte
+#: src/routes/reset-password/+page.svelte
+#: src/routes/signup/+page.svelte
+msgid "Log in"
+msgstr "Log in"
+
+#: src/routes/my/+page.svelte
+msgid "Log my first training"
+msgstr "Log my first training"
+
+#: src/routes/my/log/+page.svelte
+msgid "Log one now"
+msgstr "Log one now"
+
+#: src/lib/AppSidebar.svelte
+#: src/routes/+page.svelte
+#: src/routes/my/+layout.svelte
+msgid "Log out"
+msgstr "Log out"
+
+#. placeholder {0}: me.data.user.name
+#: src/routes/+page.svelte
+msgid "Logged in as {0}"
+msgstr "Logged in as {0}"
+
+#: src/lib/TwoFactor.svelte
+msgid "Logging in asks for a code from your authenticator app."
+msgstr "Logging in asks for a code from your authenticator app."
+
+#: src/lib/AccountSettings.svelte
+msgid "Login"
+msgstr "Login"
+
+#. Column header: mouches
+#: src/lib/RankingTable.svelte
+msgid "M"
+msgstr "M"
+
+#: src/routes/my/+layout.svelte
+msgid "Main"
+msgstr "Main"
+
+#: src/lib/ShooterSheet.svelte
+msgid "Master data"
+msgstr "Master data"
+
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "Master data of the people who shoot for this club."
+msgstr "Master data of the people who shoot for this club."
+
+#: src/lib/NewShooterDialog.svelte
+msgid "Master data of this club. License number, birthday and address are optional."
+msgstr "Master data of this club. License number, birthday and address are optional."
+
+#. placeholder {0}: fmtTotal(cur.shots * max)
+#: src/routes/my/train/+page.svelte
+msgid "max. {0}"
+msgstr "max. {0}"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Max. points"
+msgstr "Max. points"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Minimum participants of the club in this programme"
+msgstr "Minimum participants of the club in this programme"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Minimum participants per category"
+msgstr "Minimum participants per category"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Minimum total per age category; leave empty where the award is not available."
+msgstr "Minimum total per age category; leave empty where the award is not available."
+
+#: src/lib/EventDesk.svelte
+msgid "missing"
+msgstr "missing"
+
+#: src/lib/components/ui/breadcrumb/breadcrumb-ellipsis.svelte
+msgid "More"
+msgstr "More"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "more lp options, e.g. fit-to-page"
+msgstr "more lp options, e.g. fit-to-page"
+
+#. placeholder {0}: d.label
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "More options for {0}"
+msgstr "More options for {0}"
+
+#: src/routes/my/train/+page.svelte
+msgid "More shots"
+msgstr "More shots"
+
+#: src/lib/EntryCard.svelte
+#: src/lib/ProgrammeEditor.svelte
+msgid "Mouches"
+msgstr "Mouches"
+
+#. placeholder {0}: i + 1
+#: src/lib/EntryCard.svelte
+msgid "Mouches series {0}"
+msgstr "Mouches series {0}"
+
+#: src/lib/AppSidebar.svelte
+#: src/lib/help/nav.ts
+#: src/routes/+page.svelte
+msgid "My training"
+msgstr "My training"
+
+#: src/lib/EventForm.svelte
+#: src/lib/my/ApiTokens.svelte
+#: src/lib/ProgrammeEditor.svelte
+#: src/lib/RankingTable.svelte
+#: src/routes/my/settings/+page.svelte
+#: src/routes/t/[tenantId]/+page.svelte
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "Name"
+msgstr "Name"
+
+#: src/lib/EventDesk.svelte
+msgid "Name or license number, or scan the code"
+msgstr "Name or license number, or scan the code"
+
+#: src/routes/my/settings/+page.svelte
+msgid "Name, birthday and license number connect your log with your competition results: Standblatt finds the results of competitions run with it, so you can add them to your log with one tap."
+msgstr "Name, birthday and license number connect your log with your competition results: Standblatt finds the results of competitions run with it, so you can add them to your log with one tap."
+
+#: src/routes/my/progress/+page.svelte
+msgid "needs both"
+msgstr "needs both"
+
+#: src/lib/my/ApiTokens.svelte
+msgid "never"
+msgstr "never"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "never connected"
+msgstr "never connected"
+
+#: src/lib/HelperCodes.svelte
+#: src/lib/KioskTokens.svelte
+#: src/lib/my/ApiTokens.svelte
+msgid "never used"
+msgstr "never used"
+
+#: src/lib/BookingRequests.svelte
+msgid "new"
+msgstr "new"
+
+#: src/lib/my/ApiTokens.svelte
+msgid "New API token"
+msgstr "New API token"
+
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+msgid "New club"
+msgstr "New club"
+
+#: src/lib/SetupChecklist.svelte
+#: src/routes/t/[tenantId]/+page.svelte
+msgid "New event"
+msgstr "New event"
+
+#: src/lib/BookingSettings.svelte
+msgid "New link"
+msgstr "New link"
+
+#: src/lib/BookingSettings.svelte
+msgid "New link created"
+msgstr "New link created"
+
+#: src/lib/BookingSettings.svelte
+msgid "New link?"
+msgstr "New link?"
+
+#: src/lib/AccountSettings.svelte
+#: src/routes/reset-password/+page.svelte
+msgid "New password"
+msgstr "New password"
+
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "New people get a mail with a link to set their password; existing accounts are added to the club and told by mail."
+msgstr "New people get a mail with a link to set their password; existing accounts are added to the club and told by mail."
+
+#: src/lib/my/Result.svelte
+msgid "New personal best!"
+msgstr "New personal best!"
+
+#: src/lib/ProgrammeList.svelte
+#: src/lib/ProgrammeSheet.svelte
+msgid "New programme"
+msgstr "New programme"
+
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "New range"
+msgstr "New range"
+
+#: src/lib/RegistrationDialog.svelte
+msgid "New registration"
+msgstr "New registration"
+
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "New reservation"
+msgstr "New reservation"
+
+#: src/lib/EventDesk.svelte
+#: src/lib/NewShooterDialog.svelte
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "New shooter"
+msgstr "New shooter"
+
+#: src/lib/my/Finish.svelte
+msgid "New tag"
+msgstr "New tag"
+
+#: src/lib/my/ApiTokens.svelte
+msgid "New token"
+msgstr "New token"
+
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "New users only, at least 10 characters"
+msgstr "New users only, at least 10 characters"
+
+#: src/lib/my/Finish.svelte
+msgid "New weapon, e.g. Steyr EVO 10"
+msgstr "New weapon, e.g. Steyr EVO 10"
+
+#: src/routes/my/train/+page.svelte
+msgid "Next"
+msgstr "Next"
+
+#: src/lib/Pager.svelte
+msgid "Next page"
+msgstr "Next page"
+
+#: src/routes/my/train/+page.svelte
+msgid "Next series"
+msgstr "Next series"
+
+#: src/lib/EntryCard.svelte
+msgid "No award reached."
+msgstr "No award reached."
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "No awards given yet."
+msgstr "No awards given yet."
+
+#: src/lib/RegistrationDialog.svelte
+#: src/lib/ResultsDialog.svelte
+msgid "no club"
+msgstr "no club"
+
+#: src/lib/ShooterSheet.svelte
+msgid "No club assigned."
+msgstr "No club assigned."
+
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+msgid "No clubs."
+msgstr "No clubs."
+
+#: src/lib/AccountSettings.svelte
+msgid "No email address yet"
+msgstr "No email address yet"
+
+#: src/lib/HelperCodes.svelte
+msgid "No helper links."
+msgstr "No helper links."
+
+#: src/lib/KioskTokens.svelte
+msgid "No kiosk displays."
+msgstr "No kiosk displays."
+
+#: src/lib/RegistrationForm.svelte
+msgid "No lane: the shooter waits."
+msgstr "No lane: the shooter waits."
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "No print agent yet."
+msgstr "No print agent yet."
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "No print jobs yet."
+msgstr "No print jobs yet."
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "No programme counts for the club competition."
+msgstr "No programme counts for the club competition."
+
+#: src/lib/ProgrammeList.svelte
+msgid "No programmes yet."
+msgstr "No programmes yet."
+
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "No ranges yet."
+msgstr "No ranges yet."
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "No registrations yet."
+msgstr "No registrations yet."
+
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "No reservations."
+msgstr "No reservations."
+
+#: src/lib/RankingTable.svelte
+msgid "No results yet."
+msgstr "No results yet."
+
+#: src/routes/my/progress/+page.svelte
+msgid "No sessions in this discipline yet. Log a few and your progress shows up here."
+msgstr "No sessions in this discipline yet. Log a few and your progress shows up here."
+
+#: src/routes/my/log/+page.svelte
+msgid "No sessions yet."
+msgstr "No sessions yet."
+
+#: src/lib/EventDesk.svelte
+msgid "No shooter found."
+msgstr "No shooter found."
+
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "No shooters found."
+msgstr "No shooters found."
+
+#: src/lib/booking/ShooterList.svelte
+msgid "No shooters yet. You can add them now or later until the deadline."
+msgstr "No shooters yet. You can add them now or later until the deadline."
+
+#: src/lib/BookingSettings.svelte
+msgid "No slots: check the hours."
+msgstr "No slots: check the hours."
+
+#: src/routes/my/+page.svelte
+msgid "No training yet this week. Ready when you are."
+msgstr "No training yet this week. Ready when you are."
+
+#: src/lib/ProgrammeList.svelte
+msgid "nobody"
+msgstr "nobody"
+
+#: src/lib/EventDesk.svelte
+msgid "Nobody has finished yet."
+msgstr "Nobody has finished yet."
+
+#: src/lib/EventDesk.svelte
+msgid "Nobody is shooting."
+msgstr "Nobody is shooting."
+
+#: src/lib/EventDesk.svelte
+msgid "Nobody is waiting."
+msgstr "Nobody is waiting."
+
+#: src/lib/EventForm.svelte
+#: src/lib/RegistrationForm.svelte
+msgid "none"
+msgstr "none"
+
+#: src/routes/my/settings/+page.svelte
+msgid "None"
+msgstr "None"
+
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "not an email address"
+msgstr "not an email address"
+
+#: src/lib/AccountSettings.svelte
+msgid "not confirmed"
+msgstr "not confirmed"
+
+#: src/lib/RegistrationForm.svelte
+msgid "not for this age category"
+msgstr "not for this age category"
+
+#: src/routes/t/[tenantId]/events/[eventId]/rankings/+page.svelte
+msgid "not on kiosk"
+msgstr "not on kiosk"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "not ranked"
+msgstr "not ranked"
+
+#: src/routes/t/[tenantId]/events/[eventId]/rankings/+page.svelte
+msgid "Not shown on kiosk displays"
+msgstr "Not shown on kiosk displays"
+
+#: src/lib/booking/BookingForm.svelte
+msgid "Note to the organizer"
+msgstr "Note to the organizer"
+
+#: src/lib/my/Finish.svelte
+msgid "Notes"
+msgstr "Notes"
+
+#: src/lib/help/HelpNav.svelte
+msgid "Nothing found."
+msgstr "Nothing found."
+
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "Nothing imported, please fix these lines:"
+msgstr "Nothing imported, please fix these lines:"
+
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Number of lanes"
+msgstr "Number of lanes"
+
+#: src/lib/my/GroupInfo.svelte
+msgid "Off centre"
+msgstr "Off centre"
+
+#: src/lib/labels.ts
+msgid "offline"
+msgstr "offline"
+
+#: src/routes/my/settings/+page.svelte
+msgid "On iPhone: tap Share and then \"Add to Home Screen\"."
+msgstr "On iPhone: tap Share and then \"Add to Home Screen\"."
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "online"
+msgstr "online"
+
+#: src/lib/BookingSettings.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Online booking"
+msgstr "Online booking"
+
+#: src/lib/BookingSettings.svelte
+msgid "Online booking switched off"
+msgstr "Online booking switched off"
+
+#: src/lib/BookingSettings.svelte
+msgid "Online booking switched on"
+msgstr "Online booking switched on"
+
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Only possible as long as nobody is registered."
+msgstr "Only possible as long as nobody is registered."
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Only the checked age categories may shoot this programme."
+msgstr "Only the checked age categories may shoot this programme."
+
+#: src/routes/my/settings/+page.svelte
+msgid "Open"
+msgstr "Open"
+
+#: src/lib/PrintButton.svelte
+msgid "Open as PDF"
+msgstr "Open as PDF"
+
+#: src/routes/verify/+page.svelte
+msgid "Open my log"
+msgstr "Open my log"
+
+#: src/lib/EventDesk.svelte
+#: src/lib/RegistrationDialog.svelte
+msgid "Open registration"
+msgstr "Open registration"
+
+#: src/lib/help/HelpButton.svelte
+msgid "Open the full help"
+msgstr "Open the full help"
+
+#: src/lib/EventDesk.svelte
+msgid "Open the results to see and hand out the awards"
+msgstr "Open the results to see and hand out the awards"
+
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Optional: lanes with another distance on the same range, e.g. 25 m on 1-10 and 50 m on 11-15. Programmes can then be tied to a group."
+msgstr "Optional: lanes with another distance on the same range, e.g. 25 m on 1-10 and 50 m on 11-15. Programmes can then be tied to a group."
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Options"
+msgstr "Options"
+
+#: src/lib/EventForm.svelte
+#: src/routes/t/[tenantId]/+page.svelte
+msgid "Organizer"
+msgstr "Organizer"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "out of competition"
+msgstr "out of competition"
+
+#: src/lib/EventDesk.svelte
+#: src/lib/RegistrationForm.svelte
+#: src/routes/kiosk/[token]/+page.svelte
+msgid "out of service"
+msgstr "out of service"
+
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Out of service"
+msgstr "Out of service"
+
+#: src/routes/my/settings/+page.svelte
+msgid "Own discipline"
+msgstr "Own discipline"
+
+#: src/lib/Pager.svelte
+msgid "Pages"
+msgstr "Pages"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Participants"
+msgstr "Participants"
+
+#: src/lib/AccountSettings.svelte
+#: src/routes/login/+page.svelte
+#: src/routes/signup/+page.svelte
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "Password"
+msgstr "Password"
+
+#: src/lib/AccountSettings.svelte
+msgid "Password changed. Other devices were logged out."
+msgstr "Password changed. Other devices were logged out."
+
+#: src/routes/t/[tenantId]/+page.svelte
+msgid "Past"
+msgstr "Past"
+
+#: src/lib/booking/ShooterList.svelte
+msgid "Paste list"
+msgstr "Paste list"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "PDF for printing, CSV for Excel (semicolon separated)."
+msgstr "PDF for printing, CSV for Excel (semicolon separated)."
+
+#: src/lib/EntryCard.svelte
+msgid "pending"
+msgstr "pending"
+
+#: src/routes/my/+page.svelte
+#: src/routes/my/log/[id]/+page.svelte
+#: src/routes/my/progress/+page.svelte
+msgid "per shot"
+msgstr "per shot"
+
+#: src/lib/ScheduleEditor.svelte
+msgid "Period (season)"
+msgstr "Period (season)"
+
+#: src/lib/my/ApiTokens.svelte
+msgid "Permissions"
+msgstr "Permissions"
+
+#: src/routes/my/progress/+page.svelte
+msgid "Personal best"
+msgstr "Personal best"
+
+#: src/lib/booking/BookingForm.svelte
+msgid "Phone"
+msgstr "Phone"
+
+#: src/lib/my.svelte.ts
+msgid "Pistol 25 m"
+msgstr "Pistol 25 m"
+
+#: src/lib/my.svelte.ts
+msgid "Pistol 50 m"
+msgstr "Pistol 50 m"
+
+#: src/routes/my/settings/+page.svelte
+msgid "Pistol precision 25/50 m"
+msgstr "Pistol precision 25/50 m"
+
+#. placeholder {0}: f.rank
+#. placeholder {1}: f.of
+#. placeholder {2}: s.shots
+#: src/lib/my/Result.svelte
+msgid "Place {0} of your {1} sessions with {2} shots"
+msgstr "Place {0} of your {1} sessions with {2} shots"
+
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "planned"
+msgstr "planned"
+
+#. placeholder {0}: my.email
+#: src/lib/my/Notices.svelte
+msgid "Please confirm your email address {0} with the link we sent you."
+msgstr "Please confirm your email address {0} with the link we sent you."
+
+#: src/routes/my/log/[id]/+page.svelte
+msgid "Points per shot by series"
+msgstr "Points per shot by series"
+
+#. placeholder {0}: (strongest ?? 0) + 1
+#. placeholder {1}: (weakest ?? 0) + 1
+#: src/routes/my/progress/+page.svelte
+msgid "Points per shot by series. Series {0} is your strongest, series {1} your weakest."
+msgstr "Points per shot by series. Series {0} is your strongest, series {1} your weakest."
+
+#: src/routes/my/progress/+page.svelte
+msgid "Points per shot of all sessions with each weapon. Tap a weapon to see only its sessions."
+msgstr "Points per shot of all sessions with each weapon. Tap a weapon to see only its sessions."
+
+#: src/routes/my/progress/+page.svelte
+msgid "Points per shot of every session"
+msgstr "Points per shot of every session"
+
+#: src/routes/my/progress/+page.svelte
+msgid "Points per shot of every session, oldest on the left."
+msgstr "Points per shot of every session, oldest on the left."
+
+#: src/routes/my/progress/+page.svelte
+msgid "Points per shot of sessions with a tag compared with your average."
+msgstr "Points per shot of sessions with a tag compared with your average."
+
+#: src/lib/ShooterForm.svelte
+msgid "Postal code"
+msgstr "Postal code"
+
+#: src/lib/Pager.svelte
+msgid "Previous page"
+msgstr "Previous page"
+
+#. placeholder {0}: _i18n._(ageCategoryLabel(c))
+#: src/lib/ProgrammeEditor.svelte
+msgid "Price {0}"
+msgstr "Price {0}"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Prices"
+msgstr "Prices"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Prices (CHF)"
+msgstr "Prices (CHF)"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Print agent added"
+msgstr "Print agent added"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Print agents"
+msgstr "Print agents"
+
+#: src/lib/PrintButton.svelte
+#: src/lib/RegistrationDialog.svelte
+msgid "Print control strip"
+msgstr "Print control strip"
+
+#: src/lib/PrintButton.svelte
+#: src/lib/RegistrationDialog.svelte
+msgid "Print lane sheet"
+msgstr "Print lane sheet"
+
+#: src/lib/PrintButton.svelte
+msgid "Print ranking"
+msgstr "Print ranking"
+
+#: src/lib/PrintButton.svelte
+msgid "Print result sheet"
+msgstr "Print result sheet"
+
+#: src/lib/EventForm.svelte
+msgid "Print the award value on wreath cards"
+msgstr "Print the award value on wreath cards"
+
+#: src/lib/PrintButton.svelte
+msgid "Print wreath card"
+msgstr "Print wreath card"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Printer"
+msgstr "Printer"
+
+#. placeholder {0}: d.label
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Printer for {0}"
+msgstr "Printer for {0}"
+
+#: src/lib/labels.ts
+msgid "printing"
+msgstr "printing"
+
+#: src/routes/t/[tenantId]/+layout.svelte
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Printing"
+msgstr "Printing"
+
+#. placeholder {0}: range.name
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Printing · {0}"
+msgstr "Printing · {0}"
+
+#: src/lib/ProgrammeEditor.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Prize in kind"
+msgstr "Prize in kind"
+
+#: src/routes/my/settings/+page.svelte
+msgid "Profile"
+msgstr "Profile"
+
+#: src/routes/my/settings/+page.svelte
+msgid "Profile saved"
+msgstr "Profile saved"
+
+#: src/lib/ProgrammeList.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Programme"
+msgstr "Programme"
+
+#. placeholder {0}: d.name
+#: src/lib/ProgrammeSheet.svelte
+msgid "Programme \"{0}\" created"
+msgstr "Programme \"{0}\" created"
+
+#. placeholder {0}: d.name
+#: src/lib/ProgrammeSheet.svelte
+msgid "Programme \"{0}\" saved"
+msgstr "Programme \"{0}\" saved"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Programme file"
+msgstr "Programme file"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Programme library"
+msgstr "Programme library"
+
+#: src/lib/EventDesk.svelte
+#: src/lib/ProgrammeList.svelte
+#: src/lib/RegistrationForm.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Programmes"
+msgstr "Programmes"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "programmes sold"
+msgstr "programmes sold"
+
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Programmes, event settings and kiosk displays."
+msgstr "Programmes, event settings and kiosk displays."
+
+#: src/routes/my/+layout.svelte
+#: src/routes/my/progress/+page.svelte
+msgid "Progress"
+msgstr "Progress"
+
+#: src/lib/my/Finish.svelte
+msgid "Progress compares your results between weapons."
+msgstr "Progress compares your results between weapons."
+
+#: src/lib/TwoFactor.svelte
+msgid "Protect your login with a code from an authenticator app (TOTP)."
+msgstr "Protect your login with a code from an authenticator app (TOTP)."
+
+#: src/lib/TwoFactor.svelte
+msgid "QR code for the authenticator app"
+msgstr "QR code for the authenticator app"
+
+#: src/lib/BookingSettings.svelte
+msgid "QR code of the booking link"
+msgstr "QR code of the booking link"
+
+#: src/lib/labels.ts
+msgid "queued"
+msgstr "queued"
+
+#: src/lib/HelperCodes.svelte
+#: src/lib/KioskTokens.svelte
+#: src/lib/my/Finish.svelte
+#: src/lib/ProgrammeList.svelte
+#: src/routes/t/[tenantId]/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "Range"
+msgstr "Range"
+
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Range \"{name}\" created"
+msgstr "Range \"{name}\" created"
+
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Range deleted"
+msgstr "Range deleted"
+
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Range saved"
+msgstr "Range saved"
+
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Range, organizer, language, settings and all programmes with prices, awards, combinations and special prizes are copied. Registrations, results and kiosk links are not."
+msgstr "Range, organizer, language, settings and all programmes with prices, awards, combinations and special prizes are copied. Registrations, results and kiosk links are not."
+
+#: src/lib/AppSidebar.svelte
+#: src/lib/EventForm.svelte
+#: src/lib/SetupChecklist.svelte
+#: src/routes/t/[tenantId]/+layout.svelte
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Ranges"
+msgstr "Ranges"
+
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Ranges with events cannot be deleted."
+msgstr "Ranges with events cannot be deleted."
+
+#: src/lib/RankingTable.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Rank"
+msgstr "Rank"
+
+#. placeholder {0}: c.rank
+#. placeholder {0}: s.rank
+#. placeholder {0}: session.rank
+#. placeholder {1}: c.participants
+#. placeholder {1}: s.participants ?? 0
+#. placeholder {1}: session.participants ?? 0
+#: src/lib/my/SessionRow.svelte
+#: src/routes/my/log/[id]/+page.svelte
+#: src/routes/my/log/+page.svelte
+msgid "Rank {0} of {1}"
+msgstr "Rank {0} of {1}"
+
+#. placeholder {0}: s.shots
+#: src/routes/my/log/[id]/+page.svelte
+msgid "Rank among sessions with {0} shots"
+msgstr "Rank among sessions with {0} shots"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Ranking (A4)"
+msgstr "Ranking (A4)"
+
+#. placeholder {0}: programmeTitle(p)
+#. placeholder {0}: ranking.title
+#: src/lib/RankingTable.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Ranking {0}"
+msgstr "Ranking {0}"
+
+#: src/lib/PrintButton.svelte
+msgid "Ranking sent to printer"
+msgstr "Ranking sent to printer"
+
+#: src/lib/AppSidebar.svelte
+#: src/routes/kiosk/[token]/+page.svelte
+#: src/routes/t/[tenantId]/+layout.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/rankings/+page.svelte
+msgid "Rankings"
+msgstr "Rankings"
+
+#: src/lib/ProgrammeList.svelte
+msgid "Ranks per category"
+msgstr "Ranks per category"
+
+#: src/routes/my/+page.svelte
+msgid "reached"
+msgstr "reached"
+
+#: src/lib/my/ApiTokens.svelte
+msgid "Read sessions"
+msgstr "Read sessions"
+
+#: src/lib/BookingRequests.svelte
+msgid "Reason"
+msgstr "Reason"
+
+#: src/lib/BookingRequests.svelte
+msgid "Reason (optional)"
+msgstr "Reason (optional)"
+
+#. placeholder {0}: r.declineReason
+#: src/lib/BookingRequests.svelte
+msgid "Reason: {0}"
+msgstr "Reason: {0}"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Recent jobs"
+msgstr "Recent jobs"
+
+#: src/routes/my/+page.svelte
+msgid "Recent sessions"
+msgstr "Recent sessions"
+
+#: src/lib/help/nav.ts
+msgid "Reference"
+msgstr "Reference"
+
+#: src/lib/EventDesk.svelte
+#: src/lib/RegistrationDialog.svelte
+msgid "Register"
+msgstr "Register"
+
+#. placeholder {0}: c.name
+#: src/lib/EventDesk.svelte
+msgid "Register for {0}"
+msgstr "Register for {0}"
+
+#: src/lib/labels.ts
+msgid "registered"
+msgstr "registered"
+
+#: src/lib/RegistrationDialog.svelte
+msgid "Registration deleted"
+msgstr "Registration deleted"
+
+#: src/lib/RegistrationDialog.svelte
+msgid "Registration saved"
+msgstr "Registration saved"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "registrations"
+msgstr "registrations"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Registrations"
+msgstr "Registrations"
+
+#: src/lib/AuthShell.svelte
+msgid "Registrations, results and rankings live at the range; your own sessions and progress on the phone."
+msgstr "Registrations, results and rankings live at the range; your own sessions and progress on the phone."
+
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Registrations, results and settings can be changed again."
+msgstr "Registrations, results and settings can be changed again."
+
+#: src/lib/UpdateNotice.svelte
+msgid "Reload"
+msgstr "Reload"
+
+#: src/routes/my/progress/+page.svelte
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "Remove"
+msgstr "Remove"
+
+#. placeholder {0}: c.name
+#: src/lib/ShooterSheet.svelte
+msgid "Remove {0}"
+msgstr "Remove {0}"
+
+#. placeholder {0}: m.name
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "Remove {0}?"
+msgstr "Remove {0}?"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Remove award"
+msgstr "Remove award"
+
+#. placeholder {0}: i + 1
+#: src/lib/ProgrammeEditor.svelte
+msgid "Remove award {0}"
+msgstr "Remove award {0}"
+
+#: src/lib/ScheduleEditor.svelte
+msgid "Remove day"
+msgstr "Remove day"
+
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Remove group"
+msgstr "Remove group"
+
+#: src/lib/ProgrammeEditor.svelte
+#: src/routes/my/train/+page.svelte
+msgid "Remove series"
+msgstr "Remove series"
+
+#. placeholder {0}: i + 1
+#: src/lib/ProgrammeEditor.svelte
+msgid "Remove series {0}"
+msgstr "Remove series {0}"
+
+#. placeholder {0}: i + 1
+#: src/lib/booking/ShooterList.svelte
+msgid "Remove shooter {0}"
+msgstr "Remove shooter {0}"
+
+#: src/lib/ScheduleEditor.svelte
+msgid "Remove time"
+msgstr "Remove time"
+
+#: src/routes/my/settings/+page.svelte
+msgid "Rename"
+msgstr "Rename"
+
+#: src/routes/my/settings/+page.svelte
+msgid "Rename weapon"
+msgstr "Rename weapon"
+
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Reopen"
+msgstr "Reopen"
+
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Reopen this event"
+msgstr "Reopen this event"
+
+#: src/routes/b/manage/[token]/+page.svelte
+msgid "Request cancelled"
+msgstr "Request cancelled"
+
+#: src/lib/BookingRequests.svelte
+msgid "Request confirmed"
+msgstr "Request confirmed"
+
+#: src/lib/BookingRequests.svelte
+msgid "Request declined"
+msgstr "Request declined"
+
+#. placeholder {0}: r.club
+#: src/lib/BookingRequests.svelte
+msgid "Request of {0}"
+msgstr "Request of {0}"
+
+#: src/routes/b/[code]/+page.svelte
+msgid "Request received"
+msgstr "Request received"
+
+#: src/routes/b/manage/[token]/+page.svelte
+msgid "Request saved"
+msgstr "Request saved"
+
+#. placeholder {0}: deadlineDay(c.deadline, event.timezone)
+#: src/lib/BookingSettings.svelte
+msgid "Requests and changes until {0}."
+msgstr "Requests and changes until {0}."
+
+#. placeholder {0}: r.description
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "Reservation {0}"
+msgstr "Reservation {0}"
+
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "Reservation created"
+msgstr "Reservation created"
+
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "Reservation saved"
+msgstr "Reservation saved"
+
+#: src/lib/AppSidebar.svelte
+#: src/routes/t/[tenantId]/+layout.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "Reservations"
+msgstr "Reservations"
+
+#. placeholder {0}: l.reservation ?? ''
+#: src/lib/RegistrationForm.svelte
+msgid "Reserved for \"{0}\". Use it anyway?"
+msgstr "Reserved for \"{0}\". Use it anyway?"
+
+#: src/routes/b/manage/[token]/+page.svelte
+msgid "Reserved lanes are released. This cannot be undone."
+msgstr "Reserved lanes are released. This cannot be undone."
+
+#. placeholder {0}: l.reservation ?? ''
+#: src/lib/RegistrationForm.svelte
+msgid "reserved: {0}"
+msgstr "reserved: {0}"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Result"
+msgstr "Result"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Result sheet (A5)"
+msgstr "Result sheet (A5)"
+
+#: src/lib/PrintButton.svelte
+msgid "Result sheet sent to printer"
+msgstr "Result sheet sent to printer"
+
+#: src/lib/EventDesk.svelte
+#: src/lib/RegistrationDialog.svelte
+#: src/lib/ResultsDialog.svelte
+msgid "Results"
+msgstr "Results"
+
+#: src/lib/labels.ts
+msgid "Results clerk"
+msgstr "Results clerk"
+
+#. placeholder {0}: r.shooter.lastname
+#. placeholder {1}: r.shooter.firstname
+#: src/lib/ResultsDialog.svelte
+msgid "Results: {0} {1}"
+msgstr "Results: {0} {1}"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "revenue"
+msgstr "revenue"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Revenue"
+msgstr "Revenue"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Revenue by programme and age category"
+msgstr "Revenue by programme and age category"
+
+#: src/lib/HelperCodes.svelte
+#: src/lib/KioskTokens.svelte
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "revoke"
+msgstr "revoke"
+
+#: src/lib/HelperCodes.svelte
+#: src/lib/KioskTokens.svelte
+#: src/lib/my/ApiTokens.svelte
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Revoke"
+msgstr "Revoke"
+
+#: src/lib/my/ApiTokens.svelte
+msgid "Revoke \"{tokenName}\"?"
+msgstr "Revoke \"{tokenName}\"?"
+
+#. placeholder {0}: tok.name
+#: src/lib/my/ApiTokens.svelte
+msgid "Revoke {0}"
+msgstr "Revoke {0}"
+
+#: src/lib/HelperCodes.svelte
+msgid "Revoke helper link?"
+msgstr "Revoke helper link?"
+
+#: src/lib/KioskTokens.svelte
+msgid "Revoke kiosk display?"
+msgstr "Revoke kiosk display?"
+
+#. placeholder {0}: a.name
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Revoke print agent \"{0}\"?"
+msgstr "Revoke print agent \"{0}\"?"
+
+#: src/lib/my.svelte.ts
+#: src/routes/my/settings/+page.svelte
+msgid "Rifle 300 m"
+msgstr "Rifle 300 m"
+
+#: src/lib/my.svelte.ts
+#: src/routes/my/settings/+page.svelte
+msgid "Rifle 50 m"
+msgstr "Rifle 50 m"
+
+#: src/lib/my/GroupInfo.svelte
+msgid "right"
+msgstr "right"
+
+#: src/lib/HelperCodes.svelte
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "Role"
+msgstr "Role"
+
+#. placeholder {0}: m.name
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "Role of {0}"
+msgstr "Role of {0}"
+
+#. placeholder {0}: i + 1
+#: src/lib/RankingTable.svelte
+msgid "S{0}"
+msgstr "S{0}"
+
+#: src/lib/booking/BookingHoursForm.svelte
+#: src/lib/EntryCard.svelte
+#: src/lib/ProgrammeList.svelte
+#: src/lib/ProgrammeSheet.svelte
+#: src/lib/RegistrationDialog.svelte
+#: src/lib/ShooterSheet.svelte
+#: src/routes/my/progress/+page.svelte
+#: src/routes/my/settings/+page.svelte
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Save"
+msgstr "Save"
+
+#: src/lib/EntryCard.svelte
+msgid "Save award"
+msgstr "Save award"
+
+#: src/routes/b/manage/[token]/+page.svelte
+msgid "Save changes"
+msgstr "Save changes"
+
+#: src/routes/reset-password/+page.svelte
+msgid "Save password"
+msgstr "Save password"
+
+#: src/lib/my/Finish.svelte
+msgid "Save session"
+msgstr "Save session"
+
+#: src/lib/my/Result.svelte
+msgid "Saved on this device"
+msgstr "Saved on this device"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Saved."
+msgstr "Saved."
+
+#: src/lib/TwoFactor.svelte
+msgid "Scan the code with Google Authenticator, Aegis, 1Password or a similar app, then enter the code it shows."
+msgstr "Scan the code with Google Authenticator, Aegis, 1Password or a similar app, then enter the code it shows."
+
+#: src/lib/labels.ts
+msgid "Scorer"
+msgstr "Scorer"
+
+#: src/lib/my/ApiTokens.svelte
+msgid "Scripts using this token stop working at once."
+msgstr "Scripts using this token stop working at once."
+
+#: src/lib/help/HelpNav.svelte
+msgid "Search results"
+msgstr "Search results"
+
+#: src/lib/EventDesk.svelte
+msgid "Search shooter"
+msgstr "Search shooter"
+
+#: src/lib/help/HelpNav.svelte
+msgid "Search the help"
+msgstr "Search the help"
+
+#: src/lib/TwoFactor.svelte
+msgid "Second factor"
+msgstr "Second factor"
+
+#: src/lib/TwoFactor.svelte
+msgid "Second factor switched off"
+msgstr "Second factor switched off"
+
+#: src/lib/TwoFactor.svelte
+msgid "Second factor switched on"
+msgstr "Second factor switched on"
+
+#: src/routes/my/+page.svelte
+msgid "See right away how the session compares and where you improve."
+msgstr "See right away how the session compares and where you improve."
+
+#: src/lib/AccountSettings.svelte
+#: src/lib/my/Notices.svelte
+msgid "Send again"
+msgstr "Send again"
+
+#: src/lib/AccountSettings.svelte
+msgid "Send confirmation link"
+msgstr "Send confirmation link"
+
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "Send invitations"
+msgstr "Send invitations"
+
+#: src/routes/forgot-password/+page.svelte
+msgid "Send link"
+msgstr "Send link"
+
+#: src/routes/b/[code]/+page.svelte
+msgid "Send request"
+msgstr "Send request"
+
+#: src/lib/labels.ts
+msgid "Senior"
+msgstr "Senior"
+
+#: src/lib/labels.ts
+msgid "Senior veteran"
+msgstr "Senior veteran"
+
+#: src/routes/my/log/[id]/+page.svelte
+#: src/routes/my/settings/+page.svelte
+#: src/routes/my/train/+page.svelte
+msgid "Series"
+msgstr "Series"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Series ({totalShots} shots, max. {totalPoints} points)"
+msgstr "Series ({totalShots} shots, max. {totalPoints} points)"
+
+#. placeholder {0}: draft.current + 1
+#. placeholder {0}: i + 1
+#: src/lib/EntryCard.svelte
+#: src/routes/my/train/+page.svelte
+msgid "Series {0}"
+msgstr "Series {0}"
+
+#: src/routes/my/progress/+page.svelte
+msgid "Series curve"
+msgstr "Series curve"
+
+#. placeholder {0}: programmeTitle(target)
+#: src/lib/RegistrationForm.svelte
+msgid "Series of {0}"
+msgstr "Series of {0}"
+
+#: src/lib/ProgrammeSheet.svelte
+msgid "Series, prices per age category and award limits."
+msgstr "Series, prices per age category and award limits."
+
+#: src/routes/my/log/[id]/+page.svelte
+msgid "Session"
+msgstr "Session"
+
+#: src/routes/my/log/[id]/+page.svelte
+msgid "Session not found."
+msgstr "Session not found."
+
+#: src/routes/my/progress/+page.svelte
+msgid "Sessions"
+msgstr "Sessions"
+
+#: src/routes/my/progress/+page.svelte
+msgid "Set a goal"
+msgstr "Set a goal"
+
+#: src/lib/TwoFactor.svelte
+msgid "Set up"
+msgstr "Set up"
+
+#: src/lib/SetupChecklist.svelte
+msgid "Set up programmes"
+msgstr "Set up programmes"
+
+#: src/lib/TwoFactor.svelte
+msgid "Set up the authenticator app"
+msgstr "Set up the authenticator app"
+
+#: src/routes/my/+layout.svelte
+#: src/routes/my/settings/+page.svelte
+#: src/routes/verify/+page.svelte
+msgid "Settings"
+msgstr "Settings"
+
+#: src/lib/AppSidebar.svelte
+#: src/lib/help/nav.ts
+#: src/lib/SetupChecklist.svelte
+#: src/routes/t/[tenantId]/+layout.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "Setup"
+msgstr "Setup"
+
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "Several addresses separated by commas or one per line."
+msgstr "Several addresses separated by commas or one per line."
+
+#: src/routes/my/progress/+page.svelte
+msgid "Share of every value over {shotsLogged} logged shots."
+msgstr "Share of every value over {shotsLogged} logged shots."
+
+#: src/routes/my/settings/+page.svelte
+msgid "Shoot more than one gun? Add them, choose one when you save a session and compare them on the progress page."
+msgstr "Shoot more than one gun? Add them, choose one when you save a session and compare them on the progress page."
+
+#: src/routes/my/settings/+page.svelte
+msgid "Shoot something else, like a field programme? Add your own discipline with its format and scoring."
+msgstr "Shoot something else, like a field programme? Add your own discipline with its format and scoring."
+
+#: src/lib/EventDesk.svelte
+msgid "Shooter"
+msgstr "Shooter"
+
+#: src/lib/ShooterSheet.svelte
+msgid "Shooter saved"
+msgstr "Shooter saved"
+
+#: src/lib/AppSidebar.svelte
+#: src/lib/booking/BookingForm.svelte
+#: src/lib/SetupChecklist.svelte
+#: src/routes/t/[tenantId]/+layout.svelte
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+#: src/routes/t/[tenantId]/shooters/+page.svelte
+msgid "Shooters"
+msgstr "Shooters"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Shooters are registered for this programme: the series stay as they are, and age categories and awards can be added but not removed."
+msgstr "Shooters are registered for this programme: the series stay as they are, and age categories and awards can be added but not removed."
+
+#: src/lib/BookingRequests.svelte
+msgid "Shooters taken over"
+msgstr "Shooters taken over"
+
+#: src/lib/EventDesk.svelte
+#: src/lib/labels.ts
+msgid "shooting"
+msgstr "shooting"
+
+#: src/lib/EventDesk.svelte
+msgid "Shooting"
+msgstr "Shooting"
+
+#: src/lib/ScheduleEditor.svelte
+msgid "Shooting day"
+msgstr "Shooting day"
+
+#: src/lib/ScheduleEditor.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Shooting days"
+msgstr "Shooting days"
+
+#: src/lib/booking/BookingHoursForm.svelte
+msgid "Shooting from"
+msgstr "Shooting from"
+
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Shooting ranges of this club with their lanes and printers."
+msgstr "Shooting ranges of this club with their lanes and printers."
+
+#: src/lib/ScheduleEditor.svelte
+msgid "Shooting times"
+msgstr "Shooting times"
+
+#: src/lib/booking/BookingHoursForm.svelte
+msgid "Shooting until"
+msgstr "Shooting until"
+
+#: src/routes/my/progress/+page.svelte
+msgid "Shot values"
+msgstr "Shot values"
+
+#: src/lib/ProgrammeEditor.svelte
+#: src/lib/ProgrammeList.svelte
+#: src/routes/my/log/[id]/+page.svelte
+#: src/routes/my/train/+page.svelte
+msgid "Shots"
+msgstr "Shots"
+
+#: src/routes/my/train/+page.svelte
+msgid "Shots of this series"
+msgstr "Shots of this series"
+
+#: src/routes/my/settings/+page.svelte
+msgid "Shots per series"
+msgstr "Shots per series"
+
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "Show as reserved (minutes before)"
+msgstr "Show as reserved (minutes before)"
+
+#: src/lib/EventForm.svelte
+msgid "Show lane status on the rankings"
+msgstr "Show lane status on the rankings"
+
+#: src/routes/my/log/+page.svelte
+msgid "Show more"
+msgstr "Show more"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Show on kiosk displays"
+msgstr "Show on kiosk displays"
+
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "show past"
+msgstr "show past"
+
+#. placeholder {0}: r.leadMinutes
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "shown {0} min before"
+msgstr "shown {0} min before"
+
+#: src/lib/components/ui/sidebar/sidebar.svelte
+msgid "Sidebar"
+msgstr "Sidebar"
+
+#: src/routes/signup/+page.svelte
+msgid "Sign-up is not open on this server."
+msgstr "Sign-up is not open on this server."
+
+#: src/lib/ScheduleEditor.svelte
+msgid "Single days with optional shooting times, e.g. pre-shooting days or the official weekend. The main day is always a shooting day."
+msgstr "Single days with optional shooting times, e.g. pre-shooting days or the official weekend. The main day is always a shooting day."
+
+#: src/lib/booking/BookingHoursForm.svelte
+msgid "Slot length (minutes)"
+msgstr "Slot length (minutes)"
+
+#: src/lib/BookingSettings.svelte
+msgid "Slots"
+msgstr "Slots"
+
+#: src/lib/ProgrammeList.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Special prizes"
+msgstr "Special prizes"
+
+#. placeholder {0}: programmeTitle(programme)
+#: src/lib/ProgrammeList.svelte
+msgid "Special prizes of {0} saved"
+msgstr "Special prizes of {0} saved"
+
+#. placeholder {0}: programmeTitle(programme)
+#: src/lib/ProgrammeList.svelte
+msgid "Special prizes of {0} turned off"
+msgstr "Special prizes of {0} turned off"
+
+#. placeholder {0}: programmeTitle(prizes.programme)
+#: src/lib/ProgrammeList.svelte
+msgid "Special prizes: {0}"
+msgstr "Special prizes: {0}"
+
+#. placeholder {0}: p.specialPrizes.ranks
+#: src/lib/ProgrammeList.svelte
+msgid "Special prizes: ranks 1–{0}"
+msgstr "Special prizes: ranks 1–{0}"
+
+#: src/routes/t/[tenantId]/clubs/+page.svelte
+msgid "SSV number"
+msgstr "SSV number"
+
+#: src/lib/labels.ts
+msgid "Staff"
+msgstr "Staff"
+
+#: src/lib/help/nav.ts
+msgid "Start"
+msgstr "Start"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Start the agent with these settings. The token is shown only now."
+msgstr "Start the agent with these settings. The token is shown only now."
+
+#: src/routes/my/+layout.svelte
+#: src/routes/my/+page.svelte
+#: src/routes/my/progress/+page.svelte
+msgid "Start training"
+msgstr "Start training"
+
+#: src/lib/AppSidebar.svelte
+#: src/lib/EventDesk.svelte
+#: src/routes/t/[tenantId]/+layout.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Statistics"
+msgstr "Statistics"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Status"
+msgstr "Status"
+
+#: src/routes/login/+page.svelte
+msgid "Stay logged in for 90 days"
+msgstr "Stay logged in for 90 days"
+
+#: src/lib/AuthShell.svelte
+msgid "Swiss SSV rules"
+msgstr "Swiss SSV rules"
+
+#: src/lib/AppSidebar.svelte
+msgid "Switch club"
+msgstr "Switch club"
+
+#: src/lib/BookingSettings.svelte
+#: src/lib/TwoFactor.svelte
+msgid "Switch off"
+msgstr "Switch off"
+
+#: src/lib/TwoFactor.svelte
+msgid "Switch off the second factor?"
+msgstr "Switch off the second factor?"
+
+#: src/lib/BookingSettings.svelte
+#: src/lib/TwoFactor.svelte
+msgid "Switch on"
+msgstr "Switch on"
+
+#: src/lib/BookingSettings.svelte
+msgid "Switch online booking off?"
+msgstr "Switch online booking off?"
+
+#: src/lib/ThemeToggle.svelte
+msgid "System theme"
+msgstr "System theme"
+
+#: src/lib/my/Finish.svelte
+msgid "Tags"
+msgstr "Tags"
+
+#. placeholder {0}: p.series.length
+#. placeholder {1}: programmeTitle(target)
+#: src/lib/RegistrationForm.svelte
+msgid "take {0} series from {1}"
+msgstr "take {0} series from {1}"
+
+#: src/lib/EventDesk.svelte
+#: src/lib/ResultsDialog.svelte
+msgid "Take back"
+msgstr "Take back"
+
+#: src/lib/EventDesk.svelte
+msgid "Take the ammunition issue back?"
+msgstr "Take the ammunition issue back?"
+
+#: src/lib/EventDesk.svelte
+#: src/lib/ResultsDialog.svelte
+msgid "Take the awards handout back?"
+msgstr "Take the awards handout back?"
+
+#. placeholder {0}: entry.combinedSeries.join(', ')
+#. placeholder {1}: entry.combinedFrom ?? ''
+#: src/lib/EntryCard.svelte
+msgid "Takes series {0} of {1}."
+msgstr "Takes series {0} of {1}."
+
+#: src/routes/my/+page.svelte
+msgid "Tap the + after your next training."
+msgstr "Tap the + after your next training."
+
+#: src/routes/my/train/+page.svelte
+msgid "Tap where the shot hit"
+msgstr "Tap where the shot hit"
+
+#: src/routes/my/train/+page.svelte
+msgid "Target"
+msgstr "Target"
+
+#: src/routes/my/settings/+page.svelte
+msgid "Target face for tapping hits"
+msgstr "Target face for tapping hits"
+
+#: src/routes/verify/+page.svelte
+msgid "Thank you. Time for a training!"
+msgstr "Thank you. Time for a training!"
+
+#: src/routes/verify/+page.svelte
+msgid "That did not work"
+msgstr "That did not work"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "The agent can no longer fetch jobs."
+msgstr "The agent can no longer fetch jobs."
+
+#: src/lib/ResultsDialog.svelte
+msgid "The awards count as open again."
+msgstr "The awards count as open again."
+
+#: src/lib/EventDesk.svelte
+msgid "The awards of {name} count as open again."
+msgstr "The awards of {name} count as open again."
+
+#: src/lib/ProgrammeList.svelte
+msgid "The best ranks of every age category get a special prize. Shooters whose club has too few participants in this programme are skipped. Can be changed while shooters are registered."
+msgstr "The best ranks of every age category get a special prize. Shooters whose club has too few participants in this programme are skipped. Can be changed while shooters are registered."
+
+#. placeholder {0}: group.shots
+#. placeholder {1}: [horizontal, vertical].filter(Boolean).join(', ')
+#: src/lib/my/GroupInfo.svelte
+msgid "The centre of your {0} hits sits {1}."
+msgstr "The centre of your {0} hits sits {1}."
+
+#. placeholder {0}: rangeTitle(requiredRange ?? 0)
+#: src/lib/RegistrationForm.svelte
+msgid "The chosen programmes are shot on {0}."
+msgstr "The chosen programmes are shot on {0}."
+
+#: src/lib/BookingRequests.svelte
+msgid "The club gets a mail with your reason. Lanes already reserved for it are free again."
+msgstr "The club gets a mail with your reason. Lanes already reserved for it are free again."
+
+#: src/lib/EventDesk.svelte
+msgid "The code belongs to another event"
+msgstr "The code belongs to another event"
+
+#: src/lib/EventDesk.svelte
+msgid "The code does not match the registration"
+msgstr "The code does not match the registration"
+
+#: src/lib/SetupChecklist.svelte
+msgid "The competition with its date, on one of your ranges."
+msgstr "The competition with its date, on one of your ranges."
+
+#: src/lib/BookingSettings.svelte
+msgid "The current link stops working. Clubs that already asked keep their personal links."
+msgstr "The current link stops working. Clubs that already asked keep their personal links."
+
+#: src/routes/b/[code]/+page.svelte
+msgid "The deadline for online booking has passed. Contact the organizer."
+msgstr "The deadline for online booking has passed. Contact the organizer."
+
+#: src/routes/b/manage/[token]/+page.svelte
+msgid "The deadline has passed. Contact the organizer for changes."
+msgstr "The deadline has passed. Contact the organizer for changes."
+
+#: src/lib/ProgrammeList.svelte
+msgid "The file is not valid JSON"
+msgstr "The file is not valid JSON"
+
+#: src/lib/BookingSettings.svelte
+msgid "The link stops working. Requests and confirmed reservations stay."
+msgstr "The link stops working. Requests and confirmed reservations stay."
+
+#: src/lib/EventForm.svelte
+msgid "The main day. Age categories follow the SSV rule: competition year minus year of birth, so only the year of this date matters."
+msgstr "The main day. Age categories follow the SSV rule: competition year minus year of birth, so only the year of this date matters."
+
+#: src/lib/EventForm.svelte
+msgid "The organizer hands out the ammunition (Ammo button on the dashboard)"
+msgstr "The organizer hands out the ammunition (Ammo button on the dashboard)"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "The print agent runs on a computer next to the printers (e.g. a Raspberry Pi with CUPS). It connects to Standblatt, reports the printers and prints the jobs of this range."
+msgstr "The print agent runs on a computer next to the printers (e.g. a Raspberry Pi with CUPS). It connects to Standblatt, reports the printers and prints the jobs of this range."
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "The printers appear here once an agent has connected."
+msgstr "The printers appear here once an agent has connected."
+
+#: src/lib/RegistrationDialog.svelte
+msgid "The registration of {name} and its results are deleted."
+msgstr "The registration of {name} and its results are deleted."
+
+#: src/lib/SetupChecklist.svelte
+msgid "The shooting range with its number of lanes."
+msgstr "The shooting range with its number of lanes."
+
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "The user loses access to this club. The account itself stays."
+msgstr "The user loses access to this club. The account itself stays."
+
+#: src/routes/my/train/+page.svelte
+msgid "The values you entered are lost."
+msgstr "The values you entered are lost."
+
+#: src/lib/EventDesk.svelte
+#: src/lib/RegistrationDialog.svelte
+msgid "the waiting list"
+msgstr "the waiting list"
+
+#: src/lib/AccountSettings.svelte
+#: src/lib/KioskTokens.svelte
+#: src/routes/my/settings/+page.svelte
+msgid "Theme"
+msgstr "Theme"
+
+#: src/routes/b/[code]/+page.svelte
+msgid "This booking link is not valid. Ask the organizer for a new one."
+msgstr "This booking link is not valid. Ask the organizer for a new one."
+
+#: src/lib/RegistrationForm.svelte
+msgid "This event has no active programmes."
+msgstr "This event has no active programmes."
+
+#: src/routes/t/[tenantId]/events/[eventId]/rankings/+page.svelte
+msgid "This event has no programmes yet."
+msgstr "This event has no programmes yet."
+
+#: src/lib/help/HelpArticle.svelte
+msgid "This help page does not exist."
+msgstr "This help page does not exist."
+
+#: src/routes/h/[code]/+page.svelte
+msgid "This helper link is not valid (anymore)."
+msgstr "This helper link is not valid (anymore)."
+
+#: src/routes/kiosk/[token]/+page.svelte
+msgid "This kiosk link is not valid (anymore)."
+msgstr "This kiosk link is not valid (anymore)."
+
+#: src/routes/b/manage/[token]/+page.svelte
+msgid "This link is not valid."
+msgstr "This link is not valid."
+
+#: src/lib/help/HelpArticle.svelte
+msgid "This page is not translated yet."
+msgstr "This page is not translated yet."
+
+#: src/lib/EventForm.svelte
+msgid "Tick every range the event is shot on."
+msgstr "Tick every range the event is shot on."
+
+#: src/lib/booking/BookingForm.svelte
+#: src/lib/ScheduleEditor.svelte
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Time"
+msgstr "Time"
+
+#: src/lib/my/GroupInfo.svelte
+msgid "Tip: if this shows up again and again, adjust your sight {sight} — or look at your hold and trigger first."
+msgstr "Tip: if this shows up again and again, adjust your sight {sight} — or look at your hold and trigger first."
+
+#: src/routes/my/progress/+page.svelte
+msgid "Tip: tap your hits on the target when you log a session and Standblatt shows where your group sits and how big it is."
+msgstr "Tip: tap your hits on the target when you log a session and Standblatt shows where your group sits and how big it is."
+
+#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+msgid "To"
+msgstr "To"
+
+#: src/routes/my/+layout.svelte
+#: src/routes/my/+page.svelte
+#: src/routes/t/[tenantId]/+page.svelte
+msgid "Today"
+msgstr "Today"
+
+#: src/lib/components/ui/sidebar/sidebar-rail.svelte
+#: src/lib/components/ui/sidebar/sidebar-trigger.svelte
+msgid "Toggle Sidebar"
+msgstr "Toggle Sidebar"
+
+#: src/lib/my/ApiTokens.svelte
+msgid "Token revoked"
+msgstr "Token revoked"
+
+#: src/lib/RankingTable.svelte
+#: src/routes/my/log/[id]/+page.svelte
+msgid "Total"
+msgstr "Total"
+
+#. placeholder {0}: readOnly ? entry.total : total
+#. placeholder {1}: entry.maxPoints
+#: src/lib/EntryCard.svelte
+msgid "Total <0>{0}</0> / {1}"
+msgstr "Total <0>{0}</0> / {1}"
+
+#: src/routes/my/progress/+page.svelte
+msgid "Total over {standard} shots"
+msgstr "Total over {standard} shots"
+
+#. placeholder {0}: total.toFixed(2)
+#: src/lib/RegistrationForm.svelte
+msgid "Total: CHF {0}"
+msgstr "Total: CHF {0}"
+
+#. placeholder {0}: i + 1
+#: src/lib/ProgrammeEditor.svelte
+msgid "Track mouches in series {0}"
+msgstr "Track mouches in series {0}"
+
+#: src/lib/my.svelte.ts
+#: src/lib/my/Finish.svelte
+#: src/lib/my/SessionRow.svelte
+#: src/routes/my/log/+page.svelte
+#: src/routes/my/progress/+page.svelte
+#: src/routes/my/train/+page.svelte
+msgid "Training"
+msgstr "Training"
+
+#: src/routes/my/+page.svelte
+#: src/routes/my/progress/+page.svelte
+msgid "Trend"
+msgstr "Trend"
+
+#: src/routes/my/train/+page.svelte
+msgid "Type 97 for 9.7 and 104 for 10.4."
+msgstr "Type 97 for 9.7 and 104 for 10.4."
+
+#: src/routes/my/+page.svelte
+msgid "Type the series totals — or every shot, or tap the hits on the target."
+msgstr "Type the series totals — or every shot, or tap the hits on the target."
+
+#: src/routes/my/train/+page.svelte
+msgid "Undo"
+msgstr "Undo"
+
+#. placeholder {0}: l.reservedUntil ? new Date(l.reservedUntil).toLocaleTimeString(intlLocale(), { hour: '2-digit', minute: '2-digit' }) : ''
+#: src/lib/EventDesk.svelte
+msgid "until {0}"
+msgstr "until {0}"
+
+#: src/lib/my/GroupInfo.svelte
+msgid "up"
+msgstr "up"
+
+#: src/routes/t/[tenantId]/+page.svelte
+msgid "Upcoming"
+msgstr "Upcoming"
+
+#: src/lib/RegistrationForm.svelte
+msgid "Use lane"
+msgstr "Use lane"
+
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "User"
+msgstr "User"
+
+#: src/lib/AppSidebar.svelte
+msgid "User menu"
+msgstr "User menu"
+
+#: src/lib/AccountSettings.svelte
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "User name"
+msgstr "User name"
+
+#: src/lib/AppSidebar.svelte
+#: src/routes/t/[tenantId]/+layout.svelte
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "Users"
+msgstr "Users"
+
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Value"
+msgstr "Value"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Value (CHF)"
+msgstr "Value (CHF)"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Variant"
+msgstr "Variant"
+
+#. placeholder {0}: name.trim()
+#. placeholder {1}: siblings.length + 1
+#: src/lib/ProgrammeEditor.svelte
+msgid "Variant of \"{0}\": shooters register for only one of {1} programmes."
+msgstr "Variant of \"{0}\": shooters register for only one of {1} programmes."
+
+#: src/lib/AppSidebar.svelte
+#: src/routes/my/+layout.svelte
+#: src/routes/my/settings/+page.svelte
+msgid "Version"
+msgstr "Version"
+
+#: src/lib/labels.ts
+msgid "Veteran"
+msgstr "Veteran"
+
+#: src/routes/my/+page.svelte
+msgid "vs. 30 days before"
+msgstr "vs. 30 days before"
+
+#: src/lib/EventDesk.svelte
+msgid "waiting"
+msgstr "waiting"
+
+#: src/lib/EventDesk.svelte
+msgid "Waiting"
+msgstr "Waiting"
+
+#: src/lib/booking/BookingStatus.svelte
+msgid "waiting for confirmation"
+msgstr "waiting for confirmation"
+
+#. placeholder {0}: entry.combinedFrom ?? ''
+#: src/lib/EntryCard.svelte
+msgid "Waiting for the results of {0}."
+msgstr "Waiting for the results of {0}."
+
+#: src/lib/AccountSettings.svelte
+msgid "We sent a confirmation link to {email}."
+msgstr "We sent a confirmation link to {email}."
+
+#: src/routes/b/[code]/+page.svelte
+msgid "We sent a confirmation to {sentTo} with a link to check, change or cancel your request. The lanes are reserved once the organizer confirms them."
+msgstr "We sent a confirmation to {sentTo} with a link to check, change or cancel your request. The lanes are reserved once the organizer confirms them."
+
+#: src/lib/AccountSettings.svelte
+#: src/lib/my/Notices.svelte
+msgid "We sent you a new link."
+msgstr "We sent you a new link."
+
+#: src/lib/my/Finish.svelte
+#: src/routes/my/progress/+page.svelte
+msgid "Weapon"
+msgstr "Weapon"
+
+#: src/routes/my/settings/+page.svelte
+msgid "Weapons"
+msgstr "Weapons"
+
+#: src/routes/my/progress/+page.svelte
+msgid "Weapons compared"
+msgstr "Weapons compared"
+
+#: src/lib/ScheduleEditor.svelte
+msgid "Weekdays of the period that are shot on. None ticked: every day of the period."
+msgstr "Weekdays of the period that are shot on. None ticked: every day of the period."
+
+#: src/routes/my/+page.svelte
+msgid "Weeks in a row with training"
+msgstr "Weeks in a row with training"
+
+#: src/lib/ProgrammeList.svelte
+msgid "What shooters can register for, with prices and awards."
+msgstr "What shooters can register for, with prices and awards."
+
+#: src/lib/SetupChecklist.svelte
+msgid "What shooters can register for: series, prices and awards. Copy them from an earlier event or the library."
+msgstr "What shooters can register for: series, prices and awards. Copy them from an earlier event or the library."
+
+#: src/lib/my/Finish.svelte
+msgid "What went well? What will you try next time?"
+msgstr "What went well? What will you try next time?"
+
+#: src/routes/my/progress/+page.svelte
+msgid "What your tags tell you"
+msgstr "What your tags tell you"
+
+#: src/lib/my/Finish.svelte
+msgid "When"
+msgstr "When"
+
+#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+msgid "When the event is over: the rankings are final and reach the shooters' personal training logs, everything stays visible, but results and registrations can no longer be changed."
+msgstr "When the event is over: the rankings are final and reach the shooters' personal training logs, everything stays visible, but results and registrations can no longer be changed."
+
+#: src/lib/my/Finish.svelte
+msgid "Where"
+msgstr "Where"
+
+#: src/routes/+page.svelte
+msgid "Where to?"
+msgstr "Where to?"
+
+#: src/lib/AccountSettings.svelte
+msgid "With a confirmed email address you can reset a forgotten password yourself."
+msgstr "With a confirmed email address you can reset a forgotten password yourself."
+
+#: src/routes/login/+page.svelte
+msgid "With your email address, or the user name your club admin gave you."
+msgstr "With your email address, or the user name your club admin gave you."
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Without an online agent, documents open as PDF in the browser."
+msgstr "Without an online agent, documents open as PDF in the browser."
+
+#: src/lib/ProgrammeEditor.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+msgid "Wreath card"
+msgstr "Wreath card"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Wreath card (A6, pre-printed)"
+msgstr "Wreath card (A6, pre-printed)"
+
+#: src/lib/PrintButton.svelte
+msgid "Wreath card sent to printer"
+msgstr "Wreath card sent to printer"
+
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "Write lanes like 1-10, 12"
+msgstr "Write lanes like 1-10, 12"
+
+#: src/lib/RankingTable.svelte
+msgid "Year"
+msgstr "Year"
+
+#: src/lib/my/Result.svelte
+msgid "You are offline. The session is uploaded automatically as soon as you are back online."
+msgstr "You are offline. The session is uploaded automatically as soon as you are back online."
+
+#. placeholder {0}: deadlineDay(info.deadline, info.timezone)
+#: src/routes/b/manage/[token]/+page.svelte
+msgid "You can change or cancel the request until {0}."
+msgstr "You can change or cancel the request until {0}."
+
+#: src/lib/AccountSettings.svelte
+msgid "Your club manages this account. Ask your club admin to remove it."
+msgstr "Your club manages this account. Ask your club admin to remove it."
+
+#: src/routes/my/log/+page.svelte
+msgid "Your competition results"
+msgstr "Your competition results"
+
+#: src/routes/my/settings/+page.svelte
+msgid "Your data"
+msgstr "Your data"
+
+#: src/lib/my/Result.svelte
+msgid "Your first session in this format — the next one has something to beat."
+msgstr "Your first session in this format — the next one has something to beat."
+
+#: src/lib/my/GroupInfo.svelte
+msgid "Your group"
+msgstr "Your group"
+
+#: src/lib/my/GroupInfo.svelte
+msgid "Your group is well centred. Work on making it smaller."
+msgstr "Your group is well centred. Work on making it smaller."
+
+#: src/routes/b/manage/[token]/+page.svelte
+msgid "Your lane request"
+msgstr "Your lane request"
+
+#. placeholder {0}: fmtTotal(now)
+#: src/routes/my/progress/+page.svelte
+msgid "Your last 30 days average {0} — goal reached!"
+msgstr "Your last 30 days average {0} — goal reached!"
+
+#. placeholder {0}: fmtTotal(now)
+#. placeholder {1}: fmt(Math.max(0.01, goal.targetTotal / standard - recent), 2)
+#: src/routes/my/progress/+page.svelte
+msgid "Your last 30 days average {0}. {1} more per shot to go."
+msgstr "Your last 30 days average {0}. {1} more per shot to go."
+
+#: src/routes/my/+page.svelte
+msgid "Your log is empty — let's change that."
+msgstr "Your log is empty — let's change that."
+
+#: src/lib/AccountSettings.svelte
+#: src/lib/TwoFactor.svelte
+msgid "Your password"
+msgstr "Your password"
+
+#: src/routes/reset-password/+page.svelte
+msgid "Your password is changed. Log in with the new one."
+msgstr "Your password is changed. Log in with the new one."
+
+#: src/routes/+page.svelte
+msgid "Your personal training log"
+msgstr "Your personal training log"
+
+#: src/routes/signup/+page.svelte
+msgid "Your personal training log, ready in a minute."
+msgstr "Your personal training log, ready in a minute."
+
+#: src/routes/b/manage/[token]/+page.svelte
+msgid "Your request"
+msgstr "Your request"
+
+#: src/routes/b/manage/[token]/+page.svelte
+msgid "Your reserved lanes are released and the organizer has to confirm the request again."
+msgstr "Your reserved lanes are released and the organizer has to confirm the request again."
+
+#: src/lib/AccountSettings.svelte
+msgid "Your training log, goals and settings are deleted for good. Export your sessions first if you want to keep them."
+msgstr "Your training log, goals and settings are deleted for good. Export your sessions first if you want to keep them."
+
+#: src/routes/my/train/+page.svelte
+msgid "Your unfinished session is back."
+msgstr "Your unfinished session is back."
+
+#: src/routes/my/train/+page.svelte
+msgid "Zoom in"
+msgstr "Zoom in"
+
+#: src/routes/my/train/+page.svelte
+msgid "Zoom out"
+msgstr "Zoom out"

@@ -1,0 +1,21 @@
+{{template "head" .}}{{template "shell" .}}
+<div class="page-head">
+<div><h1>{{T "Administration"}}</h1><p>{{T "Clubs, their users and the programme library shared by all clubs."}}</p></div>
+<div class="muted">{{.Version}}{{if .Environment}} · {{.Environment}}{{end}}</div>
+</div>
+{{template "alerts" .}}
+<div class="stats">
+<a class="stat" href="/admin/clubs"><b>{{.Stats.Tenants}}</b><span>{{T "Clubs"}}</span></a>
+<a class="stat" href="/admin/users"><b>{{.Stats.Users}}</b><span>{{T "Users"}}</span></a>
+<div class="stat"><b>{{.Stats.Events}}</b><span>{{T "Events"}}</span></div>
+<div class="stat"><b>{{.Stats.Registrations}}</b><span>{{T "Registrations"}}</span></div>
+<a class="stat" href="/admin/system"><b>{{.Stats.Sessions}}</b><span>{{T "Active sessions"}}</span></a>
+<a class="stat" href="/admin/library"><b>{{.Stats.Templates}}</b><span>{{T "Programme templates"}}</span></a>
+</div>
+{{if .Maintenance}}
+<section class="card"><div class="card-body">
+<strong>{{T "Maintenance: new logins are blocked"}}</strong>
+<form method="post" action="/admin/maintenance"><input type="hidden" name="on" value="false"><input type="hidden" name="back" value="/admin"><button class="btn">{{T "Allow logins again"}}</button></form>
+</div></section>
+{{end}}
+{{template "end" .}}

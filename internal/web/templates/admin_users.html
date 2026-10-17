@@ -1,0 +1,40 @@
+{{template "head" .}}{{template "shell" .}}
+<div class="page-head">
+<div><h1>{{T "Users"}}</h1><p>{{T "Accounts are global; a user can belong to several clubs."}}</p></div>
+<form method="get" action="/admin/users" class="row">
+<input type="search" name="q" value="{{.Query}}" placeholder="{{T "Search name or email"}}">
+<button>{{T "Search"}}</button>
+</form>
+</div>
+{{template "alerts" .}}
+<section class="card">
+<div class="card-head">
+<div><h2>{{T "Create user"}}</h2><p>{{T "Without a password the user gets a mail with a link to set one (needs an email address)."}}</p></div>
+<form method="post" action="/admin/users" class="row">
+<input name="name" placeholder="{{T "User name"}}" autocomplete="off" required>
+<input name="email" type="email" placeholder="{{T "Email (optional)"}}" autocomplete="off">
+<input name="password" placeholder="{{T "Password (at least 10 characters)"}}" autocomplete="new-password">
+<button class="primary">{{T "Create user"}}</button>
+</form>
+</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>{{T "Name"}}</th><th>{{T "Email"}}</th><th>{{T "Clubs"}}</th><th>{{T "Second factor"}}</th><th class="num">{{T "Sessions"}}</th><th>{{T "Last login"}}</th></tr></thead>
+<tbody>
+{{range .Users}}
+<tr>
+<td><a href="/admin/users/{{.ID}}"><strong>{{.Name}}</strong></a></td>
+<td>{{if .Email}}{{if ne .Email .Name}}<div>{{.Email}}</div>{{end}}{{if .EmailVerified}}<span class="badge staff">{{T "verified"}}</span>{{else}}<span class="badge">{{T "unconfirmed"}}</span>{{end}}{{else}}<span class="muted">–</span>{{end}}</td>
+<td>{{range .Tenants}}<div>{{.}}</div>{{else}}<span class="muted">{{T "none"}}</span>{{end}}</td>
+<td>{{if .TOTP}}<span class="badge staff">{{T "on"}}</span>{{else}}<span class="muted">–</span>{{end}}</td>
+<td class="num">{{.Sessions}}</td>
+<td>{{if .LastLogin}}{{(local .LastLogin).Format "02.01.2006 15:04"}}{{else}}<span class="muted">{{T "never"}}</span>{{end}}</td>
+</tr>
+{{else}}
+<tr><td colspan="6" class="muted">{{T "No users found"}}</td></tr>
+{{end}}
+</tbody>
+</table>
+</div>
+</section>
+{{template "end" .}}

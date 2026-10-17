@@ -1,0 +1,43 @@
+{{- if .Values.ingress.enabled }}
+{{- if not .Values.ingress.hosts }}{{ fail "ingress.hosts must contain at least one host" }}{{ end }}
+{{- $issuer := .Values.ingress.tls.clusterIssuer }}
+{{- $secretName := .Values.ingress.tls.secretName }}
+{{- if and (not $secretName) $issuer }}{{ $secretName = printf "%s-tls" .Release.Name }}{{ end }}
+{{- $annotations := deepCopy .Values.ingress.annotations }}
+{{- with $issuer }}{{ $_ := set $annotations "cert-manager.io/cluster-issuer" . }}{{ end }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    {{- include "standblatt.labels" . | nindent 4 }}
+  {{- with $annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  ingressClassName: {{ .Values.ingress.className }}
+  {{- if .Values.ingress.tls.enabled }}
+  tls:
+    - hosts:
+        {{- range .Values.ingress.hosts }}
+        - {{ . | quote }}
+        {{- end }}
+      {{- with $secretName }}
+      secretName: {{ . }}
+      {{- end }}
+  {{- end }}
+  rules:
+    {{- range .Values.ingress.hosts }}
+    - host: {{ . | quote }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $.Release.Name }}
+                port:
+                  name: http
+    {{- end }}
+{{- end }}

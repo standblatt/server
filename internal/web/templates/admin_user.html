@@ -1,0 +1,73 @@
+{{template "head" .}}{{template "shell" .}}
+{{$u := .User}}
+<div class="page-head">
+<div>
+<div class="crumbs"><a href="/admin/users">{{T "Users"}}</a> / </div>
+<h1>{{$u.Name}}</h1>
+<p>{{Tf "Created on %s" ($u.CreatedAt.Format "02.01.2006")}} · ID {{$u.ID}}</p>
+</div>
+<form method="post" action="/admin/users/{{$u.ID}}/delete" data-confirm="{{Tf "Delete user %s? The personal training log goes with it." $u.Name}}"><button class="danger">{{T "Delete user"}}</button></form>
+</div>
+{{template "alerts" .}}
+<div class="grid2">
+<section class="card">
+<div class="card-head"><div><h2>{{T "Account"}}</h2></div></div>
+<div class="card-body">
+<dl class="kv">
+<dt>{{T "Sessions"}}</dt><dd>{{$u.Sessions}} {{T "active"}}{{if $u.LastLogin}} · {{T "last login"}} {{(local $u.LastLogin).Format "02.01.2006 15:04"}}{{end}}</dd>
+<dt>{{T "Second factor"}}</dt><dd>{{if $u.TOTP}}{{T "on"}}{{else}}{{T "off"}}{{end}}</dd>
+<dt>{{T "Language"}}</dt><dd>{{if $u.Locale}}{{$u.Locale}}{{else}}<span class="muted">{{T "browser"}}</span>{{end}}</dd>
+<dt>{{T "Training log"}}</dt><dd>{{Tf "%d sessions" $u.Trainings}}</dd>
+</dl>
+<div class="row">
+<form class="inline" method="post" action="/admin/users/{{$u.ID}}/sessions/delete"><button class="small">{{T "Log out everywhere"}}</button></form>
+{{if $u.TOTP}}<form class="inline" method="post" action="/admin/users/{{$u.ID}}/totp/delete" data-confirm="{{Tf "Switch off the second factor of %s?" $u.Name}}"><button class="small">{{T "Reset second factor"}}</button></form>{{end}}
+</div>
+</div>
+</section>
+
+<section class="card">
+<div class="card-head"><div><h2>{{T "Email"}}</h2><p>{{T "Needed for password links and invitations. Clear the field to remove it."}}</p></div></div>
+<div class="card-body">
+<form method="post" action="/admin/users/{{$u.ID}}/email" class="row">
+<input name="email" type="email" value="{{$u.Email}}" placeholder="{{T "Email"}}" autocomplete="off">
+<label class="check"><input type="checkbox" name="verified" {{if $u.EmailVerified}}checked{{end}}>{{T "verified"}}</label>
+<button>{{T "Save"}}</button>
+</form>
+{{if $u.Email}}
+<form method="post" action="/admin/users/{{$u.ID}}/password-link" class="row"><button>{{T "Send password link"}}</button><span class="muted">{{T "Mails a link valid for seven days to set a new password."}}</span></form>
+{{end}}
+</div>
+</section>
+
+<section class="card">
+<div class="card-head"><div><h2>{{T "Password"}}</h2><p>{{T "Sets the password directly; prefer the password link when the user has an email address."}}</p></div></div>
+<div class="card-body">
+<form method="post" action="/admin/users/{{$u.ID}}/password" class="row">
+<input name="password" placeholder="{{T "New password (at least 10 characters)"}}" autocomplete="new-password" required>
+<button>{{T "Set password"}}</button>
+</form>
+</div>
+</section>
+
+<section class="card">
+<div class="card-head"><div><h2>{{T "Clubs"}}</h2><p>{{T "Assign the user on the club's page."}}</p></div></div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>{{T "Club"}}</th><th>{{T "Role"}}</th><th></th></tr></thead>
+<tbody>
+{{range .Memberships}}
+<tr>
+<td><a href="/admin/clubs/{{.TenantID}}"><strong>{{.TenantName}}</strong></a></td>
+<td><span class="badge {{.Role}}">{{.Role}}</span></td>
+<td class="actions"><form class="inline" method="post" action="/admin/users/{{$u.ID}}/memberships/delete"><input type="hidden" name="tenant" value="{{.TenantID}}"><button class="ghost small danger">{{T "remove"}}</button></form></td>
+</tr>
+{{else}}
+<tr><td colspan="3" class="muted">{{T "No clubs"}}</td></tr>
+{{end}}
+</tbody>
+</table>
+</div>
+</section>
+</div>
+{{template "end" .}}

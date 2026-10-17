@@ -1,0 +1,6 @@
+apiVersion: v2
+name: standblatt
+description: Standblatt web pods with Traefik ingress. The PostgreSQL database is external (e.g. CloudNativePG); the image tag may move (latest, bleeding_edge) with pullPolicy Always.
+type: application
+version: 0.1.0
+appVersion: "0.1.0"

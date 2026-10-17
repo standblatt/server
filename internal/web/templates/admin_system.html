@@ -1,0 +1,35 @@
+{{template "head" .}}{{template "shell" .}}
+<div class="page-head"><div><h1>{{T "System"}}</h1><p>{{T "Maintenance, sessions and the configuration of this instance."}}</p></div></div>
+{{template "alerts" .}}
+<div class="grid2">
+<section class="card">
+<div class="card-head"><div><h2>{{T "Maintenance mode"}}</h2><p>{{T "Blocks new logins; users already logged in keep working."}}</p></div></div>
+<div class="card-body">
+{{if .Maintenance}}
+<div class="alert error">{{T "Maintenance: new logins are blocked"}}</div>
+<form method="post" action="/admin/maintenance"><input type="hidden" name="on" value="false"><button class="primary">{{T "Allow logins again"}}</button></form>
+{{else}}
+<div class="alert notice">{{T "Logins open"}}</div>
+<form method="post" action="/admin/maintenance" data-confirm="{{T "Block all new logins? Open sessions keep working."}}"><input type="hidden" name="on" value="true"><button>{{T "Maintenance mode"}}</button></form>
+{{end}}
+</div>
+</section>
+<section class="card">
+<div class="card-head"><div><h2>{{T "Sessions"}}</h2><p>{{T "Ends every session on every replica; everyone has to log in again."}}</p></div></div>
+<div class="card-body">
+<form method="post" action="/admin/sessions/delete" data-confirm="{{T "Log out every user?"}}"><button class="danger">{{T "Revoke all sessions"}}</button></form>
+</div>
+</section>
+<section class="card">
+<div class="card-head"><div><h2>{{T "Instance"}}</h2></div></div>
+<div class="card-body">
+<dl class="kv">
+<dt>{{T "Version"}}</dt><dd>{{.Version}}</dd>
+<dt>{{T "Environment"}}</dt><dd>{{if .Environment}}{{.Environment}}{{else}}<span class="muted">–</span>{{end}}</dd>
+<dt>{{T "Self sign-up"}}</dt><dd>{{if .Signup}}{{T "on"}}{{else}}{{T "off"}}{{end}}</dd>
+<dt>{{T "Second factor"}}</dt><dd>{{if .TOTP}}{{T "available"}}{{else}}{{T "off"}}{{end}}</dd>
+</dl>
+</div>
+</section>
+</div>
+{{template "end" .}}

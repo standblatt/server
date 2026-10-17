@@ -1,0 +1,2 @@
+ALTER TABLE users ADD COLUMN locale text NOT NULL DEFAULT '';
+ALTER TABLE events ADD COLUMN locale text NOT NULL DEFAULT 'en';

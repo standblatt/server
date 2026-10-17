@@ -1,0 +1,30 @@
+{{template "head" .}}{{template "shell" .}}
+<div class="page-head">
+<div><h1>{{T "Clubs"}}</h1><p>{{T "Each club is a tenant with its own ranges, events and master data."}}</p></div>
+<form method="post" action="/admin/clubs" class="row">
+<input name="name" placeholder="{{T "Club name"}}" required>
+<button class="primary">{{T "Create club"}}</button>
+</form>
+</div>
+{{template "alerts" .}}
+<section class="card">
+<div class="table-wrap">
+<table>
+<thead><tr><th>{{T "Club"}}</th><th class="num">{{T "Users"}}</th><th class="num">{{T "Events"}}</th><th class="num">{{T "Registrations"}}</th><th>{{T "Created"}}</th></tr></thead>
+<tbody>
+{{range .Tenants}}
+<tr>
+<td><a href="/admin/clubs/{{.ID}}"><strong>{{.Name}}</strong></a></td>
+<td class="num">{{.Members}}</td>
+<td class="num">{{.Events}}</td>
+<td class="num">{{.Registrations}}</td>
+<td>{{.CreatedAt.Format "02.01.2006"}}</td>
+</tr>
+{{else}}
+<tr><td colspan="5" class="muted">{{T "No clubs yet"}}</td></tr>
+{{end}}
+</tbody>
+</table>
+</div>
+</section>
+{{template "end" .}}

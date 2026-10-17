@@ -1,0 +1,1805 @@
+# French translations for standblatt package.
+# Copyright (C) 2026 THE standblatt'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the standblatt package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: standblatt\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-17 15:52+0200\n"
+"PO-Revision-Date: 2026-10-14 19:21+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: internal/docs/docs.go
+#, go-format
+msgid "%s – %d shots"
+msgstr "%s – %d coups"
+
+#: internal/docs/docs.go
+#, go-format
+msgid "Award: %s"
+msgstr "Distinction : %s"
+
+#: internal/docs/docs.go
+msgid "Cat."
+msgstr "Cat."
+
+#: internal/docs/docs.go internal/web/reports.go
+msgid "Category"
+msgstr "Catégorie"
+
+#: internal/docs/docs.go internal/web/reports.go
+msgid "Club"
+msgstr "Société"
+
+#: internal/docs/docs.go
+#, go-format
+msgid "Combined with %s"
+msgstr "Combiné avec %s"
+
+#: internal/docs/docs.go
+#, go-format
+msgid "Generated %s"
+msgstr "Généré le %s"
+
+#: internal/docs/docs.go
+msgid "LANE"
+msgstr "CIBLE"
+
+#: internal/docs/docs.go
+msgid "LANE SHEET"
+msgstr "FEUILLE DE STAND"
+
+#: internal/docs/docs.go
+msgid "License"
+msgstr "Licence"
+
+#: internal/docs/docs.go internal/web/reports.go
+msgid "Name"
+msgstr "Nom"
+
+#: internal/docs/docs.go
+msgid "PROGRAMMES"
+msgstr "PROGRAMMES"
+
+#: internal/docs/docs.go
+msgid "RANKING"
+msgstr "CLASSEMENT"
+
+#: internal/docs/docs.go
+msgid "RESULT SHEET"
+msgstr "FEUILLE DE RÉSULTATS"
+
+#: internal/docs/docs.go internal/web/reports.go
+msgid "Rank"
+msgstr "Rang"
+
+#: internal/docs/docs.go internal/web/reports.go
+#, go-format
+msgid "S%d"
+msgstr "P%d"
+
+#: internal/docs/docs.go
+#, go-format
+msgid "Shooters: %d"
+msgstr "Tireurs : %d"
+
+#: internal/docs/docs.go
+msgid "TOTAL"
+msgstr "TOTAL"
+
+#: internal/docs/docs.go
+msgid "Thank you for taking part!"
+msgstr "Merci de votre participation !"
+
+#: internal/docs/docs.go internal/web/reports.go
+msgid "Total"
+msgstr "Total"
+
+#: internal/docs/docs.go internal/web/reports.go
+msgid "Year"
+msgstr "Année"
+
+#: internal/docs/report.go
+#, go-format
+msgid "Generated %s · Standblatt · page %d"
+msgstr "Généré le %s · Standblatt · page %d"
+
+#: internal/docs/report.go
+msgid "No data."
+msgstr "Aucune donnée."
+
+#: internal/domain/booking.go
+msgid "A chosen slot is not offered"
+msgstr "Un créneau choisi n’est pas proposé"
+
+#: internal/domain/booking.go
+msgid "A slot is chosen twice"
+msgstr "Un créneau est choisi deux fois"
+
+#: internal/domain/booking.go
+#, go-format
+msgid "At most %d lanes per slot"
+msgstr "Au plus %d cibles par créneau"
+
+#: internal/domain/booking.go
+#, go-format
+msgid "At most %d shooters"
+msgstr "Au plus %d tireurs"
+
+#: internal/domain/booking.go
+msgid "Break: the end must be after the start"
+msgstr "Pause : la fin doit être après le début"
+
+#: internal/domain/booking.go
+msgid "Choose at least one slot"
+msgstr "Choisis au moins un créneau"
+
+#: internal/domain/booking.go
+msgid "Deadline: not a date"
+msgstr "Délai : pas une date"
+
+#: internal/domain/booking.go
+#, go-format
+msgid "Hours of %s: the end must be after the start"
+msgstr "Horaires du %s : la fin doit être après le début"
+
+#: internal/domain/booking.go
+#, go-format
+msgid "Lanes: between 1 and %d"
+msgstr "Cibles : entre 1 et %d"
+
+#: internal/domain/booking.go
+#, go-format
+msgid "Shooter %d: birthday missing or not a date"
+msgstr "Tireur %d : date de naissance manquante ou invalide"
+
+#: internal/domain/booking.go
+#, go-format
+msgid "Shooter %d: first and last name are required"
+msgstr "Tireur %d : nom et prénom sont requis"
+
+#: internal/domain/booking.go
+msgid "Shooting hours: the end must be after the start"
+msgstr "Horaires de tir : la fin doit être après le début"
+
+#: internal/domain/programme.go
+#, go-format
+msgid "Age category %s has more than one price"
+msgstr "La catégorie d'âge %s a plus d'un prix"
+
+#: internal/domain/programme.go
+msgid "At least one series is required"
+msgstr "Au moins une passe est requise"
+
+#: internal/domain/programme.go
+#, go-format
+msgid "Award %d: age category %s has more than one limit"
+msgstr "Distinction %d : la catégorie d'âge %s a plus d'une limite"
+
+#: internal/domain/programme.go
+#, go-format
+msgid "Award %d: kind must be natural, card or cash"
+msgstr "Distinction %d : le type doit être natural, card ou cash"
+
+#: internal/domain/programme.go
+#, go-format
+msgid "Award %d: limit for %s must be between 0 and %.0f"
+msgstr "Distinction %d : la limite pour %s doit être entre 0 et %.0f"
+
+#: internal/domain/programme.go
+#, go-format
+msgid "Award %d: name is required"
+msgstr "Distinction %d : le nom est requis"
+
+#: internal/domain/programme.go
+#, go-format
+msgid "Award %d: unknown age category %q"
+msgstr "Distinction %d : catégorie d'âge inconnue %q"
+
+#: internal/domain/programme.go
+#, go-format
+msgid "Award %d: value must not be negative"
+msgstr "Distinction %d : la valeur ne doit pas être négative"
+
+#: internal/domain/programme.go
+msgid "Name is required"
+msgstr "Le nom est requis"
+
+#: internal/domain/programme.go
+#, go-format
+msgid "Price for %s must not be negative"
+msgstr "Le prix pour %s ne doit pas être négatif"
+
+#: internal/domain/programme.go
+#, go-format
+msgid "Series %d: shots and maximum points must be positive"
+msgstr "Passe %d : les coups et les points maximaux doivent être positifs"
+
+#: internal/domain/programme.go
+#, go-format
+msgid "Unknown age category %q"
+msgstr "Catégorie d'âge inconnue %q"
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s and %s are shot on different lane groups"
+msgstr "%s et %s se tirent sur des groupes de cibles différents"
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s and %s are shot on different ranges"
+msgstr "%s et %s se tirent sur des stands différents"
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s and %s are variants of each other; choose one"
+msgstr "%s et %s sont des variantes l'une de l'autre ; choisissez-en une"
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s cannot be combined"
+msgstr "%s ne peut pas être combiné"
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s is chosen twice"
+msgstr "%s est choisi deux fois"
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s is not active"
+msgstr "%s n'est pas actif"
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s is not open to the age category %s"
+msgstr "%s n'est pas ouvert à la catégorie d'âge %s"
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s is not shot on this range"
+msgstr "%s ne se tire pas sur ce stand"
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s is shot on %s, not on lane %d"
+msgstr "%s se tire sur %s, pas sur la cible %d"
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s needs exactly %d series of %s"
+msgstr "%s a besoin d'exactement %d passes de %s"
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s takes its series from %s, which is not chosen"
+msgstr "%s reprend les passes de %s, qui n'est pas choisi"
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s: series %d of %s is invalid or chosen twice"
+msgstr "%s : la passe %d de %s est invalide ou choisie deux fois"
+
+#: internal/domain/registration.go
+msgid "Choose at least one programme"
+msgstr "Choisissez au moins un programme"
+
+#: internal/domain/registration.go
+#, go-format
+msgid "Programme %d does not belong to this event"
+msgstr "Le programme %d n'appartient pas à cette manifestation"
+
+#: internal/domain/results.go
+#, go-format
+msgid "Enter all %d series"
+msgstr "Saisissez les %d passes"
+
+#: internal/domain/results.go
+#, go-format
+msgid "Series %d does not track mouches"
+msgstr "La passe %d ne compte pas les mouches"
+
+#: internal/domain/results.go
+#, go-format
+msgid "Series %d: mouches must be between 0 and %d"
+msgstr "Passe %d : les mouches doivent être entre 0 et %d"
+
+#: internal/domain/results.go
+#, go-format
+msgid "Series %d: points must be between 0 and %d"
+msgstr "Passe %d : les points doivent être entre 0 et %d"
+
+#: internal/domain/schedule.go internal/web/tenants.go
+msgid "Date must be YYYY-MM-DD"
+msgstr "Date au format AAAA-MM-JJ"
+
+#: internal/domain/schedule.go
+#, go-format
+msgid "Shooting times of %s: the end must be after the start"
+msgstr "Heures de tir du %s : la fin doit être après le début"
+
+#: internal/domain/schedule.go
+msgid "The period ends before it starts"
+msgstr "La période se termine avant de commencer"
+
+#: internal/domain/schedule.go
+#, go-format
+msgid "The period is longer than %d days"
+msgstr "La période dépasse %d jours"
+
+#: internal/domain/schedule.go
+msgid "The period needs a first and a last day"
+msgstr "La période nécessite un premier et un dernier jour"
+
+#: internal/domain/schedule.go
+msgid "Weekday must be 1–7"
+msgstr "Le jour de la semaine doit être 1–7"
+
+#: internal/domain/schedule.go
+msgid "Weekly shooting times need a period"
+msgstr "Les heures de tir hebdomadaires nécessitent une période"
+
+#: internal/domain/schedule.go
+msgid "Weekly shooting times: the end must be after the start"
+msgstr "Heures de tir hebdomadaires : la fin doit être après le début"
+
+#: internal/domain/training.go
+#, go-format
+msgid "A session has 1 to %d series"
+msgstr "Une séance a de 1 à %d passes"
+
+#: internal/domain/training.go
+#, go-format
+msgid "Series %d: %d shot values for %d shots"
+msgstr "Passe %d : %d valeurs pour %d coups"
+
+#: internal/domain/training.go
+#, go-format
+msgid "Series %d: 1 to 100 shots"
+msgstr "Passe %d : 1 à 100 coups"
+
+#: internal/domain/training.go
+#, go-format
+msgid "Series %d: every shot needs a value and a position"
+msgstr "Passe %d : chaque coup a besoin d'une valeur et d'une position"
+
+#: internal/domain/training.go
+#, go-format
+msgid "Series %d: shot value %g is not possible"
+msgstr "Passe %d : la valeur %g n'est pas possible"
+
+#: internal/domain/training.go
+#, go-format
+msgid "Series %d: total %g is not possible with %d shots"
+msgstr "Passe %d : le total %g n'est pas possible avec %d coups"
+
+#: internal/web/account.go
+msgid "An account with this email exists already. Log in or reset your password."
+msgstr "Un compte existe déjà avec cette adresse e-mail. Connectez-vous ou réinitialisez votre mot de passe."
+
+#: internal/web/account.go
+msgid "Confirm your email address"
+msgstr "Confirme ton adresse e-mail"
+
+#: internal/web/account.go
+#, go-format
+msgid "Hello %s,"
+msgstr "Bonjour %s,"
+
+#: internal/web/account.go internal/web/invites.go
+msgid "Hello,"
+msgstr "Bonjour,"
+
+#: internal/web/account.go
+msgid "Reset your Standblatt password"
+msgstr "Nouveau mot de passe pour Standblatt"
+
+#: internal/web/account.go
+msgid "Sign-up is not open on this server."
+msgstr "L'inscription n'est pas ouverte sur ce serveur."
+
+#: internal/web/account.go
+msgid "The link is valid for 7 days. If you did not create an account, ignore this mail."
+msgstr "Le lien est valable 7 jours. Si tu n'as pas créé de compte, ignore ce message."
+
+#: internal/web/account.go
+msgid "The link is valid for one hour. If you did not ask for it, ignore this mail; your password stays the same."
+msgstr "Le lien est valable une heure. Si tu n'as rien demandé, ignore ce message ; ton mot de passe reste inchangé."
+
+#: internal/web/account.go
+msgid "This link is no longer valid. Request a new one in your settings."
+msgstr "Ce lien n'est plus valable. Demandez-en un nouveau dans vos paramètres."
+
+#: internal/web/account.go
+msgid "This link is no longer valid. Request a new one."
+msgstr "Ce lien n'est plus valable. Demandez-en un nouveau."
+
+#: internal/web/account.go internal/web/admin.go internal/web/auth.go
+#, go-format
+msgid "Too many attempts. Try again in %d minutes."
+msgstr "Trop de tentatives. Réessayez dans %d minutes."
+
+#: internal/web/account.go
+msgid "please confirm your email address for Standblatt:"
+msgstr "merci de confirmer ton adresse e-mail pour Standblatt :"
+
+#: internal/web/account.go
+msgid "someone, hopefully you, asked to reset the password of your Standblatt account. Choose a new password here:"
+msgstr "quelqu'un, espérons que c'est toi, a demandé à réinitialiser le mot de passe de ton compte Standblatt. Choisis un nouveau mot de passe ici :"
+
+#: internal/web/admin.go
+#, go-format
+msgid "%d session(s) revoked"
+msgstr "%d session(s) révoquée(s)"
+
+#: internal/web/admin.go
+#, go-format
+msgid "%d session(s) revoked, everyone is logged out"
+msgstr "%d session(s) révoquée(s), tout le monde est déconnecté"
+
+#: internal/web/admin.go
+msgid "Another account uses this email address"
+msgstr "Un autre compte utilise cette adresse e-mail"
+
+#: internal/web/admin.go
+msgid "Choose a programme file"
+msgstr "Choisissez un fichier de programme"
+
+#: internal/web/admin.go
+msgid "Club already exists"
+msgstr "La société existe déjà"
+
+#: internal/web/admin.go
+msgid "Name is missing"
+msgstr "Le nom manque"
+
+#: internal/web/admin.go
+msgid "No such user"
+msgstr "Utilisateur introuvable"
+
+#: internal/web/admin.go
+msgid "Not a programme export file"
+msgstr "Pas un fichier d’export de programme"
+
+#: internal/web/admin.go
+msgid "Not an email address"
+msgstr "Pas une adresse e-mail"
+
+#: internal/web/admin.go
+msgid "Not found"
+msgstr "Introuvable"
+
+#: internal/web/admin.go
+msgid "Session expired. Enter the token again."
+msgstr "Session expirée. Saisissez à nouveau le jeton."
+
+#: internal/web/admin.go
+msgid "Set your Standblatt password"
+msgstr "Définis ton mot de passe Standblatt"
+
+#: internal/web/admin.go
+#, go-format
+msgid "The link is valid for seven days. Your user name is %s."
+msgstr "Le lien est valable sept jours. Ton nom d’utilisateur est %s."
+
+#: internal/web/admin.go
+msgid "The link to set the password is on its way"
+msgstr "Le lien pour définir le mot de passe est en route"
+
+#: internal/web/admin.go
+msgid "The user has no email address"
+msgstr "L’utilisateur n’a pas d’adresse e-mail"
+
+#: internal/web/admin.go
+msgid "Unknown role"
+msgstr "Rôle inconnu"
+
+#: internal/web/admin.go
+msgid "User name is already taken"
+msgstr "Le nom d’utilisateur est déjà pris"
+
+#: internal/web/admin.go
+msgid "Wrong token."
+msgstr "Jeton incorrect."
+
+#: internal/web/admin.go
+msgid "an administrator created a link for you to set the password of your Standblatt account:"
+msgstr "un administrateur a créé un lien pour que tu définisses le mot de passe de ton compte Standblatt :"
+
+#: internal/web/apitokens.go
+msgid "API token not found"
+msgstr "Jeton API introuvable"
+
+#: internal/web/apitokens.go internal/web/my.go
+msgid "Name is empty"
+msgstr "Le nom est vide"
+
+#: internal/web/auth.go
+msgid "Maintenance: logging in is not possible right now."
+msgstr "Maintenance : la connexion n’est pas possible pour le moment."
+
+#: internal/web/auth.go
+msgid "Password: at least 10 characters"
+msgstr "Mot de passe : au moins 10 caractères"
+
+#: internal/web/auth.go
+#, go-format
+msgid "Password: at most %d bytes"
+msgstr "Mot de passe : au plus %d octets"
+
+#: internal/web/auth.go
+msgid "User name: 3 to 32 characters, lower-case letters, digits, . _ -, starting with a letter or digit"
+msgstr "Nom d'utilisateur : 3 à 32 caractères, minuscules, chiffres, . _ -, commençant par une lettre ou un chiffre"
+
+#: internal/web/auth.go
+msgid "Wrong user name or password."
+msgstr "Nom d'utilisateur ou mot de passe incorrect."
+
+#: internal/web/auth.go
+msgid "not logged in"
+msgstr "Non connecté"
+
+#: internal/web/booking.go
+#, go-format
+msgid "%s (%s, %s) asks for lanes at %s:"
+msgstr "%s (%s, %s) demande des cibles pour %s :"
+
+#: internal/web/booking.go
+#, go-format
+msgid "%s cancelled the lane request"
+msgstr "%s a annulé la demande de cibles"
+
+#: internal/web/booking.go
+#, go-format
+msgid "%s changed the lane request"
+msgstr "%s a modifié la demande de cibles"
+
+#: internal/web/booking.go
+msgid "Check, change or cancel your request here:"
+msgstr "Vérifie, modifie ou annule ta demande ici :"
+
+#: internal/web/booking.go
+msgid "Confirm or decline the request here:"
+msgstr "Confirme ou refuse la demande ici :"
+
+#: internal/web/booking.go internal/web/helpers.go internal/web/programmes.go
+#: internal/web/rankings.go internal/web/registrations.go
+#: internal/web/reports.go internal/web/tenants.go
+msgid "Event not found"
+msgstr "Manifestation introuvable"
+
+#: internal/web/booking.go
+#, go-format
+msgid "Lane request for %s declined"
+msgstr "Demande de cibles pour %s refusée"
+
+#: internal/web/booking.go internal/web/reports.go
+msgid "Lanes"
+msgstr "Cibles"
+
+#: internal/web/booking.go
+#, go-format
+msgid "Lanes confirmed for %s"
+msgstr "Cibles confirmées pour %s"
+
+#: internal/web/booking.go
+#, go-format
+msgid "New lane request from %s"
+msgstr "Nouvelle demande de cibles de %s"
+
+#: internal/web/booking.go
+#, go-format
+msgid "Only %d lanes are free at %s"
+msgstr "Seulement %d cibles libres le %s"
+
+#: internal/web/booking.go
+#, go-format
+msgid "Only %d lanes are free at %s; move a reservation or decline the request."
+msgstr "Seulement %d cibles libres le %s ; déplace une réservation ou refuse la demande."
+
+#: internal/web/booking.go
+msgid "Request not found"
+msgstr "Demande introuvable"
+
+#: internal/web/booking.go
+#, go-format
+msgid "Shooters announced: %d"
+msgstr "Tireurs annoncés : %d"
+
+#: internal/web/booking.go
+msgid "The deadline for online booking has passed. Contact the organizer."
+msgstr "Le délai de réservation en ligne est passé. Contacte l’organisateur."
+
+#: internal/web/booking.go
+msgid "The request was already handled or cancelled."
+msgstr "La demande a déjà été traitée ou annulée."
+
+#: internal/web/booking.go
+msgid "This booking link is not valid."
+msgstr "Ce lien de réservation n’est pas valable."
+
+#: internal/web/booking.go
+msgid "This link is not valid."
+msgstr "Ce lien n’est pas valable."
+
+#: internal/web/booking.go
+#, go-format
+msgid "Your lane request for %s"
+msgstr "Ta demande de cibles pour %s"
+
+#: internal/web/booking.go
+#, go-format
+msgid "unfortunately the organizer of %s cannot give you these lanes."
+msgstr "malheureusement l’organisateur de %s ne peut pas te donner ces cibles."
+
+#: internal/web/booking.go
+#, go-format
+msgid "we received your request for %s. The organizer confirms it by mail; until then the lanes are not reserved."
+msgstr "nous avons reçu ta demande pour %s. L’organisateur la confirme par e-mail ; d’ici là, les cibles ne sont pas réservées."
+
+#: internal/web/booking.go
+#, go-format
+msgid "your lanes for %s are reserved:"
+msgstr "tes cibles pour %s sont réservées :"
+
+#: internal/web/documents.go
+#, go-format
+msgid "Control strip %s"
+msgstr "Bande de contrôle %s"
+
+#: internal/web/documents.go
+msgid "Elite"
+msgstr "Élite"
+
+#: internal/web/documents.go
+#, go-format
+msgid "Lane sheet %s"
+msgstr "Feuille de stand %s"
+
+#: internal/web/documents.go
+msgid "Not all programmes have results yet"
+msgstr "Tous les programmes n'ont pas encore de résultats"
+
+#: internal/web/documents.go internal/web/programmes.go internal/web/reports.go
+msgid "Programme not found"
+msgstr "Programme introuvable"
+
+#: internal/web/documents.go internal/web/helpers.go internal/web/results.go
+msgid "Programme of the registration not found"
+msgstr "Programme de l'inscription introuvable"
+
+#: internal/web/documents.go internal/web/reports.go
+#, go-format
+msgid "Ranking %s"
+msgstr "Classement %s"
+
+#: internal/web/documents.go internal/web/helpers.go
+#: internal/web/registrations.go internal/web/results.go
+msgid "Registration not found"
+msgstr "Inscription introuvable"
+
+#: internal/web/documents.go
+#, go-format
+msgid "Result sheet %s"
+msgstr "Feuille de résultats %s"
+
+#: internal/web/documents.go
+msgid "Senior"
+msgstr "Seniors"
+
+#: internal/web/documents.go
+msgid "Senior veteran"
+msgstr "Seniors-vétérans"
+
+#: internal/web/documents.go
+msgid "This programme has no wreath card award"
+msgstr "Ce programme n'a pas de carte-couronne comme distinction"
+
+#: internal/web/documents.go
+#, go-format
+msgid "Unknown document %s"
+msgstr "Document inconnu %s"
+
+#: internal/web/documents.go
+msgid "Veteran"
+msgstr "Vétérans"
+
+#: internal/web/documents.go
+#, go-format
+msgid "Wreath card %s"
+msgstr "Carte-couronne %s"
+
+#: internal/web/helpers.go
+msgid "Choose a range of the event for the scorer"
+msgstr "Choisis un stand de la manifestation pour le cibarre"
+
+#: internal/web/helpers.go internal/web/masterdata.go internal/web/tenants.go
+msgid "Club not found"
+msgstr "Société introuvable"
+
+#: internal/web/helpers.go
+msgid "Helper link not found"
+msgstr "Lien d'aide introuvable"
+
+#: internal/web/helpers.go
+#, go-format
+msgid "Lane %d does not exist on %s"
+msgstr "La cible %d n'existe pas sur %s"
+
+#: internal/web/helpers.go
+msgid "Lanes: numbers and ranges such as 1-5, 8"
+msgstr "Cibles : numéros et plages comme 1-5, 8"
+
+#: internal/web/helpers.go internal/web/registrations.go
+#: internal/web/tenants.go
+msgid "Not allowed for this helper link"
+msgstr "Non autorisé pour ce lien d'aide"
+
+#: internal/web/helpers.go
+msgid "This lane is not yours"
+msgstr "Cette cible n'est pas la tienne"
+
+#: internal/web/helpers.go
+msgid "Unknown or revoked helper link"
+msgstr "Lien d'aide inconnu ou révoqué"
+
+#: internal/web/invites.go
+#, go-format
+msgid "%s added you on Standblatt"
+msgstr "%s t’a ajouté sur Standblatt"
+
+#: internal/web/invites.go
+#, go-format
+msgid "%s gave your account access to its events on Standblatt. Log in as usual:"
+msgstr "%s a donné à ton compte l’accès à ses manifestations sur Standblatt. Connecte-toi comme d’habitude :"
+
+#: internal/web/invites.go
+#, go-format
+msgid "%s invites you to Standblatt"
+msgstr "%s t’invite sur Standblatt"
+
+#: internal/web/invites.go
+#, go-format
+msgid "%s uses Standblatt for its shooting events and created an account for you. Set your password with this link:"
+msgstr "%s utilise Standblatt pour ses manifestations de tir et a créé un compte pour toi. Définis ton mot de passe avec ce lien :"
+
+#: internal/web/invites.go
+msgid "The link is valid for seven days. Afterwards you log in with this email address and your password."
+msgstr "Le lien est valable sept jours. Ensuite, tu te connectes avec cette adresse e-mail et ton mot de passe."
+
+#: internal/web/masterdata.go
+msgid "A club with this name already exists"
+msgstr "Une société portant ce nom existe déjà"
+
+#: internal/web/masterdata.go
+msgid "Assignment not found"
+msgstr "Attribution introuvable"
+
+#: internal/web/masterdata.go
+msgid "Club is missing"
+msgstr "La société manque"
+
+#: internal/web/masterdata.go
+msgid "First and last name are required"
+msgstr "Le prénom et le nom sont requis"
+
+#: internal/web/masterdata.go
+msgid "Registrations refer to this club; it cannot be deleted"
+msgstr "Des inscriptions renvoient à cette société ; elle ne peut pas être supprimée"
+
+#: internal/web/masterdata.go internal/web/registrations.go
+msgid "Shooter not found"
+msgstr "Tireur introuvable"
+
+#: internal/web/masterdata.go
+msgid "Shooter or club not found"
+msgstr "Tireur ou société introuvable"
+
+#: internal/web/masterdata.go
+msgid "The shooter has registrations and cannot be deleted"
+msgstr "Le tireur a des inscriptions et ne peut pas être supprimé"
+
+#: internal/web/masterdata.go
+msgid "This license number already exists"
+msgstr "Ce numéro de licence existe déjà"
+
+#: internal/web/my.go
+msgid "Another account uses this email address."
+msgstr "Un autre compte utilise cette adresse e-mail."
+
+#: internal/web/my.go
+msgid "Birthday: use YYYY-MM-DD"
+msgstr "Date de naissance : format AAAA-MM-JJ"
+
+#: internal/web/my.go
+msgid "Date: use YYYY-MM-DD"
+msgstr "Date : format AAAA-MM-JJ"
+
+#: internal/web/my.go
+msgid "Decimal scoring needs 10 as the highest value of a shot"
+msgstr "Le décompte au dixième exige 10 comme valeur maximale d'un coup"
+
+#: internal/web/my.go
+msgid "Discipline not found"
+msgstr "Discipline introuvable"
+
+#: internal/web/my.go
+msgid "Goal not found"
+msgstr "Objectif introuvable"
+
+#: internal/web/my.go
+msgid "Result not found"
+msgstr "Résultat introuvable"
+
+#: internal/web/my.go
+msgid "Session not found"
+msgstr "Séance introuvable"
+
+#: internal/web/my.go
+msgid "Sessions use this discipline"
+msgstr "Des séances utilisent cette discipline"
+
+#: internal/web/my.go
+msgid "The goal is higher than the maximum"
+msgstr "L'objectif dépasse le maximum"
+
+#: internal/web/my.go
+msgid "There is no email address to confirm."
+msgstr "Il n'y a pas d'adresse e-mail à confirmer."
+
+#: internal/web/my.go
+msgid "Weapon not found"
+msgstr "Arme introuvable"
+
+#: internal/web/my.go internal/web/totp.go
+msgid "Wrong password."
+msgstr "Mot de passe incorrect."
+
+#: internal/web/my.go
+msgid "You already have a weapon with this name"
+msgstr "Vous avez déjà une arme portant ce nom"
+
+#: internal/web/my.go
+msgid "Your account belongs to a club. Ask the club admin to remove you first."
+msgstr "Votre compte appartient à une société. Demandez à l'admin de la société de vous retirer d'abord."
+
+#: internal/web/printing.go
+msgid "Agent token missing"
+msgstr "Jeton de l'agent manquant"
+
+#: internal/web/printing.go
+msgid "Job not found or not being printed"
+msgstr "Tâche introuvable ou pas en cours d'impression"
+
+#: internal/web/printing.go
+msgid "Print agent not found"
+msgstr "Agent d'impression introuvable"
+
+#: internal/web/printing.go internal/web/registrations.go
+#: internal/web/reservations.go internal/web/tenants.go
+msgid "Range not found"
+msgstr "Stand de tir introuvable"
+
+#: internal/web/printing.go
+msgid "Unknown document"
+msgstr "Document inconnu"
+
+#: internal/web/printing.go
+msgid "Unknown or revoked agent token"
+msgstr "Jeton de l'agent inconnu ou révoqué"
+
+#: internal/web/programmes.go
+msgid "Programme not found, or the other programme belongs to a different event"
+msgstr "Programme introuvable, ou l'autre programme appartient à une autre manifestation"
+
+#: internal/web/programmes.go
+msgid "Programme not found, or the range is not one of the event"
+msgstr "Programme introuvable, ou le stand ne fait pas partie de la manifestation"
+
+#: internal/web/programmes.go
+msgid "Programme or event not found"
+msgstr "Programme ou manifestation introuvable"
+
+#: internal/web/programmes.go
+msgid "Shooters are registered for this programme: the series stay as they are, and age categories and awards can be added but not removed"
+msgstr "Des tireurs sont inscrits à ce programme : les passes restent telles quelles, les catégories d'âge et les distinctions peuvent être ajoutées mais pas retirées"
+
+#: internal/web/programmes.go
+msgid "Shooters are registered for this programme; it cannot be deleted"
+msgstr "Des tireurs sont inscrits à ce programme ; il ne peut pas être supprimé"
+
+#: internal/web/programmes.go
+msgid "Template not found"
+msgstr "Modèle introuvable"
+
+#: internal/web/programmes.go
+msgid "The event already has a programme with this name and variant"
+msgstr "La manifestation a déjà un programme avec ce nom et cette variante"
+
+#: internal/web/rankings.go
+msgid "Kiosk token missing"
+msgstr "Jeton kiosque manquant"
+
+#: internal/web/rankings.go
+msgid "Kiosk token not found"
+msgstr "Jeton kiosque introuvable"
+
+#: internal/web/rankings.go
+msgid "Unknown or revoked kiosk token"
+msgstr "Jeton kiosque inconnu ou révoqué"
+
+#: internal/web/registrations.go
+msgid "A programme with results cannot be removed from the registration"
+msgstr "Un programme avec des résultats ne peut pas être retiré de l'inscription"
+
+#: internal/web/registrations.go
+msgid "Choose the range of the lane"
+msgstr "Choisissez le stand de la cible"
+
+#: internal/web/registrations.go
+#, go-format
+msgid "Lane %d does not exist (1–%d)"
+msgstr "La cible %d n'existe pas (1–%d)"
+
+#: internal/web/registrations.go
+#, go-format
+msgid "Lane %d is occupied"
+msgstr "La cible %d est occupée"
+
+#: internal/web/registrations.go
+#, go-format
+msgid "Lane %d is out of service"
+msgstr "La cible %d est hors service"
+
+#: internal/web/registrations.go
+msgid "The lane is occupied"
+msgstr "La cible est occupée"
+
+#: internal/web/registrations.go
+msgid "The shooter is already registered for one of these programmes at this event"
+msgstr "Le tireur est déjà inscrit à l'un de ces programmes pour cette manifestation"
+
+#: internal/web/registrations.go
+msgid "The shooter is not a member of this club"
+msgstr "Le tireur n'est pas membre de cette société"
+
+#: internal/web/reports.go
+#, go-format
+msgid "%s: no special prize"
+msgstr "%s : pas de prix spécial"
+
+#: internal/web/reports.go
+msgid "(no club)"
+msgstr "(sans société)"
+
+#: internal/web/reports.go
+#, go-format
+msgid "At least %d participants are required for a ranking."
+msgstr "Il faut au moins %d participants pour être classé."
+
+#: internal/web/reports.go
+msgid "Award"
+msgstr "Distinction"
+
+#: internal/web/reports.go
+msgid "Awards"
+msgstr "Distinctions"
+
+#: internal/web/reports.go
+msgid "Awards given"
+msgstr "Distinctions remises"
+
+#: internal/web/reports.go
+msgid "Awards to hand out"
+msgstr "Distinctions à remettre"
+
+#: internal/web/reports.go
+msgid "Cash prize"
+msgstr "Prix en espèces"
+
+#: internal/web/reports.go
+msgid "Cash to pay out"
+msgstr "Espèces à verser"
+
+#: internal/web/reports.go
+msgid "Club competition"
+msgstr "Concours de sections"
+
+#: internal/web/reports.go
+msgid "Club participants by programme and age category"
+msgstr "Participants par société, programme et catégorie d’âge"
+
+#: internal/web/reports.go
+msgid "Clubs"
+msgstr "Sociétés"
+
+#: internal/web/reports.go
+msgid "Count"
+msgstr "Nombre"
+
+#: internal/web/reports.go
+msgid "Financial report"
+msgstr "Rapport financier"
+
+#: internal/web/reports.go
+msgid "First name"
+msgstr "Prénom"
+
+#: internal/web/reports.go
+msgid "Kind"
+msgstr "Type"
+
+#: internal/web/reports.go
+msgid "Lane bookings"
+msgstr "Réservations de cibles"
+
+#: internal/web/reports.go
+msgid "Lane numbers"
+msgstr "Numéros de cible"
+
+#: internal/web/reports.go
+msgid "Last name"
+msgstr "Nom"
+
+#: internal/web/reports.go
+msgid "Licence"
+msgstr "Licence"
+
+#: internal/web/reports.go
+msgid "Mouches"
+msgstr "Mouches"
+
+#: internal/web/reports.go
+msgid "No club"
+msgstr "Sans société"
+
+#: internal/web/reports.go
+msgid "No programme awards special prizes."
+msgstr "Aucun programme ne décerne de prix spéciaux."
+
+#: internal/web/reports.go
+msgid "Not confirmed yet"
+msgstr "Pas encore confirmées"
+
+#: internal/web/reports.go
+msgid "Not ranked"
+msgstr "Non classés"
+
+#: internal/web/reports.go
+msgid "Out of competition"
+msgstr "Hors concours"
+
+#: internal/web/reports.go
+msgid "Participants"
+msgstr "Participants"
+
+#: internal/web/reports.go
+#, go-format
+msgid "Participants in the category: %d"
+msgstr "Participants de la catégorie : %d"
+
+#: internal/web/reports.go
+#, go-format
+msgid "Participants of the club: %d"
+msgstr "Participants de la société : %d"
+
+#: internal/web/reports.go
+msgid "Price"
+msgstr "Prix"
+
+#: internal/web/reports.go
+msgid "Prize"
+msgstr "Prix"
+
+#: internal/web/reports.go
+msgid "Prize in kind"
+msgstr "Prix en nature"
+
+#: internal/web/reports.go
+msgid "Programme"
+msgstr "Programme"
+
+#: internal/web/reports.go
+msgid "Programmes counted"
+msgstr "Programmes comptés"
+
+#: internal/web/reports.go
+msgid "Programmes sold"
+msgstr "Programmes vendus"
+
+#: internal/web/reports.go
+msgid "Range"
+msgstr "Stand"
+
+#: internal/web/reports.go
+msgid "Ranking"
+msgstr "Classement"
+
+#: internal/web/reports.go
+#, go-format
+msgid "Ranks 1–%d per category with at least %d participants, club with at least %d in this programme"
+msgstr "Rangs 1–%d par catégorie d’au moins %d participants, société d’au moins %d dans ce programme"
+
+#: internal/web/reports.go
+msgid "Reason"
+msgstr "Motif"
+
+#: internal/web/reports.go
+msgid "Result"
+msgstr "Résultat"
+
+#: internal/web/reports.go
+msgid "Revenue"
+msgstr "Recettes"
+
+#: internal/web/reports.go
+msgid "Revenue by programme"
+msgstr "Recettes par programme"
+
+#: internal/web/reports.go
+msgid "Revenue by programme and age category"
+msgstr "Recettes par programme et catégorie d’âge"
+
+#: internal/web/reports.go
+msgid "SSV no."
+msgstr "N° FST"
+
+#: internal/web/reports.go
+#, go-format
+msgid "Shooters of %s"
+msgstr "Tireurs de %s"
+
+#: internal/web/reports.go
+msgid "Shooters with awards to collect"
+msgstr "Tireurs avec des distinctions à retirer"
+
+#: internal/web/reports.go
+msgid "Special prizes"
+msgstr "Prix spéciaux"
+
+#: internal/web/reports.go
+msgid "Subtotal"
+msgstr "Sous-total"
+
+#: internal/web/reports.go
+msgid "Time"
+msgstr "Heure"
+
+#: internal/web/reports.go
+msgid "Unknown report"
+msgstr "Rapport inconnu"
+
+#: internal/web/reports.go
+msgid "Value"
+msgstr "Valeur"
+
+#: internal/web/reports.go
+msgid "Value of awards"
+msgstr "Valeur des distinctions"
+
+#: internal/web/reports.go
+msgid "Wreath card"
+msgstr "Carte-couronne"
+
+#: internal/web/reports.go
+msgid "confirmed"
+msgstr "confirmée"
+
+#: internal/web/reports.go
+msgid "not confirmed yet"
+msgstr "pas encore confirmée"
+
+#: internal/web/reservations.go
+#, go-format
+msgid "Overlaps with %s"
+msgstr "Chevauche %s"
+
+#: internal/web/reservations.go
+msgid "Overlaps with another reservation"
+msgstr "Chevauche une autre réservation"
+
+#: internal/web/reservations.go
+msgid "Reservation not found"
+msgstr "Réservation introuvable"
+
+#: internal/web/reservations.go
+msgid "The end must be after the start"
+msgstr "La fin doit être après le début"
+
+#: internal/web/reservations.go
+#, go-format
+msgid "The range has lanes 1–%d"
+msgstr "Le stand de tir a les cibles 1–%d"
+
+#: internal/web/reservations.go
+msgid "The reservation ends in the past"
+msgstr "La réservation se termine dans le passé"
+
+#: internal/web/results.go
+msgid "This award has not been reached"
+msgstr "Cette distinction n'est pas atteinte"
+
+#: internal/web/results.go
+msgid "This programme takes its results from another programme"
+msgstr "Ce programme reprend ses résultats d'un autre programme"
+
+#: internal/web/server.go
+msgid "The event is archived; unarchive it to make changes"
+msgstr "La manifestation est archivée ; désarchivez-la pour faire des modifications"
+
+#: internal/web/templates/admin_club.html
+msgid "Assign users as admin or staff by user name or email address."
+msgstr "Attribuez des utilisateurs comme admin ou collaborateur par nom d’utilisateur ou adresse e-mail."
+
+#: internal/web/templates/admin_club.html
+#: internal/web/templates/admin_user.html
+msgid "Created on %s"
+msgstr "Créé le %s"
+
+#: internal/web/templates/admin_club.html
+msgid "Date"
+msgstr "Date"
+
+#: internal/web/templates/admin_club.html
+msgid "Delete club"
+msgstr "Supprimer la société"
+
+#: internal/web/templates/admin_club.html
+msgid "Delete club %s with all its data? This cannot be undone."
+msgstr "Supprimer la société %s avec toutes ses données ? Cette action est irréversible."
+
+#: internal/web/templates/admin_club.html
+msgid "Event"
+msgstr "Manifestation"
+
+#: internal/web/templates/admin_club.html
+#: internal/web/templates/admin_clubs.html
+#: internal/web/templates/admin_overview.html
+msgid "Events"
+msgstr "Manifestations"
+
+#: internal/web/templates/admin_club.html
+msgid "Newest first. Archived events are read-only."
+msgstr "Les plus récentes d’abord. Les manifestations archivées sont en lecture seule."
+
+#: internal/web/templates/admin_club.html
+msgid "No events yet"
+msgstr "Pas encore de manifestations"
+
+#: internal/web/templates/admin_club.html
+msgid "No users"
+msgstr "Aucun utilisateur"
+
+#: internal/web/templates/admin_club.html
+#: internal/web/templates/admin_user.html
+msgid "Role"
+msgstr "Rôle"
+
+#: internal/web/templates/admin_club.html
+msgid "Status"
+msgstr "Statut"
+
+#: internal/web/templates/admin_club.html
+msgid "User name or email"
+msgstr "Nom d’utilisateur ou e-mail"
+
+#: internal/web/templates/admin_club.html
+#: internal/web/templates/admin_clubs.html
+#: internal/web/templates/admin_overview.html
+#: internal/web/templates/admin_user.html
+#: internal/web/templates/admin_users.html internal/web/templates/head.html
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: internal/web/templates/admin_club.html
+msgid "archived"
+msgstr "archivée"
+
+#: internal/web/templates/admin_club.html
+msgid "assign"
+msgstr "attribuer"
+
+#: internal/web/templates/admin_club.html
+msgid "open"
+msgstr "ouverte"
+
+#: internal/web/templates/admin_club.html
+#: internal/web/templates/admin_user.html
+msgid "remove"
+msgstr "retirer"
+
+#: internal/web/templates/admin_clubs.html
+msgid "Club name"
+msgstr "Nom de la société"
+
+#: internal/web/templates/admin_clubs.html
+msgid "Create club"
+msgstr "Créer une société"
+
+#: internal/web/templates/admin_clubs.html
+msgid "Created"
+msgstr "Créé"
+
+#: internal/web/templates/admin_clubs.html
+msgid "Each club is a tenant with its own ranges, events and master data."
+msgstr "Chaque société est un locataire avec ses propres stands, manifestations et données de base."
+
+#: internal/web/templates/admin_clubs.html
+msgid "No clubs yet"
+msgstr "Pas encore de sociétés"
+
+#: internal/web/templates/admin_clubs.html
+#: internal/web/templates/admin_overview.html
+msgid "Registrations"
+msgstr "Inscriptions"
+
+#: internal/web/templates/admin_library.html
+msgid "Clubs can add these templates to their events. Upload a programme export file; a template with the same name and variant is replaced."
+msgstr "Les sociétés peuvent ajouter ces modèles à leurs manifestations. Téléversez un fichier d’export de programme ; un modèle de même nom et même variante est remplacé."
+
+#: internal/web/templates/admin_library.html
+msgid "Delete template %s?"
+msgstr "Supprimer le modèle %s ?"
+
+#: internal/web/templates/admin_library.html
+msgid "No templates yet"
+msgstr "Pas encore de modèles"
+
+#: internal/web/templates/admin_library.html internal/web/templates/head.html
+msgid "Programme library"
+msgstr "Bibliothèque de programmes"
+
+#: internal/web/templates/admin_library.html
+msgid "Series"
+msgstr "Séries"
+
+#: internal/web/templates/admin_library.html
+msgid "Shots"
+msgstr "Coups"
+
+#: internal/web/templates/admin_library.html
+msgid "Upload template"
+msgstr "Téléverser un modèle"
+
+#: internal/web/templates/admin_library.html
+msgid "Variant"
+msgstr "Variante"
+
+#: internal/web/templates/admin_library.html
+msgid "delete"
+msgstr "supprimer"
+
+#: internal/web/templates/admin_library.html
+msgid "download"
+msgstr "télécharger"
+
+#: internal/web/templates/admin_login.html
+msgid "Admin login"
+msgstr "Connexion admin"
+
+#: internal/web/templates/admin_login.html
+msgid "Log in"
+msgstr "Se connecter"
+
+#: internal/web/templates/admin_login.html
+msgid "Not part of the club app."
+msgstr "Ne fait pas partie de l’application des sociétés."
+
+#: internal/web/templates/admin_login.html
+msgid "Platform administration: clubs, users and the programme library."
+msgstr "Administration de la plateforme : sociétés, utilisateurs et bibliothèque de programmes."
+
+#: internal/web/templates/admin_login.html
+msgid "Token"
+msgstr "Jeton"
+
+#: internal/web/templates/admin_overview.html
+msgid "Active sessions"
+msgstr "Sessions actives"
+
+#: internal/web/templates/admin_overview.html
+msgid "Administration"
+msgstr "Administration"
+
+#: internal/web/templates/admin_overview.html
+#: internal/web/templates/admin_system.html
+msgid "Allow logins again"
+msgstr "Autoriser à nouveau les connexions"
+
+#: internal/web/templates/admin_overview.html
+msgid "Clubs, their users and the programme library shared by all clubs."
+msgstr "Les sociétés, leurs utilisateurs et la bibliothèque de programmes partagée par toutes les sociétés."
+
+#: internal/web/templates/admin_overview.html
+#: internal/web/templates/admin_system.html internal/web/templates/head.html
+msgid "Maintenance: new logins are blocked"
+msgstr "Maintenance : les nouvelles connexions sont bloquées"
+
+#: internal/web/templates/admin_overview.html
+msgid "Programme templates"
+msgstr "Modèles de programme"
+
+#: internal/web/templates/admin_system.html
+msgid "Block all new logins? Open sessions keep working."
+msgstr "Bloquer toutes les nouvelles connexions ? Les sessions ouvertes continuent de fonctionner."
+
+#: internal/web/templates/admin_system.html
+msgid "Blocks new logins; users already logged in keep working."
+msgstr "Bloque les nouvelles connexions ; les utilisateurs déjà connectés continuent de travailler."
+
+#: internal/web/templates/admin_system.html
+msgid "Ends every session on every replica; everyone has to log in again."
+msgstr "Termine toutes les sessions sur toutes les répliques ; tout le monde doit se reconnecter."
+
+#: internal/web/templates/admin_system.html
+msgid "Environment"
+msgstr "Environnement"
+
+#: internal/web/templates/admin_system.html
+msgid "Instance"
+msgstr "Instance"
+
+#: internal/web/templates/admin_system.html
+msgid "Log out every user?"
+msgstr "Déconnecter tous les utilisateurs ?"
+
+#: internal/web/templates/admin_system.html
+msgid "Logins open"
+msgstr "Connexions ouvertes"
+
+#: internal/web/templates/admin_system.html
+msgid "Maintenance mode"
+msgstr "Mode maintenance"
+
+#: internal/web/templates/admin_system.html
+msgid "Maintenance, sessions and the configuration of this instance."
+msgstr "Maintenance, sessions et configuration de cette instance."
+
+#: internal/web/templates/admin_system.html
+msgid "Revoke all sessions"
+msgstr "Révoquer toutes les sessions"
+
+#: internal/web/templates/admin_system.html
+#: internal/web/templates/admin_user.html
+#: internal/web/templates/admin_users.html
+msgid "Second factor"
+msgstr "Deuxième facteur"
+
+#: internal/web/templates/admin_system.html
+msgid "Self sign-up"
+msgstr "Inscription autonome"
+
+#: internal/web/templates/admin_system.html
+#: internal/web/templates/admin_user.html
+#: internal/web/templates/admin_users.html
+msgid "Sessions"
+msgstr "Sessions"
+
+#: internal/web/templates/admin_system.html internal/web/templates/head.html
+msgid "System"
+msgstr "Système"
+
+#: internal/web/templates/admin_system.html
+msgid "Version"
+msgstr "Version"
+
+#: internal/web/templates/admin_system.html
+msgid "available"
+msgstr "disponible"
+
+#: internal/web/templates/admin_system.html
+#: internal/web/templates/admin_user.html
+msgid "off"
+msgstr "désactivé"
+
+#: internal/web/templates/admin_system.html
+#: internal/web/templates/admin_user.html
+#: internal/web/templates/admin_users.html
+msgid "on"
+msgstr "activé"
+
+#: internal/web/templates/admin_user.html
+msgid "%d sessions"
+msgstr "%d séances"
+
+#: internal/web/templates/admin_user.html
+msgid "Account"
+msgstr "Compte"
+
+#: internal/web/templates/admin_user.html
+msgid "Assign the user on the club's page."
+msgstr "Attribuez l’utilisateur sur la page de la société."
+
+#: internal/web/templates/admin_user.html
+msgid "Delete user"
+msgstr "Supprimer l’utilisateur"
+
+#: internal/web/templates/admin_user.html
+msgid "Delete user %s? The personal training log goes with it."
+msgstr "Supprimer l’utilisateur %s ? Son journal d’entraînement personnel est supprimé aussi."
+
+#: internal/web/templates/admin_user.html
+#: internal/web/templates/admin_users.html
+msgid "Email"
+msgstr "E-mail"
+
+#: internal/web/templates/admin_user.html internal/web/templates/head.html
+msgid "Language"
+msgstr "Langue"
+
+#: internal/web/templates/admin_user.html
+msgid "Log out everywhere"
+msgstr "Déconnecter partout"
+
+#: internal/web/templates/admin_user.html
+msgid "Mails a link valid for seven days to set a new password."
+msgstr "Envoie un lien valable sept jours pour définir un nouveau mot de passe."
+
+#: internal/web/templates/admin_user.html
+msgid "Needed for password links and invitations. Clear the field to remove it."
+msgstr "Nécessaire pour les liens de mot de passe et les invitations. Videz le champ pour la supprimer."
+
+#: internal/web/templates/admin_user.html
+msgid "New password (at least 10 characters)"
+msgstr "Nouveau mot de passe (au moins 10 caractères)"
+
+#: internal/web/templates/admin_user.html
+msgid "No clubs"
+msgstr "Aucune société"
+
+#: internal/web/templates/admin_user.html
+msgid "Password"
+msgstr "Mot de passe"
+
+#: internal/web/templates/admin_user.html
+msgid "Reset second factor"
+msgstr "Réinitialiser le deuxième facteur"
+
+#: internal/web/templates/admin_user.html
+msgid "Save"
+msgstr "Enregistrer"
+
+#: internal/web/templates/admin_user.html
+msgid "Send password link"
+msgstr "Envoyer le lien de mot de passe"
+
+#: internal/web/templates/admin_user.html
+msgid "Set password"
+msgstr "Définir le mot de passe"
+
+#: internal/web/templates/admin_user.html
+msgid "Sets the password directly; prefer the password link when the user has an email address."
+msgstr "Définit le mot de passe directement ; préférez le lien de mot de passe si l’utilisateur a une adresse e-mail."
+
+#: internal/web/templates/admin_user.html
+msgid "Switch off the second factor of %s?"
+msgstr "Désactiver le deuxième facteur de %s ?"
+
+#: internal/web/templates/admin_user.html
+msgid "Training log"
+msgstr "Journal d’entraînement"
+
+#: internal/web/templates/admin_user.html
+msgid "active"
+msgstr "actives"
+
+#: internal/web/templates/admin_user.html
+msgid "browser"
+msgstr "navigateur"
+
+#: internal/web/templates/admin_user.html
+msgid "last login"
+msgstr "dernière connexion"
+
+#: internal/web/templates/admin_user.html
+#: internal/web/templates/admin_users.html
+msgid "verified"
+msgstr "confirmée"
+
+#: internal/web/templates/admin_users.html
+msgid "Accounts are global; a user can belong to several clubs."
+msgstr "Les comptes sont globaux ; un utilisateur peut appartenir à plusieurs sociétés."
+
+#: internal/web/templates/admin_users.html
+msgid "Create user"
+msgstr "Créer un utilisateur"
+
+#: internal/web/templates/admin_users.html
+msgid "Email (optional)"
+msgstr "E-mail (facultatif)"
+
+#: internal/web/templates/admin_users.html
+msgid "Last login"
+msgstr "Dernière connexion"
+
+#: internal/web/templates/admin_users.html
+msgid "No users found"
+msgstr "Aucun utilisateur trouvé"
+
+#: internal/web/templates/admin_users.html
+msgid "Password (at least 10 characters)"
+msgstr "Mot de passe (au moins 10 caractères)"
+
+#: internal/web/templates/admin_users.html
+msgid "Search"
+msgstr "Rechercher"
+
+#: internal/web/templates/admin_users.html
+msgid "Search name or email"
+msgstr "Rechercher un nom ou un e-mail"
+
+#: internal/web/templates/admin_users.html
+msgid "User name"
+msgstr "Nom d’utilisateur"
+
+#: internal/web/templates/admin_users.html
+msgid "Without a password the user gets a mail with a link to set one (needs an email address)."
+msgstr "Sans mot de passe, l’utilisateur reçoit un e-mail avec un lien pour en définir un (nécessite une adresse e-mail)."
+
+#: internal/web/templates/admin_users.html
+msgid "never"
+msgstr "jamais"
+
+#: internal/web/templates/admin_users.html
+msgid "none"
+msgstr "aucune"
+
+#: internal/web/templates/admin_users.html
+msgid "unconfirmed"
+msgstr "non confirmée"
+
+#: internal/web/templates/head.html
+msgid "Are you sure?"
+msgstr "Êtes-vous sûr ?"
+
+#: internal/web/templates/head.html
+msgid "Cancel"
+msgstr "Annuler"
+
+#: internal/web/templates/head.html
+msgid "Confirm"
+msgstr "Confirmer"
+
+#: internal/web/templates/head.html
+msgid "Log out"
+msgstr "Se déconnecter"
+
+#: internal/web/templates/head.html
+msgid "Overview"
+msgstr "Aperçu"
+
+#: internal/web/templates/head.html
+msgid "Toggle dark mode"
+msgstr "Basculer le mode sombre"
+
+#: internal/web/tenants.go
+msgid "A club needs at least one admin"
+msgstr "Une société a besoin d'au moins un admin"
+
+#: internal/web/tenants.go
+msgid "A range with this name already exists"
+msgstr "Un stand de tir portant ce nom existe déjà"
+
+#: internal/web/tenants.go
+msgid "A removed lane group is used by programmes"
+msgstr "Un groupe de cibles retiré est utilisé par des programmes"
+
+#: internal/web/tenants.go
+msgid "Choose at least one range"
+msgstr "Choisissez au moins un stand"
+
+#: internal/web/tenants.go
+msgid "Club admins only"
+msgstr "Réservé aux admins de la société"
+
+#: internal/web/tenants.go
+msgid "Events with registrations cannot be deleted"
+msgstr "Les manifestations avec des inscriptions ne peuvent pas être supprimées"
+
+#: internal/web/tenants.go
+#, go-format
+msgid "Lane %d is in %s and %s"
+msgstr "La cible %d est dans %s et %s"
+
+#: internal/web/tenants.go
+#, go-format
+msgid "Lane %d is outside 1–%d"
+msgstr "La cible %d est en dehors de 1–%d"
+
+#: internal/web/tenants.go
+msgid "Shooters or programmes use a range that was removed from the event"
+msgstr "Des tireurs ou des programmes utilisent un stand retiré de la manifestation"
+
+#: internal/web/tenants.go
+msgid "The range is used by events"
+msgstr "Le stand de tir est utilisé par des manifestations"
+
+#: internal/web/tenants.go
+#, go-format
+msgid "Two lane groups are called %s"
+msgstr "Deux groupes de cibles s'appellent %s"
+
+#: internal/web/tenants.go
+#, go-format
+msgid "Unknown time zone: %s"
+msgstr "Fuseau horaire inconnu : %s"
+
+#: internal/web/tenants.go
+msgid "User not found"
+msgstr "Utilisateur introuvable"
+
+#: internal/web/totp.go
+msgid "Enter the code from your authenticator app."
+msgstr "Saisis le code de ton app d’authentification."
+
+#: internal/web/totp.go
+msgid "Secret: not a valid base32 string"
+msgstr "Clé : chaîne base32 invalide"
+
+#: internal/web/totp.go
+msgid "The second factor is switched off on this server"
+msgstr "Le deuxième facteur est désactivé sur ce serveur"
+
+#: internal/web/totp.go
+msgid "This code was used already; wait for the next one."
+msgstr "Ce code a déjà été utilisé ; attends le prochain."
+
+#: internal/web/totp.go
+msgid "Wrong code."
+msgstr "Code erroné."
+
+#, go-format
+#~ msgid "%d lanes"
+#~ msgstr "%d cibles"
+
+#, go-format
+#~ msgid "lanes %s"
+#~ msgstr "cibles %s"
+
+#~ msgid "Online payment is not available on this server"
+#~ msgstr "Le paiement en ligne n'est pas disponible sur ce serveur"
+
+#~ msgid "No online subscription"
+#~ msgstr "Pas d'abonnement en ligne"
+
+#, go-format
+#~ msgid "Not an email address: %s"
+#~ msgstr "Pas une adresse e-mail : %s"
+
+#~ msgid "Your club has no plan for members yet. Contact the Standblatt administrator."
+#~ msgstr "Votre société n'a pas encore de forfait membres. Contactez l'administrateur Standblatt."
+
+#~ msgid "Not enough free seats in your club plan."
+#~ msgstr "Pas assez de places libres dans le forfait membres de votre société."
+
+#~ msgid "Seat not found"
+#~ msgstr "Place introuvable"
+
+#, go-format
+#~ msgid "%s gives you Standblatt"
+#~ msgstr "%s t'offre Standblatt"
+
+#, go-format
+#~ msgid "your club %s pays for your personal Standblatt training log: log every training in seconds and see what makes you better."
+#~ msgstr "ton club %s t'offre ton journal d'entraînement personnel sur Standblatt : saisis chaque entraînement en quelques secondes et vois ce qui te fait progresser."
+
+#~ msgid "Sign up or log in with this email address and confirm it:"
+#~ msgstr "Inscris-toi ou connecte-toi avec cette adresse e-mail et confirme-la :"
+
+#, go-format
+#~ msgid "Award %d: kind must be natural or card"
+#~ msgstr "Distinction %d : le type doit être natural ou card"
+
+#~ msgid "Shooters are registered for this programme; it can no longer be changed or deleted"
+#~ msgstr "Des tireurs sont inscrits à ce programme ; il ne peut plus être modifié ni supprimé"
+
+#~ msgid "Password: at most 72 bytes"
+#~ msgstr "Mot de passe : au plus 72 octets"

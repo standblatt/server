@@ -1,0 +1,1757 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the standblatt package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: standblatt\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-17 15:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: internal/docs/docs.go
+#, go-format
+msgid "%s – %d shots"
+msgstr ""
+
+#: internal/docs/docs.go
+#, go-format
+msgid "Award: %s"
+msgstr ""
+
+#: internal/docs/docs.go
+msgid "Cat."
+msgstr ""
+
+#: internal/docs/docs.go internal/web/reports.go
+msgid "Category"
+msgstr ""
+
+#: internal/docs/docs.go internal/web/reports.go
+msgid "Club"
+msgstr ""
+
+#: internal/docs/docs.go
+#, go-format
+msgid "Combined with %s"
+msgstr ""
+
+#: internal/docs/docs.go
+#, go-format
+msgid "Generated %s"
+msgstr ""
+
+#: internal/docs/docs.go
+msgid "LANE"
+msgstr ""
+
+#: internal/docs/docs.go
+msgid "LANE SHEET"
+msgstr ""
+
+#: internal/docs/docs.go
+msgid "License"
+msgstr ""
+
+#: internal/docs/docs.go internal/web/reports.go
+msgid "Name"
+msgstr ""
+
+#: internal/docs/docs.go
+msgid "PROGRAMMES"
+msgstr ""
+
+#: internal/docs/docs.go
+msgid "RANKING"
+msgstr ""
+
+#: internal/docs/docs.go
+msgid "RESULT SHEET"
+msgstr ""
+
+#: internal/docs/docs.go internal/web/reports.go
+msgid "Rank"
+msgstr ""
+
+#: internal/docs/docs.go internal/web/reports.go
+#, go-format
+msgid "S%d"
+msgstr ""
+
+#: internal/docs/docs.go
+#, go-format
+msgid "Shooters: %d"
+msgstr ""
+
+#: internal/docs/docs.go
+msgid "TOTAL"
+msgstr ""
+
+#: internal/docs/docs.go
+msgid "Thank you for taking part!"
+msgstr ""
+
+#: internal/docs/docs.go internal/web/reports.go
+msgid "Total"
+msgstr ""
+
+#: internal/docs/docs.go internal/web/reports.go
+msgid "Year"
+msgstr ""
+
+#: internal/docs/report.go
+#, go-format
+msgid "Generated %s · Standblatt · page %d"
+msgstr ""
+
+#: internal/docs/report.go
+msgid "No data."
+msgstr ""
+
+#: internal/domain/booking.go
+msgid "A chosen slot is not offered"
+msgstr ""
+
+#: internal/domain/booking.go
+msgid "A slot is chosen twice"
+msgstr ""
+
+#: internal/domain/booking.go
+#, go-format
+msgid "At most %d lanes per slot"
+msgstr ""
+
+#: internal/domain/booking.go
+#, go-format
+msgid "At most %d shooters"
+msgstr ""
+
+#: internal/domain/booking.go
+msgid "Break: the end must be after the start"
+msgstr ""
+
+#: internal/domain/booking.go
+msgid "Choose at least one slot"
+msgstr ""
+
+#: internal/domain/booking.go
+msgid "Deadline: not a date"
+msgstr ""
+
+#: internal/domain/booking.go
+#, go-format
+msgid "Hours of %s: the end must be after the start"
+msgstr ""
+
+#: internal/domain/booking.go
+#, go-format
+msgid "Lanes: between 1 and %d"
+msgstr ""
+
+#: internal/domain/booking.go
+#, go-format
+msgid "Shooter %d: birthday missing or not a date"
+msgstr ""
+
+#: internal/domain/booking.go
+#, go-format
+msgid "Shooter %d: first and last name are required"
+msgstr ""
+
+#: internal/domain/booking.go
+msgid "Shooting hours: the end must be after the start"
+msgstr ""
+
+#: internal/domain/programme.go
+#, go-format
+msgid "Age category %s has more than one price"
+msgstr ""
+
+#: internal/domain/programme.go
+msgid "At least one series is required"
+msgstr ""
+
+#: internal/domain/programme.go
+#, go-format
+msgid "Award %d: age category %s has more than one limit"
+msgstr ""
+
+#: internal/domain/programme.go
+#, go-format
+msgid "Award %d: kind must be natural, card or cash"
+msgstr ""
+
+#: internal/domain/programme.go
+#, go-format
+msgid "Award %d: limit for %s must be between 0 and %.0f"
+msgstr ""
+
+#: internal/domain/programme.go
+#, go-format
+msgid "Award %d: name is required"
+msgstr ""
+
+#: internal/domain/programme.go
+#, go-format
+msgid "Award %d: unknown age category %q"
+msgstr ""
+
+#: internal/domain/programme.go
+#, go-format
+msgid "Award %d: value must not be negative"
+msgstr ""
+
+#: internal/domain/programme.go
+msgid "Name is required"
+msgstr ""
+
+#: internal/domain/programme.go
+#, go-format
+msgid "Price for %s must not be negative"
+msgstr ""
+
+#: internal/domain/programme.go
+#, go-format
+msgid "Series %d: shots and maximum points must be positive"
+msgstr ""
+
+#: internal/domain/programme.go
+#, go-format
+msgid "Unknown age category %q"
+msgstr ""
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s and %s are shot on different lane groups"
+msgstr ""
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s and %s are shot on different ranges"
+msgstr ""
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s and %s are variants of each other; choose one"
+msgstr ""
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s cannot be combined"
+msgstr ""
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s is chosen twice"
+msgstr ""
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s is not active"
+msgstr ""
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s is not open to the age category %s"
+msgstr ""
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s is not shot on this range"
+msgstr ""
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s is shot on %s, not on lane %d"
+msgstr ""
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s needs exactly %d series of %s"
+msgstr ""
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s takes its series from %s, which is not chosen"
+msgstr ""
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s: series %d of %s is invalid or chosen twice"
+msgstr ""
+
+#: internal/domain/registration.go
+msgid "Choose at least one programme"
+msgstr ""
+
+#: internal/domain/registration.go
+#, go-format
+msgid "Programme %d does not belong to this event"
+msgstr ""
+
+#: internal/domain/results.go
+#, go-format
+msgid "Enter all %d series"
+msgstr ""
+
+#: internal/domain/results.go
+#, go-format
+msgid "Series %d does not track mouches"
+msgstr ""
+
+#: internal/domain/results.go
+#, go-format
+msgid "Series %d: mouches must be between 0 and %d"
+msgstr ""
+
+#: internal/domain/results.go
+#, go-format
+msgid "Series %d: points must be between 0 and %d"
+msgstr ""
+
+#: internal/domain/schedule.go internal/web/tenants.go
+msgid "Date must be YYYY-MM-DD"
+msgstr ""
+
+#: internal/domain/schedule.go
+#, go-format
+msgid "Shooting times of %s: the end must be after the start"
+msgstr ""
+
+#: internal/domain/schedule.go
+msgid "The period ends before it starts"
+msgstr ""
+
+#: internal/domain/schedule.go
+#, go-format
+msgid "The period is longer than %d days"
+msgstr ""
+
+#: internal/domain/schedule.go
+msgid "The period needs a first and a last day"
+msgstr ""
+
+#: internal/domain/schedule.go
+msgid "Weekday must be 1–7"
+msgstr ""
+
+#: internal/domain/schedule.go
+msgid "Weekly shooting times need a period"
+msgstr ""
+
+#: internal/domain/schedule.go
+msgid "Weekly shooting times: the end must be after the start"
+msgstr ""
+
+#: internal/domain/training.go
+#, go-format
+msgid "A session has 1 to %d series"
+msgstr ""
+
+#: internal/domain/training.go
+#, go-format
+msgid "Series %d: %d shot values for %d shots"
+msgstr ""
+
+#: internal/domain/training.go
+#, go-format
+msgid "Series %d: 1 to 100 shots"
+msgstr ""
+
+#: internal/domain/training.go
+#, go-format
+msgid "Series %d: every shot needs a value and a position"
+msgstr ""
+
+#: internal/domain/training.go
+#, go-format
+msgid "Series %d: shot value %g is not possible"
+msgstr ""
+
+#: internal/domain/training.go
+#, go-format
+msgid "Series %d: total %g is not possible with %d shots"
+msgstr ""
+
+#: internal/web/account.go
+msgid "An account with this email exists already. Log in or reset your password."
+msgstr ""
+
+#: internal/web/account.go
+msgid "Confirm your email address"
+msgstr ""
+
+#: internal/web/account.go
+#, go-format
+msgid "Hello %s,"
+msgstr ""
+
+#: internal/web/account.go internal/web/invites.go
+msgid "Hello,"
+msgstr ""
+
+#: internal/web/account.go
+msgid "Reset your Standblatt password"
+msgstr ""
+
+#: internal/web/account.go
+msgid "Sign-up is not open on this server."
+msgstr ""
+
+#: internal/web/account.go
+msgid "The link is valid for 7 days. If you did not create an account, ignore this mail."
+msgstr ""
+
+#: internal/web/account.go
+msgid "The link is valid for one hour. If you did not ask for it, ignore this mail; your password stays the same."
+msgstr ""
+
+#: internal/web/account.go
+msgid "This link is no longer valid. Request a new one in your settings."
+msgstr ""
+
+#: internal/web/account.go
+msgid "This link is no longer valid. Request a new one."
+msgstr ""
+
+#: internal/web/account.go internal/web/admin.go internal/web/auth.go
+#, go-format
+msgid "Too many attempts. Try again in %d minutes."
+msgstr ""
+
+#: internal/web/account.go
+msgid "please confirm your email address for Standblatt:"
+msgstr ""
+
+#: internal/web/account.go
+msgid "someone, hopefully you, asked to reset the password of your Standblatt account. Choose a new password here:"
+msgstr ""
+
+#: internal/web/admin.go
+#, go-format
+msgid "%d session(s) revoked"
+msgstr ""
+
+#: internal/web/admin.go
+#, go-format
+msgid "%d session(s) revoked, everyone is logged out"
+msgstr ""
+
+#: internal/web/admin.go
+msgid "Another account uses this email address"
+msgstr ""
+
+#: internal/web/admin.go
+msgid "Choose a programme file"
+msgstr ""
+
+#: internal/web/admin.go
+msgid "Club already exists"
+msgstr ""
+
+#: internal/web/admin.go
+msgid "Name is missing"
+msgstr ""
+
+#: internal/web/admin.go
+msgid "No such user"
+msgstr ""
+
+#: internal/web/admin.go
+msgid "Not a programme export file"
+msgstr ""
+
+#: internal/web/admin.go
+msgid "Not an email address"
+msgstr ""
+
+#: internal/web/admin.go
+msgid "Not found"
+msgstr ""
+
+#: internal/web/admin.go
+msgid "Session expired. Enter the token again."
+msgstr ""
+
+#: internal/web/admin.go
+msgid "Set your Standblatt password"
+msgstr ""
+
+#: internal/web/admin.go
+#, go-format
+msgid "The link is valid for seven days. Your user name is %s."
+msgstr ""
+
+#: internal/web/admin.go
+msgid "The link to set the password is on its way"
+msgstr ""
+
+#: internal/web/admin.go
+msgid "The user has no email address"
+msgstr ""
+
+#: internal/web/admin.go
+msgid "Unknown role"
+msgstr ""
+
+#: internal/web/admin.go
+msgid "User name is already taken"
+msgstr ""
+
+#: internal/web/admin.go
+msgid "Wrong token."
+msgstr ""
+
+#: internal/web/admin.go
+msgid "an administrator created a link for you to set the password of your Standblatt account:"
+msgstr ""
+
+#: internal/web/apitokens.go
+msgid "API token not found"
+msgstr ""
+
+#: internal/web/apitokens.go internal/web/my.go
+msgid "Name is empty"
+msgstr ""
+
+#: internal/web/auth.go
+msgid "Maintenance: logging in is not possible right now."
+msgstr ""
+
+#: internal/web/auth.go
+msgid "Password: at least 10 characters"
+msgstr ""
+
+#: internal/web/auth.go
+#, go-format
+msgid "Password: at most %d bytes"
+msgstr ""
+
+#: internal/web/auth.go
+msgid "User name: 3 to 32 characters, lower-case letters, digits, . _ -, starting with a letter or digit"
+msgstr ""
+
+#: internal/web/auth.go
+msgid "Wrong user name or password."
+msgstr ""
+
+#: internal/web/auth.go
+msgid "not logged in"
+msgstr ""
+
+#: internal/web/booking.go
+#, go-format
+msgid "%s (%s, %s) asks for lanes at %s:"
+msgstr ""
+
+#: internal/web/booking.go
+#, go-format
+msgid "%s cancelled the lane request"
+msgstr ""
+
+#: internal/web/booking.go
+#, go-format
+msgid "%s changed the lane request"
+msgstr ""
+
+#: internal/web/booking.go
+msgid "Check, change or cancel your request here:"
+msgstr ""
+
+#: internal/web/booking.go
+msgid "Confirm or decline the request here:"
+msgstr ""
+
+#: internal/web/booking.go internal/web/helpers.go internal/web/programmes.go
+#: internal/web/rankings.go internal/web/registrations.go
+#: internal/web/reports.go internal/web/tenants.go
+msgid "Event not found"
+msgstr ""
+
+#: internal/web/booking.go
+#, go-format
+msgid "Lane request for %s declined"
+msgstr ""
+
+#: internal/web/booking.go internal/web/reports.go
+msgid "Lanes"
+msgstr ""
+
+#: internal/web/booking.go
+#, go-format
+msgid "Lanes confirmed for %s"
+msgstr ""
+
+#: internal/web/booking.go
+#, go-format
+msgid "New lane request from %s"
+msgstr ""
+
+#: internal/web/booking.go
+#, go-format
+msgid "Only %d lanes are free at %s"
+msgstr ""
+
+#: internal/web/booking.go
+#, go-format
+msgid "Only %d lanes are free at %s; move a reservation or decline the request."
+msgstr ""
+
+#: internal/web/booking.go
+msgid "Request not found"
+msgstr ""
+
+#: internal/web/booking.go
+#, go-format
+msgid "Shooters announced: %d"
+msgstr ""
+
+#: internal/web/booking.go
+msgid "The deadline for online booking has passed. Contact the organizer."
+msgstr ""
+
+#: internal/web/booking.go
+msgid "The request was already handled or cancelled."
+msgstr ""
+
+#: internal/web/booking.go
+msgid "This booking link is not valid."
+msgstr ""
+
+#: internal/web/booking.go
+msgid "This link is not valid."
+msgstr ""
+
+#: internal/web/booking.go
+#, go-format
+msgid "Your lane request for %s"
+msgstr ""
+
+#: internal/web/booking.go
+#, go-format
+msgid "unfortunately the organizer of %s cannot give you these lanes."
+msgstr ""
+
+#: internal/web/booking.go
+#, go-format
+msgid "we received your request for %s. The organizer confirms it by mail; until then the lanes are not reserved."
+msgstr ""
+
+#: internal/web/booking.go
+#, go-format
+msgid "your lanes for %s are reserved:"
+msgstr ""
+
+#: internal/web/documents.go
+#, go-format
+msgid "Control strip %s"
+msgstr ""
+
+#: internal/web/documents.go
+msgid "Elite"
+msgstr ""
+
+#: internal/web/documents.go
+#, go-format
+msgid "Lane sheet %s"
+msgstr ""
+
+#: internal/web/documents.go
+msgid "Not all programmes have results yet"
+msgstr ""
+
+#: internal/web/documents.go internal/web/programmes.go internal/web/reports.go
+msgid "Programme not found"
+msgstr ""
+
+#: internal/web/documents.go internal/web/helpers.go internal/web/results.go
+msgid "Programme of the registration not found"
+msgstr ""
+
+#: internal/web/documents.go internal/web/reports.go
+#, go-format
+msgid "Ranking %s"
+msgstr ""
+
+#: internal/web/documents.go internal/web/helpers.go
+#: internal/web/registrations.go internal/web/results.go
+msgid "Registration not found"
+msgstr ""
+
+#: internal/web/documents.go
+#, go-format
+msgid "Result sheet %s"
+msgstr ""
+
+#: internal/web/documents.go
+msgid "Senior"
+msgstr ""
+
+#: internal/web/documents.go
+msgid "Senior veteran"
+msgstr ""
+
+#: internal/web/documents.go
+msgid "This programme has no wreath card award"
+msgstr ""
+
+#: internal/web/documents.go
+#, go-format
+msgid "Unknown document %s"
+msgstr ""
+
+#: internal/web/documents.go
+msgid "Veteran"
+msgstr ""
+
+#: internal/web/documents.go
+#, go-format
+msgid "Wreath card %s"
+msgstr ""
+
+#: internal/web/helpers.go
+msgid "Choose a range of the event for the scorer"
+msgstr ""
+
+#: internal/web/helpers.go internal/web/masterdata.go internal/web/tenants.go
+msgid "Club not found"
+msgstr ""
+
+#: internal/web/helpers.go
+msgid "Helper link not found"
+msgstr ""
+
+#: internal/web/helpers.go
+#, go-format
+msgid "Lane %d does not exist on %s"
+msgstr ""
+
+#: internal/web/helpers.go
+msgid "Lanes: numbers and ranges such as 1-5, 8"
+msgstr ""
+
+#: internal/web/helpers.go internal/web/registrations.go
+#: internal/web/tenants.go
+msgid "Not allowed for this helper link"
+msgstr ""
+
+#: internal/web/helpers.go
+msgid "This lane is not yours"
+msgstr ""
+
+#: internal/web/helpers.go
+msgid "Unknown or revoked helper link"
+msgstr ""
+
+#: internal/web/invites.go
+#, go-format
+msgid "%s added you on Standblatt"
+msgstr ""
+
+#: internal/web/invites.go
+#, go-format
+msgid "%s gave your account access to its events on Standblatt. Log in as usual:"
+msgstr ""
+
+#: internal/web/invites.go
+#, go-format
+msgid "%s invites you to Standblatt"
+msgstr ""
+
+#: internal/web/invites.go
+#, go-format
+msgid "%s uses Standblatt for its shooting events and created an account for you. Set your password with this link:"
+msgstr ""
+
+#: internal/web/invites.go
+msgid "The link is valid for seven days. Afterwards you log in with this email address and your password."
+msgstr ""
+
+#: internal/web/masterdata.go
+msgid "A club with this name already exists"
+msgstr ""
+
+#: internal/web/masterdata.go
+msgid "Assignment not found"
+msgstr ""
+
+#: internal/web/masterdata.go
+msgid "Club is missing"
+msgstr ""
+
+#: internal/web/masterdata.go
+msgid "First and last name are required"
+msgstr ""
+
+#: internal/web/masterdata.go
+msgid "Registrations refer to this club; it cannot be deleted"
+msgstr ""
+
+#: internal/web/masterdata.go internal/web/registrations.go
+msgid "Shooter not found"
+msgstr ""
+
+#: internal/web/masterdata.go
+msgid "Shooter or club not found"
+msgstr ""
+
+#: internal/web/masterdata.go
+msgid "The shooter has registrations and cannot be deleted"
+msgstr ""
+
+#: internal/web/masterdata.go
+msgid "This license number already exists"
+msgstr ""
+
+#: internal/web/my.go
+msgid "Another account uses this email address."
+msgstr ""
+
+#: internal/web/my.go
+msgid "Birthday: use YYYY-MM-DD"
+msgstr ""
+
+#: internal/web/my.go
+msgid "Date: use YYYY-MM-DD"
+msgstr ""
+
+#: internal/web/my.go
+msgid "Decimal scoring needs 10 as the highest value of a shot"
+msgstr ""
+
+#: internal/web/my.go
+msgid "Discipline not found"
+msgstr ""
+
+#: internal/web/my.go
+msgid "Goal not found"
+msgstr ""
+
+#: internal/web/my.go
+msgid "Result not found"
+msgstr ""
+
+#: internal/web/my.go
+msgid "Session not found"
+msgstr ""
+
+#: internal/web/my.go
+msgid "Sessions use this discipline"
+msgstr ""
+
+#: internal/web/my.go
+msgid "The goal is higher than the maximum"
+msgstr ""
+
+#: internal/web/my.go
+msgid "There is no email address to confirm."
+msgstr ""
+
+#: internal/web/my.go
+msgid "Weapon not found"
+msgstr ""
+
+#: internal/web/my.go internal/web/totp.go
+msgid "Wrong password."
+msgstr ""
+
+#: internal/web/my.go
+msgid "You already have a weapon with this name"
+msgstr ""
+
+#: internal/web/my.go
+msgid "Your account belongs to a club. Ask the club admin to remove you first."
+msgstr ""
+
+#: internal/web/printing.go
+msgid "Agent token missing"
+msgstr ""
+
+#: internal/web/printing.go
+msgid "Job not found or not being printed"
+msgstr ""
+
+#: internal/web/printing.go
+msgid "Print agent not found"
+msgstr ""
+
+#: internal/web/printing.go internal/web/registrations.go
+#: internal/web/reservations.go internal/web/tenants.go
+msgid "Range not found"
+msgstr ""
+
+#: internal/web/printing.go
+msgid "Unknown document"
+msgstr ""
+
+#: internal/web/printing.go
+msgid "Unknown or revoked agent token"
+msgstr ""
+
+#: internal/web/programmes.go
+msgid "Programme not found, or the other programme belongs to a different event"
+msgstr ""
+
+#: internal/web/programmes.go
+msgid "Programme not found, or the range is not one of the event"
+msgstr ""
+
+#: internal/web/programmes.go
+msgid "Programme or event not found"
+msgstr ""
+
+#: internal/web/programmes.go
+msgid "Shooters are registered for this programme: the series stay as they are, and age categories and awards can be added but not removed"
+msgstr ""
+
+#: internal/web/programmes.go
+msgid "Shooters are registered for this programme; it cannot be deleted"
+msgstr ""
+
+#: internal/web/programmes.go
+msgid "Template not found"
+msgstr ""
+
+#: internal/web/programmes.go
+msgid "The event already has a programme with this name and variant"
+msgstr ""
+
+#: internal/web/rankings.go
+msgid "Kiosk token missing"
+msgstr ""
+
+#: internal/web/rankings.go
+msgid "Kiosk token not found"
+msgstr ""
+
+#: internal/web/rankings.go
+msgid "Unknown or revoked kiosk token"
+msgstr ""
+
+#: internal/web/registrations.go
+msgid "A programme with results cannot be removed from the registration"
+msgstr ""
+
+#: internal/web/registrations.go
+msgid "Choose the range of the lane"
+msgstr ""
+
+#: internal/web/registrations.go
+#, go-format
+msgid "Lane %d does not exist (1–%d)"
+msgstr ""
+
+#: internal/web/registrations.go
+#, go-format
+msgid "Lane %d is occupied"
+msgstr ""
+
+#: internal/web/registrations.go
+#, go-format
+msgid "Lane %d is out of service"
+msgstr ""
+
+#: internal/web/registrations.go
+msgid "The lane is occupied"
+msgstr ""
+
+#: internal/web/registrations.go
+msgid "The shooter is already registered for one of these programmes at this event"
+msgstr ""
+
+#: internal/web/registrations.go
+msgid "The shooter is not a member of this club"
+msgstr ""
+
+#: internal/web/reports.go
+#, go-format
+msgid "%s: no special prize"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "(no club)"
+msgstr ""
+
+#: internal/web/reports.go
+#, go-format
+msgid "At least %d participants are required for a ranking."
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Award"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Awards"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Awards given"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Awards to hand out"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Cash prize"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Cash to pay out"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Club competition"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Club participants by programme and age category"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Clubs"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Count"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Financial report"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "First name"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Kind"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Lane bookings"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Lane numbers"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Last name"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Licence"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Mouches"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "No club"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "No programme awards special prizes."
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Not confirmed yet"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Not ranked"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Out of competition"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Participants"
+msgstr ""
+
+#: internal/web/reports.go
+#, go-format
+msgid "Participants in the category: %d"
+msgstr ""
+
+#: internal/web/reports.go
+#, go-format
+msgid "Participants of the club: %d"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Price"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Prize"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Prize in kind"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Programme"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Programmes counted"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Programmes sold"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Range"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Ranking"
+msgstr ""
+
+#: internal/web/reports.go
+#, go-format
+msgid "Ranks 1–%d per category with at least %d participants, club with at least %d in this programme"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Reason"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Result"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Revenue"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Revenue by programme"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Revenue by programme and age category"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "SSV no."
+msgstr ""
+
+#: internal/web/reports.go
+#, go-format
+msgid "Shooters of %s"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Shooters with awards to collect"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Special prizes"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Subtotal"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Time"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Unknown report"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Value"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Value of awards"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Wreath card"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "confirmed"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "not confirmed yet"
+msgstr ""
+
+#: internal/web/reservations.go
+#, go-format
+msgid "Overlaps with %s"
+msgstr ""
+
+#: internal/web/reservations.go
+msgid "Overlaps with another reservation"
+msgstr ""
+
+#: internal/web/reservations.go
+msgid "Reservation not found"
+msgstr ""
+
+#: internal/web/reservations.go
+msgid "The end must be after the start"
+msgstr ""
+
+#: internal/web/reservations.go
+#, go-format
+msgid "The range has lanes 1–%d"
+msgstr ""
+
+#: internal/web/reservations.go
+msgid "The reservation ends in the past"
+msgstr ""
+
+#: internal/web/results.go
+msgid "This award has not been reached"
+msgstr ""
+
+#: internal/web/results.go
+msgid "This programme takes its results from another programme"
+msgstr ""
+
+#: internal/web/server.go
+msgid "The event is archived; unarchive it to make changes"
+msgstr ""
+
+#: internal/web/templates/admin_club.html
+msgid "Assign users as admin or staff by user name or email address."
+msgstr ""
+
+#: internal/web/templates/admin_club.html
+#: internal/web/templates/admin_user.html
+msgid "Created on %s"
+msgstr ""
+
+#: internal/web/templates/admin_club.html
+msgid "Date"
+msgstr ""
+
+#: internal/web/templates/admin_club.html
+msgid "Delete club"
+msgstr ""
+
+#: internal/web/templates/admin_club.html
+msgid "Delete club %s with all its data? This cannot be undone."
+msgstr ""
+
+#: internal/web/templates/admin_club.html
+msgid "Event"
+msgstr ""
+
+#: internal/web/templates/admin_club.html
+#: internal/web/templates/admin_clubs.html
+#: internal/web/templates/admin_overview.html
+msgid "Events"
+msgstr ""
+
+#: internal/web/templates/admin_club.html
+msgid "Newest first. Archived events are read-only."
+msgstr ""
+
+#: internal/web/templates/admin_club.html
+msgid "No events yet"
+msgstr ""
+
+#: internal/web/templates/admin_club.html
+msgid "No users"
+msgstr ""
+
+#: internal/web/templates/admin_club.html
+#: internal/web/templates/admin_user.html
+msgid "Role"
+msgstr ""
+
+#: internal/web/templates/admin_club.html
+msgid "Status"
+msgstr ""
+
+#: internal/web/templates/admin_club.html
+msgid "User name or email"
+msgstr ""
+
+#: internal/web/templates/admin_club.html
+#: internal/web/templates/admin_clubs.html
+#: internal/web/templates/admin_overview.html
+#: internal/web/templates/admin_user.html
+#: internal/web/templates/admin_users.html internal/web/templates/head.html
+msgid "Users"
+msgstr ""
+
+#: internal/web/templates/admin_club.html
+msgid "archived"
+msgstr ""
+
+#: internal/web/templates/admin_club.html
+msgid "assign"
+msgstr ""
+
+#: internal/web/templates/admin_club.html
+msgid "open"
+msgstr ""
+
+#: internal/web/templates/admin_club.html
+#: internal/web/templates/admin_user.html
+msgid "remove"
+msgstr ""
+
+#: internal/web/templates/admin_clubs.html
+msgid "Club name"
+msgstr ""
+
+#: internal/web/templates/admin_clubs.html
+msgid "Create club"
+msgstr ""
+
+#: internal/web/templates/admin_clubs.html
+msgid "Created"
+msgstr ""
+
+#: internal/web/templates/admin_clubs.html
+msgid "Each club is a tenant with its own ranges, events and master data."
+msgstr ""
+
+#: internal/web/templates/admin_clubs.html
+msgid "No clubs yet"
+msgstr ""
+
+#: internal/web/templates/admin_clubs.html
+#: internal/web/templates/admin_overview.html
+msgid "Registrations"
+msgstr ""
+
+#: internal/web/templates/admin_library.html
+msgid "Clubs can add these templates to their events. Upload a programme export file; a template with the same name and variant is replaced."
+msgstr ""
+
+#: internal/web/templates/admin_library.html
+msgid "Delete template %s?"
+msgstr ""
+
+#: internal/web/templates/admin_library.html
+msgid "No templates yet"
+msgstr ""
+
+#: internal/web/templates/admin_library.html internal/web/templates/head.html
+msgid "Programme library"
+msgstr ""
+
+#: internal/web/templates/admin_library.html
+msgid "Series"
+msgstr ""
+
+#: internal/web/templates/admin_library.html
+msgid "Shots"
+msgstr ""
+
+#: internal/web/templates/admin_library.html
+msgid "Upload template"
+msgstr ""
+
+#: internal/web/templates/admin_library.html
+msgid "Variant"
+msgstr ""
+
+#: internal/web/templates/admin_library.html
+msgid "delete"
+msgstr ""
+
+#: internal/web/templates/admin_library.html
+msgid "download"
+msgstr ""
+
+#: internal/web/templates/admin_login.html
+msgid "Admin login"
+msgstr ""
+
+#: internal/web/templates/admin_login.html
+msgid "Log in"
+msgstr ""
+
+#: internal/web/templates/admin_login.html
+msgid "Not part of the club app."
+msgstr ""
+
+#: internal/web/templates/admin_login.html
+msgid "Platform administration: clubs, users and the programme library."
+msgstr ""
+
+#: internal/web/templates/admin_login.html
+msgid "Token"
+msgstr ""
+
+#: internal/web/templates/admin_overview.html
+msgid "Active sessions"
+msgstr ""
+
+#: internal/web/templates/admin_overview.html
+msgid "Administration"
+msgstr ""
+
+#: internal/web/templates/admin_overview.html
+#: internal/web/templates/admin_system.html
+msgid "Allow logins again"
+msgstr ""
+
+#: internal/web/templates/admin_overview.html
+msgid "Clubs, their users and the programme library shared by all clubs."
+msgstr ""
+
+#: internal/web/templates/admin_overview.html
+#: internal/web/templates/admin_system.html internal/web/templates/head.html
+msgid "Maintenance: new logins are blocked"
+msgstr ""
+
+#: internal/web/templates/admin_overview.html
+msgid "Programme templates"
+msgstr ""
+
+#: internal/web/templates/admin_system.html
+msgid "Block all new logins? Open sessions keep working."
+msgstr ""
+
+#: internal/web/templates/admin_system.html
+msgid "Blocks new logins; users already logged in keep working."
+msgstr ""
+
+#: internal/web/templates/admin_system.html
+msgid "Ends every session on every replica; everyone has to log in again."
+msgstr ""
+
+#: internal/web/templates/admin_system.html
+msgid "Environment"
+msgstr ""
+
+#: internal/web/templates/admin_system.html
+msgid "Instance"
+msgstr ""
+
+#: internal/web/templates/admin_system.html
+msgid "Log out every user?"
+msgstr ""
+
+#: internal/web/templates/admin_system.html
+msgid "Logins open"
+msgstr ""
+
+#: internal/web/templates/admin_system.html
+msgid "Maintenance mode"
+msgstr ""
+
+#: internal/web/templates/admin_system.html
+msgid "Maintenance, sessions and the configuration of this instance."
+msgstr ""
+
+#: internal/web/templates/admin_system.html
+msgid "Revoke all sessions"
+msgstr ""
+
+#: internal/web/templates/admin_system.html
+#: internal/web/templates/admin_user.html
+#: internal/web/templates/admin_users.html
+msgid "Second factor"
+msgstr ""
+
+#: internal/web/templates/admin_system.html
+msgid "Self sign-up"
+msgstr ""
+
+#: internal/web/templates/admin_system.html
+#: internal/web/templates/admin_user.html
+#: internal/web/templates/admin_users.html
+msgid "Sessions"
+msgstr ""
+
+#: internal/web/templates/admin_system.html internal/web/templates/head.html
+msgid "System"
+msgstr ""
+
+#: internal/web/templates/admin_system.html
+msgid "Version"
+msgstr ""
+
+#: internal/web/templates/admin_system.html
+msgid "available"
+msgstr ""
+
+#: internal/web/templates/admin_system.html
+#: internal/web/templates/admin_user.html
+msgid "off"
+msgstr ""
+
+#: internal/web/templates/admin_system.html
+#: internal/web/templates/admin_user.html
+#: internal/web/templates/admin_users.html
+msgid "on"
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+msgid "%d sessions"
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+msgid "Account"
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+msgid "Assign the user on the club's page."
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+msgid "Delete user"
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+msgid "Delete user %s? The personal training log goes with it."
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+#: internal/web/templates/admin_users.html
+msgid "Email"
+msgstr ""
+
+#: internal/web/templates/admin_user.html internal/web/templates/head.html
+msgid "Language"
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+msgid "Log out everywhere"
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+msgid "Mails a link valid for seven days to set a new password."
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+msgid "Needed for password links and invitations. Clear the field to remove it."
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+msgid "New password (at least 10 characters)"
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+msgid "No clubs"
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+msgid "Password"
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+msgid "Reset second factor"
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+msgid "Save"
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+msgid "Send password link"
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+msgid "Set password"
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+msgid "Sets the password directly; prefer the password link when the user has an email address."
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+msgid "Switch off the second factor of %s?"
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+msgid "Training log"
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+msgid "active"
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+msgid "browser"
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+msgid "last login"
+msgstr ""
+
+#: internal/web/templates/admin_user.html
+#: internal/web/templates/admin_users.html
+msgid "verified"
+msgstr ""
+
+#: internal/web/templates/admin_users.html
+msgid "Accounts are global; a user can belong to several clubs."
+msgstr ""
+
+#: internal/web/templates/admin_users.html
+msgid "Create user"
+msgstr ""
+
+#: internal/web/templates/admin_users.html
+msgid "Email (optional)"
+msgstr ""
+
+#: internal/web/templates/admin_users.html
+msgid "Last login"
+msgstr ""
+
+#: internal/web/templates/admin_users.html
+msgid "No users found"
+msgstr ""
+
+#: internal/web/templates/admin_users.html
+msgid "Password (at least 10 characters)"
+msgstr ""
+
+#: internal/web/templates/admin_users.html
+msgid "Search"
+msgstr ""
+
+#: internal/web/templates/admin_users.html
+msgid "Search name or email"
+msgstr ""
+
+#: internal/web/templates/admin_users.html
+msgid "User name"
+msgstr ""
+
+#: internal/web/templates/admin_users.html
+msgid "Without a password the user gets a mail with a link to set one (needs an email address)."
+msgstr ""
+
+#: internal/web/templates/admin_users.html
+msgid "never"
+msgstr ""
+
+#: internal/web/templates/admin_users.html
+msgid "none"
+msgstr ""
+
+#: internal/web/templates/admin_users.html
+msgid "unconfirmed"
+msgstr ""
+
+#: internal/web/templates/head.html
+msgid "Are you sure?"
+msgstr ""
+
+#: internal/web/templates/head.html
+msgid "Cancel"
+msgstr ""
+
+#: internal/web/templates/head.html
+msgid "Confirm"
+msgstr ""
+
+#: internal/web/templates/head.html
+msgid "Log out"
+msgstr ""
+
+#: internal/web/templates/head.html
+msgid "Overview"
+msgstr ""
+
+#: internal/web/templates/head.html
+msgid "Toggle dark mode"
+msgstr ""
+
+#: internal/web/tenants.go
+msgid "A club needs at least one admin"
+msgstr ""
+
+#: internal/web/tenants.go
+msgid "A range with this name already exists"
+msgstr ""
+
+#: internal/web/tenants.go
+msgid "A removed lane group is used by programmes"
+msgstr ""
+
+#: internal/web/tenants.go
+msgid "Choose at least one range"
+msgstr ""
+
+#: internal/web/tenants.go
+msgid "Club admins only"
+msgstr ""
+
+#: internal/web/tenants.go
+msgid "Events with registrations cannot be deleted"
+msgstr ""
+
+#: internal/web/tenants.go
+#, go-format
+msgid "Lane %d is in %s and %s"
+msgstr ""
+
+#: internal/web/tenants.go
+#, go-format
+msgid "Lane %d is outside 1–%d"
+msgstr ""
+
+#: internal/web/tenants.go
+msgid "Shooters or programmes use a range that was removed from the event"
+msgstr ""
+
+#: internal/web/tenants.go
+msgid "The range is used by events"
+msgstr ""
+
+#: internal/web/tenants.go
+#, go-format
+msgid "Two lane groups are called %s"
+msgstr ""
+
+#: internal/web/tenants.go
+#, go-format
+msgid "Unknown time zone: %s"
+msgstr ""
+
+#: internal/web/tenants.go
+msgid "User not found"
+msgstr ""
+
+#: internal/web/totp.go
+msgid "Enter the code from your authenticator app."
+msgstr ""
+
+#: internal/web/totp.go
+msgid "Secret: not a valid base32 string"
+msgstr ""
+
+#: internal/web/totp.go
+msgid "The second factor is switched off on this server"
+msgstr ""
+
+#: internal/web/totp.go
+msgid "This code was used already; wait for the next one."
+msgstr ""
+
+#: internal/web/totp.go
+msgid "Wrong code."
+msgstr ""

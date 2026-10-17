@@ -1,0 +1,67 @@
+name: standblatt
+
+services:
+  db:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_USER: standblatt
+      POSTGRES_PASSWORD: standblatt
+      POSTGRES_DB: standblatt
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD", "pg_isready", "-h", "127.0.0.1", "-U", "standblatt"]
+      interval: 1s
+      retries: 30
+
+  mail:
+    image: axllent/mailpit:v1.31
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+  e2e-db:
+    profiles: [e2e]
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_USER: standblatt
+      POSTGRES_PASSWORD: standblatt
+      POSTGRES_DB: standblatt
+    tmpfs:
+      - /var/lib/postgresql
+    healthcheck:
+      test: ["CMD", "pg_isready", "-h", "127.0.0.1", "-U", "standblatt"]
+      interval: 1s
+      retries: 30
+
+  e2e:
+    profiles: [e2e]
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    depends_on:
+      e2e-db:
+        condition: service_healthy
+      e2e-mail:
+        condition: service_started
+    environment:
+      DATABASE_URL: postgres://standblatt:standblatt@e2e-db:5432/standblatt
+      STANDBLATT_ADMIN_TOKEN: e2e-admin-token-e2e-admin-token-e2e
+      STANDBLATT_ENVIRONMENT: ${E2E_ENVIRONMENT:-}
+      STANDBLATT_METRICS_LISTEN: ""
+      STANDBLATT_SIGNUP: "true"
+      STANDBLATT_SMTP_HOST: e2e-mail
+      STANDBLATT_SMTP_PORT: "1025"
+    ports:
+      - "3002:8080"
+
+  e2e-mail:
+    profiles: [e2e]
+    image: axllent/mailpit:v1.31
+    ports:
+      - "8026:8025"
+
+volumes:
+  pgdata:
