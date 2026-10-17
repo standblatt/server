@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.17.2] - 2026-10-17
+
 ### Added
 - Club pages and helper links show a bar while there is no connection (by @HB9HIL)
 
