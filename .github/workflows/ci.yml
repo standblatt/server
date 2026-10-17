@@ -59,7 +59,7 @@ jobs:
         working-directory: web
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v7
         with:
           node-version: 26
           cache: npm
@@ -74,7 +74,7 @@ jobs:
         working-directory: web
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v7
         with:
           node-version: 26
           cache: npm
@@ -163,7 +163,7 @@ jobs:
           chmod +x bin/standblatt
           ./bin/standblatt > standblatt.log 2>&1 &
           timeout 30 sh -c 'until curl -sf http://localhost:8080/healthz; do sleep 1; done'
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v7
         with:
           node-version: 26
           cache: npm
