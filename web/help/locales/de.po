@@ -3975,10 +3975,8 @@ msgstr "Schützen und Vereine"
 #: ../src/help/en/user-guide/shooters-clubs.md:4
 msgid ""
 "Each club keeps its own shooter master data; nothing is shared with other "
-"clubs."
-msgstr ""
-"Jeder Verein führt seine eigenen Schützen-Stammdaten; nichts wird mit "
-"anderen Vereinen geteilt."
+"clubs. **Shooters** and **Clubs** are under **Master data** in the sidebar."
+msgstr "Jeder Verein führt seine eigenen Schützen-Stammdaten; nichts wird mit anderen Vereinen geteilt. **Schützen** und **Vereine** stehen in der Seitenleiste unter **Stammdaten**."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/shooters-clubs.md:5
@@ -4216,6 +4214,8 @@ msgstr ""
 "Konten sind global: Ein Konto löscht der Plattformbetreiber im [Admin-Panel]"
 "(../admin-guide/admin-panel.md). Ein vergessenes Passwort setzt man mit "
 "**Passwort vergessen?** auf der Login-Seite zurück, wenn das Konto eine "
+"bestätigte E-Mail-Adresse hat, sonst der Betreiber."
+
 #~ msgid ""
 #~ "**Print ranking** sends the ranking (A4) to the range's printer or opens "
 #~ "it as PDF; the CSV export is under the programme in [Statistics]"
@@ -4224,8 +4224,6 @@ msgstr ""
 #~ "**Rangliste drucken** schickt die Rangliste (A4) an den Drucker des "
 #~ "Schiessstands oder öffnet sie als PDF; der CSV-Export steht beim Programm "
 #~ "unter [Statistik](statistics-reports.md)."
-
-"bestätigte E-Mail-Adresse hat, sonst der Betreiber."
 
 #~ msgid ""
 #~ "**[Admin guide](admin-guide/installation.md)**: installing and running "

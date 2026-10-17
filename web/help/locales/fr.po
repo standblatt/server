@@ -4005,10 +4005,8 @@ msgstr "Tireurs et sociétés"
 #: ../src/help/en/user-guide/shooters-clubs.md:4
 msgid ""
 "Each club keeps its own shooter master data; nothing is shared with other "
-"clubs."
-msgstr ""
-"Chaque société tient ses propres données de base des tireurs ; rien n’est "
-"partagé avec d’autres sociétés."
+"clubs. **Shooters** and **Clubs** are under **Master data** in the sidebar."
+msgstr "Chaque société tient ses propres données de base des tireurs ; rien n’est partagé avec d’autres sociétés. **Tireurs** et **Sociétés** se trouvent sous **Données de base** dans la barre latérale."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/shooters-clubs.md:5
@@ -4247,6 +4245,8 @@ msgstr ""
 "plateforme dans le [panneau d’administration](../admin-guide/admin-"
 "panel.md). Un mot de passe oublié se réinitialise avec **Mot de passe "
 "oublié ?** sur la page de connexion si le compte a une adresse e-mail "
+"confirmée, sinon par l’exploitant."
+
 #~ msgid ""
 #~ "**Print ranking** sends the ranking (A4) to the range's printer or opens "
 #~ "it as PDF; the CSV export is under the programme in [Statistics]"
@@ -4255,8 +4255,6 @@ msgstr ""
 #~ "**Imprimer le classement** envoie le classement (A4) à l’imprimante du "
 #~ "stand ou l’ouvre en PDF ; l’export CSV se trouve sous le programme dans "
 #~ "[Statistiques](statistics-reports.md)."
-
-"confirmée, sinon par l’exploitant."
 
 #~ msgid ""
 #~ "**[Admin guide](admin-guide/installation.md)**: installing and running "

@@ -2213,6 +2213,7 @@ msgstr "M"
 msgid "Main"
 msgstr "Main"
 
+#: src/lib/AppSidebar.svelte
 #: src/lib/ShooterSheet.svelte
 msgid "Master data"
 msgstr "Master data"

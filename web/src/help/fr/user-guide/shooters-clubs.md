@@ -1,7 +1,8 @@
 # Tireurs et sociétés
 
 Chaque société tient ses propres données de base des tireurs ; rien n’est
-partagé avec d’autres sociétés.
+partagé avec d’autres sociétés. **Tireurs** et **Sociétés** se trouvent sous
+**Données de base** dans la barre latérale.
 
 ## Tireurs
 

@@ -1,7 +1,8 @@
 # Schützen und Vereine
 
 Jeder Verein führt seine eigenen Schützen-Stammdaten; nichts wird mit
-anderen Vereinen geteilt.
+anderen Vereinen geteilt. **Schützen** und **Vereine** stehen in der
+Seitenleiste unter **Stammdaten**.
 
 ## Schützen
 

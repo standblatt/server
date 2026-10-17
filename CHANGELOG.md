@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Rankings offer PDF and CSV instead of Print; rankings are no longer sent to the range's printer (by @HB9HIL)
+- The sidebar groups Shooters and Clubs under Master data (by @HB9HIL)
 - On phones and tablets PDFs go to the share sheet instead of a new tab (by @HB9HIL)
 - On phones tables show their main columns with the rest below the name, and the setup tabs become a list, so no page scrolls sideways (by @HB9HIL)
 

@@ -1,6 +1,6 @@
 # Shooters and clubs
 
-Each club keeps its own shooter master data; nothing is shared with other clubs.
+Each club keeps its own shooter master data; nothing is shared with other clubs. **Shooters** and **Clubs** are under **Master data** in the sidebar.
 
 ## Shooters
 

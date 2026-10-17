@@ -2600,7 +2600,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/shooters-clubs.md:4
 #, markdown-text
-msgid "Each club keeps its own shooter master data; nothing is shared with other clubs."
+msgid "Each club keeps its own shooter master data; nothing is shared with other clubs. **Shooters** and **Clubs** are under **Master data** in the sidebar."
 msgstr ""
 
 #. type: Title ##

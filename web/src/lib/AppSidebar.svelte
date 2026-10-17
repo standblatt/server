@@ -75,14 +75,16 @@
 	]);
 	const clubItems = $derived([
 		{ href: base, label: $t`Events`, icon: CalendarDays, active: path === base },
-		{ href: `${base}/shooters`, label: $t`Shooters`, icon: Users },
-		{ href: `${base}/clubs`, label: $t`Clubs`, icon: Building },
 		...(isAdmin
 			? [
 					{ href: `${base}/ranges`, label: $t`Ranges`, icon: Crosshair },
 					{ href: `${base}/users`, label: $t`Users`, icon: UserCog }
 				]
 			: [])
+	]);
+	const masterItems = $derived([
+		{ href: `${base}/shooters`, label: $t`Shooters`, icon: Users },
+		{ href: `${base}/clubs`, label: $t`Clubs`, icon: Building }
 	]);
 	const initials = $derived(me.user.name.slice(0, 2).toUpperCase());
 	const sidebar = Sidebar.useSidebar();
@@ -162,6 +164,11 @@
 		<Sidebar.Group>
 			<Sidebar.GroupLabel>{$t`Club`}</Sidebar.GroupLabel>
 			{@render nav(clubItems)}
+		</Sidebar.Group>
+
+		<Sidebar.Group>
+			<Sidebar.GroupLabel>{$t`Master data`}</Sidebar.GroupLabel>
+			{@render nav(masterItems)}
 		</Sidebar.Group>
 	</Sidebar.Content>
 

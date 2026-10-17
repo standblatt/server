@@ -51,6 +51,10 @@ test.describe("rankings and kiosk", () => {
     const type = async (link) => (await page.request.get(await link.getAttribute("href"))).headers()["content-type"];
     expect(await type(pdf)).toBe("application/pdf");
     expect(await type(csv)).toContain("text/csv");
+
+    const group = (label) => page.locator("[data-sidebar=group]").filter({ has: page.locator("[data-sidebar=group-label]", { hasText: new RegExp(`^${label}$`) }) });
+    await expect(group("Master data").locator("a")).toHaveText(["Shooters", "Clubs"]);
+    await expect(group("Club").locator("a")).toHaveText(["Events", "Ranges", "Users"]);
   });
 
   test("serves a live kiosk display without login", async ({ page, browser }) => {

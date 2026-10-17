@@ -1,7 +1,8 @@
 # Tiratori e società
 
 Ogni società gestisce i propri dati di base dei tiratori; niente è condiviso
-con altre società.
+con altre società. **Tiratori** e **Società** si trovano sotto **Dati di
+base** nella barra laterale.
 
 ## Tiratori
 
