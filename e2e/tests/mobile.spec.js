@@ -120,7 +120,7 @@ test.describe("phone", () => {
     const e = `${t}/events/${ids.event}`;
     const urls = [
       "/", "/account", t, `${t}/shooters`, `${t}/shooters?shooter=${ids.shooter}`, `${t}/clubs`, `${t}/ranges`, `${t}/ranges/${ids.range}/printing`, `${t}/users`,
-      e, `${e}?registration=${ids.regs[3]}`, `${e}?results=${ids.regs[0]}`, `${e}/rankings`, `${e}/statistics`, `${e}/reservations`,
+      e, `${e}?registration=${ids.regs[3]}`, `${e}?results=${ids.regs[0]}`, `${e}/entry`, `${e}/rankings`, `${e}/statistics`, `${e}/reservations`,
       ...["programmes", "event", "kiosk", "helpers", "booking", "more"].map((x) => `${e}/setup?tab=${x}`),
       "/my", "/my/log", "/my/progress", "/my/settings", "/my/train", "/help", "/help/user-guide/dashboard",
       `/h/${ids.helper}`, `/kiosk/${ids.kiosk}`,

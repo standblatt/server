@@ -224,3 +224,48 @@ func TestSingleShotResults(t *testing.T) {
 	code, b = e.do(boss, "PUT", path, map[string]any{"series": []map[string]any{{"points": 0, "shots": []float64{5, 4}}}})
 	expect(t, "too few shots", code, 422, b)
 }
+
+func TestEnterResult(t *testing.T) {
+	e := newEnv(t)
+	f := e.registrationFixture("Quick")
+	e.user("helper", f.tenant, store.RoleStaff)
+	other := e.tenant("Other")
+	e.user("outsider", other, store.RoleAdmin)
+	staff := e.login("helper")
+	ctx := context.Background()
+	path := fmt.Sprintf("/api/tenants/%d/events/%d/results", f.tenant, f.event)
+	line := func(shooter, programme int64, points ...float64) map[string]any {
+		series := []map[string]any{}
+		for _, p := range points {
+			series = append(series, map[string]any{"points": p})
+		}
+		return map[string]any{"shooterId": shooter, "programmeId": programme, "clubId": f.club, "series": series}
+	}
+
+	code, b := e.do(staff, "POST", path, line(f.shooter, f.main, 90, 91))
+	expect(t, "too few series", code, 422, b)
+	if regs, _ := e.st.ListRegistrations(ctx, f.tenant, f.event, false); len(regs) != 0 {
+		t.Fatalf("an invalid line left a registration: %+v", regs)
+	}
+	code, b = e.do(staff, "POST", path, line(f.shooter, f.main, 90, 91, 92, 93))
+	expect(t, "enter a new result", code, 200, b)
+	var sheet web.ResultSheet
+	json.Unmarshal(b, &sheet)
+	if sheet.Registration.Status != "completed" || sheet.Registration.Lane != nil || sheet.Entries[0].Total != 366 || sheet.Registration.ClubID == nil {
+		t.Fatalf("new result: %s", b)
+	}
+	code, b = e.do(staff, "POST", path, line(f.shooter, f.main, 90, 91, 92, 93))
+	expect(t, "the same programme twice", code, 409, b)
+
+	desk, _ := e.st.CreateRegistration(ctx, f.tenant, store.NewRegistration{EventID: f.event, ShooterID: f.youth, AgeCategory: domain.U21,
+		Programmes: []domain.ProgrammeChoice{{ProgrammeID: f.junior}}})
+	code, b = e.do(staff, "POST", path, line(f.youth, f.junior, 50, 60))
+	expect(t, "fill a registration from the desk", code, 200, b)
+	json.Unmarshal(b, &sheet)
+	if sheet.Registration.ID != desk || sheet.Entries[0].Total != 110 {
+		t.Fatalf("desk registration: %s", b)
+	}
+
+	code, b = e.do(e.login("outsider"), "POST", fmt.Sprintf("/api/tenants/%d/events/%d/results", other, f.event), line(f.shooter, f.section, 50, 50))
+	expect(t, "other tenant", code, 404, b)
+}

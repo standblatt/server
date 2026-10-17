@@ -1188,6 +1188,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/tenants/{tenantId}/events/{eventId}/results": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Enter the results of a shooter in a programme without the desk
+         * @description Fills the shooter's entry for the programme when it has no results yet, otherwise registers the shooter without a lane for that programme. 409 when the entry already has results.
+         */
+        post: operations["enter-result"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/tenants/{tenantId}/events/{eventId}/statistics": {
         parameters: {
             query?: never;
@@ -2927,6 +2947,18 @@ export interface components {
         ResetInputBody: {
             password: string;
             token: string;
+        };
+        ResultLine: {
+            /**
+             * Format: int64
+             * @description One of the shooter's clubs, used when a registration is created
+             */
+            clubId?: number;
+            /** Format: int64 */
+            programmeId: number;
+            series: components["schemas"]["SeriesResult"][];
+            /** Format: int64 */
+            shooterId: number;
         };
         ResultSheet: {
             entries: components["schemas"]["EntryResult"][];
@@ -6239,6 +6271,42 @@ export interface operations {
                 content: {
                     "application/pdf": unknown;
                     "text/csv": unknown;
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "enter-result": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                eventId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ResultLine"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ResultSheet"];
                 };
             };
             /** @description Error */

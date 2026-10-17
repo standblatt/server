@@ -84,4 +84,29 @@ test.describe("events without a desk", () => {
     const sheet = await api(page, "GET", `${base}/registrations/${reg.id}/results`);
     expect(sheet.entries[0].results).toEqual([{ points: 27, shots: [10, 9, 8] }, { points: 18 }]);
   });
+
+  test("enters results shooter by shooter without the desk", async ({ page }) => {
+    await login(page, admin);
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}/entry`);
+    await page.getByLabel("Programme").selectOption({ label: "Obligatory" });
+    const search = page.getByPlaceholder("License number or name");
+    await search.fill("500001");
+    await expect(c(page, "[aria-label='Shooters found'] button", "Obligatory Olga")).toBeVisible();
+    await search.press("Enter");
+    const card = page.locator("section[aria-label='Obligatory']");
+    await card.getByLabel("Series 1", { exact: true }).fill("45");
+    await card.getByLabel("Series 1", { exact: true }).press("Enter");
+    await expect(c(page, "[data-sonner-toast]", "Obligatory Olga: 45 points saved")).toBeVisible();
+    await expect(c(page, "section[aria-label='Entered now'] tr", "Obligatory Olga")).toContainText("45");
+    await expect(search).toBeFocused();
+
+    await search.fill("500001");
+    await search.press("Enter");
+    await card.getByLabel("Series 1", { exact: true }).fill("40");
+    await c(card, "button", "Save").click();
+    await expect(c(card, "[role=alert]", "already has results")).toBeVisible();
+
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}/rankings`);
+    await expect(c(page, "section[aria-label='Ranking Obligatory'] tr", "Obligatory Olga")).toContainText("45");
+  });
 });

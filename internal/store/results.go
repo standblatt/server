@@ -29,6 +29,19 @@ func (s *Store) GetEntry(ctx context.Context, tenantID, entryID int64) (EntryRef
 	return e, mapErr(err)
 }
 
+// FindEntry returns a shooter's entry for a programme of an event of a tenant and whether it has results;
+// ErrNotFound when the shooter has none.
+func (s *Store) FindEntry(ctx context.Context, tenantID, eventID, shooterID, programmeID int64) (EntryRef, bool, error) {
+	var e EntryRef
+	var done bool
+	err := s.pool.QueryRow(ctx, `SELECT en.id, en.registration_id, en.event_id, en.programme_id,
+			coalesce(en.combined_series, '{}'), r.age_category, en.status = 'completed'
+		FROM entries en JOIN registrations r ON r.id = en.registration_id
+		WHERE en.tenant_id = $1 AND en.event_id = $2 AND en.shooter_id = $3 AND en.programme_id = $4`, tenantID, eventID, shooterID, programmeID).
+		Scan(&e.ID, &e.RegistrationID, &e.EventID, &e.ProgrammeID, &e.CombinedSeries, &e.AgeCategory, &done)
+	return e, done, mapErr(err)
+}
+
 // ListResults returns the series results of all entries of a registration, keyed by entry.
 func (s *Store) ListResults(ctx context.Context, tenantID, registrationID int64) (map[int64][]domain.SeriesResult, error) {
 	rows, err := s.pool.Query(ctx, `SELECT re.entry_id, re.points, re.mouches, re.shots FROM results re

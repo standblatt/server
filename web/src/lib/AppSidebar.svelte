@@ -7,6 +7,7 @@
 	import CalendarClock from '@lucide/svelte/icons/calendar-clock';
 	import CalendarDays from '@lucide/svelte/icons/calendar-days';
 	import Check from '@lucide/svelte/icons/check';
+	import ClipboardPen from '@lucide/svelte/icons/clipboard-pen';
 	import CircleHelp from '@lucide/svelte/icons/circle-help';
 	import ChevronsUpDown from '@lucide/svelte/icons/chevrons-up-down';
 	import Crosshair from '@lucide/svelte/icons/crosshair';
@@ -69,6 +70,7 @@
 	const eventItems = $derived([
 		{ href: eventBase, label: $t`Dashboard`, icon: LayoutDashboard, active: path === eventBase },
 		...(event?.ranges.length ? [{ href: `${eventBase}/reservations`, label: $t`Reservations`, icon: CalendarClock, badge: pending }] : []),
+		{ href: `${eventBase}/entry`, label: $t`Enter results`, icon: ClipboardPen },
 		{ href: `${eventBase}/rankings`, label: $t`Rankings`, icon: ListOrdered },
 		{ href: `${eventBase}/statistics`, label: $t`Statistics`, icon: BarChart },
 		{ href: `${eventBase}/setup`, label: $t`Setup`, icon: Settings }

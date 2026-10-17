@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 22:52+0200\n"
+"POT-Creation-Date: 2026-10-17 22:59+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -678,6 +678,7 @@ msgid "Not all programmes have results yet"
 msgstr "Noch nicht alle Programme haben Resultate"
 
 #: internal/web/documents.go internal/web/programmes.go internal/web/reports.go
+#: internal/web/results.go
 msgid "Programme not found"
 msgstr "Programm nicht gefunden"
 
@@ -1240,6 +1241,10 @@ msgstr "Der Schiessstand hat die Scheiben 1–%d"
 #: internal/web/reservations.go
 msgid "The reservation ends in the past"
 msgstr "Die Reservation endet in der Vergangenheit"
+
+#: internal/web/results.go
+msgid "The shooter already has results in this programme"
+msgstr "Der Schütze hat in diesem Programm schon Resultate"
 
 #: internal/web/results.go
 msgid "This award has not been reached"

@@ -171,9 +171,9 @@
 						{#each series as s, i (i)}
 							<Table.Row>
 								<Table.Cell class="hidden text-muted-foreground sm:table-cell">{i + 1}</Table.Cell>
-								<Table.Cell><Input class="h-8 w-14 sm:w-20" type="number" min="1" max="100" bind:value={s.shots} required disabled={locked} /></Table.Cell>
-								<Table.Cell><Input class="h-8 w-16 sm:w-24" type="number" min="1" bind:value={s.maxPoints} required disabled={locked} /></Table.Cell>
-								<Table.Cell class="w-full"><Input class="h-8 min-w-16" bind:value={s.name} /></Table.Cell>
+								<Table.Cell><Input class="h-8 w-12 sm:w-20" type="number" min="1" max="100" bind:value={s.shots} required disabled={locked} /></Table.Cell>
+								<Table.Cell><Input class="h-8 w-14 sm:w-24" type="number" min="1" bind:value={s.maxPoints} required disabled={locked} /></Table.Cell>
+								<Table.Cell class="w-full"><Input class="h-8 min-w-12" bind:value={s.name} /></Table.Cell>
 								<Table.Cell><Checkbox bind:checked={s.trackMouches} disabled={locked} aria-label={$t`Track mouches in series ${i + 1}`} /></Table.Cell>
 								<Table.Cell><Checkbox bind:checked={s.trackShots} disabled={locked} aria-label={$t`Record single shots in series ${i + 1}`} /></Table.Cell>
 								<Table.Cell class="text-right">

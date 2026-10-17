@@ -37,6 +37,7 @@
 
 	const sections: Record<string, string> = $derived({
 		reservations: $t`Reservations`,
+		entry: $t`Enter results`,
 		rankings: $t`Rankings`,
 		statistics: $t`Statistics`,
 		setup: $t`Setup`,

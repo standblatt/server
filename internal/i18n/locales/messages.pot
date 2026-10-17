@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 22:52+0200\n"
+"POT-Creation-Date: 2026-10-17 22:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -678,6 +678,7 @@ msgid "Not all programmes have results yet"
 msgstr ""
 
 #: internal/web/documents.go internal/web/programmes.go internal/web/reports.go
+#: internal/web/results.go
 msgid "Programme not found"
 msgstr ""
 
@@ -1239,6 +1240,10 @@ msgstr ""
 
 #: internal/web/reservations.go
 msgid "The reservation ends in the past"
+msgstr ""
+
+#: internal/web/results.go
+msgid "The shooter already has results in this programme"
 msgstr ""
 
 #: internal/web/results.go

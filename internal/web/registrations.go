@@ -88,6 +88,39 @@ func checkLane(rangeID *int64, lane *int, rules store.EventRules) (*int64, error
 	return rangeID, nil
 }
 
+// register checks and stores a new registration: the club must be one of the shooter's, the age category follows
+// the event date, the lane must exist and be free and the programmes must suit the shooter and the lane's range.
+func (s *Server) register(ctx context.Context, tenantID, eventID int64, in RegistrationInput) (int64, error) {
+	rules, err := s.Store.LoadEventRules(ctx, tenantID, eventID)
+	if err != nil {
+		return 0, notFound(err, "Event not found")
+	}
+	sh, err := s.Store.GetShooter(ctx, tenantID, in.ShooterID)
+	if err != nil {
+		return 0, notFound(err, "Shooter not found")
+	}
+	if in.ClubID != nil && !slices.ContainsFunc(sh.Clubs, func(c store.ClubRef) bool { return c.ID == *in.ClubID }) {
+		return 0, invalid("The shooter is not a member of this club")
+	}
+	category := domain.AgeCategoryFor(sh.Birthday, rules.StartsOn)
+	rangeID, err := checkLane(in.RangeID, in.Lane, rules)
+	if err != nil {
+		return 0, err
+	}
+	if errs := domain.CheckProgrammes(in.Programmes, rules.Programmes, category, nil, rangeID); len(errs) > 0 {
+		return 0, invalidList(errs)
+	}
+	id, err := s.Store.CreateRegistration(ctx, tenantID, store.NewRegistration{
+		EventID: eventID, ShooterID: sh.ID, ClubID: in.ClubID, AgeCategory: category,
+		RangeID: rangeID, Lane: in.Lane, Programmes: in.Programmes,
+	})
+	if err != nil {
+		return 0, registrationConflict(err, in.Lane)
+	}
+	s.notify(ctx, tenantID, eventID, realtime.TopicRegistrations, realtime.TopicLanes)
+	return id, nil
+}
+
 // registrationConflict maps store errors of registration writes to 409 or 404; lane must be set for ErrLaneTaken.
 func registrationConflict(err error, lane *int) error {
 	switch {
@@ -132,33 +165,10 @@ func (s *Server) registerRegistrations(api huma.API) {
 		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
 			return nil, err
 		}
-		rules, err := s.Store.LoadEventRules(ctx, in.TenantID, in.EventID)
-		if err != nil {
-			return nil, notFound(err, "Event not found")
-		}
-		sh, err := s.Store.GetShooter(ctx, in.TenantID, in.Body.ShooterID)
-		if err != nil {
-			return nil, notFound(err, "Shooter not found")
-		}
-		if in.Body.ClubID != nil && !slices.ContainsFunc(sh.Clubs, func(c store.ClubRef) bool { return c.ID == *in.Body.ClubID }) {
-			return nil, invalid("The shooter is not a member of this club")
-		}
-		category := domain.AgeCategoryFor(sh.Birthday, rules.StartsOn)
-		rangeID, err := checkLane(in.Body.RangeID, in.Body.Lane, rules)
+		id, err := s.register(ctx, in.TenantID, in.EventID, in.Body)
 		if err != nil {
 			return nil, err
 		}
-		if errs := domain.CheckProgrammes(in.Body.Programmes, rules.Programmes, category, nil, rangeID); len(errs) > 0 {
-			return nil, invalidList(errs)
-		}
-		id, err := s.Store.CreateRegistration(ctx, in.TenantID, store.NewRegistration{
-			EventID: in.EventID, ShooterID: sh.ID, ClubID: in.Body.ClubID, AgeCategory: category,
-			RangeID: rangeID, Lane: in.Body.Lane, Programmes: in.Body.Programmes,
-		})
-		if err != nil {
-			return nil, registrationConflict(err, in.Body.Lane)
-		}
-		s.notify(ctx, in.TenantID, in.EventID, realtime.TopicRegistrations, realtime.TopicLanes)
 		r, err := s.Store.GetRegistration(ctx, in.TenantID, id)
 		return &regOut{Body: r}, err
 	})

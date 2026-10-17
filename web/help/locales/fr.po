@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-17 20:54+0000\n"
+"POT-Creation-Date: 2026-10-17 21:06+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -3048,7 +3048,12 @@ msgid ""
 "**Single shots** are recorded, per series. With single shots, every shot can "
 "be entered and the series is their sum, e.g. to print them onto a form; the "
 "series total alone can still be entered."
-msgstr "**Passes** : coups, points maximum, si les mouches sont comptées et si les **Coups individuels** sont saisis, par passe. Avec les coups individuels, chaque coup peut être saisi et la passe en est la somme, p. ex. pour les imprimer sur un formulaire ; le total de la passe seul peut toujours être saisi."
+msgstr ""
+"**Passes** : coups, points maximum, si les mouches sont comptées et si les "
+"**Coups individuels** sont saisis, par passe. Avec les coups individuels, "
+"chaque coup peut être saisi et la passe en est la somme, p. ex. pour les "
+"imprimer sur un formulaire ; le total de la passe seul peut toujours être "
+"saisi."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/programmes.md:24
@@ -3962,7 +3967,10 @@ msgid ""
 "Series with single shots show a field per shot under the series; the series "
 "becomes their sum. Enter every shot or none: without shots, the series total "
 "is typed as usual."
-msgstr "Les passes avec coups individuels affichent un champ par coup sous la passe ; la passe en devient la somme. Saisis chaque coup ou aucun : sans coups, le total de la passe se tape comme d’habitude."
+msgstr ""
+"Les passes avec coups individuels affichent un champ par coup sous la "
+"passe ; la passe en devient la somme. Saisis chaque coup ou aucun : sans "
+"coups, le total de la passe se tape comme d’habitude."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/results.md:14
@@ -4057,6 +4065,84 @@ msgstr ""
 "reports.md)) liste ce qui reste ouvert et les espèces à verser. La saisie "
 "des résultats avec un [lien d’aide](helpers.md) peut aussi marquer les "
 "distinctions comme remises."
+
+#. type: Title #
+#: ../src/help/en/user-guide/results-entry.md:1
+#, no-wrap
+msgid "Enter results"
+msgstr "Saisir les résultats"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/results-entry.md:4
+msgid ""
+"Results can be entered in three ways; they can be mixed within one event:"
+msgstr "Les résultats peuvent être saisis de trois façons, mélangeables au sein d’une manifestation :"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/results-entry.md:8
+msgid ""
+"**At the lane** on a tablet or phone, through a scorer link (see [Helpers]"
+"(helpers.md)): the scorer enters the series, or every shot, of the shooters "
+"on their lanes."
+msgstr "**À la cible** sur une tablette ou un téléphone, par un lien de secrétaire (voir [Aides](helpers.md)) : le secrétaire saisit les passes, ou chaque coup, des tireurs de ses cibles."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/results-entry.md:8
+msgid ""
+"**At the desk** through the registration and its results (see [Results]"
+"(results.md)), the way of a shooting festival."
+msgstr "**Au desk** par l’inscription et ses résultats (voir [Résultats](results.md)), comme lors d’une fête de tir."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/results-entry.md:8
+msgid ""
+"**Afterwards** on **Enter results** in the event's sidebar, shooter by "
+"shooter, e.g. from paper sheets or the display of the scoring system. This "
+"page describes it."
+msgstr "**Après coup** sous **Saisir les résultats** dans la barre latérale de la manifestation, tireur par tireur, p. ex. depuis des feuilles papier ou l’affichage de l’installation de marquage. Cette page le décrit."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/results-entry.md:9
+#, no-wrap
+msgid "Shooter by shooter {#quick}"
+msgstr "Tireur par tireur {#quick}"
+
+#. type: Bullet: '1. '
+#: ../src/help/en/user-guide/results-entry.md:14
+msgid "Choose the **Programme**; it stays chosen for the next shooters."
+msgstr "Choisis le **Programme** ; il reste choisi pour les tireurs suivants."
+
+#. type: Bullet: '2. '
+#: ../src/help/en/user-guide/results-entry.md:14
+msgid ""
+"Type a licence number or a name into **Shooter** and press ++enter++: the "
+"first hit is taken. A barcode scanner works too. **New shooter** adds "
+"someone who is not in the master data yet."
+msgstr "Tape un numéro de licence ou un nom dans **Tireur** et appuie sur ++enter++ : le premier résultat est repris. Un lecteur de codes-barres fonctionne aussi. **Nouveau tireur** ajoute quelqu’un qui n’est pas encore dans les données de base."
+
+#. type: Bullet: '3. '
+#: ../src/help/en/user-guide/results-entry.md:14
+msgid ""
+"Type the series, or the single shots for series that record them (see "
+"[Programmes](programmes.md)), and press ++enter++."
+msgstr "Tape les passes, ou les coups individuels pour les passes qui les saisissent (voir [Programmes](programmes.md)), et appuie sur ++enter++."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/results-entry.md:16
+msgid ""
+"The result is saved at once and the shooter is listed under *Entered now* "
+"with a link to the results. If the shooter was registered at the desk for "
+"this programme and has no results yet, the results go into that "
+"registration; otherwise a registration without a lane is created, already "
+"completed. A shooter can have results in a programme only once."
+msgstr "Le résultat est enregistré tout de suite et le tireur apparaît sous *Saisis à l’instant* avec un lien vers les résultats. Si le tireur était inscrit au desk pour ce programme et n’a pas encore de résultats, ceux-ci vont dans cette inscription ; sinon une inscription sans cible est créée, déjà terminée. Un tireur ne peut avoir des résultats qu’une fois par programme."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/results-entry.md:17
+msgid ""
+"Awards are chosen as usual: the most valuable award reached is set "
+"automatically and can be changed in the results."
+msgstr "Les distinctions se choisissent comme d’habitude : la distinction atteinte la plus précieuse est fixée automatiquement et peut être changée dans les résultats."
 
 #. type: Title #
 #: ../src/help/en/user-guide/shooters-clubs.md:1

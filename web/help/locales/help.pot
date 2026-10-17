@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-17 20:54+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-17 21:06+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
 #: ../src/help/en/getting-started/concepts.md:1
@@ -2619,6 +2619,72 @@ msgstr ""
 #: ../src/help/en/user-guide/results.md:25
 #, markdown-text
 msgid "When the shooter collects the wreath cards, prizes and cash at the desk, press **Awards handed out** in the results dialog, which lists the awards of every programme; the *awards to hand out* badge in the *Completed* list of the dashboard opens that dialog. The registration then carries the time of the handout and a green *awards handed out* badge; until then it shows *awards to hand out*. A wrong click is taken back with **Take back** in the results dialog or by clicking the green badge on the dashboard (club members only, not helper links); the same works for the *ammo* badge. The report **Awards to hand out** (see [Statistics and reports](statistics-reports.md)) lists what is still open and the cash to pay out. A results clerk with a [helper link](helpers.md) may mark awards as handed out too."
+msgstr ""
+
+#. type: Title #
+#: ../src/help/en/user-guide/results-entry.md:1
+#, markdown-text, no-wrap
+msgid "Enter results"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/results-entry.md:4
+#, markdown-text
+msgid "Results can be entered in three ways; they can be mixed within one event:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/results-entry.md:8
+#, markdown-text
+msgid "**At the lane** on a tablet or phone, through a scorer link (see [Helpers](helpers.md)): the scorer enters the series, or every shot, of the shooters on their lanes."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/results-entry.md:8
+#, markdown-text
+msgid "**At the desk** through the registration and its results (see [Results](results.md)), the way of a shooting festival."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/results-entry.md:8
+#, markdown-text
+msgid "**Afterwards** on **Enter results** in the event's sidebar, shooter by shooter, e.g. from paper sheets or the display of the scoring system. This page describes it."
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/results-entry.md:9
+#, markdown-text, no-wrap
+msgid "Shooter by shooter {#quick}"
+msgstr ""
+
+#. type: Bullet: '1. '
+#: ../src/help/en/user-guide/results-entry.md:14
+#, markdown-text
+msgid "Choose the **Programme**; it stays chosen for the next shooters."
+msgstr ""
+
+#. type: Bullet: '2. '
+#: ../src/help/en/user-guide/results-entry.md:14
+#, markdown-text
+msgid "Type a licence number or a name into **Shooter** and press ++enter++: the first hit is taken. A barcode scanner works too. **New shooter** adds someone who is not in the master data yet."
+msgstr ""
+
+#. type: Bullet: '3. '
+#: ../src/help/en/user-guide/results-entry.md:14
+#, markdown-text
+msgid "Type the series, or the single shots for series that record them (see [Programmes](programmes.md)), and press ++enter++."
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/results-entry.md:16
+#, markdown-text
+msgid "The result is saved at once and the shooter is listed under *Entered now* with a link to the results. If the shooter was registered at the desk for this programme and has no results yet, the results go into that registration; otherwise a registration without a lane is created, already completed. A shooter can have results in a programme only once."
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/results-entry.md:17
+#, markdown-text
+msgid "Awards are chosen as usual: the most valuable award reached is set automatically and can be changed in the results."
 msgstr ""
 
 #. type: Title #

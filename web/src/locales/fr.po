@@ -386,6 +386,11 @@ msgstr "{name} est supprimé. Les tireurs avec des inscriptions ne peuvent pas �
 msgid "{name} leaves {where}."
 msgstr "{name} quitte {where}."
 
+#. placeholder {0}: entry?.total ?? 0
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
+msgid "{name}: {0} points saved"
+msgstr "{name} : {0} points enregistrés"
+
 #: src/routes/my/progress/+page.svelte
 msgid "{standard} shots"
 msgstr "{standard} coups"
@@ -957,6 +962,7 @@ msgstr "Clôturée le {0} : les classements sont publiés, tout reste visible, m
 #: src/lib/RankingTable.svelte
 #: src/lib/RegistrationForm.svelte
 #: src/routes/my/+layout.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "Club"
@@ -1202,6 +1208,10 @@ msgstr "Créer un compte"
 #: src/lib/SetupChecklist.svelte
 msgid "Create an event"
 msgstr "Créer une manifestation"
+
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
+msgid "Create and enter results"
+msgstr "Créer et saisir les résultats"
 
 #: src/lib/EventDesk.svelte
 msgid "Create and register"
@@ -1562,9 +1572,19 @@ msgstr "Saisis au moins une passe."
 msgid "Enter how many lanes you need in each slot. The organizer assigns the lane numbers when confirming."
 msgstr "Indique combien de cibles il te faut par créneau. L’organisateur attribue les numéros de cible lors de la confirmation."
 
+#: src/lib/AppSidebar.svelte
+#: src/routes/t/[tenantId]/+layout.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
+msgid "Enter results"
+msgstr "Saisir les résultats"
+
 #: src/routes/forgot-password/+page.svelte
 msgid "Enter your email address and we send you a link to choose a new one. Club accounts without email: ask your club admin."
 msgstr "Saisis ton adresse e-mail et nous t’envoyons un lien pour en choisir un nouveau. Comptes de club sans e-mail : demande à l’admin de ton club."
+
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
+msgid "Entered now"
+msgstr "Saisis à l’instant"
 
 #. Number of programmes shot
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
@@ -2147,6 +2167,7 @@ msgstr "Licence {0} · né(e) {1}"
 msgid "License number"
 msgstr "Numéro de licence"
 
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "License number or name"
 msgstr "Numéro de licence ou nom"
@@ -2453,6 +2474,7 @@ msgstr "Nouvelle réservation"
 
 #: src/lib/EventDesk.svelte
 #: src/lib/NewShooterDialog.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "New shooter"
 msgstr "Nouveau tireur"
@@ -2572,6 +2594,7 @@ msgid "No sessions yet."
 msgstr "Pas encore de séances."
 
 #: src/lib/EventDesk.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 msgid "No shooter found."
 msgstr "Aucun tireur trouvé."
 
@@ -2742,6 +2765,10 @@ msgstr "Organisateur"
 #: src/lib/ClubSelect.svelte
 msgid "Other clubs"
 msgstr "Autres sociétés"
+
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
+msgid "Other shooter"
+msgstr "Autre tireur"
 
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "out of competition"
@@ -2971,6 +2998,7 @@ msgid "Profile saved"
 msgstr "Profil enregistré"
 
 #: src/lib/ProgrammeList.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Programme"
 msgstr "Programme"
@@ -3339,6 +3367,10 @@ msgstr "Résultats"
 msgid "Results clerk"
 msgstr "Saisie des résultats"
 
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
+msgid "Results from paper or the scoring system, shooter by shooter, without the desk."
+msgstr "Résultats sur papier ou de l’installation de marquage, tireur par tireur, sans le desk."
+
 #. placeholder {0}: r.shooter.lastname
 #. placeholder {1}: r.shooter.firstname
 #: src/lib/ResultsDialog.svelte
@@ -3639,6 +3671,7 @@ msgid "Shoot something else, like a field programme? Add your own discipline wit
 msgstr "Tu tires autre chose, par exemple un programme de tir de campagne ? Ajoute ta propre discipline avec son format et son comptage."
 
 #: src/lib/EventDesk.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 msgid "Shooter"
 msgstr "Tireur"
 
@@ -3658,6 +3691,10 @@ msgstr "Tireurs"
 #: src/lib/ProgrammeEditor.svelte
 msgid "Shooters are registered for this programme: the series stay as they are, and age categories and awards can be added but not removed."
 msgstr "Des tireurs sont inscrits à ce programme : les passes restent telles quelles, les catégories d'âge et les distinctions peuvent être ajoutées mais pas retirées."
+
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
+msgid "Shooters found"
+msgstr "Tireurs trouvés"
 
 #: src/lib/BookingRequests.svelte
 msgid "Shooters taken over"
@@ -4038,6 +4075,10 @@ msgstr "Elles sont supprimées de cet appareil et ne peuvent plus être envoyée
 msgid "This booking link is not valid. Ask the organizer for a new one."
 msgstr "Ce lien de réservation n’est pas valable. Demande-en un nouveau à l’organisateur."
 
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
+msgid "This event has no active programmes yet."
+msgstr "Cette manifestation n’a pas encore de programmes actifs."
+
 #: src/lib/RegistrationForm.svelte
 msgid "This event has no active programmes."
 msgstr "Cette manifestation n’a aucun programme actif."
@@ -4045,6 +4086,10 @@ msgstr "Cette manifestation n’a aucun programme actif."
 #: src/routes/t/[tenantId]/events/[eventId]/rankings/+page.svelte
 msgid "This event has no programmes yet."
 msgstr "Cette manifestation n’a pas encore de programmes."
+
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
+msgid "This event is closed."
+msgstr "Cette manifestation est clôturée."
 
 #: src/lib/help/HelpArticle.svelte
 msgid "This help page does not exist."

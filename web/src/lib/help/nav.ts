@@ -12,6 +12,7 @@ export const nav: { label: MessageDescriptor; pages: string[] }[] = [
 			'user-guide/dashboard',
 			'user-guide/registrations',
 			'user-guide/results',
+			'user-guide/results-entry',
 			'user-guide/rankings-kiosk',
 			'user-guide/reservations',
 			'user-guide/statistics-reports',

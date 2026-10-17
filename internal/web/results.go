@@ -2,6 +2,7 @@ package web
 
 import (
 	"context"
+	"errors"
 	"net/http"
 
 	"github.com/danielgtaylor/huma/v2"
@@ -105,6 +106,76 @@ func (s *Server) resultSheet(ctx context.Context, tenantID, registrationID int64
 	return sheet, nil
 }
 
+// ResultLine is the result of a shooter in a programme, entered without the desk.
+type ResultLine struct {
+	ShooterID   int64                 `json:"shooterId"`
+	ClubID      *int64                `json:"clubId,omitempty" required:"false" doc:"One of the shooter's clubs, used when a registration is created"`
+	ProgrammeID int64                 `json:"programmeId"`
+	Series      []domain.SeriesResult `json:"series"`
+}
+
+// enterResult saves a result line into the shooter's entry for the programme when it has no results yet, or into a
+// new registration without a lane; 409 when the entry already has results.
+func (s *Server) enterResult(ctx context.Context, tenantID, eventID int64, line ResultLine) (ResultSheet, error) {
+	e, done, err := s.Store.FindEntry(ctx, tenantID, eventID, line.ShooterID, line.ProgrammeID)
+	switch {
+	case err == nil && done:
+		return ResultSheet{}, conflict("The shooter already has results in this programme")
+	case errors.Is(err, store.ErrNotFound):
+		p, err := s.Store.GetProgramme(ctx, tenantID, line.ProgrammeID)
+		if err != nil || p.EventID != eventID {
+			return ResultSheet{}, notFound(store.ErrNotFound, "Programme not found")
+		}
+		domain.NormalizeResults(line.Series)
+		if errs := domain.ValidateResults(p.Series, line.Series); len(errs) > 0 {
+			return ResultSheet{}, invalidList(errs)
+		}
+		if _, err := s.register(ctx, tenantID, eventID, RegistrationInput{ShooterID: line.ShooterID, ClubID: line.ClubID,
+			Programmes: []domain.ProgrammeChoice{{ProgrammeID: line.ProgrammeID}}}); err != nil {
+			return ResultSheet{}, err
+		}
+		if e, _, err = s.Store.FindEntry(ctx, tenantID, eventID, line.ShooterID, line.ProgrammeID); err != nil {
+			return ResultSheet{}, err
+		}
+	case err != nil:
+		return ResultSheet{}, err
+	}
+	return s.saveResults(ctx, tenantID, e, line.Series)
+}
+
+// saveResults replaces the results of an entry, keeps or picks the default award and tells the event's clients;
+// it returns the result sheet of the registration.
+func (s *Server) saveResults(ctx context.Context, tenantID int64, e store.EntryRef, series []domain.SeriesResult) (ResultSheet, error) {
+	if len(e.CombinedSeries) > 0 {
+		return ResultSheet{}, conflict("This programme takes its results from another programme")
+	}
+	p, err := s.Store.GetProgramme(ctx, tenantID, e.ProgrammeID)
+	if err != nil {
+		return ResultSheet{}, err
+	}
+	domain.NormalizeResults(series)
+	if errs := domain.ValidateResults(p.Series, series); len(errs) > 0 {
+		return ResultSheet{}, invalidList(errs)
+	}
+	before, err := s.resultSheet(ctx, tenantID, e.RegistrationID)
+	if err != nil {
+		return ResultSheet{}, err
+	}
+	completed, err := s.Store.SaveResults(ctx, tenantID, e, series)
+	if err != nil {
+		return ResultSheet{}, err
+	}
+	if err := s.defaultAwards(ctx, tenantID, e, before); err != nil {
+		return ResultSheet{}, err
+	}
+	topics := []string{realtime.TopicResults, realtime.TopicRegistrations}
+	if completed {
+		topics = append(topics, realtime.TopicLanes)
+	}
+	s.notify(ctx, tenantID, e.EventID, topics...)
+	return s.resultSheet(ctx, tenantID, e.RegistrationID)
+}
+
 // defaultAwards gives the saved entry and the entries that take series from it an award again: the one
 // they had before if it is still reached, otherwise the most valuable one.
 func (s *Server) defaultAwards(ctx context.Context, tenantID int64, e store.EntryRef, before ResultSheet) error {
@@ -166,34 +237,23 @@ func (s *Server) registerResults(api huma.API) {
 		if err != nil {
 			return nil, notFound(err, "Programme of the registration not found")
 		}
-		if len(e.CombinedSeries) > 0 {
-			return nil, conflict("This programme takes its results from another programme")
-		}
-		p, err := s.Store.GetProgramme(ctx, in.TenantID, e.ProgrammeID)
-		if err != nil {
+		sheet, err := s.saveResults(ctx, in.TenantID, e, in.Body.Series)
+		return &sheetOut{Body: sheet}, err
+	})
+
+	type enterIn struct {
+		EventPath
+		Body ResultLine
+	}
+	huma.Register(api, huma.Operation{
+		OperationID: "enter-result", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/results", Tags: []string{"results"},
+		Summary:     "Enter the results of a shooter in a programme without the desk",
+		Description: "Fills the shooter's entry for the programme when it has no results yet, otherwise registers the shooter without a lane for that programme. 409 when the entry already has results.",
+	}, func(ctx context.Context, in *enterIn) (*sheetOut, error) {
+		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
 			return nil, err
 		}
-		domain.NormalizeResults(in.Body.Series)
-		if errs := domain.ValidateResults(p.Series, in.Body.Series); len(errs) > 0 {
-			return nil, invalidList(errs)
-		}
-		before, err := s.resultSheet(ctx, in.TenantID, e.RegistrationID)
-		if err != nil {
-			return nil, err
-		}
-		completed, err := s.Store.SaveResults(ctx, in.TenantID, e, in.Body.Series)
-		if err != nil {
-			return nil, err
-		}
-		if err := s.defaultAwards(ctx, in.TenantID, e, before); err != nil {
-			return nil, err
-		}
-		topics := []string{realtime.TopicResults, realtime.TopicRegistrations}
-		if completed {
-			topics = append(topics, realtime.TopicLanes)
-		}
-		s.notify(ctx, in.TenantID, e.EventID, topics...)
-		sheet, err := s.resultSheet(ctx, in.TenantID, e.RegistrationID)
+		sheet, err := s.enterResult(ctx, in.TenantID, in.EventID, in.Body)
 		return &sheetOut{Body: sheet}, err
 	})
 
