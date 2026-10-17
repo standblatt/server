@@ -37,7 +37,7 @@ prepare: web/node_modules internal/webui/dist/index.html
 	cd web && npm run i18n
 	xgettext -L Go --keyword=T:2 --keyword=Tf:2 --keyword=Problemf --keyword=notFound:2 $(ERR_KEYWORDS) --from-code=UTF-8 --add-location=file --no-wrap --sort-by-file \
 		--package-name=standblatt -o internal/i18n/locales/messages.pot.go $$(find internal cmd -name '*.go' ! -name '*_test.go' | sort)
-	sed -i 's/charset=CHARSET/charset=UTF-8/' internal/i18n/locales/messages.pot.go
+	sed -i.bak 's/charset=CHARSET/charset=UTF-8/' internal/i18n/locales/messages.pot.go && rm internal/i18n/locales/messages.pot.go.bak
 	python3 scripts/tmplpot.py internal/i18n/locales/messages.pot.tmpl $$(find internal/web/templates -name '*.html' | sort)
 	msgcat --no-wrap --sort-by-file --use-first -o internal/i18n/locales/messages.pot.new internal/i18n/locales/messages.pot.go internal/i18n/locales/messages.pot.tmpl
 	rm internal/i18n/locales/messages.pot.go internal/i18n/locales/messages.pot.tmpl
