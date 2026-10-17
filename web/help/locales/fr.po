@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-17 21:06+0000\n"
+"POT-Creation-Date: 2026-10-17 21:14+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -1705,14 +1705,14 @@ msgstr ""
 "| `club` | non | la société du tireur, comparée sans tenir compte des majuscules ni des espaces |\n"
 
 #. type: Bullet: '- '
-#: ../src/help/en/reference/csv-import.md:22
+#: ../src/help/en/reference/csv-import.md:23
 msgid "One line per shooter and club; a shooter in two clubs appears twice."
 msgstr ""
 "Une ligne par tireur et société ; un tireur dans deux sociétés apparaît deux "
 "fois."
 
 #. type: Bullet: '- '
-#: ../src/help/en/reference/csv-import.md:22
+#: ../src/help/en/reference/csv-import.md:23
 msgid ""
 "Shooters are matched by license number, or by name and birthday when there "
 "is none. Existing shooters are updated, nothing is deleted."
@@ -1722,7 +1722,7 @@ msgstr ""
 "n’est supprimé."
 
 #. type: Bullet: '- '
-#: ../src/help/en/reference/csv-import.md:22
+#: ../src/help/en/reference/csv-import.md:23
 msgid ""
 "A file with invalid lines is rejected as a whole, with the list of lines to "
 "fix."
@@ -1731,7 +1731,7 @@ msgstr ""
 "lignes à corriger."
 
 #. type: Bullet: '- '
-#: ../src/help/en/reference/csv-import.md:22
+#: ../src/help/en/reference/csv-import.md:23
 msgid ""
 "Clubs that are not in the club list stop the import before anything is "
 "stored: for each one, choose an existing club (similar names are suggested) "
@@ -1741,6 +1741,69 @@ msgstr ""
 "soit ne soit enregistré : choisis pour chacune une société existante (les "
 "noms semblables sont proposés) ou une nouvelle, puis clique à nouveau sur "
 "**Importer**."
+
+#. type: Title ##
+#: ../src/help/en/reference/csv-import.md:24
+#, no-wrap
+msgid "Results {#results}"
+msgstr "Résultats {#results}"
+
+#. type: Plain text
+#: ../src/help/en/reference/csv-import.md:27
+#, no-wrap
+msgid "**Import CSV** on an event's **Enter results** page reads results (see [Enter results](../user-guide/results-entry.md#import)):\n"
+msgstr ""
+"**Importer un CSV** sur la page **Saisir les résultats** d’une manifestation lit des résultats (voir [Saisir les résultats](../user-guide/results-entry.md#import)) :\n"
+
+#. type: Fenced code block (text)
+#: ../src/help/en/reference/csv-import.md:28
+#, no-wrap
+msgid ""
+"license;firstname;lastname;birthday;club;programme;s1;s2;m2;s1_1;s1_2;s1_3\n"
+"013756;;;;;Championship;96;93;2;;;\n"
+";Max;Muster;1990-02-02;SG Hilltown;Obligatory;;45;;9;10;8\n"
+msgstr ""
+"license;firstname;lastname;birthday;club;programme;s1;s2;m2;s1_1;s1_2;s1_3\n"
+"013756;;;;;Championship;96;93;2;;;\n"
+";Max;Muster;1990-02-02;SG Hilltown;Obligatory;;45;;9;10;8\n"
+
+#. type: Plain text
+#: ../src/help/en/reference/csv-import.md:43
+#, no-wrap
+msgid ""
+"| Column | Required | Notes |\n"
+"|---|---|---|\n"
+"| `license` or `firstname` + `lastname` | yes | the shooter: found by licence, else by name (and `birthday`, if several have the name); created when not found |\n"
+"| `birthday` | no | `YYYY-MM-DD` or `DD.MM.YYYY` |\n"
+"| `club` | no | must be in the club list (regardless of upper case and spaces); the shooter joins it |\n"
+"| `programme` | yes | barcode, name with variant like `Championship (Sport)`, or the name alone |\n"
+"| `s1`, `s2`, … | yes | points per series, decimals with `.` or `,` |\n"
+"| `m1`, `m2`, … | no | mouches per series |\n"
+"| `s1_1`, `s1_2`, … | no | single shots of series 1, for series that record them; the series is their sum |\n"
+msgstr ""
+"| Colonne | Obligatoire | Remarques |\n"
+"|---|---|---|\n"
+"| `license` ou `firstname` + `lastname` | oui | le tireur : trouvé par sa licence, sinon par son nom (et `birthday` si plusieurs portent ce nom) ; créé s’il n’est pas trouvé |\n"
+"| `birthday` | non | `YYYY-MM-DD` ou `DD.MM.YYYY` |\n"
+"| `club` | non | doit figurer dans la liste des sociétés (sans tenir compte des majuscules ni des espaces) ; le tireur la rejoint |\n"
+"| `programme` | oui | code-barres, nom avec variante comme `Championship (Sport)` ou le nom seul |\n"
+"| `s1`, `s2`, … | oui | points par passe, décimales avec `.` ou `,` |\n"
+"| `m1`, `m2`, … | non | mouches par passe |\n"
+"| `s1_1`, `s1_2`, … | non | coups individuels de la passe 1, pour les passes qui les saisissent ; la passe en est la somme |\n"
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/csv-import.md:45
+msgid ""
+"A shooter can have results in a programme only once; a line for results that "
+"exist already is an error."
+msgstr "Un tireur ne peut avoir des résultats qu’une fois par programme ; une ligne pour des résultats déjà présents est une erreur."
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/csv-import.md:45
+msgid ""
+"If the shooter is registered for the programme without results, the results "
+"go into that registration."
+msgstr "Si le tireur est inscrit au programme sans résultats, les résultats vont dans cette inscription."
 
 #. type: Title #
 #: ../src/help/en/reference/programme-file.md:1
@@ -4076,7 +4139,9 @@ msgstr "Saisir les résultats"
 #: ../src/help/en/user-guide/results-entry.md:4
 msgid ""
 "Results can be entered in three ways; they can be mixed within one event:"
-msgstr "Les résultats peuvent être saisis de trois façons, mélangeables au sein d’une manifestation :"
+msgstr ""
+"Les résultats peuvent être saisis de trois façons, mélangeables au sein "
+"d’une manifestation :"
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/results-entry.md:8
@@ -4084,22 +4149,27 @@ msgid ""
 "**At the lane** on a tablet or phone, through a scorer link (see [Helpers]"
 "(helpers.md)): the scorer enters the series, or every shot, of the shooters "
 "on their lanes."
-msgstr "**À la cible** sur une tablette ou un téléphone, par un lien de secrétaire (voir [Aides](helpers.md)) : le secrétaire saisit les passes, ou chaque coup, des tireurs de ses cibles."
+msgstr ""
+"**À la cible** sur une tablette ou un téléphone, par un lien de secrétaire "
+"(voir [Aides](helpers.md)) : le secrétaire saisit les passes, ou chaque "
+"coup, des tireurs de ses cibles."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/results-entry.md:8
 msgid ""
 "**At the desk** through the registration and its results (see [Results]"
 "(results.md)), the way of a shooting festival."
-msgstr "**Au desk** par l’inscription et ses résultats (voir [Résultats](results.md)), comme lors d’une fête de tir."
+msgstr ""
+"**Au desk** par l’inscription et ses résultats (voir [Résultats]"
+"(results.md)), comme lors d’une fête de tir."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/results-entry.md:8
 msgid ""
 "**Afterwards** on **Enter results** in the event's sidebar, shooter by "
-"shooter, e.g. from paper sheets or the display of the scoring system. This "
-"page describes it."
-msgstr "**Après coup** sous **Saisir les résultats** dans la barre latérale de la manifestation, tireur par tireur, p. ex. depuis des feuilles papier ou l’affichage de l’installation de marquage. Cette page le décrit."
+"shooter, e.g. from paper sheets or the display of the scoring system, or as "
+"a file exported from the scoring system. This page describes both."
+msgstr "**Après coup** sous **Saisir les résultats** dans la barre latérale de la manifestation, tireur par tireur, p. ex. depuis des feuilles papier ou l’affichage de l’installation de marquage, ou comme fichier exporté de l’installation. Cette page décrit les deux."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/results-entry.md:9
@@ -4118,14 +4188,20 @@ msgid ""
 "Type a licence number or a name into **Shooter** and press ++enter++: the "
 "first hit is taken. A barcode scanner works too. **New shooter** adds "
 "someone who is not in the master data yet."
-msgstr "Tape un numéro de licence ou un nom dans **Tireur** et appuie sur ++enter++ : le premier résultat est repris. Un lecteur de codes-barres fonctionne aussi. **Nouveau tireur** ajoute quelqu’un qui n’est pas encore dans les données de base."
+msgstr ""
+"Tape un numéro de licence ou un nom dans **Tireur** et appuie sur ++enter+"
+"+ : le premier résultat est repris. Un lecteur de codes-barres fonctionne "
+"aussi. **Nouveau tireur** ajoute quelqu’un qui n’est pas encore dans les "
+"données de base."
 
 #. type: Bullet: '3. '
 #: ../src/help/en/user-guide/results-entry.md:14
 msgid ""
 "Type the series, or the single shots for series that record them (see "
 "[Programmes](programmes.md)), and press ++enter++."
-msgstr "Tape les passes, ou les coups individuels pour les passes qui les saisissent (voir [Programmes](programmes.md)), et appuie sur ++enter++."
+msgstr ""
+"Tape les passes, ou les coups individuels pour les passes qui les saisissent "
+"(voir [Programmes](programmes.md)), et appuie sur ++enter++."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/results-entry.md:16
@@ -4135,14 +4211,30 @@ msgid ""
 "this programme and has no results yet, the results go into that "
 "registration; otherwise a registration without a lane is created, already "
 "completed. A shooter can have results in a programme only once."
-msgstr "Le résultat est enregistré tout de suite et le tireur apparaît sous *Saisis à l’instant* avec un lien vers les résultats. Si le tireur était inscrit au desk pour ce programme et n’a pas encore de résultats, ceux-ci vont dans cette inscription ; sinon une inscription sans cible est créée, déjà terminée. Un tireur ne peut avoir des résultats qu’une fois par programme."
+msgstr "Un tireur ne peut avoir des résultats qu’une fois par programme ; une ligne pour des résultats déjà présents est une erreur."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/results-entry.md:17
+#: ../src/help/en/user-guide/results-entry.md:18
 msgid ""
 "Awards are chosen as usual: the most valuable award reached is set "
 "automatically and can be changed in the results."
-msgstr "Les distinctions se choisissent comme d’habitude : la distinction atteinte la plus précieuse est fixée automatiquement et peut être changée dans les résultats."
+msgstr ""
+"Les distinctions se choisissent comme d’habitude : la distinction atteinte "
+"la plus précieuse est fixée automatiquement et peut être changée dans les "
+"résultats."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/results-entry.md:19
+#, no-wrap
+msgid "Import from a file {#import}"
+msgstr "Import depuis un fichier {#import}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/results-entry.md:21
+#, no-wrap
+msgid "**Import CSV** (admins) on **Enter results** reads a file with one line per shooter and programme, e.g. exported from the scoring system or typed in a spreadsheet; the columns are described under [CSV import](../reference/csv-import.md#results). Every line is checked first: with any error nothing is imported, and the dialog lists the lines to fix. Shooters who are not in the master data are created; a club must already be in the club list.\n"
+msgstr ""
+"**Importer un CSV** (admins) sous **Saisir les résultats** lit un fichier avec une ligne par tireur et programme, p. ex. exporté de l’installation de marquage ou saisi dans un tableur ; les colonnes sont décrites sous [Import CSV](../reference/csv-import.md#results). Chaque ligne est d’abord contrôlée : en cas d’erreur rien n’est importé et le dialogue liste les lignes à corriger. Les tireurs absents des données de base sont créés ; une société doit déjà figurer dans la liste.\n"
 
 #. type: Title #
 #: ../src/help/en/user-guide/shooters-clubs.md:1

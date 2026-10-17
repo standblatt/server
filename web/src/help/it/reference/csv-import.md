@@ -28,3 +28,28 @@ license;firstname;lastname;birthday;postalcode;city;club
 - Le società che non sono nell’elenco fermano l’importazione prima che venga
   salvato qualcosa: scegli per ognuna una società esistente (i nomi simili
   vengono proposti) o una nuova, poi clicca di nuovo su **Importa**.
+
+## Risultati {#results}
+
+**Importa CSV** nella pagina **Registra risultati** di una manifestazione legge i risultati (vedi [Registra risultati](../user-guide/results-entry.md#import)):
+
+```text
+license;firstname;lastname;birthday;club;programme;s1;s2;m2;s1_1;s1_2;s1_3
+013756;;;;;Championship;96;93;2;;;
+;Max;Muster;1990-02-02;SG Hilltown;Obligatory;;45;;9;10;8
+```
+
+| Colonna | Obbligatoria | Note |
+|---|---|---|
+| `license` oppure `firstname` + `lastname` | sì | il tiratore: trovato tramite la licenza, altrimenti tramite il nome (e `birthday`, se più persone hanno quel nome); creato se non trovato |
+| `birthday` | no | `YYYY-MM-DD` o `DD.MM.YYYY` |
+| `club` | no | deve essere nell’elenco delle società (senza tenere conto di maiuscole e spazi); il tiratore vi entra |
+| `programme` | sì | codice a barre, nome con variante come `Championship (Sport)` o il solo nome |
+| `s1`, `s2`, … | sì | punti per serie, decimali con `.` o `,` |
+| `m1`, `m2`, … | no | mouche per serie |
+| `s1_1`, `s1_2`, … | no | colpi singoli della serie 1, per le serie che li registrano; la serie ne è la somma |
+
+- Un tiratore può avere risultati in un programma una sola volta; una riga
+  per risultati già presenti è un errore.
+- Se il tiratore è iscritto al programma senza risultati, i risultati vanno
+  in quell’iscrizione.

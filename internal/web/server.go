@@ -108,6 +108,7 @@ func (s *Server) registerAPI(api huma.API) {
 	s.registerAuth(api)
 	s.registerTenants(api)
 	s.registerMasterData(api)
+	s.registerResultImport(api)
 	s.registerProgrammes(api)
 	s.registerRegistrations(api)
 	s.registerResults(api)

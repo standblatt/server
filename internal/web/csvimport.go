@@ -31,9 +31,9 @@ var importColumns = map[string]string{
 
 const maxImportErrors = 50
 
-// parseShooterCSV reads a shooter list with a header row. The delimiter (; or ,) is taken from the header.
-// Required columns: firstname and lastname; optional: license, birthday, postalcode, city, club.
-func parseShooterCSV(r io.Reader) ([]store.ImportRow, []ImportLineError, error) {
+// openCSV skips a byte order mark, takes the delimiter (; or ,) from the header row, reads that row and returns the
+// reader with the header names in lower case without spaces, dots and dashes.
+func openCSV(r io.Reader) (*csv.Reader, []string, error) {
 	br := bufio.NewReader(r)
 	head, err := br.Peek(4096)
 	if err != nil && !errors.Is(err, io.EOF) && !errors.Is(err, bufio.ErrBufferFull) {
@@ -51,16 +51,27 @@ func parseShooterCSV(r io.Reader) ([]store.ImportRow, []ImportLineError, error) 
 	}
 	cr.FieldsPerRecord = -1
 	cr.TrimLeadingSpace = true
-
 	header, err := cr.Read()
 	if err != nil {
 		return nil, nil, fmt.Errorf("Cannot read the header row: %w", err)
 	}
-	col := map[string]int{}
 	for i, h := range header {
 		key := strings.ToLower(strings.TrimSpace(strings.TrimPrefix(h, "\ufeff")))
-		key = strings.NewReplacer(" ", "", ".", "", "-", "", "_", "").Replace(key)
-		if f, ok := importColumns[key]; ok {
+		header[i] = strings.NewReplacer(" ", "", ".", "", "-", "").Replace(key)
+	}
+	return cr, header, nil
+}
+
+// parseShooterCSV reads a shooter list with a header row. The delimiter (; or ,) is taken from the header.
+// Required columns: firstname and lastname; optional: license, birthday, postalcode, city, club.
+func parseShooterCSV(r io.Reader) ([]store.ImportRow, []ImportLineError, error) {
+	cr, header, err := openCSV(r)
+	if err != nil {
+		return nil, nil, err
+	}
+	col := map[string]int{}
+	for i, h := range header {
+		if f, ok := importColumns[strings.ReplaceAll(h, "_", "")]; ok {
 			col[f] = i
 		}
 	}

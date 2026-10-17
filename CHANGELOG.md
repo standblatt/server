@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Lane sheet and control strip can be switched off per event (by @HB9HIL)
 - Series can record single shots: the series is their sum, and the total alone can still be entered (by @HB9HIL)
 - **Enter results**: results from paper or the scoring system shooter by shooter, without the desk; registrations are created as needed (by @HB9HIL)
+- Results can be imported from a CSV file, e.g. exported from the scoring system; unknown shooters are created (by @HB9HIL)
 
 ### Fixed
 - The event line in the sidebar no longer ends in a dangling separator (by @HB9HIL)

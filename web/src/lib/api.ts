@@ -20,6 +20,7 @@ export type Shooter = Schemas['Shooter'];
 export type ClubRef = Schemas['ClubRef'];
 export type ShooterInput = Schemas['ShooterInput'];
 export type ImportReport = Schemas['ImportReport'];
+export type ResultImportReport = Schemas['ResultImportReport'];
 export type Programme = Schemas['Programme'];
 export type ProgrammeDefinition = Schemas['ProgrammeDefinition'];
 export type ProgrammeTemplate = Schemas['ProgrammeTemplate'];

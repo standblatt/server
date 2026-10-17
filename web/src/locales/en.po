@@ -1805,6 +1805,10 @@ msgstr "Group size"
 msgid "Group size is twice the average distance of your hits from their centre."
 msgstr "Group size is twice the average distance of your hits from their centre."
 
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
+msgid "Header row with <0>license</0> or <1>firstname</1> and <2>lastname</2> (optionally <3>birthday</3>), optionally <4>club</4>, then <5>programme</5> (barcode or name) and the series <6>s1</6>, <7>s2</7>, …; optionally mouches <8>m1</8>, … and single shots <9>s1_1</9>, <10>s1_2</10>, …. One line per shooter and programme. If any line has an error, nothing is imported."
+msgstr "Header row with <0>license</0> or <1>firstname</1> and <2>lastname</2> (optionally <3>birthday</3>), optionally <4>club</4>, then <5>programme</5> (barcode or name) and the series <6>s1</6>, <7>s2</7>, …; optionally mouches <8>m1</8>, … and single shots <9>s1_1</9>, <10>s1_2</10>, …. One line per shooter and programme. If any line has an error, nothing is imported."
+
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "Header row with the columns <0>firstname</0> and <1>lastname</1>, optionally <2>license</2>, <3>birthday</3>, <4>postalcode</4>, <5>city</5> and <6>club</6>; separated by <7>;</7> or <8>,</8>. One line per shooter and club. Shooters are matched by license number (or name and birthday without one); nothing is deleted."
 msgstr "Header row with the columns <0>firstname</0> and <1>lastname</1>, optionally <2>license</2>, <3>birthday</3>, <4>postalcode</4>, <5>city</5> and <6>club</6>; separated by <7>;</7> or <8>,</8>. One line per shooter and club. Shooters are matched by license number (or name and birthday without one); nothing is deleted."
@@ -1861,6 +1865,7 @@ msgstr "How does this work?"
 msgid "If an account uses {email}, we sent a link to choose a new password. Check your inbox."
 msgstr "If an account uses {email}, we sent a link to choose a new password. Check your inbox."
 
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "Import"
 msgstr "Import"
@@ -1869,6 +1874,7 @@ msgstr "Import"
 msgid "Import a programme file"
 msgstr "Import a programme file"
 
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "Import CSV"
 msgstr "Import CSV"
@@ -1876,6 +1882,10 @@ msgstr "Import CSV"
 #: src/lib/ProgrammeList.svelte
 msgid "Import programme file"
 msgstr "Import programme file"
+
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
+msgid "Import results from CSV"
+msgstr "Import results from CSV"
 
 #: src/lib/SetupChecklist.svelte
 msgid "Import shooters (optional)"
@@ -1901,6 +1911,12 @@ msgstr "Imported {0}."
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "Imported: {0} new, {1} updated, {2} new clubs, {3} club assignments."
 msgstr "Imported: {0} new, {1} updated, {2} new clubs, {3} club assignments."
+
+#. placeholder {0}: report.imported
+#. placeholder {1}: report.createdShooters
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
+msgid "Imported: {0} results, {1} new shooters."
+msgstr "Imported: {0} results, {1} new shooters."
 
 #: src/lib/my/ApiTokens.svelte
 msgid "in 30 days"
@@ -2182,6 +2198,7 @@ msgstr "Light theme"
 
 #. placeholder {0}: e.line
 #. placeholder {1}: e.message
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "Line {0}: {1}"
 msgstr "Line {0}: {1}"
@@ -2679,6 +2696,7 @@ msgstr "Nothing found."
 msgid "Nothing imported yet: these clubs are not in the club list. Choose an existing club or a new one for each, then import again."
 msgstr "Nothing imported yet: these clubs are not in the club list. Choose an existing club or a new one for each, then import again."
 
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "Nothing imported, please fix these lines:"
 msgstr "Nothing imported, please fix these lines:"

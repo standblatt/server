@@ -1805,6 +1805,10 @@ msgstr "Dimensione del gruppo"
 msgid "Group size is twice the average distance of your hits from their centre."
 msgstr "La dimensione del gruppo è il doppio della distanza media dei tuoi colpi a segno dal loro centro."
 
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
+msgid "Header row with <0>license</0> or <1>firstname</1> and <2>lastname</2> (optionally <3>birthday</3>), optionally <4>club</4>, then <5>programme</5> (barcode or name) and the series <6>s1</6>, <7>s2</7>, …; optionally mouches <8>m1</8>, … and single shots <9>s1_1</9>, <10>s1_2</10>, …. One line per shooter and programme. If any line has an error, nothing is imported."
+msgstr "Riga d’intestazione con <0>license</0> oppure <1>firstname</1> e <2>lastname</2> (facoltativo <3>birthday</3>), facoltativo <4>club</4>, poi <5>programme</5> (codice a barre o nome) e le serie <6>s1</6>, <7>s2</7>, …; facoltative le mouche <8>m1</8>, … e i colpi singoli <9>s1_1</9>, <10>s1_2</10>, …. Una riga per tiratore e programma. Se una riga contiene un errore, non viene importato nulla."
+
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "Header row with the columns <0>firstname</0> and <1>lastname</1>, optionally <2>license</2>, <3>birthday</3>, <4>postalcode</4>, <5>city</5> and <6>club</6>; separated by <7>;</7> or <8>,</8>. One line per shooter and club. Shooters are matched by license number (or name and birthday without one); nothing is deleted."
 msgstr "Riga di intestazione con le colonne <0>firstname</0> e <1>lastname</1>, facoltative <2>license</2>, <3>birthday</3>, <4>postalcode</4>, <5>city</5> e <6>club</6>; separate da <7>;</7> o <8>,</8>. Una riga per tiratore e società. I tiratori vengono abbinati tramite il numero di licenza (senza licenza: nome e data di nascita); non viene eliminato nulla."
@@ -1861,6 +1865,7 @@ msgstr "Come funziona?"
 msgid "If an account uses {email}, we sent a link to choose a new password. Check your inbox."
 msgstr "Se un account usa {email}, abbiamo inviato un link per scegliere una nuova password. Controlla la posta in arrivo."
 
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "Import"
 msgstr "Importa"
@@ -1869,6 +1874,7 @@ msgstr "Importa"
 msgid "Import a programme file"
 msgstr "Importa un file di programma"
 
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "Import CSV"
 msgstr "Importa CSV"
@@ -1876,6 +1882,10 @@ msgstr "Importa CSV"
 #: src/lib/ProgrammeList.svelte
 msgid "Import programme file"
 msgstr "Importa file di programma"
+
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
+msgid "Import results from CSV"
+msgstr "Importa risultati da CSV"
 
 #: src/lib/SetupChecklist.svelte
 msgid "Import shooters (optional)"
@@ -1901,6 +1911,12 @@ msgstr "{0} importato."
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "Imported: {0} new, {1} updated, {2} new clubs, {3} club assignments."
 msgstr "Importati: {0} nuovi, {1} aggiornati, {2} nuove società, {3} assegnazioni a società."
+
+#. placeholder {0}: report.imported
+#. placeholder {1}: report.createdShooters
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
+msgid "Imported: {0} results, {1} new shooters."
+msgstr "Importati: {0} risultati, {1} nuovi tiratori."
 
 #: src/lib/my/ApiTokens.svelte
 msgid "in 30 days"
@@ -2182,6 +2198,7 @@ msgstr "Tema chiaro"
 
 #. placeholder {0}: e.line
 #. placeholder {1}: e.message
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "Line {0}: {1}"
 msgstr "Riga {0}: {1}"
@@ -2679,6 +2696,7 @@ msgstr "Nessun risultato."
 msgid "Nothing imported yet: these clubs are not in the club list. Choose an existing club or a new one for each, then import again."
 msgstr "Ancora nulla importato: queste società non sono nell’elenco. Scegli per ognuna una società esistente o una nuova, poi importa di nuovo."
 
+#: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "Nothing imported, please fix these lines:"
 msgstr "Nulla importato, correggere queste righe:"

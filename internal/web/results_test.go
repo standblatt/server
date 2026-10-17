@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/standblatt/server/internal/domain"
@@ -268,4 +269,65 @@ func TestEnterResult(t *testing.T) {
 
 	code, b = e.do(e.login("outsider"), "POST", fmt.Sprintf("/api/tenants/%d/events/%d/results", other, f.event), line(f.shooter, f.section, 50, 50))
 	expect(t, "other tenant", code, 404, b)
+}
+
+func TestImportResults(t *testing.T) {
+	e := newEnv(t)
+	f := e.registrationFixture("Import")
+	e.user("boss", f.tenant, store.RoleAdmin)
+	e.user("helper", f.tenant, store.RoleStaff)
+	boss := e.login("boss")
+	ctx := context.Background()
+	shots, _ := e.st.CreateProgramme(ctx, f.tenant, f.event, domain.ProgrammeDefinition{Name: "Obligatory", Barcode: "OP", Awards: []domain.AwardTier{},
+		Series: []domain.Series{{Shots: 3, MaxPoints: 15, TrackShots: true}, {Shots: 2, MaxPoints: 10}}, Prices: []domain.Price{{AgeCategory: domain.Elite, Price: 0}}})
+	path := fmt.Sprintf("/api/tenants/%d/events/%d/results/import", f.tenant, f.event)
+
+	code, b := e.upload(e.login("helper"), path, "license;programme;s1\n100001;Main;90\n")
+	expect(t, "staff imports", code, 403, b)
+
+	bad := "license;firstname;lastname;birthday;club;programme;s1;s2;s3;s4;s1_1;s1_2;s1_3\n" +
+		"100001;;;;Home;Main;90;91;92;93;;;\n" +
+		";Neo;Newman;1990-02-02;Nowhere;Main;90;91;92;93;;;\n" +
+		";Neo;Newman;1990-02-02;;Unknown;1;;;;;;\n" +
+		";Neo;Newman;1990-02-02;;OP;;9;;;5;5;4\n"
+	code, b = e.upload(boss, path, bad)
+	expect(t, "file with errors", code, 200, b)
+	var rep web.ResultImportReport
+	json.Unmarshal(b, &rep)
+	if rep.Imported != 0 || len(rep.Errors) != 2 || rep.Errors[0].Line != 3 || rep.Errors[1].Line != 4 {
+		t.Fatalf("report with errors: %s", b)
+	}
+	if regs, _ := e.st.ListRegistrations(ctx, f.tenant, f.event, false); len(regs) != 0 {
+		t.Fatalf("a file with errors stored something: %+v", regs)
+	}
+
+	good := "license;firstname;lastname;birthday;club;programme;s1;s2;s3;s4;s1_1;s1_2;s1_3\n" +
+		"100001;;;;home;Main;90;91;92;93;;;\n" +
+		";Neo;Newman;1990-02-02;Home;OP;;9;;;5;5;4\n" +
+		";Neo;Newman;1990-02-02;;Section;48;49;;;;;\n"
+	code, b = e.upload(boss, path, good)
+	expect(t, "import", code, 200, b)
+	rep = web.ResultImportReport{}
+	json.Unmarshal(b, &rep)
+	if rep.Imported != 3 || rep.CreatedShooters != 1 || len(rep.Errors) != 0 {
+		t.Fatalf("report: %s", b)
+	}
+	found, _ := e.st.SearchShooters(ctx, f.tenant, "Neo Newman", 0, 5, 0)
+	if len(found) != 1 || len(found[0].Clubs) != 1 || found[0].Clubs[0].ID != f.club {
+		t.Fatalf("new shooter: %+v", found)
+	}
+	e2, done, err := e.st.FindEntry(ctx, f.tenant, f.event, found[0].ID, shots)
+	if err != nil || !done {
+		t.Fatalf("shots entry: %v %v", done, err)
+	}
+	res, _ := e.st.ListResults(ctx, f.tenant, e2.RegistrationID)
+	if r := res[e2.ID]; len(r) != 2 || r[0].Points != 14 || fmt.Sprint(r[0].Shots) != "[5 5 4]" || r[1].Points != 9 {
+		t.Fatalf("shots: %+v", r)
+	}
+
+	code, b = e.upload(boss, path, "license;programme;s1;s2;s3;s4\n100001;Main;1;1;1;1\n")
+	json.Unmarshal(b, &rep)
+	if code != 200 || len(rep.Errors) != 1 || !strings.Contains(rep.Errors[0].Message, "already has results") {
+		t.Fatalf("second import: %d %s", code, b)
+	}
 }

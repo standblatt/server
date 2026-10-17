@@ -29,3 +29,28 @@ license;firstname;lastname;birthday;postalcode;city;club
   soit ne soit enregistré : choisis pour chacune une société existante (les
   noms semblables sont proposés) ou une nouvelle, puis clique à nouveau sur
   **Importer**.
+
+## Résultats {#results}
+
+**Importer un CSV** sur la page **Saisir les résultats** d’une manifestation lit des résultats (voir [Saisir les résultats](../user-guide/results-entry.md#import)) :
+
+```text
+license;firstname;lastname;birthday;club;programme;s1;s2;m2;s1_1;s1_2;s1_3
+013756;;;;;Championship;96;93;2;;;
+;Max;Muster;1990-02-02;SG Hilltown;Obligatory;;45;;9;10;8
+```
+
+| Colonne | Obligatoire | Remarques |
+|---|---|---|
+| `license` ou `firstname` + `lastname` | oui | le tireur : trouvé par sa licence, sinon par son nom (et `birthday` si plusieurs portent ce nom) ; créé s’il n’est pas trouvé |
+| `birthday` | non | `YYYY-MM-DD` ou `DD.MM.YYYY` |
+| `club` | non | doit figurer dans la liste des sociétés (sans tenir compte des majuscules ni des espaces) ; le tireur la rejoint |
+| `programme` | oui | code-barres, nom avec variante comme `Championship (Sport)` ou le nom seul |
+| `s1`, `s2`, … | oui | points par passe, décimales avec `.` ou `,` |
+| `m1`, `m2`, … | non | mouches par passe |
+| `s1_1`, `s1_2`, … | non | coups individuels de la passe 1, pour les passes qui les saisissent ; la passe en est la somme |
+
+- Un tireur ne peut avoir des résultats qu’une fois par programme ; une
+  ligne pour des résultats déjà présents est une erreur.
+- Si le tireur est inscrit au programme sans résultats, les résultats vont
+  dans cette inscription.

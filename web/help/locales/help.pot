@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-17 21:06+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-17 21:14+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
 #: ../src/help/en/getting-started/concepts.md:1
@@ -1101,27 +1101,63 @@ msgid "| Column | Required | Notes |\n|---|---|---|\n| `firstname` | yes | |\n| 
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/reference/csv-import.md:22
+#: ../src/help/en/reference/csv-import.md:23
 #, markdown-text
 msgid "One line per shooter and club; a shooter in two clubs appears twice."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/reference/csv-import.md:22
+#: ../src/help/en/reference/csv-import.md:23
 #, markdown-text
 msgid "Shooters are matched by license number, or by name and birthday when there is none. Existing shooters are updated, nothing is deleted."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/reference/csv-import.md:22
+#: ../src/help/en/reference/csv-import.md:23
 #, markdown-text
 msgid "A file with invalid lines is rejected as a whole, with the list of lines to fix."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/reference/csv-import.md:22
+#: ../src/help/en/reference/csv-import.md:23
 #, markdown-text
 msgid "Clubs that are not in the club list stop the import before anything is stored: for each one, choose an existing club (similar names are suggested) or a new one, then **Import** again."
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/reference/csv-import.md:24
+#, markdown-text, no-wrap
+msgid "Results {#results}"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/reference/csv-import.md:27
+#, markdown-text, no-wrap
+msgid "**Import CSV** on an event's **Enter results** page reads results (see [Enter results](../user-guide/results-entry.md#import)):\n"
+msgstr ""
+
+#. type: Fenced code block (text)
+#: ../src/help/en/reference/csv-import.md:28
+#, no-wrap
+msgid "license;firstname;lastname;birthday;club;programme;s1;s2;m2;s1_1;s1_2;s1_3\n013756;;;;;Championship;96;93;2;;;\n;Max;Muster;1990-02-02;SG Hilltown;Obligatory;;45;;9;10;8\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/reference/csv-import.md:43
+#, markdown-text, no-wrap
+msgid "| Column | Required | Notes |\n|---|---|---|\n| `license` or `firstname` + `lastname` | yes | the shooter: found by licence, else by name (and `birthday`, if several have the name); created when not found |\n| `birthday` | no | `YYYY-MM-DD` or `DD.MM.YYYY` |\n| `club` | no | must be in the club list (regardless of upper case and spaces); the shooter joins it |\n| `programme` | yes | barcode, name with variant like `Championship (Sport)`, or the name alone |\n| `s1`, `s2`, … | yes | points per series, decimals with `.` or `,` |\n| `m1`, `m2`, … | no | mouches per series |\n| `s1_1`, `s1_2`, … | no | single shots of series 1, for series that record them; the series is their sum |\n"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/csv-import.md:45
+#, markdown-text
+msgid "A shooter can have results in a programme only once; a line for results that exist already is an error."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/reference/csv-import.md:45
+#, markdown-text
+msgid "If the shooter is registered for the programme without results, the results go into that registration."
 msgstr ""
 
 #. type: Title #
@@ -2648,7 +2684,7 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/results-entry.md:8
 #, markdown-text
-msgid "**Afterwards** on **Enter results** in the event's sidebar, shooter by shooter, e.g. from paper sheets or the display of the scoring system. This page describes it."
+msgid "**Afterwards** on **Enter results** in the event's sidebar, shooter by shooter, e.g. from paper sheets or the display of the scoring system, or as a file exported from the scoring system. This page describes both."
 msgstr ""
 
 #. type: Title ##
@@ -2682,9 +2718,21 @@ msgid "The result is saved at once and the shooter is listed under *Entered now*
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/results-entry.md:17
+#: ../src/help/en/user-guide/results-entry.md:18
 #, markdown-text
 msgid "Awards are chosen as usual: the most valuable award reached is set automatically and can be changed in the results."
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/results-entry.md:19
+#, markdown-text, no-wrap
+msgid "Import from a file {#import}"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/results-entry.md:21
+#, markdown-text, no-wrap
+msgid "**Import CSV** (admins) on **Enter results** reads a file with one line per shooter and programme, e.g. exported from the scoring system or typed in a spreadsheet; the columns are described under [CSV import](../reference/csv-import.md#results). Every line is checked first: with any error nothing is imported, and the dialog lists the lines to fix. Shooters who are not in the master data are created; a club must already be in the club list.\n"
 msgstr ""
 
 #. type: Title #

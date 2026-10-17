@@ -10,7 +10,8 @@ lassen sie sich mischen:
   [Resultate](results.md)), wie an einem Schützenfest.
 - **Nachträglich** unter **Resultate erfassen** in der Seitenleiste des
   Anlasses, Schütze für Schütze, z. B. von Papierblättern oder der Anzeige
-  der Trefferanzeige. Diese Seite beschreibt das.
+  der Trefferanzeige, oder als Datei aus der Trefferanzeige. Diese Seite
+  beschreibt beides.
 
 ## Schütze für Schütze {#quick}
 
@@ -22,13 +23,13 @@ lassen sie sich mischen:
 3. Tippe die Passen ein, oder die Einzelschüsse bei Passen, die sie erfassen
    (siehe [Programme](programmes.md)), und drücke ++enter++.
 
-Das Resultat wird sofort gespeichert, und der Schütze erscheint unter
-*Soeben erfasst* mit einem Link zu den Resultaten. War der Schütze am Desk
-für dieses Programm angemeldet und hat noch keine Resultate, gehen die
-Resultate in diese Anmeldung; sonst entsteht eine Anmeldung ohne Scheibe,
-bereits abgeschlossen. Ein Schütze kann in einem Programm nur einmal
-Resultate haben.
+Ein Schütze kann in einem Programm nur einmal Resultate haben; eine Zeile
+für schon vorhandene Resultate ist ein Fehler.
 
 Auszeichnungen werden wie gewohnt gewählt: Die wertvollste erreichte
 Auszeichnung wird automatisch gesetzt und lässt sich in den Resultaten
 ändern.
+
+## Import aus einer Datei {#import}
+
+**CSV importieren** (Admins) unter **Resultate erfassen** liest eine Datei mit einer Zeile pro Schütze und Programm, z. B. aus der Trefferanzeige exportiert oder in einer Tabellenkalkulation getippt; die Spalten stehen unter [CSV-Import](../reference/csv-import.md#results). Jede Zeile wird zuerst geprüft: Bei einem Fehler wird nichts importiert, und der Dialog listet die zu korrigierenden Zeilen. Schützen, die nicht in den Stammdaten sind, werden angelegt; ein Verein muss schon in der Vereinsliste stehen.

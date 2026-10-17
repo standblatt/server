@@ -109,4 +109,25 @@ test.describe("events without a desk", () => {
     await page.goto(`/t/${ids.tenant}/events/${ids.event}/rankings`);
     await expect(c(page, "section[aria-label='Ranking Obligatory'] tr", "Obligatory Olga")).toContainText("45");
   });
+
+  test("imports results from a CSV file", async ({ page }) => {
+    await login(page, admin);
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}/entry`);
+    await c(page, "button", "Import CSV").click();
+    const dialog = page.getByRole("dialog");
+    const csv = (text) => ({ name: "results.csv", mimeType: "text/csv", buffer: Buffer.from(text) });
+    const header = "firstname;lastname;birthday;club;programme;s1;s2;s1_1;s1_2;s1_3\n";
+    await dialog.locator("input[type=file]").setInputFiles(csv(header + "Neo;Newman;1990-02-02;;Unknown;44;;;;\n"));
+    await c(dialog, "button", /^Import$/).click();
+    await expect(c(dialog, "[role=alert]", "Programme \"Unknown\" not found")).toBeVisible();
+
+    await dialog.locator("input[type=file]").setInputFiles(csv(header + "Neo;Newman;1990-02-02;;Obligatory;44;;;;\nNeo;Newman;1990-02-02;;Annual stich;;18;9;9;9\n"));
+    await c(dialog, "button", /^Import$/).click();
+    await expect(c(dialog, "[role=status]", "Imported: 2 results, 1 new shooters.")).toBeVisible();
+    await page.keyboard.press("Escape");
+
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}/rankings`);
+    await expect(c(page, "section[aria-label='Ranking Obligatory'] tr", "Newman Neo")).toContainText("44");
+    await expect(c(page, "section[aria-label='Ranking Annual stich'] tr", "Newman Neo")).toContainText("45");
+  });
 });

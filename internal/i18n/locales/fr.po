@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 22:59+0200\n"
+"POT-Creation-Date: 2026-10-17 23:12+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -577,7 +577,7 @@ msgstr "Confirme ou refuse la demande ici :"
 
 #: internal/web/booking.go internal/web/helpers.go internal/web/programmes.go
 #: internal/web/rankings.go internal/web/registrations.go
-#: internal/web/reports.go internal/web/tenants.go
+#: internal/web/reports.go internal/web/resultimport.go internal/web/tenants.go
 msgid "Event not found"
 msgstr "Manifestation introuvable"
 

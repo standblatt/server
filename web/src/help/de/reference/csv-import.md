@@ -29,3 +29,28 @@ license;firstname;lastname;birthday;postalcode;city;club
   etwas gespeichert wird: Wähle für jeden einen bestehenden Verein (ähnliche
   Namen werden vorgeschlagen) oder einen neuen und klicke dann nochmals auf
   **Importieren**.
+
+## Resultate {#results}
+
+**CSV importieren** auf der Seite **Resultate erfassen** eines Anlasses liest Resultate (siehe [Resultate erfassen](../user-guide/results-entry.md#import)):
+
+```text
+license;firstname;lastname;birthday;club;programme;s1;s2;m2;s1_1;s1_2;s1_3
+013756;;;;;Championship;96;93;2;;;
+;Max;Muster;1990-02-02;SG Hilltown;Obligatory;;45;;9;10;8
+```
+
+| Spalte | Pflicht | Hinweise |
+|---|---|---|
+| `license` oder `firstname` + `lastname` | ja | der Schütze: über die Lizenz gefunden, sonst über den Namen (und `birthday`, wenn mehrere so heissen); angelegt, wenn nicht gefunden |
+| `birthday` | nein | `YYYY-MM-DD` oder `DD.MM.YYYY` |
+| `club` | nein | muss in der Vereinsliste stehen (ohne Rücksicht auf Gross-/Kleinschreibung und Leerzeichen); der Schütze kommt dazu |
+| `programme` | ja | Barcode, Name mit Variante wie `Championship (Sport)` oder der Name allein |
+| `s1`, `s2`, … | ja | Punkte pro Passe, Dezimalstellen mit `.` oder `,` |
+| `m1`, `m2`, … | nein | Mouchen pro Passe |
+| `s1_1`, `s1_2`, … | nein | Einzelschüsse der Passe 1, für Passen, die sie erfassen; die Passe ist deren Summe |
+
+- Ein Schütze kann in einem Programm nur einmal Resultate haben; eine Zeile
+  für schon vorhandene Resultate ist ein Fehler.
+- Ist der Schütze ohne Resultate für das Programm angemeldet, gehen die
+  Resultate in diese Anmeldung.

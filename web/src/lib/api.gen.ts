@@ -1208,6 +1208,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/tenants/{tenantId}/events/{eventId}/results/import": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Import results from CSV (license or firstname/lastname/birthday, optional club, programme, s1…sN, optional m1…mN and sN_M shots)
+         * @description Every line is checked first; with any error nothing is imported. Shooters that are not in the master data are created; unknown clubs are an error.
+         */
+        post: operations["import-results"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/tenants/{tenantId}/events/{eventId}/statistics": {
         parameters: {
             query?: never;
@@ -2947,6 +2967,13 @@ export interface components {
         ResetInputBody: {
             password: string;
             token: string;
+        };
+        ResultImportReport: {
+            /** Format: int64 */
+            createdShooters: number;
+            errors: components["schemas"]["ImportLineError"][];
+            /** Format: int64 */
+            imported: number;
         };
         ResultLine: {
             /**
@@ -6307,6 +6334,45 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ResultSheet"];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "import-results": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                eventId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "multipart/form-data": {
+                    /** Format: binary */
+                    file: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ResultImportReport"];
                 };
             };
             /** @description Error */

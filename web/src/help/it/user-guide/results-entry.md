@@ -10,7 +10,8 @@ una manifestazione:
   [Risultati](results.md)), come in una festa di tiro.
 - **In seguito** in **Registra risultati** nella barra laterale della
   manifestazione, tiratore per tiratore, p. es. da fogli di carta o dal
-  display dell’impianto di segnalazione. Questa pagina lo descrive.
+  display dell’impianto di segnalazione, oppure come file esportato
+  dall’impianto. Questa pagina descrive entrambi.
 
 ## Tiratore per tiratore {#quick}
 
@@ -22,11 +23,12 @@ una manifestazione:
 3. Digita le serie, o i colpi singoli per le serie che li registrano (vedi
    [Programmi](programmes.md)), e premi ++enter++.
 
-Il risultato viene salvato subito e il tiratore compare sotto *Appena
-registrati* con un link ai risultati. Se il tiratore era iscritto al desk
-per questo programma e non ha ancora risultati, i risultati vanno in
-quell’iscrizione; altrimenti viene creata un’iscrizione senza bersaglio, già
-conclusa. Un tiratore può avere risultati in un programma una sola volta.
+Un tiratore può avere risultati in un programma una sola volta; una riga per
+risultati già presenti è un errore.
 
 Le distinzioni si scelgono come di consueto: la distinzione raggiunta più
 preziosa viene impostata automaticamente e si può cambiare nei risultati.
+
+## Importazione da un file {#import}
+
+**Importa CSV** (admin) in **Registra risultati** legge un file con una riga per tiratore e programma, p. es. esportato dall’impianto di segnalazione o digitato in un foglio di calcolo; le colonne sono descritte in [Importazione CSV](../reference/csv-import.md#results). Ogni riga viene controllata prima: con un errore non viene importato nulla e il dialogo elenca le righe da correggere. I tiratori che non sono nei dati di base vengono creati; una società deve già essere nell’elenco.

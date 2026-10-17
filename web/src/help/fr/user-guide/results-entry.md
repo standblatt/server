@@ -10,7 +10,8 @@ d’une manifestation :
   [Résultats](results.md)), comme lors d’une fête de tir.
 - **Après coup** sous **Saisir les résultats** dans la barre latérale de la
   manifestation, tireur par tireur, p. ex. depuis des feuilles papier ou
-  l’affichage de l’installation de marquage. Cette page le décrit.
+  l’affichage de l’installation de marquage, ou comme fichier exporté de
+  l’installation. Cette page décrit les deux.
 
 ## Tireur par tireur {#quick}
 
@@ -22,12 +23,13 @@ d’une manifestation :
 3. Tape les passes, ou les coups individuels pour les passes qui les
    saisissent (voir [Programmes](programmes.md)), et appuie sur ++enter++.
 
-Le résultat est enregistré tout de suite et le tireur apparaît sous *Saisis
-à l’instant* avec un lien vers les résultats. Si le tireur était inscrit au
-desk pour ce programme et n’a pas encore de résultats, ceux-ci vont dans
-cette inscription ; sinon une inscription sans cible est créée, déjà
-terminée. Un tireur ne peut avoir des résultats qu’une fois par programme.
+Un tireur ne peut avoir des résultats qu’une fois par programme ; une ligne
+pour des résultats déjà présents est une erreur.
 
 Les distinctions se choisissent comme d’habitude : la distinction atteinte
 la plus précieuse est fixée automatiquement et peut être changée dans les
 résultats.
+
+## Import depuis un fichier {#import}
+
+**Importer un CSV** (admins) sous **Saisir les résultats** lit un fichier avec une ligne par tireur et programme, p. ex. exporté de l’installation de marquage ou saisi dans un tableur ; les colonnes sont décrites sous [Import CSV](../reference/csv-import.md#results). Chaque ligne est d’abord contrôlée : en cas d’erreur rien n’est importé et le dialogue liste les lignes à corriger. Les tireurs absents des données de base sont créés ; une société doit déjà figurer dans la liste.
