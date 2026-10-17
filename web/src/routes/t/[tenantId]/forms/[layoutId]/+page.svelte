@@ -14,6 +14,7 @@
 	import * as NativeSelect from '$lib/components/ui/native-select';
 	import FormError from '$lib/FormError.svelte';
 	import FormField from '$lib/FormField.svelte';
+	import LayoutCanvas from '$lib/LayoutCanvas.svelte';
 	import PageHeader from '$lib/PageHeader.svelte';
 	import { pdfClick } from '$lib/print';
 
@@ -38,7 +39,8 @@
 	let elements = $state<LayoutElement[]>([]);
 	let loaded = $state(0);
 	let version = $state(0);
-	let focused = $state(-1);
+	let selected = $state(-1);
+	let view = $state<'sheet' | 'pdf'>('sheet');
 	let error = $state('');
 	let busy = $state(false);
 
@@ -56,17 +58,18 @@
 
 	const base = $derived(`/api/tenants/${tenantId}/layouts/${layoutId}`);
 	const preview = $derived(`${base}/preview?v=${version}`);
+	const samples = $derived(Object.fromEntries((fields.data ?? []).map((f) => [f.key, f.example])));
 
-	/** A new element below the last one, or at the top left of an empty form. */
-	function addElement() {
+	/** A new text element at x/y, or below the last one, and selects it. */
+	function addElement(x?: number, y?: number) {
 		const last = elements.at(-1);
-		elements.push({ type: 'text', x: last?.x ?? 10, y: (last?.y ?? 5) + 8, w: 0, h: 0, size: 10, bold: false, align: 'L', value: '', repeat: 0, dx: 0, dy: 0 });
-		focused = elements.length - 1;
+		elements.push({ type: 'text', x: x ?? last?.x ?? 10, y: y ?? (Number(last?.y ?? 5) + 8), w: 0, h: 0, size: 10, bold: false, align: 'L', value: '', repeat: 0, dx: 0, dy: 0 });
+		selected = elements.length - 1;
 	}
 
 	/** Puts a placeholder into the value of the element edited last (a shot as shot# when it repeats), or copies it. */
 	async function usePlaceholder(key: string) {
-		const el = elements[focused];
+		const el = elements[selected];
 		const shot = key.match(/^(s\d+\.shot)\d+$/);
 		const text = `{{${el?.repeat && shot ? `${shot[1]}#` : key}}}`;
 		if (el) {
@@ -160,7 +163,7 @@
 			<section class="rounded-lg border bg-card" aria-label={$t`Elements`}>
 				<div class="flex items-center justify-between border-b px-4 py-2.5">
 					<h2 class="text-sm font-semibold">{$t`Elements`}</h2>
-					<Button size="sm" variant="outline" onclick={addElement}><Plus />{$t`Add element`}</Button>
+					<Button size="sm" variant="outline" onclick={() => addElement()}><Plus />{$t`Add element`}</Button>
 				</div>
 				<div class="overflow-x-auto" data-swipe>
 					<table class="w-full text-sm">
@@ -172,7 +175,7 @@
 						</thead>
 						<tbody>
 							{#each elements as el, i (i)}
-								<tr class="border-t" aria-label={$t`Element ${i + 1}`}>
+								<tr class="border-t {selected === i ? 'bg-sky-500/10' : ''}" aria-label={$t`Element ${i + 1}`} onfocusin={() => (selected = i)}>
 									<td class="px-2 py-1.5">
 										<NativeSelect.Root size="sm" bind:value={el.type} aria-label={$t`Type of element ${i + 1}`}>
 											<NativeSelect.Option value="text">{$t`Text`}</NativeSelect.Option>
@@ -181,7 +184,7 @@
 											<NativeSelect.Option value="line">{$t`Line`}</NativeSelect.Option>
 										</NativeSelect.Root>
 									</td>
-									<td class="px-2"><Input class="h-8 min-w-48" bind:value={el.value} onfocus={() => (focused = i)} aria-label={$t`Value of element ${i + 1}`} disabled={el.type === 'line'} /></td>
+									<td class="px-2"><Input class="h-8 min-w-48" bind:value={el.value} aria-label={$t`Value of element ${i + 1}`} disabled={el.type === 'line'} /></td>
 									<td class="px-2"><Input class={num} type="number" step="0.5" bind:value={el.x} aria-label={$t`x of element ${i + 1}`} /></td>
 									<td class="px-2"><Input class={num} type="number" step="0.5" bind:value={el.y} aria-label={$t`y of element ${i + 1}`} /></td>
 									<td class="px-2"><Input class={num} type="number" step="0.5" bind:value={el.w} aria-label={$t`Width of element ${i + 1}`} /></td>
@@ -200,7 +203,7 @@
 									<td class="px-2"><Input class={num} type="number" step="0.5" bind:value={el.dy} aria-label={$t`dy of element ${i + 1}`} /></td>
 									<td class="px-2 whitespace-nowrap">
 										<Button variant="ghost" size="icon-sm" title={$t`Duplicate`} aria-label={$t`Duplicate element ${i + 1}`} onclick={() => elements.splice(i + 1, 0, { ...$state.snapshot(el), y: Number(el.y) + 8 })}><Copy /></Button>
-										<Button variant="ghost" size="icon-sm" title={$t`Remove`} aria-label={$t`Remove element ${i + 1}`} onclick={() => (elements.splice(i, 1), (focused = -1))}><Trash /></Button>
+										<Button variant="ghost" size="icon-sm" title={$t`Remove`} aria-label={$t`Remove element ${i + 1}`} onclick={() => (elements.splice(i, 1), (selected = -1))}><Trash /></Button>
 									</td>
 								</tr>
 							{:else}
@@ -223,10 +226,19 @@
 			<FormError message={error} />
 		</form>
 
-		<section class="grid content-start gap-2" aria-label={$t`Preview`}>
-			<h2 class="text-sm font-semibold">{$t`Preview`}</h2>
-			<iframe title={$t`Preview`} src={preview} class="w-full rounded-lg border bg-white" style:aspect-ratio="{width} / {height}"></iframe>
-			<p class="text-xs text-muted-foreground">{$t`With made-up values and the scan, without the printer offset. Save to refresh.`}</p>
+		<section class="grid content-start gap-2 xl:sticky xl:top-4" aria-label={$t`Preview`}>
+			<div class="flex gap-1 border-b" role="tablist" aria-label={$t`Preview`}>
+				{#each [['sheet', $t`Sheet`], ['pdf', $t`PDF preview`]] as [key, label] (key)}
+					<button type="button" role="tab" aria-selected={view === key} class="-mb-px border-b-2 px-3 py-1.5 text-sm font-medium {view === key ? 'border-primary' : 'border-transparent text-muted-foreground hover:text-foreground'}" onclick={() => (view = key as 'sheet' | 'pdf')}>{label}</button>
+				{/each}
+			</div>
+			{#if view === 'sheet'}
+				<LayoutCanvas width={Number(width) || 1} height={Number(height) || 1} bind:elements bind:selected {samples} background={layout.data.hasBackground ? `${base}/background?v=${version}` : undefined} onadd={addElement} />
+				<p class="text-xs text-muted-foreground">{$t`Drag elements, resize them at the corner, move the selected one with the arrow keys (Shift: 5 mm). Double-click the empty sheet to add text there.`}</p>
+			{:else}
+				<iframe title={$t`Preview`} src={preview} class="w-full rounded-lg border bg-white" style:aspect-ratio="{width} / {height}"></iframe>
+				<p class="text-xs text-muted-foreground">{$t`With made-up values and the scan, without the printer offset. Save to refresh.`}</p>
+			{/if}
 		</section>
 	</div>
 {/if}

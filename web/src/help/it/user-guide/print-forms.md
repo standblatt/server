@@ -29,7 +29,15 @@ modelli sono facoltativi.
 - **Segnaposto** elenca ogni valore con un esempio; un clic lo aggiunge
   all’ultimo elemento modificato.
 
-**Salva** aggiorna l’anteprima, che mostra valori inventati.
+Il **Foglio** mostra il modello in scala sopra la scansione, con valori
+inventati. Trascina un elemento per spostarlo e il suo angolo per
+ridimensionarlo; le frecce spostano l’elemento scelto di mezzo millimetro,
+con Maiusc di cinque, e un doppio clic sul foglio vuoto vi aggiunge un
+testo. Le posizioni si agganciano al mezzo millimetro. Tabella e foglio
+mostrano gli stessi elementi: scegline uno sul foglio e modifica i suoi
+valori esatti nella tabella, o viceversa.
+
+**Salva** salva il modello. **Anteprima PDF** mostra il modello esattamente come lo rende il PDF, che può differire leggermente dal foglio nel browser.
 
 ## Calibrare la stampante {#calibrate}
 

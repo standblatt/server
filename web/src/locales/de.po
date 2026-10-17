@@ -1521,6 +1521,10 @@ msgid "down"
 msgstr "unten"
 
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Drag elements, resize them at the corner, move the selected one with the arrow keys (Shift: 5 mm). Double-click the empty sheet to add text there."
+msgstr "Elemente ziehen, an der Ecke die Grösse ändern, das gewählte mit den Pfeiltasten verschieben (Shift: 5 mm). Doppelklick aufs leere Blatt fügt dort Text ein."
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Duplicate"
 msgstr "Duplizieren"
 
@@ -1596,6 +1600,7 @@ msgid "Edit reservation"
 msgstr "Reservation bearbeiten"
 
 #. placeholder {0}: i + 1
+#: src/lib/LayoutCanvas.svelte
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Element {0}"
 msgstr "Element {0}"
@@ -2999,6 +3004,10 @@ msgstr "Liste einfügen"
 msgid "PDF for printing, CSV for Excel (semicolon separated)."
 msgstr "PDF zum Drucken, CSV für Excel (Semikolon-getrennt)."
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "PDF preview"
+msgstr "PDF-Vorschau"
+
 #: src/lib/EntryCard.svelte
 msgid "pending"
 msgstr "offen"
@@ -3594,6 +3603,11 @@ msgstr "Reservierte Scheiben werden freigegeben. Das lässt sich nicht rückgän
 msgid "reserved: {0}"
 msgstr "reserviert: {0}"
 
+#. placeholder {0}: i + 1
+#: src/lib/LayoutCanvas.svelte
+msgid "Resize element {0}"
+msgstr "Grösse von Element {0} ändern"
+
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Result"
 msgstr "Resultat"
@@ -3916,6 +3930,11 @@ msgstr "Teilen"
 #: src/routes/my/progress/+page.svelte
 msgid "Share of every value over {shotsLogged} logged shots."
 msgstr "Anteil jedes Werts an den {shotsLogged} erfassten Schüssen."
+
+#: src/lib/LayoutCanvas.svelte
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Sheet"
+msgstr "Blatt"
 
 #: src/routes/my/settings/+page.svelte
 msgid "Shoot more than one gun? Add them, choose one when you save a session and compare them on the progress page."

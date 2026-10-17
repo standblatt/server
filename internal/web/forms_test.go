@@ -122,6 +122,11 @@ func TestPrintForms(t *testing.T) {
 		t.Fatalf("upload the scan: %v %v", resp.StatusCode, err)
 	}
 	resp.Body.Close()
+	resp, err = admin.Get(fmt.Sprintf("%s%s/layouts/%d/background", e.srv.URL, base, l.ID))
+	if err != nil || resp.StatusCode != 200 || resp.Header.Get("Content-Type") != "image/png" {
+		t.Fatalf("scan for the editor: %v %v", resp.Header, err)
+	}
+	resp.Body.Close()
 	if code := pdf(admin, fmt.Sprintf("%s/layouts/%d/preview?entryId=%d", base, l.ID, anna.Entries[0].ID)); code != 200 {
 		t.Fatalf("preview: %d", code)
 	}

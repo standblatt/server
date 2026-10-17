@@ -1521,6 +1521,10 @@ msgid "down"
 msgstr "down"
 
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Drag elements, resize them at the corner, move the selected one with the arrow keys (Shift: 5 mm). Double-click the empty sheet to add text there."
+msgstr "Drag elements, resize them at the corner, move the selected one with the arrow keys (Shift: 5 mm). Double-click the empty sheet to add text there."
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Duplicate"
 msgstr "Duplicate"
 
@@ -1596,6 +1600,7 @@ msgid "Edit reservation"
 msgstr "Edit reservation"
 
 #. placeholder {0}: i + 1
+#: src/lib/LayoutCanvas.svelte
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Element {0}"
 msgstr "Element {0}"
@@ -2999,6 +3004,10 @@ msgstr "Paste list"
 msgid "PDF for printing, CSV for Excel (semicolon separated)."
 msgstr "PDF for printing, CSV for Excel (semicolon separated)."
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "PDF preview"
+msgstr "PDF preview"
+
 #: src/lib/EntryCard.svelte
 msgid "pending"
 msgstr "pending"
@@ -3594,6 +3603,11 @@ msgstr "Reserved lanes are released. This cannot be undone."
 msgid "reserved: {0}"
 msgstr "reserved: {0}"
 
+#. placeholder {0}: i + 1
+#: src/lib/LayoutCanvas.svelte
+msgid "Resize element {0}"
+msgstr "Resize element {0}"
+
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Result"
 msgstr "Result"
@@ -3916,6 +3930,11 @@ msgstr "Share"
 #: src/routes/my/progress/+page.svelte
 msgid "Share of every value over {shotsLogged} logged shots."
 msgstr "Share of every value over {shotsLogged} logged shots."
+
+#: src/lib/LayoutCanvas.svelte
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Sheet"
+msgstr "Sheet"
 
 #: src/routes/my/settings/+page.svelte
 msgid "Shoot more than one gun? Add them, choose one when you save a session and compare them on the progress page."

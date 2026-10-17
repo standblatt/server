@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-17 21:29+0000\n"
+"POT-Creation-Date: 2026-10-17 21:50+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -2977,7 +2977,12 @@ msgid ""
 "army supplies for the obligatory programme: the shots are entered at the "
 "lane or afterwards, and the sheet is printed instead of filled in by hand. "
 "Filling in sheets by hand stays possible; print forms are optional."
-msgstr "Un modello di stampa porta i risultati su un foglio prestampato, p. es. i fogli di stand che l’esercito fornisce per il programma obbligatorio: i colpi si registrano al bersaglio o in seguito, e il foglio viene stampato invece di essere compilato a mano. Compilare a mano resta possibile; i modelli sono facoltativi."
+msgstr ""
+"Un modello di stampa porta i risultati su un foglio prestampato, p. es. i "
+"fogli di stand che l’esercito fornisce per il programma obbligatorio: i "
+"colpi si registrano al bersaglio o in seguito, e il foglio viene stampato "
+"invece di essere compilato a mano. Compilare a mano resta possibile; i "
+"modelli sono facoltativi."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/print-forms.md:5
@@ -2989,8 +2994,7 @@ msgstr "Creare un modello {#create}"
 #: ../src/help/en/user-guide/print-forms.md:8
 #, no-wrap
 msgid "**Print forms** (admins, in the club part of the sidebar) lists the forms of the club. **New print form** asks for a name and a paper size, then opens the editor:\n"
-msgstr ""
-"**Modelli di stampa** (admin, nella parte società della barra laterale) elenca i modelli della società. **Nuovo modello di stampa** chiede nome e formato della carta, poi apre l’editor:\n"
+msgstr "**Modelli di stampa** (admin, nella parte società della barra laterale) elenca i modelli della società. **Nuovo modello di stampa** chiede nome e formato della carta, poi apre l’editor:\n"
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/print-forms.md:16
@@ -3003,7 +3007,10 @@ msgid ""
 "**Scan of the empty form**: a PNG or JPEG of the whole sheet. It appears "
 "behind the **Preview** so the fields can be placed onto the boxes of the "
 "form; it is never printed."
-msgstr "**Scansione del modulo vuoto**: un PNG o JPEG dell’intero foglio. Appare dietro l’**Anteprima** per posizionare i campi sulle caselle del modulo; non viene mai stampata."
+msgstr ""
+"**Scansione del modulo vuoto**: un PNG o JPEG dell’intero foglio. Appare "
+"dietro l’**Anteprima** per posizionare i campi sulle caselle del modulo; non "
+"viene mai stampata."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/print-forms.md:16
@@ -3011,21 +3018,29 @@ msgid ""
 "**Elements**: what is printed where. **x** and **y** are millimetres from "
 "the top left corner, **Width** and **Height** the size (a width of 0 lets "
 "text run to the right edge), **Size** the font size in points."
-msgstr "**Elementi**: cosa viene stampato e dove. **x** e **y** sono millimetri dall’angolo superiore sinistro, **Larghezza** e **Altezza** la dimensione (una larghezza di 0 lascia il testo fino al bordo destro), **Dimensione** la dimensione del carattere in punti."
+msgstr ""
+"**Elementi**: cosa viene stampato e dove. **x** e **y** sono millimetri "
+"dall’angolo superiore sinistro, **Larghezza** e **Altezza** la dimensione "
+"(una larghezza di 0 lascia il testo fino al bordo destro), **Dimensione** la "
+"dimensione del carattere in punti."
 
 #. type: Bullet: '  - '
 #: ../src/help/en/user-guide/print-forms.md:16
 msgid ""
 "*Text* prints its **Value**, in which placeholders are replaced, e.g. "
 "`{{shooter.name}}` or `{{total}}`."
-msgstr "*Testo* stampa il suo **Valore**, in cui i segnaposto vengono sostituiti, p. es. `{{shooter.name}}` o `{{total}}`."
+msgstr ""
+"*Testo* stampa il suo **Valore**, in cui i segnaposto vengono sostituiti, p. "
+"es. `{{shooter.name}}` o `{{total}}`."
 
 #. type: Bullet: '  - '
 #: ../src/help/en/user-guide/print-forms.md:16
 msgid ""
 "*QR* and *Barcode* print their value as a code, *Line* draws a line from x/y "
 "by width/height."
-msgstr "*QR* e *Codice a barre* stampano il loro valore come codice, *Linea* traccia una linea da x/y per larghezza/altezza."
+msgstr ""
+"*QR* e *Codice a barre* stampano il loro valore come codice, *Linea* traccia "
+"una linea da x/y per larghezza/altezza."
 
 #. type: Bullet: '  - '
 #: ../src/help/en/user-guide/print-forms.md:16
@@ -3033,45 +3048,66 @@ msgid ""
 "**Repeat** prints the element several times, moved by **dx** and **dy** each "
 "time; `#` in a placeholder counts 1, 2, 3, …. One element `{{s1.shot#}}` "
 "with repeat 10 and dx 8 fills the ten shot boxes of series 1."
-msgstr "**Ripetizione** stampa l’elemento più volte, spostato ogni volta di **dx** e **dy**; `#` in un segnaposto conta 1, 2, 3, …. Un elemento `{{s1.shot#}}` con ripetizione 10 e dx 8 riempie le dieci caselle dei colpi della serie 1."
+msgstr ""
+"**Ripetizione** stampa l’elemento più volte, spostato ogni volta di **dx** e "
+"**dy**; `#` in un segnaposto conta 1, 2, 3, …. Un elemento `{{s1.shot#}}` "
+"con ripetizione 10 e dx 8 riempie le dieci caselle dei colpi della serie 1."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/print-forms.md:16
 msgid ""
 "**Placeholders** lists every value with an example; a click adds it to the "
 "element edited last."
-msgstr "**Segnaposto** elenca ogni valore con un esempio; un clic lo aggiunge all’ultimo elemento modificato."
+msgstr ""
+"**Segnaposto** elenca ogni valore con un esempio; un clic lo aggiunge "
+"all’ultimo elemento modificato."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:18
+msgid ""
+"The **Sheet** shows the form true to scale over the scan, with made-up "
+"values. Drag an element to move it and its corner to resize it; the arrow "
+"keys move the selected element by half a millimetre, with Shift by five, and "
+"a double click on the empty sheet adds a text there. Positions snap to half "
+"millimetres. The table and the sheet show the same elements: select one on "
+"the sheet and edit its exact values in the table, or the other way round."
+msgstr "Il **Foglio** mostra il modello in scala sopra la scansione, con valori inventati. Trascina un elemento per spostarlo e il suo angolo per ridimensionarlo; le frecce spostano l’elemento scelto di mezzo millimetro, con Maiusc di cinque, e un doppio clic sul foglio vuoto vi aggiunge un testo. Le posizioni si agganciano al mezzo millimetro. Tabella e foglio mostrano gli stessi elementi: scegline uno sul foglio e modifica i suoi valori esatti nella tabella, o viceversa."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:20
 #, no-wrap
-msgid "**Save** refreshes the preview, which shows made-up values.\n"
+msgid "**Save** stores the form. **PDF preview** shows the form exactly as the PDF renders it, which can differ slightly from the sheet in the browser.\n"
 msgstr ""
-"**Salva** aggiorna l’anteprima, che mostra valori inventati.\n"
+"**Salva** salva il modello. **Anteprima PDF** mostra il modello esattamente come lo rende il PDF, che può differire leggermente dal foglio nel browser.\n"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:19
+#: ../src/help/en/user-guide/print-forms.md:21
 #, no-wrap
 msgid "Calibrate the printer {#calibrate}"
 msgstr "Calibrare la stampante {#calibrate}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:22
+#: ../src/help/en/user-guide/print-forms.md:24
 msgid ""
 "Printers rarely print exactly where they should. Print a sheet with **Test "
 "print**, measure how far the values are off and enter it as **Printer offset "
 "right** and **Printer offset down** (negative to move left or up). The "
 "offset applies to every element; the preview ignores it."
-msgstr "Le stampanti raramente stampano esattamente dove dovrebbero. Stampa un foglio con **Stampa di prova**, misura di quanto i valori sono spostati e inseriscilo come **Spostamento della stampante a destra** e **Spostamento della stampante in basso** (negativo per sinistra o alto). Lo spostamento vale per tutti gli elementi; l’anteprima lo ignora."
+msgstr ""
+"Le stampanti raramente stampano esattamente dove dovrebbero. Stampa un "
+"foglio con **Stampa di prova**, misura di quanto i valori sono spostati e "
+"inseriscilo come **Spostamento della stampante a destra** e **Spostamento "
+"della stampante in basso** (negativo per sinistra o alto). Lo spostamento "
+"vale per tutti gli elementi; l’anteprima lo ignora."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:23
+#: ../src/help/en/user-guide/print-forms.md:25
 #, no-wrap
 msgid "Use a form {#use}"
 msgstr "Usare un modello {#use}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:26
+#: ../src/help/en/user-guide/print-forms.md:28
 msgid ""
 "On the *Programmes* tab of the event's **Setup**, choose the **Print form** "
 "of a programme; this works while shooters are registered. Every completed "
@@ -3080,14 +3116,21 @@ msgid ""
 "(helpers.md)). With a print agent and a printer chosen for *Print forms* "
 "under **Ranges → Printing**, the sheet goes to that printer (e.g. its manual "
 "feed), otherwise the PDF opens (see [Printing](printing.md))."
-msgstr "Nella scheda *Programmi* della **Configurazione** della manifestazione scegli il **Modello di stampa** di un programma; funziona anche con tiratori già iscritti. Ogni programma concluso offre allora **Stampa sul modello** nei risultati: al desk, nella pagina **Registra risultati** e tramite i link per segretari al bersaglio (vedi [Aiutanti](helpers.md)). Con un agente di stampa e una stampante scelta per *Modelli di stampa* in **Stand di tiro → Stampa**, il foglio va a quella stampante (p. es. al suo alimentatore manuale), altrimenti si apre il PDF (vedi [Stampa](printing.md))."
+msgstr ""
+"Nella scheda *Programmi* della **Configurazione** della manifestazione "
+"scegli il **Modello di stampa** di un programma; funziona anche con tiratori "
+"già iscritti. Ogni programma concluso offre allora **Stampa sul modello** "
+"nei risultati: al desk, nella pagina **Registra risultati** e tramite i link "
+"per segretari al bersaglio (vedi [Aiutanti](helpers.md)). Con un agente di "
+"stampa e una stampante scelta per *Modelli di stampa* in **Stand di tiro → "
+"Stampa**, il foglio va a quella stampante (p. es. al suo alimentatore "
+"manuale), altrimenti si apre il PDF (vedi [Stampa](printing.md))."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:27
+#: ../src/help/en/user-guide/print-forms.md:29
 #, no-wrap
 msgid "**Export** downloads a form as a file and **Import** reads it again, e.g. to share a form with another club.\n"
-msgstr ""
-"**Esporta** scarica un modello come file e **Importa** lo rilegge, p. es. per condividere un modello con un’altra società.\n"
+msgstr "**Esporta** scarica un modello come file e **Importa** lo rilegge, p. es. per condividere un modello con un’altra società.\n"
 
 #. type: Title ##
 #: ../src/help/en/user-guide/programmes.md:1
@@ -3286,7 +3329,10 @@ msgstr ""
 msgid ""
 "**Print form** (when the club has [print forms](print-forms.md)): the form "
 "the results of the programme are printed onto; *none* prints no form."
-msgstr "**Modello di stampa** (quando la società ha dei [modelli di stampa](print-forms.md)): il modello su cui vengono stampati i risultati del programma; *nessuno* non stampa alcun modello."
+msgstr ""
+"**Modello di stampa** (quando la società ha dei [modelli di stampa](print-"
+"forms.md)): il modello su cui vengono stampati i risultati del programma; "
+"*nessuno* non stampa alcun modello."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/programmes.md:32
@@ -4613,6 +4659,10 @@ msgstr ""
 "panel.md). Una password dimenticata si reimposta con **Password dimenticata?"
 "** nella pagina di accesso se l’account ha un indirizzo e-mail confermato, "
 "altrimenti lo fa il gestore."
+
+#, no-wrap
+#~ msgid "**Save** refreshes the preview, which shows made-up values.\n"
+#~ msgstr "**Salva** aggiorna l’anteprima, che mostra valori inventati.\n"
 
 #~ msgid ""
 #~ "**Series**: shots, maximum points and whether mouches are tracked, per "

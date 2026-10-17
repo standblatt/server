@@ -51,6 +51,7 @@ test.describe("print forms", () => {
     await expect(page.getByLabel("Value of element 2")).toHaveValue("{{s1.shot#}}");
     await page.getByRole("button", { name: "Save", exact: true }).click();
     await expect(c(page, "[data-sonner-toast]", "Print form saved")).toBeVisible();
+    await page.getByRole("tab", { name: "PDF preview" }).click();
     await expect(page.locator("iframe[title=Preview]")).toHaveAttribute("src", /preview\?v=1$/);
 
     const layout = await api(page, "GET", `/api/tenants/${ids.tenant}/layouts/${ids.layout}`);
@@ -58,6 +59,43 @@ test.describe("print forms", () => {
     const preview = await page.request.get(`/api/tenants/${ids.tenant}/layouts/${ids.layout}/preview`);
     expect(preview.headers()["content-type"]).toBe("application/pdf");
     expect(preview.headers()["x-frame-options"]).toBe("SAMEORIGIN");
+  });
+
+  test("moves elements on the sheet with the mouse and the keyboard", async ({ page }) => {
+    await login(page, admin);
+    await page.goto(`/t/${ids.tenant}/forms/${ids.layout}`);
+    const sheet = page.getByRole("application", { name: "Sheet" });
+    const first = sheet.locator("[data-element='0']");
+    await expect(first).toContainText("Example Anna");
+    await expect(sheet.locator("[data-element='1']")).toHaveCount(3);
+
+    const x = page.getByLabel("x of element 1", { exact: true });
+    const y = page.getByLabel("y of element 1", { exact: true });
+    const before = Number(await x.inputValue());
+    const box = await first.boundingBox();
+    const sheetBox = await sheet.boundingBox();
+    const mm = sheetBox.width / 148;
+    await page.mouse.move(box.x + 5, box.y + box.height / 2);
+    await page.mouse.down();
+    await page.mouse.move(box.x + 5 + 20 * mm, box.y + box.height / 2 + 10 * mm, { steps: 5 });
+    await page.mouse.up();
+    await expect(x).toHaveValue(String(before + 20));
+    await expect(y).toHaveValue("23");
+
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("Shift+ArrowDown");
+    await expect(x).toHaveValue(String(before + 20.5));
+    await expect(y).toHaveValue("28");
+
+    const now = await sheet.boundingBox();
+    await page.mouse.dblclick(now.x + 100 * mm, now.y + 150 * mm);
+    await expect(page.getByLabel("x of element 3", { exact: true })).toHaveValue("100");
+    await expect(page.getByLabel("y of element 3", { exact: true })).toHaveValue("150");
+    await page.getByLabel("Remove element 3").click();
+    await page.getByRole("button", { name: "Save", exact: true }).click();
+    await expect(c(page, "[data-sonner-toast]", "Print form saved")).toBeVisible();
+    const layout = await api(page, "GET", `/api/tenants/${ids.tenant}/layouts/${ids.layout}`);
+    expect(layout.elements[0]).toMatchObject({ x: before + 20.5, y: 28 });
   });
 
   test("prints the results onto the form of the programme", async ({ page }) => {

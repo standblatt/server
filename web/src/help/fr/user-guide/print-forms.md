@@ -29,7 +29,15 @@ possible ; les modèles sont facultatifs.
 - **Espaces réservés** liste chaque valeur avec un exemple ; un clic
   l’ajoute à l’élément modifié en dernier.
 
-**Enregistrer** actualise l’aperçu, qui montre des valeurs inventées.
+La **Feuille** montre le modèle à l’échelle sur le scan, avec des valeurs
+inventées. Fais glisser un élément pour le déplacer et son coin pour le
+redimensionner ; les flèches déplacent l’élément choisi d’un
+demi-millimètre, avec Maj de cinq, et un double-clic sur la feuille vide y
+ajoute un texte. Les positions s’alignent sur le demi-millimètre. Le tableau
+et la feuille montrent les mêmes éléments : choisis-en un sur la feuille et
+ajuste ses valeurs exactes dans le tableau, ou l’inverse.
+
+**Enregistrer** enregistre le modèle. **Aperçu PDF** montre le modèle exactement comme le PDF le rend, ce qui peut différer légèrement de la feuille dans le navigateur.
 
 ## Calibrer l’imprimante {#calibrate}
 

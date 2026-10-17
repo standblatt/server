@@ -247,6 +247,29 @@ func (s *Server) registerForms(api huma.API) {
 		return nil, notFound(s.Store.SetLayoutBackground(ctx, in.TenantID, in.LayoutID, nil), "Print form not found")
 	})
 
+	type imageOut struct {
+		ContentType  string `header:"Content-Type"`
+		CacheControl string `header:"Cache-Control"`
+		Body         []byte
+	}
+	huma.Register(api, huma.Operation{
+		OperationID: "get-layout-background", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/layouts/{layoutId}/background", Tags: []string{"forms"},
+		Summary:   "The scan of the empty form, for the editor",
+		Responses: map[string]*huma.Response{"200": {Description: "PNG or JPEG", Content: map[string]*huma.MediaType{"image/png": {}, "image/jpeg": {}}}},
+	}, func(ctx context.Context, in *LayoutPath) (*imageOut, error) {
+		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+			return nil, err
+		}
+		_, bg, err := s.Store.GetLayout(ctx, in.TenantID, in.LayoutID)
+		if err != nil {
+			return nil, notFound(err, "Print form not found")
+		}
+		if len(bg) == 0 {
+			return nil, notFound(store.ErrNotFound, "The print form has no scan")
+		}
+		return &imageOut{ContentType: http.DetectContentType(bg), CacheControl: "no-cache", Body: bg}, nil
+	})
+
 	pdfOp := func(op, path, summary string) huma.Operation {
 		return huma.Operation{
 			OperationID: op, Method: http.MethodGet, Path: path, Tags: []string{"forms"}, Summary: summary,

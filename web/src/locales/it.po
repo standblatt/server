@@ -1521,6 +1521,10 @@ msgid "down"
 msgstr "in basso"
 
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Drag elements, resize them at the corner, move the selected one with the arrow keys (Shift: 5 mm). Double-click the empty sheet to add text there."
+msgstr "Trascina gli elementi, ridimensionali dall’angolo, sposta quello scelto con le frecce (Maiusc: 5 mm). Un doppio clic sul foglio vuoto vi aggiunge del testo."
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Duplicate"
 msgstr "Duplica"
 
@@ -1596,6 +1600,7 @@ msgid "Edit reservation"
 msgstr "Modifica prenotazione"
 
 #. placeholder {0}: i + 1
+#: src/lib/LayoutCanvas.svelte
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Element {0}"
 msgstr "Elemento {0}"
@@ -2999,6 +3004,10 @@ msgstr "Incolla lista"
 msgid "PDF for printing, CSV for Excel (semicolon separated)."
 msgstr "PDF per la stampa, CSV per Excel (separato da punto e virgola)."
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "PDF preview"
+msgstr "Anteprima PDF"
+
 #: src/lib/EntryCard.svelte
 msgid "pending"
 msgstr "in sospeso"
@@ -3594,6 +3603,11 @@ msgstr "I bersagli riservati vengono liberati. L’operazione è definitiva."
 msgid "reserved: {0}"
 msgstr "prenotato: {0}"
 
+#. placeholder {0}: i + 1
+#: src/lib/LayoutCanvas.svelte
+msgid "Resize element {0}"
+msgstr "Ridimensiona l’elemento {0}"
+
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Result"
 msgstr "Risultato"
@@ -3916,6 +3930,11 @@ msgstr "Condividi"
 #: src/routes/my/progress/+page.svelte
 msgid "Share of every value over {shotsLogged} logged shots."
 msgstr "Quota di ogni valore sui {shotsLogged} colpi registrati."
+
+#: src/lib/LayoutCanvas.svelte
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Sheet"
+msgstr "Foglio"
 
 #: src/routes/my/settings/+page.svelte
 msgid "Shoot more than one gun? Add them, choose one when you save a session and compare them on the progress page."

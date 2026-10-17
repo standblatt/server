@@ -14,7 +14,9 @@ A print form puts results onto a pre-printed sheet, e.g. the lane sheets the arm
   - **Repeat** prints the element several times, moved by **dx** and **dy** each time; `#` in a placeholder counts 1, 2, 3, …. One element `{{s1.shot#}}` with repeat 10 and dx 8 fills the ten shot boxes of series 1.
 - **Placeholders** lists every value with an example; a click adds it to the element edited last.
 
-**Save** refreshes the preview, which shows made-up values.
+The **Sheet** shows the form true to scale over the scan, with made-up values. Drag an element to move it and its corner to resize it; the arrow keys move the selected element by half a millimetre, with Shift by five, and a double click on the empty sheet adds a text there. Positions snap to half millimetres. The table and the sheet show the same elements: select one on the sheet and edit its exact values in the table, or the other way round.
+
+**Save** stores the form. **PDF preview** shows the form exactly as the PDF renders it, which can differ slightly from the sheet in the browser.
 
 ## Calibrate the printer {#calibrate}
 

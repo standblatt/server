@@ -1521,6 +1521,10 @@ msgid "down"
 msgstr "en bas"
 
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Drag elements, resize them at the corner, move the selected one with the arrow keys (Shift: 5 mm). Double-click the empty sheet to add text there."
+msgstr "Fais glisser les éléments, redimensionne-les par le coin, déplace l’élément choisi avec les flèches (Maj : 5 mm). Un double-clic sur la feuille vide y ajoute du texte."
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Duplicate"
 msgstr "Dupliquer"
 
@@ -1596,6 +1600,7 @@ msgid "Edit reservation"
 msgstr "Modifier la réservation"
 
 #. placeholder {0}: i + 1
+#: src/lib/LayoutCanvas.svelte
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Element {0}"
 msgstr "Élément {0}"
@@ -2999,6 +3004,10 @@ msgstr "Coller une liste"
 msgid "PDF for printing, CSV for Excel (semicolon separated)."
 msgstr "PDF pour l’impression, CSV pour Excel (séparé par des points-virgules)."
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "PDF preview"
+msgstr "Aperçu PDF"
+
 #: src/lib/EntryCard.svelte
 msgid "pending"
 msgstr "en attente"
@@ -3594,6 +3603,11 @@ msgstr "Les cibles réservées sont libérées. Cette action est définitive."
 msgid "reserved: {0}"
 msgstr "réservée : {0}"
 
+#. placeholder {0}: i + 1
+#: src/lib/LayoutCanvas.svelte
+msgid "Resize element {0}"
+msgstr "Redimensionner l’élément {0}"
+
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Result"
 msgstr "Résultat"
@@ -3916,6 +3930,11 @@ msgstr "Partager"
 #: src/routes/my/progress/+page.svelte
 msgid "Share of every value over {shotsLogged} logged shots."
 msgstr "Part de chaque valeur sur les {shotsLogged} coups enregistrés."
+
+#: src/lib/LayoutCanvas.svelte
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Sheet"
+msgstr "Feuille"
 
 #: src/routes/my/settings/+page.svelte
 msgid "Shoot more than one gun? Add them, choose one when you save a session and compare them on the progress page."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 23:22+0200\n"
+"POT-Creation-Date: 2026-10-17 23:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -733,6 +733,10 @@ msgstr ""
 
 #: internal/web/forms.go
 msgid "Programme or print form not found"
+msgstr ""
+
+#: internal/web/forms.go
+msgid "The print form has no scan"
 msgstr ""
 
 #: internal/web/forms.go

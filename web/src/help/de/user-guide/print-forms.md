@@ -28,7 +28,15 @@ Druckvorlagen sind freiwillig.
 - **Platzhalter** listet jeden Wert mit einem Beispiel; ein Klick fügt ihn
   dem zuletzt bearbeiteten Element hinzu.
 
-**Speichern** aktualisiert die Vorschau, die erfundene Werte zeigt.
+Das **Blatt** zeigt die Vorlage massstäblich über dem Scan, mit erfundenen
+Werten. Ziehe ein Element, um es zu verschieben, und seine Ecke, um die
+Grösse zu ändern; die Pfeiltasten verschieben das gewählte Element um einen
+halben Millimeter, mit Shift um fünf, und ein Doppelklick aufs leere Blatt
+fügt dort einen Text ein. Positionen rasten auf halbe Millimeter
+ein. Tabelle und Blatt zeigen dieselben Elemente: Wähle eines auf dem Blatt
+und passe seine genauen Werte in der Tabelle an, oder umgekehrt.
+
+**Speichern** speichert die Vorlage. **PDF-Vorschau** zeigt die Vorlage genau so, wie das PDF sie darstellt; das kann leicht vom Blatt im Browser abweichen.
 
 ## Den Drucker kalibrieren {#calibrate}
 

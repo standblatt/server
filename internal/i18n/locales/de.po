@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 23:22+0200\n"
+"POT-Creation-Date: 2026-10-17 23:45+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -734,6 +734,10 @@ msgstr "Druckvorlage nicht gefunden"
 #: internal/web/forms.go
 msgid "Programme or print form not found"
 msgstr "Programm oder Druckvorlage nicht gefunden"
+
+#: internal/web/forms.go
+msgid "The print form has no scan"
+msgstr "Die Druckvorlage hat keinen Scan"
 
 #: internal/web/forms.go
 msgid "The scan is larger than 4 MB"
