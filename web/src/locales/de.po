@@ -1098,6 +1098,10 @@ msgstr "Kontaktperson"
 msgid "Contents"
 msgstr "Inhalt"
 
+#: src/lib/EventForm.svelte
+msgid "Control strip"
+msgstr "Kontrollstreifen"
+
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Control strip (label 90 × 29 mm)"
 msgstr "Kontrollstreifen (Etikette 90 × 29 mm)"
@@ -1185,10 +1189,6 @@ msgstr "Zählt für die Vereinskonkurrenz"
 #: src/routes/t/[tenantId]/+page.svelte
 msgid "Create"
 msgstr "Erstellen"
-
-#: src/lib/EventForm.svelte
-msgid "Create a range first."
-msgstr "Zuerst einen Schiessstand erfassen."
 
 #: src/routes/signup/+page.svelte
 msgid "Create account"
@@ -1421,6 +1421,10 @@ msgstr "Dokument"
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Documents"
 msgstr "Dokumente"
+
+#: src/lib/EventForm.svelte
+msgid "Documents at registration"
+msgstr "Dokumente bei der Anmeldung"
 
 #: src/lib/my/ApiTokens.svelte
 msgid "does not expire"
@@ -2004,6 +2008,10 @@ msgstr "Scheibenreservationen"
 msgid "Lane numbers, e.g. 3, 7"
 msgstr "Scheibennummern, z. B. 3, 7"
 
+#: src/lib/EventForm.svelte
+msgid "Lane sheet"
+msgstr "Standblatt"
+
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Lane sheet (A5)"
 msgstr "Standblatt (A5)"
@@ -2538,6 +2546,7 @@ msgstr "Kein Programm zählt für die Vereinskonkurrenz."
 msgid "No programmes yet."
 msgstr "Noch keine Programme."
 
+#: src/lib/EventForm.svelte
 #: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "No ranges yet."
 msgstr "Noch keine Schiessstände."
@@ -4028,8 +4037,8 @@ msgid "This page is not translated yet."
 msgstr "Diese Seite ist noch nicht übersetzt."
 
 #: src/lib/EventForm.svelte
-msgid "Tick every range the event is shot on."
-msgstr "Kreuze jeden Stand an, auf dem der Anlass geschossen wird."
+msgid "Tick every range the event is shot on. No range: an event without lanes, results are entered afterwards."
+msgstr "Kreuze jeden Stand an, auf dem der Anlass geschossen wird. Ohne Stand: ein Anlass ohne Scheiben, die Resultate werden nachträglich erfasst."
 
 #: src/lib/booking/BookingForm.svelte
 #: src/lib/ScheduleEditor.svelte

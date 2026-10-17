@@ -174,6 +174,7 @@
 					</label>
 				{/if}
 
+				{#if lanes.length}
 				<div>
 					<div class="mb-2 flex items-baseline justify-between">
 						<h3 class="text-sm font-medium">{$t`Lane`}</h3>
@@ -198,6 +199,7 @@
 						<p class="mt-2 text-xs text-muted-foreground">{$t`The chosen programmes are shot on ${rangeTitle(requiredRange ?? 0)}.`}</p>
 					{/if}
 				</div>
+				{/if}
 			</section>
 
 			<section>

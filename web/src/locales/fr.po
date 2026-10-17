@@ -1098,6 +1098,10 @@ msgstr "Personne de contact"
 msgid "Contents"
 msgstr "Sommaire"
 
+#: src/lib/EventForm.svelte
+msgid "Control strip"
+msgstr "Bande de contrôle"
+
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Control strip (label 90 × 29 mm)"
 msgstr "Bande de contrôle (étiquette 90 × 29 mm)"
@@ -1185,10 +1189,6 @@ msgstr "Compte pour le concours de sections"
 #: src/routes/t/[tenantId]/+page.svelte
 msgid "Create"
 msgstr "Créer"
-
-#: src/lib/EventForm.svelte
-msgid "Create a range first."
-msgstr "Créez d’abord un stand de tir."
 
 #: src/routes/signup/+page.svelte
 msgid "Create account"
@@ -1421,6 +1421,10 @@ msgstr "Document"
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Documents"
 msgstr "Documents"
+
+#: src/lib/EventForm.svelte
+msgid "Documents at registration"
+msgstr "Documents à l’inscription"
 
 #: src/lib/my/ApiTokens.svelte
 msgid "does not expire"
@@ -2004,6 +2008,10 @@ msgstr "Réservations de cibles"
 msgid "Lane numbers, e.g. 3, 7"
 msgstr "Numéros de cible, p. ex. 3, 7"
 
+#: src/lib/EventForm.svelte
+msgid "Lane sheet"
+msgstr "Feuille de stand"
+
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Lane sheet (A5)"
 msgstr "Feuille de stand (A5)"
@@ -2538,6 +2546,7 @@ msgstr "Aucun programme ne compte pour le concours de sections."
 msgid "No programmes yet."
 msgstr "Pas encore de programmes."
 
+#: src/lib/EventForm.svelte
 #: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "No ranges yet."
 msgstr "Pas encore de stands de tir."
@@ -4028,8 +4037,8 @@ msgid "This page is not translated yet."
 msgstr "Cette page n’est pas encore traduite."
 
 #: src/lib/EventForm.svelte
-msgid "Tick every range the event is shot on."
-msgstr "Cochez chaque stand sur lequel la manifestation se tire."
+msgid "Tick every range the event is shot on. No range: an event without lanes, results are entered afterwards."
+msgstr "Coche chaque stand sur lequel se tire la manifestation. Sans stand : une manifestation sans cibles, les résultats sont saisis après coup."
 
 #: src/lib/booking/BookingForm.svelte
 #: src/lib/ScheduleEditor.svelte

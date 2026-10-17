@@ -15,12 +15,13 @@ Der Tab *Anlass* enthält die Einstellungen (Admins):
 
 | Einstellung | Bedeutung |
 |---|---|
-| Name, Datum, Schiessstände | das Datum ist der Haupttag; sein Jahr bestimmt die Alterskategorien (SSV: Wettkampfjahr minus Jahrgang, der Tag selbst spielt keine Rolle, was für Vorschiesstage im Dezember vor einem Anlass im Januar zählt); jeden Stand ankreuzen, auf dem der Anlass geschossen wird |
+| Name, Datum, Schiessstände | das Datum ist der Haupttag; sein Jahr bestimmt die Alterskategorien (SSV: Wettkampfjahr minus Jahrgang, der Tag selbst spielt keine Rolle, was für Vorschiesstage im Dezember vor einem Anlass im Januar zählt); jeden Stand ankreuzen, auf dem der Anlass geschossen wird; oder keinen für einen Anlass ohne Scheiben (siehe unten) |
 | Schiesstage | einzelne Tage mit optionalen Schiesszeiten, für Vorschiesstage und mehrtägige Anlässe (Anmeldungen zählen am Tag, an dem sie gemacht werden); der Haupttag ist immer einer |
 | Zeitraum (Saison) | für Anlässe über Wochen oder Monate, z. B. das Feldschiessen von der Öffnung des Schützenhauses bis 31. August: erster und letzter Tag, dazu die Wochentage mit ihren Schiesszeiten; kein Wochentag angekreuzt heisst jeder Tag. Einzelne Tage, z. B. das offizielle Wochenende, ergänzen den Zeitraum oder ersetzen an diesem Datum seine Zeiten |
 | Veranstalter | wird auf Dokumente gedruckt |
 | Sprache der Dokumente und des Kiosks | Sprache von PDFs, CSV-Exporten und Kiosk-Bildschirmen, unabhängig von der Oberflächensprache der einzelnen Benutzer |
 | Von der Vereinskonkurrenz ausgeschlossener Verein | meist der Gastgeberverein; aufgeführt als *ausser Konkurrenz* |
+| Dokumente bei der Anmeldung | **Standblatt** und **Kontrollstreifen**: ausschalten, was der Anlass nicht braucht; die Anmeldung bietet es dann weder an noch druckt sie es |
 | Scheibenstatus auf den Ranglisten zeigen | Kiosk-Bildschirme zeigen die Scheiben |
 | Wert der Auszeichnung auf Kranzkarten drucken | Wert in Ziffern und Worten auf der Karte |
 | Der Veranstalter gibt die Munition ab | zeigt den Knopf **Munition** im Dashboard und für die Munitionsausgabe (siehe [Helfer](helpers.md)); aus bei Anlässen, an denen die Schützen ihre eigene mitbringen, z. B. Luftpistole und Luftgewehr |
@@ -28,6 +29,16 @@ Der Tab *Anlass* enthält die Einstellungen (Admins):
 Die Schiesszeiten geben auch der Online-Reservation ihre Zeitblöcke, ausser
 die Reservation legt für einen Tag andere Zeiten fest (siehe
 [Online-Reservation](online-booking.md)).
+
+## Anlässe ohne Scheiben {#no-lanes}
+
+Ein Anlass braucht keinen Stand, z. B. ein Jahresprogramm oder ein
+Feldschiessen, dessen Resultate auf Papier oder aus der Trefferanzeige
+kommen. Ohne Stand gibt es kein Scheibenraster, keine Reservationen und
+keine Online-Buchung; Schützen werden ohne Scheibe angemeldet, und ihre
+Resultate werden wie gewohnt erfasst. Dokumente lassen sich weiterhin als
+PDF öffnen, gehen aber nicht an einen Druck-Agenten, weil Druck-Agenten zu
+einem Stand gehören.
 
 ## Für nächstes Jahr kopieren
 

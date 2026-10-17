@@ -1098,6 +1098,10 @@ msgstr "Persona di contatto"
 msgid "Contents"
 msgstr "Indice"
 
+#: src/lib/EventForm.svelte
+msgid "Control strip"
+msgstr "Striscia di controllo"
+
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Control strip (label 90 × 29 mm)"
 msgstr "Striscia di controllo (etichetta 90 × 29 mm)"
@@ -1185,10 +1189,6 @@ msgstr "Conta per il concorso di sezione"
 #: src/routes/t/[tenantId]/+page.svelte
 msgid "Create"
 msgstr "Crea"
-
-#: src/lib/EventForm.svelte
-msgid "Create a range first."
-msgstr "Crea prima uno stand di tiro."
 
 #: src/routes/signup/+page.svelte
 msgid "Create account"
@@ -1421,6 +1421,10 @@ msgstr "Documento"
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Documents"
 msgstr "Documenti"
+
+#: src/lib/EventForm.svelte
+msgid "Documents at registration"
+msgstr "Documenti all’iscrizione"
 
 #: src/lib/my/ApiTokens.svelte
 msgid "does not expire"
@@ -2004,6 +2008,10 @@ msgstr "Prenotazioni di bersagli"
 msgid "Lane numbers, e.g. 3, 7"
 msgstr "Numeri dei bersagli, p. es. 3, 7"
 
+#: src/lib/EventForm.svelte
+msgid "Lane sheet"
+msgstr "Foglio di stand"
+
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Lane sheet (A5)"
 msgstr "Foglio di stand (A5)"
@@ -2538,6 +2546,7 @@ msgstr "Nessun programma conta per il concorso di sezione."
 msgid "No programmes yet."
 msgstr "Ancora nessun programma."
 
+#: src/lib/EventForm.svelte
 #: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "No ranges yet."
 msgstr "Ancora nessuno stand di tiro."
@@ -4028,8 +4037,8 @@ msgid "This page is not translated yet."
 msgstr "Questa pagina non è ancora tradotta."
 
 #: src/lib/EventForm.svelte
-msgid "Tick every range the event is shot on."
-msgstr "Spunta ogni stand su cui si tira la manifestazione."
+msgid "Tick every range the event is shot on. No range: an event without lanes, results are entered afterwards."
+msgstr "Spunta ogni stand su cui si tira la manifestazione. Senza stand: una manifestazione senza bersagli, i risultati vengono registrati dopo."
 
 #: src/lib/booking/BookingForm.svelte
 #: src/lib/ScheduleEditor.svelte

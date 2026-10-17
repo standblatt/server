@@ -31,6 +31,9 @@
 	let name = $state('');
 	let role = $state<HelperCode['role']>('scorer');
 	let rangeId = $state(0);
+	$effect(() => {
+		if (!ranges.length && role === 'scorer') role = 'results';
+	});
 	let lanes = $state('');
 	let url = $state('');
 	let error = $state('');
@@ -85,7 +88,7 @@
 	<form class="flex max-w-3xl flex-wrap gap-2" onsubmit={create}>
 		<Input class="min-w-48 flex-1" placeholder={$t`Helper name, e.g. Scorer range A`} bind:value={name} required aria-label={$t`Helper name`} />
 		<NativeSelect.Root class="w-44 shrink-0" bind:value={role} aria-label={$t`Role`}>
-			{#each ['scorer', 'ammunition', 'results'] as r (r)}<NativeSelect.Option value={r}>{$t(helperRoleLabel(r))}</NativeSelect.Option>{/each}
+			{#each ranges.length ? ['scorer', 'ammunition', 'results'] : ['ammunition', 'results'] as r (r)}<NativeSelect.Option value={r}>{$t(helperRoleLabel(r))}</NativeSelect.Option>{/each}
 		</NativeSelect.Root>
 		{#if role === 'scorer'}
 			{#if ranges.length > 1}

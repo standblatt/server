@@ -40,7 +40,7 @@
 	);
 	let name = $state(start.name);
 	let startsOn = $state(start.startsOn);
-	let rangeIds = $state<number[]>(untrack(() => [...start.rangeIds]));
+	let rangeIds = $state<number[]>(untrack(() => [...(start.rangeIds ?? [])]));
 	const sched = untrack(() => $state.snapshot(start.schedule ?? {}));
 	let days = $state((sched.days ?? []).filter((d) => d.date !== start.startsOn || d.times?.length).map((d) => ({ ...d, times: d.times ?? [] })));
 	let period = $state(!!sched.from);
@@ -57,6 +57,8 @@
 	let ammoIssue = $state(start.settings?.ammoIssue ?? false);
 	let printAwardValue = $state(start.settings?.printAwardValue ?? true);
 	let excludedClubId = $state(start.settings?.excludedClubId ?? 0);
+	let laneSheet = $state(!start.settings?.noLaneSheet);
+	let controlStrip = $state(!start.settings?.noControlStrip);
 	let error = $state('');
 	let busy = $state(false);
 
@@ -74,7 +76,7 @@
 				organizer,
 				timezone: start.timezone,
 				locale,
-				settings: { showLaneStatus, printAwardValue, ammoIssue, excludedClubId: excludedClubId || undefined }
+				settings: { showLaneStatus, printAwardValue, ammoIssue, excludedClubId: excludedClubId || undefined, noLaneSheet: !laneSheet, noControlStrip: !controlStrip }
 			});
 		} catch (err) {
 			error = (err as Error).message;
@@ -84,48 +86,51 @@
 	}
 </script>
 
-{#if ranges.length === 0}
-	<p class="text-sm text-muted-foreground">{$t`Create a range first.`}</p>
-{:else}
-	<form class="grid gap-4 sm:grid-cols-2" onsubmit={submit}>
-		<FormField label={$t`Name`} class="sm:col-span-2"><Input bind:value={name} required /></FormField>
-		<FormField label={$t`Date`} hint={$t`The main day. Age categories follow the SSV rule: competition year minus year of birth, so only the year of this date matters.`}><Input type="date" bind:value={startsOn} required /></FormField>
-		<FormField label={$t`Organizer`}><Input bind:value={organizer} /></FormField>
-		<FormField label={$t`Ranges`} class="sm:col-span-2" hint={ranges.length > 1 ? $t`Tick every range the event is shot on.` : ''}>
-			<div class="grid gap-1.5 rounded-md border p-3 sm:grid-cols-2" role="group" aria-label={$t`Ranges`}>
-				{#each ranges as s (s.id)}
-					<label class="flex items-center gap-2 text-sm">
-						<Checkbox checked={rangeIds.includes(s.id)} onCheckedChange={(v) => toggleRange(s.id, v)} />
-						{$t`${s.name} (${s.laneCount} lanes)`}
-					</label>
-				{/each}
-			</div>
-		</FormField>
-		<ScheduleEditor mainDay={startsOn} bind:days bind:period bind:from bind:to bind:weekly />
-		<FormField label={$t`Language of documents and kiosk`}>
-			<NativeSelect.Root class="w-full" bind:value={locale}>
-				{#each Object.entries(localeNames) as [value, label] (value)}<NativeSelect.Option {value}>{label}</NativeSelect.Option>{/each}
-			</NativeSelect.Root>
-		</FormField>
-		<FormField label={$t`Club excluded from the club competition`} class="sm:col-span-2">
-			<NativeSelect.Root class="w-full" bind:value={excludedClubId}>
-				<NativeSelect.Option value={0}>{$t`none`}</NativeSelect.Option>
-				{#each clubs as c (c.id)}<NativeSelect.Option value={c.id}>{c.name}</NativeSelect.Option>{/each}
-			</NativeSelect.Root>
-		</FormField>
-		<label class="flex items-center justify-between gap-3 rounded-md border p-3 text-sm sm:col-span-2">
-			{$t`Show lane status on the rankings`}
-			<Switch bind:checked={showLaneStatus} />
-		</label>
-		<label class="flex items-center justify-between gap-3 rounded-md border p-3 text-sm sm:col-span-2">
-			{$t`Print the award value on wreath cards`}
-			<Switch bind:checked={printAwardValue} />
-		</label>
-		<label class="flex items-center justify-between gap-3 rounded-md border p-3 text-sm sm:col-span-2">
-			{$t`The organizer hands out the ammunition (Ammo button on the dashboard)`}
-			<Switch bind:checked={ammoIssue} />
-		</label>
-		<FormError message={error} class="sm:col-span-2" />
-		<div class="flex justify-end sm:col-span-2"><Button type="submit" disabled={busy}>{submitLabel}</Button></div>
-	</form>
-{/if}
+<form class="grid gap-4 sm:grid-cols-2" onsubmit={submit}>
+	<FormField label={$t`Name`} class="sm:col-span-2"><Input bind:value={name} required /></FormField>
+	<FormField label={$t`Date`} hint={$t`The main day. Age categories follow the SSV rule: competition year minus year of birth, so only the year of this date matters.`}><Input type="date" bind:value={startsOn} required /></FormField>
+	<FormField label={$t`Organizer`}><Input bind:value={organizer} /></FormField>
+	<FormField label={$t`Ranges`} class="sm:col-span-2" hint={$t`Tick every range the event is shot on. No range: an event without lanes, results are entered afterwards.`}>
+		<div class="grid gap-1.5 rounded-md border p-3 sm:grid-cols-2" role="group" aria-label={$t`Ranges`}>
+			{#each ranges as s (s.id)}
+				<label class="flex items-center gap-2 text-sm">
+					<Checkbox checked={rangeIds.includes(s.id)} onCheckedChange={(v) => toggleRange(s.id, v)} />
+					{$t`${s.name} (${s.laneCount} lanes)`}
+				</label>
+			{:else}
+				<span class="text-sm text-muted-foreground">{$t`No ranges yet.`}</span>
+			{/each}
+		</div>
+	</FormField>
+	<ScheduleEditor mainDay={startsOn} bind:days bind:period bind:from bind:to bind:weekly />
+	<FormField label={$t`Language of documents and kiosk`}>
+		<NativeSelect.Root class="w-full" bind:value={locale}>
+			{#each Object.entries(localeNames) as [value, label] (value)}<NativeSelect.Option {value}>{label}</NativeSelect.Option>{/each}
+		</NativeSelect.Root>
+	</FormField>
+	<FormField label={$t`Club excluded from the club competition`} class="sm:col-span-2">
+		<NativeSelect.Root class="w-full" bind:value={excludedClubId}>
+			<NativeSelect.Option value={0}>{$t`none`}</NativeSelect.Option>
+			{#each clubs as c (c.id)}<NativeSelect.Option value={c.id}>{c.name}</NativeSelect.Option>{/each}
+		</NativeSelect.Root>
+	</FormField>
+	<fieldset class="grid gap-1.5 rounded-md border p-3 sm:col-span-2">
+		<legend class="px-1 text-sm font-medium">{$t`Documents at registration`}</legend>
+		<label class="flex items-center gap-2 text-sm"><Checkbox bind:checked={laneSheet} />{$t`Lane sheet`}</label>
+		<label class="flex items-center gap-2 text-sm"><Checkbox bind:checked={controlStrip} />{$t`Control strip`}</label>
+	</fieldset>
+	<label class="flex items-center justify-between gap-3 rounded-md border p-3 text-sm sm:col-span-2">
+		{$t`Show lane status on the rankings`}
+		<Switch bind:checked={showLaneStatus} />
+	</label>
+	<label class="flex items-center justify-between gap-3 rounded-md border p-3 text-sm sm:col-span-2">
+		{$t`Print the award value on wreath cards`}
+		<Switch bind:checked={printAwardValue} />
+	</label>
+	<label class="flex items-center justify-between gap-3 rounded-md border p-3 text-sm sm:col-span-2">
+		{$t`The organizer hands out the ammunition (Ammo button on the dashboard)`}
+		<Switch bind:checked={ammoIssue} />
+	</label>
+	<FormError message={error} class="sm:col-span-2" />
+	<div class="flex justify-end sm:col-span-2"><Button type="submit" disabled={busy}>{submitLabel}</Button></div>
+</form>

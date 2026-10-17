@@ -42,7 +42,7 @@
 		['event', $t`Event`],
 		['kiosk', $t`Kiosk displays`],
 		['helpers', $t`Helpers`],
-		['booking', $t`Online booking`],
+		...(event.data?.ranges.length ? [['booking', $t`Online booking`]] : []),
 		['more', $t`Copy & close`]
 	]);
 	const setupHelp: Record<string, string> = {

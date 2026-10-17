@@ -16,12 +16,13 @@ La scheda *Manifestazione* contiene le impostazioni (admin):
 
 | Impostazione | Significato |
 |---|---|
-| Nome, data, stand | la data è il giorno principale; il suo anno fissa le categorie d’età (FST: anno della gara meno anno di nascita, il giorno in sé non conta, il che vale per il tiro anticipato di dicembre prima di una manifestazione di gennaio); spuntare ogni stand su cui si tira la manifestazione |
+| Nome, data, stand | la data è il giorno principale; il suo anno fissa le categorie d’età (FST: anno della gara meno anno di nascita, il giorno in sé non conta, il che vale per il tiro anticipato di dicembre prima di una manifestazione di gennaio); spuntare ogni stand su cui si tira la manifestazione; o nessuno per una manifestazione senza bersagli (vedi sotto) |
 | Giorni di tiro | singoli giorni con orari di tiro facoltativi, per il tiro anticipato e le manifestazioni di più giorni (le iscrizioni contano il giorno in cui vengono fatte); il giorno principale è sempre uno di essi |
 | Periodo (stagione) | per manifestazioni di settimane o mesi, p. es. il Tiro in campagna dall’apertura dello stand fino al 31 agosto: primo e ultimo giorno, più i giorni della settimana con i loro orari di tiro; nessun giorno spuntato significa ogni giorno. I singoli giorni, p. es. il fine settimana ufficiale, si aggiungono al periodo o ne sostituiscono gli orari in quella data |
 | Organizzatore | stampato sui documenti |
 | Lingua dei documenti e del chiosco | lingua dei PDF, delle esportazioni CSV e degli schermi chiosco, indipendente dalla lingua d’interfaccia di ogni utente |
 | Società esclusa dal concorso di sezione | di solito la società organizzatrice; elencata come *fuori concorso* |
+| Documenti all’iscrizione | **Foglio di stand** e **Striscia di controllo**: disattivare ciò che la manifestazione non usa; l’iscrizione allora non lo propone né lo stampa |
 | Mostra lo stato dei bersagli sulle classifiche | gli schermi chiosco mostrano i bersagli |
 | Stampa il valore della distinzione sulle carte corona | valore in cifre e in lettere sulla carta |
 | L’organizzatore consegna le munizioni | mostra il pulsante **Munizione** nella dashboard e per la distribuzione munizioni (vedi [Aiutanti](helpers.md)); disattivato per le manifestazioni in cui i tiratori portano le proprie, ad es. pistola e carabina ad aria compressa |
@@ -29,6 +30,16 @@ La scheda *Manifestazione* contiene le impostazioni (admin):
 Gli orari di tiro danno anche alla prenotazione online le sue fasce, a meno
 che la prenotazione fissi altri orari per un giorno (vedi [prenotazione
 online](online-booking.md)).
+
+## Manifestazioni senza bersagli {#no-lanes}
+
+Una manifestazione non ha bisogno di uno stand, p. es. un programma annuale
+o un Tiro in campagna i cui risultati arrivano su carta o dall’impianto di
+segnalazione. Senza stand non ci sono griglia dei bersagli, prenotazioni né
+prenotazione online; i tiratori vengono iscritti senza bersaglio e i loro
+risultati si registrano come di consueto. I documenti si aprono ancora in
+PDF, ma non vanno a un agente di stampa, perché gli agenti di stampa
+appartengono a uno stand.
 
 ## Copia per l’anno prossimo
 

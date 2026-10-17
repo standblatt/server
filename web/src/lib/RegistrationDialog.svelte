@@ -79,6 +79,8 @@
 
 	let printLaneSheet = $state(true);
 	let printControlStrip = $state(true);
+	const laneSheet = $derived(!event.data?.settings.noLaneSheet);
+	const controlStrip = $derived(!event.data?.settings.noControlStrip);
 
 	const archived = $derived(!!event.data?.archivedAt);
 	const person = $derived(registration.data?.shooter ?? shooter.data);
@@ -97,8 +99,8 @@
 	/** Registers the shooter, prints the chosen documents and closes the dialog. */
 	async function register(r: { clubId?: number; rangeId?: number; lane?: number; programmes: ProgrammeChoice[] }) {
 		const reg = await call(api.POST('/api/tenants/{tenantId}/events/{eventId}/registrations', { params: { path: { tenantId, eventId } }, body: { shooterId: shooterId!, ...r } }));
-		if (printLaneSheet) await printDocument(tenantId, { document: 'lane_sheet', registrationId: reg.id });
-		if (printControlStrip) await printDocument(tenantId, { document: 'control_strip', registrationId: reg.id });
+		if (laneSheet && printLaneSheet) await printDocument(tenantId, { document: 'lane_sheet', registrationId: reg.id });
+		if (controlStrip && printControlStrip) await printDocument(tenantId, { document: 'control_strip', registrationId: reg.id });
 		await refresh();
 		toast.success(
 			reg.lane && (event.data?.ranges.length ?? 0) > 1
@@ -161,8 +163,8 @@
 					{#if r.status !== 'completed' && !archived && !lanesOnly}
 						<Button size="sm" variant="outline" onclick={() => action('finish')}><Flag />{$t`Finish shooting`}</Button>
 					{/if}
-					<PrintButton {tenantId} target={{ document: 'lane_sheet', registrationId: r.id }} />
-					{#if !lanesOnly}<PrintButton {tenantId} target={{ document: 'control_strip', registrationId: r.id }} />{/if}
+					{#if laneSheet}<PrintButton {tenantId} target={{ document: 'lane_sheet', registrationId: r.id }} />{/if}
+					{#if controlStrip && !lanesOnly}<PrintButton {tenantId} target={{ document: 'control_strip', registrationId: r.id }} />{/if}
 					{#if !archived && !lanesOnly}<Button size="sm" variant="destructive" class="ml-auto" onclick={() => action('delete')}><Trash />{$t`Delete`}</Button>{/if}
 				</div>
 			{/if}
@@ -204,8 +206,8 @@
 					onsubmit={register}
 				>
 					{#snippet footer()}
-						<label class="flex items-center gap-2 text-sm"><Checkbox bind:checked={printLaneSheet} />{$t`Print lane sheet`}</label>
-						<label class="flex items-center gap-2 text-sm"><Checkbox bind:checked={printControlStrip} />{$t`Print control strip`}</label>
+						{#if laneSheet}<label class="flex items-center gap-2 text-sm"><Checkbox bind:checked={printLaneSheet} />{$t`Print lane sheet`}</label>{/if}
+						{#if controlStrip}<label class="flex items-center gap-2 text-sm"><Checkbox bind:checked={printControlStrip} />{$t`Print control strip`}</label>{/if}
 					{/snippet}
 				</RegistrationForm>
 			{/if}

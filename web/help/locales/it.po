@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-17 20:01+0000\n"
+"POT-Creation-Date: 2026-10-17 20:49+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -1721,7 +1721,10 @@ msgid ""
 "Clubs that are not in the club list stop the import before anything is "
 "stored: for each one, choose an existing club (similar names are suggested) "
 "or a new one, then **Import** again."
-msgstr "Le società che non sono nell’elenco fermano l’importazione prima che venga salvato qualcosa: scegli per ognuna una società esistente (i nomi simili vengono proposti) o una nuova, poi clicca di nuovo su **Importa**."
+msgstr ""
+"Le società che non sono nell’elenco fermano l’importazione prima che venga "
+"salvato qualcosa: scegli per ognuna una società esistente (i nomi simili "
+"vengono proposti) o una nuova, poi clicca di nuovo su **Importa**."
 
 #. type: Title #
 #: ../src/help/en/reference/programme-file.md:1
@@ -2434,35 +2437,37 @@ msgid "The *Event* tab holds the settings (admins):"
 msgstr "La scheda *Manifestazione* contiene le impostazioni (admin):"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:24
+#: ../src/help/en/user-guide/events.md:25
 #, no-wrap
 msgid ""
 "| Setting | Meaning |\n"
 "|---|---|\n"
-"| Name, Date, Ranges | the date is the main day; its year sets the age categories (SSV: competition year minus year of birth, the day itself does not matter, which counts for pre-shooting days in December before a January event); tick every range the event is shot on |\n"
+"| Name, Date, Ranges | the date is the main day; its year sets the age categories (SSV: competition year minus year of birth, the day itself does not matter, which counts for pre-shooting days in December before a January event); tick every range the event is shot on, or none for an event without lanes (see below) |\n"
 "| Shooting days | single days with optional shooting times, for pre-shooting days and multi-day events (registrations count on the day they are made); the main day is always one |\n"
 "| Period (season) | for events over weeks or months, e.g. the Feldschiessen from the opening of the range until 31 August: first and last day, plus the weekdays with their shooting times; no weekday ticked means every day. Single days, e.g. the official weekend, add to the period or replace its times on that date |\n"
 "| Organizer | printed on documents |\n"
 "| Language of documents and kiosk | language of PDFs, CSV exports and kiosk screens, independent of each user's interface language |\n"
 "| Club excluded from the club competition | usually the host club; listed as *out of competition* |\n"
+"| Documents at registration | **Lane sheet** and **Control strip**: switch off what the event does not use; the registration then neither offers nor prints it |\n"
 "| Show lane status on the rankings | kiosk screens show the lanes |\n"
 "| Print the award value on wreath cards | value in figures and words on the card |\n"
 "| The organizer hands out the ammunition | shows the **Ammo** button on the dashboard and for the ammunition desk (see [Helpers](helpers.md)); off for events where shooters bring their own, e.g. air pistol and air rifle |\n"
 msgstr ""
 "| Impostazione | Significato |\n"
 "|---|---|\n"
-"| Nome, data, stand | la data è il giorno principale; il suo anno fissa le categorie d’età (FST: anno della gara meno anno di nascita, il giorno in sé non conta, il che vale per il tiro anticipato di dicembre prima di una manifestazione di gennaio); spuntare ogni stand su cui si tira la manifestazione |\n"
+"| Nome, data, stand | la data è il giorno principale; il suo anno fissa le categorie d’età (FST: anno della gara meno anno di nascita, il giorno in sé non conta, il che vale per il tiro anticipato di dicembre prima di una manifestazione di gennaio); spuntare ogni stand su cui si tira la manifestazione; o nessuno per una manifestazione senza bersagli (vedi sotto) |\n"
 "| Giorni di tiro | singoli giorni con orari di tiro facoltativi, per il tiro anticipato e le manifestazioni di più giorni (le iscrizioni contano il giorno in cui vengono fatte); il giorno principale è sempre uno di essi |\n"
 "| Periodo (stagione) | per manifestazioni di settimane o mesi, p. es. il Tiro in campagna dall’apertura dello stand fino al 31 agosto: primo e ultimo giorno, più i giorni della settimana con i loro orari di tiro; nessun giorno spuntato significa ogni giorno. I singoli giorni, p. es. il fine settimana ufficiale, si aggiungono al periodo o ne sostituiscono gli orari in quella data |\n"
 "| Organizzatore | stampato sui documenti |\n"
 "| Lingua dei documenti e del chiosco | lingua dei PDF, delle esportazioni CSV e degli schermi chiosco, indipendente dalla lingua d’interfaccia di ogni utente |\n"
 "| Società esclusa dal concorso di sezione | di solito la società organizzatrice; elencata come *fuori concorso* |\n"
+"| Documenti all’iscrizione | **Foglio di stand** e **Striscia di controllo**: disattivare ciò che la manifestazione non usa; l’iscrizione allora non lo propone né lo stampa |\n"
 "| Mostra lo stato dei bersagli sulle classifiche | gli schermi chiosco mostrano i bersagli |\n"
 "| Stampa il valore della distinzione sulle carte corona | valore in cifre e in lettere sulla carta |\n"
 "| L’organizzatore consegna le munizioni | mostra il pulsante **Munizione** nella dashboard e per la distribuzione munizioni (vedi [Aiutanti](helpers.md)); disattivato per le manifestazioni in cui i tiratori portano le proprie, ad es. pistola e carabina ad aria compressa |\n"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:26
+#: ../src/help/en/user-guide/events.md:27
 msgid ""
 "Shooting times also give the online booking its slots, unless the booking "
 "sets other hours for a day (see [Online booking](online-booking.md))."
@@ -2472,13 +2477,30 @@ msgstr ""
 "online](online-booking.md))."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:27
+#: ../src/help/en/user-guide/events.md:28
+#, no-wrap
+msgid "Events without lanes {#no-lanes}"
+msgstr "Manifestazioni senza bersagli {#no-lanes}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:31
+msgid ""
+"An event needs no range, e.g. an annual programme or a Feldschiessen whose "
+"results come on paper or from the scoring system. Without a range there is "
+"no lane grid, no reservations and no online booking; shooters are registered "
+"without a lane and their results are entered as usual. Documents can still "
+"be opened as PDF, but they do not go to a print agent, because print agents "
+"belong to a range."
+msgstr "Una manifestazione non ha bisogno di uno stand, p. es. un programma annuale o un Tiro in campagna i cui risultati arrivano su carta o dall’impianto di segnalazione. Senza stand non ci sono griglia dei bersagli, prenotazioni né prenotazione online; i tiratori vengono iscritti senza bersaglio e i loro risultati si registrano come di consueto. I documenti si aprono ancora in PDF, ma non vanno a un agente di stampa, perché gli agenti di stampa appartengono a uno stand."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/events.md:32
 #, no-wrap
 msgid "Copy for next year"
 msgstr "Copia per l’anno prossimo"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:30
+#: ../src/help/en/user-guide/events.md:35
 msgid ""
 "On the *Copy & close* tab, **Copy for next year** creates a new event with "
 "the same ranges, organizer, language, settings and all programmes, including "
@@ -2498,20 +2520,20 @@ msgstr ""
 "dopo; adatta entrambi se necessario."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:32
+#: ../src/help/en/user-guide/events.md:37
 msgid "![Copy an event](../images/screenshots/copy-event.png){ .screenshot }"
 msgstr ""
 "![Copiare una manifestazione](../images/screenshots/copy-event.png)"
 "{ .screenshot }"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:33
+#: ../src/help/en/user-guide/events.md:38
 #, no-wrap
 msgid "Close {#close}"
 msgstr "Chiudere {#close}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:36
+#: ../src/help/en/user-guide/events.md:41
 msgid ""
 "When an event is over and the rankings are checked, **Close** it on the "
 "*Copy & close* tab. Closing releases the rankings: shooters with a [personal "
@@ -2536,13 +2558,13 @@ msgstr ""
 "restano. Copiare una manifestazione chiusa per l’anno prossimo funziona."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:37
+#: ../src/help/en/user-guide/events.md:42
 #, no-wrap
 msgid "Delete"
 msgstr "Eliminare"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:39
+#: ../src/help/en/user-guide/events.md:44
 #, no-wrap
 msgid "**Delete** (on the *Copy & close* tab) removes an event, but only while nobody is registered for it.\n"
 msgstr "**Elimina** (nella scheda *Copia e chiudi*) rimuove una manifestazione, ma solo finché nessuno è iscritto.\n"
@@ -3803,7 +3825,11 @@ msgid ""
 "to, because the club typed its name itself: the club with the same name is "
 "chosen already, clubs with a similar name are suggested, and *New club* "
 "creates it. The request then shows the club it was matched to."
-msgstr "**Conferma** chiede prima a quale **Società** dei dati di base appartiene la richiesta, perché la società ha digitato il nome da sé: la società con lo stesso nome è già scelta, le società con un nome simile vengono proposte e *Nuova società* la crea. La richiesta mostra poi la società attribuita."
+msgstr ""
+"**Conferma** chiede prima a quale **Società** dei dati di base appartiene la "
+"richiesta, perché la società ha digitato il nome da sé: la società con lo "
+"stesso nome è già scelta, le società con un nome simile vengono proposte e "
+"*Nuova società* la crea. La richiesta mostra poi la società attribuita."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/online-booking.md:42
@@ -3814,7 +3840,13 @@ msgid ""
 "from a public form; only a missing birthday or licence is filled in. "
 "Shooters added after the confirmation are taken over with **Take over "
 "shooters**."
-msgstr "**Conferma** riprende anche i tiratori nei dati di base, in quella società: un tiratore viene trovato tramite la licenza, altrimenti tramite nome e data di nascita, e creato in caso contrario. I tiratori esistenti non vengono mai sovrascritti, perché la lista viene da un modulo pubblico; si completa solo una data di nascita o una licenza mancante. I tiratori aggiunti dopo la conferma si riprendono con **Riprendi tiratori**."
+msgstr ""
+"**Conferma** riprende anche i tiratori nei dati di base, in quella società: "
+"un tiratore viene trovato tramite la licenza, altrimenti tramite nome e data "
+"di nascita, e creato in caso contrario. I tiratori esistenti non vengono mai "
+"sovrascritti, perché la lista viene da un modulo pubblico; si completa solo "
+"una data di nascita o una licenza mancante. I tiratori aggiunti dopo la "
+"conferma si riprendono con **Riprendi tiratori**."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/online-booking.md:42
@@ -4028,7 +4060,13 @@ msgid ""
 "is that club. Any other name shows *is not in the club list yet* with "
 "similar clubs under *Did you mean*; a new club is only created after "
 "**Create new club**, so a typo does not become a second club."
-msgstr "**Società** (nuovo tiratore o aggiunta di una società nei dettagli) propone le società dell’elenco. Un nome che corrisponde a una società senza tenere conto di maiuscole e spazi è quella società. Ogni altro nome mostra *non è ancora nell’elenco delle società* con le società simili sotto *Intendevi*; una nuova società nasce solo con **Crea la nuova società**, così un errore di battitura non diventa una seconda società."
+msgstr ""
+"**Società** (nuovo tiratore o aggiunta di una società nei dettagli) propone "
+"le società dell’elenco. Un nome che corrisponde a una società senza tenere "
+"conto di maiuscole e spazi è quella società. Ogni altro nome mostra *non è "
+"ancora nell’elenco delle società* con le società simili sotto *Intendevi*; "
+"una nuova società nasce solo con **Crea la nuova società**, così un errore "
+"di battitura non diventa una seconda società."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/shooters-clubs.md:14
@@ -4059,15 +4097,13 @@ msgstr "![Società](../images/screenshots/clubs.png){ .screenshot }"
 #: ../src/help/en/user-guide/shooters-clubs.md:20
 #, no-wrap
 msgid "**Clubs** are the clubs shooters belong to, with their SSV number. They appear in registrations, rankings and the club competition. A shooter can belong to several clubs and registers for one of them. Clubs used by registrations cannot be deleted, and two clubs cannot have the same name regardless of upper case and spaces.\n"
-msgstr ""
-"Le **società** sono le società a cui appartengono i tiratori, con il loro numero FST. Compaiono nelle iscrizioni, nelle classifiche e nel concorso di sezione. Un tiratore può appartenere a più società e si iscrive per una di esse. Le società usate da iscrizioni non si possono eliminare, e due società non possono avere lo stesso nome, nemmeno con altre maiuscole o spazi.\n"
+msgstr "Le **società** sono le società a cui appartengono i tiratori, con il loro numero FST. Compaiono nelle iscrizioni, nelle classifiche e nel concorso di sezione. Un tiratore può appartenere a più società e si iscrive per una di esse. Le società usate da iscrizioni non si possono eliminare, e due società non possono avere lo stesso nome, nemmeno con altre maiuscole o spazi.\n"
 
 #. type: Plain text
 #: ../src/help/en/user-guide/shooters-clubs.md:21
 #, no-wrap
 msgid "**Merge into…** (admins) cleans up a duplicate, e.g. *S.G. Hiltown* next to *SG Hilltown*: choose the club that stays (clubs with a similar name come first). It keeps its name and gets the shooters, registrations and booking requests of the other one, including those of closed events, so their rankings show the club that stays; the SSV number is taken over when it has none. The other club is deleted.\n"
-msgstr ""
-"**Unisci a…** (admin) elimina un doppione, p. es. *S.G. Hiltown* accanto a *SG Hilltown*: scegli la società che resta (le società con un nome simile vengono prima). Mantiene il suo nome e riceve i tiratori, le iscrizioni e le richieste di prenotazione dell’altra, anche quelli delle manifestazioni chiuse, così le loro classifiche mostrano la società che resta; il numero FST viene ripreso se non ne ha uno. L’altra società viene eliminata.\n"
+msgstr "**Unisci a…** (admin) elimina un doppione, p. es. *S.G. Hiltown* accanto a *SG Hilltown*: scegli la società che resta (le società con un nome simile vengono prima). Mantiene il suo nome e riceve i tiratori, le iscrizioni e le richieste di prenotazione dell’altra, anche quelli delle manifestazioni chiuse, così le loro classifiche mostrano la società che resta; il numero FST viene ripreso se non ne ha uno. L’altra società viene eliminata.\n"
 
 #. type: Title #
 #: ../src/help/en/user-guide/statistics-reports.md:1

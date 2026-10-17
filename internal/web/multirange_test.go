@@ -90,3 +90,32 @@ func TestMultiRangeEvent(t *testing.T) {
 		t.Fatalf("stats per day: %d %s", code, b)
 	}
 }
+
+func TestEventWithoutRange(t *testing.T) {
+	e := newEnv(t)
+	f := e.registrationFixture("Field")
+	e.user("boss", f.tenant, store.RoleAdmin)
+	boss := e.login("boss")
+	base := fmt.Sprintf("/api/tenants/%d", f.tenant)
+	evPath := fmt.Sprintf("%s/events/%d", base, f.event)
+
+	code, b := e.do(boss, "POST", base+"/events", map[string]any{"name": "Annual programme", "startsOn": "2027-03-01"})
+	expect(t, "create an event without a range", code, 201, b)
+	code, b = e.do(boss, "PUT", evPath, map[string]any{"name": "Indoor", "startsOn": "2026-11-20", "settings": store.EventSettings{NoLaneSheet: true}})
+	expect(t, "drop the range", code, 204, b)
+	var ev store.Event
+	_, b = e.do(boss, "GET", evPath, nil)
+	json.Unmarshal(b, &ev)
+	if len(ev.Ranges) != 0 || !ev.Settings.NoLaneSheet || ev.Settings.NoControlStrip {
+		t.Fatalf("event without a range: %s", b)
+	}
+	code, b = e.do(boss, "GET", evPath+"/lanes", nil)
+	if code != 200 || strings.TrimSpace(string(b)) != "[]" {
+		t.Fatalf("lanes of an event without a range: %d %s", code, b)
+	}
+	lane := 1
+	code, b = e.do(boss, "POST", evPath+"/registrations", web.RegistrationInput{ShooterID: f.shooter, Lane: &lane, Programmes: []domain.ProgrammeChoice{{ProgrammeID: f.main}}})
+	expect(t, "lane on an event without a range", code, 422, b)
+	code, b = e.do(boss, "POST", evPath+"/registrations", web.RegistrationInput{ShooterID: f.shooter, Programmes: []domain.ProgrammeChoice{{ProgrammeID: f.main}}})
+	expect(t, "register without a lane", code, 201, b)
+}

@@ -68,7 +68,7 @@
 
 	const eventItems = $derived([
 		{ href: eventBase, label: $t`Dashboard`, icon: LayoutDashboard, active: path === eventBase },
-		{ href: `${eventBase}/reservations`, label: $t`Reservations`, icon: CalendarClock, badge: pending },
+		...(event?.ranges.length ? [{ href: `${eventBase}/reservations`, label: $t`Reservations`, icon: CalendarClock, badge: pending }] : []),
 		{ href: `${eventBase}/rankings`, label: $t`Rankings`, icon: ListOrdered },
 		{ href: `${eventBase}/statistics`, label: $t`Statistics`, icon: BarChart },
 		{ href: `${eventBase}/setup`, label: $t`Setup`, icon: Settings }
@@ -154,7 +154,7 @@
 						{/if}
 						<span class="truncate font-medium text-sidebar-accent-foreground">{event.name}</span>
 					</div>
-					<span class="block truncate text-xs">{formatDays(event.days, event.startsOn)} · {rangeNames(event.ranges)}{event.archivedAt ? ` · ${$t`closed`}` : ''}</span>
+					<span class="block truncate text-xs">{[formatDays(event.days, event.startsOn), rangeNames(event.ranges), event.archivedAt ? $t`closed` : ''].filter(Boolean).join(' · ')}</span>
 					<a href={base} class="mt-1 inline-flex items-center gap-1 text-xs text-sidebar-foreground/80 underline-offset-2 hover:underline"><Repeat class="size-3" />{$t`Change event`}</a>
 				</div>
 				<div class="mt-1">{@render nav(eventItems)}</div>

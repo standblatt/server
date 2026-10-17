@@ -16,6 +16,8 @@ type EventSettings struct {
 	ShowLaneStatus  bool   `json:"showLaneStatus" required:"false"`
 	PrintAwardValue bool   `json:"printAwardValue" required:"false"`
 	AmmoIssue       bool   `json:"ammoIssue" required:"false" doc:"The organizer hands out the ammunition; shows the Ammo button on the dashboard"`
+	NoLaneSheet     bool   `json:"noLaneSheet" required:"false" doc:"The event prints no lane sheets"`
+	NoControlStrip  bool   `json:"noControlStrip" required:"false" doc:"The event prints no control strips"`
 }
 
 // EventRange is a range an event is shot on.
@@ -43,7 +45,7 @@ type Event struct {
 
 // EventInput holds the editable fields of an event.
 type EventInput struct {
-	RangeIDs  []int64         `json:"rangeIds" minItems:"1"`
+	RangeIDs  []int64         `json:"rangeIds" required:"false" doc:"Empty for an event without lanes: results are entered afterwards"`
 	Name      string          `json:"name" minLength:"1" maxLength:"200"`
 	StartsOn  string          `json:"startsOn" format:"date"`
 	Schedule  domain.Schedule `json:"schedule" required:"false" doc:"Single days and/or a period; the main day is always a shooting day"`
@@ -114,8 +116,8 @@ func (s *Store) UpdateEvent(ctx context.Context, tenantID, eventID int64, in Eve
 			return ErrNotFound
 		}
 		var used bool
-		if err := tx.QueryRow(ctx, `SELECT EXISTS (SELECT 1 FROM registrations WHERE event_id = $1 AND range_id <> ALL($2))
-			OR EXISTS (SELECT 1 FROM programmes WHERE event_id = $1 AND range_id <> ALL($2))`, eventID, in.RangeIDs).Scan(&used); err != nil {
+		if err := tx.QueryRow(ctx, `SELECT EXISTS (SELECT 1 FROM registrations WHERE event_id = $1 AND range_id IS NOT NULL AND range_id <> ALL($2))
+			OR EXISTS (SELECT 1 FROM programmes WHERE event_id = $1 AND range_id IS NOT NULL AND range_id <> ALL($2))`, eventID, in.RangeIDs).Scan(&used); err != nil {
 			return err
 		}
 		if used {

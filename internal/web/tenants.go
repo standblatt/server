@@ -96,10 +96,7 @@ func normalizeEvent(in *store.EventInput) error {
 	if errs := domain.ValidateSchedule(in.Schedule); len(errs) > 0 {
 		return invalidList(errs)
 	}
-	in.RangeIDs = slices.Compact(slices.Sorted(slices.Values(in.RangeIDs)))
-	if len(in.RangeIDs) == 0 {
-		return invalid("Choose at least one range")
-	}
+	in.RangeIDs = append([]int64{}, slices.Compact(slices.Sorted(slices.Values(in.RangeIDs)))...)
 	if in.Timezone == "" {
 		in.Timezone = defaultTimezone
 	}

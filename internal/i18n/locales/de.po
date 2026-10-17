@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 21:54+0200\n"
+"POT-Creation-Date: 2026-10-17 22:44+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1692,10 +1692,6 @@ msgid "A range with this name already exists"
 msgstr "Einen Schiessstand mit diesem Namen gibt es bereits"
 
 #: internal/web/tenants.go
-msgid "Choose at least one range"
-msgstr "Wähle mindestens einen Stand"
-
-#: internal/web/tenants.go
 msgid "Club admins only"
 msgstr "Nur für Vereinsadmins"
 
@@ -1744,6 +1740,9 @@ msgstr "Dieser Code wurde schon benutzt; warte auf den nächsten."
 #: internal/web/totp.go
 msgid "Wrong code."
 msgstr "Falscher Code."
+
+#~ msgid "Choose at least one range"
+#~ msgstr "Wähle mindestens einen Stand"
 
 #, go-format
 #~ msgid "%s and %s are shot on different lane groups"

@@ -16,12 +16,13 @@ L’onglet *Manifestation* contient les réglages (admins) :
 
 | Réglage | Signification |
 |---|---|
-| Nom, date, stands | la date est le jour principal ; son année fixe les catégories d’âge (FST : année du concours moins année de naissance, le jour lui-même ne compte pas, ce qui importe pour le tir anticipé de décembre avant une manifestation de janvier) ; cocher chaque stand sur lequel la manifestation se tire |
+| Nom, date, stands | la date est le jour principal ; son année fixe les catégories d’âge (FST : année du concours moins année de naissance, le jour lui-même ne compte pas, ce qui importe pour le tir anticipé de décembre avant une manifestation de janvier) ; cocher chaque stand sur lequel la manifestation se tire ; ou aucun pour une manifestation sans cibles (voir plus bas) |
 | Jours de tir | jours isolés avec heures de tir facultatives, pour le tir anticipé et les manifestations sur plusieurs jours (les inscriptions comptent le jour où elles sont faites) ; le jour principal en fait toujours partie |
 | Période (saison) | pour les manifestations sur des semaines ou des mois, p. ex. le Tir en campagne de l’ouverture du stand jusqu’au 31 août : premier et dernier jour, plus les jours de la semaine avec leurs heures de tir ; aucun jour coché signifie chaque jour. Les jours isolés, p. ex. le week-end officiel, s’ajoutent à la période ou remplacent ses heures à cette date |
 | Organisateur | imprimé sur les documents |
 | Langue des documents et du kiosque | langue des PDF, des exports CSV et des écrans kiosque, indépendamment de la langue d’interface de chaque utilisateur |
 | Société exclue du concours de sections | en général la société organisatrice ; listée *hors concours* |
+| Documents à l’inscription | **Feuille de stand** et **Bande de contrôle** : désactiver ce que la manifestation n’utilise pas ; l’inscription ne le propose alors plus et ne l’imprime pas |
 | Afficher l’état des cibles sur les classements | les écrans kiosque montrent les cibles |
 | Imprimer la valeur de la distinction sur les cartes-couronnes | valeur en chiffres et en lettres sur la carte |
 | L’organisateur remet la munition | affiche le bouton **Munition** sur le tableau de bord et pour la distribution de munition (voir [Aides](helpers.md)) ; désactivé pour les manifestations où les tireurs apportent la leur, p. ex. pistolet et carabine à air |
@@ -29,6 +30,16 @@ L’onglet *Manifestation* contient les réglages (admins) :
 Les heures de tir donnent aussi ses créneaux à la réservation en ligne, sauf
 si la réservation fixe d’autres horaires pour un jour (voir [réservation en
 ligne](online-booking.md)).
+
+## Manifestations sans cibles {#no-lanes}
+
+Une manifestation n’a pas besoin de stand, p. ex. un programme annuel ou un
+Tir en campagne dont les résultats arrivent sur papier ou depuis
+l’installation de marquage. Sans stand, il n’y a ni grille des cibles, ni
+réservations, ni réservation en ligne ; les tireurs sont inscrits sans cible
+et leurs résultats sont saisis comme d’habitude. Les documents s’ouvrent
+toujours en PDF, mais ne partent pas vers un agent d’impression, car les
+agents d’impression appartiennent à un stand.
 
 ## Copier pour l’année prochaine
 

@@ -50,6 +50,7 @@
 	);
 	const archived = $derived(!!event.data?.archivedAt);
 	const ammoIssue = $derived(!!event.data?.settings.ammoIssue);
+	const laneSheet = $derived(!event.data?.settings.noLaneSheet);
 	const registrations = registrationsQuery(
 		() => tenantId,
 		() => eventId
@@ -401,7 +402,7 @@
 								<Table.Cell onclick={(e: MouseEvent) => e.stopPropagation()}>
 									<div class="flex items-center justify-end gap-1.5">
 										{@render ammo(r)}
-										{#if can.print && !can.register}<PrintButton {tenantId} target={{ document: 'lane_sheet', registrationId: r.id }} />{/if}
+										{#if laneSheet && can.print && !can.register}<PrintButton {tenantId} target={{ document: 'lane_sheet', registrationId: r.id }} />{/if}
 										{#if can.assign}<Button size="sm" onclick={() => openRegistration(r.id)}>{$t`Assign lane`}</Button>{/if}
 									</div>
 								</Table.Cell>

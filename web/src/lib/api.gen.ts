@@ -2334,7 +2334,8 @@ export interface components {
             locale?: "en" | "de" | "fr" | "it";
             name: string;
             organizer?: string;
-            rangeIds: number[];
+            /** @description Empty for an event without lanes: results are entered afterwards */
+            rangeIds?: number[];
             /** @description Single days and/or a period; the main day is always a shooting day */
             schedule?: components["schemas"]["Schedule"];
             settings?: components["schemas"]["EventSettings"];
@@ -2355,6 +2356,10 @@ export interface components {
             ammoIssue?: boolean;
             /** Format: int64 */
             excludedClubId?: number;
+            /** @description The event prints no control strips */
+            noControlStrip?: boolean;
+            /** @description The event prints no lane sheets */
+            noLaneSheet?: boolean;
             printAwardValue?: boolean;
             showLaneStatus?: boolean;
         };
