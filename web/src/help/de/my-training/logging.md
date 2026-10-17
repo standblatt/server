@@ -75,6 +75,17 @@ und wird hochgeladen, sobald du wieder online bist. Ein Hinweis auf der
 Seite Heute zeigt, wie viele Einheiten warten. Ein wiederholter Upload legt
 nie eine Einheit doppelt an.
 
+Wartende Einheiten gehören dem Konto, mit dem sie erfasst wurden. Ist dein
+Login inzwischen abgelaufen, melde dich wieder an, dann werden sie
+hochgeladen; meldet sich jemand anderes auf demselben Gerät an, bekommt er
+sie nicht. Lehnt der Server eine ab, zum Beispiel weil ihre Disziplin
+gelöscht wurde, zeigt ein Hinweis den Grund und du kannst sie
+**Verwerfen**. Offline lassen sich nur neue Einheiten speichern; eine
+Einheit ändern braucht eine Verbindung.
+
+Hast du die App einmal online geöffnet, startet sie auch ohne Verbindung und
+zeigt deine letzten Daten.
+
 ## Eine Einheit ändern oder löschen
 
 Öffne die Einheit im **Logbuch** und nutze den Stift, um sie zu ändern oder

@@ -5,6 +5,7 @@
 	import { api, call } from '$lib/api';
 	import { helperRights } from '$lib/desk';
 	import EventDesk from '$lib/EventDesk.svelte';
+	import OfflineBanner from '$lib/OfflineBanner.svelte';
 	import { formatDays } from '$lib/format';
 	import { helperRoleLabel, liveLabel } from '$lib/labels';
 	import { eventLive, type Live } from '$lib/live.svelte';
@@ -70,6 +71,7 @@
 				<ThemeToggle />
 			</div>
 		</header>
+		<OfflineBanner />
 		<div class="flex flex-1 flex-col p-3 md:p-6">
 			<EventDesk {tenantId} {eventId} {base} can={helperRights(helper.data.role)} {only} />
 		</div>

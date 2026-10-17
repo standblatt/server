@@ -74,6 +74,17 @@ l’appareil et est envoyée dès que tu es de nouveau en ligne. Une note sur la
 page Aujourd’hui indique combien de séances attendent. Un envoi répété ne
 crée jamais une séance en double.
 
+Les séances en attente appartiennent au compte qui les a saisies. Si ta
+connexion a expiré entre-temps, reconnecte-toi et elles sont envoyées ; une
+autre personne qui se connecte sur le même appareil ne les reçoit pas. Si le
+serveur en refuse une, par exemple parce que sa discipline a été supprimée,
+une note en indique la raison et tu peux l’**Abandonner**. Seules les
+nouvelles séances peuvent être enregistrées hors ligne ; modifier une séance
+nécessite une connexion.
+
+Une fois l’app ouverte en ligne, elle s’ouvre aussi sans connexion et
+affiche tes dernières données.
+
 ## Modifier ou supprimer une séance
 
 Ouvre la séance dans le **Journal** et utilise le crayon pour la modifier,

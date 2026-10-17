@@ -29,8 +29,11 @@ sur quelle cible, qui attend, qui a terminé.
 
 Tout se met à jour en direct : un résultat saisi sur un autre ordinateur ou
 une réservation qui commence apparaît sans recharger. Le point à côté de
-**en direct** dans l’en-tête montre la connexion ; après une coupure du
-réseau, la page se remet à jour toute seule.
+**live** dans l’en-tête montre la connexion ; après une interruption du
+réseau, la page se met à jour d’elle-même. Sans connexion, une barre rouge
+le signale ; rien ne peut alors être enregistré, mais les dialogues ouverts
+gardent ce que tu as saisi, pour que tu puisses enregistrer à nouveau dès
+que tu es de retour en ligne.
 
 ## Rechercher et scanner
 

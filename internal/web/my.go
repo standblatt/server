@@ -30,6 +30,7 @@ type WeekSummary struct {
 
 // MyOverview is everything the home screen of the personal log needs.
 type MyOverview struct {
+	UserID        int64                   `json:"userId" doc:"The logged-in user; the app keys data kept on the device by it"`
 	Email         string                  `json:"email"`
 	EmailVerified bool                    `json:"emailVerified"`
 	Profile       store.Profile           `json:"profile" doc:"Created empty on the first visit; names, birthday and license are optional"`
@@ -131,7 +132,7 @@ func (s *Server) saved(ctx context.Context, userID, id int64) (*struct{ Body Tra
 
 // overview builds the start page of the personal log: account, profile, disciplines, goals, weapons, recent sessions, the week and competitions.
 func (s *Server) overview(ctx context.Context, u store.User, tz string) (MyOverview, error) {
-	var o MyOverview
+	o := MyOverview{UserID: u.ID}
 	a, err := s.Store.GetAccount(ctx, u.ID)
 	if err != nil {
 		return o, err

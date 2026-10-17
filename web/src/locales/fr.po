@@ -67,6 +67,14 @@ msgid_plural "# sessions are saved on this device and will be uploaded when you 
 msgstr[0] "# séance est enregistrée sur cet appareil et sera envoyée dès que tu es en ligne."
 msgstr[1] "# séances sont enregistrées sur cet appareil et seront envoyées dès que tu es en ligne."
 
+#. placeholder {0}: outbox.failed.length
+#. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+session+saved+on+this+device+could+not+be+uploaded%3A%7D+other+%7B%23+sessions+saved+on+this+device+could+not+be+uploaded%3A%7D%7D&pluralize_on=0
+#: src/lib/my/Notices.svelte
+msgid "# session saved on this device could not be uploaded:"
+msgid_plural "# sessions saved on this device could not be uploaded:"
+msgstr[0] "# séance enregistrée sur cet appareil n’a pas pu être envoyée :"
+msgstr[1] "# séances enregistrées sur cet appareil n’ont pas pu être envoyées :"
+
 #. placeholder {0}: r.shooters.length
 #. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+shooter+announced%7D+other+%7B%23+shooters+announced%7D%7D&pluralize_on=0
 #: src/lib/BookingRequests.svelte
@@ -1334,9 +1342,14 @@ msgstr "Description"
 msgid "Details"
 msgstr "Détails"
 
+#: src/lib/my/Notices.svelte
 #: src/routes/my/train/+page.svelte
 msgid "Discard"
 msgstr "Abandonner"
+
+#: src/lib/my/Notices.svelte
+msgid "Discard these sessions?"
+msgstr "Abandonner ces séances ?"
 
 #: src/routes/my/train/+page.svelte
 msgid "Discard this session?"
@@ -2420,6 +2433,14 @@ msgstr "Aucune société attribuée."
 #: src/routes/t/[tenantId]/clubs/+page.svelte
 msgid "No clubs."
 msgstr "Aucune société."
+
+#: src/lib/OfflineBanner.svelte
+msgid "No connection. Changes are only saved when you are back online."
+msgstr "Pas de connexion. Les modifications ne sont enregistrées que lorsque tu es de nouveau en ligne."
+
+#: src/lib/api.ts
+msgid "No connection. Nothing was saved."
+msgstr "Pas de connexion. Rien n’a été enregistré."
 
 #: src/lib/AccountSettings.svelte
 msgid "No email address yet"
@@ -3891,6 +3912,10 @@ msgstr "la liste d'attente"
 #: src/routes/my/settings/+page.svelte
 msgid "Theme"
 msgstr "Thème"
+
+#: src/lib/my/Notices.svelte
+msgid "They are removed from this device and cannot be uploaded anymore."
+msgstr "Elles sont supprimées de cet appareil et ne peuvent plus être envoyées."
 
 #: src/routes/b/[code]/+page.svelte
 msgid "This booking link is not valid. Ask the organizer for a new one."

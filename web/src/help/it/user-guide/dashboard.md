@@ -26,10 +26,12 @@ quale bersaglio, chi aspetta, chi ha finito.
 - *In attesa* e *Concluso* mostrano 50 iscrizioni per pagina; le frecce
   sotto l’elenco sfogliano le pagine.
 
-Tutto si aggiorna in diretta: un risultato registrato su un altro computer o
-una prenotazione che inizia compare senza ricaricare. Il punto accanto a
-**in diretta** nell’intestazione mostra la connessione; dopo un’interruzione
-di rete la pagina si aggiorna da sola.
+Tutto si aggiorna in tempo reale: un risultato inserito su un altro computer
+o una prenotazione che inizia appare senza ricaricare. Il punto accanto a
+**live** nell’intestazione mostra la connessione; dopo un’interruzione di
+rete la pagina si aggiorna da sola. Senza connessione una barra rossa lo
+segnala; allora non si può salvare nulla, ma i dialoghi aperti mantengono
+ciò che hai inserito, così puoi salvare di nuovo appena sei di nuovo online.
 
 ## Cercare e scansionare
 

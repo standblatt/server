@@ -2,7 +2,7 @@ import { msg } from '@lingui/core/macro';
 import type { MessageDescriptor } from '@lingui/core';
 import { createQuery, type QueryClient } from '@tanstack/svelte-query';
 import { goto } from '$app/navigation';
-import { api, call, ApiError, type Schemas } from './api';
+import { api, call, ApiError, OfflineError, type Schemas } from './api';
 import { intlLocale } from './locale.svelte';
 
 export type MyOverview = Schemas['MyOverview'];
@@ -22,7 +22,12 @@ export const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 export function myQuery() {
 	return createQuery(() => ({
 		queryKey: myKey,
-		queryFn: () => call(api.GET('/api/my', { params: { query: { tz: timeZone } } }))
+		queryFn: async () => {
+			const o = await call(api.GET('/api/my', { params: { query: { tz: timeZone } } }));
+			cacheMy(o);
+			return o;
+		},
+		placeholderData: cachedMy
 	}));
 }
 
@@ -79,61 +84,118 @@ export { localInput } from './format';
 export const uuid = () => crypto.randomUUID();
 
 const outboxKey = 'standblatt-outbox';
+const myCacheKey = 'standblatt-my';
 
-/** Sessions in the offline outbox (also reads the old targetlog key), empty when storage fails. */
-function readOutbox(): TrainingInput[] {
+/** A session saved on this device for a user; error holds the server's answer when the upload was refused. */
+type Queued = { userId: number; input: TrainingInput; error?: string };
+
+/** Sessions in the offline outbox, empty when storage fails; entries of the old format (no user) belong to userId. */
+function readOutbox(userId = 0): Queued[] {
 	try {
-		return JSON.parse(localStorage.getItem(outboxKey) ?? localStorage.getItem('targetlog-outbox') ?? '[]');
+		const list: (Queued | TrainingInput)[] = JSON.parse(localStorage.getItem(outboxKey) ?? localStorage.getItem('targetlog-outbox') ?? '[]');
+		return list.map((x) => ('input' in x ? x : { userId, input: x }));
 	} catch {
 		return [];
 	}
 }
 
-/** Stores the offline outbox and updates its count. */
-function writeOutbox(list: TrainingInput[]) {
+/** Stores the offline outbox and updates the counts of userId. */
+function writeOutbox(list: Queued[], userId: number) {
 	try {
 		localStorage.setItem(outboxKey, JSON.stringify(list));
+		localStorage.removeItem('targetlog-outbox');
 	} catch {
 		// nothing we can do without storage
 	}
-	outbox.count = list.length;
+	countOutbox(list, userId);
 }
 
-/** Sessions saved on this device while offline, uploaded by flushOutbox. */
-export const outbox = $state({ count: 0 });
-
-/** Puts a session into the offline outbox, replacing one with the same client ID. */
-export function queueOffline(input: TrainingInput) {
-	writeOutbox([...readOutbox().filter((x) => x.clientId !== input.clientId), input]);
+/** Updates the counts of the outbox for userId. */
+function countOutbox(list: Queued[], userId: number) {
+	const mine = list.filter((x) => x.userId === userId);
+	outbox.count = mine.filter((x) => !x.error).length;
+	outbox.failed = mine.filter((x) => x.error).map((x) => x.error!);
 }
 
-/** Uploads sessions saved offline; the client ID makes a retry safe. */
-export async function flushOutbox(queryClient: QueryClient) {
-	const list = readOutbox();
-	outbox.count = list.length;
-	if (!list.length || !navigator.onLine) return;
-	const left: TrainingInput[] = [];
-	for (const input of list) {
-		try {
-			await call(api.POST('/api/my/trainings', { body: input }));
-		} catch (err) {
-			if (!(err instanceof ApiError) || err.status >= 500) left.push(input);
+/** Sessions saved on this device while offline, uploaded by flushOutbox; failed holds the errors of refused uploads. */
+export const outbox = $state<{ count: number; failed: string[] }>({ count: 0, failed: [] });
+
+/** Puts a session of userId into the offline outbox, replacing one with the same client ID. */
+export function queueOffline(input: TrainingInput, userId: number) {
+	writeOutbox([...readOutbox(userId).filter((x) => x.input.clientId !== input.clientId), { userId, input }], userId);
+}
+
+/** Removes the sessions of userId whose upload was refused. */
+export function discardFailed(userId: number) {
+	writeOutbox(readOutbox(userId).filter((x) => x.userId !== userId || !x.error), userId);
+}
+
+let flushing = false;
+
+/** Uploads the sessions userId saved offline; the client ID makes a retry safe, refused ones stay with their error. */
+export async function flushOutbox(queryClient: QueryClient, userId: number) {
+	const list = readOutbox(userId);
+	countOutbox(list, userId);
+	if (flushing || !navigator.onLine) return;
+	flushing = true;
+	let sent = 0;
+	try {
+		for (const q of list.filter((x) => x.userId === userId && !x.error)) {
+			let error: string | undefined;
+			try {
+				await call(api.POST('/api/my/trainings', { body: q.input }));
+				sent++;
+			} catch (err) {
+				if (!(err instanceof ApiError) || err.status === 401 || err.status >= 500) break;
+				error = err.message;
+			}
+			const now = readOutbox(userId);
+			writeOutbox(error ? now.map((x) => (x.input.clientId === q.input.clientId ? { ...x, error } : x)) : now.filter((x) => x.input.clientId !== q.input.clientId), userId);
 		}
+	} finally {
+		flushing = false;
 	}
-	writeOutbox(left);
-	if (left.length < list.length) await queryClient.invalidateQueries({ queryKey: myKey });
+	if (sent) await queryClient.invalidateQueries({ queryKey: myKey });
+}
+
+/** The last home data kept on this device, so the app opens offline. */
+function cachedMy(): MyOverview | undefined {
+	try {
+		return JSON.parse(localStorage.getItem(myCacheKey) ?? 'null') ?? undefined;
+	} catch {
+		return undefined;
+	}
+}
+
+/** Keeps the home data on this device. */
+function cacheMy(o: MyOverview) {
+	try {
+		localStorage.setItem(myCacheKey, JSON.stringify(o));
+	} catch {
+		// the app then only opens online
+	}
 }
 
 /** True for errors where the request never reached the server. */
-export const isOffline = (err: unknown) => !(err instanceof ApiError);
+export const isOffline = (err: unknown) => err instanceof OfflineError;
 
 const kinds: Record<string, MessageDescriptor> = { training: msg`Training`, competition: msg`Competition` };
 /** Label descriptor of a session kind (training, competition), the raw kind otherwise. */
 export const kindLabel = (k: string) => kinds[k] ?? { id: k, message: k };
 
+/** Drops the home data kept on this device, so the next user does not see it while theirs loads. */
+export function forgetMy() {
+	try {
+		localStorage.removeItem(myCacheKey);
+	} catch {
+		// nothing kept
+	}
+}
+
 /** Ends the session and returns to the login page. */
 export async function logout(queryClient: QueryClient) {
 	await call(api.POST('/api/auth/logout'));
+	forgetMy();
 	queryClient.clear();
 	await goto('/login');
 }

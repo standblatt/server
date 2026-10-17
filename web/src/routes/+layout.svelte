@@ -8,7 +8,7 @@
 	import * as Tooltip from '$lib/components/ui/tooltip';
 	import { setLinguiContext } from 'lingui-for-svelte';
 	import { i18n } from '$lib/locale.svelte';
-	import { api, ApiError } from '$lib/api';
+	import { api, ApiError, OfflineError } from '$lib/api';
 	import { startMatomo, trackPage } from '$lib/matomo';
 	import { afterNavigate } from '$app/navigation';
 	import { onMount } from 'svelte';
@@ -48,9 +48,9 @@
 	});
 	setLinguiContext(i18n);
 
-	/** Shows API errors that no handler caught as a toast instead of losing them in the console; 401 already redirects. */
+	/** Shows API and connection errors that no handler caught as a toast instead of losing them in the console; 401 already redirects. */
 	function apiErrorToast(e: PromiseRejectionEvent) {
-		if (!(e.reason instanceof ApiError) || e.reason.status === 401) return;
+		if (!(e.reason instanceof ApiError || e.reason instanceof OfflineError) || (e.reason instanceof ApiError && e.reason.status === 401)) return;
 		e.preventDefault();
 		toast.error(e.reason.message);
 	}

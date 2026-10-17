@@ -2523,6 +2523,11 @@ export interface components {
             profile: components["schemas"]["Profile"];
             recent: components["schemas"]["TrainingSession"][];
             tags: string[];
+            /**
+             * Format: int64
+             * @description The logged-in user; the app keys data kept on the device by it
+             */
+            userId: number;
             weapons: components["schemas"]["Weapon"][];
             week: components["schemas"]["WeekSummary"];
         };

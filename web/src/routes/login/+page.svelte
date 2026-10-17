@@ -11,6 +11,7 @@
 	import FormField from '$lib/FormField.svelte';
 	import { ApiError } from '$lib/api';
 	import { authOptionsQuery, meKey } from '$lib/me';
+	import { forgetMy, myKey } from '$lib/my.svelte';
 
 	const queryClient = useQueryClient();
 	const options = authOptionsQuery();
@@ -29,6 +30,8 @@
 		error = '';
 		try {
 			const me = await call(api.POST('/api/auth/login', { body: { name, password, code: needCode ? code : undefined, remember } }));
+			forgetMy();
+			queryClient.removeQueries({ queryKey: myKey });
 			queryClient.setQueryData(meKey, me);
 			await goto('/');
 		} catch (err) {

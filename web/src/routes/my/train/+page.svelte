@@ -19,7 +19,7 @@
 	import { complete, filled, fromSession, newDraft, seriesTotal, toInput, totals, typeKey, typeShot, type Draft, type Mode } from '$lib/my/capture';
 	import Finish from '$lib/my/Finish.svelte';
 	import Result from '$lib/my/Result.svelte';
-	import { disciplineName, fmt, fmtTotal, isOffline, maxShot, myKey, myQuery, queueOffline, type Discipline, type TrainingSaved } from '$lib/my.svelte';
+	import { disciplineName, fmt, fmtTotal, flushOutbox, isOffline, maxShot, myKey, myQuery, queueOffline, type Discipline, type TrainingSaved } from '$lib/my.svelte';
 	import TargetFace from '$lib/TargetFace.svelte';
 	import { score, targets } from '$lib/targets';
 
@@ -260,9 +260,10 @@
 			clearDraft();
 			finishing = false;
 			await queryClient.invalidateQueries({ queryKey: myKey });
+			if (my.data) flushOutbox(queryClient, my.data.userId);
 		} catch (err) {
-			if (isOffline(err) && !draft.editId) {
-				queueOffline(input);
+			if (isOffline(err) && !draft.editId && my.data) {
+				queueOffline(input, my.data.userId);
 				clearDraft();
 				finishing = false;
 				result = 'offline';

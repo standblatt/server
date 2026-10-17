@@ -1,9 +1,7 @@
 <script lang="ts">
 	import { Trans, t } from 'lingui-for-svelte/macro';
-	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import { useQueryClient } from '@tanstack/svelte-query';
-	import { api, call } from '$lib/api';
 	import AppSidebar from '$lib/AppSidebar.svelte';
 	import * as Breadcrumb from '$lib/components/ui/breadcrumb';
 	import { Separator } from '$lib/components/ui/separator';
@@ -11,7 +9,9 @@
 	import { eventLive, type Live } from '$lib/live.svelte';
 	import { liveLabel } from '$lib/labels';
 	import { meQuery, setMyLocale } from '$lib/me';
+	import { logout as endSession } from '$lib/my.svelte';
 	import { eventsQuery } from '$lib/tenant';
+	import OfflineBanner from '$lib/OfflineBanner.svelte';
 	import ThemeToggle from '$lib/ThemeToggle.svelte';
 
 	let { children } = $props();
@@ -64,13 +64,6 @@
 
 	const sidebarOpen = typeof document !== 'undefined' && !document.cookie.includes('sidebar_state=false');
 
-	/** Logs out and goes to the login. */
-	async function logout() {
-		await call(api.POST('/api/auth/logout'));
-		queryClient.clear();
-		await goto('/login');
-	}
-
 	/** Stores the chosen UI language and applies it. */
 	async function changeLocale(locale: string) {
 		await setMyLocale(queryClient, locale);
@@ -83,7 +76,7 @@
 	</main>
 {:else if me.data && membership}
 	<Sidebar.Provider open={sidebarOpen}>
-		<AppSidebar me={me.data} {tenantId} {event} live={live?.connected} onlogout={logout} onlocale={changeLocale} />
+		<AppSidebar me={me.data} {tenantId} {event} live={live?.connected} onlogout={() => endSession(queryClient)} onlocale={changeLocale} />
 		<Sidebar.Inset class="min-w-0">
 			<header class="sticky top-0 z-20 flex h-12 shrink-0 items-center gap-2 border-b bg-background/90 px-3 backdrop-blur">
 				<Sidebar.Trigger />
@@ -114,6 +107,7 @@
 					<ThemeToggle />
 				</div>
 			</header>
+			<OfflineBanner />
 			<div class="flex flex-1 flex-col p-4 md:p-6">
 				{@render children()}
 			</div>

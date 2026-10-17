@@ -27,11 +27,23 @@
 
 	onMount(() => {
 		navigator.serviceWorker?.register('/service-worker.js', { scope: '/my', type: dev ? 'module' : 'classic' }).catch(() => {});
-		flushOutbox(queryClient);
-		/** Sends the queued offline sessions when the browser is back online. */
-		const online = () => flushOutbox(queryClient);
-		window.addEventListener('online', online);
-		return () => window.removeEventListener('online', online);
+	});
+
+	const userId = $derived(my.data?.userId);
+	$effect(() => {
+		if (!userId || my.isPlaceholderData) return;
+		const id = userId;
+		/** Sends the queued offline sessions; runs again when the browser is back online or the app comes to the front. */
+		const flush = () => document.visibilityState === 'visible' && flushOutbox(queryClient, id);
+		flush();
+		window.addEventListener('online', flush);
+		window.addEventListener('pageshow', flush);
+		document.addEventListener('visibilitychange', flush);
+		return () => {
+			window.removeEventListener('online', flush);
+			window.removeEventListener('pageshow', flush);
+			document.removeEventListener('visibilitychange', flush);
+		};
 	});
 
 	const path = $derived(page.url.pathname);

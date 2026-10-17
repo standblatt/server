@@ -11,7 +11,7 @@ The dashboard is the desk view of an event: who is shooting on which lane, who i
 - The figures at the top count waiting, shooting and completed registrations.
 - *Waiting* and *Completed* show 50 registrations per page; the arrows below the list turn the pages.
 
-Everything updates live: a result entered at another computer or a reservation that starts appears without reloading. The dot next to **live** in the header shows the connection; after a network interruption the page catches up by itself.
+Everything updates live: a result entered at another computer or a reservation that starts appears without reloading. The dot next to **live** in the header shows the connection; after a network interruption the page catches up by itself. Without a connection a red bar says so; nothing can be saved then, but open dialogs keep what you typed, so you can save again once you are back online.
 
 ## Search and scan
 

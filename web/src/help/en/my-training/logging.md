@@ -46,6 +46,10 @@ The session is kept on the device while you type. If you close the browser or th
 
 If there is no connection when you save, the session is kept on the device and uploaded as soon as you are online again. A note on the Today page shows how many sessions are waiting. A retried upload never creates a session twice.
 
+Waiting sessions belong to the account that typed them. If your login expired in the meantime, log in again and they are uploaded; another person logging in on the same device does not get them. If the server refuses one, for example because its discipline was deleted, a note shows the reason and you can **Discard** it. Only new sessions can be saved offline; changing a session needs a connection.
+
+Once you opened the app online, it also opens without a connection and shows your last data.
+
 ## Changing or deleting a session
 
 Open the session in the **Log** and use the pencil to change it, or the bin to delete it.

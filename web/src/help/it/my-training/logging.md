@@ -73,6 +73,17 @@ viene caricata appena sei di nuovo online. Un avviso nella pagina Oggi
 mostra quante sessioni sono in attesa. Un caricamento ripetuto non crea mai
 una sessione doppia.
 
+Le sessioni in attesa appartengono all’account che le ha inserite. Se nel
+frattempo il tuo login è scaduto, accedi di nuovo e verranno caricate;
+un’altra persona che accede sullo stesso dispositivo non le riceve. Se il
+server ne rifiuta una, per esempio perché la sua disciplina è stata
+eliminata, un avviso ne mostra il motivo e puoi eliminarla con
+**Scarta**. Offline si possono salvare solo sessioni nuove; per modificare
+una sessione serve una connessione.
+
+Dopo aver aperto l’app online una volta, si apre anche senza connessione e
+mostra i tuoi ultimi dati.
+
 ## Modificare o eliminare una sessione
 
 Apri la sessione nel **Diario** e usa la matita per modificarla, o il

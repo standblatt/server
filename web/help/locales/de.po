@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-17 14:33+0000\n"
+"POT-Creation-Date: 2026-10-17 18:07+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -1202,8 +1202,8 @@ msgid ""
 msgstr ""
 "**Waffe**: mit welcher deiner [Waffen](account.md#weapons) du geschossen "
 "hast. Eine neue Einheit beginnt mit der Waffe deiner letzten Einheit in "
-"derselben Disziplin; tippe sie erneut an, um sie abzuwählen oder füge "
-"gleich dort eine neue Waffe hinzu."
+"derselben Disziplin; tippe sie erneut an, um sie abzuwählen oder füge gleich "
+"dort eine neue Waffe hinzu."
 
 #. type: Bullet: '- '
 #: ../src/help/en/my-training/logging.md:35
@@ -1289,14 +1289,32 @@ msgstr ""
 "Seite Heute zeigt, wie viele Einheiten warten. Ein wiederholter Upload legt "
 "nie eine Einheit doppelt an."
 
+#. type: Plain text
+#: ../src/help/en/my-training/logging.md:50
+msgid ""
+"Waiting sessions belong to the account that typed them. If your login "
+"expired in the meantime, log in again and they are uploaded; another person "
+"logging in on the same device does not get them. If the server refuses one, "
+"for example because its discipline was deleted, a note shows the reason and "
+"you can **Discard** it. Only new sessions can be saved offline; changing a "
+"session needs a connection."
+msgstr "Wartende Einheiten gehören dem Konto, mit dem sie erfasst wurden. Ist dein Login inzwischen abgelaufen, melde dich wieder an, dann werden sie hochgeladen; meldet sich jemand anderes auf demselben Gerät an, bekommt er sie nicht. Lehnt der Server eine ab, zum Beispiel weil ihre Disziplin gelöscht wurde, zeigt ein Hinweis den Grund und du kannst sie **Verwerfen**. Offline lassen sich nur neue Einheiten speichern; eine Einheit ändern braucht eine Verbindung."
+
+#. type: Plain text
+#: ../src/help/en/my-training/logging.md:52
+msgid ""
+"Once you opened the app online, it also opens without a connection and shows "
+"your last data."
+msgstr "Hast du die App einmal online geöffnet, startet sie auch ohne Verbindung und zeigt deine letzten Daten."
+
 #. type: Title ##
-#: ../src/help/en/my-training/logging.md:49
+#: ../src/help/en/my-training/logging.md:53
 #, no-wrap
 msgid "Changing or deleting a session"
 msgstr "Eine Einheit ändern oder löschen"
 
 #. type: Plain text
-#: ../src/help/en/my-training/logging.md:51
+#: ../src/help/en/my-training/logging.md:55
 msgid ""
 "Open the session in the **Log** and use the pencil to change it, or the bin "
 "to delete it."
@@ -2252,7 +2270,9 @@ msgstr ""
 msgid ""
 "*Waiting* and *Completed* show 50 registrations per page; the arrows below "
 "the list turn the pages."
-msgstr "*Wartend* und *Abgeschlossen* zeigen 50 Anmeldungen pro Seite; die Pfeile unter der Liste blättern weiter."
+msgstr ""
+"*Wartend* und *Abgeschlossen* zeigen 50 Anmeldungen pro Seite; die Pfeile "
+"unter der Liste blättern weiter."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/dashboard.md:15
@@ -2260,12 +2280,10 @@ msgid ""
 "Everything updates live: a result entered at another computer or a "
 "reservation that starts appears without reloading. The dot next to **live** "
 "in the header shows the connection; after a network interruption the page "
-"catches up by itself."
-msgstr ""
-"Alles aktualisiert sich live: Ein an einem anderen Computer erfasstes "
-"Resultat oder eine beginnende Reservation erscheint ohne Neuladen. Der Punkt "
-"neben **live** in der Kopfzeile zeigt die Verbindung; nach einem "
-"Netzunterbruch holt die Seite selbst auf."
+"catches up by itself. Without a connection a red bar says so; nothing can be "
+"saved then, but open dialogs keep what you typed, so you can save again once "
+"you are back online."
+msgstr "Alles aktualisiert sich live: Ein an einem anderen Computer erfasstes Resultat oder eine beginnende Reservation erscheint ohne Neuladen. Der Punkt neben **live** in der Kopfzeile zeigt die Verbindung; nach einem Netzunterbruch holt die Seite selbst auf. Ohne Verbindung weist ein roter Balken darauf hin; dann lässt sich nichts speichern, aber offene Dialoge behalten deine Eingaben, sodass du wieder speichern kannst, sobald du online bist."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/dashboard.md:16
@@ -3963,7 +3981,11 @@ msgid ""
 "optional), part of a name, or first and last name in either order. The list "
 "shows 50 shooters per page, the club list 50 clubs; the arrows below turn "
 "the pages."
-msgstr "**Suchen** funktioniert wie im Dashboard: Lizenznummer (führende Nullen optional), Teil eines Namens oder Vor- und Nachname in beliebiger Reihenfolge. Die Liste zeigt 50 Schützen pro Seite, die Vereinsliste 50 Vereine; die Pfeile darunter blättern weiter."
+msgstr ""
+"**Suchen** funktioniert wie im Dashboard: Lizenznummer (führende Nullen "
+"optional), Teil eines Namens oder Vor- und Nachname in beliebiger "
+"Reihenfolge. Die Liste zeigt 50 Schützen pro Seite, die Vereinsliste 50 "
+"Vereine; die Pfeile darunter blättern weiter."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/shooters-clubs.md:13

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-17 14:33+0000\n"
+"POT-Creation-Date: 2026-10-17 18:07+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -1289,14 +1289,32 @@ msgstr ""
 "mostra quante sessioni sono in attesa. Un caricamento ripetuto non crea mai "
 "una sessione doppia."
 
+#. type: Plain text
+#: ../src/help/en/my-training/logging.md:50
+msgid ""
+"Waiting sessions belong to the account that typed them. If your login "
+"expired in the meantime, log in again and they are uploaded; another person "
+"logging in on the same device does not get them. If the server refuses one, "
+"for example because its discipline was deleted, a note shows the reason and "
+"you can **Discard** it. Only new sessions can be saved offline; changing a "
+"session needs a connection."
+msgstr "Le sessioni in attesa appartengono all’account che le ha inserite. Se nel frattempo il tuo login è scaduto, accedi di nuovo e verranno caricate; un’altra persona che accede sullo stesso dispositivo non le riceve. Se il server ne rifiuta una, per esempio perché la sua disciplina è stata eliminata, un avviso ne mostra il motivo e puoi eliminarla con **Scarta**. Offline si possono salvare solo sessioni nuove; per modificare una sessione serve una connessione."
+
+#. type: Plain text
+#: ../src/help/en/my-training/logging.md:52
+msgid ""
+"Once you opened the app online, it also opens without a connection and shows "
+"your last data."
+msgstr "Dopo aver aperto l’app online una volta, si apre anche senza connessione e mostra i tuoi ultimi dati."
+
 #. type: Title ##
-#: ../src/help/en/my-training/logging.md:49
+#: ../src/help/en/my-training/logging.md:53
 #, no-wrap
 msgid "Changing or deleting a session"
 msgstr "Modificare o eliminare una sessione"
 
 #. type: Plain text
-#: ../src/help/en/my-training/logging.md:51
+#: ../src/help/en/my-training/logging.md:55
 msgid ""
 "Open the session in the **Log** and use the pencil to change it, or the bin "
 "to delete it."
@@ -2246,7 +2264,9 @@ msgstr "Le cifre in alto contano le iscrizioni in attesa, al tiro e concluse."
 msgid ""
 "*Waiting* and *Completed* show 50 registrations per page; the arrows below "
 "the list turn the pages."
-msgstr "*In attesa* e *Concluso* mostrano 50 iscrizioni per pagina; le frecce sotto l’elenco sfogliano le pagine."
+msgstr ""
+"*In attesa* e *Concluso* mostrano 50 iscrizioni per pagina; le frecce sotto "
+"l’elenco sfogliano le pagine."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/dashboard.md:15
@@ -2254,12 +2274,10 @@ msgid ""
 "Everything updates live: a result entered at another computer or a "
 "reservation that starts appears without reloading. The dot next to **live** "
 "in the header shows the connection; after a network interruption the page "
-"catches up by itself."
-msgstr ""
-"Tutto si aggiorna in diretta: un risultato registrato su un altro computer o "
-"una prenotazione che inizia compare senza ricaricare. Il punto accanto a "
-"**in diretta** nell’intestazione mostra la connessione; dopo un’interruzione "
-"di rete la pagina si aggiorna da sola."
+"catches up by itself. Without a connection a red bar says so; nothing can be "
+"saved then, but open dialogs keep what you typed, so you can save again once "
+"you are back online."
+msgstr "Tutto si aggiorna in tempo reale: un risultato inserito su un altro computer o una prenotazione che inizia appare senza ricaricare. Il punto accanto a **live** nell’intestazione mostra la connessione; dopo un’interruzione di rete la pagina si aggiorna da sola. Senza connessione una barra rossa lo segnala; allora non si può salvare nulla, ma i dialoghi aperti mantengono ciò che hai inserito, così puoi salvare di nuovo appena sei di nuovo online."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/dashboard.md:16
@@ -3955,7 +3973,11 @@ msgid ""
 "optional), part of a name, or first and last name in either order. The list "
 "shows 50 shooters per page, the club list 50 clubs; the arrows below turn "
 "the pages."
-msgstr "La **ricerca** funziona come nella dashboard: numero di licenza (zeri iniziali facoltativi), parte di un nome, o nome e cognome in qualsiasi ordine. L’elenco mostra 50 tiratori per pagina, l’elenco delle società 50 società; le frecce sotto sfogliano le pagine."
+msgstr ""
+"La **ricerca** funziona come nella dashboard: numero di licenza (zeri "
+"iniziali facoltativi), parte di un nome, o nome e cognome in qualsiasi "
+"ordine. L’elenco mostra 50 tiratori per pagina, l’elenco delle società 50 "
+"società; le frecce sotto sfogliano le pagine."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/shooters-clubs.md:13

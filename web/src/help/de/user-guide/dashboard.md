@@ -30,7 +30,10 @@ Scheibe schiesst, wer wartet, wer fertig ist.
 Alles aktualisiert sich live: Ein an einem anderen Computer erfasstes
 Resultat oder eine beginnende Reservation erscheint ohne Neuladen. Der Punkt
 neben **live** in der Kopfzeile zeigt die Verbindung; nach einem
-Netzunterbruch holt die Seite selbst auf.
+Netzunterbruch holt die Seite selbst auf. Ohne Verbindung weist ein roter
+Balken darauf hin; dann lässt sich nichts speichern, aber offene Dialoge
+behalten deine Eingaben, sodass du wieder speichern kannst, sobald du online
+bist.
 
 ## Suchen und scannen
 

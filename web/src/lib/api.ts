@@ -1,7 +1,8 @@
 import createClient from 'openapi-fetch';
 import { goto } from '$app/navigation';
 import type { components, paths } from './api.gen';
-import { currentLocale } from './locale.svelte';
+import { msg } from '@lingui/core/macro';
+import { currentLocale, i18n } from './locale.svelte';
 
 export type Schemas = components['schemas'];
 export type Me = Schemas['Me'];
@@ -64,6 +65,11 @@ api.use({
 	}
 });
 
+/** OfflineError is thrown by call() when the request never reached the server. */
+export class OfflineError extends Error {}
+
+const noConnection = msg`No connection. Nothing was saved.`;
+
 export class ApiError extends Error {
 	constructor(
 		public status: number,
@@ -77,7 +83,9 @@ type Result<T> = { data?: T; error?: unknown; response: Response };
 
 /** Awaits an openapi-fetch call and returns its data; throws ApiError otherwise and handles 401 (login redirect, or an event on helper pages). */
 export async function call<T>(p: Promise<Result<T>>): Promise<T> {
-	const { data, error, response } = await p;
+	const { data, error, response } = await p.catch((err) => {
+		throw err instanceof TypeError ? new OfflineError(i18n._(noConnection)) : err;
+	});
 	if (response.ok) return data as T;
 	if (response.status === 401 && location.pathname !== '/login' && !location.pathname.startsWith('/kiosk/') && !location.pathname.startsWith('/b/')) {
 		if (location.pathname.startsWith('/h/')) window.dispatchEvent(new Event('standblatt:unauthorized'));
