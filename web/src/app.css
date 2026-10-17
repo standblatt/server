@@ -141,6 +141,24 @@
 	}
 }
 
+/* Installed on an iPhone the app runs under the status bar (black-translucent): a navy strip keeps the status bar
+   readable and hides what scrolls beneath it; side sheets start below it. Outside a layer, so it wins over utilities. */
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0 0 auto;
+	z-index: 100;
+	height: env(safe-area-inset-top);
+	background: var(--sidebar);
+	pointer-events: none;
+}
+[data-slot='sheet-content'][data-side='left'],
+[data-slot='sheet-content'][data-side='right'],
+[data-sidebar='sidebar'][data-mobile='true'] {
+	top: env(safe-area-inset-top);
+	height: auto;
+}
+
 @layer components {
 	.lane {
 		@apply flex flex-col rounded-md border p-1.5 text-xs;

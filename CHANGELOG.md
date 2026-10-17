@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Club pages and helper links show a bar while there is no connection (by @HB9HIL)
 
 ### Fixed
+- On phones the sidebar closes after choosing a page (by @HB9HIL)
+- Installed on an iPhone, the app keeps its headers below the status bar and nothing scrolls behind it (by @HB9HIL)
 - Training sessions saved offline are no longer lost when the login expired or the upload is refused, stay with the account that typed them, and the app opens offline (by @HB9HIL)
 - A failed save without a connection says so instead of "Failed to fetch" (by @HB9HIL)
 

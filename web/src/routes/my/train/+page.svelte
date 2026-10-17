@@ -290,7 +290,7 @@
 	<Result {result} discipline={discipline} onagain={again} />
 {:else if draft && discipline && cur}
 	<div class="mx-auto flex h-svh max-w-xl flex-col bg-background">
-		<header class="flex items-center gap-2 border-b px-2 py-2">
+		<header class="flex items-center gap-2 border-b px-2 pt-[calc(0.5rem+env(safe-area-inset-top))] pb-2">
 			<Button variant="ghost" size="icon" onclick={close} aria-label={$t`Close`}><X /></Button>
 			<select
 				class="min-w-0 flex-1 truncate rounded-md border bg-background px-2 py-1.5 text-sm font-medium"

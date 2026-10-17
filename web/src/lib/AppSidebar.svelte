@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { plural, t } from 'lingui-for-svelte/macro';
+	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/state';
 	import BarChart from '@lucide/svelte/icons/chart-column';
 	import Building from '@lucide/svelte/icons/building-2';
@@ -85,6 +86,7 @@
 	]);
 	const initials = $derived(me.user.name.slice(0, 2).toUpperCase());
 	const sidebar = Sidebar.useSidebar();
+	afterNavigate(() => sidebar.setOpenMobile(false));
 </script>
 
 {#snippet nav(items: { href: string; label: string; icon: typeof Users; active?: boolean; badge?: number }[])}

@@ -18,8 +18,8 @@
 		</div>
 		<p class="text-xs opacity-60">{$t`Swiss SSV rules`}</p>
 	</div>
-	<div class="relative flex items-center justify-center p-6">
-		<div class="absolute top-4 right-4"><ThemeToggle /></div>
+	<div class="relative flex items-center justify-center p-6 pt-[calc(1.5rem+env(safe-area-inset-top))]">
+		<div class="absolute top-[calc(1rem+env(safe-area-inset-top))] right-4"><ThemeToggle /></div>
 		<div class="w-full max-w-sm">
 			<div class="mb-8 flex items-center gap-3 lg:hidden">
 				<Wordmark class="text-3xl" />

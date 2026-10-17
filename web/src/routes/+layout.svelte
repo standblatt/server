@@ -64,7 +64,7 @@
 
 <ModeWatcher />
 {#if environment}
-	<div class="pointer-events-none fixed top-0 left-1/2 z-[60] -translate-x-1/2 rounded-b-md bg-red-600 px-3 py-0.5 text-xs font-bold tracking-widest text-white shadow" role="status" data-testid="environment">{environment}</div>
+	<div class="pointer-events-none fixed top-[env(safe-area-inset-top)] left-1/2 z-[60] -translate-x-1/2 rounded-b-md bg-red-600 px-3 py-0.5 text-xs font-bold tracking-widest text-white shadow" role="status" data-testid="environment">{environment}</div>
 {/if}
 <Toaster position="bottom-right" richColors />
 <ConfirmHost />

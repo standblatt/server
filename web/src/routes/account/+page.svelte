@@ -7,7 +7,7 @@
 
 <svelte:head><title>{$t`Account`} · Standblatt</title></svelte:head>
 
-<main class="mx-auto grid max-w-3xl gap-4 p-4 *:min-w-0 md:p-8">
+<main class="mx-auto grid max-w-3xl gap-4 p-4 pt-[calc(1rem+env(safe-area-inset-top))] *:min-w-0 md:p-8 md:pt-[calc(2rem+env(safe-area-inset-top))]">
 	<header class="flex items-center justify-between gap-3">
 		<a href="/" class="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"><ArrowLeft class="size-4" />{$t`Back`}</a>
 		<Wordmark class="text-xl" />

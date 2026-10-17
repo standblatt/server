@@ -10,7 +10,7 @@
 </script>
 
 <div class="min-h-svh bg-background">
-	<header class="bg-sidebar text-white">
+	<header class="bg-sidebar pt-[env(safe-area-inset-top)] text-white">
 		<div class="mx-auto flex {wide ? 'max-w-6xl' : 'max-w-4xl'} items-center gap-3 px-4 py-3">
 			<a href="/" aria-label="Standblatt"><Wordmark class="text-2xl" /></a>
 			<div class="ml-auto flex items-center gap-2">

@@ -78,7 +78,7 @@
 	<Sidebar.Provider open={sidebarOpen}>
 		<AppSidebar me={me.data} {tenantId} {event} live={live?.connected} onlogout={() => endSession(queryClient)} onlocale={changeLocale} />
 		<Sidebar.Inset class="min-w-0">
-			<header class="sticky top-0 z-20 flex h-12 shrink-0 items-center gap-2 border-b bg-background/90 px-3 backdrop-blur">
+			<header class="sticky top-0 z-20 box-content flex h-12 shrink-0 pt-[env(safe-area-inset-top)] items-center gap-2 border-b bg-background/90 px-3 backdrop-blur">
 				<Sidebar.Trigger />
 				<Separator orientation="vertical" class="mr-1 h-4 self-center" />
 				<Breadcrumb.Root>

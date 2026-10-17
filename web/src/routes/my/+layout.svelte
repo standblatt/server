@@ -108,7 +108,7 @@
 			</div>
 		</aside>
 		<div class="min-w-0 pb-24 md:pb-8">
-			<header class="sticky top-0 z-20 flex h-12 items-center gap-2 border-b bg-background/90 px-4 backdrop-blur md:hidden">
+			<header class="sticky top-0 z-20 box-content flex h-12 items-center pt-[env(safe-area-inset-top)] gap-2 border-b bg-background/90 px-4 backdrop-blur md:hidden">
 				<Wordmark class="text-xl" />
 				<div class="ml-auto flex items-center">
 					{#if clubs.length}

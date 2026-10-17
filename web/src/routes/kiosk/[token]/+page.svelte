@@ -93,7 +93,7 @@
 	{#if event.error}
 		<p class="p-10 text-xl text-destructive" role="alert">{$t`This kiosk link is not valid (anymore).`}</p>
 	{:else if event.data}
-		<header class="sticky top-0 z-10 flex flex-wrap items-center gap-x-6 gap-y-2 bg-sidebar px-6 py-4 text-sidebar-foreground">
+		<header class="sticky top-0 z-10 flex flex-wrap items-center gap-x-6 gap-y-2 bg-sidebar px-6 pt-[calc(1rem+env(safe-area-inset-top))] pb-4 text-sidebar-foreground">
 			<Logo class="size-11 text-sidebar-primary" />
 			<div class="min-w-0">
 				<h1 class="truncate text-3xl font-semibold text-white">{event.data.name}</h1>

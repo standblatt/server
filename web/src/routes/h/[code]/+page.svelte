@@ -58,7 +58,7 @@
 	{#if helper.error || revoked}
 		<p class="p-10 text-xl text-destructive" role="alert">{$t`This helper link is not valid (anymore).`}</p>
 	{:else if helper.data && event.data}
-		<header class="sticky top-0 z-20 flex items-center gap-3 bg-sidebar px-4 py-2.5 text-sidebar-foreground">
+		<header class="sticky top-0 z-20 flex items-center gap-3 bg-sidebar px-4 pt-[calc(0.625rem+env(safe-area-inset-top))] pb-2.5 text-sidebar-foreground">
 			<Logo class="size-8 shrink-0 text-sidebar-primary" />
 			<div class="min-w-0">
 				<h1 class="truncate font-semibold text-white">{event.data.name}</h1>
