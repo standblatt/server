@@ -37,7 +37,7 @@ modelli sono facoltativi.
   dell’intero foglio che appare dietro il foglio per posizionare i campi
   sulle caselle del modulo; non viene mai stampato.
 
-**Salva** salva il modello; un punto sul pulsante indica modifiche non salvate, e lasciando la pagina con esse viene chiesta prima una conferma. **Anteprima PDF** apre il modello esattamente come lo rende il PDF, che può differire leggermente dal foglio nel browser.
+**Salva** salva il modello; un punto sul pulsante indica modifiche non salvate, e lasciando la pagina con esse viene chiesta prima una conferma. Con **Salva automaticamente** (attivo finché non lo si disattiva; il browser lo ricorda) le modifiche non salvate vengono salvate ogni minuto. **Anteprima PDF** apre il modello esattamente come lo rende il PDF, che può differire leggermente dal foglio nel browser.
 
 ## Disporre gli elementi {#arrange}
 

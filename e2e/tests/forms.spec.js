@@ -109,6 +109,31 @@ test.describe("print forms", () => {
     expect(layout.elements[2]).toMatchObject({ value: "{{club}}", x: 10, y: 60 });
   });
 
+  test("saves changes every minute unless autosave is off", async ({ page }) => {
+    await login(page, admin);
+    await page.clock.install();
+    await page.goto(`/t/${ids.tenant}/forms/${ids.layout}`);
+    const sheet = page.getByRole("application", { name: "Sheet" });
+    const x = async () => (await api(page, "GET", `/api/tenants/${ids.tenant}/layouts/${ids.layout}`)).elements[0].x;
+    await expect(sheet).toContainText("Example Anna");
+    await sheet.locator("[data-id]").nth(0).click();
+    await page.keyboard.press("ArrowRight");
+    await page.clock.fastForward(61_000);
+    await expect.poll(x).toBe(10.5);
+    await expect(page.getByRole("button", { name: "Save", exact: true })).toBeVisible();
+
+    await page.getByRole("checkbox", { name: "Save automatically" }).click();
+    await sheet.locator("[data-id]").nth(0).click();
+    await page.keyboard.press("ArrowRight");
+    await page.clock.fastForward(61_000);
+    await expect(page.getByRole("button", { name: "Save •" })).toBeVisible();
+    expect(await x()).toBe(10.5);
+    await page.keyboard.press("Control+s");
+    await expect.poll(x).toBe(11);
+    await page.reload();
+    await expect(page.getByRole("checkbox", { name: "Save automatically" })).not.toBeChecked();
+  });
+
   test("prints the results onto the form of the programme", async ({ page }) => {
     await login(page, admin);
     await page.goto(`/t/${ids.tenant}/events/${ids.event}/setup`);

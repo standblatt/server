@@ -14,6 +14,7 @@
 	import { toast } from 'svelte-sonner';
 	import { api, call, type LayoutElement } from '$lib/api';
 	import { Button } from '$lib/components/ui/button';
+	import { Checkbox } from '$lib/components/ui/checkbox';
 	import { Input } from '$lib/components/ui/input';
 	import { Switch } from '$lib/components/ui/switch';
 	import { ask } from '$lib/confirm.svelte';
@@ -48,10 +49,12 @@
 	let busy = $state(false);
 	let leaving = false;
 	let zoom = $state(1);
+	let autosave = $state(true);
 	try {
 		zoom = Number(localStorage.getItem('standblatt-form-zoom')) || 1;
+		autosave = localStorage.getItem('standblatt-form-autosave') !== 'off';
 	} catch {
-		/* no storage: keep 100 % */
+		/* no storage: keep 100 % and autosave */
 	}
 
 	$effect(() => {
@@ -73,22 +76,41 @@
 		}
 	}
 
+	/** Switches saving every minute on or off and remembers it. */
+	function setAutosave(on: boolean) {
+		autosave = on;
+		try {
+			localStorage.setItem('standblatt-form-autosave', on ? 'on' : 'off');
+		} catch {
+			/* no storage */
+		}
+	}
+
+	$effect(() => {
+		if (!autosave) return;
+		const timer = setInterval(() => {
+			if (editor.dirty && !busy) save(true);
+		}, 60_000);
+		return () => clearInterval(timer);
+	});
+
 	/** Adds an element from the palette below the lowest one. */
 	function add(el: Partial<LayoutElement>) {
 		const lowest = Math.max(0, ...editor.items.map((i) => num(i.y)));
 		editor.add({ ...el, x: 10, y: editor.items.length ? Math.min(lowest + 8, num(editor.height) - 10) : 10 });
 	}
 
-	/** Stores the form. */
-	async function save() {
+	/** Stores the form; quietly for the autosave. Changes made while it is stored stay unsaved. */
+	async function save(quiet = false) {
 		error = '';
 		busy = true;
+		const state = editor.begin();
 		try {
 			await call(api.PUT('/api/tenants/{tenantId}/layouts/{layoutId}', { ...path, body: editor.input() }));
-			editor.markClean();
+			editor.markClean(state);
 			version++;
 			await queryClient.invalidateQueries({ queryKey: ['tenants', tenantId, 'layouts'] });
-			toast.success($t`Print form saved`);
+			if (!quiet) toast.success($t`Print form saved`);
 		} catch (err) {
 			error = (err as Error).message;
 		} finally {
@@ -149,7 +171,7 @@
 		<Button variant="outline" size="icon" title={$t`Redo (Ctrl+Y)`} aria-label={$t`Redo`} disabled={!editor.canRedo} onclick={() => editor.redo()}><Redo /></Button>
 		<Button variant="outline" href="{base}/preview?v={version}" target="_blank" onclick={pdfClick}><FileText />{$t`PDF preview`}</Button>
 		<Button variant="outline" href="{base}/preview?print=true&v={version}" target="_blank" onclick={pdfClick}><Printer />{$t`Test print`}</Button>
-		<Button onclick={save} disabled={busy}><Save />{$t`Save`}{editor.dirty ? ' •' : ''}</Button>
+		<Button onclick={() => save()} disabled={busy}><Save />{$t`Save`}{editor.dirty ? ' •' : ''}</Button>
 	{/snippet}
 </PageHeader>
 
@@ -169,6 +191,7 @@
 					<Button variant="outline" size="icon-sm" aria-label={$t`Zoom in`} onclick={() => setZoom(zoom + 0.1)}><Plus /></Button>
 				</div>
 				<label class="flex items-center gap-2"><Switch bind:checked={names} />{$t`Show field names`}</label>
+				<label class="flex items-center gap-2" title={$t`Saves unsaved changes every minute`}><Checkbox checked={autosave} onCheckedChange={setAutosave} />{$t`Save automatically`}</label>
 				<span class="ml-auto text-xs text-muted-foreground">{$t`Alt: no snapping · Shift: add to the selection`}</span>
 			</div>
 			<Stage {editor} {samples} {names} {zoom} onzoom={setZoom} background={layout.data.hasBackground ? `${base}/background?v=${version}` : undefined} />

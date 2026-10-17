@@ -102,9 +102,9 @@ export class FormEditor {
 		return this.#future.length > 0;
 	}
 
-	/** Marks the current state as saved. */
-	markClean() {
-		this.#clean = this.#snapshot();
+	/** Marks a state from begin, by default the current one, as saved. */
+	markClean(state = this.#snapshot()) {
+		this.#clean = state;
 	}
 
 	/** Whether there are changes since loading or saving. */

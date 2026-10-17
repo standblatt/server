@@ -37,7 +37,7 @@ possible ; les modèles sont facultatifs.
   JPEG de toute la feuille qui apparaît derrière la feuille pour placer les
   champs sur les cases du formulaire ; il n’est jamais imprimé.
 
-**Enregistrer** enregistre le modèle ; un point sur le bouton signale des modifications non enregistrées, et quitter la page avec elles demande d’abord une confirmation. **Aperçu PDF** ouvre le modèle exactement tel que le PDF le rend, ce qui peut différer légèrement de la feuille dans le navigateur.
+**Enregistrer** enregistre le modèle ; un point sur le bouton signale des modifications non enregistrées, et quitter la page avec elles demande d’abord une confirmation. Avec **Enregistrer automatiquement** (activé tant qu’on ne le désactive pas ; le navigateur s’en souvient), les modifications non enregistrées sont enregistrées chaque minute. **Aperçu PDF** ouvre le modèle exactement tel que le PDF le rend, ce qui peut différer légèrement de la feuille dans le navigateur.
 
 ## Disposer les éléments {#arrange}
 

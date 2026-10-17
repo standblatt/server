@@ -3829,6 +3829,10 @@ msgstr "S{0}"
 msgid "Save"
 msgstr "Salva"
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Save automatically"
+msgstr "Salva automaticamente"
+
 #: src/lib/EntryCard.svelte
 msgid "Save award"
 msgstr "Salva distinzione"
@@ -3852,6 +3856,10 @@ msgstr "Salvato su questo dispositivo"
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Saved."
 msgstr "Salvato."
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Saves unsaved changes every minute"
+msgstr "Salva ogni minuto le modifiche non salvate"
 
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Scan of the empty form"

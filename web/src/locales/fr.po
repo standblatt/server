@@ -3829,6 +3829,10 @@ msgstr "P{0}"
 msgid "Save"
 msgstr "Enregistrer"
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Save automatically"
+msgstr "Enregistrer automatiquement"
+
 #: src/lib/EntryCard.svelte
 msgid "Save award"
 msgstr "Enregistrer la distinction"
@@ -3852,6 +3856,10 @@ msgstr "Enregistré sur cet appareil"
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Saved."
 msgstr "Enregistré."
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+msgid "Saves unsaved changes every minute"
+msgstr "Enregistre les modifications non enregistrées chaque minute"
 
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Scan of the empty form"

@@ -13,7 +13,7 @@ A print form puts results onto a pre-printed sheet, e.g. the lane sheets the arm
 - The **Sheet** in the middle shows the form true to scale over the scan, with made-up values; **Show field names** shows the placeholders instead. Rulers in millimetres run along the top and the left, the zoom goes from 50 to 200 %.
 - **Properties** on the right edit the selected element exactly: its **Value** (placeholders such as `{{shooter.name}}` are filled in when printing), **x** and **y** in millimetres from the top left corner, **Width** and **Height** (a width of 0 lets text run to the right edge), **Font size**, **Bold** and **Alignment**. **Repeat** prints it several times, moved by **dx** and **dy** each time; `#` in a placeholder counts 1, 2, 3, …. Below, the **Form** sets the name, the size of the sheet, the printer offset and the **Scan of the empty form**: a PNG or JPEG of the whole sheet that appears behind the sheet so the fields can be placed onto the boxes of the form; it is never printed.
 
-**Save** stores the form; a dot on the button shows unsaved changes, and leaving the page with them asks first. **PDF preview** opens the form exactly as the PDF renders it, which can differ slightly from the sheet in the browser.
+**Save** stores the form; a dot on the button shows unsaved changes, and leaving the page with them asks first. With **Save automatically** (on unless you switch it off; the browser remembers it) unsaved changes are stored every minute. **PDF preview** opens the form exactly as the PDF renders it, which can differ slightly from the sheet in the browser.
 
 ## Arrange the elements {#arrange}
 
