@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- CodeQL code scanning and a `govulncheck` job in CI (by @HB9HIL)
+
 ## [0.17.0] - 2026-10-17
 
 First public release.

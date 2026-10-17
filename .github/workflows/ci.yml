@@ -38,6 +38,17 @@ jobs:
       - run: go vet ./...
       - run: go test ./...
 
+  # Known vulnerabilities in code paths we call; not a need of docker-image, so a new report does not block releases.
+  govulncheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+      - run: mkdir -p internal/webui/dist && touch internal/webui/dist/index.html
+      - run: go run golang.org/x/vuln/cmd/govulncheck@latest ./...
+
   funcdoc:
     runs-on: ubuntu-latest
     steps:
