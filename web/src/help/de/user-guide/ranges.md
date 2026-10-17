@@ -8,13 +8,12 @@
 - **Ausser Betrieb**: Scheibennummern, die nicht benutzt werden können,
   z. B. `3, 7`. Sie erscheinen im Dashboard grau und lassen sich nicht
   zuweisen.
-- **Scheibengruppen** (optional): Teile des Stands mit anderer Distanz,
-  z. B. ein Pistolenstand mit `1-10` als *25 m* und `11-15` als *50 m*. Der
-  Stand bleibt ein Stand mit einem Druck-Agenten und gemeinsamen
-  Reservationen; Dashboard und Kiosk zeigen die Gruppen als Überschriften,
-  und ein Programm, das einer Gruppe zugeordnet ist, bietet bei der
-  Anmeldung nur deren Scheiben an (siehe [Programme](programmes.md)). Eine
-  Gruppe, die Programme verwenden, lässt sich nicht entfernen.
+- **Distanzen**: Eine Halle mit 25-m- und 50-m-Scheiben wird als zwei Stände
+  erfasst, z. B. *Pistole 25 m* und *Pistole 50 m*, je mit Scheiben ab
+  1. Ein Anlass kann auf beiden geschossen werden (siehe
+  [Anlässe](events.md)), ein Programm lässt sich an einen davon binden
+  (siehe [Programme](programmes.md)), und ein Druck-Agent kann beide
+  bedienen (siehe [Drucken](printing.md)).
 - **Drucken** öffnet die Drucker und Druck-Agenten des Schiessstands (siehe
   [Drucken](printing.md)).
 

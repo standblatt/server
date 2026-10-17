@@ -133,19 +133,14 @@
 			return '';
 		});
 
-	/** Ties a programme to a range ("r:<id>"), a lane group ("g:<id>") or any range (""). */
+	/** Ties a programme to a range (its ID) or to any range (""). */
 	const setRange = (p: Programme, value: string) =>
 		run(async () => {
-			const [kind, id] = [value.slice(0, 1), Number(value.slice(2))];
-			const body = kind === 'g' ? { groupId: id } : kind === 'r' ? { rangeId: id } : {};
+			const body = value ? { rangeId: Number(value) } : {};
 			await call(api.PUT('/api/tenants/{tenantId}/programmes/{programmeId}/range', { params: { path: { tenantId, programmeId: p.id } }, body }));
 			return '';
 		});
 	const ranges = $derived(event.data?.ranges ?? []);
-	/** Range choices: every range and every lane group, labelled "Pistol · 25 m". */
-	const places = $derived(ranges.flatMap((r) => [{ value: `r:${r.id}`, label: r.name }, ...r.groups.map((g) => ({ value: `g:${g.id}`, label: `${r.name} · ${g.name}` }))]));
-	/** The choice value of a programme's range or lane group. */
-	const placeOf = (p: Programme) => (p.rangeGroupId ? `g:${p.rangeGroupId}` : p.rangeId ? `r:${p.rangeId}` : '');
 
 	/** Sets the programme it can be combined with (0 = none). */
 	const setCombination = (p: Programme, target: number) =>
@@ -209,7 +204,7 @@
 			<Table.Head class="hidden sm:table-cell">{$t`Prices`}</Table.Head>
 			<Table.Head class="hidden sm:table-cell">{$t`Awards`}</Table.Head>
 			<Table.Head class="hidden sm:table-cell">{$t`Combinable with`}</Table.Head>
-			{#if places.length > 1}<Table.Head class="hidden sm:table-cell">{$t`Range`}</Table.Head>{/if}
+			{#if ranges.length > 1}<Table.Head class="hidden sm:table-cell">{$t`Range`}</Table.Head>{/if}
 			<Table.Head>{$t`Active`}</Table.Head>
 			<Table.Head class="w-10"></Table.Head>
 		</Table.Row>
@@ -237,15 +232,15 @@
 						{programmes.data?.find((x) => x.id === p.combinableWithId)?.name ?? '–'}
 					{/if}
 				</Table.Cell>
-				{#if places.length > 1}
+				{#if ranges.length > 1}
 					<Table.Cell class="hidden sm:table-cell">
 						{#if isAdmin}
-							<NativeSelect.Root size="sm" value={placeOf(p)} onchange={(e) => setRange(p, e.currentTarget.value)} aria-label={$t`Range`}>
+							<NativeSelect.Root size="sm" value={String(p.rangeId ?? '')} onchange={(e) => setRange(p, e.currentTarget.value)} aria-label={$t`Range`}>
 								<NativeSelect.Option value="">{$t`any`}</NativeSelect.Option>
-								{#each places as o (o.value)}<NativeSelect.Option value={o.value}>{o.label}</NativeSelect.Option>{/each}
+								{#each ranges as r (r.id)}<NativeSelect.Option value={String(r.id)}>{r.name}</NativeSelect.Option>{/each}
 							</NativeSelect.Root>
 						{:else}
-							{places.find((o) => o.value === placeOf(p))?.label ?? $t`any`}
+							{ranges.find((r) => r.id === p.rangeId)?.name ?? $t`any`}
 						{/if}
 					</Table.Cell>
 				{/if}

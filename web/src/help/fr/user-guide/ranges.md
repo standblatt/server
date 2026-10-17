@@ -8,13 +8,12 @@
 - **Hors service** : numéros de cibles inutilisables, p. ex. `3, 7`. Elles
   apparaissent en gris dans le tableau de bord et ne peuvent pas être
   attribuées.
-- **Groupes de cibles** (facultatif) : parties du stand à une autre
-  distance, p. ex. un stand pistolet avec `1-10` comme *25 m* et `11-15`
-  comme *50 m*. Le stand reste un seul stand avec un agent d’impression et
-  des réservations communes ; le tableau de bord et le kiosque affichent les
-  groupes comme titres, et un programme lié à un groupe ne propose que ses
-  cibles à l’inscription (voir [Programmes](programmes.md)). Un groupe
-  utilisé par des programmes ne peut pas être retiré.
+- **Distances** : une halle avec des cibles à 25 m et à 50 m se saisit comme
+  deux stands, p. ex. *Pistolet 25 m* et *Pistolet 50 m*, chacun avec des
+  cibles à partir de 1. Une manifestation peut se tirer sur les deux (voir
+  [Manifestations](events.md)), un programme peut être lié à l’un d’eux
+  (voir [Programmes](programmes.md)) et un agent d’impression peut servir
+  les deux (voir [Impression](printing.md)).
 - **Impression** ouvre les imprimantes et agents d’impression du stand (voir
   [Impression](printing.md)).
 

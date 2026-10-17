@@ -43,9 +43,10 @@ test.describe("phone", () => {
     const page = await newPage(browser);
     ids.tenant = await createClub(page, `Mobile Club ${run}`, user);
     const base = `/api/tenants/${ids.tenant}`;
-    const range = await api(page, "POST", `${base}/ranges`, { name: "Pistol range 25 m and 50 m", laneCount: 12, groups: [{ name: "25 m", lanes: [1, 2, 3, 4, 5, 6] }, { name: "50 m", lanes: [7, 8, 9, 10, 11, 12] }] });
+    const range = await api(page, "POST", `${base}/ranges`, { name: "Pistol range 25 m", laneCount: 6 });
+    const range50 = await api(page, "POST", `${base}/ranges`, { name: "Pistol range 50 m", laneCount: 6 });
     ids.range = range.id;
-    const ev = await api(page, "POST", `${base}/events`, { rangeIds: [range.id], name: "Autumn championship with a rather long name", startsOn: "2026-11-20" });
+    const ev = await api(page, "POST", `${base}/events`, { rangeIds: [range.id, range50.id], name: "Autumn championship with a rather long name", startsOn: "2026-11-20" });
     ids.event = ev.id;
     const p = await api(page, "POST", `${base}/events/${ev.id}/programmes`, {
       name: "Supported elite programme", series: [{ shots: 10, maxPoints: 100 }, { shots: 10, maxPoints: 100 }, { shots: 10, maxPoints: 100 }],
@@ -58,7 +59,7 @@ test.describe("phone", () => {
         firstname: `Maximiliane${i}`, lastname: `Example-Longername${i}`, birthday: "1995-01-01", licenseNumber: String(810000 + i), clubNames: ["Shooting society Exampletown-Longvillage"],
       });
       ids.shooter = sh.id;
-      const reg = await api(page, "POST", `${base}/events/${ev.id}/registrations`, { shooterId: sh.id, lane: i < 3 ? i + 1 : undefined, programmes: [{ programmeId: p.id }] });
+      const reg = await api(page, "POST", `${base}/events/${ev.id}/registrations`, { shooterId: sh.id, rangeId: i < 3 ? ids.range : undefined, lane: i < 3 ? i + 1 : undefined, programmes: [{ programmeId: p.id }] });
       ids.regs.push(reg.id);
       if (i < 2) await api(page, "PUT", `${base}/entries/${reg.entries[0].id}/results`, { series: [{ points: 90 + i }, { points: 88 }, { points: 87 }] });
     }

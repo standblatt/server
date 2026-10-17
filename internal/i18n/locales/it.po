@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 21:03+0200\n"
+"POT-Creation-Date: 2026-10-17 21:32+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -230,11 +230,6 @@ msgstr "Categoria d'età sconosciuta %q"
 
 #: internal/domain/registration.go
 #, go-format
-msgid "%s and %s are shot on different lane groups"
-msgstr "%s e %s si tirano su gruppi di bersagli diversi"
-
-#: internal/domain/registration.go
-#, go-format
 msgid "%s and %s are shot on different ranges"
 msgstr "%s e %s si tirano su stand diversi"
 
@@ -267,11 +262,6 @@ msgstr "%s non è aperto alla categoria d'età %s"
 #, go-format
 msgid "%s is not shot on this range"
 msgstr "%s non si tira su questo stand"
-
-#: internal/domain/registration.go
-#, go-format
-msgid "%s is shot on %s, not on lane %d"
-msgstr "%s si tira su %s, non sul bersaglio %d"
 
 #: internal/domain/registration.go
 #, go-format
@@ -1689,10 +1679,6 @@ msgid "A range with this name already exists"
 msgstr "Esiste già uno stand di tiro con questo nome"
 
 #: internal/web/tenants.go
-msgid "A removed lane group is used by programmes"
-msgstr "Un gruppo di bersagli rimosso è usato da programmi"
-
-#: internal/web/tenants.go
 msgid "Choose at least one range"
 msgstr "Scegli almeno uno stand"
 
@@ -1706,11 +1692,6 @@ msgstr "Le manifestazioni con iscrizioni non possono essere eliminate"
 
 #: internal/web/tenants.go
 #, go-format
-msgid "Lane %d is in %s and %s"
-msgstr "Il bersaglio %d è in %s e %s"
-
-#: internal/web/tenants.go
-#, go-format
 msgid "Lane %d is outside 1–%d"
 msgstr "Il bersaglio %d è fuori da 1–%d"
 
@@ -1721,11 +1702,6 @@ msgstr "Tiratori o programmi usano uno stand rimosso dalla manifestazione"
 #: internal/web/tenants.go
 msgid "The range is used by events"
 msgstr "Lo stand di tiro è usato da manifestazioni"
-
-#: internal/web/tenants.go
-#, go-format
-msgid "Two lane groups are called %s"
-msgstr "Due gruppi di bersagli si chiamano %s"
 
 #: internal/web/tenants.go
 #, go-format
@@ -1755,6 +1731,25 @@ msgstr "Questo codice è già stato usato; attendi il prossimo."
 #: internal/web/totp.go
 msgid "Wrong code."
 msgstr "Codice errato."
+
+#, go-format
+#~ msgid "%s and %s are shot on different lane groups"
+#~ msgstr "%s e %s si tirano su gruppi di bersagli diversi"
+
+#, go-format
+#~ msgid "%s is shot on %s, not on lane %d"
+#~ msgstr "%s si tira su %s, non sul bersaglio %d"
+
+#~ msgid "A removed lane group is used by programmes"
+#~ msgstr "Un gruppo di bersagli rimosso è usato da programmi"
+
+#, go-format
+#~ msgid "Lane %d is in %s and %s"
+#~ msgstr "Il bersaglio %d è in %s e %s"
+
+#, go-format
+#~ msgid "Two lane groups are called %s"
+#~ msgstr "Due gruppi di bersagli si chiamano %s"
 
 #, go-format
 #~ msgid "%d lanes"

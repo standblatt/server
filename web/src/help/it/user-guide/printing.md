@@ -25,7 +25,9 @@ se il telefono chiede prima un altro tocco, appare un avviso con il pulsante
 
 1. **Aggiungi agente di stampa**, dagli un nome e copia il token. Installa
    l’agente su un computer vicino alle stampanti (vedi [Agente di
-   stampa](../admin-guide/print-agent.md)).
+   stampa](../admin-guide/print-agent.md)). Un computer può servire più
+   stand, p. es. *Pistola 25 m* e *Pistola 50 m*: aggiungi un agente su ogni
+   stand e dai all’agente entrambi i token, separati da una virgola.
 2. Appena l’agente è online, comunica le sue stampanti. Scegli per ogni
    documento la stampante e le sue opzioni (cassetto, formato carta, tipo di
    supporto, altre opzioni `lp` come `fit-to-page`).

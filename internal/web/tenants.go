@@ -77,29 +77,11 @@ func notFound(err error, msg string) error {
 	return err
 }
 
-// validateRange checks that the disabled lanes and the lanes of the groups lie within the lane count of the range
-// and that no lane or name belongs to two groups.
+// validateRange checks that the disabled lanes lie within the lane count of the range.
 func validateRange(in store.RangeInput) error {
 	for _, l := range in.DisabledLanes {
 		if l < 1 || int(l) > in.LaneCount {
 			return invalid("Lane %d is outside 1–%d", l, in.LaneCount)
-		}
-	}
-	owner := map[int32]string{}
-	names := map[string]bool{}
-	for _, g := range in.Groups {
-		if names[g.Name] {
-			return invalid("Two lane groups are called %s", g.Name)
-		}
-		names[g.Name] = true
-		for _, l := range g.Lanes {
-			if l < 1 || int(l) > in.LaneCount {
-				return invalid("Lane %d is outside 1–%d", l, in.LaneCount)
-			}
-			if other, ok := owner[l]; ok {
-				return invalid("Lane %d is in %s and %s", l, other, g.Name)
-			}
-			owner[l] = g.Name
 		}
 	}
 	return nil
@@ -185,9 +167,6 @@ func (s *Server) registerTenants(api huma.API) {
 		err := s.Store.UpdateRange(ctx, in.TenantID, in.RangeID, in.Body)
 		if errors.Is(err, store.ErrExists) {
 			return nil, conflict("A range with this name already exists")
-		}
-		if errors.Is(err, store.ErrInUse) {
-			return nil, conflict("A removed lane group is used by programmes")
 		}
 		return nil, notFound(err, "Range not found")
 	})

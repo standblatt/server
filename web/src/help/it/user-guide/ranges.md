@@ -7,13 +7,12 @@
 - **Nome** e **Numero di bersagli**.
 - **Fuori servizio**: numeri di bersagli non utilizzabili, p. es. `3,
   7`. Compaiono grigi nella dashboard e non si possono assegnare.
-- **Gruppi di bersagli** (facoltativo): parti dello stand a un’altra
-  distanza, p. es. uno stand pistola con `1-10` come *25 m* e `11-15` come
-  *50 m*. Lo stand resta un solo stand con un agente di stampa e
-  prenotazioni comuni; dashboard e chiosco mostrano i gruppi come titoli, e
-  un programma legato a un gruppo offre all’iscrizione solo i suoi bersagli
-  (vedi [Programmi](programmes.md)). Un gruppo usato da programmi non si può
-  rimuovere.
+- **Distanze**: una sala con bersagli a 25 m e a 50 m si registra come due
+  stand, p. es. *Pistola 25 m* e *Pistola 50 m*, ciascuno con bersagli a
+  partire da 1. Una manifestazione può tirarsi su entrambi (vedi
+  [Manifestazioni](events.md)), un programma può essere legato a uno di essi
+  (vedi [Programmi](programmes.md)) e un agente di stampa può servirli
+  entrambi (vedi [Stampa](printing.md)).
 - **Stampa** apre le stampanti e gli agenti di stampa dello stand (vedi
   [Stampa](printing.md)).
 

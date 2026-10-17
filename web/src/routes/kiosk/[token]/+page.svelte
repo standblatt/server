@@ -6,7 +6,7 @@
 	import { call } from '$lib/api';
 	import type { LaneState } from '$lib/api';
 	import type { paths } from '$lib/api.gen';
-	import { formatDays, laneSections } from '$lib/format';
+	import { formatDays } from '$lib/format';
 	import { intlLocale, localeNames, setLocale, type Locale } from '$lib/locale.svelte';
 	import { liveLabel } from '$lib/labels';
 	import { Live, refresh } from '$lib/live.svelte';
@@ -114,10 +114,8 @@
 				{#each lanes.data.filter((rl) => !rangeFilter || rl.rangeId === rangeFilter) as rl (rl.rangeId)}
 					<section aria-label={$t`Lane status`}>
 						{#if shownRanges.length > 1}<h2 class="mb-2 text-xl font-semibold">{rl.rangeName}</h2>{/if}
-						{#each laneSections(rl.lanes, rl.groups) as sec (sec.name)}
-						{#if sec.name}<h3 class="mt-2 mb-1 text-lg font-medium text-muted-foreground">{sec.name}</h3>{/if}
 						<div class="grid grid-cols-[repeat(auto-fill,minmax(8rem,1fr))] gap-2">
-							{#each sec.lanes as l (l.lane)}
+							{#each rl.lanes as l (l.lane)}
 								<div class="lane {laneClass[l.state]} p-2.5" aria-label={$t`Lane ${l.lane}: ${laneText(l)}`}>
 									<span class="text-2xl font-bold">{l.lane}</span>
 									<span class="truncate text-sm">
@@ -126,7 +124,6 @@
 								</div>
 							{/each}
 						</div>
-						{/each}
 					</section>
 				{/each}
 			{/if}

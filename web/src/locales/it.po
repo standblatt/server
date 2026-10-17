@@ -498,10 +498,6 @@ msgstr "Aggiungi dalla biblioteca"
 msgid "Add from the library"
 msgstr "Aggiungi dalla biblioteca"
 
-#: src/routes/t/[tenantId]/ranges/+page.svelte
-msgid "Add group"
-msgstr "Aggiungi gruppo"
-
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Add print agent"
 msgstr "Aggiungi agente di stampa"
@@ -1728,10 +1724,6 @@ msgstr "Buonasera"
 msgid "Good morning"
 msgstr "Buongiorno"
 
-#: src/routes/t/[tenantId]/ranges/+page.svelte
-msgid "Group name"
-msgstr "Nome del gruppo"
-
 #: src/lib/my/GroupInfo.svelte
 msgid "Group size"
 msgstr "Dimensione del gruppo"
@@ -1954,10 +1946,6 @@ msgid "Lane bookings"
 msgstr "Prenotazioni di bersagli"
 
 #: src/routes/t/[tenantId]/ranges/+page.svelte
-msgid "Lane groups"
-msgstr "Gruppi di bersagli"
-
-#: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "Lane numbers, e.g. 3, 7"
 msgstr "Numeri dei bersagli, p. es. 3, 7"
 
@@ -1987,11 +1975,6 @@ msgstr "Bersagli"
 #: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
 msgid "lanes {0}"
 msgstr "bersagli {0}"
-
-#. placeholder {0}: g.name
-#: src/routes/t/[tenantId]/ranges/+page.svelte
-msgid "Lanes of {0}"
-msgstr "Bersagli di {0}"
 
 #. placeholder {0}: r.name
 #. placeholder {1}: slotTime(sl.start, info.timezone)
@@ -2602,6 +2585,10 @@ msgstr "offline"
 msgid "On iPhone: tap Share and then \"Add to Home Screen\"."
 msgstr "Su iPhone: tocca «Condividi» e poi «Aggiungi alla schermata Home»."
 
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "One range per distance, e.g. Pistol 25 m and Pistol 50 m, each with lanes from 1."
+msgstr "Uno stand di tiro per distanza, p. es. Pistola 25 m e Pistola 50 m, ciascuno con bersagli a partire da 1."
+
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "online"
 msgstr "collegato"
@@ -2651,10 +2638,6 @@ msgstr "Apri l’aiuto completo"
 #: src/lib/EventDesk.svelte
 msgid "Open the results to see and hand out the awards"
 msgstr "Apri i risultati per vedere e consegnare le distinzioni"
-
-#: src/routes/t/[tenantId]/ranges/+page.svelte
-msgid "Optional: lanes with another distance on the same range, e.g. 25 m on 1-10 and 50 m on 11-15. Programmes can then be tied to a group."
-msgstr "Facoltativo: bersagli a un'altra distanza nello stesso stand, p. es. 25 m su 1-10 e 50 m su 11-15. I programmi si possono poi legare a un gruppo."
 
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Options"
@@ -3130,10 +3113,6 @@ msgstr "Rimuovi distinzione {0}"
 #: src/lib/ScheduleEditor.svelte
 msgid "Remove day"
 msgstr "Rimuovi giorno"
-
-#: src/routes/t/[tenantId]/ranges/+page.svelte
-msgid "Remove group"
-msgstr "Rimuovi gruppo"
 
 #: src/lib/ProgrammeEditor.svelte
 #: src/routes/my/train/+page.svelte

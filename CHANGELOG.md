@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- One print agent can serve several ranges: `STANDBLATT_AGENT_TOKEN` takes several tokens separated by commas (by @HB9HIL)
+
+### Changed
+- Lane groups are gone: each distance is a range of its own with lanes from 1, e.g. *Pistol 25 m* and *Pistol 50 m*, so online booking, reservations and scorer links work per distance. Existing groups become ranges on upgrade, with registrations, reservations, scorer links, programmes and print settings moved along; add a print agent token for each new range, and check kiosk links limited to a range and scorer links whose lanes spanned both distances (by @HB9HIL)
+
 ## [0.17.2] - 2026-10-17
 
 ### Added

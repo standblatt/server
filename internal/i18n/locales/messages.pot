@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 21:03+0200\n"
+"POT-Creation-Date: 2026-10-17 21:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -230,11 +230,6 @@ msgstr ""
 
 #: internal/domain/registration.go
 #, go-format
-msgid "%s and %s are shot on different lane groups"
-msgstr ""
-
-#: internal/domain/registration.go
-#, go-format
 msgid "%s and %s are shot on different ranges"
 msgstr ""
 
@@ -266,11 +261,6 @@ msgstr ""
 #: internal/domain/registration.go
 #, go-format
 msgid "%s is not shot on this range"
-msgstr ""
-
-#: internal/domain/registration.go
-#, go-format
-msgid "%s is shot on %s, not on lane %d"
 msgstr ""
 
 #: internal/domain/registration.go
@@ -1689,10 +1679,6 @@ msgid "A range with this name already exists"
 msgstr ""
 
 #: internal/web/tenants.go
-msgid "A removed lane group is used by programmes"
-msgstr ""
-
-#: internal/web/tenants.go
 msgid "Choose at least one range"
 msgstr ""
 
@@ -1706,11 +1692,6 @@ msgstr ""
 
 #: internal/web/tenants.go
 #, go-format
-msgid "Lane %d is in %s and %s"
-msgstr ""
-
-#: internal/web/tenants.go
-#, go-format
 msgid "Lane %d is outside 1–%d"
 msgstr ""
 
@@ -1720,11 +1701,6 @@ msgstr ""
 
 #: internal/web/tenants.go
 msgid "The range is used by events"
-msgstr ""
-
-#: internal/web/tenants.go
-#, go-format
-msgid "Two lane groups are called %s"
 msgstr ""
 
 #: internal/web/tenants.go

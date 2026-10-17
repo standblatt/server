@@ -20,7 +20,6 @@
 	import Printer from '@lucide/svelte/icons/printer';
 	import { keys, rangesQuery } from '$lib/tenant';
 	import { formatLanes, parseLanes } from '$lib/format';
-	import X from '@lucide/svelte/icons/x';
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const queryClient = useQueryClient();
@@ -30,7 +29,6 @@
 	let name = $state('');
 	let laneCount = $state(10);
 	let disabled = $state('');
-	let groups = $state<{ id?: number; name: string; lanes: string }[]>([]);
 	let error = $state('');
 
 	/** Fills the form with a range, or empties it for a new one. */
@@ -39,7 +37,6 @@
 		name = s?.name ?? '';
 		laneCount = s?.laneCount ?? 10;
 		disabled = formatLanes(s?.disabledLanes ?? []);
-		groups = (s?.groups ?? []).map((g) => ({ id: g.id, name: g.name, lanes: formatLanes(g.lanes) }));
 		error = '';
 	}
 
@@ -47,8 +44,8 @@
 	async function save(e: SubmitEvent) {
 		e.preventDefault();
 		error = '';
-		const body = { name, laneCount, disabledLanes: parseLanes(disabled), groups: groups.map((g) => ({ id: g.id, name: g.name.trim(), lanes: parseLanes(g.lanes) })) };
-		if ([body.disabledLanes, ...body.groups.map((g) => g.lanes)].some((l) => l.some(Number.isNaN))) {
+		const body = { name, laneCount, disabledLanes: parseLanes(disabled) };
+		if (body.disabledLanes.some(Number.isNaN)) {
 			error = $t`Write lanes like 1-10, 12`;
 			return;
 		}
@@ -86,17 +83,16 @@
 <div class="overflow-hidden rounded-lg border bg-card">
 	<Table.Root>
 		<Table.Header>
-			<Table.Row><Table.Head>{$t`Name`}</Table.Head><Table.Head class="text-right">{$t`Lanes`}</Table.Head><Table.Head class="hidden sm:table-cell">{$t`Lane groups`}</Table.Head><Table.Head class="hidden sm:table-cell">{$t`Out of service`}</Table.Head><Table.Head></Table.Head></Table.Row>
+			<Table.Row><Table.Head>{$t`Name`}</Table.Head><Table.Head class="text-right">{$t`Lanes`}</Table.Head><Table.Head class="hidden sm:table-cell">{$t`Out of service`}</Table.Head><Table.Head></Table.Head></Table.Row>
 		</Table.Header>
 		<Table.Body>
 			{#each ranges.data ?? [] as s (s.id)}
 				<Table.Row>
 					<Table.Cell class="whitespace-normal">
 						<div class="font-medium">{s.name}</div>
-						<div class="text-xs text-muted-foreground sm:hidden">{[...s.groups.map((g) => `${g.name}: ${formatLanes(g.lanes)}`), s.disabledLanes.length ? $t`Out of service: ${formatLanes(s.disabledLanes)}` : ''].filter(Boolean).join(' · ')}</div>
+						{#if s.disabledLanes.length}<div class="text-xs text-muted-foreground sm:hidden">{$t`Out of service: ${formatLanes(s.disabledLanes)}`}</div>{/if}
 					</Table.Cell>
 					<Table.Cell class="text-right tabular-nums">{s.laneCount}</Table.Cell>
-					<Table.Cell class="hidden sm:table-cell">{s.groups.map((g) => `${g.name}: ${formatLanes(g.lanes)}`).join(' · ') || '–'}</Table.Cell>
 					<Table.Cell class="hidden sm:table-cell">{formatLanes(s.disabledLanes) || '–'}</Table.Cell>
 					<Table.Cell>
 						<div class="flex justify-end gap-1">
@@ -115,7 +111,7 @@
 					</Table.Cell>
 				</Table.Row>
 			{:else}
-				<Table.Row><Table.Cell colspan={5} class="py-10 text-center text-muted-foreground">{$t`No ranges yet.`}</Table.Cell></Table.Row>
+				<Table.Row><Table.Cell colspan={4} class="py-10 text-center text-muted-foreground">{$t`No ranges yet.`}</Table.Cell></Table.Row>
 			{/each}
 		</Table.Body>
 	</Table.Root>
@@ -125,21 +121,9 @@
 	<Dialog.Content class="sm:max-w-md">
 		<Dialog.Header><Dialog.Title>{editId ? $t`Edit range` : $t`New range`}</Dialog.Title></Dialog.Header>
 		<form class="grid gap-4" onsubmit={save}>
-			<FormField label={$t`Name`}><Input bind:value={name} required /></FormField>
+			<FormField label={$t`Name`} hint={$t`One range per distance, e.g. Pistol 25 m and Pistol 50 m, each with lanes from 1.`}><Input bind:value={name} required /></FormField>
 			<FormField label={$t`Number of lanes`}><Input class="w-28" type="number" min="1" max="99" bind:value={laneCount} required /></FormField>
 			<FormField label={$t`Out of service`} hint={$t`Lane numbers, e.g. 3, 7`}><Input bind:value={disabled} /></FormField>
-			<FormField label={$t`Lane groups`} hint={$t`Optional: lanes with another distance on the same range, e.g. 25 m on 1-10 and 50 m on 11-15. Programmes can then be tied to a group.`}>
-				<div class="grid gap-2">
-					{#each groups as g, i (i)}
-						<div class="flex items-center gap-2">
-							<Input class="w-28" bind:value={g.name} required placeholder="25 m" aria-label={$t`Group name`} />
-							<Input bind:value={g.lanes} required placeholder="1-10" aria-label={$t`Lanes of ${g.name}`} />
-							<Button variant="ghost" size="icon-sm" aria-label={$t`Remove group`} onclick={() => groups.splice(i, 1)}><X /></Button>
-						</div>
-					{/each}
-					<div><Button variant="outline" size="sm" onclick={() => groups.push({ name: '', lanes: '' })}><Plus />{$t`Add group`}</Button></div>
-				</div>
-			</FormField>
 			<FormError message={error} />
 			<Dialog.Footer><Button type="submit">{$t`Save`}</Button></Dialog.Footer>
 		</form>

@@ -10,7 +10,7 @@
 	import * as Dialog from './components/ui/dialog';
 	import * as NativeSelect from './components/ui/native-select';
 	import { ask } from './confirm.svelte';
-	import { formatDate, laneSections, programmeTitle, withRange } from './format';
+	import { formatDate, programmeTitle, withRange } from './format';
 
 	let {
 		shooter,
@@ -78,18 +78,9 @@
 	const total = $derived(programmes.filter((p) => selected[p.id]).reduce((n, p) => n + (price(p) ?? 0), 0));
 	/** Range the chosen programmes are tied to, if any; the lane picker then shows only that range. */
 	const requiredRange = $derived(programmes.find((p) => selected[p.id] && p.rangeId)?.rangeId);
-	/** Lane group the chosen programmes are tied to, if any; the lane picker then shows only its lanes. */
-	const requiredGroup = $derived.by(() => {
-		const id = programmes.find((p) => selected[p.id] && p.rangeGroupId)?.rangeGroupId;
-		return id ? lanes.flatMap((r) => r.groups).find((g) => g.id === id) : undefined;
-	});
-	const shownLanes = $derived(
-		(requiredRange ? lanes.filter((r) => r.rangeId === requiredRange) : lanes).map((r) =>
-			requiredGroup ? { ...r, groups: [requiredGroup], lanes: r.lanes.filter((l) => requiredGroup.lanes.includes(l.lane)) } : r
-		)
-	);
-	/** Name of a range from the lane states, with the required lane group. */
-	const rangeTitle = (id: number) => [lanes.find((r) => r.rangeId === id)?.rangeName ?? '', requiredGroup?.name].filter(Boolean).join(' · ');
+	const shownLanes = $derived(requiredRange ? lanes.filter((r) => r.rangeId === requiredRange) : lanes);
+	/** Name of a range from the lane states. */
+	const rangeTitle = (id: number) => lanes.find((r) => r.rangeId === id)?.rangeName ?? '';
 	const laneLabel = $derived(
 		lane
 			? withRange(
@@ -101,7 +92,6 @@
 	);
 	$effect(() => {
 		if (requiredRange && lane && rangeId !== requiredRange) lane = 0;
-		if (requiredGroup && lane && !requiredGroup.lanes.includes(lane)) lane = 0;
 	});
 
 	/** Selects one variant of a programme group and deselects the others. */
@@ -191,10 +181,8 @@
 					</div>
 					{#each shownLanes as r (r.rangeId)}
 						{#if lanes.length > 1}<h4 class="mt-2 mb-1 text-xs font-medium text-muted-foreground">{r.rangeName}</h4>{/if}
-						{#each laneSections(r.lanes, r.groups) as sec (sec.name)}
-						{#if sec.name && !requiredGroup}<h5 class="mt-1 mb-1 text-xs text-muted-foreground">{sec.name}</h5>{/if}
-						<div class="grid grid-cols-[repeat(auto-fill,minmax(2.75rem,1fr))] gap-1.5" role="group" aria-label={sec.name ? `${r.rangeName} ${sec.name}` : r.rangeName}>
-							{#each sec.lanes as l (l.lane)}
+						<div class="grid grid-cols-[repeat(auto-fill,minmax(2.75rem,1fr))] gap-1.5" role="group" aria-label={r.rangeName}>
+							{#each r.lanes as l (l.lane)}
 								<button
 									type="button"
 									class="h-11 rounded-md border text-sm font-semibold transition-colors disabled:cursor-not-allowed {laneClass(r, l)}"
@@ -205,9 +193,8 @@
 								>
 							{/each}
 						</div>
-						{/each}
 					{/each}
-					{#if (requiredRange && lanes.length > 1) || requiredGroup}
+					{#if requiredRange && lanes.length > 1}
 						<p class="mt-2 text-xs text-muted-foreground">{$t`The chosen programmes are shot on ${rangeTitle(requiredRange ?? 0)}.`}</p>
 					{/if}
 				</div>

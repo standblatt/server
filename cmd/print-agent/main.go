@@ -7,6 +7,8 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"strings"
+	"sync"
 	"syscall"
 	"time"
 
@@ -23,24 +25,36 @@ func envOr(key, def string) string {
 	return def
 }
 
-// main configures the agent from the environment and runs it until SIGINT or SIGTERM.
+// main configures the agent from the environment and runs it until SIGINT or SIGTERM, one loop per token
+// (STANDBLATT_AGENT_TOKEN may list several, comma separated, to serve several ranges from one computer).
 func main() {
 	log := slog.New(slog.NewJSONHandler(os.Stderr, nil))
-	a := &agent.Agent{
-		URL:       os.Getenv("STANDBLATT_URL"),
-		Token:     os.Getenv("STANDBLATT_AGENT_TOKEN"),
-		LP:        envOr("STANDBLATT_LP", "lp"),
-		LPStat:    envOr("STANDBLATT_LPSTAT", "lpstat"),
-		LPOptions: envOr("STANDBLATT_LPOPTIONS", "lpoptions"),
-		Client:    &http.Client{Timeout: 60 * time.Second},
-		Log:       log,
+	url := os.Getenv("STANDBLATT_URL")
+	var tokens []string
+	for t := range strings.SplitSeq(os.Getenv("STANDBLATT_AGENT_TOKEN"), ",") {
+		if t = strings.TrimSpace(t); t != "" {
+			tokens = append(tokens, t)
+		}
 	}
-	if a.URL == "" || a.Token == "" {
+	if url == "" || len(tokens) == 0 {
 		log.Error("STANDBLATT_URL and STANDBLATT_AGENT_TOKEN are required")
 		os.Exit(2)
 	}
 	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
 	defer stop()
-	log.Info("print agent started", "version", version, "server", a.URL)
-	a.Run(ctx)
+	log.Info("print agent started", "version", version, "server", url, "ranges", len(tokens))
+	var wg sync.WaitGroup
+	for i, token := range tokens {
+		a := &agent.Agent{
+			URL:       url,
+			Token:     token,
+			LP:        envOr("STANDBLATT_LP", "lp"),
+			LPStat:    envOr("STANDBLATT_LPSTAT", "lpstat"),
+			LPOptions: envOr("STANDBLATT_LPOPTIONS", "lpoptions"),
+			Client:    &http.Client{Timeout: 60 * time.Second},
+			Log:       log.With("token", i+1),
+		}
+		wg.Go(func() { a.Run(ctx) })
+	}
+	wg.Wait()
 }

@@ -20,11 +20,10 @@ type EventSettings struct {
 
 // EventRange is a range an event is shot on.
 type EventRange struct {
-	ID            int64        `json:"id"`
-	Name          string       `json:"name"`
-	LaneCount     int          `json:"laneCount"`
-	DisabledLanes []int32      `json:"disabledLanes"`
-	Groups        []RangeGroup `json:"groups"`
+	ID            int64   `json:"id"`
+	Name          string  `json:"name"`
+	LaneCount     int     `json:"laneCount"`
+	DisabledLanes []int32 `json:"disabledLanes"`
 }
 
 // Event is a competition of a tenant, shot on one or more ranges on one or more days.
@@ -56,8 +55,7 @@ type EventInput struct {
 }
 
 const eventCols = `e.id,
-	coalesce((SELECT json_agg(json_build_object('id', rg.id, 'name', rg.name, 'laneCount', rg.lane_count, 'disabledLanes', rg.disabled_lanes,
-		'groups', ` + rangeGroupsCol + `) ORDER BY er.position)
+	coalesce((SELECT json_agg(json_build_object('id', rg.id, 'name', rg.name, 'laneCount', rg.lane_count, 'disabledLanes', rg.disabled_lanes) ORDER BY er.position)
 		FROM event_ranges er JOIN ranges rg ON rg.id = er.range_id WHERE er.event_id = e.id), '[]'),
 	e.name, e.starts_on::text, e.days::text[], e.schedule, e.organizer, e.timezone, e.locale, e.settings, e.archived_at`
 

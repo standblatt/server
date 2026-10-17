@@ -53,12 +53,11 @@ cours :
   nouvelles inscriptions ; les inscriptions existantes les gardent.
 - **Combinable avec** : le programme dont celui-ci peut reprendre les passes
   à l’inscription.
-- **Stand** (manifestations sur plusieurs stands ou stands avec groupes de
-  cibles) : le stand ou le groupe de cibles sur lequel le programme se tire,
-  p. ex. *Pistolet · 50 m* ; l’inscription ne propose alors que ces cibles
-  et les écrans kiosque groupent les classements par stand. *indifférent*
-  laisse le choix ouvert. Des programmes de groupes différents demandent des
-  inscriptions séparées.
+- **Stand de tir** (manifestations sur plusieurs stands) : le stand sur
+  lequel le programme se tire, p. ex. *Pistolet 50 m* ; l’inscription ne
+  propose alors que ses cibles et les écrans kiosque groupent les
+  classements par stand. *indifférent* laisse le choix ouvert. Des
+  programmes de stands différents demandent des inscriptions séparées.
 - **Prix spéciaux** (voir ci-dessous).
 
 **Exporter** télécharge le programme en fichier ; **Supprimer** n’est possible que tant que personne n’est inscrit.

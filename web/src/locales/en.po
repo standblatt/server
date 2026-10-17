@@ -498,10 +498,6 @@ msgstr "Add from library"
 msgid "Add from the library"
 msgstr "Add from the library"
 
-#: src/routes/t/[tenantId]/ranges/+page.svelte
-msgid "Add group"
-msgstr "Add group"
-
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Add print agent"
 msgstr "Add print agent"
@@ -1728,10 +1724,6 @@ msgstr "Good evening"
 msgid "Good morning"
 msgstr "Good morning"
 
-#: src/routes/t/[tenantId]/ranges/+page.svelte
-msgid "Group name"
-msgstr "Group name"
-
 #: src/lib/my/GroupInfo.svelte
 msgid "Group size"
 msgstr "Group size"
@@ -1954,10 +1946,6 @@ msgid "Lane bookings"
 msgstr "Lane bookings"
 
 #: src/routes/t/[tenantId]/ranges/+page.svelte
-msgid "Lane groups"
-msgstr "Lane groups"
-
-#: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "Lane numbers, e.g. 3, 7"
 msgstr "Lane numbers, e.g. 3, 7"
 
@@ -1987,11 +1975,6 @@ msgstr "Lanes"
 #: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
 msgid "lanes {0}"
 msgstr "lanes {0}"
-
-#. placeholder {0}: g.name
-#: src/routes/t/[tenantId]/ranges/+page.svelte
-msgid "Lanes of {0}"
-msgstr "Lanes of {0}"
 
 #. placeholder {0}: r.name
 #. placeholder {1}: slotTime(sl.start, info.timezone)
@@ -2602,6 +2585,10 @@ msgstr "offline"
 msgid "On iPhone: tap Share and then \"Add to Home Screen\"."
 msgstr "On iPhone: tap Share and then \"Add to Home Screen\"."
 
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "One range per distance, e.g. Pistol 25 m and Pistol 50 m, each with lanes from 1."
+msgstr "One range per distance, e.g. Pistol 25 m and Pistol 50 m, each with lanes from 1."
+
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "online"
 msgstr "online"
@@ -2651,10 +2638,6 @@ msgstr "Open the full help"
 #: src/lib/EventDesk.svelte
 msgid "Open the results to see and hand out the awards"
 msgstr "Open the results to see and hand out the awards"
-
-#: src/routes/t/[tenantId]/ranges/+page.svelte
-msgid "Optional: lanes with another distance on the same range, e.g. 25 m on 1-10 and 50 m on 11-15. Programmes can then be tied to a group."
-msgstr "Optional: lanes with another distance on the same range, e.g. 25 m on 1-10 and 50 m on 11-15. Programmes can then be tied to a group."
 
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Options"
@@ -3130,10 +3113,6 @@ msgstr "Remove award {0}"
 #: src/lib/ScheduleEditor.svelte
 msgid "Remove day"
 msgstr "Remove day"
-
-#: src/routes/t/[tenantId]/ranges/+page.svelte
-msgid "Remove group"
-msgstr "Remove group"
 
 #: src/lib/ProgrammeEditor.svelte
 #: src/routes/my/train/+page.svelte

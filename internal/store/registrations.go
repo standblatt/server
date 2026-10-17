@@ -79,7 +79,6 @@ type RangeRules struct {
 	Name          string
 	LaneCount     int
 	DisabledLanes []int32
-	Groups        []RangeGroup
 }
 
 // EventRules is what registration checks need to know about an event.
@@ -111,36 +110,32 @@ func (s *Store) LoadEventRules(ctx context.Context, tenantID, eventID int64) (Ev
 	if err != nil {
 		return r, mapErr(err)
 	}
-	rows, err := s.pool.Query(ctx, `SELECT rg.id, rg.name, rg.lane_count, rg.disabled_lanes, `+rangeGroupsCol+` FROM event_ranges er
+	rows, err := s.pool.Query(ctx, `SELECT rg.id, rg.name, rg.lane_count, rg.disabled_lanes FROM event_ranges er
 		JOIN ranges rg ON rg.id = er.range_id WHERE er.event_id = $1 ORDER BY er.position`, eventID)
 	if err != nil {
 		return r, err
 	}
 	var rid int64
 	var rr RangeRules
-	if _, err := pgx.ForEachRow(rows, []any{&rid, &rr.Name, &rr.LaneCount, &rr.DisabledLanes, &rr.Groups}, func() error {
-		r.Ranges[rid] = RangeRules{Name: rr.Name, LaneCount: rr.LaneCount, DisabledLanes: slices.Clone(rr.DisabledLanes), Groups: rr.Groups}
-		rr.Groups = nil
+	if _, err := pgx.ForEachRow(rows, []any{&rid, &rr.Name, &rr.LaneCount, &rr.DisabledLanes}, func() error {
+		r.Ranges[rid] = RangeRules{Name: rr.Name, LaneCount: rr.LaneCount, DisabledLanes: slices.Clone(rr.DisabledLanes)}
 		r.RangeOrder = append(r.RangeOrder, rid)
 		return nil
 	}); err != nil {
 		return r, err
 	}
-	rows, err = s.pool.Query(ctx, `SELECT p.id, p.name, p.variant, p.active, p.combinable_with_id, p.range_id, p.range_group_id,
-			coalesce(g.name, ''), coalesce(g.lanes, '{}'),
+	rows, err = s.pool.Query(ctx, `SELECT p.id, p.name, p.variant, p.active, p.combinable_with_id, p.range_id,
 			(SELECT count(*) FROM programme_series s WHERE s.programme_id = p.id),
 			coalesce((SELECT array_agg(age_category::text) FROM programme_prices pp WHERE pp.programme_id = p.id), '{}')
-		FROM programmes p LEFT JOIN range_groups g ON g.id = p.range_group_id
+		FROM programmes p
 		WHERE p.tenant_id = $1 AND p.event_id = $2`, tenantID, eventID)
 	if err != nil {
 		return r, err
 	}
 	var p domain.ProgrammeInfo
 	var cats []string
-	_, err = pgx.ForEachRow(rows, []any{&p.ID, &p.Name, &p.Variant, &p.Active, &p.CombinableWithID, &p.RangeID, &p.GroupID,
-		&p.GroupName, &p.GroupLanes, &p.Series, &cats}, func() error {
+	_, err = pgx.ForEachRow(rows, []any{&p.ID, &p.Name, &p.Variant, &p.Active, &p.CombinableWithID, &p.RangeID, &p.Series, &cats}, func() error {
 		info := p
-		info.GroupLanes = slices.Clone(p.GroupLanes)
 		info.Categories = make([]domain.AgeCategory, len(cats))
 		for i, c := range cats {
 			info.Categories[i] = domain.AgeCategory(c)

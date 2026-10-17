@@ -25,7 +25,10 @@ erscheint ein Hinweis mit dem Button **Teilen**.
 
 1. **Druck-Agent hinzufügen**, gib ihm einen Namen und kopiere das
    Token. Installiere den Agenten auf einem Computer bei den Druckern (siehe
-   [Druck-Agent](../admin-guide/print-agent.md)).
+   [Druck-Agent](../admin-guide/print-agent.md)). Ein Computer kann mehrere
+   Stände bedienen, z. B. *Pistole 25 m* und *Pistole 50 m*: Füge auf jedem
+   Stand einen Agenten hinzu und gib dem Agenten beide Tokens, durch Komma
+   getrennt.
 2. Sobald der Agent online ist, meldet er seine Drucker. Wähle für jedes
    Dokument den Drucker und seine Optionen (Fach, Papierformat, Medientyp,
    weitere `lp`-Optionen wie `fit-to-page`).

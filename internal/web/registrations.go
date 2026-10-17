@@ -41,10 +41,9 @@ type RegistrationUpdate struct {
 
 // RangeLanes are the lanes of one range of an event.
 type RangeLanes struct {
-	RangeID   int64              `json:"rangeId"`
-	RangeName string             `json:"rangeName"`
-	Groups    []store.RangeGroup `json:"groups" doc:"Lane groups of the range, e.g. 25 m and 50 m"`
-	Lanes     []LaneState        `json:"lanes"`
+	RangeID   int64       `json:"rangeId"`
+	RangeName string      `json:"rangeName"`
+	Lanes     []LaneState `json:"lanes"`
 }
 
 // LaneState is the state of one lane of an event's range. Out of service beats occupied beats reserved.
@@ -149,7 +148,7 @@ func (s *Server) registerRegistrations(api huma.API) {
 		if err != nil {
 			return nil, err
 		}
-		if errs := domain.CheckProgrammes(in.Body.Programmes, rules.Programmes, category, nil, rangeID, in.Body.Lane); len(errs) > 0 {
+		if errs := domain.CheckProgrammes(in.Body.Programmes, rules.Programmes, category, nil, rangeID); len(errs) > 0 {
 			return nil, invalidList(errs)
 		}
 		id, err := s.Store.CreateRegistration(ctx, in.TenantID, store.NewRegistration{
@@ -203,7 +202,7 @@ func (s *Server) registerRegistrations(api huma.API) {
 		if err != nil {
 			return nil, err
 		}
-		if errs := domain.CheckProgrammes(in.Body.Programmes, rules.Programmes, current.AgeCategory, keep, rangeID, in.Body.Lane); len(errs) > 0 {
+		if errs := domain.CheckProgrammes(in.Body.Programmes, rules.Programmes, current.AgeCategory, keep, rangeID); len(errs) > 0 {
 			return nil, invalidList(errs)
 		}
 		if err := s.Store.UpdateRegistration(ctx, in.TenantID, current, rangeID, in.Body.Lane, in.Body.Programmes); err != nil {
@@ -305,7 +304,7 @@ func (s *Server) laneStates(ctx context.Context, tenantID, eventID int64) ([]Ran
 			l.State, l.RegistrationID, l.Since = "occupied", r.ID, r.StartedAt
 			l.ShooterName = r.Shooter.Lastname + " " + r.Shooter.Firstname
 		}
-		out = append(out, RangeLanes{RangeID: rangeID, RangeName: rr.Name, Groups: rr.Groups, Lanes: lanes})
+		out = append(out, RangeLanes{RangeID: rangeID, RangeName: rr.Name, Lanes: lanes})
 	}
 	return out, nil
 }

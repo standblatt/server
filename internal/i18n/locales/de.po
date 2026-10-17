@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 21:03+0200\n"
+"POT-Creation-Date: 2026-10-17 21:32+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -230,11 +230,6 @@ msgstr "Unbekannte Alterskategorie %q"
 
 #: internal/domain/registration.go
 #, go-format
-msgid "%s and %s are shot on different lane groups"
-msgstr "%s und %s werden auf verschiedenen Scheibengruppen geschossen"
-
-#: internal/domain/registration.go
-#, go-format
 msgid "%s and %s are shot on different ranges"
 msgstr "%s und %s werden auf verschiedenen Ständen geschossen"
 
@@ -267,11 +262,6 @@ msgstr "%s ist für die Alterskategorie %s nicht offen"
 #, go-format
 msgid "%s is not shot on this range"
 msgstr "%s wird nicht auf diesem Stand geschossen"
-
-#: internal/domain/registration.go
-#, go-format
-msgid "%s is shot on %s, not on lane %d"
-msgstr "%s wird auf %s geschossen, nicht auf Scheibe %d"
 
 #: internal/domain/registration.go
 #, go-format
@@ -1689,10 +1679,6 @@ msgid "A range with this name already exists"
 msgstr "Einen Schiessstand mit diesem Namen gibt es bereits"
 
 #: internal/web/tenants.go
-msgid "A removed lane group is used by programmes"
-msgstr "Eine entfernte Scheibengruppe wird von Programmen verwendet"
-
-#: internal/web/tenants.go
 msgid "Choose at least one range"
 msgstr "Wähle mindestens einen Stand"
 
@@ -1706,11 +1692,6 @@ msgstr "Anlässe mit Anmeldungen können nicht gelöscht werden"
 
 #: internal/web/tenants.go
 #, go-format
-msgid "Lane %d is in %s and %s"
-msgstr "Scheibe %d ist in %s und %s"
-
-#: internal/web/tenants.go
-#, go-format
 msgid "Lane %d is outside 1–%d"
 msgstr "Scheibe %d liegt ausserhalb von 1–%d"
 
@@ -1721,11 +1702,6 @@ msgstr "Schützen oder Programme verwenden einen Stand, der aus dem Anlass entfe
 #: internal/web/tenants.go
 msgid "The range is used by events"
 msgstr "Der Schiessstand wird von Anlässen verwendet"
-
-#: internal/web/tenants.go
-#, go-format
-msgid "Two lane groups are called %s"
-msgstr "Zwei Scheibengruppen heissen %s"
 
 #: internal/web/tenants.go
 #, go-format
@@ -1755,6 +1731,25 @@ msgstr "Dieser Code wurde schon benutzt; warte auf den nächsten."
 #: internal/web/totp.go
 msgid "Wrong code."
 msgstr "Falscher Code."
+
+#, go-format
+#~ msgid "%s and %s are shot on different lane groups"
+#~ msgstr "%s und %s werden auf verschiedenen Scheibengruppen geschossen"
+
+#, go-format
+#~ msgid "%s is shot on %s, not on lane %d"
+#~ msgstr "%s wird auf %s geschossen, nicht auf Scheibe %d"
+
+#~ msgid "A removed lane group is used by programmes"
+#~ msgstr "Eine entfernte Scheibengruppe wird von Programmen verwendet"
+
+#, go-format
+#~ msgid "Lane %d is in %s and %s"
+#~ msgstr "Scheibe %d ist in %s und %s"
+
+#, go-format
+#~ msgid "Two lane groups are called %s"
+#~ msgstr "Zwei Scheibengruppen heissen %s"
 
 #, go-format
 #~ msgid "%d lanes"

@@ -498,10 +498,6 @@ msgstr "Ajouter depuis la bibliothèque"
 msgid "Add from the library"
 msgstr "Ajouter depuis la bibliothèque"
 
-#: src/routes/t/[tenantId]/ranges/+page.svelte
-msgid "Add group"
-msgstr "Ajouter un groupe"
-
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Add print agent"
 msgstr "Ajouter un agent d’impression"
@@ -1728,10 +1724,6 @@ msgstr "Bonsoir"
 msgid "Good morning"
 msgstr "Bonjour"
 
-#: src/routes/t/[tenantId]/ranges/+page.svelte
-msgid "Group name"
-msgstr "Nom du groupe"
-
 #: src/lib/my/GroupInfo.svelte
 msgid "Group size"
 msgstr "Taille du groupement"
@@ -1954,10 +1946,6 @@ msgid "Lane bookings"
 msgstr "Réservations de cibles"
 
 #: src/routes/t/[tenantId]/ranges/+page.svelte
-msgid "Lane groups"
-msgstr "Groupes de cibles"
-
-#: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "Lane numbers, e.g. 3, 7"
 msgstr "Numéros de cible, p. ex. 3, 7"
 
@@ -1987,11 +1975,6 @@ msgstr "Cibles"
 #: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
 msgid "lanes {0}"
 msgstr "cibles {0}"
-
-#. placeholder {0}: g.name
-#: src/routes/t/[tenantId]/ranges/+page.svelte
-msgid "Lanes of {0}"
-msgstr "Cibles de {0}"
 
 #. placeholder {0}: r.name
 #. placeholder {1}: slotTime(sl.start, info.timezone)
@@ -2602,6 +2585,10 @@ msgstr "hors ligne"
 msgid "On iPhone: tap Share and then \"Add to Home Screen\"."
 msgstr "Sur iPhone : touche « Partager » puis « Sur l’écran d’accueil »."
 
+#: src/routes/t/[tenantId]/ranges/+page.svelte
+msgid "One range per distance, e.g. Pistol 25 m and Pistol 50 m, each with lanes from 1."
+msgstr "Un stand de tir par distance, p. ex. Pistolet 25 m et Pistolet 50 m, chacun avec des cibles à partir de 1."
+
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "online"
 msgstr "connecté"
@@ -2651,10 +2638,6 @@ msgstr "Ouvrir l’aide complète"
 #: src/lib/EventDesk.svelte
 msgid "Open the results to see and hand out the awards"
 msgstr "Ouvrir les résultats pour voir et remettre les distinctions"
-
-#: src/routes/t/[tenantId]/ranges/+page.svelte
-msgid "Optional: lanes with another distance on the same range, e.g. 25 m on 1-10 and 50 m on 11-15. Programmes can then be tied to a group."
-msgstr "Facultatif : cibles à une autre distance dans le même stand, p. ex. 25 m sur 1-10 et 50 m sur 11-15. Les programmes peuvent alors être liés à un groupe."
 
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Options"
@@ -3130,10 +3113,6 @@ msgstr "Supprimer la distinction {0}"
 #: src/lib/ScheduleEditor.svelte
 msgid "Remove day"
 msgstr "Retirer le jour"
-
-#: src/routes/t/[tenantId]/ranges/+page.svelte
-msgid "Remove group"
-msgstr "Retirer le groupe"
 
 #: src/lib/ProgrammeEditor.svelte
 #: src/routes/my/train/+page.svelte

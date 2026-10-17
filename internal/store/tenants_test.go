@@ -133,57 +133,33 @@ func TestEventRoundTrip(t *testing.T) {
 	}
 }
 
-func TestRangeGroups(t *testing.T) {
+func TestProgrammeRange(t *testing.T) {
 	st := testdb.New(t)
 	ctx := context.Background()
 	tid, _ := st.CreateTenant(ctx, "Club")
 	other, _ := st.CreateTenant(ctx, "Other")
-	rng, err := st.CreateRange(ctx, tid, store.RangeInput{Name: "Pistol", LaneCount: 15, Groups: []store.RangeGroup{
-		{Name: "25 m", Lanes: []int32{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}}, {Name: "50 m", Lanes: []int32{11, 12, 13, 14, 15}}}})
-	if err != nil || len(rng.Groups) != 2 || rng.Groups[1].ID == 0 {
-		t.Fatalf("create: %+v %v", rng, err)
-	}
-	g25, g50 := rng.Groups[0], rng.Groups[1]
-	ev, _ := st.CreateEvent(ctx, tid, store.EventInput{RangeIDs: []int64{rng.ID}, Name: "Pistol 2027", StartsOn: "2027-05-01", Timezone: "UTC"})
+	r25, _ := st.CreateRange(ctx, tid, store.RangeInput{Name: "Pistol 25 m", LaneCount: 10})
+	r50, _ := st.CreateRange(ctx, tid, store.RangeInput{Name: "Pistol 50 m", LaneCount: 5})
+	spare, _ := st.CreateRange(ctx, tid, store.RangeInput{Name: "Spare", LaneCount: 2})
+	foreign, _ := st.CreateRange(ctx, other, store.RangeInput{Name: "Other", LaneCount: 2})
+	ev, _ := st.CreateEvent(ctx, tid, store.EventInput{RangeIDs: []int64{r25.ID, r50.ID}, Name: "Pistol 2027", StartsOn: "2027-05-01", Timezone: "UTC"})
 	p, _ := st.CreateProgramme(ctx, tid, ev, fieldMatch())
-	if err := st.SetProgrammeRange(ctx, tid, p, nil, &g50.ID); err != nil {
+	if err := st.SetProgrammeRange(ctx, tid, p, &r50.ID); err != nil {
 		t.Fatal(err)
 	}
-	progs, _ := st.ListProgrammes(ctx, tid, ev)
-	if *progs[0].RangeID != rng.ID || *progs[0].RangeGroupID != g50.ID {
+	if progs, _ := st.ListProgrammes(ctx, tid, ev); *progs[0].RangeID != r50.ID {
 		t.Fatalf("programme on 50 m: %+v", progs[0])
 	}
-	rules, _ := st.LoadEventRules(ctx, tid, ev)
-	if info := rules.Programmes[p]; info.GroupName != "50 m" || len(info.GroupLanes) != 5 {
-		t.Fatalf("rules: %+v", info)
+	if rules, _ := st.LoadEventRules(ctx, tid, ev); *rules.Programmes[p].RangeID != r50.ID || rules.Ranges[r50.ID].LaneCount != 5 {
+		t.Fatalf("rules: %+v", rules)
 	}
-	evs, _ := st.GetEvent(ctx, tid, ev)
-	if len(evs.Ranges[0].Groups) != 2 || evs.Ranges[0].Groups[0].Name != "25 m" {
-		t.Fatalf("event ranges: %+v", evs.Ranges)
+	if err := st.SetProgrammeRange(ctx, tid, p, &spare.ID); !errors.Is(err, store.ErrNotFound) {
+		t.Fatalf("range outside the event: %v", err)
 	}
-
-	swap := store.RangeInput{Name: "Pistol", LaneCount: 15, Groups: []store.RangeGroup{{ID: g50.ID, Name: "25 m", Lanes: g50.Lanes}, {ID: g25.ID, Name: "50 m", Lanes: g25.Lanes}}}
-	if err := st.UpdateRange(ctx, tid, rng.ID, swap); err != nil {
-		t.Fatalf("swap names: %v", err)
+	if err := st.SetProgrammeRange(ctx, tid, p, &foreign.ID); !errors.Is(err, store.ErrNotFound) {
+		t.Fatalf("range of another tenant: %v", err)
 	}
-	if err := st.UpdateRange(ctx, tid, rng.ID, store.RangeInput{Name: "Pistol", LaneCount: 15}); !errors.Is(err, store.ErrInUse) {
-		t.Fatalf("remove group in use: %v", err)
-	}
-	if err := st.UpdateRange(ctx, tid, rng.ID, store.RangeInput{Name: "Pistol", LaneCount: 15, Groups: []store.RangeGroup{{ID: g50.ID, Name: "x", Lanes: []int32{1}}, {ID: g25.ID, Name: "y", Lanes: []int32{2}}}}); err != nil {
-		t.Fatal(err)
-	}
-
-	foreign, _ := st.CreateRange(ctx, other, store.RangeInput{Name: "Other", LaneCount: 2, Groups: []store.RangeGroup{{Name: "a", Lanes: []int32{1}}}})
-	if err := st.SetProgrammeRange(ctx, tid, p, nil, &foreign.Groups[0].ID); !errors.Is(err, store.ErrNotFound) {
-		t.Fatalf("group of another tenant: %v", err)
-	}
-	if err := st.SetProgrammeRange(ctx, tid, p, &rng.ID, &foreign.Groups[0].ID); !errors.Is(err, store.ErrNotFound) {
-		t.Fatalf("group of another range: %v", err)
-	}
-	if err := st.UpdateRange(ctx, other, foreign.ID, store.RangeInput{Name: "Other", LaneCount: 2, Groups: []store.RangeGroup{{ID: g25.ID, Name: "stolen", Lanes: []int32{1}}}}); !errors.Is(err, store.ErrNotFound) {
-		t.Fatalf("update group of another tenant: %v", err)
-	}
-	if list, _ := st.ListRanges(ctx, other); len(list[0].Groups) != 1 || list[0].Groups[0].Name != "a" {
-		t.Fatalf("groups of other tenant: %+v", list)
+	if err := st.SetProgrammeRange(ctx, other, p, nil); !errors.Is(err, store.ErrNotFound) {
+		t.Fatalf("programme of another tenant: %v", err)
 	}
 }

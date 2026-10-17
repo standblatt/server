@@ -37,7 +37,7 @@ The print agent is a small program on a computer next to the printers of a range
 | Variable | Default | Description |
 |---|---|---|
 | `STANDBLATT_URL` | required | base URL of Standblatt |
-| `STANDBLATT_AGENT_TOKEN` | required | token from *Add print agent* |
+| `STANDBLATT_AGENT_TOKEN` | required | token from *Add print agent*; several tokens separated by commas serve several ranges from one computer |
 | `STANDBLATT_LP` | `lp` | print command |
 | `STANDBLATT_LPSTAT` | `lpstat` | used to list printers |
 | `STANDBLATT_LPOPTIONS` | `lpoptions` | used to read printer options (trays, paper sizes, media types) |

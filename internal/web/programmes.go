@@ -244,7 +244,6 @@ func (s *Server) registerProgrammes(api huma.API) {
 		ProgrammePath
 		Body struct {
 			RangeID *int64 `json:"rangeId,omitempty" required:"false" doc:"A range of the event; leave out for any range"`
-			GroupID *int64 `json:"groupId,omitempty" required:"false" doc:"A lane group of the range; implies the range"`
 		}
 	}
 	huma.Register(api, huma.Operation{
@@ -255,7 +254,7 @@ func (s *Server) registerProgrammes(api huma.API) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
 			return nil, err
 		}
-		return nil, s.programmeChanged(ctx, in.TenantID, in.ProgrammeID, notFound(s.Store.SetProgrammeRange(ctx, in.TenantID, in.ProgrammeID, in.Body.RangeID, in.Body.GroupID), "Programme not found, or the range is not one of the event"))
+		return nil, s.programmeChanged(ctx, in.TenantID, in.ProgrammeID, notFound(s.Store.SetProgrammeRange(ctx, in.TenantID, in.ProgrammeID, in.Body.RangeID), "Programme not found, or the range is not one of the event"))
 	})
 
 	huma.Register(api, huma.Operation{

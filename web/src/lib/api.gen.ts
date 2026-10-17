@@ -2294,7 +2294,6 @@ export interface components {
         };
         EventRange: {
             disabledLanes: number[];
-            groups: components["schemas"]["RangeGroup"][];
             /** Format: int64 */
             id: number;
             /** Format: int64 */
@@ -2646,11 +2645,6 @@ export interface components {
             prices: components["schemas"]["Price"][];
             /**
              * Format: int64
-             * @description Lane group of the range the programme is shot on; unset means any lane
-             */
-            rangeGroupId?: number;
-            /**
-             * Format: int64
              * @description Range the programme is shot on; unset means any range of the event
              */
             rangeId?: number;
@@ -2724,29 +2718,13 @@ export interface components {
         };
         Range: {
             disabledLanes: number[];
-            /** @description Lane groups, e.g. 25 m and 50 m of one pistol range; empty = one group */
-            groups: components["schemas"]["RangeGroup"][];
             /** Format: int64 */
             id: number;
             /** Format: int64 */
             laneCount: number;
             name: string;
         };
-        RangeGroup: {
-            /**
-             * Format: int64
-             * @description Unset for a new group
-             */
-            id?: number;
-            lanes: number[];
-            name: string;
-        };
         RangeInBody: {
-            /**
-             * Format: int64
-             * @description A lane group of the range; implies the range
-             */
-            groupId?: number;
             /**
              * Format: int64
              * @description A range of the event; leave out for any range
@@ -2755,15 +2733,11 @@ export interface components {
         };
         RangeInput: {
             disabledLanes?: number[];
-            /** @description Groups with an ID are updated, without one added, missing ones removed */
-            groups?: components["schemas"]["RangeGroup"][];
             /** Format: int64 */
             laneCount: number;
             name: string;
         };
         RangeLanes: {
-            /** @description Lane groups of the range, e.g. 25 m and 50 m */
-            groups: components["schemas"]["RangeGroup"][];
             lanes: components["schemas"]["LaneState"][];
             /** Format: int64 */
             rangeId: number;

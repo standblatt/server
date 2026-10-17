@@ -14,7 +14,6 @@ export type Schedule = Schemas['Schedule'];
 export type ScheduleDay = Schemas['ScheduleDay'];
 export type WeeklyTimes = Schemas['WeeklyTimes'];
 export type ShootingTimes = Schemas['BookingHours'];
-export type RangeGroup = Schemas['RangeGroup'];
 export type Member = Schemas['Member'];
 export type Club = Schemas['Club'];
 export type Shooter = Schemas['Shooter'];

@@ -11,7 +11,7 @@ const day = (n) => new Date(Date.now() + n * 86400000).toISOString().slice(0, 10
 
 test.describe.configure({ mode: "serial" });
 
-test.describe("seasons and lane groups", () => {
+test.describe("seasons and distances", () => {
   test.beforeAll(async ({ browser }) => {
     const page = await newPage(browser);
     ids.tenant = await createClub(page, club, admin);
@@ -65,47 +65,51 @@ test.describe("seasons and lane groups", () => {
     expect(errors).toEqual([]);
   });
 
-  test("a pistol range with 25 m and 50 m lane groups", async ({ page }) => {
+  test("a pistol hall with 25 m and 50 m as two ranges, each numbered from 1", async ({ page }) => {
     await login(page, admin);
+    const base = `/api/tenants/${ids.tenant}`;
+    const r25 = await api(page, "POST", `${base}/ranges`, { name: "Pistol 25 m", laneCount: 10 });
     await page.goto(`/t/${ids.tenant}/ranges`);
     await c(page, "button", "New range").click();
     const dialog = page.getByRole("dialog");
-    await dialog.getByLabel("Name", { exact: true }).fill("Pistol");
-    await dialog.getByLabel("Number of lanes").fill("15");
-    await c(dialog, "button", "Add group").click();
-    await dialog.getByLabel("Group name").fill("25 m");
-    await dialog.getByLabel("Lanes of 25 m").fill("1-10");
-    await c(dialog, "button", "Add group").click();
-    await dialog.getByLabel("Group name").nth(1).fill("50 m");
-    await dialog.getByLabel("Lanes of 50 m").fill("11-15");
+    await expect(dialog).toContainText("One range per distance");
+    await dialog.getByLabel("Name").fill("Pistol 50 m");
+    await dialog.getByLabel("Number of lanes").fill("5");
     await c(dialog, "button", "Save").click();
-    await expect(c(page, "td", "25 m: 1-10 · 50 m: 11-15")).toBeVisible();
+    await expect(c(page, "tr", "Pistol 50 m")).toContainText("5");
 
-    const base = `/api/tenants/${ids.tenant}`;
-    const range = (await api(page, "GET", `${base}/ranges`)).find((r) => r.name === "Pistol");
-    const event = await api(page, "POST", `${base}/events`, { rangeIds: [range.id], name: "Pistol day", startsOn: day(1) });
-    const p50 = await api(page, "POST", `${base}/events/${event.id}/programmes`, {
-      name: "Precision", showOnRankings: true, series: [{ shots: 10, maxPoints: 100 }], prices: [{ ageCategory: "elite", price: 20 }], awards: [],
+    const r50 = (await api(page, "GET", `${base}/ranges`)).find((r) => r.name === "Pistol 50 m");
+    const event = await api(page, "POST", `${base}/events`, { rangeIds: [r25.id, r50.id], name: "Pistol day", startsOn: day(1) });
+    const programme = (name) => api(page, "POST", `${base}/events/${event.id}/programmes`, {
+      name, showOnRankings: true, series: [{ shots: 10, maxPoints: 100 }], prices: [{ ageCategory: "elite", price: 20 }], awards: [],
     });
-    await api(page, "PUT", `${base}/programmes/${p50.id}/range`, { groupId: range.groups[1].id });
+    const p25 = await programme("Rapid");
+    const p50 = await programme("Precision");
+    await api(page, "PUT", `${base}/programmes/${p25.id}/range`, { rangeId: r25.id });
+    await api(page, "PUT", `${base}/programmes/${p50.id}/range`, { rangeId: r50.id });
+    const other = await api(page, "POST", `${base}/shooters`, { licenseNumber: "400002", firstname: "Rita", lastname: "Rapid", birthday: "1991-01-01" });
+    await api(page, "POST", `${base}/events/${event.id}/registrations`, { shooterId: other.id, rangeId: r25.id, lane: 1, programmes: [{ programmeId: p25.id }] });
     const wrong = await page.request.post(`${base}/events/${event.id}/registrations`, {
-      data: { shooterId: ids.shooter, rangeId: range.id, lane: 3, programmes: [{ programmeId: p50.id }] },
+      data: { shooterId: ids.shooter, rangeId: r25.id, lane: 2, programmes: [{ programmeId: p50.id }] },
     });
     expect(wrong.status()).toBe(422);
-    expect(await wrong.text()).toContain("Precision is shot on 50 m, not on lane 3");
+    expect(await wrong.text()).toContain("Precision is not shot on this range");
 
     await page.goto(`/t/${ids.tenant}/events/${event.id}`);
-    await expect(c(page, "h3", "25 m")).toBeVisible();
-    await expect(c(page, "h3", "50 m")).toBeVisible();
+    await expect(c(page, "h2", "Pistol 25 m")).toBeVisible();
+    await expect(c(page, "h2", "Pistol 50 m")).toBeVisible();
     await page.keyboard.press("F4");
     await page.keyboard.type("pistol");
     await c(page, "button", /^Register$/).click();
     await c(page, "label", "Precision").locator("[role=checkbox]").click();
-    await expect(page.getByText("The chosen programmes are shot on Pistol · 50 m.")).toBeVisible();
+    await expect(page.getByText("The chosen programmes are shot on Pistol 50 m.")).toBeVisible();
+    await expect(page.getByRole("group", { name: "Pistol 25 m" })).toHaveCount(0);
     const grid = page.getByRole("group", { name: "Pistol 50 m" });
     await expect(grid.getByRole("button")).toHaveCount(5);
-    await c(grid, "button", /^12$/).click();
+    await c(grid, "button", /^1$/).click();
     await c(page, "button", /^Register$/).click();
     await expect(c(page, "[data-sonner-toast]", "Paula Pistol registered")).toBeVisible();
+    await expect(page.getByLabel("Lane 1: Rapid Rita")).toBeVisible();
+    await expect(page.getByLabel("Lane 1: Pistol Paula")).toBeVisible();
   });
 });

@@ -58,9 +58,6 @@ type ProgrammeInfo struct {
 	Categories       []AgeCategory
 	CombinableWithID *int64
 	RangeID          *int64
-	GroupID          *int64
-	GroupName        string
-	GroupLanes       []int32
 }
 
 // title returns the programme name with its variant in parentheses, if any.
@@ -73,15 +70,15 @@ func (p ProgrammeInfo) title() string {
 
 // CheckProgrammes validates the programme choices of a registration and returns every problem.
 // keep lists programmes the registration already has; they stay allowed even if they were deactivated since.
-// rangeID and lane are the registration's lane; programmes tied to a range or a lane group must match it and each other.
-func CheckProgrammes(choices []ProgrammeChoice, programmes map[int64]ProgrammeInfo, category AgeCategory, keep map[int64]bool, rangeID *int64, lane *int) []Problem {
+// rangeID is the range of the registration's lane; programmes tied to a range must match it and each other.
+func CheckProgrammes(choices []ProgrammeChoice, programmes map[int64]ProgrammeInfo, category AgeCategory, keep map[int64]bool, rangeID *int64) []Problem {
 	var errs []Problem
 	if len(choices) == 0 {
 		return []Problem{Problemf("Choose at least one programme")}
 	}
 	chosen := map[int64]bool{}
 	byName := map[string]string{}
-	var onRange, onGroup *ProgrammeInfo
+	var onRange *ProgrammeInfo
 	for _, c := range choices {
 		p, ok := programmes[c.ProgrammeID]
 		if !ok {
@@ -112,16 +109,6 @@ func CheckProgrammes(choices []ProgrammeChoice, programmes map[int64]ProgrammeIn
 			}
 			q := p
 			onRange = &q
-		}
-		if p.GroupID != nil {
-			if lane != nil && !slices.Contains(p.GroupLanes, int32(*lane)) {
-				errs = append(errs, Problemf("%s is shot on %s, not on lane %d", p.title(), p.GroupName, *lane))
-			}
-			if onGroup != nil && *onGroup.GroupID != *p.GroupID {
-				errs = append(errs, Problemf("%s and %s are shot on different lane groups", onGroup.title(), p.title()))
-			}
-			q := p
-			onGroup = &q
 		}
 	}
 	for _, c := range choices {

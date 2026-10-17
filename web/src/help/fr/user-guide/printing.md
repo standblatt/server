@@ -25,7 +25,10 @@ d’abord un autre toucher, une note avec le bouton **Partager** apparaît.
 
 1. **Ajouter un agent d’impression**, donne-lui un nom et copie le
    jeton. Installe l’agent sur un ordinateur près des imprimantes (voir
-   [Agent d’impression](../admin-guide/print-agent.md)).
+   [Agent d’impression](../admin-guide/print-agent.md)). Un ordinateur peut
+   servir plusieurs stands, p. ex. *Pistolet 25 m* et *Pistolet 50 m* :
+   ajoute un agent sur chaque stand et donne à l’agent les deux jetons,
+   séparés par une virgule.
 2. Dès que l’agent est en ligne, il annonce ses imprimantes. Choisis pour
    chaque document l’imprimante et ses options (bac, format de papier, type
    de support, autres options `lp` comme `fit-to-page`).

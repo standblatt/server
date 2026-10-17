@@ -20,6 +20,16 @@ import (
 // The test is skipped when TEST_DATABASE_URL is not set.
 func New(t testing.TB) *store.Store {
 	t.Helper()
+	st := Bare(t)
+	if err := st.Migrate(context.Background(), slog.New(slog.NewTextHandler(io.Discard, nil))); err != nil {
+		t.Fatal(err)
+	}
+	return st
+}
+
+// Bare creates a temporary database like New but leaves it empty, for tests of the migrations themselves.
+func Bare(t testing.TB) *store.Store {
+	t.Helper()
 	base := os.Getenv("TEST_DATABASE_URL")
 	if base == "" {
 		t.Skip("TEST_DATABASE_URL not set")
@@ -50,8 +60,5 @@ func New(t testing.TB) *store.Store {
 		t.Fatal(err)
 	}
 	t.Cleanup(st.Close)
-	if err := st.Migrate(ctx, slog.New(slog.NewTextHandler(io.Discard, nil))); err != nil {
-		t.Fatal(err)
-	}
 	return st
 }

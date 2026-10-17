@@ -56,14 +56,6 @@ export function parseLanes(s: string): number[] {
 	return [...out].sort((x, y) => x - y);
 }
 
-/** Splits the lanes of a range into its lane groups in order, ungrouped lanes last under an empty name. */
-export function laneSections<L extends { lane: number }>(lanes: L[], groups: { name: string; lanes: number[] }[]): { name: string; lanes: L[] }[] {
-	const out = groups.map((g) => ({ name: g.name, lanes: lanes.filter((l) => g.lanes.includes(l.lane)) }));
-	const rest = lanes.filter((l) => !groups.some((g) => g.lanes.includes(l.lane)));
-	if (rest.length > 0 || out.length === 0) out.push({ name: '', lanes: rest });
-	return out;
-}
-
 /** Last page index (0-based) of a list of total items in pages of size, at least 0. */
 export const lastPage = (total: number, size: number) => Math.max(0, Math.ceil(total / size) - 1);
 

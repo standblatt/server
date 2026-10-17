@@ -16,6 +16,11 @@ const migrateLockKey = 5184227
 // Migrate applies all pending embedded migrations in name order. A session-level advisory lock
 // serialises concurrent starts, so several replicas can boot at the same time.
 func (s *Store) Migrate(ctx context.Context, log *slog.Logger) error {
+	return s.migrate(ctx, log, "")
+}
+
+// migrate applies the pending migrations up to and including until, or all of them when until is empty.
+func (s *Store) migrate(ctx context.Context, log *slog.Logger, until string) error {
 	conn, err := s.pool.Acquire(ctx)
 	if err != nil {
 		return fmt.Errorf("migrate: %w", err)
@@ -44,6 +49,9 @@ func (s *Store) Migrate(ctx context.Context, log *slog.Logger) error {
 	sort.Strings(names)
 
 	for _, name := range names {
+		if until != "" && name > until {
+			break
+		}
 		var applied bool
 		if err := conn.QueryRow(ctx, `SELECT EXISTS (SELECT 1 FROM schema_migrations WHERE version = $1)`, name).Scan(&applied); err != nil {
 			return fmt.Errorf("migrate: %w", err)

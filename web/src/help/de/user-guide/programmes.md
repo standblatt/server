@@ -52,12 +52,11 @@ geht ausserdem:
   wählen; bestehende behalten sie.
 - **Kombinierbar mit**: das Programm, dessen Passen dieses bei der Anmeldung
   übernehmen darf.
-- **Stand** (Anlässe auf mehreren Ständen oder Stände mit Scheibengruppen):
-  der Stand oder die Scheibengruppe, auf der das Programm geschossen wird,
-  z. B. *Pistole · 50 m*; die Anmeldung bietet dann nur diese Scheiben an,
-  und Kiosk-Bildschirme gruppieren die Ranglisten nach Stand. *beliebig*
-  lässt es offen. Programme verschiedener Gruppen brauchen getrennte
-  Anmeldungen.
+- **Schiessstand** (Anlässe auf mehreren Ständen): der Stand, auf dem das
+  Programm geschossen wird, z. B. *Pistole 50 m*; die Anmeldung bietet dann
+  nur seine Scheiben an, und Kiosk-Bildschirme gruppieren die Ranglisten
+  nach Stand. *beliebig* lässt es offen. Programme verschiedener Stände
+  brauchen getrennte Anmeldungen.
 - **Sonderpreise** (siehe unten).
 
 **Exportieren** lädt das Programm als Datei herunter; **Löschen** geht nur, solange niemand angemeldet ist.

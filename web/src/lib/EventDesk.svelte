@@ -19,7 +19,7 @@
 	import * as Table from './components/ui/table';
 	import { ask } from './confirm.svelte';
 	import type { DeskRights } from './desk';
-	import { laneSections, pad2, pageOf, programmeTitle, withRange } from './format';
+	import { pad2, pageOf, programmeTitle, withRange } from './format';
 	import Pager from './Pager.svelte';
 	import NewShooterDialog from './NewShooterDialog.svelte';
 	import PrintButton from './PrintButton.svelte';
@@ -462,10 +462,8 @@
 		{#each shownLanes as rl (rl.rangeId)}
 			<section class="rounded-lg border bg-card">
 				<div class="flex items-center border-b px-4 py-2.5"><h2 class="text-sm font-semibold">{(lanes.data?.length ?? 0) > 1 ? rl.rangeName : $t`Lanes`}</h2></div>
-				{#each laneSections(rl.lanes, rl.groups) as sec (sec.name)}
-				{#if sec.name}<h3 class="px-3 pt-2 text-xs font-medium text-muted-foreground">{sec.name}</h3>{/if}
 				<div class="grid grid-cols-4 gap-1.5 p-3 sm:grid-cols-6 xl:grid-cols-4">
-					{#each sec.lanes as l (l.lane)}
+					{#each rl.lanes as l (l.lane)}
 						{#if l.state === 'occupied'}
 							<button class="lane lane-occupied text-left hover:border-sky-400" onclick={() => open(l.registrationId!)} aria-label={$t`Lane ${l.lane}: ${l.shooterName ?? ''}`}>
 								<span class="text-base font-bold">{l.lane}</span>
@@ -486,7 +484,6 @@
 						{/if}
 					{/each}
 				</div>
-				{/each}
 			</section>
 		{/each}
 	</aside>

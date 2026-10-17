@@ -50,11 +50,11 @@ disponibile:
   iscrizioni; quelle esistenti li mantengono.
 - **Combinabile con**: il programma di cui questo può prendere le serie
   all’iscrizione.
-- **Stand** (manifestazioni su più stand o stand con gruppi di bersagli): lo
-  stand o il gruppo di bersagli su cui si tira il programma, p. es. *Pistola
-  · 50 m*; l’iscrizione offre allora solo quei bersagli e gli schermi
-  chiosco raggruppano le classifiche per stand. *qualsiasi* lascia la scelta
-  aperta. Programmi di gruppi diversi richiedono iscrizioni separate.
+- **Stand di tiro** (manifestazioni su più stand): lo stand su cui si tira
+  il programma, p. es. *Pistola 50 m*; l’iscrizione offre allora solo i suoi
+  bersagli e gli schermi chiosco raggruppano le classifiche per
+  stand. *qualsiasi* lascia la scelta aperta. Programmi di stand diversi
+  richiedono iscrizioni separate.
 - **Premi speciali** (vedi sotto).
 
 **Esporta** scarica il programma come file; **Elimina** è possibile solo finché nessuno è iscritto.

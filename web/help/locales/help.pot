@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-17 19:07+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-17 19:38+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
 #: ../src/help/en/getting-started/concepts.md:1
@@ -1831,7 +1831,7 @@ msgstr ""
 #. type: Bullet: '1. '
 #: ../src/help/en/user-guide/printing.md:24
 #, markdown-text
-msgid "**Add print agent**, give it a name and copy the token. Install the agent on a computer next to the printers (see [Print agent](../admin-guide/print-agent.md))."
+msgid "**Add print agent**, give it a name and copy the token. Install the agent on a computer next to the printers (see [Print agent](../admin-guide/print-agent.md)). One computer can serve several ranges, e.g. *Pistol 25 m* and *Pistol 50 m*: add an agent on each range and give the agent both tokens, separated by a comma."
 msgstr ""
 
 #. type: Bullet: '2. '
@@ -1970,7 +1970,7 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/programmes.md:31
 #, markdown-text
-msgid "**Range** (events on several ranges or ranges with lane groups): the range or lane group the programme is shot on, e.g. *Pistol · 50 m*; the registration then offers only those lanes and kiosk displays group the rankings by range. *any* leaves it open. Programmes of different groups need separate registrations."
+msgid "**Range** (events on several ranges): the range the programme is shot on, e.g. *Pistol 50 m*; the registration then offers only its lanes and kiosk displays group the rankings by range. *any* leaves it open. Programmes of different ranges need separate registrations."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -2036,7 +2036,7 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/ranges.md:11
 #, markdown-text
-msgid "**Lane groups** (optional): parts of the range with another distance, e.g. a pistol range with `1-10` as *25 m* and `11-15` as *50 m*. The range stays one range with one print agent and shared reservations; the dashboard and kiosk show the groups as headings, and a programme tied to a group only offers its lanes at registration (see [Programmes](programmes.md)). A group used by programmes cannot be removed."
+msgid "**Distances**: a hall with 25 m and 50 m lanes is set up as two ranges, e.g. *Pistol 25 m* and *Pistol 50 m*, each with lanes from 1. An event can be shot on both (see [Events](events.md)), a programme can be tied to one of them (see [Programmes](programmes.md)), and one print agent can serve both (see [Printing](printing.md))."
 msgstr ""
 
 #. type: Bullet: '- '

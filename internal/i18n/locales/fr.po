@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 21:03+0200\n"
+"POT-Creation-Date: 2026-10-17 21:32+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -230,11 +230,6 @@ msgstr "Catégorie d'âge inconnue %q"
 
 #: internal/domain/registration.go
 #, go-format
-msgid "%s and %s are shot on different lane groups"
-msgstr "%s et %s se tirent sur des groupes de cibles différents"
-
-#: internal/domain/registration.go
-#, go-format
 msgid "%s and %s are shot on different ranges"
 msgstr "%s et %s se tirent sur des stands différents"
 
@@ -267,11 +262,6 @@ msgstr "%s n'est pas ouvert à la catégorie d'âge %s"
 #, go-format
 msgid "%s is not shot on this range"
 msgstr "%s ne se tire pas sur ce stand"
-
-#: internal/domain/registration.go
-#, go-format
-msgid "%s is shot on %s, not on lane %d"
-msgstr "%s se tire sur %s, pas sur la cible %d"
 
 #: internal/domain/registration.go
 #, go-format
@@ -1689,10 +1679,6 @@ msgid "A range with this name already exists"
 msgstr "Un stand de tir portant ce nom existe déjà"
 
 #: internal/web/tenants.go
-msgid "A removed lane group is used by programmes"
-msgstr "Un groupe de cibles retiré est utilisé par des programmes"
-
-#: internal/web/tenants.go
 msgid "Choose at least one range"
 msgstr "Choisissez au moins un stand"
 
@@ -1706,11 +1692,6 @@ msgstr "Les manifestations avec des inscriptions ne peuvent pas être supprimée
 
 #: internal/web/tenants.go
 #, go-format
-msgid "Lane %d is in %s and %s"
-msgstr "La cible %d est dans %s et %s"
-
-#: internal/web/tenants.go
-#, go-format
 msgid "Lane %d is outside 1–%d"
 msgstr "La cible %d est en dehors de 1–%d"
 
@@ -1721,11 +1702,6 @@ msgstr "Des tireurs ou des programmes utilisent un stand retiré de la manifesta
 #: internal/web/tenants.go
 msgid "The range is used by events"
 msgstr "Le stand de tir est utilisé par des manifestations"
-
-#: internal/web/tenants.go
-#, go-format
-msgid "Two lane groups are called %s"
-msgstr "Deux groupes de cibles s'appellent %s"
 
 #: internal/web/tenants.go
 #, go-format
@@ -1755,6 +1731,25 @@ msgstr "Ce code a déjà été utilisé ; attends le prochain."
 #: internal/web/totp.go
 msgid "Wrong code."
 msgstr "Code erroné."
+
+#, go-format
+#~ msgid "%s and %s are shot on different lane groups"
+#~ msgstr "%s et %s se tirent sur des groupes de cibles différents"
+
+#, go-format
+#~ msgid "%s is shot on %s, not on lane %d"
+#~ msgstr "%s se tire sur %s, pas sur la cible %d"
+
+#~ msgid "A removed lane group is used by programmes"
+#~ msgstr "Un groupe de cibles retiré est utilisé par des programmes"
+
+#, go-format
+#~ msgid "Lane %d is in %s and %s"
+#~ msgstr "La cible %d est dans %s et %s"
+
+#, go-format
+#~ msgid "Two lane groups are called %s"
+#~ msgstr "Deux groupes de cibles s'appellent %s"
 
 #, go-format
 #~ msgid "%d lanes"

@@ -1,0 +1,85 @@
+package store_test
+
+import (
+	"context"
+	"fmt"
+	"testing"
+
+	"github.com/jackc/pgx/v5"
+
+	"github.com/standblatt/server/internal/testdb"
+)
+
+func TestRangeGroupsBecomeRanges(t *testing.T) {
+	st := testdb.Bare(t)
+	ctx := context.Background()
+	if err := st.MigrateUntil(ctx, "0025_ranking_not_printed.sql"); err != nil {
+		t.Fatal(err)
+	}
+	db := st.Pool()
+	var tid, rid, g25, g50, open, closed, shooter, item int64
+	scan := func(dst *int64, sql string, args ...any) {
+		t.Helper()
+		if err := db.QueryRow(ctx, sql, args...).Scan(dst); err != nil {
+			t.Fatalf("%s: %v", sql, err)
+		}
+	}
+	exec := func(sql string, args ...any) {
+		t.Helper()
+		if _, err := db.Exec(ctx, sql, args...); err != nil {
+			t.Fatalf("%s: %v", sql, err)
+		}
+	}
+	scan(&tid, `INSERT INTO tenants (name) VALUES ('Club') RETURNING id`)
+	scan(&rid, `INSERT INTO ranges (tenant_id, name, lane_count, disabled_lanes) VALUES ($1, 'Pistol', 15, '{3,12}') RETURNING id`, tid)
+	scan(&g25, `INSERT INTO range_groups (tenant_id, range_id, name, lanes, position) VALUES ($1, $2, '25 m', '{1,2,3,4,5,6,7,8,9,10}', 0) RETURNING id`, tid, rid)
+	scan(&g50, `INSERT INTO range_groups (tenant_id, range_id, name, lanes, position) VALUES ($1, $2, '50 m', '{11,12,13,14,15}', 1) RETURNING id`, tid, rid)
+	scan(&open, `INSERT INTO events (tenant_id, name, starts_on, days) VALUES ($1, 'Open', '2026-11-20', '{2026-11-20}') RETURNING id`, tid)
+	scan(&closed, `INSERT INTO events (tenant_id, name, starts_on, days) VALUES ($1, 'Closed', '2025-11-20', '{2025-11-20}') RETURNING id`, tid)
+	exec(`INSERT INTO event_ranges (tenant_id, event_id, range_id, position) VALUES ($1, $2, $3, 0), ($1, $4, $3, 0)`, tid, open, rid, closed)
+	scan(&shooter, `INSERT INTO shooters (tenant_id, firstname, lastname) VALUES ($1, 'Anna', 'Muster') RETURNING id`, tid)
+	exec(`INSERT INTO registrations (tenant_id, event_id, shooter_id, age_category, status, range_id, lane)
+		VALUES ($1, $2, $3, 'elite', 'registered', $4, 4), ($1, $5, $3, 'elite', 'completed', $4, 12)`, tid, open, shooter, rid, closed)
+	var p50, pAny int64
+	scan(&p50, `INSERT INTO programmes (tenant_id, event_id, name, range_id, range_group_id) VALUES ($1, $2, 'Precision', $3, $4) RETURNING id`, tid, open, rid, g50)
+	scan(&pAny, `INSERT INTO programmes (tenant_id, event_id, name, range_id) VALUES ($1, $2, 'Any', $3) RETURNING id`, tid, open, rid)
+	exec(`UPDATE events SET archived_at = now() WHERE id = $1`, closed)
+	var req int64
+	scan(&req, `INSERT INTO booking_requests (tenant_id, event_id, club, contact, email, manage_hash) VALUES ($1, $2, 'Guests', 'Bea', 'b@example.org', 'h') RETURNING id`, tid, open)
+	scan(&item, `INSERT INTO booking_items (tenant_id, request_id, range_id, starts_at, ends_at, lanes) VALUES ($1, $2, $3, '2026-11-20 08:00Z', '2026-11-20 09:00Z', 3) RETURNING id`, tid, req, rid)
+	exec(`INSERT INTO reservations (tenant_id, range_id, lanes, starts_at, ends_at, description, booking_item_id)
+		VALUES ($1, $2, '{9,10,11}', '2026-11-20 08:00Z', '2026-11-20 09:00Z', 'Guests', $3)`, tid, rid, item)
+	exec(`INSERT INTO helper_codes (tenant_id, event_id, name, role, token_hash, range_id, lanes) VALUES ($1, $2, 'Scorer', 'scorer', 'x', $3, '{11,12}')`, tid, open, rid)
+	exec(`INSERT INTO print_settings (tenant_id, range_id, document, printer) VALUES ($1, $2, 'lane_sheet', 'A5')`, tid, rid)
+
+	if err := st.MigrateUntil(ctx, ""); err != nil {
+		t.Fatal(err)
+	}
+
+	var r50 int64
+	scan(&r50, `SELECT id FROM ranges WHERE name = 'Pistol 50 m'`)
+	query := func(sql string) string {
+		t.Helper()
+		var s string
+		if err := db.QueryRow(ctx, sql, pgx.NamedArgs{"r50": r50}).Scan(&s); err != nil {
+			t.Fatalf("%s: %v", sql, err)
+		}
+		return s
+	}
+	for _, c := range []struct{ name, sql, want string }{
+		{"ranges", `SELECT string_agg(format('%s:%s:%s', name, lane_count, disabled_lanes), ' ' ORDER BY id) FROM ranges`, "Pistol 25 m:10:{3} Pistol 50 m:5:{2}"},
+		{"old range keeps its id", `SELECT name FROM ranges WHERE id = ` + fmt.Sprint(rid), "Pistol 25 m"},
+		{"registrations", `SELECT string_agg(format('%s:%s', range_id = @r50, lane), ' ' ORDER BY id) FROM registrations`, "f:4 t:2"},
+		{"reservations", `SELECT string_agg(format('%s:%s:%s', range_id = @r50, lanes, booking_item_id IS NOT NULL), ' ' ORDER BY range_id = @r50) FROM reservations`, "f:{9,10}:t t:{1}:t"},
+		{"booking item", `SELECT (range_id = @r50)::text FROM booking_items`, "true"},
+		{"scorer", `SELECT format('%s:%s', range_id = @r50, lanes) FROM helper_codes`, "t:{1,2}"},
+		{"programmes", `SELECT string_agg(format('%s:%s', name, coalesce((range_id = @r50)::text, 'any')), ' ' ORDER BY name) FROM programmes`, "Any:any Precision:true"},
+		{"event ranges", `SELECT string_agg(format('%s:%s:%s', event_id, range_id = @r50, position), ' ' ORDER BY event_id, position) FROM event_ranges`, fmt.Sprintf("%d:f:1 %d:t:2 %d:f:1 %d:t:2", open, open, closed, closed)},
+		{"print settings", `SELECT count(*)::text FROM print_settings WHERE printer = 'A5'`, "2"},
+		{"groups gone", `SELECT (to_regclass('range_groups') IS NULL)::text`, "true"},
+	} {
+		if got := query(c.sql); got != c.want {
+			t.Errorf("%s: got %q, want %q", c.name, got, c.want)
+		}
+	}
+}
