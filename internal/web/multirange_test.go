@@ -13,7 +13,8 @@ import (
 )
 
 func TestMultiRangeEvent(t *testing.T) {
-	e := newEnv(t)
+	var srv *web.Server
+	e := newEnvWith(t, func(s *web.Server) { srv = s })
 	f := e.registrationFixture("Fest")
 	e.user("boss", f.tenant, store.RoleAdmin)
 	boss := e.login("boss")
@@ -53,6 +54,17 @@ func TestMultiRangeEvent(t *testing.T) {
 	}
 	code, b = e.do(boss, "POST", evPath+"/registrations", web.RegistrationInput{ShooterID: f.youth, RangeID: &r50.ID, Lane: lane(1), Programmes: []domain.ProgrammeChoice{{ProgrammeID: f.junior}}})
 	expect(t, "junior on 50m lane 1", code, 201, b)
+	var junior store.Registration
+	json.Unmarshal(b, &junior)
+	form, err := e.st.CreateLayout(ctx, f.tenant, store.LayoutInput{Name: "Sheet", Layout: domain.Layout{Width: 100, Height: 100,
+		Elements: []domain.Element{{Type: "text", X: 10, Y: 10, Value: "{{shooter.name}}"}}}})
+	if err != nil {
+		t.Fatal(err)
+	}
+	e.st.SetProgrammeLayout(ctx, f.tenant, f.junior, &form)
+	if id, err := srv.FormRangeForTest(ctx, f.tenant, junior.Entries[0].ID); err != nil || id != r50.ID {
+		t.Fatalf("print form of a 50m entry goes to range %d (%v), want %d", id, err, r50.ID)
+	}
 	code, b = e.do(boss, "POST", evPath+"/registrations", web.RegistrationInput{ShooterID: f.shooter, ClubID: &f.club, RangeID: &r10, Lane: lane(1), Programmes: []domain.ProgrammeChoice{{ProgrammeID: f.main}}})
 	expect(t, "main on 10m lane 1 (same lane number, other range)", code, 201, b)
 	var reg store.Registration

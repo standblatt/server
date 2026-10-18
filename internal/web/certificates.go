@@ -97,11 +97,11 @@ func (s *Server) renderCertificates(ctx context.Context, tenantID, eventID int64
 				if line.Rank < from || line.Rank > to {
 					continue
 				}
-				_, _, v, err := s.entryFormValues(ctx, tenantID, line.EntryID)
+				f, err := s.entryFormValues(ctx, tenantID, line.EntryID)
 				if err != nil {
 					return rendered{}, err
 				}
-				add(v, line.Rank, line.Total, r.Title, "")
+				add(f.values, line.Rank, line.Total, r.Title, "")
 			}
 		}
 	case c.ClassificationID != 0:

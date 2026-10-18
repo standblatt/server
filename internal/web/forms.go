@@ -165,35 +165,46 @@ func (s *Server) checkEventForms(ctx context.Context, tenantID int64, set store.
 	return nil
 }
 
+// entryForm is what a print form of an entry prints, with the event and registration it belongs to.
+type entryForm struct {
+	ev     store.Event
+	reg    store.Registration
+	result EntryResult
+	values map[string]string
+}
+
 // entryFormValues loads what the form of an entry prints: the event, the shooter, the club and the results.
-func (s *Server) entryFormValues(ctx context.Context, tenantID, entryID int64) (store.EntryRef, store.Event, map[string]string, error) {
+func (s *Server) entryFormValues(ctx context.Context, tenantID, entryID int64) (entryForm, error) {
+	var f entryForm
 	e, err := s.Store.GetEntry(ctx, tenantID, entryID)
 	if err != nil {
-		return e, store.Event{}, nil, notFound(err, "Programme of the registration not found")
+		return f, notFound(err, "Programme of the registration not found")
 	}
 	sheet, err := s.resultSheet(ctx, tenantID, e.RegistrationID)
 	if err != nil {
-		return e, store.Event{}, nil, err
+		return f, err
 	}
-	ev, err := s.Store.GetEvent(ctx, tenantID, e.EventID)
-	if err != nil {
-		return e, ev, nil, err
+	if f.ev, err = s.Store.GetEvent(ctx, tenantID, e.EventID); err != nil {
+		return f, err
 	}
 	sh, club, err := s.shooterClub(ctx, tenantID, sheet.Registration)
 	if err != nil {
-		return e, ev, nil, err
+		return f, err
 	}
 	i := slices.IndexFunc(sheet.Entries, func(x EntryResult) bool { return x.EntryID == e.ID })
-	return e, ev, formValues(i18n.Get(ev.Locale), ev, sh, club, sheet.Registration, sheet.Entries[i]), nil
+	f.reg, f.result = sheet.Registration, sheet.Entries[i]
+	f.values = formValues(i18n.Get(f.ev.Locale), f.ev, sh, club, f.reg, f.result)
+	return f, nil
 }
 
 // renderForm prints the results of an entry onto the print form of its programme; 409 when it has none.
 func (s *Server) renderForm(ctx context.Context, tenantID, entryID int64) (rendered, error) {
-	e, ev, values, err := s.entryFormValues(ctx, tenantID, entryID)
+	f, err := s.entryFormValues(ctx, tenantID, entryID)
 	if err != nil {
 		return rendered{}, err
 	}
-	p, err := s.Store.GetProgramme(ctx, tenantID, e.ProgrammeID)
+	values := f.values
+	p, err := s.Store.GetProgramme(ctx, tenantID, f.result.ProgrammeID)
 	if err != nil {
 		return rendered{}, err
 	}
@@ -212,7 +223,7 @@ func (s *Server) renderForm(ctx context.Context, tenantID, entryID int64) (rende
 	name := values["shooter.name"]
 	return rendered{
 		pdf: pdf, filename: filename(l.Name, values["shooter.lastname"], values["shooter.firstname"]),
-		title: l.Name + " " + name, document: store.DocForm, rangeID: printRange(ev, nil), eventID: ev.ID,
+		title: l.Name + " " + name, document: store.DocForm, rangeID: printRange(f.ev, &f.reg), eventID: f.ev.ID,
 	}, err
 }
 
@@ -412,9 +423,11 @@ func (s *Server) registerForms(api huma.API) {
 			}
 			values := docs.SampleValues(l.DataSource())
 			if in.EntryID != 0 && l.DataSource() == domain.SourceResults {
-				if _, _, values, err = s.entryFormValues(ctx, in.TenantID, in.EntryID); err != nil {
+				f, err := s.entryFormValues(ctx, in.TenantID, in.EntryID)
+				if err != nil {
 					return nil, err
 				}
+				values = f.values
 			}
 			if in.Print {
 				bg = nil

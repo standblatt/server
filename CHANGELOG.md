@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - A control strip or result sheet that failed to render was answered as an empty PDF instead of an error (by @HB9HIL)
+- Print forms of an entry on an event with several ranges printed on the first range instead of the shooter's (by @HB9HIL)
 
 ## [0.19.0] - 2026-10-18
 
