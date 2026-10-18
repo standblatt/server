@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.19.1] - 2026-10-18
+
 ### Added
 - `make clean` stops the containers and removes installed packages and build output (by @HB9HIL)
 - staticcheck runs in `make prepare` and CI (pinned as a Go tool in `go.mod`) (by @HB9HIL)
