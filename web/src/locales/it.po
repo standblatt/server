@@ -64,6 +64,14 @@ msgid_plural "# lanes"
 msgstr[0] "# bersaglio"
 msgstr[1] "# bersagli"
 
+#. placeholder {0}: r.members
+#. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+member%7D+other+%7B%23+members%7D%7D&pluralize_on=0
+#: src/lib/RoleMatrix.svelte
+msgid "# member"
+msgid_plural "# members"
+msgstr[0] "# membro"
+msgstr[1] "# membri"
+
 #. placeholder {0}: a.printers.length
 #. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+printer%7D+other+%7B%23+printers%7D%7D&pluralize_on=0
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
@@ -229,6 +237,12 @@ msgstr "{0} {1} iscritto al bersaglio {2}"
 #: src/lib/ProgrammeList.svelte
 msgid "{0} / {1} pts"
 msgstr "{0} / {1} pti"
+
+#. placeholder {0}: _i18n._(permissionUI[p].label)
+#. placeholder {1}: roleName(r)
+#: src/lib/RoleMatrix.svelte
+msgid "{0} for {1}"
+msgstr "{0} per {1}"
 
 #. placeholder {0}: dayLabel(d)
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
@@ -494,6 +508,10 @@ msgstr "Un link chiosco mostra le classifiche in diretta di questa manifestazion
 msgid "A new event with the same settings, modules and programmes, without registrations."
 msgstr "Una nuova manifestazione con le stesse impostazioni, moduli e programmi, senza iscrizioni."
 
+#: src/lib/RoleMatrix.svelte
+msgid "A new role may only see the events until you give it more permissions."
+msgstr "Un nuovo ruolo vede solo le manifestazioni finché non gli dai più diritti."
+
 #: src/lib/UpdateNotice.svelte
 msgid "A new version of Standblatt is available."
 msgstr "È disponibile una nuova versione di Standblatt."
@@ -573,6 +591,10 @@ msgstr "Aggiungere uno stand di tiro"
 #: src/routes/my/log/+page.svelte
 msgid "Add all"
 msgstr "Aggiungi tutti"
+
+#: src/lib/permissions.ts
+msgid "Add and change shooters and clubs."
+msgstr "Registrare e modificare tiratori e società."
 
 #: src/lib/modules/awards/ProgrammeSection.svelte
 msgid "Add award"
@@ -1237,6 +1259,7 @@ msgstr "Chiusa il {0}: le classifiche sono pubblicate, tutto resta visibile, ma 
 #: src/lib/modules/reservations/booking/BookingRequests.svelte
 #: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 #: src/lib/NewShooterDialog.svelte
+#: src/lib/permissions.ts
 #: src/lib/RankingTable.svelte
 #: src/lib/RegistrationForm.svelte
 #: src/routes/my/+layout.svelte
@@ -1380,6 +1403,10 @@ msgstr "Concluso"
 #: src/routes/t/[tenantId]/+layout.svelte
 msgid "Configuration"
 msgstr "Configurazione"
+
+#: src/lib/permissions.ts
+msgid "Configure events"
+msgstr "Configurare le manifestazioni"
 
 #: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Confirm"
@@ -1571,6 +1598,10 @@ msgstr "Crea la nuova società «{name}»"
 msgid "Create token"
 msgstr "Crea token"
 
+#: src/lib/permissions.ts
+msgid "Create, configure, copy, close and delete events with programmes, classifications, kiosk and helper links and online booking."
+msgstr "Creare, configurare, copiare, chiudere ed eliminare manifestazioni, con programmi, classifiche generali, link chiosco e aiutante e prenotazione online."
+
 #: src/routes/my/log/+page.svelte
 msgid "CSV"
 msgstr "CSV"
@@ -1649,6 +1680,7 @@ msgstr "predefinito ({0})"
 #: src/lib/modules/reservations/Page.svelte
 #: src/lib/ProgrammeList.svelte
 #: src/lib/RegistrationDialog.svelte
+#: src/lib/RoleMatrix.svelte
 #: src/lib/ShooterSheet.svelte
 #: src/routes/my/log/[id]/+page.svelte
 #: src/routes/my/settings/+page.svelte
@@ -1665,6 +1697,7 @@ msgstr "Elimina"
 #. placeholder {0}: l.name
 #: src/lib/forms/ImageLibrary.svelte
 #: src/lib/modules/classifications/Classifications.svelte
+#: src/lib/RoleMatrix.svelte
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Delete {0}"
 msgstr "Elimina {0}"
@@ -1725,6 +1758,11 @@ msgstr "Elimina tiratore"
 #: src/lib/ShooterSheet.svelte
 msgid "Delete shooter?"
 msgstr "Eliminare il tiratore?"
+
+#. placeholder {0}: roleName(r)
+#: src/lib/RoleMatrix.svelte
+msgid "Delete the role {0}?"
+msgstr "Eliminare il ruolo {0}?"
 
 #: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Delete this event"
@@ -1919,6 +1957,10 @@ msgstr "Modifica iscrizione"
 msgid "Edit reservation"
 msgstr "Modifica prenotazione"
 
+#: src/lib/permissions.ts
+msgid "Edit shooters and clubs"
+msgstr "Modificare tiratori e società"
+
 #: src/lib/forms/Palette.svelte
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Elements"
@@ -2046,10 +2088,15 @@ msgid "Event saved"
 msgstr "Manifestazione salvata"
 
 #: src/lib/AppSidebar.svelte
+#: src/lib/permissions.ts
 #: src/routes/t/[tenantId]/+layout.svelte
 #: src/routes/t/[tenantId]/+page.svelte
 msgid "Events"
 msgstr "Manifestazioni"
+
+#: src/lib/permissions.ts
+msgid "Events, programmes, rankings and classifications."
+msgstr "Manifestazioni, programmi, classifiche e classifiche generali."
 
 #: src/routes/my/log/+page.svelte
 msgid "Every training and competition you logged."
@@ -2408,6 +2455,10 @@ msgstr "Importare i tiratori (facoltativo)"
 msgid "Import shooters from CSV"
 msgstr "Importa tiratori da CSV"
 
+#: src/lib/permissions.ts
+msgid "Import shooters, rename, merge and delete clubs, delete shooters."
+msgstr "Importare tiratori, rinominare, unire ed eliminare società, eliminare tiratori."
+
 #: src/lib/SetupChecklist.svelte
 msgid "Import your members from a CSV file. Shooters can also be added during registration."
 msgstr "Importa i tuoi soci da un file CSV. I tiratori possono essere aggiunti anche durante l’iscrizione."
@@ -2690,6 +2741,10 @@ msgstr "usato l’ultima volta il {0}"
 msgid "Leave"
 msgstr "Esci"
 
+#: src/lib/RoleMatrix.svelte
+msgid "Leave the name empty to keep the name every club starts with."
+msgstr "Senza nome il ruolo mantiene il nome con cui inizia ogni società."
+
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Leave without saving?"
 msgstr "Uscire senza salvare?"
@@ -2868,7 +2923,12 @@ msgstr "M"
 msgid "Main"
 msgstr "Navigazione principale"
 
+#: src/lib/permissions.ts
+msgid "Manage master data"
+msgstr "Gestire i dati di base"
+
 #: src/lib/AppSidebar.svelte
+#: src/lib/permissions.ts
 #: src/lib/ShooterSheet.svelte
 msgid "Master data"
 msgstr "Dati di base"
@@ -3008,6 +3068,7 @@ msgstr "Il mio allenamento"
 #: src/lib/programme/Basics.svelte
 #: src/lib/programme/Series.svelte
 #: src/lib/RankingTable.svelte
+#: src/lib/RoleMatrix.svelte
 #: src/routes/my/settings/+page.svelte
 #: src/routes/t/[tenantId]/+page.svelte
 #: src/routes/t/[tenantId]/clubs/+page.svelte
@@ -3133,6 +3194,10 @@ msgstr "Nuova iscrizione"
 #: src/lib/modules/reservations/Page.svelte
 msgid "New reservation"
 msgstr "Nuova prenotazione"
+
+#: src/lib/RoleMatrix.svelte
+msgid "New role"
+msgstr "Nuovo ruolo"
 
 #: src/lib/EventDesk.svelte
 #: src/lib/NewShooterDialog.svelte
@@ -3575,6 +3640,10 @@ msgstr "per colpo"
 msgid "Period (season)"
 msgstr "Periodo (stagione)"
 
+#: src/lib/RoleMatrix.svelte
+msgid "Permission"
+msgstr "Diritto"
+
 #: src/lib/my/ApiTokens.svelte
 msgid "Permissions"
 msgstr "Autorizzazioni"
@@ -3720,6 +3789,7 @@ msgid "Print form saved"
 msgstr "Modello di stampa salvato"
 
 #: src/lib/modules/forms/index.ts
+#: src/lib/permissions.ts
 #: src/routes/t/[tenantId]/+layout.svelte
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Print forms"
@@ -3728,6 +3798,10 @@ msgstr "Modelli di stampa"
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Print forms (pre-printed)"
 msgstr "Modelli di stampa (prestampati)"
+
+#: src/lib/permissions.ts
+msgid "Print forms and images."
+msgstr "Moduli di stampa e immagini."
 
 #: src/lib/PrintButton.svelte
 #: src/lib/RegistrationDialog.svelte
@@ -3945,9 +4019,17 @@ msgstr "Vengono copiati stand, organizzatore, lingua, impostazioni, moduli, tutt
 msgid "Ranges"
 msgstr "Stand di tiro"
 
+#: src/lib/permissions.ts
+msgid "Ranges and printers"
+msgstr "Stand e stampanti"
+
 #: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "Ranges with events cannot be deleted."
 msgstr "Gli stand di tiro con manifestazioni non possono essere eliminati."
+
+#: src/lib/permissions.ts
+msgid "Ranges, print agents and printer settings."
+msgstr "Stand di tiro, agenti di stampa e impostazioni delle stampanti."
 
 #: src/lib/forms/Palette.svelte
 #: src/lib/modules/classifications/ClassificationTable.svelte
@@ -4107,6 +4189,10 @@ msgstr "Iscrizioni, risultati e classifiche in tempo reale allo stand; i propri 
 msgid "Registrations, results and settings can be changed again."
 msgstr "Iscrizioni, risultati e impostazioni possono di nuovo essere modificati."
 
+#: src/lib/permissions.ts
+msgid "Registrations, results, awards, reservations, documents and printing."
+msgstr "Iscrizioni, risultati, distinzioni, prenotazioni, documenti e stampa."
+
 #: src/lib/UpdateNotice.svelte
 msgid "Reload"
 msgstr "Ricarica"
@@ -4175,6 +4261,15 @@ msgstr "Rimuovi orario"
 #: src/routes/my/settings/+page.svelte
 msgid "Rename"
 msgstr "Rinomina"
+
+#. placeholder {0}: roleName(r)
+#: src/lib/RoleMatrix.svelte
+msgid "Rename {0}"
+msgstr "Rinomina {0}"
+
+#: src/lib/RoleMatrix.svelte
+msgid "Rename role"
+msgstr "Rinomina ruolo"
 
 #: src/routes/my/settings/+page.svelte
 msgid "Rename weapon"
@@ -4370,10 +4465,22 @@ msgstr "a destra"
 msgid "Role"
 msgstr "Ruolo"
 
+#: src/lib/RoleMatrix.svelte
+msgid "Role {name} created"
+msgstr "Ruolo {name} creato"
+
 #. placeholder {0}: m.name
 #: src/routes/t/[tenantId]/users/+page.svelte
 msgid "Role of {0}"
 msgstr "Ruolo di {0}"
+
+#: src/lib/RoleMatrix.svelte
+msgid "Roles"
+msgstr "Ruoli"
+
+#: src/lib/permissions.ts
+msgid "Run events"
+msgstr "Gestire le manifestazioni"
 
 #. placeholder {0}: i + 1
 #: src/lib/RankingTable.svelte
@@ -4385,6 +4492,7 @@ msgstr "S{0}"
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 #: src/lib/modules/reservations/Page.svelte
 #: src/lib/RegistrationDialog.svelte
+#: src/lib/RoleMatrix.svelte
 #: src/lib/ShooterSheet.svelte
 #: src/routes/my/progress/+page.svelte
 #: src/routes/my/settings/+page.svelte
@@ -4493,9 +4601,17 @@ msgstr "Secondo fattore disattivato"
 msgid "Second factor switched on"
 msgstr "Secondo fattore attivato"
 
+#: src/lib/permissions.ts
+msgid "See events and rankings"
+msgstr "Vedere manifestazioni e classifiche"
+
 #: src/routes/my/+page.svelte
 msgid "See right away how the session compares and where you improve."
 msgstr "Vedi subito come si colloca la sessione e dove migliori."
+
+#: src/lib/permissions.ts
+msgid "See shooters and clubs"
+msgstr "Vedere tiratori e società"
 
 #: src/lib/forms/Properties.svelte
 msgid "Select an element on the sheet, or add one from the fields. Right-click for more."
@@ -4864,6 +4980,14 @@ msgstr "Iniziare senza moduli e attivarli secondo necessità."
 msgid "Statistics"
 msgstr "Statistiche"
 
+#: src/lib/permissions.ts
+msgid "Statistics and reports"
+msgstr "Statistiche e rapporti"
+
+#: src/lib/permissions.ts
+msgid "Statistics, reports with amounts and ranking CSV files."
+msgstr "Statistiche, rapporti con importi e classifiche in CSV."
+
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Status"
 msgstr "Stato"
@@ -5097,6 +5221,10 @@ msgstr "L'organizzatore distribuisce le munizioni: un pulsante Munizione sulla d
 #: src/lib/print.ts
 msgid "The PDF is ready."
 msgstr "Il PDF è pronto."
+
+#: src/lib/permissions.ts
+msgid "The personal data of the master data."
+msgstr "I dati personali dei dati di base."
 
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "The print agent runs on a computer next to the printers (e.g. a Raspberry Pi with CUPS). It connects to Standblatt, reports the printers and prints the jobs of this range."
@@ -5358,6 +5486,14 @@ msgstr "Nome utente"
 msgid "Users"
 msgstr "Utenti"
 
+#: src/lib/permissions.ts
+msgid "Users and club"
+msgstr "Utenti e società"
+
+#: src/lib/permissions.ts
+msgid "Users, roles, invitations and club modules."
+msgstr "Utenti, ruoli, inviti e moduli della società."
+
 #: src/lib/forms/Properties.svelte
 #: src/lib/modules/awards/StatisticsSection.svelte
 msgid "Value"
@@ -5465,6 +5601,10 @@ msgstr "A cosa possono iscriversi i tiratori: serie, prezzi e distinzioni. Copia
 #: src/routes/t/[tenantId]/modules/+page.svelte
 msgid "What the club uses besides its events."
 msgstr "Ciò che la società usa oltre alle sue manifestazioni."
+
+#: src/lib/RoleMatrix.svelte
+msgid "What the members of each role may do. Admins may always do everything."
+msgstr "Cosa possono fare i membri di ogni ruolo. Gli admin possono sempre fare tutto."
 
 #: src/lib/my/Finish.svelte
 msgid "What went well? What will you try next time?"

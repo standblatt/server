@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Roles per club**: the *Users* page has a permission matrix where a club makes its own roles and decides what each may do (see events, run events, configure events, statistics, master data, ranges, print forms, users); admins may always do everything (by @HB9HIL)
+
 ### Changed
 - Club roles are made of permissions: admin and staff became the roles *Admin* and *Helper* (unchanged rights), new default roles are *Board* and *Member* (sees only the events and rankings); the app shows pages and buttons by permission (by @HB9HIL)
 

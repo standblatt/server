@@ -32,4 +32,33 @@ test.describe("roles", () => {
     await page.goto(`/t/${ids.tenant}/shooters`);
     await expect(page).toHaveURL((u) => u.pathname === `/t/${ids.tenant}`);
   });
+
+  test("makes a role in the matrix and gives it to a member", async ({ page }) => {
+    await login(page, admin);
+    await page.goto(`/t/${ids.tenant}/users`);
+    const matrix = page.locator("section[aria-label=Roles]");
+    await expect(matrix.getByRole("checkbox", { name: "Run events for Admin" })).toBeDisabled();
+    await expect(matrix.getByRole("checkbox", { name: "Run events for Helper" })).toBeChecked();
+    await c(matrix, "button", "New role").click();
+    const dialog = page.locator("[role=dialog]");
+    await c(dialog, "label", "Name").locator("input").fill("Treasurer");
+    await c(dialog, "button", "Save").click();
+    await expect(c(page, "[data-sonner-toast]", "Role Treasurer created")).toBeVisible();
+    await matrix.getByRole("checkbox", { name: "Statistics and reports for Treasurer" }).click();
+    await expect(matrix.getByRole("checkbox", { name: "Statistics and reports for Treasurer" })).toBeChecked();
+    await c(page, "tr", member).locator("select").selectOption({ label: "Treasurer" });
+    await expect(c(page, "[data-sonner-toast]", `${member} is now Treasurer`)).toBeVisible();
+    await expect(c(matrix, "th", "Treasurer")).toContainText("1 member");
+
+    await matrix.getByRole("button", { name: "Delete Treasurer" }).click();
+    await c(page, "[role=alertdialog] button", "Delete").click();
+    await expect(c(page, "[data-sonner-toast]", "another role first")).toBeVisible();
+
+    await login(page, member);
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}/rankings`);
+    const sidebar = page.locator("[data-sidebar=sidebar]");
+    await expect(sidebar).toContainText("Treasurer");
+    await expect(sidebar).toContainText("Statistics");
+    await expect(sidebar).not.toContainText("Dashboard");
+  });
 });

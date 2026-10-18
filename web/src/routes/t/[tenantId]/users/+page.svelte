@@ -16,6 +16,7 @@
 	import FormError from '$lib/FormError.svelte';
 	import FormField from '$lib/FormField.svelte';
 	import PageHeader from '$lib/PageHeader.svelte';
+	import RoleMatrix from '$lib/RoleMatrix.svelte';
 	import { meKey } from '$lib/me';
 	import { keys, rolesQuery, usersQuery } from '$lib/tenant';
 
@@ -147,6 +148,8 @@
 		</Table.Body>
 	</Table.Root>
 </div>
+
+<div class="mt-6"><RoleMatrix {tenantId} /></div>
 
 <Dialog.Root bind:open={inviting}>
 	<Dialog.Content class="sm:max-w-lg">
