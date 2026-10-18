@@ -20,3 +20,6 @@ func (s *Server) FormRangeForTest(ctx context.Context, tenantID, entryID int64) 
 	r, err := s.renderForm(ctx, tenantID, entryID)
 	return r.rangeID, err
 }
+
+// SessionIDForTest exposes the hash under which tokens are stored.
+func SessionIDForTest(token string) string { return sessionID(token) }

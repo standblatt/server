@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 16:39+0200\n"
+"POT-Creation-Date: 2026-10-18 16:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -904,22 +904,20 @@ msgstr ""
 
 #: internal/web/invites.go
 #, go-format
-msgid "%s added you on Standblatt"
-msgstr ""
-
-#: internal/web/invites.go
-#, go-format
-msgid "%s gave your account access to its events on Standblatt. Log in as usual:"
-msgstr ""
-
-#: internal/web/invites.go
-#, go-format
 msgid "%s invites you to Standblatt"
 msgstr ""
 
 #: internal/web/invites.go
 #, go-format
-msgid "%s uses Standblatt for its shooting events and created an account for you. Set your password with this link:"
+msgid "%s uses Standblatt for its shooting events and invites you to join. Accept the invitation with this link:"
+msgstr ""
+
+#: internal/web/invites.go
+msgid "An account with this address exists: log in to accept"
+msgstr ""
+
+#: internal/web/invites.go
+msgid "Invitation not found"
 msgstr ""
 
 #: internal/web/invites.go internal/web/tenants.go
@@ -927,7 +925,23 @@ msgid "Role not found"
 msgstr ""
 
 #: internal/web/invites.go
-msgid "The link is valid for seven days. Afterwards you log in with this email address and your password."
+msgid "The address is already somebody's user name"
+msgstr ""
+
+#: internal/web/invites.go
+msgid "The link is valid for seven days."
+msgstr ""
+
+#: internal/web/invites.go
+msgid "This invitation has expired; ask the club for a new one"
+msgstr ""
+
+#: internal/web/invites.go
+msgid "This invitation is no longer valid"
+msgstr ""
+
+#: internal/web/invites.go
+msgid "This invitation was accepted already"
 msgstr ""
 
 #: internal/web/masterdata.go

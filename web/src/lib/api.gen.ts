@@ -243,6 +243,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/invitations/{token}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** What an invitation link offers; 410 once it is accepted or expired */
+        get: operations["get-invitation"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/invitations/{token}/accept": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Accept an invitation: as the logged-in user, or by creating the account of the invited address with a password (logs it in) */
+        post: operations["accept-invitation"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/kiosk/classifications": {
         parameters: {
             query?: never;
@@ -1431,10 +1465,44 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        get: operations["list-invitations"];
+        put?: never;
+        /** Invite people by email; they become members when they accept through the link in the mail */
+        post: operations["invite-users"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/tenants/{tenantId}/invitations/{invitationId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
         get?: never;
         put?: never;
-        /** Invite people by email: existing accounts join the club, new ones get a mail with a link to set their password */
-        post: operations["invite-users"];
+        post?: never;
+        /** Withdraw an invitation; its link stops working */
+        delete: operations["delete-invitation"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/tenants/{tenantId}/invitations/{invitationId}/resend": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Send an invitation again with a new link valid for seven days */
+        post: operations["resend-invitation"];
         delete?: never;
         options?: never;
         head?: never;
@@ -2161,6 +2229,10 @@ export interface components {
             lastUsedAt: string | null;
             name: string;
             scopes: string[];
+        };
+        AcceptBody: {
+            /** @description Sets the password of the new account when nobody is logged in and no account has the address */
+            password?: string;
         };
         ActiveInBody: {
             active: boolean;
@@ -3025,6 +3097,31 @@ export interface components {
             /** Format: int64 */
             updated: number;
         };
+        Invitation: {
+            /**
+             * Format: date-time
+             * @description When it was last sent
+             */
+            createdAt: string;
+            email: string;
+            expired: boolean;
+            /** Format: date-time */
+            expiresAt: string;
+            /** Format: int64 */
+            id: number;
+            /** Format: int64 */
+            roleId: number;
+        };
+        InvitationView: {
+            /** @description An account with this address exists; its owner logs in to accept */
+            account: boolean;
+            club: string;
+            email: string;
+            /** @enum {string} */
+            roleKey?: "admin" | "board" | "staff" | "member";
+            /** @description Empty for a default role that keeps its translated name */
+            roleName: string;
+        };
         InviteInBody: {
             /** @description One address per entry; the UI splits a comma or newline separated list. Mails leave at most four per second */
             emails: string[];
@@ -3034,10 +3131,10 @@ export interface components {
         InviteResult: {
             email: string;
             /**
-             * @description invited: new account, mail with the link to set the password; added: existing account joined the club; member: was a member already; invalid: not an email address
+             * @description invited: mail with the link sent (or sent again); member: is a member already; invalid: not an email address
              * @enum {string}
              */
-            status: "invited" | "added" | "member" | "invalid";
+            status: "invited" | "member" | "invalid";
         };
         KioskEvent: {
             days: string[];
@@ -4566,6 +4663,73 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Helper"];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "get-invitation": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                token: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InvitationView"];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "accept-invitation": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                token: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["AcceptBody"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    "Set-Cookie"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Me"];
                 };
             };
             /** @description Error */
@@ -7607,6 +7771,37 @@ export interface operations {
             };
         };
     };
+    "list-invitations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Invitation"][];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
     "invite-users": {
         parameters: {
             query?: never;
@@ -7630,6 +7825,66 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["InviteResult"][];
                 };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "delete-invitation": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                invitationId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "resend-invitation": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                invitationId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Error */
             default: {

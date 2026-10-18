@@ -57,8 +57,8 @@ export async function addUser(page, tenantId, name, role = "staff", pw = passwor
   await api(page, "POST", `/api/tenants/${tenantId}/users`, { name, roleId: roles.find((r) => r.key === role).id, password: pw });
 }
 
-/** The token from the newest mail to an address whose subject contains subject. */
-export async function mailToken(page, to, subject = "") {
+/** The token from the newest mail to an address whose subject contains subject; pattern captures it. */
+export async function mailToken(page, to, subject = "", pattern = /token=([A-Za-z0-9_-]+)/) {
   const query = encodeURIComponent(`to:${to}${subject ? ` subject:"${subject}"` : ""}`);
   let id;
   await expect
@@ -69,5 +69,5 @@ export async function mailToken(page, to, subject = "") {
     })
     .toBeTruthy();
   const msg = await (await page.request.get(`${mailpit}/api/v1/message/${id}`)).json();
-  return msg.Text.match(/token=([A-Za-z0-9_-]+)/)[1];
+  return msg.Text.match(pattern)[1];
 }

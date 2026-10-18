@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
 	import { page } from '$app/state';
-	import { useQueryClient } from '@tanstack/svelte-query';
-	import { api, call, type Member, type Role } from '$lib/api';
+	import { createQuery, useQueryClient } from '@tanstack/svelte-query';
+	import { api, call, type Invitation, type Member, type Role } from '$lib/api';
 	import { roleLabel } from '$lib/labels';
 	import Mail from '@lucide/svelte/icons/mail';
 	import Plus from '@lucide/svelte/icons/plus';
@@ -18,12 +18,17 @@
 	import PageHeader from '$lib/PageHeader.svelte';
 	import RoleMatrix from '$lib/RoleMatrix.svelte';
 	import { meKey } from '$lib/me';
+	import { formatDate } from '$lib/format';
 	import { keys, rolesQuery, usersQuery } from '$lib/tenant';
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const queryClient = useQueryClient();
 	const users = usersQuery(() => tenantId);
 	const roles = rolesQuery(() => tenantId);
+	const invitations = createQuery(() => ({
+		queryKey: [...keys.users(tenantId), 'invitations'],
+		queryFn: () => call(api.GET('/api/tenants/{tenantId}/invitations', { params: { path: { tenantId } } }))
+	}));
 	/** Name of a role: its own or the translated default name. */
 	const roleName = (r?: Role) => r?.name || $t(roleLabel(r?.key));
 	/** The helper role, preselected for new users. */
@@ -55,7 +60,29 @@
 		}
 	}
 	/** Label of an invitation result. */
-	const inviteStatus = (s: string) => (s === 'invited' ? $t`invited by mail` : s === 'added' ? $t`added to the club` : s === 'member' ? $t`already a member` : $t`not an email address`);
+	const inviteStatus = (s: string) => (s === 'invited' ? $t`invitation sent` : s === 'member' ? $t`already a member` : $t`not an email address`);
+
+	/** Sends an invitation again with a new link. */
+	async function resend(i: Invitation) {
+		try {
+			await call(api.POST('/api/tenants/{tenantId}/invitations/{invitationId}/resend', { params: { path: { tenantId, invitationId: i.id } } }));
+			toast.success($t`Invitation to ${i.email} sent again`);
+			await refresh();
+		} catch (err) {
+			toast.error((err as Error).message);
+		}
+	}
+
+	/** Withdraws an invitation after confirmation. */
+	async function withdraw(i: Invitation) {
+		if (!(await ask({ title: $t`Withdraw the invitation to ${i.email}?`, description: $t`The link in the mail stops working.`, action: $t`Withdraw`, destructive: true }))) return;
+		try {
+			await call(api.DELETE('/api/tenants/{tenantId}/invitations/{invitationId}', { params: { path: { tenantId, invitationId: i.id } } }));
+			await refresh();
+		} catch (err) {
+			toast.error((err as Error).message);
+		}
+	}
 
 	/** Reloads the user list and the own memberships. */
 	async function refresh() {
@@ -149,13 +176,33 @@
 	</Table.Root>
 </div>
 
+{#if invitations.data?.length}
+	<section class="mt-6 overflow-hidden rounded-lg border bg-card" aria-label={$t`Invitations`}>
+		<h2 class="border-b px-4 py-3 text-sm font-semibold">{$t`Invitations`}</h2>
+		<ul class="divide-y">
+			{#each invitations.data as i (i.id)}
+				<li class="flex flex-wrap items-center gap-3 px-4 py-2.5 text-sm">
+					<div class="mr-auto min-w-0">
+						<div class="truncate font-medium">{i.email}</div>
+						<div class="text-xs text-muted-foreground">
+							{roleName(roles.data?.find((r) => r.id === i.roleId))} · {i.expired ? $t`expired` : $t`sent on ${formatDate(i.createdAt.slice(0, 10))}`}
+						</div>
+					</div>
+					<Button variant="ghost" size="sm" onclick={() => resend(i)}>{$t`Send again`}</Button>
+					<Button variant="ghost" size="sm" class="text-destructive" onclick={() => withdraw(i)}>{$t`Withdraw`}</Button>
+				</li>
+			{/each}
+		</ul>
+	</section>
+{/if}
+
 <div class="mt-6"><RoleMatrix {tenantId} /></div>
 
 <Dialog.Root bind:open={inviting}>
 	<Dialog.Content class="sm:max-w-lg">
 		<Dialog.Header>
 			<Dialog.Title>{$t`Invite by email`}</Dialog.Title>
-			<Dialog.Description>{$t`New people get a mail with a link to set their password; existing accounts are added to the club and told by mail.`}</Dialog.Description>
+			<Dialog.Description>{$t`Every address gets a mail with a link. The person joins the club when accepting it, with a new account or the one they have.`}</Dialog.Description>
 		</Dialog.Header>
 		<form class="grid gap-4" onsubmit={invite}>
 			<FormField label={$t`Email addresses`} hint={$t`Several addresses separated by commas or one per line.`}>

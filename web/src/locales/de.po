@@ -261,6 +261,11 @@ msgstr "{0} Std. {1} Min."
 msgid "{0} in class {1}"
 msgstr "{0} in Klasse {1}"
 
+#. placeholder {0}: inv.club
+#: src/routes/invite/[token]/+page.svelte
+msgid "{0} invites you to Standblatt as {role}."
+msgstr "{0} lädt dich als {role} zu Standblatt ein."
+
 #. placeholder {0}: programmeTitle(p)
 #: src/lib/ProgrammeList.svelte
 msgid "{0} is deleted with its series, prices and awards."
@@ -544,6 +549,14 @@ msgstr "A5 hoch (148 × 210 mm)"
 msgid "A6 portrait (105 × 148 mm)"
 msgstr "A6 hoch (105 × 148 mm)"
 
+#: src/routes/invite/[token]/+page.svelte
+msgid "Accept and create the account"
+msgstr "Annehmen und Konto anlegen"
+
+#: src/routes/invite/[token]/+page.svelte
+msgid "Accept the invitation"
+msgstr "Einladung annehmen"
+
 #: src/lib/AppSidebar.svelte
 #: src/routes/+page.svelte
 #: src/routes/account/+page.svelte
@@ -666,10 +679,6 @@ msgstr "Waffe hinzufügen"
 #: src/lib/ProgrammeList.svelte
 msgid "Added {0} from the library."
 msgstr "{0} aus der Bibliothek übernommen."
-
-#: src/routes/t/[tenantId]/users/+page.svelte
-msgid "added to the club"
-msgstr "zum Verein hinzugefügt"
 
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Adjust"
@@ -861,6 +870,7 @@ msgid "Assign lane"
 msgstr "Scheibe zuweisen"
 
 #: src/lib/AccountSettings.svelte
+#: src/routes/invite/[token]/+page.svelte
 #: src/routes/reset-password/+page.svelte
 #: src/routes/signup/+page.svelte
 msgid "At least 10 characters."
@@ -1160,6 +1170,10 @@ msgstr "Geändert, wartet auf neue Bestätigung"
 #: src/lib/ClubSelect.svelte
 msgid "Choose a club"
 msgstr "Verein wählen"
+
+#: src/routes/invite/[token]/+page.svelte
+msgid "Choose a password"
+msgstr "Passwort wählen"
 
 #: src/lib/ProgrammeList.svelte
 msgid "Choose a template …"
@@ -1973,6 +1987,7 @@ msgstr "Elite"
 #: src/lib/AccountSettings.svelte
 #: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 #: src/routes/forgot-password/+page.svelte
+#: src/routes/invite/[token]/+page.svelte
 #: src/routes/signup/+page.svelte
 msgid "Email"
 msgstr "E-Mail"
@@ -2098,6 +2113,10 @@ msgstr "Anlässe"
 msgid "Events, programmes, rankings and classifications."
 msgstr "Anlässe, Programme, Ranglisten und Wertungen."
 
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "Every address gets a mail with a link. The person joins the club when accepting it, with a new account or the one they have."
+msgstr "Jede Adresse erhält eine Mail mit einem Link. Die Person tritt dem Verein bei, wenn sie ihn annimmt, mit einem neuen Konto oder ihrem bestehenden."
+
 #: src/routes/my/log/+page.svelte
 msgid "Every training and competition you logged."
 msgstr "Jedes Training und jeder Wettkampf, den du erfasst hast."
@@ -2111,6 +2130,7 @@ msgid "Existing accounts are added by name; new accounts need a password."
 msgstr "Bestehende Konten werden über den Namen hinzugefügt; neue Konten brauchen ein Passwort."
 
 #: src/lib/my/ApiTokens.svelte
+#: src/routes/t/[tenantId]/users/+page.svelte
 msgid "expired"
 msgstr "abgelaufen"
 
@@ -2515,13 +2535,26 @@ msgstr "Installieren"
 msgid "Install Standblatt on this device to start a session with one tap."
 msgstr "Installiere Standblatt auf diesem Gerät, um eine Einheit mit einem Tipp zu starten."
 
+#: src/routes/invite/[token]/+page.svelte
+msgid "Invitation"
+msgstr "Einladung"
+
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "invitation sent"
+msgstr "Einladung versendet"
+
+#. placeholder {0}: i.email
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "Invitation to {0} sent again"
+msgstr "Einladung an {0} erneut versendet"
+
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "Invitations"
+msgstr "Einladungen"
+
 #: src/routes/t/[tenantId]/users/+page.svelte
 msgid "Invite by email"
 msgstr "Per E-Mail einladen"
-
-#: src/routes/t/[tenantId]/users/+page.svelte
-msgid "invited by mail"
-msgstr "per E-Mail eingeladen"
 
 #: src/lib/my/ApiTokens.svelte
 msgid "It is shown only this once. Send it as \"Authorization: Bearer <token>\"."
@@ -2875,6 +2908,7 @@ msgstr "Logbuch"
 msgid "Log and change sessions"
 msgstr "Trainings erfassen und ändern"
 
+#: src/routes/invite/[token]/+page.svelte
 #: src/routes/login/+page.svelte
 #: src/routes/reset-password/+page.svelte
 #: src/routes/signup/+page.svelte
@@ -3164,10 +3198,6 @@ msgstr "Neuer Link?"
 #: src/routes/reset-password/+page.svelte
 msgid "New password"
 msgstr "Neues Passwort"
-
-#: src/routes/t/[tenantId]/users/+page.svelte
-msgid "New people get a mail with a link to set their password; existing accounts are added to the club and told by mail."
-msgstr "Neue Personen erhalten eine E-Mail mit einem Link zum Setzen des Passworts; bestehende Konten werden dem Verein hinzugefügt und per E-Mail informiert."
 
 #: src/lib/my/Result.svelte
 msgid "New personal best!"
@@ -4619,6 +4649,7 @@ msgstr "Ein Element auf dem Blatt auswählen oder eines aus den Feldern hinzufü
 
 #: src/lib/AccountSettings.svelte
 #: src/lib/my/Notices.svelte
+#: src/routes/t/[tenantId]/users/+page.svelte
 msgid "Send again"
 msgstr "Erneut senden"
 
@@ -4645,6 +4676,11 @@ msgstr "Senioren"
 #: src/lib/labels.ts
 msgid "Senior veteran"
 msgstr "Seniorveteranen"
+
+#. placeholder {0}: formatDate(i.createdAt.slice(0, 10))
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "sent on {0}"
+msgstr "versendet am {0}"
 
 #: src/routes/my/log/[id]/+page.svelte
 #: src/routes/my/settings/+page.svelte
@@ -5206,6 +5242,10 @@ msgstr "Die Vorlage, auf die die Resultate dieses Programms gedruckt werden."
 msgid "The last"
 msgstr "Der letzte"
 
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "The link in the mail stops working."
+msgstr "Der Link in der Mail funktioniert danach nicht mehr."
+
 #: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "The link stops working. Requests and confirmed reservations stay."
 msgstr "Der Link funktioniert nicht mehr. Anfragen und bestätigte Reservationen bleiben."
@@ -5264,6 +5304,11 @@ msgstr "die Warteliste"
 #: src/routes/my/settings/+page.svelte
 msgid "Theme"
 msgstr "Design"
+
+#. placeholder {0}: inv.email
+#: src/routes/invite/[token]/+page.svelte
+msgid "There is an account with {0}. Log in to accept the invitation."
+msgstr "Es gibt ein Konto mit {0}. Melde dich an, um die Einladung anzunehmen."
 
 #: src/lib/my/Notices.svelte
 msgid "They are removed from this device and cannot be uploaded anymore."
@@ -5647,6 +5692,15 @@ msgstr "Mit einer bestätigten E-Mail-Adresse kannst du ein vergessenes Passwort
 msgid "With your email address, or the user name your club admin gave you."
 msgstr "Mit deiner E-Mail-Adresse oder dem Benutzernamen, den dir dein Vereinsadmin gegeben hat."
 
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "Withdraw"
+msgstr "Zurückziehen"
+
+#. placeholder {0}: i.email
+#: src/routes/t/[tenantId]/users/+page.svelte
+msgid "Withdraw the invitation to {0}?"
+msgstr "Einladung an {0} zurückziehen?"
+
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Without an online agent, documents open as PDF in the browser."
 msgstr "Ohne verbundenen Agent öffnen sich Dokumente als PDF im Browser."
@@ -5706,6 +5760,11 @@ msgstr "Du bist offline. Die Einheit wird automatisch hochgeladen, sobald du wie
 #: src/routes/b/manage/[token]/+page.svelte
 msgid "You can change or cancel the request until {0}."
 msgstr "Du kannst die Anfrage bis {0} ändern oder stornieren."
+
+#. placeholder {0}: me.data.user.name
+#: src/routes/invite/[token]/+page.svelte
+msgid "You join as {0}."
+msgstr "Du trittst als {0} bei."
 
 #: src/lib/AccountSettings.svelte
 msgid "Your club manages this account. Ask your club admin to remove it."

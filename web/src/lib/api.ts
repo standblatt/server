@@ -51,6 +51,7 @@ export type Printer = Schemas['Printer'];
 export type ReservationView = Schemas['ReservationView'];
 export type ReservationInput = Schemas['ReservationInput'];
 export type Role = Schemas['Role'];
+export type Invitation = Schemas['Invitation'];
 export type Permission = Role['permissions'][number];
 export type BookingConfig = Schemas['BookingConfig'];
 export type BookingSettings = Schemas['BookingSettings'];
@@ -95,7 +96,7 @@ export async function call<T>(p: Promise<Result<T>>): Promise<T> {
 		throw err instanceof TypeError ? new OfflineError(i18n._(noConnection)) : err;
 	});
 	if (response.ok) return data as T;
-	if (response.status === 401 && location.pathname !== '/login' && !location.pathname.startsWith('/kiosk/') && !location.pathname.startsWith('/b/')) {
+	if (response.status === 401 && location.pathname !== '/login' && !location.pathname.startsWith('/kiosk/') && !location.pathname.startsWith('/b/') && !location.pathname.startsWith('/invite/')) {
 		if (location.pathname.startsWith('/h/')) window.dispatchEvent(new Event('standblatt:unauthorized'));
 		else await goto('/login');
 	}

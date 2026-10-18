@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 16:39+0200\n"
+"POT-Creation-Date: 2026-10-18 16:53+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -904,31 +904,45 @@ msgstr "Il nome deve avere da 1 a 100 caratteri"
 
 #: internal/web/invites.go
 #, go-format
-msgid "%s added you on Standblatt"
-msgstr "%s ti ha aggiunto su Standblatt"
-
-#: internal/web/invites.go
-#, go-format
-msgid "%s gave your account access to its events on Standblatt. Log in as usual:"
-msgstr "%s ha dato al tuo account l’accesso alle sue manifestazioni su Standblatt. Accedi come al solito:"
-
-#: internal/web/invites.go
-#, go-format
 msgid "%s invites you to Standblatt"
 msgstr "%s ti invita su Standblatt"
 
 #: internal/web/invites.go
 #, go-format
-msgid "%s uses Standblatt for its shooting events and created an account for you. Set your password with this link:"
-msgstr "%s usa Standblatt per le sue manifestazioni di tiro e ha creato un account per te. Imposta la password con questo link:"
+msgid "%s uses Standblatt for its shooting events and invites you to join. Accept the invitation with this link:"
+msgstr "%s usa Standblatt per le sue manifestazioni di tiro e ti invita a unirti. Accetta l’invito con questo link:"
+
+#: internal/web/invites.go
+msgid "An account with this address exists: log in to accept"
+msgstr "Esiste un account con questo indirizzo: accedi per accettare"
+
+#: internal/web/invites.go
+msgid "Invitation not found"
+msgstr "Invito non trovato"
 
 #: internal/web/invites.go internal/web/tenants.go
 msgid "Role not found"
 msgstr "Ruolo non trovato"
 
 #: internal/web/invites.go
-msgid "The link is valid for seven days. Afterwards you log in with this email address and your password."
-msgstr "Il link è valido sette giorni. Poi accedi con questo indirizzo e-mail e la tua password."
+msgid "The address is already somebody's user name"
+msgstr "L’indirizzo è già il nome utente di qualcuno"
+
+#: internal/web/invites.go
+msgid "The link is valid for seven days."
+msgstr "Il link è valido sette giorni."
+
+#: internal/web/invites.go
+msgid "This invitation has expired; ask the club for a new one"
+msgstr "Questo invito è scaduto; chiedine uno nuovo alla società"
+
+#: internal/web/invites.go
+msgid "This invitation is no longer valid"
+msgstr "Questo invito non è più valido"
+
+#: internal/web/invites.go
+msgid "This invitation was accepted already"
+msgstr "Questo invito è già stato accettato"
 
 #: internal/web/masterdata.go
 msgid "A club with this name already exists"
@@ -1994,6 +2008,21 @@ msgstr "Questo codice è già stato usato; attendi il prossimo."
 #: internal/web/totp.go
 msgid "Wrong code."
 msgstr "Codice errato."
+
+#, go-format
+#~ msgid "%s added you on Standblatt"
+#~ msgstr "%s ti ha aggiunto su Standblatt"
+
+#, go-format
+#~ msgid "%s gave your account access to its events on Standblatt. Log in as usual:"
+#~ msgstr "%s ha dato al tuo account l’accesso alle sue manifestazioni su Standblatt. Accedi come al solito:"
+
+#, go-format
+#~ msgid "%s uses Standblatt for its shooting events and created an account for you. Set your password with this link:"
+#~ msgstr "%s usa Standblatt per le sue manifestazioni di tiro e ha creato un account per te. Imposta la password con questo link:"
+
+#~ msgid "The link is valid for seven days. Afterwards you log in with this email address and your password."
+#~ msgstr "Il link è valido sette giorni. Poi accedi con questo indirizzo e-mail e la tua password."
 
 #~ msgid "Club admins only"
 #~ msgstr "Solo per gli amministratori della società"

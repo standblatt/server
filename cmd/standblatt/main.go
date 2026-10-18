@@ -254,6 +254,9 @@ func janitor(ctx context.Context, st *store.Store, log *slog.Logger) {
 		if _, err := st.DeleteExpiredUserTokens(ctx); err != nil {
 			log.Warn("user token cleanup", "err", err)
 		}
+		if err := st.DeleteOldInvitations(ctx); err != nil {
+			log.Warn("invitation cleanup", "err", err)
+		}
 		select {
 		case <-ctx.Done():
 			return

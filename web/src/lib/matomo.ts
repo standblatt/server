@@ -10,9 +10,9 @@ declare global {
 let started = false;
 let last = '';
 
-/** Kiosk displays run for hours and would only inflate the numbers; helper and booking paths carry secrets. */
+/** Kiosk displays run for hours and would only inflate the numbers; helper, booking and invitation paths carry secrets. */
 function tracked(path: string) {
-	return !['/kiosk/', '/h/', '/b/'].some((p) => path.startsWith(p));
+	return !['/kiosk/', '/h/', '/b/', '/invite/'].some((p) => path.startsWith(p));
 }
 
 /**
