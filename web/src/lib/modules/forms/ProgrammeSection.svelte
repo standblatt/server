@@ -24,7 +24,6 @@
 		if (!programme) return;
 		await call(api.PUT('/api/tenants/{tenantId}/programmes/{programmeId}/form', { params: { path: { tenantId, programmeId: programme.id } }, body: value ? { layoutId: Number(value) } : {} }));
 		await queryClient.invalidateQueries({ queryKey: keys.programmes(tenantId, event.id) });
-		await queryClient.invalidateQueries({ queryKey: ['tenants', tenantId, 'programme', programme.id] });
 		toast.success($t`Programme "${programmeTitle(programme)}" saved`);
 	}
 </script>

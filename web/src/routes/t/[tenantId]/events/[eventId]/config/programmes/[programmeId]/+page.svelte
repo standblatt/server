@@ -25,7 +25,7 @@
 		() => eventId
 	);
 	const programme = createQuery(() => ({
-		queryKey: ['tenants', tenantId, 'programme', programmeId],
+		queryKey: keys.programme(tenantId, eventId, programmeId),
 		queryFn: () => call(api.GET('/api/tenants/{tenantId}/programmes/{programmeId}', { params: { path: { tenantId, programmeId } } }))
 	}));
 	const others = $derived((programmes.data ?? []).filter((p) => p.id !== programmeId));
@@ -42,7 +42,6 @@
 	async function save(d: ProgrammeDefinition) {
 		await call(api.PUT('/api/tenants/{tenantId}/programmes/{programmeId}', { params: { path: { tenantId, programmeId } }, body: d }));
 		await queryClient.invalidateQueries({ queryKey: keys.programmes(tenantId, eventId) });
-		await queryClient.invalidateQueries({ queryKey: ['tenants', tenantId, 'programme', programmeId] });
 		toast.success($t`Programme "${d.name}" saved`);
 	}
 </script>

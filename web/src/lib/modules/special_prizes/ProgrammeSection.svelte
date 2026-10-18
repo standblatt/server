@@ -34,7 +34,6 @@
 				})
 			);
 			await queryClient.invalidateQueries({ queryKey: keys.programmes(tenantId, event.id) });
-			await queryClient.invalidateQueries({ queryKey: ['tenants', tenantId, 'programme', programme.id] });
 			toast.success(Number(ranks) ? $t`Special prizes of ${programmeTitle(programme)} saved` : $t`Special prizes of ${programmeTitle(programme)} turned off`);
 		} catch (err) {
 			error = (err as Error).message;

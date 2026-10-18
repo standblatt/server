@@ -23,7 +23,6 @@
 	async function change(save: () => Promise<unknown>) {
 		await save();
 		await queryClient.invalidateQueries({ queryKey: keys.programmes(tenantId, event.id) });
-		await queryClient.invalidateQueries({ queryKey: ['tenants', tenantId, 'programme', programme.id] });
 		toast.success($t`Programme "${programmeTitle(programme)}" saved`);
 	}
 </script>

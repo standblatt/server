@@ -74,7 +74,7 @@
 	let searchInput = $state<HTMLElement | null>(null);
 	/** The search query of the shooters matching text. */
 	const shooterSearch = (text: string) => ({
-		queryKey: [...keys.shooters(tenantId), text, 0],
+		queryKey: [...keys.shooters(tenantId), 'search', text, 10],
 		queryFn: () => call(api.GET('/api/tenants/{tenantId}/shooters', { params: { path: { tenantId }, query: { q: text, limit: 10 } } }))
 	});
 	const results = createQuery(() => ({ ...shooterSearch(q), enabled: q !== '' }));

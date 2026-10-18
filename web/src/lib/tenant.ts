@@ -10,6 +10,7 @@ export const keys = {
 	shooters: (t: number) => ['tenants', t, 'shooters'],
 	shooter: (t: number, s: number) => ['tenants', t, 'shooters', s],
 	programmes: (t: number, e: number) => ['tenants', t, 'events', e, 'programmes'],
+	programme: (t: number, e: number, p: number) => ['tenants', t, 'events', e, 'programmes', p],
 	registrations: (t: number, e: number) => ['tenants', t, 'events', e, 'registrations'],
 	lanes: (t: number, e: number) => ['tenants', t, 'events', e, 'lanes'],
 	stats: (t: number, e: number) => ['tenants', t, 'events', e, 'stats'],

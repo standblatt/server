@@ -17,7 +17,7 @@
 		enabled: !!eventId
 	}));
 	const shooters = createQuery(() => ({
-		queryKey: [...keys.shooters(tenantId), '', 0, 1],
+		queryKey: [...keys.shooters(tenantId), 'any'],
 		queryFn: () => call(api.GET('/api/tenants/{tenantId}/shooters', { params: { path: { tenantId }, query: { q: '', limit: 1 } } }))
 	}));
 

@@ -135,7 +135,7 @@
 	let scanError = $state('');
 	let timer: ReturnType<typeof setTimeout>;
 	const results = createQuery(() => ({
-		queryKey: [...keys.shooters(tenantId), q, 0],
+		queryKey: [...keys.shooters(tenantId), 'search', q, 20],
 		queryFn: () => call(api.GET('/api/tenants/{tenantId}/shooters', { params: { path: { tenantId }, query: { q, limit: 20 } } })),
 		enabled: can.search && q !== '' && !q.startsWith('REGCODE')
 	}));
