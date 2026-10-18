@@ -60,6 +60,17 @@ rapports.
 | Affichages kiosque | classements sur des écrans dans la halle (voir [Classements et kiosque](rankings-kiosk.md)) |
 | Liens d'aide | cibarres, distribution de munition et saisie des résultats sans compte (voir [Aides](helpers.md)) |
 
+En créant une manifestation, choisissez son genre ; cela n'active que des
+modules :
+
+| Genre | Modules |
+|---|---|
+| Tir de fête | Réservations, Réservation en ligne, Feuille de stand, Bande de contrôle, Distinctions, Prix spéciaux, Concours de sections, Affichages kiosque, Liens d'aide |
+| Programme annuel ou entraînement | Tentatives, Classements généraux |
+| Tir en campagne | Distinctions, Concours de sections, Affichages kiosque, Liens d'aide |
+| Championnat de société | Tentatives, Classements généraux, Affichages kiosque |
+| Sélection personnalisée | aucun |
+
 Un module qui contient des données reste activé : désactivez le kiosque
 seulement après avoir supprimé ses liens kiosque, les distinctions seulement
 quand aucun programme n’a de niveaux de distinction, et ainsi de suite ; la

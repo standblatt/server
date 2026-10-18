@@ -32,11 +32,12 @@ manifestazione.
 
 ## 4. Creare la manifestazione
 
-In **Manifestazioni** crea la manifestazione: nome, data, stand,
-organizzatore e lingua dei documenti e degli schermi chiosco. Se hai già
-organizzato la manifestazione l’anno scorso, apri quella dell’anno scorso e
-usa invece **Copia per l’anno prossimo**: riprende le impostazioni e tutti i
-programmi.
+In **Manifestazioni** crea la manifestazione: scegli di che tipo è (attiva i
+[moduli](../user-guide/events.md#modules) corrispondenti), poi nome, data,
+stand, organizzatore e lingua dei documenti e degli schermi chiosco. Se hai
+già organizzato la manifestazione l’anno scorso, apri quella dell’anno
+scorso e usa invece **Copia per l’anno prossimo**: riprende le impostazioni
+e tutti i programmi.
 
 ![Le manifestazioni di una società](../images/screenshots/events.png){
 .screenshot }

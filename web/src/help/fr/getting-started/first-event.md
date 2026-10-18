@@ -31,11 +31,12 @@ peuvent aussi être saisis à l’accueil pendant la manifestation.
 
 ## 4. Créer la manifestation
 
-Sous **Manifestations**, crée la manifestation : nom, date, stand,
-organisateur et langue des documents et des écrans kiosque. Si tu as déjà
-organisé la manifestation l’an dernier, ouvre celle de l’an dernier et
-utilise plutôt **Copier pour l’année prochaine** : les réglages et tous les
-programmes sont repris.
+Sous **Manifestations**, crée la manifestation : choisis son genre (il
+active les [modules](../user-guide/events.md#modules) correspondants), puis
+nom, date, stand, organisateur et langue des documents et des écrans
+kiosque. Si tu as déjà organisé la manifestation l’an dernier, ouvre celle
+de l’an dernier et utilise plutôt **Copier pour l’année prochaine** : les
+réglages et tous les programmes sont repris.
 
 ![Les manifestations d’une société](../images/screenshots/events.png){
 .screenshot }

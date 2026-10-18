@@ -58,6 +58,17 @@ dall’editor dei programmi, dalle classifiche e dai rapporti.
 | Display chiosco | classifiche su schermi nella sala (vedi [Classifiche e chiosco](rankings-kiosk.md)) |
 | Link aiutante | marcatori, distribuzione munizioni e registrazione risultati senza account (vedi [Aiutanti](helpers.md)) |
 
+Quando crei una manifestazione, scegli di che tipo è; questo attiva solo dei
+moduli:
+
+| Tipo | Moduli |
+|---|---|
+| Tiro di festa | Prenotazioni, Prenotazione online, Foglio di stand, Striscia di controllo, Distinzioni, Premi speciali, Concorso di sezione, Display chiosco, Link aiutante |
+| Programma annuale o allenamento | Tentativi, Classifiche generali |
+| Tiro in campagna | Distinzioni, Concorso di sezione, Display chiosco, Link aiutante |
+| Campionato sociale | Tentativi, Classifiche generali, Display chiosco |
+| Selezione personalizzata | nessuno |
+
 Un modulo che contiene dati resta attivo: disattiva il chiosco solo dopo
 averne eliminato i link chiosco, le distinzioni solo quando nessun programma
 ha livelli di distinzione, e così via; la scheda indica perché il suo

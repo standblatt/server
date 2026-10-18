@@ -44,6 +44,19 @@ test.describe("modules", () => {
     await expect(page.locator("[data-testid=module-kiosk]")).toContainText("In use: remove its data first.");
   });
 
+  test("creates an event from a preset", async ({ page }) => {
+    await login(page, admin);
+    await page.goto(`/t/${ids.tenant}`);
+    await c(page, "button", "New event").click();
+    const dialog = page.getByRole("dialog");
+    await dialog.getByLabel("Annual programme or training").check();
+    await dialog.getByLabel("Name", { exact: true }).fill("Season 2027");
+    await c(dialog, "button", "Create").click();
+    await page.waitForURL(/\/events\/\d+$/);
+    const ev = await api(page, "GET", `/api/tenants/${ids.tenant}/events/${page.url().split("/").pop()}`);
+    expect(ev.modules).toEqual(["attempts", "classifications"]);
+  });
+
   test("lists only the reports of the modules that are on", async ({ page }) => {
     await login(page, admin);
     await page.goto(`${event()}/statistics`);

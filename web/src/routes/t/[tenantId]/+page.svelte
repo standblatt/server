@@ -14,6 +14,7 @@
 	import { meQuery } from '$lib/me';
 	import PageHeader from '$lib/PageHeader.svelte';
 	import SetupChecklist from '$lib/SetupChecklist.svelte';
+	import { presets } from '$lib/modules/presets';
 	import { eventsQuery, keys, rangesQuery } from '$lib/tenant';
 
 	const tenantId = $derived(Number(page.params.tenantId));
@@ -48,10 +49,12 @@
 		{ label: $t`Past`, list: groups.past, running: false, muted: true }
 	]);
 	let creating = $state(false);
+	let preset = $state(presets[0].id);
 
 	/** Creates the event and opens its dashboard. */
 	async function create(input: EventInput) {
-		const ev = await call(api.POST('/api/tenants/{tenantId}/events', { params: { path: { tenantId } }, body: input }));
+		const modules = presets.find((p) => p.id === preset)?.modules;
+		const ev = await call(api.POST('/api/tenants/{tenantId}/events', { params: { path: { tenantId } }, body: { ...input, modules } }));
 		await queryClient.invalidateQueries({ queryKey: keys.events(tenantId) });
 		creating = false;
 		toast.success($t`Event "${ev.name}" created`);
@@ -113,8 +116,18 @@
 {/snippet}
 
 <Dialog.Root bind:open={creating}>
-	<Dialog.Content class="max-h-[92svh] overflow-y-auto sm:max-w-xl">
+	<Dialog.Content class="max-h-[92svh] overflow-y-auto sm:max-w-2xl">
 		<Dialog.Header><Dialog.Title>{$t`New event`}</Dialog.Title></Dialog.Header>
+		<fieldset class="grid gap-2">
+			<legend class="mb-2 text-sm font-medium">{$t`What kind of event?`}</legend>
+			{#each presets as p (p.id)}
+				<label class="flex cursor-pointer items-start gap-3 rounded-md border p-3 text-sm has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+					<input type="radio" name="preset" class="mt-1 accent-primary" value={p.id} bind:group={preset} />
+					<span><span class="font-medium">{$t(p.label)}</span><span class="block text-muted-foreground">{$t(p.description)}</span></span>
+				</label>
+			{/each}
+			<p class="text-xs text-muted-foreground">{$t`Only sets the modules; they can be changed any time under Configuration → Modules.`}</p>
+		</fieldset>
 		{#if creating && ranges.data}<EventForm ranges={ranges.data} submitLabel={$t`Create`} onsubmit={create} />{/if}
 	</Dialog.Content>
 </Dialog.Root>

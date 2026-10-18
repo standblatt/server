@@ -56,6 +56,17 @@ aus Seitenleiste, Dashboard, Programm-Editor, Ranglisten und Berichten.
 | Kiosk-Anzeigen | Ranglisten auf Bildschirmen in der Halle (siehe [Ranglisten und Kiosk](rankings-kiosk.md)) |
 | Helferlinks | Warner, Munitionsausgabe und Resultaterfassung ohne Konto (siehe [Helfer](helpers.md)) |
 
+Beim Erstellen eines Anlasses wählst du, was für ein Anlass es ist; das
+schaltet nur Bausteine ein:
+
+| Art | Bausteine |
+|---|---|
+| Schützenfest | Reservationen, Online-Reservation, Standblatt, Kontrollstreifen, Auszeichnungen, Sonderpreise, Vereinskonkurrenz, Kiosk-Anzeigen, Helferlinks |
+| Jahresprogramm oder Training | Durchgänge, Wertungen |
+| Feldschiessen | Auszeichnungen, Vereinskonkurrenz, Kiosk-Anzeigen, Helferlinks |
+| Vereinsmeisterschaft | Durchgänge, Wertungen, Kiosk-Anzeigen |
+| Eigene Auswahl | keine |
+
 Ein Baustein mit Daten bleibt an: Den Kiosk schaltest du erst aus, wenn
 seine Kiosk-Links gelöscht sind, die Auszeichnungen erst, wenn kein Programm
 mehr Auszeichnungsstufen hat, und so weiter; die Karte sagt, warum ihr

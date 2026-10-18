@@ -776,6 +776,10 @@ msgstr "Un administrateur de ta société doit encore terminer ces étapes."
 msgid "Announce your shooters so they are found quickly at the registration desk. Programmes are chosen at the range."
 msgstr "Annonce tes tireurs pour qu’ils soient vite trouvés à l’inscription. Les programmes se choisissent au stand."
 
+#: src/lib/modules/presets.ts
+msgid "Annual programme or training"
+msgstr "Programme annuel ou entraînement"
+
 #: src/lib/my/Result.svelte
 msgid "Another session"
 msgstr "Une autre séance"
@@ -877,6 +881,10 @@ msgstr "distinctions"
 #: src/lib/ProgrammeList.svelte
 msgid "Awards"
 msgstr "Distinctions"
+
+#: src/lib/modules/presets.ts
+msgid "Awards and club competition, kiosk displays and helper links."
+msgstr "Distinctions et concours de sections, affichages kiosque et liens d'aide."
 
 #: src/lib/EventDesk.svelte
 #: src/lib/ResultsDialog.svelte
@@ -1181,6 +1189,10 @@ msgstr "Société et contact"
 #: src/lib/forms/Palette.svelte
 msgid "Club and event"
 msgstr "Société et manifestation"
+
+#: src/lib/modules/presets.ts
+msgid "Club championship"
+msgstr "Championnat de société"
 
 #: src/lib/modules/club_competition/index.ts
 #: src/lib/modules/club_competition/StatisticsSection.svelte
@@ -1489,6 +1501,10 @@ msgstr "CSV"
 msgid "Current password"
 msgstr "Mot de passe actuel"
 
+#: src/lib/modules/presets.ts
+msgid "Custom selection"
+msgstr "Sélection personnalisée"
+
 #: src/lib/modules/kiosk/KioskTokens.svelte
 msgid "Dark"
 msgstr "Sombre"
@@ -1645,6 +1661,10 @@ msgstr "{0} supprimé."
 #: src/lib/ProgrammeEditor.svelte
 msgid "Description"
 msgstr "Description"
+
+#: src/lib/modules/presets.ts
+msgid "Desk with lanes, online booking, awards, special prizes, club competition, kiosk and helpers."
+msgstr "Desk avec cibles, réservation en ligne, distinctions, prix spéciaux, concours de sections, kiosque et aides."
 
 #: src/lib/my/Result.svelte
 msgid "Details"
@@ -1993,6 +2013,10 @@ msgstr "Les sociétés externes demandent des cibles via un lien dans ton invita
 #: src/lib/labels.ts
 msgid "failed"
 msgstr "échoué"
+
+#: src/lib/modules/presets.ts
+msgid "Feldschiessen"
+msgstr "Tir en campagne"
 
 #. placeholder {0}: programmeTitle(p)
 #: src/lib/RegistrationForm.svelte
@@ -3240,6 +3264,10 @@ msgstr "Réservation en ligne activée"
 msgid "Only possible as long as nobody is registered."
 msgstr "Possible seulement tant que personne n’est inscrit."
 
+#: src/routes/t/[tenantId]/+page.svelte
+msgid "Only sets the modules; they can be changed any time under Configuration → Modules."
+msgstr "Ne fixe que les modules ; ils peuvent être modifiés à tout moment sous Configuration → Modules."
+
 #: src/lib/ProgrammeEditor.svelte
 msgid "Only the checked age categories may shoot this programme."
 msgstr "Seules les catégories d’âge cochées peuvent tirer ce programme."
@@ -4040,6 +4068,10 @@ msgstr "Saisie des résultats"
 msgid "Results from paper or the scoring system, shooter by shooter, without the desk."
 msgstr "Résultats sur papier ou de l’installation de marquage, tireur par tireur, sans le desk."
 
+#: src/lib/modules/presets.ts
+msgid "Results over the season with several attempts and classifications, no desk."
+msgstr "Résultats sur la saison avec plusieurs tentatives et classements généraux, sans desk."
+
 #. placeholder {0}: r.shooter.lastname
 #. placeholder {1}: r.shooter.firstname
 #: src/lib/ResultsDialog.svelte
@@ -4349,6 +4381,10 @@ msgstr "Configuration"
 msgid "Several addresses separated by commas or one per line."
 msgstr "Plusieurs adresses séparées par des virgules ou une par ligne."
 
+#: src/lib/modules/presets.ts
+msgid "Several attempts ranked in classifications, shown on kiosk displays."
+msgstr "Plusieurs tentatives classées dans des classements généraux, affichées sur les écrans kiosque."
+
 #. Column header: single shots
 #: src/lib/ProgrammeEditor.svelte
 msgid "SH"
@@ -4423,6 +4459,10 @@ msgstr "Jour de tir"
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Shooting days"
 msgstr "Jours de tir"
+
+#: src/lib/modules/presets.ts
+msgid "Shooting festival"
+msgstr "Tir de fête"
 
 #: src/lib/modules/booking/parts/BookingHoursForm.svelte
 msgid "Shooting from"
@@ -4574,6 +4614,10 @@ msgstr "Démarrez l’agent avec ces paramètres. Le jeton n’est affiché que 
 #: src/routes/my/progress/+page.svelte
 msgid "Start training"
 msgstr "Démarrer l’entraînement"
+
+#: src/lib/modules/presets.ts
+msgid "Start with nothing and switch on modules as needed."
+msgstr "Commencer sans modules et les activer selon les besoins."
 
 #: src/lib/AppSidebar.svelte
 #: src/lib/EventDesk.svelte
@@ -5126,6 +5170,10 @@ msgstr "Semaines d’affilée avec entraînement"
 #: src/routes/t/[tenantId]/events/[eventId]/config/programmes/+page.svelte
 msgid "What can be shot: series, prices per age category and awards."
 msgstr "Ce qui peut être tiré : passes, prix par catégorie d'âge et distinctions."
+
+#: src/routes/t/[tenantId]/+page.svelte
+msgid "What kind of event?"
+msgstr "Quel genre de manifestation ?"
 
 #: src/lib/ProgrammeList.svelte
 msgid "What shooters can register for, with prices and awards."

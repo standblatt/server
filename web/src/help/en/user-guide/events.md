@@ -48,6 +48,16 @@ Not every event needs everything: a shooting festival books lanes and hands out 
 | Kiosk displays | rankings on screens in the hall (see [Rankings and kiosk](rankings-kiosk.md)) |
 | Helper links | scorers, ammunition desk and results clerk without an account (see [Helpers](helpers.md)) |
 
+When you create an event, choose what kind it is; this only switches modules on:
+
+| Kind | Modules |
+|---|---|
+| Shooting festival | Reservations, Online booking, Lane sheet, Control strip, Awards, Special prizes, Club competition, Kiosk displays, Helper links |
+| Annual programme or training | Attempts, Classifications |
+| Feldschiessen | Awards, Club competition, Kiosk displays, Helper links |
+| Club championship | Attempts, Classifications, Kiosk displays |
+| Custom selection | none |
+
 A module that holds data stays on: switch off the kiosk only after deleting its kiosk links, the awards only when no programme has award tiers, and so on; the card says why its switch is locked. A module another one needs (Reservations for Online booking) stays on as long as that one is.
 
 Shooting times also give the online booking its slots, unless the booking sets other hours for a day (see [Online booking](online-booking.md)).

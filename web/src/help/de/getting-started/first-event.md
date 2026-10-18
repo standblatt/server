@@ -32,11 +32,12 @@ an. Schützen lassen sich auch während des Anlasses am Empfang erfassen.
 
 ## 4. Anlass erstellen
 
-Erstelle unter **Anlässe** den Anlass: Name, Datum, Schiessstand,
-Veranstalter und die Sprache von Dokumenten und Kiosk-Bildschirmen. Hast du
-den Anlass letztes Jahr schon durchgeführt, öffne den Anlass vom letzten
-Jahr und nutze stattdessen **Für nächstes Jahr kopieren**: Das übernimmt die
-Einstellungen und alle Programme.
+Erstelle unter **Anlässe** den Anlass: Wähle, was für ein Anlass es ist (das
+schaltet die passenden [Bausteine](../user-guide/events.md#modules) ein),
+dann Name, Datum, Schiessstand, Veranstalter und die Sprache von Dokumenten
+und Kiosk-Bildschirmen. Hast du den Anlass letztes Jahr schon durchgeführt,
+öffne den Anlass vom letzten Jahr und nutze stattdessen **Für nächstes Jahr
+kopieren**: Das übernimmt die Einstellungen und alle Programme.
 
 ![Die Anlässe eines Vereins](../images/screenshots/events.png){ .screenshot
 }

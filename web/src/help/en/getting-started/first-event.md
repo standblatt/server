@@ -20,7 +20,7 @@ Under **Shooters**, import your shooter list as a CSV file (see [CSV import](../
 
 ## 4. Create the event
 
-Under **Events**, create the event: name, date, range, organizer and the language of documents and kiosk screens. If you held the event last year, open last year's event and use **Copy for next year** instead: it takes over the settings and all programmes.
+Under **Events**, create the event: choose what kind of event it is (it switches on the matching [modules](../user-guide/events.md#modules)), then name, date, range, organizer and the language of documents and kiosk screens. If you held the event last year, open last year's event and use **Copy for next year** instead: it takes over the settings and all programmes.
 
 ![The events of a club](../images/screenshots/events.png){ .screenshot }
 
