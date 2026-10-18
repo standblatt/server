@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
-	import { createQuery } from '@tanstack/svelte-query';
 	import Award from '@lucide/svelte/icons/award';
-	import { api, call, type Event } from '../api';
+	import type { Event } from '../api';
+	import { layoutsQuery } from '../tenant';
 	import { Button } from '../components/ui/button';
 	import * as Dialog from '../components/ui/dialog';
 	import { Input } from '../components/ui/input';
@@ -23,11 +23,10 @@
 	}: { tenantId: number; event: Event; title: string; programmeId?: number; classificationId?: number; classes?: string[] } = $props();
 	const me = meQuery();
 	const forms = $derived(hasClub(me.data?.tenants.find((m) => m.tenantId === tenantId), 'forms'));
-	const layouts = createQuery(() => ({
-		queryKey: ['tenants', tenantId, 'layouts'],
-		queryFn: () => call(api.GET('/api/tenants/{tenantId}/layouts', { params: { path: { tenantId } } })),
-		enabled: forms
-	}));
+	const layouts = layoutsQuery(
+		() => tenantId,
+		() => forms
+	);
 	const rankForms = $derived((layouts.data ?? []).filter((l) => l.source === 'rank'));
 	let open = $state(false);
 	let layoutId = $state(0);

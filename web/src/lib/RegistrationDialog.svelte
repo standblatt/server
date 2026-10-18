@@ -18,7 +18,7 @@
 	import PrintButton from './PrintButton.svelte';
 	import { printDocument } from './print';
 	import RegistrationForm from './RegistrationForm.svelte';
-	import { eventQuery, keys, lanesQuery, programmesQuery, registrationsQuery } from './tenant';
+	import { eventQuery, keys, lanesQuery, layoutsQuery, programmesQuery, registrationsQuery } from './tenant';
 
 	let {
 		tenantId,
@@ -85,11 +85,10 @@
 	let printControlStrip = $state(true);
 	const me = meQuery(() => !helperCode());
 	const forms = $derived(!helperCode() && hasClub(me.data?.tenants.find((m) => m.tenantId === tenantId), 'forms'));
-	const layouts = createQuery(() => ({
-		queryKey: ['tenants', tenantId, 'layouts'],
-		queryFn: () => call(api.GET('/api/tenants/{tenantId}/layouts', { params: { path: { tenantId } } })),
-		enabled: forms
-	}));
+	const layouts = layoutsQuery(
+		() => tenantId,
+		() => forms
+	);
 	/** Print forms with the registration as data source, besides the event's control strip. */
 	const registrationForms = $derived(
 		forms ? (layouts.data ?? []).filter((l) => l.source === 'registration' && l.id !== event.data?.settings.controlStripFormId) : []

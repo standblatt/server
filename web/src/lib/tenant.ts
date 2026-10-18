@@ -7,6 +7,7 @@ export const keys = {
 	event: (t: number, e: number) => ['tenants', t, 'events', e],
 	users: (t: number) => ['tenants', t, 'users'],
 	clubs: (t: number) => ['tenants', t, 'clubs'],
+	layouts: (t: number) => ['tenants', t, 'layouts'],
 	shooters: (t: number) => ['tenants', t, 'shooters'],
 	shooter: (t: number, s: number) => ['tenants', t, 'shooters', s],
 	programmes: (t: number, e: number) => ['tenants', t, 'events', e, 'programmes'],
@@ -32,6 +33,15 @@ export function rangesQuery(tenantId: () => number) {
 	return createQuery(() => ({
 		queryKey: keys.ranges(tenantId()),
 		queryFn: () => call(api.GET('/api/tenants/{tenantId}/ranges', path(tenantId())))
+	}));
+}
+
+/** Query of the club's print forms; enabled is false while the forms module is off. */
+export function layoutsQuery(tenantId: () => number, enabled: () => boolean = () => true) {
+	return createQuery(() => ({
+		queryKey: keys.layouts(tenantId()),
+		queryFn: () => call(api.GET('/api/tenants/{tenantId}/layouts', path(tenantId()))),
+		enabled: enabled()
 	}));
 }
 

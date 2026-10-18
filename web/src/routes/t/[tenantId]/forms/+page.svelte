@@ -9,6 +9,7 @@
 	import Trash from '@lucide/svelte/icons/trash-2';
 	import { toast } from 'svelte-sonner';
 	import { api, call, type Layout, type LayoutInput } from '$lib/api';
+	import { keys, layoutsQuery } from '$lib/tenant';
 	import { Button } from '$lib/components/ui/button';
 	import * as Dialog from '$lib/components/ui/dialog';
 	import { Input } from '$lib/components/ui/input';
@@ -26,11 +27,9 @@
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const queryClient = useQueryClient();
-	const key = $derived(['tenants', tenantId, 'layouts']);
-	const layouts = createQuery(() => ({
-		queryKey: key,
-		queryFn: () => call(api.GET('/api/tenants/{tenantId}/layouts', { params: { path: { tenantId } } }))
-	}));
+	const layouts = layoutsQuery(
+		() => tenantId
+	);
 
 	const images = imagesQuery(() => tenantId);
 	const sizes: Record<string, [number, number]> = { a5: [148, 210], a4: [210, 297], a6: [105, 148], a5l: [210, 148] };
@@ -56,7 +55,7 @@
 	/** Creates a form and opens it in the editor. */
 	async function create(body: LayoutInput) {
 		const l = await call(api.POST('/api/tenants/{tenantId}/layouts', { params: { path: { tenantId } }, body }));
-		await queryClient.invalidateQueries({ queryKey: key });
+		await queryClient.invalidateQueries({ queryKey: keys.layouts(tenantId) });
 		await goto(`/t/${tenantId}/forms/${l.id}`);
 	}
 
@@ -106,7 +105,7 @@
 	async function remove(l: Layout) {
 		if (!(await ask({ title: $t`Delete print form "${l.name}"?`, description: $t`Programmes that use it no longer print a form.`, action: $t`Delete`, destructive: true }))) return;
 		await call(api.DELETE('/api/tenants/{tenantId}/layouts/{layoutId}', { params: { path: { tenantId, layoutId: l.id } } }));
-		await queryClient.invalidateQueries({ queryKey: key });
+		await queryClient.invalidateQueries({ queryKey: keys.layouts(tenantId) });
 		toast.success($t`Print form deleted`);
 	}
 </script>

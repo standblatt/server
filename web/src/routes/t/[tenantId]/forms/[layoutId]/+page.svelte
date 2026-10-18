@@ -13,6 +13,7 @@
 	import Undo from '@lucide/svelte/icons/undo-2';
 	import { toast } from 'svelte-sonner';
 	import { api, call, type LayoutElement } from '$lib/api';
+	import { keys } from '$lib/tenant';
 	import { Button } from '$lib/components/ui/button';
 	import { Checkbox } from '$lib/components/ui/checkbox';
 	import { Input } from '$lib/components/ui/input';
@@ -113,7 +114,7 @@
 			await call(api.PUT('/api/tenants/{tenantId}/layouts/{layoutId}', { ...path, body: editor.input() }));
 			editor.markClean(state);
 			version++;
-			await queryClient.invalidateQueries({ queryKey: ['tenants', tenantId, 'layouts'] });
+			await queryClient.invalidateQueries({ queryKey: keys.layouts(tenantId) });
 			if (!quiet) toast.success($t`Print form saved`);
 		} catch (err) {
 			error = (err as Error).message;

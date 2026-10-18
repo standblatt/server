@@ -1,21 +1,20 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
-	import { createQuery, useQueryClient } from '@tanstack/svelte-query';
+	import { useQueryClient } from '@tanstack/svelte-query';
 	import { toast } from 'svelte-sonner';
 	import { api, call } from '$lib/api';
 	import * as NativeSelect from '$lib/components/ui/native-select';
 	import FormField from '$lib/FormField.svelte';
 	import { programmeTitle } from '$lib/format';
 	import Section from '$lib/programme/Section.svelte';
-	import { keys } from '$lib/tenant';
+	import { keys, layoutsQuery } from '$lib/tenant';
 	import type { ProgrammeProps } from '..';
 
 	let { tenantId, event, programme }: ProgrammeProps = $props();
 	const queryClient = useQueryClient();
-	const layouts = createQuery(() => ({
-		queryKey: ['tenants', tenantId, 'layouts'],
-		queryFn: () => call(api.GET('/api/tenants/{tenantId}/layouts', { params: { path: { tenantId } } }))
-	}));
+	const layouts = layoutsQuery(
+		() => tenantId
+	);
 
 	const results = $derived((layouts.data ?? []).filter((l) => (l.source || 'results') === 'results'));
 
