@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 10:31+0000\n"
+"POT-Creation-Date: 2026-10-18 10:47+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -2679,7 +2679,7 @@ msgid ""
 "| **General** | name, days, ranges, organizer and language (see below) |\n"
 "| **Modules** | the building blocks the event uses (see below) |\n"
 "| **Programmes** | what can be shot (see [Programmes](programmes.md)) |\n"
-"| Pages of modules | e.g. **Classifications**, **Kiosk displays**, **Helper links**, **Online booking**, only while the module is on |\n"
+"| Pages of modules | e.g. **Reservations** (with the online booking), **Classifications**, **Kiosk displays**, **Helper links**, only while the module is on |\n"
 "| **Copy & close** | copy for next year, close, reopen and delete |\n"
 msgstr ""
 "| Page | Contenu |\n"
@@ -2687,7 +2687,7 @@ msgstr ""
 "| **Général** | nom, jours, stands, organisateur et langue (voir plus bas) |\n"
 "| **Modules** | les éléments dont la manifestation se sert (voir plus bas) |\n"
 "| **Programmes** | ce qui peut être tiré (voir [Programmes](programmes.md)) |\n"
-"| Pages des modules | p. ex. **Classements généraux**, **Affichages kiosque**, **Liens d'aide**, **Réservation en ligne**, seulement tant que le module est activé |\n"
+"| Pages des modules | p. ex. **Réservations** (avec la réservation en ligne), **Classements généraux**, **Affichages kiosque**, **Liens d'aide**, seulement tant que le module est activé |\n"
 "| **Copier & clôturer** | copier pour l’année prochaine, clôturer, rouvrir et supprimer |\n"
 
 #. type: Plain text
@@ -2751,13 +2751,12 @@ msgstr ""
 "tableau de bord, de l’éditeur de programmes, des classements et des rapports."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:50
+#: ../src/help/en/user-guide/events.md:49
 #, no-wrap
 msgid ""
 "| Module | What it adds |\n"
 "|---|---|\n"
-"| Reservations | lanes reserved for groups and clubs (needs a range) |\n"
-"| Online booking | clubs ask for lanes through a public link (needs a range and switches on Reservations, see [Online booking](online-booking.md)) |\n"
+"| Reservations | lanes reserved for groups and clubs; its page in the configuration switches on the [online booking](online-booking.md), through which clubs ask for lanes with a public link (needs a range) |\n"
 "| Lane sheet, Control strip | the documents printed at registration; the control strip can print with a [print form](print-forms.md#builtin) of the club |\n"
 "| Ammunition desk | the **Ammo** button on the dashboard and for the ammunition desk (see [Helpers](helpers.md#ammunition)); leave it off where shooters bring their own, e.g. air pistol and air rifle |\n"
 "| Attempts | programmes that can be shot several times (see [Programmes](programmes.md#attempts)) |\n"
@@ -2770,8 +2769,7 @@ msgid ""
 msgstr ""
 "| Module | Ce qu’il ajoute |\n"
 "|---|---|\n"
-"| Réservations | cibles réservées pour des groupes et des sociétés (nécessite un stand) |\n"
-"| Réservation en ligne | les sociétés demandent des cibles par un lien public (nécessite un stand et active Réservations, voir [Réservation en ligne](online-booking.md)) |\n"
+"| Réservations | cibles réservées pour des groupes et des sociétés ; sa page dans la configuration active la [réservation en ligne](online-booking.md), par laquelle les sociétés demandent des cibles avec un lien public (nécessite un stand) |\n"
 "| Feuille de stand, Bande de contrôle | les documents imprimés à l’inscription ; la bande de contrôle peut s’imprimer avec un [modèle d’impression](print-forms.md#builtin) de la société |\n"
 "| Distribution de munition | le bouton **Munition** sur le tableau de bord et pour la distribution de munition (voir [Aides](helpers.md#ammunition)) ; laissez-le désactivé là où les tireurs apportent la leur, p. ex. pistolet et carabine à air |\n"
 "| Tentatives | des programmes qui peuvent être tirés plusieurs fois (voir [Programmes](programmes.md#attempts)) |\n"
@@ -2783,7 +2781,7 @@ msgstr ""
 "| Liens d'aide | cibarres, distribution de munition et saisie des résultats sans compte (voir [Aides](helpers.md)) |\n"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:52
+#: ../src/help/en/user-guide/events.md:51
 msgid ""
 "When you create an event, choose what kind it is; this only switches modules "
 "on:"
@@ -2792,12 +2790,12 @@ msgstr ""
 "modules :"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:60
+#: ../src/help/en/user-guide/events.md:59
 #, no-wrap
 msgid ""
 "| Kind | Modules |\n"
 "|---|---|\n"
-"| Shooting festival | Reservations, Online booking, Lane sheet, Control strip, Awards, Special prizes, Club competition, Kiosk displays, Helper links |\n"
+"| Shooting festival | Reservations, Lane sheet, Control strip, Awards, Special prizes, Club competition, Kiosk displays, Helper links |\n"
 "| Annual programme or training | Attempts, Classifications |\n"
 "| Feldschiessen | Awards, Club competition, Kiosk displays, Helper links |\n"
 "| Club championship | Attempts, Classifications, Kiosk displays |\n"
@@ -2805,29 +2803,24 @@ msgid ""
 msgstr ""
 "| Genre | Modules |\n"
 "|---|---|\n"
-"| Tir de fête | Réservations, Réservation en ligne, Feuille de stand, Bande de contrôle, Distinctions, Prix spéciaux, Concours de sections, Affichages kiosque, Liens d'aide |\n"
+"| Tir de fête | Réservations, Feuille de stand, Bande de contrôle, Distinctions, Prix spéciaux, Concours de sections, Affichages kiosque, Liens d'aide |\n"
 "| Programme annuel ou entraînement | Tentatives, Classements généraux |\n"
 "| Tir en campagne | Distinctions, Concours de sections, Affichages kiosque, Liens d'aide |\n"
 "| Championnat de société | Tentatives, Classements généraux, Affichages kiosque |\n"
 "| Sélection personnalisée | aucun |\n"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:62
+#: ../src/help/en/user-guide/events.md:61
 msgid ""
 "A module that holds data stays on: switch off the kiosk only after deleting "
 "its kiosk links, the awards only when no programme has award tiers, and so "
-"on; the card says why its switch is locked. A module another one needs "
-"(Reservations for Online booking) stays on as long as that one is."
-msgstr ""
-"Un module qui contient des données reste activé : désactivez le kiosque "
-"seulement après avoir supprimé ses liens kiosque, les distinctions seulement "
-"quand aucun programme n’a de niveaux de distinction, et ainsi de suite ; la "
-"carte indique pourquoi son interrupteur est bloqué. Un module dont un autre "
-"a besoin (Réservations pour Réservation en ligne) reste activé tant que "
-"celui-ci l’est."
+"on; the card says why its switch is locked; Reservations stay on while the "
+"online booking link is active. A module another one needs (Awards for "
+"Special prizes) stays on as long as that one is."
+msgstr "Un module qui contient des données reste activé : désactivez le kiosque seulement après avoir supprimé ses liens kiosque, les distinctions seulement quand aucun programme n’a de niveaux de distinction, et ainsi de suite ; la carte indique pourquoi son interrupteur est bloqué ; Réservations reste activé tant que le lien de réservation en ligne est actif. Un module dont un autre a besoin (Distinctions pour Prix spéciaux) reste activé tant que celui-ci l’est."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:64
+#: ../src/help/en/user-guide/events.md:63
 msgid ""
 "Shooting times also give the online booking its slots, unless the booking "
 "sets other hours for a day (see [Online booking](online-booking.md))."
@@ -2837,13 +2830,13 @@ msgstr ""
 "ligne](online-booking.md))."
 
 #. type: Title ###
-#: ../src/help/en/user-guide/events.md:65
+#: ../src/help/en/user-guide/events.md:64
 #, no-wrap
 msgid "Club modules {#club-modules}"
 msgstr "Modules de la société {#club-modules}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:68
+#: ../src/help/en/user-guide/events.md:67
 msgid ""
 "Some modules belong to the club rather than to an event. **Club modules** in "
 "the club part of the sidebar (admins) switches them on and off:"
@@ -2853,7 +2846,7 @@ msgstr ""
 "(admins) les active et les désactive :"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:72
+#: ../src/help/en/user-guide/events.md:71
 #, no-wrap
 msgid ""
 "| Module | What it adds |\n"
@@ -2865,38 +2858,30 @@ msgstr ""
 "| Modèles d’impression | des modèles pour feuilles préimprimées et la section *Modèle d’impression* de chaque programme (voir [Modèles d’impression](print-forms.md)) |\n"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:73
+#: ../src/help/en/user-guide/events.md:72
 #, no-wrap
 msgid "Events without lanes {#no-lanes}"
 msgstr "Manifestations sans cibles {#no-lanes}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:76
+#: ../src/help/en/user-guide/events.md:75
 msgid ""
 "An event needs no range, e.g. an annual programme or a Feldschiessen whose "
 "results come on paper or from the scoring system. Without a range there is "
-"no lane grid, and the modules Reservations and Online booking are not "
-"available; shooters are registered without a lane and their results are "
-"entered as usual. Documents can still be opened as PDF, but they do not go "
-"to a print agent, because print agents belong to a range."
-msgstr ""
-"Une manifestation n’a pas besoin de stand, p. ex. un programme annuel ou un "
-"Tir en campagne dont les résultats arrivent sur papier ou depuis "
-"l’installation de marquage. Sans stand, il n’y a pas de grille des cibles, "
-"et les modules Réservations et Réservation en ligne ne sont pas "
-"disponibles ; les tireurs sont inscrits sans cible et leurs résultats sont "
-"saisis comme d’habitude. Les documents s’ouvrent toujours en PDF, mais ne "
-"partent pas vers un agent d’impression, car les agents d’impression "
-"appartiennent à un stand."
+"no lane grid, and the module Reservations is not available; shooters are "
+"registered without a lane and their results are entered as usual. Documents "
+"can still be opened as PDF, but they do not go to a print agent, because "
+"print agents belong to a range."
+msgstr "Une manifestation n’a pas besoin de stand, p. ex. un programme annuel ou un Tir en campagne dont les résultats arrivent sur papier ou depuis l’installation de marquage. Sans stand, il n’y a pas de grille des cibles, et le module Réservations n’est pas disponible ; les tireurs sont inscrits sans cible et leurs résultats sont saisis comme d’habitude. Les documents s’ouvrent toujours en PDF, mais ne partent pas vers un agent d’impression, car les agents d’impression appartiennent à un stand."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:77
+#: ../src/help/en/user-guide/events.md:76
 #, no-wrap
 msgid "Copy for next year {#copy}"
 msgstr "Copier pour l’année prochaine {#copy}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:80
+#: ../src/help/en/user-guide/events.md:79
 msgid ""
 "On **Copy & close** in the configuration, **Copy for next year** creates a "
 "new event with the same ranges, organizer, language, settings, modules and "
@@ -2918,20 +2903,20 @@ msgstr ""
 "*42.*) incrémentée et la date un an plus tard ; adaptez les deux au besoin."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:82
+#: ../src/help/en/user-guide/events.md:81
 msgid "![Copy an event](../images/screenshots/copy-event.png){ .screenshot }"
 msgstr ""
 "![Copier une manifestation](../images/screenshots/copy-event.png)"
 "{ .screenshot }"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:83
+#: ../src/help/en/user-guide/events.md:82
 #, no-wrap
 msgid "Close {#close}"
 msgstr "Clôturer {#close}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:86
+#: ../src/help/en/user-guide/events.md:85
 msgid ""
 "When an event is over and the rankings are checked, **Close** it on **Copy & "
 "close** in the configuration. Closing releases the rankings: shooters with a "
@@ -2958,13 +2943,13 @@ msgstr ""
 "prochaine fonctionne."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:87
+#: ../src/help/en/user-guide/events.md:86
 #, no-wrap
 msgid "Delete"
 msgstr "Supprimer"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:89
+#: ../src/help/en/user-guide/events.md:88
 #, no-wrap
 msgid "**Delete** (on **Copy & close**) removes an event, but only while nobody is registered for it.\n"
 msgstr "**Supprimer** (sous **Copier & clôturer**) retire une manifestation, mais seulement tant que personne n’y est inscrit.\n"
@@ -3278,7 +3263,12 @@ msgid ""
 "each document (*Certificates* are the certificates from the rankings, *Print "
 "forms* every other form of the club) and its options (tray, paper size, "
 "media type, further `lp` options such as `fit-to-page`)."
-msgstr "Dès que l’agent est en ligne, il annonce ses imprimantes. Choisis pour chaque document l’imprimante (*Diplômes* sont les diplômes des classements, *Modèles d’impression* tous les autres modèles de la société) et ses options (bac, format de papier, type de support, autres options `lp` comme `fit-to-page`)."
+msgstr ""
+"Dès que l’agent est en ligne, il annonce ses imprimantes. Choisis pour "
+"chaque document l’imprimante (*Diplômes* sont les diplômes des classements, "
+"*Modèles d’impression* tous les autres modèles de la société) et ses options "
+"(bac, format de papier, type de support, autres options `lp` comme `fit-to-"
+"page`)."
 
 #. type: Bullet: '3. '
 #: ../src/help/en/user-guide/printing.md:25
@@ -3497,7 +3487,11 @@ msgid ""
 "A form that prints **A registration** besides the event's control strip, "
 "e.g. a participant card or a receipt, appears in the registration with a "
 "button of its own name; it prints on the printer of *Print forms*."
-msgstr "Un modèle qui imprime **Une inscription**, en plus de la bande de contrôle de la manifestation, p. ex. une carte de participant ou une quittance, apparaît dans l’inscription avec un bouton portant son propre nom ; il s’imprime sur l’imprimante des *Modèles d’impression*."
+msgstr ""
+"Un modèle qui imprime **Une inscription**, en plus de la bande de contrôle "
+"de la manifestation, p. ex. une carte de participant ou une quittance, "
+"apparaît dans l’inscription avec un bouton portant son propre nom ; il "
+"s’imprime sur l’imprimante des *Modèles d’impression*."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:39
@@ -3510,7 +3504,15 @@ msgid ""
 "Printing**. The fields of a rank are the rank, the total, the ranking (the "
 "programme or classification) and the class; a programme's certificate knows "
 "its results too."
-msgstr "Un modèle qui imprime **Un rang** produit des diplômes : **Diplômes** dans l’en-tête de chaque classement et de chaque classement général sous **Classements** demande le modèle, la classe d’un classement général et les rangs (1 à 3 sauf modification), puis imprime une page par tireur classé, ou les ouvre en un seul PDF. Les diplômes partent vers l’imprimante des *Diplômes* sous **Stands de tir → Impression**. Les champs d’un rang sont le rang, le total, le classement (le programme ou le classement général) et la classe ; le diplôme d’un programme connaît aussi ses résultats."
+msgstr ""
+"Un modèle qui imprime **Un rang** produit des diplômes : **Diplômes** dans "
+"l’en-tête de chaque classement et de chaque classement général sous "
+"**Classements** demande le modèle, la classe d’un classement général et les "
+"rangs (1 à 3 sauf modification), puis imprime une page par tireur classé, ou "
+"les ouvre en un seul PDF. Les diplômes partent vers l’imprimante des "
+"*Diplômes* sous **Stands de tir → Impression**. Les champs d’un rang sont le "
+"rang, le total, le classement (le programme ou le classement général) et la "
+"classe ; le diplôme d’un programme connaît aussi ses résultats."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/print-forms.md:40
@@ -4155,7 +4157,10 @@ msgid ""
 "**Certificates** prints certificates for the best ranks onto a [print form]"
 "(print-forms.md#certificates) of the club; the button appears once the club "
 "has a form that prints a rank."
-msgstr "**Diplômes** imprime des diplômes pour les meilleurs rangs sur un [modèle d’impression](print-forms.md#certificates) de la société ; le bouton apparaît dès que la société a un modèle qui imprime un rang."
+msgstr ""
+"**Diplômes** imprime des diplômes pour les meilleurs rangs sur un [modèle "
+"d’impression](print-forms.md#certificates) de la société ; le bouton "
+"apparaît dès que la société a un modèle qui imprime un rang."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/rankings-kiosk.md:14
@@ -4469,8 +4474,7 @@ msgstr ""
 #: ../src/help/en/user-guide/registrations.md:29
 #, no-wrap
 msgid "*Print lane sheet* and *Print control strip* are ticked by default (they only appear while the modules *Lane sheet* and *Control strip* are on, see [Modules](events.md#modules)): the documents print on the range's printers right after registering, or open as PDF if no printer is set up (see [Printing](printing.md)). [Print forms](print-forms.md#certificates) of the club that print a registration, e.g. a participant card, add a button each.\n"
-msgstr ""
-"*Imprimer la feuille de stand* et *Imprimer la bande de contrôle* sont cochés par défaut (ils n’apparaissent que tant que les modules *Feuille de stand* et *Bande de contrôle* sont activés, voir [Modules](events.md#modules)) : les documents s’impriment sur les imprimantes du stand juste après l’inscription, ou s’ouvrent en PDF si aucune imprimante n’est configurée (voir [Impression](printing.md)). Les [modèles d’impression](print-forms.md#certificates) de la société qui impriment une inscription, p. ex. une carte de participant, ajoutent chacun un bouton.\n"
+msgstr "*Imprimer la feuille de stand* et *Imprimer la bande de contrôle* sont cochés par défaut (ils n’apparaissent que tant que les modules *Feuille de stand* et *Bande de contrôle* sont activés, voir [Modules](events.md#modules)) : les documents s’impriment sur les imprimantes du stand juste après l’inscription, ou s’ouvrent en PDF si aucune imprimante n’est configurée (voir [Impression](printing.md)). Les [modèles d’impression](print-forms.md#certificates) de la société qui impriment une inscription, p. ex. une carte de participant, ajoutent chacun un bouton.\n"
 
 #. type: Title ##
 #: ../src/help/en/user-guide/registrations.md:30
@@ -4587,15 +4591,11 @@ msgstr "Activer {#setup}"
 #. type: Plain text
 #: ../src/help/en/user-guide/online-booking.md:8
 msgid ""
-"Switch on the module *Online booking* under **Configuration** → **Modules** "
-"(it needs a range); then, on **Online booking** in the configuration, "
-"**Switch on** is all it takes. The page then shows the link with a QR code "
-"for the invitation and the slots it offers."
-msgstr ""
-"Activez le module *Réservation en ligne* sous **Configuration** → "
-"**Modules** (il nécessite un stand) ; ensuite, sur **Réservation en ligne** "
-"dans la configuration, **Activer** suffit. La page montre ensuite le lien "
-"avec un code QR pour l’invitation et les créneaux proposés."
+"The online booking is part of the module *Reservations* (it needs a range): "
+"on **Reservations** in the configuration, **Switch on** is all it takes. The "
+"page then shows the link with a QR code for the invitation and the slots it "
+"offers."
+msgstr "La réservation en ligne fait partie du module *Réservations* (il nécessite un stand) : sur **Réservations** dans la configuration, **Activer** suffit. La page montre ensuite le lien avec un code QR pour l’invitation et les créneaux proposés."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/online-booking.md:10

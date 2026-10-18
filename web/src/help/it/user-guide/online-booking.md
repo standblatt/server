@@ -7,10 +7,9 @@ annuncia i suoi tiratori. Un admin conferma o rifiuta ogni richiesta.
 
 ## Attivare {#setup}
 
-Attiva il modulo *Prenotazione online* in **Configurazione** → **Moduli**
-(richiede uno stand); poi, in **Prenotazione online** nella configurazione,
-basta **Attiva**. La pagina mostra poi il link con un codice QR per l’invito
-e le fasce orarie offerte.
+La prenotazione online fa parte del modulo *Prenotazioni* (richiede uno
+stand): in **Prenotazioni** nella configurazione basta **Attiva**. La pagina
+mostra poi il link con un codice QR per l’invito e le fasce orarie offerte.
 
 ![Prenotazione online nella
 configurazione](../images/screenshots/booking-setup.png){ .screenshot }

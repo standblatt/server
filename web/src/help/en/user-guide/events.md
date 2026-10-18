@@ -13,7 +13,7 @@ An event has two areas. The **operation** is what you work with on the day: *Das
 | **General** | name, days, ranges, organizer and language (see below) |
 | **Modules** | the building blocks the event uses (see below) |
 | **Programmes** | what can be shot (see [Programmes](programmes.md)) |
-| Pages of modules | e.g. **Classifications**, **Kiosk displays**, **Helper links**, **Online booking**, only while the module is on |
+| Pages of modules | e.g. **Reservations** (with the online booking), **Classifications**, **Kiosk displays**, **Helper links**, only while the module is on |
 | **Copy & close** | copy for next year, close, reopen and delete |
 
 Staff work only in the operation; the configuration is for admins.
@@ -36,8 +36,7 @@ Not every event needs everything: a shooting festival books lanes and hands out 
 
 | Module | What it adds |
 |---|---|
-| Reservations | lanes reserved for groups and clubs (needs a range) |
-| Online booking | clubs ask for lanes through a public link (needs a range and switches on Reservations, see [Online booking](online-booking.md)) |
+| Reservations | lanes reserved for groups and clubs; its page in the configuration switches on the [online booking](online-booking.md), through which clubs ask for lanes with a public link (needs a range) |
 | Lane sheet, Control strip | the documents printed at registration; the control strip can print with a [print form](print-forms.md#builtin) of the club |
 | Ammunition desk | the **Ammo** button on the dashboard and for the ammunition desk (see [Helpers](helpers.md#ammunition)); leave it off where shooters bring their own, e.g. air pistol and air rifle |
 | Attempts | programmes that can be shot several times (see [Programmes](programmes.md#attempts)) |
@@ -52,13 +51,13 @@ When you create an event, choose what kind it is; this only switches modules on:
 
 | Kind | Modules |
 |---|---|
-| Shooting festival | Reservations, Online booking, Lane sheet, Control strip, Awards, Special prizes, Club competition, Kiosk displays, Helper links |
+| Shooting festival | Reservations, Lane sheet, Control strip, Awards, Special prizes, Club competition, Kiosk displays, Helper links |
 | Annual programme or training | Attempts, Classifications |
 | Feldschiessen | Awards, Club competition, Kiosk displays, Helper links |
 | Club championship | Attempts, Classifications, Kiosk displays |
 | Custom selection | none |
 
-A module that holds data stays on: switch off the kiosk only after deleting its kiosk links, the awards only when no programme has award tiers, and so on; the card says why its switch is locked. A module another one needs (Reservations for Online booking) stays on as long as that one is.
+A module that holds data stays on: switch off the kiosk only after deleting its kiosk links, the awards only when no programme has award tiers, and so on; the card says why its switch is locked; Reservations stay on while the online booking link is active. A module another one needs (Awards for Special prizes) stays on as long as that one is.
 
 Shooting times also give the online booking its slots, unless the booking sets other hours for a day (see [Online booking](online-booking.md)).
 
@@ -72,7 +71,7 @@ Some modules belong to the club rather than to an event. **Club modules** in the
 
 ## Events without lanes {#no-lanes}
 
-An event needs no range, e.g. an annual programme or a Feldschiessen whose results come on paper or from the scoring system. Without a range there is no lane grid, and the modules Reservations and Online booking are not available; shooters are registered without a lane and their results are entered as usual. Documents can still be opened as PDF, but they do not go to a print agent, because print agents belong to a range.
+An event needs no range, e.g. an annual programme or a Feldschiessen whose results come on paper or from the scoring system. Without a range there is no lane grid, and the module Reservations is not available; shooters are registered without a lane and their results are entered as usual. Documents can still be opened as PDF, but they do not go to a print agent, because print agents belong to a range.
 
 ## Copy for next year {#copy}
 

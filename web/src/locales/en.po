@@ -58,7 +58,7 @@ msgstr[1] "# elements selected"
 
 #. placeholder {0}: it.lanes
 #. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+lane%7D+other+%7B%23+lanes%7D%7D&pluralize_on=0
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "# lane"
 msgid_plural "# lanes"
 msgstr[0] "# lane"
@@ -90,7 +90,7 @@ msgstr[1] "# sessions saved on this device could not be uploaded:"
 
 #. placeholder {0}: r.shooters.length
 #. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+shooter+announced%7D+other+%7B%23+shooters+announced%7D%7D&pluralize_on=0
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "# shooter announced"
 msgid_plural "# shooters announced"
 msgstr[0] "# shooter announced"
@@ -106,7 +106,7 @@ msgstr[1] "# shooter assignments are removed, the shooters stay."
 
 #. placeholder {0}: preview.length
 #. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+shooter+recognised%7D+other+%7B%23+shooters+recognised%7D%7D&pluralize_on=0
-#: src/lib/modules/booking/parts/ShooterList.svelte
+#: src/lib/modules/reservations/booking/parts/ShooterList.svelte
 msgid "# shooter recognised"
 msgid_plural "# shooters recognised"
 msgstr[0] "# shooter recognised"
@@ -135,7 +135,7 @@ msgstr[1] "# shots"
 
 #. placeholder {0}: p.count
 #. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+slot%7D+other+%7B%23+slots%7D%7D&pluralize_on=0
-#: src/lib/modules/booking/BookingSettings.svelte
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "# slot"
 msgid_plural "# slots"
 msgstr[0] "# slot"
@@ -231,7 +231,7 @@ msgid "{0} / {1} pts"
 msgstr "{0} / {1} pts"
 
 #. placeholder {0}: dayLabel(d)
-#: src/lib/modules/booking/parts/BookingHoursForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "{0} from"
 msgstr "{0} from"
 
@@ -343,7 +343,7 @@ msgid "{0} to go"
 msgstr "{0} to go"
 
 #. placeholder {0}: dayLabel(d)
-#: src/lib/modules/booking/parts/BookingHoursForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "{0} until"
 msgstr "{0} until"
 
@@ -358,7 +358,7 @@ msgid "{at} · click to take back"
 msgstr "{at} · click to take back"
 
 #. js-lingui:icu=%7Bchosen%2C+plural%2C+one+%7B%23+slot+chosen%7D+other+%7B%23+slots+chosen%7D%7D&pluralize_on=chosen
-#: src/lib/modules/booking/parts/BookingForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 msgid "# slot chosen"
 msgid_plural "# slots chosen"
 msgstr[0] "# slot chosen"
@@ -371,7 +371,7 @@ msgid_plural "# shooting days"
 msgstr[0] "# shooting day"
 msgstr[1] "# shooting days"
 
-#: src/lib/modules/booking/parts/BookingForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 msgid "{free} free"
 msgstr "{free} free"
 
@@ -438,7 +438,7 @@ msgid "{standard} shots"
 msgstr "{standard} shots"
 
 #. js-lingui:icu=%7Bwaiting%2C+plural%2C+one+%7BTake+over+%23+shooter%7D+other+%7BTake+over+%23+shooters%7D%7D&pluralize_on=waiting
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Take over # shooter"
 msgid_plural "Take over # shooters"
 msgstr[0] "Take over # shooter"
@@ -606,7 +606,7 @@ msgstr "Add programme"
 msgid "Add series"
 msgstr "Add series"
 
-#: src/lib/modules/booking/parts/ShooterList.svelte
+#: src/lib/modules/reservations/booking/parts/ShooterList.svelte
 msgid "Add shooter"
 msgstr "Add shooter"
 
@@ -618,7 +618,7 @@ msgstr "Add Standblatt to your home screen from the browser menu."
 msgid "Add tag"
 msgstr "Add tag"
 
-#: src/lib/modules/booking/parts/ShooterList.svelte
+#: src/lib/modules/reservations/booking/parts/ShooterList.svelte
 msgid "Add to the list"
 msgstr "Add to the list"
 
@@ -640,7 +640,7 @@ msgstr "Added {0} from the library."
 msgid "added to the club"
 msgstr "added to the club"
 
-#: src/lib/modules/booking/parts/BookingHoursForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Adjust"
 msgstr "Adjust"
 
@@ -796,7 +796,7 @@ msgstr "Ammunition issued to {0} {1}"
 msgid "An administrator of your club still has to finish these steps."
 msgstr "An administrator of your club still has to finish these steps."
 
-#: src/lib/modules/booking/parts/BookingForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 msgid "Announce your shooters so they are found quickly at the registration desk. Programmes are chosen at the range."
 msgstr "Announce your shooters so they are found quickly at the registration desk. Programmes are chosen at the range."
 
@@ -836,7 +836,7 @@ msgid "At least 10 characters."
 msgstr "At least 10 characters."
 
 #. placeholder {0}: info.maxLanes
-#: src/lib/modules/booking/parts/BookingForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 msgid "At most {0} lanes per slot."
 msgstr "At most {0} lanes per slot."
 
@@ -959,7 +959,7 @@ msgid "Best"
 msgstr "Best"
 
 #: src/lib/forms/Palette.svelte
-#: src/lib/modules/booking/parts/ShooterList.svelte
+#: src/lib/modules/reservations/booking/parts/ShooterList.svelte
 #: src/lib/ShooterForm.svelte
 #: src/routes/my/settings/+page.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
@@ -967,7 +967,7 @@ msgid "Birthday"
 msgstr "Birthday"
 
 #. placeholder {0}: i + 1
-#: src/lib/modules/booking/parts/ShooterList.svelte
+#: src/lib/modules/reservations/booking/parts/ShooterList.svelte
 msgid "Birthday of shooter {0}"
 msgstr "Birthday of shooter {0}"
 
@@ -979,15 +979,15 @@ msgstr "Bold"
 msgid "Book lanes"
 msgstr "Book lanes"
 
-#: src/lib/modules/booking/BookingSettings.svelte
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "Booking link"
 msgstr "Booking link"
 
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Booking requests"
 msgstr "Booking requests"
 
-#: src/lib/modules/booking/parts/BookingHoursForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Booking settings saved"
 msgstr "Booking settings saved"
 
@@ -996,11 +996,11 @@ msgstr "Booking settings saved"
 msgid "born {0}"
 msgstr "born {0}"
 
-#: src/lib/modules/booking/parts/BookingHoursForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Break from"
 msgstr "Break from"
 
-#: src/lib/modules/booking/parts/BookingHoursForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Break until"
 msgstr "Break until"
 
@@ -1049,7 +1049,7 @@ msgstr "Cancel request"
 msgid "Cancel request?"
 msgstr "Cancel request?"
 
-#: src/lib/modules/booking/parts/BookingStatus.svelte
+#: src/lib/modules/reservations/booking/parts/BookingStatus.svelte
 msgid "cancelled"
 msgstr "cancelled"
 
@@ -1142,7 +1142,7 @@ msgstr "Choose an event …"
 msgid "Choose at least one permission."
 msgstr "Choose at least one permission."
 
-#: src/lib/modules/booking/parts/BookingForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 msgid "Choose at least one slot."
 msgstr "Choose at least one slot."
 
@@ -1223,10 +1223,10 @@ msgstr "Closed on {0}: the rankings are released, everything stays visible, but 
 #: src/lib/AppSidebar.svelte
 #: src/lib/ClubPicker.svelte
 #: src/lib/forms/Palette.svelte
-#: src/lib/modules/booking/BookingRequests.svelte
-#: src/lib/modules/booking/parts/BookingForm.svelte
 #: src/lib/modules/classifications/ClassificationTable.svelte
 #: src/lib/modules/club_competition/StatisticsSection.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 #: src/lib/NewShooterDialog.svelte
 #: src/lib/RankingTable.svelte
 #: src/lib/RegistrationForm.svelte
@@ -1240,7 +1240,7 @@ msgstr "Club"
 msgid "Club \"{name}\" created"
 msgstr "Club \"{name}\" created"
 
-#: src/lib/modules/booking/parts/BookingForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 msgid "Club and contact"
 msgstr "Club and contact"
 
@@ -1271,7 +1271,7 @@ msgid "Club for {0}"
 msgstr "Club for {0}"
 
 #. placeholder {0}: clubName(r.clubId)
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Club in the master data: {0}"
 msgstr "Club in the master data: {0}"
 
@@ -1309,10 +1309,6 @@ msgstr "Clubs"
 #: src/lib/modules/club_competition/index.ts
 msgid "Clubs are ranked by the results of their shooters."
 msgstr "Clubs are ranked by the results of their shooters."
-
-#: src/lib/modules/booking/index.ts
-msgid "Clubs ask for lanes through a public link; confirmed requests become reservations."
-msgstr "Clubs ask for lanes through a public link; confirmed requests become reservations."
 
 #: src/routes/t/[tenantId]/clubs/+page.svelte
 msgid "Clubs merged"
@@ -1375,17 +1371,17 @@ msgstr "Completed"
 msgid "Configuration"
 msgstr "Configuration"
 
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Confirm"
 msgstr "Confirm"
 
 #. placeholder {0}: confirming.club
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Confirm request of {0}"
 msgstr "Confirm request of {0}"
 
 #: src/lib/AccountSettings.svelte
-#: src/lib/modules/booking/parts/BookingStatus.svelte
+#: src/lib/modules/reservations/booking/parts/BookingStatus.svelte
 msgid "confirmed"
 msgstr "confirmed"
 
@@ -1393,7 +1389,7 @@ msgstr "confirmed"
 msgid "Confirming …"
 msgstr "Confirming …"
 
-#: src/lib/modules/booking/parts/BookingForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 msgid "Contact person"
 msgstr "Contact person"
 
@@ -1471,7 +1467,7 @@ msgstr "Copy from an earlier event"
 msgid "Copy from event"
 msgstr "Copy from event"
 
-#: src/lib/modules/booking/BookingSettings.svelte
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "Copy link"
 msgstr "Copy link"
 
@@ -1479,7 +1475,7 @@ msgstr "Copy link"
 msgid "Copy the event for next year, close it when it is over or delete it."
 msgstr "Copy the event for next year, close it when it is over or delete it."
 
-#: src/lib/modules/booking/parts/ShooterList.svelte
+#: src/lib/modules/reservations/booking/parts/ShooterList.svelte
 msgid "Copy the rows from Excel or a text file: last name, first name, birthday (e.g. 01.05.1990), licence. One shooter per line."
 msgstr "Copy the rows from Excel or a text file: last name, first name, birthday (e.g. 01.05.1990), licence. One shooter per line."
 
@@ -1601,11 +1597,11 @@ msgstr "Date"
 msgid "Day"
 msgstr "Day"
 
-#: src/lib/modules/booking/parts/BookingHoursForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Days with other hours"
 msgstr "Days with other hours"
 
-#: src/lib/modules/booking/parts/BookingHoursForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Deadline"
 msgstr "Deadline"
 
@@ -1618,16 +1614,16 @@ msgstr "Decides the fields and where the form is printed."
 msgid "Decimal scoring (10.9)"
 msgstr "Decimal scoring (10.9)"
 
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Decline"
 msgstr "Decline"
 
 #. placeholder {0}: declining.club
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Decline request of {0}?"
 msgstr "Decline request of {0}?"
 
-#: src/lib/modules/booking/parts/BookingStatus.svelte
+#: src/lib/modules/reservations/booking/parts/BookingStatus.svelte
 msgid "declined"
 msgstr "declined"
 
@@ -1923,7 +1919,7 @@ msgid "Elite"
 msgstr "Elite"
 
 #: src/lib/AccountSettings.svelte
-#: src/lib/modules/booking/parts/BookingForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 #: src/routes/forgot-password/+page.svelte
 #: src/routes/signup/+page.svelte
 msgid "Email"
@@ -1949,23 +1945,23 @@ msgstr "Email or user name"
 msgid "Email, password, language, second factor."
 msgstr "Email, password, language, second factor."
 
-#: src/lib/modules/booking/parts/BookingHoursForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Empty: 14 days before the first day"
 msgstr "Empty: 14 days before the first day"
 
-#: src/lib/modules/booking/parts/BookingHoursForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Empty: no break"
 msgstr "Empty: no break"
 
-#: src/lib/modules/booking/parts/BookingHoursForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Empty: no limit"
 msgstr "Empty: no limit"
 
-#: src/lib/modules/booking/parts/BookingHoursForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Empty: the shooting times of the day, else 08:00"
 msgstr "Empty: the shooting times of the day, else 08:00"
 
-#: src/lib/modules/booking/parts/BookingHoursForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Empty: the shooting times of the day, else 17:00"
 msgstr "Empty: the shooting times of the day, else 17:00"
 
@@ -1977,7 +1973,7 @@ msgstr "Enter all series"
 msgid "Enter at least one series."
 msgstr "Enter at least one series."
 
-#: src/lib/modules/booking/parts/BookingForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 msgid "Enter how many lanes you need in each slot. The organizer assigns the lane numbers when confirming."
 msgstr "Enter how many lanes you need in each slot. The organizer assigns the lane numbers when confirming."
 
@@ -2089,7 +2085,7 @@ msgstr "Export all sessions (CSV)"
 msgid "Exports"
 msgstr "Exports"
 
-#: src/lib/modules/booking/BookingSettings.svelte
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "External clubs ask for lanes through a link in your invitation and announce their shooters. You confirm each request."
 msgstr "External clubs ask for lanes through a link in your invitation and announce their shooters. You confirm each request."
 
@@ -2147,7 +2143,7 @@ msgid "First day"
 msgstr "First day"
 
 #: src/lib/forms/Palette.svelte
-#: src/lib/modules/booking/parts/ShooterList.svelte
+#: src/lib/modules/reservations/booking/parts/ShooterList.svelte
 #: src/lib/ShooterForm.svelte
 #: src/routes/my/settings/+page.svelte
 #: src/routes/signup/+page.svelte
@@ -2155,7 +2151,7 @@ msgid "First name"
 msgstr "First name"
 
 #. placeholder {0}: i + 1
-#: src/lib/modules/booking/parts/ShooterList.svelte
+#: src/lib/modules/reservations/booking/parts/ShooterList.svelte
 msgid "First name of shooter {0}"
 msgstr "First name of shooter {0}"
 
@@ -2206,7 +2202,7 @@ msgstr "Found by your license number and birthday in closed competitions run wit
 msgid "free"
 msgstr "free"
 
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Free lanes are reserved for every slot. The announced shooters join this club of the master data:"
 msgstr "Free lanes are reserved for every slot. The announced shooters join this club of the master data:"
 
@@ -2218,7 +2214,7 @@ msgstr "From"
 msgid "From rank"
 msgstr "From rank"
 
-#: src/lib/modules/booking/parts/BookingForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 msgid "full"
 msgstr "full"
 
@@ -2433,7 +2429,7 @@ msgstr "in 90 days"
 msgid "in a year"
 msgstr "in a year"
 
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "in master data"
 msgstr "in master data"
 
@@ -2508,7 +2504,7 @@ msgstr "Kiosk displays"
 msgid "Kiosk link (shown only now):"
 msgstr "Kiosk link (shown only now):"
 
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "known"
 msgstr "known"
 
@@ -2553,7 +2549,7 @@ msgstr "Lane {0}: reserved"
 msgid "Lane {lane}"
 msgstr "Lane {lane}"
 
-#: src/lib/modules/booking/index.ts
+#: src/lib/modules/reservations/index.ts
 msgid "Lane bookings"
 msgstr "Lane bookings"
 
@@ -2578,8 +2574,8 @@ msgid "Lane status"
 msgstr "Lane status"
 
 #: src/lib/EventDesk.svelte
-#: src/lib/modules/booking/parts/BookingForm.svelte
 #: src/lib/modules/helpers/HelperCodes.svelte
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 #: src/lib/modules/reservations/Page.svelte
 #: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "Lanes"
@@ -2587,24 +2583,24 @@ msgstr "Lanes"
 
 #. placeholder {0}: formatLanes(it.assigned)
 #. placeholder {0}: r.lanesText
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 #: src/lib/modules/reservations/Page.svelte
 msgid "lanes {0}"
 msgstr "lanes {0}"
 
 #. placeholder {0}: r.name
 #. placeholder {1}: slotTime(sl.start, info.timezone)
-#: src/lib/modules/booking/parts/BookingForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 msgid "Lanes on {0} at {1}"
 msgstr "Lanes on {0} at {1}"
 
-#: src/lib/modules/booking/parts/BookingHoursForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Lanes per slot and club"
 msgstr "Lanes per slot and club"
 
 #: src/lib/modules/reservations/index.ts
-msgid "Lanes reserved for groups and clubs, shown on the dashboard."
-msgstr "Lanes reserved for groups and clubs, shown on the dashboard."
+msgid "Lanes reserved for groups and clubs, shown on the dashboard; clubs can ask for lanes online."
+msgstr "Lanes reserved for groups and clubs, shown on the dashboard; clubs can ask for lanes online."
 
 #: src/lib/modules/reservations/Page.svelte
 msgid "Lanes reserved for trainings or groups; they show as reserved from the lead time on."
@@ -2642,7 +2638,7 @@ msgid "Last day"
 msgstr "Last day"
 
 #: src/lib/forms/Palette.svelte
-#: src/lib/modules/booking/parts/ShooterList.svelte
+#: src/lib/modules/reservations/booking/parts/ShooterList.svelte
 #: src/lib/ShooterForm.svelte
 #: src/routes/my/settings/+page.svelte
 #: src/routes/signup/+page.svelte
@@ -2650,7 +2646,7 @@ msgid "Last name"
 msgstr "Last name"
 
 #. placeholder {0}: i + 1
-#: src/lib/modules/booking/parts/ShooterList.svelte
+#: src/lib/modules/reservations/booking/parts/ShooterList.svelte
 msgid "Last name of shooter {0}"
 msgstr "Last name of shooter {0}"
 
@@ -2693,12 +2689,12 @@ msgstr "Length y (mm)"
 msgid "Library template"
 msgstr "Library template"
 
-#: src/lib/modules/booking/parts/ShooterList.svelte
+#: src/lib/modules/reservations/booking/parts/ShooterList.svelte
 msgid "Licence (optional)"
 msgstr "Licence (optional)"
 
 #. placeholder {0}: i + 1
-#: src/lib/modules/booking/parts/ShooterList.svelte
+#: src/lib/modules/reservations/booking/parts/ShooterList.svelte
 msgid "Licence of shooter {0}"
 msgstr "Licence of shooter {0}"
 
@@ -2748,17 +2744,17 @@ msgstr "Line"
 msgid "Line {0}: {1}"
 msgstr "Line {0}: {1}"
 
-#: src/lib/modules/booking/BookingSettings.svelte
 #: src/lib/modules/helpers/HelperCodes.svelte
 #: src/lib/modules/kiosk/KioskTokens.svelte
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "Link copied"
 msgstr "Link copied"
 
-#: src/lib/modules/booking/BookingSettings.svelte
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "Link for the invitation"
 msgstr "Link for the invitation"
 
-#: src/lib/modules/booking/parts/ShooterList.svelte
+#: src/lib/modules/reservations/booking/parts/ShooterList.svelte
 msgid "List of shooters"
 msgstr "List of shooters"
 
@@ -3036,7 +3032,7 @@ msgstr "never connected"
 msgid "never used"
 msgstr "never used"
 
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "new"
 msgstr "new"
 
@@ -3061,15 +3057,15 @@ msgstr "New club “{name}”"
 msgid "New event"
 msgstr "New event"
 
-#: src/lib/modules/booking/BookingSettings.svelte
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "New link"
 msgstr "New link"
 
-#: src/lib/modules/booking/BookingSettings.svelte
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "New link created"
 msgstr "New link created"
 
-#: src/lib/modules/booking/BookingSettings.svelte
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "New link?"
 msgstr "New link?"
 
@@ -3260,11 +3256,11 @@ msgstr "No shooter found."
 msgid "No shooters found."
 msgstr "No shooters found."
 
-#: src/lib/modules/booking/parts/ShooterList.svelte
+#: src/lib/modules/reservations/booking/parts/ShooterList.svelte
 msgid "No shooters yet. You can add them now or later until the deadline."
 msgstr "No shooters yet. You can add them now or later until the deadline."
 
-#: src/lib/modules/booking/BookingSettings.svelte
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "No slots: check the hours."
 msgstr "No slots: check the hours."
 
@@ -3328,7 +3324,7 @@ msgstr "not ranked"
 msgid "Not shown on kiosk displays"
 msgstr "Not shown on kiosk displays"
 
-#: src/lib/modules/booking/parts/BookingForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 msgid "Note to the organizer"
 msgstr "Note to the organizer"
 
@@ -3377,16 +3373,15 @@ msgstr "One range per distance, e.g. Pistol 25 m and Pistol 50 m, each with lane
 msgid "online"
 msgstr "online"
 
-#: src/lib/modules/booking/BookingSettings.svelte
-#: src/lib/modules/booking/index.ts
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "Online booking"
 msgstr "Online booking"
 
-#: src/lib/modules/booking/BookingSettings.svelte
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "Online booking switched off"
 msgstr "Online booking switched off"
 
-#: src/lib/modules/booking/BookingSettings.svelte
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "Online booking switched on"
 msgstr "Online booking switched on"
 
@@ -3516,7 +3511,7 @@ msgstr "Password changed. Other devices were logged out."
 msgid "Past"
 msgstr "Past"
 
-#: src/lib/modules/booking/parts/ShooterList.svelte
+#: src/lib/modules/reservations/booking/parts/ShooterList.svelte
 msgid "Paste list"
 msgstr "Paste list"
 
@@ -3550,7 +3545,7 @@ msgstr "Permissions"
 msgid "Personal best"
 msgstr "Personal best"
 
-#: src/lib/modules/booking/parts/BookingForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 msgid "Phone"
 msgstr "Phone"
 
@@ -3867,7 +3862,7 @@ msgstr "QR code"
 msgid "QR code for the authenticator app"
 msgstr "QR code for the authenticator app"
 
-#: src/lib/modules/booking/BookingSettings.svelte
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "QR code of the booking link"
 msgstr "QR code of the booking link"
 
@@ -3982,16 +3977,16 @@ msgstr "reached"
 msgid "Read sessions"
 msgstr "Read sessions"
 
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Reason"
 msgstr "Reason"
 
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Reason (optional)"
 msgstr "Reason (optional)"
 
 #. placeholder {0}: r.declineReason
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Reason: {0}"
 msgstr "Reason: {0}"
 
@@ -4119,7 +4114,7 @@ msgid "Remove series {0}"
 msgstr "Remove series {0}"
 
 #. placeholder {0}: i + 1
-#: src/lib/modules/booking/parts/ShooterList.svelte
+#: src/lib/modules/reservations/booking/parts/ShooterList.svelte
 msgid "Remove shooter {0}"
 msgstr "Remove shooter {0}"
 
@@ -4159,16 +4154,16 @@ msgstr "Repeat"
 msgid "Request cancelled"
 msgstr "Request cancelled"
 
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Request confirmed"
 msgstr "Request confirmed"
 
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Request declined"
 msgstr "Request declined"
 
 #. placeholder {0}: r.club
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Request of {0}"
 msgstr "Request of {0}"
 
@@ -4181,7 +4176,7 @@ msgid "Request saved"
 msgstr "Request saved"
 
 #. placeholder {0}: deadlineDay(c.deadline, event.timezone)
-#: src/lib/modules/booking/BookingSettings.svelte
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "Requests and changes until {0}."
 msgstr "Requests and changes until {0}."
 
@@ -4340,8 +4335,8 @@ msgid "S{0}"
 msgstr "S{0}"
 
 #: src/lib/EntryCard.svelte
-#: src/lib/modules/booking/parts/BookingHoursForm.svelte
 #: src/lib/modules/classifications/Classifications.svelte
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 #: src/lib/modules/reservations/Page.svelte
 #: src/lib/RegistrationDialog.svelte
 #: src/lib/ShooterSheet.svelte
@@ -4616,7 +4611,7 @@ msgid "Shooter saved"
 msgstr "Shooter saved"
 
 #: src/lib/AppSidebar.svelte
-#: src/lib/modules/booking/parts/BookingForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 #: src/lib/SetupChecklist.svelte
 #: src/routes/t/[tenantId]/+layout.svelte
 #: src/routes/t/[tenantId]/clubs/+page.svelte
@@ -4632,7 +4627,7 @@ msgstr "Shooters are registered for this programme: the series stay as they are,
 msgid "Shooters found"
 msgstr "Shooters found"
 
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Shooters taken over"
 msgstr "Shooters taken over"
 
@@ -4658,7 +4653,7 @@ msgstr "Shooting days"
 msgid "Shooting festival"
 msgstr "Shooting festival"
 
-#: src/lib/modules/booking/parts/BookingHoursForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Shooting from"
 msgstr "Shooting from"
 
@@ -4670,7 +4665,7 @@ msgstr "Shooting ranges of this club with their lanes and printers."
 msgid "Shooting times"
 msgstr "Shooting times"
 
-#: src/lib/modules/booking/parts/BookingHoursForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Shooting until"
 msgstr "Shooting until"
 
@@ -4753,11 +4748,11 @@ msgstr "Single shots"
 msgid "Size"
 msgstr "Size"
 
-#: src/lib/modules/booking/parts/BookingHoursForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Slot length (minutes)"
 msgstr "Slot length (minutes)"
 
-#: src/lib/modules/booking/BookingSettings.svelte
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "Slots"
 msgstr "Slots"
 
@@ -4839,7 +4834,7 @@ msgstr "Swiss SSV rules"
 msgid "Switch club"
 msgstr "Switch club"
 
-#: src/lib/modules/booking/BookingSettings.svelte
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
 #: src/lib/TwoFactor.svelte
 msgid "Switch off"
 msgstr "Switch off"
@@ -4848,7 +4843,7 @@ msgstr "Switch off"
 msgid "Switch off the second factor?"
 msgstr "Switch off the second factor?"
 
-#: src/lib/modules/booking/BookingSettings.svelte
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
 #: src/lib/TwoFactor.svelte
 msgid "Switch on"
 msgstr "Switch on"
@@ -4857,7 +4852,7 @@ msgstr "Switch on"
 msgid "Switch on what this event needs; everything else stays out of the way."
 msgstr "Switch on what this event needs; everything else stays out of the way."
 
-#: src/lib/modules/booking/BookingSettings.svelte
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "Switch online booking off?"
 msgstr "Switch online booking off?"
 
@@ -4972,7 +4967,7 @@ msgstr "The centre of your {0} hits sits {1}."
 msgid "The chosen programmes are shot on {0}."
 msgstr "The chosen programmes are shot on {0}."
 
-#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "The club gets a mail with your reason. Lanes already reserved for it are free again."
 msgstr "The club gets a mail with your reason. Lanes already reserved for it are free again."
 
@@ -4988,7 +4983,7 @@ msgstr "The code does not match the registration"
 msgid "The competition with its date, on one of your ranges."
 msgstr "The competition with its date, on one of your ranges."
 
-#: src/lib/modules/booking/BookingSettings.svelte
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "The current link stops working. Clubs that already asked keep their personal links."
 msgstr "The current link stops working. Clubs that already asked keep their personal links."
 
@@ -5024,7 +5019,7 @@ msgstr "The form the results of this programme are printed onto."
 msgid "The last"
 msgstr "The last"
 
-#: src/lib/modules/booking/BookingSettings.svelte
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "The link stops working. Requests and confirmed reservations stay."
 msgstr "The link stops working. Requests and confirmed reservations stay."
 
@@ -5140,7 +5135,7 @@ msgstr "Tick every range the event is shot on. No range: an event without lanes,
 msgid "Tie-break"
 msgstr "Tie-break"
 
-#: src/lib/modules/booking/parts/BookingForm.svelte
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 #: src/lib/ScheduleEditor.svelte
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Time"
@@ -5349,7 +5344,7 @@ msgstr "waiting"
 msgid "Waiting"
 msgstr "Waiting"
 
-#: src/lib/modules/booking/parts/BookingStatus.svelte
+#: src/lib/modules/reservations/booking/parts/BookingStatus.svelte
 msgid "waiting for confirmation"
 msgstr "waiting for confirmation"
 

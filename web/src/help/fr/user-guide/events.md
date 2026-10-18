@@ -19,7 +19,7 @@ liste alors ses pages, et *Retour à la manifestation* ramène au déroulement
 | **Général** | nom, jours, stands, organisateur et langue (voir plus bas) |
 | **Modules** | les éléments dont la manifestation se sert (voir plus bas) |
 | **Programmes** | ce qui peut être tiré (voir [Programmes](programmes.md)) |
-| Pages des modules | p. ex. **Classements généraux**, **Affichages kiosque**, **Liens d'aide**, **Réservation en ligne**, seulement tant que le module est activé |
+| Pages des modules | p. ex. **Réservations** (avec la réservation en ligne), **Classements généraux**, **Affichages kiosque**, **Liens d'aide**, seulement tant que le module est activé |
 | **Copier & clôturer** | copier pour l’année prochaine, clôturer, rouvrir et supprimer |
 
 Le personnel travaille seulement dans le déroulement ; la configuration est
@@ -48,8 +48,7 @@ rapports.
 
 | Module | Ce qu’il ajoute |
 |---|---|
-| Réservations | cibles réservées pour des groupes et des sociétés (nécessite un stand) |
-| Réservation en ligne | les sociétés demandent des cibles par un lien public (nécessite un stand et active Réservations, voir [Réservation en ligne](online-booking.md)) |
+| Réservations | cibles réservées pour des groupes et des sociétés ; sa page dans la configuration active la [réservation en ligne](online-booking.md), par laquelle les sociétés demandent des cibles avec un lien public (nécessite un stand) |
 | Feuille de stand, Bande de contrôle | les documents imprimés à l’inscription ; la bande de contrôle peut s’imprimer avec un [modèle d’impression](print-forms.md#builtin) de la société |
 | Distribution de munition | le bouton **Munition** sur le tableau de bord et pour la distribution de munition (voir [Aides](helpers.md#ammunition)) ; laissez-le désactivé là où les tireurs apportent la leur, p. ex. pistolet et carabine à air |
 | Tentatives | des programmes qui peuvent être tirés plusieurs fois (voir [Programmes](programmes.md#attempts)) |
@@ -65,7 +64,7 @@ modules :
 
 | Genre | Modules |
 |---|---|
-| Tir de fête | Réservations, Réservation en ligne, Feuille de stand, Bande de contrôle, Distinctions, Prix spéciaux, Concours de sections, Affichages kiosque, Liens d'aide |
+| Tir de fête | Réservations, Feuille de stand, Bande de contrôle, Distinctions, Prix spéciaux, Concours de sections, Affichages kiosque, Liens d'aide |
 | Programme annuel ou entraînement | Tentatives, Classements généraux |
 | Tir en campagne | Distinctions, Concours de sections, Affichages kiosque, Liens d'aide |
 | Championnat de société | Tentatives, Classements généraux, Affichages kiosque |
@@ -74,8 +73,9 @@ modules :
 Un module qui contient des données reste activé : désactivez le kiosque
 seulement après avoir supprimé ses liens kiosque, les distinctions seulement
 quand aucun programme n’a de niveaux de distinction, et ainsi de suite ; la
-carte indique pourquoi son interrupteur est bloqué. Un module dont un autre
-a besoin (Réservations pour Réservation en ligne) reste activé tant que
+carte indique pourquoi son interrupteur est bloqué ; Réservations reste
+activé tant que le lien de réservation en ligne est actif. Un module dont un
+autre a besoin (Distinctions pour Prix spéciaux) reste activé tant que
 celui-ci l’est.
 
 Les heures de tir donnent aussi ses créneaux à la réservation en ligne, sauf
@@ -97,11 +97,10 @@ latérale (admins) les active et les désactive :
 Une manifestation n’a pas besoin de stand, p. ex. un programme annuel ou un
 Tir en campagne dont les résultats arrivent sur papier ou depuis
 l’installation de marquage. Sans stand, il n’y a pas de grille des cibles,
-et les modules Réservations et Réservation en ligne ne sont pas disponibles
-; les tireurs sont inscrits sans cible et leurs résultats sont saisis comme
-d’habitude. Les documents s’ouvrent toujours en PDF, mais ne partent pas
-vers un agent d’impression, car les agents d’impression appartiennent à un
-stand.
+et le module Réservations n’est pas disponible ; les tireurs sont inscrits
+sans cible et leurs résultats sont saisis comme d’habitude. Les documents
+s’ouvrent toujours en PDF, mais ne partent pas vers un agent d’impression,
+car les agents d’impression appartiennent à un stand.
 
 ## Copier pour l’année prochaine {#copy}
 

@@ -22,8 +22,8 @@
 	import FormField from '$lib/FormField.svelte';
 	import PageHeader from '$lib/PageHeader.svelte';
 	import { keys } from '$lib/tenant';
-	import BookingRequests from '../booking/BookingRequests.svelte';
-	import { has, type EventProps } from '..';
+	import BookingRequests from './booking/BookingRequests.svelte';
+	import type { EventProps } from '..';
 	import { meQuery } from '$lib/me';
 
 	let { tenantId, event }: EventProps = $props();
@@ -135,7 +135,7 @@
 </PageHeader>
 
 <div class="space-y-4">
-	{#if has(event, 'booking')}<BookingRequests {tenantId} {event} {isAdmin} />{/if}
+	<BookingRequests {tenantId} {event} {isAdmin} />
 	{#each byDay as [day, list] (day)}
 		<section class="overflow-hidden rounded-lg border bg-card">
 			<div class="border-b px-4 py-2.5"><h2 class="text-sm font-semibold">{day}</h2></div>

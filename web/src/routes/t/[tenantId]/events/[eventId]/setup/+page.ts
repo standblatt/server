@@ -6,7 +6,7 @@ const targets: Record<string, string> = {
 	classifications: 'config/classifications',
 	kiosk: 'config/kiosk',
 	helpers: 'config/helpers',
-	booking: 'config/booking',
+	booking: 'config/reservations',
 	more: 'config/close'
 };
 

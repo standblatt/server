@@ -18,7 +18,7 @@ sue pagine, e *Torna alla manifestazione* riporta allo svolgimento:
 | **Generale** | nome, giorni, stand, organizzatore e lingua (vedi sotto) |
 | **Moduli** | gli elementi che la manifestazione usa (vedi sotto) |
 | **Programmi** | cosa si può sparare (vedi [Programmi](programmes.md)) |
-| Pagine dei moduli | p. es. **Classifiche generali**, **Display chiosco**, **Link aiutante**, **Prenotazione online**, solo finché il modulo è attivo |
+| Pagine dei moduli | p. es. **Prenotazioni** (con la prenotazione online), **Classifiche generali**, **Display chiosco**, **Link aiutante**, solo finché il modulo è attivo |
 | **Copia e chiudi** | copiare per l’anno prossimo, chiudere, riaprire ed eliminare |
 
 Il personale lavora solo nello svolgimento; la configurazione è riservata
@@ -46,8 +46,7 @@ dall’editor dei programmi, dalle classifiche e dai rapporti.
 
 | Modulo | Cosa aggiunge |
 |---|---|
-| Prenotazioni | bersagli riservati a gruppi e società (richiede uno stand) |
-| Prenotazione online | le società chiedono bersagli tramite un link pubblico (richiede uno stand e attiva Prenotazioni, vedi [Prenotazione online](online-booking.md)) |
+| Prenotazioni | bersagli riservati a gruppi e società; la sua pagina nella configurazione attiva la [prenotazione online](online-booking.md), con cui le società chiedono bersagli tramite un link pubblico (richiede uno stand) |
 | Foglio di stand, Striscia di controllo | i documenti stampati all’iscrizione; la striscia di controllo può stamparsi con un [modello di stampa](print-forms.md#builtin) della società |
 | Distribuzione munizioni | il pulsante **Munizione** sulla dashboard e per la distribuzione munizioni (vedi [Aiutanti](helpers.md#ammunition)); lascialo disattivato dove i tiratori portano le proprie, p. es. pistola e carabina ad aria compressa |
 | Tentativi | programmi che si possono sparare più volte (vedi [Programmi](programmes.md#attempts)) |
@@ -63,7 +62,7 @@ moduli:
 
 | Tipo | Moduli |
 |---|---|
-| Tiro di festa | Prenotazioni, Prenotazione online, Foglio di stand, Striscia di controllo, Distinzioni, Premi speciali, Concorso di sezione, Display chiosco, Link aiutante |
+| Tiro di festa | Prenotazioni, Foglio di stand, Striscia di controllo, Distinzioni, Premi speciali, Concorso di sezione, Display chiosco, Link aiutante |
 | Programma annuale o allenamento | Tentativi, Classifiche generali |
 | Tiro in campagna | Distinzioni, Concorso di sezione, Display chiosco, Link aiutante |
 | Campionato sociale | Tentativi, Classifiche generali, Display chiosco |
@@ -72,8 +71,9 @@ moduli:
 Un modulo che contiene dati resta attivo: disattiva il chiosco solo dopo
 averne eliminato i link chiosco, le distinzioni solo quando nessun programma
 ha livelli di distinzione, e così via; la scheda indica perché il suo
-interruttore è bloccato. Un modulo di cui un altro ha bisogno (Prenotazioni
-per Prenotazione online) resta attivo finché lo è quest’ultimo.
+interruttore è bloccato; Prenotazioni resta attivo finché il link della
+prenotazione online è attivo. Un modulo di cui un altro ha bisogno
+(Distinzioni per Premi speciali) resta attivo finché lo è quest’ultimo.
 
 Gli orari di tiro danno anche alla prenotazione online le sue fasce, a meno
 che la prenotazione fissi altri orari per un giorno (vedi [prenotazione
@@ -93,11 +93,11 @@ laterale (admin) li attiva e disattiva:
 
 Una manifestazione non ha bisogno di uno stand, p. es. un programma annuale
 o un Tiro in campagna i cui risultati arrivano su carta o dall’impianto di
-segnalazione. Senza stand non c’è la griglia dei bersagli, e i moduli
-Prenotazioni e Prenotazione online non sono disponibili; i tiratori vengono
-iscritti senza bersaglio e i loro risultati si registrano come di
-consueto. I documenti si aprono ancora in PDF, ma non vanno a un agente di
-stampa, perché gli agenti di stampa appartengono a uno stand.
+segnalazione. Senza stand non c’è la griglia dei bersagli, e il modulo
+Prenotazioni non è disponibile; i tiratori vengono iscritti senza bersaglio
+e i loro risultati si registrano come di consueto. I documenti si aprono
+ancora in PDF, ma non vanno a un agente di stampa, perché gli agenti di
+stampa appartengono a uno stand.
 
 ## Copia per l’anno prossimo {#copy}
 

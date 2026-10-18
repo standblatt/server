@@ -25,7 +25,7 @@ func TestModules(t *testing.T) {
 		return ev
 	}
 
-	if ev := get(); len(ev.Modules) != 11 || slices.Contains(ev.Modules, "ammo") || len(ev.InUse) != 0 {
+	if ev := get(); len(ev.Modules) != 10 || slices.Contains(ev.Modules, "ammo") || len(ev.InUse) != 0 {
 		t.Fatalf("a new event has every module but the ammunition desk: %v %v", ev.Modules, ev.InUse)
 	}
 	code, b := e.do(boss, "GET", "/api/modules", nil)

@@ -457,7 +457,7 @@ func (s *Server) registerBookingAdmin(api huma.API) {
 	}
 
 	huma.Register(api, huma.Operation{
-		OperationID: "get-booking-config", Metadata: modules.Metadata(modules.Booking), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/booking", Tags: []string{"booking"},
+		OperationID: "get-booking-config", Metadata: modules.Metadata(modules.Reservations), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/booking", Tags: []string{"booking"},
 	}, func(ctx context.Context, in *EventPath) (*struct{ Body BookingConfig }, error) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
 			return nil, err
@@ -470,7 +470,7 @@ func (s *Server) registerBookingAdmin(api huma.API) {
 		Body domain.BookingSettings
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "set-booking-settings", Metadata: modules.Metadata(modules.Booking), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/events/{eventId}/booking", Tags: []string{"booking"},
+		OperationID: "set-booking-settings", Metadata: modules.Metadata(modules.Reservations), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/events/{eventId}/booking", Tags: []string{"booking"},
 	}, func(ctx context.Context, in *settingsIn) (*struct{ Body BookingConfig }, error) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
 			return nil, err
@@ -490,7 +490,7 @@ func (s *Server) registerBookingAdmin(api huma.API) {
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "new-booking-code", Metadata: modules.Metadata(modules.Booking), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/booking/code", Tags: []string{"booking"},
+		OperationID: "new-booking-code", Metadata: modules.Metadata(modules.Reservations), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/booking/code", Tags: []string{"booking"},
 		Summary: "Switch the online booking on with a new link; an earlier link stops working",
 	}, func(ctx context.Context, in *EventPath) (*struct{ Body BookingConfig }, error) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
@@ -518,7 +518,7 @@ func (s *Server) registerBookingAdmin(api huma.API) {
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "list-booking-requests", Metadata: modules.Metadata(modules.Booking), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/booking-requests", Tags: []string{"booking"},
+		OperationID: "list-booking-requests", Metadata: modules.Metadata(modules.Reservations), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/booking-requests", Tags: []string{"booking"},
 	}, func(ctx context.Context, in *EventPath) (*struct{ Body []store.BookingRequest }, error) {
 		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
 			return nil, err

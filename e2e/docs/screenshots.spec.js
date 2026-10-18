@@ -214,7 +214,7 @@ test.describe("documentation screenshots", () => {
     const requests = await api(page, "GET", `${evBase}/booking-requests`);
     await api(page, "POST", `/api/tenants/${ids.tenant}/booking-requests/${requests.find((r) => r.club === "SG Hilltown").id}/confirm`);
 
-    await visit(page, `/t/${ids.tenant}/events/${ids.event}/config/booking`);
+    await visit(page, `/t/${ids.tenant}/events/${ids.event}/config/reservations`);
     await expect(page.getByLabel("Booking link")).toHaveValue(cfg.link);
     await shot(page, "booking-setup");
     await visit(page, `/t/${ids.tenant}/events/${ids.event}/reservations`);

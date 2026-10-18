@@ -145,7 +145,7 @@ func TestSettingsBecomeModules(t *testing.T) {
 	if _, err := db.Exec(ctx, insert, tid, "Closed", `{"noLaneSheet": true, "noControlStrip": true, "ammoIssue": true}`, "2026-12-01T00:00:00Z"); err != nil {
 		t.Fatal(err)
 	}
-	if err := st.MigrateUntil(ctx, ""); err != nil {
+	if err := st.MigrateUntil(ctx, "0032_modules.sql"); err != nil {
 		t.Fatal(err)
 	}
 	got := map[string]string{}
@@ -182,5 +182,33 @@ func TestClubsKeepForms(t *testing.T) {
 	st.Pool().QueryRow(ctx, `SELECT array_to_string(modules, ',') FROM tenants`).Scan(&mods)
 	if mods != "forms" {
 		t.Fatalf("modules %q", mods)
+	}
+}
+
+func TestBookingJoinsReservations(t *testing.T) {
+	st := testdb.Bare(t)
+	ctx := context.Background()
+	if err := st.MigrateUntil(ctx, "0035_certificates.sql"); err != nil {
+		t.Fatal(err)
+	}
+	db := st.Pool()
+	var tid int64
+	db.QueryRow(ctx, `INSERT INTO tenants (name) VALUES ('Club') RETURNING id`).Scan(&tid)
+	for name, mods := range map[string]string{"Both": "{reservations,booking,kiosk}", "Only booking": "{booking}", "None": "{kiosk}"} {
+		if _, err := db.Exec(ctx, `INSERT INTO events (tenant_id, name, starts_on, days, modules) VALUES ($1, $2, '2026-11-20', '{2026-11-20}', $3)`, tid, name, mods); err != nil {
+			t.Fatal(err)
+		}
+	}
+	if err := st.MigrateUntil(ctx, ""); err != nil {
+		t.Fatal(err)
+	}
+	want := map[string]string{"Both": "reservations,kiosk", "Only booking": "reservations", "None": "kiosk"}
+	rows, _ := db.Query(ctx, `SELECT name, array_to_string(modules, ',') FROM events`)
+	for rows.Next() {
+		var name, mods string
+		rows.Scan(&name, &mods)
+		if want[name] != mods {
+			t.Errorf("%s: %s, want %s", name, mods, want[name])
+		}
 	}
 }

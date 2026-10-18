@@ -8,10 +8,10 @@ demande.
 
 ## Activer {#setup}
 
-Activez le module *Réservation en ligne* sous **Configuration** →
-**Modules** (il nécessite un stand) ; ensuite, sur **Réservation en ligne**
-dans la configuration, **Activer** suffit. La page montre ensuite le lien
-avec un code QR pour l’invitation et les créneaux proposés.
+La réservation en ligne fait partie du module *Réservations* (il nécessite
+un stand) : sur **Réservations** dans la configuration, **Activer**
+suffit. La page montre ensuite le lien avec un code QR pour l’invitation et
+les créneaux proposés.
 
 ![Réservation en ligne dans la
 configuration](../images/screenshots/booking-setup.png){ .screenshot }

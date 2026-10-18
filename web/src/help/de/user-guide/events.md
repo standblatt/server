@@ -18,7 +18,7 @@ in den Betrieb:
 | **Allgemein** | Name, Tage, Stände, Veranstalter und Sprache (siehe unten) |
 | **Module** | die Module, die der Anlass verwendet (siehe unten) |
 | **Programme** | was geschossen werden kann (siehe [Programme](programmes.md)) |
-| Seiten das Module | z. B. **Wertungen**, **Kiosk-Anzeigen**, **Helferlinks**, **Online-Reservation**, nur solange das Modul an ist |
+| Seiten der Module | z. B. **Reservationen** (mit der Online-Reservation), **Wertungen**, **Kiosk-Anzeigen**, **Helferlinks**, nur solange das Modul an ist |
 | **Kopieren & abschliessen** | für nächstes Jahr kopieren, abschliessen, wiedereröffnen und löschen |
 
 Personal arbeitet nur im Betrieb; die Konfiguration ist für Admins.
@@ -44,8 +44,7 @@ Seitenleiste, Dashboard, Programm-Editor, Ranglisten und Berichten.
 
 | Modul | Was es bringt |
 |---|---|
-| Reservationen | für Gruppen und Vereine reservierte Scheiben (braucht einen Stand) |
-| Online-Reservation | Vereine fragen über einen öffentlichen Link Scheiben an (braucht einen Stand und schaltet Reservationen ein, siehe [Online-Reservation](online-booking.md)) |
+| Reservationen | für Gruppen und Vereine reservierte Scheiben; seine Seite in der Konfiguration schaltet die [Online-Reservation](online-booking.md) ein, über die Vereine mit einem öffentlichen Link Scheiben anfragen (braucht einen Stand) |
 | Standblatt, Kontrollstreifen | die Dokumente, die bei der Anmeldung gedruckt werden; der Kontrollstreifen kann mit einer [Druckvorlage](print-forms.md#builtin) des Vereins drucken |
 | Munitionsausgabe | der Knopf **Munition** im Dashboard und für die Munitionsausgabe (siehe [Helfer](helpers.md#ammunition)); aus lassen, wo die Schützen ihre eigene mitbringen, z. B. Luftpistole und Luftgewehr |
 | Durchgänge | Programme, die mehrmals geschossen werden können (siehe [Programme](programmes.md#attempts)) |
@@ -61,7 +60,7 @@ schaltet nur Module ein:
 
 | Art | Module |
 |---|---|
-| Schützenfest | Reservationen, Online-Reservation, Standblatt, Kontrollstreifen, Auszeichnungen, Sonderpreise, Vereinskonkurrenz, Kiosk-Anzeigen, Helferlinks |
+| Schützenfest | Reservationen, Standblatt, Kontrollstreifen, Auszeichnungen, Sonderpreise, Vereinskonkurrenz, Kiosk-Anzeigen, Helferlinks |
 | Jahresprogramm oder Training | Durchgänge, Wertungen |
 | Feldschiessen | Auszeichnungen, Vereinskonkurrenz, Kiosk-Anzeigen, Helferlinks |
 | Vereinsmeisterschaft | Durchgänge, Wertungen, Kiosk-Anzeigen |
@@ -70,8 +69,9 @@ schaltet nur Module ein:
 Ein Modul mit Daten bleibt an: Den Kiosk schaltest du erst aus, wenn seine
 Kiosk-Links gelöscht sind, die Auszeichnungen erst, wenn kein Programm mehr
 Auszeichnungsstufen hat, und so weiter; die Karte sagt, warum ihr Schalter
-gesperrt ist. Ein Modul, das ein anderes braucht (Reservationen für die
-Online-Reservation), bleibt an, solange jenes an ist.
+gesperrt ist; Reservationen bleiben an, solange der Link der
+Online-Reservation aktiv ist. Ein Modul, das ein anderes braucht
+(Auszeichnungen für Sonderpreise), bleibt an, solange jenes an ist.
 
 Die Schiesszeiten geben auch der Online-Reservation ihre Zeitblöcke, ausser
 die Reservation legt für einen Tag andere Zeiten fest (siehe
@@ -90,11 +90,11 @@ Vereinsteil der Seitenleiste (Admins) schaltet sie ein und aus:
 
 Ein Anlass braucht keinen Stand, z. B. ein Jahresprogramm oder ein
 Feldschiessen, dessen Resultate auf Papier oder aus der Trefferanzeige
-kommen. Ohne Stand gibt es kein Scheibenraster, und die Module Reservationen
-und Online-Reservation stehen nicht zur Verfügung; Schützen werden ohne
-Scheibe angemeldet, und ihre Resultate werden wie gewohnt erfasst. Dokumente
-lassen sich weiterhin als PDF öffnen, gehen aber nicht an einen
-Druck-Agenten, weil Druck-Agenten zu einem Stand gehören.
+kommen. Ohne Stand gibt es kein Scheibenraster, und das Modul Reservationen
+steht nicht zur Verfügung; Schützen werden ohne Scheibe angemeldet, und ihre
+Resultate werden wie gewohnt erfasst. Dokumente lassen sich weiterhin als
+PDF öffnen, gehen aber nicht an einen Druck-Agenten, weil Druck-Agenten zu
+einem Stand gehören.
 
 ## Für nächstes Jahr kopieren {#copy}
 

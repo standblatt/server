@@ -2807,9 +2807,9 @@ export interface components {
              */
             locale: "en" | "de" | "fr" | "it";
             /** @description The modules that are on: the chosen ones, the ones with data and what they require */
-            modules: ("reservations" | "booking" | "lane_sheet" | "control_strip" | "ammo" | "attempts" | "awards" | "special_prizes" | "club_competition" | "classifications" | "kiosk" | "helpers")[];
+            modules: ("reservations" | "lane_sheet" | "control_strip" | "ammo" | "attempts" | "awards" | "special_prizes" | "club_competition" | "classifications" | "kiosk" | "helpers")[];
             /** @description The modules with data; they cannot be switched off */
-            modulesInUse: ("reservations" | "booking" | "lane_sheet" | "control_strip" | "ammo" | "attempts" | "awards" | "special_prizes" | "club_competition" | "classifications" | "kiosk" | "helpers")[];
+            modulesInUse: ("reservations" | "lane_sheet" | "control_strip" | "ammo" | "attempts" | "awards" | "special_prizes" | "club_competition" | "classifications" | "kiosk" | "helpers")[];
             name: string;
             organizer: string;
             /** @description In the order shown; documents print on the first one */
@@ -2827,7 +2827,7 @@ export interface components {
             /** @enum {string} */
             locale?: "en" | "de" | "fr" | "it";
             /** @description The modules to switch on; left out: all but the ammunition desk when creating, unchanged when updating */
-            modules?: ("reservations" | "booking" | "lane_sheet" | "control_strip" | "ammo" | "attempts" | "awards" | "special_prizes" | "club_competition" | "classifications" | "kiosk" | "helpers")[];
+            modules?: ("reservations" | "lane_sheet" | "control_strip" | "ammo" | "attempts" | "awards" | "special_prizes" | "club_competition" | "classifications" | "kiosk" | "helpers")[];
             name: string;
             organizer?: string;
             /** @description Empty for an event without lanes: results are entered afterwards */

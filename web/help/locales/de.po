@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 10:31+0000\n"
+"POT-Creation-Date: 2026-10-18 10:47+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -2665,7 +2665,7 @@ msgid ""
 "| **General** | name, days, ranges, organizer and language (see below) |\n"
 "| **Modules** | the building blocks the event uses (see below) |\n"
 "| **Programmes** | what can be shot (see [Programmes](programmes.md)) |\n"
-"| Pages of modules | e.g. **Classifications**, **Kiosk displays**, **Helper links**, **Online booking**, only while the module is on |\n"
+"| Pages of modules | e.g. **Reservations** (with the online booking), **Classifications**, **Kiosk displays**, **Helper links**, only while the module is on |\n"
 "| **Copy & close** | copy for next year, close, reopen and delete |\n"
 msgstr ""
 "| Seite | Was sie enthält |\n"
@@ -2673,7 +2673,7 @@ msgstr ""
 "| **Allgemein** | Name, Tage, Stände, Veranstalter und Sprache (siehe unten) |\n"
 "| **Module** | die Module, die der Anlass verwendet (siehe unten) |\n"
 "| **Programme** | was geschossen werden kann (siehe [Programme](programmes.md)) |\n"
-"| Seiten das Module | z. B. **Wertungen**, **Kiosk-Anzeigen**, **Helferlinks**, **Online-Reservation**, nur solange das Modul an ist |\n"
+"| Seiten der Module | z. B. **Reservationen** (mit der Online-Reservation), **Wertungen**, **Kiosk-Anzeigen**, **Helferlinks**, nur solange das Modul an ist |\n"
 "| **Kopieren & abschliessen** | für nächstes Jahr kopieren, abschliessen, wiedereröffnen und löschen |\n"
 
 #. type: Plain text
@@ -2734,13 +2734,12 @@ msgstr ""
 "Seitenleiste, Dashboard, Programm-Editor, Ranglisten und Berichten."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:50
+#: ../src/help/en/user-guide/events.md:49
 #, no-wrap
 msgid ""
 "| Module | What it adds |\n"
 "|---|---|\n"
-"| Reservations | lanes reserved for groups and clubs (needs a range) |\n"
-"| Online booking | clubs ask for lanes through a public link (needs a range and switches on Reservations, see [Online booking](online-booking.md)) |\n"
+"| Reservations | lanes reserved for groups and clubs; its page in the configuration switches on the [online booking](online-booking.md), through which clubs ask for lanes with a public link (needs a range) |\n"
 "| Lane sheet, Control strip | the documents printed at registration; the control strip can print with a [print form](print-forms.md#builtin) of the club |\n"
 "| Ammunition desk | the **Ammo** button on the dashboard and for the ammunition desk (see [Helpers](helpers.md#ammunition)); leave it off where shooters bring their own, e.g. air pistol and air rifle |\n"
 "| Attempts | programmes that can be shot several times (see [Programmes](programmes.md#attempts)) |\n"
@@ -2753,8 +2752,7 @@ msgid ""
 msgstr ""
 "| Modul | Was es bringt |\n"
 "|---|---|\n"
-"| Reservationen | für Gruppen und Vereine reservierte Scheiben (braucht einen Stand) |\n"
-"| Online-Reservation | Vereine fragen über einen öffentlichen Link Scheiben an (braucht einen Stand und schaltet Reservationen ein, siehe [Online-Reservation](online-booking.md)) |\n"
+"| Reservationen | für Gruppen und Vereine reservierte Scheiben; seine Seite in der Konfiguration schaltet die [Online-Reservation](online-booking.md) ein, über die Vereine mit einem öffentlichen Link Scheiben anfragen (braucht einen Stand) |\n"
 "| Standblatt, Kontrollstreifen | die Dokumente, die bei der Anmeldung gedruckt werden; der Kontrollstreifen kann mit einer [Druckvorlage](print-forms.md#builtin) des Vereins drucken |\n"
 "| Munitionsausgabe | der Knopf **Munition** im Dashboard und für die Munitionsausgabe (siehe [Helfer](helpers.md#ammunition)); aus lassen, wo die Schützen ihre eigene mitbringen, z. B. Luftpistole und Luftgewehr |\n"
 "| Durchgänge | Programme, die mehrmals geschossen werden können (siehe [Programme](programmes.md#attempts)) |\n"
@@ -2766,7 +2764,7 @@ msgstr ""
 "| Helferlinks | Warner, Munitionsausgabe und Resultaterfassung ohne Konto (siehe [Helfer](helpers.md)) |\n"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:52
+#: ../src/help/en/user-guide/events.md:51
 msgid ""
 "When you create an event, choose what kind it is; this only switches modules "
 "on:"
@@ -2775,12 +2773,12 @@ msgstr ""
 "schaltet nur Module ein:"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:60
+#: ../src/help/en/user-guide/events.md:59
 #, no-wrap
 msgid ""
 "| Kind | Modules |\n"
 "|---|---|\n"
-"| Shooting festival | Reservations, Online booking, Lane sheet, Control strip, Awards, Special prizes, Club competition, Kiosk displays, Helper links |\n"
+"| Shooting festival | Reservations, Lane sheet, Control strip, Awards, Special prizes, Club competition, Kiosk displays, Helper links |\n"
 "| Annual programme or training | Attempts, Classifications |\n"
 "| Feldschiessen | Awards, Club competition, Kiosk displays, Helper links |\n"
 "| Club championship | Attempts, Classifications, Kiosk displays |\n"
@@ -2788,28 +2786,24 @@ msgid ""
 msgstr ""
 "| Art | Module |\n"
 "|---|---|\n"
-"| Schützenfest | Reservationen, Online-Reservation, Standblatt, Kontrollstreifen, Auszeichnungen, Sonderpreise, Vereinskonkurrenz, Kiosk-Anzeigen, Helferlinks |\n"
+"| Schützenfest | Reservationen, Standblatt, Kontrollstreifen, Auszeichnungen, Sonderpreise, Vereinskonkurrenz, Kiosk-Anzeigen, Helferlinks |\n"
 "| Jahresprogramm oder Training | Durchgänge, Wertungen |\n"
 "| Feldschiessen | Auszeichnungen, Vereinskonkurrenz, Kiosk-Anzeigen, Helferlinks |\n"
 "| Vereinsmeisterschaft | Durchgänge, Wertungen, Kiosk-Anzeigen |\n"
 "| Eigene Auswahl | keine |\n"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:62
+#: ../src/help/en/user-guide/events.md:61
 msgid ""
 "A module that holds data stays on: switch off the kiosk only after deleting "
 "its kiosk links, the awards only when no programme has award tiers, and so "
-"on; the card says why its switch is locked. A module another one needs "
-"(Reservations for Online booking) stays on as long as that one is."
-msgstr ""
-"Ein Modul mit Daten bleibt an: Den Kiosk schaltest du erst aus, wenn seine "
-"Kiosk-Links gelöscht sind, die Auszeichnungen erst, wenn kein Programm mehr "
-"Auszeichnungsstufen hat, und so weiter; die Karte sagt, warum ihr Schalter "
-"gesperrt ist. Ein Modul, das ein anderes braucht (Reservationen für die "
-"Online-Reservation), bleibt an, solange jenes an ist."
+"on; the card says why its switch is locked; Reservations stay on while the "
+"online booking link is active. A module another one needs (Awards for "
+"Special prizes) stays on as long as that one is."
+msgstr "Ein Modul mit Daten bleibt an: Den Kiosk schaltest du erst aus, wenn seine Kiosk-Links gelöscht sind, die Auszeichnungen erst, wenn kein Programm mehr Auszeichnungsstufen hat, und so weiter; die Karte sagt, warum ihr Schalter gesperrt ist; Reservationen bleiben an, solange der Link der Online-Reservation aktiv ist. Ein Modul, das ein anderes braucht (Auszeichnungen für Sonderpreise), bleibt an, solange jenes an ist."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:64
+#: ../src/help/en/user-guide/events.md:63
 msgid ""
 "Shooting times also give the online booking its slots, unless the booking "
 "sets other hours for a day (see [Online booking](online-booking.md))."
@@ -2819,13 +2813,13 @@ msgstr ""
 "Reservation](online-booking.md))."
 
 #. type: Title ###
-#: ../src/help/en/user-guide/events.md:65
+#: ../src/help/en/user-guide/events.md:64
 #, no-wrap
 msgid "Club modules {#club-modules}"
 msgstr "Vereinsmodule {#club-modules}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:68
+#: ../src/help/en/user-guide/events.md:67
 msgid ""
 "Some modules belong to the club rather than to an event. **Club modules** in "
 "the club part of the sidebar (admins) switches them on and off:"
@@ -2834,7 +2828,7 @@ msgstr ""
 "Vereinsteil der Seitenleiste (Admins) schaltet sie ein und aus:"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:72
+#: ../src/help/en/user-guide/events.md:71
 #, no-wrap
 msgid ""
 "| Module | What it adds |\n"
@@ -2846,37 +2840,30 @@ msgstr ""
 "| Druckvorlagen | Vorlagen für vorgedruckte Blätter und der Abschnitt *Druckvorlage* jedes Programms (siehe [Druckvorlagen](print-forms.md)) |\n"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:73
+#: ../src/help/en/user-guide/events.md:72
 #, no-wrap
 msgid "Events without lanes {#no-lanes}"
 msgstr "Anlässe ohne Scheiben {#no-lanes}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:76
+#: ../src/help/en/user-guide/events.md:75
 msgid ""
 "An event needs no range, e.g. an annual programme or a Feldschiessen whose "
 "results come on paper or from the scoring system. Without a range there is "
-"no lane grid, and the modules Reservations and Online booking are not "
-"available; shooters are registered without a lane and their results are "
-"entered as usual. Documents can still be opened as PDF, but they do not go "
-"to a print agent, because print agents belong to a range."
-msgstr ""
-"Ein Anlass braucht keinen Stand, z. B. ein Jahresprogramm oder ein "
-"Feldschiessen, dessen Resultate auf Papier oder aus der Trefferanzeige "
-"kommen. Ohne Stand gibt es kein Scheibenraster, und die Module Reservationen "
-"und Online-Reservation stehen nicht zur Verfügung; Schützen werden ohne "
-"Scheibe angemeldet, und ihre Resultate werden wie gewohnt erfasst. Dokumente "
-"lassen sich weiterhin als PDF öffnen, gehen aber nicht an einen Druck-"
-"Agenten, weil Druck-Agenten zu einem Stand gehören."
+"no lane grid, and the module Reservations is not available; shooters are "
+"registered without a lane and their results are entered as usual. Documents "
+"can still be opened as PDF, but they do not go to a print agent, because "
+"print agents belong to a range."
+msgstr "Ein Anlass braucht keinen Stand, z. B. ein Jahresprogramm oder ein Feldschiessen, dessen Resultate auf Papier oder aus der Trefferanzeige kommen. Ohne Stand gibt es kein Scheibenraster, und das Modul Reservationen steht nicht zur Verfügung; Schützen werden ohne Scheibe angemeldet, und ihre Resultate werden wie gewohnt erfasst. Dokumente lassen sich weiterhin als PDF öffnen, gehen aber nicht an einen Druck-Agenten, weil Druck-Agenten zu einem Stand gehören."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:77
+#: ../src/help/en/user-guide/events.md:76
 #, no-wrap
 msgid "Copy for next year {#copy}"
 msgstr "Für nächstes Jahr kopieren {#copy}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:80
+#: ../src/help/en/user-guide/events.md:79
 msgid ""
 "On **Copy & close** in the configuration, **Copy for next year** creates a "
 "new event with the same ranges, organizer, language, settings, modules and "
@@ -2898,19 +2885,19 @@ msgstr ""
 "*42.*) und das Datum ein Jahr später vor; passe beides bei Bedarf an."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:82
+#: ../src/help/en/user-guide/events.md:81
 msgid "![Copy an event](../images/screenshots/copy-event.png){ .screenshot }"
 msgstr ""
 "![Einen Anlass kopieren](../images/screenshots/copy-event.png){ .screenshot }"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:83
+#: ../src/help/en/user-guide/events.md:82
 #, no-wrap
 msgid "Close {#close}"
 msgstr "Abschliessen {#close}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:86
+#: ../src/help/en/user-guide/events.md:85
 msgid ""
 "When an event is over and the rankings are checked, **Close** it on **Copy & "
 "close** in the configuration. Closing releases the rankings: shooters with a "
@@ -2936,13 +2923,13 @@ msgstr ""
 "abgeschlossenen Anlasses für nächstes Jahr funktioniert."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:87
+#: ../src/help/en/user-guide/events.md:86
 #, no-wrap
 msgid "Delete"
 msgstr "Löschen"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:89
+#: ../src/help/en/user-guide/events.md:88
 #, no-wrap
 msgid "**Delete** (on **Copy & close**) removes an event, but only while nobody is registered for it.\n"
 msgstr "**Löschen** (auf **Kopieren & abschliessen**) entfernt einen Anlass, aber nur solange niemand dafür angemeldet ist.\n"
@@ -3250,7 +3237,11 @@ msgid ""
 "each document (*Certificates* are the certificates from the rankings, *Print "
 "forms* every other form of the club) and its options (tray, paper size, "
 "media type, further `lp` options such as `fit-to-page`)."
-msgstr "Sobald der Agent online ist, meldet er seine Drucker. Wähle für jedes Dokument den Drucker (*Urkunden* sind die Urkunden aus den Ranglisten, *Druckvorlagen* alle anderen Vorlagen des Vereins) und seine Optionen (Fach, Papierformat, Medientyp, weitere `lp`-Optionen wie `fit-to-page`)."
+msgstr ""
+"Sobald der Agent online ist, meldet er seine Drucker. Wähle für jedes "
+"Dokument den Drucker (*Urkunden* sind die Urkunden aus den Ranglisten, "
+"*Druckvorlagen* alle anderen Vorlagen des Vereins) und seine Optionen (Fach, "
+"Papierformat, Medientyp, weitere `lp`-Optionen wie `fit-to-page`)."
 
 #. type: Bullet: '3. '
 #: ../src/help/en/user-guide/printing.md:25
@@ -3465,7 +3456,11 @@ msgid ""
 "A form that prints **A registration** besides the event's control strip, "
 "e.g. a participant card or a receipt, appears in the registration with a "
 "button of its own name; it prints on the printer of *Print forms*."
-msgstr "Eine Vorlage, die **Eine Anmeldung** druckt, erscheint neben dem Kontrollstreifen des Anlasses in der Anmeldung als Knopf mit ihrem eigenen Namen, z. B. eine Teilnehmerkarte oder eine Quittung; sie druckt auf dem Drucker der *Druckvorlagen*."
+msgstr ""
+"Eine Vorlage, die **Eine Anmeldung** druckt, erscheint neben dem "
+"Kontrollstreifen des Anlasses in der Anmeldung als Knopf mit ihrem eigenen "
+"Namen, z. B. eine Teilnehmerkarte oder eine Quittung; sie druckt auf dem "
+"Drucker der *Druckvorlagen*."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:39
@@ -3478,7 +3473,15 @@ msgid ""
 "Printing**. The fields of a rank are the rank, the total, the ranking (the "
 "programme or classification) and the class; a programme's certificate knows "
 "its results too."
-msgstr "Eine Vorlage, die **Ein Rang** druckt, macht Urkunden: **Urkunden** im Kopf jeder Rangliste und jeder Wertung unter **Ranglisten** fragt nach der Vorlage, der Klasse einer Wertung und den Rängen (1 bis 3, wenn nicht geändert) und druckt dann eine Seite pro rangiertem Schützen oder öffnet sie als ein PDF. Urkunden gehen an den Drucker der *Urkunden* unter **Schiessstände → Drucken**. Die Felder eines Rangs sind der Rang, das Total, die Rangliste (das Programm oder die Wertung) und die Klasse; die Urkunde eines Programms kennt auch seine Resultate."
+msgstr ""
+"Eine Vorlage, die **Ein Rang** druckt, macht Urkunden: **Urkunden** im Kopf "
+"jeder Rangliste und jeder Wertung unter **Ranglisten** fragt nach der "
+"Vorlage, der Klasse einer Wertung und den Rängen (1 bis 3, wenn nicht "
+"geändert) und druckt dann eine Seite pro rangiertem Schützen oder öffnet sie "
+"als ein PDF. Urkunden gehen an den Drucker der *Urkunden* unter "
+"**Schiessstände → Drucken**. Die Felder eines Rangs sind der Rang, das "
+"Total, die Rangliste (das Programm oder die Wertung) und die Klasse; die "
+"Urkunde eines Programms kennt auch seine Resultate."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/print-forms.md:40
@@ -4113,7 +4116,10 @@ msgid ""
 "**Certificates** prints certificates for the best ranks onto a [print form]"
 "(print-forms.md#certificates) of the club; the button appears once the club "
 "has a form that prints a rank."
-msgstr "**Urkunden** druckt Urkunden für die besten Ränge auf eine [Druckvorlage](print-forms.md#certificates) des Vereins; der Knopf erscheint, sobald der Verein eine Vorlage hat, die einen Rang druckt."
+msgstr ""
+"**Urkunden** druckt Urkunden für die besten Ränge auf eine [Druckvorlage]"
+"(print-forms.md#certificates) des Vereins; der Knopf erscheint, sobald der "
+"Verein eine Vorlage hat, die einen Rang druckt."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/rankings-kiosk.md:14
@@ -4428,8 +4434,7 @@ msgstr ""
 #: ../src/help/en/user-guide/registrations.md:29
 #, no-wrap
 msgid "*Print lane sheet* and *Print control strip* are ticked by default (they only appear while the modules *Lane sheet* and *Control strip* are on, see [Modules](events.md#modules)): the documents print on the range's printers right after registering, or open as PDF if no printer is set up (see [Printing](printing.md)). [Print forms](print-forms.md#certificates) of the club that print a registration, e.g. a participant card, add a button each.\n"
-msgstr ""
-"*Standblatt drucken* und *Kontrollstreifen drucken* sind standardmässig angekreuzt (sie erscheinen nur, solange die Module *Standblatt* und *Kontrollstreifen* an sind, siehe [Module](events.md#modules)): Die Dokumente werden gleich nach der Anmeldung auf den Druckern des Schiessstands gedruckt oder öffnen sich als PDF, wenn kein Drucker eingerichtet ist (siehe [Drucken](printing.md)). [Druckvorlagen](print-forms.md#certificates) des Vereins, die eine Anmeldung drucken, z. B. eine Teilnehmerkarte, fügen je einen Knopf hinzu.\n"
+msgstr "*Standblatt drucken* und *Kontrollstreifen drucken* sind standardmässig angekreuzt (sie erscheinen nur, solange die Module *Standblatt* und *Kontrollstreifen* an sind, siehe [Module](events.md#modules)): Die Dokumente werden gleich nach der Anmeldung auf den Druckern des Schiessstands gedruckt oder öffnen sich als PDF, wenn kein Drucker eingerichtet ist (siehe [Drucken](printing.md)). [Druckvorlagen](print-forms.md#certificates) des Vereins, die eine Anmeldung drucken, z. B. eine Teilnehmerkarte, fügen je einen Knopf hinzu.\n"
 
 #. type: Title ##
 #: ../src/help/en/user-guide/registrations.md:30
@@ -4545,15 +4550,11 @@ msgstr "Einschalten {#setup}"
 #. type: Plain text
 #: ../src/help/en/user-guide/online-booking.md:8
 msgid ""
-"Switch on the module *Online booking* under **Configuration** → **Modules** "
-"(it needs a range); then, on **Online booking** in the configuration, "
-"**Switch on** is all it takes. The page then shows the link with a QR code "
-"for the invitation and the slots it offers."
-msgstr ""
-"Schalte das Modul *Online-Reservation* unter **Konfiguration** → **Module** "
-"ein (es braucht einen Stand); dann genügt auf **Online-Reservation** in der "
-"Konfiguration **Einschalten**. Die Seite zeigt dann den Link mit einem QR-"
-"Code für die Einladung und die angebotenen Zeitblöcke."
+"The online booking is part of the module *Reservations* (it needs a range): "
+"on **Reservations** in the configuration, **Switch on** is all it takes. The "
+"page then shows the link with a QR code for the invitation and the slots it "
+"offers."
+msgstr "Die Online-Reservation ist Teil des Moduls *Reservationen* (es braucht einen Stand): Auf **Reservationen** in der Konfiguration genügt **Einschalten**. Die Seite zeigt dann den Link mit einem QR-Code für die Einladung und die angebotenen Zeitblöcke."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/online-booking.md:10

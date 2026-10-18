@@ -30,8 +30,8 @@ func TestEffective(t *testing.T) {
 		hasRange     bool
 		want         string
 	}{
-		{[]string{Booking}, nil, true, "[reservations booking]"},
-		{[]string{Booking, Kiosk}, nil, false, "[kiosk]"},
+		{[]string{Reservations}, nil, true, "[reservations]"},
+		{[]string{Reservations, Kiosk}, nil, false, "[kiosk]"},
 		{[]string{SpecialPrizes}, []string{Helpers}, false, "[awards special_prizes helpers]"},
 		{[]string{"nope", Kiosk, Kiosk}, nil, true, "[kiosk]"},
 		{nil, nil, true, "[]"},

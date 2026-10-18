@@ -22,7 +22,7 @@ var documentModules = map[string]string{store.DocLaneSheet: modules.LaneSheet, s
 // reportModules are the reports that belong to a module.
 var reportModules = map[string]string{
 	ReportAwards: modules.Awards, ReportAwardsOpen: modules.Awards, ReportClubCompetition: modules.ClubCompetition,
-	ReportSpecialPrizes: modules.SpecialPrizes, ReportBookings: modules.Booking, ReportClassifications: modules.Classifications,
+	ReportSpecialPrizes: modules.SpecialPrizes, ReportBookings: modules.Reservations, ReportClassifications: modules.Classifications,
 }
 
 // moduleGate refuses operations of a module (see modules.Metadata) with 404 while the module is off for the event
@@ -105,7 +105,7 @@ func requireModule(ev store.Event, key string) error {
 // moduleUsed turns a store.ModuleUsedError into a 409 for its first module, telling what to remove first.
 func moduleUsed(e *store.ModuleUsedError) error {
 	switch e.Keys[0] {
-	case modules.Booking:
+	case modules.Reservations:
 		return conflict("Switch the online booking link off first")
 	case modules.Attempts:
 		return conflict("Programmes with several attempts use this module")

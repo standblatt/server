@@ -101,7 +101,7 @@ func TestEventWithoutRange(t *testing.T) {
 
 	code, b := e.do(boss, "POST", base+"/events", map[string]any{"name": "Annual programme", "startsOn": "2027-03-01"})
 	expect(t, "create an event without a range", code, 201, b)
-	code, b = e.do(boss, "PUT", evPath, map[string]any{"name": "Indoor", "startsOn": "2026-11-20", "modules": []string{"control_strip", "booking"}})
+	code, b = e.do(boss, "PUT", evPath, map[string]any{"name": "Indoor", "startsOn": "2026-11-20", "modules": []string{"control_strip", "reservations"}})
 	expect(t, "drop the range", code, 204, b)
 	var ev store.Event
 	_, b = e.do(boss, "GET", evPath, nil)
