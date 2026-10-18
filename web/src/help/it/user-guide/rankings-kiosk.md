@@ -10,6 +10,9 @@
   scarica per Excel. Le classifiche non vanno alla stampante dello stand.
 - I programmi disattivati per gli schermi chiosco sono comunque classificati
   qui e segnati *non sul chiosco*.
+- Le [classifiche generali](classifications.md) seguono i programmi, una
+  tabella per classe; il loro **PDF** e **CSV** sono il rapporto
+  *Classifiche generali*.
 
 ## Schermi chiosco
 

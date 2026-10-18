@@ -25,6 +25,7 @@ type RankingRow struct {
 	AwardName   string
 	Series      []float64
 	Mouches     int
+	Shots       []float64
 	Attempts    int
 }
 
@@ -32,7 +33,9 @@ type RankingRow struct {
 func (s *Store) ListRankingRows(ctx context.Context, tenantID, eventID int64) ([]RankingRow, error) {
 	rows, err := s.pool.Query(ctx, `SELECT en.programme_id, en.id, en.shooter_id, en.attempt, p.attempt_rule,
 			sh.firstname, sh.lastname, coalesce(sh.birthday::text, ''), coalesce(c.name, ''), r.age_category, coalesce(t.name, ''),
-			array_agg(re.points::float8 ORDER BY re.series_number), coalesce(sum(re.mouches), 0), 0
+			array_agg(re.points::float8 ORDER BY re.series_number), coalesce(sum(re.mouches), 0),
+			coalesce((SELECT array_agg(x::float8 ORDER BY r2.series_number, o) FROM results r2, unnest(r2.shots) WITH ORDINALITY u(x, o)
+				WHERE r2.entry_id = en.id), '{}'), 0
 		FROM entries en
 		JOIN programmes p ON p.id = en.programme_id
 		JOIN registrations r ON r.id = en.registration_id
@@ -102,7 +105,7 @@ func (r RankingRow) Entry() domain.RankingEntry {
 	for _, v := range r.Series {
 		total += v
 	}
-	return domain.RankingEntry{Total: math.Round(total*100) / 100, Mouches: r.Mouches, Series: r.Series, Birthday: r.Birthday, Category: r.Category}
+	return domain.RankingEntry{Total: math.Round(total*100) / 100, Mouches: r.Mouches, Series: r.Series, Shots: r.Shots, Birthday: r.Birthday, Category: r.Category}
 }
 
 // CountingRows keeps the counting attempt of every shooter in every programme, by the programme's attempt rule, and

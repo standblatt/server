@@ -11,6 +11,9 @@
   l’imprimante du stand.
 - Les programmes désactivés pour les écrans kiosque sont quand même classés
   ici et marqués *pas sur le kiosque*.
+- Les [classements généraux](classifications.md) suivent les programmes, un
+  tableau par classe ; leur **PDF** et **CSV** sont le rapport *Classements
+  généraux*.
 
 ## Écrans kiosque
 

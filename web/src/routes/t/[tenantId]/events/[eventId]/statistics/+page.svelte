@@ -37,6 +37,7 @@
 		{ id: 'club_competition', label: $t`Club competition` },
 		{ id: 'club_participants', label: $t`Club participants` },
 		{ id: 'special_prizes', label: $t`Special prizes` },
+		{ id: 'classifications', label: $t`Classifications` },
 		{ id: 'awards_open', label: $t`Awards to hand out` },
 		{ id: 'bookings', label: $t`Lane bookings` }
 	]);

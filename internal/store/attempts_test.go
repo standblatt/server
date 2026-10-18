@@ -123,3 +123,33 @@ func TestCountingRows(t *testing.T) {
 		}
 	}
 }
+
+func TestClassificationsCopyAndCleanup(t *testing.T) {
+	st := testdb.New(t)
+	ctx := context.Background()
+	tid, ev := eventFixture(t, st, "Club")
+	keep, _ := st.CreateProgramme(ctx, tid, ev, fieldMatch())
+	other := fieldMatch()
+	other.Name = "Other"
+	drop, _ := st.CreateProgramme(ctx, tid, ev, other)
+	c := domain.ClassificationDefinition{Name: "Section", TieBreak: domain.SSVTieBreak,
+		Parts: []domain.ClassificationPart{{ProgrammeID: keep, Count: 1}, {ProgrammeID: drop, Count: 2}}}
+	if _, err := st.CreateClassification(ctx, tid, ev, c); err != nil {
+		t.Fatal(err)
+	}
+	copied, err := st.CopyEvent(ctx, tid, ev, "Next year", "2027-06-01")
+	if err != nil {
+		t.Fatal(err)
+	}
+	list, err := st.ListClassifications(ctx, tid, copied)
+	if err != nil || len(list) != 1 || len(list[0].Parts) != 2 || list[0].Parts[0].ProgrammeID == keep || list[0].Parts[1].Count != 2 {
+		t.Fatalf("copied classification: %+v %v", list, err)
+	}
+	if err := st.DeleteProgramme(ctx, tid, drop); err != nil {
+		t.Fatal(err)
+	}
+	list, _ = st.ListClassifications(ctx, tid, ev)
+	if len(list[0].Parts) != 1 || list[0].Parts[0].ProgrammeID != keep {
+		t.Fatalf("a deleted programme leaves the classification: %+v", list[0].Parts)
+	}
+}

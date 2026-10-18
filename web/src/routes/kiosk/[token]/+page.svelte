@@ -11,6 +11,7 @@
 	import { liveLabel } from '$lib/labels';
 	import { Live, refresh } from '$lib/live.svelte';
 	import Logo from '$lib/Logo.svelte';
+	import ClassificationTable from '$lib/ClassificationTable.svelte';
 	import RankingTable from '$lib/RankingTable.svelte';
 	import Maximize from '@lucide/svelte/icons/maximize';
 	import { Button } from '$lib/components/ui/button';
@@ -39,6 +40,11 @@
 	const rankings = createQuery(() => ({
 		queryKey: ['kiosk', token, 'rankings'],
 		queryFn: () => call(kiosk.GET('/api/kiosk/rankings')),
+		enabled: !!event.data
+	}));
+	const classifications = createQuery(() => ({
+		queryKey: ['kiosk', token, 'classifications'],
+		queryFn: () => call(kiosk.GET('/api/kiosk/classifications')),
 		enabled: !!event.data
 	}));
 	const lanes = createQuery(() => ({
@@ -136,6 +142,13 @@
 					{/each}
 				</div>
 			{/each}
+			{#if classifications.data?.length}
+				<div class="grid gap-6 *:min-w-0 2xl:grid-cols-2">
+					{#each classifications.data as c (c.id)}
+						<ClassificationTable ranking={c} large />
+					{/each}
+				</div>
+			{/if}
 		</div>
 	{:else}
 		<p class="p-10 text-muted-foreground">{$t`Loading …`}</p>

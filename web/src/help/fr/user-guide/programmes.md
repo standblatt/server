@@ -31,8 +31,7 @@ programmes](../images/screenshots/setup.png){ .screenshot }
   avertit si le nom de variante est vide ou déjà pris.
 - **Code-barres** : imprimé sur la feuille de stand pour le marquage
   électronique (voir [Codes](../reference/codes.md)).
-- **Compte pour le concours de sections** et **Afficher sur les écrans
-  kiosque**.
+- **Afficher sur les écrans kiosque**.
 - **Passes** : coups, points maximum, si les mouches sont comptées et si les
   **Coups individuels** sont saisis, par passe. Avec les coups individuels,
   chaque coup peut être saisi et la passe en est la somme, p. ex. pour les

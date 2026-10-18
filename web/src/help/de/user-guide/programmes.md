@@ -31,7 +31,7 @@ Programme gehören zu einem Anlass und werden im Tab *Programme* seiner
   wenn der Variantenname leer oder schon vergeben ist.
 - **Barcode**: wird für die elektronische Trefferanzeige auf das Standblatt
   gedruckt (siehe [Codes](../reference/codes.md)).
-- **Zählt für die Vereinskonkurrenz** und **Auf Kiosk-Anzeigen zeigen**.
+- **Auf Kiosk-Anzeigen zeigen**.
 - **Passen**: Schüsse, Maximalpunkte, ob Mouchen gezählt und ob
   **Einzelschüsse** erfasst werden, pro Passe. Mit Einzelschüssen lässt sich
   jeder Schuss erfassen, und die Passe ist deren Summe, z. B. um sie auf ein

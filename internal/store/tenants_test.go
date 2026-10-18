@@ -53,6 +53,23 @@ func TestTenantIsolation(t *testing.T) {
 	if err := st.DeleteRange(ctx, a, rangeA.ID); !errors.Is(err, store.ErrInUse) {
 		t.Fatalf("delete range used by event: %v", err)
 	}
+	cl := domain.ClassificationDefinition{Name: "Section", Parts: []domain.ClassificationPart{}, TieBreak: domain.SSVTieBreak, Classes: []domain.ClassificationClass{}}
+	clA, err := st.CreateClassification(ctx, a, evA, cl)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := st.CreateClassification(ctx, b, evA, cl); !errors.Is(err, store.ErrNotFound) {
+		t.Fatalf("CreateClassification across tenants: %v", err)
+	}
+	if list, err := st.ListClassifications(ctx, b, evA); err != nil || len(list) != 0 {
+		t.Fatalf("tenant B sees classifications of A: %v %v", list, err)
+	}
+	if err := st.UpdateClassification(ctx, b, evA, clA, cl); !errors.Is(err, store.ErrNotFound) {
+		t.Fatalf("UpdateClassification across tenants: %v", err)
+	}
+	if err := st.DeleteClassification(ctx, b, evA, clA); !errors.Is(err, store.ErrNotFound) {
+		t.Fatalf("DeleteClassification across tenants: %v", err)
+	}
 	codeA, err := st.CreateHelperCode(ctx, a, evA, store.HelperCode{Name: "Office", Role: store.HelperResults}, "hash-a")
 	if err != nil {
 		t.Fatal(err)

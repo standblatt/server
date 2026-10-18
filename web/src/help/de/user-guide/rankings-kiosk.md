@@ -11,6 +11,8 @@
   Schiessstands.
 - Programme, die für Kiosk-Anzeigen ausgeschaltet sind, werden hier trotzdem
   rangiert und als *nicht im Kiosk* markiert.
+- [Wertungen](classifications.md) folgen auf die Programme, eine Tabelle pro
+  Klasse; ihr **PDF** und **CSV** ist der Bericht *Wertungen*.
 
 ## Kiosk-Bildschirme
 

@@ -8,6 +8,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import PageHeader from '$lib/PageHeader.svelte';
 	import { pdfClick } from '$lib/print';
+	import ClassificationTable from '$lib/ClassificationTable.svelte';
 	import RankingTable from '$lib/RankingTable.svelte';
 	import { keys } from '$lib/tenant';
 
@@ -17,6 +18,11 @@
 		queryKey: keys.rankings(tenantId, eventId),
 		queryFn: () => call(api.GET('/api/tenants/{tenantId}/events/{eventId}/rankings', { params: { path: { tenantId, eventId } } }))
 	}));
+	const classifications = createQuery(() => ({
+		queryKey: keys.classificationRankings(tenantId, eventId),
+		queryFn: () => call(api.GET('/api/tenants/{tenantId}/events/{eventId}/classification-rankings', { params: { path: { tenantId, eventId } } }))
+	}));
+	const reportUrl = $derived(`/api/tenants/${tenantId}/events/${eventId}/reports/classifications`);
 </script>
 
 <PageHeader help="user-guide/rankings-kiosk" title={$t`Rankings`} description={$t`Live rankings per programme, ranked by the SSV rules.`} />
@@ -35,6 +41,17 @@
 			</RankingTable>
 		{:else}
 			<p class="text-sm text-muted-foreground">{$t`This event has no programmes yet.`}</p>
+		{/each}
+		{#each classifications.data ?? [] as c (c.id)}
+			<ClassificationTable ranking={c}>
+				{#snippet actions()}
+					<div class="flex items-center gap-2">
+						{#if !c.public}<span class="rounded-full border px-2 py-0.5 text-xs text-muted-foreground" title={$t`Not shown on kiosk displays`}>{$t`not on kiosk`}</span>{/if}
+						<Button size="sm" variant="outline" href="{reportUrl}?format=pdf" target="_blank" onclick={pdfClick}><FileText />PDF</Button>
+						<Button size="sm" variant="outline" href="{reportUrl}?format=csv"><FileSpreadsheet />CSV</Button>
+					</div>
+				{/snippet}
+			</ClassificationTable>
 		{/each}
 	</div>
 {:else if rankings.error}

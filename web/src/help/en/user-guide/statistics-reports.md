@@ -20,6 +20,7 @@ Every report is available as **PDF** and **CSV** (UTF-8 with BOM, `;` separated,
 | Club competition | ranking, out of competition and not ranked clubs |
 | Club participants | participants per club, programme and age category |
 | Special prizes | winners per programme and age category, skipped shooters with the reason (see [Programmes](programmes.md#special-prizes)) |
+| Classifications | every [classification](classifications.md) per class, with the points per programme; parts that do not count are in parentheses |
 | Awards to hand out | awards not yet collected, with shooter, club, programme, kind and value, plus the cash still to pay out (see [Results](results.md#handout)) |
 | Lane bookings | the clubs that asked for lanes through [online booking](online-booking.md), confirmed or still waiting, with contact, slots, lane numbers and announced shooters |
 

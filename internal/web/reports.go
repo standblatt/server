@@ -87,6 +87,7 @@ type eventData struct {
 	facts      []store.EntryFact
 	counting   map[int64]bool
 	rankings   []ProgrammeRanking
+	ranked     []ClassificationRanking
 	bookings   []store.BookingRequest
 }
 
@@ -279,6 +280,7 @@ const (
 	ReportSpecialPrizes    = "special_prizes"
 	ReportAwardsOpen       = "awards_open"
 	ReportBookings         = "bookings"
+	ReportClassifications  = "classifications"
 )
 
 // report builds the report of kind and its file name, 404 for unknown kinds.
@@ -536,6 +538,46 @@ func (d eventData) report(kind string, now time.Time) (docs.Report, string, erro
 			}
 		}
 		r.Summary = [][2]string{{i18n.T(l, "Clubs"), strconv.Itoa(clubs)}, {i18n.T(l, "Not confirmed yet"), strconv.Itoa(pending)}}
+	case ReportClassifications:
+		r.Title = i18n.T(l, "Classifications")
+		for _, c := range d.ranked {
+			cols := []docs.Column{col(i18n.T(l, "Rank"), 1, "C"), col(i18n.T(l, "Name"), 4, "L"), col(i18n.T(l, "Year"), 1, "C"),
+				col(i18n.T(l, "Category"), 2, "L"), col(i18n.T(l, "Club"), 4, "L")}
+			for _, p := range c.Parts {
+				cols = append(cols, col(p.Title, 1.5, "R"))
+			}
+			cols = append(cols, col(i18n.T(l, "Total"), 1.5, "R"))
+			for _, cl := range c.Classes {
+				sec := docs.Section{Heading: c.Name, Columns: cols}
+				if cl.Name != "" {
+					sec.Heading = c.Name + " – " + cl.Name
+				}
+				for _, group := range [][]ClassificationLine{cl.Lines, cl.Unranked} {
+					for _, line := range group {
+						rank := ""
+						if line.Rank > 0 {
+							rank = strconv.Itoa(line.Rank)
+						}
+						row := []string{rank, line.Lastname + " " + line.Firstname, line.BirthYear, categoryLabel(l, line.Category), line.Club}
+						for _, p := range line.Parts {
+							v := "–"
+							if p.Points != nil {
+								v = docs.Points(*p.Points)
+								if !p.Counted {
+									v = "(" + v + ")"
+								}
+							}
+							row = append(row, v)
+						}
+						sec.Rows = append(sec.Rows, append(row, docs.Points(line.Total)))
+					}
+				}
+				r.Sections = append(r.Sections, sec)
+			}
+		}
+		if len(r.Sections) == 0 {
+			r.Summary = [][2]string{{i18n.T(l, "The event has no classifications."), ""}}
+		}
 	default:
 		return r, "", missing("Unknown report")
 	}
@@ -615,7 +657,7 @@ func (s *Server) registerReports(api huma.API) {
 
 	type reportIn struct {
 		EventPath
-		Report string `path:"report" enum:"financial,revenue,awards,club_competition,club_participants,special_prizes,awards_open,bookings"`
+		Report string `path:"report" enum:"financial,revenue,awards,club_competition,club_participants,special_prizes,awards_open,bookings,classifications"`
 		Format string `query:"format" enum:"pdf,csv" default:"pdf"`
 	}
 	fileResponses := map[string]*huma.Response{"200": {Description: "PDF or CSV", Content: map[string]*huma.MediaType{"application/pdf": {}, "text/csv": {}}}}
@@ -632,6 +674,11 @@ func (s *Server) registerReports(api huma.API) {
 		}
 		if in.Report == ReportBookings {
 			if d.bookings, err = s.Store.ListBookingRequests(ctx, in.TenantID, in.EventID); err != nil {
+				return nil, err
+			}
+		}
+		if in.Report == ReportClassifications {
+			if d.ranked, err = s.classificationRankings(ctx, in.TenantID, in.EventID, false); err != nil {
 				return nil, err
 			}
 		}

@@ -46,11 +46,12 @@ agents d’impression appartiennent à un stand.
 Dans l’onglet *Copier & clôturer*, **Copier pour l’année prochaine** crée
 une nouvelle manifestation avec les mêmes stands, organisateur, langue,
 réglages et tous les programmes, y compris prix, distinctions, combinaisons
-et prix spéciaux ; les jours de tir et la période suivent la date, les
-heures de tir hebdomadaires restent sur leurs jours de la semaine. Les
-inscriptions, les résultats et les liens kiosque ne sont pas copiés. Le
-dialogue propose le nom avec l’année (et un numéro en tête comme *42.*)
-incrémentée et la date un an plus tard ; adaptez les deux au besoin.
+et prix spéciaux, ainsi que les [classements généraux](classifications.md) ;
+les jours de tir et la période suivent la date, les heures de tir
+hebdomadaires restent sur leurs jours de la semaine. Les inscriptions, les
+résultats et les liens kiosque ne sont pas copiés. Le dialogue propose le
+nom avec l’année (et un numéro en tête comme *42.*) incrémentée et la date
+un an plus tard ; adaptez les deux au besoin.
 
 ![Copier une manifestation](../images/screenshots/copy-event.png){
 .screenshot }

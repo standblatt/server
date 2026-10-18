@@ -243,6 +243,22 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/kiosk/classifications": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["kiosk-classifications"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/kiosk/event": {
         parameters: {
             query?: never;
@@ -1004,6 +1020,54 @@ export interface paths {
         post: operations["new-booking-code"];
         /** Switch the online booking off; requests and reservations stay */
         delete: operations["disable-booking"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/tenants/{tenantId}/events/{eventId}/classification-rankings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["get-classification-rankings"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/tenants/{tenantId}/events/{eventId}/classifications": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["list-classifications"];
+        put?: never;
+        post: operations["create-classification"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/tenants/{tenantId}/events/{eventId}/classifications/{classificationId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["update-classification"];
+        post?: never;
+        delete: operations["delete-classification"];
         options?: never;
         head?: never;
         patch?: never;
@@ -2185,6 +2249,91 @@ export interface components {
             printer: string;
             title: string;
         };
+        Classification: {
+            /**
+             * Format: int64
+             * @description Only the best parts count, this many; 0 = all
+             */
+            best?: number;
+            /** @description Separate rankings by age categories; empty = one ranking */
+            classes: components["schemas"]["ClassificationClass"][];
+            /** @description Only shooters with every counting part complete are ranked; the others are listed unranked */
+            complete?: boolean;
+            /** Format: int64 */
+            id: number;
+            name: string;
+            parts: components["schemas"]["ClassificationPart"][];
+            showOnKiosk?: boolean;
+            /** @description Criteria after the total, in order */
+            tieBreak: ("series" | "shots" | "mouches" | "age")[];
+        };
+        ClassificationClass: {
+            categories: ("u10" | "u13" | "u15" | "u17" | "u19" | "u21" | "elite" | "senior" | "veteran" | "senior_veteran")[];
+            name: string;
+        };
+        ClassificationClassView: {
+            lines: components["schemas"]["ClassificationLine"][];
+            name: string;
+            /** @description Shooters without every counting part, when the classification requires it */
+            unranked: components["schemas"]["ClassificationLine"][];
+        };
+        ClassificationDefinition: {
+            /**
+             * Format: int64
+             * @description Only the best parts count, this many; 0 = all
+             */
+            best?: number;
+            /** @description Separate rankings by age categories; empty = one ranking */
+            classes: components["schemas"]["ClassificationClass"][];
+            /** @description Only shooters with every counting part complete are ranked; the others are listed unranked */
+            complete?: boolean;
+            name: string;
+            parts: components["schemas"]["ClassificationPart"][];
+            showOnKiosk?: boolean;
+            /** @description Criteria after the total, in order */
+            tieBreak: ("series" | "shots" | "mouches" | "age")[];
+        };
+        ClassificationLine: {
+            birthYear: string;
+            /** @enum {string} */
+            category: "u10" | "u13" | "u15" | "u17" | "u19" | "u21" | "elite" | "senior" | "veteran" | "senior_veteran";
+            club: string;
+            complete: boolean;
+            firstname: string;
+            lastname: string;
+            parts: components["schemas"]["PartScore"][];
+            /** Format: int64 */
+            rank: number;
+            /** Format: int64 */
+            shooterId: number;
+            /** Format: double */
+            total: number;
+        };
+        ClassificationPart: {
+            /**
+             * Format: int64
+             * @description Attempts of the programme that count
+             */
+            count: number;
+            /** Format: int64 */
+            programmeId: number;
+        };
+        ClassificationPartView: {
+            /** Format: int64 */
+            count: number;
+            /** Format: int64 */
+            programmeId: number;
+            title: string;
+        };
+        ClassificationRanking: {
+            classes: components["schemas"]["ClassificationClassView"][];
+            /** Format: int64 */
+            id: number;
+            name: string;
+            parts: components["schemas"]["ClassificationPartView"][];
+            /** @description Shown on kiosk displays */
+            public: boolean;
+        };
         Club: {
             /** Format: int64 */
             id: number;
@@ -2855,6 +3004,12 @@ export interface components {
             expiresInDays?: 0 | 30 | 90 | 365;
             name: string;
             scopes: ("training:read" | "training:write")[];
+        };
+        PartScore: {
+            /** @description The part counts towards the total (see best) */
+            counted: boolean;
+            /** Format: double */
+            points?: number;
         };
         PasswordInputBody: {
             currentPassword: string;
@@ -4142,6 +4297,38 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Helper"];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "kiosk-classifications": {
+        parameters: {
+            query?: never;
+            header?: {
+                /** @description Bearer <kiosk token> */
+                Authorization?: string;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ClassificationRanking"][];
                 };
             };
             /** @description Error */
@@ -6054,6 +6241,172 @@ export interface operations {
             };
         };
     };
+    "get-classification-rankings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                eventId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ClassificationRanking"][];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "list-classifications": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                eventId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Classification"][];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "create-classification": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                eventId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ClassificationDefinition"];
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Classification"];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "update-classification": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                eventId: number;
+                classificationId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ClassificationDefinition"];
+            };
+        };
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "delete-classification": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                eventId: number;
+                classificationId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
     "get-club-competition": {
         parameters: {
             query?: never;
@@ -6578,7 +6931,7 @@ export interface operations {
             path: {
                 tenantId: number;
                 eventId: number;
-                report: "financial" | "revenue" | "awards" | "club_competition" | "club_participants" | "special_prizes" | "awards_open" | "bookings";
+                report: "financial" | "revenue" | "awards" | "club_competition" | "club_participants" | "special_prizes" | "awards_open" | "bookings" | "classifications";
             };
             cookie?: never;
         };

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 09:50+0200\n"
+"POT-Creation-Date: 2026-10-18 10:13+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -170,6 +170,54 @@ msgstr "Tireur %d : nom et prénom sont requis"
 msgid "Shooting hours: the end must be after the start"
 msgstr "Horaires de tir : la fin doit être après le début"
 
+#: internal/domain/classification.go
+#, go-format
+msgid "Age category %s is in more than one class"
+msgstr "La catégorie d’âge %s est dans plus d’une classe"
+
+#: internal/domain/classification.go internal/domain/registration.go
+msgid "Choose at least one programme"
+msgstr "Choisissez au moins un programme"
+
+#: internal/domain/classification.go
+#, go-format
+msgid "Class %d: name is required"
+msgstr "Classe %d : le nom est requis"
+
+#: internal/domain/classification.go
+#, go-format
+msgid "Class %d: unknown age category %q"
+msgstr "Classe %d : catégorie d’âge inconnue %q"
+
+#: internal/domain/classification.go internal/domain/programme.go
+msgid "Name is required"
+msgstr "Le nom est requis"
+
+#: internal/domain/classification.go
+#, go-format
+msgid "Part %d: at least one attempt must count"
+msgstr "Partie %d : au moins une tentative doit compter"
+
+#: internal/domain/classification.go
+#, go-format
+msgid "Part %d: the programme is chosen twice"
+msgstr "Partie %d : le programme est choisi deux fois"
+
+#: internal/domain/classification.go internal/domain/registration.go
+#, go-format
+msgid "Programme %d does not belong to this event"
+msgstr "Le programme %d n'appartient pas à cette manifestation"
+
+#: internal/domain/classification.go
+#, go-format
+msgid "The best parts must be between 0 and %d"
+msgstr "Les meilleures parties doivent être entre 0 et %d"
+
+#: internal/domain/classification.go
+#, go-format
+msgid "Unknown or repeated tie-break %q"
+msgstr "Départage inconnu ou répété %q"
+
 #: internal/domain/programme.go
 #, go-format
 msgid "Age category %s has more than one price"
@@ -212,10 +260,6 @@ msgstr "Distinction %d : catégorie d'âge inconnue %q"
 #, go-format
 msgid "Award %d: value must not be negative"
 msgstr "Distinction %d : la valeur ne doit pas être négative"
-
-#: internal/domain/programme.go
-msgid "Name is required"
-msgstr "Le nom est requis"
 
 #: internal/domain/programme.go
 #, go-format
@@ -301,15 +345,6 @@ msgstr "%s reprend ses passes d’un autre programme et ne peut être tiré qu�
 #, go-format
 msgid "%s: series %d of %s is invalid or chosen twice"
 msgstr "%s : la passe %d de %s est invalide ou choisie deux fois"
-
-#: internal/domain/registration.go
-msgid "Choose at least one programme"
-msgstr "Choisissez au moins un programme"
-
-#: internal/domain/registration.go
-#, go-format
-msgid "Programme %d does not belong to this event"
-msgstr "Le programme %d n'appartient pas à cette manifestation"
 
 #: internal/domain/results.go
 #, go-format
@@ -599,9 +634,10 @@ msgstr "Vérifie, modifie ou annule ta demande ici :"
 msgid "Confirm or decline the request here:"
 msgstr "Confirme ou refuse la demande ici :"
 
-#: internal/web/booking.go internal/web/helpers.go internal/web/programmes.go
-#: internal/web/rankings.go internal/web/registrations.go
-#: internal/web/reports.go internal/web/resultimport.go internal/web/tenants.go
+#: internal/web/booking.go internal/web/classifications.go
+#: internal/web/helpers.go internal/web/programmes.go internal/web/rankings.go
+#: internal/web/registrations.go internal/web/reports.go
+#: internal/web/resultimport.go internal/web/tenants.go
 msgid "Event not found"
 msgstr "Manifestation introuvable"
 
@@ -682,6 +718,10 @@ msgstr "nous avons reçu ta demande pour %s. L’organisateur la confirme par e-
 #, go-format
 msgid "your lanes for %s are reserved:"
 msgstr "tes cibles pour %s sont réservées :"
+
+#: internal/web/classifications.go
+msgid "Classification not found"
+msgstr "Classement général introuvable"
 
 #: internal/web/documents.go
 #, go-format
@@ -1093,6 +1133,10 @@ msgid "Cash to pay out"
 msgstr "Espèces à verser"
 
 #: internal/web/reports.go
+msgid "Classifications"
+msgstr "Classements généraux"
+
+#: internal/web/reports.go
 msgid "Club competition"
 msgstr "Concours de sections"
 
@@ -1256,6 +1300,10 @@ msgstr "Prix spéciaux"
 #: internal/web/reports.go
 msgid "Subtotal"
 msgstr "Sous-total"
+
+#: internal/web/reports.go
+msgid "The event has no classifications."
+msgstr "La manifestation n’a pas de classements généraux."
 
 #: internal/web/reports.go
 msgid "Time"

@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-18 08:00+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-18 08:18+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
 #: ../src/help/en/getting-started/concepts.md:1
@@ -1474,6 +1474,84 @@ msgid "Amounts are shown as `CHF 1'234.50`, dates as `dd.mm.yyyy`. On wreath car
 msgstr ""
 
 #. type: Title #
+#: ../src/help/en/user-guide/classifications.md:1
+#, markdown-text, no-wrap
+msgid "Classifications"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/classifications.md:4
+#, markdown-text
+msgid "A programme ranking ranks one programme. A **classification** ranks shooters over several programmes or over several [attempts](programmes.md#attempts) of one programme, e.g. a section championship as the sum of three programmes, or a club championship over the best three attempts of an annual programme. Classifications appear on **Rankings**, on kiosk displays and as a report; they never change results or awards."
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/classifications.md:5
+#, markdown-text, no-wrap
+msgid "Create a classification {#create}"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/classifications.md:8
+#, markdown-text
+msgid "On the *Classifications* tab of the event's **Setup** (admins), **New classification** opens the editor:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/classifications.md:15
+#, markdown-text
+msgid "**Programmes**: every programme that counts, with its **Counting attempts**. With 3, the best three attempts count (or the first or last three, as set by the programme's *Counting attempt*). A shooter's total is the sum of all counted attempts."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/classifications.md:15
+#, markdown-text
+msgid "**Count only the best programmes**: with several programmes, only that many with the highest points count, e.g. the best two of three; 0 counts all."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/classifications.md:15
+#, markdown-text
+msgid "**Rank only shooters with all counting results**: shooters who are still missing a programme or an attempt are listed below the ranking without a rank. Without it everybody is ranked by what they have."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/classifications.md:15
+#, markdown-text
+msgid "**Tie-break**: equal totals are decided by the ticked criteria in their order; the arrows change it. *Series from the last one backwards* compares all counted series, *More of the highest single shots* needs [single shots](programmes.md) (more tens, then more nines …), *Age* follows the [SSV rule](../reference/rules.md#ranking). The default is the SSV order."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/classifications.md:15
+#, markdown-text
+msgid "**Classes**: separate rankings, each for some age categories, e.g. *Juniors* with U17 to U21 and *Elite* with the others. An age category belongs to one class at most; shooters whose category is in no class are not listed. Without classes everybody is in one ranking."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/classifications.md:15
+#, markdown-text
+msgid "**Show on kiosk displays**."
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/classifications.md:16
+#, markdown-text, no-wrap
+msgid "Examples {#examples}"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/classifications.md:23
+#, markdown-text, no-wrap
+msgid "| Event | Programmes | Settings |\n|---|---|---|\n| Section championship | Obligatory, Field match, Section stich | each counting attempt 1, *Rank only shooters with all counting results* |\n| Club championship over the season | annual programme with unlimited attempts | counting attempts 3 |\n| Shooting festival, best two stiche | three stiche | *Count only the best programmes* 2 |\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/classifications.md:24
+#, markdown-text, no-wrap
+msgid "**Copy for next year** copies the classifications with the programmes. Deleting a programme removes it from the classifications.\n"
+msgstr ""
+
+#. type: Title #
 #: ../src/help/en/user-guide/dashboard.md:1
 #, markdown-text, no-wrap
 msgid "Dashboard"
@@ -1674,7 +1752,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:35
 #, markdown-text
-msgid "On the *Copy & close* tab, **Copy for next year** creates a new event with the same ranges, organizer, language, settings and all programmes, including prices, awards, combinations and special prizes; the shooting days and the period move with the date, weekly shooting times stay on their weekdays. Registrations, results and kiosk links are not copied. The dialog suggests the name with the year (and a leading number like *42.*) counted up and the date one year later; adjust both as needed."
+msgid "On the *Copy & close* tab, **Copy for next year** creates a new event with the same ranges, organizer, language, settings and all programmes, including prices, awards, combinations and special prizes, and the [classifications](classifications.md); the shooting days and the period move with the date, weekly shooting times stay on their weekdays. Registrations, results and kiosk links are not copied. The dialog suggests the name with the year (and a leading number like *42.*) counted up and the date one year later; adjust both as needed."
 msgstr ""
 
 #. type: Plain text
@@ -2310,73 +2388,79 @@ msgid "![Rankings](../images/screenshots/rankings.png){ .screenshot }"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:11
+#: ../src/help/en/user-guide/rankings-kiosk.md:12
 #, markdown-text
 msgid "**PDF** opens the ranking (A4) for printing or sharing, **CSV** downloads it for Excel. Rankings do not go to the range's printer."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:11
+#: ../src/help/en/user-guide/rankings-kiosk.md:12
 #, markdown-text
 msgid "Programmes switched off for kiosk displays are still ranked here and marked *not on kiosk*."
 msgstr ""
 
-#. type: Title ##
+#. type: Bullet: '- '
 #: ../src/help/en/user-guide/rankings-kiosk.md:12
+#, markdown-text
+msgid "[Classifications](classifications.md) follow the programmes, one table per class; their **PDF** and **CSV** are the report *Classifications*."
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/rankings-kiosk.md:13
 #, markdown-text, no-wrap
 msgid "Kiosk screens"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/rankings-kiosk.md:15
+#: ../src/help/en/user-guide/rankings-kiosk.md:16
 #, markdown-text
 msgid "A kiosk link shows the rankings of one event on a screen in the hall, without login. Create one on the *Kiosk displays* tab of the event's **Setup**:"
 msgstr ""
 
 #. type: Bullet: '1. '
-#: ../src/help/en/user-guide/rankings-kiosk.md:19
+#: ../src/help/en/user-guide/rankings-kiosk.md:20
 #, markdown-text
 msgid "Enter a name for the screen (e.g. *Hall 1*), choose **Dark** or **Light** and optionally a language."
 msgstr ""
 
 #. type: Bullet: '2. '
-#: ../src/help/en/user-guide/rankings-kiosk.md:19
+#: ../src/help/en/user-guide/rankings-kiosk.md:20
 #, markdown-text
 msgid "**Create kiosk link**; copy the link. It is shown only once."
 msgstr ""
 
 #. type: Bullet: '3. '
-#: ../src/help/en/user-guide/rankings-kiosk.md:19
+#: ../src/help/en/user-guide/rankings-kiosk.md:20
 #, markdown-text
 msgid "Open the link in a browser on the screen, ideally in full screen."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/rankings-kiosk.md:21
+#: ../src/help/en/user-guide/rankings-kiosk.md:22
 #, markdown-text
 msgid "![Kiosk screen](../images/screenshots/kiosk.png){ .screenshot }"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:25
+#: ../src/help/en/user-guide/rankings-kiosk.md:26
 #, markdown-text
 msgid "The kiosk shows only programmes with *Show on kiosk displays* switched on, and the lane status if the event setting *Show lane status on the rankings* is on."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:25
+#: ../src/help/en/user-guide/rankings-kiosk.md:26
 #, markdown-text
 msgid "The language is the event's language unless the link carries another one (`?language=de`, `fr`, `it`, `en`); the theme comes from `?theme=dark` or `?theme=light`. On an event with several ranges, `?range=<id>` (chosen when creating the link) limits the display to that range: its lanes, its programmes and the programmes without a range."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:25
+#: ../src/help/en/user-guide/rankings-kiosk.md:26
 #, markdown-text
 msgid "The screen updates live and reconnects by itself after a network interruption. When a new version of Standblatt is released, it reloads by itself."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:25
+#: ../src/help/en/user-guide/rankings-kiosk.md:26
 #, markdown-text
 msgid "**revoke** in the list stops a link immediately. *last seen* tells when a screen last fetched data."
 msgstr ""
@@ -3042,13 +3126,13 @@ msgid "Every report is available as **PDF** and **CSV** (UTF-8 with BOM, `;` sep
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/statistics-reports.md:25
+#: ../src/help/en/user-guide/statistics-reports.md:26
 #, markdown-text, no-wrap
-msgid "| Report | Content |\n|---|---|\n| Financial report | revenue per programme, awards with their value |\n| Revenue by programme and age category | participants, price and subtotal per programme and category |\n| Awards | every award given, with shooter, club, programme, value and result |\n| Club competition | ranking, out of competition and not ranked clubs |\n| Club participants | participants per club, programme and age category |\n| Special prizes | winners per programme and age category, skipped shooters with the reason (see [Programmes](programmes.md#special-prizes)) |\n| Awards to hand out | awards not yet collected, with shooter, club, programme, kind and value, plus the cash still to pay out (see [Results](results.md#handout)) |\n| Lane bookings | the clubs that asked for lanes through [online booking](online-booking.md), confirmed or still waiting, with contact, slots, lane numbers and announced shooters |\n"
+msgid "| Report | Content |\n|---|---|\n| Financial report | revenue per programme, awards with their value |\n| Revenue by programme and age category | participants, price and subtotal per programme and category |\n| Awards | every award given, with shooter, club, programme, value and result |\n| Club competition | ranking, out of competition and not ranked clubs |\n| Club participants | participants per club, programme and age category |\n| Special prizes | winners per programme and age category, skipped shooters with the reason (see [Programmes](programmes.md#special-prizes)) |\n| Classifications | every [classification](classifications.md) per class, with the points per programme; parts that do not count are in parentheses |\n| Awards to hand out | awards not yet collected, with shooter, club, programme, kind and value, plus the cash still to pay out (see [Results](results.md#handout)) |\n| Lane bookings | the clubs that asked for lanes through [online booking](online-booking.md), confirmed or still waiting, with contact, slots, lane numbers and announced shooters |\n"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/statistics-reports.md:26
+#: ../src/help/en/user-guide/statistics-reports.md:27
 #, markdown-text
 msgid "Below the reports, the ranking of every programme can be downloaded as PDF or CSV."
 msgstr ""

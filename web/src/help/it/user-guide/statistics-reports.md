@@ -26,6 +26,7 @@ manifestazione.
 | Concorso di sezione | classifica, società fuori concorso e non classificate |
 | Partecipanti per società | partecipanti per società, programma e categoria d’età |
 | Premi speciali | vincitori per programma e categoria d’età, tiratori saltati con il motivo (vedi [Programmi](programmes.md#special-prizes)) |
+| Classifiche generali | ogni [classifica generale](classifications.md) per classe, con i punti per programma; le parti che non contano sono tra parentesi |
 | Distinzioni da consegnare | distinzioni non ancora ritirate, con tiratore, società, programma, tipo e valore, più il denaro ancora da versare (vedi [Risultati](results.md#handout)) |
 | Prenotazioni di bersagli | le società che hanno richiesto bersagli tramite la [prenotazione online](online-booking.md), confermate o in attesa, con contatto, fasce orarie, numeri dei bersagli e tiratori annunciati |
 

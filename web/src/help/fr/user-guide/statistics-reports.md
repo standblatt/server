@@ -26,6 +26,7 @@ langue de la manifestation.
 | Concours de sections | classement, sociétés hors concours et non classées |
 | Participants par société | participants par société, programme et catégorie d’âge |
 | Prix spéciaux | gagnants par programme et catégorie d’âge, tireurs sautés avec la raison (voir [Programmes](programmes.md#special-prizes)) |
+| Classements généraux | chaque [classement général](classifications.md) par classe, avec les points par programme ; les parties qui ne comptent pas sont entre parenthèses |
 | Distinctions à remettre | distinctions pas encore retirées, avec tireur, société, programme, type et valeur, plus les espèces encore à verser (voir [Résultats](results.md#handout)) |
 | Réservations de cibles | les sociétés qui ont demandé des cibles par la [réservation en ligne](online-booking.md), confirmées ou en attente, avec contact, créneaux, numéros de cible et tireurs annoncés |
 

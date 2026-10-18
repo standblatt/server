@@ -23,6 +23,7 @@
 	import HelperCodes from '$lib/HelperCodes.svelte';
 	import BookingSettings from '$lib/BookingSettings.svelte';
 	import KioskTokens from '$lib/KioskTokens.svelte';
+	import Classifications from '$lib/Classifications.svelte';
 	import { meQuery } from '$lib/me';
 	import { clubsQuery, eventQuery, keys, rangesQuery } from '$lib/tenant';
 
@@ -40,6 +41,7 @@
 	const tabs = $derived([
 		['programmes', $t`Programmes`],
 		['event', $t`Event`],
+		['classifications', $t`Classifications`],
 		['kiosk', $t`Kiosk displays`],
 		['helpers', $t`Helpers`],
 		...(event.data?.ranges.length ? [['booking', $t`Online booking`]] : []),
@@ -48,6 +50,7 @@
 	const setupHelp: Record<string, string> = {
 		programmes: 'user-guide/programmes',
 		event: 'user-guide/events',
+		classifications: 'user-guide/classifications',
 		kiosk: 'user-guide/rankings-kiosk',
 		helpers: 'user-guide/helpers',
 		booking: 'user-guide/online-booking',
@@ -171,6 +174,8 @@
 					{#key ev.id}<EventForm ranges={ranges.data} clubs={clubs.data ?? []} initial={{ ...ev, rangeIds: ev.ranges.map((r) => r.id) }} submitLabel={$t`Save`} onsubmit={save} />{/key}
 				</section>
 			{/if}
+		{:else if tab === 'classifications'}
+			<Classifications {tenantId} {eventId} />
 		{:else if tab === 'kiosk'}
 			<section class="overflow-hidden rounded-lg border bg-card"><KioskTokens {tenantId} {eventId} /></section>
 		{:else if tab === 'helpers'}
@@ -194,7 +199,7 @@
 		{#if copy}
 			<Dialog.Header>
 				<Dialog.Title>{$t`Copy event`}</Dialog.Title>
-				<Dialog.Description>{$t`Range, organizer, language, settings and all programmes with prices, awards, combinations and special prizes are copied. Registrations, results and kiosk links are not.`}</Dialog.Description>
+				<Dialog.Description>{$t`Range, organizer, language, settings, all programmes with prices, awards, combinations and special prizes, and the classifications are copied. Registrations, results and kiosk links are not.`}</Dialog.Description>
 			</Dialog.Header>
 			<form class="grid gap-4" onsubmit={copyEvent}>
 				<FormField label={$t`Name`}><Input name="name" bind:value={copy.name} required maxlength={200} /></FormField>

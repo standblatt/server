@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 09:50+0200\n"
+"POT-Creation-Date: 2026-10-18 10:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -170,6 +170,54 @@ msgstr ""
 msgid "Shooting hours: the end must be after the start"
 msgstr ""
 
+#: internal/domain/classification.go
+#, go-format
+msgid "Age category %s is in more than one class"
+msgstr ""
+
+#: internal/domain/classification.go internal/domain/registration.go
+msgid "Choose at least one programme"
+msgstr ""
+
+#: internal/domain/classification.go
+#, go-format
+msgid "Class %d: name is required"
+msgstr ""
+
+#: internal/domain/classification.go
+#, go-format
+msgid "Class %d: unknown age category %q"
+msgstr ""
+
+#: internal/domain/classification.go internal/domain/programme.go
+msgid "Name is required"
+msgstr ""
+
+#: internal/domain/classification.go
+#, go-format
+msgid "Part %d: at least one attempt must count"
+msgstr ""
+
+#: internal/domain/classification.go
+#, go-format
+msgid "Part %d: the programme is chosen twice"
+msgstr ""
+
+#: internal/domain/classification.go internal/domain/registration.go
+#, go-format
+msgid "Programme %d does not belong to this event"
+msgstr ""
+
+#: internal/domain/classification.go
+#, go-format
+msgid "The best parts must be between 0 and %d"
+msgstr ""
+
+#: internal/domain/classification.go
+#, go-format
+msgid "Unknown or repeated tie-break %q"
+msgstr ""
+
 #: internal/domain/programme.go
 #, go-format
 msgid "Age category %s has more than one price"
@@ -211,10 +259,6 @@ msgstr ""
 #: internal/domain/programme.go
 #, go-format
 msgid "Award %d: value must not be negative"
-msgstr ""
-
-#: internal/domain/programme.go
-msgid "Name is required"
 msgstr ""
 
 #: internal/domain/programme.go
@@ -300,15 +344,6 @@ msgstr ""
 #: internal/domain/registration.go
 #, go-format
 msgid "%s: series %d of %s is invalid or chosen twice"
-msgstr ""
-
-#: internal/domain/registration.go
-msgid "Choose at least one programme"
-msgstr ""
-
-#: internal/domain/registration.go
-#, go-format
-msgid "Programme %d does not belong to this event"
 msgstr ""
 
 #: internal/domain/results.go
@@ -599,9 +634,10 @@ msgstr ""
 msgid "Confirm or decline the request here:"
 msgstr ""
 
-#: internal/web/booking.go internal/web/helpers.go internal/web/programmes.go
-#: internal/web/rankings.go internal/web/registrations.go
-#: internal/web/reports.go internal/web/resultimport.go internal/web/tenants.go
+#: internal/web/booking.go internal/web/classifications.go
+#: internal/web/helpers.go internal/web/programmes.go internal/web/rankings.go
+#: internal/web/registrations.go internal/web/reports.go
+#: internal/web/resultimport.go internal/web/tenants.go
 msgid "Event not found"
 msgstr ""
 
@@ -681,6 +717,10 @@ msgstr ""
 #: internal/web/booking.go
 #, go-format
 msgid "your lanes for %s are reserved:"
+msgstr ""
+
+#: internal/web/classifications.go
+msgid "Classification not found"
 msgstr ""
 
 #: internal/web/documents.go
@@ -1093,6 +1133,10 @@ msgid "Cash to pay out"
 msgstr ""
 
 #: internal/web/reports.go
+msgid "Classifications"
+msgstr ""
+
+#: internal/web/reports.go
 msgid "Club competition"
 msgstr ""
 
@@ -1255,6 +1299,10 @@ msgstr ""
 
 #: internal/web/reports.go
 msgid "Subtotal"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "The event has no classifications."
 msgstr ""
 
 #: internal/web/reports.go

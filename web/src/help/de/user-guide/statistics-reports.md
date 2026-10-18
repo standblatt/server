@@ -26,6 +26,7 @@ Sprache des Anlasses.
 | Vereinskonkurrenz | Rangliste, Vereine ausser Konkurrenz und nicht rangierte Vereine |
 | Vereinsteilnehmer | Teilnehmer pro Verein, Programm und Alterskategorie |
 | Sonderpreise | Gewinner pro Programm und Alterskategorie, übersprungene Schützen mit Grund (siehe [Programme](programmes.md#special-prizes)) |
+| Wertungen | jede [Wertung](classifications.md) pro Klasse, mit den Punkten pro Programm; nicht zählende Teile stehen in Klammern |
 | Abzugebende Auszeichnungen | noch nicht abgeholte Auszeichnungen mit Schütze, Verein, Programm, Art und Wert, dazu das noch auszuzahlende Geld (siehe [Resultate](results.md#handout)) |
 | Scheibenreservationen | die Vereine, die über die [Online-Reservation](online-booking.md) Scheiben angefragt haben, bestätigt oder noch offen, mit Kontakt, Zeitblöcken, Scheibennummern und angemeldeten Schützen |
 

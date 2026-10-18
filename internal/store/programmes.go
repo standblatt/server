@@ -347,9 +347,16 @@ func (s *Store) SetSpecialPrizes(ctx context.Context, tenantID, programmeID int6
 		WHERE tenant_id = $1 AND id = $2`, tenantID, programmeID, r.Ranks, r.MinCategory, r.MinClub))
 }
 
-// DeleteProgramme removes a programme; ErrInUse once shooters are registered for it.
+// DeleteProgramme removes a programme and its parts of classifications; ErrInUse once shooters are registered for it.
 func (s *Store) DeleteProgramme(ctx context.Context, tenantID, programmeID int64) error {
-	return affected(s.pool.Exec(ctx, `DELETE FROM programmes WHERE tenant_id = $1 AND id = $2`, tenantID, programmeID))
+	return mapErr(pgx.BeginFunc(ctx, s.pool, func(tx pgx.Tx) error {
+		if _, err := tx.Exec(ctx, `UPDATE classifications c SET definition = jsonb_set(definition, '{parts}',
+				coalesce((SELECT jsonb_agg(p) FROM jsonb_array_elements(definition->'parts') p WHERE (p->>'programmeId')::bigint <> $2), '[]'))
+			WHERE tenant_id = $1 AND event_id = (SELECT event_id FROM programmes WHERE id = $2)`, tenantID, programmeID); err != nil {
+			return err
+		}
+		return affected(tx.Exec(ctx, `DELETE FROM programmes WHERE tenant_id = $1 AND id = $2`, tenantID, programmeID))
+	}))
 }
 
 // CopyProgrammes copies all programmes of one event into another event of the same tenant, including
@@ -369,8 +376,8 @@ func (s *Store) CopyProgrammes(ctx context.Context, tenantID, fromEventID, toEve
 }
 
 // CopyEvent creates a new event of the tenant with the ranges, schedule (dates shifted with the main day), organizer, timezone,
-// language, settings, booking hours (other days shifted, no deadline, booking off) and all programmes of another
-// event, but no registrations; the source may be archived.
+// language, settings, booking hours (other days shifted, no deadline, booking off), all programmes and classifications of
+// another event, but no registrations; the source may be archived.
 func (s *Store) CopyEvent(ctx context.Context, tenantID, fromEventID int64, name, startsOn string) (int64, error) {
 	var id int64
 	err := pgx.BeginFunc(ctx, s.pool, func(tx pgx.Tx) error {
@@ -393,8 +400,10 @@ func (s *Store) CopyEvent(ctx context.Context, tenantID, fromEventID int64, name
 			SELECT tenant_id, $2, range_id, position FROM event_ranges WHERE event_id = $1`, fromEventID, id); err != nil {
 			return err
 		}
-		_, err := copyProgrammes(ctx, tx, tenantID, fromEventID, id)
-		return err
+		if _, err := copyProgrammes(ctx, tx, tenantID, fromEventID, id); err != nil {
+			return err
+		}
+		return copyClassifications(ctx, tx, tenantID, fromEventID, id)
 	})
 	return id, mapErr(err)
 }

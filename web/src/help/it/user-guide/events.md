@@ -46,11 +46,12 @@ appartengono a uno stand.
 Nella scheda *Copia e chiudi*, **Copia per l’anno prossimo** crea una nuova
 manifestazione con gli stessi stand, organizzatore, lingua, impostazioni e
 tutti i programmi, compresi prezzi, distinzioni, combinazioni e premi
-speciali; i giorni di tiro e il periodo si spostano con la data, gli orari
-di tiro settimanali restano sui loro giorni della settimana. Iscrizioni,
-risultati e link chiosco non vengono copiati. La finestra propone il nome
-con l’anno (e un numero iniziale come *42.*) incrementato e la data un anno
-dopo; adatta entrambi se necessario.
+speciali, e le [classifiche generali](classifications.md); i giorni di tiro
+e il periodo si spostano con la data, gli orari di tiro settimanali restano
+sui loro giorni della settimana. Iscrizioni, risultati e link chiosco non
+vengono copiati. La finestra propone il nome con l’anno (e un numero
+iniziale come *42.*) incrementato e la data un anno dopo; adatta entrambi se
+necessario.
 
 ![Copiare una manifestazione](../images/screenshots/copy-event.png){
 .screenshot }

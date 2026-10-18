@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 08:00+0000\n"
+"POT-Creation-Date: 2026-10-18 08:18+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -1792,7 +1792,11 @@ msgid ""
 "exist already is an error. Programmes with several [attempts](../user-guide/"
 "programmes.md#attempts) take one line per attempt until the shooter has none "
 "left."
-msgstr "Un tireur ne peut avoir des résultats qu’une fois par programme ; une ligne pour des résultats déjà présents est une erreur. Les programmes à plusieurs [tentatives](../user-guide/programmes.md#attempts) prennent une ligne par tentative, jusqu’à ce que le tireur n’en ait plus."
+msgstr ""
+"Un tireur ne peut avoir des résultats qu’une fois par programme ; une ligne "
+"pour des résultats déjà présents est une erreur. Les programmes à plusieurs "
+"[tentatives](../user-guide/programmes.md#attempts) prennent une ligne par "
+"tentative, jusqu’à ce que le tireur n’en ait plus."
 
 #. type: Bullet: '- '
 #: ../src/help/en/reference/csv-import.md:45
@@ -1955,7 +1959,9 @@ msgstr "Une inscription est refusée quand :"
 msgid ""
 "a programme does not belong to the event, is chosen twice or is not active, "
 "or more attempts are chosen than it allows;"
-msgstr "un programme n’appartient pas à la manifestation, est choisi deux fois ou n’est pas actif, ou plus de tentatives sont choisies qu’il n’en permet ;"
+msgstr ""
+"un programme n’appartient pas à la manifestation, est choisi deux fois ou "
+"n’est pas actif, ou plus de tentatives sont choisies qu’il n’en permet ;"
 
 #. type: Bullet: '- '
 #: ../src/help/en/reference/rules.md:19
@@ -1993,7 +1999,11 @@ msgid ""
 "shooter shoots each programme once per event unless it allows several "
 "[attempts](../user-guide/programmes.md#attempts); another variant in a "
 "separate registration is fine)."
-msgstr "le tireur est déjà inscrit à l’un des programmes de cette manifestation (un tireur tire chaque programme une fois par manifestation, sauf s’il permet plusieurs [tentatives](../user-guide/programmes.md#attempts) ; une autre variante dans une inscription séparée est permise)."
+msgstr ""
+"le tireur est déjà inscrit à l’un des programmes de cette manifestation (un "
+"tireur tire chaque programme une fois par manifestation, sauf s’il permet "
+"plusieurs [tentatives](../user-guide/programmes.md#attempts) ; une autre "
+"variante dans une inscription séparée est permise)."
 
 #. type: Plain text
 #: ../src/help/en/reference/rules.md:21
@@ -2277,6 +2287,113 @@ msgstr ""
 "cartes-couronnes, la valeur peut être imprimée en toutes lettres dans la "
 "langue de la manifestation, p. ex. *Fünfundzwanzig Franken*, *Septante et un "
 "francs*, *Ventitré franchi*."
+
+#. type: Title #
+#: ../src/help/en/user-guide/classifications.md:1
+#, no-wrap
+msgid "Classifications"
+msgstr "Classements généraux"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/classifications.md:4
+msgid ""
+"A programme ranking ranks one programme. A **classification** ranks shooters "
+"over several programmes or over several [attempts](programmes.md#attempts) "
+"of one programme, e.g. a section championship as the sum of three "
+"programmes, or a club championship over the best three attempts of an annual "
+"programme. Classifications appear on **Rankings**, on kiosk displays and as "
+"a report; they never change results or awards."
+msgstr "Un classement de programme classe un programme. Un **classement général** classe les tireurs sur plusieurs programmes ou sur plusieurs [tentatives](programmes.md#attempts) d’un programme, p. ex. un championnat de section comme somme de trois programmes, ou un championnat de société sur les trois meilleures tentatives d’un programme annuel. Les classements généraux apparaissent sous **Classements**, sur les écrans kiosque et comme rapport ; ils ne modifient jamais les résultats ni les distinctions."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/classifications.md:5
+#, no-wrap
+msgid "Create a classification {#create}"
+msgstr "Créer un classement général {#create}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/classifications.md:8
+msgid ""
+"On the *Classifications* tab of the event's **Setup** (admins), **New "
+"classification** opens the editor:"
+msgstr "Dans l’onglet *Classements généraux* de la **Configuration** de la manifestation (admins), **Nouveau classement général** ouvre l’éditeur :"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/classifications.md:15
+msgid ""
+"**Programmes**: every programme that counts, with its **Counting attempts**. "
+"With 3, the best three attempts count (or the first or last three, as set by "
+"the programme's *Counting attempt*). A shooter's total is the sum of all "
+"counted attempts."
+msgstr "**Programmes** : chaque programme qui compte, avec ses **Tentatives qui comptent**. Avec 3, les trois meilleures tentatives comptent (ou les trois premières ou dernières, selon la *Tentative qui compte* du programme). Le total d’un tireur est la somme de toutes les tentatives comptées."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/classifications.md:15
+msgid ""
+"**Count only the best programmes**: with several programmes, only that many "
+"with the highest points count, e.g. the best two of three; 0 counts all."
+msgstr "**Ne compter que les meilleurs programmes** : avec plusieurs programmes, seuls autant de programmes avec le plus de points comptent, p. ex. les deux meilleurs sur trois ; 0 les compte tous."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/classifications.md:15
+msgid ""
+"**Rank only shooters with all counting results**: shooters who are still "
+"missing a programme or an attempt are listed below the ranking without a "
+"rank. Without it everybody is ranked by what they have."
+msgstr "**Classer seulement les tireurs avec tous les résultats qui comptent** : les tireurs à qui il manque encore un programme ou une tentative sont listés sous le classement, sans rang. Sans cette option, chacun est classé selon ce qu’il a."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/classifications.md:15
+msgid ""
+"**Tie-break**: equal totals are decided by the ticked criteria in their "
+"order; the arrows change it. *Series from the last one backwards* compares "
+"all counted series, *More of the highest single shots* needs [single shots]"
+"(programmes.md) (more tens, then more nines …), *Age* follows the [SSV rule]"
+"(../reference/rules.md#ranking). The default is the SSV order."
+msgstr "**Départage** : en cas d’égalité, les critères cochés décident dans leur ordre ; les flèches le modifient. *Passes de la dernière en arrière* compare toutes les passes comptées, *Plus de coups les plus hauts* nécessite des [coups individuels](programmes.md) (plus de dix, puis plus de neuf …), *Âge* suit la [règle FST](../reference/rules.md#ranking). Par défaut, l’ordre FST."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/classifications.md:15
+msgid ""
+"**Classes**: separate rankings, each for some age categories, e.g. *Juniors* "
+"with U17 to U21 and *Elite* with the others. An age category belongs to one "
+"class at most; shooters whose category is in no class are not listed. "
+"Without classes everybody is in one ranking."
+msgstr "**Classes** : classements séparés, chacun pour certaines catégories d’âge, p. ex. *Juniors* avec U17 à U21 et *Élite* avec les autres. Une catégorie d’âge appartient au plus à une classe ; les tireurs dont la catégorie n’est dans aucune classe ne sont pas listés. Sans classes, tout le monde est dans un seul classement."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/classifications.md:15
+msgid "**Show on kiosk displays**."
+msgstr "**Afficher sur les écrans kiosque**."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/classifications.md:16
+#, no-wrap
+msgid "Examples {#examples}"
+msgstr "Exemples {#examples}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/classifications.md:23
+#, no-wrap
+msgid ""
+"| Event | Programmes | Settings |\n"
+"|---|---|---|\n"
+"| Section championship | Obligatory, Field match, Section stich | each counting attempt 1, *Rank only shooters with all counting results* |\n"
+"| Club championship over the season | annual programme with unlimited attempts | counting attempts 3 |\n"
+"| Shooting festival, best two stiche | three stiche | *Count only the best programmes* 2 |\n"
+msgstr ""
+"| Manifestation | Programmes | Réglages |\n"
+"|---|---|---|\n"
+"| Championnat de section | Programme obligatoire, Tir en campagne, Cible section | tentatives qui comptent 1 chacun, *Classer seulement les tireurs avec tous les résultats qui comptent* |\n"
+"| Championnat de société sur la saison | programme annuel à tentatives illimitées | tentatives qui comptent 3 |\n"
+"| Fête de tir, deux meilleures cibles | trois cibles | *Ne compter que les meilleurs programmes* 2 |\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/classifications.md:24
+#, no-wrap
+msgid "**Copy for next year** copies the classifications with the programmes. Deleting a programme removes it from the classifications.\n"
+msgstr ""
+"**Copier pour l’année prochaine** copie les classements généraux avec les programmes. Supprimer un programme le retire des classements généraux.\n"
 
 #. type: Title #
 #: ../src/help/en/user-guide/dashboard.md:1
@@ -2592,20 +2709,13 @@ msgstr "Copier pour l’année prochaine"
 msgid ""
 "On the *Copy & close* tab, **Copy for next year** creates a new event with "
 "the same ranges, organizer, language, settings and all programmes, including "
-"prices, awards, combinations and special prizes; the shooting days and the "
-"period move with the date, weekly shooting times stay on their weekdays. "
-"Registrations, results and kiosk links are not copied. The dialog suggests "
-"the name with the year (and a leading number like *42.*) counted up and the "
-"date one year later; adjust both as needed."
-msgstr ""
-"Dans l’onglet *Copier & clôturer*, **Copier pour l’année prochaine** crée "
-"une nouvelle manifestation avec les mêmes stands, organisateur, langue, "
-"réglages et tous les programmes, y compris prix, distinctions, combinaisons "
-"et prix spéciaux ; les jours de tir et la période suivent la date, les "
-"heures de tir hebdomadaires restent sur leurs jours de la semaine. Les "
-"inscriptions, les résultats et les liens kiosque ne sont pas copiés. Le "
-"dialogue propose le nom avec l’année (et un numéro en tête comme *42.*) "
-"incrémentée et la date un an plus tard ; adaptez les deux au besoin."
+"prices, awards, combinations and special prizes, and the [classifications]"
+"(classifications.md); the shooting days and the period move with the date, "
+"weekly shooting times stay on their weekdays. Registrations, results and "
+"kiosk links are not copied. The dialog suggests the name with the year (and "
+"a leading number like *42.*) counted up and the date one year later; adjust "
+"both as needed."
+msgstr "Dans l’onglet *Copier & clôturer*, **Copier pour l’année prochaine** crée une nouvelle manifestation avec les mêmes stands, organisateur, langue, réglages et tous les programmes, y compris prix, distinctions, combinaisons et prix spéciaux, ainsi que les [classements généraux](classifications.md) ; les jours de tir et la période suivent la date, les heures de tir hebdomadaires restent sur leurs jours de la semaine. Les inscriptions, les résultats et les liens kiosque ne sont pas copiés. Le dialogue propose le nom avec l’année (et un numéro en tête comme *42.*) incrémentée et la date un an plus tard ; adaptez les deux au besoin."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:37
@@ -3341,9 +3451,7 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/programmes.md:25
 msgid "**Counts for the club competition** and **Show on kiosk displays**."
-msgstr ""
-"**Compte pour le concours de sections** et **Afficher sur les écrans "
-"kiosque**."
+msgstr "**Afficher sur les écrans kiosque**."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/programmes.md:25
@@ -3364,7 +3472,9 @@ msgstr ""
 msgid ""
 "**Attempts** (see below): how often a shooter may shoot the programme at the "
 "event."
-msgstr "**Tentatives** (voir plus bas) : combien de fois un tireur peut tirer le programme lors de la manifestation."
+msgstr ""
+"**Tentatives** (voir plus bas) : combien de fois un tireur peut tirer le "
+"programme lors de la manifestation."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/programmes.md:25
@@ -3373,7 +3483,11 @@ msgid ""
 "With several attempts, a second field per category is the price of every "
 "further attempt (*Nachdoppel*); empty means the same price, 0 means the "
 "programme is paid once."
-msgstr "**Prix (CHF)** : seules les catégories d’âge cochées peuvent tirer le programme. Avec plusieurs tentatives, un second champ par catégorie est le prix de chaque tentative supplémentaire (*rachat*) ; vide signifie le même prix, 0 signifie que le programme est payé une fois."
+msgstr ""
+"**Prix (CHF)** : seules les catégories d’âge cochées peuvent tirer le "
+"programme. Avec plusieurs tentatives, un second champ par catégorie est le "
+"prix de chaque tentative supplémentaire (*rachat*) ; vide signifie le même "
+"prix, 0 signifie que le programme est payé une fois."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/programmes.md:25
@@ -3470,7 +3584,11 @@ msgid ""
 "shooter** allows more, e.g. 3 for a lucky target with further attempts at a "
 "shooting festival, or **Unlimited** for an annual programme shot over the "
 "season."
-msgstr "Par défaut, un tireur tire un programme une fois par manifestation. **Tentatives par tireur** en permet davantage, p. ex. 3 pour une cible chance avec rachats à une fête de tir, ou **Illimité** pour un programme annuel tiré sur toute la saison."
+msgstr ""
+"Par défaut, un tireur tire un programme une fois par manifestation. "
+"**Tentatives par tireur** en permet davantage, p. ex. 3 pour une cible "
+"chance avec rachats à une fête de tir, ou **Illimité** pour un programme "
+"annuel tiré sur toute la saison."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/programmes.md:43
@@ -3479,7 +3597,12 @@ msgid ""
 "competition, special prizes and *My training* count: **The best** (by the "
 "ranking rules), **The first** or **The last**. The ranking shows it as "
 "*2/3*: the second of three attempts counts."
-msgstr "**Tentative qui compte** détermine quelle tentative compte pour le classement, le concours de sections, les prix spéciaux et *Mon entraînement* : **La meilleure** (selon les règles du classement), **La première** ou **La dernière**. Le classement l’affiche comme *2/3* : la deuxième de trois tentatives compte."
+msgstr ""
+"**Tentative qui compte** détermine quelle tentative compte pour le "
+"classement, le concours de sections, les prix spéciaux et *Mon "
+"entraînement* : **La meilleure** (selon les règles du classement), **La "
+"première** ou **La dernière**. Le classement l’affiche comme *2/3* : la "
+"deuxième de trois tentatives compte."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/programmes.md:43
@@ -3487,7 +3610,11 @@ msgid ""
 "**Only the counting attempt receives an award**: off, every attempt can earn "
 "its award (a wreath card per further attempt); on, only the counting attempt "
 "gets one, and the award moves when a better attempt is shot."
-msgstr "**Seule la tentative qui compte reçoit une distinction** : désactivé, chaque tentative peut recevoir sa distinction (une carte-couronne par rachat) ; activé, seule la tentative qui compte en reçoit une, et la distinction passe à une meilleure tentative dès qu’elle est tirée."
+msgstr ""
+"**Seule la tentative qui compte reçoit une distinction** : désactivé, chaque "
+"tentative peut recevoir sa distinction (une carte-couronne par rachat) ; "
+"activé, seule la tentative qui compte en reçoit une, et la distinction passe "
+"à une meilleure tentative dès qu’elle est tirée."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/programmes.md:43
@@ -3496,7 +3623,12 @@ msgid ""
 "attempts at once are two result cards, *Attempt 1* and *Attempt 2*. Further "
 "attempts can also be added later in a new registration, or by entering "
 "another result on **Enter results**, until the shooter has no attempts left."
-msgstr "À l’inscription, un programme à plusieurs tentatives affiche un compteur : deux tentatives à la fois donnent deux cartes de résultats, *Tentative 1* et *Tentative 2*. D’autres tentatives peuvent aussi être ajoutées plus tard dans une nouvelle inscription, ou en saisissant un autre résultat sous **Saisir les résultats**, jusqu’à ce que le tireur n’ait plus de tentatives."
+msgstr ""
+"À l’inscription, un programme à plusieurs tentatives affiche un compteur : "
+"deux tentatives à la fois donnent deux cartes de résultats, *Tentative 1* et "
+"*Tentative 2*. D’autres tentatives peuvent aussi être ajoutées plus tard "
+"dans une nouvelle inscription, ou en saisissant un autre résultat sous "
+"**Saisir les résultats**, jusqu’à ce que le tireur n’ait plus de tentatives."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/programmes.md:45
@@ -3504,7 +3636,10 @@ msgid ""
 "The number of attempts can be changed while shooters are registered, but not "
 "below the attempts a shooter already has. Programmes with several attempts "
 "cannot be combined."
-msgstr "Le nombre de tentatives peut être modifié pendant que des tireurs sont inscrits, mais pas en dessous des tentatives qu’un tireur a déjà. Les programmes à plusieurs tentatives ne peuvent pas être combinés."
+msgstr ""
+"Le nombre de tentatives peut être modifié pendant que des tireurs sont "
+"inscrits, mais pas en dessous des tentatives qu’un tireur a déjà. Les "
+"programmes à plusieurs tentatives ne peuvent pas être combinés."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/programmes.md:49
@@ -3621,7 +3756,7 @@ msgid "![Rankings](../images/screenshots/rankings.png){ .screenshot }"
 msgstr "![Classements](../images/screenshots/rankings.png){ .screenshot }"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:11
+#: ../src/help/en/user-guide/rankings-kiosk.md:12
 msgid ""
 "**PDF** opens the ranking (A4) for printing or sharing, **CSV** downloads it "
 "for Excel. Rankings do not go to the range's printer."
@@ -3631,7 +3766,7 @@ msgstr ""
 "stand."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:11
+#: ../src/help/en/user-guide/rankings-kiosk.md:12
 msgid ""
 "Programmes switched off for kiosk displays are still ranked here and marked "
 "*not on kiosk*."
@@ -3639,14 +3774,21 @@ msgstr ""
 "Les programmes désactivés pour les écrans kiosque sont quand même classés "
 "ici et marqués *pas sur le kiosque*."
 
-#. type: Title ##
+#. type: Bullet: '- '
 #: ../src/help/en/user-guide/rankings-kiosk.md:12
+msgid ""
+"[Classifications](classifications.md) follow the programmes, one table per "
+"class; their **PDF** and **CSV** are the report *Classifications*."
+msgstr "Les [classements généraux](classifications.md) suivent les programmes, un tableau par classe ; leur **PDF** et **CSV** sont le rapport *Classements généraux*."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/rankings-kiosk.md:13
 #, no-wrap
 msgid "Kiosk screens"
 msgstr "Écrans kiosque"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/rankings-kiosk.md:15
+#: ../src/help/en/user-guide/rankings-kiosk.md:16
 msgid ""
 "A kiosk link shows the rankings of one event on a screen in the hall, "
 "without login. Create one on the *Kiosk displays* tab of the event's "
@@ -3657,7 +3799,7 @@ msgstr ""
 "la **Configuration** de la manifestation :"
 
 #. type: Bullet: '1. '
-#: ../src/help/en/user-guide/rankings-kiosk.md:19
+#: ../src/help/en/user-guide/rankings-kiosk.md:20
 msgid ""
 "Enter a name for the screen (e.g. *Hall 1*), choose **Dark** or **Light** "
 "and optionally a language."
@@ -3666,24 +3808,24 @@ msgstr ""
 "**Clair** et, si besoin, une langue."
 
 #. type: Bullet: '2. '
-#: ../src/help/en/user-guide/rankings-kiosk.md:19
+#: ../src/help/en/user-guide/rankings-kiosk.md:20
 msgid "**Create kiosk link**; copy the link. It is shown only once."
 msgstr ""
 "**Créer un lien kiosque** ; copie le lien. Il n’est affiché qu’une fois."
 
 #. type: Bullet: '3. '
-#: ../src/help/en/user-guide/rankings-kiosk.md:19
+#: ../src/help/en/user-guide/rankings-kiosk.md:20
 msgid "Open the link in a browser on the screen, ideally in full screen."
 msgstr ""
 "Ouvre le lien dans un navigateur sur l’écran, idéalement en plein écran."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/rankings-kiosk.md:21
+#: ../src/help/en/user-guide/rankings-kiosk.md:22
 msgid "![Kiosk screen](../images/screenshots/kiosk.png){ .screenshot }"
 msgstr "![Écran kiosque](../images/screenshots/kiosk.png){ .screenshot }"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:25
+#: ../src/help/en/user-guide/rankings-kiosk.md:26
 msgid ""
 "The kiosk shows only programmes with *Show on kiosk displays* switched on, "
 "and the lane status if the event setting *Show lane status on the rankings* "
@@ -3694,7 +3836,7 @@ msgstr ""
 "cibles sur les classements* de la manifestation est activé."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:25
+#: ../src/help/en/user-guide/rankings-kiosk.md:26
 msgid ""
 "The language is the event's language unless the link carries another one (`?"
 "language=de`, `fr`, `it`, `en`); the theme comes from `?theme=dark` or `?"
@@ -3709,7 +3851,7 @@ msgstr ""
 "ses cibles, ses programmes et les programmes sans stand."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:25
+#: ../src/help/en/user-guide/rankings-kiosk.md:26
 msgid ""
 "The screen updates live and reconnects by itself after a network "
 "interruption. When a new version of Standblatt is released, it reloads by "
@@ -3719,7 +3861,7 @@ msgstr ""
 "du réseau. À une nouvelle version de Standblatt, il se recharge tout seul."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:25
+#: ../src/help/en/user-guide/rankings-kiosk.md:26
 msgid ""
 "**revoke** in the list stops a link immediately. *last seen* tells when a "
 "screen last fetched data."
@@ -3938,7 +4080,13 @@ msgid ""
 "Programmes already booked are locked (*already registered*, or *no attempts "
 "left* for programmes with several [attempts](programmes.md#attempts)); a "
 "shooter may still shoot another variant in a separate registration."
-msgstr "Si le tireur est ou était déjà inscrit à cette manifestation, une note liste ces inscriptions avec leurs programmes et un lien pour les ouvrir. Les programmes déjà réservés sont verrouillés (*déjà inscrit*, ou *plus de tentatives* pour les programmes à plusieurs [tentatives](programmes.md#attempts)) ; un tireur peut quand même tirer une autre variante dans une inscription séparée."
+msgstr ""
+"Si le tireur est ou était déjà inscrit à cette manifestation, une note liste "
+"ces inscriptions avec leurs programmes et un lien pour les ouvrir. Les "
+"programmes déjà réservés sont verrouillés (*déjà inscrit*, ou *plus de "
+"tentatives* pour les programmes à plusieurs [tentatives]"
+"(programmes.md#attempts)) ; un tireur peut quand même tirer une autre "
+"variante dans une inscription séparée."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/registrations.md:29
@@ -4522,7 +4670,15 @@ msgid ""
 "completed. A shooter can have results in a programme only once, unless the "
 "programme allows several [attempts](programmes.md#attempts): then every "
 "further result is a new attempt until none is left."
-msgstr "Le résultat est enregistré aussitôt, et le tireur apparaît sous *Saisis à l’instant* avec un lien vers les résultats. Si le tireur était inscrit au guichet pour ce programme et n’a pas encore de résultats, les résultats vont dans cette inscription ; sinon, une inscription sans cible est créée, déjà terminée. Un tireur ne peut avoir des résultats qu’une fois par programme, sauf si le programme permet plusieurs [tentatives](programmes.md#attempts) : chaque résultat supplémentaire est alors une nouvelle tentative, jusqu’à ce qu’il n’en reste plus."
+msgstr ""
+"Le résultat est enregistré aussitôt, et le tireur apparaît sous *Saisis à "
+"l’instant* avec un lien vers les résultats. Si le tireur était inscrit au "
+"guichet pour ce programme et n’a pas encore de résultats, les résultats vont "
+"dans cette inscription ; sinon, une inscription sans cible est créée, déjà "
+"terminée. Un tireur ne peut avoir des résultats qu’une fois par programme, "
+"sauf si le programme permet plusieurs [tentatives](programmes.md#attempts) : "
+"chaque résultat supplémentaire est alors une nouvelle tentative, jusqu’à ce "
+"qu’il n’en reste plus."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/results-entry.md:18
@@ -4711,7 +4867,7 @@ msgstr ""
 "langue de la manifestation."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/statistics-reports.md:25
+#: ../src/help/en/user-guide/statistics-reports.md:26
 #, no-wrap
 msgid ""
 "| Report | Content |\n"
@@ -4722,6 +4878,7 @@ msgid ""
 "| Club competition | ranking, out of competition and not ranked clubs |\n"
 "| Club participants | participants per club, programme and age category |\n"
 "| Special prizes | winners per programme and age category, skipped shooters with the reason (see [Programmes](programmes.md#special-prizes)) |\n"
+"| Classifications | every [classification](classifications.md) per class, with the points per programme; parts that do not count are in parentheses |\n"
 "| Awards to hand out | awards not yet collected, with shooter, club, programme, kind and value, plus the cash still to pay out (see [Results](results.md#handout)) |\n"
 "| Lane bookings | the clubs that asked for lanes through [online booking](online-booking.md), confirmed or still waiting, with contact, slots, lane numbers and announced shooters |\n"
 msgstr ""
@@ -4733,11 +4890,12 @@ msgstr ""
 "| Concours de sections | classement, sociétés hors concours et non classées |\n"
 "| Participants par société | participants par société, programme et catégorie d’âge |\n"
 "| Prix spéciaux | gagnants par programme et catégorie d’âge, tireurs sautés avec la raison (voir [Programmes](programmes.md#special-prizes)) |\n"
+"| Classements généraux | chaque [classement général](classifications.md) par classe, avec les points par programme ; les parties qui ne comptent pas sont entre parenthèses |\n"
 "| Distinctions à remettre | distinctions pas encore retirées, avec tireur, société, programme, type et valeur, plus les espèces encore à verser (voir [Résultats](results.md#handout)) |\n"
 "| Réservations de cibles | les sociétés qui ont demandé des cibles par la [réservation en ligne](online-booking.md), confirmées ou en attente, avec contact, créneaux, numéros de cible et tireurs annoncés |\n"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/statistics-reports.md:26
+#: ../src/help/en/user-guide/statistics-reports.md:27
 msgid ""
 "Below the reports, the ranking of every programme can be downloaded as PDF "
 "or CSV."

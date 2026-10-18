@@ -31,7 +31,7 @@ An event needs no range, e.g. an annual programme or a Feldschiessen whose resul
 
 ## Copy for next year
 
-On the *Copy & close* tab, **Copy for next year** creates a new event with the same ranges, organizer, language, settings and all programmes, including prices, awards, combinations and special prizes; the shooting days and the period move with the date, weekly shooting times stay on their weekdays. Registrations, results and kiosk links are not copied. The dialog suggests the name with the year (and a leading number like *42.*) counted up and the date one year later; adjust both as needed.
+On the *Copy & close* tab, **Copy for next year** creates a new event with the same ranges, organizer, language, settings and all programmes, including prices, awards, combinations and special prizes, and the [classifications](classifications.md); the shooting days and the period move with the date, weekly shooting times stay on their weekdays. Registrations, results and kiosk links are not copied. The dialog suggests the name with the year (and a leading number like *42.*) counted up and the date one year later; adjust both as needed.
 
 ![Copy an event](../images/screenshots/copy-event.png){ .screenshot }
 

@@ -30,7 +30,7 @@ programmi](../images/screenshots/setup.png){ .screenshot }
   avvisa se il nome della variante è vuoto o già usato.
 - **Codice a barre**: stampato sul foglio di stand per la segnalazione
   elettronica (vedi [Codici](../reference/codes.md)).
-- **Conta per il concorso di sezione** e **Mostra sugli schermi chiosco**.
+- **Mostra sugli schermi chiosco**.
 - **Serie**: colpi, punti massimi, se si contano le mouche e se si
   registrano i **Colpi singoli**, per serie. Con i colpi singoli si può
   registrare ogni colpo e la serie ne è la somma, p. es. per stamparli su un

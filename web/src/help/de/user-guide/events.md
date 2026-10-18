@@ -45,12 +45,12 @@ einem Stand gehören.
 Auf dem Tab *Kopieren & abschliessen* erstellt **Für nächstes Jahr
 kopieren** einen neuen Anlass mit denselben Ständen, Organisator, Sprache,
 Einstellungen und allen Programmen, inklusive Preise, Auszeichnungen,
-Kombinationen und Spezialpreise; die Schiesstage und der Zeitraum wandern
-mit dem Datum, wöchentliche Schiesszeiten bleiben auf ihren
-Wochentagen. Anmeldungen, Resultate und Kiosk-Links werden nicht
-kopiert. Der Dialog schlägt den Namen mit hochgezähltem Jahr (und einer
-führenden Nummer wie *42.*) und das Datum ein Jahr später vor; passe beides
-bei Bedarf an.
+Kombinationen und Spezialpreise, sowie den [Wertungen](classifications.md);
+die Schiesstage und der Zeitraum wandern mit dem Datum, wöchentliche
+Schiesszeiten bleiben auf ihren Wochentagen. Anmeldungen, Resultate und
+Kiosk-Links werden nicht kopiert. Der Dialog schlägt den Namen mit
+hochgezähltem Jahr (und einer führenden Nummer wie *42.*) und das Datum ein
+Jahr später vor; passe beides bei Bedarf an.
 
 ![Einen Anlass kopieren](../images/screenshots/copy-event.png){ .screenshot
 }
