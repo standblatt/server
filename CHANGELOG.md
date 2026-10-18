@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- An API token that lacks a scope its owner's role has is refused with "Not allowed for this API token" instead of naming the role (by @HB9HIL)
+
 ## [0.20.0] - 2026-10-18
 
 ### Added

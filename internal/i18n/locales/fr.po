@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 17:38+0200\n"
+"POT-Creation-Date: 2026-10-18 18:50+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1982,6 +1982,10 @@ msgstr "Donne d’abord un autre rôle aux membres de ce rôle"
 #, go-format
 msgid "Lane %d is outside 1–%d"
 msgstr "La cible %d est en dehors de 1–%d"
+
+#: internal/web/tenants.go
+msgid "Not allowed for this API token"
+msgstr "Non autorisé pour ce jeton API"
 
 #: internal/web/tenants.go
 msgid "Not allowed for your role"

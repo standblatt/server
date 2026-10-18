@@ -134,13 +134,13 @@ func TestPermissionLeaks(t *testing.T) {
 			}
 		}
 		others := slices.DeleteFunc(permissions.Keys(), func(p string) bool { return slices.Contains(op.Permissions, p) })
-		if code, b := call(with(token(others, tid)), op); code != 403 || !strings.Contains(string(b), "Not allowed for your role") {
+		if code, b := call(with(token(others, tid)), op); code != 403 || !strings.Contains(string(b), "Not allowed for this API token") {
 			t.Errorf("token without the scope: %s %s: %d %s", op.Method, op.Path, code, b)
 		}
 		if code, b := call(with(elsewhere), op); code != 404 {
 			t.Errorf("token for another club: %s %s: %d %s", op.Method, op.Path, code, b)
 		}
-		if code, b := call(with(token(op.Permissions[:1], tid)), op); strings.Contains(string(b), "Not allowed for your role") {
+		if code, b := call(with(token(op.Permissions[:1], tid)), op); strings.Contains(string(b), "Not allowed for your role") || strings.Contains(string(b), "Not allowed for this API token") {
 			t.Errorf("token with %s refused: %s %s: %d", op.Permissions[0], op.Method, op.Path, code)
 		}
 	}

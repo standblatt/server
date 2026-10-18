@@ -144,12 +144,18 @@ func TestAPITokenClubs(t *testing.T) {
 	expect(t, "events of a club not chosen", code, 404, body)
 	code, body = e.do(view, "GET", path(a, "/shooters"), nil)
 	expect(t, "a scope the token lacks although the role has it", code, 403, body)
+	if !strings.Contains(string(body), "Not allowed for this API token") {
+		t.Errorf("a missing scope names the token: %s", body)
+	}
 
 	both := token([]string{"events.view", "shooters.view", "club.manage"}, []int64{a, b})
 	code, body = e.do(both, "GET", path(b, "/shooters"), nil)
 	expect(t, "helper role in B sees shooters", code, 200, body)
 	code, body = e.do(both, "GET", path(b, "/users"), nil)
 	expect(t, "a scope the role in B lacks", code, 403, body)
+	if !strings.Contains(string(body), "Not allowed for your role") {
+		t.Errorf("a permission the role lacks names the role: %s", body)
+	}
 	code, body = e.do(both, "GET", path(a, "/users"), nil)
 	expect(t, "the same scope where the role has it", code, 200, body)
 	if err := e.st.SetMembership(ctx, b, owner, e.role(b, store.RoleMember)); err != nil {

@@ -58,7 +58,7 @@ func (s *Server) access(ctx context.Context, tenantID int64, perms ...string) (s
 	if err != nil {
 		return u, nil, err
 	}
-	_, have, err := s.callerPermissions(ctx, tenantID, u.ID)
+	role, have, err := s.callerPermissions(ctx, tenantID, u.ID)
 	if errors.Is(err, store.ErrNotFound) {
 		return u, nil, missing("Club not found")
 	}
@@ -66,6 +66,9 @@ func (s *Server) access(ctx context.Context, tenantID int64, perms ...string) (s
 		return u, nil, err
 	}
 	if !permissions.Any(have, perms...) {
+		if tokenOf(ctx) != nil && permissions.Any(role.Permissions, perms...) {
+			return u, have, forbidden("Not allowed for this API token")
+		}
 		return u, have, forbidden("Not allowed for your role")
 	}
 	return u, have, nil
