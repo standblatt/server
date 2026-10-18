@@ -967,15 +967,15 @@ msgstr "Lösche zuerst die Druckvorlagen"
 
 #: internal/web/modules.go
 msgid "Programmes with awards use this module"
-msgstr "Programme mit Auszeichnungen verwenden diesen Baustein"
+msgstr "Programme mit Auszeichnungen verwenden dieses Modul"
 
 #: internal/web/modules.go
 msgid "Programmes with several attempts use this module"
-msgstr "Programme mit mehreren Durchgängen verwenden diesen Baustein"
+msgstr "Programme mit mehreren Durchgängen verwenden dieses Modul"
 
 #: internal/web/modules.go
 msgid "Programmes with special prizes use this module"
-msgstr "Programme mit Sonderpreisen verwenden diesen Baustein"
+msgstr "Programme mit Sonderpreisen verwenden dieses Modul"
 
 #: internal/web/modules.go
 msgid "Switch the online booking link off first"
@@ -983,15 +983,15 @@ msgstr "Schalte zuerst den Link der Online-Reservation aus"
 
 #: internal/web/modules.go
 msgid "The module is in use"
-msgstr "Der Baustein wird verwendet"
+msgstr "Das Modul wird verwendet"
 
 #: internal/web/modules.go
 msgid "This module is off"
-msgstr "Dieser Baustein ist ausgeschaltet"
+msgstr "Dieses Modul ist ausgeschaltet"
 
 #: internal/web/modules.go
 msgid "This module is off for this event"
-msgstr "Dieser Baustein ist für diesen Anlass ausgeschaltet"
+msgstr "Dieses Modul ist für diesen Anlass ausgeschaltet"
 
 #: internal/web/my.go
 msgid "Another account uses this email address."

@@ -17,8 +17,8 @@
 ## Kiosk-Bildschirme
 
 Ein Kiosk-Link zeigt die Ranglisten eines Anlasses auf einem Bildschirm in
-der Halle, ohne Anmeldung. Schalte den Baustein *Kiosk-Anzeigen* unter
-**Konfiguration** → **Bausteine** ein und erstelle dann einen auf
+der Halle, ohne Anmeldung. Schalte das Modul *Kiosk-Anzeigen* unter
+**Konfiguration** → **Module** ein und erstelle dann einen auf
 **Kiosk-Anzeigen** in der Konfiguration:
 
 1. Gib einen Namen für den Bildschirm ein (z. B. *Halle 1*), wähle

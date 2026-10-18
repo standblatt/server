@@ -4,8 +4,8 @@ Eine Druckvorlage bringt Resultate auf ein vorgedrucktes Blatt, z. B. die
 Standblätter, die die Armee für das Obligatorische Programm liefert: Die
 Schüsse werden an der Scheibe oder nachträglich erfasst, und das Blatt wird
 gedruckt statt von Hand ausgefüllt. Von Hand ausfüllen bleibt möglich;
-Druckvorlagen sind freiwillig und lassen sich unter **Vereinsbausteine**
-ausschalten (siehe [Vereinsbausteine](events.md#club-modules)).
+Druckvorlagen sind freiwillig und lassen sich unter **Vereinsmodule**
+ausschalten (siehe [Vereinsmodule](events.md#club-modules)).
 
 ## Eine Vorlage erstellen {#create}
 

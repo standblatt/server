@@ -8,17 +8,17 @@
 
 Ein Anlass hat zwei Bereiche. Der **Betrieb** ist das, womit du am Anlass
 arbeitest: *Dashboard*, *Resultate erfassen*, *Ranglisten*, *Statistik* und
-die Seiten eingeschalteter Bausteine wie *Reservationen*. **Konfiguration**
-am Ende der Seitenleiste (nur Admins) öffnet die Einrichtung des Anlasses;
-die Seitenleiste zeigt dann deren Seiten, und *Zurück zum Anlass* führt
-zurück in den Betrieb:
+die Seiten eingeschalteter Module wie *Reservationen*. **Konfiguration** am
+Ende der Seitenleiste (nur Admins) öffnet die Einrichtung des Anlasses; die
+Seitenleiste zeigt dann deren Seiten, und *Zurück zum Anlass* führt zurück
+in den Betrieb:
 
 | Seite | Was sie enthält |
 |---|---|
 | **Allgemein** | Name, Tage, Stände, Veranstalter und Sprache (siehe unten) |
-| **Bausteine** | die Bausteine, die der Anlass verwendet (siehe unten) |
+| **Module** | die Module, die der Anlass verwendet (siehe unten) |
 | **Programme** | was geschossen werden kann (siehe [Programme](programmes.md)) |
-| Seiten der Bausteine | z. B. **Wertungen**, **Kiosk-Anzeigen**, **Helferlinks**, **Online-Reservation**, nur solange der Baustein an ist |
+| Seiten das Module | z. B. **Wertungen**, **Kiosk-Anzeigen**, **Helferlinks**, **Online-Reservation**, nur solange das Modul an ist |
 | **Kopieren & abschliessen** | für nächstes Jahr kopieren, abschliessen, wiedereröffnen und löschen |
 
 Personal arbeitet nur im Betrieb; die Konfiguration ist für Admins.
@@ -35,14 +35,14 @@ Personal arbeitet nur im Betrieb; die Konfiguration ist für Admins.
 | Veranstalter | wird auf Dokumente gedruckt |
 | Sprache der Dokumente und des Kiosks | Sprache von PDFs, CSV-Exporten und Kiosk-Bildschirmen, unabhängig von der Oberflächensprache der einzelnen Benutzer |
 
-## Bausteine {#modules}
+## Module {#modules}
 
 Nicht jeder Anlass braucht alles: Ein Schützenfest reserviert Scheiben und
-gibt Kranzkarten ab, ein Jahresprogramm sammelt nur Resultate. **Bausteine**
-schaltet die Bausteine des Anlasses ein und aus; was aus ist, verschwindet
-aus Seitenleiste, Dashboard, Programm-Editor, Ranglisten und Berichten.
+gibt Kranzkarten ab, ein Jahresprogramm sammelt nur Resultate. **Module**
+schaltet die Module des Anlasses ein und aus; was aus ist, verschwindet aus
+Seitenleiste, Dashboard, Programm-Editor, Ranglisten und Berichten.
 
-| Baustein | Was er bringt |
+| Modul | Was es bringt |
 |---|---|
 | Reservationen | für Gruppen und Vereine reservierte Scheiben (braucht einen Stand) |
 | Online-Reservation | Vereine fragen über einen öffentlichen Link Scheiben an (braucht einen Stand und schaltet Reservationen ein, siehe [Online-Reservation](online-booking.md)) |
@@ -57,9 +57,9 @@ aus Seitenleiste, Dashboard, Programm-Editor, Ranglisten und Berichten.
 | Helferlinks | Warner, Munitionsausgabe und Resultaterfassung ohne Konto (siehe [Helfer](helpers.md)) |
 
 Beim Erstellen eines Anlasses wählst du, was für ein Anlass es ist; das
-schaltet nur Bausteine ein:
+schaltet nur Module ein:
 
-| Art | Bausteine |
+| Art | Module |
 |---|---|
 | Schützenfest | Reservationen, Online-Reservation, Standblatt, Kontrollstreifen, Auszeichnungen, Sonderpreise, Vereinskonkurrenz, Kiosk-Anzeigen, Helferlinks |
 | Jahresprogramm oder Training | Durchgänge, Wertungen |
@@ -67,23 +67,22 @@ schaltet nur Bausteine ein:
 | Vereinsmeisterschaft | Durchgänge, Wertungen, Kiosk-Anzeigen |
 | Eigene Auswahl | keine |
 
-Ein Baustein mit Daten bleibt an: Den Kiosk schaltest du erst aus, wenn
-seine Kiosk-Links gelöscht sind, die Auszeichnungen erst, wenn kein Programm
-mehr Auszeichnungsstufen hat, und so weiter; die Karte sagt, warum ihr
-Schalter gesperrt ist. Ein Baustein, den ein anderer braucht (Reservationen
-für die Online-Reservation), bleibt an, solange jener an ist.
+Ein Modul mit Daten bleibt an: Den Kiosk schaltest du erst aus, wenn seine
+Kiosk-Links gelöscht sind, die Auszeichnungen erst, wenn kein Programm mehr
+Auszeichnungsstufen hat, und so weiter; die Karte sagt, warum ihr Schalter
+gesperrt ist. Ein Modul, das ein anderes braucht (Reservationen für die
+Online-Reservation), bleibt an, solange jenes an ist.
 
 Die Schiesszeiten geben auch der Online-Reservation ihre Zeitblöcke, ausser
 die Reservation legt für einen Tag andere Zeiten fest (siehe
 [Online-Reservation](online-booking.md)).
 
-### Vereinsbausteine {#club-modules}
+### Vereinsmodule {#club-modules}
 
-Manche Bausteine gehören zum Verein statt zu einem
-Anlass. **Vereinsbausteine** im Vereinsteil der Seitenleiste (Admins)
-schaltet sie ein und aus:
+Manche Module gehören zum Verein statt zu einem Anlass. **Vereinsmodule** im
+Vereinsteil der Seitenleiste (Admins) schaltet sie ein und aus:
 
-| Baustein | Was er bringt |
+| Modul | Was es bringt |
 |---|---|
 | Druckvorlagen | Vorlagen für vorgedruckte Blätter und der Abschnitt *Druckvorlage* jedes Programms (siehe [Druckvorlagen](print-forms.md)) |
 
@@ -91,17 +90,17 @@ schaltet sie ein und aus:
 
 Ein Anlass braucht keinen Stand, z. B. ein Jahresprogramm oder ein
 Feldschiessen, dessen Resultate auf Papier oder aus der Trefferanzeige
-kommen. Ohne Stand gibt es kein Scheibenraster, und die Bausteine
-Reservationen und Online-Reservation stehen nicht zur Verfügung; Schützen
-werden ohne Scheibe angemeldet, und ihre Resultate werden wie gewohnt
-erfasst. Dokumente lassen sich weiterhin als PDF öffnen, gehen aber nicht an
-einen Druck-Agenten, weil Druck-Agenten zu einem Stand gehören.
+kommen. Ohne Stand gibt es kein Scheibenraster, und die Module Reservationen
+und Online-Reservation stehen nicht zur Verfügung; Schützen werden ohne
+Scheibe angemeldet, und ihre Resultate werden wie gewohnt erfasst. Dokumente
+lassen sich weiterhin als PDF öffnen, gehen aber nicht an einen
+Druck-Agenten, weil Druck-Agenten zu einem Stand gehören.
 
 ## Für nächstes Jahr kopieren {#copy}
 
 Auf **Kopieren & abschliessen** in der Konfiguration erstellt **Für nächstes
 Jahr kopieren** einen neuen Anlass mit denselben Ständen, Veranstalter,
-Sprache, Einstellungen, Bausteinen und allen Programmen, inklusive Preise,
+Sprache, Einstellungen, Modulen und allen Programmen, inklusive Preise,
 Auszeichnungen, Kombinationen und Sonderpreise, sowie den
 [Wertungen](classifications.md); die Schiesstage und der Zeitraum wandern
 mit dem Datum, wöchentliche Schiesszeiten bleiben auf ihren

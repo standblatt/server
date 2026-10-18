@@ -7,11 +7,10 @@ meldet seine Schützen. Ein Admin bestätigt oder lehnt jede Anfrage ab.
 
 ## Einschalten {#setup}
 
-Schalte den Baustein *Online-Reservation* unter **Konfiguration** →
-**Bausteine** ein (er braucht einen Stand); dann genügt auf
-**Online-Reservation** in der Konfiguration **Einschalten**. Die Seite zeigt
-dann den Link mit einem QR-Code für die Einladung und die angebotenen
-Zeitblöcke.
+Schalte das Modul *Online-Reservation* unter **Konfiguration** → **Module**
+ein (es braucht einen Stand); dann genügt auf **Online-Reservation** in der
+Konfiguration **Einschalten**. Die Seite zeigt dann den Link mit einem
+QR-Code für die Einladung und die angebotenen Zeitblöcke.
 
 ![Online-Reservation in der
 Konfiguration](../images/screenshots/booking-setup.png){ .screenshot }

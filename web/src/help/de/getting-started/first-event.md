@@ -33,9 +33,9 @@ an. Schützen lassen sich auch während des Anlasses am Empfang erfassen.
 ## 4. Anlass erstellen
 
 Erstelle unter **Anlässe** den Anlass: Wähle, was für ein Anlass es ist (das
-schaltet die passenden [Bausteine](../user-guide/events.md#modules) ein),
-dann Name, Datum, Schiessstand, Veranstalter und die Sprache von Dokumenten
-und Kiosk-Bildschirmen. Hast du den Anlass letztes Jahr schon durchgeführt,
+schaltet die passenden [Module](../user-guide/events.md#modules) ein), dann
+Name, Datum, Schiessstand, Veranstalter und die Sprache von Dokumenten und
+Kiosk-Bildschirmen. Hast du den Anlass letztes Jahr schon durchgeführt,
 öffne den Anlass vom letzten Jahr und nutze stattdessen **Für nächstes Jahr
 kopieren**: Das übernimmt die Einstellungen und alle Programme.
 
@@ -45,8 +45,8 @@ kopieren**: Das übernimmt die Einstellungen und alle Programme.
 ## 5. Programme hinzufügen
 
 Öffne **Konfiguration** in der Seitenleiste des Anlasses. Schalte unter
-**Bausteine** ein, was der Anlass verwendet (Kiosk-Anzeigen, Helferlinks,
-Auszeichnungen …, siehe [Bausteine](../user-guide/events.md#modules)); füge
+**Module** ein, was der Anlass verwendet (Kiosk-Anzeigen, Helferlinks,
+Auszeichnungen …, siehe [Module](../user-guide/events.md#modules)); füge
 dann unter **Programme** die Programme hinzu: mit dem Editor, aus der
 Programmbibliothek, aus einer Programmdatei oder als Kopie aus einem
 früheren Anlass. Prüfe Preise, Auszeichnungsstufen, Varianten und

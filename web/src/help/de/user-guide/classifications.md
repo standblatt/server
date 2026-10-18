@@ -11,9 +11,9 @@ Auszeichnungen.
 
 ## Eine Wertung erstellen {#create}
 
-Ist der Baustein *Wertungen* eingeschaltet (**Konfiguration** →
-**Bausteine**), öffnet **Neue Wertung** auf **Wertungen** in der
-Konfiguration (Admins) den Editor:
+Ist das Modul *Wertungen* eingeschaltet (**Konfiguration** → **Module**),
+öffnet **Neue Wertung** auf **Wertungen** in der Konfiguration (Admins) den
+Editor:
 
 - **Programme**: jedes Programm, das zählt, mit seinen **Zählenden
   Durchgängen**. Bei 3 zählen die besten drei Durchgänge (oder die ersten

@@ -487,7 +487,7 @@ msgstr "Ein Kiosk-Link zeigt die Live-Ranglisten dieses Anlasses ohne Anmeldung.
 
 #: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "A new event with the same settings, modules and programmes, without registrations."
-msgstr "Ein neuer Anlass mit denselben Einstellungen, Bausteinen und Programmen, ohne Anmeldungen."
+msgstr "Ein neuer Anlass mit denselben Einstellungen, Modulen und Programmen, ohne Anmeldungen."
 
 #: src/lib/UpdateNotice.svelte
 msgid "A new version of Standblatt is available."
@@ -1230,7 +1230,7 @@ msgstr "Verein in den Stammdaten: {0}"
 #: src/routes/t/[tenantId]/forms/+layout.svelte
 #: src/routes/t/[tenantId]/modules/+page.svelte
 msgid "Club modules"
-msgstr "Vereinsbausteine"
+msgstr "Vereinsmodule"
 
 #: src/routes/t/[tenantId]/+layout.svelte
 msgid "Club not found. <0>Back to the list</0>"
@@ -2841,7 +2841,7 @@ msgstr "fehlt"
 #: src/routes/t/[tenantId]/events/[eventId]/config/[module]/+page.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/config/modules/+page.svelte
 msgid "Modules"
-msgstr "Bausteine"
+msgstr "Module"
 
 #: src/lib/components/ui/breadcrumb/breadcrumb-ellipsis.svelte
 msgid "More"
@@ -3325,7 +3325,7 @@ msgstr "Nur möglich, solange keine Druckvorlage es zeigt."
 
 #: src/routes/t/[tenantId]/+page.svelte
 msgid "Only sets the modules; they can be changed any time under Configuration → Modules."
-msgstr "Setzt nur die Bausteine; sie lassen sich jederzeit unter Konfiguration → Bausteine ändern."
+msgstr "Setzt nur die Module; sie lassen sich jederzeit unter Konfiguration → Module ändern."
 
 #: src/lib/ProgrammeEditor.svelte
 msgid "Only the checked age categories may shoot this programme."
@@ -3800,7 +3800,7 @@ msgstr "Schiessstand gespeichert"
 
 #: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Range, organizer, language, settings, modules, all programmes with prices, awards, combinations and special prizes, and the classifications are copied. Registrations, results and kiosk links are not."
-msgstr "Stand, Veranstalter, Sprache, Einstellungen, Bausteine, alle Programme mit Preisen, Auszeichnungen, Kombinationen und Sonderpreisen sowie die Wertungen werden kopiert. Anmeldungen, Resultate und Kiosk-Links nicht."
+msgstr "Stand, Veranstalter, Sprache, Einstellungen, Module, alle Programme mit Preisen, Auszeichnungen, Kombinationen und Sonderpreisen sowie die Wertungen werden kopiert. Anmeldungen, Resultate und Kiosk-Links nicht."
 
 #: src/lib/AppSidebar.svelte
 #: src/lib/EventForm.svelte
@@ -4691,7 +4691,7 @@ msgstr "Training starten"
 
 #: src/lib/modules/presets.ts
 msgid "Start with nothing and switch on modules as needed."
-msgstr "Ohne Bausteine beginnen und nach Bedarf einschalten."
+msgstr "Ohne Module beginnen und nach Bedarf einschalten."
 
 #: src/lib/AppSidebar.svelte
 #: src/lib/EventDesk.svelte
@@ -5003,11 +5003,11 @@ msgstr "Dieser Link ist nicht gültig."
 #: src/routes/t/[tenantId]/events/[eventId]/[module]/+page.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/config/[module]/+page.svelte
 msgid "This module is off for this event."
-msgstr "Dieser Baustein ist für diesen Anlass ausgeschaltet."
+msgstr "Dieses Modul ist für diesen Anlass ausgeschaltet."
 
 #: src/routes/t/[tenantId]/forms/+layout.svelte
 msgid "This module is off."
-msgstr "Dieser Baustein ist ausgeschaltet."
+msgstr "Dieses Modul ist ausgeschaltet."
 
 #: src/lib/help/HelpArticle.svelte
 msgid "This page is not translated yet."

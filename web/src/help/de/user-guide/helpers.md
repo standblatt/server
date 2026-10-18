@@ -3,9 +3,9 @@
 Helfer am Anlass (Warner, Munitionsausgabe, Resultaterfassung) arbeiten mit
 einem **Helferlink** statt mit einem Login. Ein Helferlink öffnet auf jedem
 Handy oder Laptop eine reduzierte Ansicht eines Anlasses; Admins schalten
-den Baustein *Helferlinks* unter **Konfiguration** → **Bausteine** ein,
-erstellen die Links auf **Helferlinks** in der Konfiguration und widerrufen
-sie, wenn der Anlass vorbei ist.
+das Modul *Helferlinks* unter **Konfiguration** → **Module** ein, erstellen
+die Links auf **Helferlinks** in der Konfiguration und widerrufen sie, wenn
+der Anlass vorbei ist.
 
 ![Helferseite des Warners auf einem
 Handy](../images/screenshots/helper-scorer.png){ .screenshot .phone }
@@ -36,4 +36,4 @@ Programme bearbeiten, Ranglisten, Statistik, Löschen.
 
 ## Munition {#ammunition}
 
-**Munition** auf einer wartenden oder schiessenden Anmeldung hält die Zeit fest, zu der die Munition ausgegeben wurde; den Knopf gibt es nur, wenn der Baustein *Munitionsausgabe* an ist (Luftpistolen- und Luftgewehrschützen bringen meist ihre eigene mit). Das Dashboard zeigt bei solchen Anmeldungen ein grünes *Munition*-Abzeichen, so sehen Ausgabe und Rangeur auf einen Blick, wer bedient ist.
+**Munition** auf einer wartenden oder schiessenden Anmeldung hält die Zeit fest, zu der die Munition ausgegeben wurde; den Knopf gibt es nur, wenn das Modul *Munitionsausgabe* an ist (Luftpistolen- und Luftgewehrschützen bringen meist ihre eigene mit). Das Dashboard zeigt bei solchen Anmeldungen ein grünes *Munition*-Abzeichen, so sehen Ausgabe und Rangeur auf einen Blick, wer bedient ist.

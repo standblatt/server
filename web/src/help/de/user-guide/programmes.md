@@ -21,9 +21,9 @@ Programme gehören zu einem Anlass und werden unter **Konfiguration** →
 ## Die Programmseite {#page}
 
 Ein Klick auf ein Programm in der Liste öffnet seine Seite. Sie hat die
-Abschnitte des Programms und dazu einen Abschnitt für jeden eingeschalteten
-[Baustein](events.md#modules), der etwas zu Programmen beiträgt;
-**Erstellen** oder **Speichern** unten speichert sie zusammen.
+Abschnitte des Programms und dazu einen Abschnitt für jedes eingeschaltete
+[Modul](events.md#modules), das etwas zu Programmen beiträgt; **Erstellen**
+oder **Speichern** unten speichert sie zusammen.
 
 ![Programmseite](../images/screenshots/programme-editor.png){ .screenshot }
 
@@ -35,18 +35,18 @@ Abschnitte des Programms und dazu einen Abschnitt für jeden eingeschalteten
 - **Barcode**: wird für die elektronische Trefferanzeige auf das Standblatt
   gedruckt (siehe [Codes](../reference/codes.md)).
 - **Zählt für die Vereinskonkurrenz** und **Auf Kiosk-Anzeigen zeigen**: nur
-  solange die Bausteine *Vereinskonkurrenz* und *Kiosk-Anzeigen* an sind.
+  solange die Module *Vereinskonkurrenz* und *Kiosk-Anzeigen* an sind.
 - **Passen**: Schüsse, Maximalpunkte, ob Mouchen gezählt und ob
   **Einzelschüsse** erfasst werden, pro Passe. Mit Einzelschüssen lässt sich
   jeder Schuss erfassen, und die Passe ist deren Summe, z. B. um sie auf ein
   Formular zu drucken; das Passentotal allein lässt sich weiterhin erfassen.
-- **Durchgänge** (Baustein *Durchgänge*, siehe unten): wie oft ein Schütze
-  das Programm am Anlass schiessen darf.
+- **Durchgänge** (Modul *Durchgänge*, siehe unten): wie oft ein Schütze das
+  Programm am Anlass schiessen darf.
 - **Preise (CHF)**: Nur die angekreuzten Alterskategorien dürfen das
   Programm schiessen. Bei mehreren Durchgängen ist ein zweites Feld pro
   Kategorie der Preis jedes weiteren Durchgangs (*Nachdoppel*); leer heisst
   gleicher Preis, 0 heisst, das Programm wird einmal bezahlt.
-- **Auszeichnungen** (Baustein *Auszeichnungen*): Name, Art (Kranzkarte,
+- **Auszeichnungen** (Modul *Auszeichnungen*): Name, Art (Kranzkarte,
   Naturalgabe oder Geldpreis, der in bar ausbezahlt wird), Wert und das
   Mindesttotal pro Alterskategorie; lass eine Kategorie leer, wo die
   Auszeichnung nicht verfügbar ist.
@@ -74,7 +74,7 @@ Der Abschnitt **Einsatz** eines gespeicherten Programms wird bei jeder
   die Vorlage, auf die die Resultate des Programms gedruckt werden; *keine*
   druckt keine Vorlage.
 
-**Sonderpreise** (Baustein *Sonderpreise*, siehe unten) folgen als eigener Abschnitt. **Exportieren** oben auf der Seite lädt das Programm als Datei herunter; **Löschen** im Menü des Programms in der Liste geht nur, solange niemand angemeldet ist.
+**Sonderpreise** (Modul *Sonderpreise*, siehe unten) folgen als eigener Abschnitt. **Exportieren** oben auf der Seite lädt das Programm als Datei herunter; **Löschen** im Menü des Programms in der Liste geht nur, solange niemand angemeldet ist.
 
 ## Durchgänge {#attempts}
 
