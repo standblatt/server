@@ -28,7 +28,8 @@ func TestTOTPLogin(t *testing.T) {
 	code, b = e.do(c, "PUT", "/api/me/totp", map[string]string{"secret": setup.Secret, "code": "000000"})
 	expect(t, "enable with wrong code", code, 401, b)
 	now := func() string { v, _ := web.TOTPCodeForTest(setup.Secret, time.Now()); return v }
-	code, b = e.do(c, "PUT", "/api/me/totp", map[string]string{"secret": setup.Secret, "code": now()})
+	enabled := now()
+	code, b = e.do(c, "PUT", "/api/me/totp", map[string]string{"secret": setup.Secret, "code": enabled})
 	expect(t, "enable", code, 204, b)
 	code, b = e.do(c, "GET", "/api/me", nil)
 	expect(t, "me", code, 200, b)
@@ -45,7 +46,7 @@ func TestTOTPLogin(t *testing.T) {
 	expect(t, "login wrong password", code, 401, b)
 	code, b = login(map[string]string{"name": "anna", "password": "password-anna", "code": "123456"})
 	expect(t, "login wrong code", code, 401, b)
-	code, b = login(map[string]string{"name": "anna", "password": "password-anna", "code": now()})
+	code, b = login(map[string]string{"name": "anna", "password": "password-anna", "code": enabled})
 	expect(t, "login replayed code", code, 401, b) // the enable step burned this time step
 	next, _ := web.TOTPCodeForTest(setup.Secret, time.Now().Add(30*time.Second))
 	code, b = login(map[string]string{"name": "anna", "password": "password-anna", "code": next})
