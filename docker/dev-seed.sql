@@ -23,7 +23,11 @@ INSERT INTO ranges (tenant_id, name, lane_count)
 SELECT id, 'Main range', 10 FROM tenants WHERE name = 'Dev Club'
 ON CONFLICT DO NOTHING;
 
-INSERT INTO events (tenant_id, range_id, name, starts_on)
-SELECT t.id, s.id, 'Test event', current_date FROM tenants t JOIN ranges s ON s.tenant_id = t.id
-WHERE t.name = 'Dev Club' AND s.name = 'Main range'
-  AND NOT EXISTS (SELECT 1 FROM events e WHERE e.tenant_id = t.id);
+INSERT INTO events (tenant_id, name, starts_on, days)
+SELECT t.id, 'Test event', current_date, ARRAY[current_date] FROM tenants t
+WHERE t.name = 'Dev Club' AND NOT EXISTS (SELECT 1 FROM events e WHERE e.tenant_id = t.id);
+
+INSERT INTO event_ranges (tenant_id, event_id, range_id, position)
+SELECT e.tenant_id, e.id, s.id, 0 FROM events e JOIN tenants t ON t.id = e.tenant_id JOIN ranges s ON s.tenant_id = t.id
+WHERE t.name = 'Dev Club' AND e.name = 'Test event' AND s.name = 'Main range'
+ON CONFLICT DO NOTHING;

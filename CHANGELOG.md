@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - The redirect of the old setup page links (`setup?tab=`) to the configuration pages (by @HB9HIL)
 
+### Fixed
+- `make dev` seeded no test event since events got several ranges (by @HB9HIL)
+
 ## [0.19.1] - 2026-10-18
 
 ### Added
