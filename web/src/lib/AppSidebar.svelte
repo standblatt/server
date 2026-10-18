@@ -246,7 +246,7 @@
 			</Sidebar.MenuItem>
 		</Sidebar.Menu>
 		{#if version.data}
-			<p class="truncate px-2 text-[11px] text-sidebar-foreground/60 group-data-[collapsible=icon]:hidden" title={$t`Version`}>Standblatt {version.data.version || 'dev'}</p>
+			<a class="truncate px-2 text-[11px] text-sidebar-foreground/60 group-data-[collapsible=icon]:hidden" href="https://github.com/standblatt/server" target="_blank" title={$t`Version`}>Standblatt Server {version.data.version || 'dev'}</a>
 		{/if}
 	</Sidebar.Footer>
 	<Sidebar.Rail />
