@@ -109,6 +109,14 @@ func (s *Server) renderCertificates(ctx context.Context, tenantID, eventID int64
 		if err != nil {
 			return rendered{}, err
 		}
+		clubs, err := s.Store.ListClubs(ctx, tenantID)
+		if err != nil {
+			return rendered{}, err
+		}
+		clubByName := map[string]store.Club{}
+		for _, cl := range clubs {
+			clubByName[cl.Name] = cl
+		}
 		for _, cr := range list {
 			if cr.ID != c.ClassificationID {
 				continue
@@ -127,7 +135,7 @@ func (s *Server) renderCertificates(ctx context.Context, tenantID, eventID int64
 					}
 					p := docs.Person{Lastname: line.Lastname, Firstname: line.Firstname, Birthday: swissDate(sh.Birthday), BirthYear: line.BirthYear,
 						License: sh.LicenseNumber, Club: line.Club, Category: categoryLabel(lang, line.Category), CategoryShort: categoryShort[line.Category]}
-					add(baseValues(ev, sh, store.Club{}, p), line.Rank, line.Total, cr.Name, cl.Name)
+					add(baseValues(ev, sh, clubByName[line.Club], p), line.Rank, line.Total, cr.Name, cl.Name)
 				}
 			}
 		}

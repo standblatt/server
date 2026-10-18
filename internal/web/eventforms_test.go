@@ -127,10 +127,11 @@ func TestCertificates(t *testing.T) {
 	})
 	base := fmt.Sprintf("/api/tenants/%d", tid)
 	evPath := fmt.Sprintf("%s/events/%d", base, ev)
+	club, _ := e.st.CreateClub(ctx, tid, store.ClubInput{Name: "SG Test", SSVNumber: "123456"})
 	var regs []store.Registration
 	for i, name := range []string{"Gold", "Silver", "Bronze"} {
-		sh, _ := e.st.CreateShooter(ctx, tid, store.ShooterInput{Firstname: "Anna", Lastname: name, Birthday: "1990-01-01"}, nil)
-		code, b := e.do(c, "POST", evPath+"/registrations", web.RegistrationInput{ShooterID: sh, Programmes: []domain.ProgrammeChoice{{ProgrammeID: main}}})
+		sh, _ := e.st.CreateShooter(ctx, tid, store.ShooterInput{Firstname: "Anna", Lastname: name, Birthday: "1990-01-01"}, []int64{club.ID})
+		code, b := e.do(c, "POST", evPath+"/registrations", web.RegistrationInput{ShooterID: sh, ClubID: &club.ID, Programmes: []domain.ProgrammeChoice{{ProgrammeID: main}}})
 		expect(t, "register "+name, code, 201, b)
 		var reg store.Registration
 		json.Unmarshal(b, &reg)
@@ -147,7 +148,7 @@ func TestCertificates(t *testing.T) {
 		return l.ID
 	}
 	card := form("Participant card", "registration", "CARD {{shooter.lastname}} {{programmes}}")
-	cert := form("Certificate", "rank", "RANK {{rank}} {{shooter.lastname}} {{ranking}} {{class}}")
+	cert := form("Certificate", "rank", "RANK {{rank}} {{shooter.lastname}} {{ranking}} {{class}} {{club.ssv}}")
 
 	code, b := e.do(c, "GET", fmt.Sprintf("%s/registrations/%d/forms/%d", base, regs[0].ID, card), nil)
 	expect(t, "participant card", code, 200, b)
@@ -172,7 +173,7 @@ func TestCertificates(t *testing.T) {
 	json.Unmarshal(b, &cl)
 	code, b = e.do(c, "GET", fmt.Sprintf("%s/certificates?layout=%d&classification=%d&class=Adults&to=1", evPath, cert, cl.ID), nil)
 	expect(t, "certificates of a class", code, 200, b)
-	if txt := pdfWords(t, b); txt != "" && !strings.Contains(txt, "RANK 1 Gold Championship Adults") {
+	if txt := pdfWords(t, b); txt != "" && !strings.Contains(txt, "RANK 1 Gold Championship Adults 123456") {
 		t.Fatalf("classification certificate: %s", txt)
 	}
 

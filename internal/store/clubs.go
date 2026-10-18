@@ -39,6 +39,14 @@ func (s *Store) ListClubs(ctx context.Context, tenantID int64) ([]Club, error) {
 	return pgx.CollectRows(rows, pgx.RowToStructByPos[Club])
 }
 
+// GetClub returns a club of a tenant.
+func (s *Store) GetClub(ctx context.Context, tenantID, id int64) (Club, error) {
+	var c Club
+	err := s.pool.QueryRow(ctx, `SELECT c.id, c.name, c.ssv_number, (SELECT count(*) FROM shooter_clubs sc WHERE sc.club_id = c.id)
+		FROM clubs c WHERE c.tenant_id = $1 AND c.id = $2`, tenantID, id).Scan(&c.ID, &c.Name, &c.SSVNumber, &c.ShooterCount)
+	return c, mapErr(err)
+}
+
 // clubByKey returns the ID of the tenant's oldest club other than except whose name has the key of name, or 0.
 func clubByKey(ctx context.Context, q querier, tenantID int64, name string, except int64) (int64, error) {
 	rows, err := q.Query(ctx, `SELECT id, name FROM clubs WHERE tenant_id = $1 AND id <> $2 ORDER BY id`, tenantID, except)

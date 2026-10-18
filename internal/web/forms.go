@@ -115,11 +115,8 @@ func (s *Server) shooterClub(ctx context.Context, tenantID int64, reg store.Regi
 	if err != nil || reg.ClubID == nil {
 		return sh, club, err
 	}
-	clubs, err := s.Store.ListClubs(ctx, tenantID)
-	if i := slices.IndexFunc(clubs, func(c store.Club) bool { return c.ID == *reg.ClubID }); i >= 0 {
-		club = clubs[i]
-	}
-	return sh, club, err
+	club, err = s.Store.GetClub(ctx, tenantID, *reg.ClubID)
+	return sh, club, ignoreNotFound(err)
 }
 
 // eventLayout returns the print form an event chose for a built-in document, with its images, or the built-in form
