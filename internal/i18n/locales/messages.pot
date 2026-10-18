@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 15:07+0200\n"
+"POT-Creation-Date: 2026-10-18 16:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -190,6 +190,7 @@ msgid "Class %d: unknown age category %q"
 msgstr ""
 
 #: internal/domain/classification.go internal/domain/programme.go
+#: internal/web/tenants.go
 msgid "Name is required"
 msgstr ""
 
@@ -919,6 +920,10 @@ msgstr ""
 #: internal/web/invites.go
 #, go-format
 msgid "%s uses Standblatt for its shooting events and created an account for you. Set your password with this link:"
+msgstr ""
+
+#: internal/web/invites.go internal/web/tenants.go
+msgid "Role not found"
 msgstr ""
 
 #: internal/web/invites.go
@@ -1933,11 +1938,11 @@ msgid "A range with this name already exists"
 msgstr ""
 
 #: internal/web/tenants.go
-msgid "Club admins only"
+msgid "Events with registrations cannot be deleted"
 msgstr ""
 
 #: internal/web/tenants.go
-msgid "Events with registrations cannot be deleted"
+msgid "Give the members of this role another role first"
 msgstr ""
 
 #: internal/web/tenants.go
@@ -1946,7 +1951,15 @@ msgid "Lane %d is outside 1–%d"
 msgstr ""
 
 #: internal/web/tenants.go
+msgid "Not allowed for your role"
+msgstr ""
+
+#: internal/web/tenants.go
 msgid "Shooters or programmes use a range that was removed from the event"
+msgstr ""
+
+#: internal/web/tenants.go
+msgid "The admin role cannot be deleted"
 msgstr ""
 
 #: internal/web/tenants.go

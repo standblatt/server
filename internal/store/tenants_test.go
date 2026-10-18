@@ -203,3 +203,38 @@ func TestProgrammeRange(t *testing.T) {
 		t.Fatalf("programme of another tenant: %v", err)
 	}
 }
+
+// TestRoleIsolation checks that roles stay within their tenant.
+func TestRoleIsolation(t *testing.T) {
+	st := testdb.New(t)
+	ctx := context.Background()
+	a, _ := st.CreateTenant(ctx, "Club A")
+	b, _ := st.CreateTenant(ctx, "Club B")
+	user, _ := st.CreateUser(ctx, "anna", "x")
+	roleA, err := st.CreateRole(ctx, a, store.RoleInput{Name: "Treasurer", Permissions: []string{"reports.view", "nope"}})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if r, err := st.GetRole(ctx, a, roleA); err != nil || len(r.Permissions) != 1 {
+		t.Fatalf("unknown permissions are dropped: %+v %v", r, err)
+	}
+	if err := st.SetMembership(ctx, b, user, roleA); !errors.Is(err, store.ErrNotFound) {
+		t.Fatalf("role of another tenant: %v", err)
+	}
+	if err := st.UpdateRole(ctx, b, roleA, store.RoleInput{Name: "x"}); !errors.Is(err, store.ErrNotFound) {
+		t.Fatalf("update across tenants: %v", err)
+	}
+	if err := st.DeleteRole(ctx, b, roleA); !errors.Is(err, store.ErrNotFound) {
+		t.Fatalf("delete across tenants: %v", err)
+	}
+	if err := st.SetMembership(ctx, a, user, roleA); err != nil {
+		t.Fatal(err)
+	}
+	if err := st.DeleteRole(ctx, a, roleA); !errors.Is(err, store.ErrInUse) {
+		t.Fatalf("delete a role with members: %v", err)
+	}
+	admin, _ := st.RoleIDByKey(ctx, a, store.RoleAdmin)
+	if err := st.DeleteRole(ctx, a, admin); !errors.Is(err, store.ErrNotFound) {
+		t.Fatalf("delete the admin role: %v", err)
+	}
+}

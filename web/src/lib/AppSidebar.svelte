@@ -19,7 +19,7 @@
 	import BadgeCheck from '@lucide/svelte/icons/badge-check';
 	import Dumbbell from '@lucide/svelte/icons/dumbbell';
 	import ShieldCheck from '@lucide/svelte/icons/shield-check';
-	import { authOptionsQuery, membershipOf, versionQuery } from '$lib/me';
+	import { authOptionsQuery, can, membershipOf, versionQuery } from '$lib/me';
 	import Archive from '@lucide/svelte/icons/archive';
 	import ArrowLeft from '@lucide/svelte/icons/arrow-left';
 	import ListChecks from '@lucide/svelte/icons/list-checks';
@@ -58,7 +58,6 @@
 	const options = authOptionsQuery();
 	const version = versionQuery();
 	const membership = $derived(membershipOf(me, tenantId)!);
-	const isAdmin = $derived(membership.role === 'admin');
 	const base = $derived(`/t/${tenantId}`);
 	const eventBase = $derived(`${base}/events/${event?.id}`);
 	const path = $derived(page.url.pathname);
@@ -67,12 +66,16 @@
 	const configuring = $derived(!!event?.template || path.startsWith(`${eventBase}/config`));
 	const modules = $derived(enabled(event));
 	const eventItems = $derived<NavItem[]>([
-		{ href: eventBase, label: $t`Dashboard`, icon: LayoutDashboard, active: path === eventBase },
-		...modules.filter((m) => m.operationPage).map((m) => ({ href: `${eventBase}/${m.key}`, label: $t(m.label), icon: m.icon, badge: m.badge })),
-		{ href: `${eventBase}/entry`, label: $t`Enter results`, icon: ClipboardPen },
+		...(can(membership, 'events.operate')
+			? [
+					{ href: eventBase, label: $t`Dashboard`, icon: LayoutDashboard, active: path === eventBase },
+					...modules.filter((m) => m.operationPage).map((m) => ({ href: `${eventBase}/${m.key}`, label: $t(m.label), icon: m.icon, badge: m.badge })),
+					{ href: `${eventBase}/entry`, label: $t`Enter results`, icon: ClipboardPen }
+				]
+			: []),
 		{ href: `${eventBase}/rankings`, label: $t`Rankings`, icon: ListOrdered },
-		{ href: `${eventBase}/statistics`, label: $t`Statistics`, icon: BarChart },
-		...(isAdmin ? [{ href: `${eventBase}/config`, label: $t`Configuration`, icon: Settings }] : [])
+		...(can(membership, 'reports.view') ? [{ href: `${eventBase}/statistics`, label: $t`Statistics`, icon: BarChart }] : []),
+		...(can(membership, 'events.configure') ? [{ href: `${eventBase}/config`, label: $t`Configuration`, icon: Settings }] : [])
 	]);
 	const configItems = $derived<NavItem[]>([
 		...(event?.template ? [] : [{ href: eventBase, label: $t`Back to the event`, icon: ArrowLeft, active: false }]),
@@ -84,19 +87,21 @@
 	]);
 	const clubItems = $derived([
 		{ href: base, label: $t`Events`, icon: CalendarDays, active: path === base },
-		...(isAdmin
+		...(can(membership, 'ranges.manage') ? [{ href: `${base}/ranges`, label: $t`Ranges`, icon: Crosshair }] : []),
+		...(can(membership, 'club.manage') ? [{ href: `${base}/users`, label: $t`Users`, icon: UserCog }] : []),
+		...enabledClub(membership).flatMap((m) =>
+			m.clubPage && can(membership, m.clubPage.permission) ? [{ href: `${base}/${m.clubPage.path}`, label: $t(m.clubPage.label), icon: m.icon }] : []
+		),
+		...(can(membership, 'club.manage') ? [{ href: `${base}/modules`, label: $t`Club modules`, icon: Puzzle, active: path === `${base}/modules` }] : [])
+	]);
+	const masterItems = $derived(
+		can(membership, 'shooters.view')
 			? [
-					{ href: `${base}/ranges`, label: $t`Ranges`, icon: Crosshair },
-					{ href: `${base}/users`, label: $t`Users`, icon: UserCog },
-					...enabledClub(membership).flatMap((m) => (m.clubPage ? [{ href: `${base}/${m.clubPage.path}`, label: $t(m.clubPage.label), icon: m.icon }] : [])),
-					{ href: `${base}/modules`, label: $t`Club modules`, icon: Puzzle, active: path === `${base}/modules` }
+					{ href: `${base}/shooters`, label: $t`Shooters`, icon: Users },
+					{ href: `${base}/clubs`, label: $t`Clubs`, icon: Building }
 				]
-			: [])
-	]);
-	const masterItems = $derived([
-		{ href: `${base}/shooters`, label: $t`Shooters`, icon: Users },
-		{ href: `${base}/clubs`, label: $t`Clubs`, icon: Building }
-	]);
+			: []
+	);
 	const initials = $derived(me.user.name.slice(0, 2).toUpperCase());
 	const sidebar = Sidebar.useSidebar();
 	afterNavigate(() => sidebar.setOpenMobile(false));
@@ -177,10 +182,12 @@
 			{@render nav(clubItems)}
 		</Sidebar.Group>
 
-		<Sidebar.Group>
-			<Sidebar.GroupLabel>{$t`Master data`}</Sidebar.GroupLabel>
-			{@render nav(masterItems)}
-		</Sidebar.Group>
+		{#if masterItems.length}
+			<Sidebar.Group>
+				<Sidebar.GroupLabel>{$t`Master data`}</Sidebar.GroupLabel>
+				{@render nav(masterItems)}
+			</Sidebar.Group>
+		{/if}
 	</Sidebar.Content>
 
 	<Sidebar.Footer>
@@ -200,7 +207,7 @@
 								</Avatar.Root>
 								<div class="grid flex-1 text-left leading-tight">
 									<span class="truncate font-medium text-sidebar-accent-foreground">{me.user.name}</span>
-									<span class="truncate text-xs">{$t(roleLabel(membership.role))}</span>
+									<span class="truncate text-xs">{membership.roleName || $t(roleLabel(membership.roleKey))}</span>
 								</div>
 								<ChevronsUpDown class="ml-auto" />
 							</Sidebar.MenuButton>
@@ -210,7 +217,7 @@
 						<DropdownMenu.Label>
 							<div class="grid leading-tight">
 								<span>{me.user.name}</span>
-								<span class="text-xs font-normal text-muted-foreground">{membership.tenantName} · {$t(roleLabel(membership.role))}</span>
+								<span class="text-xs font-normal text-muted-foreground">{membership.tenantName} · {membership.roleName || $t(roleLabel(membership.roleKey))}</span>
 							</div>
 						</DropdownMenu.Label>
 						<DropdownMenu.Separator />

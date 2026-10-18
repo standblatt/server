@@ -12,6 +12,7 @@ import (
 
 	"github.com/standblatt/server/internal/i18n"
 	tlmail "github.com/standblatt/server/internal/mail"
+	"github.com/standblatt/server/internal/permissions"
 	"github.com/standblatt/server/internal/store"
 )
 
@@ -29,8 +30,8 @@ func (s *Server) registerInvites(api huma.API) {
 	type inviteIn struct {
 		TenantPath
 		Body struct {
-			Emails []string   `json:"emails" minItems:"1" maxItems:"300" doc:"One address per entry; the UI splits a comma or newline separated list. Mails leave at most four per second"`
-			Role   store.Role `json:"role" enum:"admin,staff"`
+			Emails []string `json:"emails" minItems:"1" maxItems:"300" doc:"One address per entry; the UI splits a comma or newline separated list. Mails leave at most four per second"`
+			RoleID int64    `json:"roleId"`
 		}
 	}
 	type inviteOut struct{ Body []InviteResult }
@@ -38,13 +39,16 @@ func (s *Server) registerInvites(api huma.API) {
 		OperationID: "invite-users", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/invitations", Tags: []string{"users"},
 		Summary: "Invite people by email: existing accounts join the club, new ones get a mail with a link to set their password",
 	}, func(ctx context.Context, in *inviteIn) (*inviteOut, error) {
-		by, _, err := s.access(ctx, in.TenantID, true)
+		by, _, err := s.access(ctx, in.TenantID, permissions.ClubManage)
 		if err != nil {
 			return nil, err
 		}
 		tenant, err := s.Store.GetTenant(ctx, in.TenantID)
 		if err != nil {
 			return nil, err
+		}
+		if _, err := s.Store.GetRole(ctx, in.TenantID, in.Body.RoleID); err != nil {
+			return nil, notFound(err, "Role not found")
 		}
 		out := &inviteOut{Body: []InviteResult{}}
 		seen := map[string]bool{}
@@ -54,7 +58,7 @@ func (s *Server) registerInvites(api huma.API) {
 				continue
 			}
 			seen[email] = true
-			status, err := s.invite(ctx, in.TenantID, tenant.Name, email, in.Body.Role)
+			status, err := s.invite(ctx, in.TenantID, tenant.Name, email, in.Body.RoleID)
 			if err != nil {
 				return nil, err
 			}
@@ -67,7 +71,7 @@ func (s *Server) registerInvites(api huma.API) {
 
 // invite adds one email address to a club: an existing account becomes a member and is told by mail,
 // a new one is created without a usable password and gets the link to set it.
-func (s *Server) invite(ctx context.Context, tenantID int64, club, email string, role store.Role) (string, error) {
+func (s *Server) invite(ctx context.Context, tenantID int64, club, email string, role int64) (string, error) {
 	if a, err := mail.ParseAddress(email); err != nil || a.Address != email {
 		return "invalid", nil
 	}

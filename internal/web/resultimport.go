@@ -13,6 +13,7 @@ import (
 	"github.com/danielgtaylor/huma/v2"
 
 	"github.com/standblatt/server/internal/domain"
+	"github.com/standblatt/server/internal/permissions"
 	"github.com/standblatt/server/internal/store"
 )
 
@@ -222,7 +223,7 @@ func (s *Server) registerResultImport(api huma.API) {
 		Description:  "Every line is checked first; with any error nothing is imported. Shooters that are not in the master data are created; unknown clubs are an error.",
 		MaxBodyBytes: maxImportBytes,
 	}, func(ctx context.Context, in *importIn) (*importOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
 			return nil, err
 		}
 		if _, err := s.Store.GetEvent(ctx, in.TenantID, in.EventID); err != nil {

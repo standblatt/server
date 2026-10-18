@@ -10,6 +10,7 @@ import (
 
 	"github.com/standblatt/server/internal/domain"
 	"github.com/standblatt/server/internal/modules"
+	"github.com/standblatt/server/internal/permissions"
 	"github.com/standblatt/server/internal/store"
 )
 
@@ -145,7 +146,7 @@ func (s *Server) registerRankings(api huma.API) {
 	huma.Register(api, huma.Operation{
 		OperationID: "get-rankings", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/rankings", Tags: []string{"rankings"},
 	}, func(ctx context.Context, in *EventPath) (*rankingsOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView); err != nil {
 			return nil, err
 		}
 		list, err := s.rankings(ctx, in.TenantID, in.EventID, false)
@@ -156,7 +157,7 @@ func (s *Server) registerRankings(api huma.API) {
 	huma.Register(api, huma.Operation{
 		OperationID: "list-kiosk-tokens", Metadata: modules.Metadata(modules.Kiosk), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/kiosk-tokens", Tags: []string{"kiosk"},
 	}, func(ctx context.Context, in *EventPath) (*tokensOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.ListKioskTokens(ctx, in.TenantID, in.EventID)
@@ -179,7 +180,7 @@ func (s *Server) registerRankings(api huma.API) {
 		OperationID: "create-kiosk-token", Metadata: modules.Metadata(modules.Kiosk), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/kiosk-tokens", Tags: []string{"kiosk"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *createIn) (*createOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
 			return nil, err
 		}
 		secret := randomToken()
@@ -202,7 +203,7 @@ func (s *Server) registerRankings(api huma.API) {
 		OperationID: "delete-kiosk-token", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/kiosk-tokens/{tokenId}", Tags: []string{"kiosk"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *tokenPath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
 			return nil, err
 		}
 		return nil, notFound(s.Store.DeleteKioskToken(ctx, in.TenantID, in.TokenID), "Kiosk token not found")

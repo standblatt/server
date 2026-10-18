@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 15:07+0200\n"
+"POT-Creation-Date: 2026-10-18 16:39+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -190,6 +190,7 @@ msgid "Class %d: unknown age category %q"
 msgstr "Klasse %d: unbekannte Alterskategorie %q"
 
 #: internal/domain/classification.go internal/domain/programme.go
+#: internal/web/tenants.go
 msgid "Name is required"
 msgstr "Der Name ist erforderlich"
 
@@ -920,6 +921,10 @@ msgstr "%s lädt dich zu Standblatt ein"
 #, go-format
 msgid "%s uses Standblatt for its shooting events and created an account for you. Set your password with this link:"
 msgstr "%s verwendet Standblatt für seine Schiessanlässe und hat ein Konto für dich erstellt. Setze dein Passwort über diesen Link:"
+
+#: internal/web/invites.go internal/web/tenants.go
+msgid "Role not found"
+msgstr "Rolle nicht gefunden"
 
 #: internal/web/invites.go
 msgid "The link is valid for seven days. Afterwards you log in with this email address and your password."
@@ -1933,12 +1938,12 @@ msgid "A range with this name already exists"
 msgstr "Einen Schiessstand mit diesem Namen gibt es bereits"
 
 #: internal/web/tenants.go
-msgid "Club admins only"
-msgstr "Nur für Vereinsadmins"
-
-#: internal/web/tenants.go
 msgid "Events with registrations cannot be deleted"
 msgstr "Anlässe mit Anmeldungen können nicht gelöscht werden"
+
+#: internal/web/tenants.go
+msgid "Give the members of this role another role first"
+msgstr "Gib den Mitgliedern dieser Rolle zuerst eine andere Rolle"
 
 #: internal/web/tenants.go
 #, go-format
@@ -1946,8 +1951,16 @@ msgid "Lane %d is outside 1–%d"
 msgstr "Scheibe %d liegt ausserhalb von 1–%d"
 
 #: internal/web/tenants.go
+msgid "Not allowed for your role"
+msgstr "Für deine Rolle nicht erlaubt"
+
+#: internal/web/tenants.go
 msgid "Shooters or programmes use a range that was removed from the event"
 msgstr "Schützen oder Programme verwenden einen Stand, der aus dem Anlass entfernt wurde"
+
+#: internal/web/tenants.go
+msgid "The admin role cannot be deleted"
+msgstr "Die Rolle Admin kann nicht gelöscht werden"
 
 #: internal/web/tenants.go
 msgid "The range is used by events"
@@ -1981,6 +1994,9 @@ msgstr "Dieser Code wurde schon benutzt; warte auf den nächsten."
 #: internal/web/totp.go
 msgid "Wrong code."
 msgstr "Falscher Code."
+
+#~ msgid "Club admins only"
+#~ msgstr "Nur für Vereinsadmins"
 
 #~ msgid "This module is off for this event"
 #~ msgstr "Dieses Modul ist für diesen Anlass ausgeschaltet"

@@ -14,7 +14,7 @@
 	import * as Table from '$lib/components/ui/table';
 	import { formatDate } from '$lib/format';
 	import FormError from '$lib/FormError.svelte';
-	import { membershipOf, meQuery } from '$lib/me';
+	import { can, membershipOf, meQuery } from '$lib/me';
 	import NewShooterDialog from '$lib/NewShooterDialog.svelte';
 	import Pager from '$lib/Pager.svelte';
 	import PageHeader from '$lib/PageHeader.svelte';
@@ -26,7 +26,7 @@
 	const queryClient = useQueryClient();
 	const me = meQuery();
 	const clubs = clubsQuery(() => tenantId);
-	const isAdmin = $derived(membershipOf(me.data, tenantId)?.role === 'admin');
+	const isAdmin = $derived(can(membershipOf(me.data, tenantId), 'shooters.manage'));
 
 	let input = $state('');
 	let q = $state('');

@@ -6,6 +6,7 @@ export const keys = {
 	events: (t: number) => ['tenants', t, 'events'],
 	event: (t: number, e: number) => ['tenants', t, 'events', e],
 	users: (t: number) => ['tenants', t, 'users'],
+	roles: (t: number) => ['tenants', t, 'roles'],
 	clubs: (t: number) => ['tenants', t, 'clubs'],
 	layouts: (t: number) => ['tenants', t, 'layouts'],
 	shooters: (t: number) => ['tenants', t, 'shooters'],
@@ -42,6 +43,14 @@ export function layoutsQuery(tenantId: () => number, enabled: () => boolean = ()
 		queryKey: keys.layouts(tenantId()),
 		queryFn: () => call(api.GET('/api/tenants/{tenantId}/layouts', path(tenantId()))),
 		enabled: enabled()
+	}));
+}
+
+/** Query of the club's roles with their permissions and member counts. */
+export function rolesQuery(tenantId: () => number) {
+	return createQuery(() => ({
+		queryKey: keys.roles(tenantId()),
+		queryFn: () => call(api.GET('/api/tenants/{tenantId}/roles', path(tenantId())))
 	}));
 }
 

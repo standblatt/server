@@ -8,6 +8,7 @@ import (
 
 	"github.com/standblatt/server/internal/domain"
 	"github.com/standblatt/server/internal/modules"
+	"github.com/standblatt/server/internal/permissions"
 	"github.com/standblatt/server/internal/realtime"
 	"github.com/standblatt/server/internal/store"
 )
@@ -145,7 +146,7 @@ func (s *Server) registerClassifications(api huma.API) {
 	huma.Register(api, huma.Operation{
 		OperationID: "list-classifications", Metadata: modules.Metadata(modules.Classifications), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/classifications", Tags: []string{"classifications"},
 	}, func(ctx context.Context, in *EventPath) (*listOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.ListClassifications(ctx, in.TenantID, in.EventID)
@@ -161,7 +162,7 @@ func (s *Server) registerClassifications(api huma.API) {
 		OperationID: "create-classification", Metadata: modules.Metadata(modules.Classifications), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/classifications", Tags: []string{"classifications"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *createIn) (*createOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
 			return nil, err
 		}
 		if err := s.checkClassification(ctx, in.TenantID, in.EventID, &in.Body); err != nil {
@@ -183,7 +184,7 @@ func (s *Server) registerClassifications(api huma.API) {
 		OperationID: "update-classification", Metadata: modules.Metadata(modules.Classifications), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/events/{eventId}/classifications/{classificationId}", Tags: []string{"classifications"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *updateIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
 			return nil, err
 		}
 		if err := s.checkClassification(ctx, in.TenantID, in.EventID, &in.Body); err != nil {
@@ -200,7 +201,7 @@ func (s *Server) registerClassifications(api huma.API) {
 		OperationID: "delete-classification", Metadata: modules.Metadata(modules.Classifications), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/events/{eventId}/classifications/{classificationId}", Tags: []string{"classifications"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *ClassificationPath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
 			return nil, err
 		}
 		if err := s.Store.DeleteClassification(ctx, in.TenantID, in.EventID, in.ClassificationID); err != nil {
@@ -214,7 +215,7 @@ func (s *Server) registerClassifications(api huma.API) {
 	huma.Register(api, huma.Operation{
 		OperationID: "get-classification-rankings", Metadata: modules.Metadata(modules.Classifications), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/classification-rankings", Tags: []string{"classifications"},
 	}, func(ctx context.Context, in *EventPath) (*rankingsOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView); err != nil {
 			return nil, err
 		}
 		list, err := s.classificationRankings(ctx, in.TenantID, in.EventID, false)

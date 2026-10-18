@@ -1,8 +1,9 @@
 import { msg } from '@lingui/core/macro';
 import type { MessageDescriptor } from '@lingui/core';
 
-/** Display name of a tenant role; translate with `$t(...)`. */
-export const roleLabel = (role: string): MessageDescriptor => (role === 'admin' ? msg`Admin` : msg`Staff`);
+/** Display name of a default role of a club by its key; translate with `$t(...)`. Roles a club made carry their own name. */
+export const roleLabel = (key?: string): MessageDescriptor =>
+	key === 'admin' ? msg`Admin` : key === 'board' ? msg`Board` : key === 'staff' ? msg`Helper` : msg`Member`;
 
 /** Display name of a helper link role; translate with `$t(...)`. */
 export const helperRoleLabel = (role: string): MessageDescriptor =>

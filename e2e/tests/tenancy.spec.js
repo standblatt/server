@@ -77,7 +77,7 @@ test.describe("admin panel and tenancy", () => {
     await c(dialog, "label", "User name").locator("input").fill(staff);
     await c(dialog, "label", "Password").locator("input").fill(password);
     await c(dialog, "button", /^Add$/).click();
-    await expect(c(page, "tr", staff).locator("select")).toHaveValue("staff");
+    await expect(c(page, "tr", staff).locator("select option:checked")).toHaveText("Helper");
   });
 
   test("gives staff read access without admin pages", async ({ page }) => {

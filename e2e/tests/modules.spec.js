@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { api, c, createClub, login, newPage } from "../helpers.js";
+import { addUser, api, c, createClub, login, newPage } from "../helpers.js";
 
 const run = Date.now().toString(36);
 const club = `Modules Club ${run}`;
@@ -15,7 +15,7 @@ test.describe("modules", () => {
     ids.tenant = await createClub(page, club, admin);
     const base = `/api/tenants/${ids.tenant}`;
     ids.event = (await api(page, "POST", `${base}/events`, { name: "Annual programme", startsOn: "2027-03-01", modules: ["awards"] })).id;
-    await api(page, "POST", `${base}/users`, { name: staff, role: "staff", password: "e2e-password-123" });
+    await addUser(page, ids.tenant, staff);
     await page.close();
   });
 

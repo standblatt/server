@@ -17,6 +17,7 @@ import (
 	"github.com/standblatt/server/internal/domain"
 	"github.com/standblatt/server/internal/i18n"
 	"github.com/standblatt/server/internal/modules"
+	"github.com/standblatt/server/internal/permissions"
 	"github.com/standblatt/server/internal/store"
 )
 
@@ -623,7 +624,7 @@ func (s *Server) registerReports(api huma.API) {
 	huma.Register(api, huma.Operation{
 		OperationID: "get-statistics", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/statistics", Tags: []string{"reports"},
 	}, func(ctx context.Context, in *EventPath) (*statsOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.ReportsView); err != nil {
 			return nil, err
 		}
 		d, err := s.loadEventData(ctx, in.TenantID, in.EventID)
@@ -637,7 +638,7 @@ func (s *Server) registerReports(api huma.API) {
 	huma.Register(api, huma.Operation{
 		OperationID: "get-club-competition", Metadata: modules.Metadata(modules.ClubCompetition), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/club-competition", Tags: []string{"reports"},
 	}, func(ctx context.Context, in *EventPath) (*clubOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.ReportsView); err != nil {
 			return nil, err
 		}
 		d, err := s.loadEventData(ctx, in.TenantID, in.EventID)
@@ -657,7 +658,7 @@ func (s *Server) registerReports(api huma.API) {
 		OperationID: "get-report", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/reports/{report}", Tags: []string{"reports"},
 		Responses: fileResponses,
 	}, func(ctx context.Context, in *reportIn) (*FileOutput, error) {
-		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.ReportsView); err != nil {
 			return nil, err
 		}
 		d, err := s.loadEventData(ctx, in.TenantID, in.EventID)
@@ -698,7 +699,7 @@ func (s *Server) registerReports(api huma.API) {
 		OperationID: "ranking-csv", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/programmes/{programmeId}/ranking.csv", Tags: []string{"reports"},
 		Responses: fileResponses,
 	}, func(ctx context.Context, in *rankingCSVIn) (*FileOutput, error) {
-		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.ReportsView); err != nil {
 			return nil, err
 		}
 		p, err := s.Store.GetProgramme(ctx, in.TenantID, in.ProgrammeID)

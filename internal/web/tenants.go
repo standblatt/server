@@ -11,6 +11,7 @@ import (
 	"github.com/danielgtaylor/huma/v2"
 
 	"github.com/standblatt/server/internal/domain"
+	"github.com/standblatt/server/internal/permissions"
 	"github.com/standblatt/server/internal/store"
 )
 
@@ -39,34 +40,35 @@ type MemberPath struct {
 	UserID   int64 `path:"userId"`
 }
 
-// access checks that the logged-in user belongs to the tenant, and is an admin there if admin is set.
-// Non-members get 404 so tenant IDs cannot be probed.
-func (s *Server) access(ctx context.Context, tenantID int64, admin bool) (store.User, store.Role, error) {
+// access checks that the logged-in user belongs to the tenant and that their role has one of perms (none: any member).
+// It returns the user and the role's permissions. Non-members get 404 so tenant IDs cannot be probed. Helper links
+// pass only for viewing and operating events; authorize already checked the operation and the path.
+func (s *Server) access(ctx context.Context, tenantID int64, perms ...string) (store.User, []string, error) {
 	if h := helperOf(ctx); h != nil {
-		// authorize already checked the operation and the path; admin pages stay closed to links.
+		helper := []string{permissions.EventsView, permissions.EventsOperate}
 		if h.TenantID != tenantID {
-			return store.User{Name: h.Name}, store.RoleHelper, missing("Club not found")
+			return store.User{Name: h.Name}, nil, missing("Club not found")
 		}
-		if admin {
-			return store.User{Name: h.Name}, store.RoleHelper, forbidden("Not allowed for this helper link")
+		if !permissions.Any(helper, perms...) {
+			return store.User{Name: h.Name}, nil, forbidden("Not allowed for this helper link")
 		}
-		return store.User{Name: h.Name}, store.RoleHelper, nil
+		return store.User{Name: h.Name}, helper, nil
 	}
 	u, err := currentUser(ctx)
 	if err != nil {
-		return u, "", err
+		return u, nil, err
 	}
 	role, err := s.Store.MemberRole(ctx, tenantID, u.ID)
 	if errors.Is(err, store.ErrNotFound) {
-		return u, "", missing("Club not found")
+		return u, nil, missing("Club not found")
 	}
 	if err != nil {
-		return u, "", err
+		return u, nil, err
 	}
-	if admin && role != store.RoleAdmin {
-		return u, role, forbidden("Club admins only")
+	if !permissions.Any(role.Permissions, perms...) {
+		return u, role.Permissions, forbidden("Not allowed for your role")
 	}
-	return u, role, nil
+	return u, role.Permissions, nil
 }
 
 // notFound turns ErrNotFound into a 404 with msg and returns other errors unchanged.
@@ -115,7 +117,7 @@ func (s *Server) registerTenants(api huma.API) {
 	huma.Register(api, huma.Operation{
 		OperationID: "list-ranges", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/ranges", Tags: []string{"ranges"},
 	}, func(ctx context.Context, in *TenantPath) (*rangesOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView, permissions.RangesManage); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.ListRanges(ctx, in.TenantID)
@@ -131,7 +133,7 @@ func (s *Server) registerTenants(api huma.API) {
 		OperationID: "create-range", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/ranges", Tags: []string{"ranges"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *rangeIn) (*rangeOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.RangesManage); err != nil {
 			return nil, err
 		}
 		if err := validateRange(in.Body); err != nil {
@@ -152,7 +154,7 @@ func (s *Server) registerTenants(api huma.API) {
 		OperationID: "update-range", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/ranges/{rangeId}", Tags: []string{"ranges"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *rangeUpdateIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.RangesManage); err != nil {
 			return nil, err
 		}
 		if err := validateRange(in.Body); err != nil {
@@ -169,7 +171,7 @@ func (s *Server) registerTenants(api huma.API) {
 		OperationID: "delete-range", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/ranges/{rangeId}", Tags: []string{"ranges"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *RangePath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.RangesManage); err != nil {
 			return nil, err
 		}
 		err := s.Store.DeleteRange(ctx, in.TenantID, in.RangeID)
@@ -183,7 +185,7 @@ func (s *Server) registerTenants(api huma.API) {
 	huma.Register(api, huma.Operation{
 		OperationID: "list-events", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events", Tags: []string{"events"},
 	}, func(ctx context.Context, in *TenantPath) (*eventsOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.ListEvents(ctx, in.TenantID)
@@ -194,7 +196,7 @@ func (s *Server) registerTenants(api huma.API) {
 	huma.Register(api, huma.Operation{
 		OperationID: "get-event", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}", Tags: []string{"events"},
 	}, func(ctx context.Context, in *EventPath) (*eventOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView); err != nil {
 			return nil, err
 		}
 		ev, err := s.Store.GetEvent(ctx, in.TenantID, in.EventID)
@@ -209,7 +211,7 @@ func (s *Server) registerTenants(api huma.API) {
 		OperationID: "create-event", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events", Tags: []string{"events"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *eventIn) (*eventOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
 			return nil, err
 		}
 		if err := normalizeEvent(&in.Body); err != nil {
@@ -242,7 +244,7 @@ func (s *Server) registerTenants(api huma.API) {
 		Summary:       "Create a new event with the settings and programmes of this one, e.g. for next year; registrations are not copied",
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *copyEventIn) (*eventOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
 			return nil, err
 		}
 		id, err := s.Store.CopyEvent(ctx, in.TenantID, in.EventID, strings.TrimSpace(in.Body.Name), in.Body.StartsOn, in.Body.Template)
@@ -261,7 +263,7 @@ func (s *Server) registerTenants(api huma.API) {
 		OperationID: "update-event", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/events/{eventId}", Tags: []string{"events"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *eventUpdateIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
 			return nil, err
 		}
 		if err := normalizeEvent(&in.Body); err != nil {
@@ -287,7 +289,7 @@ func (s *Server) registerTenants(api huma.API) {
 		OperationID: "delete-event", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/events/{eventId}", Tags: []string{"events"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *EventPath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
 			return nil, err
 		}
 		err := s.Store.DeleteEvent(ctx, in.TenantID, in.EventID)
@@ -308,13 +310,14 @@ func (s *Server) registerTenants(api huma.API) {
 		Summary:       "Archive or unarchive an event; an archived event stays readable but refuses every change",
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *archiveIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
 			return nil, err
 		}
 		return nil, notFound(s.Store.SetEventArchived(ctx, in.TenantID, in.EventID, in.Body.Archived), "Event not found")
 	})
 
 	s.registerMembers(api)
+	s.registerRoles(api)
 }
 
 // registerMembers registers the endpoints that manage the users of a tenant.
@@ -323,7 +326,7 @@ func (s *Server) registerMembers(api huma.API) {
 	huma.Register(api, huma.Operation{
 		OperationID: "list-users", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/users", Tags: []string{"users"},
 	}, func(ctx context.Context, in *TenantPath) (*membersOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.ClubManage); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.Members(ctx, in.TenantID)
@@ -333,9 +336,9 @@ func (s *Server) registerMembers(api huma.API) {
 	type addIn struct {
 		TenantPath
 		Body struct {
-			Name     string     `json:"name" minLength:"1"`
-			Role     store.Role `json:"role" enum:"admin,staff"`
-			Password string     `json:"password,omitempty" required:"false" doc:"Required when the user does not exist yet"`
+			Name     string `json:"name" minLength:"1"`
+			RoleID   int64  `json:"roleId"`
+			Password string `json:"password,omitempty" required:"false" doc:"Required when the user does not exist yet"`
 		}
 	}
 	huma.Register(api, huma.Operation{
@@ -343,9 +346,12 @@ func (s *Server) registerMembers(api huma.API) {
 		Summary:       "Add an existing user to the tenant, or create the user with the given password",
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *addIn) (*struct{}, error) {
-		u, _, err := s.access(ctx, in.TenantID, true)
+		u, _, err := s.access(ctx, in.TenantID, permissions.ClubManage)
 		if err != nil {
 			return nil, err
+		}
+		if _, err := s.Store.GetRole(ctx, in.TenantID, in.Body.RoleID); err != nil {
+			return nil, notFound(err, "Role not found")
 		}
 		name := strings.ToLower(strings.TrimSpace(in.Body.Name))
 		target, err := s.Store.UserByName(ctx, name)
@@ -364,55 +370,139 @@ func (s *Server) registerMembers(api huma.API) {
 		case err != nil:
 			return nil, err
 		}
-		if err := s.Store.SetMembership(ctx, in.TenantID, target.ID, in.Body.Role); err != nil {
+		if err := s.Store.SetMembership(ctx, in.TenantID, target.ID, in.Body.RoleID); err != nil {
 			return nil, err
 		}
-		s.Log.Info("member added", "tenant", in.TenantID, "user", name, "role", in.Body.Role, "by", u.Name)
+		s.Log.Info("member added", "tenant", in.TenantID, "user", name, "role", in.Body.RoleID, "by", u.Name)
 		return nil, nil
 	})
 
 	type roleIn struct {
 		MemberPath
 		Body struct {
-			Role store.Role `json:"role" enum:"admin,staff"`
+			RoleID int64 `json:"roleId"`
 		}
 	}
 	huma.Register(api, huma.Operation{
 		OperationID: "set-user-role", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/users/{userId}", Tags: []string{"users"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *roleIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.ClubManage); err != nil {
 			return nil, err
-		}
-		if in.Body.Role != store.RoleAdmin {
-			if err := s.keepOneAdmin(ctx, in.TenantID, in.UserID); err != nil {
-				return nil, err
-			}
 		}
 		if _, err := s.Store.MemberRole(ctx, in.TenantID, in.UserID); err != nil {
 			return nil, notFound(err, "User not found")
 		}
-		return nil, s.Store.SetMembership(ctx, in.TenantID, in.UserID, in.Body.Role)
+		if err := s.keepOneAdmin(ctx, in.TenantID, in.UserID, in.Body.RoleID); err != nil {
+			return nil, err
+		}
+		return nil, notFound(s.Store.SetMembership(ctx, in.TenantID, in.UserID, in.Body.RoleID), "Role not found")
 	})
 
 	huma.Register(api, huma.Operation{
 		OperationID: "remove-user", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/users/{userId}", Tags: []string{"users"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *MemberPath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.ClubManage); err != nil {
 			return nil, err
 		}
-		if err := s.keepOneAdmin(ctx, in.TenantID, in.UserID); err != nil {
+		if err := s.keepOneAdmin(ctx, in.TenantID, in.UserID, 0); err != nil {
 			return nil, err
 		}
 		return nil, notFound(s.Store.RemoveMembership(ctx, in.TenantID, in.UserID), "User not found")
 	})
 }
 
-// keepOneAdmin returns a 409 when userID is the last admin of the tenant.
-func (s *Server) keepOneAdmin(ctx context.Context, tenantID, userID int64) error {
+// RolePath identifies a role of a tenant in the URL.
+type RolePath struct {
+	TenantID int64 `path:"tenantId"`
+	RoleID   int64 `path:"roleId"`
+}
+
+// registerRoles registers the endpoints that manage the roles of a tenant and their permissions.
+func (s *Server) registerRoles(api huma.API) {
+	type listOut struct{ Body []store.Role }
+	huma.Register(api, huma.Operation{
+		OperationID: "list-roles", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/roles", Tags: []string{"users"},
+	}, func(ctx context.Context, in *TenantPath) (*listOut, error) {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.ClubManage); err != nil {
+			return nil, err
+		}
+		list, err := s.Store.ListRoles(ctx, in.TenantID)
+		return &listOut{Body: list}, err
+	})
+
+	type createIn struct {
+		TenantPath
+		Body store.RoleInput
+	}
+	type createOut struct{ Body store.Role }
+	huma.Register(api, huma.Operation{
+		OperationID: "create-role", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/roles", Tags: []string{"users"},
+		DefaultStatus: http.StatusCreated,
+	}, func(ctx context.Context, in *createIn) (*createOut, error) {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.ClubManage); err != nil {
+			return nil, err
+		}
+		in.Body.Name = strings.TrimSpace(in.Body.Name)
+		if in.Body.Name == "" {
+			return nil, invalid("Name is required")
+		}
+		id, err := s.Store.CreateRole(ctx, in.TenantID, in.Body)
+		if err != nil {
+			return nil, err
+		}
+		r, err := s.Store.GetRole(ctx, in.TenantID, id)
+		return &createOut{Body: r}, err
+	})
+
+	type updateIn struct {
+		RolePath
+		Body store.RoleInput
+	}
+	huma.Register(api, huma.Operation{
+		OperationID: "update-role", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/roles/{roleId}", Tags: []string{"users"},
+		Summary: "Rename a role and set its permissions; the admin role keeps every permission", DefaultStatus: http.StatusNoContent,
+	}, func(ctx context.Context, in *updateIn) (*struct{}, error) {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.ClubManage); err != nil {
+			return nil, err
+		}
+		r, err := s.Store.GetRole(ctx, in.TenantID, in.RoleID)
+		if err != nil {
+			return nil, notFound(err, "Role not found")
+		}
+		in.Body.Name = strings.TrimSpace(in.Body.Name)
+		if in.Body.Name == "" && r.Key == "" {
+			return nil, invalid("Name is required")
+		}
+		return nil, notFound(s.Store.UpdateRole(ctx, in.TenantID, in.RoleID, in.Body), "Role not found")
+	})
+
+	huma.Register(api, huma.Operation{
+		OperationID: "delete-role", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/roles/{roleId}", Tags: []string{"users"},
+		DefaultStatus: http.StatusNoContent,
+	}, func(ctx context.Context, in *RolePath) (*struct{}, error) {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.ClubManage); err != nil {
+			return nil, err
+		}
+		r, err := s.Store.GetRole(ctx, in.TenantID, in.RoleID)
+		switch {
+		case err != nil:
+			return nil, notFound(err, "Role not found")
+		case r.Key == store.RoleAdmin:
+			return nil, conflict("The admin role cannot be deleted")
+		case r.Members > 0:
+			return nil, conflict("Give the members of this role another role first")
+		}
+		return nil, notFound(s.Store.DeleteRole(ctx, in.TenantID, in.RoleID), "Role not found")
+	})
+}
+
+// keepOneAdmin returns a 409 when userID is the last admin of the tenant and is about to get the role newRoleID
+// (0 = removed from the club).
+func (s *Server) keepOneAdmin(ctx context.Context, tenantID, userID, newRoleID int64) error {
 	role, err := s.Store.MemberRole(ctx, tenantID, userID)
-	if err != nil || role != store.RoleAdmin {
+	if err != nil || role.Key != store.RoleAdmin || role.ID == newRoleID {
 		return nil
 	}
 	n, err := s.Store.AdminCount(ctx, tenantID)

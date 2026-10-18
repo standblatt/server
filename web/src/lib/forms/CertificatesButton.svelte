@@ -8,7 +8,7 @@
 	import { Input } from '../components/ui/input';
 	import * as NativeSelect from '../components/ui/native-select';
 	import FormField from '../FormField.svelte';
-	import { membershipOf, meQuery } from '../me';
+	import { can, membershipOf, meQuery } from '../me';
 	import { hasClub } from '../modules';
 	import PrintButton from '../PrintButton.svelte';
 	import type { CertificatesTarget } from '../print';
@@ -22,7 +22,8 @@
 		classes = []
 	}: { tenantId: number; event: Event; title: string; programmeId?: number; classificationId?: number; classes?: string[] } = $props();
 	const me = meQuery();
-	const forms = $derived(hasClub(membershipOf(me.data, tenantId), 'forms'));
+	const membership = $derived(membershipOf(me.data, tenantId));
+	const forms = $derived(hasClub(membership, 'forms') && can(membership, 'events.operate'));
 	const layouts = layoutsQuery(
 		() => tenantId,
 		() => forms

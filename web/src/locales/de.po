@@ -253,7 +253,7 @@ msgid "{0} is deleted with its series, prices and awards."
 msgstr "{0} wird mit Passen, Preisen und Auszeichnungen gelöscht."
 
 #. placeholder {0}: m.name
-#. placeholder {1}: _i18n._(roleLabel(r))
+#. placeholder {1}: roleName(roles.data?.find(r => r.id === roleId))
 #: src/routes/t/[tenantId]/users/+page.svelte
 msgid "{0} is now {1}"
 msgstr "{0} ist jetzt {1}"
@@ -535,8 +535,8 @@ msgid "Account"
 msgstr "Konto"
 
 #: src/routes/t/[tenantId]/users/+page.svelte
-msgid "Accounts with access to this club. Admins manage ranges, events and users; staff run the events."
-msgstr "Konten mit Zugang zu diesem Verein. Admins verwalten Schiessstände, Anlässe und Benutzer; das Personal führt die Anlässe durch."
+msgid "Accounts with access to this club. What each role may do is set under Roles."
+msgstr "Konten mit Zugang zu diesem Verein. Was jede Rolle darf, legst du unter Rollen fest."
 
 #. placeholder {0}: c.name
 #. placeholder {0}: programmeTitle(p)
@@ -975,6 +975,10 @@ msgstr "Geburtsdatum"
 #: src/lib/modules/reservations/booking/parts/ShooterList.svelte
 msgid "Birthday of shooter {0}"
 msgstr "Geburtsdatum von Schütze {0}"
+
+#: src/lib/labels.ts
+msgid "Board"
+msgstr "Vorstand"
 
 #: src/lib/forms/Properties.svelte
 msgid "Bold"
@@ -2303,6 +2307,10 @@ msgstr "Hilfe"
 msgid "Help pages"
 msgstr "Hilfeseiten"
 
+#: src/lib/labels.ts
+msgid "Helper"
+msgstr "Helfer"
+
 #: src/lib/modules/helpers/HelperCodes.svelte
 msgid "Helper link (shown only now):"
 msgstr "Helferlink (wird nur jetzt angezeigt):"
@@ -2881,6 +2889,10 @@ msgstr "max. {0}"
 #: src/lib/programme/Series.svelte
 msgid "Max. points"
 msgstr "Max. Punkte"
+
+#: src/lib/labels.ts
+msgid "Member"
+msgstr "Mitglied"
 
 #: src/routes/t/[tenantId]/clubs/+page.svelte
 msgid "Merge"
@@ -4822,10 +4834,6 @@ msgstr "Sonderpreise: Ränge 1–{0}"
 #: src/routes/t/[tenantId]/clubs/+page.svelte
 msgid "SSV number"
 msgstr "SSV-Nummer"
-
-#: src/lib/labels.ts
-msgid "Staff"
-msgstr "Personal"
 
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Standblatt prints these unless an event chooses a form of the club; copy one to change it."

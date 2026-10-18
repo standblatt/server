@@ -12,6 +12,7 @@ import (
 
 	"github.com/standblatt/server/internal/domain"
 	"github.com/standblatt/server/internal/modules"
+	"github.com/standblatt/server/internal/permissions"
 	"github.com/standblatt/server/internal/realtime"
 	"github.com/standblatt/server/internal/store"
 )
@@ -159,7 +160,7 @@ func (s *Server) registerHelpers(api huma.API) {
 	huma.Register(api, huma.Operation{
 		OperationID: "list-helper-codes", Metadata: modules.Metadata(modules.Helpers), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/helper-codes", Tags: []string{"helpers"},
 	}, func(ctx context.Context, in *EventPath) (*listOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.ListHelperCodes(ctx, in.TenantID, in.EventID)
@@ -185,7 +186,7 @@ func (s *Server) registerHelpers(api huma.API) {
 		OperationID: "create-helper-code", Metadata: modules.Metadata(modules.Helpers), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/helper-codes", Tags: []string{"helpers"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *createIn) (*createOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
 			return nil, err
 		}
 		ev, err := s.Store.GetEvent(ctx, in.TenantID, in.EventID)
@@ -231,7 +232,7 @@ func (s *Server) registerHelpers(api huma.API) {
 		OperationID: "delete-helper-code", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/helper-codes/{codeId}", Tags: []string{"helpers"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *codePath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
 			return nil, err
 		}
 		eventID, err := s.Store.DeleteHelperCode(ctx, in.TenantID, in.CodeID)

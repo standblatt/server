@@ -11,7 +11,7 @@
 	import * as Table from '$lib/components/ui/table';
 	import EventForm from '$lib/EventForm.svelte';
 	import { formatDays, rangeNames } from '$lib/format';
-	import { membershipOf, meQuery } from '$lib/me';
+	import { can, membershipOf, meQuery } from '$lib/me';
 	import PageHeader from '$lib/PageHeader.svelte';
 	import FormError from '$lib/FormError.svelte';
 	import FormField from '$lib/FormField.svelte';
@@ -25,7 +25,7 @@
 	const me = meQuery();
 	const events = eventsQuery(() => tenantId);
 	const ranges = rangesQuery(() => tenantId);
-	const isAdmin = $derived(membershipOf(me.data, tenantId)?.role === 'admin');
+	const isAdmin = $derived(can(membershipOf(me.data, tenantId), 'events.configure'));
 	/** Today's date (YYYY-MM-DD) in the given time zone, UTC if it is invalid. */
 	function todayIn(timeZone: string): string {
 		try {

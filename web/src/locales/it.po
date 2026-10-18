@@ -253,7 +253,7 @@ msgid "{0} is deleted with its series, prices and awards."
 msgstr "{0} viene eliminato con le sue serie, prezzi e distinzioni."
 
 #. placeholder {0}: m.name
-#. placeholder {1}: _i18n._(roleLabel(r))
+#. placeholder {1}: roleName(roles.data?.find(r => r.id === roleId))
 #: src/routes/t/[tenantId]/users/+page.svelte
 msgid "{0} is now {1}"
 msgstr "{0} è ora {1}"
@@ -535,8 +535,8 @@ msgid "Account"
 msgstr "Account"
 
 #: src/routes/t/[tenantId]/users/+page.svelte
-msgid "Accounts with access to this club. Admins manage ranges, events and users; staff run the events."
-msgstr "Account con accesso a questa società. Gli amministratori gestiscono stand, manifestazioni e utenti; il personale conduce le manifestazioni."
+msgid "Accounts with access to this club. What each role may do is set under Roles."
+msgstr "Account con accesso a questa società. Cosa può fare ogni ruolo si imposta in Ruoli."
 
 #. placeholder {0}: c.name
 #. placeholder {0}: programmeTitle(p)
@@ -975,6 +975,10 @@ msgstr "Data di nascita"
 #: src/lib/modules/reservations/booking/parts/ShooterList.svelte
 msgid "Birthday of shooter {0}"
 msgstr "Data di nascita del tiratore {0}"
+
+#: src/lib/labels.ts
+msgid "Board"
+msgstr "Comitato"
 
 #: src/lib/forms/Properties.svelte
 msgid "Bold"
@@ -2303,6 +2307,10 @@ msgstr "Aiuto"
 msgid "Help pages"
 msgstr "Pagine di aiuto"
 
+#: src/lib/labels.ts
+msgid "Helper"
+msgstr "Aiutante"
+
 #: src/lib/modules/helpers/HelperCodes.svelte
 msgid "Helper link (shown only now):"
 msgstr "Link aiutante (mostrato solo ora):"
@@ -2881,6 +2889,10 @@ msgstr "max. {0}"
 #: src/lib/programme/Series.svelte
 msgid "Max. points"
 msgstr "Punti max."
+
+#: src/lib/labels.ts
+msgid "Member"
+msgstr "Membro"
 
 #: src/routes/t/[tenantId]/clubs/+page.svelte
 msgid "Merge"
@@ -4822,10 +4834,6 @@ msgstr "Premi speciali: ranghi 1–{0}"
 #: src/routes/t/[tenantId]/clubs/+page.svelte
 msgid "SSV number"
 msgstr "Numero FST"
-
-#: src/lib/labels.ts
-msgid "Staff"
-msgstr "Personale"
 
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Standblatt prints these unless an event chooses a form of the club; copy one to change it."

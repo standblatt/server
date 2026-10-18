@@ -35,7 +35,7 @@
 					<a class="flex flex-col gap-3 rounded-lg border bg-card p-5 shadow-xl transition hover:-translate-y-0.5 hover:ring-2 hover:ring-sidebar-primary" href="/t/{m.tenantId}">
 						<Building class="size-8 text-primary" />
 						<span class="font-semibold">{m.tenantName}</span>
-						<span class="text-xs text-muted-foreground">{$t(roleLabel(m.role))}</span>
+						<span class="text-xs text-muted-foreground">{m.roleName || $t(roleLabel(m.roleKey))}</span>
 					</a>
 				{/each}
 				<a class="flex flex-col gap-3 rounded-lg border bg-card p-5 shadow-xl transition hover:-translate-y-0.5 hover:ring-2 hover:ring-sidebar-primary" href="/my">

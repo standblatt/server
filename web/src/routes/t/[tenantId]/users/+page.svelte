@@ -17,20 +17,25 @@
 	import FormField from '$lib/FormField.svelte';
 	import PageHeader from '$lib/PageHeader.svelte';
 	import { meKey } from '$lib/me';
-	import { keys, usersQuery } from '$lib/tenant';
+	import { keys, rolesQuery, usersQuery } from '$lib/tenant';
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const queryClient = useQueryClient();
 	const users = usersQuery(() => tenantId);
+	const roles = rolesQuery(() => tenantId);
+	/** Name of a role: its own or the translated default name. */
+	const roleName = (r?: Role) => r?.name || $t(roleLabel(r?.key));
+	/** The helper role, preselected for new users. */
+	const helperRole = $derived(roles.data?.find((r) => r.key === 'staff')?.id ?? 0);
 
 	let name = $state('');
-	let role = $state<Role>('staff');
+	let role = $state(0);
 	let password = $state('');
 	let error = $state('');
 	let adding = $state(false);
 	let inviting = $state(false);
 	let inviteText = $state('');
-	let inviteRole = $state<Role>('staff');
+	let inviteRole = $state(0);
 	let inviteError = $state('');
 	let invited = $state<{ email: string; status: string }[]>([]);
 	/** Splits the pasted list into addresses (commas, semicolons, whitespace and newlines all separate). */
@@ -41,7 +46,7 @@
 		e.preventDefault();
 		inviteError = '';
 		try {
-			invited = await call(api.POST('/api/tenants/{tenantId}/invitations', { params: { path: { tenantId } }, body: { emails: inviteEmails, role: inviteRole } }));
+			invited = await call(api.POST('/api/tenants/{tenantId}/invitations', { params: { path: { tenantId } }, body: { emails: inviteEmails, roleId: inviteRole || helperRole } }));
 			inviteText = '';
 			await refresh();
 		} catch (err) {
@@ -54,6 +59,7 @@
 	/** Reloads the user list and the own memberships. */
 	async function refresh() {
 		await queryClient.invalidateQueries({ queryKey: keys.users(tenantId) });
+		await queryClient.invalidateQueries({ queryKey: keys.roles(tenantId) });
 		await queryClient.invalidateQueries({ queryKey: meKey });
 	}
 
@@ -65,7 +71,7 @@
 			await call(
 				api.POST('/api/tenants/{tenantId}/users', {
 					params: { path: { tenantId } },
-					body: { name, role, password: password || undefined }
+					body: { name, roleId: role || helperRole, password: password || undefined }
 				})
 			);
 			toast.success($t`${name} added`);
@@ -78,10 +84,10 @@
 	}
 
 	/** Changes a user's role. */
-	async function setRole(m: Member, r: Role) {
+	async function setRole(m: Member, roleId: number) {
 		try {
-			await call(api.PUT('/api/tenants/{tenantId}/users/{userId}', { params: { path: { tenantId, userId: m.userId } }, body: { role: r } }));
-			toast.success($t`${m.name} is now ${$t(roleLabel(r))}`);
+			await call(api.PUT('/api/tenants/{tenantId}/users/{userId}', { params: { path: { tenantId, userId: m.userId } }, body: { roleId } }));
+			toast.success($t`${m.name} is now ${roleName(roles.data?.find((r) => r.id === roleId))}`);
 		} catch (err) {
 			toast.error((err as Error).message);
 		}
@@ -101,7 +107,7 @@
 	}
 </script>
 
-<PageHeader help="user-guide/users" title={$t`Users`} description={$t`Accounts with access to this club. Admins manage ranges, events and users; staff run the events.`}>
+<PageHeader help="user-guide/users" title={$t`Users`} description={$t`Accounts with access to this club. What each role may do is set under Roles.`}>
 	{#snippet actions()}
 		<Button
 			onclick={() => {
@@ -131,8 +137,8 @@
 						{#if m.email && m.email !== m.name}<div class="text-xs text-muted-foreground">{m.email}</div>{/if}
 					</Table.Cell>
 					<Table.Cell>
-						<NativeSelect.Root size="sm" value={m.role} onchange={(e) => setRole(m, e.currentTarget.value as Role)} aria-label={$t`Role of ${m.name}`}>
-							{#each ['admin', 'staff'] as value (value)}<NativeSelect.Option {value}>{$t(roleLabel(value))}</NativeSelect.Option>{/each}
+						<NativeSelect.Root size="sm" value={m.roleId} onchange={(e) => setRole(m, Number(e.currentTarget.value))} aria-label={$t`Role of ${m.name}`}>
+							{#each roles.data ?? [] as r (r.id)}<NativeSelect.Option value={r.id}>{roleName(r)}</NativeSelect.Option>{/each}
 						</NativeSelect.Root>
 					</Table.Cell>
 					<Table.Cell class="text-right"><Button variant="ghost" size="sm" class="text-destructive" onclick={() => remove(m)}>{$t`Remove`}</Button></Table.Cell>
@@ -153,8 +159,8 @@
 				<textarea class="min-h-28 rounded-md border bg-background px-3 py-2 text-sm" bind:value={inviteText} name="emails" required placeholder="anna@example.org, bert@example.org"></textarea>
 			</FormField>
 			<FormField label={$t`Role`}>
-				<NativeSelect.Root class="w-full" bind:value={inviteRole}>
-					{#each ['admin', 'staff'] as value (value)}<NativeSelect.Option {value}>{$t(roleLabel(value))}</NativeSelect.Option>{/each}
+				<NativeSelect.Root class="w-full" value={inviteRole || helperRole} onchange={(e) => (inviteRole = Number(e.currentTarget.value))}>
+					{#each roles.data ?? [] as r (r.id)}<NativeSelect.Option value={r.id}>{roleName(r)}</NativeSelect.Option>{/each}
 				</NativeSelect.Root>
 			</FormField>
 			{#if invited.length}
@@ -179,8 +185,8 @@
 		<form class="grid gap-4" onsubmit={add}>
 			<FormField label={$t`User name`}><Input bind:value={name} autocomplete="off" required /></FormField>
 			<FormField label={$t`Role`}>
-				<NativeSelect.Root class="w-full" bind:value={role}>
-					{#each ['admin', 'staff'] as value (value)}<NativeSelect.Option {value}>{$t(roleLabel(value))}</NativeSelect.Option>{/each}
+				<NativeSelect.Root class="w-full" value={role || helperRole} onchange={(e) => (role = Number(e.currentTarget.value))}>
+					{#each roles.data ?? [] as r (r.id)}<NativeSelect.Option value={r.id}>{roleName(r)}</NativeSelect.Option>{/each}
 				</NativeSelect.Root>
 			</FormField>
 			<FormField label={$t`Password`} hint={$t`New users only, at least 10 characters`}><Input type="password" bind:value={password} autocomplete="new-password" /></FormField>

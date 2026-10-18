@@ -1982,6 +1982,39 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/tenants/{tenantId}/roles": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["list-roles"];
+        put?: never;
+        post: operations["create-role"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/tenants/{tenantId}/roles/{roleId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Rename a role and set its permissions; the admin role keeps every permission */
+        put: operations["update-role"];
+        post?: never;
+        delete: operations["delete-role"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/tenants/{tenantId}/shooters": {
         parameters: {
             query?: never;
@@ -2142,8 +2175,8 @@ export interface components {
             name: string;
             /** @description Required when the user does not exist yet */
             password?: string;
-            /** @enum {string} */
-            role: "admin" | "staff";
+            /** Format: int64 */
+            roleId: number;
         };
         ArchiveInBody: {
             archived: boolean;
@@ -2995,8 +3028,8 @@ export interface components {
         InviteInBody: {
             /** @description One address per entry; the UI splits a comma or newline separated list. Mails leave at most four per second */
             emails: string[];
-            /** @enum {string} */
-            role: "admin" | "staff";
+            /** Format: int64 */
+            roleId: number;
         };
         InviteResult: {
             email: string;
@@ -3124,8 +3157,8 @@ export interface components {
             /** @description Empty when the account has none */
             email: string;
             name: string;
-            /** @enum {string} */
-            role: "admin" | "staff";
+            /** Format: int64 */
+            roleId: number;
             /** Format: int64 */
             userId: number;
         };
@@ -3134,8 +3167,16 @@ export interface components {
             modules: "forms"[];
             /** @description The club modules with data; they cannot be switched off */
             modulesInUse: "forms"[];
-            /** @enum {string} */
-            role: "admin" | "staff";
+            permissions: ("events.view" | "events.operate" | "events.configure" | "reports.view" | "shooters.view" | "shooters.edit" | "shooters.manage" | "ranges.manage" | "forms.manage" | "club.manage")[];
+            /** Format: int64 */
+            roleId: number;
+            /**
+             * @description Set for the roles every club starts with
+             * @enum {string}
+             */
+            roleKey?: "admin" | "board" | "staff" | "member";
+            /** @description Empty for a default role that keeps its translated name */
+            roleName: string;
             /** Format: int64 */
             tenantId: number;
             tenantName: string;
@@ -3617,9 +3658,28 @@ export interface components {
             entries: components["schemas"]["EntryResult"][];
             registration: components["schemas"]["Registration"];
         };
+        Role: {
+            /** Format: int64 */
+            id: number;
+            /**
+             * @description Set for the roles every club starts with
+             * @enum {string}
+             */
+            key?: "admin" | "board" | "staff" | "member";
+            /** Format: int64 */
+            members: number;
+            /** @description Empty for a default role that keeps its translated name */
+            name: string;
+            permissions: ("events.view" | "events.operate" | "events.configure" | "reports.view" | "shooters.view" | "shooters.edit" | "shooters.manage" | "ranges.manage" | "forms.manage" | "club.manage")[];
+        };
         RoleInBody: {
-            /** @enum {string} */
-            role: "admin" | "staff";
+            /** Format: int64 */
+            roleId: number;
+        };
+        RoleInput: {
+            /** @description Empty keeps the translated name of a default role */
+            name: string;
+            permissions: ("events.view" | "events.operate" | "events.configure" | "reports.view" | "shooters.view" | "shooters.edit" | "shooters.manage" | "ranges.manage" | "forms.manage" | "club.manage")[];
         };
         SaveInBody: {
             series: components["schemas"]["SeriesResult"][];
@@ -9206,6 +9266,136 @@ export interface operations {
             path: {
                 tenantId: number;
                 reservationId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "list-roles": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Role"][];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "create-role": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RoleInput"];
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Role"];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "update-role": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                roleId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RoleInput"];
+            };
+        };
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "delete-role": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                roleId: number;
             };
             cookie?: never;
         };

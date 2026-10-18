@@ -17,6 +17,7 @@ import (
 	"github.com/standblatt/server/internal/domain"
 	"github.com/standblatt/server/internal/i18n"
 	"github.com/standblatt/server/internal/modules"
+	"github.com/standblatt/server/internal/permissions"
 	"github.com/standblatt/server/internal/store"
 )
 
@@ -223,7 +224,7 @@ func (s *Server) registerForms(api huma.API) {
 	huma.Register(api, huma.Operation{
 		OperationID: "list-layouts", Metadata: modules.Metadata(modules.Forms), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/layouts", Tags: []string{"forms"},
 	}, func(ctx context.Context, in *TenantPath) (*layoutsOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.ListLayouts(ctx, in.TenantID)
@@ -243,7 +244,7 @@ func (s *Server) registerForms(api huma.API) {
 		OperationID: "list-builtin-layouts", Metadata: modules.Metadata(modules.Forms), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/layouts/builtin", Tags: []string{"forms"},
 		Summary: "The built-in print forms (wreath card, control strip), to copy and change",
 	}, func(ctx context.Context, in *TenantPath) (*builtinOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView); err != nil {
 			return nil, err
 		}
 		out := &builtinOut{Body: []builtinLayout{}}
@@ -258,7 +259,7 @@ func (s *Server) registerForms(api huma.API) {
 		OperationID: "list-layout-fields", Metadata: modules.Metadata(modules.Forms), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/layouts/fields", Tags: []string{"forms"},
 		Summary: "The placeholders of print forms with example values",
 	}, func(ctx context.Context, in *fieldsIn) (*struct{ Body []LayoutField }, error) {
-		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView); err != nil {
 			return nil, err
 		}
 		out := []LayoutField{}
@@ -278,7 +279,7 @@ func (s *Server) registerForms(api huma.API) {
 		OperationID: "create-layout", Metadata: modules.Metadata(modules.Forms), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/layouts", Tags: []string{"forms"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *layoutIn) (*layoutOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.FormsManage); err != nil {
 			return nil, err
 		}
 		in.Body.Name = strings.TrimSpace(in.Body.Name)
@@ -296,7 +297,7 @@ func (s *Server) registerForms(api huma.API) {
 	huma.Register(api, huma.Operation{
 		OperationID: "get-layout", Metadata: modules.Metadata(modules.Forms), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/layouts/{layoutId}", Tags: []string{"forms"},
 	}, func(ctx context.Context, in *LayoutPath) (*layoutOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView); err != nil {
 			return nil, err
 		}
 		l, err := s.Store.GetLayout(ctx, in.TenantID, in.LayoutID)
@@ -311,7 +312,7 @@ func (s *Server) registerForms(api huma.API) {
 		OperationID: "update-layout", Metadata: modules.Metadata(modules.Forms), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/layouts/{layoutId}", Tags: []string{"forms"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *layoutUpdateIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.FormsManage); err != nil {
 			return nil, err
 		}
 		in.Body.Name = strings.TrimSpace(in.Body.Name)
@@ -325,7 +326,7 @@ func (s *Server) registerForms(api huma.API) {
 		OperationID: "delete-layout", Metadata: modules.Metadata(modules.Forms), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/layouts/{layoutId}", Tags: []string{"forms"},
 		Summary: "Delete a print form; programmes that use it no longer print a form", DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *LayoutPath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.FormsManage); err != nil {
 			return nil, err
 		}
 		return nil, notFound(s.Store.DeleteLayout(ctx, in.TenantID, in.LayoutID), "Print form not found")
@@ -342,7 +343,7 @@ func (s *Server) registerForms(api huma.API) {
 		Summary: "Store a scan of the empty form (PNG or JPEG) for the preview; it is never printed", DefaultStatus: http.StatusNoContent,
 		MaxBodyBytes: maxBackgroundBytes + 64<<10,
 	}, func(ctx context.Context, in *backgroundIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.FormsManage); err != nil {
 			return nil, err
 		}
 		b, err := io.ReadAll(io.LimitReader(in.RawBody.Data().File, maxBackgroundBytes+1))
@@ -362,7 +363,7 @@ func (s *Server) registerForms(api huma.API) {
 		OperationID: "delete-layout-background", Metadata: modules.Metadata(modules.Forms), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/layouts/{layoutId}/background", Tags: []string{"forms"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *LayoutPath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.FormsManage); err != nil {
 			return nil, err
 		}
 		return nil, notFound(s.Store.SetLayoutBackground(ctx, in.TenantID, in.LayoutID, nil), "Print form not found")
@@ -378,7 +379,7 @@ func (s *Server) registerForms(api huma.API) {
 		Summary:   "The scan of the empty form, for the editor",
 		Responses: map[string]*huma.Response{"200": {Description: "PNG or JPEG", Content: map[string]*huma.MediaType{"image/png": {}, "image/jpeg": {}}}},
 	}, func(ctx context.Context, in *LayoutPath) (*imageOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.FormsManage); err != nil {
 			return nil, err
 		}
 		bg, err := s.Store.LayoutBackground(ctx, in.TenantID, in.LayoutID)
@@ -398,7 +399,7 @@ func (s *Server) registerForms(api huma.API) {
 	}
 	huma.Register(api, withModule(pdfOp("preview-layout", "forms", "/api/tenants/{tenantId}/layouts/{layoutId}/preview", "The form with the scan of the empty form behind it"), modules.Forms),
 		func(ctx context.Context, in *previewIn) (*PDFOutput, error) {
-			if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+			if _, _, err := s.access(ctx, in.TenantID, permissions.FormsManage); err != nil {
 				return nil, err
 			}
 			l, err := s.Store.GetLayout(ctx, in.TenantID, in.LayoutID)
@@ -429,7 +430,7 @@ func (s *Server) registerForms(api huma.API) {
 
 	huma.Register(api, withModule(pdfOp("entry-form", "forms", "/api/tenants/{tenantId}/entries/{entryId}/form", "The results of an entry printed onto the form of its programme"), modules.Forms),
 		func(ctx context.Context, in *EntryPath) (*PDFOutput, error) {
-			if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+			if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
 				return nil, err
 			}
 			return pdfOut(s.renderForm(ctx, in.TenantID, in.EntryID))
@@ -445,7 +446,7 @@ func (s *Server) registerForms(api huma.API) {
 		OperationID: "set-programme-form", Metadata: modules.Metadata(modules.Forms), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/programmes/{programmeId}/form", Tags: []string{"programmes"},
 		Summary: "Choose the print form of a programme; allowed while shooters are registered", DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *formIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
 			return nil, err
 		}
 		if in.Body.LayoutID != nil {

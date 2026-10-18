@@ -51,6 +51,12 @@ export async function createClub(page, club, user, pw = password) {
   return me.tenants.find((t) => t.tenantName === club).tenantId;
 }
 
+/** Adds a user with a password to a club with one of the default roles (admin, board, staff, member). */
+export async function addUser(page, tenantId, name, role = "staff", pw = password) {
+  const roles = await api(page, "GET", `/api/tenants/${tenantId}/roles`);
+  await api(page, "POST", `/api/tenants/${tenantId}/users`, { name, roleId: roles.find((r) => r.key === role).id, password: pw });
+}
+
 /** The token from the newest mail to an address whose subject contains subject. */
 export async function mailToken(page, to, subject = "") {
   const query = encodeURIComponent(`to:${to}${subject ? ` subject:"${subject}"` : ""}`);

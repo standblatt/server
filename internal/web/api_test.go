@@ -15,6 +15,7 @@ import (
 	"testing"
 	"testing/fstest"
 
+	"github.com/standblatt/server/internal/permissions"
 	"github.com/standblatt/server/internal/realtime"
 	"github.com/standblatt/server/internal/store"
 	"github.com/standblatt/server/internal/testdb"
@@ -60,7 +61,7 @@ func (e *env) client() *http.Client {
 	return &http.Client{Jar: jar, CheckRedirect: func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }}
 }
 
-func (e *env) user(name string, tenantID int64, role store.Role) int64 {
+func (e *env) user(name string, tenantID int64, role string) int64 {
 	e.t.Helper()
 	hash, _ := web.HashPassword("password-" + name)
 	id, err := e.st.CreateUser(context.Background(), name, hash)
@@ -68,9 +69,23 @@ func (e *env) user(name string, tenantID int64, role store.Role) int64 {
 		e.t.Fatal(err)
 	}
 	if tenantID != 0 {
-		if err := e.st.SetMembership(context.Background(), tenantID, id, role); err != nil {
+		roleID, err := e.st.RoleIDByKey(context.Background(), tenantID, role)
+		if err != nil {
 			e.t.Fatal(err)
 		}
+		if err := e.st.SetMembership(context.Background(), tenantID, id, roleID); err != nil {
+			e.t.Fatal(err)
+		}
+	}
+	return id
+}
+
+// role returns the ID of a default role of a tenant.
+func (e *env) role(tenantID int64, key string) int64 {
+	e.t.Helper()
+	id, err := e.st.RoleIDByKey(context.Background(), tenantID, key)
+	if err != nil {
+		e.t.Fatal(err)
 	}
 	return id
 }
@@ -138,7 +153,7 @@ func TestLoginAndSession(t *testing.T) {
 	expect(t, "me", code, 200, b)
 	var me web.Me
 	json.Unmarshal(b, &me)
-	if me.User.Name != "anna" || len(me.Tenants) != 1 || me.Tenants[0].TenantID != tid || me.Tenants[0].Role != store.RoleAdmin {
+	if me.User.Name != "anna" || len(me.Tenants) != 1 || me.Tenants[0].TenantID != tid || me.Tenants[0].RoleKey != store.RoleAdmin || len(me.Tenants[0].Permissions) != len(permissions.All) {
 		t.Fatalf("unexpected me: %+v", me)
 	}
 
@@ -245,15 +260,15 @@ func TestMembers(t *testing.T) {
 	c := e.login("boss")
 	base := fmt.Sprintf("/api/tenants/%d/users", tid)
 
-	code, b := e.do(c, "POST", base, map[string]any{"name": "Helper1", "role": "staff"})
+	code, b := e.do(c, "POST", base, map[string]any{"name": "Helper1", "roleId": e.role(tid, "staff")})
 	expect(t, "new user without password", code, 422, b)
-	code, b = e.do(c, "POST", base, map[string]any{"name": "Helper1", "role": "staff", "password": "helper-password"})
+	code, b = e.do(c, "POST", base, map[string]any{"name": "Helper1", "roleId": e.role(tid, "staff"), "password": "helper-password"})
 	expect(t, "create member", code, 204, b)
 	h := e.client()
 	code, b = e.do(h, "POST", "/api/auth/login", map[string]string{"name": "helper1", "password": "helper-password"})
 	expect(t, "new member logs in", code, 200, b)
 
-	code, b = e.do(c, "PUT", fmt.Sprintf("%s/%d", base, adminID), map[string]any{"role": "staff"})
+	code, b = e.do(c, "PUT", fmt.Sprintf("%s/%d", base, adminID), map[string]any{"roleId": e.role(tid, "staff")})
 	expect(t, "demote last admin", code, 409, b)
 	code, b = e.do(c, "DELETE", fmt.Sprintf("%s/%d", base, adminID), nil)
 	expect(t, "remove last admin", code, 409, b)

@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Club roles are made of permissions: admin and staff became the roles *Admin* and *Helper* (unchanged rights), new default roles are *Board* and *Member* (sees only the events and rankings); the app shows pages and buttons by permission (by @HB9HIL)
+
 ### Removed
 - The redirect of the old setup page links (`setup?tab=`) to the configuration pages (by @HB9HIL)
 

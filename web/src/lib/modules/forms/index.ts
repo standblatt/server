@@ -7,6 +7,6 @@ export default {
 	description: msg`Results printed onto pre-printed sheets, such as the army's lane sheets.`,
 	help: 'user-guide/print-forms',
 	icon: ScrollText,
-	clubPage: { path: 'forms', label: msg`Print forms` },
+	clubPage: { path: 'forms', label: msg`Print forms`, permission: 'forms.manage' },
 	programmeSections: [{ after: 'usage', load: () => import('./ProgrammeSection.svelte') }]
 } satisfies ClubModuleUI;

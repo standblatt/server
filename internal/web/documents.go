@@ -14,6 +14,7 @@ import (
 	"github.com/standblatt/server/internal/domain"
 	"github.com/standblatt/server/internal/i18n"
 	"github.com/standblatt/server/internal/modules"
+	"github.com/standblatt/server/internal/permissions"
 	"github.com/standblatt/server/internal/realtime"
 	"github.com/standblatt/server/internal/store"
 )
@@ -317,7 +318,7 @@ func (s *Server) registerDocuments(api huma.API) {
 	}
 	huma.Register(api, pdfOp("registration-document", "documents", "/api/tenants/{tenantId}/registrations/{registrationId}/documents/{document}", ""),
 		func(ctx context.Context, in *regDocIn) (*PDFOutput, error) {
-			if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+			if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
 				return nil, err
 			}
 			if err := s.helperDocument(ctx, in.TenantID, in.RegistrationID, 0, in.Document); err != nil {
@@ -327,14 +328,14 @@ func (s *Server) registerDocuments(api huma.API) {
 		})
 	huma.Register(api, withModule(pdfOp("wreath-card", "documents", "/api/tenants/{tenantId}/entries/{entryId}/wreath-card", ""), modules.Awards),
 		func(ctx context.Context, in *EntryPath) (*PDFOutput, error) {
-			if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+			if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
 				return nil, err
 			}
 			return pdfOut(s.renderWreathCard(ctx, in.TenantID, in.EntryID))
 		})
 	huma.Register(api, pdfOp("ranking-pdf", "documents", "/api/tenants/{tenantId}/programmes/{programmeId}/ranking", ""),
 		func(ctx context.Context, in *ProgrammePath) (*PDFOutput, error) {
-			if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+			if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView); err != nil {
 				return nil, err
 			}
 			return pdfOut(s.renderRanking(ctx, in.TenantID, in.ProgrammeID))
@@ -349,7 +350,7 @@ func (s *Server) registerDocuments(api huma.API) {
 		OperationID: "print", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/print", Tags: []string{"documents"},
 		Summary: "Send a document to the printer of its range; queued is false when no printer is set up or no agent is online",
 	}, func(ctx context.Context, in *printIn) (*printOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
 			return nil, err
 		}
 		if err := s.helperDocument(ctx, in.TenantID, in.Body.RegistrationID, in.Body.EntryID, in.Body.Document); err != nil {

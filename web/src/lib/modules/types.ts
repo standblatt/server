@@ -1,7 +1,7 @@
 import type { MessageDescriptor } from '@lingui/core';
 import type { Component } from 'svelte';
 import type Users from '@lucide/svelte/icons/users';
-import type { Event, Me, Programme } from '$lib/api';
+import type { Event, Me, Permission, Programme } from '$lib/api';
 import type { ProgrammeDraft } from '$lib/programme/draft.svelte';
 
 /** Key of an event module, as the API names it. */
@@ -49,6 +49,6 @@ export type ClubModuleKey = Me['tenants'][number]['modules'][number];
 
 /** The UI of a club module: like an event module, with a page in the club part of the sidebar. */
 export type ClubModuleUI = Pick<ModuleUI, 'label' | 'description' | 'help' | 'icon' | 'programmeSections'> & {
-	/** Own page of the club at /t/<id>/<path>. */
-	clubPage?: { path: string; label: MessageDescriptor };
+	/** Own page of the club at /t/<id>/<path>, for roles with the permission. */
+	clubPage?: { path: string; label: MessageDescriptor; permission: Permission };
 };

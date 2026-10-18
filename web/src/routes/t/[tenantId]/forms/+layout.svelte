@@ -3,6 +3,7 @@
 	import { page } from '$app/state';
 	import { membershipOf, meQuery } from '$lib/me';
 	import { hasClub } from '$lib/modules';
+	import RequirePermission from '$lib/RequirePermission.svelte';
 
 	let { children } = $props();
 	const me = meQuery();
@@ -12,7 +13,7 @@
 
 {#if club}
 	{#if hasClub(club, 'forms')}
-		{@render children()}
+		<RequirePermission {tenantId} permission="forms.manage">{@render children()}</RequirePermission>
 	{:else}
 		<p class="text-sm text-muted-foreground">
 			{$t`This module is off.`} <a class="underline" href="/t/{tenantId}/modules">{$t`Club modules`}</a>

@@ -22,10 +22,10 @@ func TestInviteUsers(t *testing.T) {
 	box.next(t) // Lea's own verification mail
 	path := fmt.Sprintf("/api/tenants/%d/invitations", tid)
 
-	code, b := e.do(staff, "POST", path, map[string]any{"emails": []string{"x@example.org"}, "role": "staff"})
+	code, b := e.do(staff, "POST", path, map[string]any{"emails": []string{"x@example.org"}, "roleId": e.role(tid, "staff")})
 	expect(t, "staff invites", code, 403, b)
 
-	code, b = e.do(admin, "POST", path, map[string]any{"emails": []string{"New.Shooter@Example.org", "lea@example.org", "boss", " new.shooter@example.org "}, "role": "staff"})
+	code, b = e.do(admin, "POST", path, map[string]any{"emails": []string{"New.Shooter@Example.org", "lea@example.org", "boss", " new.shooter@example.org "}, "roleId": e.role(tid, "staff")})
 	expect(t, "invite", code, 200, b)
 	var results []web.InviteResult
 	json.Unmarshal(b, &results)
@@ -36,7 +36,7 @@ func TestInviteUsers(t *testing.T) {
 	if len(results) != 3 || got["new.shooter@example.org"] != "invited" || got["lea@example.org"] != "added" || got["boss"] != "invalid" {
 		t.Fatalf("results: %s", b)
 	}
-	code, b = e.do(admin, "POST", path, map[string]any{"emails": []string{"lea@example.org"}, "role": "admin"})
+	code, b = e.do(admin, "POST", path, map[string]any{"emails": []string{"lea@example.org"}, "roleId": e.role(tid, "admin")})
 	expect(t, "invite again", code, 200, b)
 	if !strings.Contains(string(b), `"status":"member"`) {
 		t.Fatalf("second invite: %s", b)

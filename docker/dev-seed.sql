@@ -5,8 +5,18 @@ ON CONFLICT (name) DO NOTHING;
 
 INSERT INTO tenants (name) VALUES ('Dev Club') ON CONFLICT (name) DO NOTHING;
 
-INSERT INTO memberships (tenant_id, user_id, role)
-SELECT t.id, u.id, 'admin' FROM tenants t, users u WHERE t.name = 'Dev Club' AND u.name = 'dev'
+INSERT INTO roles (tenant_id, key, permissions, position)
+SELECT t.id, d.key, d.permissions, d.position FROM tenants t, (VALUES
+    ('admin', '{}'::text[], 1),
+    ('board', '{events.view,events.operate,events.configure,reports.view,shooters.view,shooters.edit,shooters.manage,forms.manage}', 2),
+    ('staff', '{events.view,events.operate,reports.view,shooters.view,shooters.edit}', 3),
+    ('member', '{events.view}', 4)
+) d(key, permissions, position) WHERE t.name = 'Dev Club'
+ON CONFLICT DO NOTHING;
+
+INSERT INTO memberships (tenant_id, user_id, role_id)
+SELECT t.id, u.id, r.id FROM tenants t JOIN roles r ON r.tenant_id = t.id AND r.key = 'admin', users u
+WHERE t.name = 'Dev Club' AND u.name = 'dev'
 ON CONFLICT DO NOTHING;
 
 INSERT INTO ranges (tenant_id, name, lane_count)

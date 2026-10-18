@@ -59,7 +59,7 @@
 {{range .Memberships}}
 <tr>
 <td><a href="/admin/clubs/{{.TenantID}}"><strong>{{.TenantName}}</strong></a></td>
-<td><span class="badge {{.Role}}">{{.Role}}</span></td>
+<td><span class="badge {{.RoleKey}}">{{.RoleLabel}}</span></td>
 <td class="actions"><form class="inline" method="post" action="/admin/users/{{$u.ID}}/memberships/delete"><input type="hidden" name="tenant" value="{{.TenantID}}"><button class="ghost small danger">{{T "remove"}}</button></form></td>
 </tr>
 {{else}}

@@ -2,7 +2,7 @@
 // `make docs-screenshots` starts an empty instance and writes the files into $SHOTS.
 import zlib from "node:zlib";
 import { test, expect } from "@playwright/test";
-import { adminLogin, api, c, createClub, login, mailToken, newPage } from "../helpers.js";
+import { addUser, adminLogin, api, c, createClub, login, mailToken, newPage } from "../helpers.js";
 
 const shots = process.env.SHOTS || "screenshots";
 const admin = "anna.admin";
@@ -76,7 +76,7 @@ test.describe("documentation screenshots", () => {
     ids.tenant = await createClub(page, club, admin, password);
 
     const base = `/api/tenants/${ids.tenant}`;
-    await api(page, "POST", `${base}/users`, { name: "sam.staff", password, role: "staff" });
+    await addUser(page, ids.tenant, "sam.staff", "staff", password);
     const clubs = {};
     for (const [name, ssv] of [["PS Example", "1.99.0.00.001"], ["SG Hilltown", "1.99.0.00.002"], ["PC Lakeside", "1.99.0.00.003"], ["SV Riverbank", "1.99.0.00.004"], ["CP Valley", "1.99.0.00.005"]]) {
       clubs[name] = (await api(page, "POST", `${base}/clubs`, { name, ssvNumber: ssv })).id;

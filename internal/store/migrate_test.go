@@ -234,3 +234,37 @@ func TestEventsKeepLanes(t *testing.T) {
 		t.Fatalf("modules %q", mods)
 	}
 }
+
+func TestMembershipsGetRoles(t *testing.T) {
+	st := testdb.Bare(t)
+	ctx := context.Background()
+	if err := st.MigrateUntil(ctx, "0038_event_templates.sql"); err != nil {
+		t.Fatal(err)
+	}
+	db := st.Pool()
+	var tid, anna, bert int64
+	for dst, sql := range map[*int64]string{
+		&tid:  `INSERT INTO tenants (name) VALUES ('Club') RETURNING id`,
+		&anna: `INSERT INTO users (name, password_hash) VALUES ('anna', 'x') RETURNING id`,
+		&bert: `INSERT INTO users (name, password_hash) VALUES ('bert', 'x') RETURNING id`,
+	} {
+		if err := db.QueryRow(ctx, sql).Scan(dst); err != nil {
+			t.Fatal(err)
+		}
+	}
+	if _, err := db.Exec(ctx, `INSERT INTO memberships (tenant_id, user_id, role) VALUES ($1, $2, 'admin'), ($1, $3, 'staff')`, tid, anna, bert); err != nil {
+		t.Fatal(err)
+	}
+	if err := st.MigrateUntil(ctx, ""); err != nil {
+		t.Fatal(err)
+	}
+	for user, want := range map[int64]string{anna: "admin", bert: "staff"} {
+		r, err := st.MemberRole(ctx, tid, user)
+		if err != nil || r.Key != want {
+			t.Fatalf("user %d: %+v %v, want %s", user, r, err, want)
+		}
+	}
+	if roles, _ := st.ListRoles(ctx, tid); fmt.Sprint(len(roles)) != "4" {
+		t.Fatalf("default roles: %+v", roles)
+	}
+}

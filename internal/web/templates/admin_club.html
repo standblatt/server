@@ -21,7 +21,7 @@
 {{range .Members}}
 <tr>
 <td><a href="/admin/users/{{.UserID}}"><strong>{{.Name}}</strong></a>{{if and .Email (ne .Email .Name)}}<div class="muted">{{.Email}}</div>{{end}}</td>
-<td><span class="badge {{.Role}}">{{.Role}}</span></td>
+<td><span class="badge {{.RoleKey}}">{{.RoleLabel}}</span></td>
 <td class="actions"><form class="inline" method="post" action="/admin/clubs/{{$tid}}/members/delete"><input type="hidden" name="user" value="{{.UserID}}"><button class="ghost small danger">{{T "remove"}}</button></form></td>
 </tr>
 {{else}}
@@ -33,7 +33,7 @@
 <div class="card-body">
 <form method="post" action="/admin/clubs/{{.Tenant.ID}}/members" class="row">
 <input name="user" placeholder="{{T "User name or email"}}" required>
-<select name="role"><option value="admin">admin</option><option value="staff">staff</option></select>
+<select name="role"><option value="admin">admin</option><option value="board">board</option><option value="staff">staff</option><option value="member">member</option></select>
 <button>{{T "assign"}}</button>
 </form>
 </div>

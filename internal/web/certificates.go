@@ -10,6 +10,7 @@ import (
 	"github.com/standblatt/server/internal/domain"
 	"github.com/standblatt/server/internal/i18n"
 	"github.com/standblatt/server/internal/modules"
+	"github.com/standblatt/server/internal/permissions"
 	"github.com/standblatt/server/internal/store"
 )
 
@@ -159,7 +160,7 @@ func (s *Server) registerCertificates(api huma.API) {
 	}
 	huma.Register(api, withModule(pdfOp("registration-form", "forms", "/api/tenants/{tenantId}/registrations/{registrationId}/forms/{layoutId}", "A registration printed onto a print form with the registration as data source"), modules.Forms),
 		func(ctx context.Context, in *regFormIn) (*PDFOutput, error) {
-			if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+			if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
 				return nil, err
 			}
 			return pdfOut(s.renderRegistrationForm(ctx, in.TenantID, in.RegistrationID, in.LayoutID))
@@ -171,7 +172,7 @@ func (s *Server) registerCertificates(api huma.API) {
 	}
 	huma.Register(api, withModule(pdfOp("certificates", "forms", "/api/tenants/{tenantId}/events/{eventId}/certificates", "Certificates: one page per ranked shooter of a programme or classification"), modules.Forms),
 		func(ctx context.Context, in *certificatesIn) (*PDFOutput, error) {
-			if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+			if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
 				return nil, err
 			}
 			return pdfOut(s.renderCertificates(ctx, in.TenantID, in.EventID, in.Certificates))

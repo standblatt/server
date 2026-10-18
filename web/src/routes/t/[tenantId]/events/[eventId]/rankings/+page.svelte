@@ -12,6 +12,7 @@
 	import { enabled, has } from '$lib/modules';
 	import RankingTable from '$lib/RankingTable.svelte';
 	import CertificatesButton from '$lib/forms/CertificatesButton.svelte';
+	import { can, membershipOf, meQuery } from '$lib/me';
 	import { eventQuery, keys } from '$lib/tenant';
 
 	const tenantId = $derived(Number(page.params.tenantId));
@@ -24,6 +25,8 @@
 		() => tenantId,
 		() => eventId
 	);
+	const me = meQuery();
+	const reports = $derived(can(membershipOf(me.data, tenantId), 'reports.view'));
 </script>
 
 <PageHeader help="user-guide/rankings-kiosk" title={$t`Rankings`} description={$t`Live rankings per programme, ranked by the SSV rules.`} />
@@ -37,7 +40,7 @@
 						{#if has(event.data, 'kiosk') && !r.public}<span class="rounded-full border px-2 py-0.5 text-xs text-muted-foreground" title={$t`Not shown on kiosk displays`}>{$t`not on kiosk`}</span>{/if}
 						{#if event.data}<CertificatesButton {tenantId} event={event.data} title={r.title} programmeId={r.programmeId} />{/if}
 						<Button size="sm" variant="outline" href="/api/tenants/{tenantId}/programmes/{r.programmeId}/ranking" target="_blank" onclick={pdfClick}><FileText />PDF</Button>
-						<Button size="sm" variant="outline" href="/api/tenants/{tenantId}/programmes/{r.programmeId}/ranking.csv"><FileSpreadsheet />CSV</Button>
+						{#if reports}<Button size="sm" variant="outline" href="/api/tenants/{tenantId}/programmes/{r.programmeId}/ranking.csv"><FileSpreadsheet />CSV</Button>{/if}
 					</div>
 				{/snippet}
 			</RankingTable>

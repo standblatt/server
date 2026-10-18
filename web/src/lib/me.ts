@@ -1,11 +1,14 @@
 import { createQuery, type QueryClient } from '@tanstack/svelte-query';
-import { api, call, type Me } from './api';
+import { api, call, type Me, type Permission } from './api';
 import { setLocale, type Locale } from './locale.svelte';
 
 export const meKey = ['me'];
 
 /** The user's membership in a club, undefined when the user is no member. */
 export const membershipOf = (me: Me | undefined, tenantId: number) => me?.tenants.find((m) => m.tenantId === tenantId);
+
+/** Whether the role of a membership has a permission. */
+export const can = (membership: { permissions: Permission[] } | undefined, permission: Permission) => !!membership?.permissions.includes(permission);
 
 /** Query of the logged-in user; applies the user's saved locale. Pass enabled false where no user is logged in,
  * e.g. on helper links, since a 401 sends the browser to the login. */

@@ -74,8 +74,8 @@ func (s *Store) DeleteUser(ctx context.Context, userID int64) error {
 const userStatCols = `u.id, u.name, u.locale, u.created_at,
 	(SELECT count(*) FROM sessions s WHERE s.user_id = u.id AND s.expires_at > now()),
 	(SELECT max(created_at) FROM sessions s WHERE s.user_id = u.id),
-	coalesce((SELECT array_agg(t.name || ' (' || m.role || ')' ORDER BY t.name)
-		FROM memberships m JOIN tenants t ON t.id = m.tenant_id WHERE m.user_id = u.id), '{}'),
+	coalesce((SELECT array_agg(t.name || ' (' || coalesce(r.name, r.key) || ')' ORDER BY t.name)
+		FROM memberships m JOIN tenants t ON t.id = m.tenant_id JOIN roles r ON r.id = m.role_id WHERE m.user_id = u.id), '{}'),
 	coalesce(u.email, ''), u.email_verified_at IS NOT NULL,
 	(SELECT count(*) FROM training_sessions ts WHERE ts.user_id = u.id), u.totp_secret IS NOT NULL`
 

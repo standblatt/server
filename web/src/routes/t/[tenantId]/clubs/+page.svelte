@@ -22,14 +22,15 @@
 	import Pager from '$lib/Pager.svelte';
 	import { pageOf } from '$lib/format';
 	import Search from '@lucide/svelte/icons/search';
-	import { membershipOf, meQuery } from '$lib/me';
+	import { can, membershipOf, meQuery } from '$lib/me';
 	import { clubsQuery, keys } from '$lib/tenant';
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const queryClient = useQueryClient();
 	const me = meQuery();
 	const clubs = clubsQuery(() => tenantId);
-	const isAdmin = $derived(membershipOf(me.data, tenantId)?.role === 'admin');
+	const canEdit = $derived(can(membershipOf(me.data, tenantId), 'shooters.edit'));
+	const canManage = $derived(can(membershipOf(me.data, tenantId), 'shooters.manage'));
 
 	let filter = $state('');
 	const shown = $derived((clubs.data ?? []).filter((c) => c.name.toLowerCase().includes(filter.trim().toLowerCase())));
@@ -115,7 +116,7 @@
 
 <PageHeader help="user-guide/shooters-clubs" title={$t`Clubs`} description={$t`Clubs that shooters belong to; used for registrations and the club competition.`}>
 	{#snippet actions()}
-		{#if isAdmin}<Button onclick={() => edit(null)}><Plus />{$t`New club`}</Button>{/if}
+		{#if canEdit}<Button onclick={() => edit(null)}><Plus />{$t`New club`}</Button>{/if}
 	{/snippet}
 </PageHeader>
 
@@ -137,7 +138,7 @@
 					<Table.Cell class="hidden sm:table-cell font-mono text-xs">{c.ssvNumber || '–'}</Table.Cell>
 					<Table.Cell class="text-right tabular-nums">{c.shooterCount}</Table.Cell>
 					<Table.Cell class="text-right">
-						{#if isAdmin}
+						{#if canManage}
 							<DropdownMenu.Root>
 								<DropdownMenu.Trigger>
 									{#snippet child({ props })}<Button variant="ghost" size="icon-sm" aria-label={$t`Actions for ${c.name}`} {...props}><MoreHorizontal /></Button>{/snippet}

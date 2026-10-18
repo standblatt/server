@@ -5,7 +5,7 @@
 	import { useQueryClient } from '@tanstack/svelte-query';
 	import { toast } from 'svelte-sonner';
 	import { api, call } from '$lib/api';
-	import { meKey, membershipOf, meQuery } from '$lib/me';
+	import { can, meKey, membershipOf, meQuery } from '$lib/me';
 	import { clubModuleUI, hasClub, modulesQuery, type ClubModuleKey } from '$lib/modules';
 	import ModuleCards from '$lib/modules/ModuleCards.svelte';
 	import PageHeader from '$lib/PageHeader.svelte';
@@ -18,7 +18,7 @@
 	const list = $derived((modules.data ?? []).filter((m) => m.level === 'club').map((m) => m.key as ClubModuleKey));
 
 	$effect(() => {
-		if (club && club.role !== 'admin') goto(`/t/${tenantId}`, { replaceState: true });
+		if (club && !can(club, 'club.manage')) goto(`/t/${tenantId}`, { replaceState: true });
 	});
 
 	/** Switches a club module on or off. */
@@ -32,7 +32,7 @@
 
 <PageHeader help="user-guide/events#club-modules" title={$t`Club modules`} description={$t`What the club uses besides its events.`} />
 
-{#if club?.role === 'admin'}
+{#if club && can(club, 'club.manage')}
 	<ModuleCards
 		cards={list.map((key) => ({
 			key,

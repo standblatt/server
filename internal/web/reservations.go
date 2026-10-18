@@ -11,6 +11,7 @@ import (
 	"github.com/danielgtaylor/huma/v2"
 
 	"github.com/standblatt/server/internal/domain"
+	"github.com/standblatt/server/internal/permissions"
 	"github.com/standblatt/server/internal/realtime"
 	"github.com/standblatt/server/internal/store"
 )
@@ -113,7 +114,7 @@ func (s *Server) registerReservations(api huma.API) {
 	huma.Register(api, huma.Operation{
 		OperationID: "list-reservations", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/ranges/{rangeId}/reservations", Tags: []string{"reservations"},
 	}, func(ctx context.Context, in *listIn) (*listOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.ListReservations(ctx, in.TenantID, in.RangeID, in.All)
@@ -133,7 +134,7 @@ func (s *Server) registerReservations(api huma.API) {
 		OperationID: "create-reservation", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/ranges/{rangeId}/reservations", Tags: []string{"reservations"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *createIn) (*viewOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
 			return nil, err
 		}
 		r, err := s.saveReservation(ctx, in.TenantID, store.Reservation{RangeID: in.RangeID}, in.Body, true)
@@ -147,7 +148,7 @@ func (s *Server) registerReservations(api huma.API) {
 	huma.Register(api, huma.Operation{
 		OperationID: "update-reservation", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/reservations/{reservationId}", Tags: []string{"reservations"},
 	}, func(ctx context.Context, in *updateIn) (*viewOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
 			return nil, err
 		}
 		current, err := s.Store.GetReservation(ctx, in.TenantID, in.ReservationID)
@@ -165,7 +166,7 @@ func (s *Server) registerReservations(api huma.API) {
 		OperationID: "delete-reservation", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/reservations/{reservationId}", Tags: []string{"reservations"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *ReservationPath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
 			return nil, err
 		}
 		rangeID, err := s.Store.DeleteReservation(ctx, in.TenantID, in.ReservationID)

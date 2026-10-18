@@ -370,10 +370,14 @@ func (s *Server) adminDeleteTenant(w http.ResponseWriter, r *http.Request) {
 // adminSetMembership gives the posted user (by name or email) the posted role in the club in the path.
 func (s *Server) adminSetMembership(w http.ResponseWriter, r *http.Request) {
 	tenantID := pathID(r)
-	role := store.Role(r.PostFormValue("role"))
+	role := r.PostFormValue("role")
 	name := strings.ToLower(strings.TrimSpace(r.PostFormValue("user")))
-	if !role.Valid() {
+	roleID, err := s.Store.RoleIDByKey(r.Context(), tenantID, role)
+	if errors.Is(err, store.ErrNotFound) {
 		s.adminInvalid(w, r, "club", domain.Problemf("Unknown role"))
+		return
+	} else if err != nil {
+		s.adminFail(w, err)
 		return
 	}
 	u, err := s.Store.UserByName(r.Context(), name)
@@ -387,7 +391,7 @@ func (s *Server) adminSetMembership(w http.ResponseWriter, r *http.Request) {
 		s.adminFail(w, err)
 		return
 	}
-	if err := s.Store.SetMembership(r.Context(), tenantID, u.ID, role); errors.Is(err, store.ErrInUse) {
+	if err := s.Store.SetMembership(r.Context(), tenantID, u.ID, roleID); errors.Is(err, store.ErrNotFound) {
 		s.adminDone(w, r, store.ErrNotFound, "")
 		return
 	} else if err != nil {

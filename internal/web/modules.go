@@ -10,6 +10,7 @@ import (
 	"github.com/danielgtaylor/huma/v2"
 
 	"github.com/standblatt/server/internal/modules"
+	"github.com/standblatt/server/internal/permissions"
 	"github.com/standblatt/server/internal/store"
 )
 
@@ -59,7 +60,7 @@ func (s *Server) moduleOn(ctx context.Context, key string, param func(string) st
 	if err != nil {
 		return true, nil
 	}
-	if _, _, err := s.access(ctx, tenantID, false); err != nil {
+	if _, _, err := s.access(ctx, tenantID); err != nil {
 		return true, nil
 	}
 	if m, _ := modules.Get(key); m.Level == modules.Club {
@@ -147,7 +148,7 @@ func (s *Server) registerModules(api huma.API) {
 		OperationID: "set-club-modules", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/modules", Tags: []string{"tenants"},
 		Summary: "Choose the modules of a club; modules that hold data stay on", DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *clubModulesIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID, permissions.ClubManage); err != nil {
 			return nil, err
 		}
 		err := s.Store.SetClubModules(ctx, in.TenantID, in.Body.Modules)

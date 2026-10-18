@@ -3,7 +3,12 @@ package web
 import (
 	"encoding/json"
 	"fmt"
+	"go/ast"
+	"go/parser"
+	"go/token"
 	"net/http"
+	"os"
+	"path/filepath"
 	"slices"
 	"strings"
 	"testing"
@@ -12,6 +17,7 @@ import (
 	"github.com/danielgtaylor/huma/v2/adapters/humago"
 
 	"github.com/standblatt/server/internal/modules"
+	"github.com/standblatt/server/internal/permissions"
 )
 
 // TestModuleOperations checks that every operation of a module names a known module and has a path parameter the
@@ -44,7 +50,7 @@ func TestModuleOperations(t *testing.T) {
 	}
 }
 
-// TestModuleEnums keeps the enum tags of module lists in the API in step with modules.All.
+// TestModuleEnums keeps the enum tags of module and permission lists in the API in step with modules.All and permissions.All.
 func TestModuleEnums(t *testing.T) {
 	s := &Server{}
 	api := humago.New(http.NewServeMux(), s.apiConfig())
@@ -53,7 +59,7 @@ func TestModuleEnums(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	want := map[string][]string{"event": modules.Keys(modules.Event), "club": modules.Keys(modules.Club)}
+	want := map[string][]string{"event": modules.Keys(modules.Event), "club": modules.Keys(modules.Club), "permission": permissions.Keys()}
 	found := map[string]int{}
 	var walk func(v any)
 	walk = func(v any) {
@@ -81,7 +87,41 @@ func TestModuleEnums(t *testing.T) {
 	var doc any
 	json.Unmarshal(spec, &doc)
 	walk(doc)
-	if found["event"] == 0 || found["club"] == 0 {
+	if found["event"] == 0 || found["club"] == 0 || found["permission"] == 0 {
 		t.Fatalf("no module enums found: %v", found)
+	}
+}
+
+// TestPermissionsUsed checks that every permission is required by at least one operation.
+func TestPermissionsUsed(t *testing.T) {
+	names := map[string]string{}
+	f, err := parser.ParseFile(token.NewFileSet(), "../permissions/permissions.go", nil, 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, d := range f.Decls {
+		g, ok := d.(*ast.GenDecl)
+		if !ok || g.Tok != token.CONST {
+			continue
+		}
+		for _, spec := range g.Specs {
+			v := spec.(*ast.ValueSpec)
+			if lit, ok := v.Values[0].(*ast.BasicLit); ok && permissions.Known(strings.Trim(lit.Value, `"`)) {
+				names[strings.Trim(lit.Value, `"`)] = v.Names[0].Name
+			}
+		}
+	}
+	var src strings.Builder
+	files, _ := filepath.Glob("*.go")
+	for _, name := range files {
+		if !strings.HasSuffix(name, "_test.go") {
+			b, _ := os.ReadFile(name)
+			src.Write(b)
+		}
+	}
+	for _, p := range permissions.All {
+		if names[p.Key] == "" || !strings.Contains(src.String(), "permissions."+names[p.Key]) {
+			t.Errorf("no operation requires %s", p.Key)
+		}
 	}
 }
