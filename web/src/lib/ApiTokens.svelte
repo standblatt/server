@@ -118,12 +118,12 @@
 					<div class="min-w-0 flex-1">
 						<div class="truncate font-medium">{tok.name}</div>
 						<div class="text-xs text-muted-foreground">
-							{#if tok.tenants.length}{tok.tenants.map(clubName).join(', ')} · {/if}{tok.scopes.map(scopeLabel).join(', ')}
+							{[tok.tenants.map(clubName).join(', '), tok.scopes.map(scopeLabel).join(', ')].filter(Boolean).join(' · ')}
 						</div>
 						<div class="text-xs text-muted-foreground">
-							{tok.lastUsedAt ? $t`last used ${formatDate(tok.lastUsedAt)}` : $t`never used`} ·
+							{tok.lastUsedAt ? $t`last used ${formatDate(tok.lastUsedAt.slice(0, 10))}` : $t`never used`} ·
 							{#if expired(tok.expiresAt)}<span class="text-destructive">{$t`expired`}</span>
-							{:else if tok.expiresAt}{$t`expires ${formatDate(tok.expiresAt)}`}
+							{:else if tok.expiresAt}{$t`expires ${formatDate(tok.expiresAt.slice(0, 10))}`}
 							{:else}{$t`does not expire`}{/if}
 						</div>
 					</div>

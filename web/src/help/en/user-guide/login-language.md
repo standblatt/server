@@ -22,9 +22,22 @@ If your account belongs to several clubs, you choose the club after logging in; 
 - **Password**: enter the current and the new password (at least 10 characters). Other devices are logged out, the one you are on stays.
 - **Language and theme**: the interface language of your account and light or dark mode.
 - **Second factor**: see below.
+- **API tokens**: see below.
 - **Delete account**: only for accounts that belong to no club; the training log, goals and settings are deleted for good. Club accounts are removed by the club admin.
 
 ![Account](../images/screenshots/account.png){ .screenshot }
+
+## API tokens {#api-tokens}
+
+Want to show the rankings on the club website, import sessions from another app or analyse data with your own script? Create a token under **Account → API tokens** with **New token**:
+
+- a **name** that tells you later what uses it,
+- a **preset** fills in the permissions for a common use: **Rankings for a website**, **Training app** or **Read only**,
+- the **clubs** the token may use (none: only your training log),
+- the **permissions**: *Read my training log*, *Log and change my training sessions* and, for the chosen clubs, the [permissions of roles](users.md#roles) your own role has there,
+- when it **expires**: in 30 or 90 days, in a year, or never.
+
+The token (`sb_…`) is shown only once; copy it right away. Scripts send it as `Authorization: Bearer sb_…` (or `X-API-Key: sb_…`). It may do what you chose and never more than your role in the club: if you lose a permission or leave the club, the token loses it at once. It never reaches your password, email, account or other tokens. `GET /api/token` tells a script its name, permissions and clubs. A token makes at most 600 requests in five minutes. The list shows when each token was last used; revoking one stops it at once. Developers find the endpoints under `/api/docs`.
 
 ## Second factor {#totp}
 

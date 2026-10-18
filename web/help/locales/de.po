@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 15:18+0000\n"
+"POT-Creation-Date: 2026-10-18 15:43+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -796,60 +796,23 @@ msgstr "API-Tokens"
 #: ../src/help/en/my-training/account.md:36
 msgid ""
 "Want to import sessions from another app or analyse your log with your own "
-"script? Create a token under **Settings → API tokens**:"
-msgstr ""
-"Du willst Einheiten aus einer anderen App importieren oder dein Logbuch mit "
-"einem eigenen Skript auswerten? Erstelle ein Token unter **Einstellungen → "
-"API-Tokens**:"
-
-#. type: Bullet: '- '
-#: ../src/help/en/my-training/account.md:40
-msgid "a **name** that tells you later what uses it,"
-msgstr "einen **Namen**, an dem du später erkennst, was es verwendet,"
-
-#. type: Bullet: '- '
-#: ../src/help/en/my-training/account.md:40
-msgid "the **permissions**: *Read sessions* and/or *Log and change sessions*,"
-msgstr ""
-"die **Berechtigungen**: *Trainings lesen* und/oder *Trainings erfassen und "
-"ändern*,"
-
-#. type: Bullet: '- '
-#: ../src/help/en/my-training/account.md:40
-msgid "when it **expires**: in 30 or 90 days, in a year, or never."
-msgstr "wann es **abläuft**: in 30 oder 90 Tagen, in einem Jahr oder nie."
-
-#. type: Plain text
-#: ../src/help/en/my-training/account.md:42
-msgid ""
-"The token (`sb_…`) is shown only once; copy it right away. Scripts send it "
-"as `Authorization: Bearer sb_…` (or `X-API-Key: sb_…`). It works for your "
-"sessions, disciplines, weapons, goals, statistics and the export, but never "
-"for your password, email, account or other tokens, and never for club data. "
-"The list shows when each token was last used; revoking one stops it at once. "
-"See the [API reference](../developer/api.md) for the endpoints."
-msgstr ""
-"Das Token (`sb_…`) wird nur einmal angezeigt; kopiere es sofort. Skripte "
-"senden es als `Authorization: Bearer sb_…` (oder `X-API-Key: sb_…`). Es gilt "
-"für deine Einheiten, Disziplinen, Waffen, Ziele, die Statistik und den "
-"Export, aber nie für dein Passwort, deine E-Mail, dein Konto oder andere "
-"Tokens, und nie für Vereinsdaten. Die Liste zeigt, wann jedes Token zuletzt "
-"verwendet wurde; Widerrufen stoppt es sofort. Die Endpunkte stehen in der "
-"[API-Referenz](../developer/api.md)."
+"script? Create a token in your account with the preset **Training app**; see "
+"[API tokens](../user-guide/login-language.md#api-tokens)."
+msgstr "Willst du Einheiten aus einer anderen App importieren oder dein Logbuch mit einem eigenen Skript auswerten? Erstelle in deinem Konto ein Token mit der Vorlage **Training-App**; siehe [API-Tokens](../user-guide/login-language.md#api-tokens)."
 
 #. type: Title ##
-#: ../src/help/en/my-training/account.md:43
+#: ../src/help/en/my-training/account.md:37
 #, no-wrap
 msgid "Install the app"
 msgstr "Die App installieren"
 
 #. type: Plain text
-#: ../src/help/en/my-training/account.md:46
+#: ../src/help/en/my-training/account.md:40
 msgid "Standblatt is a web app that can be installed:"
 msgstr "Standblatt ist eine Web-App, die sich installieren lässt:"
 
 #. type: Bullet: '- '
-#: ../src/help/en/my-training/account.md:49
+#: ../src/help/en/my-training/account.md:43
 msgid ""
 "**Android / Chrome**: Settings → **Install**, or *Add to home screen* in the "
 "browser menu."
@@ -858,12 +821,12 @@ msgstr ""
 "Startbildschirm hinzufügen* im Browsermenü."
 
 #. type: Bullet: '- '
-#: ../src/help/en/my-training/account.md:49
+#: ../src/help/en/my-training/account.md:43
 msgid "**iPhone**: Share → *Add to Home Screen*."
 msgstr "**iPhone**: Teilen → *Zum Home-Bildschirm*."
 
 #. type: Plain text
-#: ../src/help/en/my-training/account.md:51
+#: ../src/help/en/my-training/account.md:45
 msgid ""
 "Installed, it starts full screen. A long press on the icon offers *Start "
 "training*."
@@ -872,19 +835,19 @@ msgstr ""
 "bietet *Training starten* an."
 
 #. type: Title ##
-#: ../src/help/en/my-training/account.md:52
+#: ../src/help/en/my-training/account.md:46
 #, no-wrap
 msgid "Your data"
 msgstr "Deine Daten"
 
 #. type: Bullet: '- '
-#: ../src/help/en/my-training/account.md:55
+#: ../src/help/en/my-training/account.md:49
 msgid "**Export all sessions (CSV)** downloads every series of every session."
 msgstr ""
 "**Alle Einheiten exportieren (CSV)** lädt jede Passe jeder Einheit herunter."
 
 #. type: Bullet: '- '
-#: ../src/help/en/my-training/account.md:55
+#: ../src/help/en/my-training/account.md:49
 msgid ""
 "**Delete account** removes the account with all sessions, goals and settings "
 "after you enter your password. Accounts that belong to a club must first be "
@@ -1021,14 +984,14 @@ msgid ""
 "| **Today** | start a session, this week's activity, your recent trend and sessions |\n"
 "| **Log** | every session, filtered by discipline and kind, competition results waiting to be added |\n"
 "| **Progress** | the analysis of one discipline, see [Progress explained](progress.md) |\n"
-"| **Settings** | profile (name, birthday and license number for the competition match), own disciplines, weapons, app, API tokens, export; **Account** for email, password, language, second factor and deleting the account |\n"
+"| **Settings** | profile (name, birthday and license number for the competition match), own disciplines, weapons, app, export; **Account** for email, password, language, second factor and deleting the account |\n"
 msgstr ""
 "| Seite | Wofür |\n"
 "|---|---|\n"
 "| **Heute** | eine Einheit starten, die Aktivität dieser Woche, dein aktueller Trend und deine letzten Einheiten |\n"
 "| **Logbuch** | jede Einheit, gefiltert nach Disziplin und Art, Wettkampfresultate, die auf das Hinzufügen warten |\n"
 "| **Fortschritt** | die Analyse einer Disziplin, siehe [Fortschritt erklärt](progress.md) |\n"
-"| **Einstellungen** | Profil (Name, Geburtstag und Lizenznummer für die Wettkampf-Zuordnung), eigene Disziplinen, Waffen, App, API-Tokens, Export; **Konto** für E-Mail, Passwort, Sprache, zweiten Faktor und das Löschen des Kontos |\n"
+"| **Einstellungen** | Profil (Name, Geburtstag und Lizenznummer für die Wettkampf-Zuordnung), eigene Disziplinen, Waffen, App, Export; **Konto** für E-Mail, Passwort, Sprache, zweiten Faktor und das Löschen des Kontos |\n"
 
 #. type: Plain text
 #: ../src/help/en/my-training/index.md:31
@@ -3092,7 +3055,7 @@ msgid "**Account** in the user menu (bottom of the sidebar), on the start page a
 msgstr "**Konto** im Benutzermenü (unten in der Seitenleiste), auf der Startseite und in der Seitenleiste von Mein Training öffnet deine Kontoeinstellungen:\n"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:26
+#: ../src/help/en/user-guide/login-language.md:27
 msgid ""
 "**Login**: your user name (it cannot be changed) and your email address. "
 "**Add** or **Change** asks for your password and sends a confirmation link; "
@@ -3107,7 +3070,7 @@ msgstr ""
 "bestätigten Adresse kannst du ein vergessenes Passwort selbst zurücksetzen."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:26
+#: ../src/help/en/user-guide/login-language.md:27
 msgid ""
 "**Password**: enter the current and the new password (at least 10 "
 "characters). Other devices are logged out, the one you are on stays."
@@ -3116,7 +3079,7 @@ msgstr ""
 "Andere Geräte werden abgemeldet, das aktuelle bleibt angemeldet."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:26
+#: ../src/help/en/user-guide/login-language.md:27
 msgid ""
 "**Language and theme**: the interface language of your account and light or "
 "dark mode."
@@ -3125,12 +3088,17 @@ msgstr ""
 "oder dunkler Modus."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:26
+#: ../src/help/en/user-guide/login-language.md:27
 msgid "**Second factor**: see below."
 msgstr "**Zweiter Faktor**: siehe unten."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:26
+#: ../src/help/en/user-guide/login-language.md:27
+msgid "**API tokens**: see below."
+msgstr "**API-Tokens**: siehe unten."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/login-language.md:27
 msgid ""
 "**Delete account**: only for accounts that belong to no club; the training "
 "log, goals and settings are deleted for good. Club accounts are removed by "
@@ -3141,18 +3109,75 @@ msgstr ""
 "Admin."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:28
+#: ../src/help/en/user-guide/login-language.md:29
 msgid "![Account](../images/screenshots/account.png){ .screenshot }"
 msgstr "![Konto](../images/screenshots/account.png){ .screenshot }"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/login-language.md:29
+#: ../src/help/en/user-guide/login-language.md:30
+#, no-wrap
+msgid "API tokens {#api-tokens}"
+msgstr "API-Tokens {#api-tokens}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:33
+msgid ""
+"Want to show the rankings on the club website, import sessions from another "
+"app or analyse data with your own script? Create a token under **Account → "
+"API tokens** with **New token**:"
+msgstr "Willst du die Ranglisten auf der Vereinswebsite zeigen, Einheiten aus einer anderen App importieren oder Daten mit einem eigenen Skript auswerten? Erstelle ein Token unter **Konto → API-Tokens** mit **Neues Token**:"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/login-language.md:39
+msgid "a **name** that tells you later what uses it,"
+msgstr "einen **Namen**, an dem du später erkennst, was es verwendet,"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/login-language.md:39
+msgid ""
+"a **preset** fills in the permissions for a common use: **Rankings for a "
+"website**, **Training app** or **Read only**,"
+msgstr "eine **Vorlage** setzt die Rechte für einen üblichen Zweck: **Ranglisten für eine Website**, **Training-App** oder **Nur lesen**,"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/login-language.md:39
+msgid "the **clubs** the token may use (none: only your training log),"
+msgstr "die **Vereine**, die das Token nutzen darf (keiner: nur dein Trainingslog),"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/login-language.md:39
+msgid ""
+"the **permissions**: *Read my training log*, *Log and change my training "
+"sessions* and, for the chosen clubs, the [permissions of roles]"
+"(users.md#roles) your own role has there,"
+msgstr "die **Rechte**: *Mein Trainingslog lesen*, *Meine Trainings erfassen und ändern* und für die gewählten Vereine die [Rechte der Rollen](users.md#roles), die deine eigene Rolle dort hat,"
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/login-language.md:39
+msgid "when it **expires**: in 30 or 90 days, in a year, or never."
+msgstr "wann es **abläuft**: in 30 oder 90 Tagen, in einem Jahr oder nie."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:41
+msgid ""
+"The token (`sb_…`) is shown only once; copy it right away. Scripts send it "
+"as `Authorization: Bearer sb_…` (or `X-API-Key: sb_…`). It may do what you "
+"chose and never more than your role in the club: if you lose a permission or "
+"leave the club, the token loses it at once. It never reaches your password, "
+"email, account or other tokens. `GET /api/token` tells a script its name, "
+"permissions and clubs. A token makes at most 600 requests in five minutes. "
+"The list shows when each token was last used; revoking one stops it at once. "
+"Developers find the endpoints under `/api/docs`."
+msgstr "Das Token (`sb_…`) wird nur einmal angezeigt; kopiere es sofort. Skripte senden es als `Authorization: Bearer sb_…` (oder `X-API-Key: sb_…`). Es darf, was du gewählt hast, und nie mehr als deine Rolle im Verein: Verlierst du ein Recht oder verlässt du den Verein, verliert es das Token sofort. Es erreicht nie dein Passwort, deine E-Mail, dein Konto oder andere Tokens. `GET /api/token` sagt einem Skript Name, Rechte und Vereine seines Tokens. Ein Token macht höchstens 600 Anfragen in fünf Minuten. Die Liste zeigt, wann jedes Token zuletzt benutzt wurde; Widerrufen stoppt es sofort. Entwickler finden die Endpunkte unter `/api/docs`."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/login-language.md:42
 #, no-wrap
 msgid "Second factor {#totp}"
 msgstr "Zweiter Faktor {#totp}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:32
+#: ../src/help/en/user-guide/login-language.md:45
 msgid ""
 "An authenticator app (Google Authenticator, Aegis, 1Password and the like) "
 "can protect your login: after the password, Standblatt asks for the six-"
@@ -3172,13 +3197,13 @@ msgstr ""
 "Server ausschalten."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/login-language.md:33
+#: ../src/help/en/user-guide/login-language.md:46
 #, no-wrap
 msgid "Language"
 msgstr "Sprache"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:36
+#: ../src/help/en/user-guide/login-language.md:49
 msgid ""
 "The interface is available in English, German, French and Italian. Without a "
 "choice, Standblatt follows the browser's language. **Language** in the user "
@@ -3190,7 +3215,7 @@ msgstr ""
 "Gerät."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:38
+#: ../src/help/en/user-guide/login-language.md:51
 msgid ""
 "Printed documents, CSV exports and kiosk screens do not follow your choice "
 "but the language of the event, so that every printout of an event looks the "
@@ -3201,13 +3226,13 @@ msgstr ""
 "gleich aussieht (siehe [Anlässe](events.md#settings))."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/login-language.md:39
+#: ../src/help/en/user-guide/login-language.md:52
 #, no-wrap
 msgid "Version"
 msgstr "Version"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:41
+#: ../src/help/en/user-guide/login-language.md:54
 msgid ""
 "The bottom of the sidebar shows the version of the server, which helps when "
 "reporting a problem; in My training on a phone it is under **Settings**. "
@@ -5513,7 +5538,12 @@ msgid ""
 "own permissions: they give, change, remove and invite only with roles whose "
 "permissions they have themselves, and make or change roles only within them. "
 "So only admins make, change or remove admins."
-msgstr "Mitglieder mit *Benutzer und Verein*, aber ohne die Rolle Admin, bleiben innerhalb ihrer eigenen Rechte: Sie vergeben, ändern, entfernen und laden nur mit Rollen ein, deren Rechte sie selbst haben, und legen Rollen nur innerhalb davon an oder ändern sie. Nur Admins ernennen, ändern oder entfernen deshalb Admins."
+msgstr ""
+"Mitglieder mit *Benutzer und Verein*, aber ohne die Rolle Admin, bleiben "
+"innerhalb ihrer eigenen Rechte: Sie vergeben, ändern, entfernen und laden "
+"nur mit Rollen ein, deren Rechte sie selbst haben, und legen Rollen nur "
+"innerhalb davon an oder ändern sie. Nur Admins ernennen, ändern oder "
+"entfernen deshalb Admins."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/users.md:48
@@ -5527,6 +5557,12 @@ msgstr ""
 "(../admin-guide/admin-panel.md). Ein vergessenes Passwort setzt man mit "
 "**Passwort vergessen?** auf der Login-Seite zurück, wenn das Konto eine "
 "bestätigte E-Mail-Adresse hat, sonst der Betreiber."
+
+#~ msgid ""
+#~ "the **permissions**: *Read sessions* and/or *Log and change sessions*,"
+#~ msgstr ""
+#~ "die **Berechtigungen**: *Trainings lesen* und/oder *Trainings erfassen "
+#~ "und ändern*,"
 
 #, no-wrap
 #~ msgid "**Users** are personal accounts. One account can belong to several clubs, with one role per club:\n"

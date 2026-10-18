@@ -46,11 +46,38 @@ zurück.
 - **Sprache und Darstellung**: die Oberflächensprache deines Kontos und
   heller oder dunkler Modus.
 - **Zweiter Faktor**: siehe unten.
+- **API-Tokens**: siehe unten.
 - **Konto löschen**: nur für Konten ohne Verein; Trainingslogbuch, Ziele und
   Einstellungen werden endgültig gelöscht. Vereinskonten entfernt der
   Vereins-Admin.
 
 ![Konto](../images/screenshots/account.png){ .screenshot }
+
+## API-Tokens {#api-tokens}
+
+Willst du die Ranglisten auf der Vereinswebsite zeigen, Einheiten aus einer
+anderen App importieren oder Daten mit einem eigenen Skript auswerten?
+Erstelle ein Token unter **Konto → API-Tokens** mit **Neues Token**:
+
+- einen **Namen**, an dem du später erkennst, was es verwendet,
+- eine **Vorlage** setzt die Rechte für einen üblichen Zweck: **Ranglisten
+  für eine Website**, **Training-App** oder **Nur lesen**,
+- die **Vereine**, die das Token nutzen darf (keiner: nur dein
+  Trainingslog),
+- die **Rechte**: *Mein Trainingslog lesen*, *Meine Trainings erfassen und
+  ändern* und für die gewählten Vereine die [Rechte der
+  Rollen](users.md#roles), die deine eigene Rolle dort hat,
+- wann es **abläuft**: in 30 oder 90 Tagen, in einem Jahr oder nie.
+
+Das Token (`sb_…`) wird nur einmal angezeigt; kopiere es sofort. Skripte
+senden es als `Authorization: Bearer sb_…` (oder `X-API-Key: sb_…`). Es
+darf, was du gewählt hast, und nie mehr als deine Rolle im Verein: Verlierst
+du ein Recht oder verlässt du den Verein, verliert es das Token sofort. Es
+erreicht nie dein Passwort, deine E-Mail, dein Konto oder andere
+Tokens. `GET /api/token` sagt einem Skript Name, Rechte und Vereine seines
+Tokens. Ein Token macht höchstens 600 Anfragen in fünf Minuten. Die Liste
+zeigt, wann jedes Token zuletzt benutzt wurde; Widerrufen stoppt es
+sofort. Entwickler finden die Endpunkte unter `/api/docs`.
 
 ## Zweiter Faktor {#totp}
 

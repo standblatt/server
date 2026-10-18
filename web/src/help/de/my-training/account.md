@@ -64,22 +64,10 @@ einfach keine Waffe mehr.
 
 ## API-Tokens
 
-Du willst Einheiten aus einer anderen App importieren oder dein Logbuch mit
-einem eigenen Skript auswerten? Erstelle ein Token unter **Einstellungen →
-API-Tokens**:
-
-- einen **Namen**, an dem du später erkennst, was es verwendet,
-- die **Berechtigungen**: *Trainings lesen* und/oder *Trainings erfassen und
-  ändern*,
-- wann es **abläuft**: in 30 oder 90 Tagen, in einem Jahr oder nie.
-
-Das Token (`sb_…`) wird nur einmal angezeigt; kopiere es sofort. Skripte
-senden es als `Authorization: Bearer sb_…` (oder `X-API-Key: sb_…`). Es gilt
-für deine Einheiten, Disziplinen, Waffen, Ziele, die Statistik und den
-Export, aber nie für dein Passwort, deine E-Mail, dein Konto oder andere
-Tokens, und nie für Vereinsdaten. Die Liste zeigt, wann jedes Token zuletzt
-verwendet wurde; Widerrufen stoppt es sofort. Die Endpunkte stehen in der
-[API-Referenz](../developer/api.md).
+Willst du Einheiten aus einer anderen App importieren oder dein Logbuch mit
+einem eigenen Skript auswerten? Erstelle in deinem Konto ein Token mit der
+Vorlage **Training-App**; siehe
+[API-Tokens](../user-guide/login-language.md#api-tokens).
 
 ## Die App installieren
 

@@ -48,12 +48,40 @@ choix.
 - **Langue et apparence** : la langue de l’interface de ton compte et le
   mode clair ou sombre.
 - **Deuxième facteur** : voir ci-dessous.
+- **Jetons API** : voir ci-dessous.
 - **Supprimer le compte** : seulement pour les comptes sans société ; le
   journal d’entraînement, les objectifs et les réglages sont supprimés
   définitivement. Les comptes de société sont supprimés par l’admin de la
   société.
 
 ![Compte](../images/screenshots/account.png){ .screenshot }
+
+## Jetons API {#api-tokens}
+
+Tu veux afficher les classements sur le site de la société, importer des
+séances d’une autre app ou analyser des données avec ton propre script ?
+Crée un jeton sous **Compte → Jetons API** avec **Nouveau jeton** :
+
+- un **nom** qui te dira plus tard qui l’utilise,
+- un **modèle** remplit les droits pour un usage courant : **Classements
+  pour un site web**, **App d’entraînement** ou **Lecture seule**,
+- les **sociétés** que le jeton peut utiliser (aucune : seulement ton
+  journal d’entraînement),
+- les **droits** : *Lire mon journal d’entraînement*, *Saisir et modifier
+  mes séances d’entraînement* et, pour les sociétés choisies, les [droits
+  des rôles](users.md#roles) que ton propre rôle y a,
+- quand il **expire** : dans 30 ou 90 jours, dans un an ou jamais.
+
+Le jeton (`sb_…`) n’est affiché qu’une fois ; copie-le tout de suite. Les
+scripts l’envoient comme `Authorization: Bearer sb_…` (ou `X-API-Key:
+sb_…`). Il peut faire ce que tu as choisi et jamais plus que ton rôle dans
+la société : si tu perds un droit ou quittes la société, le jeton le perd
+aussitôt. Il n’atteint jamais ton mot de passe, ton e-mail, ton compte ou
+d’autres jetons. `GET /api/token` indique à un script le nom, les droits et
+les sociétés de son jeton. Un jeton fait au plus 600 requêtes en cinq
+minutes. La liste montre quand chaque jeton a été utilisé pour la dernière
+fois ; le révoquer l’arrête aussitôt. Les développeurs trouvent les points
+d’accès sous `/api/docs`.
 
 ## Deuxième facteur {#totp}
 

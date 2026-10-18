@@ -63,22 +63,10 @@ garde ses séances. La supprimer aussi, elles n’ont simplement plus d’arme.
 
 ## Jetons API
 
-Tu veux importer des séances d’une autre application ou analyser ton journal
-avec ton propre script ? Crée un jeton sous **Réglages → Jetons API** :
-
-- un **nom** qui te dira plus tard qui l’utilise,
-- les **autorisations** : *Lire les séances* et/ou *Enregistrer et modifier
-  des séances*,
-- quand il **expire** : dans 30 ou 90 jours, dans un an ou jamais.
-
-Le jeton (`sb_…`) n’est affiché qu’une seule fois ; copie-le tout de
-suite. Les scripts l’envoient comme `Authorization: Bearer sb_…` (ou
-`X-API-Key: tl_…`). Il vaut pour tes séances, disciplines, armes, objectifs,
-statistiques et l’export, mais jamais pour ton mot de passe, ton e-mail, ton
-compte ou d’autres jetons, ni pour les données de société. La liste montre
-quand chaque jeton a été utilisé pour la dernière fois ; le révoquer
-l’arrête immédiatement. Les points d’accès figurent dans la [référence de
-l’API](../developer/api.md).
+Tu veux importer des séances d’une autre app ou analyser ton journal avec
+ton propre script ? Crée un jeton dans ton compte avec le modèle **App
+d’entraînement** ; voir [Jetons
+API](../user-guide/login-language.md#api-tokens).
 
 ## Installer l’application
 

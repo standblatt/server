@@ -145,6 +145,7 @@ test.describe("documentation screenshots", () => {
     await visit(page, "/");
     await expect(c(page, "h1", "Where to?")).toBeVisible();
     await shot(page, "home");
+    await api(page, "POST", "/api/me/tokens", { name: "Club website", scopes: ["events.view"], tenants: [ids.tenant], expiresInDays: 365 });
     await visit(page, "/account");
     await expect(c(page, "h1", "Account")).toBeVisible();
     await shot(page, "account");

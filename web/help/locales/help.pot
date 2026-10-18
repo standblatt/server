@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-18 15:18+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-18 15:43+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
 #: ../src/help/en/getting-started/concepts.md:1
@@ -491,77 +491,53 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/my-training/account.md:36
 #, markdown-text
-msgid "Want to import sessions from another app or analyse your log with your own script? Create a token under **Settings → API tokens**:"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/help/en/my-training/account.md:40
-#, markdown-text
-msgid "a **name** that tells you later what uses it,"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/help/en/my-training/account.md:40
-#, markdown-text
-msgid "the **permissions**: *Read sessions* and/or *Log and change sessions*,"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/help/en/my-training/account.md:40
-#, markdown-text
-msgid "when it **expires**: in 30 or 90 days, in a year, or never."
-msgstr ""
-
-#. type: Plain text
-#: ../src/help/en/my-training/account.md:42
-#, markdown-text
-msgid "The token (`sb_…`) is shown only once; copy it right away. Scripts send it as `Authorization: Bearer sb_…` (or `X-API-Key: sb_…`). It works for your sessions, disciplines, weapons, goals, statistics and the export, but never for your password, email, account or other tokens, and never for club data. The list shows when each token was last used; revoking one stops it at once. See the [API reference](../developer/api.md) for the endpoints."
+msgid "Want to import sessions from another app or analyse your log with your own script? Create a token in your account with the preset **Training app**; see [API tokens](../user-guide/login-language.md#api-tokens)."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/my-training/account.md:43
+#: ../src/help/en/my-training/account.md:37
 #, markdown-text, no-wrap
 msgid "Install the app"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/my-training/account.md:46
+#: ../src/help/en/my-training/account.md:40
 #, markdown-text
 msgid "Standblatt is a web app that can be installed:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/my-training/account.md:49
+#: ../src/help/en/my-training/account.md:43
 #, markdown-text
 msgid "**Android / Chrome**: Settings → **Install**, or *Add to home screen* in the browser menu."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/my-training/account.md:49
+#: ../src/help/en/my-training/account.md:43
 #, markdown-text
 msgid "**iPhone**: Share → *Add to Home Screen*."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/my-training/account.md:51
+#: ../src/help/en/my-training/account.md:45
 #, markdown-text
 msgid "Installed, it starts full screen. A long press on the icon offers *Start training*."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/my-training/account.md:52
+#: ../src/help/en/my-training/account.md:46
 #, markdown-text, no-wrap
 msgid "Your data"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/my-training/account.md:55
+#: ../src/help/en/my-training/account.md:49
 #, markdown-text
 msgid "**Export all sessions (CSV)** downloads every series of every session."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/my-training/account.md:55
+#: ../src/help/en/my-training/account.md:49
 #, markdown-text
 msgid "**Delete account** removes the account with all sessions, goals and settings after you enter your password. Accounts that belong to a club must first be removed from the club by its admin."
 msgstr ""
@@ -647,7 +623,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/my-training/index.md:29
 #, markdown-text, no-wrap
-msgid "| Page | What it is for |\n|---|---|\n| **Today** | start a session, this week's activity, your recent trend and sessions |\n| **Log** | every session, filtered by discipline and kind, competition results waiting to be added |\n| **Progress** | the analysis of one discipline, see [Progress explained](progress.md) |\n| **Settings** | profile (name, birthday and license number for the competition match), own disciplines, weapons, app, API tokens, export; **Account** for email, password, language, second factor and deleting the account |\n"
+msgid "| Page | What it is for |\n|---|---|\n| **Today** | start a session, this week's activity, your recent trend and sessions |\n| **Log** | every session, filtered by discipline and kind, competition results waiting to be added |\n| **Progress** | the analysis of one discipline, see [Progress explained](progress.md) |\n| **Settings** | profile (name, birthday and license number for the competition match), own disciplines, weapons, app, export; **Account** for email, password, language, second factor and deleting the account |\n"
 msgstr ""
 
 #. type: Plain text
@@ -1930,79 +1906,133 @@ msgid "**Account** in the user menu (bottom of the sidebar), on the start page a
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:26
+#: ../src/help/en/user-guide/login-language.md:27
 #, markdown-text
 msgid "**Login**: your user name (it cannot be changed) and your email address. **Add** or **Change** asks for your password and sends a confirmation link; until you confirm, the address counts as *not confirmed* and **Send again** sends a new link. A confirmed address lets you reset a forgotten password yourself."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:26
+#: ../src/help/en/user-guide/login-language.md:27
 #, markdown-text
 msgid "**Password**: enter the current and the new password (at least 10 characters). Other devices are logged out, the one you are on stays."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:26
+#: ../src/help/en/user-guide/login-language.md:27
 #, markdown-text
 msgid "**Language and theme**: the interface language of your account and light or dark mode."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:26
+#: ../src/help/en/user-guide/login-language.md:27
 #, markdown-text
 msgid "**Second factor**: see below."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:26
+#: ../src/help/en/user-guide/login-language.md:27
+#, markdown-text
+msgid "**API tokens**: see below."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/login-language.md:27
 #, markdown-text
 msgid "**Delete account**: only for accounts that belong to no club; the training log, goals and settings are deleted for good. Club accounts are removed by the club admin."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:28
+#: ../src/help/en/user-guide/login-language.md:29
 #, markdown-text
 msgid "![Account](../images/screenshots/account.png){ .screenshot }"
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/login-language.md:29
+#: ../src/help/en/user-guide/login-language.md:30
+#, markdown-text, no-wrap
+msgid "API tokens {#api-tokens}"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:33
+#, markdown-text
+msgid "Want to show the rankings on the club website, import sessions from another app or analyse data with your own script? Create a token under **Account → API tokens** with **New token**:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/login-language.md:39
+#, markdown-text
+msgid "a **name** that tells you later what uses it,"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/login-language.md:39
+#, markdown-text
+msgid "a **preset** fills in the permissions for a common use: **Rankings for a website**, **Training app** or **Read only**,"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/login-language.md:39
+#, markdown-text
+msgid "the **clubs** the token may use (none: only your training log),"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/login-language.md:39
+#, markdown-text
+msgid "the **permissions**: *Read my training log*, *Log and change my training sessions* and, for the chosen clubs, the [permissions of roles](users.md#roles) your own role has there,"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/login-language.md:39
+#, markdown-text
+msgid "when it **expires**: in 30 or 90 days, in a year, or never."
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:41
+#, markdown-text
+msgid "The token (`sb_…`) is shown only once; copy it right away. Scripts send it as `Authorization: Bearer sb_…` (or `X-API-Key: sb_…`). It may do what you chose and never more than your role in the club: if you lose a permission or leave the club, the token loses it at once. It never reaches your password, email, account or other tokens. `GET /api/token` tells a script its name, permissions and clubs. A token makes at most 600 requests in five minutes. The list shows when each token was last used; revoking one stops it at once. Developers find the endpoints under `/api/docs`."
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/login-language.md:42
 #, markdown-text, no-wrap
 msgid "Second factor {#totp}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:32
+#: ../src/help/en/user-guide/login-language.md:45
 #, markdown-text
 msgid "An authenticator app (Google Authenticator, Aegis, 1Password and the like) can protect your login: after the password, Standblatt asks for the six-digit code the app shows. Set it up under [Account](#account): **Set up**, scan the QR code, enter the current code, **Switch on**. **Switch off** asks for your password. Lost the phone? The operator can reset the second factor in the [admin panel](../admin-guide/admin-panel.md). The operator can also switch the feature off for the whole server."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/login-language.md:33
+#: ../src/help/en/user-guide/login-language.md:46
 #, markdown-text, no-wrap
 msgid "Language"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:36
+#: ../src/help/en/user-guide/login-language.md:49
 #, markdown-text
 msgid "The interface is available in English, German, French and Italian. Without a choice, Standblatt follows the browser's language. **Language** in the user menu (bottom of the sidebar) sets it for your account on every device."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:38
+#: ../src/help/en/user-guide/login-language.md:51
 #, markdown-text
 msgid "Printed documents, CSV exports and kiosk screens do not follow your choice but the language of the event, so that every printout of an event looks the same (see [Events](events.md#settings))."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/login-language.md:39
+#: ../src/help/en/user-guide/login-language.md:52
 #, markdown-text, no-wrap
 msgid "Version"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:41
+#: ../src/help/en/user-guide/login-language.md:54
 #, markdown-text
 msgid "The bottom of the sidebar shows the version of the server, which helps when reporting a problem; in My training on a phone it is under **Settings**. When a new version is released, open pages offer **Reload** within a minute and load it on the next page change at the latest."
 msgstr ""

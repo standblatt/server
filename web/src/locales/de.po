@@ -2143,7 +2143,7 @@ msgstr "abgelaufen"
 msgid "Expires"
 msgstr "Läuft ab"
 
-#. placeholder {0}: formatDate(tok.expiresAt)
+#. placeholder {0}: formatDate(tok.expiresAt.slice(0, 10))
 #: src/lib/ApiTokens.svelte
 msgid "expires {0}"
 msgstr "läuft ab am {0}"
@@ -2770,7 +2770,7 @@ msgstr "Name von Schütze {0}"
 msgid "last seen {0}"
 msgstr "zuletzt gesehen {0}"
 
-#. placeholder {0}: formatDate(tok.lastUsedAt)
+#. placeholder {0}: formatDate(tok.lastUsedAt.slice(0, 10))
 #: src/lib/ApiTokens.svelte
 msgid "last used {0}"
 msgstr "zuletzt verwendet am {0}"
@@ -5301,7 +5301,7 @@ msgstr "Der Schiessstand mit der Anzahl Scheiben. Anlässe ohne Scheiben, etwa e
 
 #: src/lib/ApiTokens.svelte
 msgid "The token may do what you choose here, and never more than your role in the club."
-msgstr "Der Token darf, was du hier wählst, und nie mehr als deine Rolle im Verein."
+msgstr "Das Token darf, was du hier wählst, und nie mehr als deine Rolle im Verein."
 
 #: src/routes/t/[tenantId]/users/+page.svelte
 msgid "The user loses access to this club. The account itself stays."

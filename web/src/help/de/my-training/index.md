@@ -42,7 +42,7 @@ beantwortet eine Frage: **Wirkt mein Training?**
 | **Heute** | eine Einheit starten, die Aktivität dieser Woche, dein aktueller Trend und deine letzten Einheiten |
 | **Logbuch** | jede Einheit, gefiltert nach Disziplin und Art, Wettkampfresultate, die auf das Hinzufügen warten |
 | **Fortschritt** | die Analyse einer Disziplin, siehe [Fortschritt erklärt](progress.md) |
-| **Einstellungen** | Profil (Name, Geburtstag und Lizenznummer für die Wettkampf-Zuordnung), eigene Disziplinen, Waffen, App, API-Tokens, Export; **Konto** für E-Mail, Passwort, Sprache, zweiten Faktor und das Löschen des Kontos |
+| **Einstellungen** | Profil (Name, Geburtstag und Lizenznummer für die Wettkampf-Zuordnung), eigene Disziplinen, Waffen, App, Export; **Konto** für E-Mail, Passwort, Sprache, zweiten Faktor und das Löschen des Kontos |
 
 Auf dem Handy sind die Seiten in der Leiste unten, mit dem +-Knopf in der
 Mitte. Auf einem grösseren Bildschirm sind sie in der Seitenleiste.

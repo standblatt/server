@@ -18,6 +18,7 @@ Standblatt reads environment variables only.
 | `STANDBLATT_SIGNUP` | `false` | anyone can create an account for [My training](../../web/src/help/en/my-training/index.md) |
 | `STANDBLATT_ENVIRONMENT` | | deployment name such as `staging`; anything but empty or `production` shows a red *STAGING* banner and adds the name to the page title, so nobody confuses test and live |
 | `STANDBLATT_TOTP` | `true` | users may add an authenticator app as second factor (see [Login and language](../../web/src/help/en/user-guide/login-language.md)); `false` hides the option and ignores stored secrets |
+| `STANDBLATT_API_RATE_LIMIT` | `600` | requests one personal API token may make per five minutes; more get 429. `0` turns the limit off |
 | `STANDBLATT_MATOMO_URL`, `STANDBLATT_MATOMO_SITE_ID` | empty | web analytics with [Matomo](https://matomo.org): base URL of the instance (e.g. `https://analytics.example.org/`) and the numeric site ID; set both or neither. The app reports page views without cookies, with record IDs replaced by `:id` and without query strings; kiosk displays are not counted |
 
 Generate the admin token with `openssl rand -base64 32` and keep it in a secret store.

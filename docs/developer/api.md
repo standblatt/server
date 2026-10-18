@@ -14,21 +14,25 @@ The frontend uses `openapi-fetch` with types generated from the spec: after chan
 | App | session cookie `standblatt_session` from `POST /api/auth/login` |
 | Kiosk screen | `Authorization: Bearer <kiosk token>` on `/api/kiosk/*`, `?token=` on the WebSocket |
 | Print agent | `Authorization: Bearer <agent token>` on `/api/agent/*` |
-| Scripts of a shooter | personal API token `sb_…` as `Authorization: Bearer` or `X-API-Key` on `/api/my/*` |
+| Scripts and tools | personal API token `sb_…` as `Authorization: Bearer` or `X-API-Key` on `/api/tenants/*`, the training paths of `/api/my` and `GET /api/token` |
 
 ### Personal API tokens
 
-Created in My training → Settings (`POST /api/my/tokens`) with a name, scopes and an optional expiry of 30, 90 or 365 days. Only the sha256 hash is stored; the secret (`sb_` + 40 hex characters) is returned once. Scopes:
+Created in the account (`POST /api/me/tokens`, session only) with a name, scopes, the clubs (`tenants`) and an optional expiry of 30, 90 or 365 days. Only the sha256 hash is stored; the secret (`sb_` + 40 hex characters) is returned once.
 
 | Scope | Allows |
 |---|---|
-| `training:read` | `GET` on the paths below |
-| `training:write` | `POST`, `PUT` and `DELETE` on the paths below |
+| `events.view` … `club.manage` | the operations of `/api/tenants/{tenantId}/…` that need this permission (the table is `internal/web/testdata/permissions.txt`) |
+| `training:read` | `GET` on `/api/my` and `/api/my/{trainings,stats,disciplines,weapons,goals,competitions,export}` |
+| `training:write` | `POST`, `PUT` and `DELETE` on those paths |
 
-A token reaches `/api/my` and `/api/my/{trainings,stats,disciplines,weapons,goals,competitions,export}`. Everything else answers 403: profile, email, account, the token management itself; a token on any other path is ignored (401). Unknown, revoked and expired tokens get 401 with a distinct `detail`; a missing scope gets 403. Each use updates *last used*.
+A token may use a club's operations only for the clubs it was created for, and only with the permissions that are both its scopes and in the owner's current role there: a club it is not for answers 404, a missing permission 403. Creating a token refuses clubs the owner is not in and club scopes the owner's role has in none of them (422). Account endpoints (`/api/me*`, `/api/auth/*`), the token management and everything else answer 403. Unknown, revoked and expired tokens get 401 with a distinct `detail`. `GET /api/token` returns the token's name, owner, scopes, clubs and expiry.
+
+Limits: a token makes at most `STANDBLATT_API_RATE_LIMIT` requests per five minutes (default 600), more get 429 with `Retry-After`; an address that sends 20 unknown tokens within 15 minutes gets 429 too. Each use updates *last used*.
 
 ```sh
-curl -H "Authorization: Bearer $TOKEN" https://app.standblatt.ch/api/my/trainings?limit=10
+curl -H "Authorization: Bearer $TOKEN" https://app.standblatt.ch/api/token
+curl -H "Authorization: Bearer $TOKEN" https://app.standblatt.ch/api/tenants/12/events/34/rankings
 ```
 
 ## Conventions

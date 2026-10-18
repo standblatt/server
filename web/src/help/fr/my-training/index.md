@@ -43,7 +43,7 @@ fruits ?**
 | **Aujourd’hui** | démarrer une séance, l’activité de la semaine, ta tendance et tes dernières séances |
 | **Journal** | chaque séance, filtrée par discipline et type, les résultats de compétition à ajouter |
 | **Progression** | l’analyse d’une discipline, voir [La progression expliquée](progress.md) |
-| **Réglages** | profil (nom, date de naissance et numéro de licence pour l’appariement des concours), disciplines personnalisées, armes, app, jetons API, export ; **Compte** pour l’e-mail, le mot de passe, la langue, le deuxième facteur et la suppression du compte |
+| **Réglages** | profil (nom, date de naissance et numéro de licence pour l’appariement des concours), disciplines personnalisées, armes, app, export ; **Compte** pour l’e-mail, le mot de passe, la langue, le deuxième facteur et la suppression du compte |
 
 Sur un téléphone, les pages sont dans la barre du bas, avec le bouton + au
 milieu. Sur un écran plus grand, elles sont dans la barre latérale.

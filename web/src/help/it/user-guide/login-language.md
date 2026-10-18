@@ -45,11 +45,38 @@ l’accesso; **Cambia società** nel menu utente riporta a questa scelta.
 - **Lingua e aspetto**: la lingua dell’interfaccia del tuo account e la
   modalità chiara o scura.
 - **Secondo fattore**: vedi sotto.
+- **Token API**: vedi sotto.
 - **Elimina account**: solo per account senza società; diario di
   allenamento, obiettivi e impostazioni vengono eliminati
   definitivamente. Gli account di società li rimuove l’admin della società.
 
 ![Account](../images/screenshots/account.png){ .screenshot }
+
+## Token API {#api-tokens}
+
+Vuoi mostrare le classifiche sul sito della società, importare sessioni da
+un’altra app o analizzare dati con un tuo script? Crea un token sotto
+**Account → Token API** con **Nuovo token**:
+
+- un **nome** che ti dirà più tardi chi lo usa,
+- un **modello** imposta i diritti per un uso comune: **Classifiche per un
+  sito web**, **App di allenamento** o **Solo lettura**,
+- le **società** che il token può usare (nessuna: solo il tuo diario di
+  allenamento),
+- i **diritti**: *Leggere il mio diario di allenamento*, *Registrare e
+  modificare le mie sessioni di allenamento* e, per le società scelte, i
+  [diritti dei ruoli](users.md#roles) che il tuo ruolo vi ha,
+- quando **scade**: tra 30 o 90 giorni, tra un anno o mai.
+
+Il token (`sb_…`) viene mostrato una sola volta; copialo subito. Gli script
+lo inviano come `Authorization: Bearer sb_…` (o `X-API-Key: sb_…`). Può fare
+ciò che hai scelto e mai più del tuo ruolo nella società: se perdi un
+diritto o lasci la società, il token lo perde subito. Non raggiunge mai la
+tua password, la tua e-mail, il tuo account o altri token. `GET /api/token`
+dice a uno script nome, diritti e società del suo token. Un token fa al
+massimo 600 richieste in cinque minuti. L’elenco mostra quando ogni token è
+stato usato l’ultima volta; revocarlo lo ferma subito. Gli sviluppatori
+trovano gli endpoint sotto `/api/docs`.
 
 ## Secondo fattore {#totp}
 

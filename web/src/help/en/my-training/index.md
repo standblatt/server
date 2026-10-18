@@ -25,7 +25,7 @@ My training is a personal shooting diary. Every shooter can use it, whether or n
 | **Today** | start a session, this week's activity, your recent trend and sessions |
 | **Log** | every session, filtered by discipline and kind, competition results waiting to be added |
 | **Progress** | the analysis of one discipline, see [Progress explained](progress.md) |
-| **Settings** | profile (name, birthday and license number for the competition match), own disciplines, weapons, app, API tokens, export; **Account** for email, password, language, second factor and deleting the account |
+| **Settings** | profile (name, birthday and license number for the competition match), own disciplines, weapons, app, export; **Account** for email, password, language, second factor and deleting the account |
 
 On a phone the pages are in the bar at the bottom, with the + button in the middle. On a larger screen they are in the sidebar.
 

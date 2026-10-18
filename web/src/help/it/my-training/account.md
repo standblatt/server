@@ -64,20 +64,8 @@ un’arma.
 ## Token API
 
 Vuoi importare sessioni da un’altra app o analizzare il tuo diario con un
-tuo script? Crea un token in **Impostazioni → Token API**:
-
-- un **nome** che ti dirà più tardi chi lo usa,
-- le **autorizzazioni**: *Leggere le sessioni* e/o *Registrare e modificare
-  sessioni*,
-- quando **scade**: tra 30 o 90 giorni, tra un anno o mai.
-
-Il token (`sb_…`) viene mostrato una sola volta; copialo subito. Gli script
-lo inviano come `Authorization: Bearer sb_…` (o `X-API-Key: sb_…`). Vale per
-le tue sessioni, discipline, armi, obiettivi, statistiche e l’esportazione,
-ma mai per la tua password, la tua e-mail, il tuo account o altri token, né
-per i dati della società. L’elenco mostra quando ogni token è stato usato
-l’ultima volta; revocarlo lo ferma subito. Gli endpoint sono nel
-[riferimento dell’API](../developer/api.md).
+tuo script? Crea un token nel tuo account con il modello **App di
+allenamento**; vedi [Token API](../user-guide/login-language.md#api-tokens).
 
 ## Installare l’app
 

@@ -2143,7 +2143,7 @@ msgstr "expired"
 msgid "Expires"
 msgstr "Expires"
 
-#. placeholder {0}: formatDate(tok.expiresAt)
+#. placeholder {0}: formatDate(tok.expiresAt.slice(0, 10))
 #: src/lib/ApiTokens.svelte
 msgid "expires {0}"
 msgstr "expires {0}"
@@ -2770,7 +2770,7 @@ msgstr "Last name of shooter {0}"
 msgid "last seen {0}"
 msgstr "last seen {0}"
 
-#. placeholder {0}: formatDate(tok.lastUsedAt)
+#. placeholder {0}: formatDate(tok.lastUsedAt.slice(0, 10))
 #: src/lib/ApiTokens.svelte
 msgid "last used {0}"
 msgstr "last used {0}"

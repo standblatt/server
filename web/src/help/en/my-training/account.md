@@ -32,13 +32,7 @@ Shoot more than one gun, e.g. two air pistols? Add them under **Settings → Wea
 
 ## API tokens
 
-Want to import sessions from another app or analyse your log with your own script? Create a token under **Settings → API tokens**:
-
-- a **name** that tells you later what uses it,
-- the **permissions**: *Read sessions* and/or *Log and change sessions*,
-- when it **expires**: in 30 or 90 days, in a year, or never.
-
-The token (`sb_…`) is shown only once; copy it right away. Scripts send it as `Authorization: Bearer sb_…` (or `X-API-Key: sb_…`). It works for your sessions, disciplines, weapons, goals, statistics and the export, but never for your password, email, account or other tokens, and never for club data. The list shows when each token was last used; revoking one stops it at once. See the [API reference](../developer/api.md) for the endpoints.
+Want to import sessions from another app or analyse your log with your own script? Create a token in your account with the preset **Training app**; see [API tokens](../user-guide/login-language.md#api-tokens).
 
 ## Install the app
 

@@ -42,7 +42,7 @@ una domanda: **il mio allenamento funziona?**
 | **Oggi** | avviare una sessione, l’attività della settimana, la tua tendenza e le ultime sessioni |
 | **Diario** | ogni sessione, filtrata per disciplina e tipo, i risultati di gara da aggiungere |
 | **Progressi** | l’analisi di una disciplina, vedi [I progressi spiegati](progress.md) |
-| **Impostazioni** | profilo (nome, data di nascita e numero di licenza per l’abbinamento delle gare), discipline personalizzate, armi, app, token API, esportazione; **Account** per e-mail, password, lingua, secondo fattore ed eliminazione dell’account |
+| **Impostazioni** | profilo (nome, data di nascita e numero di licenza per l’abbinamento delle gare), discipline personalizzate, armi, app, esportazione; **Account** per e-mail, password, lingua, secondo fattore ed eliminazione dell’account |
 
 Sul telefono le pagine sono nella barra in basso, con il pulsante + al
 centro. Su uno schermo più grande sono nella barra laterale.
