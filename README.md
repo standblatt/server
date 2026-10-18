@@ -18,7 +18,7 @@ Requirements: Go, Node and Docker.
 
 ```sh
 make dev      # PostgreSQL, Mailpit, backend and Vite; app on http://localhost:5173, login dev / devpassword
-make prepare  # before a commit (also the pre-commit hook): API types, catalogs, gofmt, vet, svelte-check
+make prepare  # before a commit (also the pre-commit hook): API types, catalogs, gofmt, vet, staticcheck, svelte-check
 make test     # Go tests, then the Playwright e2e specs
 make docs     # help translations and screenshots
 make clean    # containers down, node_modules and build output removed

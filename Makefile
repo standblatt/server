@@ -30,7 +30,7 @@ dev: .env web/node_modules internal/webui/dist/index.html
 ERR_KEYWORDS := $(addprefix --keyword=,unauthorized forbidden missing conflict gone invalid tooMany)
 
 # Everything to regenerate and check before a commit (the pre-commit hook in .githooks runs it): OpenAPI spec and
-# TypeScript types, UI and document strings into the PO catalogs, gofmt, go vet, doc comments, svelte-check.
+# TypeScript types, UI and document strings into the PO catalogs, gofmt, go vet, staticcheck, doc comments, svelte-check.
 prepare: web/node_modules internal/webui/dist/index.html
 	go run ./cmd/standblatt openapi > web/openapi.json
 	cd web && npm run api
@@ -46,6 +46,7 @@ prepare: web/node_modules internal/webui/dist/index.html
 	for l in de fr it; do msgmerge --quiet --update --backup=none --no-wrap --no-fuzzy-matching internal/i18n/locales/$$l.po internal/i18n/locales/messages.pot; done
 	@test -z "$$(gofmt -l cmd internal)" || { gofmt -l cmd internal; echo "gofmt: files above need formatting"; exit 1; }
 	go vet ./...
+	go tool staticcheck ./...
 	python3 scripts/funcdoc.py
 	cd web && npm run check
 	@git status --short

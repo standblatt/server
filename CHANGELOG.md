@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - `make clean` stops the containers and removes installed packages and build output (by @HB9HIL)
+- staticcheck runs in `make prepare` and CI (pinned as a Go tool in `go.mod`) (by @HB9HIL)
 
 ### Changed
 - Go tests copy a migrated template database and hash passwords cheaply, so they run in about 15 instead of 90 seconds (by @HB9HIL)

@@ -4,7 +4,7 @@ Requirements: Go, Node and Docker.
 
 ```sh
 make dev      # PostgreSQL, Mailpit, backend and Vite in the foreground, app on http://localhost:5173; Ctrl-C stops everything
-make prepare  # before a commit: OpenAPI spec and TS types, PO catalogs, gofmt, go vet, doc comments, svelte-check
+make prepare  # before a commit: OpenAPI spec and TS types, PO catalogs, gofmt, go vet, staticcheck, doc comments, svelte-check
 make test     # Go unit and integration tests against the compose PostgreSQL, then the Playwright e2e specs
 make docs     # help: update the PO catalogs, write the translated pages, regenerate the screenshots
 make clean    # stop the containers, remove node_modules and build output (keeps .env and the database volume)
