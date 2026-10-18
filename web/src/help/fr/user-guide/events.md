@@ -48,6 +48,7 @@ rapports.
 
 | Module | Ce qu’il ajoute |
 |---|---|
+| Attribution des cibles | les tireurs sont inscrits sur des cibles : la grille des cibles sur le tableau de bord, l’état des cibles sur les affichages kiosque et les liens de cibarre (nécessite un stand ; voir plus bas) |
 | Réservations | cibles réservées pour des groupes et des sociétés ; sa page dans la configuration active la [réservation en ligne](online-booking.md), par laquelle les sociétés demandent des cibles avec un lien public (nécessite un stand) |
 | Feuille de stand, Bande de contrôle | les documents imprimés à l’inscription ; la bande de contrôle peut s’imprimer avec un [modèle d’impression](print-forms.md#builtin) de la société |
 | Distribution de munition | le bouton **Munition** sur le tableau de bord et pour la distribution de munition (voir [Aides](helpers.md#ammunition)) ; laissez-le désactivé là où les tireurs apportent la leur, p. ex. pistolet et carabine à air |
@@ -64,9 +65,9 @@ modules :
 
 | Genre | Modules |
 |---|---|
-| Tir de fête | Réservations, Feuille de stand, Bande de contrôle, Distinctions, Prix spéciaux, Concours de sections, Affichages kiosque, Liens d'aide |
+| Tir de fête | Attribution des cibles, Réservations, Feuille de stand, Bande de contrôle, Distinctions, Prix spéciaux, Concours de sections, Affichages kiosque, Liens d'aide |
 | Programme annuel ou entraînement | Tentatives, Classements généraux |
-| Tir en campagne | Distinctions, Concours de sections, Affichages kiosque, Liens d'aide |
+| Tir en campagne | Attribution des cibles, Distinctions, Concours de sections, Affichages kiosque, Liens d'aide |
 | Championnat de société | Tentatives, Classements généraux, Affichages kiosque |
 | Sélection personnalisée | aucun |
 
@@ -94,13 +95,15 @@ latérale (admins) les active et les désactive :
 
 ## Manifestations sans cibles {#no-lanes}
 
-Une manifestation n’a pas besoin de stand, p. ex. un programme annuel ou un
-Tir en campagne dont les résultats arrivent sur papier ou depuis
-l’installation de marquage. Sans stand, il n’y a pas de grille des cibles,
-et le module Réservations n’est pas disponible ; les tireurs sont inscrits
-sans cible et leurs résultats sont saisis comme d’habitude. Les documents
-s’ouvrent toujours en PDF, mais ne partent pas vers un agent d’impression,
-car les agents d’impression appartiennent à un stand.
+Une manifestation sans cibles, p. ex. un programme annuel ou un Tir en
+campagne dont les résultats arrivent sur papier ou depuis l’installation de
+marquage, n’a soit pas de stand, soit désactive le module *Attribution des
+cibles*. Il n’y a alors ni grille des cibles, ni réservations, ni liens de
+cibarre ; les tireurs sont inscrits sans cible et leurs résultats sont
+saisis comme d’habitude. Avec un stand mais sans attribution des cibles, les
+documents s’impriment toujours sur l’agent d’impression du stand et les
+programmes peuvent toujours être liés au stand ; sans stand, les documents
+s’ouvrent en PDF, car les agents d’impression appartiennent à un stand.
 
 ## Copier pour l’année prochaine {#copy}
 

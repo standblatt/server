@@ -85,6 +85,19 @@ test.describe("modules", () => {
     await expect(c(page, "p", "This module is off.")).toBeVisible();
   });
 
+  test("runs an event on a range without lane assignment", async ({ page }) => {
+    await login(page, admin);
+    const base = `/api/tenants/${ids.tenant}`;
+    const range = await api(page, "POST", `${base}/ranges`, { name: "Indoor", laneCount: 4 });
+    const ev = await api(page, "POST", `${base}/events`, { rangeIds: [range.id], name: "Season", startsOn: "2027-03-01", modules: ["helpers"] });
+    expect(ev.modules).toEqual(["helpers"]);
+    await page.goto(`/t/${ids.tenant}/events/${ev.id}/config/modules`);
+    await expect(page.getByRole("switch", { name: "Lane assignment", exact: true })).not.toBeChecked();
+    await page.goto(`/t/${ids.tenant}/events/${ev.id}/config/helpers`);
+    await expect(page.locator("option[value=scorer]")).toHaveCount(0);
+    expect(await api(page, "GET", `${base}/events/${ev.id}/lanes`)).toEqual([]);
+  });
+
   test("keeps staff out of the configuration", async ({ page }) => {
     await login(page, staff);
     await page.goto(`${event()}/config`);

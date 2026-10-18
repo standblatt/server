@@ -1,6 +1,7 @@
 import { createQuery } from '@tanstack/svelte-query';
 import { api, call } from '$lib/api';
 import type { Event } from '$lib/api';
+import lanes from './lanes';
 import reservations from './reservations';
 import lanesheet from './lane_sheet';
 import controlstrip from './control_strip';
@@ -19,6 +20,7 @@ export type { ClubModuleKey, ClubModuleUI, EventProps, Lazy, ModuleKey, ModuleUI
 
 /** The UI of every event module; a module the API knows but this list lacks fails the type check. */
 export const moduleUI: Record<ModuleKey, ModuleUI> = {
+	lanes: lanes,
 	reservations: reservations,
 	lane_sheet: lanesheet,
 	control_strip: controlstrip,

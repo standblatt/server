@@ -105,6 +105,8 @@ func requireModule(ev store.Event, key string) error {
 // moduleUsed turns a store.ModuleUsedError into a 409 for its first module, telling what to remove first.
 func moduleUsed(e *store.ModuleUsedError) error {
 	switch e.Keys[0] {
+	case modules.Lanes:
+		return conflict("Shooters are registered on lanes")
 	case modules.Reservations:
 		return conflict("Switch the online booking link off first")
 	case modules.Attempts:

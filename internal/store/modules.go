@@ -12,6 +12,7 @@ import (
 // eventUsage tells per event module when an event has data of it (SQL over the alias e for events); a module with
 // data stays on and cannot be switched off. "" means the module never holds data.
 var eventUsage = map[string]string{
+	modules.Lanes:           `EXISTS (SELECT 1 FROM registrations x WHERE x.event_id = e.id AND x.lane IS NOT NULL)`,
 	modules.Reservations:    `e.booking_code IS NOT NULL`,
 	modules.LaneSheet:       "",
 	modules.ControlStrip:    "",

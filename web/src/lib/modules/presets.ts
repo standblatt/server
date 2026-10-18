@@ -11,7 +11,7 @@ export const presets: Preset[] = [
 		id: 'festival',
 		label: msg`Shooting festival`,
 		description: msg`Desk with lanes, online booking, awards, special prizes, club competition, kiosk and helpers.`,
-		modules: ['reservations', 'lane_sheet', 'control_strip', 'awards', 'special_prizes', 'club_competition', 'kiosk', 'helpers']
+		modules: ['lanes', 'reservations', 'lane_sheet', 'control_strip', 'awards', 'special_prizes', 'club_competition', 'kiosk', 'helpers']
 	},
 	{
 		id: 'annual',
@@ -22,8 +22,8 @@ export const presets: Preset[] = [
 	{
 		id: 'field',
 		label: msg`Feldschiessen`,
-		description: msg`Awards and club competition, kiosk displays and helper links.`,
-		modules: ['awards', 'club_competition', 'kiosk', 'helpers']
+		description: msg`Lanes, awards and club competition, kiosk displays and helper links.`,
+		modules: ['lanes', 'awards', 'club_competition', 'kiosk', 'helpers']
 	},
 	{
 		id: 'championship',

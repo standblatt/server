@@ -25,7 +25,9 @@ modificare programmi, classifiche, statistiche, eliminare.
 
 1. Inserisci un nome (chi riceve il link, ad es. *Marcatore poligono A*),
    scegli il ruolo e, per un marcatore, il poligono e i bersagli (`1-5,
-   8`). Un marcatore di solito segue più bersagli.
+   8`). Un marcatore di solito segue più bersagli. I marcatori esistono solo
+   finché la manifestazione assegna bersagli (modulo *Assegnazione dei
+   bersagli*).
 2. **Crea link aiutante**; copia il link e mandalo all’aiutante (ad es. via
    messaggistica). Viene mostrato una sola volta.
 3. L’aiutante apre il link; resta valido finché non viene revocato o la

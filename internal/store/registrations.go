@@ -10,6 +10,7 @@ import (
 	"github.com/jackc/pgx/v5/pgconn"
 
 	"github.com/standblatt/server/internal/domain"
+	"github.com/standblatt/server/internal/modules"
 )
 
 // Errors for the registration constraints.
@@ -86,6 +87,7 @@ type RangeRules struct {
 // EventRules is what registration checks need to know about an event.
 type EventRules struct {
 	StartsOn   string
+	Lanes      bool
 	Ranges     map[int64]RangeRules
 	RangeOrder []int64
 	Programmes map[int64]domain.ProgrammeInfo
@@ -108,7 +110,9 @@ func registrationErr(err error) error {
 // LoadEventRules returns the event date, ranges with their lanes and the programmes of an event of a tenant.
 func (s *Store) LoadEventRules(ctx context.Context, tenantID, eventID int64) (EventRules, error) {
 	r := EventRules{Ranges: map[int64]RangeRules{}, Programmes: map[int64]domain.ProgrammeInfo{}}
-	err := s.pool.QueryRow(ctx, `SELECT starts_on::text FROM events WHERE tenant_id = $1 AND id = $2`, tenantID, eventID).Scan(&r.StartsOn)
+	var chosen, used []string
+	err := s.pool.QueryRow(ctx, `SELECT e.starts_on::text, e.modules, `+eventUsed+` FROM events e WHERE e.tenant_id = $1 AND e.id = $2`,
+		tenantID, eventID).Scan(&r.StartsOn, &chosen, &used)
 	if err != nil {
 		return r, mapErr(err)
 	}
@@ -126,6 +130,7 @@ func (s *Store) LoadEventRules(ctx context.Context, tenantID, eventID int64) (Ev
 	}); err != nil {
 		return r, err
 	}
+	r.Lanes = slices.Contains(modules.Effective(modules.Event, chosen, used, len(r.RangeOrder) > 0), modules.Lanes)
 	rows, err = s.pool.Query(ctx, `SELECT p.id, p.name, p.variant, p.active, p.combinable_with_id, p.range_id, p.attempts,
 			(SELECT count(*) FROM programme_series s WHERE s.programme_id = p.id),
 			coalesce((SELECT array_agg(age_category::text) FROM programme_prices pp WHERE pp.programme_id = p.id), '{}')

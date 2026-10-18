@@ -25,7 +25,9 @@ modifier des programmes, classements, statistiques, supprimer.
 
 1. Saisis un nom (qui reçoit le lien, p. ex. *Cibarre stand A*), choisis le
    rôle et, pour un cibarre, le stand et les cibles (`1-5, 8`). Un cibarre
-   s’occupe généralement de plusieurs cibles.
+   s’occupe généralement de plusieurs cibles. Les cibarres n’existent que
+   tant que la manifestation attribue des cibles (module *Attribution des
+   cibles*).
 2. **Créer un lien d’aide** ; copie le lien et envoie-le à l’aide
    (p. ex. par messagerie). Il n’est affiché qu’une fois.
 3. L’aide ouvre le lien ; il reste valable jusqu’à sa révocation ou la

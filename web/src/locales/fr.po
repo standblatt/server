@@ -906,10 +906,6 @@ msgstr "distinctions"
 msgid "Awards"
 msgstr "Distinctions"
 
-#: src/lib/modules/presets.ts
-msgid "Awards and club competition, kiosk displays and helper links."
-msgstr "Distinctions et concours de sections, affichages kiosque et liens d'aide."
-
 #: src/lib/EventDesk.svelte
 #: src/lib/ResultsDialog.svelte
 msgid "awards handed out"
@@ -2549,6 +2545,10 @@ msgstr "Cible {0} : réservée"
 msgid "Lane {lane}"
 msgstr "Cible {lane}"
 
+#: src/lib/modules/lanes/index.ts
+msgid "Lane assignment"
+msgstr "Attribution des cibles"
+
 #: src/lib/modules/reservations/index.ts
 msgid "Lane bookings"
 msgstr "Réservations de cibles"
@@ -2605,6 +2605,10 @@ msgstr "Cibles réservées pour des groupes et des sociétés, visibles sur le t
 #: src/lib/modules/reservations/Page.svelte
 msgid "Lanes reserved for trainings or groups; they show as reserved from the lead time on."
 msgstr "Cibles réservées pour des entraînements ou des groupes ; elles apparaissent comme réservées dès le délai préalable."
+
+#: src/lib/modules/presets.ts
+msgid "Lanes, awards and club competition, kiosk displays and helper links."
+msgstr "Cibles, distinctions et concours de sections, affichages kiosque et liens d'aide."
 
 #: src/lib/modules/helpers/HelperCodes.svelte
 msgid "Lanes, e.g. 1-5, 8"
@@ -4622,6 +4626,10 @@ msgstr "Tireurs"
 #: src/lib/ProgrammeEditor.svelte
 msgid "Shooters are registered for this programme: the series stay as they are, and age categories and awards can be added but not removed."
 msgstr "Des tireurs sont inscrits à ce programme : les passes restent telles quelles, les catégories d'âge et les distinctions peuvent être ajoutées mais pas retirées."
+
+#: src/lib/modules/lanes/index.ts
+msgid "Shooters are registered on lanes: lane grid on the dashboard, lane status on kiosk displays and scorer links."
+msgstr "Les tireurs sont inscrits sur des cibles : grille des cibles sur le tableau de bord, état des cibles sur les écrans kiosque et liens de cibarre."
 
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 msgid "Shooters found"

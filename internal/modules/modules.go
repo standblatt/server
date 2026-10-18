@@ -15,6 +15,7 @@ const (
 
 // Keys of the modules.
 const (
+	Lanes           = "lanes"
 	Reservations    = "reservations"
 	Kiosk           = "kiosk"
 	Helpers         = "helpers"
@@ -41,7 +42,8 @@ type Module struct {
 
 // All is every module, in the order the UI shows them.
 var All = []Module{
-	{Key: Reservations, Level: Event, Requires: []string{}, NeedsRange: true},
+	{Key: Lanes, Level: Event, Requires: []string{}, NeedsRange: true},
+	{Key: Reservations, Level: Event, Requires: []string{Lanes}, NeedsRange: true},
 	{Key: LaneSheet, Level: Event, Requires: []string{}},
 	{Key: ControlStrip, Level: Event, Requires: []string{}},
 	{Key: Ammo, Level: Event, Requires: []string{}, OffByDefault: true},
@@ -56,7 +58,7 @@ var All = []Module{
 }
 
 // EventEnum is the comma separated list of event module keys for huma enum tags.
-const EventEnum = "reservations,lane_sheet,control_strip,ammo,attempts,awards,special_prizes,club_competition,classifications,kiosk,helpers"
+const EventEnum = "lanes,reservations,lane_sheet,control_strip,ammo,attempts,awards,special_prizes,club_competition,classifications,kiosk,helpers"
 
 // ClubEnum is the comma separated list of club module keys for huma enum tags.
 const ClubEnum = "forms"

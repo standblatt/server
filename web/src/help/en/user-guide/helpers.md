@@ -16,7 +16,7 @@ Everything else stays with the club's users: registering shooters, editing progr
 
 ## Creating a link {#create}
 
-1. Enter a name (who gets the link, e.g. *Scorer range A*), choose the role and, for a scorer, the range and the lanes (`1-5, 8`). One scorer usually looks after several lanes.
+1. Enter a name (who gets the link, e.g. *Scorer range A*), choose the role and, for a scorer, the range and the lanes (`1-5, 8`). One scorer usually looks after several lanes; scorers exist only while the event assigns lanes (module *Lane assignment*).
 2. **Create helper link**; copy the link and send it to the helper (e.g. by messenger). It is shown only once.
 3. The helper opens the link; it stays valid until it is revoked or the event is deleted. `?language=de` (`fr`, `it`, `en`) overrides the event's language.
 

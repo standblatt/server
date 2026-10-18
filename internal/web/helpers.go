@@ -194,6 +194,9 @@ func (s *Server) registerHelpers(api huma.API) {
 		}
 		c := store.HelperCode{Name: strings.TrimSpace(in.Body.Name), Role: in.Body.Role, Lanes: []int{}}
 		if c.Role == store.HelperScorer {
+			if !slices.Contains(ev.Modules, modules.Lanes) {
+				return nil, invalid("Scorer links need the lane assignment")
+			}
 			i := slices.IndexFunc(ev.Ranges, func(r store.EventRange) bool { return in.Body.RangeID != nil && r.ID == *in.Body.RangeID })
 			if i < 0 {
 				return nil, invalid("Choose a range of the event for the scorer")

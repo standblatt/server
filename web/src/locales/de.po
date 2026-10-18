@@ -906,10 +906,6 @@ msgstr "auszeichnungen"
 msgid "Awards"
 msgstr "Auszeichnungen"
 
-#: src/lib/modules/presets.ts
-msgid "Awards and club competition, kiosk displays and helper links."
-msgstr "Auszeichnungen und Vereinskonkurrenz, Kiosk-Anzeigen und Helferlinks."
-
 #: src/lib/EventDesk.svelte
 #: src/lib/ResultsDialog.svelte
 msgid "awards handed out"
@@ -2549,6 +2545,10 @@ msgstr "Scheibe {0}: reserviert"
 msgid "Lane {lane}"
 msgstr "Scheibe {lane}"
 
+#: src/lib/modules/lanes/index.ts
+msgid "Lane assignment"
+msgstr "Scheibenzuteilung"
+
 #: src/lib/modules/reservations/index.ts
 msgid "Lane bookings"
 msgstr "Scheibenreservationen"
@@ -2605,6 +2605,10 @@ msgstr "Für Gruppen und Vereine reservierte Scheiben, sichtbar auf dem Dashboar
 #: src/lib/modules/reservations/Page.svelte
 msgid "Lanes reserved for trainings or groups; they show as reserved from the lead time on."
 msgstr "Für Trainings oder Gruppen reservierte Scheiben; sie erscheinen ab der Vorlaufzeit als reserviert."
+
+#: src/lib/modules/presets.ts
+msgid "Lanes, awards and club competition, kiosk displays and helper links."
+msgstr "Scheiben, Auszeichnungen und Vereinskonkurrenz, Kiosk-Anzeigen und Helferlinks."
 
 #: src/lib/modules/helpers/HelperCodes.svelte
 msgid "Lanes, e.g. 1-5, 8"
@@ -4622,6 +4626,10 @@ msgstr "Schützen"
 #: src/lib/ProgrammeEditor.svelte
 msgid "Shooters are registered for this programme: the series stay as they are, and age categories and awards can be added but not removed."
 msgstr "Für dieses Programm sind Schützen angemeldet: Die Passen bleiben wie sie sind, Alterskategorien und Auszeichnungen können hinzugefügt, aber nicht entfernt werden."
+
+#: src/lib/modules/lanes/index.ts
+msgid "Shooters are registered on lanes: lane grid on the dashboard, lane status on kiosk displays and scorer links."
+msgstr "Schützen werden auf Scheiben angemeldet: Scheibenraster im Dashboard, Scheibenstatus auf Kiosk-Anzeigen und Warner-Links."
 
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 msgid "Shooters found"

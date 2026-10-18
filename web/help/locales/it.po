@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 10:47+0000\n"
+"POT-Creation-Date: 2026-10-18 10:54+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -2728,11 +2728,12 @@ msgstr ""
 "dall’editor dei programmi, dalle classifiche e dai rapporti."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:49
+#: ../src/help/en/user-guide/events.md:50
 #, no-wrap
 msgid ""
 "| Module | What it adds |\n"
 "|---|---|\n"
+"| Lane assignment | shooters are registered on lanes: the lane grid on the dashboard, the lane status on kiosk displays and scorer links (needs a range; see below) |\n"
 "| Reservations | lanes reserved for groups and clubs; its page in the configuration switches on the [online booking](online-booking.md), through which clubs ask for lanes with a public link (needs a range) |\n"
 "| Lane sheet, Control strip | the documents printed at registration; the control strip can print with a [print form](print-forms.md#builtin) of the club |\n"
 "| Ammunition desk | the **Ammo** button on the dashboard and for the ammunition desk (see [Helpers](helpers.md#ammunition)); leave it off where shooters bring their own, e.g. air pistol and air rifle |\n"
@@ -2746,6 +2747,7 @@ msgid ""
 msgstr ""
 "| Modulo | Cosa aggiunge |\n"
 "|---|---|\n"
+"| Assegnazione dei bersagli | i tiratori vengono iscritti su bersagli: la griglia dei bersagli sulla dashboard, lo stato dei bersagli sui display chiosco e i link per marcatori (richiede uno stand; vedi sotto) |\n"
 "| Prenotazioni | bersagli riservati a gruppi e società; la sua pagina nella configurazione attiva la [prenotazione online](online-booking.md), con cui le società chiedono bersagli tramite un link pubblico (richiede uno stand) |\n"
 "| Foglio di stand, Striscia di controllo | i documenti stampati all’iscrizione; la striscia di controllo può stamparsi con un [modello di stampa](print-forms.md#builtin) della società |\n"
 "| Distribuzione munizioni | il pulsante **Munizione** sulla dashboard e per la distribuzione munizioni (vedi [Aiutanti](helpers.md#ammunition)); lascialo disattivato dove i tiratori portano le proprie, p. es. pistola e carabina ad aria compressa |\n"
@@ -2758,7 +2760,7 @@ msgstr ""
 "| Link aiutante | marcatori, distribuzione munizioni e registrazione risultati senza account (vedi [Aiutanti](helpers.md)) |\n"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:51
+#: ../src/help/en/user-guide/events.md:52
 msgid ""
 "When you create an event, choose what kind it is; this only switches modules "
 "on:"
@@ -2767,37 +2769,43 @@ msgstr ""
 "moduli:"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:59
+#: ../src/help/en/user-guide/events.md:60
 #, no-wrap
 msgid ""
 "| Kind | Modules |\n"
 "|---|---|\n"
-"| Shooting festival | Reservations, Lane sheet, Control strip, Awards, Special prizes, Club competition, Kiosk displays, Helper links |\n"
+"| Shooting festival | Lane assignment, Reservations, Lane sheet, Control strip, Awards, Special prizes, Club competition, Kiosk displays, Helper links |\n"
 "| Annual programme or training | Attempts, Classifications |\n"
-"| Feldschiessen | Awards, Club competition, Kiosk displays, Helper links |\n"
+"| Feldschiessen | Lane assignment, Awards, Club competition, Kiosk displays, Helper links |\n"
 "| Club championship | Attempts, Classifications, Kiosk displays |\n"
 "| Custom selection | none |\n"
 msgstr ""
 "| Tipo | Moduli |\n"
 "|---|---|\n"
-"| Tiro di festa | Prenotazioni, Foglio di stand, Striscia di controllo, Distinzioni, Premi speciali, Concorso di sezione, Display chiosco, Link aiutante |\n"
+"| Tiro di festa | Assegnazione dei bersagli, Prenotazioni, Foglio di stand, Striscia di controllo, Distinzioni, Premi speciali, Concorso di sezione, Display chiosco, Link aiutante |\n"
 "| Programma annuale o allenamento | Tentativi, Classifiche generali |\n"
-"| Tiro in campagna | Distinzioni, Concorso di sezione, Display chiosco, Link aiutante |\n"
+"| Tiro in campagna | Assegnazione dei bersagli, Distinzioni, Concorso di sezione, Display chiosco, Link aiutante |\n"
 "| Campionato sociale | Tentativi, Classifiche generali, Display chiosco |\n"
 "| Selezione personalizzata | nessuno |\n"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:61
+#: ../src/help/en/user-guide/events.md:62
 msgid ""
 "A module that holds data stays on: switch off the kiosk only after deleting "
 "its kiosk links, the awards only when no programme has award tiers, and so "
 "on; the card says why its switch is locked; Reservations stay on while the "
 "online booking link is active. A module another one needs (Awards for "
 "Special prizes) stays on as long as that one is."
-msgstr "Un modulo che contiene dati resta attivo: disattiva il chiosco solo dopo averne eliminato i link chiosco, le distinzioni solo quando nessun programma ha livelli di distinzione, e così via; la scheda indica perché il suo interruttore è bloccato; Prenotazioni resta attivo finché il link della prenotazione online è attivo. Un modulo di cui un altro ha bisogno (Distinzioni per Premi speciali) resta attivo finché lo è quest’ultimo."
+msgstr ""
+"Un modulo che contiene dati resta attivo: disattiva il chiosco solo dopo "
+"averne eliminato i link chiosco, le distinzioni solo quando nessun programma "
+"ha livelli di distinzione, e così via; la scheda indica perché il suo "
+"interruttore è bloccato; Prenotazioni resta attivo finché il link della "
+"prenotazione online è attivo. Un modulo di cui un altro ha bisogno "
+"(Distinzioni per Premi speciali) resta attivo finché lo è quest’ultimo."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:63
+#: ../src/help/en/user-guide/events.md:64
 msgid ""
 "Shooting times also give the online booking its slots, unless the booking "
 "sets other hours for a day (see [Online booking](online-booking.md))."
@@ -2807,13 +2815,13 @@ msgstr ""
 "online](online-booking.md))."
 
 #. type: Title ###
-#: ../src/help/en/user-guide/events.md:64
+#: ../src/help/en/user-guide/events.md:65
 #, no-wrap
 msgid "Club modules {#club-modules}"
 msgstr "Moduli della società {#club-modules}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:67
+#: ../src/help/en/user-guide/events.md:68
 msgid ""
 "Some modules belong to the club rather than to an event. **Club modules** in "
 "the club part of the sidebar (admins) switches them on and off:"
@@ -2823,7 +2831,7 @@ msgstr ""
 "attiva e disattiva:"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:71
+#: ../src/help/en/user-guide/events.md:72
 #, no-wrap
 msgid ""
 "| Module | What it adds |\n"
@@ -2835,30 +2843,32 @@ msgstr ""
 "| Modelli di stampa | modelli per fogli prestampati e la sezione *Modello di stampa* di ogni programma (vedi [Modelli di stampa](print-forms.md)) |\n"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:72
+#: ../src/help/en/user-guide/events.md:73
 #, no-wrap
 msgid "Events without lanes {#no-lanes}"
 msgstr "Manifestazioni senza bersagli {#no-lanes}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:75
+#: ../src/help/en/user-guide/events.md:76
 msgid ""
-"An event needs no range, e.g. an annual programme or a Feldschiessen whose "
-"results come on paper or from the scoring system. Without a range there is "
-"no lane grid, and the module Reservations is not available; shooters are "
-"registered without a lane and their results are entered as usual. Documents "
-"can still be opened as PDF, but they do not go to a print agent, because "
-"print agents belong to a range."
-msgstr "Una manifestazione non ha bisogno di uno stand, p. es. un programma annuale o un Tiro in campagna i cui risultati arrivano su carta o dall’impianto di segnalazione. Senza stand non c’è la griglia dei bersagli, e il modulo Prenotazioni non è disponibile; i tiratori vengono iscritti senza bersaglio e i loro risultati si registrano come di consueto. I documenti si aprono ancora in PDF, ma non vanno a un agente di stampa, perché gli agenti di stampa appartengono a uno stand."
+"An event without lanes, e.g. an annual programme or a Feldschiessen whose "
+"results come on paper or from the scoring system, either has no range or "
+"switches the module *Lane assignment* off. Then there is no lane grid, no "
+"reservations and no scorer links; shooters are registered without a lane and "
+"their results are entered as usual. With a range but without lane "
+"assignment, documents still print on the range's print agent and programmes "
+"can still be tied to the range; without a range, documents open as PDF, "
+"because print agents belong to a range."
+msgstr "Una manifestazione senza bersagli, p. es. un programma annuale o un Tiro in campagna i cui risultati arrivano su carta o dall’impianto di segnalazione, o non ha uno stand o disattiva il modulo *Assegnazione dei bersagli*. Allora non c’è la griglia dei bersagli, né prenotazioni né link per marcatori; i tiratori vengono iscritti senza bersaglio e i loro risultati si registrano come di consueto. Con uno stand ma senza assegnazione dei bersagli, i documenti si stampano ancora sull’agente di stampa dello stand e i programmi si possono ancora legare allo stand; senza stand, i documenti si aprono in PDF, perché gli agenti di stampa appartengono a uno stand."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:76
+#: ../src/help/en/user-guide/events.md:77
 #, no-wrap
 msgid "Copy for next year {#copy}"
 msgstr "Copia per l’anno prossimo {#copy}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:79
+#: ../src/help/en/user-guide/events.md:80
 msgid ""
 "On **Copy & close** in the configuration, **Copy for next year** creates a "
 "new event with the same ranges, organizer, language, settings, modules and "
@@ -2880,20 +2890,20 @@ msgstr ""
 "la data un anno dopo; adatta entrambi se necessario."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:81
+#: ../src/help/en/user-guide/events.md:82
 msgid "![Copy an event](../images/screenshots/copy-event.png){ .screenshot }"
 msgstr ""
 "![Copiare una manifestazione](../images/screenshots/copy-event.png)"
 "{ .screenshot }"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:82
+#: ../src/help/en/user-guide/events.md:83
 #, no-wrap
 msgid "Close {#close}"
 msgstr "Chiudere {#close}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:85
+#: ../src/help/en/user-guide/events.md:86
 msgid ""
 "When an event is over and the rankings are checked, **Close** it on **Copy & "
 "close** in the configuration. Closing releases the rankings: shooters with a "
@@ -2919,13 +2929,13 @@ msgstr ""
 "funziona."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:86
+#: ../src/help/en/user-guide/events.md:87
 #, no-wrap
 msgid "Delete"
 msgstr "Eliminare"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:88
+#: ../src/help/en/user-guide/events.md:89
 #, no-wrap
 msgid "**Delete** (on **Copy & close**) removes an event, but only while nobody is registered for it.\n"
 msgstr "**Elimina** (in **Copia e chiudi**) rimuove una manifestazione, ma solo finché nessuno è iscritto.\n"
@@ -4279,11 +4289,9 @@ msgstr "Creare un link {#create}"
 msgid ""
 "Enter a name (who gets the link, e.g. *Scorer range A*), choose the role "
 "and, for a scorer, the range and the lanes (`1-5, 8`). One scorer usually "
-"looks after several lanes."
-msgstr ""
-"Inserisci un nome (chi riceve il link, ad es. *Marcatore poligono A*), "
-"scegli il ruolo e, per un marcatore, il poligono e i bersagli (`1-5, 8`). Un "
-"marcatore di solito segue più bersagli."
+"looks after several lanes; scorers exist only while the event assigns lanes "
+"(module *Lane assignment*)."
+msgstr "Inserisci un nome (chi riceve il link, ad es. *Marcatore poligono A*), scegli il ruolo e, per un marcatore, il poligono e i bersagli (`1-5, 8`). Un marcatore di solito segue più bersagli. I marcatori esistono solo finché la manifestazione assegna bersagli (modulo *Assegnazione dei bersagli*)."
 
 #. type: Bullet: '2. '
 #: ../src/help/en/user-guide/helpers.md:22
@@ -4547,7 +4555,10 @@ msgid ""
 "on **Reservations** in the configuration, **Switch on** is all it takes. The "
 "page then shows the link with a QR code for the invitation and the slots it "
 "offers."
-msgstr "La prenotazione online fa parte del modulo *Prenotazioni* (richiede uno stand): in **Prenotazioni** nella configurazione basta **Attiva**. La pagina mostra poi il link con un codice QR per l’invito e le fasce orarie offerte."
+msgstr ""
+"La prenotazione online fa parte del modulo *Prenotazioni* (richiede uno "
+"stand): in **Prenotazioni** nella configurazione basta **Attiva**. La pagina "
+"mostra poi il link con un codice QR per l’invito e le fasce orarie offerte."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/online-booking.md:10

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 12:26+0200\n"
+"POT-Creation-Date: 2026-10-18 12:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -861,6 +861,10 @@ msgid "Not allowed for this helper link"
 msgstr ""
 
 #: internal/web/helpers.go
+msgid "Scorer links need the lane assignment"
+msgstr ""
+
+#: internal/web/helpers.go
 msgid "This lane is not yours"
 msgstr ""
 
@@ -993,6 +997,10 @@ msgstr ""
 
 #: internal/web/modules.go
 msgid "Programmes with special prizes use this module"
+msgstr ""
+
+#: internal/web/modules.go
+msgid "Shooters are registered on lanes"
 msgstr ""
 
 #: internal/web/modules.go
@@ -1165,6 +1173,10 @@ msgstr ""
 #: internal/web/registrations.go
 #, go-format
 msgid "Lane %d is out of service"
+msgstr ""
+
+#: internal/web/registrations.go
+msgid "Lanes are not assigned at this event"
 msgstr ""
 
 #: internal/web/registrations.go

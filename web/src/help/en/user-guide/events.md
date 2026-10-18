@@ -36,6 +36,7 @@ Not every event needs everything: a shooting festival books lanes and hands out 
 
 | Module | What it adds |
 |---|---|
+| Lane assignment | shooters are registered on lanes: the lane grid on the dashboard, the lane status on kiosk displays and scorer links (needs a range; see below) |
 | Reservations | lanes reserved for groups and clubs; its page in the configuration switches on the [online booking](online-booking.md), through which clubs ask for lanes with a public link (needs a range) |
 | Lane sheet, Control strip | the documents printed at registration; the control strip can print with a [print form](print-forms.md#builtin) of the club |
 | Ammunition desk | the **Ammo** button on the dashboard and for the ammunition desk (see [Helpers](helpers.md#ammunition)); leave it off where shooters bring their own, e.g. air pistol and air rifle |
@@ -51,9 +52,9 @@ When you create an event, choose what kind it is; this only switches modules on:
 
 | Kind | Modules |
 |---|---|
-| Shooting festival | Reservations, Lane sheet, Control strip, Awards, Special prizes, Club competition, Kiosk displays, Helper links |
+| Shooting festival | Lane assignment, Reservations, Lane sheet, Control strip, Awards, Special prizes, Club competition, Kiosk displays, Helper links |
 | Annual programme or training | Attempts, Classifications |
-| Feldschiessen | Awards, Club competition, Kiosk displays, Helper links |
+| Feldschiessen | Lane assignment, Awards, Club competition, Kiosk displays, Helper links |
 | Club championship | Attempts, Classifications, Kiosk displays |
 | Custom selection | none |
 
@@ -71,7 +72,7 @@ Some modules belong to the club rather than to an event. **Club modules** in the
 
 ## Events without lanes {#no-lanes}
 
-An event needs no range, e.g. an annual programme or a Feldschiessen whose results come on paper or from the scoring system. Without a range there is no lane grid, and the module Reservations is not available; shooters are registered without a lane and their results are entered as usual. Documents can still be opened as PDF, but they do not go to a print agent, because print agents belong to a range.
+An event without lanes, e.g. an annual programme or a Feldschiessen whose results come on paper or from the scoring system, either has no range or switches the module *Lane assignment* off. Then there is no lane grid, no reservations and no scorer links; shooters are registered without a lane and their results are entered as usual. With a range but without lane assignment, documents still print on the range's print agent and programmes can still be tied to the range; without a range, documents open as PDF, because print agents belong to a range.
 
 ## Copy for next year {#copy}
 

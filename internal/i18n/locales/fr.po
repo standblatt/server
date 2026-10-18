@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 12:26+0200\n"
+"POT-Creation-Date: 2026-10-18 12:52+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -861,6 +861,10 @@ msgid "Not allowed for this helper link"
 msgstr "Non autorisé pour ce lien d'aide"
 
 #: internal/web/helpers.go
+msgid "Scorer links need the lane assignment"
+msgstr "Les liens de cibarre nécessitent l'attribution des cibles"
+
+#: internal/web/helpers.go
 msgid "This lane is not yours"
 msgstr "Cette cible n'est pas la tienne"
 
@@ -994,6 +998,10 @@ msgstr "Des programmes à plusieurs tentatives utilisent ce module"
 #: internal/web/modules.go
 msgid "Programmes with special prizes use this module"
 msgstr "Des programmes avec prix spéciaux utilisent ce module"
+
+#: internal/web/modules.go
+msgid "Shooters are registered on lanes"
+msgstr "Des tireurs sont inscrits sur des cibles"
 
 #: internal/web/modules.go
 msgid "Switch the online booking link off first"
@@ -1166,6 +1174,10 @@ msgstr "La cible %d est occupée"
 #, go-format
 msgid "Lane %d is out of service"
 msgstr "La cible %d est hors service"
+
+#: internal/web/registrations.go
+msgid "Lanes are not assigned at this event"
+msgstr "Cette manifestation n'attribue pas de cibles"
 
 #: internal/web/registrations.go
 msgid "The lane is occupied"

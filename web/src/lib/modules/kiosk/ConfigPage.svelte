@@ -4,7 +4,7 @@
 	import { toast } from 'svelte-sonner';
 	import { Switch } from '$lib/components/ui/switch';
 	import { updateEvent } from '$lib/tenant';
-	import type { EventProps } from '..';
+	import { has, type EventProps } from '..';
 	import KioskTokens from './KioskTokens.svelte';
 
 	let { tenantId, event }: EventProps = $props();
@@ -18,7 +18,7 @@
 </script>
 
 <div class="space-y-4">
-	{#if event.ranges.length}
+	{#if has(event, 'lanes')}
 		<label class="flex items-center justify-between gap-3 rounded-lg border bg-card p-4 text-sm">
 			{$t`Show lane status on the rankings`}
 			<Switch checked={event.settings.showLaneStatus ?? false} onCheckedChange={save} />

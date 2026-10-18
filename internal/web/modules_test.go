@@ -7,7 +7,9 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/standblatt/server/internal/domain"
 	"github.com/standblatt/server/internal/store"
+	"github.com/standblatt/server/internal/web"
 )
 
 // TestModules checks the gate, the default of all modules and that modules with data cannot be switched off.
@@ -25,7 +27,7 @@ func TestModules(t *testing.T) {
 		return ev
 	}
 
-	if ev := get(); len(ev.Modules) != 10 || slices.Contains(ev.Modules, "ammo") || len(ev.InUse) != 0 {
+	if ev := get(); len(ev.Modules) != 11 || slices.Contains(ev.Modules, "ammo") || len(ev.InUse) != 0 {
 		t.Fatalf("a new event has every module but the ammunition desk: %v %v", ev.Modules, ev.InUse)
 	}
 	code, b := e.do(boss, "GET", "/api/modules", nil)
@@ -112,4 +114,45 @@ func TestClubModules(t *testing.T) {
 	}
 	code, b = e.do(boss, "GET", base+"/layouts", nil)
 	expect(t, "forms are off", code, 404, b)
+}
+
+// TestLaneModule checks an event with a range that assigns no lanes.
+func TestLaneModule(t *testing.T) {
+	e := newEnv(t)
+	f := e.registrationFixture("Lanes")
+	e.user("boss", f.tenant, store.RoleAdmin)
+	boss := e.login("boss")
+	base := fmt.Sprintf("/api/tenants/%d", f.tenant)
+	evPath := fmt.Sprintf("%s/events/%d", base, f.event)
+	var ev store.Event
+	_, b := e.do(boss, "GET", evPath, nil)
+	json.Unmarshal(b, &ev)
+	ranges := []int64{ev.Ranges[0].ID}
+	update := func(mods ...string) (int, []byte) {
+		return e.do(boss, "PUT", evPath, map[string]any{"name": "Indoor", "startsOn": "2026-11-20", "rangeIds": ranges, "modules": mods})
+	}
+	code, b := update("kiosk")
+	expect(t, "lanes off", code, 204, b)
+	code, b = e.do(boss, "GET", evPath+"/lanes", nil)
+	if code != 200 || strings.TrimSpace(string(b)) != "[]" {
+		t.Fatalf("lanes without lane assignment: %d %s", code, b)
+	}
+	lane := 1
+	code, b = e.do(boss, "POST", evPath+"/registrations", web.RegistrationInput{ShooterID: f.shooter, Lane: &lane, Programmes: []domain.ProgrammeChoice{{ProgrammeID: f.main}}})
+	expect(t, "lane without lane assignment", code, 422, b)
+	code, b = e.do(boss, "POST", evPath+"/registrations", web.RegistrationInput{ShooterID: f.shooter, Programmes: []domain.ProgrammeChoice{{ProgrammeID: f.main}}})
+	expect(t, "register without a lane", code, 201, b)
+	code, b = e.do(boss, "POST", evPath+"/helper-codes", map[string]any{"name": "Scorer", "role": "scorer", "rangeId": ranges[0], "lanes": "1-2"})
+	expect(t, "helpers are off", code, 404, b)
+	code, b = update("helpers")
+	expect(t, "helpers on", code, 204, b)
+	code, b = e.do(boss, "POST", evPath+"/helper-codes", map[string]any{"name": "Scorer", "role": "scorer", "rangeId": ranges[0], "lanes": "1-2"})
+	expect(t, "scorer without lane assignment", code, 422, b)
+
+	code, b = update("lanes", "helpers")
+	expect(t, "lanes on", code, 204, b)
+	code, b = e.do(boss, "POST", evPath+"/registrations", web.RegistrationInput{ShooterID: f.youth, Lane: &lane, Programmes: []domain.ProgrammeChoice{{ProgrammeID: f.junior}}})
+	expect(t, "register on a lane", code, 201, b)
+	code, b = update("helpers")
+	expect(t, "lanes in use", code, 409, b)
 }

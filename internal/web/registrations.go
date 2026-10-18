@@ -70,6 +70,9 @@ func checkLane(rangeID *int64, lane *int, rules store.EventRules) (*int64, error
 	if lane == nil {
 		return nil, nil
 	}
+	if !rules.Lanes {
+		return nil, invalid("Lanes are not assigned at this event")
+	}
 	if rangeID == nil && len(rules.RangeOrder) == 1 {
 		rangeID = &rules.RangeOrder[0]
 	}
@@ -279,11 +282,14 @@ func (s *Server) laneStates(ctx context.Context, tenantID, eventID int64) ([]Ran
 	if err != nil {
 		return nil, notFound(err, "Event not found")
 	}
+	out := []RangeLanes{}
+	if !rules.Lanes {
+		return out, nil
+	}
 	regs, err := s.Store.ListRegistrations(ctx, tenantID, eventID, true)
 	if err != nil {
 		return nil, err
 	}
-	out := []RangeLanes{}
 	for _, rangeID := range rules.RangeOrder {
 		rr := rules.Ranges[rangeID]
 		reservations, err := s.Store.ActiveReservations(ctx, rangeID, time.Now())

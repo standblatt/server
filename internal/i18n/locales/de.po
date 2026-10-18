@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 12:26+0200\n"
+"POT-Creation-Date: 2026-10-18 12:52+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -861,6 +861,10 @@ msgid "Not allowed for this helper link"
 msgstr "Für diesen Helferlink nicht erlaubt"
 
 #: internal/web/helpers.go
+msgid "Scorer links need the lane assignment"
+msgstr "Warner-Links brauchen die Scheibenzuteilung"
+
+#: internal/web/helpers.go
 msgid "This lane is not yours"
 msgstr "Diese Scheibe gehört nicht zu dir"
 
@@ -994,6 +998,10 @@ msgstr "Programme mit mehreren Durchgängen verwenden dieses Modul"
 #: internal/web/modules.go
 msgid "Programmes with special prizes use this module"
 msgstr "Programme mit Sonderpreisen verwenden dieses Modul"
+
+#: internal/web/modules.go
+msgid "Shooters are registered on lanes"
+msgstr "Schützen sind auf Scheiben angemeldet"
 
 #: internal/web/modules.go
 msgid "Switch the online booking link off first"
@@ -1166,6 +1174,10 @@ msgstr "Scheibe %d ist besetzt"
 #, go-format
 msgid "Lane %d is out of service"
 msgstr "Scheibe %d ist ausser Betrieb"
+
+#: internal/web/registrations.go
+msgid "Lanes are not assigned at this event"
+msgstr "An diesem Anlass werden keine Scheiben zugeteilt"
 
 #: internal/web/registrations.go
 msgid "The lane is occupied"

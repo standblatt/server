@@ -906,10 +906,6 @@ msgstr "awards"
 msgid "Awards"
 msgstr "Awards"
 
-#: src/lib/modules/presets.ts
-msgid "Awards and club competition, kiosk displays and helper links."
-msgstr "Awards and club competition, kiosk displays and helper links."
-
 #: src/lib/EventDesk.svelte
 #: src/lib/ResultsDialog.svelte
 msgid "awards handed out"
@@ -2549,6 +2545,10 @@ msgstr "Lane {0}: reserved"
 msgid "Lane {lane}"
 msgstr "Lane {lane}"
 
+#: src/lib/modules/lanes/index.ts
+msgid "Lane assignment"
+msgstr "Lane assignment"
+
 #: src/lib/modules/reservations/index.ts
 msgid "Lane bookings"
 msgstr "Lane bookings"
@@ -2605,6 +2605,10 @@ msgstr "Lanes reserved for groups and clubs, shown on the dashboard; clubs can a
 #: src/lib/modules/reservations/Page.svelte
 msgid "Lanes reserved for trainings or groups; they show as reserved from the lead time on."
 msgstr "Lanes reserved for trainings or groups; they show as reserved from the lead time on."
+
+#: src/lib/modules/presets.ts
+msgid "Lanes, awards and club competition, kiosk displays and helper links."
+msgstr "Lanes, awards and club competition, kiosk displays and helper links."
 
 #: src/lib/modules/helpers/HelperCodes.svelte
 msgid "Lanes, e.g. 1-5, 8"
@@ -4622,6 +4626,10 @@ msgstr "Shooters"
 #: src/lib/ProgrammeEditor.svelte
 msgid "Shooters are registered for this programme: the series stay as they are, and age categories and awards can be added but not removed."
 msgstr "Shooters are registered for this programme: the series stay as they are, and age categories and awards can be added but not removed."
+
+#: src/lib/modules/lanes/index.ts
+msgid "Shooters are registered on lanes: lane grid on the dashboard, lane status on kiosk displays and scorer links."
+msgstr "Shooters are registered on lanes: lane grid on the dashboard, lane status on kiosk displays and scorer links."
 
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 msgid "Shooters found"

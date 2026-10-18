@@ -41,8 +41,8 @@ type Event struct {
 	Locale     string          `json:"locale" enum:"en,de,fr,it" doc:"Language of documents and kiosk displays"`
 	Settings   EventSettings   `json:"settings"`
 	ArchivedAt *time.Time      `json:"archivedAt,omitempty" doc:"Set when the event is archived: everything stays readable, nothing can be changed"`
-	Modules    []string        `json:"modules" enum:"reservations,lane_sheet,control_strip,ammo,attempts,awards,special_prizes,club_competition,classifications,kiosk,helpers" doc:"The modules that are on: the chosen ones, the ones with data and what they require"`
-	InUse      []string        `json:"modulesInUse" enum:"reservations,lane_sheet,control_strip,ammo,attempts,awards,special_prizes,club_competition,classifications,kiosk,helpers" doc:"The modules with data; they cannot be switched off"`
+	Modules    []string        `json:"modules" enum:"lanes,reservations,lane_sheet,control_strip,ammo,attempts,awards,special_prizes,club_competition,classifications,kiosk,helpers" doc:"The modules that are on: the chosen ones, the ones with data and what they require"`
+	InUse      []string        `json:"modulesInUse" enum:"lanes,reservations,lane_sheet,control_strip,ammo,attempts,awards,special_prizes,club_competition,classifications,kiosk,helpers" doc:"The modules with data; they cannot be switched off"`
 }
 
 // EventInput holds the editable fields of an event.
@@ -56,7 +56,7 @@ type EventInput struct {
 	Timezone  string          `json:"timezone" required:"false"`
 	Locale    string          `json:"locale" required:"false" enum:"en,de,fr,it"`
 	Settings  EventSettings   `json:"settings" required:"false"`
-	Modules   []string        `json:"modules,omitempty" required:"false" enum:"reservations,lane_sheet,control_strip,ammo,attempts,awards,special_prizes,club_competition,classifications,kiosk,helpers" doc:"The modules to switch on; left out: all but the ammunition desk when creating, unchanged when updating"`
+	Modules   []string        `json:"modules,omitempty" required:"false" enum:"lanes,reservations,lane_sheet,control_strip,ammo,attempts,awards,special_prizes,club_competition,classifications,kiosk,helpers" doc:"The modules to switch on; left out: all but the ammunition desk when creating, unchanged when updating"`
 }
 
 var eventCols = `e.id,

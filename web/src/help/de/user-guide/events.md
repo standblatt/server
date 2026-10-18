@@ -44,6 +44,7 @@ Seitenleiste, Dashboard, Programm-Editor, Ranglisten und Berichten.
 
 | Modul | Was es bringt |
 |---|---|
+| Scheibenzuteilung | Schützen werden auf Scheiben angemeldet: das Scheibenraster im Dashboard, der Scheibenstatus auf Kiosk-Anzeigen und Warner-Links (braucht einen Stand; siehe unten) |
 | Reservationen | für Gruppen und Vereine reservierte Scheiben; seine Seite in der Konfiguration schaltet die [Online-Reservation](online-booking.md) ein, über die Vereine mit einem öffentlichen Link Scheiben anfragen (braucht einen Stand) |
 | Standblatt, Kontrollstreifen | die Dokumente, die bei der Anmeldung gedruckt werden; der Kontrollstreifen kann mit einer [Druckvorlage](print-forms.md#builtin) des Vereins drucken |
 | Munitionsausgabe | der Knopf **Munition** im Dashboard und für die Munitionsausgabe (siehe [Helfer](helpers.md#ammunition)); aus lassen, wo die Schützen ihre eigene mitbringen, z. B. Luftpistole und Luftgewehr |
@@ -60,9 +61,9 @@ schaltet nur Module ein:
 
 | Art | Module |
 |---|---|
-| Schützenfest | Reservationen, Standblatt, Kontrollstreifen, Auszeichnungen, Sonderpreise, Vereinskonkurrenz, Kiosk-Anzeigen, Helferlinks |
+| Schützenfest | Scheibenzuteilung, Reservationen, Standblatt, Kontrollstreifen, Auszeichnungen, Sonderpreise, Vereinskonkurrenz, Kiosk-Anzeigen, Helferlinks |
 | Jahresprogramm oder Training | Durchgänge, Wertungen |
-| Feldschiessen | Auszeichnungen, Vereinskonkurrenz, Kiosk-Anzeigen, Helferlinks |
+| Feldschiessen | Scheibenzuteilung, Auszeichnungen, Vereinskonkurrenz, Kiosk-Anzeigen, Helferlinks |
 | Vereinsmeisterschaft | Durchgänge, Wertungen, Kiosk-Anzeigen |
 | Eigene Auswahl | keine |
 
@@ -88,13 +89,15 @@ Vereinsteil der Seitenleiste (Admins) schaltet sie ein und aus:
 
 ## Anlässe ohne Scheiben {#no-lanes}
 
-Ein Anlass braucht keinen Stand, z. B. ein Jahresprogramm oder ein
-Feldschiessen, dessen Resultate auf Papier oder aus der Trefferanzeige
-kommen. Ohne Stand gibt es kein Scheibenraster, und das Modul Reservationen
-steht nicht zur Verfügung; Schützen werden ohne Scheibe angemeldet, und ihre
-Resultate werden wie gewohnt erfasst. Dokumente lassen sich weiterhin als
-PDF öffnen, gehen aber nicht an einen Druck-Agenten, weil Druck-Agenten zu
-einem Stand gehören.
+Ein Anlass ohne Scheiben, z. B. ein Jahresprogramm oder ein Feldschiessen,
+dessen Resultate auf Papier oder aus der Trefferanzeige kommen, hat entweder
+keinen Stand oder schaltet das Modul *Scheibenzuteilung* aus. Dann gibt es
+kein Scheibenraster, keine Reservationen und keine Warner-Links; Schützen
+werden ohne Scheibe angemeldet, und ihre Resultate werden wie gewohnt
+erfasst. Mit Stand, aber ohne Scheibenzuteilung, drucken Dokumente weiterhin
+über den Druck-Agenten des Stands, und Programme lassen sich weiterhin an
+den Stand binden; ohne Stand öffnen sich Dokumente als PDF, weil
+Druck-Agenten zu einem Stand gehören.
 
 ## Für nächstes Jahr kopieren {#copy}
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 12:26+0200\n"
+"POT-Creation-Date: 2026-10-18 12:52+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -861,6 +861,10 @@ msgid "Not allowed for this helper link"
 msgstr "Non consentito per questo link aiutante"
 
 #: internal/web/helpers.go
+msgid "Scorer links need the lane assignment"
+msgstr "I link per marcatori richiedono l'assegnazione dei bersagli"
+
+#: internal/web/helpers.go
 msgid "This lane is not yours"
 msgstr "Questo bersaglio non è il tuo"
 
@@ -994,6 +998,10 @@ msgstr "Programmi con più tentativi usano questo modulo"
 #: internal/web/modules.go
 msgid "Programmes with special prizes use this module"
 msgstr "Programmi con premi speciali usano questo modulo"
+
+#: internal/web/modules.go
+msgid "Shooters are registered on lanes"
+msgstr "Ci sono tiratori iscritti su bersagli"
 
 #: internal/web/modules.go
 msgid "Switch the online booking link off first"
@@ -1166,6 +1174,10 @@ msgstr "Il bersaglio %d è occupato"
 #, go-format
 msgid "Lane %d is out of service"
 msgstr "Il bersaglio %d è fuori servizio"
+
+#: internal/web/registrations.go
+msgid "Lanes are not assigned at this event"
+msgstr "Questa manifestazione non assegna bersagli"
 
 #: internal/web/registrations.go
 msgid "The lane is occupied"

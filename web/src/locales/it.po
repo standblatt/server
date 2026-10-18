@@ -906,10 +906,6 @@ msgstr "distinzioni"
 msgid "Awards"
 msgstr "Distinzioni"
 
-#: src/lib/modules/presets.ts
-msgid "Awards and club competition, kiosk displays and helper links."
-msgstr "Distinzioni e concorso di sezione, display chiosco e link aiutante."
-
 #: src/lib/EventDesk.svelte
 #: src/lib/ResultsDialog.svelte
 msgid "awards handed out"
@@ -2549,6 +2545,10 @@ msgstr "Bersaglio {0}: prenotato"
 msgid "Lane {lane}"
 msgstr "Bersaglio {lane}"
 
+#: src/lib/modules/lanes/index.ts
+msgid "Lane assignment"
+msgstr "Assegnazione dei bersagli"
+
 #: src/lib/modules/reservations/index.ts
 msgid "Lane bookings"
 msgstr "Prenotazioni di bersagli"
@@ -2605,6 +2605,10 @@ msgstr "Bersagli riservati a gruppi e società, visibili sulla dashboard; le soc
 #: src/lib/modules/reservations/Page.svelte
 msgid "Lanes reserved for trainings or groups; they show as reserved from the lead time on."
 msgstr "Bersagli prenotati per allenamenti o gruppi; risultano prenotati a partire dal tempo di preavviso."
+
+#: src/lib/modules/presets.ts
+msgid "Lanes, awards and club competition, kiosk displays and helper links."
+msgstr "Bersagli, distinzioni e concorso di sezione, display chiosco e link aiutante."
 
 #: src/lib/modules/helpers/HelperCodes.svelte
 msgid "Lanes, e.g. 1-5, 8"
@@ -4622,6 +4626,10 @@ msgstr "Tiratori"
 #: src/lib/ProgrammeEditor.svelte
 msgid "Shooters are registered for this programme: the series stay as they are, and age categories and awards can be added but not removed."
 msgstr "Ci sono tiratori iscritti a questo programma: le serie restano come sono, categorie d'età e distinzioni possono essere aggiunte ma non rimosse."
+
+#: src/lib/modules/lanes/index.ts
+msgid "Shooters are registered on lanes: lane grid on the dashboard, lane status on kiosk displays and scorer links."
+msgstr "I tiratori sono iscritti su bersagli: griglia dei bersagli sulla dashboard, stato dei bersagli sui display chiosco e link per marcatori."
 
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 msgid "Shooters found"

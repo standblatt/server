@@ -25,7 +25,8 @@ Programme bearbeiten, Ranglisten, Statistik, Löschen.
 
 1. Gib einen Namen ein (wer den Link bekommt, z. B. *Warner Stand A*), wähle
    die Rolle und beim Warner den Stand und die Scheiben (`1-5, 8`). Ein
-   Warner betreut meist mehrere Scheiben.
+   Warner betreut meist mehrere Scheiben. Warner gibt es nur, solange der
+   Anlass Scheiben zuteilt (Modul *Scheibenzuteilung*).
 2. **Helferlink erstellen**; kopiere den Link und schicke ihn dem Helfer
    (z. B. per Messenger). Er wird nur einmal angezeigt.
 3. Der Helfer öffnet den Link; er gilt, bis er widerrufen oder der Anlass

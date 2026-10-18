@@ -46,6 +46,7 @@ dall’editor dei programmi, dalle classifiche e dai rapporti.
 
 | Modulo | Cosa aggiunge |
 |---|---|
+| Assegnazione dei bersagli | i tiratori vengono iscritti su bersagli: la griglia dei bersagli sulla dashboard, lo stato dei bersagli sui display chiosco e i link per marcatori (richiede uno stand; vedi sotto) |
 | Prenotazioni | bersagli riservati a gruppi e società; la sua pagina nella configurazione attiva la [prenotazione online](online-booking.md), con cui le società chiedono bersagli tramite un link pubblico (richiede uno stand) |
 | Foglio di stand, Striscia di controllo | i documenti stampati all’iscrizione; la striscia di controllo può stamparsi con un [modello di stampa](print-forms.md#builtin) della società |
 | Distribuzione munizioni | il pulsante **Munizione** sulla dashboard e per la distribuzione munizioni (vedi [Aiutanti](helpers.md#ammunition)); lascialo disattivato dove i tiratori portano le proprie, p. es. pistola e carabina ad aria compressa |
@@ -62,9 +63,9 @@ moduli:
 
 | Tipo | Moduli |
 |---|---|
-| Tiro di festa | Prenotazioni, Foglio di stand, Striscia di controllo, Distinzioni, Premi speciali, Concorso di sezione, Display chiosco, Link aiutante |
+| Tiro di festa | Assegnazione dei bersagli, Prenotazioni, Foglio di stand, Striscia di controllo, Distinzioni, Premi speciali, Concorso di sezione, Display chiosco, Link aiutante |
 | Programma annuale o allenamento | Tentativi, Classifiche generali |
-| Tiro in campagna | Distinzioni, Concorso di sezione, Display chiosco, Link aiutante |
+| Tiro in campagna | Assegnazione dei bersagli, Distinzioni, Concorso di sezione, Display chiosco, Link aiutante |
 | Campionato sociale | Tentativi, Classifiche generali, Display chiosco |
 | Selezione personalizzata | nessuno |
 
@@ -91,13 +92,15 @@ laterale (admin) li attiva e disattiva:
 
 ## Manifestazioni senza bersagli {#no-lanes}
 
-Una manifestazione non ha bisogno di uno stand, p. es. un programma annuale
-o un Tiro in campagna i cui risultati arrivano su carta o dall’impianto di
-segnalazione. Senza stand non c’è la griglia dei bersagli, e il modulo
-Prenotazioni non è disponibile; i tiratori vengono iscritti senza bersaglio
-e i loro risultati si registrano come di consueto. I documenti si aprono
-ancora in PDF, ma non vanno a un agente di stampa, perché gli agenti di
-stampa appartengono a uno stand.
+Una manifestazione senza bersagli, p. es. un programma annuale o un Tiro in
+campagna i cui risultati arrivano su carta o dall’impianto di segnalazione,
+o non ha uno stand o disattiva il modulo *Assegnazione dei bersagli*. Allora
+non c’è la griglia dei bersagli, né prenotazioni né link per marcatori; i
+tiratori vengono iscritti senza bersaglio e i loro risultati si registrano
+come di consueto. Con uno stand ma senza assegnazione dei bersagli, i
+documenti si stampano ancora sull’agente di stampa dello stand e i programmi
+si possono ancora legare allo stand; senza stand, i documenti si aprono in
+PDF, perché gli agenti di stampa appartengono a uno stand.
 
 ## Copia per l’anno prossimo {#copy}
 
