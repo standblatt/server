@@ -47,7 +47,7 @@ test.describe("documents and printing", () => {
   test("routes documents to a print agent", async ({ page }) => {
     await login(page, admin);
     await page.goto(`/t/${ids.tenant}/ranges`);
-    await c(c(page, "tr", "10m"), "a", "Printing").click();
+    await c(c(page, "tr", "10m"), "a", "Set up the printers").click();
     await page.locator("input[aria-label='Agent name']").fill("Pi hall 1");
     await c(page, "button", "Add print agent").click();
     const agent = { Authorization: `Bearer ${await page.locator("[data-testid=agent-token]").innerText()}` };

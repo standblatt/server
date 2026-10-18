@@ -3950,7 +3950,6 @@ msgstr "impression"
 
 #: src/routes/t/[tenantId]/+layout.svelte
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
-#: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "Printing"
 msgstr "Impression"
 
@@ -4841,6 +4840,7 @@ msgid "Set up the authenticator app"
 msgstr "Configurer l’app d’authentification"
 
 #: src/routes/connect/+page.svelte
+#: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "Set up the printers"
 msgstr "Configurer les imprimantes"
 

@@ -15,7 +15,7 @@ Every Print button prints on the range's printer if one is set up and its print 
 
 ## Setting up printers
 
-**Ranges → Printing** (admins):
+**Ranges → Set up the printers** (admins):
 
 ![Printing](../images/screenshots/printing.png){ .screenshot }
 
@@ -28,4 +28,4 @@ A job that the agent does not confirm within two minutes is retried; after three
 
 ## Connecting a computer by code {#connect}
 
-The Standblatt app on a computer next to the printers needs no token: it shows a code such as `K7QD-4MZP` and opens **Connect a print agent** in the browser. There, log in if asked, check the computer named on the page, choose the club and range and the agent's name, and **Connect**. Only members who may manage ranges can connect a computer; a code is valid for ten minutes. The app then connects by itself, and the agent appears under **Ranges → Printing** with its version and operating system.
+The Standblatt app on a computer next to the printers needs no token: it shows a code such as `K7QD-4MZP` and opens **Connect a print agent** in the browser. There, log in if asked, check the computer named on the page, choose the club and range and the agent's name, and **Connect**. Only members who may manage ranges can connect a computer; a code is valid for ten minutes. The app then connects by itself, and the agent appears under **Ranges → Set up the printers** with its version and operating system.

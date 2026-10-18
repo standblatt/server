@@ -13,7 +13,7 @@
   [Manifestazioni](events.md)), un programma può essere legato a uno di essi
   (vedi [Programmi](programmes.md)) e un agente di stampa può servirli
   entrambi (vedi [Stampa](printing.md)).
-- **Stampa** apre le stampanti e gli agenti di stampa dello stand (vedi
+- **Configura le stampanti** apre le stampanti e gli agenti di stampa dello stand (vedi
   [Stampa](printing.md)).
 
 Uno stand con manifestazioni non si può eliminare. Le prenotazioni dei

@@ -20,7 +20,7 @@ se il telefono chiede prima un altro tocco, appare un avviso con il pulsante
 
 ## Configurare le stampanti
 
-**Stand di tiro → Stampa** (admin):
+**Stand di tiro → Configura le stampanti** (admin):
 
 ![Stampa](../images/screenshots/printing.png){ .screenshot }
 
@@ -56,4 +56,4 @@ stampa** nel browser. Accedi se richiesto, controlla il computer indicato,
 scegli società, stand di tiro e nome dell’agente e **Collega**. Solo i
 membri che possono gestire gli stand di tiro possono collegare un computer;
 un codice vale dieci minuti. L’app si collega poi da sola e l’agente compare
-in **Stand di tiro → Stampa** con la sua versione e il sistema operativo.
+in **Stand di tiro → Configura le stampanti** con la sua versione e il sistema operativo.

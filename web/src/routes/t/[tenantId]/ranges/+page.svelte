@@ -96,7 +96,7 @@
 					<Table.Cell class="hidden sm:table-cell">{formatLanes(s.disabledLanes) || '–'}</Table.Cell>
 					<Table.Cell>
 						<div class="flex justify-end gap-1">
-							<Button size="sm" variant="outline" href="/t/{tenantId}/ranges/{s.id}/printing" aria-label={$t`Printing`}><Printer /><span class="hidden sm:inline">{$t`Printing`}</span></Button>
+							<Button size="sm" variant="outline" href="/t/{tenantId}/ranges/{s.id}/printing" aria-label={$t`Set up the printers`}><Printer /><span class="hidden sm:inline">{$t`Set up the printers`}</span></Button>
 							<DropdownMenu.Root>
 								<DropdownMenu.Trigger>
 									{#snippet child({ props })}<Button variant="ghost" size="icon-sm" aria-label={$t`Actions for ${s.name}`} {...props}><MoreHorizontal /></Button>{/snippet}

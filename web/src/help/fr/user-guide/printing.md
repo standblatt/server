@@ -20,7 +20,7 @@ d’abord un autre toucher, une note avec le bouton **Partager** apparaît.
 
 ## Configurer les imprimantes
 
-**Stands de tir → Impression** (admins) :
+**Stands de tir → Configurer les imprimantes** (admins) :
 
 ![Impression](../images/screenshots/printing.png){ .screenshot }
 
@@ -59,5 +59,5 @@ nécessaire, vérifie l’ordinateur indiqué, choisis la société, le stand de
 tir et le nom de l’agent, puis **Connecter**. Seuls les membres qui peuvent
 gérer les stands de tir peuvent connecter un ordinateur ; un code est
 valable dix minutes. L’application se connecte ensuite d’elle-même, et
-l’agent apparaît sous **Stands de tir → Impression** avec sa version et son
+l’agent apparaît sous **Stands de tir → Configurer les imprimantes** avec sa version et son
 système d’exploitation.

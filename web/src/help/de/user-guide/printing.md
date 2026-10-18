@@ -20,7 +20,7 @@ erscheint ein Hinweis mit dem Button **Teilen**.
 
 ## Drucker einrichten
 
-**Schiessstände → Drucken** (Admins):
+**Schiessstände → Drucker einrichten** (Admins):
 
 ![Drucken](../images/screenshots/printing.png){ .screenshot }
 
@@ -57,4 +57,4 @@ wähle Verein, Schiessstand und den Namen des Agenten und klicke
 **Verbinden**. Nur Mitglieder, die Schiessstände verwalten dürfen, können
 einen Computer verbinden; ein Code gilt zehn Minuten. Danach verbindet sich
 die App von selbst, und der Agent erscheint unter **Schiessstände →
-Drucken** mit seiner Version und seinem Betriebssystem.
+Drucker einrichten** mit seiner Version und seinem Betriebssystem.

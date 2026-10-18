@@ -14,7 +14,7 @@
   [Anlässe](events.md)), ein Programm lässt sich an einen davon binden
   (siehe [Programme](programmes.md)), und ein Druck-Agent kann beide
   bedienen (siehe [Drucken](printing.md)).
-- **Drucken** öffnet die Drucker und Druck-Agenten des Schiessstands (siehe
+- **Drucker einrichten** öffnet die Drucker und Druck-Agenten des Schiessstands (siehe
   [Drucken](printing.md)).
 
 Ein Schiessstand mit Anlässen lässt sich nicht
