@@ -27,6 +27,7 @@ const (
 	LaneSheet       = "lane_sheet"
 	ControlStrip    = "control_strip"
 	Ammo            = "ammo"
+	Forms           = "forms"
 )
 
 // Module is a building block; Requires names modules that must be on as well, NeedsRange is for event modules
@@ -53,10 +54,14 @@ var All = []Module{
 	{Key: Classifications, Level: Event, Requires: []string{}},
 	{Key: Kiosk, Level: Event, Requires: []string{}},
 	{Key: Helpers, Level: Event, Requires: []string{}},
+	{Key: Forms, Level: Club, Requires: []string{}},
 }
 
 // EventEnum is the comma separated list of event module keys for huma enum tags.
 const EventEnum = "reservations,booking,lane_sheet,control_strip,ammo,attempts,awards,special_prizes,club_competition,classifications,kiosk,helpers"
+
+// ClubEnum is the comma separated list of club module keys for huma enum tags.
+const ClubEnum = "forms"
 
 // Get returns the module of a key.
 func Get(key string) (Module, bool) {

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 09:26+0000\n"
+"POT-Creation-Date: 2026-10-18 09:39+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -1826,8 +1826,7 @@ msgstr "Fichier de programme"
 #: ../src/help/en/reference/programme-file.md:4
 #, no-wrap
 msgid "**Export** in the programme menu or on the programme page downloads a programme as `<name>.programme.json`; **Programme file** under *Add from …* imports it into another event or another club. The platform operator uploads the same files to the global programme library.\n"
-msgstr ""
-"**Exporter** dans le menu du programme ou sur la page du programme télécharge un programme en `<name>.programme.json` ; **Fichier de programme** sous *Ajouter depuis …* l’importe dans une autre manifestation ou une autre société. L’exploitant de la plateforme téléverse les mêmes fichiers dans la bibliothèque globale de programmes.\n"
+msgstr "**Exporter** dans le menu du programme ou sur la page du programme télécharge un programme en `<name>.programme.json` ; **Fichier de programme** sous *Ajouter depuis …* l’importe dans une autre manifestation ou une autre société. L’exploitant de la plateforme téléverse les mêmes fichiers dans la bibliothèque globale de programmes.\n"
 
 #. type: Fenced code block (json)
 #: ../src/help/en/reference/programme-file.md:5
@@ -2837,14 +2836,39 @@ msgstr ""
 "si la réservation fixe d’autres horaires pour un jour (voir [réservation en "
 "ligne](online-booking.md))."
 
-#. type: Title ##
+#. type: Title ###
 #: ../src/help/en/user-guide/events.md:65
+#, no-wrap
+msgid "Club modules {#club-modules}"
+msgstr "Modules de la société {#club-modules}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:68
+msgid ""
+"Some modules belong to the club rather than to an event. **Club modules** in "
+"the club part of the sidebar (admins) switches them on and off:"
+msgstr "Certains modules appartiennent à la société plutôt qu'à une manifestation. **Modules de la société** dans la partie société de la barre latérale (admins) les active et les désactive :"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:72
+#, no-wrap
+msgid ""
+"| Module | What it adds |\n"
+"|---|---|\n"
+"| Print forms | forms for pre-printed sheets and the *Print form* section of every programme (see [Print forms](print-forms.md)) |\n"
+msgstr ""
+"| Module | Ce qu'il ajoute |\n"
+"|---|---|\n"
+"| Modèles d’impression | des modèles pour feuilles préimprimées et la section *Modèle d’impression* de chaque programme (voir [Modèles d’impression](print-forms.md)) |\n"
+
+#. type: Title ##
+#: ../src/help/en/user-guide/events.md:73
 #, no-wrap
 msgid "Events without lanes {#no-lanes}"
 msgstr "Manifestations sans cibles {#no-lanes}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:68
+#: ../src/help/en/user-guide/events.md:76
 msgid ""
 "An event needs no range, e.g. an annual programme or a Feldschiessen whose "
 "results come on paper or from the scoring system. Without a range there is "
@@ -2863,13 +2887,13 @@ msgstr ""
 "appartiennent à un stand."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:69
+#: ../src/help/en/user-guide/events.md:77
 #, no-wrap
 msgid "Copy for next year {#copy}"
 msgstr "Copier pour l’année prochaine {#copy}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:72
+#: ../src/help/en/user-guide/events.md:80
 msgid ""
 "On **Copy & close** in the configuration, **Copy for next year** creates a "
 "new event with the same ranges, organizer, language, settings, modules and "
@@ -2891,20 +2915,20 @@ msgstr ""
 "*42.*) incrémentée et la date un an plus tard ; adaptez les deux au besoin."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:74
+#: ../src/help/en/user-guide/events.md:82
 msgid "![Copy an event](../images/screenshots/copy-event.png){ .screenshot }"
 msgstr ""
 "![Copier une manifestation](../images/screenshots/copy-event.png)"
 "{ .screenshot }"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:75
+#: ../src/help/en/user-guide/events.md:83
 #, no-wrap
 msgid "Close {#close}"
 msgstr "Clôturer {#close}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:78
+#: ../src/help/en/user-guide/events.md:86
 msgid ""
 "When an event is over and the rankings are checked, **Close** it on **Copy & "
 "close** in the configuration. Closing releases the rankings: shooters with a "
@@ -2931,13 +2955,13 @@ msgstr ""
 "prochaine fonctionne."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:79
+#: ../src/help/en/user-guide/events.md:87
 #, no-wrap
 msgid "Delete"
 msgstr "Supprimer"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:81
+#: ../src/help/en/user-guide/events.md:89
 #, no-wrap
 msgid "**Delete** (on **Copy & close**) removes an event, but only while nobody is registered for it.\n"
 msgstr "**Supprimer** (sous **Copier & clôturer**) retire une manifestation, mais seulement tant que personne n’y est inscrit.\n"
@@ -3283,13 +3307,10 @@ msgid ""
 "A print form puts results onto a pre-printed sheet, e.g. the lane sheets the "
 "army supplies for the obligatory programme: the shots are entered at the "
 "lane or afterwards, and the sheet is printed instead of filled in by hand. "
-"Filling in sheets by hand stays possible; print forms are optional."
-msgstr ""
-"Un modèle d’impression place les résultats sur une feuille préimprimée, p. "
-"ex. les feuilles de stand que l’armée fournit pour le programme "
-"obligatoire : les coups sont saisis à la cible ou après coup, et la feuille "
-"est imprimée au lieu d’être remplie à la main. Remplir à la main reste "
-"possible ; les modèles sont facultatifs."
+"Filling in sheets by hand stays possible; print forms are optional and can "
+"be switched off under **Club modules** (see [Club modules](events.md#club-"
+"modules))."
+msgstr "Un modèle d’impression place les résultats sur une feuille préimprimée, p. ex. les feuilles de stand que l’armée fournit pour le programme obligatoire : les coups sont saisis à la cible ou après coup, et la feuille est imprimée au lieu d’être remplie à la main. Remplir à la main reste possible ; les modèles sont facultatifs et peuvent être désactivés sous **Modules de la société** (voir [Modules de la société](events.md#club-modules))."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/print-forms.md:5
@@ -3492,14 +3513,14 @@ msgstr "Utiliser un modèle {#use}"
 #: ../src/help/en/user-guide/print-forms.md:43
 msgid ""
 "Under **Configuration** → **Programmes** of the event, open a programme and "
-"choose its **Print form** in the section **Use**; this works while shooters "
-"are registered. Every completed programme then offers **Print onto form** in "
-"the results: at the desk, on the **Enter results** page and on scorer links "
-"at the lane (see [Helpers](helpers.md)). With a print agent and a printer "
-"chosen for *Print forms* under **Ranges → Printing**, the sheet goes to that "
-"printer (e.g. its manual feed), otherwise the PDF opens (see [Printing]"
-"(printing.md))."
-msgstr "Sous **Configuration** → **Programmes** de la manifestation, ouvre un programme et choisis son **Modèle d’impression** dans la section **Utilisation** ; cela fonctionne aussi quand des tireurs sont inscrits. Chaque programme terminé propose alors **Imprimer sur le modèle** dans les résultats : au desk, sur la page **Saisir les résultats** et par les liens de secrétaire à la cible (voir [Aides](helpers.md)). Avec un agent d’impression et une imprimante choisie pour *Modèles d’impression* sous **Stands de tir → Impression**, la feuille part vers cette imprimante (p. ex. son alimentation manuelle), sinon le PDF s’ouvre (voir [Impression](printing.md))."
+"choose its **Print form** in the section of the same name; this works while "
+"shooters are registered. Every completed programme then offers **Print onto "
+"form** in the results: at the desk, on the **Enter results** page and on "
+"scorer links at the lane (see [Helpers](helpers.md)). With a print agent and "
+"a printer chosen for *Print forms* under **Ranges → Printing**, the sheet "
+"goes to that printer (e.g. its manual feed), otherwise the PDF opens (see "
+"[Printing](printing.md))."
+msgstr "Sous **Configuration** → **Programmes** de la manifestation, ouvre un programme et choisis son **Modèle d’impression** dans la section du même nom ; cela fonctionne aussi quand des tireurs sont inscrits. Chaque programme terminé propose alors **Imprimer sur le modèle** dans les résultats : au desk, sur la page **Saisir les résultats** et par les liens de secrétaire à la cible (voir [Aides](helpers.md)). Avec un agent d’impression et une imprimante choisie pour *Modèles d’impression* sous **Stands de tir → Impression**, la feuille part vers cette imprimante (p. ex. son alimentation manuelle), sinon le PDF s’ouvre (voir [Impression](printing.md))."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:44
@@ -3584,13 +3605,19 @@ msgid ""
 "the programme, plus a section for each switched-on [module]"
 "(events.md#modules) that adds to programmes; **Create** or **Save** at the "
 "bottom saves them together."
-msgstr "Un clic sur un programme dans la liste ouvre sa page. Elle contient les sections du programme, plus une section pour chaque [module](events.md#modules) activé qui complète les programmes ; **Créer** ou **Enregistrer** en bas les enregistre ensemble."
+msgstr ""
+"Un clic sur un programme dans la liste ouvre sa page. Elle contient les "
+"sections du programme, plus une section pour chaque [module]"
+"(events.md#modules) activé qui complète les programmes ; **Créer** ou "
+"**Enregistrer** en bas les enregistre ensemble."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/programmes.md:19
 msgid ""
 "![Programme page](../images/screenshots/programme-editor.png){ .screenshot }"
-msgstr "![Page du programme](../images/screenshots/programme-editor.png){ .screenshot }"
+msgstr ""
+"![Page du programme](../images/screenshots/programme-editor.png)"
+"{ .screenshot }"
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/programmes.md:27
@@ -3600,7 +3627,12 @@ msgid ""
 "names of the event's programmes, and as soon as the name matches one, the "
 "page says that you are creating a variant and warns when the variant name is "
 "empty or already taken."
-msgstr "**Nom** et **Variante** : les programmes de même nom sont des variantes les uns des autres ; un tireur s’inscrit à l’une d’elles. Le champ du nom propose les noms des programmes de la manifestation, et dès que le nom correspond à l’un d’eux, la page indique que tu crées une variante et avertit si le nom de variante est vide ou déjà pris."
+msgstr ""
+"**Nom** et **Variante** : les programmes de même nom sont des variantes les "
+"uns des autres ; un tireur s’inscrit à l’une d’elles. Le champ du nom "
+"propose les noms des programmes de la manifestation, et dès que le nom "
+"correspond à l’un d’eux, la page indique que tu crées une variante et "
+"avertit si le nom de variante est vide ou déjà pris."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/programmes.md:27
@@ -3616,7 +3648,10 @@ msgstr ""
 msgid ""
 "**Counts for the club competition** and **Show on kiosk displays**: only "
 "while the modules *Club competition* and *Kiosk displays* are on."
-msgstr "**Compte pour le concours de sections** et **Afficher sur les écrans kiosque** : seulement tant que les modules *Concours de sections* et *Affichages kiosque* sont activés."
+msgstr ""
+"**Compte pour le concours de sections** et **Afficher sur les écrans "
+"kiosque** : seulement tant que les modules *Concours de sections* et "
+"*Affichages kiosque* sont activés."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/programmes.md:27
@@ -3637,7 +3672,9 @@ msgstr ""
 msgid ""
 "**Attempts** (module *Attempts*, see below): how often a shooter may shoot "
 "the programme at the event."
-msgstr "**Tentatives** (module *Tentatives*, voir plus bas) : combien de fois un tireur peut tirer le programme lors de la manifestation."
+msgstr ""
+"**Tentatives** (module *Tentatives*, voir plus bas) : combien de fois un "
+"tireur peut tirer le programme lors de la manifestation."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/programmes.md:27
@@ -3658,7 +3695,11 @@ msgid ""
 "**Awards** (module *Awards*): name, kind (wreath card, prize in kind or cash "
 "prize paid out in money), value and the minimum total per age category; "
 "leave a category empty where the award is not available."
-msgstr "**Distinctions** (module *Distinctions*) : nom, type (carte-couronne, prix en nature ou prix en espèces versé en argent), valeur et total minimal par catégorie d’âge ; laisse une catégorie vide là où la distinction n’est pas disponible."
+msgstr ""
+"**Distinctions** (module *Distinctions*) : nom, type (carte-couronne, prix "
+"en nature ou prix en espèces versé en argent), valeur et total minimal par "
+"catégorie d’âge ; laisse une catégorie vide là où la distinction n’est pas "
+"disponible."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/programmes.md:29
@@ -3668,14 +3709,22 @@ msgid ""
 "else can still be changed: name, variant, description, barcode, the flags, "
 "prices, series names, award names, values and limits. Age categories and "
 "awards can be **added** but not removed."
-msgstr "Dès que des tireurs sont inscrits à un programme, les **passes** sont figées pour que les résultats gardent leur sens ; la page l'indique et les grise. Tout le reste reste modifiable : nom, variante, description, code-barres, les options, prix, noms des passes, noms, valeurs et limites des distinctions. Les catégories d'âge et les distinctions peuvent être **ajoutées** mais pas retirées."
+msgstr ""
+"Dès que des tireurs sont inscrits à un programme, les **passes** sont figées "
+"pour que les résultats gardent leur sens ; la page l'indique et les grise. "
+"Tout le reste reste modifiable : nom, variante, description, code-barres, "
+"les options, prix, noms des passes, noms, valeurs et limites des "
+"distinctions. Les catégories d'âge et les distinctions peuvent être "
+"**ajoutées** mais pas retirées."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/programmes.md:31
 msgid ""
 "The section **Use** of a saved programme is saved at once with every change, "
 "also while shooters are registered:"
-msgstr "La section **Utilisation** d’un programme enregistré est enregistrée immédiatement à chaque modification, même quand des tireurs sont inscrits :"
+msgstr ""
+"La section **Utilisation** d’un programme enregistré est enregistrée "
+"immédiatement à chaque modification, même quand des tireurs sont inscrits :"
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/programmes.md:36
@@ -3691,7 +3740,9 @@ msgstr ""
 msgid ""
 "**Combinable with**: the programme whose series this one may take at "
 "registration (not for programmes with several attempts)."
-msgstr "**Combinable avec** : le programme dont celui-ci peut reprendre les passes à l’inscription (pas pour les programmes à plusieurs tentatives)."
+msgstr ""
+"**Combinable avec** : le programme dont celui-ci peut reprendre les passes à "
+"l’inscription (pas pour les programmes à plusieurs tentatives)."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/programmes.md:36
@@ -3721,8 +3772,7 @@ msgstr ""
 #: ../src/help/en/user-guide/programmes.md:38
 #, no-wrap
 msgid "**Special prizes** (module *Special prizes*, see below) follow as a section of their own. **Export** at the top of the page downloads the programme as a file; **Delete** in the programme's menu in the list is only possible while nobody is registered.\n"
-msgstr ""
-"Les **Prix spéciaux** (module *Prix spéciaux*, voir plus bas) suivent dans une section à part. **Exporter** en haut de la page télécharge le programme sous forme de fichier ; **Supprimer** dans le menu du programme dans la liste n’est possible que tant que personne n’est inscrit.\n"
+msgstr "Les **Prix spéciaux** (module *Prix spéciaux*, voir plus bas) suivent dans une section à part. **Exporter** en haut de la page télécharge le programme sous forme de fichier ; **Supprimer** dans le menu du programme dans la liste n’est possible que tant que personne n’est inscrit.\n"
 
 #. type: Title ##
 #: ../src/help/en/user-guide/programmes.md:39
@@ -3804,21 +3854,29 @@ msgid ""
 "The exact rule is in [Competition rules](../reference/rules.md#special-"
 "prizes); the winners are in the report *Special prizes* under [Statistics]"
 "(statistics-reports.md)."
-msgstr "La section **Prix spéciaux** de la page du programme récompense les meilleurs rangs de chaque catégorie d’âge, par exemple les rangs 1 à 3 dans chaque catégorie d’au moins 10 participants, en ne comptant que les tireurs dont la société a au moins 4 participants dans ce programme. Les tireurs sautés laissent la place au suivant. La règle exacte figure dans les [règles de concours](../reference/rules.md#special-prizes) ; les gagnants sont dans le rapport *Prix spéciaux* sous [Statistiques](statistics-reports.md)."
+msgstr ""
+"La section **Prix spéciaux** de la page du programme récompense les "
+"meilleurs rangs de chaque catégorie d’âge, par exemple les rangs 1 à 3 dans "
+"chaque catégorie d’au moins 10 participants, en ne comptant que les tireurs "
+"dont la société a au moins 4 participants dans ce programme. Les tireurs "
+"sautés laissent la place au suivant. La règle exacte figure dans les [règles "
+"de concours](../reference/rules.md#special-prizes) ; les gagnants sont dans "
+"le rapport *Prix spéciaux* sous [Statistiques](statistics-reports.md)."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/programmes.md:54
 msgid ""
 "![Special prizes of a programme](../images/screenshots/special-prizes.png)"
 "{ .screenshot }"
-msgstr "![Prix spéciaux d’un programme](../images/screenshots/special-prizes.png){ .screenshot }"
+msgstr ""
+"![Prix spéciaux d’un programme](../images/screenshots/special-prizes.png)"
+"{ .screenshot }"
 
 #. type: Plain text
 #: ../src/help/en/user-guide/programmes.md:55
 #, no-wrap
 msgid "**Save special prizes** stores them; ranks 0 turns special prizes off. The settings can be changed at any time, also after the event.\n"
-msgstr ""
-"**Enregistrer les prix spéciaux** les enregistre ; rangs 0 désactive les prix spéciaux. Les réglages peuvent être modifiés à tout moment, même après la manifestation.\n"
+msgstr "**Enregistrer les prix spéciaux** les enregistre ; rangs 0 désactive les prix spéciaux. Les réglages peuvent être modifiés à tout moment, même après la manifestation.\n"
 
 #. type: Title #
 #: ../src/help/en/user-guide/ranges.md:1

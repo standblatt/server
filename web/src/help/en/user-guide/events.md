@@ -62,6 +62,14 @@ A module that holds data stays on: switch off the kiosk only after deleting its 
 
 Shooting times also give the online booking its slots, unless the booking sets other hours for a day (see [Online booking](online-booking.md)).
 
+### Club modules {#club-modules}
+
+Some modules belong to the club rather than to an event. **Club modules** in the club part of the sidebar (admins) switches them on and off:
+
+| Module | What it adds |
+|---|---|
+| Print forms | forms for pre-printed sheets and the *Print form* section of every programme (see [Print forms](print-forms.md)) |
+
 ## Events without lanes {#no-lanes}
 
 An event needs no range, e.g. an annual programme or a Feldschiessen whose results come on paper or from the scoring system. Without a range there is no lane grid, and the modules Reservations and Online booking are not available; shooters are registered without a lane and their results are entered as usual. Documents can still be opened as PDF, but they do not go to a print agent, because print agents belong to a range.

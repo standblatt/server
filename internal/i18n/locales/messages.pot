@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 10:50+0200\n"
+"POT-Creation-Date: 2026-10-18 11:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -819,7 +819,8 @@ msgstr ""
 msgid "Choose a range of the event for the scorer"
 msgstr ""
 
-#: internal/web/helpers.go internal/web/masterdata.go internal/web/tenants.go
+#: internal/web/helpers.go internal/web/masterdata.go internal/web/modules.go
+#: internal/web/tenants.go
 msgid "Club not found"
 msgstr ""
 
@@ -931,6 +932,10 @@ msgid "Delete the kiosk links first"
 msgstr ""
 
 #: internal/web/modules.go
+msgid "Delete the print forms first"
+msgstr ""
+
+#: internal/web/modules.go
 msgid "Programmes with awards use this module"
 msgstr ""
 
@@ -948,6 +953,10 @@ msgstr ""
 
 #: internal/web/modules.go
 msgid "The module is in use"
+msgstr ""
+
+#: internal/web/modules.go
+msgid "This module is off"
 msgstr ""
 
 #: internal/web/modules.go

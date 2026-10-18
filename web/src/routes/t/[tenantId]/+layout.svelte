@@ -67,7 +67,7 @@
 		} else if (rest.length === 0) {
 			list.push({ label: $t`Events` });
 		} else {
-			list.push({ label: sections[rest[0]] ?? rest[0], href: rest.length > 1 ? `${base}/${rest[0]}` : undefined });
+			list.push({ label: rest[0] === 'modules' ? $t`Club modules` : (sections[rest[0]] ?? rest[0]), href: rest.length > 1 ? `${base}/${rest[0]}` : undefined });
 			if (rest.length > 2) list.push({ label: sections[rest[2]] ?? rest[2] });
 		}
 		return list;

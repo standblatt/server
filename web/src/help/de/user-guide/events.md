@@ -77,6 +77,16 @@ Die Schiesszeiten geben auch der Online-Reservation ihre Zeitblöcke, ausser
 die Reservation legt für einen Tag andere Zeiten fest (siehe
 [Online-Reservation](online-booking.md)).
 
+### Vereinsbausteine {#club-modules}
+
+Manche Bausteine gehören zum Verein statt zu einem
+Anlass. **Vereinsbausteine** im Vereinsteil der Seitenleiste (Admins)
+schaltet sie ein und aus:
+
+| Baustein | Was er bringt |
+|---|---|
+| Druckvorlagen | Vorlagen für vorgedruckte Blätter und der Abschnitt *Druckvorlage* jedes Programms (siehe [Druckvorlagen](print-forms.md)) |
+
 ## Anlässe ohne Scheiben {#no-lanes}
 
 Ein Anlass braucht keinen Stand, z. B. ein Jahresprogramm oder ein

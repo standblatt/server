@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
-	import { createQuery, useQueryClient } from '@tanstack/svelte-query';
+	import { useQueryClient } from '@tanstack/svelte-query';
 	import { toast } from 'svelte-sonner';
 	import { api, call, type Event, type Programme } from '$lib/api';
 	import * as NativeSelect from '$lib/components/ui/native-select';
@@ -17,10 +17,6 @@
 		() => event.id
 	);
 	const others = $derived((programmes.data ?? []).filter((p) => p.id !== programme.id));
-	const layouts = createQuery(() => ({
-		queryKey: ['tenants', tenantId, 'layouts'],
-		queryFn: () => call(api.GET('/api/tenants/{tenantId}/layouts', { params: { path: { tenantId } } }))
-	}));
 	const path = $derived({ params: { path: { tenantId, programmeId: programme.id } } });
 
 	/** Runs a change that saves at once and refreshes the programme. */
@@ -50,14 +46,6 @@
 			<NativeSelect.Root class="w-full" value={programme.combinableWithId ?? 0} onchange={(e) => change(() => call(api.PUT('/api/tenants/{tenantId}/programmes/{programmeId}/combination', { ...path, body: Number(e.currentTarget.value) ? { combinableWithId: Number(e.currentTarget.value) } : {} })))}>
 				<NativeSelect.Option value={0}>–</NativeSelect.Option>
 				{#each others as o (o.id)}<NativeSelect.Option value={o.id}>{programmeTitle(o)}</NativeSelect.Option>{/each}
-			</NativeSelect.Root>
-		</FormField>
-	{/if}
-	{#if layouts.data?.length}
-		<FormField label={$t`Print form`}>
-			<NativeSelect.Root class="w-full" value={String(programme.layoutId ?? '')} onchange={(e) => change(() => call(api.PUT('/api/tenants/{tenantId}/programmes/{programmeId}/form', { ...path, body: e.currentTarget.value ? { layoutId: Number(e.currentTarget.value) } : {} })))}>
-				<NativeSelect.Option value="">{$t`none`}</NativeSelect.Option>
-				{#each layouts.data as l (l.id)}<NativeSelect.Option value={String(l.id)}>{l.name}</NativeSelect.Option>{/each}
 			</NativeSelect.Root>
 		</FormField>
 	{/if}

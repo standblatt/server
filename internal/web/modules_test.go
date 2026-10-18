@@ -77,3 +77,39 @@ func TestModules(t *testing.T) {
 		t.Fatalf("copied modules: %v", copied.Modules)
 	}
 }
+
+// TestClubModules checks the gate of a club module and that it cannot be switched off while it holds data.
+func TestClubModules(t *testing.T) {
+	e := newEnv(t)
+	tid := e.tenant("Club modules")
+	e.user("boss", tid, store.RoleAdmin)
+	boss := e.login("boss")
+	base := fmt.Sprintf("/api/tenants/%d", tid)
+	me := func() store.Membership {
+		var m struct{ Tenants []store.Membership }
+		_, b := e.do(boss, "GET", "/api/me", nil)
+		json.Unmarshal(b, &m)
+		return m.Tenants[0]
+	}
+	if m := me(); fmt.Sprint(m.Modules) != "[forms]" {
+		t.Fatalf("a new club has print forms: %v", m.Modules)
+	}
+	code, b := e.do(boss, "POST", base+"/layouts", map[string]any{"name": "Sheet", "width": 148, "height": 210, "elements": []map[string]any{}})
+	expect(t, "create a form", code, 201, b)
+	var l store.Layout
+	json.Unmarshal(b, &l)
+	code, b = e.do(boss, "PUT", base+"/modules", map[string]any{"modules": []string{}})
+	expect(t, "forms with a form", code, 409, b)
+	if !strings.Contains(string(b), "print forms") {
+		t.Fatalf("message: %s", b)
+	}
+	code, b = e.do(boss, "DELETE", fmt.Sprintf("%s/layouts/%d", base, l.ID), nil)
+	expect(t, "delete the form", code, 204, b)
+	code, b = e.do(boss, "PUT", base+"/modules", map[string]any{"modules": []string{}})
+	expect(t, "switch forms off", code, 204, b)
+	if m := me(); len(m.Modules) != 0 {
+		t.Fatalf("forms still on: %v", m.Modules)
+	}
+	code, b = e.do(boss, "GET", base+"/layouts", nil)
+	expect(t, "forms are off", code, 404, b)
+}

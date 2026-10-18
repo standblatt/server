@@ -1492,6 +1492,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/tenants/{tenantId}/modules": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Choose the modules of a club; modules that hold data stay on */
+        put: operations["set-club-modules"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/tenants/{tenantId}/print": {
         parameters: {
             query?: never;
@@ -2393,6 +2410,9 @@ export interface components {
             /** @description Other clubs with a similar name, best first */
             similar: components["schemas"]["Club"][];
         };
+        ClubModulesInBody: {
+            modules: "forms"[];
+        };
         ClubRef: {
             /** Format: int64 */
             id: number;
@@ -2972,6 +2992,10 @@ export interface components {
             userId: number;
         };
         Membership: {
+            /** @description The club modules that are on */
+            modules: "forms"[];
+            /** @description The club modules with data; they cannot be switched off */
+            modulesInUse: "forms"[];
             /** @enum {string} */
             role: "admin" | "staff";
             /** Format: int64 */
@@ -7569,6 +7593,39 @@ export interface operations {
                 content: {
                     "application/pdf": unknown;
                 };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "set-club-modules": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ClubModulesInBody"];
+            };
+        };
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Error */
             default: {

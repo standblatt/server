@@ -54,7 +54,7 @@ test.describe("rankings and kiosk", () => {
 
     const group = (label) => page.locator("[data-sidebar=group]").filter({ has: page.locator("[data-sidebar=group-label]", { hasText: new RegExp(`^${label}$`) }) });
     await expect(group("Master data").locator("a")).toHaveText(["Shooters", "Clubs"]);
-    await expect(group("Club").locator("a")).toHaveText(["Events", "Ranges", "Users", "Print forms"]);
+    await expect(group("Club").locator("a")).toHaveText(["Events", "Ranges", "Users", "Print forms", "Club modules"]);
   });
 
   test("serves a live kiosk display without login", async ({ page, browser }) => {

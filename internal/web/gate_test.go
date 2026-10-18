@@ -32,7 +32,7 @@ func TestModuleOperations(t *testing.T) {
 			if _, ok := modules.Get(key); !ok {
 				t.Errorf("%s: unknown module %q", op.OperationID, key)
 			}
-			if !slices.ContainsFunc(moduleParams, func(p string) bool { return strings.Contains(path, "{"+p+"}") }) {
+			if m, _ := modules.Get(key); m.Level == modules.Event && !slices.ContainsFunc(moduleParams, func(p string) bool { return strings.Contains(path, "{"+p+"}") }) {
 				t.Errorf("%s: the gate cannot find the event of %s", op.OperationID, path)
 			}
 		}

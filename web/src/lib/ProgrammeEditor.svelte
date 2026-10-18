@@ -3,7 +3,8 @@
 	import type { Event, Programme, ProgrammeDefinition } from './api';
 	import { Button } from './components/ui/button';
 	import FormError from './FormError.svelte';
-	import { enabled, type ProgrammeSection } from './modules';
+	import { meQuery } from './me';
+	import { enabled, enabledClub, type ProgrammeSection } from './modules';
 	import ModuleSlot from './modules/ModuleSlot.svelte';
 	import Basics from './programme/Basics.svelte';
 	import type { ProgrammeDraft } from './programme/draft.svelte';
@@ -36,8 +37,11 @@
 
 	let error = $state('');
 	let busy = $state(false);
-	/** Sections of the switched-on modules that go after a core section. */
-	const after = (anchor: ProgrammeSection['after']) => enabled(event).flatMap((m) => (m.programmeSections ?? []).filter((s) => s.after === anchor));
+	const me = meQuery();
+	const club = $derived(me.data?.tenants.find((m) => m.tenantId === tenantId));
+	/** Sections of the switched-on event and club modules that go after a core section. */
+	const after = (anchor: ProgrammeSection['after']) =>
+		[...enabled(event), ...enabledClub(club)].flatMap((m) => (m.programmeSections ?? []).filter((s) => s.after === anchor));
 
 	/** Saves the definition through onsubmit. */
 	async function submit(e: SubmitEvent) {

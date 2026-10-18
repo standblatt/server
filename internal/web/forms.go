@@ -14,6 +14,7 @@ import (
 
 	"github.com/standblatt/server/internal/docs"
 	"github.com/standblatt/server/internal/i18n"
+	"github.com/standblatt/server/internal/modules"
 	"github.com/standblatt/server/internal/store"
 )
 
@@ -130,7 +131,7 @@ func (s *Server) renderForm(ctx context.Context, tenantID, entryID int64) (rende
 func (s *Server) registerForms(api huma.API) {
 	type layoutsOut struct{ Body []store.Layout }
 	huma.Register(api, huma.Operation{
-		OperationID: "list-layouts", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/layouts", Tags: []string{"forms"},
+		OperationID: "list-layouts", Metadata: modules.Metadata(modules.Forms), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/layouts", Tags: []string{"forms"},
 	}, func(ctx context.Context, in *TenantPath) (*layoutsOut, error) {
 		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
 			return nil, err
@@ -140,7 +141,7 @@ func (s *Server) registerForms(api huma.API) {
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "list-layout-fields", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/layouts/fields", Tags: []string{"forms"},
+		OperationID: "list-layout-fields", Metadata: modules.Metadata(modules.Forms), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/layouts/fields", Tags: []string{"forms"},
 		Summary: "The placeholders of print forms with example values",
 	}, func(ctx context.Context, in *TenantPath) (*struct{ Body []LayoutField }, error) {
 		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
@@ -160,7 +161,7 @@ func (s *Server) registerForms(api huma.API) {
 	}
 	type layoutOut struct{ Body store.Layout }
 	huma.Register(api, huma.Operation{
-		OperationID: "create-layout", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/layouts", Tags: []string{"forms"},
+		OperationID: "create-layout", Metadata: modules.Metadata(modules.Forms), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/layouts", Tags: []string{"forms"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *layoutIn) (*layoutOut, error) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
@@ -176,7 +177,7 @@ func (s *Server) registerForms(api huma.API) {
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "get-layout", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/layouts/{layoutId}", Tags: []string{"forms"},
+		OperationID: "get-layout", Metadata: modules.Metadata(modules.Forms), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/layouts/{layoutId}", Tags: []string{"forms"},
 	}, func(ctx context.Context, in *LayoutPath) (*layoutOut, error) {
 		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
 			return nil, err
@@ -190,7 +191,7 @@ func (s *Server) registerForms(api huma.API) {
 		Body store.LayoutInput
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "update-layout", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/layouts/{layoutId}", Tags: []string{"forms"},
+		OperationID: "update-layout", Metadata: modules.Metadata(modules.Forms), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/layouts/{layoutId}", Tags: []string{"forms"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *layoutUpdateIn) (*struct{}, error) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
@@ -201,7 +202,7 @@ func (s *Server) registerForms(api huma.API) {
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "delete-layout", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/layouts/{layoutId}", Tags: []string{"forms"},
+		OperationID: "delete-layout", Metadata: modules.Metadata(modules.Forms), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/layouts/{layoutId}", Tags: []string{"forms"},
 		Summary: "Delete a print form; programmes that use it no longer print a form", DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *LayoutPath) (*struct{}, error) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
@@ -217,7 +218,7 @@ func (s *Server) registerForms(api huma.API) {
 		}]
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "set-layout-background", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/layouts/{layoutId}/background", Tags: []string{"forms"},
+		OperationID: "set-layout-background", Metadata: modules.Metadata(modules.Forms), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/layouts/{layoutId}/background", Tags: []string{"forms"},
 		Summary: "Store a scan of the empty form (PNG or JPEG) for the preview; it is never printed", DefaultStatus: http.StatusNoContent,
 		MaxBodyBytes: maxBackgroundBytes + 64<<10,
 	}, func(ctx context.Context, in *backgroundIn) (*struct{}, error) {
@@ -238,7 +239,7 @@ func (s *Server) registerForms(api huma.API) {
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "delete-layout-background", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/layouts/{layoutId}/background", Tags: []string{"forms"},
+		OperationID: "delete-layout-background", Metadata: modules.Metadata(modules.Forms), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/layouts/{layoutId}/background", Tags: []string{"forms"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *LayoutPath) (*struct{}, error) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
@@ -253,7 +254,7 @@ func (s *Server) registerForms(api huma.API) {
 		Body         []byte
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "get-layout-background", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/layouts/{layoutId}/background", Tags: []string{"forms"},
+		OperationID: "get-layout-background", Metadata: modules.Metadata(modules.Forms), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/layouts/{layoutId}/background", Tags: []string{"forms"},
 		Summary:   "The scan of the empty form, for the editor",
 		Responses: map[string]*huma.Response{"200": {Description: "PNG or JPEG", Content: map[string]*huma.MediaType{"image/png": {}, "image/jpeg": {}}}},
 	}, func(ctx context.Context, in *LayoutPath) (*imageOut, error) {
@@ -272,7 +273,7 @@ func (s *Server) registerForms(api huma.API) {
 
 	pdfOp := func(op, path, summary string) huma.Operation {
 		return huma.Operation{
-			OperationID: op, Method: http.MethodGet, Path: path, Tags: []string{"forms"}, Summary: summary,
+			OperationID: op, Metadata: modules.Metadata(modules.Forms), Method: http.MethodGet, Path: path, Tags: []string{"forms"}, Summary: summary,
 			Responses: map[string]*huma.Response{"200": {Description: "PDF", Content: map[string]*huma.MediaType{"application/pdf": {}}}},
 		}
 	}
@@ -318,7 +319,7 @@ func (s *Server) registerForms(api huma.API) {
 		}
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "set-programme-form", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/programmes/{programmeId}/form", Tags: []string{"programmes"},
+		OperationID: "set-programme-form", Metadata: modules.Metadata(modules.Forms), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/programmes/{programmeId}/form", Tags: []string{"programmes"},
 		Summary: "Choose the print form of a programme; allowed while shooters are registered", DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *formIn) (*struct{}, error) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {

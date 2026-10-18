@@ -13,9 +13,10 @@ import clubcompetition from './club_competition';
 import classifications from './classifications';
 import kiosk from './kiosk';
 import helpers from './helpers';
-import type { ModuleKey, ModuleUI } from './types';
+import forms from './forms';
+import type { ClubModuleKey, ClubModuleUI, ModuleKey, ModuleUI } from './types';
 
-export type { EventProps, Lazy, ModuleKey, ModuleUI, ProgrammeProps, ProgrammeSection } from './types';
+export type { ClubModuleKey, ClubModuleUI, EventProps, Lazy, ModuleKey, ModuleUI, ProgrammeProps, ProgrammeSection } from './types';
 
 /** The UI of every event module; a module the API knows but this list lacks fails the type check. */
 export const moduleUI: Record<ModuleKey, ModuleUI> = {
@@ -32,6 +33,17 @@ export const moduleUI: Record<ModuleKey, ModuleUI> = {
 	kiosk: kiosk,
 	helpers: helpers
 };
+
+/** The UI of every club module. */
+export const clubModuleUI: Record<ClubModuleKey, ClubModuleUI> = {
+	forms
+};
+
+/** Whether a club module is on for a club (its membership in Me). */
+export const hasClub = (club: { modules: string[] } | undefined, key: ClubModuleKey) => !!club?.modules.includes(key);
+
+/** The club modules that are on, with their UI. */
+export const enabledClub = (club: { modules: ClubModuleKey[] } | undefined) => (club?.modules ?? []).map((key) => ({ key, ...clubModuleUI[key] }));
 
 /** Whether a module is on for an event. */
 export const has = (event: Pick<Event, 'modules'> | undefined, key: ModuleKey) => !!event?.modules.includes(key);

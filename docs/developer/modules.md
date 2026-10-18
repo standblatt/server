@@ -36,6 +36,10 @@ Every module has a folder `web/src/lib/modules/<key>/` with an `index.ts` that e
 
 `has(event, key)` tells whether a module is on; check it where the feature lives, not in the page around it. Static routes win over `[module]`, so a module key must not be `entry`, `rankings`, `statistics`, `config`, `modules`, `programmes` or `close`.
 
+## Club modules
+
+Modules with `Level: Club` belong to a club: `tenants.modules` holds the chosen keys, `clubUsage` in `internal/store/modules.go` tells when a club holds data, `store.Membership` (in `/api/me`) carries `modules` and `modulesInUse`, and `PUT /api/tenants/{tenantId}/modules` chooses them. The gate checks the club of `tenantId` for operations tagged with a club module. In the UI, `clubModuleUI` in `$lib/modules/index.ts` (`ClubModuleUI`: label, description, help, icon, `clubPage` = a page of the club in the sidebar, `programmeSections`) and `hasClub(membership, key)`; the *Club modules* page at `/t/<id>/modules` uses the same `ModuleCards` as the event's *Modules* page.
+
 ## Adding a module
 
 1. Add the key to `internal/modules` (and to the enum tags), with `Requires` and `NeedsRange` as needed.

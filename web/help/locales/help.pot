@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-18 09:26+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-18 09:39+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
 #: ../src/help/en/getting-started/concepts.md:1
@@ -1785,56 +1785,74 @@ msgstr ""
 msgid "Shooting times also give the online booking its slots, unless the booking sets other hours for a day (see [Online booking](online-booking.md))."
 msgstr ""
 
-#. type: Title ##
+#. type: Title ###
 #: ../src/help/en/user-guide/events.md:65
 #, markdown-text, no-wrap
-msgid "Events without lanes {#no-lanes}"
+msgid "Club modules {#club-modules}"
 msgstr ""
 
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:68
 #, markdown-text
+msgid "Some modules belong to the club rather than to an event. **Club modules** in the club part of the sidebar (admins) switches them on and off:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:72
+#, markdown-text, no-wrap
+msgid "| Module | What it adds |\n|---|---|\n| Print forms | forms for pre-printed sheets and the *Print form* section of every programme (see [Print forms](print-forms.md)) |\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/events.md:73
+#, markdown-text, no-wrap
+msgid "Events without lanes {#no-lanes}"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:76
+#, markdown-text
 msgid "An event needs no range, e.g. an annual programme or a Feldschiessen whose results come on paper or from the scoring system. Without a range there is no lane grid, and the modules Reservations and Online booking are not available; shooters are registered without a lane and their results are entered as usual. Documents can still be opened as PDF, but they do not go to a print agent, because print agents belong to a range."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:69
+#: ../src/help/en/user-guide/events.md:77
 #, markdown-text, no-wrap
 msgid "Copy for next year {#copy}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:72
+#: ../src/help/en/user-guide/events.md:80
 #, markdown-text
 msgid "On **Copy & close** in the configuration, **Copy for next year** creates a new event with the same ranges, organizer, language, settings, modules and all programmes, including prices, awards, combinations and special prizes, and the [classifications](classifications.md); the shooting days and the period move with the date, weekly shooting times stay on their weekdays. Registrations, results and kiosk links are not copied. The dialog suggests the name with the year (and a leading number like *42.*) counted up and the date one year later; adjust both as needed."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:74
+#: ../src/help/en/user-guide/events.md:82
 #, markdown-text
 msgid "![Copy an event](../images/screenshots/copy-event.png){ .screenshot }"
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:75
+#: ../src/help/en/user-guide/events.md:83
 #, markdown-text, no-wrap
 msgid "Close {#close}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:78
+#: ../src/help/en/user-guide/events.md:86
 #, markdown-text
 msgid "When an event is over and the rankings are checked, **Close** it on **Copy & close** in the configuration. Closing releases the rankings: shooters with a [personal training log](../my-training/account.md#competitions) now find their results of this event, with their rank in the programme, and can add them to their log. Everything stays visible (dashboard, results, rankings, reports, documents), but registrations, results, awards, programmes and settings can no longer be changed. A banner on every page of the event says so. **Reopen** makes it editable again; results that shooters already added to their logs stay there. Copying a closed event for next year works."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:79
+#: ../src/help/en/user-guide/events.md:87
 #, markdown-text, no-wrap
 msgid "Delete"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:81
+#: ../src/help/en/user-guide/events.md:89
 #, markdown-text, no-wrap
 msgid "**Delete** (on **Copy & close**) removes an event, but only while nobody is registered for it.\n"
 msgstr ""
@@ -2047,7 +2065,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:4
 #, markdown-text
-msgid "A print form puts results onto a pre-printed sheet, e.g. the lane sheets the army supplies for the obligatory programme: the shots are entered at the lane or afterwards, and the sheet is printed instead of filled in by hand. Filling in sheets by hand stays possible; print forms are optional."
+msgid "A print form puts results onto a pre-printed sheet, e.g. the lane sheets the army supplies for the obligatory programme: the shots are entered at the lane or afterwards, and the sheet is printed instead of filled in by hand. Filling in sheets by hand stays possible; print forms are optional and can be switched off under **Club modules** (see [Club modules](events.md#club-modules))."
 msgstr ""
 
 #. type: Title ##
@@ -2161,7 +2179,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:43
 #, markdown-text
-msgid "Under **Configuration** → **Programmes** of the event, open a programme and choose its **Print form** in the section **Use**; this works while shooters are registered. Every completed programme then offers **Print onto form** in the results: at the desk, on the **Enter results** page and on scorer links at the lane (see [Helpers](helpers.md)). With a print agent and a printer chosen for *Print forms* under **Ranges → Printing**, the sheet goes to that printer (e.g. its manual feed), otherwise the PDF opens (see [Printing](printing.md))."
+msgid "Under **Configuration** → **Programmes** of the event, open a programme and choose its **Print form** in the section of the same name; this works while shooters are registered. Every completed programme then offers **Print onto form** in the results: at the desk, on the **Enter results** page and on scorer links at the lane (see [Helpers](helpers.md)). With a print agent and a printer chosen for *Print forms* under **Ranges → Printing**, the sheet goes to that printer (e.g. its manual feed), otherwise the PDF opens (see [Printing](printing.md))."
 msgstr ""
 
 #. type: Plain text

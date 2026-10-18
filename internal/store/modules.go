@@ -26,21 +26,32 @@ var eventUsage = map[string]string{
 	modules.Helpers:         `EXISTS (SELECT 1 FROM helper_codes x WHERE x.event_id = e.id)`,
 }
 
+// clubUsage is eventUsage for club modules, SQL over the alias t for tenants.
+var clubUsage = map[string]string{
+	modules.Forms: `EXISTS (SELECT 1 FROM layouts x WHERE x.tenant_id = t.id)`,
+}
+
 // copiers copy the data of event modules that is not part of the programmes when an event is copied.
 var copiers = []func(ctx context.Context, tx pgx.Tx, tenantID, fromEventID, toEventID int64) error{
 	copyClassifications,
 }
 
-// eventUsed is the SQL array of the event modules with data, for the alias e.
-var eventUsed = func() string {
-	var parts []string
-	for _, k := range modules.Keys(modules.Event) {
-		if cond := eventUsage[k]; cond != "" {
+// usedSQL builds the SQL array of the modules of a level that hold data from their usage conditions.
+func usedSQL(level modules.Level, usage map[string]string) string {
+	parts := []string{"NULL"}
+	for _, k := range modules.Keys(level) {
+		if cond := usage[k]; cond != "" {
 			parts = append(parts, "CASE WHEN "+cond+" THEN '"+k+"' END")
 		}
 	}
 	return "array_remove(ARRAY[" + strings.Join(parts, ", ") + "]::text[], NULL)"
-}()
+}
+
+// eventUsed and clubUsed are the SQL arrays of the modules with data, for the aliases e and t.
+var (
+	eventUsed = usedSQL(modules.Event, eventUsage)
+	clubUsed  = usedSQL(modules.Club, clubUsage)
+)
 
 // ModuleUsedError is returned when modules with data are switched off.
 type ModuleUsedError struct{ Keys []string }
@@ -60,4 +71,30 @@ func (s *Store) EventOf(ctx context.Context, tenantID int64, param string, id in
 	var eventID int64
 	err := s.pool.QueryRow(ctx, `SELECT event_id FROM `+table+` WHERE tenant_id = $1 AND id = $2`, tenantID, id).Scan(&eventID)
 	return eventID, mapErr(err)
+}
+
+// ClubModules returns the modules that are on for a club and those that hold data.
+func (s *Store) ClubModules(ctx context.Context, tenantID int64) (on, used []string, err error) {
+	var chosen []string
+	err = s.pool.QueryRow(ctx, `SELECT t.modules, `+clubUsed+` FROM tenants t WHERE t.id = $1`, tenantID).Scan(&chosen, &used)
+	if err != nil {
+		return nil, nil, mapErr(err)
+	}
+	return modules.Effective(modules.Club, chosen, used, true), used, nil
+}
+
+// SetClubModules chooses the modules of a club; ModuleUsedError when modules with data would be switched off.
+func (s *Store) SetClubModules(ctx context.Context, tenantID int64, keys []string) error {
+	chosen := modules.Effective(modules.Club, keys, nil, true)
+	return mapErr(pgx.BeginFunc(ctx, s.pool, func(tx pgx.Tx) error {
+		var used []string
+		if err := tx.QueryRow(ctx, `SELECT `+clubUsed+` FROM tenants t WHERE t.id = $1 FOR UPDATE`, tenantID).Scan(&used); err != nil {
+			return err
+		}
+		if off := modules.Missing(used, chosen); len(off) > 0 {
+			return &ModuleUsedError{Keys: off}
+		}
+		_, err := tx.Exec(ctx, `UPDATE tenants SET modules = $2 WHERE id = $1`, tenantID, chosen)
+		return err
+	}))
 }

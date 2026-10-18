@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 10:50+0200\n"
+"POT-Creation-Date: 2026-10-18 11:37+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -819,7 +819,8 @@ msgstr "Dieses Programm hat keine Druckvorlage"
 msgid "Choose a range of the event for the scorer"
 msgstr "Wähle für den Warner einen Stand des Anlasses"
 
-#: internal/web/helpers.go internal/web/masterdata.go internal/web/tenants.go
+#: internal/web/helpers.go internal/web/masterdata.go internal/web/modules.go
+#: internal/web/tenants.go
 msgid "Club not found"
 msgstr "Verein nicht gefunden"
 
@@ -931,6 +932,10 @@ msgid "Delete the kiosk links first"
 msgstr "Lösche zuerst die Kiosk-Links"
 
 #: internal/web/modules.go
+msgid "Delete the print forms first"
+msgstr "Lösche zuerst die Druckvorlagen"
+
+#: internal/web/modules.go
 msgid "Programmes with awards use this module"
 msgstr "Programme mit Auszeichnungen verwenden diesen Baustein"
 
@@ -949,6 +954,10 @@ msgstr "Schalte zuerst den Link der Online-Reservation aus"
 #: internal/web/modules.go
 msgid "The module is in use"
 msgstr "Der Baustein wird verwendet"
+
+#: internal/web/modules.go
+msgid "This module is off"
+msgstr "Dieser Baustein ist ausgeschaltet"
 
 #: internal/web/modules.go
 msgid "This module is off for this event"

@@ -3,9 +3,8 @@
 	import { page } from '$app/state';
 	import { useQueryClient } from '@tanstack/svelte-query';
 	import { toast } from 'svelte-sonner';
-	import { Switch } from '$lib/components/ui/switch';
-	import HelpButton from '$lib/help/HelpButton.svelte';
 	import { has, moduleUI, modulesQuery, type ModuleKey } from '$lib/modules';
+	import ModuleCards from '$lib/modules/ModuleCards.svelte';
 	import ModuleSlot from '$lib/modules/ModuleSlot.svelte';
 	import PageHeader from '$lib/PageHeader.svelte';
 	import { eventQuery, updateEvent } from '$lib/tenant';
@@ -47,30 +46,10 @@
 
 {#if event.data}
 	{@const ev = event.data}
-	<ul class="grid max-w-5xl gap-3 md:grid-cols-2">
-		{#each list as m (m.key)}
-			{@const ui = moduleUI[m.key]}
-			{@const on = has(ev, m.key)}
-			{@const st = state(m.key, m.requires, m.needsRange)}
-			<li class="flex flex-col gap-3 rounded-lg border bg-card p-4 {on ? '' : 'opacity-80'}" data-testid="module-{m.key}">
-				<div class="flex items-start gap-3">
-					<ui.icon class="mt-0.5 size-5 shrink-0 {on ? 'text-primary' : 'text-muted-foreground'}" />
-					<div class="min-w-0 flex-1 text-sm">
-						<div class="flex items-center gap-1 font-medium">{$t(ui.label)}<HelpButton page={ui.help} /></div>
-						<p class="text-muted-foreground">{$t(ui.description)}</p>
-						{#if st.blocked || st.note}<p class="mt-1 text-xs text-muted-foreground">{st.blocked || st.note}</p>{/if}
-					</div>
-					<Switch
-						checked={on}
-						disabled={!!st.blocked}
-						aria-label={$t(ui.label)}
-						onCheckedChange={(v) => toggle(m.key, v)}
-					/>
-				</div>
-				{#if on && ui.settings && !ev.archivedAt}
-					<div class="border-t pt-3"><ModuleSlot load={ui.settings} props={{ tenantId, event: ev }} /></div>
-				{/if}
-			</li>
-		{/each}
-	</ul>
+	<ModuleCards cards={list.map((m) => ({ key: m.key, ui: moduleUI[m.key], on: has(ev, m.key), ...state(m.key, m.requires, m.needsRange) }))} ontoggle={(k, on) => toggle(k as ModuleKey, on)}>
+		{#snippet settings(key)}
+			{@const ui = moduleUI[key as ModuleKey]}
+			{#if ui.settings && !ev.archivedAt}<div class="border-t pt-3"><ModuleSlot load={ui.settings} props={{ tenantId, event: ev }} /></div>{/if}
+		{/snippet}
+	</ModuleCards>
 {/if}

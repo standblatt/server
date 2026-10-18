@@ -26,7 +26,7 @@ var reportModules = map[string]string{
 }
 
 // moduleGate refuses operations of a module (see modules.Metadata) with 404 while the module is off for the event
-// in the path. Requests the handler refuses anyway (no access, unknown event) pass through to it.
+// in the path, or for the club of the path for club modules. Requests the handler refuses anyway (no access, unknown event) pass through to it.
 func (s *Server) moduleGate(api huma.API) func(ctx huma.Context, next func(huma.Context)) {
 	return func(ctx huma.Context, next func(huma.Context)) {
 		key := modules.Of(ctx.Operation().Metadata)
@@ -40,11 +40,16 @@ func (s *Server) moduleGate(api huma.API) func(ctx huma.Context, next func(huma.
 			return
 		}
 		if !on {
-			huma.WriteErr(api, ctx, http.StatusNotFound, missing("This module is off for this event").Error())
+			huma.WriteErr(api, ctx, http.StatusNotFound, moduleOff().Error())
 			return
 		}
 		next(ctx)
 	}
+}
+
+// moduleOff is the 404 of an operation whose module is off.
+func moduleOff() error {
+	return missing("This module is off")
 }
 
 // moduleOn tells whether a module is on for the event the path points to; true when the caller has no access or the
@@ -56,6 +61,10 @@ func (s *Server) moduleOn(ctx context.Context, key string, param func(string) st
 	}
 	if _, _, err := s.access(ctx, tenantID, false); err != nil {
 		return true, nil
+	}
+	if m, _ := modules.Get(key); m.Level == modules.Club {
+		on, _, err := s.Store.ClubModules(ctx, tenantID)
+		return slices.Contains(on, key), ignoreNotFound(err)
 	}
 	for _, p := range moduleParams {
 		id, err := strconv.ParseInt(param(p), 10, 64)
@@ -110,6 +119,8 @@ func moduleUsed(e *store.ModuleUsedError) error {
 		return conflict("Delete the kiosk links first")
 	case modules.Helpers:
 		return conflict("Delete the helper links first")
+	case modules.Forms:
+		return conflict("Delete the print forms first")
 	}
 	return conflict("The module is in use")
 }
@@ -122,6 +133,27 @@ func (s *Server) registerModules(api huma.API) {
 		Summary: "The modules a club or an event can switch on, with what they require",
 	}, func(ctx context.Context, _ *struct{}) (*listOut, error) {
 		return &listOut{Body: modules.All}, nil
+	})
+
+	type clubModulesIn struct {
+		TenantPath
+		Body struct {
+			Modules []string `json:"modules" enum:"forms"`
+		}
+	}
+	huma.Register(api, huma.Operation{
+		OperationID: "set-club-modules", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/modules", Tags: []string{"tenants"},
+		Summary: "Choose the modules of a club; modules that hold data stay on", DefaultStatus: http.StatusNoContent,
+	}, func(ctx context.Context, in *clubModulesIn) (*struct{}, error) {
+		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
+			return nil, err
+		}
+		err := s.Store.SetClubModules(ctx, in.TenantID, in.Body.Modules)
+		var used *store.ModuleUsedError
+		if errors.As(err, &used) {
+			return nil, moduleUsed(used)
+		}
+		return nil, notFound(err, "Club not found")
 	})
 }
 

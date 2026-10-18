@@ -25,7 +25,7 @@ test.describe("modules", () => {
     await login(page, admin);
     await page.goto(`${event()}/config/modules`);
     const sidebar = page.locator("[data-sidebar=sidebar]");
-    await expect(sidebar.getByRole("link", { name: "Modules" })).toBeVisible();
+    await expect(sidebar.getByRole("link", { name: "Modules", exact: true })).toBeVisible();
     await expect(sidebar.getByRole("link", { name: "Kiosk displays" })).toHaveCount(0);
     await expect(sidebar.getByRole("link", { name: "Helper links" })).toHaveCount(0);
 
@@ -71,6 +71,18 @@ test.describe("modules", () => {
     await page.goto(`${event()}/setup?tab=kiosk`);
     await expect(page).toHaveURL((u) => u.pathname.endsWith("/config/kiosk"));
     await expect(c(page, "li", "Hall")).toBeVisible();
+  });
+
+  test("switches a club module off", async ({ page }) => {
+    await login(page, admin);
+    await page.goto(`/t/${ids.tenant}/modules`);
+    const sidebar = page.locator("[data-sidebar=sidebar]");
+    await expect(sidebar.getByRole("link", { name: "Print forms" })).toBeVisible();
+    await page.getByRole("switch", { name: "Print forms", exact: true }).click();
+    await expect(c(page, "[data-sonner-toast]", "Print forms switched off")).toBeVisible();
+    await expect(sidebar.getByRole("link", { name: "Print forms" })).toHaveCount(0);
+    await page.goto(`/t/${ids.tenant}/forms`);
+    await expect(c(page, "p", "This module is off.")).toBeVisible();
   });
 
   test("keeps staff out of the configuration", async ({ page }) => {

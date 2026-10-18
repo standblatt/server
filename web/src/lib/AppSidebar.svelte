@@ -6,7 +6,6 @@
 	import Building from '@lucide/svelte/icons/building-2';
 	import CalendarDays from '@lucide/svelte/icons/calendar-days';
 	import Check from '@lucide/svelte/icons/check';
-	import ScrollText from '@lucide/svelte/icons/scroll-text';
 	import ClipboardPen from '@lucide/svelte/icons/clipboard-pen';
 	import CircleHelp from '@lucide/svelte/icons/circle-help';
 	import ChevronsUpDown from '@lucide/svelte/icons/chevrons-up-down';
@@ -27,7 +26,7 @@
 	import Puzzle from '@lucide/svelte/icons/puzzle';
 	import SlidersHorizontal from '@lucide/svelte/icons/sliders-horizontal';
 	import ModuleSlot from '$lib/modules/ModuleSlot.svelte';
-	import { enabled, type Lazy } from '$lib/modules';
+	import { enabled, enabledClub, type Lazy } from '$lib/modules';
 	import Users from '@lucide/svelte/icons/users';
 	import type { Event, Me } from '$lib/api';
 	import { liveLabel, roleLabel } from '$lib/labels';
@@ -89,7 +88,8 @@
 			? [
 					{ href: `${base}/ranges`, label: $t`Ranges`, icon: Crosshair },
 					{ href: `${base}/users`, label: $t`Users`, icon: UserCog },
-					{ href: `${base}/forms`, label: $t`Print forms`, icon: ScrollText }
+					...enabledClub(membership).flatMap((m) => (m.clubPage ? [{ href: `${base}/${m.clubPage.path}`, label: $t(m.clubPage.label), icon: m.icon }] : [])),
+					{ href: `${base}/modules`, label: $t`Club modules`, icon: Puzzle, active: path === `${base}/modules` }
 				]
 			: [])
 	]);

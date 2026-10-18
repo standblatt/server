@@ -4,7 +4,8 @@ Un modello di stampa porta i risultati su un foglio prestampato, p. es. i
 fogli di stand che l’esercito fornisce per il programma obbligatorio: i
 colpi si registrano al bersaglio o in seguito, e il foglio viene stampato
 invece di essere compilato a mano. Compilare a mano resta possibile; i
-modelli sono facoltativi.
+modelli sono facoltativi e si possono disattivare in **Moduli della
+società** (vedi [Moduli della società](events.md#club-modules)).
 
 ## Creare un modello {#create}
 
@@ -78,13 +79,13 @@ vale per tutti gli elementi; l’anteprima lo ignora.
 ## Usare un modello {#use}
 
 In **Configurazione** → **Programmi** della manifestazione apri un programma
-e scegli il suo **Modello di stampa** nella sezione **Utilizzo**; funziona
-anche con tiratori già iscritti. Ogni programma concluso offre allora
-**Stampa sul modello** nei risultati: al desk, nella pagina **Registra
-risultati** e tramite i link per segretari al bersaglio (vedi
-[Aiutanti](helpers.md)). Con un agente di stampa e una stampante scelta per
-*Modelli di stampa* in **Stand di tiro → Stampa**, il foglio va a quella
-stampante (p. es. al suo alimentatore manuale), altrimenti si apre il PDF
-(vedi [Stampa](printing.md)).
+e scegli il suo **Modello di stampa** nella sezione omonima; funziona anche
+con tiratori già iscritti. Ogni programma concluso offre allora **Stampa sul
+modello** nei risultati: al desk, nella pagina **Registra risultati** e
+tramite i link per segretari al bersaglio (vedi [Aiutanti](helpers.md)). Con
+un agente di stampa e una stampante scelta per *Modelli di stampa* in
+**Stand di tiro → Stampa**, il foglio va a quella stampante (p. es. al suo
+alimentatore manuale), altrimenti si apre il PDF (vedi
+[Stampa](printing.md)).
 
 **Esporta** scarica un modello come file e **Importa** lo rilegge, p. es. per condividere un modello con un’altra società.

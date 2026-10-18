@@ -4,7 +4,8 @@ Eine Druckvorlage bringt Resultate auf ein vorgedrucktes Blatt, z. B. die
 Standblätter, die die Armee für das Obligatorische Programm liefert: Die
 Schüsse werden an der Scheibe oder nachträglich erfasst, und das Blatt wird
 gedruckt statt von Hand ausgefüllt. Von Hand ausfüllen bleibt möglich;
-Druckvorlagen sind freiwillig.
+Druckvorlagen sind freiwillig und lassen sich unter **Vereinsbausteine**
+ausschalten (siehe [Vereinsbausteine](events.md#club-modules)).
 
 ## Eine Vorlage erstellen {#create}
 
@@ -77,7 +78,7 @@ Vorschau ignoriert ihn.
 ## Eine Vorlage verwenden {#use}
 
 Öffne unter **Konfiguration** → **Programme** des Anlasses ein Programm und
-wähle im Abschnitt **Einsatz** seine **Druckvorlage**; das geht auch, wenn
+wähle im gleichnamigen Abschnitt seine **Druckvorlage**; das geht auch, wenn
 schon Schützen angemeldet sind. Jedes abgeschlossene Programm bietet dann in
 den Resultaten **Auf Vorlage drucken** an: am Desk, auf der Seite
 **Resultate erfassen** und über Warner-Links an der Scheibe (siehe

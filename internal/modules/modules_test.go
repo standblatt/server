@@ -11,6 +11,9 @@ func TestEnum(t *testing.T) {
 	if got := strings.Join(Keys(Event), ","); got != EventEnum {
 		t.Fatalf("EventEnum = %q, want %q", EventEnum, got)
 	}
+	if got := strings.Join(Keys(Club), ","); got != ClubEnum {
+		t.Fatalf("ClubEnum = %q, want %q", ClubEnum, got)
+	}
 	for _, m := range All {
 		for _, r := range m.Requires {
 			if _, ok := Get(r); !ok {

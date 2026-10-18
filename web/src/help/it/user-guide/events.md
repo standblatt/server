@@ -79,6 +79,16 @@ Gli orari di tiro danno anche alla prenotazione online le sue fasce, a meno
 che la prenotazione fissi altri orari per un giorno (vedi [prenotazione
 online](online-booking.md)).
 
+### Moduli della società {#club-modules}
+
+Alcuni moduli appartengono alla società invece che a una
+manifestazione. **Moduli della società** nella parte società della barra
+laterale (admin) li attiva e disattiva:
+
+| Modulo | Cosa aggiunge |
+|---|---|
+| Modelli di stampa | modelli per fogli prestampati e la sezione *Modello di stampa* di ogni programma (vedi [Modelli di stampa](print-forms.md)) |
+
 ## Manifestazioni senza bersagli {#no-lanes}
 
 Una manifestazione non ha bisogno di uno stand, p. es. un programma annuale

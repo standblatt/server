@@ -165,3 +165,22 @@ func TestSettingsBecomeModules(t *testing.T) {
 		}
 	}
 }
+
+func TestClubsKeepForms(t *testing.T) {
+	st := testdb.Bare(t)
+	ctx := context.Background()
+	if err := st.MigrateUntil(ctx, "0032_modules.sql"); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := st.Pool().Exec(ctx, `INSERT INTO tenants (name) VALUES ('Club')`); err != nil {
+		t.Fatal(err)
+	}
+	if err := st.MigrateUntil(ctx, ""); err != nil {
+		t.Fatal(err)
+	}
+	var mods string
+	st.Pool().QueryRow(ctx, `SELECT array_to_string(modules, ',') FROM tenants`).Scan(&mods)
+	if mods != "forms" {
+		t.Fatalf("modules %q", mods)
+	}
+}

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 10:50+0200\n"
+"POT-Creation-Date: 2026-10-18 11:37+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -819,7 +819,8 @@ msgstr "Questo programma non ha un modello di stampa"
 msgid "Choose a range of the event for the scorer"
 msgstr "Scegli un poligono della manifestazione per il marcatore"
 
-#: internal/web/helpers.go internal/web/masterdata.go internal/web/tenants.go
+#: internal/web/helpers.go internal/web/masterdata.go internal/web/modules.go
+#: internal/web/tenants.go
 msgid "Club not found"
 msgstr "Società non trovata"
 
@@ -931,6 +932,10 @@ msgid "Delete the kiosk links first"
 msgstr "Elimina prima i link kiosk"
 
 #: internal/web/modules.go
+msgid "Delete the print forms first"
+msgstr "Elimina prima i modelli di stampa"
+
+#: internal/web/modules.go
 msgid "Programmes with awards use this module"
 msgstr "Programmi con distinzioni usano questo modulo"
 
@@ -949,6 +954,10 @@ msgstr "Disattiva prima il link della prenotazione online"
 #: internal/web/modules.go
 msgid "The module is in use"
 msgstr "Il modulo è in uso"
+
+#: internal/web/modules.go
+msgid "This module is off"
+msgstr "Questo modulo è disattivato"
 
 #: internal/web/modules.go
 msgid "This module is off for this event"

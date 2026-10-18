@@ -5,6 +5,8 @@ import (
 	"time"
 
 	"github.com/jackc/pgx/v5"
+
+	"github.com/standblatt/server/internal/modules"
 )
 
 // Role is a user's role within one tenant.
@@ -34,9 +36,11 @@ type Tenant struct {
 
 // Membership is a tenant the user belongs to, with the user's role there.
 type Membership struct {
-	TenantID   int64  `json:"tenantId"`
-	TenantName string `json:"tenantName"`
-	Role       Role   `json:"role" enum:"admin,staff"`
+	TenantID   int64    `json:"tenantId"`
+	TenantName string   `json:"tenantName"`
+	Role       Role     `json:"role" enum:"admin,staff"`
+	Modules    []string `json:"modules" enum:"forms" doc:"The club modules that are on"`
+	InUse      []string `json:"modulesInUse" enum:"forms" doc:"The club modules with data; they cannot be switched off"`
 }
 
 // Member is a user within a tenant.
@@ -57,7 +61,7 @@ func (s *Store) GetTenant(ctx context.Context, tenantID int64) (Tenant, error) {
 // CreateTenant inserts a tenant; ErrExists if the name is taken.
 func (s *Store) CreateTenant(ctx context.Context, name string) (int64, error) {
 	var id int64
-	err := s.pool.QueryRow(ctx, `INSERT INTO tenants (name) VALUES ($1) RETURNING id`, name).Scan(&id)
+	err := s.pool.QueryRow(ctx, `INSERT INTO tenants (name, modules) VALUES ($1, $2) RETURNING id`, name, modules.Defaults(modules.Club)).Scan(&id)
 	return id, mapErr(err)
 }
 
@@ -114,12 +118,16 @@ func (s *Store) RemoveMembership(ctx context.Context, tenantID, userID int64) er
 
 // Memberships lists the tenants a user belongs to.
 func (s *Store) Memberships(ctx context.Context, userID int64) ([]Membership, error) {
-	rows, err := s.pool.Query(ctx, `SELECT t.id, t.name, m.role FROM memberships m
+	rows, err := s.pool.Query(ctx, `SELECT t.id, t.name, m.role, t.modules, `+clubUsed+` FROM memberships m
 		JOIN tenants t ON t.id = m.tenant_id WHERE m.user_id = $1 ORDER BY t.name`, userID)
 	if err != nil {
 		return nil, err
 	}
-	return pgx.CollectRows(rows, pgx.RowToStructByPos[Membership])
+	list, err := pgx.CollectRows(rows, pgx.RowToStructByPos[Membership])
+	for i := range list {
+		list[i].Modules = modules.Effective(modules.Club, list[i].Modules, list[i].InUse, true)
+	}
+	return list, err
 }
 
 // MemberRole returns the user's role in a tenant; ErrNotFound if they are not a member.

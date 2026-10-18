@@ -82,6 +82,16 @@ Les heures de tir donnent aussi ses créneaux à la réservation en ligne, sauf
 si la réservation fixe d’autres horaires pour un jour (voir [réservation en
 ligne](online-booking.md)).
 
+### Modules de la société {#club-modules}
+
+Certains modules appartiennent à la société plutôt qu'à une
+manifestation. **Modules de la société** dans la partie société de la barre
+latérale (admins) les active et les désactive :
+
+| Module | Ce qu'il ajoute |
+|---|---|
+| Modèles d’impression | des modèles pour feuilles préimprimées et la section *Modèle d’impression* de chaque programme (voir [Modèles d’impression](print-forms.md)) |
+
 ## Manifestations sans cibles {#no-lanes}
 
 Une manifestation n’a pas besoin de stand, p. ex. un programme annuel ou un
