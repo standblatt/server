@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 08:18+0000\n"
+"POT-Creation-Date: 2026-10-18 09:12+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -366,23 +366,21 @@ msgstr "5. Programme hinzufügen"
 #. type: Plain text
 #: ../src/help/en/getting-started/first-event.md:30
 msgid ""
-"In the event's **Setup**, add the programmes: from the editor, from the "
-"programme library, from a programme file or by copying them from an earlier "
-"event. Check prices, award tiers, variants and combinations, and set up "
-"[special prizes](../user-guide/programmes.md#special-prizes) if your event "
-"awards them."
-msgstr ""
-"Füge in der **Einrichtung** des Anlasses die Programme hinzu: mit dem "
-"Editor, aus der Programmbibliothek, aus einer Programmdatei oder als Kopie "
-"aus einem früheren Anlass. Prüfe Preise, Auszeichnungsstufen, Varianten und "
-"Kombinationen, und richte [Sonderpreise](../user-guide/programmes.md#special-"
-"prizes) ein, wenn dein Anlass welche vergibt."
+"Open **Configuration** in the event's sidebar. Under **Modules**, switch on "
+"what the event uses (kiosk displays, helper links, awards …, see [Modules]"
+"(../user-guide/events.md#modules)); then add the programmes under "
+"**Programmes**: from the editor, from the programme library, from a "
+"programme file or by copying them from an earlier event. Check prices, award "
+"tiers, variants and combinations, and set up [special prizes](../user-guide/"
+"programmes.md#special-prizes) if your event awards them."
+msgstr "Öffne **Konfiguration** in der Seitenleiste des Anlasses. Schalte unter **Bausteine** ein, was der Anlass verwendet (Kiosk-Anzeigen, Helferlinks, Auszeichnungen …, siehe [Bausteine](../user-guide/events.md#modules)); füge dann unter **Programme** die Programme hinzu: mit dem Editor, aus der Programmbibliothek, aus einer Programmdatei oder als Kopie aus einem früheren Anlass. Prüfe Preise, Auszeichnungsstufen, Varianten und Kombinationen, und richte [Sonderpreise](../user-guide/programmes.md#special-prizes) ein, wenn dein Anlass welche vergibt."
 
 #. type: Plain text
 #: ../src/help/en/getting-started/first-event.md:32
-msgid "![Event setup](../images/screenshots/setup.png){ .screenshot }"
-msgstr ""
-"![Einrichtung des Anlasses](../images/screenshots/setup.png){ .screenshot }"
+msgid ""
+"![The programmes of the event](../images/screenshots/setup.png)"
+"{ .screenshot }"
+msgstr "![Die Programme des Anlasses](../images/screenshots/setup.png){ .screenshot }"
 
 #. type: Title ##
 #: ../src/help/en/getting-started/first-event.md:33
@@ -393,15 +391,11 @@ msgstr "6. Kiosk-Bildschirme und Drucker"
 #. type: Plain text
 #: ../src/help/en/getting-started/first-event.md:36
 msgid ""
-"Still in Setup, on the *Kiosk displays* tab, create a kiosk link for each "
-"screen in the hall (see [Rankings and kiosk](../user-guide/rankings-"
+"Still in the configuration, on **Kiosk displays**, create a kiosk link for "
+"each screen in the hall (see [Rankings and kiosk](../user-guide/rankings-"
 "kiosk.md)). Under Ranges → Printing, assign a printer to each document (see "
 "[Printing](../user-guide/printing.md))."
-msgstr ""
-"Erstelle, immer noch in der Einrichtung, im Tab *Kiosk-Anzeigen* einen Kiosk-"
-"Link für jeden Bildschirm in der Halle (siehe [Ranglisten und Kiosk](../user-"
-"guide/rankings-kiosk.md)). Weise unter Schiessstände → Drucken jedem "
-"Dokument einen Drucker zu (siehe [Drucken](../user-guide/printing.md))."
+msgstr "Erstelle, immer noch in der Konfiguration, auf **Kiosk-Anzeigen** einen Kiosk-Link für jeden Bildschirm in der Halle (siehe [Ranglisten und Kiosk](../user-guide/rankings-kiosk.md)). Weise unter Schiessstände → Drucken jedem Dokument einen Drucker zu (siehe [Drucken](../user-guide/printing.md))."
 
 #. type: Title ##
 #: ../src/help/en/getting-started/first-event.md:37
@@ -435,16 +429,10 @@ msgstr "8. Nach dem Anlass"
 msgid ""
 "Under **Statistics**, download the reports (financial report, awards, club "
 "competition, special prizes …). When everything is settled, **close** the "
-"event in Setup (*Copy & close* tab): the rankings are released to the "
-"shooters' personal training logs, and the event stays readable but can no "
-"longer be changed."
-msgstr ""
-"Unter **Statistik** lädst du die Berichte herunter (Finanzbericht, "
-"Auszeichnungen, Vereinswettkampf, Spezialpreise …). Wenn alles erledigt ist, "
-"**schliesst** du den Anlass in der Einrichtung **ab** (Tab *Kopieren & "
-"abschliessen*): die Ranglisten werden für das persönliche Trainingslog der "
-"Schützen freigegeben, und der Anlass bleibt lesbar, kann aber nicht mehr "
-"geändert werden."
+"event under **Configuration** → **Copy & close**: the rankings are released "
+"to the shooters' personal training logs, and the event stays readable but "
+"can no longer be changed."
+msgstr "Unter **Statistik** lädst du die Berichte herunter (Finanzbericht, Auszeichnungen, Vereinskonkurrenz, Sonderpreise …). Wenn alles erledigt ist, **schliesst** du den Anlass unter **Konfiguration** → **Kopieren & abschliessen** **ab**: Die Ranglisten werden für das persönliche Trainingslog der Schützen freigegeben, und der Anlass bleibt lesbar, kann aber nicht mehr geändert werden."
 
 #. type: Title #
 #: ../src/help/en/index.md:1
@@ -2291,7 +2279,14 @@ msgid ""
 "programmes, or a club championship over the best three attempts of an annual "
 "programme. Classifications appear on **Rankings**, on kiosk displays and as "
 "a report; they never change results or awards."
-msgstr "Eine Programm-Rangliste rangiert ein Programm. Eine **Wertung** rangiert Schützen über mehrere Programme oder über mehrere [Durchgänge](programmes.md#attempts) eines Programms, z. B. eine Sektionsmeisterschaft als Summe von drei Programmen oder eine Vereinsmeisterschaft über die besten drei Durchgänge eines Jahresprogramms. Wertungen erscheinen unter **Ranglisten**, auf Kiosk-Anzeigen und als Bericht; sie ändern nie Resultate oder Auszeichnungen."
+msgstr ""
+"Eine Programm-Rangliste rangiert ein Programm. Eine **Wertung** rangiert "
+"Schützen über mehrere Programme oder über mehrere [Durchgänge]"
+"(programmes.md#attempts) eines Programms, z. B. eine Sektionsmeisterschaft "
+"als Summe von drei Programmen oder eine Vereinsmeisterschaft über die besten "
+"drei Durchgänge eines Jahresprogramms. Wertungen erscheinen unter "
+"**Ranglisten**, auf Kiosk-Anzeigen und als Bericht; sie ändern nie Resultate "
+"oder Auszeichnungen."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/classifications.md:5
@@ -2302,9 +2297,10 @@ msgstr "Eine Wertung erstellen {#create}"
 #. type: Plain text
 #: ../src/help/en/user-guide/classifications.md:8
 msgid ""
-"On the *Classifications* tab of the event's **Setup** (admins), **New "
-"classification** opens the editor:"
-msgstr "Auf dem Tab *Wertungen* der **Einrichtung** des Anlasses (Admins) öffnet **Neue Wertung** den Editor:"
+"With the module *Classifications* switched on (**Configuration** → "
+"**Modules**), **New classification** on **Classifications** in the "
+"configuration (admins) opens the editor:"
+msgstr "Ist der Baustein *Wertungen* eingeschaltet (**Konfiguration** → **Bausteine**), öffnet **Neue Wertung** auf **Wertungen** in der Konfiguration (Admins) den Editor:"
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/classifications.md:15
@@ -2313,14 +2309,20 @@ msgid ""
 "With 3, the best three attempts count (or the first or last three, as set by "
 "the programme's *Counting attempt*). A shooter's total is the sum of all "
 "counted attempts."
-msgstr "**Programme**: jedes Programm, das zählt, mit seinen **Zählenden Durchgängen**. Bei 3 zählen die besten drei Durchgänge (oder die ersten oder letzten drei, je nach *Zählender Durchgang* am Programm). Das Total eines Schützen ist die Summe aller gezählten Durchgänge."
+msgstr ""
+"**Programme**: jedes Programm, das zählt, mit seinen **Zählenden "
+"Durchgängen**. Bei 3 zählen die besten drei Durchgänge (oder die ersten oder "
+"letzten drei, je nach *Zählender Durchgang* am Programm). Das Total eines "
+"Schützen ist die Summe aller gezählten Durchgänge."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/classifications.md:15
 msgid ""
 "**Count only the best programmes**: with several programmes, only that many "
 "with the highest points count, e.g. the best two of three; 0 counts all."
-msgstr "**Nur die besten Programme zählen**: Bei mehreren Programmen zählen nur so viele mit den meisten Punkten, z. B. die besten zwei von drei; 0 zählt alle."
+msgstr ""
+"**Nur die besten Programme zählen**: Bei mehreren Programmen zählen nur so "
+"viele mit den meisten Punkten, z. B. die besten zwei von drei; 0 zählt alle."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/classifications.md:15
@@ -2328,7 +2330,10 @@ msgid ""
 "**Rank only shooters with all counting results**: shooters who are still "
 "missing a programme or an attempt are listed below the ranking without a "
 "rank. Without it everybody is ranked by what they have."
-msgstr "**Nur Schützen mit allen zählenden Resultaten rangieren**: Schützen, denen noch ein Programm oder ein Durchgang fehlt, stehen ohne Rang unter der Rangliste. Ohne diese Option wird jeder nach dem rangiert, was er hat."
+msgstr ""
+"**Nur Schützen mit allen zählenden Resultaten rangieren**: Schützen, denen "
+"noch ein Programm oder ein Durchgang fehlt, stehen ohne Rang unter der "
+"Rangliste. Ohne diese Option wird jeder nach dem rangiert, was er hat."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/classifications.md:15
@@ -2338,7 +2343,13 @@ msgid ""
 "all counted series, *More of the highest single shots* needs [single shots]"
 "(programmes.md) (more tens, then more nines …), *Age* follows the [SSV rule]"
 "(../reference/rules.md#ranking). The default is the SSV order."
-msgstr "**Stichentscheid**: Bei gleichem Total entscheiden die angekreuzten Kriterien in ihrer Reihenfolge; die Pfeile ändern sie. *Passen von der letzten rückwärts* vergleicht alle gezählten Passen, *Mehr höchste Einzelschüsse* braucht [Einzelschüsse](programmes.md) (mehr Zehner, dann mehr Neuner …), *Alter* folgt der [SSV-Regel](../reference/rules.md#ranking). Standard ist die SSV-Reihenfolge."
+msgstr ""
+"**Stichentscheid**: Bei gleichem Total entscheiden die angekreuzten "
+"Kriterien in ihrer Reihenfolge; die Pfeile ändern sie. *Passen von der "
+"letzten rückwärts* vergleicht alle gezählten Passen, *Mehr höchste "
+"Einzelschüsse* braucht [Einzelschüsse](programmes.md) (mehr Zehner, dann "
+"mehr Neuner …), *Alter* folgt der [SSV-Regel](../reference/"
+"rules.md#ranking). Standard ist die SSV-Reihenfolge."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/classifications.md:15
@@ -2347,7 +2358,11 @@ msgid ""
 "with U17 to U21 and *Elite* with the others. An age category belongs to one "
 "class at most; shooters whose category is in no class are not listed. "
 "Without classes everybody is in one ranking."
-msgstr "**Klassen**: getrennte Ranglisten, je für einige Alterskategorien, z. B. *Junioren* mit U17 bis U21 und *Elite* mit den übrigen. Eine Alterskategorie gehört höchstens zu einer Klasse; Schützen, deren Kategorie in keiner Klasse ist, erscheinen nicht. Ohne Klassen sind alle in einer Rangliste."
+msgstr ""
+"**Klassen**: getrennte Ranglisten, je für einige Alterskategorien, z. B. "
+"*Junioren* mit U17 bis U21 und *Elite* mit den übrigen. Eine Alterskategorie "
+"gehört höchstens zu einer Klasse; Schützen, deren Kategorie in keiner Klasse "
+"ist, erscheinen nicht. Ohne Klassen sind alle in einer Rangliste."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/classifications.md:15
@@ -2380,8 +2395,7 @@ msgstr ""
 #: ../src/help/en/user-guide/classifications.md:24
 #, no-wrap
 msgid "**Copy for next year** copies the classifications with the programmes. Deleting a programme removes it from the classifications.\n"
-msgstr ""
-"**Für nächstes Jahr kopieren** kopiert die Wertungen mit den Programmen. Wird ein Programm gelöscht, verschwindet es aus den Wertungen.\n"
+msgstr "**Für nächstes Jahr kopieren** kopiert die Wertungen mit den Programmen. Wird ein Programm gelöscht, verschwindet es aus den Wertungen.\n"
 
 #. type: Title #
 #: ../src/help/en/user-guide/dashboard.md:1
@@ -2407,16 +2421,10 @@ msgstr "![Dashboard](../images/screenshots/dashboard.png){ .screenshot }"
 #: ../src/help/en/user-guide/dashboard.md:13
 msgid ""
 "**Shooting**: registrations on a lane, with the time since they started, the "
-"buttons **Results**, **Edit** and **Finish**. When the event setting *The "
-"organizer hands out the ammunition* is on, **Ammo** records that it was "
-"handed out and a green *ammo* badge shows it afterwards (see [Helpers]"
-"(helpers.md))."
-msgstr ""
-"**Am Schiessen**: Anmeldungen auf einer Scheibe, mit der Zeit seit ihrem "
-"Start, den Knöpfen **Resultate**, **Bearbeiten** und **Beenden**. Ist die "
-"Anlass-Einstellung *Der Veranstalter gibt die Munition ab* an, hält "
-"**Munition** fest, dass sie ausgegeben wurde, und danach zeigt es ein grünes "
-"*Munition*-Abzeichen (siehe [Helfer](helpers.md))."
+"buttons **Results**, **Edit** and **Finish**. When the module *Ammunition "
+"desk* is on, **Ammo** records that it was handed out and a green *ammo* "
+"badge shows it afterwards (see [Helpers](helpers.md))."
+msgstr "**Am Schiessen**: Anmeldungen auf einer Scheibe, mit der Zeit seit ihrem Start, den Knöpfen **Resultate**, **Bearbeiten** und **Beenden**. Ist der Baustein *Munitionsausgabe* an, hält **Munition** fest, dass sie ausgegeben wurde, und danach zeigt es ein grünes *Munition*-Abzeichen (siehe [Helfer](helpers.md))."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/dashboard.md:13
@@ -2588,8 +2596,9 @@ msgstr "Anlässe"
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:4
 #, no-wrap
-msgid "**Events** lists the events of the club in the groups *Today* (between the first and the last shooting day), *Upcoming*, *Past* and *Closed*; admins create new ones there. Opening an event shows its dashboard, reservations, rankings, statistics and setup in the sidebar; *Change event* at the top of the sidebar returns to the list.\n"
-msgstr "**Anlässe** listet die Anlässe des Vereins in den Gruppen *Heute* (zwischen dem ersten und dem letzten Schiesstag), *Bevorstehend*, *Vergangen* und *Abgeschlossen*; Admins erstellen dort neue. Das Öffnen eines Anlasses zeigt in der Seitenleiste sein Dashboard, Reservationen, Ranglisten, Statistik und Einrichtung; *Anlass wechseln* oben in der Seitenleiste führt zurück zur Liste.\n"
+msgid "**Events** lists the events of the club in the groups *Today* (between the first and the last shooting day), *Upcoming*, *Past* and *Closed*; admins create new ones there. Opening an event shows its dashboard and the other pages of the operation in the sidebar; *Change event* at the top of the sidebar returns to the list.\n"
+msgstr ""
+"**Anlässe** listet die Anlässe des Vereins in den Gruppen *Heute* (zwischen dem ersten und dem letzten Schiesstag), *Bevorstehend*, *Vergangen* und *Abgeschlossen*; Admins erstellen dort neue. Das Öffnen eines Anlasses zeigt in der Seitenleiste sein Dashboard und die übrigen Seiten des Betriebs; *Anlass wechseln* oben in der Seitenleiste führt zurück zur Liste.\n"
 
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:6
@@ -2599,29 +2608,59 @@ msgstr "![Anlässe](../images/screenshots/events.png){ .screenshot }"
 #. type: Title ##
 #: ../src/help/en/user-guide/events.md:7
 #, no-wrap
-msgid "Settings {#settings}"
-msgstr "Einstellungen {#settings}"
+msgid "Configuration and operation {#configuration}"
+msgstr "Konfiguration und Betrieb {#configuration}"
 
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:10
 msgid ""
-"The event's **Setup** has five tabs: *Programmes* (see [Programmes]"
-"(programmes.md)), *Event*, *Kiosk displays* (see [Rankings and kiosk]"
-"(rankings-kiosk.md)), *Helpers* (see [Helpers](helpers.md)) and *Copy & "
-"close*. Staff only see the programmes."
+"An event has two areas. The **operation** is what you work with on the day: "
+"*Dashboard*, *Enter results*, *Rankings*, *Statistics* and the pages of "
+"switched-on modules such as *Reservations*. **Configuration** at the end of "
+"the sidebar (admins only) opens the set-up of the event; the sidebar then "
+"lists its pages, and *Back to the event* returns to the operation:"
+msgstr "Ein Anlass hat zwei Bereiche. Der **Betrieb** ist das, womit du am Anlass arbeitest: *Dashboard*, *Resultate erfassen*, *Ranglisten*, *Statistik* und die Seiten eingeschalteter Bausteine wie *Reservationen*. **Konfiguration** am Ende der Seitenleiste (nur Admins) öffnet die Einrichtung des Anlasses; die Seitenleiste zeigt dann deren Seiten, und *Zurück zum Anlass* führt zurück in den Betrieb:"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:18
+#, no-wrap
+msgid ""
+"| Page | What it holds |\n"
+"|---|---|\n"
+"| **General** | name, days, ranges, organizer and language (see below) |\n"
+"| **Modules** | the building blocks the event uses (see below) |\n"
+"| **Programmes** | what can be shot (see [Programmes](programmes.md)) |\n"
+"| Pages of modules | e.g. **Classifications**, **Kiosk displays**, **Helper links**, **Online booking**, only while the module is on |\n"
+"| **Copy & close** | copy for next year, close, reopen and delete |\n"
 msgstr ""
-"Die **Einrichtung** des Anlasses hat fünf Tabs: *Programme* (siehe "
-"[Programme](programmes.md)), *Anlass*, *Kiosk-Anzeigen* (siehe [Ranglisten "
-"und Kiosk](rankings-kiosk.md)), *Helfer* (siehe [Helfer](helpers.md)) und "
-"*Kopieren & abschliessen*. Mitarbeiter sehen nur die Programme."
+"| Seite | Was sie enthält |\n"
+"|---|---|\n"
+"| **Allgemein** | Name, Tage, Stände, Veranstalter und Sprache (siehe unten) |\n"
+"| **Bausteine** | die Bausteine, die der Anlass verwendet (siehe unten) |\n"
+"| **Programme** | was geschossen werden kann (siehe [Programme](programmes.md)) |\n"
+"| Seiten der Bausteine | z. B. **Wertungen**, **Kiosk-Anzeigen**, **Helferlinks**, **Online-Reservation**, nur solange der Baustein an ist |\n"
+"| **Kopieren & abschliessen** | für nächstes Jahr kopieren, abschliessen, wiedereröffnen und löschen |\n"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:12
-msgid "The *Event* tab holds the settings (admins):"
-msgstr "Der Tab *Anlass* enthält die Einstellungen (Admins):"
+#: ../src/help/en/user-guide/events.md:20
+msgid "Staff work only in the operation; the configuration is for admins."
+msgstr "Personal arbeitet nur im Betrieb; die Konfiguration ist für Admins."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/events.md:21
+#, no-wrap
+msgid "Settings {#settings}"
+msgstr "Einstellungen {#settings}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:25
+#: ../src/help/en/user-guide/events.md:24
+#, no-wrap
+msgid "**General** holds what every event has:\n"
+msgstr ""
+"**Allgemein** enthält, was jeder Anlass hat:\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:32
 #, no-wrap
 msgid ""
 "| Setting | Meaning |\n"
@@ -2631,11 +2670,6 @@ msgid ""
 "| Period (season) | for events over weeks or months, e.g. the Feldschiessen from the opening of the range until 31 August: first and last day, plus the weekdays with their shooting times; no weekday ticked means every day. Single days, e.g. the official weekend, add to the period or replace its times on that date |\n"
 "| Organizer | printed on documents |\n"
 "| Language of documents and kiosk | language of PDFs, CSV exports and kiosk screens, independent of each user's interface language |\n"
-"| Club excluded from the club competition | usually the host club; listed as *out of competition* |\n"
-"| Documents at registration | **Lane sheet** and **Control strip**: switch off what the event does not use; the registration then neither offers nor prints it |\n"
-"| Show lane status on the rankings | kiosk screens show the lanes |\n"
-"| Print the award value on wreath cards | value in figures and words on the card |\n"
-"| The organizer hands out the ammunition | shows the **Ammo** button on the dashboard and for the ammunition desk (see [Helpers](helpers.md)); off for events where shooters bring their own, e.g. air pistol and air rifle |\n"
 msgstr ""
 "| Einstellung | Bedeutung |\n"
 "|---|---|\n"
@@ -2644,14 +2678,66 @@ msgstr ""
 "| Zeitraum (Saison) | für Anlässe über Wochen oder Monate, z. B. das Feldschiessen von der Öffnung des Schützenhauses bis 31. August: erster und letzter Tag, dazu die Wochentage mit ihren Schiesszeiten; kein Wochentag angekreuzt heisst jeder Tag. Einzelne Tage, z. B. das offizielle Wochenende, ergänzen den Zeitraum oder ersetzen an diesem Datum seine Zeiten |\n"
 "| Veranstalter | wird auf Dokumente gedruckt |\n"
 "| Sprache der Dokumente und des Kiosks | Sprache von PDFs, CSV-Exporten und Kiosk-Bildschirmen, unabhängig von der Oberflächensprache der einzelnen Benutzer |\n"
-"| Von der Vereinskonkurrenz ausgeschlossener Verein | meist der Gastgeberverein; aufgeführt als *ausser Konkurrenz* |\n"
-"| Dokumente bei der Anmeldung | **Standblatt** und **Kontrollstreifen**: ausschalten, was der Anlass nicht braucht; die Anmeldung bietet es dann weder an noch druckt sie es |\n"
-"| Scheibenstatus auf den Ranglisten zeigen | Kiosk-Bildschirme zeigen die Scheiben |\n"
-"| Wert der Auszeichnung auf Kranzkarten drucken | Wert in Ziffern und Worten auf der Karte |\n"
-"| Der Veranstalter gibt die Munition ab | zeigt den Knopf **Munition** im Dashboard und für die Munitionsausgabe (siehe [Helfer](helpers.md)); aus bei Anlässen, an denen die Schützen ihre eigene mitbringen, z. B. Luftpistole und Luftgewehr |\n"
+
+#. type: Title ##
+#: ../src/help/en/user-guide/events.md:33
+#, no-wrap
+msgid "Modules {#modules}"
+msgstr "Bausteine {#modules}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:27
+#: ../src/help/en/user-guide/events.md:36
+msgid ""
+"Not every event needs everything: a shooting festival books lanes and hands "
+"out wreath cards, an annual programme only collects results. **Modules** "
+"switches the building blocks of the event on and off; what is off disappears "
+"from the sidebar, the dashboard, the programme editor, the rankings and the "
+"reports."
+msgstr "Nicht jeder Anlass braucht alles: Ein Schützenfest reserviert Scheiben und gibt Kranzkarten ab, ein Jahresprogramm sammelt nur Resultate. **Bausteine** schaltet die Bausteine des Anlasses ein und aus; was aus ist, verschwindet aus Seitenleiste, Dashboard, Programm-Editor, Ranglisten und Berichten."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:50
+#, no-wrap
+msgid ""
+"| Module | What it adds |\n"
+"|---|---|\n"
+"| Reservations | lanes reserved for groups and clubs (needs a range) |\n"
+"| Online booking | clubs ask for lanes through a public link (needs a range and switches on Reservations, see [Online booking](online-booking.md)) |\n"
+"| Lane sheet, Control strip | the documents printed at registration |\n"
+"| Ammunition desk | the **Ammo** button on the dashboard and for the ammunition desk (see [Helpers](helpers.md#ammunition)); leave it off where shooters bring their own, e.g. air pistol and air rifle |\n"
+"| Attempts | programmes that can be shot several times (see [Programmes](programmes.md#attempts)) |\n"
+"| Awards | wreath cards, prizes in kind and cash prizes; its setting *Print the award value on wreath cards* puts the value in figures and words on the card |\n"
+"| Special prizes | the best ranks of every age category (switches on Awards, see [Programmes](programmes.md#special-prizes)) |\n"
+"| Club competition | clubs ranked by their shooters' results; its setting *Club excluded from the club competition* is usually the host club, listed as *out of competition* |\n"
+"| Classifications | rankings over several programmes or attempts (see [Classifications](classifications.md)) |\n"
+"| Kiosk displays | rankings on screens in the hall (see [Rankings and kiosk](rankings-kiosk.md)) |\n"
+"| Helper links | scorers, ammunition desk and results clerk without an account (see [Helpers](helpers.md)) |\n"
+msgstr ""
+"| Baustein | Was er bringt |\n"
+"|---|---|\n"
+"| Reservationen | für Gruppen und Vereine reservierte Scheiben (braucht einen Stand) |\n"
+"| Online-Reservation | Vereine fragen über einen öffentlichen Link Scheiben an (braucht einen Stand und schaltet Reservationen ein, siehe [Online-Reservation](online-booking.md)) |\n"
+"| Standblatt, Kontrollstreifen | die Dokumente, die bei der Anmeldung gedruckt werden |\n"
+"| Munitionsausgabe | der Knopf **Munition** im Dashboard und für die Munitionsausgabe (siehe [Helfer](helpers.md#ammunition)); aus lassen, wo die Schützen ihre eigene mitbringen, z. B. Luftpistole und Luftgewehr |\n"
+"| Durchgänge | Programme, die mehrmals geschossen werden können (siehe [Programme](programmes.md#attempts)) |\n"
+"| Auszeichnungen | Kranzkarten, Naturalgaben und Geldpreise; seine Einstellung *Wert der Auszeichnung auf Kranzkarten drucken* setzt den Wert in Ziffern und Worten auf die Karte |\n"
+"| Sonderpreise | die besten Ränge jeder Alterskategorie (schaltet Auszeichnungen ein, siehe [Programme](programmes.md#special-prizes)) |\n"
+"| Vereinskonkurrenz | Vereine nach den Resultaten ihrer Schützen rangiert; seine Einstellung *Von der Vereinskonkurrenz ausgeschlossener Verein* ist meist der Gastgeberverein, aufgeführt als *ausser Konkurrenz* |\n"
+"| Wertungen | Ranglisten über mehrere Programme oder Durchgänge (siehe [Wertungen](classifications.md)) |\n"
+"| Kiosk-Anzeigen | Ranglisten auf Bildschirmen in der Halle (siehe [Ranglisten und Kiosk](rankings-kiosk.md)) |\n"
+"| Helferlinks | Warner, Munitionsausgabe und Resultaterfassung ohne Konto (siehe [Helfer](helpers.md)) |\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:52
+msgid ""
+"A module that holds data stays on: switch off the kiosk only after deleting "
+"its kiosk links, the awards only when no programme has award tiers, and so "
+"on; the card says why its switch is locked. A module another one needs "
+"(Reservations for Online booking) stays on as long as that one is."
+msgstr "Ein Baustein mit Daten bleibt an: Den Kiosk schaltest du erst aus, wenn seine Kiosk-Links gelöscht sind, die Auszeichnungen erst, wenn kein Programm mehr Auszeichnungsstufen hat, und so weiter; die Karte sagt, warum ihr Schalter gesperrt ist. Ein Baustein, den ein anderer braucht (Reservationen für die Online-Reservation), bleibt an, solange jener an ist."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:54
 msgid ""
 "Shooting times also give the online booking its slots, unless the booking "
 "sets other hours for a day (see [Online booking](online-booking.md))."
@@ -2661,97 +2747,79 @@ msgstr ""
 "Reservation](online-booking.md))."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:28
+#: ../src/help/en/user-guide/events.md:55
 #, no-wrap
 msgid "Events without lanes {#no-lanes}"
 msgstr "Anlässe ohne Scheiben {#no-lanes}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:31
+#: ../src/help/en/user-guide/events.md:58
 msgid ""
 "An event needs no range, e.g. an annual programme or a Feldschiessen whose "
 "results come on paper or from the scoring system. Without a range there is "
-"no lane grid, no reservations and no online booking; shooters are registered "
-"without a lane and their results are entered as usual. Documents can still "
-"be opened as PDF, but they do not go to a print agent, because print agents "
-"belong to a range."
-msgstr ""
-"Ein Anlass braucht keinen Stand, z. B. ein Jahresprogramm oder ein "
-"Feldschiessen, dessen Resultate auf Papier oder aus der Trefferanzeige "
-"kommen. Ohne Stand gibt es kein Scheibenraster, keine Reservationen und "
-"keine Online-Buchung; Schützen werden ohne Scheibe angemeldet, und ihre "
-"Resultate werden wie gewohnt erfasst. Dokumente lassen sich weiterhin als "
-"PDF öffnen, gehen aber nicht an einen Druck-Agenten, weil Druck-Agenten zu "
-"einem Stand gehören."
+"no lane grid, and the modules Reservations and Online booking are not "
+"available; shooters are registered without a lane and their results are "
+"entered as usual. Documents can still be opened as PDF, but they do not go "
+"to a print agent, because print agents belong to a range."
+msgstr "Ein Anlass braucht keinen Stand, z. B. ein Jahresprogramm oder ein Feldschiessen, dessen Resultate auf Papier oder aus der Trefferanzeige kommen. Ohne Stand gibt es kein Scheibenraster, und die Bausteine Reservationen und Online-Reservation stehen nicht zur Verfügung; Schützen werden ohne Scheibe angemeldet, und ihre Resultate werden wie gewohnt erfasst. Dokumente lassen sich weiterhin als PDF öffnen, gehen aber nicht an einen Druck-Agenten, weil Druck-Agenten zu einem Stand gehören."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:32
+#: ../src/help/en/user-guide/events.md:59
 #, no-wrap
-msgid "Copy for next year"
-msgstr "Für nächstes Jahr kopieren"
+msgid "Copy for next year {#copy}"
+msgstr "Für nächstes Jahr kopieren {#copy}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:35
+#: ../src/help/en/user-guide/events.md:62
 msgid ""
-"On the *Copy & close* tab, **Copy for next year** creates a new event with "
-"the same ranges, organizer, language, settings and all programmes, including "
-"prices, awards, combinations and special prizes, and the [classifications]"
-"(classifications.md); the shooting days and the period move with the date, "
-"weekly shooting times stay on their weekdays. Registrations, results and "
-"kiosk links are not copied. The dialog suggests the name with the year (and "
-"a leading number like *42.*) counted up and the date one year later; adjust "
-"both as needed."
-msgstr "Auf dem Tab *Kopieren & abschliessen* erstellt **Für nächstes Jahr kopieren** einen neuen Anlass mit denselben Ständen, Organisator, Sprache, Einstellungen und allen Programmen, inklusive Preise, Auszeichnungen, Kombinationen und Spezialpreise, sowie den [Wertungen](classifications.md); die Schiesstage und der Zeitraum wandern mit dem Datum, wöchentliche Schiesszeiten bleiben auf ihren Wochentagen. Anmeldungen, Resultate und Kiosk-Links werden nicht kopiert. Der Dialog schlägt den Namen mit hochgezähltem Jahr (und einer führenden Nummer wie *42.*) und das Datum ein Jahr später vor; passe beides bei Bedarf an."
+"On **Copy & close** in the configuration, **Copy for next year** creates a "
+"new event with the same ranges, organizer, language, settings, modules and "
+"all programmes, including prices, awards, combinations and special prizes, "
+"and the [classifications](classifications.md); the shooting days and the "
+"period move with the date, weekly shooting times stay on their weekdays. "
+"Registrations, results and kiosk links are not copied. The dialog suggests "
+"the name with the year (and a leading number like *42.*) counted up and the "
+"date one year later; adjust both as needed."
+msgstr "Auf **Kopieren & abschliessen** in der Konfiguration erstellt **Für nächstes Jahr kopieren** einen neuen Anlass mit denselben Ständen, Veranstalter, Sprache, Einstellungen, Bausteinen und allen Programmen, inklusive Preise, Auszeichnungen, Kombinationen und Sonderpreise, sowie den [Wertungen](classifications.md); die Schiesstage und der Zeitraum wandern mit dem Datum, wöchentliche Schiesszeiten bleiben auf ihren Wochentagen. Anmeldungen, Resultate und Kiosk-Links werden nicht kopiert. Der Dialog schlägt den Namen mit hochgezähltem Jahr (und einer führenden Nummer wie *42.*) und das Datum ein Jahr später vor; passe beides bei Bedarf an."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:37
+#: ../src/help/en/user-guide/events.md:64
 msgid "![Copy an event](../images/screenshots/copy-event.png){ .screenshot }"
 msgstr ""
 "![Einen Anlass kopieren](../images/screenshots/copy-event.png){ .screenshot }"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:38
+#: ../src/help/en/user-guide/events.md:65
 #, no-wrap
 msgid "Close {#close}"
 msgstr "Abschliessen {#close}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:41
+#: ../src/help/en/user-guide/events.md:68
 msgid ""
-"When an event is over and the rankings are checked, **Close** it on the "
-"*Copy & close* tab. Closing releases the rankings: shooters with a [personal "
-"training log](../my-training/account.md#competitions) now find their results "
-"of this event, with their rank in the programme, and can add them to their "
-"log. Everything stays visible (dashboard, results, rankings, reports, "
-"documents), but registrations, results, awards, programmes and settings can "
-"no longer be changed. A banner on every page of the event says so. "
-"**Reopen** makes it editable again; results that shooters already added to "
-"their logs stay there. Copying a closed event for next year works."
-msgstr ""
-"Wenn der Anlass vorbei ist und die Ranglisten geprüft sind, **schliesst** du "
-"ihn auf dem Tab *Kopieren & abschliessen* **ab** (**Anlass abschliessen**). "
-"Das Abschliessen gibt die Ranglisten frei: Schützen mit einem [persönlichen "
-"Trainingslog](../my-training/account.md#competitions) finden jetzt ihre "
-"Resultate dieses Anlasses mit ihrem Rang im Programm und können sie in ihr "
-"Log übernehmen. Alles bleibt sichtbar (Dashboard, Resultate, Ranglisten, "
-"Berichte, Dokumente), aber Anmeldungen, Resultate, Auszeichnungen, Programme "
-"und Einstellungen können nicht mehr geändert werden. Ein Banner auf jeder "
-"Seite des Anlasses weist darauf hin. **Wiedereröffnen** macht ihn wieder "
-"bearbeitbar; Resultate, die Schützen bereits in ihr Log übernommen haben, "
-"bleiben dort. Das Kopieren eines abgeschlossenen Anlasses für nächstes Jahr "
-"funktioniert."
+"When an event is over and the rankings are checked, **Close** it on **Copy & "
+"close** in the configuration. Closing releases the rankings: shooters with a "
+"[personal training log](../my-training/account.md#competitions) now find "
+"their results of this event, with their rank in the programme, and can add "
+"them to their log. Everything stays visible (dashboard, results, rankings, "
+"reports, documents), but registrations, results, awards, programmes and "
+"settings can no longer be changed. A banner on every page of the event says "
+"so. **Reopen** makes it editable again; results that shooters already added "
+"to their logs stay there. Copying a closed event for next year works."
+msgstr "Wenn der Anlass vorbei ist und die Ranglisten geprüft sind, **schliesst** du ihn auf **Kopieren & abschliessen** in der Konfiguration **ab** (**Anlass abschliessen**). Das Abschliessen gibt die Ranglisten frei: Schützen mit einem [persönlichen Trainingslog](../my-training/account.md#competitions) finden jetzt ihre Resultate dieses Anlasses mit ihrem Rang im Programm und können sie in ihr Log übernehmen. Alles bleibt sichtbar (Dashboard, Resultate, Ranglisten, Berichte, Dokumente), aber Anmeldungen, Resultate, Auszeichnungen, Programme und Einstellungen können nicht mehr geändert werden. Ein Banner auf jeder Seite des Anlasses weist darauf hin. **Wiedereröffnen** macht ihn wieder bearbeitbar; Resultate, die Schützen bereits in ihr Log übernommen haben, bleiben dort. Das Kopieren eines abgeschlossenen Anlasses für nächstes Jahr funktioniert."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:42
+#: ../src/help/en/user-guide/events.md:69
 #, no-wrap
 msgid "Delete"
 msgstr "Löschen"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:44
+#: ../src/help/en/user-guide/events.md:71
 #, no-wrap
-msgid "**Delete** (on the *Copy & close* tab) removes an event, but only while nobody is registered for it.\n"
-msgstr "**Löschen** (auf dem Tab *Kopieren & abschliessen*) entfernt einen Anlass, aber nur solange niemand dafür angemeldet ist.\n"
+msgid "**Delete** (on **Copy & close**) removes an event, but only while nobody is registered for it.\n"
+msgstr ""
+"**Löschen** (auf **Kopieren & abschliessen**) entfernt einen Anlass, aber nur solange niemand dafür angemeldet ist.\n"
 
 #. type: Title #
 #: ../src/help/en/user-guide/login-language.md:1
@@ -3295,23 +3363,14 @@ msgstr "Eine Vorlage verwenden {#use}"
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:43
 msgid ""
-"On the *Programmes* tab of the event's **Setup**, choose the **Print form** "
-"of a programme; this works while shooters are registered. Every completed "
-"programme then offers **Print onto form** in the results: at the desk, on "
-"the **Enter results** page and on scorer links at the lane (see [Helpers]"
-"(helpers.md)). With a print agent and a printer chosen for *Print forms* "
-"under **Ranges → Printing**, the sheet goes to that printer (e.g. its manual "
-"feed), otherwise the PDF opens (see [Printing](printing.md))."
-msgstr ""
-"Wähle im Tab *Programme* der **Einrichtung** des Anlasses die "
-"**Druckvorlage** eines Programms; das geht auch, wenn schon Schützen "
-"angemeldet sind. Jedes abgeschlossene Programm bietet dann in den Resultaten "
-"**Auf Vorlage drucken** an: am Desk, auf der Seite **Resultate erfassen** "
-"und über Schreiber-Links an der Scheibe (siehe [Helfer](helpers.md)). Mit "
-"einem Druck-Agenten und einem Drucker für *Druckvorlagen* unter "
-"**Schiessstände → Drucken** geht das Blatt an diesen Drucker (z. B. an "
-"seinen manuellen Einzug), sonst öffnet sich das PDF (siehe [Drucken]"
-"(printing.md))."
+"Under **Configuration** → **Programmes** of the event, choose the **Print "
+"form** of a programme; this works while shooters are registered. Every "
+"completed programme then offers **Print onto form** in the results: at the "
+"desk, on the **Enter results** page and on scorer links at the lane (see "
+"[Helpers](helpers.md)). With a print agent and a printer chosen for *Print "
+"forms* under **Ranges → Printing**, the sheet goes to that printer (e.g. its "
+"manual feed), otherwise the PDF opens (see [Printing](printing.md))."
+msgstr "Wähle unter **Konfiguration** → **Programme** des Anlasses die **Druckvorlage** eines Programms; das geht auch, wenn schon Schützen angemeldet sind. Jedes abgeschlossene Programm bietet dann in den Resultaten **Auf Vorlage drucken** an: am Desk, auf der Seite **Resultate erfassen** und über Warner-Links an der Scheibe (siehe [Helfer](helpers.md)). Mit einem Druck-Agenten und einem Drucker für *Druckvorlagen* unter **Schiessstände → Drucken** geht das Blatt an diesen Drucker (z. B. an seinen manuellen Einzug), sonst öffnet sich das PDF (siehe [Drucken](printing.md))."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:44
@@ -3329,20 +3388,14 @@ msgstr "Programme"
 #. type: Plain text
 #: ../src/help/en/user-guide/programmes.md:4
 msgid ""
-"Programmes belong to an event and are managed on the *Programmes* tab of its "
-"**Setup** (admins only)."
-msgstr ""
-"Programme gehören zu einem Anlass und werden im Tab *Programme* seiner "
-"**Einrichtung** verwaltet (nur Admins)."
+"Programmes belong to an event and are managed under **Configuration** → "
+"**Programmes** (admins only)."
+msgstr "Programme gehören zu einem Anlass und werden unter **Konfiguration** → **Programme** verwaltet (nur Admins)."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/programmes.md:6
-msgid ""
-"![Setup with the programme list](../images/screenshots/setup.png)"
-"{ .screenshot }"
-msgstr ""
-"![Einrichtung mit der Programmliste](../images/screenshots/setup.png)"
-"{ .screenshot }"
+msgid "![The programme list](../images/screenshots/setup.png){ .screenshot }"
+msgstr "![Die Programmliste](../images/screenshots/setup.png){ .screenshot }"
 
 #. type: Title ##
 #: ../src/help/en/user-guide/programmes.md:7
@@ -3750,7 +3803,9 @@ msgstr ""
 msgid ""
 "[Classifications](classifications.md) follow the programmes, one table per "
 "class; their **PDF** and **CSV** are the report *Classifications*."
-msgstr "[Wertungen](classifications.md) folgen auf die Programme, eine Tabelle pro Klasse; ihr **PDF** und **CSV** ist der Bericht *Wertungen*."
+msgstr ""
+"[Wertungen](classifications.md) folgen auf die Programme, eine Tabelle pro "
+"Klasse; ihr **PDF** und **CSV** ist der Bericht *Wertungen*."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/rankings-kiosk.md:13
@@ -3762,12 +3817,9 @@ msgstr "Kiosk-Bildschirme"
 #: ../src/help/en/user-guide/rankings-kiosk.md:16
 msgid ""
 "A kiosk link shows the rankings of one event on a screen in the hall, "
-"without login. Create one on the *Kiosk displays* tab of the event's "
-"**Setup**:"
-msgstr ""
-"Ein Kiosk-Link zeigt die Ranglisten eines Anlasses auf einem Bildschirm in "
-"der Halle, ohne Anmeldung. Erstelle einen im Tab *Kiosk-Anzeigen* der "
-"**Einrichtung** des Anlasses:"
+"without login. Switch on the module *Kiosk displays* under **Configuration** "
+"→ **Modules**, then create one on **Kiosk displays** in the configuration:"
+msgstr "Ein Kiosk-Link zeigt die Ranglisten eines Anlasses auf einem Bildschirm in der Halle, ohne Anmeldung. Schalte den Baustein *Kiosk-Anzeigen* unter **Konfiguration** → **Bausteine** ein und erstelle dann einen auf **Kiosk-Anzeigen** in der Konfiguration:"
 
 #. type: Bullet: '1. '
 #: ../src/help/en/user-guide/rankings-kiosk.md:20
@@ -3799,12 +3851,9 @@ msgstr "![Kiosk-Bildschirm](../images/screenshots/kiosk.png){ .screenshot }"
 #: ../src/help/en/user-guide/rankings-kiosk.md:26
 msgid ""
 "The kiosk shows only programmes with *Show on kiosk displays* switched on, "
-"and the lane status if the event setting *Show lane status on the rankings* "
-"is on."
-msgstr ""
-"Der Kiosk zeigt nur Programme mit eingeschaltetem *Auf Kiosk-Anzeigen "
-"zeigen*, und den Scheibenstatus, wenn die Einstellung *Scheibenstatus auf "
-"den Ranglisten zeigen* des Anlasses an ist."
+"and the lane status if *Show lane status on the rankings* is on (on the same "
+"page)."
+msgstr "Der Kiosk zeigt nur Programme mit eingeschaltetem *Auf Kiosk-Anzeigen zeigen*, und den Scheibenstatus, wenn *Scheibenstatus auf den Ranglisten zeigen* an ist (auf derselben Seite)."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/rankings-kiosk.md:26
@@ -3852,15 +3901,10 @@ msgstr "Helfer"
 msgid ""
 "Helpers at the event (scorers, the ammunition desk, the results office) work "
 "with a **helper link** instead of a login. A helper link opens a reduced "
-"desk of one event on any phone or laptop; admins create the links on the "
-"*Helpers* tab of the event's **Setup** and revoke them when the event is "
-"over."
-msgstr ""
-"Helfer am Anlass (Warner, Munitionsausgabe, Resultatbüro) arbeiten mit einem "
-"**Helferlink** statt mit einem Login. Ein Helferlink öffnet auf jedem Handy "
-"oder Laptop eine reduzierte Ansicht eines Anlasses; Admins erstellen die "
-"Links im Tab *Helfer* der **Einrichtung** des Anlasses und widerrufen sie, "
-"wenn der Anlass vorbei ist."
+"desk of one event on any phone or laptop; admins switch on the module "
+"*Helper links* under **Configuration** → **Modules**, create the links on "
+"**Helper links** in the configuration and revoke them when the event is over."
+msgstr "Helfer am Anlass (Warner, Munitionsausgabe, Resultaterfassung) arbeiten mit einem **Helferlink** statt mit einem Login. Ein Helferlink öffnet auf jedem Handy oder Laptop eine reduzierte Ansicht eines Anlasses; Admins schalten den Baustein *Helferlinks* unter **Konfiguration** → **Bausteine** ein, erstellen die Links auf **Helferlinks** in der Konfiguration und widerrufen sie, wenn der Anlass vorbei ist."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/helpers.md:6
@@ -3953,8 +3997,9 @@ msgstr "Munition {#ammunition}"
 #. type: Plain text
 #: ../src/help/en/user-guide/helpers.md:27
 #, no-wrap
-msgid "**Ammo** on a waiting or shooting registration records the time the ammunition was handed out; the button exists only when the event setting *The organizer hands out the ammunition* is on (air pistol and air rifle shooters usually bring their own). The dashboard shows a green *ammo* badge on such registrations, so the desk and the range officer see at a glance who has been served.\n"
-msgstr "**Munition** auf einer wartenden oder schiessenden Anmeldung hält die Zeit fest, zu der die Munition ausgegeben wurde; den Knopf gibt es nur, wenn die Anlass-Einstellung *Der Veranstalter gibt die Munition ab* an ist (Luftpistolen- und Luftgewehrschützen bringen meist ihre eigene mit). Das Dashboard zeigt bei solchen Anmeldungen ein grünes *Munition*-Abzeichen, so sehen Ausgabe und Rangeur auf einen Blick, wer bedient ist.\n"
+msgid "**Ammo** on a waiting or shooting registration records the time the ammunition was handed out; the button exists only when the module *Ammunition desk* is on (air pistol and air rifle shooters usually bring their own). The dashboard shows a green *ammo* badge on such registrations, so the desk and the range officer see at a glance who has been served.\n"
+msgstr ""
+"**Munition** auf einer wartenden oder schiessenden Anmeldung hält die Zeit fest, zu der die Munition ausgegeben wurde; den Knopf gibt es nur, wenn der Baustein *Munitionsausgabe* an ist (Luftpistolen- und Luftgewehrschützen bringen meist ihre eigene mit). Das Dashboard zeigt bei solchen Anmeldungen ein grünes *Munition*-Abzeichen, so sehen Ausgabe und Rangeur auf einen Blick, wer bedient ist.\n"
 
 #. type: Title #
 #: ../src/help/en/user-guide/registrations.md:1
@@ -4062,8 +4107,9 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/registrations.md:29
 #, no-wrap
-msgid "*Print lane sheet* and *Print control strip* are ticked by default: the documents print on the range's printers right after registering, or open as PDF if no printer is set up (see [Printing](printing.md)).\n"
-msgstr "*Standblatt drucken* und *Kontrollstreifen drucken* sind standardmässig angekreuzt: Die Dokumente werden gleich nach der Anmeldung auf den Druckern des Schiessstands gedruckt oder öffnen sich als PDF, wenn kein Drucker eingerichtet ist (siehe [Drucken](printing.md)).\n"
+msgid "*Print lane sheet* and *Print control strip* are ticked by default (they only appear while the modules *Lane sheet* and *Control strip* are on, see [Modules](events.md#modules)): the documents print on the range's printers right after registering, or open as PDF if no printer is set up (see [Printing](printing.md)).\n"
+msgstr ""
+"*Standblatt drucken* und *Kontrollstreifen drucken* sind standardmässig angekreuzt (sie erscheinen nur, solange die Bausteine *Standblatt* und *Kontrollstreifen* an sind, siehe [Bausteine](events.md#modules)): Die Dokumente werden gleich nach der Anmeldung auf den Druckern des Schiessstands gedruckt oder öffnen sich als PDF, wenn kein Drucker eingerichtet ist (siehe [Drucken](printing.md)).\n"
 
 #. type: Title ##
 #: ../src/help/en/user-guide/registrations.md:30
@@ -4179,22 +4225,18 @@ msgstr "Einschalten {#setup}"
 #. type: Plain text
 #: ../src/help/en/user-guide/online-booking.md:8
 msgid ""
-"On the *Online booking* tab of the event's **Setup**, **Switch on** is all "
-"it takes. The tab then shows the link with a QR code for the invitation and "
-"the slots it offers."
-msgstr ""
-"Auf dem Tab *Online-Reservation* der **Einrichtung** des Anlasses genügt "
-"**Einschalten**. Der Tab zeigt dann den Link mit einem QR-Code für die "
-"Einladung und die angebotenen Zeitblöcke."
+"Switch on the module *Online booking* under **Configuration** → **Modules** "
+"(it needs a range); then, on **Online booking** in the configuration, "
+"**Switch on** is all it takes. The page then shows the link with a QR code "
+"for the invitation and the slots it offers."
+msgstr "Schalte den Baustein *Online-Reservation* unter **Konfiguration** → **Bausteine** ein (er braucht einen Stand); dann genügt auf **Online-Reservation** in der Konfiguration **Einschalten**. Die Seite zeigt dann den Link mit einem QR-Code für die Einladung und die angebotenen Zeitblöcke."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/online-booking.md:10
 msgid ""
-"![Online booking in the setup](../images/screenshots/booking-setup.png)"
-"{ .screenshot }"
-msgstr ""
-"![Online-Reservation in der Einrichtung](../images/screenshots/booking-"
+"![Online booking in the configuration](../images/screenshots/booking-"
 "setup.png){ .screenshot }"
+msgstr "![Online-Reservation in der Konfiguration](../images/screenshots/booking-setup.png){ .screenshot }"
 
 #. type: Plain text
 #: ../src/help/en/user-guide/online-booking.md:12
@@ -4950,6 +4992,33 @@ msgstr ""
 "(../admin-guide/admin-panel.md). Ein vergessenes Passwort setzt man mit "
 "**Passwort vergessen?** auf der Login-Seite zurück, wenn das Konto eine "
 "bestätigte E-Mail-Adresse hat, sonst der Betreiber."
+
+#~ msgid "![Event setup](../images/screenshots/setup.png){ .screenshot }"
+#~ msgstr ""
+#~ "![Einrichtung des Anlasses](../images/screenshots/setup.png)"
+#~ "{ .screenshot }"
+
+#~ msgid ""
+#~ "On the *Classifications* tab of the event's **Setup** (admins), **New "
+#~ "classification** opens the editor:"
+#~ msgstr ""
+#~ "Auf dem Tab *Wertungen* der **Einrichtung** des Anlasses (Admins) öffnet "
+#~ "**Neue Wertung** den Editor:"
+
+#~ msgid ""
+#~ "The event's **Setup** has five tabs: *Programmes* (see [Programmes]"
+#~ "(programmes.md)), *Event*, *Kiosk displays* (see [Rankings and kiosk]"
+#~ "(rankings-kiosk.md)), *Helpers* (see [Helpers](helpers.md)) and *Copy & "
+#~ "close*. Staff only see the programmes."
+#~ msgstr ""
+#~ "Die **Einrichtung** des Anlasses hat fünf Tabs: *Programme* (siehe "
+#~ "[Programme](programmes.md)), *Anlass*, *Kiosk-Anzeigen* (siehe "
+#~ "[Ranglisten und Kiosk](rankings-kiosk.md)), *Helfer* (siehe [Helfer]"
+#~ "(helpers.md)) und *Kopieren & abschliessen*. Mitarbeiter sehen nur die "
+#~ "Programme."
+
+#~ msgid "The *Event* tab holds the settings (admins):"
+#~ msgstr "Der Tab *Anlass* enthält die Einstellungen (Admins):"
 
 #~ msgid ""
 #~ "**Prices (CHF)**: only the ticked age categories may shoot the programme."

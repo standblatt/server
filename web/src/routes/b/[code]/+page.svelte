@@ -4,8 +4,8 @@
 	import { createQuery } from '@tanstack/svelte-query';
 	import CircleCheck from '@lucide/svelte/icons/circle-check';
 	import { api, call, type BookingRequestInput } from '$lib/api';
-	import { deadlineDay } from '$lib/booking';
-	import BookingForm from '$lib/booking/BookingForm.svelte';
+	import { deadlineDay } from '$lib/modules/booking/booking';
+	import BookingForm from '$lib/modules/booking/parts/BookingForm.svelte';
 	import PublicShell from '$lib/PublicShell.svelte';
 	import { formatDays } from '$lib/format';
 

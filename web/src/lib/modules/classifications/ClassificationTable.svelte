@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
 	import type { Snippet } from 'svelte';
-	import type { ClassificationRanking } from './api';
-	import { ageCategoryShort } from './categories';
-	import * as Table from './components/ui/table';
+	import type { ClassificationRanking } from '$lib/api';
+	import { ageCategoryShort } from '$lib/categories';
+	import * as Table from '$lib/components/ui/table';
 
 	let { ranking, large = false, actions }: { ranking: ClassificationRanking; large?: boolean; actions?: Snippet } = $props();
 

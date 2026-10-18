@@ -11,8 +11,9 @@ Auszeichnungen.
 
 ## Eine Wertung erstellen {#create}
 
-Auf dem Tab *Wertungen* der **Einrichtung** des Anlasses (Admins) öffnet
-**Neue Wertung** den Editor:
+Ist der Baustein *Wertungen* eingeschaltet (**Konfiguration** →
+**Bausteine**), öffnet **Neue Wertung** auf **Wertungen** in der
+Konfiguration (Admins) den Editor:
 
 - **Programme**: jedes Programm, das zählt, mit seinen **Zählenden
   Durchgängen**. Bei 3 zählen die besten drei Durchgänge (oder die ersten

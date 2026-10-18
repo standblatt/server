@@ -59,7 +59,7 @@ test.describe("rankings and kiosk", () => {
 
   test("serves a live kiosk display without login", async ({ page, browser }) => {
     await login(page, admin);
-    await page.goto(`/t/${ids.tenant}/events/${ids.event}/setup?tab=kiosk`);
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}/config/kiosk`);
     await page.locator("input[aria-label='Display name']").fill("Hall 1");
     await c(page, "button", "Create kiosk link").click();
     const url = new URL(await page.locator("[data-testid=kiosk-url]").innerText());
@@ -91,7 +91,7 @@ test.describe("rankings and kiosk", () => {
 
   test("stops working when the kiosk link is revoked", async ({ page }) => {
     await login(page, admin);
-    await page.goto(`/t/${ids.tenant}/events/${ids.event}/setup?tab=kiosk`);
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}/config/kiosk`);
     const hall = c(page, "li", "Hall 1");
     await expect(hall).toContainText("last seen");
     await c(hall, "button", "revoke").click();

@@ -14,29 +14,29 @@ msgstr ""
 "Language-Team: \n"
 
 #. placeholder {0}: c.name
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "\"{0}\" is deleted; the results stay."
 msgstr "«{0}» viene eliminata; i risultati restano."
 
 #. placeholder {0}: event.data?.name ?? ''
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "\"{0}\" is deleted. Events with registrations cannot be deleted."
 msgstr "«{0}» viene eliminata. Le manifestazioni con iscrizioni non possono essere eliminate."
 
 #. placeholder {0}: event.data?.name ?? ''
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "\"{0}\" is final: the rankings are released and the results appear in the shooters' personal training logs with their rank. Nothing can be changed until the event is reopened."
 msgstr "«{0}» è definitiva: le classifiche sono pubblicate e i risultati compaiono con il rango nel diario di allenamento personale dei tiratori. Nulla può essere modificato finché la manifestazione non viene riaperta."
 
 #. placeholder {0}: r.description
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/lib/modules/reservations/Page.svelte
 msgid "\"{0}\" is removed and its lanes are free again."
 msgstr "«{0}» viene rimossa, i suoi bersagli sono di nuovo liberi."
 
 #. placeholder {0}: c.name
 #. placeholder {0}: k.name
-#: src/lib/HelperCodes.svelte
-#: src/lib/KioskTokens.svelte
+#: src/lib/modules/helpers/HelperCodes.svelte
+#: src/lib/modules/kiosk/KioskTokens.svelte
 msgid "\"{0}\" stops working immediately."
 msgstr "«{0}» smette di funzionare immediatamente."
 
@@ -58,19 +58,11 @@ msgstr[1] "# elementi selezionati"
 
 #. placeholder {0}: it.lanes
 #. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+lane%7D+other+%7B%23+lanes%7D%7D&pluralize_on=0
-#: src/lib/BookingRequests.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
 msgid "# lane"
 msgid_plural "# lanes"
 msgstr[0] "# bersaglio"
 msgstr[1] "# bersagli"
-
-#. placeholder {0}: item.badge
-#. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+open+request%7D+other+%7B%23+open+requests%7D%7D&pluralize_on=0
-#: src/lib/AppSidebar.svelte
-msgid "# open request"
-msgid_plural "# open requests"
-msgstr[0] "# richiesta aperta"
-msgstr[1] "# richieste aperte"
 
 #. placeholder {0}: a.printers.length
 #. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+printer%7D+other+%7B%23+printers%7D%7D&pluralize_on=0
@@ -98,7 +90,7 @@ msgstr[1] "# sessioni salvate su questo dispositivo non sono state caricate:"
 
 #. placeholder {0}: r.shooters.length
 #. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+shooter+announced%7D+other+%7B%23+shooters+announced%7D%7D&pluralize_on=0
-#: src/lib/BookingRequests.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
 msgid "# shooter announced"
 msgid_plural "# shooters announced"
 msgstr[0] "# tiratore annunciato"
@@ -114,7 +106,7 @@ msgstr[1] "# assegnazioni di tiratori vengono rimosse, i tiratori rimangono."
 
 #. placeholder {0}: preview.length
 #. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+shooter+recognised%7D+other+%7B%23+shooters+recognised%7D%7D&pluralize_on=0
-#: src/lib/booking/ShooterList.svelte
+#: src/lib/modules/booking/parts/ShooterList.svelte
 msgid "# shooter recognised"
 msgid_plural "# shooters recognised"
 msgstr[0] "# tiratore riconosciuto"
@@ -143,7 +135,7 @@ msgstr[1] "# colpi"
 
 #. placeholder {0}: p.count
 #. js-lingui:icu=%7B0%2C+plural%2C+one+%7B%23+slot%7D+other+%7B%23+slots%7D%7D&pluralize_on=0
-#: src/lib/BookingSettings.svelte
+#: src/lib/modules/booking/BookingSettings.svelte
 msgid "# slot"
 msgid_plural "# slots"
 msgstr[0] "# fascia oraria"
@@ -239,7 +231,7 @@ msgid "{0} / {1} pts"
 msgstr "{0} / {1} pti"
 
 #. placeholder {0}: dayLabel(d)
-#: src/lib/booking/BookingHoursForm.svelte
+#: src/lib/modules/booking/parts/BookingHoursForm.svelte
 msgid "{0} from"
 msgstr "{0} dalle"
 
@@ -251,7 +243,7 @@ msgstr "{0} h {1} min"
 
 #. placeholder {0}: _i18n._(ageCategoryLabel(cat))
 #. placeholder {1}: i + 1
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "{0} in class {1}"
 msgstr "{0} nella classe {1}"
 
@@ -331,13 +323,23 @@ msgstr "{0} colpi · Ø {1}"
 msgid "{0} shots · Ø {1} per shot"
 msgstr "{0} colpi · Ø {1} per colpo"
 
+#. placeholder {0}: _i18n._(moduleUI[key].label)
+#: src/routes/t/[tenantId]/events/[eventId]/config/modules/+page.svelte
+msgid "{0} switched off"
+msgstr "{0} disattivato"
+
+#. placeholder {0}: _i18n._(moduleUI[key].label)
+#: src/routes/t/[tenantId]/events/[eventId]/config/modules/+page.svelte
+msgid "{0} switched on"
+msgstr "{0} attivato"
+
 #. placeholder {0}: fmt(goal.targetTotal - now, 1)
 #: src/routes/my/+page.svelte
 msgid "{0} to go"
 msgstr "ancora {0}"
 
 #. placeholder {0}: dayLabel(d)
-#: src/lib/booking/BookingHoursForm.svelte
+#: src/lib/modules/booking/parts/BookingHoursForm.svelte
 msgid "{0} until"
 msgstr "{0} alle"
 
@@ -352,7 +354,7 @@ msgid "{at} · click to take back"
 msgstr "{at} · clic per annullare"
 
 #. js-lingui:icu=%7Bchosen%2C+plural%2C+one+%7B%23+slot+chosen%7D+other+%7B%23+slots+chosen%7D%7D&pluralize_on=chosen
-#: src/lib/booking/BookingForm.svelte
+#: src/lib/modules/booking/parts/BookingForm.svelte
 msgid "# slot chosen"
 msgid_plural "# slots chosen"
 msgstr[0] "# fascia oraria scelta"
@@ -365,7 +367,7 @@ msgid_plural "# shooting days"
 msgstr[0] "# giorno di tiro"
 msgstr[1] "# giorni di tiro"
 
-#: src/lib/booking/BookingForm.svelte
+#: src/lib/modules/booking/parts/BookingForm.svelte
 msgid "{free} free"
 msgstr "{free} liberi"
 
@@ -416,6 +418,13 @@ msgstr "{name} lascia {where}."
 msgid "{name}: {0} points saved"
 msgstr "{name}: {0} punti salvati"
 
+#. js-lingui:icu=%7Bpending%2C+plural%2C+one+%7B%23+open+request%7D+other+%7B%23+open+requests%7D%7D&pluralize_on=pending
+#: src/lib/modules/reservations/Badge.svelte
+msgid "# open request"
+msgid_plural "# open requests"
+msgstr[0] "# richiesta aperta"
+msgstr[1] "# richieste aperte"
+
 #: src/lib/forms/Palette.svelte
 msgid "{shots} boxes"
 msgstr "{shots} caselle"
@@ -425,7 +434,7 @@ msgid "{standard} shots"
 msgstr "{standard} colpi"
 
 #. js-lingui:icu=%7Bwaiting%2C+plural%2C+one+%7BTake+over+%23+shooter%7D+other+%7BTake+over+%23+shooters%7D%7D&pluralize_on=waiting
-#: src/lib/BookingRequests.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
 msgid "Take over # shooter"
 msgid_plural "Take over # shooters"
 msgstr[0] "Riprendi # tiratore"
@@ -436,7 +445,7 @@ msgstr[1] "Riprendi # tiratori"
 msgid "≙ {0} of {standard} shots"
 msgstr "≙ {0} su {standard} colpi"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "0 counts all of them."
 msgstr "0 li conta tutti."
 
@@ -448,6 +457,10 @@ msgstr "0 disattiva i premi speciali."
 msgid "30 days"
 msgstr "30 giorni"
 
+#: src/routes/t/[tenantId]/events/[eventId]/config/+page.svelte
+msgid "A closed event cannot be changed."
+msgstr "Una manifestazione chiusa non può essere modificata."
+
 #: src/lib/SetupChecklist.svelte
 msgid "A few steps before the first shooter can register."
 msgstr "Alcuni passi prima che il primo tiratore possa iscriversi."
@@ -456,7 +469,7 @@ msgstr "Alcuni passi prima che il primo tiratore possa iscriversi."
 msgid "A goal gives every session a meaning. Set the total you want to reach."
 msgstr "Un obiettivo dà un senso a ogni sessione. Imposta il totale che vuoi raggiungere."
 
-#: src/lib/HelperCodes.svelte
+#: src/lib/modules/helpers/HelperCodes.svelte
 msgid "A helper link opens a reduced desk for this event without login: scorers enter the results of their lanes, the ammunition desk issues ammunition, assigns lanes and prints lane sheets, results clerks enter results on every lane."
 msgstr "Un link aiutante apre senza login una vista ridotta di questa manifestazione: i marcatori registrano i risultati dei loro bersagli, la distribuzione munizioni consegna le munizioni, assegna i bersagli e stampa i fogli di stand, la registrazione risultati registra i risultati su tutti i bersagli."
 
@@ -464,13 +477,13 @@ msgstr "Un link aiutante apre senza login una vista ridotta di questa manifestaz
 msgid "A JSON file exported from Standblatt (format standblatt.programme v1)."
 msgstr "Un file JSON esportato da Standblatt (formato standblatt.programme v1)."
 
-#: src/lib/KioskTokens.svelte
+#: src/lib/modules/kiosk/KioskTokens.svelte
 msgid "A kiosk link shows the live rankings of this event without login. Anyone with the link can see them."
 msgstr "Un link chiosco mostra le classifiche in diretta di questa manifestazione senza accesso. Chiunque abbia il link può vederle."
 
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
-msgid "A new event with the same settings and programmes, without registrations."
-msgstr "Una nuova manifestazione con le stesse impostazioni e gli stessi programmi, senza iscrizioni."
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
+msgid "A new event with the same settings, modules and programmes, without registrations."
+msgstr "Una nuova manifestazione con le stesse impostazioni, moduli e programmi, senza iscrizioni."
 
 #: src/lib/UpdateNotice.svelte
 msgid "A new version of Standblatt is available."
@@ -507,14 +520,14 @@ msgstr "Account con accesso a questa società. Gli amministratori gestiscono sta
 #. placeholder {0}: c.name
 #. placeholder {0}: programmeTitle(p)
 #. placeholder {0}: r.description
+#: src/lib/modules/reservations/Page.svelte
 #: src/lib/ProgrammeList.svelte
 #: src/routes/t/[tenantId]/clubs/+page.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
 #: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "Actions for {0}"
 msgstr "Azioni per {0}"
 
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/lib/modules/reservations/Page.svelte
 msgid "active"
 msgstr "attivo"
 
@@ -540,7 +553,7 @@ msgstr "Aggiungi tutti"
 msgid "Add award"
 msgstr "Aggiungi distinzione"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Add class"
 msgstr "Aggiungi classe"
 
@@ -568,7 +581,7 @@ msgstr "Aggiungi dalla biblioteca"
 msgid "Add print agent"
 msgstr "Aggiungi agente di stampa"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Add programme"
 msgstr "Aggiungi programma"
 
@@ -577,7 +590,7 @@ msgstr "Aggiungi programma"
 msgid "Add series"
 msgstr "Aggiungi serie"
 
-#: src/lib/booking/ShooterList.svelte
+#: src/lib/modules/booking/parts/ShooterList.svelte
 msgid "Add shooter"
 msgstr "Aggiungi tiratore"
 
@@ -589,7 +602,7 @@ msgstr "Aggiungi Standblatt alla schermata Home dal menu del browser."
 msgid "Add tag"
 msgstr "Aggiungi tag"
 
-#: src/lib/booking/ShooterList.svelte
+#: src/lib/modules/booking/parts/ShooterList.svelte
 msgid "Add to the list"
 msgstr "Aggiungi alla lista"
 
@@ -611,7 +624,7 @@ msgstr "{0} aggiunto dalla biblioteca."
 msgid "added to the club"
 msgstr "aggiunto alla società"
 
-#: src/lib/booking/BookingHoursForm.svelte
+#: src/lib/modules/booking/parts/BookingHoursForm.svelte
 msgid "Adjust"
 msgstr "Adatta"
 
@@ -619,7 +632,7 @@ msgstr "Adatta"
 msgid "Admin"
 msgstr "Admin"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Age (SSV rule)"
 msgstr "Età (regola FST)"
 
@@ -699,7 +712,7 @@ msgstr "Tutte le discipline"
 msgid "All programmes have results."
 msgstr "Tutti i programmi hanno risultati."
 
-#: src/lib/KioskTokens.svelte
+#: src/lib/modules/kiosk/KioskTokens.svelte
 #: src/routes/kiosk/[token]/+page.svelte
 msgid "All ranges"
 msgstr "Tutti gli stand"
@@ -741,6 +754,7 @@ msgid "Ammo"
 msgstr "Munizione"
 
 #: src/lib/labels.ts
+#: src/lib/modules/ammo/index.ts
 msgid "Ammunition desk"
 msgstr "Distribuzione munizioni"
 
@@ -758,7 +772,7 @@ msgstr "Munizioni consegnate a {0} {1}"
 msgid "An administrator of your club still has to finish these steps."
 msgstr "Un amministratore della tua società deve ancora completare questi passi."
 
-#: src/lib/booking/BookingForm.svelte
+#: src/lib/modules/booking/parts/BookingForm.svelte
 msgid "Announce your shooters so they are found quickly at the registration desk. Programmes are chosen at the range."
 msgstr "Annuncia i tuoi tiratori perché vengano trovati subito all’iscrizione. I programmi si scelgono al poligono."
 
@@ -794,7 +808,7 @@ msgid "At least 10 characters."
 msgstr "Almeno 10 caratteri."
 
 #. placeholder {0}: info.maxLanes
-#: src/lib/booking/BookingForm.svelte
+#: src/lib/modules/booking/parts/BookingForm.svelte
 msgid "At most {0} lanes per slot."
 msgstr "Al massimo {0} bersagli per fascia oraria."
 
@@ -811,6 +825,7 @@ msgstr "Tentativo"
 msgid "Attempt {0}"
 msgstr "Tentativo {0}"
 
+#: src/lib/modules/attempts/index.ts
 #: src/lib/ProgrammeEditor.svelte
 #: src/lib/RegistrationForm.svelte
 msgid "Attempts"
@@ -829,7 +844,7 @@ msgid "Average of 5"
 msgstr "Media di 5"
 
 #: src/lib/forms/Palette.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+#: src/lib/modules/awards/StatisticsSection.svelte
 msgid "Award"
 msgstr "Distinzione"
 
@@ -856,9 +871,10 @@ msgid "awards"
 msgstr "distinzioni"
 
 #: src/lib/EventDesk.svelte
+#: src/lib/modules/awards/index.ts
+#: src/lib/modules/awards/StatisticsSection.svelte
 #: src/lib/ProgrammeEditor.svelte
 #: src/lib/ProgrammeList.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Awards"
 msgstr "Distinzioni"
 
@@ -875,7 +891,7 @@ msgstr "Distinzioni consegnate"
 msgid "awards to hand out"
 msgstr "distinzioni da consegnare"
 
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+#: src/lib/modules/awards/index.ts
 msgid "Awards to hand out"
 msgstr "Distinzioni da consegnare"
 
@@ -892,6 +908,10 @@ msgstr "Torna al 100 %"
 msgid "Back to log in"
 msgstr "Torna al login"
 
+#: src/lib/AppSidebar.svelte
+msgid "Back to the event"
+msgstr "Torna alla manifestazione"
+
 #: src/routes/my/log/[id]/+page.svelte
 msgid "Back to the log"
 msgstr "Torna al diario"
@@ -906,8 +926,8 @@ msgstr "Codice a barre"
 msgid "Best"
 msgstr "Migliore"
 
-#: src/lib/booking/ShooterList.svelte
 #: src/lib/forms/Palette.svelte
+#: src/lib/modules/booking/parts/ShooterList.svelte
 #: src/lib/ShooterForm.svelte
 #: src/routes/my/settings/+page.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
@@ -915,7 +935,7 @@ msgid "Birthday"
 msgstr "Data di nascita"
 
 #. placeholder {0}: i + 1
-#: src/lib/booking/ShooterList.svelte
+#: src/lib/modules/booking/parts/ShooterList.svelte
 msgid "Birthday of shooter {0}"
 msgstr "Data di nascita del tiratore {0}"
 
@@ -927,15 +947,15 @@ msgstr "Grassetto"
 msgid "Book lanes"
 msgstr "Prenota bersagli"
 
-#: src/lib/BookingSettings.svelte
+#: src/lib/modules/booking/BookingSettings.svelte
 msgid "Booking link"
 msgstr "Link di prenotazione"
 
-#: src/lib/BookingRequests.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
 msgid "Booking requests"
 msgstr "Richieste di prenotazione"
 
-#: src/lib/booking/BookingHoursForm.svelte
+#: src/lib/modules/booking/parts/BookingHoursForm.svelte
 msgid "Booking settings saved"
 msgstr "Impostazioni della prenotazione online salvate"
 
@@ -944,11 +964,11 @@ msgstr "Impostazioni della prenotazione online salvate"
 msgid "born {0}"
 msgstr "nato/a {0}"
 
-#: src/lib/booking/BookingHoursForm.svelte
+#: src/lib/modules/booking/parts/BookingHoursForm.svelte
 msgid "Break from"
 msgstr "Pausa dalle"
 
-#: src/lib/booking/BookingHoursForm.svelte
+#: src/lib/modules/booking/parts/BookingHoursForm.svelte
 msgid "Break until"
 msgstr "Pausa fino alle"
 
@@ -985,7 +1005,7 @@ msgstr "Annulla la richiesta"
 msgid "Cancel request?"
 msgstr "Annullare la richiesta?"
 
-#: src/lib/booking/BookingStatus.svelte
+#: src/lib/modules/booking/parts/BookingStatus.svelte
 msgid "cancelled"
 msgstr "annullata"
 
@@ -993,12 +1013,12 @@ msgstr "annullata"
 msgid "Cannot scan? Enter this key:"
 msgstr "Non riesci a scansionare? Inserisci questa chiave:"
 
+#: src/lib/modules/awards/StatisticsSection.svelte
 #: src/lib/ProgrammeEditor.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Cash prize"
 msgstr "Premio in denaro"
 
-#: src/lib/ClassificationTable.svelte
+#: src/lib/modules/classifications/ClassificationTable.svelte
 #: src/lib/RankingTable.svelte
 msgid "Cat."
 msgstr "Cat."
@@ -1061,7 +1081,7 @@ msgstr "Scegli una manifestazione …"
 msgid "Choose at least one permission."
 msgstr "Scegli almeno un’autorizzazione."
 
-#: src/lib/booking/BookingForm.svelte
+#: src/lib/modules/booking/parts/BookingForm.svelte
 msgid "Choose at least one slot."
 msgstr "Scegli almeno una fascia oraria."
 
@@ -1072,26 +1092,25 @@ msgid "City"
 msgstr "Località"
 
 #. placeholder {0}: i + 1
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Class {0}"
 msgstr "Classe {0}"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Classes"
 msgstr "Classi"
 
 #. placeholder {0}: draft.name
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Classification \"{0}\" saved"
 msgstr "Classifica generale «{0}» salvata"
 
-#: src/lib/ClassificationTable.svelte
+#: src/lib/modules/classifications/ClassificationTable.svelte
 msgid "Classification {title}"
 msgstr "Classifica generale {title}"
 
-#: src/lib/Classifications.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+#: src/lib/modules/classifications/Classifications.svelte
+#: src/lib/modules/classifications/index.ts
 msgid "Classifications"
 msgstr "Classifiche generali"
 
@@ -1110,15 +1129,15 @@ msgstr "Clicca per aggiungere o trascina sul foglio"
 msgid "Close"
 msgstr "Chiudi"
 
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Close event"
 msgstr "Chiudi la manifestazione"
 
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Close event?"
 msgstr "Chiudere la manifestazione?"
 
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Close this event"
 msgstr "Chiudi questa manifestazione"
 
@@ -1136,17 +1155,17 @@ msgid "Closed on {0}: the rankings are released, everything stays visible, but n
 msgstr "Chiusa il {0}: le classifiche sono pubblicate, tutto resta visibile, ma nulla può più essere modificato."
 
 #: src/lib/AppSidebar.svelte
-#: src/lib/booking/BookingForm.svelte
-#: src/lib/BookingRequests.svelte
-#: src/lib/ClassificationTable.svelte
 #: src/lib/ClubPicker.svelte
 #: src/lib/forms/Palette.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/booking/parts/BookingForm.svelte
+#: src/lib/modules/classifications/ClassificationTable.svelte
+#: src/lib/modules/club_competition/StatisticsSection.svelte
 #: src/lib/NewShooterDialog.svelte
 #: src/lib/RankingTable.svelte
 #: src/lib/RegistrationForm.svelte
 #: src/routes/my/+layout.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "Club"
 msgstr "Società"
@@ -1155,7 +1174,7 @@ msgstr "Società"
 msgid "Club \"{name}\" created"
 msgstr "Società «{name}» creata"
 
-#: src/lib/booking/BookingForm.svelte
+#: src/lib/modules/booking/parts/BookingForm.svelte
 msgid "Club and contact"
 msgstr "Società e contatto"
 
@@ -1163,7 +1182,8 @@ msgstr "Società e contatto"
 msgid "Club and event"
 msgstr "Società e manifestazione"
 
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+#: src/lib/modules/club_competition/index.ts
+#: src/lib/modules/club_competition/StatisticsSection.svelte
 msgid "Club competition"
 msgstr "Concorso di sezione"
 
@@ -1171,7 +1191,7 @@ msgstr "Concorso di sezione"
 msgid "Club deleted"
 msgstr "Società eliminata"
 
-#: src/lib/EventForm.svelte
+#: src/lib/modules/club_competition/Settings.svelte
 msgid "Club excluded from the club competition"
 msgstr "Società esclusa dal concorso di sezione"
 
@@ -1181,7 +1201,7 @@ msgid "Club for {0}"
 msgstr "Società per {0}"
 
 #. placeholder {0}: clubName(r.clubId)
-#: src/lib/BookingRequests.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
 msgid "Club in the master data: {0}"
 msgstr "Società nei dati di base: {0}"
 
@@ -1208,6 +1228,14 @@ msgstr "Società che resta"
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "Clubs"
 msgstr "Società"
+
+#: src/lib/modules/club_competition/index.ts
+msgid "Clubs are ranked by the results of their shooters."
+msgstr "Le società sono classificate secondo i risultati dei loro tiratori."
+
+#: src/lib/modules/booking/index.ts
+msgid "Clubs ask for lanes through a public link; confirmed requests become reservations."
+msgstr "Le società chiedono bersagli tramite un link pubblico; le richieste confermate diventano prenotazioni."
 
 #: src/routes/t/[tenantId]/clubs/+page.svelte
 msgid "Clubs merged"
@@ -1265,17 +1293,22 @@ msgstr "concluso"
 msgid "Completed"
 msgstr "Concluso"
 
-#: src/lib/BookingRequests.svelte
+#: src/lib/AppSidebar.svelte
+#: src/routes/t/[tenantId]/+layout.svelte
+msgid "Configuration"
+msgstr "Configurazione"
+
+#: src/lib/modules/booking/BookingRequests.svelte
 msgid "Confirm"
 msgstr "Conferma"
 
 #. placeholder {0}: confirming.club
-#: src/lib/BookingRequests.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
 msgid "Confirm request of {0}"
 msgstr "Conferma la richiesta di {0}"
 
 #: src/lib/AccountSettings.svelte
-#: src/lib/booking/BookingStatus.svelte
+#: src/lib/modules/booking/parts/BookingStatus.svelte
 msgid "confirmed"
 msgstr "confermato"
 
@@ -1283,7 +1316,7 @@ msgstr "confermato"
 msgid "Confirming …"
 msgstr "Conferma in corso …"
 
-#: src/lib/booking/BookingForm.svelte
+#: src/lib/modules/booking/parts/BookingForm.svelte
 msgid "Contact person"
 msgstr "Persona di contatto"
 
@@ -1291,7 +1324,7 @@ msgstr "Persona di contatto"
 msgid "Contents"
 msgstr "Indice"
 
-#: src/lib/EventForm.svelte
+#: src/lib/modules/control_strip/index.ts
 msgid "Control strip"
 msgstr "Striscia di controllo"
 
@@ -1316,19 +1349,21 @@ msgstr "Copia un modello della biblioteca dei programmi in questa manifestazione
 msgid "Copies all programmes of the chosen event."
 msgstr "Copia tutti i programmi della manifestazione scelta."
 
-#: src/lib/HelperCodes.svelte
-#: src/lib/KioskTokens.svelte
+#: src/lib/modules/helpers/HelperCodes.svelte
+#: src/lib/modules/kiosk/KioskTokens.svelte
 msgid "copy"
 msgstr "copia"
 
+#: src/lib/modules/reservations/Page.svelte
 #: src/lib/my/ApiTokens.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Copy"
 msgstr "copia"
 
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/lib/AppSidebar.svelte
+#: src/routes/t/[tenantId]/+layout.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Copy & close"
 msgstr "Copia e chiudi"
 
@@ -1336,11 +1371,11 @@ msgstr "Copia e chiudi"
 msgid "Copy all programmes"
 msgstr "Copia tutti i programmi"
 
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Copy event"
 msgstr "Copia manifestazione"
 
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Copy for next year"
 msgstr "Copia per l’anno prossimo"
 
@@ -1352,11 +1387,15 @@ msgstr "Copia da una manifestazione precedente"
 msgid "Copy from event"
 msgstr "Copia dalla manifestazione"
 
-#: src/lib/BookingSettings.svelte
+#: src/lib/modules/booking/BookingSettings.svelte
 msgid "Copy link"
 msgstr "Copia link"
 
-#: src/lib/booking/ShooterList.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
+msgid "Copy the event for next year, close it when it is over or delete it."
+msgstr "Copia la manifestazione per l'anno prossimo, chiudila quando è finita o eliminala."
+
+#: src/lib/modules/booking/parts/ShooterList.svelte
 msgid "Copy the rows from Excel or a text file: last name, first name, birthday (e.g. 01.05.1990), licence. One shooter per line."
 msgstr "Copia le righe da Excel o da un file di testo: cognome, nome, data di nascita (p. es. 01.05.1990), licenza. Un tiratore per riga."
 
@@ -1364,16 +1403,16 @@ msgstr "Copia le righe da Excel o da un file di testo: cognome, nome, data di na
 msgid "Copy your token now"
 msgstr "Copia ora il tuo token"
 
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+#: src/lib/modules/awards/StatisticsSection.svelte
 msgid "Count"
 msgstr "Numero"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Count only the best programmes"
 msgstr "Contare solo i programmi migliori"
 
 #. placeholder {0}: club.data.programmes.join(', ')
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+#: src/lib/modules/club_competition/StatisticsSection.svelte
 msgid "Counted: {0}"
 msgstr "Conteggiati: {0}"
 
@@ -1385,7 +1424,7 @@ msgstr "Tentativo che conta"
 msgid "Counting attempt of the shooter's attempts"
 msgstr "Tentativo che conta tra i tentativi del tiratore"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Counting attempts"
 msgstr "Tentativi che contano"
 
@@ -1393,7 +1432,7 @@ msgstr "Tentativi che contano"
 msgid "Counts for the club competition"
 msgstr "Conta per il concorso di sezione"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 #: src/lib/NewShooterDialog.svelte
 #: src/lib/ProgrammeSheet.svelte
 #: src/routes/t/[tenantId]/+page.svelte
@@ -1422,15 +1461,15 @@ msgstr "Crea e registra i risultati"
 msgid "Create and register"
 msgstr "Crea e iscrivi"
 
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Create copy"
 msgstr "Crea copia"
 
-#: src/lib/HelperCodes.svelte
+#: src/lib/modules/helpers/HelperCodes.svelte
 msgid "Create helper link"
 msgstr "Crea link aiutante"
 
-#: src/lib/KioskTokens.svelte
+#: src/lib/modules/kiosk/KioskTokens.svelte
 msgid "Create kiosk link"
 msgstr "Crea link chiosco"
 
@@ -1450,7 +1489,7 @@ msgstr "CSV"
 msgid "Current password"
 msgstr "Password attuale"
 
-#: src/lib/KioskTokens.svelte
+#: src/lib/modules/kiosk/KioskTokens.svelte
 msgid "Dark"
 msgstr "Scuro"
 
@@ -1466,7 +1505,7 @@ msgstr "Dashboard"
 #: src/lib/EventForm.svelte
 #: src/lib/forms/Palette.svelte
 #: src/routes/t/[tenantId]/+page.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Date"
 msgstr "Data"
 
@@ -1474,11 +1513,11 @@ msgstr "Data"
 msgid "Day"
 msgstr "Giorno"
 
-#: src/lib/booking/BookingHoursForm.svelte
+#: src/lib/modules/booking/parts/BookingHoursForm.svelte
 msgid "Days with other hours"
 msgstr "Giorni con altri orari"
 
-#: src/lib/booking/BookingHoursForm.svelte
+#: src/lib/modules/booking/parts/BookingHoursForm.svelte
 msgid "Deadline"
 msgstr "Termine d’iscrizione"
 
@@ -1486,16 +1525,16 @@ msgstr "Termine d’iscrizione"
 msgid "Decimal scoring (10.9)"
 msgstr "Punteggio decimale (10.9)"
 
-#: src/lib/BookingRequests.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
 msgid "Decline"
 msgstr "Rifiuta"
 
 #. placeholder {0}: declining.club
-#: src/lib/BookingRequests.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
 msgid "Decline request of {0}?"
 msgstr "Rifiutare la richiesta di {0}?"
 
-#: src/lib/booking/BookingStatus.svelte
+#: src/lib/modules/booking/parts/BookingStatus.svelte
 msgid "declined"
 msgstr "rifiutata"
 
@@ -1504,9 +1543,10 @@ msgstr "rifiutata"
 msgid "default ({0})"
 msgstr "predefinito ({0})"
 
-#: src/lib/Classifications.svelte
 #: src/lib/forms/Properties.svelte
 #: src/lib/forms/Stage.svelte
+#: src/lib/modules/classifications/Classifications.svelte
+#: src/lib/modules/reservations/Page.svelte
 #: src/lib/ProgrammeList.svelte
 #: src/lib/RegistrationDialog.svelte
 #: src/lib/ShooterSheet.svelte
@@ -1514,8 +1554,7 @@ msgstr "predefinito ({0})"
 #: src/routes/my/settings/+page.svelte
 #: src/routes/my/train/+page.svelte
 #: src/routes/t/[tenantId]/clubs/+page.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 #: src/routes/t/[tenantId]/forms/+page.svelte
 #: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "Delete"
@@ -1523,7 +1562,7 @@ msgstr "Elimina"
 
 #. placeholder {0}: c.name
 #. placeholder {0}: l.name
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Delete {0}"
 msgstr "Elimina {0}"
@@ -1532,7 +1571,7 @@ msgstr "Elimina {0}"
 msgid "Delete account"
 msgstr "Elimina account"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Delete classification?"
 msgstr "Eliminare la classifica generale?"
 
@@ -1546,7 +1585,7 @@ msgstr "Eliminare la società «{0}»?"
 msgid "Delete discipline \"{0}\"?"
 msgstr "Eliminare la disciplina «{0}»?"
 
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Delete event?"
 msgstr "Eliminare la manifestazione?"
 
@@ -1568,7 +1607,7 @@ msgstr "Eliminare lo stand di tiro «{0}»?"
 msgid "Delete registration?"
 msgstr "Eliminare l'iscrizione?"
 
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/lib/modules/reservations/Page.svelte
 msgid "Delete reservation?"
 msgstr "Eliminare la prenotazione?"
 
@@ -1580,7 +1619,7 @@ msgstr "Elimina tiratore"
 msgid "Delete shooter?"
 msgstr "Eliminare il tiratore?"
 
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Delete this event"
 msgstr "Elimina questa manifestazione"
 
@@ -1602,8 +1641,8 @@ msgstr "Eliminare il tuo account?"
 msgid "Deleted {0}."
 msgstr "{0} eliminato."
 
+#: src/lib/modules/reservations/Page.svelte
 #: src/lib/ProgrammeEditor.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
 msgid "Description"
 msgstr "Descrizione"
 
@@ -1638,11 +1677,11 @@ msgstr "Disciplina"
 msgid "Disciplines"
 msgstr "Discipline"
 
-#: src/lib/KioskTokens.svelte
+#: src/lib/modules/kiosk/KioskTokens.svelte
 msgid "Display name"
 msgstr "Nome del display"
 
-#: src/lib/KioskTokens.svelte
+#: src/lib/modules/kiosk/KioskTokens.svelte
 msgid "Display name, e.g. Hall 1"
 msgstr "Nome del display, p. es. Sala 1"
 
@@ -1665,10 +1704,6 @@ msgstr "Documento"
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Documents"
 msgstr "Documenti"
-
-#: src/lib/EventForm.svelte
-msgid "Documents at registration"
-msgstr "Documenti all’iscrizione"
 
 #: src/lib/my/ApiTokens.svelte
 msgid "does not expire"
@@ -1708,7 +1743,7 @@ msgstr "dx (mm)"
 msgid "dy (mm)"
 msgstr "dy (mm)"
 
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/lib/modules/reservations/Page.svelte
 msgid "e.g. 5 or 1, 5, 7-10"
 msgstr "p. es. 5 o 1, 5, 7-10"
 
@@ -1724,7 +1759,7 @@ msgstr "ad es. Steyr EVO 10"
 msgid "e.g. Stgw 90"
 msgstr "p. es. Fass 90"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Each programme counts the given number of its best (or first or last, as set on the programme) attempts."
 msgstr "Ogni programma conta il numero indicato dei suoi tentativi migliori (o primi o ultimi, come impostato nel programma)."
 
@@ -1733,21 +1768,21 @@ msgid "Earlier event"
 msgstr "Manifestazione precedente"
 
 #: src/lib/EventDesk.svelte
+#: src/lib/modules/reservations/Page.svelte
 #: src/lib/ProgrammeList.svelte
 #: src/routes/my/log/[id]/+page.svelte
 #: src/routes/my/settings/+page.svelte
 #: src/routes/t/[tenantId]/clubs/+page.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
 #: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "Edit"
 msgstr "Modifica"
 
 #. placeholder {0}: c.name
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Edit {0}"
 msgstr "Modifica {0}"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Edit classification"
 msgstr "Modifica classifica generale"
 
@@ -1773,7 +1808,7 @@ msgstr "Modifica stand di tiro"
 msgid "Edit registration"
 msgstr "Modifica iscrizione"
 
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/lib/modules/reservations/Page.svelte
 msgid "Edit reservation"
 msgstr "Modifica prenotazione"
 
@@ -1787,7 +1822,7 @@ msgid "Elite"
 msgstr "Élite"
 
 #: src/lib/AccountSettings.svelte
-#: src/lib/booking/BookingForm.svelte
+#: src/lib/modules/booking/parts/BookingForm.svelte
 #: src/routes/forgot-password/+page.svelte
 #: src/routes/signup/+page.svelte
 msgid "Email"
@@ -1813,23 +1848,23 @@ msgstr "E-mail o nome utente"
 msgid "Email, password, language, second factor."
 msgstr "E-mail, password, lingua, secondo fattore."
 
-#: src/lib/booking/BookingHoursForm.svelte
+#: src/lib/modules/booking/parts/BookingHoursForm.svelte
 msgid "Empty: 14 days before the first day"
 msgstr "Vuoto: 14 giorni prima del primo giorno"
 
-#: src/lib/booking/BookingHoursForm.svelte
+#: src/lib/modules/booking/parts/BookingHoursForm.svelte
 msgid "Empty: no break"
 msgstr "Vuoto: nessuna pausa"
 
-#: src/lib/booking/BookingHoursForm.svelte
+#: src/lib/modules/booking/parts/BookingHoursForm.svelte
 msgid "Empty: no limit"
 msgstr "Vuoto: nessun limite"
 
-#: src/lib/booking/BookingHoursForm.svelte
+#: src/lib/modules/booking/parts/BookingHoursForm.svelte
 msgid "Empty: the shooting times of the day, else 08:00"
 msgstr "Vuoto: gli orari di tiro del giorno, altrimenti 08:00"
 
-#: src/lib/booking/BookingHoursForm.svelte
+#: src/lib/modules/booking/parts/BookingHoursForm.svelte
 msgid "Empty: the shooting times of the day, else 17:00"
 msgstr "Vuoto: gli orari di tiro del giorno, altrimenti 17:00"
 
@@ -1841,7 +1876,7 @@ msgstr "Inserire tutte le serie"
 msgid "Enter at least one series."
 msgstr "Inserisci almeno una serie."
 
-#: src/lib/booking/BookingForm.svelte
+#: src/lib/modules/booking/parts/BookingForm.svelte
 msgid "Enter how many lanes you need in each slot. The organizer assigns the lane numbers when confirming."
 msgstr "Indica quanti bersagli ti servono per fascia oraria. L’organizzatore assegna i numeri dei bersagli alla conferma."
 
@@ -1864,39 +1899,41 @@ msgstr "Appena registrati"
 msgid "Entries"
 msgstr "Programmi"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Equal totals are decided by these criteria in order."
 msgstr "A parità di totale decidono questi criteri in ordine."
 
 #: src/lib/AppSidebar.svelte
 #: src/lib/forms/Palette.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
 msgid "Event"
 msgstr "Manifestazione"
 
 #. placeholder {0}: ev.name
 #: src/routes/t/[tenantId]/+page.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Event \"{0}\" created"
 msgstr "Manifestazione «{0}» creata"
 
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Event closed"
 msgstr "Manifestazione chiusa"
 
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Event deleted"
 msgstr "Manifestazione eliminata"
 
-#: src/lib/KioskTokens.svelte
+#: src/lib/modules/kiosk/KioskTokens.svelte
 msgid "Event language"
 msgstr "Lingua della manifestazione"
 
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Event reopened"
 msgstr "Manifestazione riaperta"
 
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/lib/modules/awards/Settings.svelte
+#: src/lib/modules/club_competition/Settings.svelte
+#: src/lib/modules/kiosk/ConfigPage.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/+page.svelte
 msgid "Event saved"
 msgstr "Manifestazione salvata"
 
@@ -1949,7 +1986,7 @@ msgstr "Esporta tutte le sessioni (CSV)"
 msgid "Exports"
 msgstr "Esportazioni"
 
-#: src/lib/BookingSettings.svelte
+#: src/lib/modules/booking/BookingSettings.svelte
 msgid "External clubs ask for lanes through a link in your invitation and announce their shooters. You confirm each request."
 msgstr "Le società esterne richiedono bersagli tramite un link nel tuo invito e annunciano i loro tiratori. Confermi ogni richiesta."
 
@@ -1994,7 +2031,7 @@ msgstr "Termina il tiro"
 msgid "Finish shooting?"
 msgstr "Terminare il tiro?"
 
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/lib/modules/reservations/Page.svelte
 msgid "finished"
 msgstr "conclusa"
 
@@ -2002,8 +2039,8 @@ msgstr "conclusa"
 msgid "First day"
 msgstr "Primo giorno"
 
-#: src/lib/booking/ShooterList.svelte
 #: src/lib/forms/Palette.svelte
+#: src/lib/modules/booking/parts/ShooterList.svelte
 #: src/lib/ShooterForm.svelte
 #: src/routes/my/settings/+page.svelte
 #: src/routes/signup/+page.svelte
@@ -2011,7 +2048,7 @@ msgid "First name"
 msgstr "Nome"
 
 #. placeholder {0}: i + 1
-#: src/lib/booking/ShooterList.svelte
+#: src/lib/modules/booking/parts/ShooterList.svelte
 msgid "First name of shooter {0}"
 msgstr "Nome del tiratore {0}"
 
@@ -2062,15 +2099,15 @@ msgstr "Trovati tramite il tuo numero di licenza e la data di nascita nelle gare
 msgid "free"
 msgstr "libero"
 
-#: src/lib/BookingRequests.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
 msgid "Free lanes are reserved for every slot. The announced shooters join this club of the master data:"
 msgstr "Per ogni fascia oraria vengono riservati bersagli liberi. I tiratori annunciati entrano in questa società dei dati di base:"
 
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/lib/modules/reservations/Page.svelte
 msgid "From"
 msgstr "Da"
 
-#: src/lib/booking/BookingForm.svelte
+#: src/lib/modules/booking/parts/BookingForm.svelte
 msgid "full"
 msgstr "pieno"
 
@@ -2086,6 +2123,11 @@ msgstr "Rachat {0}"
 #: src/lib/ProgrammeEditor.svelte
 msgid "Further: same"
 msgstr "Rachat: uguale"
+
+#: src/lib/AppSidebar.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/+page.svelte
+msgid "General"
+msgstr "Generale"
 
 #: src/lib/SetupChecklist.svelte
 msgid "Getting started"
@@ -2148,20 +2190,23 @@ msgstr "Aiuto"
 msgid "Help pages"
 msgstr "Pagine di aiuto"
 
-#: src/lib/HelperCodes.svelte
+#: src/lib/modules/helpers/HelperCodes.svelte
 msgid "Helper link (shown only now):"
 msgstr "Link aiutante (mostrato solo ora):"
 
-#: src/lib/HelperCodes.svelte
+#: src/lib/modules/helpers/index.ts
+msgid "Helper links"
+msgstr "Link aiutante"
+
+#: src/lib/modules/helpers/HelperCodes.svelte
 msgid "Helper name"
 msgstr "Nome dell'aiutante"
 
-#: src/lib/HelperCodes.svelte
+#: src/lib/modules/helpers/HelperCodes.svelte
 msgid "Helper name, e.g. Scorer range A"
 msgstr "Nome dell'aiutante, ad es. Marcatore poligono A"
 
-#: src/lib/HelperCodes.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/lib/modules/helpers/HelperCodes.svelte
 msgid "Helpers"
 msgstr "Aiutanti"
 
@@ -2259,9 +2304,13 @@ msgstr "tra 90 giorni"
 msgid "in a year"
 msgstr "tra un anno"
 
-#: src/lib/BookingRequests.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
 msgid "in master data"
 msgstr "nei dati di base"
+
+#: src/routes/t/[tenantId]/events/[eventId]/config/modules/+page.svelte
+msgid "In use: remove its data first."
+msgstr "In uso: rimuovi prima i suoi dati."
 
 #: src/routes/my/train/+page.svelte
 msgid "Input"
@@ -2305,23 +2354,23 @@ msgstr "Cifre chiave"
 msgid "Key figures, club competition and exports of this event."
 msgstr "Cifre chiave, concorso di sezione ed esportazioni di questa manifestazione."
 
+#: src/lib/modules/awards/StatisticsSection.svelte
 #: src/lib/my/Finish.svelte
 #: src/lib/ProgrammeEditor.svelte
 #: src/routes/my/log/+page.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Kind"
 msgstr "Tipo"
 
-#: src/lib/KioskTokens.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/lib/modules/kiosk/index.ts
+#: src/lib/modules/kiosk/KioskTokens.svelte
 msgid "Kiosk displays"
 msgstr "Display chiosco"
 
-#: src/lib/KioskTokens.svelte
+#: src/lib/modules/kiosk/KioskTokens.svelte
 msgid "Kiosk link (shown only now):"
 msgstr "Link chiosco (mostrato solo ora):"
 
-#: src/lib/BookingRequests.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
 msgid "known"
 msgstr "noto"
 
@@ -2366,7 +2415,7 @@ msgstr "Bersaglio {0}: prenotato"
 msgid "Lane {lane}"
 msgstr "Bersaglio {lane}"
 
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+#: src/lib/modules/booking/index.ts
 msgid "Lane bookings"
 msgstr "Prenotazioni di bersagli"
 
@@ -2374,7 +2423,7 @@ msgstr "Prenotazioni di bersagli"
 msgid "Lane numbers, e.g. 3, 7"
 msgstr "Numeri dei bersagli, p. es. 3, 7"
 
-#: src/lib/EventForm.svelte
+#: src/lib/modules/lane_sheet/index.ts
 msgid "Lane sheet"
 msgstr "Foglio di stand"
 
@@ -2390,42 +2439,46 @@ msgstr "Foglio di stand inviato alla stampante"
 msgid "Lane status"
 msgstr "Stato dei bersagli"
 
-#: src/lib/booking/BookingForm.svelte
 #: src/lib/EventDesk.svelte
-#: src/lib/HelperCodes.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/lib/modules/booking/parts/BookingForm.svelte
+#: src/lib/modules/helpers/HelperCodes.svelte
+#: src/lib/modules/reservations/Page.svelte
 #: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "Lanes"
 msgstr "Bersagli"
 
 #. placeholder {0}: formatLanes(it.assigned)
 #. placeholder {0}: r.lanesText
-#: src/lib/BookingRequests.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
+#: src/lib/modules/reservations/Page.svelte
 msgid "lanes {0}"
 msgstr "bersagli {0}"
 
 #. placeholder {0}: r.name
 #. placeholder {1}: slotTime(sl.start, info.timezone)
-#: src/lib/booking/BookingForm.svelte
+#: src/lib/modules/booking/parts/BookingForm.svelte
 msgid "Lanes on {0} at {1}"
 msgstr "Bersagli su {0} alle {1}"
 
-#: src/lib/booking/BookingHoursForm.svelte
+#: src/lib/modules/booking/parts/BookingHoursForm.svelte
 msgid "Lanes per slot and club"
 msgstr "Bersagli per fascia oraria e società"
 
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/lib/modules/reservations/index.ts
+msgid "Lanes reserved for groups and clubs, shown on the dashboard."
+msgstr "Bersagli riservati a gruppi e società, visibili sulla dashboard."
+
+#: src/lib/modules/reservations/Page.svelte
 msgid "Lanes reserved for trainings or groups; they show as reserved from the lead time on."
 msgstr "Bersagli prenotati per allenamenti o gruppi; risultano prenotati a partire dal tempo di preavviso."
 
-#: src/lib/HelperCodes.svelte
+#: src/lib/modules/helpers/HelperCodes.svelte
 msgid "Lanes, e.g. 1-5, 8"
 msgstr "Bersagli, ad es. 1-5, 8"
 
 #: src/lib/AccountSettings.svelte
 #: src/lib/AppSidebar.svelte
-#: src/lib/KioskTokens.svelte
+#: src/lib/modules/kiosk/KioskTokens.svelte
 #: src/lib/PublicShell.svelte
 msgid "Language"
 msgstr "Lingua"
@@ -2450,8 +2503,8 @@ msgstr "Ultimi 30 giorni"
 msgid "Last day"
 msgstr "Ultimo giorno"
 
-#: src/lib/booking/ShooterList.svelte
 #: src/lib/forms/Palette.svelte
+#: src/lib/modules/booking/parts/ShooterList.svelte
 #: src/lib/ShooterForm.svelte
 #: src/routes/my/settings/+page.svelte
 #: src/routes/signup/+page.svelte
@@ -2459,15 +2512,15 @@ msgid "Last name"
 msgstr "Cognome"
 
 #. placeholder {0}: i + 1
-#: src/lib/booking/ShooterList.svelte
+#: src/lib/modules/booking/parts/ShooterList.svelte
 msgid "Last name of shooter {0}"
 msgstr "Cognome del tiratore {0}"
 
 #. placeholder {0}: new Date(a.lastSeenAt).toLocaleString(intlLocale())
 #. placeholder {0}: new Date(c.lastUsedAt).toLocaleString(intlLocale())
 #. placeholder {0}: new Date(k.lastUsedAt).toLocaleString(intlLocale())
-#: src/lib/HelperCodes.svelte
-#: src/lib/KioskTokens.svelte
+#: src/lib/modules/helpers/HelperCodes.svelte
+#: src/lib/modules/kiosk/KioskTokens.svelte
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "last seen {0}"
 msgstr "visto l'ultima volta {0}"
@@ -2502,12 +2555,12 @@ msgstr "Lunghezza y (mm)"
 msgid "Library template"
 msgstr "Modello"
 
-#: src/lib/booking/ShooterList.svelte
+#: src/lib/modules/booking/parts/ShooterList.svelte
 msgid "Licence (optional)"
 msgstr "Licenza (facoltativa)"
 
 #. placeholder {0}: i + 1
-#: src/lib/booking/ShooterList.svelte
+#: src/lib/modules/booking/parts/ShooterList.svelte
 msgid "Licence of shooter {0}"
 msgstr "Licenza del tiratore {0}"
 
@@ -2537,7 +2590,7 @@ msgstr "Numero di licenza"
 msgid "License number or name"
 msgstr "Numero di licenza o nome"
 
-#: src/lib/KioskTokens.svelte
+#: src/lib/modules/kiosk/KioskTokens.svelte
 msgid "Light"
 msgstr "Chiaro"
 
@@ -2557,23 +2610,27 @@ msgstr "Linea"
 msgid "Line {0}: {1}"
 msgstr "Riga {0}: {1}"
 
-#: src/lib/BookingSettings.svelte
-#: src/lib/HelperCodes.svelte
-#: src/lib/KioskTokens.svelte
+#: src/lib/modules/booking/BookingSettings.svelte
+#: src/lib/modules/helpers/HelperCodes.svelte
+#: src/lib/modules/kiosk/KioskTokens.svelte
 msgid "Link copied"
 msgstr "Link copiato"
 
-#: src/lib/BookingSettings.svelte
+#: src/lib/modules/booking/BookingSettings.svelte
 msgid "Link for the invitation"
 msgstr "Link per l’invito"
 
-#: src/lib/booking/ShooterList.svelte
+#: src/lib/modules/booking/parts/ShooterList.svelte
 msgid "List of shooters"
 msgstr "Lista dei tiratori"
 
 #: src/lib/labels.ts
 msgid "live"
 msgstr "in diretta"
+
+#: src/lib/modules/kiosk/index.ts
+msgid "Live rankings on screens at the range through a link."
+msgstr "Classifiche in diretta su schermi allo stand tramite un link."
 
 #: src/routes/t/[tenantId]/events/[eventId]/rankings/+page.svelte
 msgid "Live rankings per programme, ranked by the SSV rules."
@@ -2708,6 +2765,13 @@ msgstr "Totale minimo per categoria d'età; lasciare vuoto dove la distinzione n
 msgid "missing"
 msgstr "mancante"
 
+#: src/lib/AppSidebar.svelte
+#: src/routes/t/[tenantId]/+layout.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/[module]/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/modules/+page.svelte
+msgid "Modules"
+msgstr "Moduli"
+
 #: src/lib/components/ui/breadcrumb/breadcrumb-ellipsis.svelte
 msgid "More"
 msgstr "Altro"
@@ -2721,11 +2785,11 @@ msgstr "Più tentativi {0}"
 msgid "more lp options, e.g. fit-to-page"
 msgstr "altre opzioni lp, p. es. fit-to-page"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "More mouches"
 msgstr "Più mouches"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "More of the highest single shots"
 msgstr "Più colpi singoli più alti"
 
@@ -2753,11 +2817,11 @@ msgstr "Mouches serie {0}"
 msgid "Mouches series {n}"
 msgstr "Mouches serie {n}"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Move down"
 msgstr "Sposta giù"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Move up"
 msgstr "Sposta su"
 
@@ -2771,17 +2835,17 @@ msgstr "Sposta tutto quando la stampante stampa fuori posizione; verificalo con 
 msgid "My training"
 msgstr "Il mio allenamento"
 
-#: src/lib/Classifications.svelte
-#: src/lib/ClassificationTable.svelte
 #: src/lib/EventForm.svelte
 #: src/lib/forms/Palette.svelte
+#: src/lib/modules/classifications/Classifications.svelte
+#: src/lib/modules/classifications/ClassificationTable.svelte
 #: src/lib/my/ApiTokens.svelte
 #: src/lib/ProgrammeEditor.svelte
 #: src/lib/RankingTable.svelte
 #: src/routes/my/settings/+page.svelte
 #: src/routes/t/[tenantId]/+page.svelte
 #: src/routes/t/[tenantId]/clubs/+page.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 #: src/routes/t/[tenantId]/forms/+page.svelte
 #: src/routes/t/[tenantId]/ranges/+page.svelte
@@ -2797,6 +2861,19 @@ msgstr "Nome o numero di licenza, o scansiona il codice"
 msgid "Name, birthday and license number connect your log with your competition results: Standblatt finds the results of competitions run with it, so you can add them to your log with one tap."
 msgstr "Nome, data di nascita e numero di licenza collegano il tuo diario ai tuoi risultati di gara: Standblatt trova i risultati delle gare gestite con esso e li aggiungi al diario con un tocco."
 
+#: src/routes/t/[tenantId]/events/[eventId]/config/+page.svelte
+msgid "Name, days, ranges and language of the event."
+msgstr "Nome, giorni, stand e lingua della manifestazione."
+
+#. placeholder {0}: names(by)
+#: src/routes/t/[tenantId]/events/[eventId]/config/modules/+page.svelte
+msgid "Needed by {0}."
+msgstr "Richiesto da {0}."
+
+#: src/routes/t/[tenantId]/events/[eventId]/config/modules/+page.svelte
+msgid "Needs a range with lanes."
+msgstr "Richiede uno stand con bersagli."
+
 #: src/routes/my/progress/+page.svelte
 msgid "needs both"
 msgstr "servono entrambi"
@@ -2809,13 +2886,13 @@ msgstr "mai"
 msgid "never connected"
 msgstr "mai collegato"
 
-#: src/lib/HelperCodes.svelte
-#: src/lib/KioskTokens.svelte
+#: src/lib/modules/helpers/HelperCodes.svelte
+#: src/lib/modules/kiosk/KioskTokens.svelte
 #: src/lib/my/ApiTokens.svelte
 msgid "never used"
 msgstr "mai usato"
 
-#: src/lib/BookingRequests.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
 msgid "new"
 msgstr "nuovo"
 
@@ -2823,7 +2900,7 @@ msgstr "nuovo"
 msgid "New API token"
 msgstr "Nuovo token API"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "New classification"
 msgstr "Nuova classifica generale"
 
@@ -2840,15 +2917,15 @@ msgstr "Nuova società «{name}»"
 msgid "New event"
 msgstr "Nuova manifestazione"
 
-#: src/lib/BookingSettings.svelte
+#: src/lib/modules/booking/BookingSettings.svelte
 msgid "New link"
 msgstr "Nuovo link"
 
-#: src/lib/BookingSettings.svelte
+#: src/lib/modules/booking/BookingSettings.svelte
 msgid "New link created"
 msgstr "Nuovo link creato"
 
-#: src/lib/BookingSettings.svelte
+#: src/lib/modules/booking/BookingSettings.svelte
 msgid "New link?"
 msgstr "Nuovo link?"
 
@@ -2882,7 +2959,7 @@ msgstr "Nuovo stand di tiro"
 msgid "New registration"
 msgstr "Nuova iscrizione"
 
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/lib/modules/reservations/Page.svelte
 msgid "New reservation"
 msgstr "Nuova prenotazione"
 
@@ -2929,11 +3006,11 @@ msgstr "nessun tentativo rimasto"
 msgid "No award reached."
 msgstr "Nessuna distinzione raggiunta."
 
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+#: src/lib/modules/awards/StatisticsSection.svelte
 msgid "No awards given yet."
 msgstr "Ancora nessuna distinzione consegnata."
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "No classifications yet. Programme rankings need none."
 msgstr "Ancora nessuna classifica generale. Le classifiche dei programmi non ne hanno bisogno."
 
@@ -2966,11 +3043,11 @@ msgstr "Ancora nessun indirizzo e-mail"
 msgid "No field matches."
 msgstr "Nessun campo corrisponde."
 
-#: src/lib/HelperCodes.svelte
+#: src/lib/modules/helpers/HelperCodes.svelte
 msgid "No helper links."
 msgstr "Nessun link aiutante."
 
-#: src/lib/KioskTokens.svelte
+#: src/lib/modules/kiosk/KioskTokens.svelte
 msgid "No kiosk displays."
 msgstr "Nessun display chiosco."
 
@@ -2990,7 +3067,7 @@ msgstr "Ancora nessun modello di stampa."
 msgid "No print jobs yet."
 msgstr "Ancora nessun lavoro di stampa."
 
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+#: src/lib/modules/club_competition/StatisticsSection.svelte
 msgid "No programme counts for the club competition."
 msgstr "Nessun programma conta per il concorso di sezione."
 
@@ -3007,11 +3084,11 @@ msgstr "Ancora nessuno stand di tiro."
 msgid "No registrations yet."
 msgstr "Ancora nessuna iscrizione."
 
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/lib/modules/reservations/Page.svelte
 msgid "No reservations."
 msgstr "Nessuna prenotazione."
 
-#: src/lib/ClassificationTable.svelte
+#: src/lib/modules/classifications/ClassificationTable.svelte
 #: src/lib/RankingTable.svelte
 msgid "No results yet."
 msgstr "Ancora nessun risultato."
@@ -3033,11 +3110,11 @@ msgstr "Nessun tiratore trovato."
 msgid "No shooters found."
 msgstr "Nessun tiratore trovato."
 
-#: src/lib/booking/ShooterList.svelte
+#: src/lib/modules/booking/parts/ShooterList.svelte
 msgid "No shooters yet. You can add them now or later until the deadline."
 msgstr "Ancora nessun tiratore. Puoi aggiungerli ora o più tardi, fino al termine."
 
-#: src/lib/BookingSettings.svelte
+#: src/lib/modules/booking/BookingSettings.svelte
 msgid "No slots: check the hours."
 msgstr "Nessuna fascia oraria: controlla gli orari."
 
@@ -3061,7 +3138,7 @@ msgstr "Nessuno sta tirando."
 msgid "Nobody is waiting."
 msgstr "Nessuno è in attesa."
 
-#: src/lib/EventForm.svelte
+#: src/lib/modules/club_competition/Settings.svelte
 #: src/lib/ProgrammeList.svelte
 #: src/lib/RegistrationForm.svelte
 msgid "none"
@@ -3071,7 +3148,7 @@ msgstr "nessuna"
 msgid "None"
 msgstr "Nessuno"
 
-#: src/lib/ClassificationTable.svelte
+#: src/lib/modules/classifications/ClassificationTable.svelte
 msgid "Not all counting results yet"
 msgstr "Non ancora tutti i risultati che contano"
 
@@ -3087,19 +3164,21 @@ msgstr "non confermato"
 msgid "not for this age category"
 msgstr "non per questa categoria d'età"
 
+#: src/lib/modules/classifications/RankingsSection.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/rankings/+page.svelte
 msgid "not on kiosk"
 msgstr "non sul chiosco"
 
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+#: src/lib/modules/club_competition/StatisticsSection.svelte
 msgid "not ranked"
 msgstr "non classificato"
 
+#: src/lib/modules/classifications/RankingsSection.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/rankings/+page.svelte
 msgid "Not shown on kiosk displays"
 msgstr "Non mostrato sugli schermi chiosco"
 
-#: src/lib/booking/BookingForm.svelte
+#: src/lib/modules/booking/parts/BookingForm.svelte
 msgid "Note to the organizer"
 msgstr "Nota per l’organizzatore"
 
@@ -3144,20 +3223,20 @@ msgstr "Uno stand di tiro per distanza, p. es. Pistola 25 m e Pistola 50 m, cias
 msgid "online"
 msgstr "collegato"
 
-#: src/lib/BookingSettings.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/lib/modules/booking/BookingSettings.svelte
+#: src/lib/modules/booking/index.ts
 msgid "Online booking"
 msgstr "Prenotazione online"
 
-#: src/lib/BookingSettings.svelte
+#: src/lib/modules/booking/BookingSettings.svelte
 msgid "Online booking switched off"
 msgstr "Prenotazione online disattivata"
 
-#: src/lib/BookingSettings.svelte
+#: src/lib/modules/booking/BookingSettings.svelte
 msgid "Online booking switched on"
 msgstr "Prenotazione online attivata"
 
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Only possible as long as nobody is registered."
 msgstr "Possibile solo finché nessuno è iscritto."
 
@@ -3216,7 +3295,7 @@ msgstr "Altre società"
 msgid "Other shooter"
 msgstr "Altro tiratore"
 
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+#: src/lib/modules/club_competition/StatisticsSection.svelte
 msgid "out of competition"
 msgstr "fuori concorso"
 
@@ -3251,7 +3330,7 @@ msgstr "Pagine"
 msgid "Paper size"
 msgstr "Formato della carta"
 
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+#: src/lib/modules/club_competition/StatisticsSection.svelte
 msgid "Participants"
 msgstr "Partecipanti"
 
@@ -3270,7 +3349,7 @@ msgstr "Password cambiata. Gli altri dispositivi sono stati disconnessi."
 msgid "Past"
 msgstr "Passate"
 
-#: src/lib/booking/ShooterList.svelte
+#: src/lib/modules/booking/parts/ShooterList.svelte
 msgid "Paste list"
 msgstr "Incolla lista"
 
@@ -3304,7 +3383,7 @@ msgstr "Autorizzazioni"
 msgid "Personal best"
 msgstr "Record personale"
 
-#: src/lib/booking/BookingForm.svelte
+#: src/lib/modules/booking/parts/BookingForm.svelte
 msgid "Phone"
 msgstr "Telefono"
 
@@ -3336,7 +3415,7 @@ msgstr "Posto {0} delle tue {1} sessioni da {2} colpi"
 msgid "Placeholders in double curly braces are filled in when printing; add them from the fields."
 msgstr "I segnaposto tra doppie parentesi graffe vengono compilati in stampa; aggiungili dai campi."
 
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/lib/modules/reservations/Page.svelte
 msgid "planned"
 msgstr "pianificata"
 
@@ -3450,13 +3529,21 @@ msgstr "Stampa sul modello"
 msgid "Print result sheet"
 msgstr "Stampa foglio dei risultati"
 
-#: src/lib/EventForm.svelte
+#: src/lib/modules/awards/Settings.svelte
 msgid "Print the award value on wreath cards"
 msgstr "Stampa il valore della distinzione sulle carte corona"
 
 #: src/lib/PrintButton.svelte
 msgid "Print wreath card"
 msgstr "Stampa carta corona"
+
+#: src/lib/modules/lane_sheet/index.ts
+msgid "Printed at registration: shooter, lane, programmes and barcodes."
+msgstr "Stampato all'iscrizione: tiratore, bersaglio, programmi e codici a barre."
+
+#: src/lib/modules/control_strip/index.ts
+msgid "Printed at registration: the passes the shooter may shoot."
+msgstr "Stampata all'iscrizione: le serie che il tiratore può sparare."
 
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Printer"
@@ -3494,8 +3581,8 @@ msgstr "Stampa · {0}"
 msgid "Prints the element several times, moved by dx/dy; # in a placeholder counts 1, 2, 3 …"
 msgstr "Stampa l’elemento più volte, spostato di dx/dy; # in un segnaposto conta 1, 2, 3 …"
 
+#: src/lib/modules/awards/StatisticsSection.svelte
 #: src/lib/ProgrammeEditor.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Prize in kind"
 msgstr "Premio in natura"
 
@@ -3508,6 +3595,7 @@ msgid "Profile saved"
 msgstr "Profilo salvato"
 
 #: src/lib/forms/Palette.svelte
+#: src/lib/modules/awards/StatisticsSection.svelte
 #: src/lib/ProgrammeList.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
@@ -3525,7 +3613,7 @@ msgid "Programme \"{0}\" saved"
 msgstr "Programma «{0}» salvato"
 
 #. placeholder {0}: i + 1
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Programme {0}"
 msgstr "Programma {0}"
 
@@ -3537,14 +3625,21 @@ msgstr "File di programma"
 msgid "Programme library"
 msgstr "Biblioteca dei programmi"
 
-#: src/lib/Classifications.svelte
+#: src/lib/AppSidebar.svelte
 #: src/lib/EventDesk.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 #: src/lib/ProgrammeList.svelte
 #: src/lib/RegistrationForm.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/lib/SetupChecklist.svelte
+#: src/routes/t/[tenantId]/+layout.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/programmes/+page.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Programmes"
 msgstr "Programmi"
+
+#: src/lib/modules/attempts/index.ts
+msgid "Programmes can be shot several times, e.g. further attempts or an annual programme."
+msgstr "I programmi possono essere sparati più volte, p. es. riacquisti o un programma annuale."
 
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "programmes sold"
@@ -3553,10 +3648,6 @@ msgstr "programmi venduti"
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Programmes that use it no longer print a form."
 msgstr "I programmi che lo usano non stampano più un modello."
-
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
-msgid "Programmes, event settings and kiosk displays."
-msgstr "Programmi, impostazioni della manifestazione e display chiosco."
 
 #: src/routes/my/+layout.svelte
 #: src/routes/my/progress/+page.svelte
@@ -3585,7 +3676,7 @@ msgstr "Codice QR"
 msgid "QR code for the authenticator app"
 msgstr "Codice QR per l’app di autenticazione"
 
-#: src/lib/BookingSettings.svelte
+#: src/lib/modules/booking/BookingSettings.svelte
 msgid "QR code of the booking link"
 msgstr "Codice QR del link di prenotazione"
 
@@ -3593,12 +3684,12 @@ msgstr "Codice QR del link di prenotazione"
 msgid "queued"
 msgstr "in coda"
 
-#: src/lib/HelperCodes.svelte
-#: src/lib/KioskTokens.svelte
+#: src/lib/modules/helpers/HelperCodes.svelte
+#: src/lib/modules/kiosk/KioskTokens.svelte
+#: src/lib/modules/reservations/Page.svelte
 #: src/lib/my/Finish.svelte
 #: src/lib/ProgrammeList.svelte
 #: src/routes/t/[tenantId]/+page.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
 msgid "Range"
 msgstr "Stand di tiro"
 
@@ -3614,9 +3705,9 @@ msgstr "Stand di tiro eliminato"
 msgid "Range saved"
 msgstr "Stand di tiro salvato"
 
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
-msgid "Range, organizer, language, settings, all programmes with prices, awards, combinations and special prizes, and the classifications are copied. Registrations, results and kiosk links are not."
-msgstr "Stand, organizzatore, lingua, impostazioni, tutti i programmi con prezzi, distinzioni, combinazioni e premi speciali e le classifiche generali vengono copiati. Iscrizioni, risultati e link chiosco no."
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
+msgid "Range, organizer, language, settings, modules, all programmes with prices, awards, combinations and special prizes, and the classifications are copied. Registrations, results and kiosk links are not."
+msgstr "Vengono copiati stand, organizzatore, lingua, impostazioni, moduli, tutti i programmi con prezzi, distinzioni, combinazioni e premi speciali e le classifiche generali. Iscrizioni, risultati e link kiosk no."
 
 #: src/lib/AppSidebar.svelte
 #: src/lib/EventForm.svelte
@@ -3630,9 +3721,9 @@ msgstr "Stand di tiro"
 msgid "Ranges with events cannot be deleted."
 msgstr "Gli stand di tiro con manifestazioni non possono essere eliminati."
 
-#: src/lib/ClassificationTable.svelte
+#: src/lib/modules/classifications/ClassificationTable.svelte
+#: src/lib/modules/club_competition/StatisticsSection.svelte
 #: src/lib/RankingTable.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Rank"
 msgstr "Rango"
 
@@ -3653,7 +3744,7 @@ msgstr "Rango {0} di {1}"
 msgid "Rank among sessions with {0} shots"
 msgstr "Posizione tra le sessioni da {0} colpi"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Rank only shooters with all counting results"
 msgstr "Classificare solo i tiratori con tutti i risultati che contano"
 
@@ -3671,9 +3762,13 @@ msgstr "Classifica {0}"
 msgid "Rankings"
 msgstr "Classifiche"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Rankings over several programmes or attempts, e.g. a section or club championship."
 msgstr "Classifiche su più programmi o tentativi, p. es. un campionato di sezione o di società."
+
+#: src/lib/modules/classifications/index.ts
+msgid "Rankings over several programmes or attempts, with classes and tie-breaks."
+msgstr "Classifiche su più programmi o tentativi, con classi e spareggio."
 
 #: src/lib/ProgrammeList.svelte
 msgid "Ranks per category"
@@ -3687,16 +3782,16 @@ msgstr "raggiunto"
 msgid "Read sessions"
 msgstr "Leggere le sessioni"
 
-#: src/lib/BookingRequests.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
 msgid "Reason"
 msgstr "Motivo"
 
-#: src/lib/BookingRequests.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
 msgid "Reason (optional)"
 msgstr "Motivo (facoltativo)"
 
 #. placeholder {0}: r.declineReason
-#: src/lib/BookingRequests.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
 msgid "Reason: {0}"
 msgstr "Motivo: {0}"
 
@@ -3763,7 +3858,7 @@ msgstr "Iscrizioni"
 msgid "Registrations, results and rankings live at the range; your own sessions and progress on the phone."
 msgstr "Iscrizioni, risultati e classifiche in tempo reale allo stand; i propri allenamenti e i progressi sul telefono."
 
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Registrations, results and settings can be changed again."
 msgstr "Iscrizioni, risultati e impostazioni possono di nuovo essere modificati."
 
@@ -3796,7 +3891,7 @@ msgid "Remove award {0}"
 msgstr "Rimuovi distinzione {0}"
 
 #. placeholder {0}: i + 1
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Remove class {0}"
 msgstr "Rimuovi classe {0}"
 
@@ -3805,7 +3900,7 @@ msgid "Remove day"
 msgstr "Rimuovi giorno"
 
 #. placeholder {0}: i + 1
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Remove programme {0}"
 msgstr "Rimuovi programma {0}"
 
@@ -3820,7 +3915,7 @@ msgid "Remove series {0}"
 msgstr "Rimuovi serie {0}"
 
 #. placeholder {0}: i + 1
-#: src/lib/booking/ShooterList.svelte
+#: src/lib/modules/booking/parts/ShooterList.svelte
 msgid "Remove shooter {0}"
 msgstr "Rimuovi tiratore {0}"
 
@@ -3840,11 +3935,15 @@ msgstr "Rinomina"
 msgid "Rename weapon"
 msgstr "Rinomina arma"
 
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Reopen"
 msgstr "Riapri"
 
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/+page.svelte
+msgid "Reopen it"
+msgstr "Riaprila"
+
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Reopen this event"
 msgstr "Riapri questa manifestazione"
 
@@ -3856,16 +3955,16 @@ msgstr "Ripetizione"
 msgid "Request cancelled"
 msgstr "Richiesta annullata"
 
-#: src/lib/BookingRequests.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
 msgid "Request confirmed"
 msgstr "Richiesta confermata"
 
-#: src/lib/BookingRequests.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
 msgid "Request declined"
 msgstr "Richiesta rifiutata"
 
 #. placeholder {0}: r.club
-#: src/lib/BookingRequests.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
 msgid "Request of {0}"
 msgstr "Richiesta di {0}"
 
@@ -3878,26 +3977,25 @@ msgid "Request saved"
 msgstr "Richiesta salvata"
 
 #. placeholder {0}: deadlineDay(c.deadline, event.timezone)
-#: src/lib/BookingSettings.svelte
+#: src/lib/modules/booking/BookingSettings.svelte
 msgid "Requests and changes until {0}."
 msgstr "Richieste e modifiche fino al {0}."
 
 #. placeholder {0}: r.description
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/lib/modules/reservations/Page.svelte
 msgid "Reservation {0}"
 msgstr "Prenotazione {0}"
 
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/lib/modules/reservations/Page.svelte
 msgid "Reservation created"
 msgstr "Prenotazione creata"
 
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/lib/modules/reservations/Page.svelte
 msgid "Reservation saved"
 msgstr "Prenotazione salvata"
 
-#: src/lib/AppSidebar.svelte
-#: src/routes/t/[tenantId]/+layout.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/lib/modules/reservations/index.ts
+#: src/lib/modules/reservations/Page.svelte
 msgid "Reservations"
 msgstr "Prenotazioni"
 
@@ -3916,7 +4014,7 @@ msgid "reserved: {0}"
 msgstr "prenotato: {0}"
 
 #: src/lib/forms/Palette.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+#: src/lib/modules/club_competition/StatisticsSection.svelte
 msgid "Result"
 msgstr "Risultato"
 
@@ -3960,14 +4058,14 @@ msgstr "Incassi"
 msgid "Revenue by programme and age category"
 msgstr "Incassi per programma e categoria d'età"
 
-#: src/lib/HelperCodes.svelte
-#: src/lib/KioskTokens.svelte
+#: src/lib/modules/helpers/HelperCodes.svelte
+#: src/lib/modules/kiosk/KioskTokens.svelte
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "revoke"
 msgstr "revoca"
 
-#: src/lib/HelperCodes.svelte
-#: src/lib/KioskTokens.svelte
+#: src/lib/modules/helpers/HelperCodes.svelte
+#: src/lib/modules/kiosk/KioskTokens.svelte
 #: src/lib/my/ApiTokens.svelte
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Revoke"
@@ -3982,11 +4080,11 @@ msgstr "Revocare «{tokenName}»?"
 msgid "Revoke {0}"
 msgstr "Revoca {0}"
 
-#: src/lib/HelperCodes.svelte
+#: src/lib/modules/helpers/HelperCodes.svelte
 msgid "Revoke helper link?"
 msgstr "Revocare il link aiutante?"
 
-#: src/lib/KioskTokens.svelte
+#: src/lib/modules/kiosk/KioskTokens.svelte
 msgid "Revoke kiosk display?"
 msgstr "Revocare il display chiosco?"
 
@@ -4010,7 +4108,7 @@ msgstr "Carabina 50 m"
 msgid "right"
 msgstr "a destra"
 
-#: src/lib/HelperCodes.svelte
+#: src/lib/modules/helpers/HelperCodes.svelte
 #: src/routes/t/[tenantId]/users/+page.svelte
 msgid "Role"
 msgstr "Ruolo"
@@ -4025,9 +4123,10 @@ msgstr "Ruolo di {0}"
 msgid "S{0}"
 msgstr "S{0}"
 
-#: src/lib/booking/BookingHoursForm.svelte
-#: src/lib/Classifications.svelte
 #: src/lib/EntryCard.svelte
+#: src/lib/modules/booking/parts/BookingHoursForm.svelte
+#: src/lib/modules/classifications/Classifications.svelte
+#: src/lib/modules/reservations/Page.svelte
 #: src/lib/ProgrammeList.svelte
 #: src/lib/ProgrammeSheet.svelte
 #: src/lib/RegistrationDialog.svelte
@@ -4035,8 +4134,7 @@ msgstr "S{0}"
 #: src/routes/my/progress/+page.svelte
 #: src/routes/my/settings/+page.svelte
 #: src/routes/t/[tenantId]/clubs/+page.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/+page.svelte
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 #: src/routes/t/[tenantId]/ranges/+page.svelte
@@ -4086,6 +4184,10 @@ msgstr "Scansiona il codice con Google Authenticator, Aegis, 1Password o un’ap
 #: src/lib/labels.ts
 msgid "Scorer"
 msgstr "Marcatore"
+
+#: src/lib/modules/helpers/index.ts
+msgid "Scorers, ammunition desk and results clerk work through a link without an account."
+msgstr "Marcatori, distribuzione munizioni e registrazione risultati lavorano tramite un link senza account."
 
 #: src/lib/my/ApiTokens.svelte
 msgid "Scripts using this token stop working at once."
@@ -4192,7 +4294,7 @@ msgstr "Serie {n}"
 msgid "Series curve"
 msgstr "Andamento delle serie"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Series from the last one backwards"
 msgstr "Serie dall’ultima all’indietro"
 
@@ -4239,11 +4341,7 @@ msgstr "Configura l’app di autenticazione"
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: src/lib/AppSidebar.svelte
 #: src/lib/help/nav.ts
-#: src/lib/SetupChecklist.svelte
-#: src/routes/t/[tenantId]/+layout.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
 msgid "Setup"
 msgstr "Configurazione"
 
@@ -4288,7 +4386,7 @@ msgid "Shooter saved"
 msgstr "Tiratore salvato"
 
 #: src/lib/AppSidebar.svelte
-#: src/lib/booking/BookingForm.svelte
+#: src/lib/modules/booking/parts/BookingForm.svelte
 #: src/lib/SetupChecklist.svelte
 #: src/routes/t/[tenantId]/+layout.svelte
 #: src/routes/t/[tenantId]/clubs/+page.svelte
@@ -4304,7 +4402,7 @@ msgstr "Ci sono tiratori iscritti a questo programma: le serie restano come sono
 msgid "Shooters found"
 msgstr "Tiratori trovati"
 
-#: src/lib/BookingRequests.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
 msgid "Shooters taken over"
 msgstr "Tiratori ripresi"
 
@@ -4326,7 +4424,7 @@ msgstr "Giorno di tiro"
 msgid "Shooting days"
 msgstr "Giorni di tiro"
 
-#: src/lib/booking/BookingHoursForm.svelte
+#: src/lib/modules/booking/parts/BookingHoursForm.svelte
 msgid "Shooting from"
 msgstr "Tiro dalle"
 
@@ -4338,7 +4436,7 @@ msgstr "Stand di tiro di questa società con i loro bersagli e stampanti."
 msgid "Shooting times"
 msgstr "Orari di tiro"
 
-#: src/lib/booking/BookingHoursForm.svelte
+#: src/lib/modules/booking/parts/BookingHoursForm.svelte
 msgid "Shooting until"
 msgstr "Tiro fino alle"
 
@@ -4370,7 +4468,7 @@ msgstr "Colpi di questa serie"
 msgid "Shots per series"
 msgstr "Colpi per serie"
 
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/lib/modules/reservations/Page.svelte
 msgid "Show as reserved (minutes before)"
 msgstr "Mostra come prenotato (minuti prima)"
 
@@ -4378,7 +4476,7 @@ msgstr "Mostra come prenotato (minuti prima)"
 msgid "Show field names"
 msgstr "Mostra i nomi dei campi"
 
-#: src/lib/EventForm.svelte
+#: src/lib/modules/kiosk/ConfigPage.svelte
 msgid "Show lane status on the rankings"
 msgstr "Mostra lo stato dei bersagli sulle classifiche"
 
@@ -4386,17 +4484,17 @@ msgstr "Mostra lo stato dei bersagli sulle classifiche"
 msgid "Show more"
 msgstr "Mostra altro"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 #: src/lib/ProgrammeEditor.svelte
 msgid "Show on kiosk displays"
 msgstr "Mostra sugli schermi chiosco"
 
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/lib/modules/reservations/Page.svelte
 msgid "show past"
 msgstr "mostra passate"
 
 #. placeholder {0}: r.leadMinutes
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/lib/modules/reservations/Page.svelte
 msgid "shown {0} min before"
 msgstr "mostrata {0} min prima"
 
@@ -4421,16 +4519,16 @@ msgstr "Colpi singoli"
 msgid "Size"
 msgstr "Dimensione"
 
-#: src/lib/booking/BookingHoursForm.svelte
+#: src/lib/modules/booking/parts/BookingHoursForm.svelte
 msgid "Slot length (minutes)"
 msgstr "Durata di una fascia oraria (minuti)"
 
-#: src/lib/BookingSettings.svelte
+#: src/lib/modules/booking/BookingSettings.svelte
 msgid "Slots"
 msgstr "Fasce orarie"
 
+#: src/lib/modules/special_prizes/index.ts
 #: src/lib/ProgrammeList.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Special prizes"
 msgstr "Premi speciali"
 
@@ -4504,7 +4602,7 @@ msgstr "Secondo le regole FST"
 msgid "Switch club"
 msgstr "Cambia società"
 
-#: src/lib/BookingSettings.svelte
+#: src/lib/modules/booking/BookingSettings.svelte
 #: src/lib/TwoFactor.svelte
 msgid "Switch off"
 msgstr "Disattiva"
@@ -4513,14 +4611,23 @@ msgstr "Disattiva"
 msgid "Switch off the second factor?"
 msgstr "Disattivare il secondo fattore?"
 
-#: src/lib/BookingSettings.svelte
+#: src/lib/modules/booking/BookingSettings.svelte
 #: src/lib/TwoFactor.svelte
 msgid "Switch on"
 msgstr "Attiva"
 
-#: src/lib/BookingSettings.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/modules/+page.svelte
+msgid "Switch on what this event needs; everything else stays out of the way."
+msgstr "Attiva ciò che serve a questa manifestazione; il resto non intralcia."
+
+#: src/lib/modules/booking/BookingSettings.svelte
 msgid "Switch online booking off?"
 msgstr "Disattivare la prenotazione online?"
+
+#. placeholder {0}: names(missing)
+#: src/routes/t/[tenantId]/events/[eventId]/config/modules/+page.svelte
+msgid "Switches on {0} as well."
+msgstr "Attiva anche {0}."
 
 #: src/lib/ThemeToggle.svelte
 msgid "System theme"
@@ -4609,6 +4716,10 @@ msgstr "Le distinzioni di {name} contano di nuovo come aperte."
 msgid "The best"
 msgstr "Il migliore"
 
+#: src/lib/modules/special_prizes/index.ts
+msgid "The best ranks of every age category get a special prize."
+msgstr "I migliori ranghi di ogni categoria d'età ricevono un premio speciale."
+
 #: src/lib/ProgrammeList.svelte
 msgid "The best ranks of every age category get a special prize. Shooters whose club has too few participants in this programme are skipped. Can be changed while shooters are registered."
 msgstr "I migliori ranghi di ogni categoria d’età ricevono un premio speciale. I tiratori la cui società ha troppo pochi partecipanti in questo programma vengono saltati. Modificabile anche dopo le iscrizioni."
@@ -4624,7 +4735,7 @@ msgstr "Il centro dei tuoi {0} colpi a segno si trova {1}."
 msgid "The chosen programmes are shot on {0}."
 msgstr "I programmi scelti si tirano su {0}."
 
-#: src/lib/BookingRequests.svelte
+#: src/lib/modules/booking/BookingRequests.svelte
 msgid "The club gets a mail with your reason. Lanes already reserved for it are free again."
 msgstr "La società riceve un’e-mail con il tuo motivo. I bersagli già riservati tornano liberi."
 
@@ -4640,7 +4751,7 @@ msgstr "Il codice non corrisponde all'iscrizione"
 msgid "The competition with its date, on one of your ranges."
 msgstr "La gara con la sua data, su uno dei tuoi stand di tiro."
 
-#: src/lib/BookingSettings.svelte
+#: src/lib/modules/booking/BookingSettings.svelte
 msgid "The current link stops working. Clubs that already asked keep their personal links."
 msgstr "Il link attuale smette di funzionare. Le società che hanno già fatto richiesta mantengono i loro link personali."
 
@@ -4651,6 +4762,10 @@ msgstr "Il termine per la prenotazione online è scaduto. Contatta l’organizza
 #: src/routes/b/manage/[token]/+page.svelte
 msgid "The deadline has passed. Contact the organizer for changes."
 msgstr "Il termine è scaduto. Per modifiche contatta l’organizzatore."
+
+#: src/routes/t/[tenantId]/events/[eventId]/config/modules/+page.svelte
+msgid "The event is closed."
+msgstr "La manifestazione è chiusa."
 
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "The file is not a print form."
@@ -4668,7 +4783,7 @@ msgstr "Il primo"
 msgid "The last"
 msgstr "L’ultimo"
 
-#: src/lib/BookingSettings.svelte
+#: src/lib/modules/booking/BookingSettings.svelte
 msgid "The link stops working. Requests and confirmed reservations stay."
 msgstr "Il link smette di funzionare. Le richieste e le prenotazioni confermate restano."
 
@@ -4676,9 +4791,9 @@ msgstr "Il link smette di funzionare. Le richieste e le prenotazioni confermate 
 msgid "The main day. Age categories follow the SSV rule: competition year minus year of birth, so only the year of this date matters."
 msgstr "Il giorno principale. Le categorie d’età seguono la regola FST: anno della gara meno anno di nascita, conta quindi solo l’anno di questa data."
 
-#: src/lib/EventForm.svelte
-msgid "The organizer hands out the ammunition (Ammo button on the dashboard)"
-msgstr "L’organizzatore consegna le munizioni (pulsante Munizione nella dashboard)"
+#: src/lib/modules/ammo/index.ts
+msgid "The organizer hands out the ammunition: an Ammo button on the dashboard and a helper role."
+msgstr "L'organizzatore distribuisce le munizioni: un pulsante Munizione sulla dashboard e un ruolo di aiutante."
 
 #: src/lib/print.ts
 msgid "The PDF is ready."
@@ -4718,7 +4833,7 @@ msgid "the waiting list"
 msgstr "la lista d'attesa"
 
 #: src/lib/AccountSettings.svelte
-#: src/lib/KioskTokens.svelte
+#: src/lib/modules/kiosk/KioskTokens.svelte
 #: src/routes/my/settings/+page.svelte
 msgid "Theme"
 msgstr "Tema"
@@ -4763,6 +4878,11 @@ msgstr "Questo link chiosco non è (più) valido."
 msgid "This link is not valid."
 msgstr "Questo link non è valido."
 
+#: src/routes/t/[tenantId]/events/[eventId]/[module]/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/[module]/+page.svelte
+msgid "This module is off for this event."
+msgstr "Questo modulo è disattivato per questa manifestazione."
+
 #: src/lib/help/HelpArticle.svelte
 msgid "This page is not translated yet."
 msgstr "Questa pagina non è ancora tradotta."
@@ -4771,11 +4891,11 @@ msgstr "Questa pagina non è ancora tradotta."
 msgid "Tick every range the event is shot on. No range: an event without lanes, results are entered afterwards."
 msgstr "Spunta ogni stand su cui si tira la manifestazione. Senza stand: una manifestazione senza bersagli, i risultati vengono registrati dopo."
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Tie-break"
 msgstr "Spareggio"
 
-#: src/lib/booking/BookingForm.svelte
+#: src/lib/modules/booking/parts/BookingForm.svelte
 #: src/lib/ScheduleEditor.svelte
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Time"
@@ -4793,7 +4913,7 @@ msgstr "Suggerimento: se succede di continuo, correggi il mirino {sight} – opp
 msgid "Tip: tap your hits on the target when you log a session and Standblatt shows where your group sits and how big it is."
 msgstr "Suggerimento: tocca i tuoi colpi sul bersaglio quando registri una sessione e Standblatt mostra dove si trova il tuo gruppo e quanto è grande."
 
-#: src/routes/t/[tenantId]/events/[eventId]/reservations/+page.svelte
+#: src/lib/modules/reservations/Page.svelte
 msgid "To"
 msgstr "A"
 
@@ -4813,8 +4933,8 @@ msgstr "Mostra/nascondi barra laterale"
 msgid "Token revoked"
 msgstr "Token revocato"
 
-#: src/lib/ClassificationTable.svelte
 #: src/lib/forms/Palette.svelte
+#: src/lib/modules/classifications/ClassificationTable.svelte
 #: src/lib/RankingTable.svelte
 #: src/routes/my/log/[id]/+page.svelte
 msgid "Total"
@@ -4920,7 +5040,7 @@ msgid "Users"
 msgstr "Utenti"
 
 #: src/lib/forms/Properties.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
+#: src/lib/modules/awards/StatisticsSection.svelte
 msgid "Value"
 msgstr "Valore"
 
@@ -4960,7 +5080,7 @@ msgstr "in attesa"
 msgid "Waiting"
 msgstr "In attesa"
 
-#: src/lib/booking/BookingStatus.svelte
+#: src/lib/modules/booking/parts/BookingStatus.svelte
 msgid "waiting for confirmation"
 msgstr "in attesa di conferma"
 
@@ -5003,6 +5123,10 @@ msgstr "Giorni della settimana del periodo in cui si tira. Nessuno spuntato: ogn
 msgid "Weeks in a row with training"
 msgstr "Settimane di fila con allenamento"
 
+#: src/routes/t/[tenantId]/events/[eventId]/config/programmes/+page.svelte
+msgid "What can be shot: series, prices per age category and awards."
+msgstr "Cosa si può sparare: serie, prezzi per categoria d'età e distinzioni."
+
 #: src/lib/ProgrammeList.svelte
 msgid "What shooters can register for, with prices and awards."
 msgstr "A cosa possono iscriversi i tiratori, con prezzi e distinzioni."
@@ -5023,7 +5147,7 @@ msgstr "Cosa dicono i tuoi tag"
 msgid "When"
 msgstr "Quando"
 
-#: src/routes/t/[tenantId]/events/[eventId]/setup/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "When the event is over: the rankings are final and reach the shooters' personal training logs, everything stays visible, but results and registrations can no longer be changed."
 msgstr "Quando la manifestazione è finita: le classifiche sono definitive e arrivano nel diario di allenamento personale dei tiratori, tutto resta visibile, ma risultati e iscrizioni non possono più essere modificati."
 
@@ -5035,7 +5159,7 @@ msgstr "Dove"
 msgid "Where to?"
 msgstr "Dove vuoi andare?"
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Which programmes count, how ties are decided and who is ranked together."
 msgstr "Quali programmi contano, come si decide a parità e chi viene classificato insieme."
 
@@ -5056,12 +5180,12 @@ msgstr "Con il tuo indirizzo e-mail o il nome utente che ti ha dato l’admin de
 msgid "Without an online agent, documents open as PDF in the browser."
 msgstr "Senza un agente collegato, i documenti si aprono come PDF nel browser."
 
-#: src/lib/Classifications.svelte
+#: src/lib/modules/classifications/Classifications.svelte
 msgid "Without classes everybody is in one ranking. Shooters whose category is in no class are not listed."
 msgstr "Senza classi tutti sono in un’unica classifica. I tiratori la cui categoria non è in nessuna classe non sono elencati."
 
+#: src/lib/modules/awards/StatisticsSection.svelte
 #: src/lib/ProgrammeEditor.svelte
-#: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Wreath card"
 msgstr "Carta corona"
 
@@ -5072,6 +5196,10 @@ msgstr "Carta corona (A6, prestampata)"
 #: src/lib/PrintButton.svelte
 msgid "Wreath card sent to printer"
 msgstr "Carta corona inviata alla stampante"
+
+#: src/lib/modules/awards/index.ts
+msgid "Wreath cards, prizes in kind and cash prizes by points per age category."
+msgstr "Carte corona, premi in natura e premi in denaro secondo i punti per categoria d'età."
 
 #: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "Write lanes like 1-10, 12"
@@ -5085,7 +5213,7 @@ msgstr "x (mm)"
 msgid "y (mm)"
 msgstr "y (mm)"
 
-#: src/lib/ClassificationTable.svelte
+#: src/lib/modules/classifications/ClassificationTable.svelte
 #: src/lib/RankingTable.svelte
 msgid "Year"
 msgstr "Anno"

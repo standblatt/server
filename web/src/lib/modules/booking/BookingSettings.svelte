@@ -5,13 +5,13 @@
 	import Power from '@lucide/svelte/icons/power';
 	import RefreshCw from '@lucide/svelte/icons/refresh-cw';
 	import { toast } from 'svelte-sonner';
-	import { api, call, type BookingConfig, type Event } from './api';
+	import { api, call, type BookingConfig, type Event } from '$lib/api';
 	import { byDay, deadlineDay, slotTime } from './booking';
-	import { Button } from './components/ui/button';
-	import { Input } from './components/ui/input';
-	import { ask } from './confirm.svelte';
-	import BookingHoursForm from './booking/BookingHoursForm.svelte';
-	import { keys } from './tenant';
+	import { Button } from '$lib/components/ui/button';
+	import { Input } from '$lib/components/ui/input';
+	import { ask } from '$lib/confirm.svelte';
+	import BookingHoursForm from './parts/BookingHoursForm.svelte';
+	import { keys } from '$lib/tenant';
 
 	let { tenantId, event }: { tenantId: number; event: Event } = $props();
 

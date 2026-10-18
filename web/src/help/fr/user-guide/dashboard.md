@@ -7,9 +7,9 @@ sur quelle cible, qui attend, qui a terminé.
 
 - **En tir** : inscriptions sur une cible, avec le temps écoulé depuis le
   début, les boutons **Résultats**, **Modifier** et **Terminer**. Si le
-  réglage de la manifestation *L’organisateur remet la munition* est activé,
-  **Munition** note qu’elle a été remise et un badge vert *munition* le
-  montre ensuite (voir [Aides](helpers.md)).
+  module *Distribution de munition* est activé, **Munition** note qu’elle a
+  été remise et un badge vert *munition* le montre ensuite (voir
+  [Aides](helpers.md)).
 - **En attente** : inscriptions sans cible (par exemple quand toutes les
   cibles sont occupées).
 - **Terminés** : inscriptions dont tous les programmes ont des résultats,

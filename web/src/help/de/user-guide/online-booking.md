@@ -7,12 +7,14 @@ meldet seine Schützen. Ein Admin bestätigt oder lehnt jede Anfrage ab.
 
 ## Einschalten {#setup}
 
-Auf dem Tab *Online-Reservation* der **Einrichtung** des Anlasses genügt
-**Einschalten**. Der Tab zeigt dann den Link mit einem QR-Code für die
-Einladung und die angebotenen Zeitblöcke.
+Schalte den Baustein *Online-Reservation* unter **Konfiguration** →
+**Bausteine** ein (er braucht einen Stand); dann genügt auf
+**Online-Reservation** in der Konfiguration **Einschalten**. Die Seite zeigt
+dann den Link mit einem QR-Code für die Einladung und die angebotenen
+Zeitblöcke.
 
 ![Online-Reservation in der
-Einrichtung](../images/screenshots/booking-setup.png){ .screenshot }
+Konfiguration](../images/screenshots/booking-setup.png){ .screenshot }
 
 Ohne Änderungen ist jeder Tag des Anlasses während seiner Schiesszeiten
 offen (siehe [Anlässe](events.md#settings)), ohne Schiesszeiten von 08:00

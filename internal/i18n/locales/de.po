@@ -924,7 +924,7 @@ msgstr "Lösche zuerst die Wertungen"
 
 #: internal/web/modules.go
 msgid "Delete the helper links first"
-msgstr "Lösche zuerst die Helfer-Links"
+msgstr "Lösche zuerst die Helferlinks"
 
 #: internal/web/modules.go
 msgid "Delete the kiosk links first"
@@ -944,7 +944,7 @@ msgstr "Programme mit Sonderpreisen verwenden diesen Baustein"
 
 #: internal/web/modules.go
 msgid "Switch the online booking link off first"
-msgstr "Schalte zuerst den Link der Online-Buchung aus"
+msgstr "Schalte zuerst den Link der Online-Reservation aus"
 
 #: internal/web/modules.go
 msgid "The module is in use"

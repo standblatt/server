@@ -58,7 +58,7 @@ test.describe("seasons and distances", () => {
     });
     const errors = [];
     page.on("pageerror", (e) => errors.push(e.message));
-    await page.goto(`/t/${ids.tenant}/events/${ev.id}/setup?tab=event`);
+    await page.goto(`/t/${ids.tenant}/events/${ev.id}/config`);
     await expect(page.getByLabel("Shooting day")).toHaveValue(day(4));
     await page.getByRole("group", { name: "Shooting times" }).getByRole("button", { name: "Time" }).click();
     await expect(page.getByLabel("Saturday from")).toBeVisible();

@@ -37,7 +37,7 @@ test.describe("online booking", () => {
 
   test("admin switches online booking on", async ({ page }) => {
     await login(page, admin);
-    await page.goto(`/t/${ids.tenant}/events/${ids.event}/setup?tab=booking`);
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}/config/booking`);
     await c(page, "button", "Switch on").click();
     const link = page.getByLabel("Booking link");
     await expect(link).toHaveValue(/\/b\/[A-Za-z0-9_-]+$/);

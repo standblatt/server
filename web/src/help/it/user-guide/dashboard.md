@@ -6,10 +6,10 @@ quale bersaglio, chi aspetta, chi ha finito.
 ![Dashboard](../images/screenshots/dashboard.png){ .screenshot }
 
 - **Al tiro**: iscrizioni su un bersaglio, con il tempo dall’inizio, i
-  pulsanti **Risultati**, **Modifica** e **Termina**. Se l’impostazione
-  della manifestazione *L’organizzatore consegna le munizioni* è attiva,
-  **Munizione** registra che sono state consegnate e poi lo mostra un badge
-  verde *munizione* (vedi [Aiutanti](helpers.md)).
+  pulsanti **Risultati**, **Modifica** e **Termina**. Se il modulo
+  *Distribuzione munizioni* è attivo, **Munizione** registra che sono state
+  consegnate e poi lo mostra un badge verde *munizione* (vedi
+  [Aiutanti](helpers.md)).
 - **In attesa**: iscrizioni senza bersaglio (per esempio quando tutti i
   bersagli sono occupati).
 - **Terminati**: iscrizioni i cui programmi hanno tutti i risultati, con il

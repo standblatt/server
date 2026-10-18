@@ -12,7 +12,10 @@
 	import { Button } from '$lib/components/ui/button';
 	import * as Table from '$lib/components/ui/table';
 	import PageHeader from '$lib/PageHeader.svelte';
-	import { keys, programmesQuery } from '$lib/tenant';
+	import PanelHead from '$lib/PanelHead.svelte';
+	import ModuleSlot from '$lib/modules/ModuleSlot.svelte';
+	import { enabled, has } from '$lib/modules';
+	import { eventQuery, keys, programmesQuery } from '$lib/tenant';
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const eventId = $derived(Number(page.params.eventId));
@@ -21,10 +24,10 @@
 		queryKey: [...keys.reports(tenantId, eventId), 'statistics'],
 		queryFn: () => call(api.GET('/api/tenants/{tenantId}/events/{eventId}/statistics', path))
 	}));
-	const club = createQuery(() => ({
-		queryKey: [...keys.reports(tenantId, eventId), 'club-competition'],
-		queryFn: () => call(api.GET('/api/tenants/{tenantId}/events/{eventId}/club-competition', path))
-	}));
+	const event = eventQuery(
+		() => tenantId,
+		() => eventId
+	);
 	const programmes = programmesQuery(
 		() => tenantId,
 		() => eventId
@@ -33,13 +36,8 @@
 	const reports = $derived([
 		{ id: 'financial', label: $t`Financial report` },
 		{ id: 'revenue', label: $t`Revenue by programme and age category` },
-		{ id: 'awards', label: $t`Awards` },
-		{ id: 'club_competition', label: $t`Club competition` },
 		{ id: 'club_participants', label: $t`Club participants` },
-		{ id: 'special_prizes', label: $t`Special prizes` },
-		{ id: 'classifications', label: $t`Classifications` },
-		{ id: 'awards_open', label: $t`Awards to hand out` },
-		{ id: 'bookings', label: $t`Lane bookings` }
+		...enabled(event.data).flatMap((m) => (m.reports ?? []).map((r) => ({ id: r.id, label: $t(r.label) })))
 	]);
 	/** Download URL of a report in the given format. */
 	const reportUrl = (id: string, format: string) => `/api/tenants/${tenantId}/events/${eventId}/reports/${id}?format=${format}`;
@@ -51,19 +49,14 @@
 		[`${s.completionRate}%`, $t`completed`],
 		[String(s.entries), $t`programmes sold`],
 		[chf(s.revenue), $t`revenue`],
-		[String(s.awards.reduce((n, a) => n + a.count, 0)), $t`awards`],
-		[chf(s.awardsValue), $t`award value`]
+		...(has(event.data, 'awards')
+			? [
+					[String(s.awards.reduce((n, a) => n + a.count, 0)), $t`awards`],
+					[chf(s.awardsValue), $t`award value`]
+				]
+			: [])
 	];
-	/** Translated label of an award kind. */
-	const kind = (k: string) => (k === 'card' ? $t`Wreath card` : k === 'cash' ? $t`Cash prize` : $t`Prize in kind`);
 </script>
-
-{#snippet panelHead(title: string, hint?: string)}
-	<div class="border-b px-4 py-2.5">
-		<h2 class="text-sm font-semibold">{title}</h2>
-		{#if hint}<p class="text-xs text-muted-foreground">{hint}</p>{/if}
-	</div>
-{/snippet}
 
 <PageHeader help="user-guide/statistics-reports" title={$t`Statistics`} description={$t`Key figures, club competition and exports of this event.`} />
 
@@ -81,7 +74,7 @@
 		{#if stats.data}
 			{@const s = stats.data}
 			<section class="overflow-hidden rounded-lg border bg-card">
-				{@render panelHead($t`Programmes`)}
+				<PanelHead title={$t`Programmes`} />
 				<Table.Root>
 					<Table.Header><Table.Row><Table.Head>{$t`Programme`}</Table.Head><Table.Head class="text-right">{$t({ message: "Entries", comment: "Number of programmes shot" })}</Table.Head><Table.Head class="hidden sm:table-cell text-right">{$t`Completed`}</Table.Head><Table.Head class="text-right">{$t`Revenue`}</Table.Head></Table.Row></Table.Header>
 					<Table.Body>
@@ -93,7 +86,7 @@
 			</section>
 
 			<section class="overflow-hidden rounded-lg border bg-card">
-				{@render panelHead($t`Age categories`)}
+				<PanelHead title={$t`Age categories`} />
 				<Table.Root>
 					<Table.Body>
 						{#each s.categories as c (c.category)}
@@ -107,7 +100,7 @@
 
 			{#if s.days.length > 1}
 				<section class="overflow-hidden rounded-lg border bg-card">
-					{@render panelHead($t`Shooting days`)}
+					<PanelHead title={$t`Shooting days`} />
 					<Table.Root>
 						<Table.Header>
 							<Table.Row><Table.Head>{$t`Day`}</Table.Head><Table.Head class="text-right">{$t`Registrations`}</Table.Head><Table.Head class="text-right">{$t`Revenue`}</Table.Head></Table.Row>
@@ -121,45 +114,16 @@
 				</section>
 			{/if}
 
-			<section class="overflow-hidden rounded-lg border bg-card">
-				{@render panelHead($t`Awards`)}
-				<Table.Root>
-					<Table.Header><Table.Row><Table.Head class="hidden sm:table-cell">{$t`Programme`}</Table.Head><Table.Head>{$t`Award`}</Table.Head><Table.Head class="hidden sm:table-cell">{$t`Kind`}</Table.Head><Table.Head class="text-right">{$t`Count`}</Table.Head><Table.Head class="text-right">{$t`Value`}</Table.Head></Table.Row></Table.Header>
-					<Table.Body>
-						{#each s.awards as a, i (i)}
-							<Table.Row><Table.Cell class="hidden sm:table-cell">{a.programme}</Table.Cell><Table.Cell class="whitespace-normal"><div class="font-medium">{a.name}</div><div class="text-xs text-muted-foreground sm:hidden">{a.programme} · {kind(a.kind)}</div></Table.Cell><Table.Cell class="hidden sm:table-cell">{kind(a.kind)}</Table.Cell><Table.Cell class="text-right tabular-nums">{a.count}</Table.Cell><Table.Cell class="text-right tabular-nums">{chf(a.total)}</Table.Cell></Table.Row>
-						{:else}
-							<Table.Row><Table.Cell colspan={5} class="py-6 text-center text-muted-foreground">{$t`No awards given yet.`}</Table.Cell></Table.Row>
-						{/each}
-					</Table.Body>
-				</Table.Root>
-			</section>
 		{/if}
 
-		{#if club.data}
-			<section class="overflow-hidden rounded-lg border bg-card" aria-label={$t`Club competition`}>
-				{@render panelHead($t`Club competition`, club.data.programmes.length ? $t`Counted: ${club.data.programmes.join(', ')}` : $t`No programme counts for the club competition.`)}
-				<Table.Root>
-					<Table.Header><Table.Row><Table.Head>{$t`Rank`}</Table.Head><Table.Head>{$t`Club`}</Table.Head><Table.Head class="text-right">{$t`Result`}</Table.Head><Table.Head class="text-right">{$t`Participants`}</Table.Head></Table.Row></Table.Header>
-					<Table.Body>
-						{#each club.data.ranked as c (c.clubId)}
-							<Table.Row class={c.excluded ? 'opacity-50' : ''}>
-								<Table.Cell class="whitespace-normal">{c.excluded ? $t`out of competition` : c.rank}</Table.Cell>
-								<Table.Cell class="font-medium whitespace-normal">{c.name}</Table.Cell>
-								<Table.Cell class="text-right tabular-nums">{c.result.toFixed(3)}</Table.Cell>
-								<Table.Cell class="text-right tabular-nums">{c.participants}</Table.Cell>
-							</Table.Row>
-						{/each}
-						{#each club.data.unranked as c (c.clubId)}
-							<Table.Row class="text-muted-foreground"><Table.Cell class="whitespace-normal">{$t`not ranked`}</Table.Cell><Table.Cell class="whitespace-normal">{c.name}</Table.Cell><Table.Cell></Table.Cell><Table.Cell class="text-right tabular-nums">{c.participants}</Table.Cell></Table.Row>
-						{/each}
-					</Table.Body>
-				</Table.Root>
-			</section>
+		{#if event.data}
+			{#each enabled(event.data) as m (m.key)}
+				{#if m.statisticsSections}<ModuleSlot load={m.statisticsSections} {tenantId} event={event.data} />{/if}
+			{/each}
 		{/if}
 
 		<section class="overflow-hidden rounded-lg border bg-card" aria-label={$t`Exports`}>
-			{@render panelHead($t`Exports`, $t`PDF for printing, CSV for Excel (semicolon separated).`)}
+			<PanelHead title={$t`Exports`} hint={$t`PDF for printing, CSV for Excel (semicolon separated).`} />
 			<ul class="divide-y">
 				{#each reports as r (r.id)}
 					<li class="flex items-center gap-2 px-4 py-2 text-sm">

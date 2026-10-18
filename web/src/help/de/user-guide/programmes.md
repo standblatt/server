@@ -1,10 +1,9 @@
 # Programme
 
-Programme gehören zu einem Anlass und werden im Tab *Programme* seiner
-**Einrichtung** verwaltet (nur Admins).
+Programme gehören zu einem Anlass und werden unter **Konfiguration** →
+**Programme** verwaltet (nur Admins).
 
-![Einrichtung mit der Programmliste](../images/screenshots/setup.png){
-.screenshot }
+![Die Programmliste](../images/screenshots/setup.png){ .screenshot }
 
 ## Programme hinzufügen
 

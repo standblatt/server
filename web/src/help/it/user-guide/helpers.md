@@ -3,8 +3,9 @@
 Gli aiutanti alla manifestazione (marcatori, distribuzione munizioni,
 ufficio risultati) lavorano con un **link aiutante** invece di un login. Un
 link aiutante apre su qualsiasi telefono o portatile una vista ridotta di
-una manifestazione; gli admin creano i link nella scheda *Aiutanti* della
-**Configurazione** della manifestazione e li revocano quando è finita.
+una manifestazione; gli admin attivano il modulo *Link aiutante* in
+**Configurazione** → **Moduli**, creano i link in **Link aiutante** nella
+configurazione e li revocano quando la manifestazione è finita.
 
 ![Pagina aiutante del marcatore su un
 telefono](../images/screenshots/helper-scorer.png){ .screenshot .phone }
@@ -35,4 +36,4 @@ modificare programmi, classifiche, statistiche, eliminare.
 
 ## Munizioni {#ammunition}
 
-**Munizione** su un’iscrizione in attesa o al tiro registra l’ora in cui le munizioni sono state consegnate; il pulsante esiste solo se l’impostazione della manifestazione *L’organizzatore consegna le munizioni* è attiva (i tiratori di pistola e carabina ad aria compressa di solito portano le proprie). La dashboard mostra un badge verde *munizione* su queste iscrizioni, così distribuzione e rangeur vedono a colpo d’occhio chi è stato servito.
+**Munizione** su un’iscrizione in attesa o al tiro registra l’ora in cui le munizioni sono state consegnate; il pulsante esiste solo se il modulo *Distribuzione munizioni* è attivo (i tiratori di pistola e carabina ad aria compressa di solito portano le proprie). La dashboard mostra un badge verde *munizione* su queste iscrizioni, così distribuzione e rangeur vedono a colpo d’occhio chi è stato servito.

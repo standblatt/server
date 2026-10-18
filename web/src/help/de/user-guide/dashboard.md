@@ -6,10 +6,10 @@ Scheibe schiesst, wer wartet, wer fertig ist.
 ![Dashboard](../images/screenshots/dashboard.png){ .screenshot }
 
 - **Am Schiessen**: Anmeldungen auf einer Scheibe, mit der Zeit seit ihrem
-  Start, den Knöpfen **Resultate**, **Bearbeiten** und **Beenden**. Ist die
-  Anlass-Einstellung *Der Veranstalter gibt die Munition ab* an, hält
-  **Munition** fest, dass sie ausgegeben wurde, und danach zeigt es ein
-  grünes *Munition*-Abzeichen (siehe [Helfer](helpers.md)).
+  Start, den Knöpfen **Resultate**, **Bearbeiten** und **Beenden**. Ist der
+  Baustein *Munitionsausgabe* an, hält **Munition** fest, dass sie
+  ausgegeben wurde, und danach zeigt es ein grünes *Munition*-Abzeichen
+  (siehe [Helfer](helpers.md)).
 - **Wartend**: Anmeldungen ohne Scheibe (zum Beispiel, wenn alle Scheiben
   belegt sind).
 - **Beendet**: Anmeldungen, deren Programme alle Resultate haben, mit dem

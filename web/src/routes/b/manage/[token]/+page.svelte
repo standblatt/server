@@ -7,10 +7,10 @@
 	import { toast } from 'svelte-sonner';
 	import { call, type BookingRequestInput } from '$lib/api';
 	import type { paths } from '$lib/api.gen';
-	import { deadlineDay } from '$lib/booking';
-	import BookingForm from '$lib/booking/BookingForm.svelte';
+	import { deadlineDay } from '$lib/modules/booking/booking';
+	import BookingForm from '$lib/modules/booking/parts/BookingForm.svelte';
 	import PublicShell from '$lib/PublicShell.svelte';
-	import BookingStatus from '$lib/booking/BookingStatus.svelte';
+	import BookingStatus from '$lib/modules/booking/parts/BookingStatus.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { ask } from '$lib/confirm.svelte';
 	import { currentLocale } from '$lib/locale.svelte';

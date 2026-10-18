@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
 	import { untrack } from 'svelte';
-	import type { Club, EventInput, Range } from './api';
+	import type { EventInput, Range } from './api';
 	import { Button } from './components/ui/button';
 	import { Checkbox } from './components/ui/checkbox';
 	import { Input } from './components/ui/input';
 	import * as NativeSelect from './components/ui/native-select';
-	import { Switch } from './components/ui/switch';
 	import FormError from './FormError.svelte';
 	import FormField from './FormField.svelte';
 	import { currentLocale, localeNames, type Locale } from './locale.svelte';
@@ -14,13 +13,11 @@
 
 	let {
 		ranges,
-		clubs,
 		initial,
 		submitLabel,
 		onsubmit
 	}: {
 		ranges: Range[];
-		clubs: Club[];
 		initial?: EventInput;
 		submitLabel: string;
 		onsubmit: (input: EventInput) => Promise<void>;
@@ -53,20 +50,6 @@
 	}
 	let organizer = $state(start.organizer ?? '');
 	let locale = $state<Locale>(start.locale ?? currentLocale());
-	let showLaneStatus = $state(start.settings?.showLaneStatus ?? false);
-	const mods = start.modules;
-	let ammoIssue = $state(!!mods?.includes('ammo'));
-	let printAwardValue = $state(start.settings?.printAwardValue ?? true);
-	let excludedClubId = $state(start.settings?.excludedClubId ?? 0);
-	let laneSheet = $state(!!mods?.includes('lane_sheet'));
-	let controlStrip = $state(!!mods?.includes('control_strip'));
-	/** The modules of an edited event with the switches of this form applied; undefined for a new event (server defaults). */
-	function modules() {
-		if (!mods) return undefined;
-		const set = new Set(mods);
-		for (const [k, on] of [['lane_sheet', laneSheet], ['control_strip', controlStrip], ['ammo', ammoIssue]] as const) on ? set.add(k) : set.delete(k);
-		return [...set];
-	}
 	let error = $state('');
 	let busy = $state(false);
 
@@ -84,8 +67,7 @@
 				organizer,
 				timezone: start.timezone,
 				locale,
-				settings: { showLaneStatus, printAwardValue, excludedClubId: excludedClubId || undefined },
-				modules: modules()
+				settings: start.settings
 			});
 		} catch (err) {
 			error = (err as Error).message;
@@ -117,29 +99,6 @@
 			{#each Object.entries(localeNames) as [value, label] (value)}<NativeSelect.Option {value}>{label}</NativeSelect.Option>{/each}
 		</NativeSelect.Root>
 	</FormField>
-	<FormField label={$t`Club excluded from the club competition`} class="sm:col-span-2">
-		<NativeSelect.Root class="w-full" bind:value={excludedClubId}>
-			<NativeSelect.Option value={0}>{$t`none`}</NativeSelect.Option>
-			{#each clubs as c (c.id)}<NativeSelect.Option value={c.id}>{c.name}</NativeSelect.Option>{/each}
-		</NativeSelect.Root>
-	</FormField>
-	{#if mods}<fieldset class="grid gap-1.5 rounded-md border p-3 sm:col-span-2">
-		<legend class="px-1 text-sm font-medium">{$t`Documents at registration`}</legend>
-		<label class="flex items-center gap-2 text-sm"><Checkbox bind:checked={laneSheet} />{$t`Lane sheet`}</label>
-		<label class="flex items-center gap-2 text-sm"><Checkbox bind:checked={controlStrip} />{$t`Control strip`}</label>
-	</fieldset>{/if}
-	<label class="flex items-center justify-between gap-3 rounded-md border p-3 text-sm sm:col-span-2">
-		{$t`Show lane status on the rankings`}
-		<Switch bind:checked={showLaneStatus} />
-	</label>
-	<label class="flex items-center justify-between gap-3 rounded-md border p-3 text-sm sm:col-span-2">
-		{$t`Print the award value on wreath cards`}
-		<Switch bind:checked={printAwardValue} />
-	</label>
-	{#if mods}<label class="flex items-center justify-between gap-3 rounded-md border p-3 text-sm sm:col-span-2">
-		{$t`The organizer hands out the ammunition (Ammo button on the dashboard)`}
-		<Switch bind:checked={ammoIssue} />
-	</label>{/if}
 	<FormError message={error} class="sm:col-span-2" />
 	<div class="flex justify-end sm:col-span-2"><Button type="submit" disabled={busy}>{submitLabel}</Button></div>
 </form>

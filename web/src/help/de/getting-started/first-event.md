@@ -43,18 +43,22 @@ Einstellungen und alle Programme.
 
 ## 5. Programme hinzufügen
 
-Füge in der **Einrichtung** des Anlasses die Programme hinzu: mit dem
-Editor, aus der Programmbibliothek, aus einer Programmdatei oder als Kopie
-aus einem früheren Anlass. Prüfe Preise, Auszeichnungsstufen, Varianten und
+Öffne **Konfiguration** in der Seitenleiste des Anlasses. Schalte unter
+**Bausteine** ein, was der Anlass verwendet (Kiosk-Anzeigen, Helferlinks,
+Auszeichnungen …, siehe [Bausteine](../user-guide/events.md#modules)); füge
+dann unter **Programme** die Programme hinzu: mit dem Editor, aus der
+Programmbibliothek, aus einer Programmdatei oder als Kopie aus einem
+früheren Anlass. Prüfe Preise, Auszeichnungsstufen, Varianten und
 Kombinationen, und richte
 [Sonderpreise](../user-guide/programmes.md#special-prizes) ein, wenn dein
 Anlass welche vergibt.
 
-![Einrichtung des Anlasses](../images/screenshots/setup.png){ .screenshot }
+![Die Programme des Anlasses](../images/screenshots/setup.png){ .screenshot
+}
 
 ## 6. Kiosk-Bildschirme und Drucker
 
-Erstelle, immer noch in der Einrichtung, im Tab *Kiosk-Anzeigen* einen
+Erstelle, immer noch in der Konfiguration, auf **Kiosk-Anzeigen** einen
 Kiosk-Link für jeden Bildschirm in der Halle (siehe [Ranglisten und
 Kiosk](../user-guide/rankings-kiosk.md)). Weise unter Schiessstände →
 Drucken jedem Dokument einen Drucker zu (siehe
@@ -72,8 +76,8 @@ sich sofort. Siehe [Dashboard](../user-guide/dashboard.md),
 ## 8. Nach dem Anlass
 
 Unter **Statistik** lädst du die Berichte herunter (Finanzbericht,
-Auszeichnungen, Vereinswettkampf, Spezialpreise …). Wenn alles erledigt ist,
-**schliesst** du den Anlass in der Einrichtung **ab** (Tab *Kopieren &
-abschliessen*): die Ranglisten werden für das persönliche Trainingslog der
-Schützen freigegeben, und der Anlass bleibt lesbar, kann aber nicht mehr
-geändert werden.
+Auszeichnungen, Vereinskonkurrenz, Sonderpreise …). Wenn alles erledigt ist,
+**schliesst** du den Anlass unter **Konfiguration** → **Kopieren &
+abschliessen** **ab**: Die Ranglisten werden für das persönliche
+Trainingslog der Schützen freigegeben, und der Anlass bleibt lesbar, kann
+aber nicht mehr geändert werden.

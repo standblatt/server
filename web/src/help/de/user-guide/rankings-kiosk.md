@@ -17,8 +17,9 @@
 ## Kiosk-Bildschirme
 
 Ein Kiosk-Link zeigt die Ranglisten eines Anlasses auf einem Bildschirm in
-der Halle, ohne Anmeldung. Erstelle einen im Tab *Kiosk-Anzeigen* der
-**Einrichtung** des Anlasses:
+der Halle, ohne Anmeldung. Schalte den Baustein *Kiosk-Anzeigen* unter
+**Konfiguration** → **Bausteine** ein und erstelle dann einen auf
+**Kiosk-Anzeigen** in der Konfiguration:
 
 1. Gib einen Namen für den Bildschirm ein (z. B. *Halle 1*), wähle
    **Dunkel** oder **Hell** und wahlweise eine Sprache.
@@ -29,8 +30,8 @@ der Halle, ohne Anmeldung. Erstelle einen im Tab *Kiosk-Anzeigen* der
 ![Kiosk-Bildschirm](../images/screenshots/kiosk.png){ .screenshot }
 
 - Der Kiosk zeigt nur Programme mit eingeschaltetem *Auf Kiosk-Anzeigen
-  zeigen*, und den Scheibenstatus, wenn die Einstellung *Scheibenstatus auf
-  den Ranglisten zeigen* des Anlasses an ist.
+  zeigen*, und den Scheibenstatus, wenn *Scheibenstatus auf den Ranglisten
+  zeigen* an ist (auf derselben Seite).
 - Die Sprache ist die Sprache des Anlasses, sofern der Link keine andere
   trägt (`?language=de`, `fr`, `it`, `en`); das Farbschema kommt von
   `?theme=dark` oder `?theme=light`. Bei einem Anlass auf mehreren Ständen

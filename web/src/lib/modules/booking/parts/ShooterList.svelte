@@ -3,12 +3,12 @@
 	import ClipboardPaste from '@lucide/svelte/icons/clipboard-paste';
 	import Plus from '@lucide/svelte/icons/plus';
 	import X from '@lucide/svelte/icons/x';
-	import type { BookingShooter } from '../api';
+	import type { BookingShooter } from '$lib/api';
 	import { parseShooters } from '../booking';
-	import { Button } from '../components/ui/button';
-	import * as Dialog from '../components/ui/dialog';
-	import { Input } from '../components/ui/input';
-	import { Textarea } from '../components/ui/textarea';
+	import { Button } from '$lib/components/ui/button';
+	import * as Dialog from '$lib/components/ui/dialog';
+	import { Input } from '$lib/components/ui/input';
+	import { Textarea } from '$lib/components/ui/textarea';
 
 	let { shooters = $bindable(), readonly = false }: { shooters: BookingShooter[]; readonly?: boolean } = $props();
 

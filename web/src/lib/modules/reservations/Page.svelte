@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
 	import { intlLocale } from '$lib/locale.svelte';
-	import { page } from '$app/state';
 	import { createQuery, useQueryClient } from '@tanstack/svelte-query';
 	import Copy from '@lucide/svelte/icons/copy';
 	import MoreHorizontal from '@lucide/svelte/icons/ellipsis';
@@ -22,18 +21,15 @@
 	import FormError from '$lib/FormError.svelte';
 	import FormField from '$lib/FormField.svelte';
 	import PageHeader from '$lib/PageHeader.svelte';
-	import { eventQuery, keys } from '$lib/tenant';
-	import BookingRequests from '$lib/BookingRequests.svelte';
+	import { keys } from '$lib/tenant';
+	import BookingRequests from '../booking/BookingRequests.svelte';
+	import { has, type EventProps } from '..';
 	import { meQuery } from '$lib/me';
 
-	const tenantId = $derived(Number(page.params.tenantId));
-	const eventId = $derived(Number(page.params.eventId));
+	let { tenantId, event }: EventProps = $props();
+	const eventId = $derived(event.id);
 	const queryClient = useQueryClient();
-	const event = eventQuery(
-		() => tenantId,
-		() => eventId
-	);
-	const ranges = $derived(event.data?.ranges ?? []);
+	const ranges = $derived(event.ranges);
 	const me = meQuery();
 	const isAdmin = $derived(me.data?.tenants.find((m) => m.tenantId === tenantId)?.role === 'admin');
 	let showPast = $state(false);
@@ -139,7 +135,7 @@
 </PageHeader>
 
 <div class="space-y-4">
-	{#if event.data}<BookingRequests {tenantId} event={event.data} {isAdmin} />{/if}
+	{#if has(event, 'booking')}<BookingRequests {tenantId} {event} {isAdmin} />{/if}
 	{#each byDay as [day, list] (day)}
 		<section class="overflow-hidden rounded-lg border bg-card">
 			<div class="border-b px-4 py-2.5"><h2 class="text-sm font-semibold">{day}</h2></div>

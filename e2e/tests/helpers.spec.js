@@ -30,7 +30,7 @@ test.describe("helper links", () => {
 
   test("creates a scorer link in the setup", async ({ page }) => {
     await login(page, admin);
-    await page.goto(`/t/${ids.tenant}/events/${ids.event}/setup?tab=helpers`);
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}/config/helpers`);
     await page.locator("input[aria-label='Helper name']").fill("Scorer A");
     await page.locator("select[aria-label='Role']").selectOption("scorer");
     await page.locator("input[aria-label='Lanes']").fill("1-3");
@@ -84,7 +84,7 @@ test.describe("helper links", () => {
     await helper.goto(ids.scorer);
     await expect(c(helper, "h1", "Helper match")).toBeVisible();
     await login(page, admin);
-    await page.goto(`/t/${ids.tenant}/events/${ids.event}/setup?tab=helpers`);
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}/config/helpers`);
     const row = c(page, "li", "Scorer A");
     await expect(row).toContainText("last seen");
     await c(row, "button", "revoke").click();

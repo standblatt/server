@@ -29,9 +29,7 @@ test.describe("closed events", () => {
   test("locks a closed event and unlocks it again", async ({ page }) => {
     await login(page, admin);
     const event = `/t/${ids.tenant}/events/${ids.event}`;
-    await page.goto(`${event}/setup`);
-    await expect(c(page, "td", "Main")).toBeVisible();
-    await c(page, "[role=tab]", "Copy & close").click();
+    await page.goto(`${event}/config/close`);
     await c(c(page, "section", "Close this event"), "button", "Close event").click();
     await c(c(page, "[role=alertdialog]", "Close event?"), "button", "Close event").click();
     await expect(page.locator("[data-testid=archived]")).toContainText("nothing can be changed");
@@ -51,7 +49,7 @@ test.describe("closed events", () => {
     const res = await page.request.put(`/api/tenants/${ids.tenant}/entries/${ids.entry}/results`, { data: { series: [{ points: 90 }] } });
     expect(res.status()).toBe(409);
 
-    await page.goto(`${event}/setup?tab=more`);
+    await page.goto(`${event}/config/close`);
     await c(c(page, "section", "Reopen this event"), "button", "Reopen").click();
     await expect(c(page, "[data-sonner-toast]", "Event reopened")).toBeVisible();
     await expect(page.locator("[data-testid=archived]")).toHaveCount(0);
@@ -61,25 +59,24 @@ test.describe("closed events", () => {
 
   test("says why an event with registrations cannot be deleted", async ({ page }) => {
     await login(page, admin);
-    await page.goto(`/t/${ids.tenant}/events/${ids.event}/setup?tab=more`);
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}/config/close`);
     await c(c(page, "section", "Delete this event"), "button", "Delete").click();
     await c(c(page, "[role=alertdialog]", "Delete event?"), "button", "Delete").click();
     await expect(c(page, "[data-sonner-toast]", "Events with registrations cannot be deleted")).toBeVisible();
-    await expect(page).toHaveURL((u) => u.pathname.endsWith("/setup"));
+    await expect(page).toHaveURL((u) => u.pathname.endsWith("/config/close"));
   });
 
   test("copies the event for next year", async ({ page }) => {
     await login(page, admin);
-    const setup = `/t/${ids.tenant}/events/${ids.event}/setup`;
-    await page.goto(setup);
-    await expect(c(page, "td", "Main")).toBeVisible();
-    await c(page, "[role=tab]", "Copy & close").click();
+    const close = `/t/${ids.tenant}/events/${ids.event}/config/close`;
+    await page.goto(close);
     await c(c(page, "section", "Copy for next year"), "button", "Copy").click();
     await expect(page.locator("[role=dialog] input[name=name]")).toHaveValue("42. Old match 2027");
     await expect(page.locator("[role=dialog] input[name=startsOn]")).toHaveValue("2027-01-02");
     await c(page, "[role=dialog] button", "Create copy").click();
     await expect(c(page, "[data-sonner-toast]", 'Event "42. Old match 2027" created')).toBeVisible();
-    await expect(page).toHaveURL((u) => /\/events\/\d+\/setup$/.test(u.pathname) && u.pathname !== setup);
+    await expect(page).toHaveURL((u) => /\/events\/\d+\/config$/.test(u.pathname) && !close.startsWith(u.pathname));
+    await c(page, "[data-sidebar=sidebar] a", "Programmes").click();
     await expect(c(page, "td", "Main")).toBeVisible();
     await expect(c(page, "[data-sidebar=event]", "42. Old match 2027")).toBeVisible();
   });

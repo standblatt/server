@@ -182,7 +182,7 @@ test.describe("documentation screenshots", () => {
   });
 
   test("setup, programmes and special prizes", async ({ page }) => {
-    await visit(page, `/t/${ids.tenant}/events/${ids.event}/setup`);
+    await visit(page, `/t/${ids.tenant}/events/${ids.event}/config/programmes`);
     await expect(c(page, "td", "Championship")).toBeVisible();
     await shot(page, "setup");
     const actions = page.locator("button[aria-label='Actions for Championship (Sport)']");
@@ -196,7 +196,7 @@ test.describe("documentation screenshots", () => {
     await expect(c(page, "[role=dialog]", "Edit programme")).toBeVisible();
     await shot(page, "programme-editor");
     await page.keyboard.press("Escape");
-    await c(page, "[role=tab]", "Copy & close").click();
+    await visit(page, `/t/${ids.tenant}/events/${ids.event}/config/close`);
     await c(c(page, "section", "Copy for next year"), "button", "Copy").click();
     await expect(page.locator("[role=dialog] input[name=name]")).toHaveValue("43. Example Championship 2028");
     await shot(page, "copy-event");
@@ -219,7 +219,7 @@ test.describe("documentation screenshots", () => {
     const requests = await api(page, "GET", `${evBase}/booking-requests`);
     await api(page, "POST", `/api/tenants/${ids.tenant}/booking-requests/${requests.find((r) => r.club === "SG Hilltown").id}/confirm`);
 
-    await visit(page, `/t/${ids.tenant}/events/${ids.event}/setup?tab=booking`);
+    await visit(page, `/t/${ids.tenant}/events/${ids.event}/config/booking`);
     await expect(page.getByLabel("Booking link")).toHaveValue(cfg.link);
     await shot(page, "booking-setup");
     await visit(page, `/t/${ids.tenant}/events/${ids.event}/reservations`);

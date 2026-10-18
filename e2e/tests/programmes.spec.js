@@ -42,7 +42,7 @@ test.describe("programmes", () => {
 
   test("creates a programme in the editor", async ({ page }) => {
     await login(page, admin);
-    await page.goto(`/t/${ids.tenant}/events/${ids.event}/setup`);
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}/config/programmes`);
     await c(page, "button", "New programme").click();
     const dialog = page.locator("[role=dialog]");
     await c(dialog, "label", "Name").locator("input").fill("Field match");
@@ -80,7 +80,7 @@ test.describe("programmes", () => {
 
   test("imports, copies and adds library programmes", async ({ page }) => {
     await login(page, admin);
-    await page.goto(`/t/${ids.tenant}/events/${ids.event}/setup`);
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}/config/programmes`);
     await c(page, "button", "Add from …").click();
     await c(page, "[role=menuitem]", "Programme file").click();
     await page.locator("input[aria-label='Programme file']").setInputFiles(json("obligatory.programme.json", exportFile));
@@ -90,7 +90,7 @@ test.describe("programmes", () => {
     await expect(c(page, "[role=menuitem]", "Export")).toHaveAttribute("href", /\/export$/);
     await page.keyboard.press("Escape");
 
-    await page.goto(`/t/${ids.tenant}/events/${ids.next}/setup`);
+    await page.goto(`/t/${ids.tenant}/events/${ids.next}/config/programmes`);
     await c(page, "button", "Add from …").click();
     await c(page, "[role=menuitem]", "Earlier event").click();
     await page.locator("select[aria-label='Copy from event']").selectOption({ label: "Indoor 2026 (2026-11-20)" });

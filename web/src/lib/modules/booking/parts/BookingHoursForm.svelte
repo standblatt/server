@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
 	import { toast } from 'svelte-sonner';
-	import { api, call, type BookingConfig, type BookingSettings, type Event } from '../api';
-	import { Button } from '../components/ui/button';
-	import { Input } from '../components/ui/input';
-	import FormError from '../FormError.svelte';
-	import FormField from '../FormField.svelte';
-	import { intlLocale } from '../locale.svelte';
+	import { api, call, type BookingConfig, type BookingSettings, type Event } from '$lib/api';
+	import { Button } from '$lib/components/ui/button';
+	import { Input } from '$lib/components/ui/input';
+	import FormError from '$lib/FormError.svelte';
+	import FormField from '$lib/FormField.svelte';
+	import { intlLocale } from '$lib/locale.svelte';
 
 	let { tenantId, event, settings, onsaved }: { tenantId: number; event: Event; settings: BookingSettings; onsaved: (c: BookingConfig) => void } = $props();
 

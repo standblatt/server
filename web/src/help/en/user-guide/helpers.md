@@ -1,6 +1,6 @@
 # Helpers
 
-Helpers at the event (scorers, the ammunition desk, the results office) work with a **helper link** instead of a login. A helper link opens a reduced desk of one event on any phone or laptop; admins create the links on the *Helpers* tab of the event's **Setup** and revoke them when the event is over.
+Helpers at the event (scorers, the ammunition desk, the results office) work with a **helper link** instead of a login. A helper link opens a reduced desk of one event on any phone or laptop; admins switch on the module *Helper links* under **Configuration** → **Modules**, create the links on **Helper links** in the configuration and revoke them when the event is over.
 
 ![Scorer's helper page on a phone](../images/screenshots/helper-scorer.png){ .screenshot .phone }
 
@@ -24,4 +24,4 @@ Everything else stays with the club's users: registering shooters, editing progr
 
 ## Ammunition {#ammunition}
 
-**Ammo** on a waiting or shooting registration records the time the ammunition was handed out; the button exists only when the event setting *The organizer hands out the ammunition* is on (air pistol and air rifle shooters usually bring their own). The dashboard shows a green *ammo* badge on such registrations, so the desk and the range officer see at a glance who has been served.
+**Ammo** on a waiting or shooting registration records the time the ammunition was handed out; the button exists only when the module *Ammunition desk* is on (air pistol and air rifle shooters usually bring their own). The dashboard shows a green *ammo* badge on such registrations, so the desk and the range officer see at a glance who has been served.

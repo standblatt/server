@@ -26,13 +26,13 @@ Under **Events**, create the event: name, date, range, organizer and the languag
 
 ## 5. Add the programmes
 
-In the event's **Setup**, add the programmes: from the editor, from the programme library, from a programme file or by copying them from an earlier event. Check prices, award tiers, variants and combinations, and set up [special prizes](../user-guide/programmes.md#special-prizes) if your event awards them.
+Open **Configuration** in the event's sidebar. Under **Modules**, switch on what the event uses (kiosk displays, helper links, awards …, see [Modules](../user-guide/events.md#modules)); then add the programmes under **Programmes**: from the editor, from the programme library, from a programme file or by copying them from an earlier event. Check prices, award tiers, variants and combinations, and set up [special prizes](../user-guide/programmes.md#special-prizes) if your event awards them.
 
-![Event setup](../images/screenshots/setup.png){ .screenshot }
+![The programmes of the event](../images/screenshots/setup.png){ .screenshot }
 
 ## 6. Kiosk screens and printers
 
-Still in Setup, on the *Kiosk displays* tab, create a kiosk link for each screen in the hall (see [Rankings and kiosk](../user-guide/rankings-kiosk.md)). Under Ranges → Printing, assign a printer to each document (see [Printing](../user-guide/printing.md)).
+Still in the configuration, on **Kiosk displays**, create a kiosk link for each screen in the hall (see [Rankings and kiosk](../user-guide/rankings-kiosk.md)). Under Ranges → Printing, assign a printer to each document (see [Printing](../user-guide/printing.md)).
 
 ## 7. Run the event
 
@@ -40,4 +40,4 @@ On the **Dashboard**, press ++f4++, search the shooter, register them on a lane 
 
 ## 8. After the event
 
-Under **Statistics**, download the reports (financial report, awards, club competition, special prizes …). When everything is settled, **close** the event in Setup (*Copy & close* tab): the rankings are released to the shooters' personal training logs, and the event stays readable but can no longer be changed.
+Under **Statistics**, download the reports (financial report, awards, club competition, special prizes …). When everything is settled, **close** the event under **Configuration** → **Copy & close**: the rankings are released to the shooters' personal training logs, and the event stays readable but can no longer be changed.

@@ -32,7 +32,7 @@ test.describe("classifications", () => {
 
   test("creates a classification with classes in the setup", async ({ page }) => {
     await login(page, admin);
-    await page.goto(`/t/${ids.tenant}/events/${ids.event}/setup?tab=classifications`);
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}/config/classifications`);
     await c(page, "button", "New classification").click();
     const sheet = page.getByRole("dialog");
     await sheet.getByLabel("Name", { exact: true }).fill("Section championship");

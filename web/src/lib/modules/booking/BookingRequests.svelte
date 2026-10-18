@@ -5,16 +5,16 @@
 	import UserPlus from '@lucide/svelte/icons/user-plus';
 	import X from '@lucide/svelte/icons/x';
 	import { toast } from 'svelte-sonner';
-	import { api, call, type BookingRequest, type Club, type Event } from './api';
+	import { api, call, type BookingRequest, type Club, type Event } from '$lib/api';
 	import { slotDay, slotTime } from './booking';
-	import { formatLanes } from './format';
-	import BookingStatus from './booking/BookingStatus.svelte';
-	import ClubSelect from './ClubSelect.svelte';
-	import { Button } from './components/ui/button';
-	import * as Dialog from './components/ui/dialog';
-	import { Textarea } from './components/ui/textarea';
-	import FormError from './FormError.svelte';
-	import { bookingRequestsQuery, clubsQuery, keys } from './tenant';
+	import { formatLanes } from '$lib/format';
+	import BookingStatus from './parts/BookingStatus.svelte';
+	import ClubSelect from '$lib/ClubSelect.svelte';
+	import { Button } from '$lib/components/ui/button';
+	import * as Dialog from '$lib/components/ui/dialog';
+	import { Textarea } from '$lib/components/ui/textarea';
+	import FormError from '$lib/FormError.svelte';
+	import { bookingRequestsQuery, clubsQuery, keys } from '$lib/tenant';
 
 	let { tenantId, event, isAdmin }: { tenantId: number; event: Event; isAdmin: boolean } = $props();
 

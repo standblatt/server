@@ -1,10 +1,9 @@
 # Programmes
 
-Les programmes appartiennent à une manifestation et se gèrent dans l’onglet
-*Programmes* de sa **Configuration** (admins seulement).
+Les programmes appartiennent à une manifestation et se gèrent sous
+**Configuration** → **Programmes** (admins seulement).
 
-![Configuration avec la liste des
-programmes](../images/screenshots/setup.png){ .screenshot }
+![La liste des programmes](../images/screenshots/setup.png){ .screenshot }
 
 ## Ajouter des programmes
 

@@ -4,7 +4,7 @@ A programme ranking ranks one programme. A **classification** ranks shooters ove
 
 ## Create a classification {#create}
 
-On the *Classifications* tab of the event's **Setup** (admins), **New classification** opens the editor:
+With the module *Classifications* switched on (**Configuration** → **Modules**), **New classification** on **Classifications** in the configuration (admins) opens the editor:
 
 - **Programmes**: every programme that counts, with its **Counting attempts**. With 3, the best three attempts count (or the first or last three, as set by the programme's *Counting attempt*). A shooter's total is the sum of all counted attempts.
 - **Count only the best programmes**: with several programmes, only that many with the highest points count, e.g. the best two of three; 0 counts all.

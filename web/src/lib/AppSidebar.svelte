@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { plural, t } from 'lingui-for-svelte/macro';
+	import { t } from 'lingui-for-svelte/macro';
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/state';
 	import BarChart from '@lucide/svelte/icons/chart-column';
 	import Building from '@lucide/svelte/icons/building-2';
-	import CalendarClock from '@lucide/svelte/icons/calendar-clock';
 	import CalendarDays from '@lucide/svelte/icons/calendar-days';
 	import Check from '@lucide/svelte/icons/check';
 	import ScrollText from '@lucide/svelte/icons/scroll-text';
@@ -22,9 +21,13 @@
 	import Dumbbell from '@lucide/svelte/icons/dumbbell';
 	import ShieldCheck from '@lucide/svelte/icons/shield-check';
 	import { authOptionsQuery, versionQuery } from '$lib/me';
-	import { createQuery } from '@tanstack/svelte-query';
-	import { api, call } from '$lib/api';
-	import { keys } from '$lib/tenant';
+	import Archive from '@lucide/svelte/icons/archive';
+	import ArrowLeft from '@lucide/svelte/icons/arrow-left';
+	import ListChecks from '@lucide/svelte/icons/list-checks';
+	import Puzzle from '@lucide/svelte/icons/puzzle';
+	import SlidersHorizontal from '@lucide/svelte/icons/sliders-horizontal';
+	import ModuleSlot from '$lib/modules/ModuleSlot.svelte';
+	import { enabled, type Lazy } from '$lib/modules';
 	import Users from '@lucide/svelte/icons/users';
 	import type { Event, Me } from '$lib/api';
 	import { liveLabel, roleLabel } from '$lib/labels';
@@ -61,20 +64,24 @@
 	const eventBase = $derived(`${base}/events/${event?.id}`);
 	const path = $derived(page.url.pathname);
 
-	const bookings = createQuery(() => ({
-		queryKey: [...keys.booking(tenantId, event?.id ?? 0), 'requests'],
-		queryFn: () => call(api.GET('/api/tenants/{tenantId}/events/{eventId}/booking-requests', { params: { path: { tenantId, eventId: event!.id } } })),
-		enabled: !!event
-	}));
-	const pending = $derived((bookings.data ?? []).filter((r) => r.status === 'pending').length);
-
-	const eventItems = $derived([
+	type NavItem = { href: string; label: string; icon: typeof Users; active?: boolean; badge?: Lazy };
+	const configuring = $derived(path.startsWith(`${eventBase}/config`));
+	const modules = $derived(enabled(event));
+	const eventItems = $derived<NavItem[]>([
 		{ href: eventBase, label: $t`Dashboard`, icon: LayoutDashboard, active: path === eventBase },
-		...(event?.ranges.length ? [{ href: `${eventBase}/reservations`, label: $t`Reservations`, icon: CalendarClock, badge: pending }] : []),
+		...modules.filter((m) => m.operationPage).map((m) => ({ href: `${eventBase}/${m.key}`, label: $t(m.label), icon: m.icon, badge: m.badge })),
 		{ href: `${eventBase}/entry`, label: $t`Enter results`, icon: ClipboardPen },
 		{ href: `${eventBase}/rankings`, label: $t`Rankings`, icon: ListOrdered },
 		{ href: `${eventBase}/statistics`, label: $t`Statistics`, icon: BarChart },
-		{ href: `${eventBase}/setup`, label: $t`Setup`, icon: Settings }
+		...(isAdmin ? [{ href: `${eventBase}/config`, label: $t`Configuration`, icon: Settings }] : [])
+	]);
+	const configItems = $derived<NavItem[]>([
+		{ href: eventBase, label: $t`Back to the event`, icon: ArrowLeft, active: false },
+		{ href: `${eventBase}/config`, label: $t`General`, icon: SlidersHorizontal, active: path === `${eventBase}/config` },
+		{ href: `${eventBase}/config/modules`, label: $t`Modules`, icon: Puzzle },
+		{ href: `${eventBase}/config/programmes`, label: $t`Programmes`, icon: ListChecks },
+		...modules.filter((m) => m.configPage).map((m) => ({ href: `${eventBase}/config/${m.key}`, label: $t(m.label), icon: m.icon })),
+		{ href: `${eventBase}/config/close`, label: $t`Copy & close`, icon: Archive }
 	]);
 	const clubItems = $derived([
 		{ href: base, label: $t`Events`, icon: CalendarDays, active: path === base },
@@ -95,7 +102,7 @@
 	afterNavigate(() => sidebar.setOpenMobile(false));
 </script>
 
-{#snippet nav(items: { href: string; label: string; icon: typeof Users; active?: boolean; badge?: number }[])}
+{#snippet nav(items: NavItem[])}
 	<Sidebar.Menu>
 		{#each items as item (item.href)}
 			<Sidebar.MenuItem>
@@ -104,7 +111,7 @@
 						<a href={item.href} {...props}><item.icon /><span>{item.label}</span></a>
 					{/snippet}
 				</Sidebar.MenuButton>
-				{#if item.badge}<Sidebar.MenuBadge aria-label={$plural(item.badge, { one: '# open request', other: '# open requests' })}>{item.badge}</Sidebar.MenuBadge>{/if}
+				{#if item.badge && event}<ModuleSlot load={item.badge} {tenantId} {event} />{/if}
 			</Sidebar.MenuItem>
 		{/each}
 	</Sidebar.Menu>
@@ -161,7 +168,7 @@
 					<span class="block truncate text-xs">{[formatDays(event.days, event.startsOn), rangeNames(event.ranges), event.archivedAt ? $t`closed` : ''].filter(Boolean).join(' · ')}</span>
 					<a href={base} class="mt-1 inline-flex items-center gap-1 text-xs text-sidebar-foreground/80 underline-offset-2 hover:underline"><Repeat class="size-3" />{$t`Change event`}</a>
 				</div>
-				<div class="mt-1">{@render nav(eventItems)}</div>
+				<div class="mt-1">{@render nav(configuring ? configItems : eventItems)}</div>
 			</Sidebar.Group>
 		{/if}
 

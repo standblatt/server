@@ -7,9 +7,10 @@ annuncia i suoi tiratori. Un admin conferma o rifiuta ogni richiesta.
 
 ## Attivare {#setup}
 
-Nella scheda *Prenotazione online* della **Configurazione** della
-manifestazione basta **Attiva**. La scheda mostra poi il link con un codice
-QR per l’invito e le fasce orarie offerte.
+Attiva il modulo *Prenotazione online* in **Configurazione** → **Moduli**
+(richiede uno stand); poi, in **Prenotazione online** nella configurazione,
+basta **Attiva**. La pagina mostra poi il link con un codice QR per l’invito
+e le fasce orarie offerte.
 
 ![Prenotazione online nella
 configurazione](../images/screenshots/booking-setup.png){ .screenshot }

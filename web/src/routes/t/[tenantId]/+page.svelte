@@ -14,14 +14,13 @@
 	import { meQuery } from '$lib/me';
 	import PageHeader from '$lib/PageHeader.svelte';
 	import SetupChecklist from '$lib/SetupChecklist.svelte';
-	import { clubsQuery, eventsQuery, keys, rangesQuery } from '$lib/tenant';
+	import { eventsQuery, keys, rangesQuery } from '$lib/tenant';
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const queryClient = useQueryClient();
 	const me = meQuery();
 	const events = eventsQuery(() => tenantId);
 	const ranges = rangesQuery(() => tenantId);
-	const clubs = clubsQuery(() => tenantId);
 	const isAdmin = $derived(me.data?.tenants.find((t) => t.tenantId === tenantId)?.role === 'admin');
 	/** Today's date (YYYY-MM-DD) in the given time zone, UTC if it is invalid. */
 	function todayIn(timeZone: string): string {
@@ -116,6 +115,6 @@
 <Dialog.Root bind:open={creating}>
 	<Dialog.Content class="max-h-[92svh] overflow-y-auto sm:max-w-xl">
 		<Dialog.Header><Dialog.Title>{$t`New event`}</Dialog.Title></Dialog.Header>
-		{#if creating && ranges.data}<EventForm ranges={ranges.data} clubs={clubs.data ?? []} submitLabel={$t`Create`} onsubmit={create} />{/if}
+		{#if creating && ranges.data}<EventForm ranges={ranges.data} submitLabel={$t`Create`} onsubmit={create} />{/if}
 	</Dialog.Content>
 </Dialog.Root>

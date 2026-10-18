@@ -76,14 +76,13 @@ Vorschau ignoriert ihn.
 
 ## Eine Vorlage verwenden {#use}
 
-Wähle im Tab *Programme* der **Einrichtung** des Anlasses die
+Wähle unter **Konfiguration** → **Programme** des Anlasses die
 **Druckvorlage** eines Programms; das geht auch, wenn schon Schützen
 angemeldet sind. Jedes abgeschlossene Programm bietet dann in den Resultaten
 **Auf Vorlage drucken** an: am Desk, auf der Seite **Resultate erfassen**
-und über Schreiber-Links an der Scheibe (siehe [Helfer](helpers.md)). Mit
-einem Druck-Agenten und einem Drucker für *Druckvorlagen* unter
-**Schiessstände → Drucken** geht das Blatt an diesen Drucker (z. B. an
-seinen manuellen Einzug), sonst öffnet sich das PDF (siehe
-[Drucken](printing.md)).
+und über Warner-Links an der Scheibe (siehe [Helfer](helpers.md)). Mit einem
+Druck-Agenten und einem Drucker für *Druckvorlagen* unter **Schiessstände →
+Drucken** geht das Blatt an diesen Drucker (z. B. an seinen manuellen
+Einzug), sonst öffnet sich das PDF (siehe [Drucken](printing.md)).
 
 **Exportieren** lädt eine Vorlage als Datei herunter und **Importieren** liest sie wieder ein, z. B. um eine Vorlage mit einem anderen Verein zu teilen.

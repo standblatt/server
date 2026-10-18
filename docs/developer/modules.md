@@ -21,6 +21,20 @@ Events store the chosen keys in `events.modules`; `store.Event.Modules` is the e
 
 Handlers of a module need no checks of their own. Where the gate cannot see the event (a document type in the body), call `requireModule(ev, key)`.
 
+## Frontend extension points
+
+Every module has a folder `web/src/lib/modules/<key>/` with an `index.ts` that exports its `ModuleUI` (`$lib/modules/types.ts`): label, description, help page and icon, plus the extension points it uses. `$lib/modules/index.ts` collects them in `moduleUI`, typed `Record<ModuleKey, ModuleUI>`, so svelte-check fails when the API knows a module the UI lacks. Components are loaded lazily and get `{ tenantId, event }`; `ModuleSlot.svelte` renders one.
+
+| Point | Rendered by | Use |
+|---|---|---|
+| `configPage` | `routes/…/events/[eventId]/config/[module]` with the module's label as title | its own page in the configuration, listed in the configuration sidebar |
+| `operationPage` (+ `badge`) | `routes/…/events/[eventId]/[module]` | its own page in the operation sidebar, e.g. *Reservations*; renders its own `PageHeader` |
+| `settings` | the *Modules* page, under the module's switch | a few fields saved with `updateEvent` from `$lib/tenant` |
+| `rankingsSections`, `statisticsSections` | the rankings and statistics pages | panels after the core ones |
+| `reports` | the statistics page's export list | report keys with their labels (the server checks `reportModules`) |
+
+`has(event, key)` tells whether a module is on; check it where the feature lives, not in the page around it. Static routes win over `[module]`, so a module key must not be `entry`, `rankings`, `statistics`, `config`, `modules`, `programmes` or `close`.
+
 ## Adding a module
 
 1. Add the key to `internal/modules` (and to the enum tags), with `Requires` and `NeedsRange` as needed.
@@ -28,4 +42,5 @@ Handlers of a module need no checks of their own. Where the gate cannot see the 
 3. Write its migration, store file and web file as usual; tag every operation with `Metadata`.
 4. Add its documents, reports and copier to the lists above.
 5. Tests: the module's own tests, plus a case in `TestModules` when it changes the switch-off rules.
-6. Help: a section or page in `web/src/help/en/user-guide/` and the module table in `events.md`.
+6. UI: a folder `web/src/lib/modules/<key>/` with `index.ts` and its components, and the entry in `moduleUI`.
+7. Help: a section or page in `web/src/help/en/user-guide/` and the module table in `events.md`.

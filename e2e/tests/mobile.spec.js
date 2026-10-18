@@ -121,7 +121,7 @@ test.describe("phone", () => {
     const urls = [
       "/", "/account", t, `${t}/shooters`, `${t}/shooters?shooter=${ids.shooter}`, `${t}/clubs`, `${t}/ranges`, `${t}/ranges/${ids.range}/printing`, `${t}/users`, `${t}/forms`,
       e, `${e}?registration=${ids.regs[3]}`, `${e}?results=${ids.regs[0]}`, `${e}/entry`, `${e}/rankings`, `${e}/statistics`, `${e}/reservations`,
-      ...["programmes", "event", "kiosk", "helpers", "booking", "more"].map((x) => `${e}/setup?tab=${x}`),
+      ...["", "/modules", "/programmes", "/kiosk", "/helpers", "/booking", "/classifications", "/close"].map((x) => `${e}/config${x}`),
       "/my", "/my/log", "/my/progress", "/my/settings", "/my/train", "/help", "/help/user-guide/dashboard",
       `/h/${ids.helper}`, `/kiosk/${ids.kiosk}`,
     ];
@@ -132,7 +132,7 @@ test.describe("phone", () => {
       const s = await sideways(page);
       if (s.length) found[u] = s;
     }
-    await page.goto(`${e}/setup?tab=programmes`);
+    await page.goto(`${e}/config/programmes`);
     await page.getByRole("button", { name: /Actions for/ }).first().click();
     await page.getByRole("menuitem", { name: "Edit" }).click();
     await expect(page.locator("[role=dialog]")).toBeVisible();
@@ -141,12 +141,15 @@ test.describe("phone", () => {
     expect(found).toEqual({});
   });
 
-  test("picks a setup tab from a list", async ({ page }) => {
+  test("reaches a configuration page from the sidebar", async ({ page }) => {
     await login(page, user);
-    await page.goto(`/t/${ids.tenant}/events/${ids.event}/setup`);
-    await expect(page.locator("[role=tablist][aria-label=Setup]")).toBeHidden();
-    await page.locator("select[aria-label=Setup]").selectOption("helpers");
-    await expect(page).toHaveURL(/tab=helpers/);
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}`);
+    const sheet = page.locator("[data-mobile=true]");
+    await page.locator("[data-slot=sidebar-trigger]").click();
+    await c(sheet, "a", "Configuration").click();
+    await expect(page).toHaveURL((u) => u.pathname.endsWith("/config"));
+    await page.locator("[data-slot=sidebar-trigger]").click();
+    await c(sheet, "a", "Helper links").click();
     await expect(c(page, "button", "Create helper link")).toBeVisible();
   });
 

@@ -1,8 +1,8 @@
 # Programmes
 
-Programmes belong to an event and are managed on the *Programmes* tab of its **Setup** (admins only).
+Programmes belong to an event and are managed under **Configuration** → **Programmes** (admins only).
 
-![Setup with the programme list](../images/screenshots/setup.png){ .screenshot }
+![The programme list](../images/screenshots/setup.png){ .screenshot }
 
 ## Adding programmes
 

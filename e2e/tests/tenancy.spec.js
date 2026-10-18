@@ -69,7 +69,7 @@ test.describe("admin panel and tenancy", () => {
     await expect(c(page, "header", "Indoor 2026")).toBeVisible();
     await expect(page.getByText("20.11.2026 · 10m hall").first()).toBeVisible();
     await expect(start.locator("li[data-done=true]")).toHaveCount(2);
-    await expect(c(start, "a", "Setup")).toBeVisible();
+    await expect(c(start, "a", "Programmes")).toBeVisible();
 
     await c(page, "a", "Users").click();
     await c(page, "button", "Add user").click();

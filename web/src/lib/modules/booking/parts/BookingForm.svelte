@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { plural, t } from 'lingui-for-svelte/macro';
-	import type { BookingInfo, BookingRequestInput, BookingShooter } from '../api';
+	import type { BookingInfo, BookingRequestInput, BookingShooter } from '$lib/api';
 	import { byDay, slotKey, slotTime } from '../booking';
-	import { Button } from '../components/ui/button';
-	import { Input } from '../components/ui/input';
-	import { Textarea } from '../components/ui/textarea';
-	import FormError from '../FormError.svelte';
-	import FormField from '../FormField.svelte';
+	import { Button } from '$lib/components/ui/button';
+	import { Input } from '$lib/components/ui/input';
+	import { Textarea } from '$lib/components/ui/textarea';
+	import FormError from '$lib/FormError.svelte';
+	import FormField from '$lib/FormField.svelte';
 	import ShooterList from './ShooterList.svelte';
 
 	let {

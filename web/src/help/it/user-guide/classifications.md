@@ -10,8 +10,9 @@ mai risultati o distinzioni.
 
 ## Creare una classifica generale {#create}
 
-Nella scheda *Classifiche generali* della **Configurazione** della
-manifestazione (admin), **Nuova classifica generale** apre l’editor:
+Con il modulo *Classifiche generali* attivo (**Configurazione** →
+**Moduli**), **Nuova classifica generale** in **Classifiche generali** nella
+configurazione (admin) apre l’editor:
 
 - **Programmi**: ogni programma che conta, con i suoi **Tentativi che
   contano**. Con 3 contano i tre tentativi migliori (o i primi o gli ultimi

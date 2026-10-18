@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 08:18+0000\n"
+"POT-Creation-Date: 2026-10-18 09:12+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -367,25 +367,21 @@ msgstr "5. Ajouter les programmes"
 #. type: Plain text
 #: ../src/help/en/getting-started/first-event.md:30
 msgid ""
-"In the event's **Setup**, add the programmes: from the editor, from the "
-"programme library, from a programme file or by copying them from an earlier "
-"event. Check prices, award tiers, variants and combinations, and set up "
-"[special prizes](../user-guide/programmes.md#special-prizes) if your event "
-"awards them."
-msgstr ""
-"Dans la **Configuration** de la manifestation, ajoute les programmes : avec "
-"l’éditeur, depuis la bibliothèque de programmes, depuis un fichier de "
-"programme ou en les copiant d’une manifestation précédente. Vérifie prix, "
-"niveaux de distinction, variantes et combinaisons, et configure les [prix "
-"spéciaux](../user-guide/programmes.md#special-prizes) si ta manifestation en "
-"décerne."
+"Open **Configuration** in the event's sidebar. Under **Modules**, switch on "
+"what the event uses (kiosk displays, helper links, awards …, see [Modules]"
+"(../user-guide/events.md#modules)); then add the programmes under "
+"**Programmes**: from the editor, from the programme library, from a "
+"programme file or by copying them from an earlier event. Check prices, award "
+"tiers, variants and combinations, and set up [special prizes](../user-guide/"
+"programmes.md#special-prizes) if your event awards them."
+msgstr "Ouvre **Configuration** dans la barre latérale de la manifestation. Sous **Modules**, active ce que la manifestation utilise (affichages kiosque, liens d’aide, distinctions …, voir [Modules](../user-guide/events.md#modules)) ; ajoute ensuite les programmes sous **Programmes** : avec l’éditeur, depuis la bibliothèque de programmes, depuis un fichier de programme ou en les copiant d’une manifestation précédente. Vérifie prix, niveaux de distinction, variantes et combinaisons, et configure les [prix spéciaux](../user-guide/programmes.md#special-prizes) si ta manifestation en décerne."
 
 #. type: Plain text
 #: ../src/help/en/getting-started/first-event.md:32
-msgid "![Event setup](../images/screenshots/setup.png){ .screenshot }"
-msgstr ""
-"![Configuration de la manifestation](../images/screenshots/setup.png)"
+msgid ""
+"![The programmes of the event](../images/screenshots/setup.png)"
 "{ .screenshot }"
+msgstr "![Les programmes de la manifestation](../images/screenshots/setup.png){ .screenshot }"
 
 #. type: Title ##
 #: ../src/help/en/getting-started/first-event.md:33
@@ -396,16 +392,11 @@ msgstr "6. Écrans kiosque et imprimantes"
 #. type: Plain text
 #: ../src/help/en/getting-started/first-event.md:36
 msgid ""
-"Still in Setup, on the *Kiosk displays* tab, create a kiosk link for each "
-"screen in the hall (see [Rankings and kiosk](../user-guide/rankings-"
+"Still in the configuration, on **Kiosk displays**, create a kiosk link for "
+"each screen in the hall (see [Rankings and kiosk](../user-guide/rankings-"
 "kiosk.md)). Under Ranges → Printing, assign a printer to each document (see "
 "[Printing](../user-guide/printing.md))."
-msgstr ""
-"Toujours dans la configuration, dans l’onglet *Affichages kiosque*, crée un "
-"lien kiosque pour chaque écran de la halle (voir [Classements et kiosque](../"
-"user-guide/rankings-kiosk.md)). Sous Stands de tir → Impression, attribue "
-"une imprimante à chaque document (voir [Impression](../user-guide/"
-"printing.md))."
+msgstr "Toujours dans la configuration, sur **Affichages kiosque**, crée un lien kiosque pour chaque écran de la halle (voir [Classements et kiosque](../user-guide/rankings-kiosk.md)). Sous Stands de tir → Impression, attribue une imprimante à chaque document (voir [Impression](../user-guide/printing.md))."
 
 #. type: Title ##
 #: ../src/help/en/getting-started/first-event.md:37
@@ -440,16 +431,10 @@ msgstr "8. Après la manifestation"
 msgid ""
 "Under **Statistics**, download the reports (financial report, awards, club "
 "competition, special prizes …). When everything is settled, **close** the "
-"event in Setup (*Copy & close* tab): the rankings are released to the "
-"shooters' personal training logs, and the event stays readable but can no "
-"longer be changed."
-msgstr ""
-"Sous **Statistiques**, téléchargez les rapports (rapport financier, "
-"distinctions, concours de sociétés, prix spéciaux …). Quand tout est réglé, "
-"**clôturez** la manifestation dans la configuration (onglet *Copier & "
-"clôturer*) : les classements sont publiés dans le journal d’entraînement "
-"personnel des tireurs, et la manifestation reste lisible mais ne peut plus "
-"être modifiée."
+"event under **Configuration** → **Copy & close**: the rankings are released "
+"to the shooters' personal training logs, and the event stays readable but "
+"can no longer be changed."
+msgstr "Sous **Statistiques**, téléchargez les rapports (rapport financier, distinctions, concours de sociétés, prix spéciaux …). Quand tout est réglé, **clôturez** la manifestation sous **Configuration** → **Copier & clôturer** : les classements sont publiés dans le journal d’entraînement personnel des tireurs, et la manifestation reste lisible mais ne peut plus être modifiée."
 
 #. type: Title #
 #: ../src/help/en/index.md:1
@@ -2303,7 +2288,14 @@ msgid ""
 "programmes, or a club championship over the best three attempts of an annual "
 "programme. Classifications appear on **Rankings**, on kiosk displays and as "
 "a report; they never change results or awards."
-msgstr "Un classement de programme classe un programme. Un **classement général** classe les tireurs sur plusieurs programmes ou sur plusieurs [tentatives](programmes.md#attempts) d’un programme, p. ex. un championnat de section comme somme de trois programmes, ou un championnat de société sur les trois meilleures tentatives d’un programme annuel. Les classements généraux apparaissent sous **Classements**, sur les écrans kiosque et comme rapport ; ils ne modifient jamais les résultats ni les distinctions."
+msgstr ""
+"Un classement de programme classe un programme. Un **classement général** "
+"classe les tireurs sur plusieurs programmes ou sur plusieurs [tentatives]"
+"(programmes.md#attempts) d’un programme, p. ex. un championnat de section "
+"comme somme de trois programmes, ou un championnat de société sur les trois "
+"meilleures tentatives d’un programme annuel. Les classements généraux "
+"apparaissent sous **Classements**, sur les écrans kiosque et comme rapport ; "
+"ils ne modifient jamais les résultats ni les distinctions."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/classifications.md:5
@@ -2314,9 +2306,10 @@ msgstr "Créer un classement général {#create}"
 #. type: Plain text
 #: ../src/help/en/user-guide/classifications.md:8
 msgid ""
-"On the *Classifications* tab of the event's **Setup** (admins), **New "
-"classification** opens the editor:"
-msgstr "Dans l’onglet *Classements généraux* de la **Configuration** de la manifestation (admins), **Nouveau classement général** ouvre l’éditeur :"
+"With the module *Classifications* switched on (**Configuration** → "
+"**Modules**), **New classification** on **Classifications** in the "
+"configuration (admins) opens the editor:"
+msgstr "Avec le module *Classements généraux* activé (**Configuration** → **Modules**), **Nouveau classement général** sur **Classements généraux** dans la configuration (admins) ouvre l’éditeur :"
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/classifications.md:15
@@ -2325,14 +2318,21 @@ msgid ""
 "With 3, the best three attempts count (or the first or last three, as set by "
 "the programme's *Counting attempt*). A shooter's total is the sum of all "
 "counted attempts."
-msgstr "**Programmes** : chaque programme qui compte, avec ses **Tentatives qui comptent**. Avec 3, les trois meilleures tentatives comptent (ou les trois premières ou dernières, selon la *Tentative qui compte* du programme). Le total d’un tireur est la somme de toutes les tentatives comptées."
+msgstr ""
+"**Programmes** : chaque programme qui compte, avec ses **Tentatives qui "
+"comptent**. Avec 3, les trois meilleures tentatives comptent (ou les trois "
+"premières ou dernières, selon la *Tentative qui compte* du programme). Le "
+"total d’un tireur est la somme de toutes les tentatives comptées."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/classifications.md:15
 msgid ""
 "**Count only the best programmes**: with several programmes, only that many "
 "with the highest points count, e.g. the best two of three; 0 counts all."
-msgstr "**Ne compter que les meilleurs programmes** : avec plusieurs programmes, seuls autant de programmes avec le plus de points comptent, p. ex. les deux meilleurs sur trois ; 0 les compte tous."
+msgstr ""
+"**Ne compter que les meilleurs programmes** : avec plusieurs programmes, "
+"seuls autant de programmes avec le plus de points comptent, p. ex. les deux "
+"meilleurs sur trois ; 0 les compte tous."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/classifications.md:15
@@ -2340,7 +2340,11 @@ msgid ""
 "**Rank only shooters with all counting results**: shooters who are still "
 "missing a programme or an attempt are listed below the ranking without a "
 "rank. Without it everybody is ranked by what they have."
-msgstr "**Classer seulement les tireurs avec tous les résultats qui comptent** : les tireurs à qui il manque encore un programme ou une tentative sont listés sous le classement, sans rang. Sans cette option, chacun est classé selon ce qu’il a."
+msgstr ""
+"**Classer seulement les tireurs avec tous les résultats qui comptent** : les "
+"tireurs à qui il manque encore un programme ou une tentative sont listés "
+"sous le classement, sans rang. Sans cette option, chacun est classé selon ce "
+"qu’il a."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/classifications.md:15
@@ -2350,7 +2354,12 @@ msgid ""
 "all counted series, *More of the highest single shots* needs [single shots]"
 "(programmes.md) (more tens, then more nines …), *Age* follows the [SSV rule]"
 "(../reference/rules.md#ranking). The default is the SSV order."
-msgstr "**Départage** : en cas d’égalité, les critères cochés décident dans leur ordre ; les flèches le modifient. *Passes de la dernière en arrière* compare toutes les passes comptées, *Plus de coups les plus hauts* nécessite des [coups individuels](programmes.md) (plus de dix, puis plus de neuf …), *Âge* suit la [règle FST](../reference/rules.md#ranking). Par défaut, l’ordre FST."
+msgstr ""
+"**Départage** : en cas d’égalité, les critères cochés décident dans leur "
+"ordre ; les flèches le modifient. *Passes de la dernière en arrière* compare "
+"toutes les passes comptées, *Plus de coups les plus hauts* nécessite des "
+"[coups individuels](programmes.md) (plus de dix, puis plus de neuf …), *Âge* "
+"suit la [règle FST](../reference/rules.md#ranking). Par défaut, l’ordre FST."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/classifications.md:15
@@ -2359,7 +2368,12 @@ msgid ""
 "with U17 to U21 and *Elite* with the others. An age category belongs to one "
 "class at most; shooters whose category is in no class are not listed. "
 "Without classes everybody is in one ranking."
-msgstr "**Classes** : classements séparés, chacun pour certaines catégories d’âge, p. ex. *Juniors* avec U17 à U21 et *Élite* avec les autres. Une catégorie d’âge appartient au plus à une classe ; les tireurs dont la catégorie n’est dans aucune classe ne sont pas listés. Sans classes, tout le monde est dans un seul classement."
+msgstr ""
+"**Classes** : classements séparés, chacun pour certaines catégories d’âge, "
+"p. ex. *Juniors* avec U17 à U21 et *Élite* avec les autres. Une catégorie "
+"d’âge appartient au plus à une classe ; les tireurs dont la catégorie n’est "
+"dans aucune classe ne sont pas listés. Sans classes, tout le monde est dans "
+"un seul classement."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/classifications.md:15
@@ -2392,8 +2406,7 @@ msgstr ""
 #: ../src/help/en/user-guide/classifications.md:24
 #, no-wrap
 msgid "**Copy for next year** copies the classifications with the programmes. Deleting a programme removes it from the classifications.\n"
-msgstr ""
-"**Copier pour l’année prochaine** copie les classements généraux avec les programmes. Supprimer un programme le retire des classements généraux.\n"
+msgstr "**Copier pour l’année prochaine** copie les classements généraux avec les programmes. Supprimer un programme le retire des classements généraux.\n"
 
 #. type: Title #
 #: ../src/help/en/user-guide/dashboard.md:1
@@ -2419,16 +2432,10 @@ msgstr "![Dashboard](../images/screenshots/dashboard.png){ .screenshot }"
 #: ../src/help/en/user-guide/dashboard.md:13
 msgid ""
 "**Shooting**: registrations on a lane, with the time since they started, the "
-"buttons **Results**, **Edit** and **Finish**. When the event setting *The "
-"organizer hands out the ammunition* is on, **Ammo** records that it was "
-"handed out and a green *ammo* badge shows it afterwards (see [Helpers]"
-"(helpers.md))."
-msgstr ""
-"**En tir** : inscriptions sur une cible, avec le temps écoulé depuis le "
-"début, les boutons **Résultats**, **Modifier** et **Terminer**. Si le "
-"réglage de la manifestation *L’organisateur remet la munition* est activé, "
-"**Munition** note qu’elle a été remise et un badge vert *munition* le montre "
-"ensuite (voir [Aides](helpers.md))."
+"buttons **Results**, **Edit** and **Finish**. When the module *Ammunition "
+"desk* is on, **Ammo** records that it was handed out and a green *ammo* "
+"badge shows it afterwards (see [Helpers](helpers.md))."
+msgstr "**En tir** : inscriptions sur une cible, avec le temps écoulé depuis le début, les boutons **Résultats**, **Modifier** et **Terminer**. Si le module *Distribution de munition* est activé, **Munition** note qu’elle a été remise et un badge vert *munition* le montre ensuite (voir [Aides](helpers.md))."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/dashboard.md:13
@@ -2601,8 +2608,9 @@ msgstr "Manifestations"
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:4
 #, no-wrap
-msgid "**Events** lists the events of the club in the groups *Today* (between the first and the last shooting day), *Upcoming*, *Past* and *Closed*; admins create new ones there. Opening an event shows its dashboard, reservations, rankings, statistics and setup in the sidebar; *Change event* at the top of the sidebar returns to the list.\n"
-msgstr "**Manifestations** liste les manifestations de la société dans les groupes *Aujourd’hui* (entre le premier et le dernier jour de tir), *À venir*, *Passées* et *Clôturées* ; les admins en créent de nouvelles ici. Ouvrir une manifestation affiche dans la barre latérale son tableau de bord, les réservations, les classements, les statistiques et la configuration ; *Changer de manifestation* en haut de la barre latérale ramène à la liste.\n"
+msgid "**Events** lists the events of the club in the groups *Today* (between the first and the last shooting day), *Upcoming*, *Past* and *Closed*; admins create new ones there. Opening an event shows its dashboard and the other pages of the operation in the sidebar; *Change event* at the top of the sidebar returns to the list.\n"
+msgstr ""
+"**Manifestations** liste les manifestations de la société dans les groupes *Aujourd’hui* (entre le premier et le dernier jour de tir), *À venir*, *Passées* et *Clôturées* ; les admins en créent de nouvelles ici. Ouvrir une manifestation affiche dans la barre latérale son tableau de bord et les autres pages du déroulement ; *Changer de manifestation* en haut de la barre latérale ramène à la liste.\n"
 
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:6
@@ -2612,30 +2620,59 @@ msgstr "![Manifestations](../images/screenshots/events.png){ .screenshot }"
 #. type: Title ##
 #: ../src/help/en/user-guide/events.md:7
 #, no-wrap
-msgid "Settings {#settings}"
-msgstr "Réglages {#settings}"
+msgid "Configuration and operation {#configuration}"
+msgstr "Configuration et déroulement {#configuration}"
 
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:10
 msgid ""
-"The event's **Setup** has five tabs: *Programmes* (see [Programmes]"
-"(programmes.md)), *Event*, *Kiosk displays* (see [Rankings and kiosk]"
-"(rankings-kiosk.md)), *Helpers* (see [Helpers](helpers.md)) and *Copy & "
-"close*. Staff only see the programmes."
+"An event has two areas. The **operation** is what you work with on the day: "
+"*Dashboard*, *Enter results*, *Rankings*, *Statistics* and the pages of "
+"switched-on modules such as *Reservations*. **Configuration** at the end of "
+"the sidebar (admins only) opens the set-up of the event; the sidebar then "
+"lists its pages, and *Back to the event* returns to the operation:"
+msgstr "Une manifestation a deux parties. Le **déroulement** est ce avec quoi vous travaillez le jour même : *Tableau de bord*, *Saisir les résultats*, *Classements*, *Statistiques* et les pages des modules activés comme *Réservations*. **Configuration** au bas de la barre latérale (admins seulement) ouvre la mise en place de la manifestation ; la barre latérale liste alors ses pages, et *Retour à la manifestation* ramène au déroulement :"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:18
+#, no-wrap
+msgid ""
+"| Page | What it holds |\n"
+"|---|---|\n"
+"| **General** | name, days, ranges, organizer and language (see below) |\n"
+"| **Modules** | the building blocks the event uses (see below) |\n"
+"| **Programmes** | what can be shot (see [Programmes](programmes.md)) |\n"
+"| Pages of modules | e.g. **Classifications**, **Kiosk displays**, **Helper links**, **Online booking**, only while the module is on |\n"
+"| **Copy & close** | copy for next year, close, reopen and delete |\n"
 msgstr ""
-"La **Configuration** de la manifestation a cinq onglets : *Programmes* (voir "
-"[Programmes](programmes.md)), *Manifestation*, *Écrans kiosque* (voir "
-"[Classements et kiosque](rankings-kiosk.md)), *Auxiliaires* (voir "
-"[Auxiliaires](helpers.md)) et *Copier & clôturer*. Les collaborateurs ne "
-"voient que les programmes."
+"| Page | Contenu |\n"
+"|---|---|\n"
+"| **Général** | nom, jours, stands, organisateur et langue (voir plus bas) |\n"
+"| **Modules** | les éléments dont la manifestation se sert (voir plus bas) |\n"
+"| **Programmes** | ce qui peut être tiré (voir [Programmes](programmes.md)) |\n"
+"| Pages des modules | p. ex. **Classements généraux**, **Affichages kiosque**, **Liens d'aide**, **Réservation en ligne**, seulement tant que le module est activé |\n"
+"| **Copier & clôturer** | copier pour l’année prochaine, clôturer, rouvrir et supprimer |\n"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:12
-msgid "The *Event* tab holds the settings (admins):"
-msgstr "L’onglet *Manifestation* contient les réglages (admins) :"
+#: ../src/help/en/user-guide/events.md:20
+msgid "Staff work only in the operation; the configuration is for admins."
+msgstr "Le personnel travaille seulement dans le déroulement ; la configuration est réservée aux admins."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/events.md:21
+#, no-wrap
+msgid "Settings {#settings}"
+msgstr "Réglages {#settings}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:25
+#: ../src/help/en/user-guide/events.md:24
+#, no-wrap
+msgid "**General** holds what every event has:\n"
+msgstr ""
+"**Général** contient ce que toute manifestation possède :\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:32
 #, no-wrap
 msgid ""
 "| Setting | Meaning |\n"
@@ -2645,11 +2682,6 @@ msgid ""
 "| Period (season) | for events over weeks or months, e.g. the Feldschiessen from the opening of the range until 31 August: first and last day, plus the weekdays with their shooting times; no weekday ticked means every day. Single days, e.g. the official weekend, add to the period or replace its times on that date |\n"
 "| Organizer | printed on documents |\n"
 "| Language of documents and kiosk | language of PDFs, CSV exports and kiosk screens, independent of each user's interface language |\n"
-"| Club excluded from the club competition | usually the host club; listed as *out of competition* |\n"
-"| Documents at registration | **Lane sheet** and **Control strip**: switch off what the event does not use; the registration then neither offers nor prints it |\n"
-"| Show lane status on the rankings | kiosk screens show the lanes |\n"
-"| Print the award value on wreath cards | value in figures and words on the card |\n"
-"| The organizer hands out the ammunition | shows the **Ammo** button on the dashboard and for the ammunition desk (see [Helpers](helpers.md)); off for events where shooters bring their own, e.g. air pistol and air rifle |\n"
 msgstr ""
 "| Réglage | Signification |\n"
 "|---|---|\n"
@@ -2658,14 +2690,66 @@ msgstr ""
 "| Période (saison) | pour les manifestations sur des semaines ou des mois, p. ex. le Tir en campagne de l’ouverture du stand jusqu’au 31 août : premier et dernier jour, plus les jours de la semaine avec leurs heures de tir ; aucun jour coché signifie chaque jour. Les jours isolés, p. ex. le week-end officiel, s’ajoutent à la période ou remplacent ses heures à cette date |\n"
 "| Organisateur | imprimé sur les documents |\n"
 "| Langue des documents et du kiosque | langue des PDF, des exports CSV et des écrans kiosque, indépendamment de la langue d’interface de chaque utilisateur |\n"
-"| Société exclue du concours de sections | en général la société organisatrice ; listée *hors concours* |\n"
-"| Documents à l’inscription | **Feuille de stand** et **Bande de contrôle** : désactiver ce que la manifestation n’utilise pas ; l’inscription ne le propose alors plus et ne l’imprime pas |\n"
-"| Afficher l’état des cibles sur les classements | les écrans kiosque montrent les cibles |\n"
-"| Imprimer la valeur de la distinction sur les cartes-couronnes | valeur en chiffres et en lettres sur la carte |\n"
-"| L’organisateur remet la munition | affiche le bouton **Munition** sur le tableau de bord et pour la distribution de munition (voir [Aides](helpers.md)) ; désactivé pour les manifestations où les tireurs apportent la leur, p. ex. pistolet et carabine à air |\n"
+
+#. type: Title ##
+#: ../src/help/en/user-guide/events.md:33
+#, no-wrap
+msgid "Modules {#modules}"
+msgstr "Modules {#modules}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:27
+#: ../src/help/en/user-guide/events.md:36
+msgid ""
+"Not every event needs everything: a shooting festival books lanes and hands "
+"out wreath cards, an annual programme only collects results. **Modules** "
+"switches the building blocks of the event on and off; what is off disappears "
+"from the sidebar, the dashboard, the programme editor, the rankings and the "
+"reports."
+msgstr "Toutes les manifestations n’ont pas besoin de tout : une fête de tir réserve des cibles et remet des cartes-couronnes, un programme annuel ne fait que réunir des résultats. **Modules** active et désactive les éléments de la manifestation ; ce qui est désactivé disparaît de la barre latérale, du tableau de bord, de l’éditeur de programmes, des classements et des rapports."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:50
+#, no-wrap
+msgid ""
+"| Module | What it adds |\n"
+"|---|---|\n"
+"| Reservations | lanes reserved for groups and clubs (needs a range) |\n"
+"| Online booking | clubs ask for lanes through a public link (needs a range and switches on Reservations, see [Online booking](online-booking.md)) |\n"
+"| Lane sheet, Control strip | the documents printed at registration |\n"
+"| Ammunition desk | the **Ammo** button on the dashboard and for the ammunition desk (see [Helpers](helpers.md#ammunition)); leave it off where shooters bring their own, e.g. air pistol and air rifle |\n"
+"| Attempts | programmes that can be shot several times (see [Programmes](programmes.md#attempts)) |\n"
+"| Awards | wreath cards, prizes in kind and cash prizes; its setting *Print the award value on wreath cards* puts the value in figures and words on the card |\n"
+"| Special prizes | the best ranks of every age category (switches on Awards, see [Programmes](programmes.md#special-prizes)) |\n"
+"| Club competition | clubs ranked by their shooters' results; its setting *Club excluded from the club competition* is usually the host club, listed as *out of competition* |\n"
+"| Classifications | rankings over several programmes or attempts (see [Classifications](classifications.md)) |\n"
+"| Kiosk displays | rankings on screens in the hall (see [Rankings and kiosk](rankings-kiosk.md)) |\n"
+"| Helper links | scorers, ammunition desk and results clerk without an account (see [Helpers](helpers.md)) |\n"
+msgstr ""
+"| Module | Ce qu’il ajoute |\n"
+"|---|---|\n"
+"| Réservations | cibles réservées pour des groupes et des sociétés (nécessite un stand) |\n"
+"| Réservation en ligne | les sociétés demandent des cibles par un lien public (nécessite un stand et active Réservations, voir [Réservation en ligne](online-booking.md)) |\n"
+"| Feuille de stand, Bande de contrôle | les documents imprimés à l’inscription |\n"
+"| Distribution de munition | le bouton **Munition** sur le tableau de bord et pour la distribution de munition (voir [Aides](helpers.md#ammunition)) ; laissez-le désactivé là où les tireurs apportent la leur, p. ex. pistolet et carabine à air |\n"
+"| Tentatives | des programmes qui peuvent être tirés plusieurs fois (voir [Programmes](programmes.md#attempts)) |\n"
+"| Distinctions | cartes-couronnes, prix en nature et prix en espèces ; son réglage *Imprimer la valeur de la distinction sur les cartes-couronnes* met la valeur en chiffres et en lettres sur la carte |\n"
+"| Prix spéciaux | les meilleurs rangs de chaque catégorie d’âge (active Distinctions, voir [Programmes](programmes.md#special-prizes)) |\n"
+"| Concours de sections | les sociétés classées selon les résultats de leurs tireurs ; son réglage *Société exclue du concours de sections* est en général la société organisatrice, listée *hors concours* |\n"
+"| Classements généraux | classements sur plusieurs programmes ou tentatives (voir [Classements généraux](classifications.md)) |\n"
+"| Affichages kiosque | classements sur des écrans dans la halle (voir [Classements et kiosque](rankings-kiosk.md)) |\n"
+"| Liens d'aide | cibarres, distribution de munition et saisie des résultats sans compte (voir [Aides](helpers.md)) |\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:52
+msgid ""
+"A module that holds data stays on: switch off the kiosk only after deleting "
+"its kiosk links, the awards only when no programme has award tiers, and so "
+"on; the card says why its switch is locked. A module another one needs "
+"(Reservations for Online booking) stays on as long as that one is."
+msgstr "Un module qui contient des données reste activé : désactivez le kiosque seulement après avoir supprimé ses liens kiosque, les distinctions seulement quand aucun programme n’a de niveaux de distinction, et ainsi de suite ; la carte indique pourquoi son interrupteur est bloqué. Un module dont un autre a besoin (Réservations pour Réservation en ligne) reste activé tant que celui-ci l’est."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:54
 msgid ""
 "Shooting times also give the online booking its slots, unless the booking "
 "sets other hours for a day (see [Online booking](online-booking.md))."
@@ -2675,99 +2759,80 @@ msgstr ""
 "ligne](online-booking.md))."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:28
+#: ../src/help/en/user-guide/events.md:55
 #, no-wrap
 msgid "Events without lanes {#no-lanes}"
 msgstr "Manifestations sans cibles {#no-lanes}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:31
+#: ../src/help/en/user-guide/events.md:58
 msgid ""
 "An event needs no range, e.g. an annual programme or a Feldschiessen whose "
 "results come on paper or from the scoring system. Without a range there is "
-"no lane grid, no reservations and no online booking; shooters are registered "
-"without a lane and their results are entered as usual. Documents can still "
-"be opened as PDF, but they do not go to a print agent, because print agents "
-"belong to a range."
-msgstr ""
-"Une manifestation n’a pas besoin de stand, p. ex. un programme annuel ou un "
-"Tir en campagne dont les résultats arrivent sur papier ou depuis "
-"l’installation de marquage. Sans stand, il n’y a ni grille des cibles, ni "
-"réservations, ni réservation en ligne ; les tireurs sont inscrits sans cible "
-"et leurs résultats sont saisis comme d’habitude. Les documents s’ouvrent "
-"toujours en PDF, mais ne partent pas vers un agent d’impression, car les "
-"agents d’impression appartiennent à un stand."
+"no lane grid, and the modules Reservations and Online booking are not "
+"available; shooters are registered without a lane and their results are "
+"entered as usual. Documents can still be opened as PDF, but they do not go "
+"to a print agent, because print agents belong to a range."
+msgstr "Une manifestation n’a pas besoin de stand, p. ex. un programme annuel ou un Tir en campagne dont les résultats arrivent sur papier ou depuis l’installation de marquage. Sans stand, il n’y a pas de grille des cibles, et les modules Réservations et Réservation en ligne ne sont pas disponibles ; les tireurs sont inscrits sans cible et leurs résultats sont saisis comme d’habitude. Les documents s’ouvrent toujours en PDF, mais ne partent pas vers un agent d’impression, car les agents d’impression appartiennent à un stand."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:32
+#: ../src/help/en/user-guide/events.md:59
 #, no-wrap
-msgid "Copy for next year"
-msgstr "Copier pour l’année prochaine"
+msgid "Copy for next year {#copy}"
+msgstr "Copier pour l’année prochaine {#copy}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:35
+#: ../src/help/en/user-guide/events.md:62
 msgid ""
-"On the *Copy & close* tab, **Copy for next year** creates a new event with "
-"the same ranges, organizer, language, settings and all programmes, including "
-"prices, awards, combinations and special prizes, and the [classifications]"
-"(classifications.md); the shooting days and the period move with the date, "
-"weekly shooting times stay on their weekdays. Registrations, results and "
-"kiosk links are not copied. The dialog suggests the name with the year (and "
-"a leading number like *42.*) counted up and the date one year later; adjust "
-"both as needed."
-msgstr "Dans l’onglet *Copier & clôturer*, **Copier pour l’année prochaine** crée une nouvelle manifestation avec les mêmes stands, organisateur, langue, réglages et tous les programmes, y compris prix, distinctions, combinaisons et prix spéciaux, ainsi que les [classements généraux](classifications.md) ; les jours de tir et la période suivent la date, les heures de tir hebdomadaires restent sur leurs jours de la semaine. Les inscriptions, les résultats et les liens kiosque ne sont pas copiés. Le dialogue propose le nom avec l’année (et un numéro en tête comme *42.*) incrémentée et la date un an plus tard ; adaptez les deux au besoin."
+"On **Copy & close** in the configuration, **Copy for next year** creates a "
+"new event with the same ranges, organizer, language, settings, modules and "
+"all programmes, including prices, awards, combinations and special prizes, "
+"and the [classifications](classifications.md); the shooting days and the "
+"period move with the date, weekly shooting times stay on their weekdays. "
+"Registrations, results and kiosk links are not copied. The dialog suggests "
+"the name with the year (and a leading number like *42.*) counted up and the "
+"date one year later; adjust both as needed."
+msgstr "Sous **Copier & clôturer** dans la configuration, **Copier pour l’année prochaine** crée une nouvelle manifestation avec les mêmes stands, organisateur, langue, réglages, modules et tous les programmes, y compris prix, distinctions, combinaisons et prix spéciaux, ainsi que les [classements généraux](classifications.md) ; les jours de tir et la période suivent la date, les heures de tir hebdomadaires restent sur leurs jours de la semaine. Les inscriptions, les résultats et les liens kiosque ne sont pas copiés. Le dialogue propose le nom avec l’année (et un numéro en tête comme *42.*) incrémentée et la date un an plus tard ; adaptez les deux au besoin."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:37
+#: ../src/help/en/user-guide/events.md:64
 msgid "![Copy an event](../images/screenshots/copy-event.png){ .screenshot }"
 msgstr ""
 "![Copier une manifestation](../images/screenshots/copy-event.png)"
 "{ .screenshot }"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:38
+#: ../src/help/en/user-guide/events.md:65
 #, no-wrap
 msgid "Close {#close}"
 msgstr "Clôturer {#close}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:41
+#: ../src/help/en/user-guide/events.md:68
 msgid ""
-"When an event is over and the rankings are checked, **Close** it on the "
-"*Copy & close* tab. Closing releases the rankings: shooters with a [personal "
-"training log](../my-training/account.md#competitions) now find their results "
-"of this event, with their rank in the programme, and can add them to their "
-"log. Everything stays visible (dashboard, results, rankings, reports, "
-"documents), but registrations, results, awards, programmes and settings can "
-"no longer be changed. A banner on every page of the event says so. "
-"**Reopen** makes it editable again; results that shooters already added to "
-"their logs stay there. Copying a closed event for next year works."
-msgstr ""
-"Quand la manifestation est terminée et les classements vérifiés, "
-"**clôturez**-la dans l’onglet *Copier & clôturer* (**Clôturer la "
-"manifestation**). La clôture publie les classements : les tireurs disposant "
-"d’un [journal d’entraînement personnel](../my-training/"
-"account.md#competitions) trouvent alors leurs résultats de cette "
-"manifestation, avec leur rang dans le programme, et peuvent les ajouter à "
-"leur journal. Tout reste visible (tableau de bord, résultats, classements, "
-"rapports, documents), mais les inscriptions, les résultats, les "
-"distinctions, les programmes et les réglages ne peuvent plus être modifiés. "
-"Une bannière sur chaque page de la manifestation l’indique. **Rouvrir** la "
-"rend à nouveau modifiable ; les résultats déjà ajoutés par les tireurs à "
-"leur journal y restent. Copier une manifestation clôturée pour l’année "
-"prochaine fonctionne."
+"When an event is over and the rankings are checked, **Close** it on **Copy & "
+"close** in the configuration. Closing releases the rankings: shooters with a "
+"[personal training log](../my-training/account.md#competitions) now find "
+"their results of this event, with their rank in the programme, and can add "
+"them to their log. Everything stays visible (dashboard, results, rankings, "
+"reports, documents), but registrations, results, awards, programmes and "
+"settings can no longer be changed. A banner on every page of the event says "
+"so. **Reopen** makes it editable again; results that shooters already added "
+"to their logs stay there. Copying a closed event for next year works."
+msgstr "Quand la manifestation est terminée et les classements vérifiés, **clôturez**-la sous **Copier & clôturer** dans la configuration (**Clôturer la manifestation**). La clôture publie les classements : les tireurs disposant d’un [journal d’entraînement personnel](../my-training/account.md#competitions) trouvent alors leurs résultats de cette manifestation, avec leur rang dans le programme, et peuvent les ajouter à leur journal. Tout reste visible (tableau de bord, résultats, classements, rapports, documents), mais les inscriptions, les résultats, les distinctions, les programmes et les réglages ne peuvent plus être modifiés. Une bannière sur chaque page de la manifestation l’indique. **Rouvrir** la rend à nouveau modifiable ; les résultats déjà ajoutés par les tireurs à leur journal y restent. Copier une manifestation clôturée pour l’année prochaine fonctionne."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:42
+#: ../src/help/en/user-guide/events.md:69
 #, no-wrap
 msgid "Delete"
 msgstr "Supprimer"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:44
+#: ../src/help/en/user-guide/events.md:71
 #, no-wrap
-msgid "**Delete** (on the *Copy & close* tab) removes an event, but only while nobody is registered for it.\n"
-msgstr "**Supprimer** (dans l’onglet *Copier & clôturer*) retire une manifestation, mais seulement tant que personne n’y est inscrit.\n"
+msgid "**Delete** (on **Copy & close**) removes an event, but only while nobody is registered for it.\n"
+msgstr ""
+"**Supprimer** (sous **Copier & clôturer**) retire une manifestation, mais seulement tant que personne n’y est inscrit.\n"
 
 #. type: Title #
 #: ../src/help/en/user-guide/login-language.md:1
@@ -3318,23 +3383,14 @@ msgstr "Utiliser un modèle {#use}"
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:43
 msgid ""
-"On the *Programmes* tab of the event's **Setup**, choose the **Print form** "
-"of a programme; this works while shooters are registered. Every completed "
-"programme then offers **Print onto form** in the results: at the desk, on "
-"the **Enter results** page and on scorer links at the lane (see [Helpers]"
-"(helpers.md)). With a print agent and a printer chosen for *Print forms* "
-"under **Ranges → Printing**, the sheet goes to that printer (e.g. its manual "
-"feed), otherwise the PDF opens (see [Printing](printing.md))."
-msgstr ""
-"Dans l’onglet *Programmes* de la **Configuration** de la manifestation, "
-"choisis le **Modèle d’impression** d’un programme ; cela fonctionne aussi "
-"quand des tireurs sont inscrits. Chaque programme terminé propose alors "
-"**Imprimer sur le modèle** dans les résultats : au desk, sur la page "
-"**Saisir les résultats** et par les liens de secrétaire à la cible (voir "
-"[Aides](helpers.md)). Avec un agent d’impression et une imprimante choisie "
-"pour *Modèles d’impression* sous **Stands de tir → Impression**, la feuille "
-"part vers cette imprimante (p. ex. son alimentation manuelle), sinon le PDF "
-"s’ouvre (voir [Impression](printing.md))."
+"Under **Configuration** → **Programmes** of the event, choose the **Print "
+"form** of a programme; this works while shooters are registered. Every "
+"completed programme then offers **Print onto form** in the results: at the "
+"desk, on the **Enter results** page and on scorer links at the lane (see "
+"[Helpers](helpers.md)). With a print agent and a printer chosen for *Print "
+"forms* under **Ranges → Printing**, the sheet goes to that printer (e.g. its "
+"manual feed), otherwise the PDF opens (see [Printing](printing.md))."
+msgstr "Sous **Configuration** → **Programmes** de la manifestation, choisis le **Modèle d’impression** d’un programme ; cela fonctionne aussi quand des tireurs sont inscrits. Chaque programme terminé propose alors **Imprimer sur le modèle** dans les résultats : au desk, sur la page **Saisir les résultats** et par les liens de secrétaire à la cible (voir [Aides](helpers.md)). Avec un agent d’impression et une imprimante choisie pour *Modèles d’impression* sous **Stands de tir → Impression**, la feuille part vers cette imprimante (p. ex. son alimentation manuelle), sinon le PDF s’ouvre (voir [Impression](printing.md))."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:44
@@ -3352,20 +3408,14 @@ msgstr "Programmes"
 #. type: Plain text
 #: ../src/help/en/user-guide/programmes.md:4
 msgid ""
-"Programmes belong to an event and are managed on the *Programmes* tab of its "
-"**Setup** (admins only)."
-msgstr ""
-"Les programmes appartiennent à une manifestation et se gèrent dans l’onglet "
-"*Programmes* de sa **Configuration** (admins seulement)."
+"Programmes belong to an event and are managed under **Configuration** → "
+"**Programmes** (admins only)."
+msgstr "Les programmes appartiennent à une manifestation et se gèrent sous **Configuration** → **Programmes** (admins seulement)."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/programmes.md:6
-msgid ""
-"![Setup with the programme list](../images/screenshots/setup.png)"
-"{ .screenshot }"
-msgstr ""
-"![Configuration avec la liste des programmes](../images/screenshots/"
-"setup.png){ .screenshot }"
+msgid "![The programme list](../images/screenshots/setup.png){ .screenshot }"
+msgstr "![La liste des programmes](../images/screenshots/setup.png){ .screenshot }"
 
 #. type: Title ##
 #: ../src/help/en/user-guide/programmes.md:7
@@ -3779,7 +3829,10 @@ msgstr ""
 msgid ""
 "[Classifications](classifications.md) follow the programmes, one table per "
 "class; their **PDF** and **CSV** are the report *Classifications*."
-msgstr "Les [classements généraux](classifications.md) suivent les programmes, un tableau par classe ; leur **PDF** et **CSV** sont le rapport *Classements généraux*."
+msgstr ""
+"Les [classements généraux](classifications.md) suivent les programmes, un "
+"tableau par classe ; leur **PDF** et **CSV** sont le rapport *Classements "
+"généraux*."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/rankings-kiosk.md:13
@@ -3791,12 +3844,9 @@ msgstr "Écrans kiosque"
 #: ../src/help/en/user-guide/rankings-kiosk.md:16
 msgid ""
 "A kiosk link shows the rankings of one event on a screen in the hall, "
-"without login. Create one on the *Kiosk displays* tab of the event's "
-"**Setup**:"
-msgstr ""
-"Un lien kiosque affiche les classements d’une manifestation sur un écran de "
-"la halle, sans connexion. Crée-en un dans l’onglet *Affichages kiosque* de "
-"la **Configuration** de la manifestation :"
+"without login. Switch on the module *Kiosk displays* under **Configuration** "
+"→ **Modules**, then create one on **Kiosk displays** in the configuration:"
+msgstr "Un lien kiosque affiche les classements d’une manifestation sur un écran de la halle, sans connexion. Active le module *Affichages kiosque* sous **Configuration** → **Modules**, puis crée-en un sur **Affichages kiosque** dans la configuration :"
 
 #. type: Bullet: '1. '
 #: ../src/help/en/user-guide/rankings-kiosk.md:20
@@ -3828,12 +3878,9 @@ msgstr "![Écran kiosque](../images/screenshots/kiosk.png){ .screenshot }"
 #: ../src/help/en/user-guide/rankings-kiosk.md:26
 msgid ""
 "The kiosk shows only programmes with *Show on kiosk displays* switched on, "
-"and the lane status if the event setting *Show lane status on the rankings* "
-"is on."
-msgstr ""
-"Le kiosque n’affiche que les programmes avec *Afficher sur les écrans "
-"kiosque* activé, et l’état des cibles si le réglage *Afficher l’état des "
-"cibles sur les classements* de la manifestation est activé."
+"and the lane status if *Show lane status on the rankings* is on (on the same "
+"page)."
+msgstr "Le kiosque n’affiche que les programmes avec *Afficher sur les écrans kiosque* activé, et l’état des cibles si *Afficher l’état des cibles sur les classements* est activé (sur la même page)."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/rankings-kiosk.md:26
@@ -3880,16 +3927,10 @@ msgstr "Aides"
 msgid ""
 "Helpers at the event (scorers, the ammunition desk, the results office) work "
 "with a **helper link** instead of a login. A helper link opens a reduced "
-"desk of one event on any phone or laptop; admins create the links on the "
-"*Helpers* tab of the event's **Setup** and revoke them when the event is "
-"over."
-msgstr ""
-"Les aides de la manifestation (cibarres, distribution de munition, bureau "
-"des résultats) travaillent avec un **lien d’aide** au lieu d’un login. Un "
-"lien d’aide ouvre sur n’importe quel téléphone ou ordinateur portable une "
-"vue réduite d’une manifestation ; les admins créent les liens dans l’onglet "
-"*Aides* de la **Configuration** de la manifestation et les révoquent quand "
-"elle est terminée."
+"desk of one event on any phone or laptop; admins switch on the module "
+"*Helper links* under **Configuration** → **Modules**, create the links on "
+"**Helper links** in the configuration and revoke them when the event is over."
+msgstr "Les aides de la manifestation (cibarres, distribution de munition, bureau des résultats) travaillent avec un **lien d’aide** au lieu d’un login. Un lien d’aide ouvre sur n’importe quel téléphone ou ordinateur portable une vue réduite d’une manifestation ; les admins activent le module *Liens d'aide* sous **Configuration** → **Modules**, créent les liens sur **Liens d'aide** dans la configuration et les révoquent quand elle est terminée."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/helpers.md:6
@@ -3982,8 +4023,9 @@ msgstr "Munition {#ammunition}"
 #. type: Plain text
 #: ../src/help/en/user-guide/helpers.md:27
 #, no-wrap
-msgid "**Ammo** on a waiting or shooting registration records the time the ammunition was handed out; the button exists only when the event setting *The organizer hands out the ammunition* is on (air pistol and air rifle shooters usually bring their own). The dashboard shows a green *ammo* badge on such registrations, so the desk and the range officer see at a glance who has been served.\n"
-msgstr "**Munition** sur une inscription en attente ou en tir note l’heure à laquelle la munition a été remise ; le bouton n’existe que si le réglage de la manifestation *L’organisateur remet la munition* est activé (les tireurs au pistolet et à la carabine à air apportent généralement la leur). Le tableau de bord montre un badge vert *munition* sur ces inscriptions, ainsi la distribution et le rangeur voient d’un coup d’œil qui a été servi.\n"
+msgid "**Ammo** on a waiting or shooting registration records the time the ammunition was handed out; the button exists only when the module *Ammunition desk* is on (air pistol and air rifle shooters usually bring their own). The dashboard shows a green *ammo* badge on such registrations, so the desk and the range officer see at a glance who has been served.\n"
+msgstr ""
+"**Munition** sur une inscription en attente ou en tir note l’heure à laquelle la munition a été remise ; le bouton n’existe que si le module *Distribution de munition* est activé (les tireurs au pistolet et à la carabine à air apportent généralement la leur). Le tableau de bord montre un badge vert *munition* sur ces inscriptions, ainsi la distribution et le rangeur voient d’un coup d’œil qui a été servi.\n"
 
 #. type: Title #
 #: ../src/help/en/user-guide/registrations.md:1
@@ -4091,8 +4133,9 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/registrations.md:29
 #, no-wrap
-msgid "*Print lane sheet* and *Print control strip* are ticked by default: the documents print on the range's printers right after registering, or open as PDF if no printer is set up (see [Printing](printing.md)).\n"
-msgstr "*Imprimer la feuille de stand* et *Imprimer la bande de contrôle* sont cochés par défaut : les documents s’impriment sur les imprimantes du stand juste après l’inscription, ou s’ouvrent en PDF si aucune imprimante n’est configurée (voir [Impression](printing.md)).\n"
+msgid "*Print lane sheet* and *Print control strip* are ticked by default (they only appear while the modules *Lane sheet* and *Control strip* are on, see [Modules](events.md#modules)): the documents print on the range's printers right after registering, or open as PDF if no printer is set up (see [Printing](printing.md)).\n"
+msgstr ""
+"*Imprimer la feuille de stand* et *Imprimer la bande de contrôle* sont cochés par défaut (ils n’apparaissent que tant que les modules *Feuille de stand* et *Bande de contrôle* sont activés, voir [Modules](events.md#modules)) : les documents s’impriment sur les imprimantes du stand juste après l’inscription, ou s’ouvrent en PDF si aucune imprimante n’est configurée (voir [Impression](printing.md)).\n"
 
 #. type: Title ##
 #: ../src/help/en/user-guide/registrations.md:30
@@ -4209,22 +4252,18 @@ msgstr "Activer {#setup}"
 #. type: Plain text
 #: ../src/help/en/user-guide/online-booking.md:8
 msgid ""
-"On the *Online booking* tab of the event's **Setup**, **Switch on** is all "
-"it takes. The tab then shows the link with a QR code for the invitation and "
-"the slots it offers."
-msgstr ""
-"Dans l’onglet *Réservation en ligne* de la **Configuration** de la "
-"manifestation, **Activer** suffit. L’onglet montre ensuite le lien avec un "
-"code QR pour l’invitation et les créneaux proposés."
+"Switch on the module *Online booking* under **Configuration** → **Modules** "
+"(it needs a range); then, on **Online booking** in the configuration, "
+"**Switch on** is all it takes. The page then shows the link with a QR code "
+"for the invitation and the slots it offers."
+msgstr "Activez le module *Réservation en ligne* sous **Configuration** → **Modules** (il nécessite un stand) ; ensuite, sur **Réservation en ligne** dans la configuration, **Activer** suffit. La page montre ensuite le lien avec un code QR pour l’invitation et les créneaux proposés."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/online-booking.md:10
 msgid ""
-"![Online booking in the setup](../images/screenshots/booking-setup.png)"
-"{ .screenshot }"
-msgstr ""
-"![Réservation en ligne dans la configuration](../images/screenshots/booking-"
+"![Online booking in the configuration](../images/screenshots/booking-"
 "setup.png){ .screenshot }"
+msgstr "![Réservation en ligne dans la configuration](../images/screenshots/booking-setup.png){ .screenshot }"
 
 #. type: Plain text
 #: ../src/help/en/user-guide/online-booking.md:12
@@ -4983,6 +5022,33 @@ msgstr ""
 "panel.md). Un mot de passe oublié se réinitialise avec **Mot de passe "
 "oublié ?** sur la page de connexion si le compte a une adresse e-mail "
 "confirmée, sinon par l’exploitant."
+
+#~ msgid "![Event setup](../images/screenshots/setup.png){ .screenshot }"
+#~ msgstr ""
+#~ "![Configuration de la manifestation](../images/screenshots/setup.png)"
+#~ "{ .screenshot }"
+
+#~ msgid ""
+#~ "On the *Classifications* tab of the event's **Setup** (admins), **New "
+#~ "classification** opens the editor:"
+#~ msgstr ""
+#~ "Dans l’onglet *Classements généraux* de la **Configuration** de la "
+#~ "manifestation (admins), **Nouveau classement général** ouvre l’éditeur :"
+
+#~ msgid ""
+#~ "The event's **Setup** has five tabs: *Programmes* (see [Programmes]"
+#~ "(programmes.md)), *Event*, *Kiosk displays* (see [Rankings and kiosk]"
+#~ "(rankings-kiosk.md)), *Helpers* (see [Helpers](helpers.md)) and *Copy & "
+#~ "close*. Staff only see the programmes."
+#~ msgstr ""
+#~ "La **Configuration** de la manifestation a cinq onglets : *Programmes* "
+#~ "(voir [Programmes](programmes.md)), *Manifestation*, *Écrans kiosque* "
+#~ "(voir [Classements et kiosque](rankings-kiosk.md)), *Auxiliaires* (voir "
+#~ "[Auxiliaires](helpers.md)) et *Copier & clôturer*. Les collaborateurs ne "
+#~ "voient que les programmes."
+
+#~ msgid "The *Event* tab holds the settings (admins):"
+#~ msgstr "L’onglet *Manifestation* contient les réglages (admins) :"
 
 #~ msgid ""
 #~ "**Prices (CHF)**: only the ticked age categories may shoot the programme."

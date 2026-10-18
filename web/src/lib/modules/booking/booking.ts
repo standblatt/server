@@ -1,5 +1,5 @@
-import type { BookingShooter } from './api';
-import { intlLocale } from './locale.svelte';
+import type { BookingShooter } from '$lib/api';
+import { intlLocale } from '$lib/locale.svelte';
 
 /** Formats the time of an ISO timestamp as HH:MM in the event's time zone. */
 export const slotTime = (iso: string, timeZone: string) =>

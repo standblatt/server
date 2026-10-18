@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-18 08:18+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-18 09:12+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
 #: ../src/help/en/getting-started/concepts.md:1
@@ -221,13 +221,13 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/getting-started/first-event.md:30
 #, markdown-text
-msgid "In the event's **Setup**, add the programmes: from the editor, from the programme library, from a programme file or by copying them from an earlier event. Check prices, award tiers, variants and combinations, and set up [special prizes](../user-guide/programmes.md#special-prizes) if your event awards them."
+msgid "Open **Configuration** in the event's sidebar. Under **Modules**, switch on what the event uses (kiosk displays, helper links, awards …, see [Modules](../user-guide/events.md#modules)); then add the programmes under **Programmes**: from the editor, from the programme library, from a programme file or by copying them from an earlier event. Check prices, award tiers, variants and combinations, and set up [special prizes](../user-guide/programmes.md#special-prizes) if your event awards them."
 msgstr ""
 
 #. type: Plain text
 #: ../src/help/en/getting-started/first-event.md:32
 #, markdown-text
-msgid "![Event setup](../images/screenshots/setup.png){ .screenshot }"
+msgid "![The programmes of the event](../images/screenshots/setup.png){ .screenshot }"
 msgstr ""
 
 #. type: Title ##
@@ -239,7 +239,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/getting-started/first-event.md:36
 #, markdown-text
-msgid "Still in Setup, on the *Kiosk displays* tab, create a kiosk link for each screen in the hall (see [Rankings and kiosk](../user-guide/rankings-kiosk.md)). Under Ranges → Printing, assign a printer to each document (see [Printing](../user-guide/printing.md))."
+msgid "Still in the configuration, on **Kiosk displays**, create a kiosk link for each screen in the hall (see [Rankings and kiosk](../user-guide/rankings-kiosk.md)). Under Ranges → Printing, assign a printer to each document (see [Printing](../user-guide/printing.md))."
 msgstr ""
 
 #. type: Title ##
@@ -263,7 +263,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/getting-started/first-event.md:43
 #, markdown-text
-msgid "Under **Statistics**, download the reports (financial report, awards, club competition, special prizes …). When everything is settled, **close** the event in Setup (*Copy & close* tab): the rankings are released to the shooters' personal training logs, and the event stays readable but can no longer be changed."
+msgid "Under **Statistics**, download the reports (financial report, awards, club competition, special prizes …). When everything is settled, **close** the event under **Configuration** → **Copy & close**: the rankings are released to the shooters' personal training logs, and the event stays readable but can no longer be changed."
 msgstr ""
 
 #. type: Title #
@@ -1494,7 +1494,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/classifications.md:8
 #, markdown-text
-msgid "On the *Classifications* tab of the event's **Setup** (admins), **New classification** opens the editor:"
+msgid "With the module *Classifications* switched on (**Configuration** → **Modules**), **New classification** on **Classifications** in the configuration (admins) opens the editor:"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -1572,7 +1572,7 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/dashboard.md:13
 #, markdown-text
-msgid "**Shooting**: registrations on a lane, with the time since they started, the buttons **Results**, **Edit** and **Finish**. When the event setting *The organizer hands out the ammunition* is on, **Ammo** records that it was handed out and a green *ammo* badge shows it afterwards (see [Helpers](helpers.md))."
+msgid "**Shooting**: registrations on a lane, with the time since they started, the buttons **Results**, **Edit** and **Finish**. When the module *Ammunition desk* is on, **Ammo** records that it was handed out and a green *ammo* badge shows it afterwards (see [Helpers](helpers.md))."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -1692,7 +1692,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:4
 #, markdown-text, no-wrap
-msgid "**Events** lists the events of the club in the groups *Today* (between the first and the last shooting day), *Upcoming*, *Past* and *Closed*; admins create new ones there. Opening an event shows its dashboard, reservations, rankings, statistics and setup in the sidebar; *Change event* at the top of the sidebar returns to the list.\n"
+msgid "**Events** lists the events of the club in the groups *Today* (between the first and the last shooting day), *Upcoming*, *Past* and *Closed*; admins create new ones there. Opening an event shows its dashboard and the other pages of the operation in the sidebar; *Change event* at the top of the sidebar returns to the list.\n"
 msgstr ""
 
 #. type: Plain text
@@ -1704,85 +1704,127 @@ msgstr ""
 #. type: Title ##
 #: ../src/help/en/user-guide/events.md:7
 #, markdown-text, no-wrap
-msgid "Settings {#settings}"
+msgid "Configuration and operation {#configuration}"
 msgstr ""
 
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:10
 #, markdown-text
-msgid "The event's **Setup** has five tabs: *Programmes* (see [Programmes](programmes.md)), *Event*, *Kiosk displays* (see [Rankings and kiosk](rankings-kiosk.md)), *Helpers* (see [Helpers](helpers.md)) and *Copy & close*. Staff only see the programmes."
+msgid "An event has two areas. The **operation** is what you work with on the day: *Dashboard*, *Enter results*, *Rankings*, *Statistics* and the pages of switched-on modules such as *Reservations*. **Configuration** at the end of the sidebar (admins only) opens the set-up of the event; the sidebar then lists its pages, and *Back to the event* returns to the operation:"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:12
-#, markdown-text
-msgid "The *Event* tab holds the settings (admins):"
-msgstr ""
-
-#. type: Plain text
-#: ../src/help/en/user-guide/events.md:25
+#: ../src/help/en/user-guide/events.md:18
 #, markdown-text, no-wrap
-msgid "| Setting | Meaning |\n|---|---|\n| Name, Date, Ranges | the date is the main day; its year sets the age categories (SSV: competition year minus year of birth, the day itself does not matter, which counts for pre-shooting days in December before a January event); tick every range the event is shot on, or none for an event without lanes (see below) |\n| Shooting days | single days with optional shooting times, for pre-shooting days and multi-day events (registrations count on the day they are made); the main day is always one |\n| Period (season) | for events over weeks or months, e.g. the Feldschiessen from the opening of the range until 31 August: first and last day, plus the weekdays with their shooting times; no weekday ticked means every day. Single days, e.g. the official weekend, add to the period or replace its times on that date |\n| Organizer | printed on documents |\n| Language of documents and kiosk | language of PDFs, CSV exports and kiosk screens, independent of each user's interface language |\n| Club excluded from the club competition | usually the host club; listed as *out of competition* |\n| Documents at registration | **Lane sheet** and **Control strip**: switch off what the event does not use; the registration then neither offers nor prints it |\n| Show lane status on the rankings | kiosk screens show the lanes |\n| Print the award value on wreath cards | value in figures and words on the card |\n| The organizer hands out the ammunition | shows the **Ammo** button on the dashboard and for the ammunition desk (see [Helpers](helpers.md)); off for events where shooters bring their own, e.g. air pistol and air rifle |\n"
+msgid "| Page | What it holds |\n|---|---|\n| **General** | name, days, ranges, organizer and language (see below) |\n| **Modules** | the building blocks the event uses (see below) |\n| **Programmes** | what can be shot (see [Programmes](programmes.md)) |\n| Pages of modules | e.g. **Classifications**, **Kiosk displays**, **Helper links**, **Online booking**, only while the module is on |\n| **Copy & close** | copy for next year, close, reopen and delete |\n"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:27
+#: ../src/help/en/user-guide/events.md:20
+#, markdown-text
+msgid "Staff work only in the operation; the configuration is for admins."
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/events.md:21
+#, markdown-text, no-wrap
+msgid "Settings {#settings}"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:24
+#, markdown-text, no-wrap
+msgid "**General** holds what every event has:\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:32
+#, markdown-text, no-wrap
+msgid "| Setting | Meaning |\n|---|---|\n| Name, Date, Ranges | the date is the main day; its year sets the age categories (SSV: competition year minus year of birth, the day itself does not matter, which counts for pre-shooting days in December before a January event); tick every range the event is shot on, or none for an event without lanes (see below) |\n| Shooting days | single days with optional shooting times, for pre-shooting days and multi-day events (registrations count on the day they are made); the main day is always one |\n| Period (season) | for events over weeks or months, e.g. the Feldschiessen from the opening of the range until 31 August: first and last day, plus the weekdays with their shooting times; no weekday ticked means every day. Single days, e.g. the official weekend, add to the period or replace its times on that date |\n| Organizer | printed on documents |\n| Language of documents and kiosk | language of PDFs, CSV exports and kiosk screens, independent of each user's interface language |\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/events.md:33
+#, markdown-text, no-wrap
+msgid "Modules {#modules}"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:36
+#, markdown-text
+msgid "Not every event needs everything: a shooting festival books lanes and hands out wreath cards, an annual programme only collects results. **Modules** switches the building blocks of the event on and off; what is off disappears from the sidebar, the dashboard, the programme editor, the rankings and the reports."
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:50
+#, markdown-text, no-wrap
+msgid "| Module | What it adds |\n|---|---|\n| Reservations | lanes reserved for groups and clubs (needs a range) |\n| Online booking | clubs ask for lanes through a public link (needs a range and switches on Reservations, see [Online booking](online-booking.md)) |\n| Lane sheet, Control strip | the documents printed at registration |\n| Ammunition desk | the **Ammo** button on the dashboard and for the ammunition desk (see [Helpers](helpers.md#ammunition)); leave it off where shooters bring their own, e.g. air pistol and air rifle |\n| Attempts | programmes that can be shot several times (see [Programmes](programmes.md#attempts)) |\n| Awards | wreath cards, prizes in kind and cash prizes; its setting *Print the award value on wreath cards* puts the value in figures and words on the card |\n| Special prizes | the best ranks of every age category (switches on Awards, see [Programmes](programmes.md#special-prizes)) |\n| Club competition | clubs ranked by their shooters' results; its setting *Club excluded from the club competition* is usually the host club, listed as *out of competition* |\n| Classifications | rankings over several programmes or attempts (see [Classifications](classifications.md)) |\n| Kiosk displays | rankings on screens in the hall (see [Rankings and kiosk](rankings-kiosk.md)) |\n| Helper links | scorers, ammunition desk and results clerk without an account (see [Helpers](helpers.md)) |\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:52
+#, markdown-text
+msgid "A module that holds data stays on: switch off the kiosk only after deleting its kiosk links, the awards only when no programme has award tiers, and so on; the card says why its switch is locked. A module another one needs (Reservations for Online booking) stays on as long as that one is."
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:54
 #, markdown-text
 msgid "Shooting times also give the online booking its slots, unless the booking sets other hours for a day (see [Online booking](online-booking.md))."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:28
+#: ../src/help/en/user-guide/events.md:55
 #, markdown-text, no-wrap
 msgid "Events without lanes {#no-lanes}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:31
+#: ../src/help/en/user-guide/events.md:58
 #, markdown-text
-msgid "An event needs no range, e.g. an annual programme or a Feldschiessen whose results come on paper or from the scoring system. Without a range there is no lane grid, no reservations and no online booking; shooters are registered without a lane and their results are entered as usual. Documents can still be opened as PDF, but they do not go to a print agent, because print agents belong to a range."
+msgid "An event needs no range, e.g. an annual programme or a Feldschiessen whose results come on paper or from the scoring system. Without a range there is no lane grid, and the modules Reservations and Online booking are not available; shooters are registered without a lane and their results are entered as usual. Documents can still be opened as PDF, but they do not go to a print agent, because print agents belong to a range."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:32
+#: ../src/help/en/user-guide/events.md:59
 #, markdown-text, no-wrap
-msgid "Copy for next year"
+msgid "Copy for next year {#copy}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:35
+#: ../src/help/en/user-guide/events.md:62
 #, markdown-text
-msgid "On the *Copy & close* tab, **Copy for next year** creates a new event with the same ranges, organizer, language, settings and all programmes, including prices, awards, combinations and special prizes, and the [classifications](classifications.md); the shooting days and the period move with the date, weekly shooting times stay on their weekdays. Registrations, results and kiosk links are not copied. The dialog suggests the name with the year (and a leading number like *42.*) counted up and the date one year later; adjust both as needed."
+msgid "On **Copy & close** in the configuration, **Copy for next year** creates a new event with the same ranges, organizer, language, settings, modules and all programmes, including prices, awards, combinations and special prizes, and the [classifications](classifications.md); the shooting days and the period move with the date, weekly shooting times stay on their weekdays. Registrations, results and kiosk links are not copied. The dialog suggests the name with the year (and a leading number like *42.*) counted up and the date one year later; adjust both as needed."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:37
+#: ../src/help/en/user-guide/events.md:64
 #, markdown-text
 msgid "![Copy an event](../images/screenshots/copy-event.png){ .screenshot }"
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:38
+#: ../src/help/en/user-guide/events.md:65
 #, markdown-text, no-wrap
 msgid "Close {#close}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:41
+#: ../src/help/en/user-guide/events.md:68
 #, markdown-text
-msgid "When an event is over and the rankings are checked, **Close** it on the *Copy & close* tab. Closing releases the rankings: shooters with a [personal training log](../my-training/account.md#competitions) now find their results of this event, with their rank in the programme, and can add them to their log. Everything stays visible (dashboard, results, rankings, reports, documents), but registrations, results, awards, programmes and settings can no longer be changed. A banner on every page of the event says so. **Reopen** makes it editable again; results that shooters already added to their logs stay there. Copying a closed event for next year works."
+msgid "When an event is over and the rankings are checked, **Close** it on **Copy & close** in the configuration. Closing releases the rankings: shooters with a [personal training log](../my-training/account.md#competitions) now find their results of this event, with their rank in the programme, and can add them to their log. Everything stays visible (dashboard, results, rankings, reports, documents), but registrations, results, awards, programmes and settings can no longer be changed. A banner on every page of the event says so. **Reopen** makes it editable again; results that shooters already added to their logs stay there. Copying a closed event for next year works."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:42
+#: ../src/help/en/user-guide/events.md:69
 #, markdown-text, no-wrap
 msgid "Delete"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:44
+#: ../src/help/en/user-guide/events.md:71
 #, markdown-text, no-wrap
-msgid "**Delete** (on the *Copy & close* tab) removes an event, but only while nobody is registered for it.\n"
+msgid "**Delete** (on **Copy & close**) removes an event, but only while nobody is registered for it.\n"
 msgstr ""
 
 #. type: Title #
@@ -2107,7 +2149,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:43
 #, markdown-text
-msgid "On the *Programmes* tab of the event's **Setup**, choose the **Print form** of a programme; this works while shooters are registered. Every completed programme then offers **Print onto form** in the results: at the desk, on the **Enter results** page and on scorer links at the lane (see [Helpers](helpers.md)). With a print agent and a printer chosen for *Print forms* under **Ranges → Printing**, the sheet goes to that printer (e.g. its manual feed), otherwise the PDF opens (see [Printing](printing.md))."
+msgid "Under **Configuration** → **Programmes** of the event, choose the **Print form** of a programme; this works while shooters are registered. Every completed programme then offers **Print onto form** in the results: at the desk, on the **Enter results** page and on scorer links at the lane (see [Helpers](helpers.md)). With a print agent and a printer chosen for *Print forms* under **Ranges → Printing**, the sheet goes to that printer (e.g. its manual feed), otherwise the PDF opens (see [Printing](printing.md))."
 msgstr ""
 
 #. type: Plain text
@@ -2126,13 +2168,13 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/programmes.md:4
 #, markdown-text
-msgid "Programmes belong to an event and are managed on the *Programmes* tab of its **Setup** (admins only)."
+msgid "Programmes belong to an event and are managed under **Configuration** → **Programmes** (admins only)."
 msgstr ""
 
 #. type: Plain text
 #: ../src/help/en/user-guide/programmes.md:6
 #, markdown-text
-msgid "![Setup with the programme list](../images/screenshots/setup.png){ .screenshot }"
+msgid "![The programme list](../images/screenshots/setup.png){ .screenshot }"
 msgstr ""
 
 #. type: Title ##
@@ -2414,7 +2456,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/rankings-kiosk.md:16
 #, markdown-text
-msgid "A kiosk link shows the rankings of one event on a screen in the hall, without login. Create one on the *Kiosk displays* tab of the event's **Setup**:"
+msgid "A kiosk link shows the rankings of one event on a screen in the hall, without login. Switch on the module *Kiosk displays* under **Configuration** → **Modules**, then create one on **Kiosk displays** in the configuration:"
 msgstr ""
 
 #. type: Bullet: '1. '
@@ -2444,7 +2486,7 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/rankings-kiosk.md:26
 #, markdown-text
-msgid "The kiosk shows only programmes with *Show on kiosk displays* switched on, and the lane status if the event setting *Show lane status on the rankings* is on."
+msgid "The kiosk shows only programmes with *Show on kiosk displays* switched on, and the lane status if *Show lane status on the rankings* is on (on the same page)."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -2474,7 +2516,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/helpers.md:4
 #, markdown-text
-msgid "Helpers at the event (scorers, the ammunition desk, the results office) work with a **helper link** instead of a login. A helper link opens a reduced desk of one event on any phone or laptop; admins create the links on the *Helpers* tab of the event's **Setup** and revoke them when the event is over."
+msgid "Helpers at the event (scorers, the ammunition desk, the results office) work with a **helper link** instead of a login. A helper link opens a reduced desk of one event on any phone or laptop; admins switch on the module *Helper links* under **Configuration** → **Modules**, create the links on **Helper links** in the configuration and revoke them when the event is over."
 msgstr ""
 
 #. type: Plain text
@@ -2540,7 +2582,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/helpers.md:27
 #, markdown-text, no-wrap
-msgid "**Ammo** on a waiting or shooting registration records the time the ammunition was handed out; the button exists only when the event setting *The organizer hands out the ammunition* is on (air pistol and air rifle shooters usually bring their own). The dashboard shows a green *ammo* badge on such registrations, so the desk and the range officer see at a glance who has been served.\n"
+msgid "**Ammo** on a waiting or shooting registration records the time the ammunition was handed out; the button exists only when the module *Ammunition desk* is on (air pistol and air rifle shooters usually bring their own). The dashboard shows a green *ammo* badge on such registrations, so the desk and the range officer see at a glance who has been served.\n"
 msgstr ""
 
 #. type: Title #
@@ -2624,7 +2666,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/registrations.md:29
 #, markdown-text, no-wrap
-msgid "*Print lane sheet* and *Print control strip* are ticked by default: the documents print on the range's printers right after registering, or open as PDF if no printer is set up (see [Printing](printing.md)).\n"
+msgid "*Print lane sheet* and *Print control strip* are ticked by default (they only appear while the modules *Lane sheet* and *Control strip* are on, see [Modules](events.md#modules)): the documents print on the range's printers right after registering, or open as PDF if no printer is set up (see [Printing](printing.md)).\n"
 msgstr ""
 
 #. type: Title ##
@@ -2708,13 +2750,13 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/online-booking.md:8
 #, markdown-text
-msgid "On the *Online booking* tab of the event's **Setup**, **Switch on** is all it takes. The tab then shows the link with a QR code for the invitation and the slots it offers."
+msgid "Switch on the module *Online booking* under **Configuration** → **Modules** (it needs a range); then, on **Online booking** in the configuration, **Switch on** is all it takes. The page then shows the link with a QR code for the invitation and the slots it offers."
 msgstr ""
 
 #. type: Plain text
 #: ../src/help/en/user-guide/online-booking.md:10
 #, markdown-text
-msgid "![Online booking in the setup](../images/screenshots/booking-setup.png){ .screenshot }"
+msgid "![Online booking in the configuration](../images/screenshots/booking-setup.png){ .screenshot }"
 msgstr ""
 
 #. type: Plain text

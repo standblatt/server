@@ -4,9 +4,9 @@ With **online booking**, external clubs ask for lanes themselves. The organizer 
 
 ## Switching it on {#setup}
 
-On the *Online booking* tab of the event's **Setup**, **Switch on** is all it takes. The tab then shows the link with a QR code for the invitation and the slots it offers.
+Switch on the module *Online booking* under **Configuration** → **Modules** (it needs a range); then, on **Online booking** in the configuration, **Switch on** is all it takes. The page then shows the link with a QR code for the invitation and the slots it offers.
 
-![Online booking in the setup](../images/screenshots/booking-setup.png){ .screenshot }
+![Online booking in the configuration](../images/screenshots/booking-setup.png){ .screenshot }
 
 Without changes, every day of the event is open during its shooting times (see [Events](events.md#settings)), or from 08:00 to 17:00 when it has none, in slots of 30 minutes, and requests are accepted until 14 days before the first day. **Adjust** changes this:
 

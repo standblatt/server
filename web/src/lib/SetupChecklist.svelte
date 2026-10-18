@@ -39,7 +39,7 @@
 			title: $t`Set up programmes`,
 			text: $t`What shooters can register for: series, prices and awards. Copy them from an earlier event or the library.`,
 			done: !!programmes.data?.some((p) => p.active),
-			action: eventId ? { label: $t`Setup`, href: `${base}/events/${eventId}/setup` } : undefined
+			action: eventId ? { label: $t`Programmes`, href: `${base}/events/${eventId}/config/programmes` } : undefined
 		},
 		{
 			title: $t`Import shooters (optional)`,

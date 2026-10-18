@@ -46,11 +46,13 @@ test.describe("events without a desk", () => {
 
   test("lane sheet and control strip can be switched off per event", async ({ page }) => {
     await login(page, admin);
-    await page.goto(`/t/${ids.tenant}/events/${ids.event}/setup?tab=event`);
-    await page.getByRole("checkbox", { name: "Lane sheet", exact: true }).click();
-    await page.getByRole("checkbox", { name: "Control strip", exact: true }).click();
-    await c(page, "button", "Save").click();
-    await expect(page.locator("[data-sonner-toast]").first()).toBeVisible();
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}/config/modules`);
+    for (const name of ["Lane sheet", "Control strip"]) {
+      const sw = page.getByRole("switch", { name, exact: true });
+      await sw.click();
+      await expect(c(page, "[data-sonner-toast]", `${name} switched off`)).toBeVisible();
+      await expect(sw).not.toBeChecked();
+    }
     const ev = await api(page, "GET", `/api/tenants/${ids.tenant}/events/${ids.event}`);
     expect(ev.modules).not.toContain("lane_sheet");
     expect(ev.modules).not.toContain("control_strip");

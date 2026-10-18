@@ -1,10 +1,9 @@
 # Programmi
 
-I programmi appartengono a una manifestazione e si gestiscono nella scheda
-*Programmi* della sua **Configurazione** (solo admin).
+I programmi appartengono a una manifestazione e si gestiscono in
+**Configurazione** → **Programmi** (solo admin).
 
-![Configurazione con l’elenco dei
-programmi](../images/screenshots/setup.png){ .screenshot }
+![L’elenco dei programmi](../images/screenshots/setup.png){ .screenshot }
 
 ## Aggiungere programmi
 

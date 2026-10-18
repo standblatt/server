@@ -43,20 +43,23 @@ programmi.
 
 ## 5. Aggiungere i programmi
 
-Nella **Configurazione** della manifestazione aggiungi i programmi: con
-l’editor, dalla biblioteca dei programmi, da un file di programma o
-copiandoli da una manifestazione precedente. Controlla prezzi, livelli di
-distinzione, varianti e combinazioni, e imposta i [premi
+Apri **Configurazione** nella barra laterale della manifestazione. In
+**Moduli** attiva ciò che la manifestazione usa (display chiosco, link
+aiutante, distinzioni …, vedi [Moduli](../user-guide/events.md#modules));
+poi aggiungi i programmi in **Programmi**: con l’editor, dalla biblioteca
+dei programmi, da un file di programma o copiandoli da una manifestazione
+precedente. Controlla prezzi, livelli di distinzione, varianti e
+combinazioni, e imposta i [premi
 speciali](../user-guide/programmes.md#special-prizes) se la tua
 manifestazione ne assegna.
 
-![Configurazione della manifestazione](../images/screenshots/setup.png){
+![I programmi della manifestazione](../images/screenshots/setup.png){
 .screenshot }
 
 ## 6. Schermi chiosco e stampanti
 
-Sempre nella configurazione, nella scheda *Display chiosco*, crea un link
-chiosco per ogni schermo della sala (vedi [Classifiche e
+Sempre nella configurazione, in **Display chiosco**, crea un link chiosco
+per ogni schermo della sala (vedi [Classifiche e
 chiosco](../user-guide/rankings-kiosk.md)). In Stand di tiro → Stampa
 assegna una stampante a ogni documento (vedi
 [Stampa](../user-guide/printing.md)).
@@ -74,7 +77,6 @@ subito. Vedi [Dashboard](../user-guide/dashboard.md),
 
 In **Statistiche** scarichi i rapporti (rapporto finanziario, distinzioni,
 gara di società, premi speciali …). Quando tutto è sistemato, **chiudi** la
-manifestazione nella configurazione (scheda *Copia e chiudi*): le
-classifiche vengono pubblicate nel diario di allenamento personale dei
-tiratori e la manifestazione resta leggibile ma non può più essere
-modificata.
+manifestazione in **Configurazione** → **Copia e chiudi**: le classifiche
+vengono pubblicate nel diario di allenamento personale dei tiratori e la
+manifestazione resta leggibile ma non può più essere modificata.

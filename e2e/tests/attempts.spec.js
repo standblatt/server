@@ -25,7 +25,7 @@ test.describe("attempts", () => {
 
   test("a programme allows three attempts with a price for further ones", async ({ page }) => {
     await login(page, admin);
-    await page.goto(`/t/${ids.tenant}/events/${ids.event}/setup`);
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}/config/programmes`);
     await page.locator("[aria-label='Actions for Lucky']").click();
     await c(page, "[role=menuitem]", "Edit").click();
     const sheet = page.getByRole("dialog");

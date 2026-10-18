@@ -17,8 +17,9 @@
 ## Schermi chiosco
 
 Un link chiosco mostra le classifiche di una manifestazione su uno schermo
-della sala, senza accesso. Creane uno nella scheda *Display chiosco* della
-**Configurazione** della manifestazione:
+della sala, senza accesso. Attiva il modulo *Display chiosco* in
+**Configurazione** → **Moduli**, poi creane uno in **Display chiosco** nella
+configurazione:
 
 1. Inserisci un nome per lo schermo (p. es. *Sala 1*), scegli **Scuro** o
    **Chiaro** e, se vuoi, una lingua.
@@ -28,8 +29,8 @@ della sala, senza accesso. Creane uno nella scheda *Display chiosco* della
 ![Schermo chiosco](../images/screenshots/kiosk.png){ .screenshot }
 
 - Il chiosco mostra solo i programmi con *Mostra sugli schermi chiosco*
-  attivo, e lo stato dei bersagli se l’impostazione *Mostra lo stato dei
-  bersagli sulle classifiche* della manifestazione è attiva.
+  attivo, e lo stato dei bersagli se *Mostra lo stato dei bersagli sulle
+  classifiche* è attivo (nella stessa pagina).
 - La lingua è quella della manifestazione, salvo che il link ne indichi
   un’altra (`?language=de`, `fr`, `it`, `en`); il tema viene da
   `?theme=dark` o `?theme=light`. Per una manifestazione su più stand,

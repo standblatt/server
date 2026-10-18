@@ -11,7 +11,7 @@
 	import { liveLabel } from '$lib/labels';
 	import { Live, refresh } from '$lib/live.svelte';
 	import Logo from '$lib/Logo.svelte';
-	import ClassificationTable from '$lib/ClassificationTable.svelte';
+	import ClassificationTable from '$lib/modules/classifications/ClassificationTable.svelte';
 	import RankingTable from '$lib/RankingTable.svelte';
 	import Maximize from '@lucide/svelte/icons/maximize';
 	import { Button } from '$lib/components/ui/button';

@@ -3,6 +3,7 @@
 	import { page } from '$app/state';
 	import { useQueryClient } from '@tanstack/svelte-query';
 	import AppSidebar from '$lib/AppSidebar.svelte';
+	import { moduleUI, type ModuleKey } from '$lib/modules';
 	import * as Breadcrumb from '$lib/components/ui/breadcrumb';
 	import { Separator } from '$lib/components/ui/separator';
 	import * as Sidebar from '$lib/components/ui/sidebar';
@@ -36,11 +37,12 @@
 	});
 
 	const sections: Record<string, string> = $derived({
-		reservations: $t`Reservations`,
 		entry: $t`Enter results`,
 		rankings: $t`Rankings`,
 		statistics: $t`Statistics`,
-		setup: $t`Setup`,
+		modules: $t`Modules`,
+		programmes: $t`Programmes`,
+		close: $t`Copy & close`,
 		shooters: $t`Shooters`,
 		clubs: $t`Clubs`,
 		ranges: $t`Ranges`,
@@ -53,8 +55,14 @@
 		const rest = page.url.pathname.slice(base.length).split('/').filter(Boolean);
 		const list: { label: string; href?: string }[] = [];
 		if (routeEventId) {
-			list.push({ label: event?.name ?? '…', href: `${base}/events/${routeEventId}` });
-			list.push({ label: sections[rest[2]] ?? $t`Dashboard` });
+			const eventBase = `${base}/events/${routeEventId}`;
+			/** Label of a section of the event: a core page or a module. */
+			const label = (k: string) => sections[k] ?? (k in moduleUI ? $t(moduleUI[k as ModuleKey].label) : k);
+			list.push({ label: event?.name ?? '…', href: eventBase });
+			if (rest[2] === 'config') {
+				list.push({ label: $t`Configuration`, href: rest[3] ? `${eventBase}/config` : undefined });
+				if (rest[3]) list.push({ label: label(rest[3]), href: rest[4] ? `${eventBase}/config/${rest[3]}` : undefined });
+			} else list.push({ label: rest[2] ? label(rest[2]) : $t`Dashboard` });
 		} else if (rest.length === 0) {
 			list.push({ label: $t`Events` });
 		} else {

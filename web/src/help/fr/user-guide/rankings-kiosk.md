@@ -18,8 +18,9 @@
 ## Écrans kiosque
 
 Un lien kiosque affiche les classements d’une manifestation sur un écran de
-la halle, sans connexion. Crée-en un dans l’onglet *Affichages kiosque* de
-la **Configuration** de la manifestation :
+la halle, sans connexion. Active le module *Affichages kiosque* sous
+**Configuration** → **Modules**, puis crée-en un sur **Affichages kiosque**
+dans la configuration :
 
 1. Saisis un nom pour l’écran (p. ex. *Halle 1*), choisis **Sombre** ou
    **Clair** et, si besoin, une langue.
@@ -29,8 +30,8 @@ la **Configuration** de la manifestation :
 ![Écran kiosque](../images/screenshots/kiosk.png){ .screenshot }
 
 - Le kiosque n’affiche que les programmes avec *Afficher sur les écrans
-  kiosque* activé, et l’état des cibles si le réglage *Afficher l’état des
-  cibles sur les classements* de la manifestation est activé.
+  kiosque* activé, et l’état des cibles si *Afficher l’état des cibles sur
+  les classements* est activé (sur la même page).
 - La langue est celle de la manifestation, sauf si le lien en indique une
   autre (`?language=de`, `fr`, `it`, `en`) ; le thème vient de `?theme=dark`
   ou `?theme=light`. Pour une manifestation sur plusieurs stands,

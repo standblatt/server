@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
-	import type { BookingRequest } from '../api';
-	import { Badge } from '../components/ui/badge';
+	import type { BookingRequest } from '$lib/api';
+	import { Badge } from '$lib/components/ui/badge';
 
 	let { status }: { status: BookingRequest['status'] } = $props();
 

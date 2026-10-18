@@ -10,8 +10,9 @@ rapport ; ils ne modifient jamais les résultats ni les distinctions.
 
 ## Créer un classement général {#create}
 
-Dans l’onglet *Classements généraux* de la **Configuration** de la
-manifestation (admins), **Nouveau classement général** ouvre l’éditeur :
+Avec le module *Classements généraux* activé (**Configuration** →
+**Modules**), **Nouveau classement général** sur **Classements généraux**
+dans la configuration (admins) ouvre l’éditeur :
 
 - **Programmes** : chaque programme qui compte, avec ses **Tentatives qui
   comptent**. Avec 3, les trois meilleures tentatives comptent (ou les trois

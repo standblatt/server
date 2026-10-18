@@ -42,20 +42,23 @@ programmes sont repris.
 
 ## 5. Ajouter les programmes
 
-Dans la **Configuration** de la manifestation, ajoute les programmes : avec
-l’éditeur, depuis la bibliothèque de programmes, depuis un fichier de
-programme ou en les copiant d’une manifestation précédente. Vérifie prix,
-niveaux de distinction, variantes et combinaisons, et configure les [prix
-spéciaux](../user-guide/programmes.md#special-prizes) si ta manifestation en
-décerne.
+Ouvre **Configuration** dans la barre latérale de la manifestation. Sous
+**Modules**, active ce que la manifestation utilise (affichages kiosque,
+liens d’aide, distinctions …, voir
+[Modules](../user-guide/events.md#modules)) ; ajoute ensuite les programmes
+sous **Programmes** : avec l’éditeur, depuis la bibliothèque de programmes,
+depuis un fichier de programme ou en les copiant d’une manifestation
+précédente. Vérifie prix, niveaux de distinction, variantes et combinaisons,
+et configure les [prix spéciaux](../user-guide/programmes.md#special-prizes)
+si ta manifestation en décerne.
 
-![Configuration de la manifestation](../images/screenshots/setup.png){
+![Les programmes de la manifestation](../images/screenshots/setup.png){
 .screenshot }
 
 ## 6. Écrans kiosque et imprimantes
 
-Toujours dans la configuration, dans l’onglet *Affichages kiosque*, crée un
-lien kiosque pour chaque écran de la halle (voir [Classements et
+Toujours dans la configuration, sur **Affichages kiosque**, crée un lien
+kiosque pour chaque écran de la halle (voir [Classements et
 kiosque](../user-guide/rankings-kiosk.md)). Sous Stands de tir → Impression,
 attribue une imprimante à chaque document (voir
 [Impression](../user-guide/printing.md)).
@@ -74,7 +77,6 @@ bord](../user-guide/dashboard.md),
 
 Sous **Statistiques**, téléchargez les rapports (rapport financier,
 distinctions, concours de sociétés, prix spéciaux …). Quand tout est réglé,
-**clôturez** la manifestation dans la configuration (onglet *Copier &
-clôturer*) : les classements sont publiés dans le journal d’entraînement
-personnel des tireurs, et la manifestation reste lisible mais ne peut plus
-être modifiée.
+**clôturez** la manifestation sous **Configuration** → **Copier & clôturer**
+: les classements sont publiés dans le journal d’entraînement personnel des
+tireurs, et la manifestation reste lisible mais ne peut plus être modifiée.
