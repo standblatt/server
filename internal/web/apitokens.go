@@ -43,6 +43,30 @@ func trainingPath(path string) bool {
 	return false
 }
 
+// tokenRefusal tells why a token with scopes may not call method on path, empty when it may: club paths (the
+// permission gate decides), /api/token, the public /api/version and /api/auth/options, the module list and the
+// programme library with events.configure, and the training paths with their scope.
+func tokenRefusal(method, path string, scopes []string) string {
+	need := ""
+	switch {
+	case strings.HasPrefix(path, "/api/tenants/"), path == "/api/token", path == "/api/version", path == "/api/auth/options":
+		return ""
+	case path == "/api/modules", path == "/api/programme-templates":
+		need = permissions.EventsConfigure
+	case trainingPath(path):
+		need = permissions.TrainingWrite
+		if method == http.MethodGet || method == http.MethodHead {
+			need = permissions.TrainingRead
+		}
+	default:
+		return "API tokens cannot use this endpoint"
+	}
+	if !slices.Contains(scopes, need) {
+		return "Token is missing the required scope: " + need
+	}
+	return ""
+}
+
 // tokenOf returns the API token a request came with, nil for sessions and helper links.
 func tokenOf(ctx context.Context) *store.TokenAuth {
 	t, _ := ctx.Value(tokenKey).(*store.TokenAuth)
@@ -99,20 +123,8 @@ func (s *Server) tokenRequest(ctx context.Context, w http.ResponseWriter, r *htt
 			return a, false
 		}
 	}
-	path := r.URL.Path
-	switch {
-	case strings.HasPrefix(path, "/api/tenants/"), path == "/api/token":
-	case trainingPath(path):
-		need := permissions.TrainingWrite
-		if r.Method == http.MethodGet || r.Method == http.MethodHead {
-			need = permissions.TrainingRead
-		}
-		if !slices.Contains(a.Scopes, need) {
-			writeProblem(w, http.StatusForbidden, "Token is missing the required scope: "+need)
-			return a, false
-		}
-	default:
-		writeProblem(w, http.StatusForbidden, "API tokens cannot use this endpoint")
+	if refusal := tokenRefusal(r.Method, r.URL.Path, a.Scopes); refusal != "" {
+		writeProblem(w, http.StatusForbidden, refusal)
 		return a, false
 	}
 	if err := s.Store.TouchAPIToken(ctx, a.ID); err != nil {

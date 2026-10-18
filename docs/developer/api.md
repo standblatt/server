@@ -14,7 +14,7 @@ The frontend uses `openapi-fetch` with types generated from the spec: after chan
 | App | session cookie `standblatt_session` from `POST /api/auth/login` |
 | Kiosk screen | `Authorization: Bearer <kiosk token>` on `/api/kiosk/*`, `?token=` on the WebSocket |
 | Print agent | `Authorization: Bearer <agent token>` on `/api/agent/*` |
-| Scripts and tools | personal API token `sb_…` as `Authorization: Bearer` or `X-API-Key` on `/api/tenants/*`, the training paths of `/api/my` and `GET /api/token` |
+| Scripts and tools | personal API token `sb_…` as `Authorization: Bearer` or `X-API-Key` on `/api/tenants/*`, the training paths of `/api/my`, `GET /api/token`, `/api/version`, `/api/auth/options`, and with `events.configure` `/api/modules` and `/api/programme-templates` |
 
 ### Personal API tokens
 
@@ -26,7 +26,7 @@ Created in the account (`POST /api/me/tokens`, session only) with a name, scopes
 | `training:read` | `GET` on `/api/my` and `/api/my/{trainings,stats,disciplines,weapons,goals,competitions,export}` |
 | `training:write` | `POST`, `PUT` and `DELETE` on those paths |
 
-A token may use a club's operations only for the clubs it was created for, and only with the permissions that are both its scopes and in the owner's current role there: a club it is not for answers 404, a missing permission 403. Creating a token refuses clubs the owner is not in and club scopes the owner's role has in none of them (422). Account endpoints (`/api/me*`, `/api/auth/*`), the token management and everything else answer 403. Unknown, revoked and expired tokens get 401 with a distinct `detail`. `GET /api/token` returns the token's name, owner, scopes, clubs and expiry.
+A token may use a club's operations only for the clubs it was created for, and only with the permissions that are both its scopes and in the owner's current role there: a club it is not for answers 404, a missing permission 403. Creating a token refuses clubs the owner is not in and club scopes the owner's role has in none of them (422). `/api/version` and `/api/auth/options` work with any token; the module list (`/api/modules`) and the programme library (`/api/programme-templates`) need the scope `events.configure`. Account endpoints (`/api/me*`, the rest of `/api/auth/*`), the token management and everything else answer 403. Unknown, revoked and expired tokens get 401 with a distinct `detail`. `GET /api/token` returns the token's name, owner, scopes, clubs and expiry.
 
 Limits: a token makes at most `STANDBLATT_API_RATE_LIMIT` requests per five minutes (default 600), more get 429 with `Retry-After`; an address that sends 20 unknown tokens within 15 minutes gets 429 too. Each use updates *last used*.
 

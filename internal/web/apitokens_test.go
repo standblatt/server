@@ -138,6 +138,17 @@ func TestAPITokenClubs(t *testing.T) {
 
 	path := func(tenant int64, rest string) string { return fmt.Sprintf("/api/tenants/%d%s", tenant, rest) }
 	view := token([]string{"events.view"}, []int64{a})
+	configure := token([]string{"events.configure"}, []int64{a})
+	for _, p := range []string{"/api/version", "/api/auth/options"} {
+		code, body := e.do(view, "GET", p, nil)
+		expect(t, "public "+p, code, 200, body)
+	}
+	for _, p := range []string{"/api/modules", "/api/programme-templates"} {
+		code, body := e.do(view, "GET", p, nil)
+		expect(t, p+" without events.configure", code, 403, body)
+		code, body = e.do(configure, "GET", p, nil)
+		expect(t, p+" with events.configure", code, 200, body)
+	}
 	code, body := e.do(view, "GET", path(a, "/events"), nil)
 	expect(t, "events of a chosen club", code, 200, body)
 	code, body = e.do(view, "GET", path(b, "/events"), nil)
