@@ -594,7 +594,7 @@ msgstr "Der Name fehlt"
 
 #: internal/web/apitokens.go
 msgid "Send an API token"
-msgstr "Sende einen API-Token"
+msgstr "Sende ein API-Token"
 
 #: internal/web/apitokens.go
 #, go-format
