@@ -3,12 +3,14 @@ package web
 import (
 	"context"
 	"net/http"
+	"slices"
 	"sort"
 	"strings"
 	"time"
 
 	"github.com/danielgtaylor/huma/v2"
 	"github.com/danielgtaylor/huma/v2/adapters/humago"
+	"github.com/standblatt/server/internal/permissions"
 	"github.com/standblatt/server/internal/store"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -38,14 +40,18 @@ type OperationForTest struct {
 
 // ClubOperationsForTest lists every operation under /api/tenants/{tenantId}, sorted by path and method.
 func ClubOperationsForTest() []OperationForTest {
+	return slices.DeleteFunc(OperationsForTest(), func(op OperationForTest) bool {
+		return !strings.HasPrefix(op.Path, "/api/tenants/{tenantId}")
+	})
+}
+
+// OperationsForTest lists every API operation, sorted by path and method.
+func OperationsForTest() []OperationForTest {
 	s := &Server{}
 	api := humago.New(http.NewServeMux(), s.apiConfig())
 	s.registerAPI(api)
 	var out []OperationForTest
 	for path, item := range api.OpenAPI().Paths {
-		if !strings.HasPrefix(path, "/api/tenants/{tenantId}") {
-			continue
-		}
 		for method, op := range map[string]*huma.Operation{"GET": item.Get, "POST": item.Post, "PUT": item.Put, "PATCH": item.Patch, "DELETE": item.Delete} {
 			if op != nil {
 				out = append(out, OperationForTest{ID: op.OperationID, Method: method, Path: path, Permissions: permissionsOf(op.Metadata)})
@@ -60,3 +66,11 @@ func ClubOperationsForTest() []OperationForTest {
 
 // HelperMayForTest tells whether a helper role may call an operation.
 func HelperMayForTest(role store.HelperRole, op string) bool { return helperOps[role][op] }
+
+// TokenMayForTest tells whether an API token with every scope reaches method and path.
+func TokenMayForTest(method, path string) bool {
+	return tokenRefusal(method, path, permissions.Scopes()) == ""
+}
+
+// ObserveOperationsForTest makes f learn every API call with its status and whether a token made it.
+func ObserveOperationsForTest(f func(op string, status int, token bool)) { observeOperation = f }

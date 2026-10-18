@@ -104,6 +104,14 @@ func TestShootersAndClubs(t *testing.T) {
 	expect(t, "staff deletes shooter", code, 403, b)
 	code, b = e.do(admin, "DELETE", shooterPath, nil)
 	expect(t, "admin deletes shooter", code, 204, b)
+
+	clubPath := fmt.Sprintf("%s/clubs/%d", base, clubs[0].ID)
+	code, b = e.do(staff, "DELETE", clubPath, nil)
+	expect(t, "staff deletes club", code, 403, b)
+	code, b = e.do(admin, "DELETE", clubPath, nil)
+	expect(t, "admin deletes club", code, 204, b)
+	code, b = e.do(admin, "DELETE", clubPath, nil)
+	expect(t, "delete club again", code, 404, b)
 }
 
 func TestShooterImport(t *testing.T) {

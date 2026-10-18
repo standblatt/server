@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/http"
 	"regexp"
+	"slices"
 	"strings"
 	"testing"
 	"time"
@@ -60,7 +61,7 @@ func (e *env) signup(email string) *http.Client {
 		"email": email, "password": "password-" + email, "firstname": "Example", "lastname": "Felix", "locale": "de",
 	})
 	expect(e.t, "signup "+email, code, 201, b)
-	return c
+	return e.withTokens(c, email)
 }
 
 func overview(t *testing.T, e *env, c *http.Client) web.MyOverview {
@@ -91,9 +92,14 @@ func TestSignupVerifyReset(t *testing.T) {
 	code, b = e.do(e.client(), "POST", "/api/auth/signup", map[string]string{"email": "felix@example.org", "password": "long-enough-1", "firstname": "A", "lastname": "B"})
 	expect(t, "duplicate signup", code, 409, b)
 
+	code, b = e.do(c, "POST", "/api/my/email/verify", nil)
+	expect(t, "send the link again", code, 204, b)
+	box.token(t)
 	verify := box.token(t)
 	code, b = e.do(c, "POST", "/api/auth/verify", map[string]string{"token": verify})
 	expect(t, "verify", code, 204, b)
+	code, b = e.do(c, "POST", "/api/my/email/verify", nil)
+	expect(t, "send the link of a confirmed address", code, 409, b)
 	code, b = e.do(c, "POST", "/api/auth/verify", map[string]string{"token": verify})
 	expect(t, "verify twice", code, 410, b)
 	if !overview(t, e, c).EmailVerified {
@@ -109,10 +115,17 @@ func TestSignupVerifyReset(t *testing.T) {
 	expect(t, "weak password", code, 422, b)
 	code, b = e.do(e.client(), "POST", "/api/auth/reset", map[string]string{"token": reset, "password": "a-new-password-1"})
 	expect(t, "reset", code, 204, b)
-	code, b = e.do(c, "GET", "/api/my", nil)
+	code, b = e.do(c, "GET", "/api/me", nil)
 	expect(t, "old session after reset", code, 401, b)
-	code, b = e.do(e.client(), "POST", "/api/auth/login", map[string]string{"name": "FELIX@example.org", "password": "a-new-password-1"})
+	n := e.client()
+	code, b = e.do(n, "POST", "/api/auth/login", map[string]string{"name": "FELIX@example.org", "password": "a-new-password-1"})
 	expect(t, "login with email", code, 200, b)
+	code, b = e.do(n, "PUT", "/api/my/email", map[string]string{"email": "Felix.New@example.org", "password": "a-new-password-1"})
+	expect(t, "change email", code, 204, b)
+	box.token(t)
+	if o := overview(t, e, n); o.Email != "felix.new@example.org" || o.EmailVerified {
+		t.Fatalf("overview after the change: %+v", o)
+	}
 }
 
 func TestTrainings(t *testing.T) {
@@ -215,6 +228,25 @@ func TestTrainings(t *testing.T) {
 		t.Fatalf("export: %d %s", code, b)
 	}
 
+	code, b = e.do(c, "GET", fmt.Sprintf("/api/my/trainings/%d", second), nil)
+	if code != 200 || !strings.Contains(string(b), "Club match") {
+		t.Fatalf("get session: %d %s", code, b)
+	}
+	code, b = e.do(c, "DELETE", fmt.Sprintf("/api/my/trainings/%d", first), nil)
+	expect(t, "delete session", code, 204, b)
+	code, b = e.do(c, "GET", fmt.Sprintf("/api/my/trainings/%d", first), nil)
+	expect(t, "deleted session", code, 404, b)
+	code, b = e.do(c, "DELETE", fmt.Sprintf("/api/my/goals/%d", pistol.ID), nil)
+	expect(t, "remove goal", code, 204, b)
+	code, b = e.do(c, "GET", fmt.Sprintf("/api/my/stats/%d", pistol.ID), nil)
+	if code != 200 || strings.Contains(string(b), `"targetTotal"`) {
+		t.Fatalf("stats without goal: %d %s", code, b)
+	}
+	code, b = e.do(c, "PUT", fmt.Sprintf("/api/my/disciplines/%d", own.ID), store.DisciplineInput{Name: "Field 300 m B", SeriesCount: 3, ShotsPerSeries: 6, MaxShot: 5})
+	expect(t, "change discipline", code, 204, b)
+	if o := overview(t, e, c); !slices.ContainsFunc(o.Disciplines, func(d store.Discipline) bool { return d.Name == "Field 300 m B" }) {
+		t.Fatalf("changed discipline missing: %+v", o.Disciplines)
+	}
 	code, b = e.do(c, "DELETE", fmt.Sprintf("/api/my/disciplines/%d", own.ID), nil)
 	expect(t, "delete unused discipline", code, 204, b)
 	code, b = e.do(c, "DELETE", "/api/my/account", map[string]string{"password": "wrong"})

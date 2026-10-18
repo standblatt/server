@@ -115,6 +115,8 @@ func TestEventWithoutRange(t *testing.T) {
 
 	code, b := e.do(boss, "POST", base+"/events", map[string]any{"name": "Annual programme", "startsOn": "2027-03-01"})
 	expect(t, "create an event without a range", code, 201, b)
+	var annual store.Event
+	json.Unmarshal(b, &annual)
 	code, b = e.do(boss, "PUT", evPath, map[string]any{"name": "Indoor", "startsOn": "2026-11-20", "modules": []string{"control_strip", "reservations"}})
 	expect(t, "drop the range", code, 204, b)
 	var ev store.Event
@@ -138,4 +140,19 @@ func TestEventWithoutRange(t *testing.T) {
 	expect(t, "lane sheet switched off", code, 404, b)
 	code, _ = e.do(boss, "GET", fmt.Sprintf("%s/registrations/%d/documents/control_strip", base, reg.ID), nil)
 	expect(t, "control strip", code, 200, nil)
+
+	code, b = e.do(boss, "DELETE", evPath, nil)
+	expect(t, "delete an event with registrations", code, 409, b)
+	annualPath := fmt.Sprintf("%s/events/%d", base, annual.ID)
+	code, b = e.do(boss, "DELETE", annualPath, nil)
+	expect(t, "delete an event", code, 204, b)
+	code, b = e.do(boss, "GET", annualPath, nil)
+	expect(t, "deleted event", code, 404, b)
+	ranges, _ := e.st.ListRanges(context.Background(), f.tenant)
+	code, b = e.do(boss, "DELETE", fmt.Sprintf("%s/ranges/%d", base, ranges[0].ID), nil)
+	expect(t, "delete a range no event uses", code, 204, b)
+	code, b = e.do(boss, "GET", base+"/ranges", nil)
+	if code != 200 || strings.TrimSpace(string(b)) != "[]" {
+		t.Fatalf("ranges after the delete: %d %s", code, b)
+	}
 }

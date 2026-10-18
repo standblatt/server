@@ -130,6 +130,22 @@ func TestPrintForms(t *testing.T) {
 	if code := pdf(admin, fmt.Sprintf("%s/layouts/%d/preview?entryId=%d", base, l.ID, anna.Entries[0].ID)); code != 200 {
 		t.Fatalf("preview: %d", code)
 	}
+	layoutPath := fmt.Sprintf("%s/layouts/%d", base, l.ID)
+	code, b = e.do(staff, "GET", layoutPath, nil)
+	if code != 200 || json.Unmarshal(b, &l) != nil || !l.HasBackground {
+		t.Fatalf("form with scan: %d %s", code, b)
+	}
+	form["name"] = "Army sheet 2027"
+	code, b = e.do(staff, "PUT", layoutPath, form)
+	expect(t, "staff changes the form", code, 403, b)
+	code, b = e.do(admin, "PUT", layoutPath, form)
+	expect(t, "change the form", code, 204, b)
+	code, b = e.do(admin, "DELETE", layoutPath+"/background", nil)
+	expect(t, "remove the scan", code, 204, b)
+	code, b = e.do(staff, "GET", layoutPath, nil)
+	if code != 200 || json.Unmarshal(b, &l) != nil || l.HasBackground || l.Name != "Army sheet 2027" {
+		t.Fatalf("form after the change: %d %s", code, b)
+	}
 
 	scorer := func(role string) string {
 		ranges, _ := e.st.ListRanges(ctx, tid)

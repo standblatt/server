@@ -56,6 +56,9 @@ type Server struct {
 	APIRateLimit int
 }
 
+// observeOperation, when set by tests, learns every API call with its status and whether a token made it.
+var observeOperation func(op string, status int, token bool)
+
 // init keeps multipart uploads in memory: pods have a read-only file system, and MaxBodyBytes bounds every upload.
 func init() {
 	humago.MultipartMaxMemory = maxImportBytes
@@ -110,6 +113,12 @@ func (s *Server) apiConfig() huma.Config {
 
 // registerAPI registers all API operations.
 func (s *Server) registerAPI(api huma.API) {
+	if observeOperation != nil {
+		api.UseMiddleware(func(ctx huma.Context, next func(huma.Context)) {
+			next(ctx)
+			observeOperation(ctx.Operation().OperationID, ctx.Status(), tokenOf(ctx.Context()) != nil)
+		})
+	}
 	api.UseMiddleware(s.authorize(api), s.permissionGate(api), s.moduleGate(api))
 	s.registerModules(api)
 	s.registerSystem(api)

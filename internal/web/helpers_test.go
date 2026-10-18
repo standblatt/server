@@ -208,6 +208,14 @@ func TestHelperLinks(t *testing.T) {
 	expect(t, "clerk takes awards back", code, 403, b)
 	code, b = e.helper("DELETE", fmt.Sprintf("%s/registrations/%d/ammo", tenants, cleo.ID), ammo, nil)
 	expect(t, "ammo desk takes ammo back", code, 403, b)
+	code, b = e.do(staff, "DELETE", fmt.Sprintf("%s/registrations/%d/ammo", tenants, cleo.ID), nil)
+	expect(t, "staff takes ammo back", code, 204, b)
+	code, b = e.do(staff, "GET", fmt.Sprintf("%s/registrations/%d", tenants, cleo.ID), nil)
+	if reg = (store.Registration{}); code != 200 || json.Unmarshal(b, &reg) != nil || reg.AmmoIssuedAt != nil {
+		t.Fatalf("ammo taken back: %d %s", code, b)
+	}
+	code, b = e.do(staff, "POST", fmt.Sprintf("%s/registrations/%d/ammo", tenants, cleo.ID), nil)
+	expect(t, "staff issues ammo", code, 204, b)
 
 	// Another club never sees the link.
 	tid2 := e.tenant("Other club")

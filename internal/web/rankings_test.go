@@ -1,6 +1,7 @@
 package web_test
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -86,6 +87,10 @@ func TestRankingsAndKiosk(t *testing.T) {
 	}
 	if got := strings.Join(order, ", "); got != "1 Gamma 199, 2 Alpha 185, 3 Delta 185, 4 Beta 185" {
 		t.Fatalf("ranking order: %s", got)
+	}
+	code, b = e.do(staff, "GET", fmt.Sprintf("/api/tenants/%d/programmes/%d/ranking", tid, byTitle["Main"].ProgrammeID), nil)
+	if code != 200 || !bytes.HasPrefix(b, []byte("%PDF")) {
+		t.Fatalf("ranking PDF: %d %.100s", code, b)
 	}
 
 	tokensPath := fmt.Sprintf("/api/tenants/%d/events/%d/kiosk-tokens", tid, ev)

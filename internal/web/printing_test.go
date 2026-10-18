@@ -140,4 +140,13 @@ func TestPrinting(t *testing.T) {
 	if err := bad.Hello(ctx); err == nil || !strings.Contains(err.Error(), "401") {
 		t.Fatalf("wrong agent token: %v", err)
 	}
+
+	agentPath := fmt.Sprintf("/api/tenants/%d/print-agents/%d", f.tenant, agents[0].ID)
+	code, b = e.do(staff, "DELETE", agentPath, nil)
+	expect(t, "staff deletes agent", code, 403, b)
+	code, b = e.do(admin, "DELETE", agentPath, nil)
+	expect(t, "delete agent", code, 204, b)
+	if err := a.Hello(ctx); err == nil || !strings.Contains(err.Error(), "401") {
+		t.Fatalf("deleted agent: %v", err)
+	}
 }

@@ -79,6 +79,16 @@ func TestRoles(t *testing.T) {
 	other := e.tenant("Other")
 	code, b = e.do(boss, "PUT", fmt.Sprintf("%s/users/%d", base, memberID), map[string]int64{"roleId": e.role(other, "staff")})
 	expect(t, "role of another club", code, 404, b)
+
+	code, b = e.do(boss, "PUT", fmt.Sprintf("%s/users/%d", base, memberID), map[string]int64{"roleId": e.role(tid, "member")})
+	expect(t, "mia back to member", code, 204, b)
+	code, b = e.do(boss, "DELETE", fmt.Sprintf("%s/roles/%d", base, secretary.ID), nil)
+	expect(t, "delete a role without members", code, 204, b)
+	code, b = e.do(boss, "GET", base+"/roles", nil)
+	expect(t, "list roles", code, 200, b)
+	if json.Unmarshal(b, &roles); len(roles) != 4 {
+		t.Fatalf("roles after delete: %+v", roles)
+	}
 }
 
 // TestManagersStayWithinTheirPermissions checks that a role with club.manage but without the admin role cannot make,

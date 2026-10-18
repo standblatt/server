@@ -8,6 +8,7 @@ make test   # Go tests, then e2e; for a quick loop: go test ./internal/domain/
 
 - `internal/domain`: pure unit tests (ranking, club competition, special prizes, age categories, amounts in words …).
 - `internal/store` and `internal/web`: integration tests. `internal/testdb` creates a throwaway, migrated database per test from `TEST_DATABASE_URL`; `make test` starts the compose PostgreSQL on port 5433 and sets the variable. Without it these tests are skipped.
+- `internal/web` runs twice (`TestMain` in `main_test.go`): once with sessions and once with API tokens, where every logged-in test client sends a token with every scope of its user instead of the session cookie on each path a token reaches. After a full run, `TestMain` fails if an operation was never called successfully, or a token-reachable one never with a token: a new endpoint needs a test that calls it. `TestPermissionTable` and `TestPermissionLeaks` check who may call each club operation (see [modules](modules.md#permissions)).
 - `internal/docs`: checks the text of rendered PDFs with `pdftotext` when installed. `DOCS_OUT=dir go test ./internal/docs/` writes the PDFs for a visual check.
 - `internal/i18n`: fails on untranslated messages or mismatched format verbs.
 

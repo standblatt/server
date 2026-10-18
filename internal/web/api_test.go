@@ -11,9 +11,13 @@ import (
 	"net/http/cookiejar"
 	"net/http/httptest"
 	"net/url"
+	"slices"
+	"strconv"
 	"strings"
+	"sync"
 	"testing"
 	"testing/fstest"
+	"time"
 
 	"github.com/standblatt/server/internal/permissions"
 	"github.com/standblatt/server/internal/realtime"
@@ -125,7 +129,69 @@ func (e *env) login(name string) *http.Client {
 	if code, b := e.do(c, "POST", "/api/auth/login", map[string]string{"name": name, "password": "password-" + strings.ToLower(name)}); code != 200 {
 		e.t.Fatalf("login %s: %d %s", name, code, b)
 	}
+	return e.withTokens(c, name)
+}
+
+// withTokens lets a logged-in client use API tokens of the user when viaTokens is set (see TestMain).
+func (e *env) withTokens(c *http.Client, name string) *http.Client {
+	e.t.Helper()
+	if !viaTokens {
+		return c
+	}
+	u, err := e.st.UserByName(context.Background(), strings.ToLower(name))
+	if err != nil {
+		e.t.Fatal(err)
+	}
+	c.Transport = &tokenTransport{e: e, user: u.ID, jar: c.Jar, tokens: map[int64]string{}}
 	return c
+}
+
+// tokenTransport sends, while the client is logged in, an API token with every scope instead of the session cookie on
+// every path a token reaches but /api/token (which answers 401 to sessions): one token per club in the path, made on first use, and one for the training paths.
+type tokenTransport struct {
+	e      *env
+	user   int64
+	jar    http.CookieJar
+	mu     sync.Mutex
+	tokens map[int64]string
+}
+
+// RoundTrip swaps the session cookie for the token of the club in the path.
+func (tt *tokenTransport) RoundTrip(r *http.Request) (*http.Response, error) {
+	if r.URL.Path == "/api/token" || !web.TokenMayForTest(r.Method, r.URL.Path) || !slices.ContainsFunc(tt.jar.Cookies(r.URL), func(c *http.Cookie) bool { return c.Name == "standblatt_session" }) {
+		return http.DefaultTransport.RoundTrip(r)
+	}
+	var tenant int64
+	if rest, ok := strings.CutPrefix(r.URL.Path, "/api/tenants/"); ok {
+		tenant, _ = strconv.ParseInt(strings.Split(rest, "/")[0], 10, 64)
+	}
+	token, err := tt.token(tenant)
+	if err != nil {
+		return nil, err
+	}
+	r = r.Clone(r.Context())
+	r.Header.Del("Cookie")
+	r.Header.Set("Authorization", "Bearer "+token)
+	return http.DefaultTransport.RoundTrip(r)
+}
+
+// token returns the user's token for a club, or for no club with 0.
+func (tt *tokenTransport) token(tenant int64) (string, error) {
+	tt.mu.Lock()
+	defer tt.mu.Unlock()
+	if t, ok := tt.tokens[tenant]; ok {
+		return t, nil
+	}
+	secret := fmt.Sprintf("sb_test_%d_%d_%d", tt.user, tenant, time.Now().UnixNano())
+	tenants := []int64{}
+	if tenant != 0 {
+		tenants = append(tenants, tenant)
+	}
+	if _, err := tt.e.st.CreateAPIToken(context.Background(), tt.user, "test", web.SessionIDForTest(secret), permissions.Scopes(), tenants, nil); err != nil {
+		return "", err
+	}
+	tt.tokens[tenant] = secret
+	return secret, nil
 }
 
 func expect(t *testing.T, what string, code, want int, body []byte) {

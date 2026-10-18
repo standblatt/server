@@ -61,6 +61,10 @@ func TestOnlineBooking(t *testing.T) {
 	if !cfg.Enabled || !strings.HasSuffix(cfg.Link, "/b/"+cfg.Code) || len(cfg.Slots) != 2 {
 		t.Fatalf("config: %s", b)
 	}
+	code, b = e.do(admin, "GET", base, nil)
+	if code != 200 || !strings.Contains(string(b), `"code":"`+cfg.Code+`"`) {
+		t.Fatalf("read config: %d %s", code, b)
+	}
 
 	public := "/api/booking/" + cfg.Code
 	code, b = e.do(anon, "GET", "/api/booking/nope", nil)
@@ -190,6 +194,22 @@ func TestOnlineBooking(t *testing.T) {
 	expect(t, "change a declined request", code, 409, b)
 	code, b = e.helper("DELETE", "/api/booking-manage", secret, nil)
 	expect(t, "cancel a declined request", code, 409, b)
+
+	cancelled := request
+	cancelled.Club, cancelled.Email = "SV Andere", "jo@example.org"
+	cancelled.Items = []domain.BookingItem{{RangeID: rng.ID, Start: first.Start, End: first.End, Lanes: 1}}
+	code, b = e.do(anon, "POST", public+"/requests", cancelled)
+	expect(t, "second request", code, 204, b)
+	m = manageRe.FindStringSubmatch(box.mailTo(t, "jo@example.org").Body)
+	if m == nil {
+		t.Fatal("no manage link for the second request")
+	}
+	code, b = e.helper("DELETE", "/api/booking-manage", m[1], nil)
+	expect(t, "cancel a pending request", code, 204, b)
+	code, b = e.helper("GET", "/api/booking-manage", m[1], nil)
+	if code != 200 || !strings.Contains(string(b), `"cancelled"`) {
+		t.Fatalf("cancelled request: %d %s", code, b)
+	}
 
 	// After the deadline nothing can be asked or changed.
 	yesterday := time.Now().AddDate(0, 0, -2).Format(time.DateOnly)
