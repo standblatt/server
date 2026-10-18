@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-18 11:27+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-18 11:31+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
 #: ../src/help/en/getting-started/concepts.md:1
@@ -209,7 +209,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/getting-started/first-event.md:26
 #, markdown-text
-msgid "![The events of a club](../images/screenshots/events.png){ .screenshot }"
+msgid "![A new event and its kind](../images/screenshots/new-event.png){ .screenshot }"
 msgstr ""
 
 #. type: Title ##
@@ -1756,115 +1756,127 @@ msgid "Not every event needs everything: a shooting festival books lanes and han
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:50
+#: ../src/help/en/user-guide/events.md:38
+#, markdown-text
+msgid "![The modules of an event](../images/screenshots/modules.png){ .screenshot }"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:52
 #, markdown-text, no-wrap
 msgid "| Module | What it adds |\n|---|---|\n| Lane assignment | shooters are registered on lanes: the lane grid on the dashboard, the lane status on kiosk displays and scorer links (needs a range; see below) |\n| Reservations | lanes reserved for groups and clubs; its page in the configuration switches on the [online booking](online-booking.md), through which clubs ask for lanes with a public link (needs a range) |\n| Lane sheet, Control strip | the documents printed at registration; the control strip can print with a [print form](print-forms.md#builtin) of the club |\n| Ammunition desk | the **Ammo** button on the dashboard and for the ammunition desk (see [Helpers](helpers.md#ammunition)); leave it off where shooters bring their own, e.g. air pistol and air rifle |\n| Attempts | programmes that can be shot several times (see [Programmes](programmes.md#attempts)) |\n| Awards | wreath cards, prizes in kind and cash prizes; its setting *Print the award value on wreath cards* puts the value in figures and words on the card, *Print form of the wreath cards* chooses a [print form](print-forms.md#builtin) of the club |\n| Special prizes | the best ranks of every age category (switches on Awards, see [Programmes](programmes.md#special-prizes)) |\n| Club competition | clubs ranked by their shooters' results; its setting *Club excluded from the club competition* is usually the host club, listed as *out of competition* |\n| Classifications | rankings over several programmes or attempts (see [Classifications](classifications.md)) |\n| Kiosk displays | rankings on screens in the hall (see [Rankings and kiosk](rankings-kiosk.md)) |\n| Helper links | scorers, ammunition desk and results clerk without an account (see [Helpers](helpers.md)) |\n"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:52
+#: ../src/help/en/user-guide/events.md:54
 #, markdown-text
 msgid "When you create an event, choose what kind it is; this only switches modules on:"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:60
+#: ../src/help/en/user-guide/events.md:62
 #, markdown-text, no-wrap
 msgid "| Kind | Modules |\n|---|---|\n| Shooting festival | Lane assignment, Reservations, Lane sheet, Control strip, Awards, Special prizes, Club competition, Kiosk displays, Helper links |\n| Annual programme or training | Attempts, Classifications |\n| Feldschiessen | Lane assignment, Awards, Club competition, Kiosk displays, Helper links |\n| Club championship | Attempts, Classifications, Kiosk displays |\n| Custom selection | none |\n"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:62
+#: ../src/help/en/user-guide/events.md:64
 #, markdown-text
 msgid "A module that holds data stays on: switch off the kiosk only after deleting its kiosk links, the awards only when no programme has award tiers, and so on; the card says why its switch is locked; Reservations stay on while the online booking link is active. A module another one needs (Awards for Special prizes) stays on as long as that one is."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:64
+#: ../src/help/en/user-guide/events.md:66
 #, markdown-text
 msgid "Shooting times also give the online booking its slots, unless the booking sets other hours for a day (see [Online booking](online-booking.md))."
 msgstr ""
 
 #. type: Title ###
-#: ../src/help/en/user-guide/events.md:65
+#: ../src/help/en/user-guide/events.md:67
 #, markdown-text, no-wrap
 msgid "Club modules {#club-modules}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:68
+#: ../src/help/en/user-guide/events.md:70
 #, markdown-text
 msgid "Some modules belong to the club rather than to an event. **Club modules** in the club part of the sidebar (admins) switches them on and off:"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:72
+#: ../src/help/en/user-guide/events.md:74
 #, markdown-text, no-wrap
 msgid "| Module | What it adds |\n|---|---|\n| Print forms | forms for pre-printed sheets and the *Print form* section of every programme (see [Print forms](print-forms.md)) |\n"
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:73
+#: ../src/help/en/user-guide/events.md:75
 #, markdown-text, no-wrap
 msgid "Events without lanes {#no-lanes}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:76
+#: ../src/help/en/user-guide/events.md:78
 #, markdown-text
 msgid "An event without lanes, e.g. an annual programme or a Feldschiessen whose results come on paper or from the scoring system, either has no range or switches the module *Lane assignment* off. Then there is no lane grid, no reservations and no scorer links; shooters are registered without a lane and their results are entered as usual. With a range but without lane assignment, documents still print on the range's print agent and programmes can still be tied to the range; without a range, documents open as PDF, because print agents belong to a range."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:77
+#: ../src/help/en/user-guide/events.md:79
 #, markdown-text, no-wrap
 msgid "Copy for next year {#copy}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:80
+#: ../src/help/en/user-guide/events.md:82
 #, markdown-text
 msgid "On **Copy & close** in the configuration, **Copy for next year** creates a new event with the same ranges, organizer, language, settings, modules and all programmes, including prices, awards, combinations and special prizes, and the [classifications](classifications.md); the shooting days and the period move with the date, weekly shooting times stay on their weekdays. Registrations, results and kiosk links are not copied. The dialog suggests the name with the year (and a leading number like *42.*) counted up and the date one year later; adjust both as needed."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:82
+#: ../src/help/en/user-guide/events.md:84
 #, markdown-text
 msgid "![Copy an event](../images/screenshots/copy-event.png){ .screenshot }"
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:83
+#: ../src/help/en/user-guide/events.md:85
 #, markdown-text, no-wrap
 msgid "Templates {#templates}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:86
+#: ../src/help/en/user-guide/events.md:88
 #, markdown-text
 msgid "An event that is set up well can become a **template** of the club: **Save as template** on **Copy & close** stores a copy with its modules, settings, ranges, programmes and classifications, named after the event without its year. Templates are listed under *Templates* below the events; a template opens in its configuration and can be changed like an event, but it takes no registrations. **New event** offers the club's templates below the built-in kinds: choose one, then give the new event its name and date. **Delete** on the template's **Copy & close** removes it."
-msgstr ""
-
-#. type: Title ##
-#: ../src/help/en/user-guide/events.md:87
-#, markdown-text, no-wrap
-msgid "Close {#close}"
 msgstr ""
 
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:90
 #, markdown-text
-msgid "When an event is over and the rankings are checked, **Close** it on **Copy & close** in the configuration. Closing releases the rankings: shooters with a [personal training log](../my-training/account.md#competitions) now find their results of this event, with their rank in the programme, and can add them to their log. Everything stays visible (dashboard, results, rankings, reports, documents), but registrations, results, awards, programmes and settings can no longer be changed. A banner on every page of the event says so. **Reopen** makes it editable again; results that shooters already added to their logs stay there. Copying a closed event for next year works."
+msgid "![New event with the kinds and a template of the club](../images/screenshots/new-event.png){ .screenshot }"
 msgstr ""
 
 #. type: Title ##
 #: ../src/help/en/user-guide/events.md:91
 #, markdown-text, no-wrap
+msgid "Close {#close}"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:94
+#, markdown-text
+msgid "When an event is over and the rankings are checked, **Close** it on **Copy & close** in the configuration. Closing releases the rankings: shooters with a [personal training log](../my-training/account.md#competitions) now find their results of this event, with their rank in the programme, and can add them to their log. Everything stays visible (dashboard, results, rankings, reports, documents), but registrations, results, awards, programmes and settings can no longer be changed. A banner on every page of the event says so. **Reopen** makes it editable again; results that shooters already added to their logs stay there. Copying a closed event for next year works."
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/events.md:95
+#, markdown-text, no-wrap
 msgid "Delete"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:93
+#: ../src/help/en/user-guide/events.md:97
 #, markdown-text, no-wrap
 msgid "**Delete** (on **Copy & close**) removes an event, but only while nobody is registered for it.\n"
 msgstr ""
@@ -2170,104 +2182,116 @@ msgstr ""
 msgid "Standblatt prints the wreath card and the control strip with **built-in forms**, listed below the forms of the club. **Copy** turns one into a form of the club that can be changed like any other, e.g. to move the fields onto another pre-printed wreath card or to add the club's logo. An event then chooses it under **Configuration** → **Modules**: *Print form of the wreath cards* in the module *Awards*, *Print form of the control strips* in the module *Control strip*. Without a choice, or when the chosen form is deleted, the built-in form prints."
 msgstr ""
 
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:35
+#, markdown-text
+msgid "![Print forms with the built-in forms and the image library](../images/screenshots/print-forms.png){ .screenshot }"
+msgstr ""
+
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:34
+#: ../src/help/en/user-guide/print-forms.md:36
 #, markdown-text, no-wrap
 msgid "Registration documents and certificates {#certificates}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:37
+#: ../src/help/en/user-guide/print-forms.md:39
 #, markdown-text
 msgid "A form that prints **A registration** besides the event's control strip, e.g. a participant card or a receipt, appears in the registration with a button of its own name; it prints on the printer of *Print forms*."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:39
+#: ../src/help/en/user-guide/print-forms.md:41
 #, markdown-text
 msgid "A form that prints **A rank** makes certificates: **Certificates** in the header of every ranking and classification on **Rankings** asks for the form, the class of a classification and the ranks (1 to 3 unless changed), then prints one page per ranked shooter, or opens them as one PDF. Certificates go to the printer of *Certificates* under **Ranges → Printing**. The fields of a rank are the rank, the total, the ranking (the programme or classification) and the class; a programme's certificate knows its results too."
 msgstr ""
 
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:43
+#, markdown-text
+msgid "![Certificates from a ranking](../images/screenshots/certificates.png){ .screenshot }"
+msgstr ""
+
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:40
+#: ../src/help/en/user-guide/print-forms.md:44
 #, markdown-text, no-wrap
 msgid "Arrange the elements {#arrange}"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:46
+#: ../src/help/en/user-guide/print-forms.md:50
 #, markdown-text
 msgid "**Move** an element by dragging it, **resize** it by its corner. The pink dot on the last box of a repeated element drags the spacing."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:46
+#: ../src/help/en/user-guide/print-forms.md:50
 #, markdown-text
 msgid "While moving, the element **snaps** to the edges and centres of the other elements and of the sheet, and a pink guide shows the line; elsewhere it snaps to whole millimetres. Hold Alt to place it freely."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:46
+#: ../src/help/en/user-guide/print-forms.md:50
 #, markdown-text
 msgid "**Select several** with Shift or Ctrl and a click, or draw a frame around them on the empty sheet. Dragging moves them together; font size, bold and alignment then apply to all of them."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:46
+#: ../src/help/en/user-guide/print-forms.md:50
 #, markdown-text
 msgid "A **right click** opens the menu: *Duplicate*, *Bring to front*, *Align* (edges, centres, distribute evenly), *Centre on the sheet* and *Delete*."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:57
+#: ../src/help/en/user-guide/print-forms.md:61
 #, markdown-text, no-wrap
 msgid "| Key | Does |\n|---|---|\n| Arrow keys | move the selection by 0.5 mm, with Shift by 5 mm |\n| Ctrl+Z / Ctrl+Y | undo / redo |\n| Ctrl+A | select everything |\n| Ctrl+D | duplicate |\n| Delete | delete the selection |\n| Esc | clear the selection |\n| Ctrl+S | save |\n| Ctrl+mouse wheel | zoom |\n"
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:58
+#: ../src/help/en/user-guide/print-forms.md:62
 #, markdown-text, no-wrap
 msgid "Images {#images}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:61
+#: ../src/help/en/user-guide/print-forms.md:65
 #, markdown-text
 msgid "Logos, letterheads and other pictures come from the club's image library below the list of **Print forms**: **Upload image** adds a PNG or JPEG of at most 2 MB, named after its file. In the editor, the group **Images** of the fields lists them; a click or a drag puts one onto the sheet, 30 mm wide with the image's own proportions. Its properties choose another **Image**, its position and size, and **Keep the aspect ratio** sets the height to match the width again. An image can be repeated like any other element."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:63
+#: ../src/help/en/user-guide/print-forms.md:67
 #, markdown-text
 msgid "An image can be deleted only while no form shows it. **Export** puts the images of a form into its file, and **Import** adds them to the library, reusing an image of the same name the club already has."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:64
+#: ../src/help/en/user-guide/print-forms.md:68
 #, markdown-text, no-wrap
 msgid "Calibrate the printer {#calibrate}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:67
+#: ../src/help/en/user-guide/print-forms.md:71
 #, markdown-text
 msgid "Printers rarely print exactly where they should. Print a sheet with **Test print**, measure how far the values are off and enter it as **Printer offset right** and **Printer offset down** (negative to move left or up). The offset applies to every element; the preview ignores it."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:68
+#: ../src/help/en/user-guide/print-forms.md:72
 #, markdown-text, no-wrap
 msgid "Use a form {#use}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:71
+#: ../src/help/en/user-guide/print-forms.md:75
 #, markdown-text
 msgid "Under **Configuration** → **Programmes** of the event, open a programme and choose its **Print form** in the section of the same name; this works while shooters are registered. Every completed programme then offers **Print onto form** in the results: at the desk, on the **Enter results** page and on scorer links at the lane (see [Helpers](helpers.md)). With a print agent and a printer chosen for *Print forms* under **Ranges → Printing**, the sheet goes to that printer (e.g. its manual feed), otherwise the PDF opens (see [Printing](printing.md))."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:72
+#: ../src/help/en/user-guide/print-forms.md:76
 #, markdown-text, no-wrap
 msgid "**Export** downloads a form as a file, with its images, and **Import** reads it again, e.g. to share a form with another club.\n"
 msgstr ""

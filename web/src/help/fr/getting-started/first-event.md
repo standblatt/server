@@ -40,8 +40,8 @@ réglages et tous les programmes sont repris. Un [modèle de la
 société](../user-guide/events.md#templates) fait de même pour les
 manifestations qui reviennent sous différentes formes.
 
-![Les manifestations d’une société](../images/screenshots/events.png){
-.screenshot }
+![Une nouvelle manifestation et son
+genre](../images/screenshots/new-event.png){ .screenshot }
 
 ## 5. Ajouter les programmes
 

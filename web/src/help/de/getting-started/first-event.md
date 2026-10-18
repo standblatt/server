@@ -41,8 +41,8 @@ kopieren**: Das übernimmt die Einstellungen und alle Programme. Eine
 [Vorlage des Vereins](../user-guide/events.md#templates) tut dasselbe für
 Anlässe, die in verschiedener Form wiederkehren.
 
-![Die Anlässe eines Vereins](../images/screenshots/events.png){ .screenshot
-}
+![Ein neuer Anlass und seine Art](../images/screenshots/new-event.png){
+.screenshot }
 
 ## 5. Programme hinzufügen
 

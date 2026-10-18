@@ -44,6 +44,9 @@ risultati. **Moduli** attiva e disattiva gli elementi della manifestazione;
 ciò che è disattivato scompare dalla barra laterale, dalla dashboard,
 dall’editor dei programmi, dalle classifiche e dai rapporti.
 
+![I moduli di una manifestazione](../images/screenshots/modules.png){
+.screenshot }
+
 | Modulo | Cosa aggiunge |
 |---|---|
 | Assegnazione dei bersagli | i tiratori vengono iscritti su bersagli: la griglia dei bersagli sulla dashboard, lo stato dei bersagli sui display chiosco e i link per marcatori (richiede uno stand; vedi sotto) |
@@ -128,6 +131,9 @@ configurazione e si modifica come una manifestazione, ma non accetta
 iscrizioni. **Nuova manifestazione** propone i modelli della società sotto i
 tipi integrati: scegline uno, poi dai alla nuova manifestazione il suo nome
 e la sua data. **Elimina** in **Copia e chiudi** del modello lo rimuove.
+
+![Nuova manifestazione con i tipi e un modello della
+società](../images/screenshots/new-event.png){ .screenshot }
 
 ## Chiudere {#close}
 

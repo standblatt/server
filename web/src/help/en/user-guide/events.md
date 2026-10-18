@@ -34,6 +34,8 @@ Staff work only in the operation; the configuration is for admins.
 
 Not every event needs everything: a shooting festival books lanes and hands out wreath cards, an annual programme only collects results. **Modules** switches the building blocks of the event on and off; what is off disappears from the sidebar, the dashboard, the programme editor, the rankings and the reports.
 
+![The modules of an event](../images/screenshots/modules.png){ .screenshot }
+
 | Module | What it adds |
 |---|---|
 | Lane assignment | shooters are registered on lanes: the lane grid on the dashboard, the lane status on kiosk displays and scorer links (needs a range; see below) |
@@ -83,6 +85,8 @@ On **Copy & close** in the configuration, **Copy for next year** creates a new e
 ## Templates {#templates}
 
 An event that is set up well can become a **template** of the club: **Save as template** on **Copy & close** stores a copy with its modules, settings, ranges, programmes and classifications, named after the event without its year. Templates are listed under *Templates* below the events; a template opens in its configuration and can be changed like an event, but it takes no registrations. **New event** offers the club's templates below the built-in kinds: choose one, then give the new event its name and date. **Delete** on the template's **Copy & close** removes it.
+
+![New event with the kinds and a template of the club](../images/screenshots/new-event.png){ .screenshot }
 
 ## Close {#close}
 

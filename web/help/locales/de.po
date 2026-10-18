@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 11:27+0000\n"
+"POT-Creation-Date: 2026-10-18 11:31+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -346,14 +346,22 @@ msgid ""
 "**Copy for next year** instead: it takes over the settings and all "
 "programmes. A [template of the club](../user-guide/events.md#templates) does "
 "the same for events that recur in different forms."
-msgstr "Erstelle unter **Anlässe** den Anlass: Wähle, was für ein Anlass es ist (das schaltet die passenden [Module](../user-guide/events.md#modules) ein), dann Name, Datum, Schiessstand, Veranstalter und die Sprache von Dokumenten und Kiosk-Bildschirmen. Hast du den Anlass letztes Jahr schon durchgeführt, öffne den Anlass vom letzten Jahr und nutze stattdessen **Für nächstes Jahr kopieren**: Das übernimmt die Einstellungen und alle Programme. Eine [Vorlage des Vereins](../user-guide/events.md#templates) tut dasselbe für Anlässe, die in verschiedener Form wiederkehren."
+msgstr ""
+"Erstelle unter **Anlässe** den Anlass: Wähle, was für ein Anlass es ist (das "
+"schaltet die passenden [Module](../user-guide/events.md#modules) ein), dann "
+"Name, Datum, Schiessstand, Veranstalter und die Sprache von Dokumenten und "
+"Kiosk-Bildschirmen. Hast du den Anlass letztes Jahr schon durchgeführt, "
+"öffne den Anlass vom letzten Jahr und nutze stattdessen **Für nächstes Jahr "
+"kopieren**: Das übernimmt die Einstellungen und alle Programme. Eine "
+"[Vorlage des Vereins](../user-guide/events.md#templates) tut dasselbe für "
+"Anlässe, die in verschiedener Form wiederkehren."
 
 #. type: Plain text
 #: ../src/help/en/getting-started/first-event.md:26
 msgid ""
-"![The events of a club](../images/screenshots/events.png){ .screenshot }"
-msgstr ""
-"![Die Anlässe eines Vereins](../images/screenshots/events.png){ .screenshot }"
+"![A new event and its kind](../images/screenshots/new-event.png)"
+"{ .screenshot }"
+msgstr "![Ein neuer Anlass und seine Art](../images/screenshots/new-event.png){ .screenshot }"
 
 #. type: Title ##
 #: ../src/help/en/getting-started/first-event.md:27
@@ -2729,7 +2737,13 @@ msgstr ""
 "Seitenleiste, Dashboard, Programm-Editor, Ranglisten und Berichten."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:50
+#: ../src/help/en/user-guide/events.md:38
+msgid ""
+"![The modules of an event](../images/screenshots/modules.png){ .screenshot }"
+msgstr "![Die Module eines Anlasses](../images/screenshots/modules.png){ .screenshot }"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:52
 #, no-wrap
 msgid ""
 "| Module | What it adds |\n"
@@ -2761,7 +2775,7 @@ msgstr ""
 "| Helferlinks | Warner, Munitionsausgabe und Resultaterfassung ohne Konto (siehe [Helfer](helpers.md)) |\n"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:52
+#: ../src/help/en/user-guide/events.md:54
 msgid ""
 "When you create an event, choose what kind it is; this only switches modules "
 "on:"
@@ -2770,7 +2784,7 @@ msgstr ""
 "schaltet nur Module ein:"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:60
+#: ../src/help/en/user-guide/events.md:62
 #, no-wrap
 msgid ""
 "| Kind | Modules |\n"
@@ -2790,7 +2804,7 @@ msgstr ""
 "| Eigene Auswahl | keine |\n"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:62
+#: ../src/help/en/user-guide/events.md:64
 msgid ""
 "A module that holds data stays on: switch off the kiosk only after deleting "
 "its kiosk links, the awards only when no programme has award tiers, and so "
@@ -2806,7 +2820,7 @@ msgstr ""
 "für Sonderpreise), bleibt an, solange jenes an ist."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:64
+#: ../src/help/en/user-guide/events.md:66
 msgid ""
 "Shooting times also give the online booking its slots, unless the booking "
 "sets other hours for a day (see [Online booking](online-booking.md))."
@@ -2816,13 +2830,13 @@ msgstr ""
 "Reservation](online-booking.md))."
 
 #. type: Title ###
-#: ../src/help/en/user-guide/events.md:65
+#: ../src/help/en/user-guide/events.md:67
 #, no-wrap
 msgid "Club modules {#club-modules}"
 msgstr "Vereinsmodule {#club-modules}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:68
+#: ../src/help/en/user-guide/events.md:70
 msgid ""
 "Some modules belong to the club rather than to an event. **Club modules** in "
 "the club part of the sidebar (admins) switches them on and off:"
@@ -2831,7 +2845,7 @@ msgstr ""
 "Vereinsteil der Seitenleiste (Admins) schaltet sie ein und aus:"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:72
+#: ../src/help/en/user-guide/events.md:74
 #, no-wrap
 msgid ""
 "| Module | What it adds |\n"
@@ -2843,13 +2857,13 @@ msgstr ""
 "| Druckvorlagen | Vorlagen für vorgedruckte Blätter und der Abschnitt *Druckvorlage* jedes Programms (siehe [Druckvorlagen](print-forms.md)) |\n"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:73
+#: ../src/help/en/user-guide/events.md:75
 #, no-wrap
 msgid "Events without lanes {#no-lanes}"
 msgstr "Anlässe ohne Scheiben {#no-lanes}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:76
+#: ../src/help/en/user-guide/events.md:78
 msgid ""
 "An event without lanes, e.g. an annual programme or a Feldschiessen whose "
 "results come on paper or from the scoring system, either has no range or "
@@ -2871,13 +2885,13 @@ msgstr ""
 "Agenten zu einem Stand gehören."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:77
+#: ../src/help/en/user-guide/events.md:79
 #, no-wrap
 msgid "Copy for next year {#copy}"
 msgstr "Für nächstes Jahr kopieren {#copy}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:80
+#: ../src/help/en/user-guide/events.md:82
 msgid ""
 "On **Copy & close** in the configuration, **Copy for next year** creates a "
 "new event with the same ranges, organizer, language, settings, modules and "
@@ -2899,19 +2913,19 @@ msgstr ""
 "*42.*) und das Datum ein Jahr später vor; passe beides bei Bedarf an."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:82
+#: ../src/help/en/user-guide/events.md:84
 msgid "![Copy an event](../images/screenshots/copy-event.png){ .screenshot }"
 msgstr ""
 "![Einen Anlass kopieren](../images/screenshots/copy-event.png){ .screenshot }"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:83
+#: ../src/help/en/user-guide/events.md:85
 #, no-wrap
 msgid "Templates {#templates}"
 msgstr "Vorlagen {#templates}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:86
+#: ../src/help/en/user-guide/events.md:88
 msgid ""
 "An event that is set up well can become a **template** of the club: **Save "
 "as template** on **Copy & close** stores a copy with its modules, settings, "
@@ -2921,16 +2935,32 @@ msgid ""
 "registrations. **New event** offers the club's templates below the built-in "
 "kinds: choose one, then give the new event its name and date. **Delete** on "
 "the template's **Copy & close** removes it."
-msgstr "Ein gut eingerichteter Anlass kann zu einer **Vorlage** des Vereins werden: **Als Vorlage speichern** auf **Kopieren & abschliessen** legt eine Kopie mit seinen Modulen, Einstellungen, Ständen, Programmen und Wertungen an, benannt nach dem Anlass ohne Jahreszahl. Vorlagen stehen unter *Vorlagen* unterhalb der Anlässe; eine Vorlage öffnet sich in ihrer Konfiguration und lässt sich wie ein Anlass ändern, nimmt aber keine Anmeldungen an. **Neuer Anlass** bietet die Vorlagen des Vereins unter den eingebauten Arten an: Wähle eine, dann gib dem neuen Anlass seinen Namen und sein Datum. **Löschen** auf **Kopieren & abschliessen** der Vorlage entfernt sie."
+msgstr ""
+"Ein gut eingerichteter Anlass kann zu einer **Vorlage** des Vereins werden: "
+"**Als Vorlage speichern** auf **Kopieren & abschliessen** legt eine Kopie "
+"mit seinen Modulen, Einstellungen, Ständen, Programmen und Wertungen an, "
+"benannt nach dem Anlass ohne Jahreszahl. Vorlagen stehen unter *Vorlagen* "
+"unterhalb der Anlässe; eine Vorlage öffnet sich in ihrer Konfiguration und "
+"lässt sich wie ein Anlass ändern, nimmt aber keine Anmeldungen an. **Neuer "
+"Anlass** bietet die Vorlagen des Vereins unter den eingebauten Arten an: "
+"Wähle eine, dann gib dem neuen Anlass seinen Namen und sein Datum. "
+"**Löschen** auf **Kopieren & abschliessen** der Vorlage entfernt sie."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:90
+msgid ""
+"![New event with the kinds and a template of the club](../images/screenshots/"
+"new-event.png){ .screenshot }"
+msgstr "![Neuer Anlass mit den Arten und einer Vorlage des Vereins](../images/screenshots/new-event.png){ .screenshot }"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:87
+#: ../src/help/en/user-guide/events.md:91
 #, no-wrap
 msgid "Close {#close}"
 msgstr "Abschliessen {#close}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:90
+#: ../src/help/en/user-guide/events.md:94
 msgid ""
 "When an event is over and the rankings are checked, **Close** it on **Copy & "
 "close** in the configuration. Closing releases the rankings: shooters with a "
@@ -2956,13 +2986,13 @@ msgstr ""
 "abgeschlossenen Anlasses für nächstes Jahr funktioniert."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:91
+#: ../src/help/en/user-guide/events.md:95
 #, no-wrap
 msgid "Delete"
 msgstr "Löschen"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:93
+#: ../src/help/en/user-guide/events.md:97
 #, no-wrap
 msgid "**Delete** (on **Copy & close**) removes an event, but only while nobody is registered for it.\n"
 msgstr "**Löschen** (auf **Kopieren & abschliessen**) entfernt einen Anlass, aber nur solange niemand dafür angemeldet ist.\n"
@@ -3477,14 +3507,21 @@ msgstr ""
 "*Kontrollstreifen*. Ohne Wahl, oder wenn die gewählte Vorlage gelöscht ist, "
 "druckt die eingebaute Vorlage."
 
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:35
+msgid ""
+"![Print forms with the built-in forms and the image library](../images/"
+"screenshots/print-forms.png){ .screenshot }"
+msgstr "![Druckvorlagen mit den eingebauten Vorlagen und der Bildbibliothek](../images/screenshots/print-forms.png){ .screenshot }"
+
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:34
+#: ../src/help/en/user-guide/print-forms.md:36
 #, no-wrap
 msgid "Registration documents and certificates {#certificates}"
 msgstr "Anmeldedokumente und Urkunden {#certificates}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:37
+#: ../src/help/en/user-guide/print-forms.md:39
 msgid ""
 "A form that prints **A registration** besides the event's control strip, "
 "e.g. a participant card or a receipt, appears in the registration with a "
@@ -3496,7 +3533,7 @@ msgstr ""
 "Drucker der *Druckvorlagen*."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:39
+#: ../src/help/en/user-guide/print-forms.md:41
 msgid ""
 "A form that prints **A rank** makes certificates: **Certificates** in the "
 "header of every ranking and classification on **Rankings** asks for the "
@@ -3516,14 +3553,21 @@ msgstr ""
 "Total, die Rangliste (das Programm oder die Wertung) und die Klasse; die "
 "Urkunde eines Programms kennt auch seine Resultate."
 
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:43
+msgid ""
+"![Certificates from a ranking](../images/screenshots/certificates.png)"
+"{ .screenshot }"
+msgstr "![Urkunden aus einer Rangliste](../images/screenshots/certificates.png){ .screenshot }"
+
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:40
+#: ../src/help/en/user-guide/print-forms.md:44
 #, no-wrap
 msgid "Arrange the elements {#arrange}"
 msgstr "Elemente anordnen {#arrange}"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:46
+#: ../src/help/en/user-guide/print-forms.md:50
 msgid ""
 "**Move** an element by dragging it, **resize** it by its corner. The pink "
 "dot on the last box of a repeated element drags the spacing."
@@ -3533,7 +3577,7 @@ msgstr ""
 "Elements zieht den Abstand auf."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:46
+#: ../src/help/en/user-guide/print-forms.md:50
 msgid ""
 "While moving, the element **snaps** to the edges and centres of the other "
 "elements and of the sheet, and a pink guide shows the line; elsewhere it "
@@ -3545,7 +3589,7 @@ msgstr ""
 "setzen."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:46
+#: ../src/help/en/user-guide/print-forms.md:50
 msgid ""
 "**Select several** with Shift or Ctrl and a click, or draw a frame around "
 "them on the empty sheet. Dragging moves them together; font size, bold and "
@@ -3556,7 +3600,7 @@ msgstr ""
 "Schriftgrösse, Fett und Ausrichtung gelten dann für alle."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:46
+#: ../src/help/en/user-guide/print-forms.md:50
 msgid ""
 "A **right click** opens the menu: *Duplicate*, *Bring to front*, *Align* "
 "(edges, centres, distribute evenly), *Centre on the sheet* and *Delete*."
@@ -3566,7 +3610,7 @@ msgstr ""
 "zentrieren* und *Löschen*."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:57
+#: ../src/help/en/user-guide/print-forms.md:61
 #, no-wrap
 msgid ""
 "| Key | Does |\n"
@@ -3592,13 +3636,13 @@ msgstr ""
 "| Ctrl+Mausrad | zoomen |\n"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:58
+#: ../src/help/en/user-guide/print-forms.md:62
 #, no-wrap
 msgid "Images {#images}"
 msgstr "Bilder {#images}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:61
+#: ../src/help/en/user-guide/print-forms.md:65
 msgid ""
 "Logos, letterheads and other pictures come from the club's image library "
 "below the list of **Print forms**: **Upload image** adds a PNG or JPEG of at "
@@ -3618,7 +3662,7 @@ msgstr ""
 "Bild lässt sich wie jedes andere Element wiederholen."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:63
+#: ../src/help/en/user-guide/print-forms.md:67
 msgid ""
 "An image can be deleted only while no form shows it. **Export** puts the "
 "images of a form into its file, and **Import** adds them to the library, "
@@ -3630,13 +3674,13 @@ msgstr ""
 "der Verein schon hat, wird wiederverwendet."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:64
+#: ../src/help/en/user-guide/print-forms.md:68
 #, no-wrap
 msgid "Calibrate the printer {#calibrate}"
 msgstr "Den Drucker kalibrieren {#calibrate}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:67
+#: ../src/help/en/user-guide/print-forms.md:71
 msgid ""
 "Printers rarely print exactly where they should. Print a sheet with **Test "
 "print**, measure how far the values are off and enter it as **Printer offset "
@@ -3650,13 +3694,13 @@ msgstr ""
 "Vorschau ignoriert ihn."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:68
+#: ../src/help/en/user-guide/print-forms.md:72
 #, no-wrap
 msgid "Use a form {#use}"
 msgstr "Eine Vorlage verwenden {#use}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:71
+#: ../src/help/en/user-guide/print-forms.md:75
 msgid ""
 "Under **Configuration** → **Programmes** of the event, open a programme and "
 "choose its **Print form** in the section of the same name; this works while "
@@ -3678,7 +3722,7 @@ msgstr ""
 "(printing.md))."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:72
+#: ../src/help/en/user-guide/print-forms.md:76
 #, no-wrap
 msgid "**Export** downloads a form as a file, with its images, and **Import** reads it again, e.g. to share a form with another club.\n"
 msgstr "**Exportieren** lädt eine Vorlage mit ihren Bildern als Datei herunter und **Importieren** liest sie wieder ein, z. B. um eine Vorlage mit einem anderen Verein zu teilen.\n"

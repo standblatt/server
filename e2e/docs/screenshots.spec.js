@@ -1,5 +1,6 @@
 // Screenshots for the documentation (docs/content/images/screenshots). Not part of `make e2e`;
 // `make docs-screenshots` starts an empty instance and writes the files into $SHOTS.
+import zlib from "node:zlib";
 import { test, expect } from "@playwright/test";
 import { adminLogin, api, c, createClub, login, mailToken, newPage } from "../helpers.js";
 
@@ -22,6 +23,32 @@ const shooters = [
   ["Mock", "Nina", "1987-06-30", "PS Example", []],
   ["Novice", "Hans", "1962-08-08", "PS Example", null],
 ];
+
+// examplePNG draws an invented logo: an amber ring on navy, 96 × 96 pixels.
+function examplePNG() {
+  const size = 96;
+  const rows = [];
+  for (let y = 0; y < size; y++) {
+    const row = [0];
+    for (let x = 0; x < size; x++) {
+      const d = Math.hypot(x - size / 2 + 0.5, y - size / 2 + 0.5);
+      row.push(...(d > 22 && d < 34 ? [245, 158, 11] : [30, 41, 82]));
+    }
+    rows.push(Buffer.from(row));
+  }
+  const chunk = (type, data) => {
+    const len = Buffer.alloc(4);
+    len.writeUInt32BE(data.length);
+    const crc = Buffer.alloc(4);
+    crc.writeUInt32BE(zlib.crc32(Buffer.concat([Buffer.from(type), data])));
+    return Buffer.concat([len, Buffer.from(type), data, crc]);
+  };
+  const header = Buffer.alloc(13);
+  header.writeUInt32BE(size, 0);
+  header.writeUInt32BE(size, 4);
+  header.set([8, 2, 0, 0, 0], 8);
+  return Buffer.concat([Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]), chunk("IHDR", header), chunk("IDAT", zlib.deflateSync(Buffer.concat(rows))), chunk("IEND", Buffer.alloc(0))]);
+}
 
 async function shot(page, name) {
   await expect(page.locator("[data-sonner-toast]")).toHaveCount(0, { timeout: 15000 });
@@ -195,6 +222,38 @@ test.describe("documentation screenshots", () => {
     await c(c(page, "section", "Copy for next year"), "button", "Copy").click();
     await expect(page.locator("[role=dialog] input[name=name]")).toHaveValue("43. Example Championship 2028");
     await shot(page, "copy-event");
+  });
+
+  test("modules, templates, print forms and certificates", async ({ page }) => {
+    const base = `/api/tenants/${ids.tenant}`;
+    await visit(page, `/t/${ids.tenant}/events/${ids.event}/config/modules`);
+    await expect(page.locator("[data-testid=module-kiosk]")).toBeVisible();
+    await shot(page, "modules");
+
+    await api(page, "POST", `${base}/events/${ids.event}/copy`, { name: "Example Championship", startsOn: "2027-01-08", template: true });
+    await visit(page, `/t/${ids.tenant}`);
+    await c(page, "button", "New event").click();
+    await expect(page.getByRole("dialog")).toContainText("Template of the club");
+    await shot(page, "new-event");
+
+    const logo = await page.request.post(`${base}/images`, { multipart: { name: "Club logo", file: { name: "logo.png", mimeType: "image/png", buffer: examplePNG() } } });
+    expect(logo.ok()).toBeTruthy();
+    const { id: image } = await logo.json();
+    await api(page, "POST", `${base}/layouts`, {
+      name: "Certificate", source: "rank", width: 210, height: 148, elements: [
+        { type: "image", image, x: 90, y: 12, w: 30, h: 30 },
+        { type: "text", x: 20, y: 60, w: 170, size: 24, bold: true, align: "C", value: "{{rank}}. {{shooter.name}}" },
+        { type: "text", x: 20, y: 75, w: 170, size: 12, align: "C", value: "{{ranking}} · {{event.name}}" },
+      ],
+    });
+    await visit(page, `/t/${ids.tenant}/forms`);
+    await expect(c(page, "li", "Club logo")).toBeVisible();
+    await shot(page, "print-forms");
+
+    await visit(page, `/t/${ids.tenant}/events/${ids.event}/rankings`);
+    await page.getByRole("button", { name: "Certificates of Championship (Sport)" }).click();
+    await expect(page.getByRole("dialog").getByLabel("Print form")).toBeVisible();
+    await shot(page, "certificates");
   });
 
   test("online booking", async ({ page }) => {

@@ -46,6 +46,9 @@ manifestation ; ce qui est désactivé disparaît de la barre latérale, du
 tableau de bord, de l’éditeur de programmes, des classements et des
 rapports.
 
+![Les modules d'une manifestation](../images/screenshots/modules.png){
+.screenshot }
+
 | Module | Ce qu’il ajoute |
 |---|---|
 | Attribution des cibles | les tireurs sont inscrits sur des cibles : la grille des cibles sur le tableau de bord, l’état des cibles sur les affichages kiosque et les liens de cibarre (nécessite un stand ; voir plus bas) |
@@ -132,6 +135,9 @@ d’inscriptions. **Nouvelle manifestation** propose les modèles de la sociét�
 sous les genres intégrés : choisis-en un, puis donne à la nouvelle
 manifestation son nom et sa date. **Supprimer** sur **Copier & clôturer** du
 modèle le supprime.
+
+![Nouvelle manifestation avec les genres et un modèle de la
+société](../images/screenshots/new-event.png){ .screenshot }
 
 ## Clôturer {#close}
 

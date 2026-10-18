@@ -69,6 +69,9 @@ module *Distinctions*, *Modèle des bandes de contrôle* dans le module *Bande
 de contrôle*. Sans choix, ou si le modèle choisi est supprimé, le modèle
 intégré imprime.
 
+![Modèles d’impression avec les modèles intégrés et la bibliothèque
+d'images](../images/screenshots/print-forms.png){ .screenshot }
+
 ## Documents d’inscription et diplômes {#certificates}
 
 Un modèle qui imprime **Une inscription**, en plus de la bande de contrôle
@@ -84,6 +87,9 @@ les ouvre en un seul PDF. Les diplômes partent vers l’imprimante des
 *Diplômes* sous **Stands de tir → Impression**. Les champs d’un rang sont le
 rang, le total, le classement (le programme ou le classement général) et la
 classe ; le diplôme d’un programme connaît aussi ses résultats.
+
+![Diplômes depuis un classement](../images/screenshots/certificates.png){
+.screenshot }
 
 ## Disposer les éléments {#arrange}
 

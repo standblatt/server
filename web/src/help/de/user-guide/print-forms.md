@@ -66,6 +66,9 @@ das Logo des Vereins hinzuzufügen. Ein Anlass wählt sie dann unter
 *Kontrollstreifen*. Ohne Wahl, oder wenn die gewählte Vorlage gelöscht ist,
 druckt die eingebaute Vorlage.
 
+![Druckvorlagen mit den eingebauten Vorlagen und der
+Bildbibliothek](../images/screenshots/print-forms.png){ .screenshot }
+
 ## Anmeldedokumente und Urkunden {#certificates}
 
 Eine Vorlage, die **Eine Anmeldung** druckt, erscheint neben dem
@@ -81,6 +84,9 @@ als ein PDF. Urkunden gehen an den Drucker der *Urkunden* unter
 **Schiessstände → Drucken**. Die Felder eines Rangs sind der Rang, das
 Total, die Rangliste (das Programm oder die Wertung) und die Klasse; die
 Urkunde eines Programms kennt auch seine Resultate.
+
+![Urkunden aus einer Rangliste](../images/screenshots/certificates.png){
+.screenshot }
 
 ## Elemente anordnen {#arrange}
 

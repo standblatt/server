@@ -42,6 +42,9 @@ gibt Kranzkarten ab, ein Jahresprogramm sammelt nur Resultate. **Module**
 schaltet die Module des Anlasses ein und aus; was aus ist, verschwindet aus
 Seitenleiste, Dashboard, Programm-Editor, Ranglisten und Berichten.
 
+![Die Module eines Anlasses](../images/screenshots/modules.png){ .screenshot
+}
+
 | Modul | Was es bringt |
 |---|---|
 | Scheibenzuteilung | Schützen werden auf Scheiben angemeldet: das Scheibenraster im Dashboard, der Scheibenstatus auf Kiosk-Anzeigen und Warner-Links (braucht einen Stand; siehe unten) |
@@ -126,6 +129,9 @@ lässt sich wie ein Anlass ändern, nimmt aber keine Anmeldungen an. **Neuer
 Anlass** bietet die Vorlagen des Vereins unter den eingebauten Arten an:
 Wähle eine, dann gib dem neuen Anlass seinen Namen und sein
 Datum. **Löschen** auf **Kopieren & abschliessen** der Vorlage entfernt sie.
+
+![Neuer Anlass mit den Arten und einer Vorlage des
+Vereins](../images/screenshots/new-event.png){ .screenshot }
 
 ## Abschliessen {#close}
 

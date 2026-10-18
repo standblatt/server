@@ -41,8 +41,8 @@ e tutti i programmi. Un [modello della
 società](../user-guide/events.md#templates) fa lo stesso per le
 manifestazioni che ritornano in forme diverse.
 
-![Le manifestazioni di una società](../images/screenshots/events.png){
-.screenshot }
+![Una nuova manifestazione e il suo
+tipo](../images/screenshots/new-event.png){ .screenshot }
 
 ## 5. Aggiungere i programmi
 
