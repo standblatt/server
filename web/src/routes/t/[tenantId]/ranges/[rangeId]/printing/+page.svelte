@@ -26,7 +26,11 @@
 	const queryClient = useQueryClient();
 	const key = $derived(['tenants', tenantId, 'ranges', rangeId, 'printing']);
 
-	const agents = createQuery(() => ({ queryKey: [...key, 'agents'], queryFn: () => call(api.GET('/api/tenants/{tenantId}/ranges/{rangeId}/print-agents', p)) }));
+	const agents = createQuery(() => ({
+		queryKey: [...key, 'agents'],
+		queryFn: () => call(api.GET('/api/tenants/{tenantId}/ranges/{rangeId}/print-agents', p)),
+		refetchInterval: 10000
+	}));
 	const settings = createQuery(() => ({ queryKey: [...key, 'settings'], queryFn: () => call(api.GET('/api/tenants/{tenantId}/ranges/{rangeId}/print-settings', p)) }));
 	const jobs = createQuery(() => ({
 		queryKey: [...key, 'jobs'],
@@ -69,8 +73,14 @@
 		};
 		return labels[v] ?? v;
 	}
+	// Moves on every 10 s, so an agent that stops calling in shows as offline without a reload.
+	let now = $state(Date.now());
+	$effect(() => {
+		const timer = setInterval(() => (now = Date.now()), 10000);
+		return () => clearInterval(timer);
+	});
 	/** Whether the agent was seen within the last minute. */
-	const online = (a: PrintAgent) => !!a.lastSeenAt && Date.now() - new Date(a.lastSeenAt).getTime() < 60000;
+	const online = (a: PrintAgent) => !!a.lastSeenAt && now - new Date(a.lastSeenAt).getTime() < 60000;
 
 	type Draft = { printer: string; options: Record<string, string>; extra: string };
 	let drafts = $state<Record<string, Draft>>({});

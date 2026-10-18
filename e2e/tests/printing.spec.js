@@ -116,6 +116,18 @@ test.describe("documents and printing", () => {
     expect(settings.find((s) => s.document === "control_strip")).toMatchObject({ printer: "Brother QL-700", options: { scale: "shrink" } });
   });
 
+  test("shows an agent that stops calling in as offline without a reload", async ({ page }) => {
+    await login(page, admin);
+    const { secret } = await api(page, "POST", `/api/tenants/${ids.tenant}/ranges/${ids.range}/print-agents`, { name: "Stopped PC" });
+    await page.request.post("/api/agent/hello", { headers: { Authorization: `Bearer ${secret}` }, data: { printers: [], version: "v0.1.0", os: "linux" } });
+    await page.clock.install();
+    await page.goto(`/t/${ids.tenant}/ranges/${ids.range}/printing`);
+    const entry = c(page, "li", "Stopped PC");
+    await expect(entry).toContainText("online");
+    await page.clock.fastForward(70_000);
+    await expect(entry).toContainText("last seen");
+  });
+
   test("connects a computer by code on /connect", async ({ page }) => {
     const pairing = await (await page.request.post("/api/agent/pair", { data: { name: "DESKTOP-E2E", os: "windows", version: "v0.1.0" } })).json();
     await page.goto(`/connect?code=${pairing.code}`);
