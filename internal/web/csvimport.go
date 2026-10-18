@@ -10,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/standblatt/server/internal/domain"
 	"github.com/standblatt/server/internal/store"
 )
 
@@ -106,7 +107,7 @@ func parseShooterCSV(r io.Reader) ([]store.ImportRow, []ImportLineError, error) 
 			continue
 		}
 		in := store.ShooterInput{
-			LicenseNumber: normalizeLicense(get("license")),
+			LicenseNumber: domain.NormalizeLicense(get("license")),
 			Firstname:     get("firstname"),
 			Lastname:      get("lastname"),
 			Postalcode:    get("postalcode"),
@@ -129,25 +130,6 @@ func parseShooterCSV(r io.Reader) ([]store.ImportRow, []ImportLineError, error) 
 		rows = append(rows, store.ImportRow{ShooterInput: in, Club: get("club")})
 	}
 	return rows, errs, nil
-}
-
-// normalizeLicense pads purely numeric license numbers to six digits, as the search does.
-func normalizeLicense(l string) string {
-	l = strings.TrimSpace(l)
-	if l != "" && digitsOnly(l) && len(l) < 6 {
-		return strings.Repeat("0", 6-len(l)) + l
-	}
-	return l
-}
-
-// digitsOnly reports whether s consists of ASCII digits only (true for an empty string).
-func digitsOnly(s string) bool {
-	for _, r := range s {
-		if r < '0' || r > '9' {
-			return false
-		}
-	}
-	return true
 }
 
 // parseBirthday accepts empty, YYYY-MM-DD and D.M.YYYY and returns YYYY-MM-DD.

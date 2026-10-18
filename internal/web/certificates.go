@@ -2,7 +2,6 @@ package web
 
 import (
 	"context"
-	"net/http"
 	"strconv"
 
 	"github.com/danielgtaylor/huma/v2"
@@ -25,8 +24,8 @@ type Certificates struct {
 	To               int    `json:"to,omitempty" query:"to" required:"false" minimum:"0" doc:"Last rank, 3 when 0"`
 }
 
-// rankForm loads a print form of the club that must print the given data source, with its images.
-func (s *Server) rankForm(ctx context.Context, tenantID, layoutID int64, source string) (store.Layout, map[int64][]byte, error) {
+// sourceForm loads a print form of the club that must print the given data source, with its images.
+func (s *Server) sourceForm(ctx context.Context, tenantID, layoutID int64, source string) (store.Layout, map[int64][]byte, error) {
 	l, err := s.Store.GetLayout(ctx, tenantID, layoutID)
 	if err != nil {
 		return l, nil, notFound(err, "Print form not found")
@@ -44,7 +43,7 @@ func (s *Server) renderRegistrationForm(ctx context.Context, tenantID, registrat
 	if err != nil {
 		return rendered{}, err
 	}
-	l, images, err := s.rankForm(ctx, tenantID, layoutID, domain.SourceRegistration)
+	l, images, err := s.sourceForm(ctx, tenantID, layoutID, domain.SourceRegistration)
 	if err != nil {
 		return rendered{}, err
 	}
@@ -73,7 +72,7 @@ func (s *Server) renderCertificates(ctx context.Context, tenantID, eventID int64
 	if err != nil {
 		return rendered{}, notFound(err, "Event not found")
 	}
-	l, images, err := s.rankForm(ctx, tenantID, c.LayoutID, domain.SourceRank)
+	l, images, err := s.sourceForm(ctx, tenantID, c.LayoutID, domain.SourceRank)
 	if err != nil {
 		return rendered{}, err
 	}
@@ -154,17 +153,11 @@ func (s *Server) renderCertificates(ctx context.Context, tenantID, eventID int64
 
 // registerCertificates registers the PDFs of registration documents and certificates.
 func (s *Server) registerCertificates(api huma.API) {
-	pdfOp := func(op, path, summary string) huma.Operation {
-		return huma.Operation{
-			OperationID: op, Metadata: modules.Metadata(modules.Forms), Method: http.MethodGet, Path: path, Tags: []string{"forms"}, Summary: summary,
-			Responses: map[string]*huma.Response{"200": {Description: "PDF", Content: map[string]*huma.MediaType{"application/pdf": {}}}},
-		}
-	}
 	type regFormIn struct {
 		RegistrationPath
 		LayoutID int64 `path:"layoutId"`
 	}
-	huma.Register(api, pdfOp("registration-form", "/api/tenants/{tenantId}/registrations/{registrationId}/forms/{layoutId}", "A registration printed onto a print form with the registration as data source"),
+	huma.Register(api, withModule(pdfOp("registration-form", "forms", "/api/tenants/{tenantId}/registrations/{registrationId}/forms/{layoutId}", "A registration printed onto a print form with the registration as data source"), modules.Forms),
 		func(ctx context.Context, in *regFormIn) (*PDFOutput, error) {
 			if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
 				return nil, err
@@ -176,7 +169,7 @@ func (s *Server) registerCertificates(api huma.API) {
 		EventPath
 		Certificates
 	}
-	huma.Register(api, pdfOp("certificates", "/api/tenants/{tenantId}/events/{eventId}/certificates", "Certificates: one page per ranked shooter of a programme or classification"),
+	huma.Register(api, withModule(pdfOp("certificates", "forms", "/api/tenants/{tenantId}/events/{eventId}/certificates", "Certificates: one page per ranked shooter of a programme or classification"), modules.Forms),
 		func(ctx context.Context, in *certificatesIn) (*PDFOutput, error) {
 			if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
 				return nil, err

@@ -87,9 +87,9 @@ type BookingRequestPath struct {
 	RequestID int64 `path:"requestId"`
 }
 
-// bookingLoc returns the time zone of an event, UTC when it is unknown.
-func bookingLoc(ev store.Event) *time.Location {
-	if loc, err := time.LoadLocation(ev.Timezone); err == nil {
+// eventLoc returns the location of a time zone name, UTC when it is unknown.
+func eventLoc(timezone string) *time.Location {
+	if loc, err := time.LoadLocation(timezone); err == nil {
 		return loc
 	}
 	return time.UTC
@@ -108,7 +108,7 @@ func bookingRanges(ev store.Event) []BookingRange {
 // only confirmed reservations; those of exceptRequest are left out because changing it would free them.
 func (s *Server) bookingInfo(ctx context.Context, t store.BookingTarget, exceptRequest int64) (BookingInfo, error) {
 	ev := t.Event
-	loc := bookingLoc(ev)
+	loc := eventLoc(ev.Timezone)
 	slots := domain.BookingSlots(ev.Days, ev.Schedule.Times(), t.Settings, loc)
 	deadline := domain.BookingDeadline(ev.Days, t.Settings, loc)
 	info := BookingInfo{
@@ -166,11 +166,7 @@ func checkBooking(info BookingInfo, in store.BookingRequestInput) error {
 			}
 			for _, f := range sl.Free {
 				if f.RangeID == it.RangeID && it.Lanes > f.Free {
-					loc, err := time.LoadLocation(info.Timezone)
-					if err != nil {
-						loc = time.UTC
-					}
-					return invalid("Only %d lanes are free at %s", f.Free, sl.Start.In(loc).Format("02.01.2006 15:04"))
+					return invalid("Only %d lanes are free at %s", f.Free, sl.Start.In(eventLoc(info.Timezone)).Format("02.01.2006 15:04"))
 				}
 			}
 		}
@@ -225,7 +221,7 @@ func bookingSummary(l i18n.Lang, ev store.Event, req store.BookingRequest) []str
 	for _, r := range ev.Ranges {
 		names[r.ID] = r.Name
 	}
-	loc := bookingLoc(ev)
+	loc := eventLoc(ev.Timezone)
 	lines := []string{}
 	for _, it := range req.Items {
 		line := "- " + slotText(it.Start, it.End, loc) + ", " + names[it.RangeID] + ", " + i18n.T(l, "Lanes") + ": " + strconv.Itoa(it.Lanes)
@@ -288,7 +284,7 @@ func bookingErr(ev store.Event, err error) error {
 	switch {
 	case errors.As(err, &full):
 		return conflict("Only %d lanes are free at %s; move a reservation or decline the request.", full.Free,
-			full.Item.Start.In(bookingLoc(ev)).Format("02.01.2006 15:04"))
+			full.Item.Start.In(eventLoc(ev.Timezone)).Format("02.01.2006 15:04"))
 	case errors.Is(err, store.ErrNotPending):
 		return conflict("The request was already handled or cancelled.")
 	}
@@ -418,7 +414,7 @@ func (s *Server) registerBooking(api huma.API) {
 		if err != nil {
 			return nil, err
 		}
-		if !time.Now().Before(domain.BookingDeadline(t.Event.Days, t.Settings, bookingLoc(t.Event))) {
+		if !time.Now().Before(domain.BookingDeadline(t.Event.Days, t.Settings, eventLoc(t.Event.Timezone))) {
 			return nil, conflict("The deadline for online booking has passed. Contact the organizer.")
 		}
 		if err := s.Store.CancelBookingRequest(ctx, t.TenantID, req.ID); err != nil {
@@ -444,12 +440,12 @@ func (s *Server) registerBookingAdmin(api huma.API) {
 		if err != nil {
 			return nil, err
 		}
-		loc := bookingLoc(ev)
+		loc := eventLoc(ev.Timezone)
 		c := BookingConfig{Enabled: code != "", Code: code, Settings: set,
 			Deadline: domain.BookingDeadline(ev.Days, set, loc), Slots: domain.BookingSlots(ev.Days, ev.Schedule.Times(), set, loc)}
 		if code != "" {
 			c.Link = s.link(ctx, "/b/"+code)
-			if c.QR, err = totpQR(c.Link); err != nil {
+			if c.QR, err = qrDataURL(c.Link); err != nil {
 				return nil, err
 			}
 		}

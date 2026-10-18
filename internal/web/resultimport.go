@@ -83,7 +83,7 @@ func parseResultCSV(r io.Reader) ([]resultRow, []ImportLineError, error) {
 			}
 			return ""
 		}
-		row := resultRow{line: line, license: normalizeLicense(get("license")), firstname: get("firstname"), lastname: get("lastname"),
+		row := resultRow{line: line, license: domain.NormalizeLicense(get("license")), firstname: get("firstname"), lastname: get("lastname"),
 			club: get("club"), title: get("programme"), points: map[int]string{}, mouches: map[int]string{}, shots: map[[2]int]string{}}
 		if row.birthday, err = parseBirthday(get("birthday")); err != nil {
 			errs = append(errs, ImportLineError{Line: line, Message: err.Error()})

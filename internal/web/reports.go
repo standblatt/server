@@ -119,16 +119,10 @@ func (d eventData) title(id int64) string {
 	return programmeTitle(p.Name, p.Variant)
 }
 
-// round2 rounds v to two decimals.
-func round2(v float64) float64 { return math.Round(v*100) / 100 }
-
 // statistics derives the event statistics from the entry facts: revenue, entries, days, categories and awards.
 func (d eventData) statistics() Statistics {
 	st := Statistics{Programmes: []ProgrammeStat{}, Categories: []CategoryStat{}, Days: []DayStat{}, Awards: []AwardStat{}}
-	loc, err := time.LoadLocation(d.event.Timezone)
-	if err != nil {
-		loc = time.UTC
-	}
+	loc := eventLoc(d.event.Timezone)
 	days := map[string]*DayStat{}
 	seenDay := map[int64]bool{}
 	regs := map[int64]store.EntryFact{}
@@ -194,20 +188,20 @@ func (d eventData) statistics() Statistics {
 	}
 	for _, p := range d.order {
 		ps := perProgramme[p.ID]
-		ps.Revenue = round2(ps.Revenue)
+		ps.Revenue = domain.Round2(ps.Revenue)
 		st.Programmes = append(st.Programmes, *ps)
 	}
 	for _, day := range slices.Sorted(maps.Keys(days)) {
 		ds := days[day]
-		ds.Revenue = round2(ds.Revenue)
+		ds.Revenue = domain.Round2(ds.Revenue)
 		st.Days = append(st.Days, *ds)
 	}
 	for _, k := range awardOrder {
 		a := awards[k]
-		a.Total = round2(a.Total)
+		a.Total = domain.Round2(a.Total)
 		st.Awards = append(st.Awards, *a)
 	}
-	st.Revenue, st.AwardsValue = round2(st.Revenue), round2(st.AwardsValue)
+	st.Revenue, st.AwardsValue = domain.Round2(st.Revenue), domain.Round2(st.AwardsValue)
 	return st
 }
 
@@ -508,7 +502,7 @@ func (d eventData) report(kind string, now time.Time) (docs.Report, string, erro
 		for _, rg := range d.event.Ranges {
 			names[rg.ID] = rg.Name
 		}
-		loc := bookingLoc(d.event)
+		loc := eventLoc(d.event.Timezone)
 		clubs, pending := 0, 0
 		for _, b := range d.bookings {
 			if b.Status != store.BookingConfirmed && b.Status != store.BookingPending {
@@ -619,11 +613,8 @@ func fileOut(r docs.Report, name, format string) (*FileOutput, error) {
 }
 
 // eventNow returns the current time in the event's time zone.
-func (s *Server) eventNow(ev store.Event) time.Time {
-	if loc, err := time.LoadLocation(ev.Timezone); err == nil {
-		return time.Now().In(loc)
-	}
-	return time.Now()
+func eventNow(ev store.Event) time.Time {
+	return time.Now().In(eventLoc(ev.Timezone))
 }
 
 // registerReports registers the statistics, club competition, report and ranking CSV endpoints.
@@ -693,7 +684,7 @@ func (s *Server) registerReports(api huma.API) {
 				return nil, err
 			}
 		}
-		r, name, err := d.report(in.Report, s.eventNow(d.event))
+		r, name, err := d.report(in.Report, eventNow(d.event))
 		if err != nil {
 			return nil, err
 		}

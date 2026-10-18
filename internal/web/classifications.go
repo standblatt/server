@@ -85,11 +85,8 @@ func (s *Server) classificationRankings(ctx context.Context, tenantID, eventID i
 	}
 	line := func(st domain.Standing) ClassificationLine {
 		p := people[st.ShooterID]
-		l := ClassificationLine{Rank: st.Rank, ShooterID: st.ShooterID, Firstname: p.Firstname, Lastname: p.Lastname, Category: st.Entry.Category,
+		l := ClassificationLine{Rank: st.Rank, BirthYear: birthYear(p.Birthday), ShooterID: st.ShooterID, Firstname: p.Firstname, Lastname: p.Lastname, Category: st.Entry.Category,
 			Club: p.ClubName, Total: st.Entry.Total, Complete: st.Complete, Parts: make([]PartScore, len(st.Parts))}
-		if len(p.Birthday) >= 4 {
-			l.BirthYear = p.Birthday[:4]
-		}
 		for i := range st.Parts {
 			l.Parts[i] = PartScore{Points: st.Parts[i], Counted: st.Counted[i]}
 		}

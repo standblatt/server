@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 15:04+0200\n"
+"POT-Creation-Date: 2026-10-18 15:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -764,11 +764,6 @@ msgstr ""
 msgid "Programme not found"
 msgstr ""
 
-#: internal/web/documents.go internal/web/forms.go internal/web/helpers.go
-#: internal/web/results.go
-msgid "Programme of the registration not found"
-msgstr ""
-
 #: internal/web/documents.go internal/web/helpers.go
 #: internal/web/registrations.go internal/web/results.go
 msgid "Registration not found"
@@ -811,6 +806,10 @@ msgstr ""
 
 #: internal/web/forms.go
 msgid "Only print forms of results can print a programme"
+msgstr ""
+
+#: internal/web/forms.go internal/web/helpers.go internal/web/results.go
+msgid "Programme of the registration not found"
 msgstr ""
 
 #: internal/web/forms.go
@@ -1013,10 +1012,6 @@ msgstr ""
 
 #: internal/web/modules.go
 msgid "This module is off"
-msgstr ""
-
-#: internal/web/modules.go
-msgid "This module is off for this event"
 msgstr ""
 
 #: internal/web/my.go

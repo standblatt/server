@@ -23,7 +23,7 @@ func NormalizeResults(results []SeriesResult) {
 		for _, v := range r.Shots {
 			sum += v
 		}
-		results[i].Points = math.Round(sum*100) / 100
+		results[i].Points = Round2(sum)
 	}
 }
 
@@ -64,7 +64,7 @@ func Totals(results []SeriesResult) (points float64, mouches int) {
 			mouches += *r.Mouches
 		}
 	}
-	return math.Round(points*100) / 100, mouches
+	return Round2(points), mouches
 }
 
 // CombinedResults picks the given series (1-based) of a target programme's results for a combined programme,

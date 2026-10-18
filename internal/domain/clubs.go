@@ -79,3 +79,12 @@ func levenshtein(a, b string) int {
 	}
 	return prev[len(y)]
 }
+
+// NormalizeLicense trims a licence number and pads a purely numeric one to six digits, as the SSV numbers are stored.
+func NormalizeLicense(l string) string {
+	l = strings.TrimSpace(l)
+	if l == "" || len(l) >= 6 || strings.Trim(l, "0123456789") != "" {
+		return l
+	}
+	return strings.Repeat("0", 6-len(l)) + l
+}

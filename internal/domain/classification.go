@@ -1,7 +1,6 @@
 package domain
 
 import (
-	"math"
 	"slices"
 	"sort"
 	"strings"
@@ -168,7 +167,7 @@ func Classify(c ClassificationDefinition, results []AttemptResult) []ClassStandi
 				picked[i] = append(picked[i], list[n])
 				sum += list[n].Total
 			}
-			sum = math.Round(sum*100) / 100
+			sum = Round2(sum)
 			st.Parts[i] = &sum
 			if len(picked[i]) >= p.Count {
 				full++
@@ -195,7 +194,7 @@ func Classify(c ClassificationDefinition, results []AttemptResult) []ClassStandi
 				st.Entry.Birthday, st.Entry.Category = e.Birthday, e.Category
 			}
 		}
-		st.Entry.Total = math.Round(st.Entry.Total*100) / 100
+		st.Entry.Total = Round2(st.Entry.Total)
 		st.Complete = full >= need
 		all = append(all, st)
 	}

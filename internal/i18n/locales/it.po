@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 15:04+0200\n"
+"POT-Creation-Date: 2026-10-18 15:07+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -764,11 +764,6 @@ msgstr "Non tutti i programmi hanno già risultati"
 msgid "Programme not found"
 msgstr "Programma non trovato"
 
-#: internal/web/documents.go internal/web/forms.go internal/web/helpers.go
-#: internal/web/results.go
-msgid "Programme of the registration not found"
-msgstr "Programma dell'iscrizione non trovato"
-
 #: internal/web/documents.go internal/web/helpers.go
 #: internal/web/registrations.go internal/web/results.go
 msgid "Registration not found"
@@ -812,6 +807,10 @@ msgstr "Esiste già un modello di stampa con questo nome"
 #: internal/web/forms.go
 msgid "Only print forms of results can print a programme"
 msgstr "Solo i modelli di risultati possono stampare un programma"
+
+#: internal/web/forms.go internal/web/helpers.go internal/web/results.go
+msgid "Programme of the registration not found"
+msgstr "Programma dell'iscrizione non trovato"
 
 #: internal/web/forms.go
 msgid "Programme or print form not found"
@@ -1014,10 +1013,6 @@ msgstr "Il modulo è in uso"
 #: internal/web/modules.go
 msgid "This module is off"
 msgstr "Questo modulo è disattivato"
-
-#: internal/web/modules.go
-msgid "This module is off for this event"
-msgstr "Questo modulo è disattivato per questa manifestazione"
 
 #: internal/web/my.go
 msgid "Another account uses this email address."
@@ -1986,6 +1981,9 @@ msgstr "Questo codice è già stato usato; attendi il prossimo."
 #: internal/web/totp.go
 msgid "Wrong code."
 msgstr "Codice errato."
+
+#~ msgid "This module is off for this event"
+#~ msgstr "Questo modulo è disattivato per questa manifestazione"
 
 #~ msgid "Unknown document"
 #~ msgstr "Documento sconosciuto"

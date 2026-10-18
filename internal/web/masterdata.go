@@ -106,7 +106,7 @@ const maxImportBytes = 10 << 20
 
 // normalizeShooter trims the shooter input, normalizes license and birthday and requires first and last name.
 func normalizeShooter(in *store.ShooterInput) error {
-	in.LicenseNumber = normalizeLicense(in.LicenseNumber)
+	in.LicenseNumber = domain.NormalizeLicense(in.LicenseNumber)
 	in.Firstname = strings.TrimSpace(in.Firstname)
 	in.Lastname = strings.TrimSpace(in.Lastname)
 	in.Postalcode = strings.TrimSpace(in.Postalcode)

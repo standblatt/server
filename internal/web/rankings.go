@@ -109,10 +109,7 @@ func (s *Server) rankings(ctx context.Context, tenantID, eventID int64, publicOn
 			line := RankingLine{
 				Rank: rank + 1, EntryID: r.EntryID, Firstname: r.Firstname, Lastname: r.Lastname, Category: r.Category,
 				Club: r.ClubName, Series: r.Series, Total: entries[i].Total, Mouches: r.Mouches, Award: r.AwardName,
-				Attempt: r.Attempt, Attempts: r.Attempts,
-			}
-			if len(r.Birthday) >= 4 {
-				line.BirthYear = r.Birthday[:4]
+				Attempt: r.Attempt, Attempts: r.Attempts, BirthYear: birthYear(r.Birthday),
 			}
 			pr.Lines = append(pr.Lines, line)
 		}

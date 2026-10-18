@@ -33,3 +33,11 @@ func TestSimilarClubs(t *testing.T) {
 		}
 	}
 }
+
+func TestNormalizeLicense(t *testing.T) {
+	for in, want := range map[string]string{"": "", " 123 ": "000123", "123456": "123456", "1234567": "1234567", "12a": "12a", "000001": "000001"} {
+		if got := NormalizeLicense(in); got != want {
+			t.Errorf("NormalizeLicense(%q) = %q, want %q", in, got, want)
+		}
+	}
+}

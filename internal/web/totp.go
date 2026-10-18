@@ -65,8 +65,8 @@ func totpStep(secret, code string, now time.Time) int64 {
 	return 0
 }
 
-// totpQR renders the otpauth URL as a PNG data URL for the setup dialog.
-func totpQR(otpauth string) (string, error) {
+// qrDataURL renders a URL as a QR code PNG data URL (second factor setup, booking link).
+func qrDataURL(otpauth string) (string, error) {
 	code, err := qr.Encode(otpauth, qr.M, qr.Auto)
 	if err != nil {
 		return "", err
@@ -131,7 +131,7 @@ func (s *Server) registerTOTP(api huma.API) {
 		out.Body.URL = "otpauth://totp/" + url.PathEscape("Standblatt:"+u.Name) + "?" + url.Values{
 			"secret": {out.Body.Secret}, "issuer": {"Standblatt"}, "algorithm": {"SHA1"}, "digits": {"6"}, "period": {"30"},
 		}.Encode()
-		out.Body.QR, err = totpQR(out.Body.URL)
+		out.Body.QR, err = qrDataURL(out.Body.URL)
 		return out, err
 	})
 

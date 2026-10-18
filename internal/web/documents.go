@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
-	"slices"
 	"strings"
 	"time"
 
@@ -87,14 +86,18 @@ func docEvent(ev store.Event) docs.Event {
 
 // docPerson returns the shooter block of documents for a registration.
 func docPerson(l i18n.Lang, r store.Registration) docs.Person {
-	p := docs.Person{
-		Lastname: r.Shooter.Lastname, Firstname: r.Shooter.Firstname, Birthday: swissDate(r.Shooter.Birthday),
+	return docs.Person{
+		Lastname: r.Shooter.Lastname, Firstname: r.Shooter.Firstname, Birthday: swissDate(r.Shooter.Birthday), BirthYear: birthYear(r.Shooter.Birthday),
 		License: r.Shooter.LicenseNumber, Club: r.ClubName, Category: categoryLabel(l, r.AgeCategory), CategoryShort: categoryShort[r.AgeCategory],
 	}
-	if len(r.Shooter.Birthday) >= 4 {
-		p.BirthYear = r.Shooter.Birthday[:4]
+}
+
+// birthYear returns the year of a YYYY-MM-DD birthday, empty without one.
+func birthYear(birthday string) string {
+	if len(birthday) < 4 {
+		return ""
 	}
-	return p
+	return birthday[:4]
 }
 
 // filename joins the ASCII letters and digits of parts with underscores into a PDF file name.
@@ -128,6 +131,14 @@ func (s *Server) registrationContext(ctx context.Context, tenantID, registration
 	}
 	programmes, err := s.Store.ListProgrammes(ctx, tenantID, reg.EventID)
 	return reg, ev, programmes, err
+}
+
+// pdfOp is a GET operation that answers a PDF.
+func pdfOp(op, tag, path, summary string) huma.Operation {
+	return huma.Operation{
+		OperationID: op, Method: http.MethodGet, Path: path, Tags: []string{tag}, Summary: summary,
+		Responses: map[string]*huma.Response{"200": {Description: "PDF", Content: map[string]*huma.MediaType{"application/pdf": {}}}},
+	}
 }
 
 // renderRegistrationDoc renders the lane sheet, control strip or result sheet of a registration.
@@ -213,36 +224,23 @@ func (s *Server) renderRegistrationDoc(ctx context.Context, tenantID, registrati
 
 // renderWreathCard renders the wreath card of an entry, 409 when its award is not a wreath card.
 func (s *Server) renderWreathCard(ctx context.Context, tenantID, entryID int64) (rendered, error) {
-	e, err := s.Store.GetEntry(ctx, tenantID, entryID)
-	if err != nil {
-		return rendered{}, notFound(err, "Programme of the registration not found")
-	}
-	sheet, err := s.resultSheet(ctx, tenantID, e.RegistrationID)
+	f, err := s.entryFormValues(ctx, tenantID, entryID)
 	if err != nil {
 		return rendered{}, err
 	}
-	i := slices.IndexFunc(sheet.Entries, func(er EntryResult) bool { return er.EntryID == e.ID })
-	if i < 0 || sheet.Entries[i].Award == nil || sheet.Entries[i].Award.Kind != domain.AwardCard {
+	if f.result.Award == nil || f.result.Award.Kind != domain.AwardCard {
 		return rendered{}, conflict("This programme has no wreath card award")
 	}
-	ev, err := s.Store.GetEvent(ctx, tenantID, e.EventID)
+	layout, images, err := s.eventLayout(ctx, tenantID, f.ev.Settings.WreathCardFormID, docs.BuiltinWreathCard)
 	if err != nil {
 		return rendered{}, err
 	}
-	layout, images, err := s.eventLayout(ctx, tenantID, ev.Settings.WreathCardFormID, docs.BuiltinWreathCard)
-	if err != nil {
-		return rendered{}, err
-	}
-	sh, club, err := s.shooterClub(ctx, tenantID, sheet.Registration)
-	if err != nil {
-		return rendered{}, err
-	}
-	l := i18n.Get(ev.Locale)
-	p := docPerson(l, sheet.Registration)
-	pdf, err := docs.RenderLayout(layout, []map[string]string{formValues(l, ev, sh, club, sheet.Registration, sheet.Entries[i])}, nil, images, false)
+	l := i18n.Get(f.ev.Locale)
+	name := f.reg.Shooter.Lastname + " " + f.reg.Shooter.Firstname
+	pdf, err := docs.RenderLayout(layout, []map[string]string{f.values}, nil, images, false)
 	return rendered{
-		pdf: pdf, filename: filename("Wreath_card", p.Lastname, p.Firstname), title: i18n.Tf(l, "Wreath card %s", p.Lastname+" "+p.Firstname),
-		document: store.DocWreathCard, rangeID: printRange(ev, &sheet.Registration), eventID: ev.ID,
+		pdf: pdf, filename: filename("Wreath_card", f.reg.Shooter.Lastname, f.reg.Shooter.Firstname), title: i18n.Tf(l, "Wreath card %s", name),
+		document: store.DocWreathCard, rangeID: printRange(f.ev, &f.reg), eventID: f.ev.ID,
 	}, err
 }
 
@@ -260,10 +258,7 @@ func (s *Server) renderRanking(ctx context.Context, tenantID, programmeID int64)
 	if err != nil {
 		return rendered{}, err
 	}
-	list := docs.RankingList{Event: docEvent(ev), Title: programmeTitle(p.Name, p.Variant), SeriesCount: len(p.Series), Generated: time.Now()}
-	if loc, err := time.LoadLocation(ev.Timezone); err == nil {
-		list.Generated = list.Generated.In(loc)
-	}
+	list := docs.RankingList{Event: docEvent(ev), Title: programmeTitle(p.Name, p.Variant), SeriesCount: len(p.Series), Generated: eventNow(ev)}
 	for _, r := range rankings {
 		if r.ProgrammeID != p.ID {
 			continue
@@ -316,17 +311,11 @@ type PrintResult struct {
 
 // registerDocuments registers the PDF endpoints and the print endpoint.
 func (s *Server) registerDocuments(api huma.API) {
-	pdfOp := func(op, path string) huma.Operation {
-		return huma.Operation{
-			OperationID: op, Method: http.MethodGet, Path: path, Tags: []string{"documents"},
-			Responses: map[string]*huma.Response{"200": {Description: "PDF", Content: map[string]*huma.MediaType{"application/pdf": {}}}},
-		}
-	}
 	type regDocIn struct {
 		RegistrationPath
 		Document string `path:"document" enum:"lane_sheet,control_strip,result_sheet"`
 	}
-	huma.Register(api, pdfOp("registration-document", "/api/tenants/{tenantId}/registrations/{registrationId}/documents/{document}"),
+	huma.Register(api, pdfOp("registration-document", "documents", "/api/tenants/{tenantId}/registrations/{registrationId}/documents/{document}", ""),
 		func(ctx context.Context, in *regDocIn) (*PDFOutput, error) {
 			if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
 				return nil, err
@@ -336,14 +325,14 @@ func (s *Server) registerDocuments(api huma.API) {
 			}
 			return pdfOut(s.renderRegistrationDoc(ctx, in.TenantID, in.RegistrationID, in.Document))
 		})
-	huma.Register(api, withModule(pdfOp("wreath-card", "/api/tenants/{tenantId}/entries/{entryId}/wreath-card"), modules.Awards),
+	huma.Register(api, withModule(pdfOp("wreath-card", "documents", "/api/tenants/{tenantId}/entries/{entryId}/wreath-card", ""), modules.Awards),
 		func(ctx context.Context, in *EntryPath) (*PDFOutput, error) {
 			if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
 				return nil, err
 			}
 			return pdfOut(s.renderWreathCard(ctx, in.TenantID, in.EntryID))
 		})
-	huma.Register(api, pdfOp("ranking-pdf", "/api/tenants/{tenantId}/programmes/{programmeId}/ranking"),
+	huma.Register(api, pdfOp("ranking-pdf", "documents", "/api/tenants/{tenantId}/programmes/{programmeId}/ranking", ""),
 		func(ctx context.Context, in *ProgrammePath) (*PDFOutput, error) {
 			if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
 				return nil, err

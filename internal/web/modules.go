@@ -97,7 +97,7 @@ func ignoreNotFound(err error) error {
 // requireModule answers 404 when a module is off for an event, for checks the gate cannot make from the path.
 func requireModule(ev store.Event, key string) error {
 	if !slices.Contains(ev.Modules, key) {
-		return missing("This module is off for this event")
+		return moduleOff()
 	}
 	return nil
 }

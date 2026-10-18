@@ -164,16 +164,7 @@ func insertBookingItems(ctx context.Context, tx pgx.Tx, tenantID, requestID int6
 // shooterKey identifies an announced shooter for diffing two lists.
 func shooterKey(b domain.BookingShooter) string {
 	return strings.ToLower(strings.TrimSpace(b.Firstname)) + "\x00" + strings.ToLower(strings.TrimSpace(b.Lastname)) + "\x00" +
-		b.Birthday + "\x00" + normalizeLicense(b.LicenseNumber)
-}
-
-// normalizeLicense trims a licence number and pads digit-only numbers to six digits like the master data.
-func normalizeLicense(l string) string {
-	l = strings.TrimSpace(l)
-	if digitsRe.MatchString(l) && len(l) < 6 {
-		l = strings.Repeat("0", 6-len(l)) + l
-	}
-	return l
+		b.Birthday + "\x00" + domain.NormalizeLicense(b.LicenseNumber)
 }
 
 // syncBookingShooters makes the shooter list of a request equal to list: unchanged rows keep their master data
@@ -208,7 +199,7 @@ func syncBookingShooters(ctx context.Context, tx pgx.Tx, tenantID, requestID int
 		}
 		if _, err := tx.Exec(ctx, `INSERT INTO booking_shooters (tenant_id, request_id, firstname, lastname, birthday, license_number)
 			VALUES ($1, $2, $3, $4, $5, $6)`, tenantID, requestID, strings.TrimSpace(b.Firstname), strings.TrimSpace(b.Lastname),
-			b.Birthday, normalizeLicense(b.LicenseNumber)); err != nil {
+			b.Birthday, domain.NormalizeLicense(b.LicenseNumber)); err != nil {
 			return err
 		}
 	}

@@ -36,10 +36,7 @@ const maxBackgroundBytes = 4 << 20
 
 // baseValues are the placeholder values every data source shares: the shooter, the club, the event and today.
 func baseValues(ev store.Event, sh store.Shooter, club store.Club, p docs.Person) map[string]string {
-	loc, err := time.LoadLocation(ev.Timezone)
-	if err != nil {
-		loc = time.UTC
-	}
+	loc := eventLoc(ev.Timezone)
 	return map[string]string{
 		"shooter.firstname": p.Firstname, "shooter.lastname": p.Lastname, "shooter.name": p.Lastname + " " + p.Firstname,
 		"shooter.license": p.License, "shooter.birthday": p.Birthday, "shooter.birthyear": p.BirthYear,
@@ -208,11 +205,7 @@ func (s *Server) renderForm(ctx context.Context, tenantID, entryID int64) (rende
 	if p.LayoutID == nil {
 		return rendered{}, conflict("This programme has no print form")
 	}
-	l, err := s.Store.GetLayout(ctx, tenantID, *p.LayoutID)
-	if err != nil {
-		return rendered{}, err
-	}
-	images, err := s.Store.ImagesByID(ctx, tenantID, l.ImageIDs())
+	l, images, err := s.sourceForm(ctx, tenantID, *p.LayoutID, domain.SourceResults)
 	if err != nil {
 		return rendered{}, err
 	}
@@ -398,18 +391,12 @@ func (s *Server) registerForms(api huma.API) {
 		return &imageOut{ContentType: http.DetectContentType(bg), CacheControl: "no-cache", Body: bg}, nil
 	})
 
-	pdfOp := func(op, path, summary string) huma.Operation {
-		return huma.Operation{
-			OperationID: op, Metadata: modules.Metadata(modules.Forms), Method: http.MethodGet, Path: path, Tags: []string{"forms"}, Summary: summary,
-			Responses: map[string]*huma.Response{"200": {Description: "PDF", Content: map[string]*huma.MediaType{"application/pdf": {}}}},
-		}
-	}
 	type previewIn struct {
 		LayoutPath
 		EntryID int64 `query:"entryId" required:"false" doc:"Fill in the results of this entry instead of made-up values"`
 		Print   bool  `query:"print" required:"false" doc:"Render as printed: with the printer offset and without the background"`
 	}
-	huma.Register(api, pdfOp("preview-layout", "/api/tenants/{tenantId}/layouts/{layoutId}/preview", "The form with the scan of the empty form behind it"),
+	huma.Register(api, withModule(pdfOp("preview-layout", "forms", "/api/tenants/{tenantId}/layouts/{layoutId}/preview", "The form with the scan of the empty form behind it"), modules.Forms),
 		func(ctx context.Context, in *previewIn) (*PDFOutput, error) {
 			if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
 				return nil, err
@@ -440,7 +427,7 @@ func (s *Server) registerForms(api huma.API) {
 			return pdfOut(rendered{pdf: pdf, filename: filename(l.Name, "preview")}, err)
 		})
 
-	huma.Register(api, pdfOp("entry-form", "/api/tenants/{tenantId}/entries/{entryId}/form", "The results of an entry printed onto the form of its programme"),
+	huma.Register(api, withModule(pdfOp("entry-form", "forms", "/api/tenants/{tenantId}/entries/{entryId}/form", "The results of an entry printed onto the form of its programme"), modules.Forms),
 		func(ctx context.Context, in *EntryPath) (*PDFOutput, error) {
 			if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
 				return nil, err

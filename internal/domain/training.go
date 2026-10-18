@@ -233,12 +233,12 @@ func (a acc) perShot() *float64 {
 	if a.shots == 0 {
 		return nil
 	}
-	v := round2(a.points / float64(a.shots))
+	v := Round2(a.points / float64(a.shots))
 	return &v
 }
 
-// round2 rounds v to two decimals.
-func round2(v float64) float64 { return math.Round(v*100) / 100 }
+// Round2 rounds v to two decimals.
+func Round2(v float64) float64 { return math.Round(v*100) / 100 }
 
 const (
 	movingWindow  = 5
@@ -283,7 +283,7 @@ func Stats(d Discipline, sessions []SessionFacts, now time.Time) TrainingStats {
 			w.add(a.points, a.shots)
 		}
 		p := TrainingPoint{SessionID: s.ID, At: s.StartedAt, Kind: s.Kind, Total: total, Shots: shots,
-			PerShot: round2(total / float64(shots)), Moving: *w.perShot()}
+			PerShot: Round2(total / float64(shots)), Moving: *w.perShot()}
 		st.Points = append(st.Points, p)
 		if shots == d.StandardShots() && (st.Best == nil || total > st.Best.Total) {
 			best := p
@@ -322,7 +322,7 @@ func Stats(d Discipline, sessions []SessionFacts, now time.Time) TrainingStats {
 			continue
 		}
 		p := *a.perShot()
-		st.Tags = append(st.Tags, TagStat{Tag: t, Sessions: tagCount[t], PerShot: p, Delta: round2(p - st.PerShot)})
+		st.Tags = append(st.Tags, TagStat{Tag: t, Sessions: tagCount[t], PerShot: p, Delta: Round2(p - st.PerShot)})
 	}
 	sort.Slice(st.Tags, func(i, j int) bool { return st.Tags[i].Delta > st.Tags[j].Delta })
 	st.Group = group(sessions)
@@ -373,8 +373,8 @@ func GroupOf(xs, ys []float64) *Group {
 	for i := range xs {
 		g.Radius += math.Hypot(xs[i]-g.X, ys[i]-g.Y)
 	}
-	g.Shots, g.Radius = len(xs), round2(g.Radius/n)
-	g.X, g.Y = round2(g.X), round2(g.Y)
+	g.Shots, g.Radius = len(xs), Round2(g.Radius/n)
+	g.X, g.Y = Round2(g.X), Round2(g.Y)
 	return &g
 }
 
@@ -423,7 +423,7 @@ func FeedbackFor(sessions []SessionFacts, id int64) Feedback {
 	f.Of++
 	f.PersonalBest = f.Rank == 1 && f.Of > 1
 	if p := before.perShot(); p != nil {
-		d := round2(total/float64(shots) - *p)
+		d := Round2(total/float64(shots) - *p)
 		f.Delta = &d
 	}
 	return f

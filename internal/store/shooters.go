@@ -8,6 +8,7 @@ import (
 
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgconn"
+	"github.com/standblatt/server/internal/domain"
 )
 
 type querier interface {
@@ -60,10 +61,7 @@ func searchFilter(q string, n int) (string, []any) {
 	case q == "":
 		return "true", nil
 	case digitsRe.MatchString(q):
-		if len(q) < 6 {
-			q = strings.Repeat("0", 6-len(q)) + q
-		}
-		return "s.license_number = " + p(0), []any{q}
+		return "s.license_number = " + p(0), []any{domain.NormalizeLicense(q)}
 	case strings.Contains(q, " "):
 		a, b, _ := strings.Cut(q, " ")
 		a, b = likeEscape(a)+"%", likeEscape(strings.TrimSpace(b))+"%"

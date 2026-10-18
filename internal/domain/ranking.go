@@ -1,6 +1,7 @@
 package domain
 
 import (
+	"cmp"
 	"math"
 	"slices"
 	"sort"
@@ -81,9 +82,9 @@ func tieBreak(c TieBreak, a, b RankingEntry) int {
 		case !aj && bj:
 			return -1
 		case aj:
-			return compareStrings(b.Birthday, a.Birthday)
+			return cmp.Compare(b.Birthday, a.Birthday)
 		default:
-			return compareStrings(a.Birthday, b.Birthday)
+			return cmp.Compare(a.Birthday, b.Birthday)
 		}
 	}
 	return 0
@@ -123,17 +124,6 @@ func compareHighest(a, b []float64) int {
 		if d := pointsDiff(p, q); d != 0 {
 			return -d
 		}
-	}
-	return 0
-}
-
-// compareStrings returns -1, 0 or 1 as a sorts before, equal to or after b.
-func compareStrings(a, b string) int {
-	switch {
-	case a < b:
-		return -1
-	case a > b:
-		return 1
 	}
 	return 0
 }
