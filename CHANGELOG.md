@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - API: `EventSettings` lost `noLaneSheet`, `noControlStrip` and `ammoIssue`; events have `modules` and `modulesInUse` instead, `create-event` without `modules` switches on all but the ammunition desk and `GET /api/modules` lists them (by @HB9HIL)
 
 ### Fixed
+- The README is short again and points to the help and the docs; the unused setting `STANDBLATT_PRICE_LABEL` is gone from the docs and `.env.example` (by @HB9HIL)
 - The dashboard of an event without lane assignment or range showed registrations as waiting with *Assign lane*; they are listed as *Registered* with *Results*, *Edit* and *Finish* (by @HB9HIL)
 - Copying an event that was itself a copy failed when the first copy had no booking days (by @HB9HIL)
 - The German, French and Italian help of *Enter results* showed a paragraph of the CSV import instead of how results are saved (by @HB9HIL)
