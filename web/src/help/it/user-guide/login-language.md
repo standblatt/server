@@ -2,9 +2,10 @@
 
 ## Accedere
 
-Accedi con il nome utente (o l’indirizzo e-mail) e la password ricevuti
-dall’admin della tua società o dal gestore della piattaforma. Gli account
-della società non nascono da una registrazione; solo [Il mio
+Accedi con il tuo indirizzo e-mail (o nome utente) e la tua password: la
+password l’hai scelta accettando l’invito della tua società, oppure l’hai
+ricevuta dall’admin della tua società o dal gestore della piattaforma. Gli
+account della società non nascono da una registrazione; solo [Il mio
 allenamento](../my-training/account.md) ha una sua registrazione. Password
 dimenticata? Se il tuo account ha un indirizzo e-mail confermato, usa
 **Password dimenticata?** nella pagina di accesso; altrimenti chiedi al

@@ -1,8 +1,8 @@
 # CSV-Import
 
-Vereins-Admins importieren Schützen auf der Seite **Schützen**. Die Datei
-braucht eine Kopfzeile; das Trennzeichen (`;` oder `,`) wird daraus
-übernommen.
+Mitglieder mit dem Recht *Stammdaten verwalten* importieren Schützen auf der
+Seite **Schützen**. Die Datei braucht eine Kopfzeile; das Trennzeichen (`;`
+oder `,`) wird daraus übernommen.
 
 ```text
 license;firstname;lastname;birthday;postalcode;city;club

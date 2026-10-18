@@ -33,7 +33,7 @@ curl -H "Authorization: Bearer $TOKEN" https://app.standblatt.ch/api/my/training
 
 ## Conventions
 
-- Tenant-scoped paths: `/api/tenants/{tenantId}/…`; non-members get 404, staff get 403 on admin operations.
+- Tenant-scoped paths: `/api/tenants/{tenantId}/…`; non-members get 404, members whose role lacks the permission of the operation get 403 (see `internal/permissions`).
 - Errors are RFC 9457 problem details (`application/problem+json`) with an English `detail`.
 - A change to an archived event answers 409.
 - WebSockets: `/api/tenants/{tenantId}/events/{eventId}/live` and `/api/kiosk/live` send `{topic}` messages; clients refetch what the topic covers.

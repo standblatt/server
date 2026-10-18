@@ -1,6 +1,6 @@
 # Manifestations
 
-**Manifestations** liste les manifestations de la société dans les groupes *Aujourd’hui* (entre le premier et le dernier jour de tir), *À venir*, *Passées* et *Clôturées* ; les admins en créent de nouvelles ici. Ouvrir une manifestation affiche dans la barre latérale son tableau de bord et les autres pages du déroulement ; *Changer de manifestation* en haut de la barre latérale ramène à la liste.
+**Manifestations** liste les manifestations de la société dans les groupes *Aujourd’hui* (entre le premier et le dernier jour de tir), *À venir*, *Passées* et *Clôturées* ; les rôles avec le droit *Configurer les manifestations* y en créent de nouvelles. Ouvrir une manifestation affiche dans la barre latérale son tableau de bord et les autres pages de l’exploitation ; *Changer de manifestation* en haut de la barre latérale ramène à la liste.
 
 ![Manifestations](../images/screenshots/events.png){ .screenshot }
 
@@ -22,8 +22,8 @@ liste alors ses pages, et *Retour à la manifestation* ramène au déroulement
 | Pages des modules | p. ex. **Réservations** (avec la réservation en ligne), **Classements généraux**, **Affichages kiosque**, **Liens d'aide**, seulement tant que le module est activé |
 | **Copier & clôturer** | copier pour l’année prochaine, clôturer, rouvrir et supprimer |
 
-Le personnel travaille seulement dans le déroulement ; la configuration est
-réservée aux admins.
+La configuration demande le droit *Configurer les manifestations*,
+l’exploitation *Gérer les manifestations* (voir [Rôles](users.md#roles)).
 
 ## Réglages {#settings}
 
@@ -88,9 +88,9 @@ ligne](online-booking.md)).
 
 ### Modules de la société {#club-modules}
 
-Certains modules appartiennent à la société plutôt qu'à une
+Certains modules appartiennent à la société plutôt qu’à une
 manifestation. **Modules de la société** dans la partie société de la barre
-latérale (admins) les active et les désactive :
+latérale (droit *Utilisateurs et société*) les active et les désactive :
 
 | Module | Ce qu'il ajoute |
 |---|---|

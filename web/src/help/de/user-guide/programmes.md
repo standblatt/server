@@ -1,7 +1,7 @@
 # Programme
 
 Programme gehören zu einem Anlass und werden unter **Konfiguration** →
-**Programme** verwaltet (nur Admins).
+**Programme** verwaltet (Recht *Anlässe konfigurieren*).
 
 ![Die Programmliste](../images/screenshots/setup.png){ .screenshot }
 

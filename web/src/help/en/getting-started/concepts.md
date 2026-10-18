@@ -4,12 +4,7 @@
 
 A **club** is a tenant: everything in Standblatt belongs to exactly one club, and clubs never see each other's data. The platform operator creates clubs and user accounts in the [admin panel](../admin-guide/admin-panel.md).
 
-**Users** are personal accounts. One account can belong to several clubs, with one role per club:
-
-| Role | Can |
-|---|---|
-| **Admin** | everything: ranges, events, programmes, kiosk links, users of the club, special prizes, closing events |
-| **Staff** | run events: register shooters, enter results, print, reservations; read everything else |
+**Users** are personal accounts. One account can belong to several clubs, with one role per club. A role is a set of permissions such as *Run events* or *Configure events*; every club starts with the roles *Admin*, *Board*, *Helper* and *Member* and can change them or add its own (see [Roles](../user-guide/users.md#roles)). Clubs invite people by email; the invited person joins by accepting the link.
 
 ## Ranges and lanes
 

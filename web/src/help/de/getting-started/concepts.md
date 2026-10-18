@@ -7,12 +7,7 @@ Verein, und Vereine sehen die Daten der anderen nie. Der Plattformbetreiber
 legt Vereine und Benutzerkonten im
 [Admin-Panel](../admin-guide/admin-panel.md) an.
 
-**Benutzer** sind persönliche Konten. Ein Konto kann zu mehreren Vereinen gehören, mit einer Rolle pro Verein:
-
-| Rolle | Darf |
-|---|---|
-| **Admin** | alles: Schiessstände, Anlässe, Programme, Kiosk-Links, Benutzer des Vereins, Sonderpreise, Anlässe abschliessen |
-| **Personal** | Anlässe durchführen: Schützen anmelden, Resultate erfassen, drucken, Reservationen; alles andere lesen |
+**Benutzer** sind persönliche Konten. Ein Konto kann zu mehreren Vereinen gehören, mit einer Rolle pro Verein. Eine Rolle ist eine Sammlung von Rechten wie *Anlässe durchführen* oder *Anlässe konfigurieren*; jeder Verein startet mit den Rollen *Admin*, *Vorstand*, *Helfer* und *Mitglied* und kann sie ändern oder eigene hinzufügen (siehe [Rollen](../user-guide/users.md#roles)). Vereine laden Personen per E-Mail ein; die eingeladene Person tritt bei, indem sie den Link annimmt.
 
 ## Schiessstände und Scheiben
 

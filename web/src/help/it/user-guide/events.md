@@ -1,6 +1,6 @@
 # Manifestazioni
 
-**Manifestazioni** elenca le manifestazioni della società nei gruppi *Oggi* (tra il primo e l’ultimo giorno di tiro), *Prossime*, *Passate* e *Chiuse*; gli admin ne creano di nuove qui. Aprendo una manifestazione la barra laterale mostra la dashboard e le altre pagine dello svolgimento; *Cambia manifestazione* in alto nella barra laterale riporta all’elenco.
+**Manifestazioni** elenca le manifestazioni della società nei gruppi *Oggi* (tra il primo e l’ultimo giorno di tiro), *Prossime*, *Passate* e *Chiuse*; i ruoli con il diritto *Configurare le manifestazioni* ne creano di nuove. Aprendo una manifestazione la barra laterale mostra il suo cruscotto e le altre pagine dell’esercizio; *Cambia manifestazione* in alto nella barra laterale riporta all’elenco.
 
 ![Manifestazioni](../images/screenshots/events.png){ .screenshot }
 
@@ -21,8 +21,8 @@ sue pagine, e *Torna alla manifestazione* riporta allo svolgimento:
 | Pagine dei moduli | p. es. **Prenotazioni** (con la prenotazione online), **Classifiche generali**, **Display chiosco**, **Link aiutante**, solo finché il modulo è attivo |
 | **Copia e chiudi** | copiare per l’anno prossimo, chiudere, riaprire ed eliminare |
 
-Il personale lavora solo nello svolgimento; la configurazione è riservata
-agli admin.
+La configurazione richiede il diritto *Configurare le manifestazioni*,
+l’esercizio *Gestire le manifestazioni* (vedi [Ruoli](users.md#roles)).
 
 ## Impostazioni {#settings}
 
@@ -87,7 +87,7 @@ online](online-booking.md)).
 
 Alcuni moduli appartengono alla società invece che a una
 manifestazione. **Moduli della società** nella parte società della barra
-laterale (admin) li attiva e disattiva:
+laterale (diritto *Utenti e società*) li attiva e disattiva:
 
 | Modulo | Cosa aggiunge |
 |---|---|

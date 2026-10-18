@@ -38,7 +38,11 @@ Every module has a folder `web/src/lib/modules/<key>/` with an `index.ts` that e
 
 ## Club modules
 
-Modules with `Level: Club` belong to a club: `tenants.modules` holds the chosen keys, `clubUsage` in `internal/store/modules.go` tells when a club holds data, `store.Membership` (in `/api/me`) carries `modules` and `modulesInUse`, and `PUT /api/tenants/{tenantId}/modules` chooses them. The gate checks the club of `tenantId` for operations tagged with a club module. In the UI, `clubModuleUI` in `$lib/modules/index.ts` (`ClubModuleUI`: label, description, help, icon, `clubPage` = a page of the club in the sidebar, `programmeSections`) and `hasClub(membership, key)`; the *Club modules* page at `/t/<id>/modules` uses the same `ModuleCards` as the event's *Modules* page.
+Modules with `Level: Club` belong to a club: `tenants.modules` holds the chosen keys, `clubUsage` in `internal/store/modules.go` tells when a club holds data, `store.Membership` (in `/api/me`) carries `modules` and `modulesInUse`, and `PUT /api/tenants/{tenantId}/modules` chooses them. The gate checks the club of `tenantId` for operations tagged with a club module. In the UI, `clubModuleUI` in `$lib/modules/index.ts` (`ClubModuleUI`: label, description, help, icon, `clubPage` = a page of the club in the sidebar with the permission it needs, `programmeSections`) and `hasClub(membership, key)`; the *Club modules* page at `/t/<id>/modules` uses the same `ModuleCards` as the event's *Modules* page.
+
+## Permissions
+
+What a member may do comes from the permissions of their role, not from the module. `internal/permissions` is the only list (`All` with the key and, for a permission that belongs to a club module, its `Module`; `Enum` and the enum tags on `store.Role`/`RoleInput`/`Membership` must match, `TestModuleEnums` checks the spec, `TestPermissionsUsed` that every permission is required somewhere). Every tenant handler calls `s.access(ctx, tenantID, perms...)`: one of the listed permissions is enough, none means any member. A module that needs a right of its own adds a key there with its `Module`, names it in `access` and gives it a text in `permissionUI` (`$lib/permissions.ts`, a `Record<Permission, …>`, so svelte-check catches a missing one); the role matrix shows it only while the module is on. The UI asks `can(membership, permission)` from `$lib/me.ts`; pages that need a permission are wrapped in `$lib/RequirePermission.svelte`.
 
 ## Adding a module
 

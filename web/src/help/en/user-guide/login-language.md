@@ -2,7 +2,7 @@
 
 ## Logging in
 
-Log in with the user name (or email address) and password you received from your club admin or the platform operator. Club accounts are not created by sign-up; only [My training](../my-training/account.md) has its own sign-up. Forgot your password? If your account has a confirmed email address, use **Forgot your password?** on the login page; otherwise ask the operator to set a new password in the [admin panel](../admin-guide/admin-panel.md). Logged in, you change it yourself under [Account](#account).
+Log in with your email address (or user name) and password: you chose the password when you accepted the invitation of your club, or you received it from your club admin or the platform operator. Club accounts are not created by sign-up; only [My training](../my-training/account.md) has its own sign-up. Forgot your password? If your account has a confirmed email address, use **Forgot your password?** on the login page; otherwise ask the operator to set a new password in the [admin panel](../admin-guide/admin-panel.md). Logged in, you change it yourself under [Account](#account).
 
 After the login you land on the start page with a card for every club you belong to and one for [My training](../my-training/index.md), which every user has; **Account** and **Log out** are below the cards. Without a club membership the start page takes you straight to My training.
 

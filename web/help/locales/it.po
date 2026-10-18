@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 13:15+0000\n"
+"POT-Creation-Date: 2026-10-18 14:59+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -43,31 +43,18 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/getting-started/concepts.md:8
 #, no-wrap
-msgid "**Users** are personal accounts. One account can belong to several clubs, with one role per club:\n"
-msgstr "Gli **utenti** sono account personali. Un account può appartenere a più società, con un ruolo per società:\n"
-
-#. type: Plain text
-#: ../src/help/en/getting-started/concepts.md:13
-#, no-wrap
-msgid ""
-"| Role | Can |\n"
-"|---|---|\n"
-"| **Admin** | everything: ranges, events, programmes, kiosk links, users of the club, special prizes, closing events |\n"
-"| **Staff** | run events: register shooters, enter results, print, reservations; read everything else |\n"
+msgid "**Users** are personal accounts. One account can belong to several clubs, with one role per club. A role is a set of permissions such as *Run events* or *Configure events*; every club starts with the roles *Admin*, *Board*, *Helper* and *Member* and can change them or add its own (see [Roles](../user-guide/users.md#roles)). Clubs invite people by email; the invited person joins by accepting the link.\n"
 msgstr ""
-"| Ruolo | Può |\n"
-"|---|---|\n"
-"| **Admin** | tutto: stand di tiro, manifestazioni, programmi, link chiosco, utenti della società, premi speciali, chiusura delle manifestazioni |\n"
-"| **Personale** | condurre le manifestazioni: iscrivere tiratori, registrare risultati, stampare, prenotazioni; leggere tutto il resto |\n"
+"Gli **utenti** sono account personali. Un account può appartenere a più società, con un ruolo per società. Un ruolo è un insieme di diritti come *Gestire le manifestazioni* o *Configurare le manifestazioni*; ogni società inizia con i ruoli *Admin*, *Comitato*, *Aiutante* e *Membro* e può modificarli o aggiungerne di propri (vedi [Ruoli](../user-guide/users.md#roles)). Le società invitano le persone via e-mail; la persona invitata entra accettando il link.\n"
 
 #. type: Title ##
-#: ../src/help/en/getting-started/concepts.md:14
+#: ../src/help/en/getting-started/concepts.md:9
 #, no-wrap
 msgid "Ranges and lanes"
 msgstr "Stand di tiro e bersagli"
 
 #. type: Plain text
-#: ../src/help/en/getting-started/concepts.md:17
+#: ../src/help/en/getting-started/concepts.md:12
 msgid ""
 "A **range** (German *Stand*) is a shooting range of the club with a number "
 "of **lanes** (*Scheiben*). Lanes can be marked out of service. Printers and "
@@ -78,13 +65,13 @@ msgstr ""
 "fuori servizio. Le stampanti e l’agente di stampa appartengono a uno stand."
 
 #. type: Title ##
-#: ../src/help/en/getting-started/concepts.md:18
+#: ../src/help/en/getting-started/concepts.md:13
 #, no-wrap
 msgid "Events and programmes"
 msgstr "Manifestazioni e programmi"
 
 #. type: Plain text
-#: ../src/help/en/getting-started/concepts.md:21
+#: ../src/help/en/getting-started/concepts.md:16
 msgid ""
 "An **event** (*Anlass*) is a competition on one or more ranges on one or "
 "more days (the date is the main day; further days cover pre-shooting and "
@@ -92,10 +79,16 @@ msgid ""
 "and kiosk screens, and [modules](../user-guide/events.md#modules) that "
 "switch on what it needs, such as lane assignment, awards or the club "
 "competition."
-msgstr "Una **manifestazione** (inglese *event*) è una gara su uno o più stand di tiro in uno o più giorni (la data è il giorno principale; gli altri giorni coprono il tiro anticipato e le manifestazioni di più giorni). Ha una lingua, usata per i documenti stampati e gli schermi chiosco, e dei [moduli](../user-guide/events.md#modules) che attivano ciò di cui ha bisogno, come l’assegnazione dei bersagli, le distinzioni o il concorso di sezione."
+msgstr ""
+"Una **manifestazione** (inglese *event*) è una gara su uno o più stand di "
+"tiro in uno o più giorni (la data è il giorno principale; gli altri giorni "
+"coprono il tiro anticipato e le manifestazioni di più giorni). Ha una "
+"lingua, usata per i documenti stampati e gli schermi chiosco, e dei [moduli]"
+"(../user-guide/events.md#modules) che attivano ciò di cui ha bisogno, come "
+"l’assegnazione dei bersagli, le distinzioni o il concorso di sezione."
 
 #. type: Plain text
-#: ../src/help/en/getting-started/concepts.md:23
+#: ../src/help/en/getting-started/concepts.md:18
 msgid ""
 "An event offers **programmes** (*Stiche*): each programme has **series** "
 "(*Passen*) with a number of shots and maximum points, **prices** per age "
@@ -114,19 +107,19 @@ msgstr ""
 "serie da quel programma invece di essere tirato separatamente."
 
 #. type: Title ##
-#: ../src/help/en/getting-started/concepts.md:24
+#: ../src/help/en/getting-started/concepts.md:19
 #, no-wrap
 msgid "Shooters, registrations and entries"
 msgstr "Tiratori, iscrizioni e partecipazioni"
 
 #. type: Plain text
-#: ../src/help/en/getting-started/concepts.md:27
+#: ../src/help/en/getting-started/concepts.md:22
 #, no-wrap
 msgid "**Shooters** are the people who shoot. Each club keeps its own shooter master data, together with the **clubs** shooters belong to (the shooter's own club, not to be confused with the tenant club).\n"
 msgstr "I **tiratori** sono le persone che tirano. Ogni società gestisce i propri dati di base dei tiratori, insieme alle **società** a cui appartengono (la società del tiratore, da non confondere con la società che usa Standblatt).\n"
 
 #. type: Plain text
-#: ../src/help/en/getting-started/concepts.md:29
+#: ../src/help/en/getting-started/concepts.md:24
 msgid ""
 "A **registration** puts a shooter on the event, optionally on a lane, with "
 "one or more programmes. Each programme of a registration is an **entry**. A "
@@ -140,32 +133,32 @@ msgstr ""
 "bersaglio è di nuovo libero)."
 
 #. type: Title ##
-#: ../src/help/en/getting-started/concepts.md:30
+#: ../src/help/en/getting-started/concepts.md:25
 #, no-wrap
 msgid "Results, awards and rankings"
 msgstr "Risultati, distinzioni e classifiche"
 
 #. type: Plain text
-#: ../src/help/en/getting-started/concepts.md:33
+#: ../src/help/en/getting-started/concepts.md:28
 #, no-wrap
 msgid "**Results** are the points per series, optionally with mouches (inner tens). Once all series are in, the shooter may receive one of the **awards** the total reaches in the shooter's age category. **Rankings** order all results of a programme by the [SSV rules](../reference/rules.md#ranking).\n"
 msgstr "I **risultati** sono i punti per serie, facoltativamente con mouche (dieci interni). Quando tutte le serie sono registrate, il tiratore può ricevere una delle **distinzioni** che il suo totale raggiunge nella sua categoria d’età. Le **classifiche** ordinano tutti i risultati di un programma secondo le [regole della FST](../reference/rules.md#ranking).\n"
 
 #. type: Title ##
-#: ../src/help/en/getting-started/concepts.md:34
+#: ../src/help/en/getting-started/concepts.md:29
 #, no-wrap
 msgid "Age categories {#age-categories}"
 msgstr "Categorie d’età {#age-categories}"
 
 #. type: Plain text
-#: ../src/help/en/getting-started/concepts.md:37
+#: ../src/help/en/getting-started/concepts.md:32
 msgid "The age category follows from the birth year and the year of the event:"
 msgstr ""
 "La categoria d’età risulta dall’anno di nascita e dall’anno della "
 "manifestazione:"
 
 #. type: Plain text
-#: ../src/help/en/getting-started/concepts.md:50
+#: ../src/help/en/getting-started/concepts.md:45
 #, no-wrap
 msgid ""
 "| Category | Short | Age in the event year |\n"
@@ -195,18 +188,18 @@ msgstr ""
 "| Seniori-veterani | SV | 70 e oltre |\n"
 
 #. type: Plain text
-#: ../src/help/en/getting-started/concepts.md:52
+#: ../src/help/en/getting-started/concepts.md:47
 msgid "A shooter without a birthday counts as Elite."
 msgstr "Un tiratore senza data di nascita conta come élite."
 
 #. type: Title ##
-#: ../src/help/en/getting-started/concepts.md:53
+#: ../src/help/en/getting-started/concepts.md:48
 #, no-wrap
 msgid "Glossary"
 msgstr "Glossario"
 
 #. type: Plain text
-#: ../src/help/en/getting-started/concepts.md:67
+#: ../src/help/en/getting-started/concepts.md:62
 #, no-wrap
 msgid ""
 "| English (Standblatt) | German | French | Italian |\n"
@@ -1654,12 +1647,10 @@ msgstr "Importazione CSV"
 #. type: Plain text
 #: ../src/help/en/reference/csv-import.md:4
 msgid ""
-"Club admins import shooters on the **Shooters** page. The file needs a "
-"header row; the separator (`;` or `,`) is taken from it."
-msgstr ""
-"Gli admin della società importano i tiratori nella pagina **Tiratori**. Il "
-"file ha bisogno di una riga d’intestazione; il separatore (`;` o `,`) viene "
-"preso da essa."
+"Members with the permission *Manage master data* import shooters on the "
+"**Shooters** page. The file needs a header row; the separator (`;` or `,`) "
+"is taken from it."
+msgstr "I membri con il diritto *Gestire i dati di base* importano i tiratori nella pagina **Tiratori**. Il file ha bisogno di una riga d’intestazione; il separatore (`;` o `,`) viene preso da essa."
 
 #. type: Fenced code block (text)
 #: ../src/help/en/reference/csv-import.md:5
@@ -2179,7 +2170,10 @@ msgid ""
 "The club excluded in the settings of the module *Club competition* (usually "
 "the host) keeps its place in the list but gets no rank (\"out of "
 "competition\")."
-msgstr "La società esclusa nelle impostazioni del modulo *Concorso di sezione* (di solito l’organizzatrice) mantiene il suo posto nell’elenco ma non riceve un rango («fuori concorso»)."
+msgstr ""
+"La società esclusa nelle impostazioni del modulo *Concorso di sezione* (di "
+"solito l’organizzatrice) mantiene il suo posto nell’elenco ma non riceve un "
+"rango («fuori concorso»)."
 
 #. type: Title ##
 #: ../src/help/en/reference/rules.md:56
@@ -2621,8 +2615,9 @@ msgstr "Manifestazioni"
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:4
 #, no-wrap
-msgid "**Events** lists the events of the club in the groups *Today* (between the first and the last shooting day), *Upcoming*, *Past* and *Closed*; admins create new ones there. Opening an event shows its dashboard and the other pages of the operation in the sidebar; *Change event* at the top of the sidebar returns to the list.\n"
-msgstr "**Manifestazioni** elenca le manifestazioni della società nei gruppi *Oggi* (tra il primo e l’ultimo giorno di tiro), *Prossime*, *Passate* e *Chiuse*; gli admin ne creano di nuove qui. Aprendo una manifestazione la barra laterale mostra la dashboard e le altre pagine dello svolgimento; *Cambia manifestazione* in alto nella barra laterale riporta all’elenco.\n"
+msgid "**Events** lists the events of the club in the groups *Today* (between the first and the last shooting day), *Upcoming*, *Past* and *Closed*; roles with the permission *Configure events* create new ones there. Opening an event shows its dashboard and the other pages of the operation in the sidebar; *Change event* at the top of the sidebar returns to the list.\n"
+msgstr ""
+"**Manifestazioni** elenca le manifestazioni della società nei gruppi *Oggi* (tra il primo e l’ultimo giorno di tiro), *Prossime*, *Passate* e *Chiuse*; i ruoli con il diritto *Configurare le manifestazioni* ne creano di nuove. Aprendo una manifestazione la barra laterale mostra il suo cruscotto e le altre pagine dell’esercizio; *Cambia manifestazione* in alto nella barra laterale riporta all’elenco.\n"
 
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:6
@@ -2673,10 +2668,10 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:20
-msgid "Staff work only in the operation; the configuration is for admins."
-msgstr ""
-"Il personale lavora solo nello svolgimento; la configurazione è riservata "
-"agli admin."
+msgid ""
+"The configuration needs the permission *Configure events*, the operation "
+"*Run events* (see [Roles](users.md#roles))."
+msgstr "La configurazione richiede il diritto *Configurare le manifestazioni*, l’esercizio *Gestire le manifestazioni* (vedi [Ruoli](users.md#roles))."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/events.md:21
@@ -2836,11 +2831,9 @@ msgstr "Moduli della società {#club-modules}"
 #: ../src/help/en/user-guide/events.md:70
 msgid ""
 "Some modules belong to the club rather than to an event. **Club modules** in "
-"the club part of the sidebar (admins) switches them on and off:"
-msgstr ""
-"Alcuni moduli appartengono alla società invece che a una manifestazione. "
-"**Moduli della società** nella parte società della barra laterale (admin) li "
-"attiva e disattiva:"
+"the club part of the sidebar (permission *Users and club*) switches them on "
+"and off:"
+msgstr "Alcuni moduli appartengono alla società invece che a una manifestazione. **Moduli della società** nella parte società della barra laterale (diritto *Utenti e società*) li attiva e disattiva:"
 
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:74
@@ -3013,22 +3006,15 @@ msgstr "Accedere"
 #. type: Plain text
 #: ../src/help/en/user-guide/login-language.md:6
 msgid ""
-"Log in with the user name (or email address) and password you received from "
-"your club admin or the platform operator. Club accounts are not created by "
-"sign-up; only [My training](../my-training/account.md) has its own sign-up. "
-"Forgot your password? If your account has a confirmed email address, use "
+"Log in with your email address (or user name) and password: you chose the "
+"password when you accepted the invitation of your club, or you received it "
+"from your club admin or the platform operator. Club accounts are not created "
+"by sign-up; only [My training](../my-training/account.md) has its own sign-"
+"up. Forgot your password? If your account has a confirmed email address, use "
 "**Forgot your password?** on the login page; otherwise ask the operator to "
 "set a new password in the [admin panel](../admin-guide/admin-panel.md). "
 "Logged in, you change it yourself under [Account](#account)."
-msgstr ""
-"Accedi con il nome utente (o l’indirizzo e-mail) e la password ricevuti "
-"dall’admin della tua società o dal gestore della piattaforma. Gli account "
-"della società non nascono da una registrazione; solo [Il mio allenamento](../"
-"my-training/account.md) ha una sua registrazione. Password dimenticata? Se "
-"il tuo account ha un indirizzo e-mail confermato, usa **Password dimenticata?"
-"** nella pagina di accesso; altrimenti chiedi al gestore di impostare una "
-"nuova password nel [pannello di amministrazione](../admin-guide/admin-"
-"panel.md). Da connesso la cambi da solo sotto [Account](#account)."
+msgstr "Accedi con il tuo indirizzo e-mail (o nome utente) e la tua password: la password l’hai scelta accettando l’invito della tua società, oppure l’hai ricevuta dall’admin della tua società o dal gestore della piattaforma. Gli account della società non nascono da una registrazione; solo [Il mio allenamento](../my-training/account.md) ha una sua registrazione. Password dimenticata? Se il tuo account ha un indirizzo e-mail confermato, usa **Password dimenticata?** nella pagina di accesso; altrimenti chiedi al gestore di impostare una nuova password nel [pannello di amministrazione](../admin-guide/admin-panel.md). Da connesso la cambi da solo sotto [Account](#account)."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/login-language.md:8
@@ -3742,10 +3728,8 @@ msgstr "Programmi"
 #: ../src/help/en/user-guide/programmes.md:4
 msgid ""
 "Programmes belong to an event and are managed under **Configuration** → "
-"**Programmes** (admins only)."
-msgstr ""
-"I programmi appartengono a una manifestazione e si gestiscono in "
-"**Configurazione** → **Programmi** (solo admin)."
+"**Programmes** (permission *Configure events*)."
+msgstr "I programmi appartengono a una manifestazione e si gestiscono sotto **Configurazione** → **Programmi** (diritto *Configurare le manifestazioni*)."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/programmes.md:6
@@ -4324,7 +4308,7 @@ msgstr ""
 "scorer.png){ .screenshot .phone }"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/helpers.md:7
+#: ../src/help/en/user-guide/helpers.md:7 ../src/help/en/user-guide/users.md:16
 #, no-wrap
 msgid "Roles {#roles}"
 msgstr "Ruoli {#roles}"
@@ -5334,56 +5318,66 @@ msgstr "Utenti"
 #. type: Plain text
 #: ../src/help/en/user-guide/users.md:4
 #, no-wrap
-msgid "**Users** (admins only) lists the accounts with access to the club and their role.\n"
-msgstr "**Utenti** (solo admin) elenca gli account con accesso alla società e il loro ruolo.\n"
+msgid "**Users** lists the accounts with access to the club, the open invitations and the roles of the club. It is open to roles with the permission *Users and club*, so at least to admins.\n"
+msgstr ""
+"**Utenti** elenca gli account con accesso alla società, gli inviti aperti e i ruoli della società. La pagina è aperta ai ruoli con il diritto *Utenti e società*, quindi almeno agli admin.\n"
 
 #. type: Plain text
 #: ../src/help/en/user-guide/users.md:6
 msgid "![Users](../images/screenshots/users.png){ .screenshot }"
 msgstr "![Utenti](../images/screenshots/users.png){ .screenshot }"
 
+#. type: Title ##
+#: ../src/help/en/user-guide/users.md:7
+#, no-wrap
+msgid "Members and invitations {#invitations}"
+msgstr "Membri e inviti {#invitations}"
+
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/users.md:11
+#: ../src/help/en/user-guide/users.md:15
 msgid ""
 "**Invite by email**: paste one or many addresses (comma separated or one per "
-"line, up to 300) and choose the role. People without an account get a mail "
-"with a link to set their password (valid for seven days) and then log in "
-"with their email address; existing accounts are added to the club and told "
-"by mail. The list under the form says what happened to each address. Mails "
-"leave at about four per second, so a large list takes a minute."
-msgstr ""
-"**Invita via e-mail**: incolla uno o più indirizzi (separati da virgole o "
-"uno per riga, fino a 300) e scegli il ruolo. Le persone senza account "
-"ricevono un’e-mail con un link per impostare la password (valido sette "
-"giorni) e poi accedono con il loro indirizzo e-mail; gli account esistenti "
-"vengono aggiunti alla società e informati via e-mail. L’elenco sotto il "
-"modulo mostra cosa è successo a ogni indirizzo. Le e-mail partono a circa "
-"quattro al secondo, quindi un elenco grande richiede un minuto."
+"line, up to 300) and choose the role. Every address gets a mail with a link "
+"valid for seven days; the list under the form says what happened to each "
+"address. Mails leave at about four per second, so a large list takes a "
+"minute."
+msgstr "**Invita via e-mail**: incolla uno o più indirizzi (separati da virgole o uno per riga, fino a 300) e scegli il ruolo. Ogni indirizzo riceve un’e-mail con un link valido sette giorni; l’elenco sotto il modulo mostra cosa è successo a ogni indirizzo. Le e-mail partono a circa quattro al secondo, quindi un elenco grande richiede un minuto."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/users.md:11
+#: ../src/help/en/user-guide/users.md:15
 msgid ""
-"**Add user**: the older way for an account without email: an existing "
-"account is added by its user name; for a new account also enter a password "
-"(at least 10 characters)."
-msgstr ""
-"**Aggiungi utente**: il vecchio modo per un account senza e-mail: un account "
-"esistente viene aggiunto tramite il nome utente; per un nuovo account "
-"inserisci anche una password (almeno 10 caratteri)."
+"**Accepting**: the link opens a page that says which club invites with which "
+"role. Without an account the person chooses a password and is logged in at "
+"once; the email address is the login. Whoever has an account with the "
+"address logs in first and then accepts. Only then does the person appear "
+"among the members."
+msgstr "**Accettare**: il link apre una pagina che dice quale società invita e con quale ruolo. Senza account la persona sceglie una password ed è subito connessa; l’indirizzo e-mail è il login. Chi ha già un account con l’indirizzo accede prima e poi accetta. Solo allora la persona compare tra i membri."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/users.md:11
+#: ../src/help/en/user-guide/users.md:15
 msgid ""
-"**Role**: *Admin* manages ranges, events, programmes and users; *Staff* runs "
-"the events (see [Concepts](../getting-started/concepts.md#clubs-users-and-"
-"roles))."
-msgstr ""
-"**Ruolo**: *Admin* gestisce stand, manifestazioni, programmi e utenti; "
-"*Personale* conduce le manifestazioni (vedi [Concetti](../getting-started/"
-"concepts.md#clubs-users-and-roles))."
+"**Invitations** below the members lists the open and the expired ones: "
+"**Send again** mails a new link (the old one stops working), **Withdraw** "
+"cancels the invitation."
+msgstr "**Inviti** sotto i membri elenca quelli aperti e scaduti: **Invia di nuovo** manda un nuovo link (il vecchio non funziona più), **Ritira** annulla l’invito."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/users.md:11
+#: ../src/help/en/user-guide/users.md:15
+msgid ""
+"**Add user**: for an account without email, such as a shared account at the "
+"range: an existing account is added by its user name; for a new account also "
+"enter a password (at least 10 characters)."
+msgstr "**Aggiungi utente**: per un account senza e-mail, per esempio un account comune allo stand: un account esistente viene aggiunto tramite il nome utente; per un nuovo account inserisci anche una password (almeno 10 caratteri)."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/users.md:15
+msgid ""
+"**Role**: choose the role of a member in the list. A club always keeps at "
+"least one admin."
+msgstr "**Ruolo**: scegli il ruolo di un membro nell’elenco. Una società mantiene sempre almeno un admin."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/users.md:15
 msgid ""
 "**Remove** takes away the access to this club; the account itself stays and "
 "keeps its other clubs."
@@ -5392,7 +5386,80 @@ msgstr ""
 "mantiene le sue altre società."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/users.md:12
+#: ../src/help/en/user-guide/users.md:19
+msgid ""
+"What a member may do depends on the role. The matrix under **Roles** has a "
+"column per role and a row per permission; a tick gives the permission at "
+"once."
+msgstr "Cosa può fare un membro dipende dal suo ruolo. La matrice sotto **Ruoli** ha una colonna per ruolo e una riga per diritto; una spunta dà subito il diritto."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/users.md:21
+msgid "![Roles](../images/screenshots/roles.png){ .screenshot }"
+msgstr "![Ruoli](../images/screenshots/roles.png){ .screenshot }"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/users.md:34
+#, no-wrap
+msgid ""
+"| Permission | Allows |\n"
+"|---|---|\n"
+"| **See events and rankings** | events, programmes, rankings and classifications |\n"
+"| **Run events** | registrations, results, awards, reservations, documents and printing |\n"
+"| **Configure events** | create, configure, copy, close and delete events with programmes, classifications, kiosk and helper links and online booking |\n"
+"| **Statistics and reports** | statistics, reports with amounts and ranking CSV files |\n"
+"| **See shooters and clubs** | the personal data of the master data |\n"
+"| **Edit shooters and clubs** | add and change shooters and clubs |\n"
+"| **Manage master data** | import shooters, rename, merge and delete clubs, delete shooters |\n"
+"| **Ranges and printers** | ranges, print agents and printer settings |\n"
+"| **Print forms** | print forms and images (only while the club module is on) |\n"
+"| **Users and club** | users, roles, invitations and club modules |\n"
+msgstr ""
+"| Diritto | Permette |\n"
+"|---|---|\n"
+"| **Vedere manifestazioni e classifiche** | manifestazioni, programmi, classifiche e classifiche generali |\n"
+"| **Gestire le manifestazioni** | iscrizioni, risultati, distinzioni, prenotazioni, documenti e stampa |\n"
+"| **Configurare le manifestazioni** | creare, configurare, copiare, chiudere ed eliminare manifestazioni, con programmi, classifiche generali, link chiosco e aiutante e prenotazione online |\n"
+"| **Statistiche e rapporti** | statistiche, rapporti con importi e classifiche in CSV |\n"
+"| **Vedere tiratori e società** | i dati personali dei dati di base |\n"
+"| **Modificare tiratori e società** | registrare e modificare tiratori e società |\n"
+"| **Gestire i dati di base** | importare tiratori, rinominare, unire ed eliminare società, eliminare tiratori |\n"
+"| **Stand e stampanti** | stand di tiro, agenti di stampa e impostazioni delle stampanti |\n"
+"| **Modelli di stampa** | modelli di stampa e immagini (solo finché il modulo della società è attivo) |\n"
+"| **Utenti e società** | utenti, ruoli, inviti e moduli della società |\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/users.md:36
+msgid "Every club starts with four roles:"
+msgstr "Ogni società inizia con quattro ruoli:"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/users.md:43
+#, no-wrap
+msgid ""
+"| Role | Permissions |\n"
+"|---|---|\n"
+"| **Admin** | all; the column cannot be changed and the role cannot be deleted |\n"
+"| **Board** | all but *Ranges and printers* and *Users and club* |\n"
+"| **Helper** | see and run events, statistics, see and edit shooters and clubs |\n"
+"| **Member** | see events and rankings |\n"
+msgstr ""
+"| Ruolo | Diritti |\n"
+"|---|---|\n"
+"| **Admin** | tutti; la colonna non si può modificare e il ruolo non si può eliminare |\n"
+"| **Comitato** | tutti tranne *Stand e stampanti* e *Utenti e società* |\n"
+"| **Aiutante** | vedere e gestire le manifestazioni, statistiche, vedere e modificare tiratori e società |\n"
+"| **Membro** | vedere manifestazioni e classifiche |\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/users.md:45
+#, no-wrap
+msgid "**New role** adds a role of your own, which may only see the events until you tick more. The pencil renames a role (an empty name keeps the default name), the bin deletes it once nobody has it any more. The app shows each member only the pages and buttons their role allows: a member without *Run events* opens an event on its rankings.\n"
+msgstr ""
+"**Nuovo ruolo** aggiunge un ruolo proprio, che vede solo le manifestazioni finché non ne spunti di più. La matita rinomina un ruolo (un nome vuoto mantiene il nome predefinito), il cestino lo elimina quando nessuno lo ha più. L’app mostra a ogni membro solo le pagine e i pulsanti che il suo ruolo consente: un membro senza *Gestire le manifestazioni* apre una manifestazione sulle sue classifiche.\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/users.md:46
 msgid ""
 "Accounts are global: deleting an account is done by the platform operator in "
 "the [admin panel](../admin-guide/admin-panel.md). A forgotten password is "
@@ -5404,6 +5471,40 @@ msgstr ""
 "panel.md). Una password dimenticata si reimposta con **Password dimenticata?"
 "** nella pagina di accesso se l’account ha un indirizzo e-mail confermato, "
 "altrimenti lo fa il gestore."
+
+#, no-wrap
+#~ msgid "**Users** are personal accounts. One account can belong to several clubs, with one role per club:\n"
+#~ msgstr "Gli **utenti** sono account personali. Un account può appartenere a più società, con un ruolo per società:\n"
+
+#, no-wrap
+#~ msgid ""
+#~ "| Role | Can |\n"
+#~ "|---|---|\n"
+#~ "| **Admin** | everything: ranges, events, programmes, kiosk links, users of the club, special prizes, closing events |\n"
+#~ "| **Staff** | run events: register shooters, enter results, print, reservations; read everything else |\n"
+#~ msgstr ""
+#~ "| Ruolo | Può |\n"
+#~ "|---|---|\n"
+#~ "| **Admin** | tutto: stand di tiro, manifestazioni, programmi, link chiosco, utenti della società, premi speciali, chiusura delle manifestazioni |\n"
+#~ "| **Personale** | condurre le manifestazioni: iscrivere tiratori, registrare risultati, stampare, prenotazioni; leggere tutto il resto |\n"
+
+#~ msgid "Staff work only in the operation; the configuration is for admins."
+#~ msgstr ""
+#~ "Il personale lavora solo nello svolgimento; la configurazione è riservata "
+#~ "agli admin."
+
+#, no-wrap
+#~ msgid "**Users** (admins only) lists the accounts with access to the club and their role.\n"
+#~ msgstr "**Utenti** (solo admin) elenca gli account con accesso alla società e il loro ruolo.\n"
+
+#~ msgid ""
+#~ "**Role**: *Admin* manages ranges, events, programmes and users; *Staff* "
+#~ "runs the events (see [Concepts](../getting-started/concepts.md#clubs-"
+#~ "users-and-roles))."
+#~ msgstr ""
+#~ "**Ruolo**: *Admin* gestisce stand, manifestazioni, programmi e utenti; "
+#~ "*Personale* conduce le manifestazioni (vedi [Concetti](../getting-started/"
+#~ "concepts.md#clubs-users-and-roles))."
 
 #~ msgid ""
 #~ "**Waiting**: registrations without a lane (for example when all lanes are "

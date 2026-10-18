@@ -7,12 +7,7 @@ una società, e le società non vedono mai i dati delle altre. Il gestore
 della piattaforma crea società e account utente nel [pannello di
 amministrazione](../admin-guide/admin-panel.md).
 
-Gli **utenti** sono account personali. Un account può appartenere a più società, con un ruolo per società:
-
-| Ruolo | Può |
-|---|---|
-| **Admin** | tutto: stand di tiro, manifestazioni, programmi, link chiosco, utenti della società, premi speciali, chiusura delle manifestazioni |
-| **Personale** | condurre le manifestazioni: iscrivere tiratori, registrare risultati, stampare, prenotazioni; leggere tutto il resto |
+Gli **utenti** sono account personali. Un account può appartenere a più società, con un ruolo per società. Un ruolo è un insieme di diritti come *Gestire le manifestazioni* o *Configurare le manifestazioni*; ogni società inizia con i ruoli *Admin*, *Comitato*, *Aiutante* e *Membro* e può modificarli o aggiungerne di propri (vedi [Ruoli](../user-guide/users.md#roles)). Le società invitano le persone via e-mail; la persona invitata entra accettando il link.
 
 ## Stand di tiro e bersagli
 

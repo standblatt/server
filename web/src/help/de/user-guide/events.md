@@ -1,6 +1,6 @@
 # Anlässe
 
-**Anlässe** listet die Anlässe des Vereins in den Gruppen *Heute* (zwischen dem ersten und dem letzten Schiesstag), *Bevorstehend*, *Vergangen* und *Abgeschlossen*; Admins erstellen dort neue. Das Öffnen eines Anlasses zeigt in der Seitenleiste sein Dashboard und die übrigen Seiten des Betriebs; *Anlass wechseln* oben in der Seitenleiste führt zurück zur Liste.
+**Anlässe** listet die Anlässe des Vereins in den Gruppen *Heute* (zwischen dem ersten und dem letzten Schiesstag), *Bevorstehend*, *Vergangen* und *Abgeschlossen*; Rollen mit dem Recht *Anlässe konfigurieren* erstellen dort neue. Das Öffnen eines Anlasses zeigt in der Seitenleiste sein Dashboard und die übrigen Seiten des Betriebs; *Anlass wechseln* oben in der Seitenleiste führt zurück zur Liste.
 
 ![Anlässe](../images/screenshots/events.png){ .screenshot }
 
@@ -21,7 +21,8 @@ in den Betrieb:
 | Seiten der Module | z. B. **Reservationen** (mit der Online-Reservation), **Wertungen**, **Kiosk-Anzeigen**, **Helferlinks**, nur solange das Modul an ist |
 | **Kopieren & abschliessen** | für nächstes Jahr kopieren, abschliessen, wiedereröffnen und löschen |
 
-Personal arbeitet nur im Betrieb; die Konfiguration ist für Admins.
+Die Konfiguration braucht das Recht *Anlässe konfigurieren*, der Betrieb
+*Anlässe durchführen* (siehe [Rollen](users.md#roles)).
 
 ## Einstellungen {#settings}
 
@@ -84,7 +85,8 @@ die Reservation legt für einen Tag andere Zeiten fest (siehe
 ### Vereinsmodule {#club-modules}
 
 Manche Module gehören zum Verein statt zu einem Anlass. **Vereinsmodule** im
-Vereinsteil der Seitenleiste (Admins) schaltet sie ein und aus:
+Vereinsteil der Seitenleiste (Recht *Benutzer und Verein*) schaltet sie ein
+und aus:
 
 | Modul | Was es bringt |
 |---|---|

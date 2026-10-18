@@ -1,6 +1,6 @@
 # Programmes
 
-Programmes belong to an event and are managed under **Configuration** → **Programmes** (admins only).
+Programmes belong to an event and are managed under **Configuration** → **Programmes** (permission *Configure events*).
 
 ![The programme list](../images/screenshots/setup.png){ .screenshot }
 

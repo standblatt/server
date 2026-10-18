@@ -12,7 +12,7 @@ Counts of clubs, users, events, registrations, active sessions and programme tem
 
 The list shows users, events and registrations per club and the creation date. **Create club** creates a tenant and opens its page. On the club page:
 
-- **assign** adds an existing user by user name or email address as *admin* or *staff*; **remove** takes the access away. Club admins can also [invite people by email](../../web/src/help/en/user-guide/users.md) themselves.
+- **assign** adds an existing user by user name or email address with one of the default roles *admin*, *board*, *staff* (the app calls it *Helper*) or *member*; **remove** takes the access away. The club sets up its own roles in the app. Club admins can also [invite people by email](../../web/src/help/en/user-guide/users.md) themselves.
 - The events of the club, newest first, with their status (open or archived).
 - **Delete club** removes the club with all its data (ranges, events, registrations, shooters). It asks for confirmation and cannot be undone.
 

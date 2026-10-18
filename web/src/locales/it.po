@@ -3831,7 +3831,7 @@ msgstr "Modelli di stampa (prestampati)"
 
 #: src/lib/permissions.ts
 msgid "Print forms and images."
-msgstr "Moduli di stampa e immagini."
+msgstr "Modelli di stampa e immagini."
 
 #: src/lib/PrintButton.svelte
 #: src/lib/RegistrationDialog.svelte

@@ -77,6 +77,9 @@ test.describe("documentation screenshots", () => {
 
     const base = `/api/tenants/${ids.tenant}`;
     await addUser(page, ids.tenant, "sam.staff", "staff", password);
+    await addUser(page, ids.tenant, "mia.member", "member", password);
+    const roles = await api(page, "GET", `${base}/roles`);
+    await api(page, "POST", `${base}/invitations`, { emails: ["lea.example@example.org"], roleId: roles.find((r) => r.key === "board").id });
     const clubs = {};
     for (const [name, ssv] of [["PS Example", "1.99.0.00.001"], ["SG Hilltown", "1.99.0.00.002"], ["PC Lakeside", "1.99.0.00.003"], ["SV Riverbank", "1.99.0.00.004"], ["CP Valley", "1.99.0.00.005"]]) {
       clubs[name] = (await api(page, "POST", `${base}/clubs`, { name, ssvNumber: ssv })).id;
@@ -302,6 +305,8 @@ test.describe("documentation screenshots", () => {
       await expect(page.getByText(text).first()).toBeVisible();
       await shot(page, name);
     }
+    await page.locator("section[aria-label=Roles]").scrollIntoViewIfNeeded();
+    await shot(page, "roles");
     await page.context().clearCookies();
     await adminLogin(page);
     await expect(c(page, "h1", "Administration")).toBeVisible();

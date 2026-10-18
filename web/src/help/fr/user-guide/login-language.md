@@ -2,8 +2,9 @@
 
 ## Se connecter
 
-Connecte-toi avec le nom d’utilisateur (ou l’adresse e-mail) et le mot de
-passe reçus de l’admin de ta société ou de l’exploitant de la
+Connecte-toi avec ton adresse e-mail (ou ton nom d’utilisateur) et ton mot
+de passe : tu as choisi le mot de passe en acceptant l’invitation de ta
+société, ou tu l’as reçu de l’admin de ta société ou de l’exploitant de la
 plateforme. Les comptes de société ne se créent pas par inscription ; seul
 [Mon entraînement](../my-training/account.md) a sa propre inscription. Mot
 de passe oublié ? Si ton compte a une adresse e-mail confirmée, utilise

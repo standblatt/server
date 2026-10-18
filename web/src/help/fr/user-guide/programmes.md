@@ -1,7 +1,7 @@
 # Programmes
 
 Les programmes appartiennent à une manifestation et se gèrent sous
-**Configuration** → **Programmes** (admins seulement).
+**Configuration** → **Programmes** (droit *Configurer les manifestations*).
 
 ![La liste des programmes](../images/screenshots/setup.png){ .screenshot }
 

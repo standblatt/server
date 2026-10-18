@@ -1,7 +1,8 @@
 # Programmi
 
-I programmi appartengono a una manifestazione e si gestiscono in
-**Configurazione** → **Programmi** (solo admin).
+I programmi appartengono a una manifestazione e si gestiscono sotto
+**Configurazione** → **Programmi** (diritto *Configurare le
+manifestazioni*).
 
 ![L’elenco dei programmi](../images/screenshots/setup.png){ .screenshot }
 

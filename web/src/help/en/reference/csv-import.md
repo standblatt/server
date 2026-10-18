@@ -1,6 +1,6 @@
 # CSV import
 
-Club admins import shooters on the **Shooters** page. The file needs a header row; the separator (`;` or `,`) is taken from it.
+Members with the permission *Manage master data* import shooters on the **Shooters** page. The file needs a header row; the separator (`;` or `,`) is taken from it.
 
 ```text
 license;firstname;lastname;birthday;postalcode;city;club

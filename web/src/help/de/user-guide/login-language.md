@@ -2,9 +2,10 @@
 
 ## Anmelden
 
-Melde dich mit dem Benutzernamen (oder der E-Mail-Adresse) und dem Passwort
-an, die du von deinem Vereins-Admin oder dem Plattformbetreiber erhalten
-hast. Vereinskonten entstehen nicht durch Registrierung; nur [Mein
+Melde dich mit deiner E-Mail-Adresse (oder deinem Benutzernamen) und deinem
+Passwort an: Das Passwort hast du beim Annehmen der Einladung deines Vereins
+gewählt oder von deinem Vereins-Admin oder dem Plattformbetreiber
+erhalten. Vereinskonten entstehen nicht durch Registrierung; nur [Mein
 Training](../my-training/account.md) hat eine eigene Registrierung. Passwort
 vergessen? Hat dein Konto eine bestätigte E-Mail-Adresse, nutze **Passwort
 vergessen?** auf der Login-Seite; sonst bitte den Betreiber, im

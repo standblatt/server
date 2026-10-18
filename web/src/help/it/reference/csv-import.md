@@ -1,8 +1,8 @@
 # Importazione CSV
 
-Gli admin della società importano i tiratori nella pagina **Tiratori**. Il
-file ha bisogno di una riga d’intestazione; il separatore (`;` o `,`) viene
-preso da essa.
+I membri con il diritto *Gestire i dati di base* importano i tiratori nella
+pagina **Tiratori**. Il file ha bisogno di una riga d’intestazione; il
+separatore (`;` o `,`) viene preso da essa.
 
 ```text
 license;firstname;lastname;birthday;postalcode;city;club

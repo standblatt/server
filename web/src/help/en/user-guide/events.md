@@ -1,6 +1,6 @@
 # Events
 
-**Events** lists the events of the club in the groups *Today* (between the first and the last shooting day), *Upcoming*, *Past* and *Closed*; admins create new ones there. Opening an event shows its dashboard and the other pages of the operation in the sidebar; *Change event* at the top of the sidebar returns to the list.
+**Events** lists the events of the club in the groups *Today* (between the first and the last shooting day), *Upcoming*, *Past* and *Closed*; roles with the permission *Configure events* create new ones there. Opening an event shows its dashboard and the other pages of the operation in the sidebar; *Change event* at the top of the sidebar returns to the list.
 
 ![Events](../images/screenshots/events.png){ .screenshot }
 
@@ -16,7 +16,7 @@ An event has two areas. The **operation** is what you work with on the day: *Das
 | Pages of modules | e.g. **Reservations** (with the online booking), **Classifications**, **Kiosk displays**, **Helper links**, only while the module is on |
 | **Copy & close** | copy for next year, close, reopen and delete |
 
-Staff work only in the operation; the configuration is for admins.
+The configuration needs the permission *Configure events*, the operation *Run events* (see [Roles](users.md#roles)).
 
 ## Settings {#settings}
 
@@ -66,7 +66,7 @@ Shooting times also give the online booking its slots, unless the booking sets o
 
 ### Club modules {#club-modules}
 
-Some modules belong to the club rather than to an event. **Club modules** in the club part of the sidebar (admins) switches them on and off:
+Some modules belong to the club rather than to an event. **Club modules** in the club part of the sidebar (permission *Users and club*) switches them on and off:
 
 | Module | What it adds |
 |---|---|

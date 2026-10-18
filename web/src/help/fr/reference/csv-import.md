@@ -1,8 +1,8 @@
 # Import CSV
 
-Les admins de société importent les tireurs sur la page **Tireurs**. Le
-fichier a besoin d’une ligne d’en-tête ; le séparateur (`;` ou `,`) en est
-déduit.
+Les membres avec le droit *Gérer les données de base* importent les tireurs
+sur la page **Tireurs**. Le fichier a besoin d’une ligne d’en-tête ; le
+séparateur (`;` ou `,`) en est déduit.
 
 ```text
 license;firstname;lastname;birthday;postalcode;city;club
