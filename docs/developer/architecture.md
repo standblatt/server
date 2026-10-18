@@ -16,7 +16,6 @@ flowchart LR
 | Path | Content |
 |---|---|
 | `cmd/standblatt` | server entry point and janitors; `standblatt openapi` prints the API spec |
-| `cmd/print-agent`, `internal/agent` | the print agent |
 | `internal/domain` | rules without storage or HTTP: age categories, programme definitions, registration rules, results and awards, ranking, club competition, special prizes, lane syntax, amount in words |
 | `internal/store` | handwritten pgx store; `migrations/*.sql` embedded and applied at startup |
 | `internal/web` | HTTP: health checks, huma API under `/api`, admin panel, SPA fallback |

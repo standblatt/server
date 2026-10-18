@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+- The print agent (`cmd/print-agent`) and its binaries in the releases: it lives in [standblatt/print-agent](https://github.com/standblatt/print-agent) with a desktop app for Windows, macOS and Linux; the documentation points there (by @HB9HIL)
+
 ## [0.21.1] - 2026-10-19
 
 ### Changed

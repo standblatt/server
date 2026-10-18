@@ -6,35 +6,44 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"log/slog"
 	"net/http"
-	"os"
-	"path/filepath"
-	"runtime"
 	"strings"
 	"testing"
 	"time"
 
-	"github.com/standblatt/server/internal/agent"
 	"github.com/standblatt/server/internal/domain"
 	"github.com/standblatt/server/internal/store"
 	"github.com/standblatt/server/internal/web"
 )
 
-func fakeCUPS(t *testing.T) (dir string, lpLog string) {
-	dir = t.TempDir()
-	lpLog = filepath.Join(dir, "lp.log")
-	scripts := map[string]string{
-		"lpstat":    "#!/bin/sh\necho 'Office_A5 Brother_QL'\n",
-		"lpoptions": "#!/bin/sh\ncase \"$2\" in Office_A5) echo 'InputSlot/Media Source: *Auto Tray1 Tray2';; *) echo 'PageSize/Media Size: *29x90mm';; esac\n",
-		"lp":        "#!/bin/sh\necho \"$@\" >> " + lpLog + "\nhead -c 5 \"$(eval echo \\${$#})\" >> " + lpLog + "\necho >> " + lpLog + "\n",
+// agentCall sends a request of the print agent protocol (github.com/standblatt/print-agent) with token and returns
+// the status code and body.
+func agentCall(t *testing.T, url, token, method, path string, body any) (int, []byte) {
+	t.Helper()
+	var r io.Reader
+	if body != nil {
+		raw, _ := json.Marshal(body)
+		r = bytes.NewReader(raw)
 	}
-	for name, body := range scripts {
-		if err := os.WriteFile(filepath.Join(dir, name), []byte(body), 0o755); err != nil {
-			t.Fatal(err)
-		}
+	req, _ := http.NewRequest(method, url+path, r)
+	req.Header.Set("Authorization", "Bearer "+token)
+	req.Header.Set("Content-Type", "application/json")
+	resp, err := (&http.Client{Timeout: 10 * time.Second}).Do(req)
+	if err != nil {
+		t.Fatal(err)
 	}
-	return dir, lpLog
+	defer resp.Body.Close()
+	out, _ := io.ReadAll(resp.Body)
+	return resp.StatusCode, out
+}
+
+// printJob is a job as the server hands it to an agent.
+type printJob struct {
+	ID      int64             `json:"id"`
+	Title   string            `json:"title"`
+	Printer string            `json:"printer"`
+	Options map[string]string `json:"options"`
+	PDF     []byte            `json:"pdf"`
 }
 
 func TestPrinting(t *testing.T) {
@@ -88,21 +97,38 @@ func TestPrinting(t *testing.T) {
 	code, b = e.do(admin, "POST", testPath, map[string]any{"printer": "Office_A5"})
 	expect(t, "test page without an online agent", code, 409, b)
 
-	dir, lpLog := fakeCUPS(t)
-	a := &agent.Agent{
-		URL: e.srv.URL, Token: created.Secret, Client: &http.Client{Timeout: 10 * time.Second},
-		LP: filepath.Join(dir, "lp"), LPStat: filepath.Join(dir, "lpstat"), LPOptions: filepath.Join(dir, "lpoptions"),
-		Log: slog.New(slog.NewTextHandler(io.Discard, nil)),
+	agentDo := func(token, method, path string, body any) (int, []byte) {
+		return agentCall(t, e.srv.URL, token, method, path, body)
 	}
-	if err := a.Hello(ctx); err != nil {
-		t.Fatal(err)
+	hello := func(body any) (int, []byte) { return agentDo(created.Secret, "POST", "/api/agent/hello", body) }
+	cupsHello := map[string]any{"version": "v0.1.0", "os": "linux", "printers": []map[string]any{
+		{"name": "Office_A5", "options": []map[string]any{{"name": "InputSlot", "label": "Media Source", "values": []string{"Auto", "Tray1", "Tray2"}, "default": "Auto"}}},
+		{"name": "Brother_QL", "options": []map[string]any{{"name": "PageSize", "label": "Media Size", "values": []string{"29x90mm"}, "default": "29x90mm"}}},
+	}}
+	code, b = hello(cupsHello)
+	expect(t, "hello", code, 200, b)
+	next := func() *printJob {
+		t.Helper()
+		code, b := agentDo(created.Secret, "GET", "/api/agent/jobs/next", nil)
+		if code == http.StatusNoContent {
+			return nil
+		}
+		expect(t, "next job", code, 200, b)
+		var j printJob
+		json.Unmarshal(b, &j)
+		return &j
+	}
+	finish := func(id int64) {
+		t.Helper()
+		code, b := agentDo(created.Secret, "POST", fmt.Sprintf("/api/agent/jobs/%d", id), map[string]any{"ok": true})
+		expect(t, "finish job", code, 204, b)
 	}
 	code, b = e.do(admin, "GET", rangePath+"/print-agents", nil)
 	expect(t, "get", code, 200, b)
 	var agents []store.PrintAgent
 	json.Unmarshal(b, &agents)
 	if len(agents) != 1 || len(agents[0].Printers) != 2 || agents[0].Printers[0].Options[0].Values[2] != "Tray2" || agents[0].LastSeenAt == nil ||
-		agents[0].Version != "dev" || agents[0].OS != runtime.GOOS {
+		agents[0].Version != "v0.1.0" || agents[0].OS != "linux" {
 		t.Fatalf("agents: %s", b)
 	}
 
@@ -111,19 +137,6 @@ func TestPrinting(t *testing.T) {
 	})
 	expect(t, "route lane sheet", code, 204, b)
 
-	hello := func(body any) (int, []byte) {
-		raw, _ := json.Marshal(body)
-		req, _ := http.NewRequest("POST", e.srv.URL+"/api/agent/hello", bytes.NewReader(raw))
-		req.Header.Set("Authorization", "Bearer "+created.Secret)
-		req.Header.Set("Content-Type", "application/json")
-		resp, err := http.DefaultClient.Do(req)
-		if err != nil {
-			t.Fatal(err)
-		}
-		defer resp.Body.Close()
-		out, _ := io.ReadAll(resp.Body)
-		return resp.StatusCode, out
-	}
 	code, b = hello(map[string]any{"printers": []map[string]any{{"name": "Brother_QL", "options": []any{}}}, "version": "v0.1.0", "os": "windows"})
 	expect(t, "hello without the routed printer", code, 200, b)
 	var h store.AgentHello
@@ -141,9 +154,8 @@ func TestPrinting(t *testing.T) {
 	expect(t, "hello without a version", code, 422, b)
 	code, b = hello(map[string]any{"printers": []any{}, "version": "v0.1.0", "os": "plan9"})
 	expect(t, "hello from an unknown OS", code, 422, b)
-	if err := a.Hello(ctx); err != nil {
-		t.Fatal(err)
-	}
+	code, b = hello(cupsHello)
+	expect(t, "hello again", code, 200, b)
 
 	code, b = e.do(staff, "POST", fmt.Sprintf("/api/tenants/%d/print", f.tenant), printReq)
 	expect(t, "print", code, 200, b)
@@ -151,21 +163,14 @@ func TestPrinting(t *testing.T) {
 		t.Fatalf("print should queue: %s", b)
 	}
 
-	runCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
-	defer cancel()
-	j, err := a.Next(runCtx)
-	if err != nil || j == nil {
-		t.Fatalf("agent got no job: %v", err)
+	j := next()
+	if j == nil || j.Printer != "Office_A5" || j.Title != "Lane sheet Adult Anna" || !strings.HasPrefix(string(j.PDF), "%PDF") ||
+		len(j.Options) != 3 || j.Options["InputSlot"] != "Tray2" || j.Options["PageSize"] != "A5" || j.Options["fit-to-page"] != "" {
+		t.Fatalf("lane sheet job: %+v", j)
 	}
-	if err := a.Finish(runCtx, j.ID, a.Print(runCtx, j)); err != nil {
-		t.Fatal(err)
-	}
-	log, _ := os.ReadFile(lpLog)
-	if !strings.Contains(string(log), "-d Office_A5 -t Lane sheet Adult Anna -o InputSlot=Tray2 -o PageSize=A5 -o fit-to-page") || !strings.Contains(string(log), "%PDF") {
-		t.Fatalf("lp was called with: %s", log)
-	}
-	if j, err := a.Next(runCtx); err != nil || j != nil {
-		t.Fatalf("queue should be empty: %+v %v", j, err)
+	finish(j.ID)
+	if j := next(); j != nil {
+		t.Fatalf("queue should be empty: %+v", j)
 	}
 
 	code, b = e.do(staff, "GET", rangePath+"/print-jobs", nil)
@@ -176,22 +181,18 @@ func TestPrinting(t *testing.T) {
 		t.Fatalf("jobs: %s", b)
 	}
 
-	bad := &agent.Agent{URL: e.srv.URL, Token: "wrong", Client: http.DefaultClient, Log: a.Log, LPStat: a.LPStat, LPOptions: a.LPOptions}
-	if err := bad.Hello(ctx); err == nil || !strings.Contains(err.Error(), "401") {
-		t.Fatalf("wrong agent token: %v", err)
-	}
+	code, b = agentDo("wrong", "POST", "/api/agent/hello", cupsHello)
+	expect(t, "wrong agent token", code, 401, b)
 
 	code, b = e.do(staff, "POST", testPath, map[string]any{"printer": "Brother_QL"})
 	expect(t, "staff test page", code, 403, b)
 	code, b = e.do(admin, "POST", testPath, map[string]any{"printer": "Brother_QL", "options": map[string]string{"PageSize": "29x90mm"}})
 	expect(t, "test page", code, 200, b)
-	j, err = a.Next(runCtx)
-	if err != nil || j == nil || j.Printer != "Brother_QL" || j.Options["PageSize"] != "29x90mm" || j.Title != "Test page Brother_QL" || !strings.HasPrefix(string(j.PDF), "%PDF") {
-		t.Fatalf("test page job: %+v %v", j, err)
+	j = next()
+	if j == nil || j.Printer != "Brother_QL" || j.Options["PageSize"] != "29x90mm" || j.Title != "Test page Brother_QL" || !strings.HasPrefix(string(j.PDF), "%PDF") {
+		t.Fatalf("test page job: %+v", j)
 	}
-	if err := a.Finish(runCtx, j.ID, nil); err != nil {
-		t.Fatal(err)
-	}
+	finish(j.ID)
 	code, b = e.do(admin, "POST", fmt.Sprintf("/api/tenants/%d/ranges/%d/print-test", f.tenant, 999999), map[string]any{"printer": "Brother_QL"})
 	expect(t, "test page on an unknown range", code, 404, b)
 
@@ -200,7 +201,6 @@ func TestPrinting(t *testing.T) {
 	expect(t, "staff deletes agent", code, 403, b)
 	code, b = e.do(admin, "DELETE", agentPath, nil)
 	expect(t, "delete agent", code, 204, b)
-	if err := a.Hello(ctx); err == nil || !strings.Contains(err.Error(), "401") {
-		t.Fatalf("deleted agent: %v", err)
-	}
+	code, b = hello(cupsHello)
+	expect(t, "deleted agent", code, 401, b)
 }

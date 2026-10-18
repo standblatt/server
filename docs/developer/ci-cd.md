@@ -5,10 +5,10 @@ GitHub Actions (`.github/workflows/ci.yml`) builds and tests on every push to ma
 | Jobs | What |
 |---|---|
 | `go`, `govulncheck`, `funcdoc`, `helm`, `web-check`, `web` | gofmt, vet, staticcheck and tests with PostgreSQL; known vulnerabilities in called code (does not block images); every function has a doc comment; chart lint; svelte-check; build of the SPA (`binary` waits only for this one) |
-| `binary`, `print-agent` | the server binary (built once, with `git describe` as version) and the print agent for linux amd64/arm64 |
+| `binary` | the server binary (built once, with `git describe` as version) |
 | `e2e` | Playwright against the binary, with PostgreSQL and Mailpit as services |
 | `docker-image` | pushes and tags the image on ghcr.io (master and tags only) |
-| `chart`, `release` | tags only: the chart as OCI artifact to `oci://ghcr.io/standblatt/charts`, a GitHub release with the changelog section and the print agent binaries |
+| `chart`, `release` | tags only: the chart as OCI artifact to `oci://ghcr.io/standblatt/charts`, a GitHub release with the changelog section (the print agent has its own releases) |
 
 ## Deployments
 

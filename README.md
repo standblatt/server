@@ -28,7 +28,7 @@ More in [docs/developer/development.md](docs/developer/development.md).
 
 ## Deployment
 
-The image `ghcr.io/standblatt/server` and the Helm chart `oci://ghcr.io/standblatt/charts/standblatt` are built by GitHub Actions; configuration is environment variables only and migrations run at startup. Printing at the range goes through the small print agent (`cmd/print-agent`), released with every version.
+The image `ghcr.io/standblatt/server` and the Helm chart `oci://ghcr.io/standblatt/charts/standblatt` are built by GitHub Actions; configuration is environment variables only and migrations run at startup. Printing at the range goes through the print agent, which has its own repository and releases: [standblatt/print-agent](https://github.com/standblatt/print-agent).
 
 ## License
 

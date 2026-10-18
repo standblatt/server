@@ -10,7 +10,7 @@ make docs     # help: update the PO catalogs, write the translated pages, regene
 make clean    # stop the containers, remove node_modules and build output (keeps .env and the database volume)
 ```
 
-`make dev` also sets `git config core.hooksPath .githooks`: the pre-commit hook runs `make prepare` and stops the commit when it changed files (new strings in the catalogs, a regenerated `api.gen.ts`); review and stage them, then commit again. `git commit --no-verify` skips it. The image is built by `docker build -f docker/Dockerfile .`, the print agent by `CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -o standblatt-print-agent ./cmd/print-agent`.
+`make dev` also sets `git config core.hooksPath .githooks`: the pre-commit hook runs `make prepare` and stops the commit when it changed files (new strings in the catalogs, a regenerated `api.gen.ts`); review and stage them, then commit again. `git commit --no-verify` skips it. The image is built by `docker build -f docker/Dockerfile .`; the print agent is built in [standblatt/print-agent](https://github.com/standblatt/print-agent).
 
 `make dev` seeds the login `dev` / `devpassword` with a club, a range and an event. The admin panel is at `/admin` with the token from `.env` (created from `.env.example` on the first start).
 
