@@ -146,6 +146,7 @@ func TestResults(t *testing.T) {
 	code, b = e.do(staff, "PUT", regPath, web.RegistrationUpdate{Programmes: []domain.ProgrammeChoice{{ProgrammeID: main}, {ProgrammeID: section, CombinedSeries: []int{1, 3}}}})
 	expect(t, "change combined series", code, 200, b)
 	code, b = e.do(staff, "GET", resultsPath, nil)
+	expect(t, "get", code, 200, b)
 	_, entries = sheetOf(b)
 	if entries["Section"].Total != 160 || entries["Section"].Mouches != 0 {
 		t.Fatalf("section after recombination: %+v", entries["Section"])

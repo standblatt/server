@@ -134,6 +134,7 @@ func TestOnlineBooking(t *testing.T) {
 		t.Fatalf("confirmation mail: %+v", msg)
 	}
 	code, b = e.do(anon, "GET", public, nil)
+	expect(t, "get", code, 200, b)
 	json.Unmarshal(b, &info)
 	if info.Slots[0].Free[0].Free != 1 || info.Slots[1].Free[0].Free != 4 {
 		t.Fatalf("free after confirmation: %s", b)
@@ -168,6 +169,7 @@ func TestOnlineBooking(t *testing.T) {
 	}
 	box.mailTo(t, "boss@example.org")
 	code, b = e.do(anon, "GET", public, nil)
+	expect(t, "get", code, 200, b)
 	json.Unmarshal(b, &info)
 	if info.Slots[0].Free[0].Free != 4 {
 		t.Fatalf("lanes not freed: %s", b)

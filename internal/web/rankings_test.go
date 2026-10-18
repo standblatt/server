@@ -137,6 +137,7 @@ func TestRankingsAndKiosk(t *testing.T) {
 	}
 
 	code, b = e.do(admin, "GET", tokensPath, nil)
+	expect(t, "get", code, 200, b)
 	var tokens []store.KioskToken
 	json.Unmarshal(b, &tokens)
 	if len(tokens) != 1 || tokens[0].LastUsedAt == nil {

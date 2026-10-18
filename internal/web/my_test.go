@@ -73,11 +73,11 @@ func overview(t *testing.T, e *env, c *http.Client) web.MyOverview {
 }
 
 func TestSignupVerifyReset(t *testing.T) {
-	e, box := personalEnv(t, func(s *web.Server) { s.Signup = false })
+	e, _ := personalEnv(t, func(s *web.Server) { s.Signup = false })
 	code, b := e.do(e.client(), "POST", "/api/auth/signup", map[string]string{"email": "a@example.org", "password": "long-enough-1", "firstname": "A", "lastname": "B"})
 	expect(t, "closed signup", code, 403, b)
 
-	e, box = personalEnv(t, nil)
+	e, box := personalEnv(t, nil)
 	code, b = e.do(e.client(), "GET", "/api/auth/options", nil)
 	expect(t, "options", code, 200, b)
 	if !strings.Contains(string(b), `"signup":true`) {

@@ -72,6 +72,7 @@ func TestAPITokens(t *testing.T) {
 	expect(t, "unknown token", code, 401, b)
 
 	code, b = e.do(c, "GET", "/api/my/tokens", nil)
+	expect(t, "get", code, 200, b)
 	var list []store.APIToken
 	json.Unmarshal(b, &list)
 	for _, tok := range list {
@@ -88,6 +89,7 @@ func TestAPITokens(t *testing.T) {
 	expect(t, "revoked token", code, 401, b)
 
 	code, b = e.do(c, "GET", "/api/me", nil)
+	expect(t, "get", code, 200, b)
 	var me web.Me
 	json.Unmarshal(b, &me)
 	secret := "sb_1111111111111111111111111111111111111111"

@@ -36,6 +36,7 @@ func TestReservations(t *testing.T) {
 	}
 
 	code, b = e.do(staff, "GET", fmt.Sprintf("/api/tenants/%d/events/%d/lanes", f.tenant, f.event), nil)
+	expect(t, "get", code, 200, b)
 	var byRange []web.RangeLanes
 	json.Unmarshal(b, &byRange)
 	lanes := byRange[0].Lanes
@@ -64,6 +65,7 @@ func TestReservations(t *testing.T) {
 
 	var list []web.ReservationView
 	code, b = e.do(staff, "GET", resPath, nil)
+	expect(t, "get", code, 200, b)
 	json.Unmarshal(b, &list)
 	var parallel web.ReservationView
 	for _, r := range list {

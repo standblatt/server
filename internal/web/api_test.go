@@ -316,7 +316,8 @@ func TestAdminPanel(t *testing.T) {
 		return string(b)
 	}
 
-	code, body := form("/admin/clubs", url.Values{"name": {"Club X"}})
+	var body string
+	code, _ := form("/admin/clubs", url.Values{"name": {"Club X"}})
 	if code != 401 {
 		t.Fatalf("admin action without cookie: %d", code)
 	}

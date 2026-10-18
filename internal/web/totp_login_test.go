@@ -3,7 +3,6 @@ package web_test
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"strings"
 	"testing"
@@ -57,7 +56,7 @@ func TestTOTPLogin(t *testing.T) {
 	code, b = e.do(c, "POST", "/api/me/totp/disable", map[string]string{"password": "password-anna"})
 	expect(t, "disable", code, 204, b)
 	code, b = login(map[string]string{"name": "anna", "password": "password-anna"})
-	expect(t, fmt.Sprint("login after disable"), code, 200, b)
+	expect(t, "login after disable", code, 200, b)
 }
 
 func TestRememberMe(t *testing.T) {

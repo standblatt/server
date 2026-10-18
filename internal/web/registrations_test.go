@@ -138,6 +138,7 @@ func TestRegistrations(t *testing.T) {
 	code, b = e.do(boss, "PUT", progPath, kept("elite", "u21", "senior"))
 	expect(t, "edit programme in use without touching the series", code, 204, b)
 	code, b = e.do(boss, "GET", progPath, nil)
+	expect(t, "get", code, 200, b)
 	var edited store.Programme
 	json.Unmarshal(b, &edited)
 	if !edited.InUse || edited.Name != "Main cup" || len(edited.Prices) != 3 || edited.Prices[0].Price != 12 || len(edited.Awards) != 1 || edited.Series[0].Name != "A" {

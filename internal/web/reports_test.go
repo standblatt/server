@@ -93,6 +93,7 @@ func TestReports(t *testing.T) {
 	e.st.UpdateEvent(ctx, tid, ev, store.EventInput{RangeIDs: []int64{evData.Ranges[0].ID}, Name: evData.Name, StartsOn: evData.StartsOn, Timezone: evData.Timezone,
 		Settings: store.EventSettings{ExcludedClubID: &home.ID}})
 	code, b = e.do(staff, "GET", base+"/club-competition", nil)
+	expect(t, "get", code, 200, b)
 	cc = web.ClubCompetitionView{}
 	json.Unmarshal(b, &cc)
 	if !cc.Ranked[0].Excluded || cc.Ranked[0].Rank != 0 {

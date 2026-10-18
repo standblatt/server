@@ -62,6 +62,7 @@ func TestAwardsHandout(t *testing.T) {
 	code, b = e.do(c, "DELETE", fmt.Sprintf("/api/tenants/%d/registrations/%d/awards-issued", tid, reg.ID), nil)
 	expect(t, "take back", code, 204, b)
 	code, b = e.do(c, "GET", fmt.Sprintf("/api/tenants/%d/registrations/%d", tid, reg.ID), nil)
+	expect(t, "get", code, 200, b)
 	var after store.Registration
 	json.Unmarshal(b, &after)
 	if after.AwardsIssuedAt != nil {

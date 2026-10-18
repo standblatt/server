@@ -123,6 +123,7 @@ func TestProgrammes(t *testing.T) {
 	code, b = e.do(admin, "POST", nextPath+"/from-template", map[string]any{"templateId": tplID})
 	expect(t, "from template", code, 201, b)
 	code, b = e.do(admin, "GET", nextPath, nil)
+	expect(t, "get", code, 200, b)
 	json.Unmarshal(b, &list)
 	if len(list) != 3 {
 		t.Fatalf("next event programmes: %+v", list)

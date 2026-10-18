@@ -93,6 +93,7 @@ func TestPrinting(t *testing.T) {
 		t.Fatal(err)
 	}
 	code, b = e.do(admin, "GET", rangePath+"/print-agents", nil)
+	expect(t, "get", code, 200, b)
 	var agents []store.PrintAgent
 	json.Unmarshal(b, &agents)
 	if len(agents) != 1 || len(agents[0].Printers) != 2 || agents[0].Printers[0].Options[0].Values[2] != "Tray2" || agents[0].LastSeenAt == nil {
@@ -128,6 +129,7 @@ func TestPrinting(t *testing.T) {
 	}
 
 	code, b = e.do(staff, "GET", rangePath+"/print-jobs", nil)
+	expect(t, "get", code, 200, b)
 	var jobs []store.PrintJob
 	json.Unmarshal(b, &jobs)
 	if len(jobs) != 1 || jobs[0].Status != "done" || jobs[0].Printer != "Office_A5" {

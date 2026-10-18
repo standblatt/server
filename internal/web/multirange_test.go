@@ -34,6 +34,7 @@ func TestMultiRangeEvent(t *testing.T) {
 		t.Fatalf("period backwards: %d %s", code, b)
 	}
 	code, b = e.do(boss, "GET", evPath, nil)
+	expect(t, "get", code, 200, b)
 	json.Unmarshal(b, &ev)
 	if len(ev.Ranges) != 2 || ev.Ranges[1].Name != "50m" || strings.Join(ev.Days, ",") != "2026-11-18,2026-11-21,2026-11-22" {
 		t.Fatalf("event with two ranges: %+v", ev)
@@ -74,6 +75,7 @@ func TestMultiRangeEvent(t *testing.T) {
 	}
 
 	code, b = e.do(boss, "GET", evPath+"/lanes", nil)
+	expect(t, "get", code, 200, b)
 	var lanes []web.RangeLanes
 	json.Unmarshal(b, &lanes)
 	if len(lanes) != 2 || lanes[0].RangeName != "10m" || lanes[0].Lanes[0].State != "occupied" || len(lanes[1].Lanes) != 3 || lanes[1].Lanes[0].ShooterName != "Young Yves" {
