@@ -42,13 +42,33 @@
 		{ id: 'certificate', label: $t`Certificates` },
 		{ id: 'form', label: $t`Print forms (pre-printed)` }
 	]);
-	const routedOptions = ['InputSlot', 'PageSize', 'MediaType'];
-
+	type AgentPrinter = Printer & { os: string };
 	const printers = $derived.by(() => {
-		const all = new Map<string, Printer>();
-		for (const a of agents.data ?? []) for (const pr of a.printers) all.set(pr.name, pr);
+		const all = new Map<string, AgentPrinter>();
+		for (const a of agents.data ?? []) for (const pr of a.printers) all.set(pr.name, { ...pr, os: a.os });
 		return [...all.values()];
 	});
+
+	/** The label of a printer option: translated for the options of the Windows agent, else the driver's. */
+	function optionLabel(o: Printer['options'][number]) {
+		const labels: Record<string, string> = { bin: $t`Tray`, paper: $t`Paper`, duplex: $t`Two-sided`, scale: $t`Scaling`, color: $t`Colour` };
+		return labels[o.name] ?? (o.label || o.name);
+	}
+
+	/** The label of an option value: translated for the fixed values of the Windows agent, else the value itself. */
+	function valueLabel(v: string) {
+		const labels: Record<string, string> = {
+			simplex: $t`One-sided`,
+			duplexlong: $t`Two-sided, long edge`,
+			duplexshort: $t`Two-sided, short edge`,
+			noscale: $t`Actual size`,
+			shrink: $t`Shrink to fit`,
+			fit: $t`Fit to page`,
+			color: $t`Colour`,
+			monochrome: $t`Black and white`
+		};
+		return labels[v] ?? v;
+	}
 	/** Whether the agent was seen within the last minute. */
 	const online = (a: PrintAgent) => !!a.lastSeenAt && Date.now() - new Date(a.lastSeenAt).getTime() < 60000;
 
@@ -60,10 +80,11 @@
 		const next: Record<string, Draft> = {};
 		for (const d of untrack(() => documents)) {
 			const s = list.find((x) => x.document === d.id);
+			const reported = printers.find((x) => x.name === s?.printer)?.options.map((o) => o.name) ?? [];
 			const options: Record<string, string> = {};
 			const extra: string[] = [];
 			for (const [k, v] of Object.entries(s?.options ?? {})) {
-				if (routedOptions.includes(k)) options[k] = v;
+				if (reported.includes(k)) options[k] = v;
 				else extra.push(v ? `${k}=${v}` : k);
 			}
 			next[d.id] = { printer: s?.printer ?? '', options, extra: extra.join(', ') };
@@ -78,10 +99,13 @@
 	let secret = $state('');
 	let addingAgent = $state(false);
 
-	/** The options of a draft: the chosen values and the extra key=value pairs. */
+	/** The options of a draft: the chosen values of the options its printer reports and, except on Windows, the extra key=value pairs. */
 	function optionsOf(d: Draft) {
+		const pr = printers.find((x) => x.name === d.printer);
+		const reported = pr?.options.map((o) => o.name);
 		const options: Record<string, string> = {};
-		for (const [k, v] of Object.entries(d.options)) if (v) options[k] = v;
+		for (const [k, v] of Object.entries(d.options)) if (v && (!reported || reported.includes(k))) options[k] = v;
+		if (pr?.os === 'windows') return options;
 		for (const part of d.extra.split(',').map((x) => x.trim()).filter(Boolean)) {
 			const [k, ...v] = part.split('=');
 			options[k.trim()] = v.join('=').trim();
@@ -148,6 +172,7 @@
 				<li class="flex flex-wrap items-center gap-2 px-4 py-2.5 text-sm">
 					<Server class="size-4 text-muted-foreground" />
 					<span class="font-medium">{a.name}</span>
+					{#if a.version}<span class="text-xs text-muted-foreground">{a.version} · {a.os}</span>{/if}
 					<Badge variant="outline" class={online(a) ? 'border-emerald-500/50 text-emerald-700 dark:text-emerald-400' : ''}>
 						{online(a) ? $t`online` : a.lastSeenAt ? $t`last seen ${new Date(a.lastSeenAt).toLocaleString(intlLocale())}` : $t`never connected`}
 					</Badge>
@@ -187,16 +212,18 @@
 								</Table.Cell>
 								<Table.Cell>
 									<div class="flex flex-wrap items-end gap-2">
-										{#each (pr?.options ?? []).filter((o) => routedOptions.includes(o.name)) as o (o.name)}
+										{#each pr?.options ?? [] as o (o.name)}
 											<label class="grid gap-1 text-xs text-muted-foreground">
-												{o.label || o.name}
+												{optionLabel(o)}
 												<NativeSelect.Root size="sm" bind:value={drafts[d.id].options[o.name]}>
-													<NativeSelect.Option value="">{$t`default (${o.default ?? ''})`}</NativeSelect.Option>
-													{#each o.values as v (v)}<NativeSelect.Option value={v}>{v}</NativeSelect.Option>{/each}
+													<NativeSelect.Option value="">{$t`default (${valueLabel(o.default ?? '')})`}</NativeSelect.Option>
+													{#each o.values as v (v)}<NativeSelect.Option value={v}>{valueLabel(v)}</NativeSelect.Option>{/each}
 												</NativeSelect.Root>
 											</label>
 										{/each}
-										<Input class="h-8 w-56 max-sm:w-full" placeholder={$t`more lp options, e.g. fit-to-page`} bind:value={drafts[d.id].extra} aria-label={$t`More options for ${d.label}`} />
+										{#if pr?.os !== 'windows'}
+											<Input class="h-8 w-56 max-sm:w-full" placeholder={$t`more lp options, e.g. fit-to-page`} bind:value={drafts[d.id].extra} aria-label={$t`More options for ${d.label}`} />
+										{/if}
 									</div>
 								</Table.Cell>
 								<Table.Cell class="text-right whitespace-nowrap max-sm:text-left">

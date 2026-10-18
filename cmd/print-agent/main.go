@@ -51,6 +51,7 @@ func main() {
 			LP:        envOr("STANDBLATT_LP", "lp"),
 			LPStat:    envOr("STANDBLATT_LPSTAT", "lpstat"),
 			LPOptions: envOr("STANDBLATT_LPOPTIONS", "lpoptions"),
+			Version:   version,
 			Client:    &http.Client{Timeout: 60 * time.Second},
 			Log:       log.With("token", i+1),
 		}

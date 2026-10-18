@@ -50,17 +50,21 @@ func (s *Server) registerPrinting(api huma.API) {
 		AgentAuth
 		Body struct {
 			Printers []store.Printer `json:"printers"`
+			Version  string          `json:"version" minLength:"1" maxLength:"50"`
+			OS       string          `json:"os" enum:"linux,windows,darwin"`
 		}
 	}
+	type helloOut struct{ Body store.AgentHello }
 	huma.Register(api, huma.Operation{
 		OperationID: "agent-hello", Method: http.MethodPost, Path: "/api/agent/hello", Tags: []string{"agent"},
-		Summary: "Report the printers of the agent", DefaultStatus: http.StatusNoContent,
-	}, func(ctx context.Context, in *helloIn) (*struct{}, error) {
+		Summary: "Report the printers, version and operating system of the agent; the answer tells club, range and the routed printers it lacks",
+	}, func(ctx context.Context, in *helloIn) (*helloOut, error) {
 		a, err := s.agentAuth(ctx, in.Authorization)
 		if err != nil {
 			return nil, err
 		}
-		return nil, s.Store.SetAgentPrinters(ctx, a.ID, in.Body.Printers)
+		h, err := s.Store.AgentHello(ctx, a, in.Body.Printers, in.Body.Version, in.Body.OS)
+		return &helloOut{Body: h}, err
 	})
 
 	type jobOut struct {

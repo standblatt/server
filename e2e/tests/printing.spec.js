@@ -53,12 +53,13 @@ test.describe("documents and printing", () => {
     const agent = { Authorization: `Bearer ${await page.locator("[data-testid=agent-token]").innerText()}` };
     await page.request.post("/api/agent/hello", {
       headers: agent,
-      data: { printers: [{ name: "Office_A5", options: [{ name: "InputSlot", label: "Media Source", values: ["Auto", "Tray1", "Tray2"], default: "Auto" }] }] },
+      data: { printers: [{ name: "Office_A5", options: [{ name: "InputSlot", label: "Media Source", values: ["Auto", "Tray1", "Tray2"], default: "Auto" }] }], version: "v0.1.0", os: "linux" },
     });
     await page.reload();
     const entry = c(page, "li", "Pi hall 1");
     await expect(entry).toContainText("online");
     await expect(entry).toContainText("1 printer");
+    await expect(entry).toContainText("v0.1.0 · linux");
     await page.locator("select[aria-label='Printer for Lane sheet (A5)']").selectOption("Office_A5");
     const row = c(page, "tr", "Lane sheet (A5)");
     await c(row, "label", "Media Source").locator("select").selectOption("Tray2");
@@ -87,6 +88,32 @@ test.describe("documents and printing", () => {
     await page.request.post(`/api/agent/jobs/${test.id}`, { headers: agent, data: { ok: true } });
     await page.reload();
     await expect(c(page, "tr", "Test page Office_A5")).toContainText("done");
+  });
+
+  test("shows the options of a Windows agent in plain words", async ({ page }) => {
+    await login(page, admin);
+    const { secret } = await api(page, "POST", `/api/tenants/${ids.tenant}/ranges/${ids.range}/print-agents`, { name: "Laptop" });
+    await page.request.post("/api/agent/hello", {
+      headers: { Authorization: `Bearer ${secret}` },
+      data: {
+        version: "v0.1.0",
+        os: "windows",
+        printers: [{ name: "Brother QL-700", options: [
+          { name: "paper", label: "Paper", values: ["29mm x 90mm", "62mm x 29mm"], default: "29mm x 90mm" },
+          { name: "scale", label: "Scaling", values: ["noscale", "shrink", "fit"], default: "noscale" },
+        ] }],
+      },
+    });
+    await page.goto(`/t/${ids.tenant}/ranges/${ids.range}/printing`);
+    const doc = "Control strip (label 90 × 29 mm)";
+    await page.locator(`select[aria-label='Printer for ${doc}']`).selectOption("Brother QL-700");
+    const row = c(page, "tr", doc);
+    await expect(row.locator(`input[aria-label='More options for ${doc}']`)).toHaveCount(0);
+    await c(row, "label", "Scaling").locator("select").selectOption({ label: "Shrink to fit" });
+    await c(row, "button", "Save").click();
+    await expect(c(page, "[data-sonner-toast]", "Saved.")).toBeVisible();
+    const settings = await api(page, "GET", `/api/tenants/${ids.tenant}/ranges/${ids.range}/print-settings`);
+    expect(settings.find((s) => s.document === "control_strip")).toMatchObject({ printer: "Brother QL-700", options: { scale: "shrink" } });
   });
 
   test("offers the wreath card and result sheet once results are in", async ({ page }) => {

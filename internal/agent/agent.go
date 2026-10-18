@@ -5,6 +5,7 @@ package agent
 import (
 	"bufio"
 	"bytes"
+	"cmp"
 	"context"
 	"encoding/json"
 	"errors"
@@ -14,6 +15,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"runtime"
 	"sort"
 	"strings"
 	"time"
@@ -49,6 +51,7 @@ type Agent struct {
 	LP        string
 	LPStat    string
 	LPOptions string
+	Version   string
 	Client    *http.Client
 	Log       *slog.Logger
 }
@@ -125,13 +128,13 @@ func (a *Agent) request(ctx context.Context, method, path string, body any) (*ht
 	return resp, nil
 }
 
-// Hello reports the printers to the server.
+// Hello reports the printers, the version (dev when unset) and the operating system to the server.
 func (a *Agent) Hello(ctx context.Context) error {
 	printers, err := a.Discover(ctx)
 	if err != nil {
 		return err
 	}
-	resp, err := a.request(ctx, http.MethodPost, "/api/agent/hello", map[string]any{"printers": printers})
+	resp, err := a.request(ctx, http.MethodPost, "/api/agent/hello", map[string]any{"printers": printers, "version": cmp.Or(a.Version, "dev"), "os": runtime.GOOS})
 	if err != nil {
 		return err
 	}

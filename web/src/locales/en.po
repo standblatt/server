@@ -591,6 +591,10 @@ msgstr "Active"
 msgid "Active: shooters can register for it"
 msgstr "Active: shooters can register for it"
 
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Actual size"
+msgstr "Actual size"
+
 #: src/lib/AccountSettings.svelte
 #: src/routes/my/log/+page.svelte
 #: src/routes/t/[tenantId]/users/+page.svelte
@@ -1008,6 +1012,10 @@ msgstr "Birthday"
 msgid "Birthday of shooter {0}"
 msgstr "Birthday of shooter {0}"
 
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Black and white"
+msgstr "Black and white"
+
 #: src/lib/labels.ts
 msgid "Board"
 msgstr "Board"
@@ -1377,6 +1385,10 @@ msgstr "Code from the app"
 msgid "Code from your authenticator app"
 msgstr "Code from your authenticator app"
 
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Colour"
+msgstr "Colour"
+
 #: src/lib/programme/Usage.svelte
 msgid "Combinable with"
 msgstr "Combinable with"
@@ -1687,7 +1699,7 @@ msgstr "Decline request of {0}?"
 msgid "declined"
 msgstr "declined"
 
-#. placeholder {0}: o.default ?? ''
+#. placeholder {0}: valueLabel(o.default ?? '')
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "default ({0})"
 msgstr "default ({0})"
@@ -2236,6 +2248,10 @@ msgstr "First name"
 #: src/lib/modules/reservations/booking/parts/ShooterList.svelte
 msgid "First name of shooter {0}"
 msgstr "First name of shooter {0}"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Fit to page"
+msgstr "Fit to page"
 
 #: src/lib/forms/Properties.svelte
 msgid "Font size (pt)"
@@ -3504,6 +3520,10 @@ msgid "One range per distance, e.g. Pistol 25 m and Pistol 50 m, each with lanes
 msgstr "One range per distance, e.g. Pistol 25 m and Pistol 50 m, each with lanes from 1."
 
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "One-sided"
+msgstr "One-sided"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "online"
 msgstr "online"
 
@@ -3621,6 +3641,10 @@ msgstr "Own text"
 #: src/lib/Pager.svelte
 msgid "Pages"
 msgstr "Pages"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Paper"
+msgstr "Paper"
 
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Paper size"
@@ -4596,6 +4620,10 @@ msgstr "Saved."
 msgid "Saves unsaved changes every minute"
 msgstr "Saves unsaved changes every minute"
 
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Scaling"
+msgstr "Scaling"
+
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Scan of the empty form"
 msgstr "Scan of the empty form"
@@ -4945,6 +4973,10 @@ msgstr "show past"
 #: src/lib/modules/reservations/Page.svelte
 msgid "shown {0} min before"
 msgstr "shown {0} min before"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Shrink to fit"
+msgstr "Shrink to fit"
 
 #: src/lib/components/ui/sidebar/sidebar.svelte
 msgid "Sidebar"
@@ -5479,10 +5511,26 @@ msgstr "Training"
 msgid "Training app"
 msgstr "Training app"
 
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Tray"
+msgstr "Tray"
+
 #: src/routes/my/+page.svelte
 #: src/routes/my/progress/+page.svelte
 msgid "Trend"
 msgstr "Trend"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Two-sided"
+msgstr "Two-sided"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Two-sided, long edge"
+msgstr "Two-sided, long edge"
+
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Two-sided, short edge"
+msgstr "Two-sided, short edge"
 
 #: src/lib/forms/Properties.svelte
 msgid "Type"

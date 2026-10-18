@@ -44,6 +44,15 @@ type PrintAgent struct {
 	CreatedAt  time.Time  `json:"createdAt"`
 	LastSeenAt *time.Time `json:"lastSeenAt,omitempty"`
 	Printers   []Printer  `json:"printers"`
+	Version    string     `json:"version" doc:"Version the agent reported, empty before its first hello"`
+	OS         string     `json:"os" doc:"Operating system the agent reported (linux, windows, darwin), empty before its first hello"`
+}
+
+// AgentHello is what the server answers an agent's hello: where it prints and which routed printers it lacks.
+type AgentHello struct {
+	Club            string   `json:"club"`
+	Range           string   `json:"range"`
+	MissingPrinters []string `json:"missingPrinters" doc:"Printers the printing setup of the range routes documents to that the agent did not report"`
 }
 
 // AgentRef identifies the agent behind a token.
@@ -108,7 +117,7 @@ func (s *Store) CreatePrintAgent(ctx context.Context, tenantID, rangeID int64, n
 
 // ListPrintAgents lists the agents of a range.
 func (s *Store) ListPrintAgents(ctx context.Context, tenantID, rangeID int64) ([]PrintAgent, error) {
-	rows, err := s.pool.Query(ctx, `SELECT id, name, created_at, last_seen_at, printers FROM print_agents
+	rows, err := s.pool.Query(ctx, `SELECT id, name, created_at, last_seen_at, printers, version, os FROM print_agents
 		WHERE tenant_id = $1 AND range_id = $2 ORDER BY created_at`, tenantID, rangeID)
 	if err != nil {
 		return nil, err
@@ -129,13 +138,24 @@ func (s *Store) AgentByToken(ctx context.Context, tokenHash string) (AgentRef, e
 	return a, mapErr(err)
 }
 
-// SetAgentPrinters stores the printers an agent reported.
-func (s *Store) SetAgentPrinters(ctx context.Context, agentID int64, printers []Printer) error {
+// AgentHello stores the printers, version and operating system an agent reported and returns its club, range and
+// the routed printers it did not report.
+func (s *Store) AgentHello(ctx context.Context, a AgentRef, printers []Printer, version, os string) (AgentHello, error) {
 	if printers == nil {
 		printers = []Printer{}
 	}
-	_, err := s.pool.Exec(ctx, `UPDATE print_agents SET printers = $2 WHERE id = $1`, agentID, printers)
-	return err
+	names := make([]string, len(printers))
+	for i, p := range printers {
+		names[i] = p.Name
+	}
+	var h AgentHello
+	err := s.pool.QueryRow(ctx, `WITH a AS (UPDATE print_agents SET printers = $3, version = $4, os = $5
+			WHERE tenant_id = $1 AND id = $2 RETURNING tenant_id, range_id)
+		SELECT t.name, r.name, array(SELECT DISTINCT ps.printer FROM print_settings ps
+			WHERE ps.tenant_id = a.tenant_id AND ps.range_id = a.range_id AND NOT ps.printer = ANY($6) ORDER BY 1)
+		FROM a JOIN tenants t ON t.id = a.tenant_id JOIN ranges r ON r.id = a.range_id AND r.tenant_id = a.tenant_id`,
+		a.TenantID, a.ID, printers, version, os, names).Scan(&h.Club, &h.Range, &h.MissingPrinters)
+	return h, mapErr(err)
 }
 
 // ListPrintSettings returns the document routing of a range.

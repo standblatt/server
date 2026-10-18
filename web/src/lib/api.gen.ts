@@ -13,7 +13,7 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /** Report the printers of the agent */
+        /** Report the printers, version and operating system of the agent; the answer tells club, range and the routed printers it lacks */
         post: operations["agent-hello"];
         delete?: never;
         options?: never;
@@ -2286,6 +2286,12 @@ export interface components {
             /** Format: int64 */
             roleId: number;
         };
+        AgentHello: {
+            club: string;
+            /** @description Printers the printing setup of the range routes documents to that the agent did not report */
+            missingPrinters: string[];
+            range: string;
+        };
         ArchiveInBody: {
             archived: boolean;
         };
@@ -3067,7 +3073,10 @@ export interface components {
             y: number;
         };
         HelloInBody: {
+            /** @enum {string} */
+            os: "linux" | "windows" | "darwin";
             printers: components["schemas"]["Printer"][];
+            version: string;
         };
         Helper: {
             /** Format: int64 */
@@ -3399,7 +3408,11 @@ export interface components {
             /** Format: date-time */
             lastSeenAt?: string;
             name: string;
+            /** @description Operating system the agent reported (linux, windows, darwin), empty before its first hello */
+            os: string;
             printers: components["schemas"]["Printer"][];
+            /** @description Version the agent reported, empty before its first hello */
+            version: string;
         };
         PrintJob: {
             /** Format: int64 */
@@ -4243,12 +4256,14 @@ export interface operations {
             };
         };
         responses: {
-            /** @description No Content */
-            204: {
+            /** @description OK */
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
-                content?: never;
+                content: {
+                    "application/json": components["schemas"]["AgentHello"];
+                };
             };
             /** @description Error */
             default: {

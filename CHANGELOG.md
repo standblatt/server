@@ -8,7 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Print agents report their version and operating system; *Ranges → Printing* shows them (by @HB9HIL)
 - **Test page** in *Ranges → Printing*: each document row sends a small page (90 × 29 mm) with club, range, printer, options and time to its printer with the options of that row (by @HB9HIL)
+
+### Changed
+- *Ranges → Printing* offers every option a print agent reports for a printer, with plain names for the options of the Windows agent; the free-text `lp` options remain for printers of other agents, and a saved setting keeps only the options of its printer (by @HB9HIL)
+- The print agent's hello requires `version` and `os` and answers with the club, the range and the routed printers the agent does not report (by @HB9HIL)
 
 ## [0.20.1] - 2026-10-18
 

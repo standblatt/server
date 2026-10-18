@@ -1,6 +1,7 @@
 package web_test
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -9,6 +10,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"testing"
 	"time"
@@ -99,7 +101,8 @@ func TestPrinting(t *testing.T) {
 	expect(t, "get", code, 200, b)
 	var agents []store.PrintAgent
 	json.Unmarshal(b, &agents)
-	if len(agents) != 1 || len(agents[0].Printers) != 2 || agents[0].Printers[0].Options[0].Values[2] != "Tray2" || agents[0].LastSeenAt == nil {
+	if len(agents) != 1 || len(agents[0].Printers) != 2 || agents[0].Printers[0].Options[0].Values[2] != "Tray2" || agents[0].LastSeenAt == nil ||
+		agents[0].Version != "dev" || agents[0].OS != runtime.GOOS {
 		t.Fatalf("agents: %s", b)
 	}
 
@@ -107,6 +110,40 @@ func TestPrinting(t *testing.T) {
 		"document": "lane_sheet", "printer": "Office_A5", "options": map[string]string{"InputSlot": "Tray2", "PageSize": "A5", "fit-to-page": ""},
 	})
 	expect(t, "route lane sheet", code, 204, b)
+
+	hello := func(body any) (int, []byte) {
+		raw, _ := json.Marshal(body)
+		req, _ := http.NewRequest("POST", e.srv.URL+"/api/agent/hello", bytes.NewReader(raw))
+		req.Header.Set("Authorization", "Bearer "+created.Secret)
+		req.Header.Set("Content-Type", "application/json")
+		resp, err := http.DefaultClient.Do(req)
+		if err != nil {
+			t.Fatal(err)
+		}
+		defer resp.Body.Close()
+		out, _ := io.ReadAll(resp.Body)
+		return resp.StatusCode, out
+	}
+	code, b = hello(map[string]any{"printers": []map[string]any{{"name": "Brother_QL", "options": []any{}}}, "version": "v0.1.0", "os": "windows"})
+	expect(t, "hello without the routed printer", code, 200, b)
+	var h store.AgentHello
+	json.Unmarshal(b, &h)
+	if h.Club != "Club" || h.Range != ev.Ranges[0].Name || len(h.MissingPrinters) != 1 || h.MissingPrinters[0] != "Office_A5" {
+		t.Fatalf("hello answer: %s", b)
+	}
+	code, b = e.do(admin, "GET", rangePath+"/print-agents", nil)
+	expect(t, "get", code, 200, b)
+	json.Unmarshal(b, &agents)
+	if agents[0].Version != "v0.1.0" || agents[0].OS != "windows" {
+		t.Fatalf("agent info: %s", b)
+	}
+	code, b = hello(map[string]any{"printers": []any{}, "os": "windows"})
+	expect(t, "hello without a version", code, 422, b)
+	code, b = hello(map[string]any{"printers": []any{}, "version": "v0.1.0", "os": "plan9"})
+	expect(t, "hello from an unknown OS", code, 422, b)
+	if err := a.Hello(ctx); err != nil {
+		t.Fatal(err)
+	}
 
 	code, b = e.do(staff, "POST", fmt.Sprintf("/api/tenants/%d/print", f.tenant), printReq)
 	expect(t, "print", code, 200, b)

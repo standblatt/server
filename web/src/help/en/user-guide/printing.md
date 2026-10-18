@@ -20,7 +20,7 @@ Every Print button prints on the range's printer if one is set up and its print 
 ![Printing](../images/screenshots/printing.png){ .screenshot }
 
 1. **Add print agent**, give it a name and copy the token. Install the agent on a computer next to the printers (see [Print agent](../admin-guide/print-agent.md)). One computer can serve several ranges, e.g. *Pistol 25 m* and *Pistol 50 m*: add an agent on each range and give the agent both tokens, separated by a comma.
-2. Once the agent is online, it reports its printers. Choose the printer for each document (*Certificates* are the certificates from the rankings, *Print forms* every other form of the club) and its options (tray, paper size, media type, further `lp` options such as `fit-to-page`).
+2. Once the agent is online, it reports its printers and the list shows its version and operating system. Choose the printer for each document (*Certificates* are the certificates from the rankings, *Print forms* every other form of the club) and its options: the options the agent reports for that printer (on Linux tray, paper size and media type, plus further `lp` options such as `fit-to-page` in the text field; on Windows tray, paper, two-sided, scaling and colour).
 3. **Test page** prints a small page (90 × 29 mm, the size of the control strip) on the printer of that row with the options chosen there, also before saving: club, range, printer, options and the time. A label printer prints it as a label, other printers in the top-left corner of the sheet. It needs an online agent.
 4. **Recent jobs** shows what was printed and whether it worked.
 
