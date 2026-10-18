@@ -4,6 +4,7 @@
 	import { toast } from 'svelte-sonner';
 	import { Switch } from '$lib/components/ui/switch';
 	import { updateEvent } from '$lib/tenant';
+	import EventFormChoice from '$lib/forms/EventFormChoice.svelte';
 	import type { EventProps } from '..';
 
 	let { tenantId, event }: EventProps = $props();
@@ -16,7 +17,10 @@
 	}
 </script>
 
-<label class="flex items-center justify-between gap-3 text-sm">
-	{$t`Print the award value on wreath cards`}
-	<Switch checked={event.settings.printAwardValue ?? true} onCheckedChange={save} />
-</label>
+<div class="grid gap-3">
+	<label class="flex items-center justify-between gap-3 text-sm">
+		{$t`Print the award value on wreath cards`}
+		<Switch checked={event.settings.printAwardValue ?? true} onCheckedChange={save} />
+	</label>
+	<EventFormChoice {tenantId} {event} setting="wreathCardFormId" source="results" label={$t`Print form of the wreath cards`} />
+</div>

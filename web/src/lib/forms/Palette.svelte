@@ -11,12 +11,12 @@
 		onadd
 	}: { samples: Record<string, string>; images?: LibraryImage[]; library: string; onadd: (el: Partial<LayoutElement>) => void } = $props();
 
-	type Entry = { key: string; label: string; example: string; el: Partial<LayoutElement> };
+	type Entry = { key: string; label: string; example: string; el: Partial<LayoutElement>; field?: boolean };
 
 	let q = $state('');
 
 	/** An entry that prints one placeholder as text. */
-	const field = (key: string, label: string): Entry => ({ key, label, example: samples[key] ?? '', el: { type: 'text', value: `{{${key}}}`, size: 10 } });
+	const field = (key: string, label: string): Entry => ({ key, label, example: samples[key] ?? '', el: { type: 'text', value: `{{${key}}}`, size: 10 }, field: true });
 
 	const series = $derived(
 		Object.keys(samples)
@@ -69,8 +69,23 @@
 				field('total', $t`Total`),
 				field('mouches', $t`Mouches`),
 				field('award', $t`Award`),
+				field('award.value', $t`Value of the award`),
+				field('award.value.words', $t`Value in words`),
 				...series.flatMap((n) => [field(`s${n}`, $t`Series ${n}`), field(`s${n}.mouches`, $t`Mouches series ${n}`)])
 			]
+		},
+		{
+			label: $t`Registration`,
+			entries: [
+				field('category.short', $t`Age category, short`),
+				field('programmes', $t`Programmes`),
+				field('passes', $t`Passes`),
+				{ key: 'registration.code', label: $t`QR code of the registration`, example: '', el: { type: 'qr', value: '{{registration.code}}', w: 20 }, field: true }
+			]
+		},
+		{
+			label: $t`Rank`,
+			entries: [field('rank', $t`Rank`), field('ranking', $t`Ranking`), field('class', $t`Class`)]
 		},
 		{
 			label: $t`Single shots`,
@@ -92,7 +107,7 @@
 
 	const shown = $derived(
 		groups
-			.map((g) => ({ ...g, entries: g.entries.filter((e) => !q || `${e.label} ${e.key}`.toLowerCase().includes(q.trim().toLowerCase())) }))
+			.map((g) => ({ ...g, entries: g.entries.filter((e) => (!e.field || e.key in samples) && (!q || `${e.label} ${e.key}`.toLowerCase().includes(q.trim().toLowerCase()))) }))
 			.filter((g) => g.entries.length || (g.label === $t`Images` && !q))
 	);
 

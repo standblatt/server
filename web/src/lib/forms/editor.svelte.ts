@@ -3,7 +3,10 @@ import type { Layout, LayoutElement, LayoutInput } from '../api';
 /** An element of the form being edited, with an ID that lives only in the editor. */
 export type Item = LayoutElement & { id: string };
 
-type Snapshot = { name: string; width: number; height: number; offsetX: number; offsetY: number; items: Item[] };
+/** What a form prints: the results of a programme, a registration or a rank. */
+export type Source = 'results' | 'registration' | 'rank';
+
+type Snapshot = { name: string; source: Source; width: number; height: number; offsetX: number; offsetY: number; items: Item[] };
 
 const historyMax = 100;
 
@@ -19,6 +22,7 @@ const newId = () => Math.random().toString(36).slice(2, 10);
 /** The editor state of a print form: its fields, elements, selection and undo history. */
 export class FormEditor {
 	name = $state('');
+	source = $state<Source>('results');
 	width = $state(148);
 	height = $state(210);
 	offsetX = $state(0);
@@ -32,6 +36,7 @@ export class FormEditor {
 	/** Takes a stored form as the clean starting point. */
 	load(l: Layout) {
 		this.name = l.name;
+		this.source = (l.source || 'results') as Source;
 		this.width = l.width;
 		this.height = l.height;
 		this.offsetX = l.offsetX ?? 0;
@@ -45,14 +50,14 @@ export class FormEditor {
 
 	/** The state as a string, for the history and to tell unsaved changes. */
 	#snapshot(): string {
-		const s: Snapshot = { name: this.name, width: num(this.width), height: num(this.height), offsetX: num(this.offsetX), offsetY: num(this.offsetY), items: $state.snapshot(this.items) };
+		const s: Snapshot = { name: this.name, source: this.source, width: num(this.width), height: num(this.height), offsetX: num(this.offsetX), offsetY: num(this.offsetY), items: $state.snapshot(this.items) };
 		return JSON.stringify(s);
 	}
 
 	/** Puts a snapshot back. */
 	#restore(json: string) {
 		const s = JSON.parse(json) as Snapshot;
-		Object.assign(this, { name: s.name, width: s.width, height: s.height, offsetX: s.offsetX, offsetY: s.offsetY, items: s.items });
+		Object.assign(this, { name: s.name, source: s.source, width: s.width, height: s.height, offsetX: s.offsetX, offsetY: s.offsetY, items: s.items });
 		this.selected = this.selected.filter((id) => s.items.some((i) => i.id === id));
 	}
 
@@ -153,6 +158,7 @@ export class FormEditor {
 	input(): LayoutInput {
 		return {
 			name: this.name.trim(),
+			source: this.source,
 			width: num(this.width),
 			height: num(this.height),
 			offsetX: num(this.offsetX),

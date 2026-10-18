@@ -6,5 +6,6 @@ export default {
 	label: msg`Control strip`,
 	description: msg`Printed at registration: the passes the shooter may shoot.`,
 	help: 'user-guide/registrations',
-	icon: Ticket
+	icon: Ticket,
+	settings: () => import('./Settings.svelte')
 } satisfies ModuleUI;

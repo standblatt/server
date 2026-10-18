@@ -1,5 +1,5 @@
-// Package docs renders the printed documents as PDF: lane sheet, control strip label, result sheet,
-// wreath card and ranking list. It works on plain data and knows nothing about storage or HTTP.
+// Package docs renders the printed documents as PDF: lane sheet, result sheet, ranking list, reports and print
+// forms (layouts), among them the built-in wreath card and control strip. It works on plain data and knows nothing about storage or HTTP.
 package docs
 
 import (
@@ -221,37 +221,6 @@ func RenderLaneSheet(s LaneSheet) ([]byte, error) {
 	return d.bytes()
 }
 
-// ControlStrip is the 90 × 29 mm label stuck on the target card.
-type ControlStrip struct {
-	EventName      string
-	Person         Person
-	RegistrationID int64
-	Passes         string
-}
-
-// RenderControlStrip renders the control strip label.
-func RenderControlStrip(s ControlStrip) ([]byte, error) {
-	d := newDoc("P", "", 90.3, 29)
-	d.AddPage()
-	w := 57.0
-	d.SetFont("Helvetica", "I", 7)
-	d.text(2, 1.5, w, 3, "I", 7, "L", d.fit(s.EventName, w))
-	d.SetFont("Helvetica", "B", 9)
-	d.text(2, 5, w, 4, "B", 9, "L", d.fit(s.Person.Lastname+" "+s.Person.Firstname+", "+s.Person.Birthday, w))
-	d.text(2, 9.5, w, 3.5, "", 8, "L", orDash(s.Person.License))
-	d.SetFont("Helvetica", "", 8)
-	d.text(2, 13.5, w, 3.5, "", 8, "L", d.fit(s.Person.Club, w))
-	d.SetFont("Helvetica", "B", 13)
-	catW := d.GetStringWidth(s.Person.CategoryShort) + 2
-	d.text(2, 20, catW, 6, "B", 13, "L", s.Person.CategoryShort)
-	d.SetFont("Helvetica", "", 7)
-	d.SetXY(2+catW+2, 20)
-	d.MultiCell(w-catW-2, 3, d.tr(s.Passes), "", "L", false)
-	d.qr(Code(s.RegistrationID, s.Person.License), 63, 1.5, 24)
-	d.text(62, 25.5, 26, 2.5, "B", 5, "C", fmt.Sprintf("ID %d", s.RegistrationID))
-	return d.bytes()
-}
-
 // ResultSheetProgramme is a programme with its results on the result sheet.
 type ResultSheetProgramme struct {
 	Title     string
@@ -314,36 +283,6 @@ func RenderResultSheet(s ResultSheet) ([]byte, error) {
 	d.Line(left, y, right, y)
 	d.text(left, y+3, right-left, 6, "I", 10, "C", i18n.T(l, "Thank you for taking part!"))
 	d.text(left, 202, right-left, 4, "", 7, "C", "www.standblatt.ch")
-	return d.bytes()
-}
-
-// WreathCard holds the fields printed onto a pre-printed A6 wreath card.
-type WreathCard struct {
-	Lastname   string
-	Firstname  string
-	BirthYear  string
-	Club       string
-	Date       string
-	Value      float64
-	ShowValue  bool
-	ValueWords string
-	Organizer  string
-}
-
-// RenderWreathCard prints the field values at the positions of the pre-printed card (A6 portrait).
-func RenderWreathCard(c WreathCard) ([]byte, error) {
-	d := newDoc("P", "A6", 0, 0)
-	d.AddPage()
-	d.text(30, 94.5, 65, 6, "B", 10, "L", c.Lastname)
-	d.text(30, 102.7, 50, 6, "", 10, "L", c.Firstname)
-	d.text(85, 102.7, 20, 6, "", 10, "L", c.BirthYear)
-	d.text(30, 111, 65, 5, "", 10, "L", c.Club)
-	d.text(30, 119.3, 65, 5, "", 10, "L", c.Date)
-	d.text(15, 131, 80, 4, "", 8, "R", c.Organizer)
-	if c.ShowValue && c.Value > 0 {
-		d.text(30, 135.3, 65, 5, "B", 12, "L", fmt.Sprintf("CHF %.2f", c.Value))
-		d.text(30, 140.3, 65, 4, "", 8, "L", c.ValueWords)
-	}
 	return d.bytes()
 }
 

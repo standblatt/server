@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"slices"
 	"strings"
 	"time"
 
@@ -170,12 +171,15 @@ func (s *Server) renderRegistrationDoc(ctx context.Context, tenantID, registrati
 		out.pdf, err = docs.RenderLaneSheet(sheet)
 		out.filename, out.title = filename("Lane_sheet", reg.Shooter.LicenseNumber, reg.Shooter.Lastname), i18n.Tf(l, "Lane sheet %s", name)
 	case store.DocControlStrip:
-		var passes []domain.PassesEntry
-		for _, e := range reg.Entries {
-			p := byID[e.ProgrammeID]
-			passes = append(passes, domain.PassesEntry{ProgrammeID: p.ID, Series: len(p.Series), CombinableWithID: p.CombinableWithID, CombinedSeries: e.CombinedSeries})
+		layout, images, err := s.eventLayout(ctx, tenantID, ev.Settings.ControlStripFormID, docs.BuiltinControlStrip)
+		if err != nil {
+			return out, err
 		}
-		out.pdf, err = docs.RenderControlStrip(docs.ControlStrip{EventName: ev.Name, Person: person, RegistrationID: reg.ID, Passes: domain.PassesText(passes)})
+		sh, club, err := s.shooterClub(ctx, tenantID, reg)
+		if err != nil {
+			return out, err
+		}
+		out.pdf, err = docs.RenderLayout(layout, []map[string]string{registrationValues(l, ev, sh, club, reg, programmes)}, nil, images, false)
 		out.filename, out.title = filename("Control_strip", reg.Shooter.LicenseNumber, reg.Shooter.Lastname), i18n.Tf(l, "Control strip %s", name)
 	case store.DocResultSheet:
 		sheet, err := s.resultSheet(ctx, tenantID, reg.ID)
@@ -215,25 +219,25 @@ func (s *Server) renderWreathCard(ctx context.Context, tenantID, entryID int64) 
 	if err != nil {
 		return rendered{}, err
 	}
-	var award *domain.Tier
-	for _, er := range sheet.Entries {
-		if er.EntryID == e.ID {
-			award = er.Award
-		}
-	}
-	if award == nil || award.Kind != domain.AwardCard {
+	i := slices.IndexFunc(sheet.Entries, func(er EntryResult) bool { return er.EntryID == e.ID })
+	if i < 0 || sheet.Entries[i].Award == nil || sheet.Entries[i].Award.Kind != domain.AwardCard {
 		return rendered{}, conflict("This programme has no wreath card award")
 	}
 	ev, err := s.Store.GetEvent(ctx, tenantID, e.EventID)
 	if err != nil {
 		return rendered{}, err
 	}
+	layout, images, err := s.eventLayout(ctx, tenantID, ev.Settings.WreathCardFormID, docs.BuiltinWreathCard)
+	if err != nil {
+		return rendered{}, err
+	}
+	sh, club, err := s.shooterClub(ctx, tenantID, sheet.Registration)
+	if err != nil {
+		return rendered{}, err
+	}
 	l := i18n.Get(ev.Locale)
 	p := docPerson(l, sheet.Registration)
-	pdf, err := docs.RenderWreathCard(docs.WreathCard{
-		Lastname: p.Lastname, Firstname: p.Firstname, BirthYear: p.BirthYear, Club: p.Club, Date: swissDate(ev.StartsOn),
-		Value: award.Value, ShowValue: ev.Settings.PrintAwardValue, ValueWords: domain.AmountInWords(ev.Locale, award.Value), Organizer: ev.Organizer,
-	})
+	pdf, err := docs.RenderLayout(layout, []map[string]string{formValues(l, ev, sh, club, sheet.Registration, sheet.Entries[i])}, nil, images, false)
 	return rendered{
 		pdf: pdf, filename: filename("Wreath_card", p.Lastname, p.Firstname), title: i18n.Tf(l, "Wreath card %s", p.Lastname+" "+p.Firstname),
 		document: store.DocWreathCard, rangeID: printRange(ev, &sheet.Registration), eventID: ev.ID,

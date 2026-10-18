@@ -17,6 +17,8 @@
 		queryFn: () => call(api.GET('/api/tenants/{tenantId}/layouts', { params: { path: { tenantId } } }))
 	}));
 
+	const results = $derived((layouts.data ?? []).filter((l) => (l.source || 'results') === 'results'));
+
 	/** Chooses the print form of the programme (its ID) or none (""). */
 	async function choose(value: string) {
 		if (!programme) return;
@@ -27,12 +29,12 @@
 	}
 </script>
 
-{#if programme && layouts.data?.length}
+{#if programme && results.length}
 	<Section title={$t`Print form`} hint={$t`The form the results of this programme are printed onto.`}>
 		<FormField label={$t`Print form`}>
 			<NativeSelect.Root class="w-full sm:w-80" value={String(programme.layoutId ?? '')} onchange={(e) => choose(e.currentTarget.value)}>
 				<NativeSelect.Option value="">{$t`none`}</NativeSelect.Option>
-				{#each layouts.data as l (l.id)}<NativeSelect.Option value={String(l.id)}>{l.name}</NativeSelect.Option>{/each}
+				{#each results as l (l.id)}<NativeSelect.Option value={String(l.id)}>{l.name}</NativeSelect.Option>{/each}
 			</NativeSelect.Root>
 		</FormField>
 	</Section>

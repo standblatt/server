@@ -9,7 +9,7 @@ ausschalten (siehe [Vereinsmodule](events.md#club-modules)).
 
 ## Eine Vorlage erstellen {#create}
 
-**Druckvorlagen** (Admins, im Vereinsteil der Seitenleiste) listet die Vorlagen des Vereins. **Neue Druckvorlage** fragt nach einem Namen und einem Papierformat und öffnet dann den Editor. Er hat drei Spalten:
+**Druckvorlagen** (Admins, im Vereinsteil der Seitenleiste) listet die Vorlagen des Vereins. **Neue Druckvorlage** fragt nach einem Namen, was die Vorlage **Druckt** (siehe [Datenquelle](#source)) und einem Papierformat und öffnet dann den Editor. Er hat drei Spalten:
 
 - Links die **Felder**: alles, was eine Vorlage drucken kann, in Gruppen, je
   mit einem Beispiel, und eine Suche. Ein Klick fügt das Feld unter dem
@@ -30,15 +30,41 @@ ausschalten (siehe [Vereinsmodule](events.md#club-modules)).
   **Wert** (Platzhalter wie `{{shooter.name}}` werden beim Drucken
   ausgefüllt), **x** und **y** in Millimetern ab der oberen linken Ecke,
   **Breite** und **Höhe** (bei Breite 0 läuft Text bis zum rechten Rand),
-  **Schriftgrösse**, **Fett** und **Ausrichtung**. **Wiederholung** druckt
-  es mehrmals, jedes Mal um **dx** und **dy** verschoben; `#` in einem
-  Platzhalter zählt 1, 2, 3, …. Darunter legt die **Vorlage** den Namen, die
-  Grösse des Blatts, den Druckversatz und den **Scan des leeren Formulars**
-  fest: ein PNG oder JPEG des ganzen Blatts, das hinter dem Blatt erscheint,
-  damit die Felder auf die Kästchen des Formulars gesetzt werden können; es
-  wird nie gedruckt.
+  **Schriftgrösse**, **Fett**, **Kursiv**, **Text umbrechen** (der Text
+  bricht innerhalb der Breite in Zeilen um, jede so hoch wie die Höhe) und
+  **Ausrichtung**. **Wiederholung** druckt es mehrmals, jedes Mal um **dx**
+  und **dy** verschoben; `#` in einem Platzhalter zählt 1, 2, 3, …. Darunter
+  legt die **Vorlage** den Namen, die Grösse des Blatts, den Druckversatz
+  und den **Scan des leeren Formulars** fest: ein PNG oder JPEG des ganzen
+  Blatts, das hinter dem Blatt erscheint, damit die Felder auf die Kästchen
+  des Formulars gesetzt werden können; es wird nie gedruckt.
 
 **Speichern** speichert die Vorlage; ein Punkt auf dem Knopf zeigt ungespeicherte Änderungen, und wer die Seite mit ihnen verlässt, wird zuerst gefragt. Mit **Automatisch speichern** (eingeschaltet, bis man es ausschaltet; der Browser merkt es sich) werden ungespeicherte Änderungen jede Minute gespeichert. **PDF-Vorschau** öffnet die Vorlage genau so, wie das PDF sie darstellt; das kann leicht vom Blatt im Browser abweichen.
+
+## Datenquelle {#source}
+
+Was eine Vorlage **Druckt**, bestimmt ihre Felder und wo sie gedruckt wird:
+
+| Druckt | Felder | Gedruckt aus |
+|---|---|---|
+| Resultate eines Programms | Schütze, Verein, Anlass, Passen, Einzelschüsse, Total, Auszeichnung und ihr Wert | den Resultaten eines Programms (siehe [Vorlage verwenden](#use)) oder als Kranzkarte des Anlasses |
+| Eine Anmeldung | Schütze, Verein, Anlass, Scheibe, Programme, Passen, QR-Code der Anmeldung | als Kontrollstreifen des Anlasses |
+| Ein Rang | Schütze, Verein, Anlass, Rang, Total, Rangliste, Klasse | Urkunden aus den Ranglisten |
+
+Die Quelle lässt sich im Editor unter **Vorlage** ändern; Felder, die die
+neue Quelle nicht kennt, drucken nichts.
+
+## Eingebaute Vorlagen {#builtin}
+
+Standblatt druckt die Kranzkarte und den Kontrollstreifen mit **eingebauten
+Vorlagen**, aufgeführt unter den Vorlagen des Vereins. **Kopieren** macht
+daraus eine Vorlage des Vereins, die sich wie jede andere ändern lässt,
+z. B. um die Felder auf eine andere vorgedruckte Kranzkarte zu setzen oder
+das Logo des Vereins hinzuzufügen. Ein Anlass wählt sie dann unter
+**Konfiguration** → **Module**: *Vorlage der Kranzkarten* im Modul
+*Auszeichnungen*, *Vorlage der Kontrollstreifen* im Modul
+*Kontrollstreifen*. Ohne Wahl, oder wenn die gewählte Vorlage gelöscht ist,
+druckt die eingebaute Vorlage.
 
 ## Elemente anordnen {#arrange}
 

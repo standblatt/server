@@ -221,6 +221,9 @@ func (s *Server) registerTenants(api huma.API) {
 		if err := normalizeEvent(&in.Body); err != nil {
 			return nil, err
 		}
+		if err := s.checkEventForms(ctx, in.TenantID, in.Body.Settings); err != nil {
+			return nil, err
+		}
 		id, err := s.Store.CreateEvent(ctx, in.TenantID, in.Body)
 		if errors.Is(err, store.ErrInUse) {
 			return nil, invalid("Range not found")
@@ -267,6 +270,9 @@ func (s *Server) registerTenants(api huma.API) {
 			return nil, err
 		}
 		if err := normalizeEvent(&in.Body); err != nil {
+			return nil, err
+		}
+		if err := s.checkEventForms(ctx, in.TenantID, in.Body.Settings); err != nil {
 			return nil, err
 		}
 		err := s.Store.UpdateEvent(ctx, in.TenantID, in.EventID, in.Body)

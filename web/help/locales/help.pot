@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-18 09:58+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-18 10:20+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
 #: ../src/help/en/getting-started/concepts.md:1
@@ -1758,7 +1758,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:50
 #, markdown-text, no-wrap
-msgid "| Module | What it adds |\n|---|---|\n| Reservations | lanes reserved for groups and clubs (needs a range) |\n| Online booking | clubs ask for lanes through a public link (needs a range and switches on Reservations, see [Online booking](online-booking.md)) |\n| Lane sheet, Control strip | the documents printed at registration |\n| Ammunition desk | the **Ammo** button on the dashboard and for the ammunition desk (see [Helpers](helpers.md#ammunition)); leave it off where shooters bring their own, e.g. air pistol and air rifle |\n| Attempts | programmes that can be shot several times (see [Programmes](programmes.md#attempts)) |\n| Awards | wreath cards, prizes in kind and cash prizes; its setting *Print the award value on wreath cards* puts the value in figures and words on the card |\n| Special prizes | the best ranks of every age category (switches on Awards, see [Programmes](programmes.md#special-prizes)) |\n| Club competition | clubs ranked by their shooters' results; its setting *Club excluded from the club competition* is usually the host club, listed as *out of competition* |\n| Classifications | rankings over several programmes or attempts (see [Classifications](classifications.md)) |\n| Kiosk displays | rankings on screens in the hall (see [Rankings and kiosk](rankings-kiosk.md)) |\n| Helper links | scorers, ammunition desk and results clerk without an account (see [Helpers](helpers.md)) |\n"
+msgid "| Module | What it adds |\n|---|---|\n| Reservations | lanes reserved for groups and clubs (needs a range) |\n| Online booking | clubs ask for lanes through a public link (needs a range and switches on Reservations, see [Online booking](online-booking.md)) |\n| Lane sheet, Control strip | the documents printed at registration; the control strip can print with a [print form](print-forms.md#builtin) of the club |\n| Ammunition desk | the **Ammo** button on the dashboard and for the ammunition desk (see [Helpers](helpers.md#ammunition)); leave it off where shooters bring their own, e.g. air pistol and air rifle |\n| Attempts | programmes that can be shot several times (see [Programmes](programmes.md#attempts)) |\n| Awards | wreath cards, prizes in kind and cash prizes; its setting *Print the award value on wreath cards* puts the value in figures and words on the card, *Print form of the wreath cards* chooses a [print form](print-forms.md#builtin) of the club |\n| Special prizes | the best ranks of every age category (switches on Awards, see [Programmes](programmes.md#special-prizes)) |\n| Club competition | clubs ranked by their shooters' results; its setting *Club excluded from the club competition* is usually the host club, listed as *out of competition* |\n| Classifications | rankings over several programmes or attempts (see [Classifications](classifications.md)) |\n| Kiosk displays | rankings on screens in the hall (see [Rankings and kiosk](rankings-kiosk.md)) |\n| Helper links | scorers, ammunition desk and results clerk without an account (see [Helpers](helpers.md)) |\n"
 msgstr ""
 
 #. type: Plain text
@@ -2077,7 +2077,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:8
 #, markdown-text, no-wrap
-msgid "**Print forms** (admins, in the club part of the sidebar) lists the forms of the club. **New print form** asks for a name and a paper size, then opens the editor. It has three columns:\n"
+msgid "**Print forms** (admins, in the club part of the sidebar) lists the forms of the club. **New print form** asks for a name, what the form **Prints** (see [Data source](#source)) and a paper size, then opens the editor. It has three columns:\n"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -2113,7 +2113,7 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/print-forms.md:15
 #, markdown-text
-msgid "**Properties** on the right edit the selected element exactly: its **Value** (placeholders such as `{{shooter.name}}` are filled in when printing), **x** and **y** in millimetres from the top left corner, **Width** and **Height** (a width of 0 lets text run to the right edge), **Font size**, **Bold** and **Alignment**. **Repeat** prints it several times, moved by **dx** and **dy** each time; `#` in a placeholder counts 1, 2, 3, …. Below, the **Form** sets the name, the size of the sheet, the printer offset and the **Scan of the empty form**: a PNG or JPEG of the whole sheet that appears behind the sheet so the fields can be placed onto the boxes of the form; it is never printed."
+msgid "**Properties** on the right edit the selected element exactly: its **Value** (placeholders such as `{{shooter.name}}` are filled in when printing), **x** and **y** in millimetres from the top left corner, **Width** and **Height** (a width of 0 lets text run to the right edge), **Font size**, **Bold**, **Italic**, **Wrap text** (the text breaks into lines within the width, each as high as the height) and **Alignment**. **Repeat** prints it several times, moved by **dx** and **dy** each time; `#` in a placeholder counts 1, 2, 3, …. Below, the **Form** sets the name, the size of the sheet, the printer offset and the **Scan of the empty form**: a PNG or JPEG of the whole sheet that appears behind the sheet so the fields can be placed onto the boxes of the form; it is never printed."
 msgstr ""
 
 #. type: Plain text
@@ -2125,83 +2125,119 @@ msgstr ""
 #. type: Title ##
 #: ../src/help/en/user-guide/print-forms.md:18
 #, markdown-text, no-wrap
+msgid "Data source {#source}"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:21
+#, markdown-text
+msgid "What a form **Prints** decides its fields and where it is printed:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:27
+#, markdown-text, no-wrap
+msgid "| Prints | Fields | Printed from |\n|---|---|---|\n| Results of a programme | shooter, club, event, series, single shots, total, award and its value | the results of a programme (see [Use a form](#use)) or as the event's wreath card |\n| A registration | shooter, club, event, lane, programmes, passes, QR code of the registration | as the event's control strip |\n| A rank | shooter, club, event, rank, total, ranking, class | certificates from the rankings |\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:29
+#, markdown-text
+msgid "The source can be changed in the editor under **Form**; fields the new source does not know print nothing."
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/print-forms.md:30
+#, markdown-text, no-wrap
+msgid "Built-in forms {#builtin}"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:33
+#, markdown-text
+msgid "Standblatt prints the wreath card and the control strip with **built-in forms**, listed below the forms of the club. **Copy** turns one into a form of the club that can be changed like any other, e.g. to move the fields onto another pre-printed wreath card or to add the club's logo. An event then chooses it under **Configuration** → **Modules**: *Print form of the wreath cards* in the module *Awards*, *Print form of the control strips* in the module *Control strip*. Without a choice, or when the chosen form is deleted, the built-in form prints."
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/print-forms.md:34
+#, markdown-text, no-wrap
 msgid "Arrange the elements {#arrange}"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:24
+#: ../src/help/en/user-guide/print-forms.md:40
 #, markdown-text
 msgid "**Move** an element by dragging it, **resize** it by its corner. The pink dot on the last box of a repeated element drags the spacing."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:24
+#: ../src/help/en/user-guide/print-forms.md:40
 #, markdown-text
 msgid "While moving, the element **snaps** to the edges and centres of the other elements and of the sheet, and a pink guide shows the line; elsewhere it snaps to whole millimetres. Hold Alt to place it freely."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:24
+#: ../src/help/en/user-guide/print-forms.md:40
 #, markdown-text
 msgid "**Select several** with Shift or Ctrl and a click, or draw a frame around them on the empty sheet. Dragging moves them together; font size, bold and alignment then apply to all of them."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:24
+#: ../src/help/en/user-guide/print-forms.md:40
 #, markdown-text
 msgid "A **right click** opens the menu: *Duplicate*, *Bring to front*, *Align* (edges, centres, distribute evenly), *Centre on the sheet* and *Delete*."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:35
+#: ../src/help/en/user-guide/print-forms.md:51
 #, markdown-text, no-wrap
 msgid "| Key | Does |\n|---|---|\n| Arrow keys | move the selection by 0.5 mm, with Shift by 5 mm |\n| Ctrl+Z / Ctrl+Y | undo / redo |\n| Ctrl+A | select everything |\n| Ctrl+D | duplicate |\n| Delete | delete the selection |\n| Esc | clear the selection |\n| Ctrl+S | save |\n| Ctrl+mouse wheel | zoom |\n"
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:36
+#: ../src/help/en/user-guide/print-forms.md:52
 #, markdown-text, no-wrap
 msgid "Images {#images}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:39
+#: ../src/help/en/user-guide/print-forms.md:55
 #, markdown-text
 msgid "Logos, letterheads and other pictures come from the club's image library below the list of **Print forms**: **Upload image** adds a PNG or JPEG of at most 2 MB, named after its file. In the editor, the group **Images** of the fields lists them; a click or a drag puts one onto the sheet, 30 mm wide with the image's own proportions. Its properties choose another **Image**, its position and size, and **Keep the aspect ratio** sets the height to match the width again. An image can be repeated like any other element."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:41
+#: ../src/help/en/user-guide/print-forms.md:57
 #, markdown-text
 msgid "An image can be deleted only while no form shows it. **Export** puts the images of a form into its file, and **Import** adds them to the library, reusing an image of the same name the club already has."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:42
+#: ../src/help/en/user-guide/print-forms.md:58
 #, markdown-text, no-wrap
 msgid "Calibrate the printer {#calibrate}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:45
+#: ../src/help/en/user-guide/print-forms.md:61
 #, markdown-text
 msgid "Printers rarely print exactly where they should. Print a sheet with **Test print**, measure how far the values are off and enter it as **Printer offset right** and **Printer offset down** (negative to move left or up). The offset applies to every element; the preview ignores it."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:46
+#: ../src/help/en/user-guide/print-forms.md:62
 #, markdown-text, no-wrap
 msgid "Use a form {#use}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:49
+#: ../src/help/en/user-guide/print-forms.md:65
 #, markdown-text
 msgid "Under **Configuration** → **Programmes** of the event, open a programme and choose its **Print form** in the section of the same name; this works while shooters are registered. Every completed programme then offers **Print onto form** in the results: at the desk, on the **Enter results** page and on scorer links at the lane (see [Helpers](helpers.md)). With a print agent and a printer chosen for *Print forms* under **Ranges → Printing**, the sheet goes to that printer (e.g. its manual feed), otherwise the PDF opens (see [Printing](printing.md))."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:50
+#: ../src/help/en/user-guide/print-forms.md:66
 #, markdown-text, no-wrap
 msgid "**Export** downloads a form as a file, with its images, and **Import** reads it again, e.g. to share a form with another club.\n"
 msgstr ""

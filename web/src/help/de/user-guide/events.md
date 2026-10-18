@@ -46,10 +46,10 @@ Seitenleiste, Dashboard, Programm-Editor, Ranglisten und Berichten.
 |---|---|
 | Reservationen | für Gruppen und Vereine reservierte Scheiben (braucht einen Stand) |
 | Online-Reservation | Vereine fragen über einen öffentlichen Link Scheiben an (braucht einen Stand und schaltet Reservationen ein, siehe [Online-Reservation](online-booking.md)) |
-| Standblatt, Kontrollstreifen | die Dokumente, die bei der Anmeldung gedruckt werden |
+| Standblatt, Kontrollstreifen | die Dokumente, die bei der Anmeldung gedruckt werden; der Kontrollstreifen kann mit einer [Druckvorlage](print-forms.md#builtin) des Vereins drucken |
 | Munitionsausgabe | der Knopf **Munition** im Dashboard und für die Munitionsausgabe (siehe [Helfer](helpers.md#ammunition)); aus lassen, wo die Schützen ihre eigene mitbringen, z. B. Luftpistole und Luftgewehr |
 | Durchgänge | Programme, die mehrmals geschossen werden können (siehe [Programme](programmes.md#attempts)) |
-| Auszeichnungen | Kranzkarten, Naturalgaben und Geldpreise; seine Einstellung *Wert der Auszeichnung auf Kranzkarten drucken* setzt den Wert in Ziffern und Worten auf die Karte |
+| Auszeichnungen | Kranzkarten, Naturalgaben und Geldpreise; seine Einstellung *Wert der Auszeichnung auf Kranzkarten drucken* setzt den Wert in Ziffern und Worten auf die Karte, *Vorlage der Kranzkarten* wählt eine [Druckvorlage](print-forms.md#builtin) des Vereins |
 | Sonderpreise | die besten Ränge jeder Alterskategorie (schaltet Auszeichnungen ein, siehe [Programme](programmes.md#special-prizes)) |
 | Vereinskonkurrenz | Vereine nach den Resultaten ihrer Schützen rangiert; seine Einstellung *Von der Vereinskonkurrenz ausgeschlossener Verein* ist meist der Gastgeberverein, aufgeführt als *ausser Konkurrenz* |
 | Wertungen | Ranglisten über mehrere Programme oder Durchgänge (siehe [Wertungen](classifications.md)) |

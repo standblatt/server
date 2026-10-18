@@ -4,16 +4,32 @@ A print form puts results onto a pre-printed sheet, e.g. the lane sheets the arm
 
 ## Create a form {#create}
 
-**Print forms** (admins, in the club part of the sidebar) lists the forms of the club. **New print form** asks for a name and a paper size, then opens the editor. It has three columns:
+**Print forms** (admins, in the club part of the sidebar) lists the forms of the club. **New print form** asks for a name, what the form **Prints** (see [Data source](#source)) and a paper size, then opens the editor. It has three columns:
 
 - **Fields** on the left: everything a form can print, in groups, with an example each and a search. A click adds the field below the lowest element; dragging it onto the sheet puts it where you drop it.
   - *Own text* prints fixed text, *QR code* and *Barcode* print their value as a code, *Line* draws a line.
   - *Shooter*, *Club and event* and *Result* print one value each, e.g. the name, the total or the points of a series.
   - *Single shots* adds a whole row of shot boxes: *Shots of series 1* is one element `{{s1.shot#}}` repeated once per shot, 8 mm apart.
 - The **Sheet** in the middle shows the form true to scale over the scan, with made-up values; **Show field names** shows the placeholders instead. Rulers in millimetres run along the top and the left, the zoom goes from 50 to 200 %.
-- **Properties** on the right edit the selected element exactly: its **Value** (placeholders such as `{{shooter.name}}` are filled in when printing), **x** and **y** in millimetres from the top left corner, **Width** and **Height** (a width of 0 lets text run to the right edge), **Font size**, **Bold** and **Alignment**. **Repeat** prints it several times, moved by **dx** and **dy** each time; `#` in a placeholder counts 1, 2, 3, …. Below, the **Form** sets the name, the size of the sheet, the printer offset and the **Scan of the empty form**: a PNG or JPEG of the whole sheet that appears behind the sheet so the fields can be placed onto the boxes of the form; it is never printed.
+- **Properties** on the right edit the selected element exactly: its **Value** (placeholders such as `{{shooter.name}}` are filled in when printing), **x** and **y** in millimetres from the top left corner, **Width** and **Height** (a width of 0 lets text run to the right edge), **Font size**, **Bold**, **Italic**, **Wrap text** (the text breaks into lines within the width, each as high as the height) and **Alignment**. **Repeat** prints it several times, moved by **dx** and **dy** each time; `#` in a placeholder counts 1, 2, 3, …. Below, the **Form** sets the name, the size of the sheet, the printer offset and the **Scan of the empty form**: a PNG or JPEG of the whole sheet that appears behind the sheet so the fields can be placed onto the boxes of the form; it is never printed.
 
 **Save** stores the form; a dot on the button shows unsaved changes, and leaving the page with them asks first. With **Save automatically** (on unless you switch it off; the browser remembers it) unsaved changes are stored every minute. **PDF preview** opens the form exactly as the PDF renders it, which can differ slightly from the sheet in the browser.
+
+## Data source {#source}
+
+What a form **Prints** decides its fields and where it is printed:
+
+| Prints | Fields | Printed from |
+|---|---|---|
+| Results of a programme | shooter, club, event, series, single shots, total, award and its value | the results of a programme (see [Use a form](#use)) or as the event's wreath card |
+| A registration | shooter, club, event, lane, programmes, passes, QR code of the registration | as the event's control strip |
+| A rank | shooter, club, event, rank, total, ranking, class | certificates from the rankings |
+
+The source can be changed in the editor under **Form**; fields the new source does not know print nothing.
+
+## Built-in forms {#builtin}
+
+Standblatt prints the wreath card and the control strip with **built-in forms**, listed below the forms of the club. **Copy** turns one into a form of the club that can be changed like any other, e.g. to move the fields onto another pre-printed wreath card or to add the club's logo. An event then chooses it under **Configuration** → **Modules**: *Print form of the wreath cards* in the module *Awards*, *Print form of the control strips* in the module *Control strip*. Without a choice, or when the chosen form is deleted, the built-in form prints.
 
 ## Arrange the elements {#arrange}
 

@@ -10,6 +10,22 @@ type Layout struct {
 	OffsetX  float64   `json:"offsetX" required:"false" minimum:"-50" maximum:"50"`
 	OffsetY  float64   `json:"offsetY" required:"false" minimum:"-50" maximum:"50"`
 	Elements []Element `json:"elements"`
+	Source   string    `json:"source,omitempty" required:"false" enum:"results,registration,rank," doc:"What the form prints: the results of a programme (default), a registration or a rank"`
+}
+
+// Sources of the values a print form prints.
+const (
+	SourceResults      = "results"
+	SourceRegistration = "registration"
+	SourceRank         = "rank"
+)
+
+// DataSource returns the source of the layout, results when none is set.
+func (l Layout) DataSource() string {
+	if l.Source == "" {
+		return SourceResults
+	}
+	return l.Source
 }
 
 // Element is one thing printed on a form. Value is text with placeholders like {{shooter.lastname}}; with Repeat
@@ -23,6 +39,8 @@ type Element struct {
 	H      float64 `json:"h" required:"false" doc:"Height; QR codes are W×W"`
 	Size   float64 `json:"size" required:"false" doc:"Font size in points, 10 when 0"`
 	Bold   bool    `json:"bold" required:"false"`
+	Italic bool    `json:"italic,omitempty" required:"false"`
+	Wrap   bool    `json:"wrap,omitempty" required:"false" doc:"Text breaks into lines within W, each H high"`
 	Align  string  `json:"align" required:"false" enum:"L,C,R,"`
 	Value  string  `json:"value" required:"false"`
 	Repeat int     `json:"repeat" required:"false" minimum:"0" maximum:"100"`

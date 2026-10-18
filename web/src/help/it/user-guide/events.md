@@ -48,10 +48,10 @@ dall’editor dei programmi, dalle classifiche e dai rapporti.
 |---|---|
 | Prenotazioni | bersagli riservati a gruppi e società (richiede uno stand) |
 | Prenotazione online | le società chiedono bersagli tramite un link pubblico (richiede uno stand e attiva Prenotazioni, vedi [Prenotazione online](online-booking.md)) |
-| Foglio di stand, Striscia di controllo | i documenti stampati all’iscrizione |
+| Foglio di stand, Striscia di controllo | i documenti stampati all’iscrizione; la striscia di controllo può stamparsi con un [modello di stampa](print-forms.md#builtin) della società |
 | Distribuzione munizioni | il pulsante **Munizione** sulla dashboard e per la distribuzione munizioni (vedi [Aiutanti](helpers.md#ammunition)); lascialo disattivato dove i tiratori portano le proprie, p. es. pistola e carabina ad aria compressa |
 | Tentativi | programmi che si possono sparare più volte (vedi [Programmi](programmes.md#attempts)) |
-| Distinzioni | carte corona, premi in natura e premi in denaro; la sua impostazione *Stampa il valore della distinzione sulle carte corona* mette il valore in cifre e lettere sulla carta |
+| Distinzioni | carte corona, premi in natura e premi in denaro; la sua impostazione *Stampa il valore della distinzione sulle carte corona* mette il valore in cifre e lettere sulla carta, *Modello delle carte corona* sceglie un [modello di stampa](print-forms.md#builtin) della società |
 | Premi speciali | i migliori ranghi di ogni categoria d’età (attiva Distinzioni, vedi [Programmi](programmes.md#special-prizes)) |
 | Concorso di sezione | le società classificate secondo i risultati dei loro tiratori; la sua impostazione *Società esclusa dal concorso di sezione* è di solito la società organizzatrice, elencata *fuori concorso* |
 | Classifiche generali | classifiche su più programmi o tentativi (vedi [Classifiche generali](classifications.md)) |

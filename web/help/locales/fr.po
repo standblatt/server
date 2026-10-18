@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 09:58+0000\n"
+"POT-Creation-Date: 2026-10-18 10:20+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -2758,10 +2758,10 @@ msgid ""
 "|---|---|\n"
 "| Reservations | lanes reserved for groups and clubs (needs a range) |\n"
 "| Online booking | clubs ask for lanes through a public link (needs a range and switches on Reservations, see [Online booking](online-booking.md)) |\n"
-"| Lane sheet, Control strip | the documents printed at registration |\n"
+"| Lane sheet, Control strip | the documents printed at registration; the control strip can print with a [print form](print-forms.md#builtin) of the club |\n"
 "| Ammunition desk | the **Ammo** button on the dashboard and for the ammunition desk (see [Helpers](helpers.md#ammunition)); leave it off where shooters bring their own, e.g. air pistol and air rifle |\n"
 "| Attempts | programmes that can be shot several times (see [Programmes](programmes.md#attempts)) |\n"
-"| Awards | wreath cards, prizes in kind and cash prizes; its setting *Print the award value on wreath cards* puts the value in figures and words on the card |\n"
+"| Awards | wreath cards, prizes in kind and cash prizes; its setting *Print the award value on wreath cards* puts the value in figures and words on the card, *Print form of the wreath cards* chooses a [print form](print-forms.md#builtin) of the club |\n"
 "| Special prizes | the best ranks of every age category (switches on Awards, see [Programmes](programmes.md#special-prizes)) |\n"
 "| Club competition | clubs ranked by their shooters' results; its setting *Club excluded from the club competition* is usually the host club, listed as *out of competition* |\n"
 "| Classifications | rankings over several programmes or attempts (see [Classifications](classifications.md)) |\n"
@@ -2772,10 +2772,10 @@ msgstr ""
 "|---|---|\n"
 "| Réservations | cibles réservées pour des groupes et des sociétés (nécessite un stand) |\n"
 "| Réservation en ligne | les sociétés demandent des cibles par un lien public (nécessite un stand et active Réservations, voir [Réservation en ligne](online-booking.md)) |\n"
-"| Feuille de stand, Bande de contrôle | les documents imprimés à l’inscription |\n"
+"| Feuille de stand, Bande de contrôle | les documents imprimés à l’inscription ; la bande de contrôle peut s’imprimer avec un [modèle d’impression](print-forms.md#builtin) de la société |\n"
 "| Distribution de munition | le bouton **Munition** sur le tableau de bord et pour la distribution de munition (voir [Aides](helpers.md#ammunition)) ; laissez-le désactivé là où les tireurs apportent la leur, p. ex. pistolet et carabine à air |\n"
 "| Tentatives | des programmes qui peuvent être tirés plusieurs fois (voir [Programmes](programmes.md#attempts)) |\n"
-"| Distinctions | cartes-couronnes, prix en nature et prix en espèces ; son réglage *Imprimer la valeur de la distinction sur les cartes-couronnes* met la valeur en chiffres et en lettres sur la carte |\n"
+"| Distinctions | cartes-couronnes, prix en nature et prix en espèces ; son réglage *Imprimer la valeur de la distinction sur les cartes-couronnes* met la valeur en chiffres et en lettres sur la carte, *Modèle des cartes-couronnes* choisit un [modèle d’impression](print-forms.md#builtin) de la société |\n"
 "| Prix spéciaux | les meilleurs rangs de chaque catégorie d’âge (active Distinctions, voir [Programmes](programmes.md#special-prizes)) |\n"
 "| Concours de sections | les sociétés classées selon les résultats de leurs tireurs ; son réglage *Société exclue du concours de sections* est en général la société organisatrice, listée *hors concours* |\n"
 "| Classements généraux | classements sur plusieurs programmes ou tentatives (voir [Classements généraux](classifications.md)) |\n"
@@ -3331,8 +3331,9 @@ msgstr "Créer un modèle {#create}"
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:8
 #, no-wrap
-msgid "**Print forms** (admins, in the club part of the sidebar) lists the forms of the club. **New print form** asks for a name and a paper size, then opens the editor. It has three columns:\n"
-msgstr "**Modèles d’impression** (admins, dans la partie société de la barre latérale) liste les modèles de la société. **Nouveau modèle d’impression** demande un nom et un format de papier, puis ouvre l’éditeur. Il a trois colonnes :\n"
+msgid "**Print forms** (admins, in the club part of the sidebar) lists the forms of the club. **New print form** asks for a name, what the form **Prints** (see [Data source](#source)) and a paper size, then opens the editor. It has three columns:\n"
+msgstr ""
+"**Modèles d’impression** (admins, dans la partie société de la barre latérale) liste les modèles de la société. **Nouveau modèle d’impression** demande un nom, ce que le modèle **Imprime** (voir [Source de données](#source)) et un format de papier, puis ouvre l’éditeur. Il a trois colonnes :\n"
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/print-forms.md:15
@@ -3392,25 +3393,15 @@ msgid ""
 "**Properties** on the right edit the selected element exactly: its **Value** "
 "(placeholders such as `{{shooter.name}}` are filled in when printing), **x** "
 "and **y** in millimetres from the top left corner, **Width** and **Height** "
-"(a width of 0 lets text run to the right edge), **Font size**, **Bold** and "
-"**Alignment**. **Repeat** prints it several times, moved by **dx** and "
-"**dy** each time; `#` in a placeholder counts 1, 2, 3, …. Below, the "
-"**Form** sets the name, the size of the sheet, the printer offset and the "
-"**Scan of the empty form**: a PNG or JPEG of the whole sheet that appears "
-"behind the sheet so the fields can be placed onto the boxes of the form; it "
-"is never printed."
-msgstr ""
-"À droite, les **Propriétés** modifient précisément l’élément sélectionné : "
-"sa **Valeur** (les espaces réservés comme `{{shooter.name}}` sont remplis à "
-"l’impression), **x** et **y** en millimètres depuis le coin supérieur "
-"gauche, **Largeur** et **Hauteur** (avec une largeur de 0, le texte va "
-"jusqu’au bord droit), **Taille de police**, **Gras** et **Alignement**. "
-"**Répétition** l’imprime plusieurs fois, décalé chaque fois de **dx** et "
-"**dy** ; `#` dans un espace réservé compte 1, 2, 3, …. En dessous, le "
-"**Modèle** fixe le nom, la taille de la feuille, le décalage de l’imprimante "
-"et le **Scan du formulaire vide** : un PNG ou JPEG de toute la feuille qui "
-"apparaît derrière la feuille pour placer les champs sur les cases du "
-"formulaire ; il n’est jamais imprimé."
+"(a width of 0 lets text run to the right edge), **Font size**, **Bold**, "
+"**Italic**, **Wrap text** (the text breaks into lines within the width, each "
+"as high as the height) and **Alignment**. **Repeat** prints it several "
+"times, moved by **dx** and **dy** each time; `#` in a placeholder counts 1, "
+"2, 3, …. Below, the **Form** sets the name, the size of the sheet, the "
+"printer offset and the **Scan of the empty form**: a PNG or JPEG of the "
+"whole sheet that appears behind the sheet so the fields can be placed onto "
+"the boxes of the form; it is never printed."
+msgstr "À droite, les **Propriétés** modifient précisément l’élément sélectionné : sa **Valeur** (les espaces réservés comme `{{shooter.name}}` sont remplis à l’impression), **x** et **y** en millimètres depuis le coin supérieur gauche, **Largeur** et **Hauteur** (avec une largeur de 0, le texte va jusqu’au bord droit), **Taille de police**, **Gras**, **Italique**, **Renvoyer à la ligne** (le texte se coupe en lignes dans la largeur, chacune aussi haute que la hauteur) et **Alignement**. **Répétition** l’imprime plusieurs fois, décalé chaque fois de **dx** et **dy** ; `#` dans un espace réservé compte 1, 2, 3, …. En dessous, le **Modèle** fixe le nom, la taille de la feuille, le décalage de l’imprimante et le **Scan du formulaire vide** : un PNG ou JPEG de toute la feuille qui apparaît derrière la feuille pour placer les champs sur les cases du formulaire ; il n’est jamais imprimé."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:17
@@ -3421,11 +3412,64 @@ msgstr "**Enregistrer** enregistre le modèle ; un point sur le bouton signale d
 #. type: Title ##
 #: ../src/help/en/user-guide/print-forms.md:18
 #, no-wrap
+msgid "Data source {#source}"
+msgstr "Source de données {#source}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:21
+msgid "What a form **Prints** decides its fields and where it is printed:"
+msgstr "Ce qu’un modèle **Imprime** détermine ses champs et l’endroit où il est imprimé :"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:27
+#, no-wrap
+msgid ""
+"| Prints | Fields | Printed from |\n"
+"|---|---|---|\n"
+"| Results of a programme | shooter, club, event, series, single shots, total, award and its value | the results of a programme (see [Use a form](#use)) or as the event's wreath card |\n"
+"| A registration | shooter, club, event, lane, programmes, passes, QR code of the registration | as the event's control strip |\n"
+"| A rank | shooter, club, event, rank, total, ranking, class | certificates from the rankings |\n"
+msgstr ""
+"| Imprime | Champs | Imprimé depuis |\n"
+"|---|---|---|\n"
+"| Résultats d'un programme | tireur, société, manifestation, passes, coups isolés, total, distinction et sa valeur | les résultats d’un programme (voir [Utiliser un modèle](#use)) ou comme carte-couronne de la manifestation |\n"
+"| Une inscription | tireur, société, manifestation, cible, programmes, passes, code QR de l’inscription | comme bande de contrôle de la manifestation |\n"
+"| Un rang | tireur, société, manifestation, rang, total, classement, classe | diplômes depuis les classements |\n"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:29
+msgid ""
+"The source can be changed in the editor under **Form**; fields the new "
+"source does not know print nothing."
+msgstr "La source peut être changée dans l’éditeur sous **Modèle** ; les champs que la nouvelle source ne connaît pas n’impriment rien."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/print-forms.md:30
+#, no-wrap
+msgid "Built-in forms {#builtin}"
+msgstr "Modèles intégrés {#builtin}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:33
+msgid ""
+"Standblatt prints the wreath card and the control strip with **built-in "
+"forms**, listed below the forms of the club. **Copy** turns one into a form "
+"of the club that can be changed like any other, e.g. to move the fields onto "
+"another pre-printed wreath card or to add the club's logo. An event then "
+"chooses it under **Configuration** → **Modules**: *Print form of the wreath "
+"cards* in the module *Awards*, *Print form of the control strips* in the "
+"module *Control strip*. Without a choice, or when the chosen form is "
+"deleted, the built-in form prints."
+msgstr "Standblatt imprime la carte-couronne et la bande de contrôle avec des **modèles intégrés**, listés sous les modèles de la société. **Copier** en fait un modèle de la société qui se modifie comme tout autre, p. ex. pour déplacer les champs sur une autre carte-couronne préimprimée ou pour ajouter le logo de la société. Une manifestation le choisit ensuite sous **Configuration** → **Modules** : *Modèle des cartes-couronnes* dans le module *Distinctions*, *Modèle des bandes de contrôle* dans le module *Bande de contrôle*. Sans choix, ou si le modèle choisi est supprimé, le modèle intégré imprime."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/print-forms.md:34
+#, no-wrap
 msgid "Arrange the elements {#arrange}"
 msgstr "Disposer les éléments {#arrange}"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:24
+#: ../src/help/en/user-guide/print-forms.md:40
 msgid ""
 "**Move** an element by dragging it, **resize** it by its corner. The pink "
 "dot on the last box of a repeated element drags the spacing."
@@ -3435,7 +3479,7 @@ msgstr ""
 "l’espacement."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:24
+#: ../src/help/en/user-guide/print-forms.md:40
 msgid ""
 "While moving, the element **snaps** to the edges and centres of the other "
 "elements and of the sheet, and a pink guide shows the line; elsewhere it "
@@ -3447,7 +3491,7 @@ msgstr ""
 "enfoncée, on le place librement."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:24
+#: ../src/help/en/user-guide/print-forms.md:40
 msgid ""
 "**Select several** with Shift or Ctrl and a click, or draw a frame around "
 "them on the empty sheet. Dragging moves them together; font size, bold and "
@@ -3458,7 +3502,7 @@ msgstr ""
 "taille de police, gras et alignement s’appliquent alors à tous."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:24
+#: ../src/help/en/user-guide/print-forms.md:40
 msgid ""
 "A **right click** opens the menu: *Duplicate*, *Bring to front*, *Align* "
 "(edges, centres, distribute evenly), *Centre on the sheet* and *Delete*."
@@ -3468,7 +3512,7 @@ msgstr ""
 "feuille* et *Supprimer*."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:35
+#: ../src/help/en/user-guide/print-forms.md:51
 #, no-wrap
 msgid ""
 "| Key | Does |\n"
@@ -3494,13 +3538,13 @@ msgstr ""
 "| Ctrl+molette | zoomer |\n"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:36
+#: ../src/help/en/user-guide/print-forms.md:52
 #, no-wrap
 msgid "Images {#images}"
 msgstr "Images {#images}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:39
+#: ../src/help/en/user-guide/print-forms.md:55
 msgid ""
 "Logos, letterheads and other pictures come from the club's image library "
 "below the list of **Print forms**: **Upload image** adds a PNG or JPEG of at "
@@ -3509,24 +3553,36 @@ msgid ""
 "with the image's own proportions. Its properties choose another **Image**, "
 "its position and size, and **Keep the aspect ratio** sets the height to "
 "match the width again. An image can be repeated like any other element."
-msgstr "Les logos, en-têtes et autres images viennent de la bibliothèque d'images de la société, sous la liste des **Modèles d’impression** : **Téléverser une image** ajoute un PNG ou un JPEG de 2 Mo au plus, nommé d'après son fichier. Dans l'éditeur, le groupe **Images** des champs les liste ; un clic ou un glisser en pose une sur la feuille, large de 30 mm dans les proportions de l'image. Ses propriétés choisissent une autre **Image**, sa position et sa taille, et **Garder les proportions** ajuste à nouveau la hauteur à la largeur. Une image peut être répétée comme tout autre élément."
+msgstr ""
+"Les logos, en-têtes et autres images viennent de la bibliothèque d'images de "
+"la société, sous la liste des **Modèles d’impression** : **Téléverser une "
+"image** ajoute un PNG ou un JPEG de 2 Mo au plus, nommé d'après son fichier. "
+"Dans l'éditeur, le groupe **Images** des champs les liste ; un clic ou un "
+"glisser en pose une sur la feuille, large de 30 mm dans les proportions de "
+"l'image. Ses propriétés choisissent une autre **Image**, sa position et sa "
+"taille, et **Garder les proportions** ajuste à nouveau la hauteur à la "
+"largeur. Une image peut être répétée comme tout autre élément."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:41
+#: ../src/help/en/user-guide/print-forms.md:57
 msgid ""
 "An image can be deleted only while no form shows it. **Export** puts the "
 "images of a form into its file, and **Import** adds them to the library, "
 "reusing an image of the same name the club already has."
-msgstr "Une image ne peut être supprimée que tant qu'aucun modèle ne l'affiche. **Exporter** met les images d'un modèle dans son fichier, et **Importer** les ajoute à la bibliothèque en réutilisant une image du même nom que la société a déjà."
+msgstr ""
+"Une image ne peut être supprimée que tant qu'aucun modèle ne l'affiche. "
+"**Exporter** met les images d'un modèle dans son fichier, et **Importer** "
+"les ajoute à la bibliothèque en réutilisant une image du même nom que la "
+"société a déjà."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:42
+#: ../src/help/en/user-guide/print-forms.md:58
 #, no-wrap
 msgid "Calibrate the printer {#calibrate}"
 msgstr "Calibrer l’imprimante {#calibrate}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:45
+#: ../src/help/en/user-guide/print-forms.md:61
 msgid ""
 "Printers rarely print exactly where they should. Print a sheet with **Test "
 "print**, measure how far the values are off and enter it as **Printer offset "
@@ -3540,13 +3596,13 @@ msgstr ""
 "haut). Le décalage s’applique à tous les éléments ; l’aperçu l’ignore."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:46
+#: ../src/help/en/user-guide/print-forms.md:62
 #, no-wrap
 msgid "Use a form {#use}"
 msgstr "Utiliser un modèle {#use}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:49
+#: ../src/help/en/user-guide/print-forms.md:65
 msgid ""
 "Under **Configuration** → **Programmes** of the event, open a programme and "
 "choose its **Print form** in the section of the same name; this works while "
@@ -3569,11 +3625,10 @@ msgstr ""
 "(printing.md))."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:50
+#: ../src/help/en/user-guide/print-forms.md:66
 #, no-wrap
 msgid "**Export** downloads a form as a file, with its images, and **Import** reads it again, e.g. to share a form with another club.\n"
-msgstr ""
-"**Exporter** télécharge un modèle avec ses images sous forme de fichier et **Importer** le relit, p. ex. pour partager un modèle avec une autre société.\n"
+msgstr "**Exporter** télécharge un modèle avec ses images sous forme de fichier et **Importer** le relit, p. ex. pour partager un modèle avec une autre société.\n"
 
 #. type: Title ##
 #: ../src/help/en/user-guide/programmes.md:1

@@ -9,7 +9,7 @@ società** (vedi [Moduli della società](events.md#club-modules)).
 
 ## Creare un modello {#create}
 
-**Modelli di stampa** (admin, nella parte società della barra laterale) elenca i modelli della società. **Nuovo modello di stampa** chiede un nome e un formato di carta, poi apre l’editor. Ha tre colonne:
+**Modelli di stampa** (admin, nella parte società della barra laterale) elenca i modelli della società. **Nuovo modello di stampa** chiede un nome, ciò che il modello **Stampa** (vedi [Fonte di dati](#source)) e un formato di carta, poi apre l’editor. Ha tre colonne:
 
 - A sinistra i **Campi**: tutto ciò che un modello può stampare, in gruppi,
   ognuno con un esempio, e una ricerca. Un clic aggiunge il campo sotto
@@ -30,15 +30,41 @@ società** (vedi [Moduli della società](events.md#club-modules)).
   selezionato: il suo **Valore** (i segnaposto come `{{shooter.name}}`
   vengono compilati in stampa), **x** e **y** in millimetri dall’angolo in
   alto a sinistra, **Larghezza** e **Altezza** (con larghezza 0 il testo
-  arriva fino al bordo destro), **Dimensione carattere**, **Grassetto** e
-  **Allineamento**. **Ripetizione** lo stampa più volte, spostato ogni volta
-  di **dx** e **dy**; `#` in un segnaposto conta 1, 2, 3, …. Sotto, il
-  **Modello** imposta il nome, la dimensione del foglio, lo spostamento
-  della stampante e la **Scansione del modulo vuoto**: un PNG o JPEG
-  dell’intero foglio che appare dietro il foglio per posizionare i campi
-  sulle caselle del modulo; non viene mai stampato.
+  arriva fino al bordo destro), **Dimensione carattere**, **Grassetto**,
+  **Corsivo**, **A capo automatico** (il testo va a capo entro la larghezza,
+  ogni riga alta quanto l’altezza) e **Allineamento**. **Ripetizione** lo
+  stampa più volte, spostato ogni volta di **dx** e **dy**; `#` in un
+  segnaposto conta 1, 2, 3, …. Sotto, il **Modello** imposta il nome, la
+  dimensione del foglio, lo spostamento della stampante e la **Scansione del
+  modulo vuoto**: un PNG o JPEG dell’intero foglio che appare dietro il
+  foglio per posizionare i campi sulle caselle del modulo; non viene mai
+  stampato.
 
 **Salva** salva il modello; un punto sul pulsante indica modifiche non salvate, e lasciando la pagina con esse viene chiesta prima una conferma. Con **Salva automaticamente** (attivo finché non lo si disattiva; il browser lo ricorda) le modifiche non salvate vengono salvate ogni minuto. **Anteprima PDF** apre il modello esattamente come lo rende il PDF, che può differire leggermente dal foglio nel browser.
+
+## Fonte di dati {#source}
+
+Ciò che un modello **Stampa** ne determina i campi e dove viene stampato:
+
+| Stampa | Campi | Stampato da |
+|---|---|---|
+| Risultati di un programma | tiratore, società, manifestazione, serie, colpi singoli, totale, distinzione e il suo valore | i risultati di un programma (vedi [Usare un modello](#use)) o come carta corona della manifestazione |
+| Un'iscrizione | tiratore, società, manifestazione, bersaglio, programmi, serie, codice QR dell’iscrizione | come striscia di controllo della manifestazione |
+| Un rango | tiratore, società, manifestazione, rango, totale, classifica, classe | diplomi dalle classifiche |
+
+La fonte si può cambiare nell’editor sotto **Modello**; i campi che la nuova
+fonte non conosce non stampano nulla.
+
+## Modelli integrati {#builtin}
+
+Standblatt stampa la carta corona e la striscia di controllo con **modelli
+integrati**, elencati sotto i modelli della società. **Copia** ne fa un
+modello della società che si modifica come ogni altro, p. es. per spostare i
+campi su un’altra carta corona prestampata o per aggiungere il logo della
+società. Una manifestazione lo sceglie poi in **Configurazione** →
+**Moduli**: *Modello delle carte corona* nel modulo *Distinzioni*, *Modello
+delle strisce di controllo* nel modulo *Striscia di controllo*. Senza
+scelta, o se il modello scelto è eliminato, stampa il modello integrato.
 
 ## Disporre gli elementi {#arrange}
 

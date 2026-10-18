@@ -2,6 +2,7 @@ package docs
 
 import (
 	"bytes"
+	"cmp"
 	"net/http"
 	"regexp"
 	"strconv"
@@ -23,15 +24,23 @@ func Fill(s string, values map[string]string, n int) string {
 	})
 }
 
-// RenderLayout prints the values onto a page of the layout's size. A preview draws background (a PNG or JPEG of
-// the empty form) under the elements and leaves out the printer offset; a print never shows the background. Images
-// holds the PNG or JPEG of every image element by ID; an image element without one is left out.
-func RenderLayout(l domain.Layout, values map[string]string, background []byte, images map[int64][]byte, preview bool) ([]byte, error) {
+// RenderLayout prints every set of values onto a page of the layout's size. A preview draws background (a PNG or
+// JPEG of the empty form) under the elements and leaves out the printer offset; a print never shows the background.
+// Images holds the PNG or JPEG of every image element by ID; an image element without one is left out.
+func RenderLayout(l domain.Layout, pages []map[string]string, background []byte, images map[int64][]byte, preview bool) ([]byte, error) {
 	d := newDoc("P", "", l.Width, l.Height)
 	if l.Width > l.Height {
 		d = newDoc("L", "", l.Height, l.Width)
 	}
-	d.AddPage()
+	for _, values := range pages {
+		d.AddPage()
+		d.page(l, values, background, images, preview)
+	}
+	return d.bytes()
+}
+
+// page draws the elements of a layout with one set of values onto the current page.
+func (d *doc) page(l domain.Layout, values map[string]string, background []byte, images map[int64][]byte, preview bool) {
 	ox, oy := l.OffsetX, l.OffsetY
 	if preview {
 		ox, oy = 0, 0
@@ -54,11 +63,20 @@ func RenderLayout(l domain.Layout, values map[string]string, background []byte, 
 				if e.Bold {
 					style = "B"
 				}
+				if e.Italic {
+					style += "I"
+				}
 				h := e.H
 				if h == 0 {
 					h = size * 0.45
 				}
 				w := e.W
+				if e.Wrap && w > 0 {
+					d.SetFont("Helvetica", style, size)
+					d.SetXY(x, y)
+					d.MultiCell(w, h, d.tr(v), "", cmp.Or(e.Align, "L"), false)
+					continue
+				}
 				if w > 0 {
 					d.SetFont("Helvetica", style, size)
 					v = d.fit(v, w)
@@ -81,7 +99,6 @@ func RenderLayout(l domain.Layout, values map[string]string, background []byte, 
 			}
 		}
 	}
-	return d.bytes()
 }
 
 // image draws a PNG or JPEG in w×h (h 0 keeps the aspect ratio), registering it once under name.
@@ -96,16 +113,32 @@ func (d *doc) image(name string, data []byte, x, y, w, h float64) {
 	d.ImageOptions(name, x, y, w, h, false, opt, 0, "")
 }
 
-// SampleValues are made-up values for every placeholder, used for previews without a real result.
-func SampleValues() map[string]string {
+// SampleValues are made-up values for every placeholder of a data source, used for previews without real data.
+func SampleValues(source string) map[string]string {
 	v := map[string]string{
 		"shooter.firstname": "Anna", "shooter.lastname": "Example", "shooter.name": "Example Anna",
 		"shooter.license": "123456", "shooter.birthday": "02.06.1985", "shooter.birthyear": "1985",
 		"shooter.postalcode": "9050", "shooter.city": "Appenzell",
 		"club": "SG Hilltown", "club.ssv": "1.23.4.56",
 		"event.name": "Annual programme 2027", "event.date": "12.05.2027", "event.organizer": "SG Hilltown",
-		"programme": "Obligatory", "category": "Elite", "lane": "7", "registration": "1042", "today": "12.05.2027",
-		"total": "85", "mouches": "3", "award": "Card",
+		"category": "Elite", "today": "12.05.2027",
+	}
+	switch source {
+	case domain.SourceRegistration:
+		for k, s := range map[string]string{"category.short": "E", "lane": "7", "registration": "1042", "registration.code": Code(1042, "123456"),
+			"programmes": "Obligatory, Field match", "passes": "P1 P2 + P0", "price": "CHF 25.00"} {
+			v[k] = s
+		}
+		return v
+	case domain.SourceRank:
+		for k, s := range map[string]string{"rank": "1", "total": "98", "ranking": "Section championship", "class": "Juniors", "programme": "Obligatory"} {
+			v[k] = s
+		}
+		return v
+	}
+	for k, s := range map[string]string{"programme": "Obligatory", "lane": "7", "registration": "1042", "total": "85", "mouches": "3", "award": "Card",
+		"award.value": "CHF 12.00", "award.value.words": "twelve francs"} {
+		v[k] = s
 	}
 	shots := [][]float64{{5, 4, 5, 5, 4, 5, 5, 4, 5, 5}, {9, 10, 8, 9, 10, 9}}
 	for i, ss := range shots {

@@ -3,6 +3,7 @@ package web
 import (
 	"context"
 	"errors"
+	"fmt"
 	"io"
 	"net/http"
 	"slices"
@@ -13,6 +14,7 @@ import (
 	"github.com/danielgtaylor/huma/v2"
 
 	"github.com/standblatt/server/internal/docs"
+	"github.com/standblatt/server/internal/domain"
 	"github.com/standblatt/server/internal/i18n"
 	"github.com/standblatt/server/internal/modules"
 	"github.com/standblatt/server/internal/store"
@@ -32,22 +34,54 @@ type LayoutField struct {
 
 const maxBackgroundBytes = 4 << 20
 
-// formValues are the placeholder values of an entry of a registration, as printed onto its form.
-func formValues(l i18n.Lang, ev store.Event, sh store.Shooter, club store.Club, reg store.Registration, er EntryResult) map[string]string {
-	p := docPerson(l, reg)
+// baseValues are the placeholder values every data source shares: the shooter, the club, the event and today.
+func baseValues(ev store.Event, sh store.Shooter, club store.Club, p docs.Person) map[string]string {
 	loc, err := time.LoadLocation(ev.Timezone)
 	if err != nil {
 		loc = time.UTC
 	}
-	v := map[string]string{
+	return map[string]string{
 		"shooter.firstname": p.Firstname, "shooter.lastname": p.Lastname, "shooter.name": p.Lastname + " " + p.Firstname,
 		"shooter.license": p.License, "shooter.birthday": p.Birthday, "shooter.birthyear": p.BirthYear,
 		"shooter.postalcode": sh.Postalcode, "shooter.city": sh.City,
 		"club": p.Club, "club.ssv": club.SSVNumber,
 		"event.name": ev.Name, "event.date": swissDate(ev.StartsOn), "event.organizer": ev.Organizer,
-		"programme": er.Title, "category": p.Category, "registration": strconv.FormatInt(reg.ID, 10),
-		"today": time.Now().In(loc).Format("02.01.2006"),
+		"category": p.Category, "today": time.Now().In(loc).Format("02.01.2006"),
 	}
+}
+
+// registrationValues are the placeholder values of a registration, as printed onto its control strip or another
+// form with the registration as data source.
+func registrationValues(l i18n.Lang, ev store.Event, sh store.Shooter, club store.Club, reg store.Registration, programmes []store.Programme) map[string]string {
+	p := docPerson(l, reg)
+	v := baseValues(ev, sh, club, p)
+	v["category.short"] = p.CategoryShort
+	v["registration"] = strconv.FormatInt(reg.ID, 10)
+	v["registration.code"] = docs.Code(reg.ID, reg.Shooter.LicenseNumber)
+	if reg.Lane != nil {
+		v["lane"] = strconv.Itoa(*reg.Lane)
+	}
+	byID := map[int64]store.Programme{}
+	for _, pr := range programmes {
+		byID[pr.ID] = pr
+	}
+	var titles []string
+	var passes []domain.PassesEntry
+	for _, e := range reg.Entries {
+		pr := byID[e.ProgrammeID]
+		titles = append(titles, programmeTitle(pr.Name, pr.Variant))
+		passes = append(passes, domain.PassesEntry{ProgrammeID: pr.ID, Series: len(pr.Series), CombinableWithID: pr.CombinableWithID, CombinedSeries: e.CombinedSeries})
+	}
+	v["programmes"] = strings.Join(titles, ", ")
+	v["passes"] = domain.PassesText(passes)
+	return v
+}
+
+// formValues are the placeholder values of an entry of a registration, as printed onto its form or wreath card.
+func formValues(l i18n.Lang, ev store.Event, sh store.Shooter, club store.Club, reg store.Registration, er EntryResult) map[string]string {
+	v := baseValues(ev, sh, club, docPerson(l, reg))
+	v["programme"] = er.Title
+	v["registration"] = strconv.FormatInt(reg.ID, 10)
 	if reg.Lane != nil {
 		v["lane"] = strconv.Itoa(*reg.Lane)
 	}
@@ -56,6 +90,10 @@ func formValues(l i18n.Lang, ev store.Event, sh store.Shooter, club store.Club, 
 	}
 	if er.Award != nil {
 		v["award"] = er.Award.Name
+		if ev.Settings.PrintAwardValue && er.Award.Value > 0 {
+			v["award.value"] = fmt.Sprintf("CHF %.2f", er.Award.Value)
+			v["award.value.words"] = domain.AmountInWords(ev.Locale, er.Award.Value)
+		}
 	}
 	for i, r := range er.Results {
 		n := "s" + strconv.Itoa(i+1)
@@ -68,6 +106,63 @@ func formValues(l i18n.Lang, ev store.Event, sh store.Shooter, club store.Club, 
 		}
 	}
 	return v
+}
+
+// shooterClub loads the master data of the shooter and the club of a registration (an empty club without one).
+func (s *Server) shooterClub(ctx context.Context, tenantID int64, reg store.Registration) (store.Shooter, store.Club, error) {
+	var club store.Club
+	sh, err := s.Store.GetShooter(ctx, tenantID, reg.Shooter.ID)
+	if err != nil || reg.ClubID == nil {
+		return sh, club, err
+	}
+	clubs, err := s.Store.ListClubs(ctx, tenantID)
+	if i := slices.IndexFunc(clubs, func(c store.Club) bool { return c.ID == *reg.ClubID }); i >= 0 {
+		club = clubs[i]
+	}
+	return sh, club, err
+}
+
+// eventLayout returns the print form an event chose for a built-in document, with its images, or the built-in form
+// when the event chose none, the form is gone or has another data source, or the club switched print forms off.
+func (s *Server) eventLayout(ctx context.Context, tenantID int64, chosen *int64, builtin string) (domain.Layout, map[int64][]byte, error) {
+	def, _ := docs.Builtin(builtin)
+	if chosen == nil {
+		return def, nil, nil
+	}
+	on, _, err := s.Store.ClubModules(ctx, tenantID)
+	if err != nil || !slices.Contains(on, modules.Forms) {
+		return def, nil, err
+	}
+	l, _, err := s.Store.GetLayout(ctx, tenantID, *chosen)
+	if errors.Is(err, store.ErrNotFound) || err == nil && l.DataSource() != def.DataSource() {
+		return def, nil, nil
+	}
+	if err != nil {
+		return def, nil, err
+	}
+	images, err := s.Store.ImagesByID(ctx, tenantID, l.ImageIDs())
+	return l.Layout, images, err
+}
+
+// checkEventForms answers 422 when an event chooses a print form for its wreath card or control strip that the club
+// does not have or that prints another data source.
+func (s *Server) checkEventForms(ctx context.Context, tenantID int64, set store.EventSettings) error {
+	for _, c := range []struct {
+		id     *int64
+		source string
+	}{{set.WreathCardFormID, domain.SourceResults}, {set.ControlStripFormID, domain.SourceRegistration}} {
+		if c.id == nil {
+			continue
+		}
+		l, _, err := s.Store.GetLayout(ctx, tenantID, *c.id)
+		if err != nil {
+			return notFound(err, "Print form not found")
+		}
+		if l.DataSource() != c.source {
+			return invalid("The print form %s prints another data source", l.Name)
+		}
+	}
+	return nil
 }
 
 // entryFormValues loads what the form of an entry prints: the event, the shooter, the club and the results.
@@ -84,19 +179,9 @@ func (s *Server) entryFormValues(ctx context.Context, tenantID, entryID int64) (
 	if err != nil {
 		return e, ev, nil, err
 	}
-	sh, err := s.Store.GetShooter(ctx, tenantID, sheet.Registration.Shooter.ID)
+	sh, club, err := s.shooterClub(ctx, tenantID, sheet.Registration)
 	if err != nil {
 		return e, ev, nil, err
-	}
-	var club store.Club
-	if id := sheet.Registration.ClubID; id != nil {
-		clubs, err := s.Store.ListClubs(ctx, tenantID)
-		if err != nil {
-			return e, ev, nil, err
-		}
-		if i := slices.IndexFunc(clubs, func(c store.Club) bool { return c.ID == *id }); i >= 0 {
-			club = clubs[i]
-		}
 	}
 	i := slices.IndexFunc(sheet.Entries, func(x EntryResult) bool { return x.EntryID == e.ID })
 	return e, ev, formValues(i18n.Get(ev.Locale), ev, sh, club, sheet.Registration, sheet.Entries[i]), nil
@@ -123,7 +208,7 @@ func (s *Server) renderForm(ctx context.Context, tenantID, entryID int64) (rende
 	if err != nil {
 		return rendered{}, err
 	}
-	pdf, err := docs.RenderLayout(l.Layout, values, nil, images, false)
+	pdf, err := docs.RenderLayout(l.Layout, []map[string]string{values}, nil, images, false)
 	name := values["shooter.name"]
 	return rendered{
 		pdf: pdf, filename: filename(l.Name, values["shooter.lastname"], values["shooter.firstname"]),
@@ -144,15 +229,39 @@ func (s *Server) registerForms(api huma.API) {
 		return &layoutsOut{Body: list}, err
 	})
 
+	type fieldsIn struct {
+		TenantPath
+		Source string `query:"source" required:"false" enum:"results,registration,rank," doc:"The data source of the form; results when left out"`
+	}
+	type builtinLayout struct {
+		Key    string            `json:"key" enum:"wreath_card,control_strip"`
+		Layout store.LayoutInput `json:"layout" doc:"Name is the key; the client names its copy"`
+	}
+	type builtinOut struct{ Body []builtinLayout }
+	huma.Register(api, huma.Operation{
+		OperationID: "list-builtin-layouts", Metadata: modules.Metadata(modules.Forms), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/layouts/builtin", Tags: []string{"forms"},
+		Summary: "The built-in print forms (wreath card, control strip), to copy and change",
+	}, func(ctx context.Context, in *TenantPath) (*builtinOut, error) {
+		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
+			return nil, err
+		}
+		out := &builtinOut{Body: []builtinLayout{}}
+		for _, k := range docs.BuiltinKeys {
+			l, _ := docs.Builtin(k)
+			out.Body = append(out.Body, builtinLayout{Key: k, Layout: store.LayoutInput{Name: k, Layout: l}})
+		}
+		return out, nil
+	})
+
 	huma.Register(api, huma.Operation{
 		OperationID: "list-layout-fields", Metadata: modules.Metadata(modules.Forms), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/layouts/fields", Tags: []string{"forms"},
 		Summary: "The placeholders of print forms with example values",
-	}, func(ctx context.Context, in *TenantPath) (*struct{ Body []LayoutField }, error) {
+	}, func(ctx context.Context, in *fieldsIn) (*struct{ Body []LayoutField }, error) {
 		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
 			return nil, err
 		}
 		out := []LayoutField{}
-		for k, v := range docs.SampleValues() {
+		for k, v := range docs.SampleValues(in.Source) {
 			out = append(out, LayoutField{Key: k, Example: v})
 		}
 		slices.SortFunc(out, func(a, b LayoutField) int { return strings.Compare(a.Key, b.Key) })
@@ -301,8 +410,8 @@ func (s *Server) registerForms(api huma.API) {
 			if err != nil {
 				return nil, notFound(err, "Print form not found")
 			}
-			values := docs.SampleValues()
-			if in.EntryID != 0 {
+			values := docs.SampleValues(l.DataSource())
+			if in.EntryID != 0 && l.DataSource() == domain.SourceResults {
 				if _, _, values, err = s.entryFormValues(ctx, in.TenantID, in.EntryID); err != nil {
 					return nil, err
 				}
@@ -314,7 +423,7 @@ func (s *Server) registerForms(api huma.API) {
 			if err != nil {
 				return nil, err
 			}
-			pdf, err := docs.RenderLayout(l.Layout, values, bg, images, !in.Print)
+			pdf, err := docs.RenderLayout(l.Layout, []map[string]string{values}, bg, images, !in.Print)
 			return pdfOut(rendered{pdf: pdf, filename: filename(l.Name, "preview")}, err)
 		})
 
@@ -338,6 +447,11 @@ func (s *Server) registerForms(api huma.API) {
 	}, func(ctx context.Context, in *formIn) (*struct{}, error) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
 			return nil, err
+		}
+		if in.Body.LayoutID != nil {
+			if l, _, err := s.Store.GetLayout(ctx, in.TenantID, *in.Body.LayoutID); err == nil && l.DataSource() != domain.SourceResults {
+				return nil, invalid("Only print forms of results can print a programme")
+			}
 		}
 		return nil, s.programmeChanged(ctx, in.TenantID, in.ProgrammeID, notFound(s.Store.SetProgrammeLayout(ctx, in.TenantID, in.ProgrammeID, in.Body.LayoutID), "Programme or print form not found"))
 	})

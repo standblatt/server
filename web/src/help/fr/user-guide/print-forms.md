@@ -10,7 +10,7 @@ société](events.md#club-modules)).
 
 ## Créer un modèle {#create}
 
-**Modèles d’impression** (admins, dans la partie société de la barre latérale) liste les modèles de la société. **Nouveau modèle d’impression** demande un nom et un format de papier, puis ouvre l’éditeur. Il a trois colonnes :
+**Modèles d’impression** (admins, dans la partie société de la barre latérale) liste les modèles de la société. **Nouveau modèle d’impression** demande un nom, ce que le modèle **Imprime** (voir [Source de données](#source)) et un format de papier, puis ouvre l’éditeur. Il a trois colonnes :
 
 - À gauche, les **Champs** : tout ce qu’un modèle peut imprimer, par
   groupes, chacun avec un exemple, et une recherche. Un clic ajoute le champ
@@ -31,15 +31,43 @@ société](events.md#club-modules)).
   sa **Valeur** (les espaces réservés comme `{{shooter.name}}` sont remplis
   à l’impression), **x** et **y** en millimètres depuis le coin supérieur
   gauche, **Largeur** et **Hauteur** (avec une largeur de 0, le texte va
-  jusqu’au bord droit), **Taille de police**, **Gras** et
-  **Alignement**. **Répétition** l’imprime plusieurs fois, décalé chaque
-  fois de **dx** et **dy** ; `#` dans un espace réservé compte 1, 2, 3,
-  …. En dessous, le **Modèle** fixe le nom, la taille de la feuille, le
-  décalage de l’imprimante et le **Scan du formulaire vide** : un PNG ou
-  JPEG de toute la feuille qui apparaît derrière la feuille pour placer les
-  champs sur les cases du formulaire ; il n’est jamais imprimé.
+  jusqu’au bord droit), **Taille de police**, **Gras**, **Italique**,
+  **Renvoyer à la ligne** (le texte se coupe en lignes dans la largeur,
+  chacune aussi haute que la hauteur) et **Alignement**. **Répétition**
+  l’imprime plusieurs fois, décalé chaque fois de **dx** et **dy** ; `#`
+  dans un espace réservé compte 1, 2, 3, …. En dessous, le **Modèle** fixe
+  le nom, la taille de la feuille, le décalage de l’imprimante et le **Scan
+  du formulaire vide** : un PNG ou JPEG de toute la feuille qui apparaît
+  derrière la feuille pour placer les champs sur les cases du formulaire ;
+  il n’est jamais imprimé.
 
 **Enregistrer** enregistre le modèle ; un point sur le bouton signale des modifications non enregistrées, et quitter la page avec elles demande d’abord une confirmation. Avec **Enregistrer automatiquement** (activé tant qu’on ne le désactive pas ; le navigateur s’en souvient), les modifications non enregistrées sont enregistrées chaque minute. **Aperçu PDF** ouvre le modèle exactement tel que le PDF le rend, ce qui peut différer légèrement de la feuille dans le navigateur.
+
+## Source de données {#source}
+
+Ce qu’un modèle **Imprime** détermine ses champs et l’endroit où il est
+imprimé :
+
+| Imprime | Champs | Imprimé depuis |
+|---|---|---|
+| Résultats d'un programme | tireur, société, manifestation, passes, coups isolés, total, distinction et sa valeur | les résultats d’un programme (voir [Utiliser un modèle](#use)) ou comme carte-couronne de la manifestation |
+| Une inscription | tireur, société, manifestation, cible, programmes, passes, code QR de l’inscription | comme bande de contrôle de la manifestation |
+| Un rang | tireur, société, manifestation, rang, total, classement, classe | diplômes depuis les classements |
+
+La source peut être changée dans l’éditeur sous **Modèle** ; les champs que
+la nouvelle source ne connaît pas n’impriment rien.
+
+## Modèles intégrés {#builtin}
+
+Standblatt imprime la carte-couronne et la bande de contrôle avec des
+**modèles intégrés**, listés sous les modèles de la société. **Copier** en
+fait un modèle de la société qui se modifie comme tout autre, p. ex. pour
+déplacer les champs sur une autre carte-couronne préimprimée ou pour ajouter
+le logo de la société. Une manifestation le choisit ensuite sous
+**Configuration** → **Modules** : *Modèle des cartes-couronnes* dans le
+module *Distinctions*, *Modèle des bandes de contrôle* dans le module *Bande
+de contrôle*. Sans choix, ou si le modèle choisi est supprimé, le modèle
+intégré imprime.
 
 ## Disposer les éléments {#arrange}
 

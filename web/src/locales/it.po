@@ -493,6 +493,14 @@ msgstr "Una nuova manifestazione con le stesse impostazioni, moduli e programmi,
 msgid "A new version of Standblatt is available."
 msgstr "È disponibile una nuova versione di Standblatt."
 
+#: src/lib/forms/sources.ts
+msgid "A rank"
+msgstr "Un rango"
+
+#: src/lib/forms/sources.ts
+msgid "A registration"
+msgstr "Un'iscrizione"
+
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "A4 portrait (210 × 297 mm)"
 msgstr "A4 verticale (210 × 297 mm)"
@@ -651,6 +659,10 @@ msgstr "Categorie d'età"
 #: src/lib/forms/Palette.svelte
 msgid "Age category"
 msgstr "Categoria d’età"
+
+#: src/lib/forms/Palette.svelte
+msgid "Age category, short"
+msgstr "Categoria d'età, abbreviata"
 
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Agent name"
@@ -988,6 +1000,10 @@ msgstr "Pausa dalle"
 msgid "Break until"
 msgstr "Pausa fino alle"
 
+#: src/lib/forms/Properties.svelte
+msgid "Breaks the text into lines within the width; the height is the line height."
+msgstr "Divide il testo in righe entro la larghezza; l'altezza è quella di una riga."
+
 #: src/lib/forms/Stage.svelte
 msgid "Bring to front"
 msgstr "Porta in primo piano"
@@ -995,6 +1011,14 @@ msgstr "Porta in primo piano"
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "browser (PDF)"
 msgstr "browser (PDF)"
+
+#: src/lib/forms/EventFormChoice.svelte
+msgid "Built-in"
+msgstr "Integrato"
+
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Built-in forms"
+msgstr "Modelli integrati"
 
 #: src/routes/my/progress/+page.svelte
 msgid "By (optional)"
@@ -1106,6 +1130,10 @@ msgstr "Scegli almeno una fascia oraria."
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "City"
 msgstr "Località"
+
+#: src/lib/forms/Palette.svelte
+msgid "Class"
+msgstr "Classe"
 
 #. placeholder {0}: i + 1
 #: src/lib/modules/classifications/Classifications.svelte
@@ -1352,6 +1380,7 @@ msgid "Contents"
 msgstr "Indice"
 
 #: src/lib/modules/control_strip/index.ts
+#: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Control strip"
 msgstr "Striscia di controllo"
 
@@ -1384,9 +1413,15 @@ msgstr "copia"
 #: src/lib/modules/reservations/Page.svelte
 #: src/lib/my/ApiTokens.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
+#: src/routes/t/[tenantId]/forms/+page.svelte
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Copy"
 msgstr "copia"
+
+#. placeholder {0}: builtinNames[b.key]
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Copy {0}"
+msgstr "Copia {0}"
 
 #: src/lib/AppSidebar.svelte
 #: src/routes/t/[tenantId]/+layout.svelte
@@ -1551,6 +1586,11 @@ msgstr "Giorni con altri orari"
 #: src/lib/modules/booking/parts/BookingHoursForm.svelte
 msgid "Deadline"
 msgstr "Termine d’iscrizione"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Decides the fields and where the form is printed."
+msgstr "Determina i campi e dove viene stampato il modello."
 
 #: src/routes/my/settings/+page.svelte
 msgid "Decimal scoring (10.9)"
@@ -1969,6 +2009,7 @@ msgstr "Lingua della manifestazione"
 msgid "Event reopened"
 msgstr "Manifestazione riaperta"
 
+#: src/lib/forms/EventFormChoice.svelte
 #: src/lib/modules/awards/Settings.svelte
 #: src/lib/modules/club_competition/Settings.svelte
 #: src/lib/modules/kiosk/ConfigPage.svelte
@@ -2398,6 +2439,10 @@ msgstr "invitato via e-mail"
 #: src/lib/my/ApiTokens.svelte
 msgid "It is shown only this once. Send it as \"Authorization: Bearer <token>\"."
 msgstr "Viene mostrato solo questa volta. Invialo come «Authorization: Bearer <token>»."
+
+#: src/lib/forms/Properties.svelte
+msgid "Italic"
+msgstr "Corsivo"
 
 #: src/routes/my/settings/+page.svelte
 msgid "Its sessions stay in your log, without a weapon."
@@ -3422,6 +3467,10 @@ msgstr "Formato della carta"
 msgid "Participants"
 msgstr "Partecipanti"
 
+#: src/lib/forms/Palette.svelte
+msgid "Passes"
+msgstr "Serie"
+
 #: src/lib/AccountSettings.svelte
 #: src/routes/login/+page.svelte
 #: src/routes/signup/+page.svelte
@@ -3590,6 +3639,14 @@ msgstr "Modello di stampa"
 msgid "Print form deleted"
 msgstr "Modello di stampa eliminato"
 
+#: src/lib/modules/control_strip/Settings.svelte
+msgid "Print form of the control strips"
+msgstr "Modello delle strisce di controllo"
+
+#: src/lib/modules/awards/Settings.svelte
+msgid "Print form of the wreath cards"
+msgstr "Modello delle carte corona"
+
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Print form saved"
 msgstr "Modello di stampa salvato"
@@ -3665,6 +3722,11 @@ msgstr "Stampa"
 msgid "Printing · {0}"
 msgstr "Stampa · {0}"
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Prints"
+msgstr "Stampa"
+
 #: src/lib/forms/Properties.svelte
 msgid "Prints the element several times, moved by dx/dy; # in a placeholder counts 1, 2, 3 …"
 msgstr "Stampa l’elemento più volte, spostato di dx/dy; # in un segnaposto conta 1, 2, 3 …"
@@ -3721,6 +3783,7 @@ msgstr "Biblioteca dei programmi"
 
 #: src/lib/AppSidebar.svelte
 #: src/lib/EventDesk.svelte
+#: src/lib/forms/Palette.svelte
 #: src/lib/modules/classifications/Classifications.svelte
 #: src/lib/RegistrationForm.svelte
 #: src/lib/SetupChecklist.svelte
@@ -3773,6 +3836,10 @@ msgstr "Codice QR per l’app di autenticazione"
 msgid "QR code of the booking link"
 msgstr "Codice QR del link di prenotazione"
 
+#: src/lib/forms/Palette.svelte
+msgid "QR code of the registration"
+msgstr "Codice QR dell'iscrizione"
+
 #: src/lib/labels.ts
 msgid "queued"
 msgstr "in coda"
@@ -3814,6 +3881,7 @@ msgstr "Stand di tiro"
 msgid "Ranges with events cannot be deleted."
 msgstr "Gli stand di tiro con manifestazioni non possono essere eliminati."
 
+#: src/lib/forms/Palette.svelte
 #: src/lib/modules/classifications/ClassificationTable.svelte
 #: src/lib/modules/club_competition/StatisticsSection.svelte
 #: src/lib/RankingTable.svelte
@@ -3840,6 +3908,10 @@ msgstr "Posizione tra le sessioni da {0} colpi"
 #: src/lib/modules/classifications/Classifications.svelte
 msgid "Rank only shooters with all counting results"
 msgstr "Classificare solo i tiratori con tutti i risultati che contano"
+
+#: src/lib/forms/Palette.svelte
+msgid "Ranking"
+msgstr "Classifica"
 
 #. placeholder {0}: programmeTitle(p)
 #. placeholder {0}: ranking.title
@@ -3926,6 +3998,10 @@ msgstr "Iscrivi {0}"
 #: src/lib/labels.ts
 msgid "registered"
 msgstr "iscritto"
+
+#: src/lib/forms/Palette.svelte
+msgid "Registration"
+msgstr "Iscrizione"
 
 #: src/lib/RegistrationDialog.svelte
 msgid "Registration deleted"
@@ -4132,6 +4208,10 @@ msgstr "Registrazione risultati"
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 msgid "Results from paper or the scoring system, shooter by shooter, without the desk."
 msgstr "Risultati da carta o dall’impianto di segnalazione, tiratore per tiratore, senza desk."
+
+#: src/lib/forms/sources.ts
+msgid "Results of a programme"
+msgstr "Risultati di un programma"
 
 #: src/lib/modules/presets.ts
 msgid "Results over the season with several attempts and classifications, no desk."
@@ -4675,6 +4755,10 @@ msgstr "Numero FST"
 msgid "Staff"
 msgstr "Personale"
 
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Standblatt prints these unless an event chooses a form of the club; copy one to change it."
+msgstr "Standblatt stampa questi, a meno che una manifestazione scelga un modello della società; copiane uno per modificarlo."
+
 #: src/lib/help/nav.ts
 msgid "Start"
 msgstr "Inizio"
@@ -5186,6 +5270,14 @@ msgstr "Valore"
 msgid "Value (CHF)"
 msgstr "Valore (CHF)"
 
+#: src/lib/forms/Palette.svelte
+msgid "Value in words"
+msgstr "Valore in lettere"
+
+#: src/lib/forms/Palette.svelte
+msgid "Value of the award"
+msgstr "Valore della distinzione"
+
 #: src/lib/programme/Basics.svelte
 msgid "Variant"
 msgstr "Variante"
@@ -5326,8 +5418,13 @@ msgstr "Senza un agente collegato, i documenti si aprono come PDF nel browser."
 msgid "Without classes everybody is in one ranking. Shooters whose category is in no class are not listed."
 msgstr "Senza classi tutti sono in un’unica classifica. I tiratori la cui categoria non è in nessuna classe non sono elencati."
 
+#: src/lib/forms/Properties.svelte
+msgid "Wrap text"
+msgstr "A capo automatico"
+
 #: src/lib/modules/awards/ProgrammeSection.svelte
 #: src/lib/modules/awards/StatisticsSection.svelte
+#: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Wreath card"
 msgstr "Carta corona"
 

@@ -50,10 +50,10 @@ rapports.
 |---|---|
 | Réservations | cibles réservées pour des groupes et des sociétés (nécessite un stand) |
 | Réservation en ligne | les sociétés demandent des cibles par un lien public (nécessite un stand et active Réservations, voir [Réservation en ligne](online-booking.md)) |
-| Feuille de stand, Bande de contrôle | les documents imprimés à l’inscription |
+| Feuille de stand, Bande de contrôle | les documents imprimés à l’inscription ; la bande de contrôle peut s’imprimer avec un [modèle d’impression](print-forms.md#builtin) de la société |
 | Distribution de munition | le bouton **Munition** sur le tableau de bord et pour la distribution de munition (voir [Aides](helpers.md#ammunition)) ; laissez-le désactivé là où les tireurs apportent la leur, p. ex. pistolet et carabine à air |
 | Tentatives | des programmes qui peuvent être tirés plusieurs fois (voir [Programmes](programmes.md#attempts)) |
-| Distinctions | cartes-couronnes, prix en nature et prix en espèces ; son réglage *Imprimer la valeur de la distinction sur les cartes-couronnes* met la valeur en chiffres et en lettres sur la carte |
+| Distinctions | cartes-couronnes, prix en nature et prix en espèces ; son réglage *Imprimer la valeur de la distinction sur les cartes-couronnes* met la valeur en chiffres et en lettres sur la carte, *Modèle des cartes-couronnes* choisit un [modèle d’impression](print-forms.md#builtin) de la société |
 | Prix spéciaux | les meilleurs rangs de chaque catégorie d’âge (active Distinctions, voir [Programmes](programmes.md#special-prizes)) |
 | Concours de sections | les sociétés classées selon les résultats de leurs tireurs ; son réglage *Société exclue du concours de sections* est en général la société organisatrice, listée *hors concours* |
 | Classements généraux | classements sur plusieurs programmes ou tentatives (voir [Classements généraux](classifications.md)) |

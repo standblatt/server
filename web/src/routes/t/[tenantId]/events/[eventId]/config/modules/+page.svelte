@@ -49,7 +49,7 @@
 	<ModuleCards cards={list.map((m) => ({ key: m.key, ui: moduleUI[m.key], on: has(ev, m.key), ...state(m.key, m.requires, m.needsRange) }))} ontoggle={(k, on) => toggle(k as ModuleKey, on)}>
 		{#snippet settings(key)}
 			{@const ui = moduleUI[key as ModuleKey]}
-			{#if ui.settings && !ev.archivedAt}<div class="border-t pt-3"><ModuleSlot load={ui.settings} props={{ tenantId, event: ev }} /></div>{/if}
+			{#if ui.settings && !ev.archivedAt}<div class="border-t pt-3 empty:hidden"><ModuleSlot load={ui.settings} props={{ tenantId, event: ev }} /></div>{/if}
 		{/snippet}
 	</ModuleCards>
 {/if}

@@ -23,6 +23,8 @@
 	import Properties from '$lib/forms/Properties.svelte';
 	import Stage from '$lib/forms/Stage.svelte';
 	import { imagesQuery, imageUrl } from '$lib/forms/images';
+	import { sourceKeys, sourceLabels } from '$lib/forms/sources';
+	import * as NativeSelect from '$lib/components/ui/native-select';
 	import FormError from '$lib/FormError.svelte';
 	import FormField from '$lib/FormField.svelte';
 	import PageHeader from '$lib/PageHeader.svelte';
@@ -36,14 +38,14 @@
 		queryKey: ['tenants', tenantId, 'layouts', layoutId],
 		queryFn: () => call(api.GET('/api/tenants/{tenantId}/layouts/{layoutId}', path))
 	}));
+	const editor = new FormEditor();
 	const fields = createQuery(() => ({
-		queryKey: ['tenants', tenantId, 'layouts', 'fields'],
-		queryFn: () => call(api.GET('/api/tenants/{tenantId}/layouts/fields', { params: { path: { tenantId } } }))
+		queryKey: ['tenants', tenantId, 'layouts', 'fields', editor.source],
+		queryFn: () => call(api.GET('/api/tenants/{tenantId}/layouts/fields', { params: { path: { tenantId }, query: { source: editor.source } } }))
 	}));
 	const images = imagesQuery(() => tenantId);
 	const samples = $derived(Object.fromEntries((fields.data ?? []).map((f) => [f.key, f.example])));
 
-	const editor = new FormEditor();
 	let loaded = $state(0);
 	let version = $state(0);
 	let names = $state(false);
@@ -207,6 +209,11 @@
 			<aside class="grid gap-3 rounded-lg border bg-card p-3" aria-label={$t`Form`}>
 				<h2 class="text-sm font-semibold">{$t`Form`}</h2>
 				<FormField label={$t`Name`}><Input bind:value={editor.name} required maxlength={100} /></FormField>
+				<FormField label={$t`Prints`} hint={$t`Decides the fields and where the form is printed.`}>
+					<NativeSelect.Root class="w-full" bind:value={editor.source}>
+						{#each sourceKeys as value (value)}<NativeSelect.Option {value}>{$t(sourceLabels[value])}</NativeSelect.Option>{/each}
+					</NativeSelect.Root>
+				</FormField>
 				<div class="grid grid-cols-2 gap-2">
 					<FormField label={$t`Width (mm)`}><Input type="number" min="20" max="500" step="0.5" bind:value={editor.width} /></FormField>
 					<FormField label={$t`Height (mm)`}><Input type="number" min="20" max="500" step="0.5" bind:value={editor.height} /></FormField>

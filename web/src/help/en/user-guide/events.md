@@ -38,10 +38,10 @@ Not every event needs everything: a shooting festival books lanes and hands out 
 |---|---|
 | Reservations | lanes reserved for groups and clubs (needs a range) |
 | Online booking | clubs ask for lanes through a public link (needs a range and switches on Reservations, see [Online booking](online-booking.md)) |
-| Lane sheet, Control strip | the documents printed at registration |
+| Lane sheet, Control strip | the documents printed at registration; the control strip can print with a [print form](print-forms.md#builtin) of the club |
 | Ammunition desk | the **Ammo** button on the dashboard and for the ammunition desk (see [Helpers](helpers.md#ammunition)); leave it off where shooters bring their own, e.g. air pistol and air rifle |
 | Attempts | programmes that can be shot several times (see [Programmes](programmes.md#attempts)) |
-| Awards | wreath cards, prizes in kind and cash prizes; its setting *Print the award value on wreath cards* puts the value in figures and words on the card |
+| Awards | wreath cards, prizes in kind and cash prizes; its setting *Print the award value on wreath cards* puts the value in figures and words on the card, *Print form of the wreath cards* chooses a [print form](print-forms.md#builtin) of the club |
 | Special prizes | the best ranks of every age category (switches on Awards, see [Programmes](programmes.md#special-prizes)) |
 | Club competition | clubs ranked by their shooters' results; its setting *Club excluded from the club competition* is usually the host club, listed as *out of competition* |
 | Classifications | rankings over several programmes or attempts (see [Classifications](classifications.md)) |

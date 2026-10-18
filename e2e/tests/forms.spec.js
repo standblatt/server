@@ -161,6 +161,23 @@ test.describe("print forms", () => {
     await expect(page.getByRole("application", { name: "Sheet" }).locator("[data-copy]")).toHaveCount(12);
   });
 
+  test("copies the built-in wreath card and chooses it for an event", async ({ page }) => {
+    await login(page, admin);
+    await page.goto(`/t/${ids.tenant}/forms`);
+    await page.getByLabel("Copy Wreath card").click();
+    await page.waitForURL(/\/forms\/\d+$/);
+    const card = Number(page.url().split("/").pop());
+    await expect(page.getByRole("application", { name: "Sheet" })).toContainText("Example");
+    await expect(page.getByLabel("Prints")).toHaveValue("results");
+
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}/config/modules`);
+    await page.getByLabel("Print form of the wreath cards").selectOption({ label: "Wreath card" });
+    await expect(c(page, "[data-sonner-toast]", "Event saved")).toBeVisible();
+    const ev = await api(page, "GET", `/api/tenants/${ids.tenant}/events/${ids.event}`);
+    expect(ev.settings.wreathCardFormId).toBe(card);
+    await expect(page.getByLabel("Print form of the control strips")).toHaveCount(0);
+  });
+
   test("places an image of the library and carries it in exports", async ({ page }) => {
     const logo = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAAAAABawyK/AAAADklEQVR4nGNoAAIGEAEAFAoEAeiOg+cAAAAASUVORK5CYII=", "base64");
     await login(page, admin);

@@ -92,7 +92,9 @@ func TestLaneSheet(t *testing.T) {
 }
 
 func TestControlStrip(t *testing.T) {
-	pdf, err := RenderControlStrip(ControlStrip{EventName: "Indoor 2026", Person: person, RegistrationID: 42, Passes: "P1 P2 + P0"})
+	l, _ := Builtin(BuiltinControlStrip)
+	pdf, err := RenderLayout(l, []map[string]string{{"event.name": "Indoor 2026", "shooter.lastname": "Böckli", "shooter.firstname": "Fritz",
+		"shooter.birthday": "02.05.1930", "club": "SV", "category.short": "SV", "passes": "P1 P2 + P0", "registration": "42", "registration.code": Code(42, "")}}, nil, nil, false)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -114,13 +116,14 @@ func TestResultSheet(t *testing.T) {
 }
 
 func TestWreathCard(t *testing.T) {
-	pdf, err := RenderWreathCard(WreathCard{Lastname: "Böckli", Firstname: "Fritz", BirthYear: "1930", Club: "SV", Date: "20.11.2026",
-		Value: 25, ShowValue: true, ValueWords: "Twenty-five francs", Organizer: "SV Muster"})
+	l, _ := Builtin(BuiltinWreathCard)
+	pdf, err := RenderLayout(l, []map[string]string{{"shooter.lastname": "Böckli", "shooter.firstname": "Fritz", "shooter.birthyear": "1930", "club": "SV",
+		"event.date": "20.11.2026", "award.value": "CHF 25.00", "award.value.words": "Twenty-five francs", "event.organizer": "SV Muster"}}, nil, nil, false)
 	if err != nil {
 		t.Fatal(err)
 	}
 	expectText(t, pdfText(t, pdf), "Böckli", "CHF 25.00", "Twenty-five francs")
-	if s := pageSize(t, pdf); s != "" && !strings.HasSuffix(s, "(A6)") {
+	if s := pageSize(t, pdf); s != "" && !strings.HasPrefix(s, "297.6") {
 		t.Errorf("wreath card should be A6, got %s", s)
 	}
 }

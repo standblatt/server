@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 11:50+0200\n"
+"POT-Creation-Date: 2026-10-18 12:12+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -792,12 +792,21 @@ msgid "A print form with this name already exists"
 msgstr "Un modèle d’impression de ce nom existe déjà"
 
 #: internal/web/forms.go
+msgid "Only print forms of results can print a programme"
+msgstr "Seuls les modèles de résultats peuvent imprimer un programme"
+
+#: internal/web/forms.go
 msgid "Print form not found"
 msgstr "Modèle d’impression introuvable"
 
 #: internal/web/forms.go
 msgid "Programme or print form not found"
 msgstr "Programme ou modèle d’impression introuvable"
+
+#: internal/web/forms.go
+#, go-format
+msgid "The print form %s prints another data source"
+msgstr "Le modèle %s imprime une autre source de données"
 
 #: internal/web/forms.go
 msgid "The print form has no scan"

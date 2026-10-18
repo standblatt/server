@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 11:50+0200\n"
+"POT-Creation-Date: 2026-10-18 12:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -792,11 +792,20 @@ msgid "A print form with this name already exists"
 msgstr ""
 
 #: internal/web/forms.go
+msgid "Only print forms of results can print a programme"
+msgstr ""
+
+#: internal/web/forms.go
 msgid "Print form not found"
 msgstr ""
 
 #: internal/web/forms.go
 msgid "Programme or print form not found"
+msgstr ""
+
+#: internal/web/forms.go
+#, go-format
+msgid "The print form %s prints another data source"
 msgstr ""
 
 #: internal/web/forms.go

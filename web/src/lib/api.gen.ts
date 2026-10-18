@@ -1456,6 +1456,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/tenants/{tenantId}/layouts/builtin": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** The built-in print forms (wreath card, control strip), to copy and change */
+        get: operations["list-builtin-layouts"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/tenants/{tenantId}/layouts/fields": {
         parameters: {
             query?: never;
@@ -2300,6 +2317,12 @@ export interface components {
             /** Format: date-time */
             start: string;
         };
+        BuiltinLayout: {
+            /** @enum {string} */
+            key: "wreath_card" | "control_strip";
+            /** @description Name is the key; the client names its copy */
+            layout: components["schemas"]["LayoutInput"];
+        };
         CategoryStat: {
             /** @enum {string} */
             category: "u10" | "u13" | "u15" | "u17" | "u19" | "u21" | "elite" | "senior" | "veteran" | "senior_veteran";
@@ -2618,6 +2641,7 @@ export interface components {
              * @description The image of the club's library an image element shows
              */
             image?: number;
+            italic?: boolean;
             /** Format: int64 */
             repeat?: number;
             /**
@@ -2633,6 +2657,8 @@ export interface components {
              * @description Width; 0 lets text run to the right edge
              */
             w?: number;
+            /** @description Text breaks into lines within W, each H high */
+            wrap?: boolean;
             /** Format: double */
             x: number;
             /** Format: double */
@@ -2788,10 +2814,20 @@ export interface components {
             name: string;
         };
         EventSettings: {
+            /**
+             * Format: int64
+             * @description The print form of the control strips; the built-in one when left out
+             */
+            controlStripFormId?: number;
             /** Format: int64 */
             excludedClubId?: number;
             printAwardValue?: boolean;
             showLaneStatus?: boolean;
+            /**
+             * Format: int64
+             * @description The print form of the wreath cards; the built-in one when left out
+             */
+            wreathCardFormId?: number;
         };
         EventStats: {
             /** Format: int64 */
@@ -2984,6 +3020,11 @@ export interface components {
             offsetX?: number;
             /** Format: double */
             offsetY?: number;
+            /**
+             * @description What the form prints: the results of a programme (default), a registration or a rank
+             * @enum {string}
+             */
+            source?: "results" | "registration" | "rank" | "";
             /** Format: date-time */
             updatedAt: string;
             /** Format: double */
@@ -3002,6 +3043,11 @@ export interface components {
             offsetX?: number;
             /** Format: double */
             offsetY?: number;
+            /**
+             * @description What the form prints: the results of a programme (default), a registration or a rank
+             * @enum {string}
+             */
+            source?: "results" | "registration" | "rank" | "";
             /** Format: double */
             width: number;
         };
@@ -7526,9 +7572,43 @@ export interface operations {
             };
         };
     };
-    "list-layout-fields": {
+    "list-builtin-layouts": {
         parameters: {
             query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BuiltinLayout"][];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "list-layout-fields": {
+        parameters: {
+            query?: {
+                /** @description The data source of the form; results when left out */
+                source?: "results" | "registration" | "rank" | "";
+            };
             header?: never;
             path: {
                 tenantId: number;

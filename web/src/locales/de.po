@@ -493,6 +493,14 @@ msgstr "Ein neuer Anlass mit denselben Einstellungen, Modulen und Programmen, oh
 msgid "A new version of Standblatt is available."
 msgstr "Eine neue Version von Standblatt ist verfügbar."
 
+#: src/lib/forms/sources.ts
+msgid "A rank"
+msgstr "Ein Rang"
+
+#: src/lib/forms/sources.ts
+msgid "A registration"
+msgstr "Eine Anmeldung"
+
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "A4 portrait (210 × 297 mm)"
 msgstr "A4 hoch (210 × 297 mm)"
@@ -651,6 +659,10 @@ msgstr "Alterskategorien"
 #: src/lib/forms/Palette.svelte
 msgid "Age category"
 msgstr "Alterskategorie"
+
+#: src/lib/forms/Palette.svelte
+msgid "Age category, short"
+msgstr "Alterskategorie, kurz"
 
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Agent name"
@@ -988,6 +1000,10 @@ msgstr "Pause von"
 msgid "Break until"
 msgstr "Pause bis"
 
+#: src/lib/forms/Properties.svelte
+msgid "Breaks the text into lines within the width; the height is the line height."
+msgstr "Bricht den Text innerhalb der Breite in Zeilen um; die Höhe ist die Zeilenhöhe."
+
 #: src/lib/forms/Stage.svelte
 msgid "Bring to front"
 msgstr "In den Vordergrund"
@@ -995,6 +1011,14 @@ msgstr "In den Vordergrund"
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "browser (PDF)"
 msgstr "Browser (PDF)"
+
+#: src/lib/forms/EventFormChoice.svelte
+msgid "Built-in"
+msgstr "Eingebaut"
+
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Built-in forms"
+msgstr "Eingebaute Vorlagen"
 
 #: src/routes/my/progress/+page.svelte
 msgid "By (optional)"
@@ -1106,6 +1130,10 @@ msgstr "Wähle mindestens einen Zeitblock."
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "City"
 msgstr "Ort"
+
+#: src/lib/forms/Palette.svelte
+msgid "Class"
+msgstr "Klasse"
 
 #. placeholder {0}: i + 1
 #: src/lib/modules/classifications/Classifications.svelte
@@ -1352,6 +1380,7 @@ msgid "Contents"
 msgstr "Inhalt"
 
 #: src/lib/modules/control_strip/index.ts
+#: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Control strip"
 msgstr "Kontrollstreifen"
 
@@ -1384,9 +1413,15 @@ msgstr "kopieren"
 #: src/lib/modules/reservations/Page.svelte
 #: src/lib/my/ApiTokens.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
+#: src/routes/t/[tenantId]/forms/+page.svelte
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Copy"
 msgstr "kopieren"
+
+#. placeholder {0}: builtinNames[b.key]
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Copy {0}"
+msgstr "{0} kopieren"
 
 #: src/lib/AppSidebar.svelte
 #: src/routes/t/[tenantId]/+layout.svelte
@@ -1551,6 +1586,11 @@ msgstr "Tage mit anderen Zeiten"
 #: src/lib/modules/booking/parts/BookingHoursForm.svelte
 msgid "Deadline"
 msgstr "Anmeldeschluss"
+
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Decides the fields and where the form is printed."
+msgstr "Bestimmt die Felder und wo die Vorlage gedruckt wird."
 
 #: src/routes/my/settings/+page.svelte
 msgid "Decimal scoring (10.9)"
@@ -1969,6 +2009,7 @@ msgstr "Sprache des Anlasses"
 msgid "Event reopened"
 msgstr "Anlass wiedereröffnet"
 
+#: src/lib/forms/EventFormChoice.svelte
 #: src/lib/modules/awards/Settings.svelte
 #: src/lib/modules/club_competition/Settings.svelte
 #: src/lib/modules/kiosk/ConfigPage.svelte
@@ -2398,6 +2439,10 @@ msgstr "per E-Mail eingeladen"
 #: src/lib/my/ApiTokens.svelte
 msgid "It is shown only this once. Send it as \"Authorization: Bearer <token>\"."
 msgstr "Es wird nur dieses eine Mal angezeigt. Sende es als «Authorization: Bearer <token>»."
+
+#: src/lib/forms/Properties.svelte
+msgid "Italic"
+msgstr "Kursiv"
 
 #: src/routes/my/settings/+page.svelte
 msgid "Its sessions stay in your log, without a weapon."
@@ -3422,6 +3467,10 @@ msgstr "Papiergrösse"
 msgid "Participants"
 msgstr "Teilnehmer"
 
+#: src/lib/forms/Palette.svelte
+msgid "Passes"
+msgstr "Passen"
+
 #: src/lib/AccountSettings.svelte
 #: src/routes/login/+page.svelte
 #: src/routes/signup/+page.svelte
@@ -3590,6 +3639,14 @@ msgstr "Druckvorlage"
 msgid "Print form deleted"
 msgstr "Druckvorlage gelöscht"
 
+#: src/lib/modules/control_strip/Settings.svelte
+msgid "Print form of the control strips"
+msgstr "Vorlage der Kontrollstreifen"
+
+#: src/lib/modules/awards/Settings.svelte
+msgid "Print form of the wreath cards"
+msgstr "Vorlage der Kranzkarten"
+
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Print form saved"
 msgstr "Druckvorlage gespeichert"
@@ -3665,6 +3722,11 @@ msgstr "Drucken"
 msgid "Printing · {0}"
 msgstr "Drucken · {0}"
 
+#: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Prints"
+msgstr "Druckt"
+
 #: src/lib/forms/Properties.svelte
 msgid "Prints the element several times, moved by dx/dy; # in a placeholder counts 1, 2, 3 …"
 msgstr "Druckt das Element mehrmals, jeweils um dx/dy verschoben; # in einem Platzhalter zählt 1, 2, 3 …"
@@ -3721,6 +3783,7 @@ msgstr "Programm-Bibliothek"
 
 #: src/lib/AppSidebar.svelte
 #: src/lib/EventDesk.svelte
+#: src/lib/forms/Palette.svelte
 #: src/lib/modules/classifications/Classifications.svelte
 #: src/lib/RegistrationForm.svelte
 #: src/lib/SetupChecklist.svelte
@@ -3773,6 +3836,10 @@ msgstr "QR-Code für die Authenticator-App"
 msgid "QR code of the booking link"
 msgstr "QR-Code des Reservationslinks"
 
+#: src/lib/forms/Palette.svelte
+msgid "QR code of the registration"
+msgstr "QR-Code der Anmeldung"
+
 #: src/lib/labels.ts
 msgid "queued"
 msgstr "in Warteschlange"
@@ -3814,6 +3881,7 @@ msgstr "Schiessstände"
 msgid "Ranges with events cannot be deleted."
 msgstr "Schiessstände mit Anlässen können nicht gelöscht werden."
 
+#: src/lib/forms/Palette.svelte
 #: src/lib/modules/classifications/ClassificationTable.svelte
 #: src/lib/modules/club_competition/StatisticsSection.svelte
 #: src/lib/RankingTable.svelte
@@ -3840,6 +3908,10 @@ msgstr "Rang unter den Einheiten mit {0} Schuss"
 #: src/lib/modules/classifications/Classifications.svelte
 msgid "Rank only shooters with all counting results"
 msgstr "Nur Schützen mit allen zählenden Resultaten rangieren"
+
+#: src/lib/forms/Palette.svelte
+msgid "Ranking"
+msgstr "Rangliste"
 
 #. placeholder {0}: programmeTitle(p)
 #. placeholder {0}: ranking.title
@@ -3926,6 +3998,10 @@ msgstr "{0} anmelden"
 #: src/lib/labels.ts
 msgid "registered"
 msgstr "angemeldet"
+
+#: src/lib/forms/Palette.svelte
+msgid "Registration"
+msgstr "Anmeldung"
 
 #: src/lib/RegistrationDialog.svelte
 msgid "Registration deleted"
@@ -4132,6 +4208,10 @@ msgstr "Resultaterfassung"
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 msgid "Results from paper or the scoring system, shooter by shooter, without the desk."
 msgstr "Resultate vom Papier oder aus der Trefferanzeige, Schütze für Schütze, ohne Desk."
+
+#: src/lib/forms/sources.ts
+msgid "Results of a programme"
+msgstr "Resultate eines Programms"
 
 #: src/lib/modules/presets.ts
 msgid "Results over the season with several attempts and classifications, no desk."
@@ -4675,6 +4755,10 @@ msgstr "SSV-Nummer"
 msgid "Staff"
 msgstr "Personal"
 
+#: src/routes/t/[tenantId]/forms/+page.svelte
+msgid "Standblatt prints these unless an event chooses a form of the club; copy one to change it."
+msgstr "Standblatt druckt diese, ausser ein Anlass wählt eine Vorlage des Vereins; kopiere eine, um sie anzupassen."
+
 #: src/lib/help/nav.ts
 msgid "Start"
 msgstr "Start"
@@ -5186,6 +5270,14 @@ msgstr "Wert"
 msgid "Value (CHF)"
 msgstr "Wert (CHF)"
 
+#: src/lib/forms/Palette.svelte
+msgid "Value in words"
+msgstr "Wert in Worten"
+
+#: src/lib/forms/Palette.svelte
+msgid "Value of the award"
+msgstr "Wert der Auszeichnung"
+
 #: src/lib/programme/Basics.svelte
 msgid "Variant"
 msgstr "Variante"
@@ -5326,8 +5418,13 @@ msgstr "Ohne verbundenen Agent öffnen sich Dokumente als PDF im Browser."
 msgid "Without classes everybody is in one ranking. Shooters whose category is in no class are not listed."
 msgstr "Ohne Klassen sind alle in einer Rangliste. Schützen, deren Kategorie in keiner Klasse ist, erscheinen nicht."
 
+#: src/lib/forms/Properties.svelte
+msgid "Wrap text"
+msgstr "Text umbrechen"
+
 #: src/lib/modules/awards/ProgrammeSection.svelte
 #: src/lib/modules/awards/StatisticsSection.svelte
+#: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Wreath card"
 msgstr "Kranzkarte"
 

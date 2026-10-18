@@ -93,6 +93,14 @@
 					<Checkbox checked={sel.every((i) => !!i.bold)} onCheckedChange={(v) => setAll('bold', v)} />
 					{$t`Bold`}
 				</label>
+				<label class="flex h-9 items-center gap-2 text-sm">
+					<Checkbox checked={sel.every((i) => !!i.italic)} onCheckedChange={(v) => setAll('italic', v)} />
+					{$t`Italic`}
+				</label>
+				<label class="flex h-9 items-center gap-2 text-sm" title={$t`Breaks the text into lines within the width; the height is the line height.`}>
+					<Checkbox checked={sel.every((i) => !!i.wrap)} onCheckedChange={(v) => setAll('wrap', v)} />
+					{$t`Wrap text`}
+				</label>
 			</div>
 			<FormField label={$t`Alignment`}>
 				<NativeSelect.Root class="w-full" value={sel[0].align || 'L'} onchange={(e) => setAll('align', e.currentTarget.value as LayoutElement['align'])}>

@@ -13,9 +13,11 @@ import (
 
 // EventSettings are per-event options.
 type EventSettings struct {
-	ExcludedClubID  *int64 `json:"excludedClubId,omitempty" required:"false"`
-	ShowLaneStatus  bool   `json:"showLaneStatus" required:"false"`
-	PrintAwardValue bool   `json:"printAwardValue" required:"false"`
+	ExcludedClubID     *int64 `json:"excludedClubId,omitempty" required:"false"`
+	ShowLaneStatus     bool   `json:"showLaneStatus" required:"false"`
+	PrintAwardValue    bool   `json:"printAwardValue" required:"false"`
+	WreathCardFormID   *int64 `json:"wreathCardFormId,omitempty" required:"false" doc:"The print form of the wreath cards; the built-in one when left out"`
+	ControlStripFormID *int64 `json:"controlStripFormId,omitempty" required:"false" doc:"The print form of the control strips; the built-in one when left out"`
 }
 
 // EventRange is a range an event is shot on.
