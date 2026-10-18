@@ -122,9 +122,9 @@ func (s *Server) registerPrinting(api huma.API) {
 
 	type agentsOut struct{ Body []store.PrintAgent }
 	huma.Register(api, huma.Operation{
-		OperationID: "list-print-agents", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/ranges/{rangeId}/print-agents", Tags: []string{"printing"},
+		OperationID: "list-print-agents", Metadata: needs("", permissions.RangesManage), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/ranges/{rangeId}/print-agents", Tags: []string{"printing"},
 	}, func(ctx context.Context, in *RangePrintPath) (*agentsOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.RangesManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.ListPrintAgents(ctx, in.TenantID, in.RangeID)
@@ -144,10 +144,10 @@ func (s *Server) registerPrinting(api huma.API) {
 		}
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "create-print-agent", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/ranges/{rangeId}/print-agents", Tags: []string{"printing"},
+		OperationID: "create-print-agent", Metadata: needs("", permissions.RangesManage), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/ranges/{rangeId}/print-agents", Tags: []string{"printing"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *createAgentIn) (*createAgentOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.RangesManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		secret := randomToken()
@@ -167,10 +167,10 @@ func (s *Server) registerPrinting(api huma.API) {
 		AgentID  int64 `path:"agentId"`
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "delete-print-agent", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/print-agents/{agentId}", Tags: []string{"printing"},
+		OperationID: "delete-print-agent", Metadata: needs("", permissions.RangesManage), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/print-agents/{agentId}", Tags: []string{"printing"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *agentPath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.RangesManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		return nil, notFound(s.Store.DeletePrintAgent(ctx, in.TenantID, in.AgentID), "Print agent not found")
@@ -178,9 +178,9 @@ func (s *Server) registerPrinting(api huma.API) {
 
 	type settingsOut struct{ Body []store.PrintSetting }
 	huma.Register(api, huma.Operation{
-		OperationID: "list-print-settings", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/ranges/{rangeId}/print-settings", Tags: []string{"printing"},
+		OperationID: "list-print-settings", Metadata: needs("", permissions.EventsOperate, permissions.RangesManage), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/ranges/{rangeId}/print-settings", Tags: []string{"printing"},
 	}, func(ctx context.Context, in *RangePrintPath) (*settingsOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate, permissions.RangesManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.ListPrintSettings(ctx, in.TenantID, in.RangeID)
@@ -192,10 +192,10 @@ func (s *Server) registerPrinting(api huma.API) {
 		Body store.PrintSetting
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "set-print-setting", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/ranges/{rangeId}/print-settings", Tags: []string{"printing"},
+		OperationID: "set-print-setting", Metadata: needs("", permissions.RangesManage), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/ranges/{rangeId}/print-settings", Tags: []string{"printing"},
 		Summary: "Route a document to a printer; an empty printer turns printing off for it", DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *settingIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.RangesManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		return nil, notFound(s.Store.SetPrintSetting(ctx, in.TenantID, in.RangeID, in.Body), "Range not found")
@@ -203,9 +203,9 @@ func (s *Server) registerPrinting(api huma.API) {
 
 	type jobsOut struct{ Body []store.PrintJob }
 	huma.Register(api, huma.Operation{
-		OperationID: "list-print-jobs", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/ranges/{rangeId}/print-jobs", Tags: []string{"printing"},
+		OperationID: "list-print-jobs", Metadata: needs("", permissions.EventsOperate, permissions.RangesManage), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/ranges/{rangeId}/print-jobs", Tags: []string{"printing"},
 	}, func(ctx context.Context, in *RangePrintPath) (*jobsOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate, permissions.RangesManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.ListPrintJobs(ctx, in.TenantID, in.RangeID, 50)

@@ -1,0 +1,125 @@
+POST   /api/tenants/{tenantId}/booking-requests/{requestId}/confirm                   events.configure
+POST   /api/tenants/{tenantId}/booking-requests/{requestId}/decline                   events.configure
+POST   /api/tenants/{tenantId}/booking-requests/{requestId}/shooters                  events.configure
+GET    /api/tenants/{tenantId}/clubs                                                  shooters.view | events.operate
+POST   /api/tenants/{tenantId}/clubs                                                  shooters.edit | events.operate
+GET    /api/tenants/{tenantId}/clubs/similar                                          shooters.view | events.operate
+DELETE /api/tenants/{tenantId}/clubs/{clubId}                                         shooters.manage
+PUT    /api/tenants/{tenantId}/clubs/{clubId}                                         shooters.manage
+POST   /api/tenants/{tenantId}/clubs/{clubId}/merge                                   shooters.manage
+PUT    /api/tenants/{tenantId}/entries/{entryId}/award                                events.operate
+GET    /api/tenants/{tenantId}/entries/{entryId}/form                                 events.operate
+PUT    /api/tenants/{tenantId}/entries/{entryId}/results                              events.operate
+GET    /api/tenants/{tenantId}/entries/{entryId}/wreath-card                          events.operate
+GET    /api/tenants/{tenantId}/events                                                 events.view
+POST   /api/tenants/{tenantId}/events                                                 events.configure
+DELETE /api/tenants/{tenantId}/events/{eventId}                                       events.configure
+GET    /api/tenants/{tenantId}/events/{eventId}                                       events.view
+PUT    /api/tenants/{tenantId}/events/{eventId}                                       events.configure
+PUT    /api/tenants/{tenantId}/events/{eventId}/archived                              events.configure
+GET    /api/tenants/{tenantId}/events/{eventId}/booking                               events.configure
+PUT    /api/tenants/{tenantId}/events/{eventId}/booking                               events.configure
+GET    /api/tenants/{tenantId}/events/{eventId}/booking-requests                      events.operate | events.configure
+DELETE /api/tenants/{tenantId}/events/{eventId}/booking/code                          events.configure
+POST   /api/tenants/{tenantId}/events/{eventId}/booking/code                          events.configure
+GET    /api/tenants/{tenantId}/events/{eventId}/certificates                          events.operate
+GET    /api/tenants/{tenantId}/events/{eventId}/classification-rankings               events.view
+GET    /api/tenants/{tenantId}/events/{eventId}/classifications                       events.view
+POST   /api/tenants/{tenantId}/events/{eventId}/classifications                       events.configure
+DELETE /api/tenants/{tenantId}/events/{eventId}/classifications/{classificationId}    events.configure
+PUT    /api/tenants/{tenantId}/events/{eventId}/classifications/{classificationId}    events.configure
+GET    /api/tenants/{tenantId}/events/{eventId}/club-competition                      reports.view
+POST   /api/tenants/{tenantId}/events/{eventId}/copy                                  events.configure
+GET    /api/tenants/{tenantId}/events/{eventId}/helper-codes                          events.configure
+POST   /api/tenants/{tenantId}/events/{eventId}/helper-codes                          events.configure
+GET    /api/tenants/{tenantId}/events/{eventId}/kiosk-tokens                          events.configure
+POST   /api/tenants/{tenantId}/events/{eventId}/kiosk-tokens                          events.configure
+GET    /api/tenants/{tenantId}/events/{eventId}/lanes                                 events.operate
+GET    /api/tenants/{tenantId}/events/{eventId}/programmes                            events.view
+POST   /api/tenants/{tenantId}/events/{eventId}/programmes                            events.configure
+POST   /api/tenants/{tenantId}/events/{eventId}/programmes/copy                       events.configure
+POST   /api/tenants/{tenantId}/events/{eventId}/programmes/from-template              events.configure
+POST   /api/tenants/{tenantId}/events/{eventId}/programmes/import                     events.configure
+GET    /api/tenants/{tenantId}/events/{eventId}/rankings                              events.view
+GET    /api/tenants/{tenantId}/events/{eventId}/registrations                         events.operate
+POST   /api/tenants/{tenantId}/events/{eventId}/registrations                         events.operate
+GET    /api/tenants/{tenantId}/events/{eventId}/reports/{report}                      reports.view
+POST   /api/tenants/{tenantId}/events/{eventId}/results                               events.operate
+POST   /api/tenants/{tenantId}/events/{eventId}/results/import                        events.configure
+GET    /api/tenants/{tenantId}/events/{eventId}/statistics                            reports.view
+GET    /api/tenants/{tenantId}/events/{eventId}/stats                                 events.operate
+DELETE /api/tenants/{tenantId}/helper-codes/{codeId}                                  events.configure
+GET    /api/tenants/{tenantId}/images                                                 events.view
+POST   /api/tenants/{tenantId}/images                                                 forms.manage
+DELETE /api/tenants/{tenantId}/images/{imageId}                                       forms.manage
+GET    /api/tenants/{tenantId}/images/{imageId}                                       events.view
+GET    /api/tenants/{tenantId}/invitations                                            club.manage
+POST   /api/tenants/{tenantId}/invitations                                            club.manage
+DELETE /api/tenants/{tenantId}/invitations/{invitationId}                             club.manage
+POST   /api/tenants/{tenantId}/invitations/{invitationId}/resend                      club.manage
+DELETE /api/tenants/{tenantId}/kiosk-tokens/{tokenId}                                 events.configure
+GET    /api/tenants/{tenantId}/layouts                                                events.view
+POST   /api/tenants/{tenantId}/layouts                                                forms.manage
+GET    /api/tenants/{tenantId}/layouts/builtin                                        events.view
+GET    /api/tenants/{tenantId}/layouts/fields                                         events.view
+DELETE /api/tenants/{tenantId}/layouts/{layoutId}                                     forms.manage
+GET    /api/tenants/{tenantId}/layouts/{layoutId}                                     events.view
+PUT    /api/tenants/{tenantId}/layouts/{layoutId}                                     forms.manage
+DELETE /api/tenants/{tenantId}/layouts/{layoutId}/background                          forms.manage
+GET    /api/tenants/{tenantId}/layouts/{layoutId}/background                          forms.manage
+PUT    /api/tenants/{tenantId}/layouts/{layoutId}/background                          forms.manage
+GET    /api/tenants/{tenantId}/layouts/{layoutId}/preview                             forms.manage
+PUT    /api/tenants/{tenantId}/modules                                                club.manage
+POST   /api/tenants/{tenantId}/print                                                  events.operate
+DELETE /api/tenants/{tenantId}/print-agents/{agentId}                                 ranges.manage
+DELETE /api/tenants/{tenantId}/programmes/{programmeId}                               events.configure
+GET    /api/tenants/{tenantId}/programmes/{programmeId}                               events.view
+PUT    /api/tenants/{tenantId}/programmes/{programmeId}                               events.configure
+PUT    /api/tenants/{tenantId}/programmes/{programmeId}/active                        events.configure
+PUT    /api/tenants/{tenantId}/programmes/{programmeId}/combination                   events.configure
+GET    /api/tenants/{tenantId}/programmes/{programmeId}/export                        events.view
+PUT    /api/tenants/{tenantId}/programmes/{programmeId}/form                          events.configure
+PUT    /api/tenants/{tenantId}/programmes/{programmeId}/range                         events.configure
+GET    /api/tenants/{tenantId}/programmes/{programmeId}/ranking                       events.view
+GET    /api/tenants/{tenantId}/programmes/{programmeId}/ranking.csv                   reports.view
+PUT    /api/tenants/{tenantId}/programmes/{programmeId}/special-prizes                events.configure
+GET    /api/tenants/{tenantId}/ranges                                                 events.view | ranges.manage
+POST   /api/tenants/{tenantId}/ranges                                                 ranges.manage
+DELETE /api/tenants/{tenantId}/ranges/{rangeId}                                       ranges.manage
+PUT    /api/tenants/{tenantId}/ranges/{rangeId}                                       ranges.manage
+GET    /api/tenants/{tenantId}/ranges/{rangeId}/print-agents                          ranges.manage
+POST   /api/tenants/{tenantId}/ranges/{rangeId}/print-agents                          ranges.manage
+GET    /api/tenants/{tenantId}/ranges/{rangeId}/print-jobs                            events.operate | ranges.manage
+GET    /api/tenants/{tenantId}/ranges/{rangeId}/print-settings                        events.operate | ranges.manage
+PUT    /api/tenants/{tenantId}/ranges/{rangeId}/print-settings                        ranges.manage
+GET    /api/tenants/{tenantId}/ranges/{rangeId}/reservations                          events.operate
+POST   /api/tenants/{tenantId}/ranges/{rangeId}/reservations                          events.operate
+DELETE /api/tenants/{tenantId}/registrations/{registrationId}                         events.operate
+GET    /api/tenants/{tenantId}/registrations/{registrationId}                         events.operate
+PUT    /api/tenants/{tenantId}/registrations/{registrationId}                         events.operate
+DELETE /api/tenants/{tenantId}/registrations/{registrationId}/ammo                    events.operate
+POST   /api/tenants/{tenantId}/registrations/{registrationId}/ammo                    events.operate
+DELETE /api/tenants/{tenantId}/registrations/{registrationId}/awards-issued           events.operate
+POST   /api/tenants/{tenantId}/registrations/{registrationId}/awards-issued           events.operate
+GET    /api/tenants/{tenantId}/registrations/{registrationId}/documents/{document}    events.operate
+POST   /api/tenants/{tenantId}/registrations/{registrationId}/finish                  events.operate
+GET    /api/tenants/{tenantId}/registrations/{registrationId}/forms/{layoutId}        events.operate
+GET    /api/tenants/{tenantId}/registrations/{registrationId}/results                 events.operate
+DELETE /api/tenants/{tenantId}/reservations/{reservationId}                           events.operate
+PUT    /api/tenants/{tenantId}/reservations/{reservationId}                           events.operate
+GET    /api/tenants/{tenantId}/roles                                                  club.manage
+POST   /api/tenants/{tenantId}/roles                                                  club.manage
+DELETE /api/tenants/{tenantId}/roles/{roleId}                                         club.manage
+PUT    /api/tenants/{tenantId}/roles/{roleId}                                         club.manage
+GET    /api/tenants/{tenantId}/shooters                                               shooters.view | events.operate
+POST   /api/tenants/{tenantId}/shooters                                               shooters.edit | events.operate
+POST   /api/tenants/{tenantId}/shooters/import                                        shooters.manage
+DELETE /api/tenants/{tenantId}/shooters/{shooterId}                                   shooters.manage
+GET    /api/tenants/{tenantId}/shooters/{shooterId}                                   shooters.view | events.operate
+PUT    /api/tenants/{tenantId}/shooters/{shooterId}                                   shooters.edit | events.operate
+POST   /api/tenants/{tenantId}/shooters/{shooterId}/clubs                             shooters.edit | events.operate
+DELETE /api/tenants/{tenantId}/shooters/{shooterId}/clubs/{clubId}                    shooters.edit | events.operate
+GET    /api/tenants/{tenantId}/users                                                  club.manage
+POST   /api/tenants/{tenantId}/users                                                  club.manage
+DELETE /api/tenants/{tenantId}/users/{userId}                                         club.manage
+PUT    /api/tenants/{tenantId}/users/{userId}                                         club.manage

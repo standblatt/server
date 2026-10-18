@@ -115,9 +115,9 @@ func normalizeEvent(in *store.EventInput) error {
 func (s *Server) registerTenants(api huma.API) {
 	type rangesOut struct{ Body []store.Range }
 	huma.Register(api, huma.Operation{
-		OperationID: "list-ranges", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/ranges", Tags: []string{"ranges"},
+		OperationID: "list-ranges", Metadata: needs("", permissions.EventsView, permissions.RangesManage), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/ranges", Tags: []string{"ranges"},
 	}, func(ctx context.Context, in *TenantPath) (*rangesOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView, permissions.RangesManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.ListRanges(ctx, in.TenantID)
@@ -130,10 +130,10 @@ func (s *Server) registerTenants(api huma.API) {
 	}
 	type rangeOut struct{ Body store.Range }
 	huma.Register(api, huma.Operation{
-		OperationID: "create-range", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/ranges", Tags: []string{"ranges"},
+		OperationID: "create-range", Metadata: needs("", permissions.RangesManage), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/ranges", Tags: []string{"ranges"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *rangeIn) (*rangeOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.RangesManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		if err := validateRange(in.Body); err != nil {
@@ -151,10 +151,10 @@ func (s *Server) registerTenants(api huma.API) {
 		Body store.RangeInput
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "update-range", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/ranges/{rangeId}", Tags: []string{"ranges"},
+		OperationID: "update-range", Metadata: needs("", permissions.RangesManage), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/ranges/{rangeId}", Tags: []string{"ranges"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *rangeUpdateIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.RangesManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		if err := validateRange(in.Body); err != nil {
@@ -168,10 +168,10 @@ func (s *Server) registerTenants(api huma.API) {
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "delete-range", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/ranges/{rangeId}", Tags: []string{"ranges"},
+		OperationID: "delete-range", Metadata: needs("", permissions.RangesManage), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/ranges/{rangeId}", Tags: []string{"ranges"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *RangePath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.RangesManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		err := s.Store.DeleteRange(ctx, in.TenantID, in.RangeID)
@@ -183,9 +183,9 @@ func (s *Server) registerTenants(api huma.API) {
 
 	type eventsOut struct{ Body []store.Event }
 	huma.Register(api, huma.Operation{
-		OperationID: "list-events", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events", Tags: []string{"events"},
+		OperationID: "list-events", Metadata: needs("", permissions.EventsView), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events", Tags: []string{"events"},
 	}, func(ctx context.Context, in *TenantPath) (*eventsOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.ListEvents(ctx, in.TenantID)
@@ -194,9 +194,9 @@ func (s *Server) registerTenants(api huma.API) {
 
 	type eventOut struct{ Body store.Event }
 	huma.Register(api, huma.Operation{
-		OperationID: "get-event", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}", Tags: []string{"events"},
+		OperationID: "get-event", Metadata: needs("", permissions.EventsView), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}", Tags: []string{"events"},
 	}, func(ctx context.Context, in *EventPath) (*eventOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		ev, err := s.Store.GetEvent(ctx, in.TenantID, in.EventID)
@@ -208,10 +208,10 @@ func (s *Server) registerTenants(api huma.API) {
 		Body store.EventInput
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "create-event", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events", Tags: []string{"events"},
+		OperationID: "create-event", Metadata: needs("", permissions.EventsConfigure), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events", Tags: []string{"events"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *eventIn) (*eventOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		if err := normalizeEvent(&in.Body); err != nil {
@@ -240,11 +240,11 @@ func (s *Server) registerTenants(api huma.API) {
 		}
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "copy-event", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/copy", Tags: []string{"events"},
+		OperationID: "copy-event", Metadata: needs("", permissions.EventsConfigure), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/copy", Tags: []string{"events"},
 		Summary:       "Create a new event with the settings and programmes of this one, e.g. for next year; registrations are not copied",
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *copyEventIn) (*eventOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		id, err := s.Store.CopyEvent(ctx, in.TenantID, in.EventID, strings.TrimSpace(in.Body.Name), in.Body.StartsOn, in.Body.Template)
@@ -260,10 +260,10 @@ func (s *Server) registerTenants(api huma.API) {
 		Body store.EventInput
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "update-event", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/events/{eventId}", Tags: []string{"events"},
+		OperationID: "update-event", Metadata: needs("", permissions.EventsConfigure), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/events/{eventId}", Tags: []string{"events"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *eventUpdateIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		if err := normalizeEvent(&in.Body); err != nil {
@@ -286,10 +286,10 @@ func (s *Server) registerTenants(api huma.API) {
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "delete-event", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/events/{eventId}", Tags: []string{"events"},
+		OperationID: "delete-event", Metadata: needs("", permissions.EventsConfigure), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/events/{eventId}", Tags: []string{"events"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *EventPath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		err := s.Store.DeleteEvent(ctx, in.TenantID, in.EventID)
@@ -306,11 +306,11 @@ func (s *Server) registerTenants(api huma.API) {
 		}
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "archive-event", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/events/{eventId}/archived", Tags: []string{"events"},
+		OperationID: "archive-event", Metadata: needs("", permissions.EventsConfigure), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/events/{eventId}/archived", Tags: []string{"events"},
 		Summary:       "Archive or unarchive an event; an archived event stays readable but refuses every change",
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *archiveIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		return nil, notFound(s.Store.SetEventArchived(ctx, in.TenantID, in.EventID, in.Body.Archived), "Event not found")
@@ -324,9 +324,9 @@ func (s *Server) registerTenants(api huma.API) {
 func (s *Server) registerMembers(api huma.API) {
 	type membersOut struct{ Body []store.Member }
 	huma.Register(api, huma.Operation{
-		OperationID: "list-users", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/users", Tags: []string{"users"},
+		OperationID: "list-users", Metadata: needs("", permissions.ClubManage), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/users", Tags: []string{"users"},
 	}, func(ctx context.Context, in *TenantPath) (*membersOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ClubManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.Members(ctx, in.TenantID)
@@ -342,11 +342,11 @@ func (s *Server) registerMembers(api huma.API) {
 		}
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "add-user", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/users", Tags: []string{"users"},
+		OperationID: "add-user", Metadata: needs("", permissions.ClubManage), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/users", Tags: []string{"users"},
 		Summary:       "Add an existing user to the tenant, or create the user with the given password",
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *addIn) (*struct{}, error) {
-		u, _, err := s.access(ctx, in.TenantID, permissions.ClubManage)
+		u, _, err := s.access(ctx, in.TenantID)
 		if err != nil {
 			return nil, err
 		}
@@ -384,10 +384,10 @@ func (s *Server) registerMembers(api huma.API) {
 		}
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "set-user-role", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/users/{userId}", Tags: []string{"users"},
+		OperationID: "set-user-role", Metadata: needs("", permissions.ClubManage), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/users/{userId}", Tags: []string{"users"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *roleIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ClubManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		if _, err := s.Store.MemberRole(ctx, in.TenantID, in.UserID); err != nil {
@@ -400,10 +400,10 @@ func (s *Server) registerMembers(api huma.API) {
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "remove-user", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/users/{userId}", Tags: []string{"users"},
+		OperationID: "remove-user", Metadata: needs("", permissions.ClubManage), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/users/{userId}", Tags: []string{"users"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *MemberPath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ClubManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		if err := s.keepOneAdmin(ctx, in.TenantID, in.UserID, 0); err != nil {
@@ -423,9 +423,9 @@ type RolePath struct {
 func (s *Server) registerRoles(api huma.API) {
 	type listOut struct{ Body []store.Role }
 	huma.Register(api, huma.Operation{
-		OperationID: "list-roles", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/roles", Tags: []string{"users"},
+		OperationID: "list-roles", Metadata: needs("", permissions.ClubManage), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/roles", Tags: []string{"users"},
 	}, func(ctx context.Context, in *TenantPath) (*listOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ClubManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.ListRoles(ctx, in.TenantID)
@@ -438,10 +438,10 @@ func (s *Server) registerRoles(api huma.API) {
 	}
 	type createOut struct{ Body store.Role }
 	huma.Register(api, huma.Operation{
-		OperationID: "create-role", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/roles", Tags: []string{"users"},
+		OperationID: "create-role", Metadata: needs("", permissions.ClubManage), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/roles", Tags: []string{"users"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *createIn) (*createOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ClubManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		in.Body.Name = strings.TrimSpace(in.Body.Name)
@@ -461,10 +461,10 @@ func (s *Server) registerRoles(api huma.API) {
 		Body store.RoleInput
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "update-role", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/roles/{roleId}", Tags: []string{"users"},
+		OperationID: "update-role", Metadata: needs("", permissions.ClubManage), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/roles/{roleId}", Tags: []string{"users"},
 		Summary: "Rename a role and set its permissions; the admin role keeps every permission", DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *updateIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ClubManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		r, err := s.Store.GetRole(ctx, in.TenantID, in.RoleID)
@@ -479,10 +479,10 @@ func (s *Server) registerRoles(api huma.API) {
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "delete-role", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/roles/{roleId}", Tags: []string{"users"},
+		OperationID: "delete-role", Metadata: needs("", permissions.ClubManage), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/roles/{roleId}", Tags: []string{"users"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *RolePath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ClubManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		r, err := s.Store.GetRole(ctx, in.TenantID, in.RoleID)

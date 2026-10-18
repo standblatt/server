@@ -218,12 +218,12 @@ func (s *Server) registerResultImport(api huma.API) {
 	}
 	type importOut struct{ Body ResultImportReport }
 	huma.Register(api, huma.Operation{
-		OperationID: "import-results", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/results/import", Tags: []string{"results"},
+		OperationID: "import-results", Metadata: needs("", permissions.EventsConfigure), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/results/import", Tags: []string{"results"},
 		Summary:      "Import results from CSV (license or firstname/lastname/birthday, optional club, programme, s1…sN, optional m1…mN and sN_M shots)",
 		Description:  "Every line is checked first; with any error nothing is imported. Shooters that are not in the master data are created; unknown clubs are an error.",
 		MaxBodyBytes: maxImportBytes,
 	}, func(ctx context.Context, in *importIn) (*importOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		if _, err := s.Store.GetEvent(ctx, in.TenantID, in.EventID); err != nil {

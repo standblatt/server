@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Club roles are made of permissions: admin and staff became the roles *Admin* and *Helper* (unchanged rights), new default roles are *Board* and *Member* (sees only the events and rankings); the app shows pages and buttons by permission (by @HB9HIL)
 - **Invitations** wait for an answer: the invited person accepts through the link in the mail, with a new account and password or, after logging in, with the account they have; the *Users* page lists open and expired invitations to send again or withdraw. Inviting no longer creates accounts (by @HB9HIL)
+- Every API operation of a club declares its permissions, checked before the request is read; tests call every operation with and without them and keep the table of who may call what under review (by @HB9HIL)
 
 ### Removed
 - The redirect of the old setup page links (`setup?tab=`) to the configuration pages (by @HB9HIL)

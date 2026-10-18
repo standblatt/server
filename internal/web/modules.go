@@ -145,10 +145,10 @@ func (s *Server) registerModules(api huma.API) {
 		}
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "set-club-modules", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/modules", Tags: []string{"tenants"},
+		OperationID: "set-club-modules", Metadata: needs("", permissions.ClubManage), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/modules", Tags: []string{"tenants"},
 		Summary: "Choose the modules of a club; modules that hold data stay on", DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *clubModulesIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ClubManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		err := s.Store.SetClubModules(ctx, in.TenantID, in.Body.Modules)
@@ -160,8 +160,49 @@ func (s *Server) registerModules(api huma.API) {
 	})
 }
 
-// withModule marks an operation as part of a module.
-func withModule(op huma.Operation, key string) huma.Operation {
-	op.Metadata = modules.Metadata(key)
+// needs is the metadata of an operation: the module it belongs to ("" for none) and the permissions of which the
+// caller's role needs one (permissionGate). Every operation of a club needs at least one.
+func needs(module string, perms ...string) map[string]any {
+	m := map[string]any{"permissions": perms}
+	if module != "" {
+		m["module"] = module
+	}
+	return m
+}
+
+// withNeeds sets the metadata of an operation, see needs.
+func withNeeds(op huma.Operation, module string, perms ...string) huma.Operation {
+	op.Metadata = needs(module, perms...)
 	return op
+}
+
+// permissionsOf returns the permissions an operation needs, see needs.
+func permissionsOf(metadata map[string]any) []string {
+	p, _ := metadata["permissions"].([]string)
+	return p
+}
+
+// permissionGate refuses an operation of a club (tenantId in the path) when the caller's role has none of its
+// permissions (see needs): 401 without login, 404 for non-members, 403 otherwise. It runs before the input is
+// parsed, so a missing permission never reaches validation or the handler.
+func (s *Server) permissionGate(api huma.API) func(ctx huma.Context, next func(huma.Context)) {
+	return func(ctx huma.Context, next func(huma.Context)) {
+		perms := permissionsOf(ctx.Operation().Metadata)
+		tenantID, err := strconv.ParseInt(ctx.Param("tenantId"), 10, 64)
+		if len(perms) == 0 || err != nil {
+			next(ctx)
+			return
+		}
+		if _, _, err := s.access(ctx.Context(), tenantID, perms...); err != nil {
+			var se huma.StatusError
+			if !errors.As(err, &se) {
+				s.Log.Error("permission gate", "err", err)
+				huma.WriteErr(api, ctx, http.StatusInternalServerError, "internal error")
+				return
+			}
+			huma.WriteErr(api, ctx, se.GetStatus(), err.Error())
+			return
+		}
+		next(ctx)
+	}
 }

@@ -316,9 +316,9 @@ func (s *Server) registerDocuments(api huma.API) {
 		RegistrationPath
 		Document string `path:"document" enum:"lane_sheet,control_strip,result_sheet"`
 	}
-	huma.Register(api, pdfOp("registration-document", "documents", "/api/tenants/{tenantId}/registrations/{registrationId}/documents/{document}", ""),
+	huma.Register(api, withNeeds(pdfOp("registration-document", "documents", "/api/tenants/{tenantId}/registrations/{registrationId}/documents/{document}", ""), "", permissions.EventsOperate),
 		func(ctx context.Context, in *regDocIn) (*PDFOutput, error) {
-			if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
+			if _, _, err := s.access(ctx, in.TenantID); err != nil {
 				return nil, err
 			}
 			if err := s.helperDocument(ctx, in.TenantID, in.RegistrationID, 0, in.Document); err != nil {
@@ -326,16 +326,16 @@ func (s *Server) registerDocuments(api huma.API) {
 			}
 			return pdfOut(s.renderRegistrationDoc(ctx, in.TenantID, in.RegistrationID, in.Document))
 		})
-	huma.Register(api, withModule(pdfOp("wreath-card", "documents", "/api/tenants/{tenantId}/entries/{entryId}/wreath-card", ""), modules.Awards),
+	huma.Register(api, withNeeds(pdfOp("wreath-card", "documents", "/api/tenants/{tenantId}/entries/{entryId}/wreath-card", ""), modules.Awards, permissions.EventsOperate),
 		func(ctx context.Context, in *EntryPath) (*PDFOutput, error) {
-			if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
+			if _, _, err := s.access(ctx, in.TenantID); err != nil {
 				return nil, err
 			}
 			return pdfOut(s.renderWreathCard(ctx, in.TenantID, in.EntryID))
 		})
-	huma.Register(api, pdfOp("ranking-pdf", "documents", "/api/tenants/{tenantId}/programmes/{programmeId}/ranking", ""),
+	huma.Register(api, withNeeds(pdfOp("ranking-pdf", "documents", "/api/tenants/{tenantId}/programmes/{programmeId}/ranking", ""), "", permissions.EventsView),
 		func(ctx context.Context, in *ProgrammePath) (*PDFOutput, error) {
-			if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView); err != nil {
+			if _, _, err := s.access(ctx, in.TenantID); err != nil {
 				return nil, err
 			}
 			return pdfOut(s.renderRanking(ctx, in.TenantID, in.ProgrammeID))
@@ -347,10 +347,10 @@ func (s *Server) registerDocuments(api huma.API) {
 	}
 	type printOut struct{ Body PrintResult }
 	huma.Register(api, huma.Operation{
-		OperationID: "print", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/print", Tags: []string{"documents"},
+		OperationID: "print", Metadata: needs("", permissions.EventsOperate), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/print", Tags: []string{"documents"},
 		Summary: "Send a document to the printer of its range; queued is false when no printer is set up or no agent is online",
 	}, func(ctx context.Context, in *printIn) (*printOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		if err := s.helperDocument(ctx, in.TenantID, in.Body.RegistrationID, in.Body.EntryID, in.Body.Document); err != nil {

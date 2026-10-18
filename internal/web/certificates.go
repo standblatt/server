@@ -158,9 +158,9 @@ func (s *Server) registerCertificates(api huma.API) {
 		RegistrationPath
 		LayoutID int64 `path:"layoutId"`
 	}
-	huma.Register(api, withModule(pdfOp("registration-form", "forms", "/api/tenants/{tenantId}/registrations/{registrationId}/forms/{layoutId}", "A registration printed onto a print form with the registration as data source"), modules.Forms),
+	huma.Register(api, withNeeds(pdfOp("registration-form", "forms", "/api/tenants/{tenantId}/registrations/{registrationId}/forms/{layoutId}", "A registration printed onto a print form with the registration as data source"), modules.Forms, permissions.EventsOperate),
 		func(ctx context.Context, in *regFormIn) (*PDFOutput, error) {
-			if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
+			if _, _, err := s.access(ctx, in.TenantID); err != nil {
 				return nil, err
 			}
 			return pdfOut(s.renderRegistrationForm(ctx, in.TenantID, in.RegistrationID, in.LayoutID))
@@ -170,9 +170,9 @@ func (s *Server) registerCertificates(api huma.API) {
 		EventPath
 		Certificates
 	}
-	huma.Register(api, withModule(pdfOp("certificates", "forms", "/api/tenants/{tenantId}/events/{eventId}/certificates", "Certificates: one page per ranked shooter of a programme or classification"), modules.Forms),
+	huma.Register(api, withNeeds(pdfOp("certificates", "forms", "/api/tenants/{tenantId}/events/{eventId}/certificates", "Certificates: one page per ranked shooter of a programme or classification"), modules.Forms, permissions.EventsOperate),
 		func(ctx context.Context, in *certificatesIn) (*PDFOutput, error) {
-			if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
+			if _, _, err := s.access(ctx, in.TenantID); err != nil {
 				return nil, err
 			}
 			return pdfOut(s.renderCertificates(ctx, in.TenantID, in.EventID, in.Certificates))

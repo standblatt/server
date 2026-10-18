@@ -81,9 +81,9 @@ func (s *Server) notCombined(ctx context.Context, tenantID, programmeID int64) e
 func (s *Server) registerProgrammes(api huma.API) {
 	type listOut struct{ Body []store.Programme }
 	huma.Register(api, huma.Operation{
-		OperationID: "list-programmes", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/programmes", Tags: []string{"programmes"},
+		OperationID: "list-programmes", Metadata: needs("", permissions.EventsView), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/programmes", Tags: []string{"programmes"},
 	}, func(ctx context.Context, in *EventPath) (*listOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.ListProgrammes(ctx, in.TenantID, in.EventID)
@@ -109,10 +109,10 @@ func (s *Server) registerProgrammes(api huma.API) {
 		Body domain.ProgrammeDefinition
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "create-programme", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/programmes", Tags: []string{"programmes"},
+		OperationID: "create-programme", Metadata: needs("", permissions.EventsConfigure), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/programmes", Tags: []string{"programmes"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *createIn) (*programmeOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		return createAndReturn(ctx, in.TenantID, in.EventID, in.Body)
@@ -123,10 +123,10 @@ func (s *Server) registerProgrammes(api huma.API) {
 		Body ProgrammeExport
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "import-programme", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/programmes/import", Tags: []string{"programmes"},
+		OperationID: "import-programme", Metadata: needs("", permissions.EventsConfigure), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/programmes/import", Tags: []string{"programmes"},
 		Summary: "Add a programme from an export file", DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *importIn) (*programmeOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		return createAndReturn(ctx, in.TenantID, in.EventID, in.Body.Programme)
@@ -139,10 +139,10 @@ func (s *Server) registerProgrammes(api huma.API) {
 		}
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "programme-from-template", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/programmes/from-template", Tags: []string{"programmes"},
+		OperationID: "programme-from-template", Metadata: needs("", permissions.EventsConfigure), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/programmes/from-template", Tags: []string{"programmes"},
 		Summary: "Add a copy of a library template", DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *fromTemplateIn) (*programmeOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		tpl, err := s.Store.GetTemplate(ctx, in.Body.TemplateID)
@@ -164,10 +164,10 @@ func (s *Server) registerProgrammes(api huma.API) {
 		}
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "copy-programmes", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/programmes/copy", Tags: []string{"programmes"},
+		OperationID: "copy-programmes", Metadata: needs("", permissions.EventsConfigure), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/programmes/copy", Tags: []string{"programmes"},
 		Summary: "Copy all programmes of another event of the club; existing name/variant pairs are skipped",
 	}, func(ctx context.Context, in *copyIn) (*copyOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		n, err := s.Store.CopyProgrammes(ctx, in.TenantID, in.Body.FromEventID, in.EventID)
@@ -180,9 +180,9 @@ func (s *Server) registerProgrammes(api huma.API) {
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "get-programme", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/programmes/{programmeId}", Tags: []string{"programmes"},
+		OperationID: "get-programme", Metadata: needs("", permissions.EventsView), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/programmes/{programmeId}", Tags: []string{"programmes"},
 	}, func(ctx context.Context, in *ProgrammePath) (*programmeOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		p, err := s.Store.GetProgramme(ctx, in.TenantID, in.ProgrammeID)
@@ -194,9 +194,9 @@ func (s *Server) registerProgrammes(api huma.API) {
 		Body               ProgrammeExport
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "export-programme", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/programmes/{programmeId}/export", Tags: []string{"programmes"},
+		OperationID: "export-programme", Metadata: needs("", permissions.EventsView), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/programmes/{programmeId}/export", Tags: []string{"programmes"},
 	}, func(ctx context.Context, in *ProgrammePath) (*exportOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		p, err := s.Store.GetProgramme(ctx, in.TenantID, in.ProgrammeID)
@@ -214,10 +214,10 @@ func (s *Server) registerProgrammes(api huma.API) {
 		Body domain.ProgrammeDefinition
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "update-programme", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/programmes/{programmeId}", Tags: []string{"programmes"},
+		OperationID: "update-programme", Metadata: needs("", permissions.EventsConfigure), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/programmes/{programmeId}", Tags: []string{"programmes"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *updateIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		if err := checkDefinition(&in.Body); err != nil {
@@ -238,10 +238,10 @@ func (s *Server) registerProgrammes(api huma.API) {
 		}
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "set-programme-active", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/programmes/{programmeId}/active", Tags: []string{"programmes"},
+		OperationID: "set-programme-active", Metadata: needs("", permissions.EventsConfigure), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/programmes/{programmeId}/active", Tags: []string{"programmes"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *activeIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		return nil, s.programmeChanged(ctx, in.TenantID, in.ProgrammeID, notFound(s.Store.SetProgrammeActive(ctx, in.TenantID, in.ProgrammeID, in.Body.Active), "Programme not found"))
@@ -254,10 +254,10 @@ func (s *Server) registerProgrammes(api huma.API) {
 		}
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "set-programme-combination", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/programmes/{programmeId}/combination", Tags: []string{"programmes"},
+		OperationID: "set-programme-combination", Metadata: needs("", permissions.EventsConfigure), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/programmes/{programmeId}/combination", Tags: []string{"programmes"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *combinationIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		if in.Body.CombinableWithID != nil {
@@ -282,32 +282,32 @@ func (s *Server) registerProgrammes(api huma.API) {
 		}
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "set-programme-range", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/programmes/{programmeId}/range", Tags: []string{"programmes"},
+		OperationID: "set-programme-range", Metadata: needs("", permissions.EventsConfigure), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/programmes/{programmeId}/range", Tags: []string{"programmes"},
 		Summary:       "Tie the programme to one range of its event; allowed while shooters are registered",
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *rangeIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		return nil, s.programmeChanged(ctx, in.TenantID, in.ProgrammeID, notFound(s.Store.SetProgrammeRange(ctx, in.TenantID, in.ProgrammeID, in.Body.RangeID), "Programme not found, or the range is not one of the event"))
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "set-special-prizes", Metadata: modules.Metadata(modules.SpecialPrizes), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/programmes/{programmeId}/special-prizes", Tags: []string{"programmes"},
+		OperationID: "set-special-prizes", Metadata: needs(modules.SpecialPrizes, permissions.EventsConfigure), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/programmes/{programmeId}/special-prizes", Tags: []string{"programmes"},
 		Summary:       "Set the special prize rules of a programme; allowed while shooters are registered",
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *prizesIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		return nil, s.programmeChanged(ctx, in.TenantID, in.ProgrammeID, notFound(s.Store.SetSpecialPrizes(ctx, in.TenantID, in.ProgrammeID, in.Body), "Programme not found"))
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "delete-programme", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/programmes/{programmeId}", Tags: []string{"programmes"},
+		OperationID: "delete-programme", Metadata: needs("", permissions.EventsConfigure), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/programmes/{programmeId}", Tags: []string{"programmes"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *ProgrammePath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		p, err := s.Store.GetProgramme(ctx, in.TenantID, in.ProgrammeID)

@@ -103,7 +103,7 @@ func (s *Server) apiConfig() huma.Config {
 
 // registerAPI registers all API operations.
 func (s *Server) registerAPI(api huma.API) {
-	api.UseMiddleware(s.authorize(api), s.moduleGate(api))
+	api.UseMiddleware(s.authorize(api), s.permissionGate(api), s.moduleGate(api))
 	s.registerModules(api)
 	s.registerSystem(api)
 	s.registerAuth(api)

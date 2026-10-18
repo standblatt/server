@@ -144,9 +144,9 @@ type KioskAuth struct {
 func (s *Server) registerRankings(api huma.API) {
 	type rankingsOut struct{ Body []ProgrammeRanking }
 	huma.Register(api, huma.Operation{
-		OperationID: "get-rankings", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/rankings", Tags: []string{"rankings"},
+		OperationID: "get-rankings", Metadata: needs("", permissions.EventsView), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/rankings", Tags: []string{"rankings"},
 	}, func(ctx context.Context, in *EventPath) (*rankingsOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		list, err := s.rankings(ctx, in.TenantID, in.EventID, false)
@@ -155,9 +155,9 @@ func (s *Server) registerRankings(api huma.API) {
 
 	type tokensOut struct{ Body []store.KioskToken }
 	huma.Register(api, huma.Operation{
-		OperationID: "list-kiosk-tokens", Metadata: modules.Metadata(modules.Kiosk), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/kiosk-tokens", Tags: []string{"kiosk"},
+		OperationID: "list-kiosk-tokens", Metadata: needs(modules.Kiosk, permissions.EventsConfigure), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/kiosk-tokens", Tags: []string{"kiosk"},
 	}, func(ctx context.Context, in *EventPath) (*tokensOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.ListKioskTokens(ctx, in.TenantID, in.EventID)
@@ -177,10 +177,10 @@ func (s *Server) registerRankings(api huma.API) {
 		}
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "create-kiosk-token", Metadata: modules.Metadata(modules.Kiosk), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/kiosk-tokens", Tags: []string{"kiosk"},
+		OperationID: "create-kiosk-token", Metadata: needs(modules.Kiosk, permissions.EventsConfigure), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/kiosk-tokens", Tags: []string{"kiosk"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *createIn) (*createOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		secret := randomToken()
@@ -200,10 +200,10 @@ func (s *Server) registerRankings(api huma.API) {
 		TokenID  int64 `path:"tokenId"`
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "delete-kiosk-token", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/kiosk-tokens/{tokenId}", Tags: []string{"kiosk"},
+		OperationID: "delete-kiosk-token", Metadata: needs("", permissions.EventsConfigure), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/kiosk-tokens/{tokenId}", Tags: []string{"kiosk"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *tokenPath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		return nil, notFound(s.Store.DeleteKioskToken(ctx, in.TenantID, in.TokenID), "Kiosk token not found")

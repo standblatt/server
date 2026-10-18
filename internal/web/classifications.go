@@ -144,9 +144,9 @@ func (s *Server) checkClassification(ctx context.Context, tenantID, eventID int6
 func (s *Server) registerClassifications(api huma.API) {
 	type listOut struct{ Body []store.Classification }
 	huma.Register(api, huma.Operation{
-		OperationID: "list-classifications", Metadata: modules.Metadata(modules.Classifications), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/classifications", Tags: []string{"classifications"},
+		OperationID: "list-classifications", Metadata: needs(modules.Classifications, permissions.EventsView), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/classifications", Tags: []string{"classifications"},
 	}, func(ctx context.Context, in *EventPath) (*listOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.ListClassifications(ctx, in.TenantID, in.EventID)
@@ -159,10 +159,10 @@ func (s *Server) registerClassifications(api huma.API) {
 	}
 	type createOut struct{ Body store.Classification }
 	huma.Register(api, huma.Operation{
-		OperationID: "create-classification", Metadata: modules.Metadata(modules.Classifications), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/classifications", Tags: []string{"classifications"},
+		OperationID: "create-classification", Metadata: needs(modules.Classifications, permissions.EventsConfigure), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/classifications", Tags: []string{"classifications"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *createIn) (*createOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		if err := s.checkClassification(ctx, in.TenantID, in.EventID, &in.Body); err != nil {
@@ -181,10 +181,10 @@ func (s *Server) registerClassifications(api huma.API) {
 		Body domain.ClassificationDefinition
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "update-classification", Metadata: modules.Metadata(modules.Classifications), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/events/{eventId}/classifications/{classificationId}", Tags: []string{"classifications"},
+		OperationID: "update-classification", Metadata: needs(modules.Classifications, permissions.EventsConfigure), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/events/{eventId}/classifications/{classificationId}", Tags: []string{"classifications"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *updateIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		if err := s.checkClassification(ctx, in.TenantID, in.EventID, &in.Body); err != nil {
@@ -198,10 +198,10 @@ func (s *Server) registerClassifications(api huma.API) {
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "delete-classification", Metadata: modules.Metadata(modules.Classifications), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/events/{eventId}/classifications/{classificationId}", Tags: []string{"classifications"},
+		OperationID: "delete-classification", Metadata: needs(modules.Classifications, permissions.EventsConfigure), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/events/{eventId}/classifications/{classificationId}", Tags: []string{"classifications"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *ClassificationPath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		if err := s.Store.DeleteClassification(ctx, in.TenantID, in.EventID, in.ClassificationID); err != nil {
@@ -213,9 +213,9 @@ func (s *Server) registerClassifications(api huma.API) {
 
 	type rankingsOut struct{ Body []ClassificationRanking }
 	huma.Register(api, huma.Operation{
-		OperationID: "get-classification-rankings", Metadata: modules.Metadata(modules.Classifications), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/classification-rankings", Tags: []string{"classifications"},
+		OperationID: "get-classification-rankings", Metadata: needs(modules.Classifications, permissions.EventsView), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/classification-rankings", Tags: []string{"classifications"},
 	}, func(ctx context.Context, in *EventPath) (*rankingsOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		list, err := s.classificationRankings(ctx, in.TenantID, in.EventID, false)

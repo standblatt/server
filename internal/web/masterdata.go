@@ -138,9 +138,9 @@ func shooterConflict(err error) error {
 func (s *Server) registerMasterData(api huma.API) {
 	type clubsOut struct{ Body []store.Club }
 	huma.Register(api, huma.Operation{
-		OperationID: "list-clubs", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/clubs", Tags: []string{"clubs"},
+		OperationID: "list-clubs", Metadata: needs("", permissions.ShootersView, permissions.EventsOperate), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/clubs", Tags: []string{"clubs"},
 	}, func(ctx context.Context, in *TenantPath) (*clubsOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ShootersView, permissions.EventsOperate); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.ListClubs(ctx, in.TenantID)
@@ -153,10 +153,10 @@ func (s *Server) registerMasterData(api huma.API) {
 	}
 	type clubOut struct{ Body store.Club }
 	huma.Register(api, huma.Operation{
-		OperationID: "create-club", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/clubs", Tags: []string{"clubs"},
+		OperationID: "create-club", Metadata: needs("", permissions.ShootersEdit, permissions.EventsOperate), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/clubs", Tags: []string{"clubs"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *clubIn) (*clubOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ShootersEdit, permissions.EventsOperate); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		in.Body.Name = strings.TrimSpace(in.Body.Name)
@@ -172,10 +172,10 @@ func (s *Server) registerMasterData(api huma.API) {
 		Name string `query:"name" required:"true" doc:"A club name as typed"`
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "match-club", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/clubs/similar", Tags: []string{"clubs"},
+		OperationID: "match-club", Metadata: needs("", permissions.ShootersView, permissions.EventsOperate), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/clubs/similar", Tags: []string{"clubs"},
 		Summary: "The club with this name regardless of case and spaces, and the clubs with a similar name",
 	}, func(ctx context.Context, in *similarIn) (*struct{ Body ClubMatch }, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ShootersView, permissions.EventsOperate); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		clubs, err := s.Store.ListClubs(ctx, in.TenantID)
@@ -189,11 +189,11 @@ func (s *Server) registerMasterData(api huma.API) {
 		}
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "merge-club", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/clubs/{clubId}/merge", Tags: []string{"clubs"},
+		OperationID: "merge-club", Metadata: needs("", permissions.ShootersManage), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/clubs/{clubId}/merge", Tags: []string{"clubs"},
 		Summary:       "Merge the club into another: shooters, registrations (of closed events too) and booking requests move, the club is deleted",
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *mergeIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ShootersManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		return nil, notFound(s.Store.MergeClubs(ctx, in.TenantID, in.ClubID, in.Body.IntoID), "Club not found")
@@ -204,10 +204,10 @@ func (s *Server) registerMasterData(api huma.API) {
 		Body store.ClubInput
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "update-club", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/clubs/{clubId}", Tags: []string{"clubs"},
+		OperationID: "update-club", Metadata: needs("", permissions.ShootersManage), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/clubs/{clubId}", Tags: []string{"clubs"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *clubUpdateIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ShootersManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		in.Body.Name = strings.TrimSpace(in.Body.Name)
@@ -219,10 +219,10 @@ func (s *Server) registerMasterData(api huma.API) {
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "delete-club", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/clubs/{clubId}", Tags: []string{"clubs"},
+		OperationID: "delete-club", Metadata: needs("", permissions.ShootersManage), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/clubs/{clubId}", Tags: []string{"clubs"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *ClubPath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ShootersManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		err := s.Store.DeleteClub(ctx, in.TenantID, in.ClubID)
@@ -244,9 +244,9 @@ func (s *Server) registerMasterData(api huma.API) {
 		Body  []store.Shooter
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "search-shooters", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/shooters", Tags: []string{"shooters"},
+		OperationID: "search-shooters", Metadata: needs("", permissions.ShootersView, permissions.EventsOperate), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/shooters", Tags: []string{"shooters"},
 	}, func(ctx context.Context, in *searchIn) (*shootersOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ShootersView, permissions.EventsOperate); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.SearchShooters(ctx, in.TenantID, in.Q, in.ClubID, in.Limit, in.Offset)
@@ -259,9 +259,9 @@ func (s *Server) registerMasterData(api huma.API) {
 
 	type shooterOut struct{ Body store.Shooter }
 	huma.Register(api, huma.Operation{
-		OperationID: "get-shooter", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/shooters/{shooterId}", Tags: []string{"shooters"},
+		OperationID: "get-shooter", Metadata: needs("", permissions.ShootersView, permissions.EventsOperate), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/shooters/{shooterId}", Tags: []string{"shooters"},
 	}, func(ctx context.Context, in *ShooterPath) (*shooterOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ShootersView, permissions.EventsOperate); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		sh, err := s.Store.GetShooter(ctx, in.TenantID, in.ShooterID)
@@ -273,10 +273,10 @@ func (s *Server) registerMasterData(api huma.API) {
 		Body ShooterCreate
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "create-shooter", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/shooters", Tags: []string{"shooters"},
+		OperationID: "create-shooter", Metadata: needs("", permissions.ShootersEdit, permissions.EventsOperate), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/shooters", Tags: []string{"shooters"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *createIn) (*shooterOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ShootersEdit, permissions.EventsOperate); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		if err := normalizeShooter(&in.Body.ShooterInput); err != nil {
@@ -306,10 +306,10 @@ func (s *Server) registerMasterData(api huma.API) {
 		Body store.ShooterInput
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "update-shooter", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/shooters/{shooterId}", Tags: []string{"shooters"},
+		OperationID: "update-shooter", Metadata: needs("", permissions.ShootersEdit, permissions.EventsOperate), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/shooters/{shooterId}", Tags: []string{"shooters"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *updateIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ShootersEdit, permissions.EventsOperate); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		if err := normalizeShooter(&in.Body); err != nil {
@@ -319,10 +319,10 @@ func (s *Server) registerMasterData(api huma.API) {
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "delete-shooter", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/shooters/{shooterId}", Tags: []string{"shooters"},
+		OperationID: "delete-shooter", Metadata: needs("", permissions.ShootersManage), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/shooters/{shooterId}", Tags: []string{"shooters"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *ShooterPath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ShootersManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		err := s.Store.DeleteShooter(ctx, in.TenantID, in.ShooterID)
@@ -340,10 +340,10 @@ func (s *Server) registerMasterData(api huma.API) {
 		}
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "add-shooter-club", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/shooters/{shooterId}/clubs", Tags: []string{"shooters"},
+		OperationID: "add-shooter-club", Metadata: needs("", permissions.ShootersEdit, permissions.EventsOperate), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/shooters/{shooterId}/clubs", Tags: []string{"shooters"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *addClubIn) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ShootersEdit, permissions.EventsOperate); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		clubID := in.Body.ClubID
@@ -361,10 +361,10 @@ func (s *Server) registerMasterData(api huma.API) {
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "remove-shooter-club", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/shooters/{shooterId}/clubs/{clubId}", Tags: []string{"shooters"},
+		OperationID: "remove-shooter-club", Metadata: needs("", permissions.ShootersEdit, permissions.EventsOperate), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/shooters/{shooterId}/clubs/{clubId}", Tags: []string{"shooters"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *ShooterClubPath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ShootersEdit, permissions.EventsOperate); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		return nil, notFound(s.Store.RemoveShooterClub(ctx, in.TenantID, in.ShooterID, in.ClubID), "Assignment not found")
@@ -379,11 +379,11 @@ func (s *Server) registerMasterData(api huma.API) {
 	}
 	type importOut struct{ Body ImportReport }
 	huma.Register(api, huma.Operation{
-		OperationID: "import-shooters", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/shooters/import", Tags: []string{"shooters"},
+		OperationID: "import-shooters", Metadata: needs("", permissions.ShootersManage), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/shooters/import", Tags: []string{"shooters"},
 		Summary:      "Import shooters and their clubs from CSV (firstname, lastname, optional license, birthday, postalcode, city, club)",
 		MaxBodyBytes: maxImportBytes,
 	}, func(ctx context.Context, in *importIn) (*importOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ShootersManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		data := in.RawBody.Data()

@@ -152,9 +152,9 @@ func (s *Server) registerRegistrations(api huma.API) {
 	}
 	type listOut struct{ Body []store.Registration }
 	huma.Register(api, huma.Operation{
-		OperationID: "list-registrations", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/registrations", Tags: []string{"registrations"},
+		OperationID: "list-registrations", Metadata: needs("", permissions.EventsOperate), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/registrations", Tags: []string{"registrations"},
 	}, func(ctx context.Context, in *listIn) (*listOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.ListRegistrations(ctx, in.TenantID, in.EventID, !in.All)
@@ -167,10 +167,10 @@ func (s *Server) registerRegistrations(api huma.API) {
 		Body RegistrationInput
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "create-registration", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/registrations", Tags: []string{"registrations"},
+		OperationID: "create-registration", Metadata: needs("", permissions.EventsOperate), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/registrations", Tags: []string{"registrations"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *createIn) (*regOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		id, err := s.register(ctx, in.TenantID, in.EventID, in.Body)
@@ -182,9 +182,9 @@ func (s *Server) registerRegistrations(api huma.API) {
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "get-registration", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/registrations/{registrationId}", Tags: []string{"registrations"},
+		OperationID: "get-registration", Metadata: needs("", permissions.EventsOperate), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/registrations/{registrationId}", Tags: []string{"registrations"},
 	}, func(ctx context.Context, in *RegistrationPath) (*regOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		r, err := s.Store.GetRegistration(ctx, in.TenantID, in.RegistrationID)
@@ -196,9 +196,9 @@ func (s *Server) registerRegistrations(api huma.API) {
 		Body RegistrationUpdate
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "update-registration", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/registrations/{registrationId}", Tags: []string{"registrations"},
+		OperationID: "update-registration", Metadata: needs("", permissions.EventsOperate), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/registrations/{registrationId}", Tags: []string{"registrations"},
 	}, func(ctx context.Context, in *updateIn) (*regOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		current, err := s.Store.GetRegistration(ctx, in.TenantID, in.RegistrationID)
@@ -233,10 +233,10 @@ func (s *Server) registerRegistrations(api huma.API) {
 
 	change := func(op, method, suffix, module string, run func(ctx context.Context, tenantID, id int64) error) {
 		huma.Register(api, huma.Operation{
-			OperationID: op, Metadata: modules.Metadata(module), Method: method, Path: "/api/tenants/{tenantId}/registrations/{registrationId}" + suffix, Tags: []string{"registrations"},
+			OperationID: op, Metadata: needs(module, permissions.EventsOperate), Method: method, Path: "/api/tenants/{tenantId}/registrations/{registrationId}" + suffix, Tags: []string{"registrations"},
 			DefaultStatus: http.StatusNoContent,
 		}, func(ctx context.Context, in *RegistrationPath) (*struct{}, error) {
-			if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
+			if _, _, err := s.access(ctx, in.TenantID); err != nil {
 				return nil, err
 			}
 			current, err := s.Store.GetRegistration(ctx, in.TenantID, in.RegistrationID)
@@ -259,9 +259,9 @@ func (s *Server) registerRegistrations(api huma.API) {
 
 	type lanesOut struct{ Body []RangeLanes }
 	huma.Register(api, huma.Operation{
-		OperationID: "list-lanes", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/lanes", Tags: []string{"registrations"},
+		OperationID: "list-lanes", Metadata: needs("", permissions.EventsOperate), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/lanes", Tags: []string{"registrations"},
 	}, func(ctx context.Context, in *EventPath) (*lanesOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		lanes, err := s.laneStates(ctx, in.TenantID, in.EventID)
@@ -270,9 +270,9 @@ func (s *Server) registerRegistrations(api huma.API) {
 
 	type statsOut struct{ Body store.EventStats }
 	huma.Register(api, huma.Operation{
-		OperationID: "get-event-stats", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/stats", Tags: []string{"registrations"},
+		OperationID: "get-event-stats", Metadata: needs("", permissions.EventsOperate), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/stats", Tags: []string{"registrations"},
 	}, func(ctx context.Context, in *EventPath) (*statsOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		st, err := s.Store.GetEventStats(ctx, in.TenantID, in.EventID)

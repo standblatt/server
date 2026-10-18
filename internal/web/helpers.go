@@ -158,9 +158,9 @@ func sameProgrammes(entries []store.Entry, choices []domain.ProgrammeChoice) boo
 func (s *Server) registerHelpers(api huma.API) {
 	type listOut struct{ Body []store.HelperCode }
 	huma.Register(api, huma.Operation{
-		OperationID: "list-helper-codes", Metadata: modules.Metadata(modules.Helpers), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/helper-codes", Tags: []string{"helpers"},
+		OperationID: "list-helper-codes", Metadata: needs(modules.Helpers, permissions.EventsConfigure), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/helper-codes", Tags: []string{"helpers"},
 	}, func(ctx context.Context, in *EventPath) (*listOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.ListHelperCodes(ctx, in.TenantID, in.EventID)
@@ -183,10 +183,10 @@ func (s *Server) registerHelpers(api huma.API) {
 		}
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "create-helper-code", Metadata: modules.Metadata(modules.Helpers), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/helper-codes", Tags: []string{"helpers"},
+		OperationID: "create-helper-code", Metadata: needs(modules.Helpers, permissions.EventsConfigure), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/helper-codes", Tags: []string{"helpers"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *createIn) (*createOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		ev, err := s.Store.GetEvent(ctx, in.TenantID, in.EventID)
@@ -229,10 +229,10 @@ func (s *Server) registerHelpers(api huma.API) {
 		CodeID   int64 `path:"codeId"`
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "delete-helper-code", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/helper-codes/{codeId}", Tags: []string{"helpers"},
+		OperationID: "delete-helper-code", Metadata: needs("", permissions.EventsConfigure), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/helper-codes/{codeId}", Tags: []string{"helpers"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *codePath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsConfigure); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		eventID, err := s.Store.DeleteHelperCode(ctx, in.TenantID, in.CodeID)

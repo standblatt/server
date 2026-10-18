@@ -275,9 +275,9 @@ func (s *Server) moveAward(ctx context.Context, tenantID int64, e store.EntryRef
 func (s *Server) registerResults(api huma.API) {
 	type sheetOut struct{ Body ResultSheet }
 	huma.Register(api, huma.Operation{
-		OperationID: "get-results", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/registrations/{registrationId}/results", Tags: []string{"results"},
+		OperationID: "get-results", Metadata: needs("", permissions.EventsOperate), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/registrations/{registrationId}/results", Tags: []string{"results"},
 	}, func(ctx context.Context, in *RegistrationPath) (*sheetOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		sheet, err := s.resultSheet(ctx, in.TenantID, in.RegistrationID)
@@ -291,11 +291,11 @@ func (s *Server) registerResults(api huma.API) {
 		}
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "save-results", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/entries/{entryId}/results", Tags: []string{"results"},
+		OperationID: "save-results", Metadata: needs("", permissions.EventsOperate), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/entries/{entryId}/results", Tags: []string{"results"},
 		Summary:     "Replace the results of a programme and choose its award",
 		Description: "Keeps the award of the programme and of the programmes that take series from it while it is still reached, otherwise gives the most valuable award reached.",
 	}, func(ctx context.Context, in *saveIn) (*sheetOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		e, err := s.Store.GetEntry(ctx, in.TenantID, in.EntryID)
@@ -311,11 +311,11 @@ func (s *Server) registerResults(api huma.API) {
 		Body ResultLine
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "enter-result", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/results", Tags: []string{"results"},
+		OperationID: "enter-result", Metadata: needs("", permissions.EventsOperate), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/results", Tags: []string{"results"},
 		Summary:     "Enter the results of a shooter in a programme without the desk",
 		Description: "Fills the shooter's first attempt at the programme without results, otherwise registers the shooter without a lane for a new attempt. 409 when the shooter has no attempts left.",
 	}, func(ctx context.Context, in *enterIn) (*sheetOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		sheet, err := s.enterResult(ctx, in.TenantID, in.EventID, in.Body)
@@ -329,9 +329,9 @@ func (s *Server) registerResults(api huma.API) {
 		}
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "set-award", Metadata: modules.Metadata(modules.Awards), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/entries/{entryId}/award", Tags: []string{"results"},
+		OperationID: "set-award", Metadata: needs(modules.Awards, permissions.EventsOperate), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/entries/{entryId}/award", Tags: []string{"results"},
 	}, func(ctx context.Context, in *awardIn) (*sheetOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsOperate); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		e, err := s.Store.GetEntry(ctx, in.TenantID, in.EntryID)

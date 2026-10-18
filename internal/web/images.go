@@ -42,9 +42,9 @@ func (s *Server) checkLayoutImages(ctx context.Context, tenantID int64, in store
 func (s *Server) registerImages(api huma.API) {
 	type listOut struct{ Body []store.Image }
 	huma.Register(api, huma.Operation{
-		OperationID: "list-images", Metadata: modules.Metadata(modules.Forms), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/images", Tags: []string{"forms"},
+		OperationID: "list-images", Metadata: needs(modules.Forms, permissions.EventsView), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/images", Tags: []string{"forms"},
 	}, func(ctx context.Context, in *TenantPath) (*listOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.ListImages(ctx, in.TenantID)
@@ -60,10 +60,10 @@ func (s *Server) registerImages(api huma.API) {
 	}
 	type imageOut struct{ Body store.Image }
 	huma.Register(api, huma.Operation{
-		OperationID: "create-image", Metadata: modules.Metadata(modules.Forms), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/images", Tags: []string{"forms"},
+		OperationID: "create-image", Metadata: needs(modules.Forms, permissions.FormsManage), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/images", Tags: []string{"forms"},
 		Summary: "Add a PNG or JPEG of at most 2 MB to the club's images", DefaultStatus: http.StatusCreated, MaxBodyBytes: maxImageBytes + 64<<10,
 	}, func(ctx context.Context, in *uploadIn) (*imageOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.FormsManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		form := in.RawBody.Data()
@@ -95,10 +95,10 @@ func (s *Server) registerImages(api huma.API) {
 		Body         []byte
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "get-image", Metadata: modules.Metadata(modules.Forms), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/images/{imageId}", Tags: []string{"forms"},
+		OperationID: "get-image", Metadata: needs(modules.Forms, permissions.EventsView), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/images/{imageId}", Tags: []string{"forms"},
 		Responses: map[string]*huma.Response{"200": {Description: "PNG or JPEG", Content: map[string]*huma.MediaType{"image/png": {}, "image/jpeg": {}}}},
 	}, func(ctx context.Context, in *ImagePath) (*fileOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.EventsView); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		b, err := s.Store.GetImage(ctx, in.TenantID, in.ImageID)
@@ -109,10 +109,10 @@ func (s *Server) registerImages(api huma.API) {
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "delete-image", Metadata: modules.Metadata(modules.Forms), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/images/{imageId}", Tags: []string{"forms"},
+		OperationID: "delete-image", Metadata: needs(modules.Forms, permissions.FormsManage), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/images/{imageId}", Tags: []string{"forms"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *ImagePath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.FormsManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		err := s.Store.DeleteImage(ctx, in.TenantID, in.ImageID)

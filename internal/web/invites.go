@@ -59,10 +59,10 @@ func (s *Server) registerInvites(api huma.API) {
 	}
 	type inviteOut struct{ Body []InviteResult }
 	huma.Register(api, huma.Operation{
-		OperationID: "invite-users", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/invitations", Tags: []string{"users"},
+		OperationID: "invite-users", Metadata: needs("", permissions.ClubManage), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/invitations", Tags: []string{"users"},
 		Summary: "Invite people by email; they become members when they accept through the link in the mail",
 	}, func(ctx context.Context, in *inviteIn) (*inviteOut, error) {
-		by, _, err := s.access(ctx, in.TenantID, permissions.ClubManage)
+		by, _, err := s.access(ctx, in.TenantID)
 		if err != nil {
 			return nil, err
 		}
@@ -93,9 +93,9 @@ func (s *Server) registerInvites(api huma.API) {
 
 	type listOut struct{ Body []store.Invitation }
 	huma.Register(api, huma.Operation{
-		OperationID: "list-invitations", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/invitations", Tags: []string{"users"},
+		OperationID: "list-invitations", Metadata: needs("", permissions.ClubManage), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/invitations", Tags: []string{"users"},
 	}, func(ctx context.Context, in *TenantPath) (*listOut, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ClubManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		list, err := s.Store.ListInvitations(ctx, in.TenantID)
@@ -103,10 +103,10 @@ func (s *Server) registerInvites(api huma.API) {
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "resend-invitation", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/invitations/{invitationId}/resend", Tags: []string{"users"},
+		OperationID: "resend-invitation", Metadata: needs("", permissions.ClubManage), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/invitations/{invitationId}/resend", Tags: []string{"users"},
 		Summary: "Send an invitation again with a new link valid for seven days", DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *InvitationPath) (*struct{}, error) {
-		by, _, err := s.access(ctx, in.TenantID, permissions.ClubManage)
+		by, _, err := s.access(ctx, in.TenantID)
 		if err != nil {
 			return nil, err
 		}
@@ -123,10 +123,10 @@ func (s *Server) registerInvites(api huma.API) {
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "delete-invitation", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/invitations/{invitationId}", Tags: []string{"users"},
+		OperationID: "delete-invitation", Metadata: needs("", permissions.ClubManage), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/invitations/{invitationId}", Tags: []string{"users"},
 		Summary: "Withdraw an invitation; its link stops working", DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *InvitationPath) (*struct{}, error) {
-		if _, _, err := s.access(ctx, in.TenantID, permissions.ClubManage); err != nil {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
 		return nil, notFound(s.Store.DeleteInvitation(ctx, in.TenantID, in.InvitationID), "Invitation not found")
