@@ -12,7 +12,7 @@ Events store the chosen keys in `events.modules`; `store.Event.Modules` is the e
 
 | Point | Where | What a module adds |
 |---|---|---|
-| Key | `internal/modules/modules.go` | an entry in `All` and its key in `EventEnum` (a test compares them) plus the enum tags on `store.Event`/`EventInput` |
+| Key | `internal/modules/modules.go` | an entry in `All` plus its key in the enum tags on `store.Event`/`EventInput` (club modules: `store.Membership` and `set-club-modules`); `TestModuleEnums` compares every module enum of the API with `All` |
 | Usage | `eventUsage` in `internal/store/modules.go` | SQL over the alias `e` that is true while the event holds data of the module, or `""`; a module with data stays on and switching it off answers 409 |
 | Switch-off message | `moduleUsed` in `internal/web/modules.go` | a `case` with what to remove first |
 | API gate | the module's `huma.Operation` | `Metadata: modules.Metadata(modules.Key)`; the middleware `moduleGate` answers 404 while the module is off. The path needs `eventId`, `programmeId`, `registrationId` or `entryId` (`TestModuleOperations`) |
