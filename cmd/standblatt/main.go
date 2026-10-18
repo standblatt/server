@@ -241,7 +241,8 @@ func run(ctx context.Context, cfg config, log *slog.Logger) error {
 	return err
 }
 
-// janitor removes expired sessions, rate limits, print jobs and user tokens now and every janitorInterval.
+// janitor removes expired sessions, rate limits, print jobs, user tokens, invitations and pairings now and every
+// janitorInterval.
 func janitor(ctx context.Context, st *store.Store, log *slog.Logger) {
 	tick := time.NewTicker(janitorInterval)
 	defer tick.Stop()
@@ -262,6 +263,9 @@ func janitor(ctx context.Context, st *store.Store, log *slog.Logger) {
 		}
 		if err := st.DeleteOldInvitations(ctx); err != nil {
 			log.Warn("invitation cleanup", "err", err)
+		}
+		if err := st.DeleteOldPairings(ctx); err != nil {
+			log.Warn("pairing cleanup", "err", err)
 		}
 		select {
 		case <-ctx.Done():

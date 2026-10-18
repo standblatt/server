@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 22:26+0200\n"
+"POT-Creation-Date: 2026-10-18 22:44+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1129,6 +1129,18 @@ msgstr "Vous avez déjà une arme portant ce nom"
 #: internal/web/my.go
 msgid "Your account belongs to a club. Ask the club admin to remove you first."
 msgstr "Votre compte appartient à une société. Demandez à l'admin de la société de vous retirer d'abord."
+
+#: internal/web/pairing.go
+msgid "The code expired. Start connecting again."
+msgstr "Le code a expiré. Recommencez la connexion."
+
+#: internal/web/pairing.go
+msgid "Unknown or expired code"
+msgstr "Code inconnu ou expiré"
+
+#: internal/web/pairing.go
+msgid "Unknown pairing"
+msgstr "Connexion inconnue"
 
 #: internal/web/printing.go
 msgid "Agent token missing"

@@ -200,6 +200,13 @@ msgstr "{0} – Classifiche"
 msgid "{0} ({1} lanes)"
 msgstr "{0} ({1} bersagli)"
 
+#. placeholder {0}: pairing.data.name
+#. placeholder {1}: osLabel(pairing.data.os)
+#. placeholder {2}: pairing.data.version
+#: src/routes/connect/+page.svelte
+msgid "{0} ({1}, {2}) wants to connect."
+msgstr "{0} ({1}, {2}) vuole collegarsi."
+
 #. placeholder {0}: drafts[d.id].printer
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "{0} (offline)"
@@ -1288,6 +1295,7 @@ msgstr "Chiusa il {0}: le classifiche sono pubblicate, tutto resta visibile, ma 
 #: src/lib/permissions.ts
 #: src/lib/RankingTable.svelte
 #: src/lib/RegistrationForm.svelte
+#: src/routes/connect/+page.svelte
 #: src/routes/my/+layout.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
@@ -1377,6 +1385,10 @@ msgstr "Società unite"
 msgid "Clubs that shooters belong to; used for registrations and the club competition."
 msgstr "Società a cui appartengono i tiratori; usate per le iscrizioni e il concorso di sezione."
 
+#: src/routes/connect/+page.svelte
+msgid "Code"
+msgstr "Codice"
+
 #: src/lib/TwoFactor.svelte
 msgid "Code from the app"
 msgstr "Codice dall’app"
@@ -1456,6 +1468,20 @@ msgstr "confermato"
 #: src/routes/verify/+page.svelte
 msgid "Confirming …"
 msgstr "Conferma in corso …"
+
+#: src/routes/connect/+page.svelte
+msgid "Connect"
+msgstr "Collega"
+
+#: src/routes/connect/+page.svelte
+msgid "Connect a print agent"
+msgstr "Collegare un agente di stampa"
+
+#. placeholder {0}: connected.name
+#. placeholder {1}: range?.name ?? ''
+#: src/routes/connect/+page.svelte
+msgid "Connected. {0} now prints for {1}; the app shows it in a moment."
+msgstr "Collegato. {0} ora stampa per {1}; l’app lo mostra tra un momento."
 
 #: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 msgid "Contact person"
@@ -2066,6 +2092,10 @@ msgstr "Indica quanti bersagli ti servono per fascia oraria. L’organizzatore a
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 msgid "Enter results"
 msgstr "Registra risultati"
+
+#: src/routes/connect/+page.svelte
+msgid "Enter the code the Standblatt app shows on the computer next to the printers."
+msgstr "Inserisci il codice che l’app Standblatt mostra sul computer vicino alle stampanti."
 
 #: src/routes/forgot-password/+page.svelte
 msgid "Enter your email address and we send you a link to choose a new one. Club accounts without email: ask your club admin."
@@ -2929,12 +2959,17 @@ msgstr "Diario"
 msgid "Log and change my training sessions"
 msgstr "Registrare e modificare le mie sessioni di allenamento"
 
+#: src/routes/connect/+page.svelte
 #: src/routes/invite/[token]/+page.svelte
 #: src/routes/login/+page.svelte
 #: src/routes/reset-password/+page.svelte
 #: src/routes/signup/+page.svelte
 msgid "Log in"
 msgstr "Accedi"
+
+#: src/routes/connect/+page.svelte
+msgid "Log in to connect the computer with the code to a range of your club."
+msgstr "Accedi per collegare il computer con il codice a uno stand di tiro del tuo club."
 
 #: src/routes/my/+page.svelte
 msgid "Log my first training"
@@ -3124,6 +3159,7 @@ msgstr "Il mio allenamento"
 #: src/lib/programme/Series.svelte
 #: src/lib/RankingTable.svelte
 #: src/lib/RoleMatrix.svelte
+#: src/routes/connect/+page.svelte
 #: src/routes/my/settings/+page.svelte
 #: src/routes/t/[tenantId]/+page.svelte
 #: src/routes/t/[tenantId]/clubs/+page.svelte
@@ -4050,6 +4086,7 @@ msgstr "in coda"
 #: src/lib/modules/reservations/Page.svelte
 #: src/lib/my/Finish.svelte
 #: src/lib/programme/Usage.svelte
+#: src/routes/connect/+page.svelte
 #: src/routes/t/[tenantId]/+page.svelte
 msgid "Range"
 msgstr "Stand di tiro"
@@ -4802,6 +4839,10 @@ msgstr "Configurare i programmi"
 #: src/lib/TwoFactor.svelte
 msgid "Set up the authenticator app"
 msgstr "Configura l’app di autenticazione"
+
+#: src/routes/connect/+page.svelte
+msgid "Set up the printers"
+msgstr "Configura le stampanti"
 
 #: src/routes/my/+layout.svelte
 #: src/routes/my/settings/+page.svelte
@@ -5843,6 +5884,10 @@ msgstr "Puoi modificare o annullare la richiesta fino al {0}."
 #: src/routes/invite/[token]/+page.svelte
 msgid "You join as {0}."
 msgstr "Entri come {0}."
+
+#: src/routes/connect/+page.svelte
+msgid "You need the permission to manage ranges in a club to connect a print agent."
+msgstr "Per collegare un agente di stampa ti serve il permesso di gestire gli stand di tiro di un club."
 
 #: src/lib/AccountSettings.svelte
 msgid "Your club manages this account. Ask your club admin to remove it."

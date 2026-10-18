@@ -116,6 +116,24 @@ test.describe("documents and printing", () => {
     expect(settings.find((s) => s.document === "control_strip")).toMatchObject({ printer: "Brother QL-700", options: { scale: "shrink" } });
   });
 
+  test("connects a computer by code on /connect", async ({ page }) => {
+    const pairing = await (await page.request.post("/api/agent/pair", { data: { name: "DESKTOP-E2E", os: "windows", version: "v0.1.0" } })).json();
+    await page.goto(`/connect?code=${pairing.code}`);
+    await expect(c(page, "a", "Log in")).toHaveAttribute("href", `/login?next=${encodeURIComponent(`/connect?code=${pairing.code}`)}`);
+    await login(page, admin);
+    await page.goto(`/connect?code=${pairing.code}`);
+    await expect(c(page, "[role=status]", "DESKTOP-E2E (Windows, v0.1.0) wants to connect.")).toBeVisible();
+    await page.locator("select[name=range]").selectOption({ label: "10m" });
+    await expect(page.locator("input[name=name]")).toHaveValue("DESKTOP-E2E");
+    await c(page, "button", "Connect").click();
+    await expect(c(page, "[role=status]", "Connected.")).toBeVisible();
+    const status = await (await page.request.post("/api/agent/pair/status", { data: { secret: pairing.secret } })).json();
+    expect(status).toMatchObject({ status: "connected", club, range: "10m" });
+    await page.request.post("/api/agent/hello", { headers: { Authorization: `Bearer ${status.token}` }, data: { printers: [], version: "v0.1.0", os: "windows" } });
+    await c(page, "a", "Set up the printers").click();
+    await expect(c(page, "li", "DESKTOP-E2E")).toContainText("v0.1.0 · windows");
+  });
+
   test("offers the wreath card and result sheet once results are in", async ({ page }) => {
     await login(page, admin);
     await api(page, "PUT", `/api/tenants/${ids.tenant}/entries/${ids.entry}/results`, { series: [{ points: 95 }] });

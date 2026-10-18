@@ -25,3 +25,7 @@ Every Print button prints on the range's printer if one is set up and its print 
 4. **Recent jobs** shows what was printed and whether it worked.
 
 A job that the agent does not confirm within two minutes is retried; after three attempts it fails. **revoke** removes an agent immediately.
+
+## Connecting a computer by code {#connect}
+
+The Standblatt app on a computer next to the printers needs no token: it shows a code such as `K7QD-4MZP` and opens **Connect a print agent** in the browser. There, log in if asked, check the computer named on the page, choose the club and range and the agent's name, and **Connect**. Only members who may manage ranges can connect a computer; a code is valid for ten minutes. The app then connects by itself, and the agent appears under **Ranges → Printing** with its version and operating system.

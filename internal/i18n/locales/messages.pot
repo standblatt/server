@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 22:26+0200\n"
+"POT-Creation-Date: 2026-10-18 22:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1128,6 +1128,18 @@ msgstr ""
 
 #: internal/web/my.go
 msgid "Your account belongs to a club. Ask the club admin to remove you first."
+msgstr ""
+
+#: internal/web/pairing.go
+msgid "The code expired. Start connecting again."
+msgstr ""
+
+#: internal/web/pairing.go
+msgid "Unknown or expired code"
+msgstr ""
+
+#: internal/web/pairing.go
+msgid "Unknown pairing"
 msgstr ""
 
 #: internal/web/printing.go

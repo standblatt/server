@@ -4,6 +4,23 @@
  */
 
 export interface paths {
+    "/api/agent-pairings/{code}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** The computer behind an open pairing code, for the logged-in user who is about to confirm it */
+        get: operations["get-agent-pairing"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/agent/hello": {
         parameters: {
             query?: never;
@@ -48,6 +65,40 @@ export interface paths {
         get?: never;
         put?: never;
         post: operations["agent-finish-job"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/agent/pair": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Start pairing: a code to confirm on /connect within ten minutes and a secret to poll with */
+        post: operations["agent-pair"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/agent/pair/status": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Poll a pairing: pending until confirmed, then connected with the agent token, given once; 410 when the code expired */
+        post: operations["agent-pair-status"];
         delete?: never;
         options?: never;
         head?: never;
@@ -1872,6 +1923,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/tenants/{tenantId}/ranges/{rangeId}/print-agents/pair": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Confirm a pairing code: the computer becomes a print agent of the range */
+        post: operations["pair-print-agent"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/tenants/{tenantId}/ranges/{rangeId}/print-jobs": {
         parameters: {
             query?: never;
@@ -2687,6 +2755,10 @@ export interface components {
             /** Format: double */
             total: number;
         };
+        ConfirmInBody: {
+            code: string;
+            name: string;
+        };
         CopyEventInBody: {
             name: string;
             /** Format: date */
@@ -3379,6 +3451,28 @@ export interface components {
             /** @description The clubs the token may use; the owner must be a member */
             tenants?: number[];
         };
+        PairInBody: {
+            /** @description Name of the computer, proposed as the agent's name */
+            name: string;
+            /** @enum {string} */
+            os: "linux" | "windows" | "darwin";
+            version: string;
+        };
+        PairOutBody: {
+            /** @description Shown to the user, e.g. K7QD-4MZP; confirmed on /connect?code=… */
+            code: string;
+            /** Format: date-time */
+            expiresAt: string;
+            /** @description Poll secret for POST /api/agent/pair/status */
+            secret: string;
+        };
+        Pairing: {
+            /** Format: date-time */
+            expiresAt: string;
+            name: string;
+            os: string;
+            version: string;
+        };
         PartScore: {
             /** @description The part counts towards the total (see best) */
             counted: boolean;
@@ -3993,6 +4087,17 @@ export interface components {
             /** Format: int64 */
             shooting: number;
         };
+        StatusInBody: {
+            secret: string;
+        };
+        StatusOutBody: {
+            club?: string;
+            range?: string;
+            /** @enum {string} */
+            status: "pending" | "connected";
+            /** @description The agent token, given once when connected */
+            token?: string;
+        };
         TagStat: {
             /** Format: double */
             delta: number;
@@ -4240,6 +4345,37 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    "get-agent-pairing": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                code: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Pairing"];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
     "agent-hello": {
         parameters: {
             query?: never;
@@ -4332,6 +4468,72 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "agent-pair": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PairInBody"];
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PairOutBody"];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "agent-pair-status": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["StatusInBody"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StatusOutBody"];
+                };
             };
             /** @description Error */
             default: {
@@ -9023,6 +9225,42 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["CreateAgentOutBody"];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "pair-print-agent": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                rangeId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ConfirmInBody"];
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PrintAgent"];
                 };
             };
             /** @description Error */

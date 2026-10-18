@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Connecting a print agent by code**: the agent asks for a code (`POST /api/agent/pair`), a member who may manage ranges confirms it for a range on the page `/connect`, and the agent fetches its token once (`POST /api/agent/pair/status`); codes are valid for ten minutes and limited per IP (by @HB9HIL)
 - Print agents report their version and operating system; *Ranges → Printing* shows them (by @HB9HIL)
 - **Test page** in *Ranges → Printing*: each document row sends a small page (90 × 29 mm) with club, range, printer, options and time to its printer with the options of that row (by @HB9HIL)
 

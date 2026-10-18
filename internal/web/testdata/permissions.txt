@@ -89,6 +89,7 @@ DELETE /api/tenants/{tenantId}/ranges/{rangeId}                                 
 PUT    /api/tenants/{tenantId}/ranges/{rangeId}                                       ranges.manage
 GET    /api/tenants/{tenantId}/ranges/{rangeId}/print-agents                          ranges.manage
 POST   /api/tenants/{tenantId}/ranges/{rangeId}/print-agents                          ranges.manage
+POST   /api/tenants/{tenantId}/ranges/{rangeId}/print-agents/pair                     ranges.manage
 GET    /api/tenants/{tenantId}/ranges/{rangeId}/print-jobs                            events.operate | ranges.manage
 GET    /api/tenants/{tenantId}/ranges/{rangeId}/print-settings                        events.operate | ranges.manage
 PUT    /api/tenants/{tenantId}/ranges/{rangeId}/print-settings                        ranges.manage
