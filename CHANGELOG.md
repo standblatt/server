@@ -7,9 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Fixed
-- Uploads larger than 8 KB (shooter and result imports, images, form scans) failed on pods with a read-only file system; they are now kept in memory (by @HB9HIL)
-
 ## [0.20.0] - 2026-10-18
 
 ### Added
@@ -28,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The redirect of the old setup page links (`setup?tab=`) to the configuration pages (by @HB9HIL)
 
 ### Fixed
+- Uploads larger than 8 KB (shooter and result imports, images, form scans) failed on pods with a read-only file system; they are now kept in memory (by @HB9HIL)
 - `make dev` seeded no test event since events got several ranges (by @HB9HIL)
 
 ## [0.19.1] - 2026-10-18
