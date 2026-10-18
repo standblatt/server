@@ -23,7 +23,7 @@ test.describe("languages", () => {
     await login(page, admin);
     await page.goto(`/t/${ids.tenant}`);
     await expect(c(page, "h1", "Events")).toBeVisible();
-    await expect(c(page, "[data-sidebar=footer] p", /^Standblatt \S+$/)).toBeVisible();
+    await expect(c(page, "[data-sidebar=footer] a", /^Standblatt Server \S+$/)).toBeVisible();
     await page.locator("button[aria-label='User menu']").click();
     await c(page, "[role=menuitem]", "Language").click();
     await c(page, "[role=menuitemradio]", "Deutsch").click();
