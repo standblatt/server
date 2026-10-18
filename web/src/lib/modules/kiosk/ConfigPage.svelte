@@ -24,5 +24,5 @@
 			<Switch checked={event.settings.showLaneStatus ?? false} onCheckedChange={save} />
 		</label>
 	{/if}
-	<section class="overflow-hidden rounded-lg border bg-card"><KioskTokens {tenantId} eventId={event.id} /></section>
+	<section class="overflow-hidden rounded-lg border bg-card"><KioskTokens {tenantId} {event} /></section>
 </div>

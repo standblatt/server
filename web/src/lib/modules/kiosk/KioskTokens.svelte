@@ -11,20 +11,18 @@
 	import * as NativeSelect from '$lib/components/ui/native-select';
 	import { ask } from '$lib/confirm.svelte';
 	import FormError from '$lib/FormError.svelte';
-	import { eventQuery, keys } from '$lib/tenant';
+	import { keys } from '$lib/tenant';
+	import type { EventProps } from '..';
 
-	let { tenantId, eventId }: { tenantId: number; eventId: number } = $props();
+	let { tenantId, event }: EventProps = $props();
+	const eventId = $derived(event.id);
 	const queryClient = useQueryClient();
 	const tokens = createQuery(() => ({
 		queryKey: keys.kioskTokens(tenantId, eventId),
 		queryFn: () => call(api.GET('/api/tenants/{tenantId}/events/{eventId}/kiosk-tokens', { params: { path: { tenantId, eventId } } }))
 	}));
 
-	const event = eventQuery(
-		() => tenantId,
-		() => eventId
-	);
-	const ranges = $derived(event.data?.ranges ?? []);
+	const ranges = $derived(event.ranges);
 	let name = $state('');
 	let theme = $state('dark');
 	let language = $state('');
