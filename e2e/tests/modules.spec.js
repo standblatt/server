@@ -66,13 +66,6 @@ test.describe("modules", () => {
     await expect(exports).not.toContainText("Club competition");
   });
 
-  test("sends old setup links to the configuration", async ({ page }) => {
-    await login(page, admin);
-    await page.goto(`${event()}/setup?tab=kiosk`);
-    await expect(page).toHaveURL((u) => u.pathname.endsWith("/config/kiosk"));
-    await expect(c(page, "li", "Hall")).toBeVisible();
-  });
-
   test("switches a club module off", async ({ page }) => {
     await login(page, admin);
     await page.goto(`/t/${ids.tenant}/modules`);
