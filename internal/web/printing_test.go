@@ -82,6 +82,9 @@ func TestPrinting(t *testing.T) {
 		Secret string `json:"secret"`
 	}
 	json.Unmarshal(b, &created)
+	testPath := rangePath + "/print-test"
+	code, b = e.do(admin, "POST", testPath, map[string]any{"printer": "Office_A5"})
+	expect(t, "test page without an online agent", code, 409, b)
 
 	dir, lpLog := fakeCUPS(t)
 	a := &agent.Agent{
@@ -140,6 +143,20 @@ func TestPrinting(t *testing.T) {
 	if err := bad.Hello(ctx); err == nil || !strings.Contains(err.Error(), "401") {
 		t.Fatalf("wrong agent token: %v", err)
 	}
+
+	code, b = e.do(staff, "POST", testPath, map[string]any{"printer": "Brother_QL"})
+	expect(t, "staff test page", code, 403, b)
+	code, b = e.do(admin, "POST", testPath, map[string]any{"printer": "Brother_QL", "options": map[string]string{"PageSize": "29x90mm"}})
+	expect(t, "test page", code, 200, b)
+	j, err = a.Next(runCtx)
+	if err != nil || j == nil || j.Printer != "Brother_QL" || j.Options["PageSize"] != "29x90mm" || j.Title != "Test page Brother_QL" || !strings.HasPrefix(string(j.PDF), "%PDF") {
+		t.Fatalf("test page job: %+v %v", j, err)
+	}
+	if err := a.Finish(runCtx, j.ID, nil); err != nil {
+		t.Fatal(err)
+	}
+	code, b = e.do(admin, "POST", fmt.Sprintf("/api/tenants/%d/ranges/%d/print-test", f.tenant, 999999), map[string]any{"printer": "Brother_QL"})
+	expect(t, "test page on an unknown range", code, 404, b)
 
 	agentPath := fmt.Sprintf("/api/tenants/%d/print-agents/%d", f.tenant, agents[0].ID)
 	code, b = e.do(staff, "DELETE", agentPath, nil)

@@ -1905,6 +1905,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/tenants/{tenantId}/ranges/{rangeId}/print-test": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Send a test page to a printer of the range with the given options; 409 when no agent of the range is online */
+        post: operations["print-test-page"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/tenants/{tenantId}/ranges/{rangeId}/reservations": {
         parameters: {
             query?: never;
@@ -3971,6 +3988,12 @@ export interface components {
             /** Format: int64 */
             sessions: number;
             tag: string;
+        };
+        TestInBody: {
+            options?: {
+                [key: string]: string;
+            };
+            printer: string;
         };
         Tier: {
             /** Format: int64 */
@@ -9084,6 +9107,42 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "print-test-page": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                rangeId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TestInBody"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PrintResult"];
+                };
             };
             /** @description Error */
             default: {

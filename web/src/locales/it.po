@@ -5151,6 +5151,15 @@ msgstr "Modelli"
 msgid "Templates that print results onto pre-printed sheets, e.g. the army's lane sheets."
 msgstr "Modelli che stampano i risultati su fogli prestampati, p. es. i fogli di stand dell’esercito."
 
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Test page"
+msgstr "Pagina di prova"
+
+#. placeholder {0}: d.printer
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Test page sent to {0}."
+msgstr "Pagina di prova inviata a {0}."
+
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Test print"
 msgstr "Stampa di prova"

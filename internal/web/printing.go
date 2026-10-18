@@ -4,11 +4,14 @@ import (
 	"context"
 	"errors"
 	"net/http"
+	"slices"
 	"strings"
 	"time"
 
 	"github.com/danielgtaylor/huma/v2"
 
+	"github.com/standblatt/server/internal/docs"
+	"github.com/standblatt/server/internal/i18n"
 	"github.com/standblatt/server/internal/permissions"
 	"github.com/standblatt/server/internal/realtime"
 	"github.com/standblatt/server/internal/store"
@@ -201,6 +204,35 @@ func (s *Server) registerPrinting(api huma.API) {
 		return nil, notFound(s.Store.SetPrintSetting(ctx, in.TenantID, in.RangeID, in.Body), "Range not found")
 	})
 
+	type testIn struct {
+		RangePrintPath
+		Body struct {
+			Printer string            `json:"printer" minLength:"1"`
+			Options map[string]string `json:"options,omitempty" required:"false"`
+		}
+	}
+	type testOut struct{ Body PrintResult }
+	huma.Register(api, huma.Operation{
+		OperationID: "print-test-page", Metadata: needs("", permissions.RangesManage), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/ranges/{rangeId}/print-test", Tags: []string{"printing"},
+		Summary: "Send a test page to a printer of the range with the given options; 409 when no agent of the range is online",
+	}, func(ctx context.Context, in *testIn) (*testOut, error) {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
+			return nil, err
+		}
+		pdf, title, err := s.renderTestPage(ctx, in.TenantID, in.RangeID, in.Body.Printer, in.Body.Options)
+		if err != nil {
+			return nil, err
+		}
+		id, err := s.Store.EnqueueTestPage(ctx, in.TenantID, in.RangeID, title, pdf, in.Body.Printer, in.Body.Options)
+		if errors.Is(err, store.ErrNoPrinter) {
+			return nil, conflict("No print agent of this range is online")
+		}
+		if err != nil {
+			return nil, notFound(err, "Range not found")
+		}
+		return &testOut{Body: PrintResult{Queued: true, JobID: id}}, nil
+	})
+
 	type jobsOut struct{ Body []store.PrintJob }
 	huma.Register(api, huma.Operation{
 		OperationID: "list-print-jobs", Metadata: needs("", permissions.EventsOperate, permissions.RangesManage), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/ranges/{rangeId}/print-jobs", Tags: []string{"printing"},
@@ -211,4 +243,25 @@ func (s *Server) registerPrinting(api huma.API) {
 		list, err := s.Store.ListPrintJobs(ctx, in.TenantID, in.RangeID, 50)
 		return &jobsOut{Body: list}, err
 	})
+}
+
+// renderTestPage renders the test page for a printer of a range in the language of the request and returns it with
+// its job title.
+func (s *Server) renderTestPage(ctx context.Context, tenantID, rangeID int64, printer string, options map[string]string) ([]byte, string, error) {
+	t, err := s.Store.GetTenant(ctx, tenantID)
+	if err != nil {
+		return nil, "", err
+	}
+	ranges, err := s.Store.ListRanges(ctx, tenantID)
+	if err != nil {
+		return nil, "", err
+	}
+	i := slices.IndexFunc(ranges, func(r store.Range) bool { return r.ID == rangeID })
+	if i < 0 {
+		return nil, "", notFound(store.ErrNotFound, "Range not found")
+	}
+	l := i18n.Get(reqInfo(ctx).lang)
+	pdf, err := docs.RenderTestPage(docs.TestPage{Club: t.Name, Range: ranges[i].Name, Printer: printer, Options: options,
+		Time: time.Now().In(zone("")).Format("02.01.2006 15:04"), Lang: l})
+	return pdf, i18n.Tf(l, "Test page %s", printer), err
 }

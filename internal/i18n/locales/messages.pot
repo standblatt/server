@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 18:50+0200\n"
+"POT-Creation-Date: 2026-10-18 22:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,6 +114,24 @@ msgstr ""
 
 #: internal/docs/report.go
 msgid "No data."
+msgstr ""
+
+#: internal/docs/testpage.go
+#, go-format
+msgid "Options: %s"
+msgstr ""
+
+#: internal/docs/testpage.go
+#, go-format
+msgid "Printer: %s"
+msgstr ""
+
+#: internal/docs/testpage.go
+msgid "Standblatt test page"
+msgstr ""
+
+#: internal/docs/testpage.go
+msgid "default"
 msgstr ""
 
 #: internal/domain/booking.go
@@ -1121,12 +1139,21 @@ msgid "Job not found or not being printed"
 msgstr ""
 
 #: internal/web/printing.go
+msgid "No print agent of this range is online"
+msgstr ""
+
+#: internal/web/printing.go
 msgid "Print agent not found"
 msgstr ""
 
 #: internal/web/printing.go internal/web/registrations.go
 #: internal/web/reservations.go internal/web/tenants.go
 msgid "Range not found"
+msgstr ""
+
+#: internal/web/printing.go
+#, go-format
+msgid "Test page %s"
 msgstr ""
 
 #: internal/web/printing.go

@@ -78,20 +78,38 @@
 	let secret = $state('');
 	let addingAgent = $state(false);
 
-	/** Saves the printer and options (incl. extra key=value pairs) of a document. */
-	async function save(doc: PrintSetting['document']) {
-		error = '';
-		const d = drafts[doc];
+	/** The options of a draft: the chosen values and the extra key=value pairs. */
+	function optionsOf(d: Draft) {
 		const options: Record<string, string> = {};
 		for (const [k, v] of Object.entries(d.options)) if (v) options[k] = v;
 		for (const part of d.extra.split(',').map((x) => x.trim()).filter(Boolean)) {
 			const [k, ...v] = part.split('=');
 			options[k.trim()] = v.join('=').trim();
 		}
+		return options;
+	}
+
+	/** Saves the printer and options (incl. extra key=value pairs) of a document. */
+	async function save(doc: PrintSetting['document']) {
+		error = '';
+		const d = drafts[doc];
 		try {
-			await call(api.PUT('/api/tenants/{tenantId}/ranges/{rangeId}/print-settings', { ...p, body: { document: doc, printer: d.printer, options } }));
+			await call(api.PUT('/api/tenants/{tenantId}/ranges/{rangeId}/print-settings', { ...p, body: { document: doc, printer: d.printer, options: optionsOf(d) } }));
 			toast.success($t`Saved.`);
 			await queryClient.invalidateQueries({ queryKey: [...key, 'settings'] });
+		} catch (err) {
+			error = (err as Error).message;
+		}
+	}
+
+	/** Sends a test page to the printer of a document's row with the options of that row. */
+	async function testPage(doc: PrintSetting['document']) {
+		error = '';
+		const d = drafts[doc];
+		try {
+			await call(api.POST('/api/tenants/{tenantId}/ranges/{rangeId}/print-test', { ...p, body: { printer: d.printer, options: optionsOf(d) } }));
+			toast.success($t`Test page sent to ${d.printer}.`);
+			await queryClient.invalidateQueries({ queryKey: [...key, 'jobs'] });
 		} catch (err) {
 			error = (err as Error).message;
 		}
@@ -181,7 +199,10 @@
 										<Input class="h-8 w-56 max-sm:w-full" placeholder={$t`more lp options, e.g. fit-to-page`} bind:value={drafts[d.id].extra} aria-label={$t`More options for ${d.label}`} />
 									</div>
 								</Table.Cell>
-								<Table.Cell class="text-right max-sm:text-left"><Button size="sm" variant="outline" onclick={() => save(d.id)}>{$t`Save`}</Button></Table.Cell>
+								<Table.Cell class="text-right whitespace-nowrap max-sm:text-left">
+									<Button size="sm" variant="ghost" disabled={!drafts[d.id].printer} onclick={() => testPage(d.id)}>{$t`Test page`}</Button>
+									<Button size="sm" variant="outline" onclick={() => save(d.id)}>{$t`Save`}</Button>
+								</Table.Cell>
 							</Table.Row>
 						{/if}
 					{/each}

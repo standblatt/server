@@ -92,6 +92,7 @@ POST   /api/tenants/{tenantId}/ranges/{rangeId}/print-agents                    
 GET    /api/tenants/{tenantId}/ranges/{rangeId}/print-jobs                            events.operate | ranges.manage
 GET    /api/tenants/{tenantId}/ranges/{rangeId}/print-settings                        events.operate | ranges.manage
 PUT    /api/tenants/{tenantId}/ranges/{rangeId}/print-settings                        ranges.manage
+POST   /api/tenants/{tenantId}/ranges/{rangeId}/print-test                            ranges.manage
 GET    /api/tenants/{tenantId}/ranges/{rangeId}/reservations                          events.operate
 POST   /api/tenants/{tenantId}/ranges/{rangeId}/reservations                          events.operate
 DELETE /api/tenants/{tenantId}/registrations/{registrationId}                         events.operate

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 18:50+0200\n"
+"POT-Creation-Date: 2026-10-18 22:26+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -115,6 +115,24 @@ msgstr "Généré le %s · Standblatt · page %d"
 #: internal/docs/report.go
 msgid "No data."
 msgstr "Aucune donnée."
+
+#: internal/docs/testpage.go
+#, go-format
+msgid "Options: %s"
+msgstr "Options : %s"
+
+#: internal/docs/testpage.go
+#, go-format
+msgid "Printer: %s"
+msgstr "Imprimante : %s"
+
+#: internal/docs/testpage.go
+msgid "Standblatt test page"
+msgstr "Page de test Standblatt"
+
+#: internal/docs/testpage.go
+msgid "default"
+msgstr "par défaut"
 
 #: internal/domain/booking.go
 msgid "A chosen slot is not offered"
@@ -1121,6 +1139,10 @@ msgid "Job not found or not being printed"
 msgstr "Tâche introuvable ou pas en cours d'impression"
 
 #: internal/web/printing.go
+msgid "No print agent of this range is online"
+msgstr "Aucun agent d’impression de ce stand de tir n’est connecté"
+
+#: internal/web/printing.go
 msgid "Print agent not found"
 msgstr "Agent d'impression introuvable"
 
@@ -1128,6 +1150,11 @@ msgstr "Agent d'impression introuvable"
 #: internal/web/reservations.go internal/web/tenants.go
 msgid "Range not found"
 msgstr "Stand de tir introuvable"
+
+#: internal/web/printing.go
+#, go-format
+msgid "Test page %s"
+msgstr "Page de test %s"
 
 #: internal/web/printing.go
 msgid "Unknown or revoked agent token"

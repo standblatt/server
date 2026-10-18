@@ -16,6 +16,8 @@ const (
 	DocWreathCard   = "wreath_card"
 	DocForm         = "form"
 	DocCertificate  = "certificate"
+	// DocTestPage is the test page of the printing setup; it has no print setting of its own.
+	DocTestPage = "test_page"
 )
 
 // AgentOnline is how recently a print agent must have called in to count as online.
@@ -175,6 +177,26 @@ func (s *Store) EnqueuePrint(ctx context.Context, tenantID, rangeID int64, event
 		WHERE ps.tenant_id = $1 AND ps.range_id = $2 AND ps.document = $4
 			AND EXISTS (SELECT 1 FROM print_agents a WHERE a.range_id = $2 AND a.last_seen_at > now() - $7::interval)
 		RETURNING id`, tenantID, rangeID, eventID, document, title, pdf, AgentOnline.String()).Scan(&id)
+	if errors.Is(err, pgx.ErrNoRows) {
+		return 0, ErrNoPrinter
+	}
+	return id, err
+}
+
+// EnqueueTestPage queues a test page on the given printer with the given options, if an agent of the range is
+// online.
+func (s *Store) EnqueueTestPage(ctx context.Context, tenantID, rangeID int64, title string, pdf []byte, printer string, options map[string]string) (int64, error) {
+	if err := rangeInTenant(ctx, s.pool, tenantID, rangeID); err != nil {
+		return 0, err
+	}
+	if options == nil {
+		options = map[string]string{}
+	}
+	var id int64
+	err := s.pool.QueryRow(ctx, `INSERT INTO print_jobs (tenant_id, range_id, document, title, pdf, printer, options)
+		SELECT $1, $2, $3, $4, $5, $6, $7
+		WHERE EXISTS (SELECT 1 FROM print_agents a WHERE a.range_id = $2 AND a.last_seen_at > now() - $8::interval)
+		RETURNING id`, tenantID, rangeID, DocTestPage, title, pdf, printer, options, AgentOnline.String()).Scan(&id)
 	if errors.Is(err, pgx.ErrNoRows) {
 		return 0, ErrNoPrinter
 	}

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 18:50+0200\n"
+"POT-Creation-Date: 2026-10-18 22:26+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -115,6 +115,24 @@ msgstr "Generato il %s · Standblatt · pagina %d"
 #: internal/docs/report.go
 msgid "No data."
 msgstr "Nessun dato."
+
+#: internal/docs/testpage.go
+#, go-format
+msgid "Options: %s"
+msgstr "Opzioni: %s"
+
+#: internal/docs/testpage.go
+#, go-format
+msgid "Printer: %s"
+msgstr "Stampante: %s"
+
+#: internal/docs/testpage.go
+msgid "Standblatt test page"
+msgstr "Pagina di prova Standblatt"
+
+#: internal/docs/testpage.go
+msgid "default"
+msgstr "predefinite"
 
 #: internal/domain/booking.go
 msgid "A chosen slot is not offered"
@@ -1121,6 +1139,10 @@ msgid "Job not found or not being printed"
 msgstr "Lavoro non trovato o non in stampa"
 
 #: internal/web/printing.go
+msgid "No print agent of this range is online"
+msgstr "Nessun agente di stampa di questo stand di tiro è collegato"
+
+#: internal/web/printing.go
 msgid "Print agent not found"
 msgstr "Agente di stampa non trovato"
 
@@ -1128,6 +1150,11 @@ msgstr "Agente di stampa non trovato"
 #: internal/web/reservations.go internal/web/tenants.go
 msgid "Range not found"
 msgstr "Stand di tiro non trovato"
+
+#: internal/web/printing.go
+#, go-format
+msgid "Test page %s"
+msgstr "Pagina di prova %s"
 
 #: internal/web/printing.go
 msgid "Unknown or revoked agent token"

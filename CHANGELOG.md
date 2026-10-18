@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Test page** in *Ranges → Printing*: each document row sends a small page (90 × 29 mm) with club, range, printer, options and time to its printer with the options of that row (by @HB9HIL)
+
 ## [0.20.1] - 2026-10-18
 
 ### Changed

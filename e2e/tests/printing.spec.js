@@ -78,6 +78,15 @@ test.describe("documents and printing", () => {
     await page.request.post(`/api/agent/jobs/${job.id}`, { headers: agent, data: { ok: true } });
     await page.goto(`/t/${ids.tenant}/ranges/${ids.range}/printing`);
     await expect(c(page, "tr", "Lane sheet Adult Anna")).toContainText("done");
+
+    await c(c(page, "tr", "Lane sheet (A5)"), "button", "Test page").click();
+    await expect(c(page, "[data-sonner-toast]", "Test page sent to Office_A5.")).toBeVisible();
+    const test = await (await page.request.get("/api/agent/jobs/next", { headers: agent })).json();
+    expect(test.title).toBe("Test page Office_A5");
+    expect(test.options).toEqual({ InputSlot: "Tray2", "fit-to-page": "" });
+    await page.request.post(`/api/agent/jobs/${test.id}`, { headers: agent, data: { ok: true } });
+    await page.reload();
+    await expect(c(page, "tr", "Test page Office_A5")).toContainText("done");
   });
 
   test("offers the wreath card and result sheet once results are in", async ({ page }) => {

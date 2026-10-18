@@ -5151,6 +5151,15 @@ msgstr "Vorlagen"
 msgid "Templates that print results onto pre-printed sheets, e.g. the army's lane sheets."
 msgstr "Vorlagen, die Resultate auf vorgedruckte Blätter drucken, z. B. die Standblätter der Armee."
 
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Test page"
+msgstr "Testseite"
+
+#. placeholder {0}: d.printer
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Test page sent to {0}."
+msgstr "Testseite an {0} gesendet."
+
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Test print"
 msgstr "Testdruck"
