@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Go tests copy a migrated template database and hash passwords cheaply, so they run in about 15 instead of 90 seconds (by @HB9HIL)
 
+### Fixed
+- A control strip or result sheet that failed to render was answered as an empty PDF instead of an error (by @HB9HIL)
+
 ## [0.19.0] - 2026-10-18
 
 ### Added

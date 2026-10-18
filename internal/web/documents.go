@@ -181,6 +181,7 @@ func (s *Server) renderRegistrationDoc(ctx context.Context, tenantID, registrati
 		}
 		out.pdf, err = docs.RenderLayout(layout, []map[string]string{registrationValues(l, ev, sh, club, reg, programmes)}, nil, images, false)
 		out.filename, out.title = filename("Control_strip", reg.Shooter.LicenseNumber, reg.Shooter.Lastname), i18n.Tf(l, "Control strip %s", name)
+		return out, err
 	case store.DocResultSheet:
 		sheet, err := s.resultSheet(ctx, tenantID, reg.ID)
 		if err != nil {
@@ -203,6 +204,7 @@ func (s *Server) renderRegistrationDoc(ctx context.Context, tenantID, registrati
 		}
 		out.pdf, err = docs.RenderResultSheet(rs)
 		out.filename, out.title = filename("Result_sheet", reg.Shooter.Lastname, reg.Shooter.Firstname), i18n.Tf(l, "Result sheet %s", name)
+		return out, err
 	default:
 		return out, invalid("Unknown document %s", document)
 	}
