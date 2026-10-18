@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 09:20+0000\n"
+"POT-Creation-Date: 2026-10-18 09:26+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -345,7 +345,13 @@ msgid ""
 "screens. If you held the event last year, open last year's event and use "
 "**Copy for next year** instead: it takes over the settings and all "
 "programmes."
-msgstr "Erstelle unter **Anlässe** den Anlass: Wähle, was für ein Anlass es ist (das schaltet die passenden [Bausteine](../user-guide/events.md#modules) ein), dann Name, Datum, Schiessstand, Veranstalter und die Sprache von Dokumenten und Kiosk-Bildschirmen. Hast du den Anlass letztes Jahr schon durchgeführt, öffne den Anlass vom letzten Jahr und nutze stattdessen **Für nächstes Jahr kopieren**: Das übernimmt die Einstellungen und alle Programme."
+msgstr ""
+"Erstelle unter **Anlässe** den Anlass: Wähle, was für ein Anlass es ist (das "
+"schaltet die passenden [Bausteine](../user-guide/events.md#modules) ein), "
+"dann Name, Datum, Schiessstand, Veranstalter und die Sprache von Dokumenten "
+"und Kiosk-Bildschirmen. Hast du den Anlass letztes Jahr schon durchgeführt, "
+"öffne den Anlass vom letzten Jahr und nutze stattdessen **Für nächstes Jahr "
+"kopieren**: Das übernimmt die Einstellungen und alle Programme."
 
 #. type: Plain text
 #: ../src/help/en/getting-started/first-event.md:26
@@ -1808,8 +1814,9 @@ msgstr "Programmdatei"
 #. type: Plain text
 #: ../src/help/en/reference/programme-file.md:4
 #, no-wrap
-msgid "**Export** in the programme menu downloads a programme as `<name>.programme.json`; **Programme file** under *Add from …* imports it into another event or another club. The platform operator uploads the same files to the global programme library.\n"
-msgstr "**Exportieren** im Programmmenü lädt ein Programm als `<name>.programme.json` herunter; **Programmdatei** unter *Übernehmen aus …* importiert es in einen anderen Anlass oder einen anderen Verein. Der Plattformbetreiber lädt dieselben Dateien in die globale Programmbibliothek hoch.\n"
+msgid "**Export** in the programme menu or on the programme page downloads a programme as `<name>.programme.json`; **Programme file** under *Add from …* imports it into another event or another club. The platform operator uploads the same files to the global programme library.\n"
+msgstr ""
+"**Exportieren** im Programmmenü oder auf der Programmseite lädt ein Programm als `<name>.programme.json` herunter; **Programmdatei** unter *Übernehmen aus …* importiert es in einen anderen Anlass oder einen anderen Verein. Der Plattformbetreiber lädt dieselben Dateien in die globale Programmbibliothek hoch.\n"
 
 #. type: Fenced code block (json)
 #: ../src/help/en/reference/programme-file.md:5
@@ -2188,7 +2195,7 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/help/en/reference/rules.md:56
-#: ../src/help/en/user-guide/programmes.md:46
+#: ../src/help/en/user-guide/programmes.md:49
 #, no-wrap
 msgid "Special prizes {#special-prizes}"
 msgstr "Sonderpreise {#special-prizes}"
@@ -2764,7 +2771,9 @@ msgstr ""
 msgid ""
 "When you create an event, choose what kind it is; this only switches modules "
 "on:"
-msgstr "Beim Erstellen eines Anlasses wählst du, was für ein Anlass es ist; das schaltet nur Bausteine ein:"
+msgstr ""
+"Beim Erstellen eines Anlasses wählst du, was für ein Anlass es ist; das "
+"schaltet nur Bausteine ein:"
 
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:60
@@ -3454,22 +3463,15 @@ msgstr "Eine Vorlage verwenden {#use}"
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:43
 msgid ""
-"Under **Configuration** → **Programmes** of the event, choose the **Print "
-"form** of a programme; this works while shooters are registered. Every "
-"completed programme then offers **Print onto form** in the results: at the "
-"desk, on the **Enter results** page and on scorer links at the lane (see "
-"[Helpers](helpers.md)). With a print agent and a printer chosen for *Print "
-"forms* under **Ranges → Printing**, the sheet goes to that printer (e.g. its "
-"manual feed), otherwise the PDF opens (see [Printing](printing.md))."
-msgstr ""
-"Wähle unter **Konfiguration** → **Programme** des Anlasses die "
-"**Druckvorlage** eines Programms; das geht auch, wenn schon Schützen "
-"angemeldet sind. Jedes abgeschlossene Programm bietet dann in den Resultaten "
-"**Auf Vorlage drucken** an: am Desk, auf der Seite **Resultate erfassen** "
-"und über Warner-Links an der Scheibe (siehe [Helfer](helpers.md)). Mit einem "
-"Druck-Agenten und einem Drucker für *Druckvorlagen* unter **Schiessstände → "
-"Drucken** geht das Blatt an diesen Drucker (z. B. an seinen manuellen "
-"Einzug), sonst öffnet sich das PDF (siehe [Drucken](printing.md))."
+"Under **Configuration** → **Programmes** of the event, open a programme and "
+"choose its **Print form** in the section **Use**; this works while shooters "
+"are registered. Every completed programme then offers **Print onto form** in "
+"the results: at the desk, on the **Enter results** page and on scorer links "
+"at the lane (see [Helpers](helpers.md)). With a print agent and a printer "
+"chosen for *Print forms* under **Ranges → Printing**, the sheet goes to that "
+"printer (e.g. its manual feed), otherwise the PDF opens (see [Printing]"
+"(printing.md))."
+msgstr "Öffne unter **Konfiguration** → **Programme** des Anlasses ein Programm und wähle im Abschnitt **Einsatz** seine **Druckvorlage**; das geht auch, wenn schon Schützen angemeldet sind. Jedes abgeschlossene Programm bietet dann in den Resultaten **Auf Vorlage drucken** an: am Desk, auf der Seite **Resultate erfassen** und über Warner-Links an der Scheibe (siehe [Helfer](helpers.md)). Mit einem Druck-Agenten und einem Drucker für *Druckvorlagen* unter **Schiessstände → Drucken** geht das Blatt an diesen Drucker (z. B. an seinen manuellen Einzug), sonst öffnet sich das PDF (siehe [Drucken](printing.md))."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:44
@@ -3506,8 +3508,8 @@ msgstr "Programme hinzufügen"
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/programmes.md:13
-msgid "**New programme** opens the editor."
-msgstr "**Neues Programm** öffnet den Editor."
+msgid "**New programme** opens an empty programme page."
+msgstr "**Neues Programm** öffnet eine leere Programmseite."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/programmes.md:13
@@ -3542,34 +3544,36 @@ msgstr ""
 #. type: Title ##
 #: ../src/help/en/user-guide/programmes.md:14
 #, no-wrap
-msgid "The editor"
-msgstr "Der Editor"
+msgid "The programme page {#page}"
+msgstr "Die Programmseite {#page}"
 
 #. type: Plain text
 #: ../src/help/en/user-guide/programmes.md:17
 msgid ""
-"![Programme editor](../images/screenshots/programme-editor.png)"
-"{ .screenshot }"
-msgstr ""
-"![Programm-Editor](../images/screenshots/programme-editor.png){ .screenshot }"
+"A click on a programme in the list opens its page. It has the sections of "
+"the programme, plus a section for each switched-on [module]"
+"(events.md#modules) that adds to programmes; **Create** or **Save** at the "
+"bottom saves them together."
+msgstr "Ein Klick auf ein Programm in der Liste öffnet seine Seite. Sie hat die Abschnitte des Programms und dazu einen Abschnitt für jeden eingeschalteten [Baustein](events.md#modules), der etwas zu Programmen beiträgt; **Erstellen** oder **Speichern** unten speichert sie zusammen."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/programmes.md:19
+msgid ""
+"![Programme page](../images/screenshots/programme-editor.png){ .screenshot }"
+msgstr "![Programmseite](../images/screenshots/programme-editor.png){ .screenshot }"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:25
+#: ../src/help/en/user-guide/programmes.md:27
 msgid ""
 "**Name** and **Variant**: programmes with the same name are variants of each "
 "other; a shooter registers for one of them. The name field suggests the "
 "names of the event's programmes, and as soon as the name matches one, the "
-"editor says that you are creating a variant and warns when the variant name "
-"is empty or already taken."
-msgstr ""
-"**Name** und **Variante**: Programme mit gleichem Namen sind Varianten "
-"voneinander; ein Schütze meldet sich für eine davon an. Das Namensfeld "
-"schlägt die Namen der Programme des Anlasses vor, und sobald der Name zu "
-"einem passt, sagt der Editor, dass du eine Variante anlegst, und warnt, wenn "
-"der Variantenname leer oder schon vergeben ist."
+"page says that you are creating a variant and warns when the variant name is "
+"empty or already taken."
+msgstr "**Name** und **Variante**: Programme mit gleichem Namen sind Varianten voneinander; ein Schütze meldet sich für eine davon an. Das Namensfeld schlägt die Namen der Programme des Anlasses vor, und sobald der Name zu einem passt, sagt die Seite, dass du eine Variante anlegst, und warnt, wenn der Variantenname leer oder schon vergeben ist."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:25
+#: ../src/help/en/user-guide/programmes.md:27
 msgid ""
 "**Barcode**: printed on the lane sheet for electronic scoring (see [Codes]"
 "(../reference/codes.md))."
@@ -3578,12 +3582,14 @@ msgstr ""
 "gedruckt (siehe [Codes](../reference/codes.md))."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:25
-msgid "**Counts for the club competition** and **Show on kiosk displays**."
-msgstr "**Auf Kiosk-Anzeigen zeigen**."
+#: ../src/help/en/user-guide/programmes.md:27
+msgid ""
+"**Counts for the club competition** and **Show on kiosk displays**: only "
+"while the modules *Club competition* and *Kiosk displays* are on."
+msgstr "**Zählt für die Vereinskonkurrenz** und **Auf Kiosk-Anzeigen zeigen**: nur solange die Bausteine *Vereinskonkurrenz* und *Kiosk-Anzeigen* an sind."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:25
+#: ../src/help/en/user-guide/programmes.md:27
 msgid ""
 "**Series**: shots, maximum points, whether mouches are tracked and whether "
 "**Single shots** are recorded, per series. With single shots, every shot can "
@@ -3596,16 +3602,14 @@ msgstr ""
 "Formular zu drucken; das Passentotal allein lässt sich weiterhin erfassen."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:25
+#: ../src/help/en/user-guide/programmes.md:27
 msgid ""
-"**Attempts** (see below): how often a shooter may shoot the programme at the "
-"event."
-msgstr ""
-"**Durchgänge** (siehe unten): wie oft ein Schütze das Programm am Anlass "
-"schiessen darf."
+"**Attempts** (module *Attempts*, see below): how often a shooter may shoot "
+"the programme at the event."
+msgstr "**Durchgänge** (Baustein *Durchgänge*, siehe unten): wie oft ein Schütze das Programm am Anlass schiessen darf."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:25
+#: ../src/help/en/user-guide/programmes.md:27
 msgid ""
 "**Prices (CHF)**: only the ticked age categories may shoot the programme. "
 "With several attempts, a second field per category is the price of every "
@@ -3618,36 +3622,32 @@ msgstr ""
 "0 heisst, das Programm wird einmal bezahlt."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:25
-msgid ""
-"**Awards**: name, kind (wreath card, prize in kind or cash prize paid out in "
-"money), value and the minimum total per age category; leave a category empty "
-"where the award is not available."
-msgstr ""
-"**Auszeichnungen**: Name, Art (Kranzkarte, Naturalgabe oder Geldpreis, der "
-"in bar ausbezahlt wird), Wert und das Mindesttotal pro Alterskategorie; lass "
-"eine Kategorie leer, wo die Auszeichnung nicht verfügbar ist."
-
-#. type: Plain text
 #: ../src/help/en/user-guide/programmes.md:27
 msgid ""
+"**Awards** (module *Awards*): name, kind (wreath card, prize in kind or cash "
+"prize paid out in money), value and the minimum total per age category; "
+"leave a category empty where the award is not available."
+msgstr "**Auszeichnungen** (Baustein *Auszeichnungen*): Name, Art (Kranzkarte, Naturalgabe oder Geldpreis, der in bar ausbezahlt wird), Wert und das Mindesttotal pro Alterskategorie; lass eine Kategorie leer, wo die Auszeichnung nicht verfügbar ist."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/programmes.md:29
+msgid ""
 "Once shooters are registered for a programme, the **series** are fixed so "
-"results keep their meaning; the editor says so and greys them out. "
-"Everything else can still be changed: name, variant, description, barcode, "
-"the flags, prices, series names, award names, values and limits. Age "
-"categories and awards can be **added** but not removed. Also available on a "
-"programme in use:"
-msgstr ""
-"Sobald Schützen für ein Programm angemeldet sind, sind die **Passen** fest, "
-"damit die Resultate ihre Bedeutung behalten; der Editor sagt das und graut "
-"sie aus. Alles andere lässt sich weiterhin ändern: Name, Variante, "
-"Beschreibung, Barcode, die Schalter, Preise, Passennamen, Namen, Werte und "
-"Limiten der Auszeichnungen. Alterskategorien und Auszeichnungen können "
-"**hinzugefügt**, aber nicht entfernt werden. Bei einem Programm in Gebrauch "
-"geht ausserdem:"
+"results keep their meaning; the page says so and greys them out. Everything "
+"else can still be changed: name, variant, description, barcode, the flags, "
+"prices, series names, award names, values and limits. Age categories and "
+"awards can be **added** but not removed."
+msgstr "Sobald Schützen für ein Programm angemeldet sind, sind die **Passen** fest, damit die Resultate ihre Bedeutung behalten; die Seite sagt das und graut sie aus. Alles andere lässt sich weiterhin ändern: Name, Variante, Beschreibung, Barcode, die Schalter, Preise, Passennamen, Namen, Werte und Limiten der Auszeichnungen. Alterskategorien und Auszeichnungen können **hinzugefügt**, aber nicht entfernt werden."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/programmes.md:31
+msgid ""
+"The section **Use** of a saved programme is saved at once with every change, "
+"also while shooters are registered:"
+msgstr "Der Abschnitt **Einsatz** eines gespeicherten Programms wird bei jeder Änderung sofort gespeichert, auch wenn schon Schützen angemeldet sind:"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:33
+#: ../src/help/en/user-guide/programmes.md:36
 msgid ""
 "**Active**: inactive programmes cannot be chosen for new registrations; "
 "existing ones keep them."
@@ -3656,16 +3656,14 @@ msgstr ""
 "bestehende behalten sie."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:33
+#: ../src/help/en/user-guide/programmes.md:36
 msgid ""
 "**Combinable with**: the programme whose series this one may take at "
-"registration."
-msgstr ""
-"**Kombinierbar mit**: das Programm, dessen Passen dieses bei der Anmeldung "
-"übernehmen darf."
+"registration (not for programmes with several attempts)."
+msgstr "**Kombinierbar mit**: das Programm, dessen Passen dieses bei der Anmeldung übernehmen darf (nicht bei Programmen mit mehreren Durchgängen)."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:33
+#: ../src/help/en/user-guide/programmes.md:36
 msgid ""
 "**Range** (events on several ranges): the range the programme is shot on, "
 "e.g. *Pistol 50 m*; the registration then offers only its lanes and kiosk "
@@ -3679,7 +3677,7 @@ msgstr ""
 "getrennte Anmeldungen."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:33
+#: ../src/help/en/user-guide/programmes.md:36
 msgid ""
 "**Print form** (when the club has [print forms](print-forms.md)): the form "
 "the results of the programme are printed onto; *none* prints no form."
@@ -3688,25 +3686,21 @@ msgstr ""
 "Vorlage, auf die die Resultate des Programms gedruckt werden; *keine* druckt "
 "keine Vorlage."
 
-#. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:33
-msgid "**Special prizes** (see below)."
-msgstr "**Sonderpreise** (siehe unten)."
-
 #. type: Plain text
-#: ../src/help/en/user-guide/programmes.md:35
+#: ../src/help/en/user-guide/programmes.md:38
 #, no-wrap
-msgid "**Export** downloads the programme as a file; **Delete** is only possible while nobody is registered.\n"
-msgstr "**Exportieren** lädt das Programm als Datei herunter; **Löschen** geht nur, solange niemand angemeldet ist.\n"
+msgid "**Special prizes** (module *Special prizes*, see below) follow as a section of their own. **Export** at the top of the page downloads the programme as a file; **Delete** in the programme's menu in the list is only possible while nobody is registered.\n"
+msgstr ""
+"**Sonderpreise** (Baustein *Sonderpreise*, siehe unten) folgen als eigener Abschnitt. **Exportieren** oben auf der Seite lädt das Programm als Datei herunter; **Löschen** im Menü des Programms in der Liste geht nur, solange niemand angemeldet ist.\n"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/programmes.md:36
+#: ../src/help/en/user-guide/programmes.md:39
 #, no-wrap
 msgid "Attempts {#attempts}"
 msgstr "Durchgänge {#attempts}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/programmes.md:39
+#: ../src/help/en/user-guide/programmes.md:42
 msgid ""
 "By default a shooter shoots a programme once per event. **Attempts per "
 "shooter** allows more, e.g. 3 for a lucky target with further attempts at a "
@@ -3719,7 +3713,7 @@ msgstr ""
 "die ganze Saison."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:43
+#: ../src/help/en/user-guide/programmes.md:46
 msgid ""
 "**Counting attempt** decides which attempt the ranking, the club "
 "competition, special prizes and *My training* count: **The best** (by the "
@@ -3732,7 +3726,7 @@ msgstr ""
 "Rangliste zeigt ihn als *2/3*: Der zweite von drei Durchgängen zählt."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:43
+#: ../src/help/en/user-guide/programmes.md:46
 msgid ""
 "**Only the counting attempt receives an award**: off, every attempt can earn "
 "its award (a wreath card per further attempt); on, only the counting attempt "
@@ -3744,7 +3738,7 @@ msgstr ""
 "Auszeichnung wandert, wenn ein besserer Durchgang geschossen wird."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:43
+#: ../src/help/en/user-guide/programmes.md:46
 msgid ""
 "At registration, a programme with several attempts shows a counter: two "
 "attempts at once are two result cards, *Attempt 1* and *Attempt 2*. Further "
@@ -3758,7 +3752,7 @@ msgstr ""
 "weiteres Resultat erfasst, bis der Schütze keine Durchgänge mehr hat."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/programmes.md:45
+#: ../src/help/en/user-guide/programmes.md:48
 msgid ""
 "The number of attempts can be changed while shooters are registered, but not "
 "below the attempts a shooter already has. Programmes with several attempts "
@@ -3769,28 +3763,30 @@ msgstr ""
 "mehreren Durchgängen können nicht kombiniert werden."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/programmes.md:49
-#, no-wrap
-msgid "**Special prizes** in the programme menu awards the best ranks of every age category, for example ranks 1–3 in every category with at least 10 participants, counting only shooters whose club has at least 4 participants in this programme. Skipped shooters make room for the next one. The exact rule is in [Competition rules](../reference/rules.md#special-prizes); the winners are in the report *Special prizes* under [Statistics](statistics-reports.md).\n"
-msgstr "**Sonderpreise** im Programmmenü zeichnet die besten Ränge jeder Alterskategorie aus, zum Beispiel die Ränge 1–3 in jeder Kategorie mit mindestens 10 Teilnehmern, wobei nur Schützen zählen, deren Verein mindestens 4 Teilnehmer in diesem Programm hat. Übersprungene Schützen machen dem nächsten Platz. Die genaue Regel steht in den [Wettkampfregeln](../reference/rules.md#special-prizes); die Gewinner stehen im Bericht *Sonderpreise* unter [Statistik](statistics-reports.md).\n"
-
-#. type: Plain text
-#: ../src/help/en/user-guide/programmes.md:51
-msgid ""
-"![Special prizes dialog](../images/screenshots/special-prizes.png)"
-"{ .screenshot }"
-msgstr ""
-"![Dialog Sonderpreise](../images/screenshots/special-prizes.png)"
-"{ .screenshot }"
-
-#. type: Plain text
 #: ../src/help/en/user-guide/programmes.md:52
 msgid ""
-"Ranks 0 turns special prizes off. The settings can be changed at any time, "
-"also after the event."
+"The section **Special prizes** on the programme page awards the best ranks "
+"of every age category, for example ranks 1–3 in every category with at least "
+"10 participants, counting only shooters whose club has at least 4 "
+"participants in this programme. Skipped shooters make room for the next one. "
+"The exact rule is in [Competition rules](../reference/rules.md#special-"
+"prizes); the winners are in the report *Special prizes* under [Statistics]"
+"(statistics-reports.md)."
+msgstr "Der Abschnitt **Sonderpreise** auf der Programmseite zeichnet die besten Ränge jeder Alterskategorie aus, zum Beispiel die Ränge 1–3 in jeder Kategorie mit mindestens 10 Teilnehmern, wobei nur Schützen zählen, deren Verein mindestens 4 Teilnehmer in diesem Programm hat. Übersprungene Schützen machen dem nächsten Platz. Die genaue Regel steht in den [Wettkampfregeln](../reference/rules.md#special-prizes); die Gewinner stehen im Bericht *Sonderpreise* unter [Statistik](statistics-reports.md)."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/programmes.md:54
+msgid ""
+"![Special prizes of a programme](../images/screenshots/special-prizes.png)"
+"{ .screenshot }"
+msgstr "![Sonderpreise eines Programms](../images/screenshots/special-prizes.png){ .screenshot }"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/programmes.md:55
+#, no-wrap
+msgid "**Save special prizes** stores them; ranks 0 turns special prizes off. The settings can be changed at any time, also after the event.\n"
 msgstr ""
-"Ränge 0 schaltet die Sonderpreise aus. Die Einstellungen lassen sich "
-"jederzeit ändern, auch nach dem Anlass."
+"**Sonderpreise speichern** speichert sie; Ränge 0 schaltet die Sonderpreise aus. Die Einstellungen lassen sich jederzeit ändern, auch nach dem Anlass.\n"
 
 #. type: Title #
 #: ../src/help/en/user-guide/ranges.md:1
@@ -5110,6 +5106,17 @@ msgstr ""
 "(../admin-guide/admin-panel.md). Ein vergessenes Passwort setzt man mit "
 "**Passwort vergessen?** auf der Login-Seite zurück, wenn das Konto eine "
 "bestätigte E-Mail-Adresse hat, sonst der Betreiber."
+
+#, no-wrap
+#~ msgid "The editor"
+#~ msgstr "Der Editor"
+
+#~ msgid "**Special prizes** (see below)."
+#~ msgstr "**Sonderpreise** (siehe unten)."
+
+#, no-wrap
+#~ msgid "**Export** downloads the programme as a file; **Delete** is only possible while nobody is registered.\n"
+#~ msgstr "**Exportieren** lädt das Programm als Datei herunter; **Löschen** geht nur, solange niemand angemeldet ist.\n"
 
 #~ msgid "![Event setup](../images/screenshots/setup.png){ .screenshot }"
 #~ msgstr ""

@@ -26,15 +26,15 @@ test.describe("attempts", () => {
   test("a programme allows three attempts with a price for further ones", async ({ page }) => {
     await login(page, admin);
     await page.goto(`/t/${ids.tenant}/events/${ids.event}/config/programmes`);
-    await page.locator("[aria-label='Actions for Lucky']").click();
-    await c(page, "[role=menuitem]", "Edit").click();
-    const sheet = page.getByRole("dialog");
+    await page.locator("table").getByRole("link", { name: "Lucky", exact: true }).click();
+    const sheet = page.locator("form").first();
+    await expect(sheet.getByLabel("Attempts per shooter")).toBeVisible();
     await sheet.getByLabel("Attempts per shooter").fill("3");
     await sheet.getByRole("combobox", { name: "Counting attempt" }).selectOption({ label: "The best" });
     await sheet.getByLabel("Only the counting attempt receives an award").click();
     await sheet.getByLabel("Further attempts Elite").fill("4");
     await c(sheet, "button", "Save").click();
-    await expect(sheet).toBeHidden();
+    await expect(c(page, "[data-sonner-toast]", 'Programme "Lucky" saved')).toBeVisible();
     const p = await api(page, "GET", `/api/tenants/${ids.tenant}/programmes/${ids.programme}`);
     expect(p).toMatchObject({ attempts: 3, attemptRule: "best", awardCountingOnly: true, prices: [{ ageCategory: "elite", price: 10, repeatPrice: 4 }] });
   });

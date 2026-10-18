@@ -1,6 +1,6 @@
 # Fichier de programme
 
-**Exporter** dans le menu du programme télécharge un programme en `<name>.programme.json` ; **Fichier de programme** sous *Ajouter depuis …* l’importe dans une autre manifestation ou une autre société. L’exploitant de la plateforme téléverse les mêmes fichiers dans la bibliothèque globale de programmes.
+**Exporter** dans le menu du programme ou sur la page du programme télécharge un programme en `<name>.programme.json` ; **Fichier de programme** sous *Ajouter depuis …* l’importe dans une autre manifestation ou une autre société. L’exploitant de la plateforme téléverse les mêmes fichiers dans la bibliothèque globale de programmes.
 
 ```json
 {

@@ -16,7 +16,7 @@
 
 {#if event.data}
 	{#if load && has(event.data, key)}
-		{#key key}<ModuleSlot {load} {tenantId} event={event.data} />{/key}
+		{#key key}<ModuleSlot {load} props={{ tenantId, event: event.data }} />{/key}
 	{:else}
 		<p class="text-sm text-muted-foreground">{$t`This module is off for this event.`}</p>
 	{/if}

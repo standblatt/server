@@ -1,6 +1,6 @@
 # File di programma
 
-**Esporta** nel menu del programma scarica un programma come `<name>.programme.json`; **File di programma** sotto *Aggiungi da …* lo importa in un’altra manifestazione o in un’altra società. Il gestore della piattaforma carica gli stessi file nella biblioteca globale dei programmi.
+**Esporta** nel menu del programma o nella pagina del programma scarica un programma come `<name>.programme.json`; **File di programma** sotto *Aggiungi da …* lo importa in un’altra manifestazione o in un’altra società. Il gestore della piattaforma carica gli stessi file nella biblioteca globale dei programmi.
 
 ```json
 {

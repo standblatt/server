@@ -15,7 +15,7 @@ import kiosk from './kiosk';
 import helpers from './helpers';
 import type { ModuleKey, ModuleUI } from './types';
 
-export type { EventProps, Lazy, ModuleKey, ModuleUI } from './types';
+export type { EventProps, Lazy, ModuleKey, ModuleUI, ProgrammeProps, ProgrammeSection } from './types';
 
 /** The UI of every event module; a module the API knows but this list lacks fails the type check. */
 export const moduleUI: Record<ModuleKey, ModuleUI> = {

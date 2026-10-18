@@ -20,7 +20,7 @@
 {/if}
 {#if event.data}
 	{#if ui?.configPage && has(event.data, key)}
-		<div class="max-w-3xl">{#key key}<ModuleSlot load={ui.configPage} {tenantId} event={event.data} />{/key}</div>
+		<div class="max-w-3xl">{#key key}<ModuleSlot load={ui.configPage} props={{ tenantId, event: event.data }} />{/key}</div>
 	{:else}
 		<p class="text-sm text-muted-foreground">
 			{$t`This module is off for this event.`} <a class="underline" href="/t/{tenantId}/events/{event.data.id}/config/modules">{$t`Modules`}</a>

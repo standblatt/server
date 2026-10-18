@@ -62,6 +62,7 @@
 			if (rest[2] === 'config') {
 				list.push({ label: $t`Configuration`, href: rest[3] ? `${eventBase}/config` : undefined });
 				if (rest[3]) list.push({ label: label(rest[3]), href: rest[4] ? `${eventBase}/config/${rest[3]}` : undefined });
+				if (rest[3] === 'programmes' && rest[4]) list.push({ label: rest[4] === 'new' ? $t`New programme` : $t`Programme` });
 			} else list.push({ label: rest[2] ? label(rest[2]) : $t`Dashboard` });
 		} else if (rest.length === 0) {
 			list.push({ label: $t`Events` });

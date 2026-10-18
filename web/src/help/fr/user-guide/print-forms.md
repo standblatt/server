@@ -76,14 +76,15 @@ haut). Le décalage s’applique à tous les éléments ; l’aperçu l’ignore
 
 ## Utiliser un modèle {#use}
 
-Sous **Configuration** → **Programmes** de la manifestation, choisis le
-**Modèle d’impression** d’un programme ; cela fonctionne aussi quand des
-tireurs sont inscrits. Chaque programme terminé propose alors **Imprimer sur
-le modèle** dans les résultats : au desk, sur la page **Saisir les
-résultats** et par les liens de secrétaire à la cible (voir
-[Aides](helpers.md)). Avec un agent d’impression et une imprimante choisie
-pour *Modèles d’impression* sous **Stands de tir → Impression**, la feuille
-part vers cette imprimante (p. ex. son alimentation manuelle), sinon le PDF
-s’ouvre (voir [Impression](printing.md)).
+Sous **Configuration** → **Programmes** de la manifestation, ouvre un
+programme et choisis son **Modèle d’impression** dans la section
+**Utilisation** ; cela fonctionne aussi quand des tireurs sont
+inscrits. Chaque programme terminé propose alors **Imprimer sur le modèle**
+dans les résultats : au desk, sur la page **Saisir les résultats** et par
+les liens de secrétaire à la cible (voir [Aides](helpers.md)). Avec un agent
+d’impression et une imprimante choisie pour *Modèles d’impression* sous
+**Stands de tir → Impression**, la feuille part vers cette imprimante
+(p. ex. son alimentation manuelle), sinon le PDF s’ouvre (voir
+[Impression](printing.md)).
 
 **Exporter** télécharge un modèle sous forme de fichier et **Importer** le relit, p. ex. pour partager un modèle avec une autre société.

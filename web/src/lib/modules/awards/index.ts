@@ -8,6 +8,7 @@ export default {
 	help: 'user-guide/programmes',
 	icon: Award,
 	settings: () => import('./Settings.svelte'),
+	programmeSections: [{ after: 'prices', load: () => import('./ProgrammeSection.svelte') }],
 	statisticsSections: () => import('./StatisticsSection.svelte'),
 	reports: [
 		{ id: 'awards', label: msg`Awards` },

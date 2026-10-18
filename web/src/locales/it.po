@@ -449,7 +449,7 @@ msgstr "≙ {0} su {standard} colpi"
 msgid "0 counts all of them."
 msgstr "0 li conta tutti."
 
-#: src/lib/ProgrammeList.svelte
+#: src/lib/modules/special_prizes/ProgrammeSection.svelte
 msgid "0 turns special prizes off."
 msgstr "0 disattiva i premi speciali."
 
@@ -535,6 +535,10 @@ msgstr "attivo"
 msgid "Active"
 msgstr "Attivo"
 
+#: src/lib/programme/Usage.svelte
+msgid "Active: shooters can register for it"
+msgstr "Attivo: i tiratori possono iscriversi"
+
 #: src/lib/AccountSettings.svelte
 #: src/routes/my/log/+page.svelte
 #: src/routes/t/[tenantId]/users/+page.svelte
@@ -549,7 +553,7 @@ msgstr "Aggiungere uno stand di tiro"
 msgid "Add all"
 msgstr "Aggiungi tutti"
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/modules/awards/ProgrammeSection.svelte
 msgid "Add award"
 msgstr "Aggiungi distinzione"
 
@@ -585,7 +589,7 @@ msgstr "Aggiungi agente di stampa"
 msgid "Add programme"
 msgstr "Aggiungi programma"
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Series.svelte
 #: src/routes/my/train/+page.svelte
 msgid "Add series"
 msgstr "Aggiungi serie"
@@ -784,7 +788,7 @@ msgstr "Programma annuale o allenamento"
 msgid "Another session"
 msgstr "Un’altra sessione"
 
-#: src/lib/ProgrammeList.svelte
+#: src/lib/programme/Usage.svelte
 msgid "any"
 msgstr "qualsiasi"
 
@@ -830,12 +834,12 @@ msgid "Attempt {0}"
 msgstr "Tentativo {0}"
 
 #: src/lib/modules/attempts/index.ts
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/modules/attempts/ProgrammeSection.svelte
 #: src/lib/RegistrationForm.svelte
 msgid "Attempts"
 msgstr "Tentativi"
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/modules/attempts/ProgrammeSection.svelte
 msgid "Attempts per shooter"
 msgstr "Tentativi per tiratore"
 
@@ -857,7 +861,7 @@ msgid "Award (choose one)"
 msgstr "Distinzione (sceglierne una)"
 
 #. placeholder {0}: i + 1
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/modules/awards/ProgrammeSection.svelte
 msgid "Award {0}"
 msgstr "Distinzione {0}"
 
@@ -876,8 +880,8 @@ msgstr "distinzioni"
 
 #: src/lib/EventDesk.svelte
 #: src/lib/modules/awards/index.ts
+#: src/lib/modules/awards/ProgrammeSection.svelte
 #: src/lib/modules/awards/StatisticsSection.svelte
-#: src/lib/ProgrammeEditor.svelte
 #: src/lib/ProgrammeList.svelte
 msgid "Awards"
 msgstr "Distinzioni"
@@ -926,7 +930,7 @@ msgstr "Torna al diario"
 
 #: src/lib/forms/Palette.svelte
 #: src/lib/forms/Properties.svelte
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Basics.svelte
 msgid "Barcode"
 msgstr "Codice a barre"
 
@@ -1021,8 +1025,8 @@ msgstr "annullata"
 msgid "Cannot scan? Enter this key:"
 msgstr "Non riesci a scansionare? Inserisci questa chiave:"
 
+#: src/lib/modules/awards/ProgrammeSection.svelte
 #: src/lib/modules/awards/StatisticsSection.svelte
-#: src/lib/ProgrammeEditor.svelte
 msgid "Cash prize"
 msgstr "Premio in denaro"
 
@@ -1265,7 +1269,7 @@ msgstr "Codice dall’app"
 msgid "Code from your authenticator app"
 msgstr "Codice dalla tua app di autenticazione"
 
-#: src/lib/ProgrammeList.svelte
+#: src/lib/programme/Usage.svelte
 msgid "Combinable with"
 msgstr "Combinabile con"
 
@@ -1428,7 +1432,7 @@ msgstr "Contare solo i programmi migliori"
 msgid "Counted: {0}"
 msgstr "Conteggiati: {0}"
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/modules/attempts/ProgrammeSection.svelte
 msgid "Counting attempt"
 msgstr "Tentativo che conta"
 
@@ -1440,14 +1444,14 @@ msgstr "Tentativo che conta tra i tentativi del tiratore"
 msgid "Counting attempts"
 msgstr "Tentativi che contano"
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/modules/club_competition/ProgrammeSection.svelte
 msgid "Counts for the club competition"
 msgstr "Conta per il concorso di sezione"
 
 #: src/lib/modules/classifications/Classifications.svelte
 #: src/lib/NewShooterDialog.svelte
-#: src/lib/ProgrammeSheet.svelte
 #: src/routes/t/[tenantId]/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/programmes/new/+page.svelte
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Create"
 msgstr "Crea"
@@ -1658,7 +1662,7 @@ msgid "Deleted {0}."
 msgstr "{0} eliminato."
 
 #: src/lib/modules/reservations/Page.svelte
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Basics.svelte
 msgid "Description"
 msgstr "Descrizione"
 
@@ -1775,7 +1779,7 @@ msgstr "p. es. script di importazione"
 msgid "e.g. Steyr EVO 10"
 msgstr "ad es. Steyr EVO 10"
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Basics.svelte
 msgid "e.g. Stgw 90"
 msgstr "p. es. Fass 90"
 
@@ -1813,10 +1817,6 @@ msgstr "Modifica società"
 #: src/routes/my/settings/+page.svelte
 msgid "Edit discipline"
 msgstr "Modifica disciplina"
-
-#: src/lib/ProgrammeSheet.svelte
-msgid "Edit programme"
-msgstr "Modifica programma"
 
 #: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "Edit range"
@@ -1989,6 +1989,7 @@ msgid "expires {0}"
 msgstr "scade il {0}"
 
 #: src/lib/ProgrammeList.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/programmes/[programmeId]/+page.svelte
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Export"
 msgstr "Esporta"
@@ -2080,7 +2081,7 @@ msgstr "Nome del tiratore {0}"
 msgid "Font size (pt)"
 msgstr "Dimensione carattere (pt)"
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Basics.svelte
 msgid "For a variant, pick the name of an existing programme: a shooter registers for only one programme of the same name."
 msgstr "Per una variante, scegli il nome di un programma esistente: un tiratore si iscrive a un solo programma con lo stesso nome."
 
@@ -2140,11 +2141,11 @@ msgid "Fullscreen"
 msgstr "Schermo intero"
 
 #. placeholder {0}: _i18n._(ageCategoryLabel(c))
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Prices.svelte
 msgid "Further attempts {0}"
 msgstr "Rachat {0}"
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Prices.svelte
 msgid "Further: same"
 msgstr "Rachat: uguale"
 
@@ -2157,7 +2158,7 @@ msgstr "Generale"
 msgid "Getting started"
 msgstr "Primi passi"
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Basics.svelte
 msgid "Give each variant its own variant name."
 msgstr "Dai a ogni variante un proprio nome di variante."
 
@@ -2250,7 +2251,7 @@ msgstr "Come ti è sembrato?"
 msgid "How does this work?"
 msgstr "Come funziona?"
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/modules/attempts/ProgrammeSection.svelte
 msgid "How often a shooter may shoot the programme at this event, e.g. further attempts at a shooting festival or an annual programme."
 msgstr "Quante volte un tiratore può tirare il programma in questa manifestazione, p. es. rachat a una festa di tiro o un programma annuale."
 
@@ -2378,9 +2379,9 @@ msgstr "Cifre chiave"
 msgid "Key figures, club competition and exports of this event."
 msgstr "Cifre chiave, concorso di sezione ed esportazioni di questa manifestazione."
 
+#: src/lib/modules/awards/ProgrammeSection.svelte
 #: src/lib/modules/awards/StatisticsSection.svelte
 #: src/lib/my/Finish.svelte
-#: src/lib/ProgrammeEditor.svelte
 #: src/routes/my/log/+page.svelte
 msgid "Kind"
 msgstr "Tipo"
@@ -2723,7 +2724,7 @@ msgstr "Accesso"
 
 #. Column header: mouches
 #. Column header: mouches
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Series.svelte
 #: src/lib/RankingTable.svelte
 msgid "M"
 msgstr "M"
@@ -2750,7 +2751,7 @@ msgstr "Dati di base di questa società. Numero di licenza, data di nascita e in
 msgid "max. {0}"
 msgstr "max. {0}"
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Series.svelte
 msgid "Max. points"
 msgstr "Punti max."
 
@@ -2773,15 +2774,15 @@ msgstr "Unisci «{0}» a…"
 msgid "Merge into…"
 msgstr "Unisci a…"
 
-#: src/lib/ProgrammeList.svelte
+#: src/lib/modules/special_prizes/ProgrammeSection.svelte
 msgid "Minimum participants of the club in this programme"
 msgstr "Partecipanti minimi della società in questo programma"
 
-#: src/lib/ProgrammeList.svelte
+#: src/lib/modules/special_prizes/ProgrammeSection.svelte
 msgid "Minimum participants per category"
 msgstr "Partecipanti minimi per categoria"
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/modules/awards/ProgrammeSection.svelte
 msgid "Minimum total per age category; leave empty where the award is not available."
 msgstr "Totale minimo per categoria d'età; lasciare vuoto dove la distinzione non è disponibile."
 
@@ -2828,7 +2829,7 @@ msgstr "Più colpi"
 
 #: src/lib/EntryCard.svelte
 #: src/lib/forms/Palette.svelte
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Series.svelte
 msgid "Mouches"
 msgstr "Mouches"
 
@@ -2861,10 +2862,12 @@ msgstr "Il mio allenamento"
 
 #: src/lib/EventForm.svelte
 #: src/lib/forms/Palette.svelte
+#: src/lib/modules/awards/ProgrammeSection.svelte
 #: src/lib/modules/classifications/Classifications.svelte
 #: src/lib/modules/classifications/ClassificationTable.svelte
 #: src/lib/my/ApiTokens.svelte
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Basics.svelte
+#: src/lib/programme/Series.svelte
 #: src/lib/RankingTable.svelte
 #: src/routes/my/settings/+page.svelte
 #: src/routes/t/[tenantId]/+page.svelte
@@ -2971,7 +2974,8 @@ msgid "New print form"
 msgstr "Nuovo modello di stampa"
 
 #: src/lib/ProgrammeList.svelte
-#: src/lib/ProgrammeSheet.svelte
+#: src/routes/t/[tenantId]/+layout.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/programmes/new/+page.svelte
 msgid "New programme"
 msgstr "Nuovo programma"
 
@@ -3163,7 +3167,7 @@ msgid "Nobody is waiting."
 msgstr "Nessuno è in attesa."
 
 #: src/lib/modules/club_competition/Settings.svelte
-#: src/lib/ProgrammeList.svelte
+#: src/lib/programme/Usage.svelte
 #: src/lib/RegistrationForm.svelte
 msgid "none"
 msgstr "nessuna"
@@ -3276,10 +3280,11 @@ msgstr "Solo le categorie d'età selezionate possono tirare questo programma."
 msgid "Only the checked age categories may shoot this programme. Further attempts cost the same unless a price is given; 0 means paid once."
 msgstr "Solo le categorie d’età selezionate possono tirare questo programma. I rachat costano uguale, salvo se è indicato un prezzo; 0 significa pagato una volta."
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/modules/attempts/ProgrammeSection.svelte
 msgid "Only the counting attempt receives an award"
 msgstr "Solo il tentativo che conta riceve una distinzione"
 
+#: src/lib/ProgrammeList.svelte
 #: src/routes/my/settings/+page.svelte
 msgid "Open"
 msgstr "Apri"
@@ -3492,11 +3497,11 @@ msgid "Previous page"
 msgstr "Pagina precedente"
 
 #. placeholder {0}: _i18n._(ageCategoryLabel(c))
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Prices.svelte
 msgid "Price {0}"
 msgstr "Prezzo {0}"
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Prices.svelte
 msgid "Price of every further attempt"
 msgstr "Prezzo di ogni tentativo supplementare"
 
@@ -3521,7 +3526,7 @@ msgstr "Agenti di stampa"
 msgid "Print control strip"
 msgstr "Stampa striscia di controllo"
 
-#: src/lib/ProgrammeList.svelte
+#: src/lib/programme/Usage.svelte
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Print form"
 msgstr "Modello di stampa"
@@ -3609,8 +3614,8 @@ msgstr "Stampa · {0}"
 msgid "Prints the element several times, moved by dx/dy; # in a placeholder counts 1, 2, 3 …"
 msgstr "Stampa l’elemento più volte, spostato di dx/dy; # in un segnaposto conta 1, 2, 3 …"
 
+#: src/lib/modules/awards/ProgrammeSection.svelte
 #: src/lib/modules/awards/StatisticsSection.svelte
-#: src/lib/ProgrammeEditor.svelte
 msgid "Prize in kind"
 msgstr "Premio in natura"
 
@@ -3624,19 +3629,24 @@ msgstr "Profilo salvato"
 
 #: src/lib/forms/Palette.svelte
 #: src/lib/modules/awards/StatisticsSection.svelte
+#: src/lib/ProgrammeEditor.svelte
 #: src/lib/ProgrammeList.svelte
+#: src/routes/t/[tenantId]/+layout.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/programmes/[programmeId]/+page.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Programme"
 msgstr "Programma"
 
 #. placeholder {0}: d.name
-#: src/lib/ProgrammeSheet.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/programmes/new/+page.svelte
 msgid "Programme \"{0}\" created"
 msgstr "Programma «{0}» creato"
 
 #. placeholder {0}: d.name
-#: src/lib/ProgrammeSheet.svelte
+#. placeholder {0}: programmeTitle(programme)
+#: src/lib/programme/Usage.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/programmes/[programmeId]/+page.svelte
 msgid "Programme \"{0}\" saved"
 msgstr "Programma «{0}» salvato"
 
@@ -3656,7 +3666,6 @@ msgstr "Biblioteca dei programmi"
 #: src/lib/AppSidebar.svelte
 #: src/lib/EventDesk.svelte
 #: src/lib/modules/classifications/Classifications.svelte
-#: src/lib/ProgrammeList.svelte
 #: src/lib/RegistrationForm.svelte
 #: src/lib/SetupChecklist.svelte
 #: src/routes/t/[tenantId]/+layout.svelte
@@ -3716,7 +3725,7 @@ msgstr "in coda"
 #: src/lib/modules/kiosk/KioskTokens.svelte
 #: src/lib/modules/reservations/Page.svelte
 #: src/lib/my/Finish.svelte
-#: src/lib/ProgrammeList.svelte
+#: src/lib/programme/Usage.svelte
 #: src/routes/t/[tenantId]/+page.svelte
 msgid "Range"
 msgstr "Stand di tiro"
@@ -3798,7 +3807,7 @@ msgstr "Classifiche su più programmi o tentativi, p. es. un campionato di sezio
 msgid "Rankings over several programmes or attempts, with classes and tie-breaks."
 msgstr "Classifiche su più programmi o tentativi, con classi e spareggio."
 
-#: src/lib/ProgrammeList.svelte
+#: src/lib/modules/special_prizes/ProgrammeSection.svelte
 msgid "Ranks per category"
 msgstr "Ranghi per categoria"
 
@@ -3832,7 +3841,7 @@ msgid "Recent sessions"
 msgstr "Ultime sessioni"
 
 #. placeholder {0}: i + 1
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Series.svelte
 msgid "Record single shots in series {0}"
 msgstr "Registrare i colpi singoli nella serie {0}"
 
@@ -3909,12 +3918,12 @@ msgstr "Rimuovi {0}"
 msgid "Remove {0}?"
 msgstr "Rimuovere {0}?"
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/modules/awards/ProgrammeSection.svelte
 msgid "Remove award"
 msgstr "Rimuovi distinzione"
 
 #. placeholder {0}: i + 1
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/modules/awards/ProgrammeSection.svelte
 msgid "Remove award {0}"
 msgstr "Rimuovi distinzione {0}"
 
@@ -3932,13 +3941,13 @@ msgstr "Rimuovi giorno"
 msgid "Remove programme {0}"
 msgstr "Rimuovi programma {0}"
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Series.svelte
 #: src/routes/my/train/+page.svelte
 msgid "Remove series"
 msgstr "Rimuovi serie"
 
 #. placeholder {0}: i + 1
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Series.svelte
 msgid "Remove series {0}"
 msgstr "Rimuovi serie {0}"
 
@@ -4159,14 +4168,13 @@ msgstr "S{0}"
 #: src/lib/modules/booking/parts/BookingHoursForm.svelte
 #: src/lib/modules/classifications/Classifications.svelte
 #: src/lib/modules/reservations/Page.svelte
-#: src/lib/ProgrammeList.svelte
-#: src/lib/ProgrammeSheet.svelte
 #: src/lib/RegistrationDialog.svelte
 #: src/lib/ShooterSheet.svelte
 #: src/routes/my/progress/+page.svelte
 #: src/routes/my/settings/+page.svelte
 #: src/routes/t/[tenantId]/clubs/+page.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/config/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/programmes/[programmeId]/+page.svelte
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 #: src/routes/t/[tenantId]/ranges/+page.svelte
@@ -4192,6 +4200,14 @@ msgstr "Salva password"
 #: src/lib/my/Finish.svelte
 msgid "Save session"
 msgstr "Salva sessione"
+
+#: src/lib/modules/special_prizes/ProgrammeSection.svelte
+msgid "Save special prizes"
+msgstr "Salva i premi speciali"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Saved at once, also while shooters are registered."
+msgstr "Salvato subito, anche se ci sono già tiratori iscritti."
 
 #: src/lib/my/Result.svelte
 msgid "Saved on this device"
@@ -4296,9 +4312,11 @@ msgstr "Seniori veterani"
 msgid "Series"
 msgstr "Serie"
 
+#. placeholder {0}: draft.totalShots
+#. placeholder {1}: draft.totalPoints
 #: src/lib/ProgrammeEditor.svelte
-msgid "Series ({totalShots} shots, max. {totalPoints} points)"
-msgstr "Serie ({totalShots} colpi, max. {totalPoints} punti)"
+msgid "Series ({0} shots, max. {1} points)"
+msgstr "Serie ({0} colpi, max. {1} punti)"
 
 #. placeholder {0}: draft.current + 1
 #. placeholder {0}: i + 1
@@ -4335,7 +4353,8 @@ msgstr "Serie dall’ultima all’indietro"
 msgid "Series of {0}"
 msgstr "Serie di {0}"
 
-#: src/lib/ProgrammeSheet.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/programmes/[programmeId]/+page.svelte
+#: src/routes/t/[tenantId]/events/[eventId]/config/programmes/new/+page.svelte
 msgid "Series, prices per age category and award limits."
 msgstr "Serie, prezzi per categoria d'età e limiti delle distinzioni."
 
@@ -4386,7 +4405,7 @@ msgid "Several attempts ranked in classifications, shown on kiosk displays."
 msgstr "Più tentativi classificati in classifiche generali, mostrati sui display chiosco."
 
 #. Column header: single shots
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Series.svelte
 msgid "SH"
 msgstr "CS"
 
@@ -4484,7 +4503,7 @@ msgstr "Tiro fino alle"
 msgid "Shot values"
 msgstr "Valori dei colpi"
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Series.svelte
 #: src/lib/ProgrammeList.svelte
 #: src/routes/my/log/[id]/+page.svelte
 #: src/routes/my/train/+page.svelte
@@ -4525,7 +4544,7 @@ msgid "Show more"
 msgstr "Mostra altro"
 
 #: src/lib/modules/classifications/Classifications.svelte
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/modules/kiosk/ProgrammeSection.svelte
 msgid "Show on kiosk displays"
 msgstr "Mostra sugli schermi chiosco"
 
@@ -4551,7 +4570,7 @@ msgid "Single days with optional shooting times, e.g. pre-shooting days or the o
 msgstr "Singoli giorni con orari di tiro facoltativi, p. es. giorni di tiro anticipato o il fine settimana ufficiale. Il giorno principale è sempre un giorno di tiro."
 
 #: src/lib/forms/Palette.svelte
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Series.svelte
 msgid "Single shots"
 msgstr "Colpi singoli"
 
@@ -4568,24 +4587,19 @@ msgid "Slots"
 msgstr "Fasce orarie"
 
 #: src/lib/modules/special_prizes/index.ts
-#: src/lib/ProgrammeList.svelte
+#: src/lib/modules/special_prizes/ProgrammeSection.svelte
 msgid "Special prizes"
 msgstr "Premi speciali"
 
 #. placeholder {0}: programmeTitle(programme)
-#: src/lib/ProgrammeList.svelte
+#: src/lib/modules/special_prizes/ProgrammeSection.svelte
 msgid "Special prizes of {0} saved"
 msgstr "Premi speciali di {0} salvati"
 
 #. placeholder {0}: programmeTitle(programme)
-#: src/lib/ProgrammeList.svelte
+#: src/lib/modules/special_prizes/ProgrammeSection.svelte
 msgid "Special prizes of {0} turned off"
 msgstr "Premi speciali di {0} disattivati"
-
-#. placeholder {0}: programmeTitle(prizes.programme)
-#: src/lib/ProgrammeList.svelte
-msgid "Special prizes: {0}"
-msgstr "Premi speciali: {0}"
 
 #. placeholder {0}: p.specialPrizes.ranks
 #: src/lib/ProgrammeList.svelte
@@ -4756,7 +4770,7 @@ msgstr "Le distinzioni contano di nuovo come aperte."
 msgid "The awards of {name} count as open again."
 msgstr "Le distinzioni di {name} contano di nuovo come aperte."
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/modules/attempts/ProgrammeSection.svelte
 msgid "The best"
 msgstr "Il migliore"
 
@@ -4764,7 +4778,7 @@ msgstr "Il migliore"
 msgid "The best ranks of every age category get a special prize."
 msgstr "I migliori ranghi di ogni categoria d'età ricevono un premio speciale."
 
-#: src/lib/ProgrammeList.svelte
+#: src/lib/modules/special_prizes/ProgrammeSection.svelte
 msgid "The best ranks of every age category get a special prize. Shooters whose club has too few participants in this programme are skipped. Can be changed while shooters are registered."
 msgstr "I migliori ranghi di ogni categoria d’età ricevono un premio speciale. I tiratori la cui società ha troppo pochi partecipanti in questo programma vengono saltati. Modificabile anche dopo le iscrizioni."
 
@@ -4819,11 +4833,11 @@ msgstr "Il file non è un modello di stampa."
 msgid "The file is not valid JSON"
 msgstr "Il file non è un JSON valido"
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/modules/attempts/ProgrammeSection.svelte
 msgid "The first"
 msgstr "Il primo"
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/modules/attempts/ProgrammeSection.svelte
 msgid "The last"
 msgstr "L’ultimo"
 
@@ -5000,7 +5014,7 @@ msgid "Total: CHF {0}"
 msgstr "Totale: CHF {0}"
 
 #. placeholder {0}: i + 1
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Series.svelte
 msgid "Track mouches in series {0}"
 msgstr "Registra le mouches nella serie {0}"
 
@@ -5039,7 +5053,7 @@ msgstr "Annulla"
 msgid "Undo (Ctrl+Z)"
 msgstr "Annulla (Ctrl+Z)"
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/modules/attempts/ProgrammeSection.svelte
 msgid "Unlimited"
 msgstr "Illimitato"
 
@@ -5059,6 +5073,10 @@ msgstr "Prossime"
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Upload a scan"
 msgstr "Carica una scansione"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Use"
+msgstr "Utilizzo"
 
 #: src/lib/RegistrationForm.svelte
 msgid "Use lane"
@@ -5088,17 +5106,17 @@ msgstr "Utenti"
 msgid "Value"
 msgstr "Valore"
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/modules/awards/ProgrammeSection.svelte
 msgid "Value (CHF)"
 msgstr "Valore (CHF)"
 
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Basics.svelte
 msgid "Variant"
 msgstr "Variante"
 
-#. placeholder {0}: name.trim()
+#. placeholder {0}: draft.name.trim()
 #. placeholder {1}: siblings.length + 1
-#: src/lib/ProgrammeEditor.svelte
+#: src/lib/programme/Basics.svelte
 msgid "Variant of \"{0}\": shooters register for only one of {1} programmes."
 msgstr "Variante di «{0}»: i tiratori si iscrivono a uno solo dei {1} programmi."
 
@@ -5175,10 +5193,6 @@ msgstr "Cosa si può sparare: serie, prezzi per categoria d'età e distinzioni."
 msgid "What kind of event?"
 msgstr "Che tipo di manifestazione?"
 
-#: src/lib/ProgrammeList.svelte
-msgid "What shooters can register for, with prices and awards."
-msgstr "A cosa possono iscriversi i tiratori, con prezzi e distinzioni."
-
 #: src/lib/SetupChecklist.svelte
 msgid "What shooters can register for: series, prices and awards. Copy them from an earlier event or the library."
 msgstr "A cosa possono iscriversi i tiratori: serie, prezzi e distinzioni. Copiali da una manifestazione precedente o dalla biblioteca."
@@ -5232,8 +5246,8 @@ msgstr "Senza un agente collegato, i documenti si aprono come PDF nel browser."
 msgid "Without classes everybody is in one ranking. Shooters whose category is in no class are not listed."
 msgstr "Senza classi tutti sono in un’unica classifica. I tiratori la cui categoria non è in nessuna classe non sono elencati."
 
+#: src/lib/modules/awards/ProgrammeSection.svelte
 #: src/lib/modules/awards/StatisticsSection.svelte
-#: src/lib/ProgrammeEditor.svelte
 msgid "Wreath card"
 msgstr "Carta corona"
 

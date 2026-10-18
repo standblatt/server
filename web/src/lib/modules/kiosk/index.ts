@@ -7,5 +7,6 @@ export default {
 	description: msg`Live rankings on screens at the range through a link.`,
 	help: 'user-guide/rankings-kiosk',
 	icon: Monitor,
-	configPage: () => import('./ConfigPage.svelte')
+	configPage: () => import('./ConfigPage.svelte'),
+	programmeSections: [{ after: 'basics', load: () => import('./ProgrammeSection.svelte') }]
 } satisfies ModuleUI;

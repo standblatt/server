@@ -7,5 +7,6 @@ export default {
 	description: msg`The best ranks of every age category get a special prize.`,
 	help: 'user-guide/programmes#special-prizes',
 	icon: Trophy,
+	programmeSections: [{ after: 'usage', load: () => import('./ProgrammeSection.svelte') }],
 	reports: [{ id: 'special_prizes', label: msg`Special prizes` }]
 } satisfies ModuleUI;

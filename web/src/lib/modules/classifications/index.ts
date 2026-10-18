@@ -7,7 +7,7 @@ export default {
 	description: msg`Rankings over several programmes or attempts, with classes and tie-breaks.`,
 	help: 'user-guide/classifications',
 	icon: Layers,
-	configPage: () => import('./ConfigPage.svelte'),
+	configPage: () => import('./Classifications.svelte'),
 	rankingsSections: () => import('./RankingsSection.svelte'),
 	reports: [{ id: 'classifications', label: msg`Classifications` }]
 } satisfies ModuleUI;

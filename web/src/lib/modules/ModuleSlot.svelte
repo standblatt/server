@@ -1,7 +1,7 @@
-<script lang="ts">
-	import type { EventProps, Lazy } from '.';
+<script lang="ts" generics="P extends Record<string, any>">
+	import type { Lazy } from '.';
 
-	let { load, tenantId, event }: { load: Lazy } & EventProps = $props();
+	let { load, props }: { load: Lazy<P>; props: P } = $props();
 </script>
 
-{#await load() then m}<m.default {tenantId} {event} />{/await}
+{#await load() then m}<m.default {...props} />{/await}

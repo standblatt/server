@@ -68,7 +68,7 @@
 					/>
 				</div>
 				{#if on && ui.settings && !ev.archivedAt}
-					<div class="border-t pt-3"><ModuleSlot load={ui.settings} {tenantId} event={ev} /></div>
+					<div class="border-t pt-3"><ModuleSlot load={ui.settings} props={{ tenantId, event: ev }} /></div>
 				{/if}
 			</li>
 		{/each}

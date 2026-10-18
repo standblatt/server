@@ -21,8 +21,10 @@
 	import FormError from '$lib/FormError.svelte';
 	import FormField from '$lib/FormField.svelte';
 	import { keys, programmesQuery } from '$lib/tenant';
+	import { has, type EventProps } from '..';
 
-	let { tenantId, eventId }: { tenantId: number; eventId: number } = $props();
+	let { tenantId, event }: EventProps = $props();
+	const eventId = $derived(event.id);
 	const queryClient = useQueryClient();
 	const list = createQuery(() => ({
 		queryKey: keys.classifications(tenantId, eventId),
@@ -218,7 +220,7 @@
 						<Button variant="outline" size="sm" onclick={() => draft.classes.push({ name: '', categories: [] })}><Plus />{$t`Add class`}</Button>
 					</section>
 
-					<label class="flex items-center justify-between gap-3 text-sm">{$t`Show on kiosk displays`} <Switch bind:checked={draft.showOnKiosk} /></label>
+					{#if has(event, 'kiosk')}<label class="flex items-center justify-between gap-3 text-sm">{$t`Show on kiosk displays`} <Switch bind:checked={draft.showOnKiosk} /></label>{/if}
 				</div>
 				<div class="flex items-center gap-3 border-t px-6 py-3">
 					<FormError message={error} class="flex-1" />

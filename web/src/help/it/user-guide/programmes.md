@@ -7,7 +7,7 @@ I programmi appartengono a una manifestazione e si gestiscono in
 
 ## Aggiungere programmi
 
-- **Nuovo programma** apre l’editor.
+- **Nuovo programma** apre una pagina di programma vuota.
 - **Aggiungi da … → Biblioteca dei programmi**: un modello della biblioteca
   globale, curata dal gestore della piattaforma.
 - **Aggiungi da … → Manifestazione precedente**: copia tutti i programmi di
@@ -17,45 +17,55 @@ I programmi appartengono a una manifestazione e si gestiscono in
   programma](../reference/programme-file.md) esportato da un’altra
   manifestazione o società.
 
-## L’editor
+## La pagina del programma {#page}
 
-![Editor del programma](../images/screenshots/programme-editor.png){
+Un clic su un programma nell’elenco apre la sua pagina. Contiene le sezioni
+del programma, più una sezione per ogni [modulo](events.md#modules) attivato
+che aggiunge qualcosa ai programmi; **Crea** o **Salva** in fondo le salva
+insieme.
+
+![Pagina del programma](../images/screenshots/programme-editor.png){
 .screenshot }
 
 - **Nome** e **Variante**: i programmi con lo stesso nome sono varianti
   l’uno dell’altro; un tiratore si iscrive a una di esse. Il campo del nome
   propone i nomi dei programmi della manifestazione, e appena il nome
-  corrisponde a uno di essi l’editor dice che stai creando una variante e
+  corrisponde a uno di essi la pagina dice che stai creando una variante e
   avvisa se il nome della variante è vuoto o già usato.
 - **Codice a barre**: stampato sul foglio di stand per la segnalazione
   elettronica (vedi [Codici](../reference/codes.md)).
-- **Mostra sugli schermi chiosco**.
+- **Conta per il concorso di sezione** e **Mostra sugli schermi chiosco**:
+  solo finché i moduli *Concorso di sezione* e *Display chiosco* sono
+  attivati.
 - **Serie**: colpi, punti massimi, se si contano le mouche e se si
   registrano i **Colpi singoli**, per serie. Con i colpi singoli si può
   registrare ogni colpo e la serie ne è la somma, p. es. per stamparli su un
   modulo; il totale della serie da solo si può ancora registrare.
-- **Tentativi** (vedi sotto): quante volte un tiratore può tirare il
-  programma nella manifestazione.
+- **Tentativi** (modulo *Tentativi*, vedi sotto): quante volte un tiratore
+  può tirare il programma nella manifestazione.
 - **Prezzi (CHF)**: solo le categorie d’età selezionate possono tirare il
   programma. Con più tentativi, un secondo campo per categoria è il prezzo
   di ogni tentativo supplementare (*rachat*); vuoto significa lo stesso
   prezzo, 0 significa che il programma è pagato una volta.
-- **Distinzioni**: nome, tipo (carta corona, premio in natura o premio in
-  denaro pagato in contanti), valore e totale minimo per categoria d’età;
-  lascia vuota una categoria dove la distinzione non è disponibile.
+- **Distinzioni** (modulo *Distinzioni*): nome, tipo (carta corona, premio
+  in natura o premio in denaro pagato in contanti), valore e totale minimo
+  per categoria d’età; lascia vuota una categoria dove la distinzione non è
+  disponibile.
 
 Non appena dei tiratori sono iscritti a un programma, le **serie** sono
-fisse perché i risultati mantengano il loro significato; l'editor lo segnala
-e le disattiva. Tutto il resto resta modificabile: nome, variante,
+fisse perché i risultati mantengano il loro significato; la pagina lo
+segnala e le disattiva. Tutto il resto resta modificabile: nome, variante,
 descrizione, codice a barre, le opzioni, prezzi, nomi delle serie, nomi,
 valori e limiti delle distinzioni. Categorie d'età e distinzioni possono
-essere **aggiunte** ma non rimosse. Su un programma in uso è inoltre
-disponibile:
+essere **aggiunte** ma non rimosse.
+
+La sezione **Utilizzo** di un programma salvato viene salvata subito a ogni
+modifica, anche con tiratori già iscritti:
 
 - **Attivo**: i programmi inattivi non si possono scegliere per nuove
   iscrizioni; quelle esistenti li mantengono.
 - **Combinabile con**: il programma di cui questo può prendere le serie
-  all’iscrizione.
+  all’iscrizione (non per i programmi con più tentativi).
 - **Stand di tiro** (manifestazioni su più stand): lo stand su cui si tira
   il programma, p. es. *Pistola 50 m*; l’iscrizione offre allora solo i suoi
   bersagli e gli schermi chiosco raggruppano le classifiche per
@@ -64,9 +74,8 @@ disponibile:
 - **Modello di stampa** (quando la società ha dei [modelli di
   stampa](print-forms.md)): il modello su cui vengono stampati i risultati
   del programma; *nessuno* non stampa alcun modello.
-- **Premi speciali** (vedi sotto).
 
-**Esporta** scarica il programma come file; **Elimina** è possibile solo finché nessuno è iscritto.
+I **Premi speciali** (modulo *Premi speciali*, vedi sotto) seguono in una sezione propria. **Esporta** in alto nella pagina scarica il programma come file; **Elimina** nel menu del programma nell’elenco è possibile solo finché nessuno è iscritto.
 
 ## Tentativi {#attempts}
 
@@ -96,10 +105,15 @@ programmi con più tentativi non possono essere combinati.
 
 ## Premi speciali {#special-prizes}
 
-**Premi speciali** nel menu del programma premia i migliori ranghi di ogni categoria d’età, per esempio i ranghi 1–3 in ogni categoria con almeno 10 partecipanti, contando solo i tiratori la cui società ha almeno 4 partecipanti in questo programma. I tiratori saltati lasciano posto al successivo. La regola esatta è nelle [regole di gara](../reference/rules.md#special-prizes); i vincitori sono nel rapporto *Premi speciali* in [Statistiche](statistics-reports.md).
+La sezione **Premi speciali** della pagina del programma premia i migliori
+ranghi di ogni categoria d’età, per esempio i ranghi 1–3 in ogni categoria
+con almeno 10 partecipanti, contando solo i tiratori la cui società ha
+almeno 4 partecipanti in questo programma. I tiratori saltati lasciano posto
+al successivo. La regola esatta è nelle [regole di
+gara](../reference/rules.md#special-prizes); i vincitori sono nel rapporto
+*Premi speciali* in [Statistiche](statistics-reports.md).
 
-![Finestra dei premi speciali](../images/screenshots/special-prizes.png){
+![Premi speciali di un programma](../images/screenshots/special-prizes.png){
 .screenshot }
 
-Ranghi 0 disattiva i premi speciali. Le impostazioni si possono cambiare in
-qualsiasi momento, anche dopo la manifestazione.
+**Salva i premi speciali** li salva; ranghi 0 disattiva i premi speciali. Le impostazioni si possono cambiare in qualsiasi momento, anche dopo la manifestazione.

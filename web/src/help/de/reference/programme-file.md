@@ -1,6 +1,6 @@
 # Programmdatei
 
-**Exportieren** im Programmmenü lädt ein Programm als `<name>.programme.json` herunter; **Programmdatei** unter *Übernehmen aus …* importiert es in einen anderen Anlass oder einen anderen Verein. Der Plattformbetreiber lädt dieselben Dateien in die globale Programmbibliothek hoch.
+**Exportieren** im Programmmenü oder auf der Programmseite lädt ein Programm als `<name>.programme.json` herunter; **Programmdatei** unter *Übernehmen aus …* importiert es in einen anderen Anlass oder einen anderen Verein. Der Plattformbetreiber lädt dieselben Dateien in die globale Programmbibliothek hoch.
 
 ```json
 {

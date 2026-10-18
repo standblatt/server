@@ -6,5 +6,6 @@ export default {
 	label: msg`Attempts`,
 	description: msg`Programmes can be shot several times, e.g. further attempts or an annual programme.`,
 	help: 'user-guide/programmes#attempts',
-	icon: Repeat
+	icon: Repeat,
+	programmeSections: [{ after: 'series', load: () => import('./ProgrammeSection.svelte') }]
 } satisfies ModuleUI;

@@ -44,7 +44,7 @@
 		{/each}
 		{#if event.data}
 			{#each enabled(event.data) as m (m.key)}
-				{#if m.rankingsSections}<ModuleSlot load={m.rankingsSections} {tenantId} event={event.data} />{/if}
+				{#if m.rankingsSections}<ModuleSlot load={m.rankingsSections} props={{ tenantId, event: event.data }} />{/if}
 			{/each}
 		{/if}
 	</div>

@@ -8,6 +8,7 @@ export default {
 	help: 'user-guide/statistics-reports',
 	icon: Building,
 	settings: () => import('./Settings.svelte'),
+	programmeSections: [{ after: 'basics', load: () => import('./ProgrammeSection.svelte') }],
 	statisticsSections: () => import('./StatisticsSection.svelte'),
 	reports: [{ id: 'club_competition', label: msg`Club competition` }]
 } satisfies ModuleUI;

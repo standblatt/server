@@ -7,7 +7,7 @@ Programme gehören zu einem Anlass und werden unter **Konfiguration** →
 
 ## Programme hinzufügen
 
-- **Neues Programm** öffnet den Editor.
+- **Neues Programm** öffnet eine leere Programmseite.
 - **Übernehmen aus … → Programm-Bibliothek**: eine Vorlage der globalen
   Bibliothek, die der Plattformbetreiber pflegt.
 - **Übernehmen aus … → Früherer Anlass**: kopiert alle Programme eines
@@ -18,45 +18,53 @@ Programme gehören zu einem Anlass und werden unter **Konfiguration** →
   [Programmdatei](../reference/programme-file.md), die aus einem anderen
   Anlass oder Verein exportiert wurde.
 
-## Der Editor
+## Die Programmseite {#page}
 
-![Programm-Editor](../images/screenshots/programme-editor.png){ .screenshot
-}
+Ein Klick auf ein Programm in der Liste öffnet seine Seite. Sie hat die
+Abschnitte des Programms und dazu einen Abschnitt für jeden eingeschalteten
+[Baustein](events.md#modules), der etwas zu Programmen beiträgt;
+**Erstellen** oder **Speichern** unten speichert sie zusammen.
+
+![Programmseite](../images/screenshots/programme-editor.png){ .screenshot }
 
 - **Name** und **Variante**: Programme mit gleichem Namen sind Varianten
   voneinander; ein Schütze meldet sich für eine davon an. Das Namensfeld
   schlägt die Namen der Programme des Anlasses vor, und sobald der Name zu
-  einem passt, sagt der Editor, dass du eine Variante anlegst, und warnt,
+  einem passt, sagt die Seite, dass du eine Variante anlegst, und warnt,
   wenn der Variantenname leer oder schon vergeben ist.
 - **Barcode**: wird für die elektronische Trefferanzeige auf das Standblatt
   gedruckt (siehe [Codes](../reference/codes.md)).
-- **Auf Kiosk-Anzeigen zeigen**.
+- **Zählt für die Vereinskonkurrenz** und **Auf Kiosk-Anzeigen zeigen**: nur
+  solange die Bausteine *Vereinskonkurrenz* und *Kiosk-Anzeigen* an sind.
 - **Passen**: Schüsse, Maximalpunkte, ob Mouchen gezählt und ob
   **Einzelschüsse** erfasst werden, pro Passe. Mit Einzelschüssen lässt sich
   jeder Schuss erfassen, und die Passe ist deren Summe, z. B. um sie auf ein
   Formular zu drucken; das Passentotal allein lässt sich weiterhin erfassen.
-- **Durchgänge** (siehe unten): wie oft ein Schütze das Programm am Anlass
-  schiessen darf.
+- **Durchgänge** (Baustein *Durchgänge*, siehe unten): wie oft ein Schütze
+  das Programm am Anlass schiessen darf.
 - **Preise (CHF)**: Nur die angekreuzten Alterskategorien dürfen das
   Programm schiessen. Bei mehreren Durchgängen ist ein zweites Feld pro
   Kategorie der Preis jedes weiteren Durchgangs (*Nachdoppel*); leer heisst
   gleicher Preis, 0 heisst, das Programm wird einmal bezahlt.
-- **Auszeichnungen**: Name, Art (Kranzkarte, Naturalgabe oder Geldpreis, der
-  in bar ausbezahlt wird), Wert und das Mindesttotal pro Alterskategorie;
-  lass eine Kategorie leer, wo die Auszeichnung nicht verfügbar ist.
+- **Auszeichnungen** (Baustein *Auszeichnungen*): Name, Art (Kranzkarte,
+  Naturalgabe oder Geldpreis, der in bar ausbezahlt wird), Wert und das
+  Mindesttotal pro Alterskategorie; lass eine Kategorie leer, wo die
+  Auszeichnung nicht verfügbar ist.
 
 Sobald Schützen für ein Programm angemeldet sind, sind die **Passen** fest,
-damit die Resultate ihre Bedeutung behalten; der Editor sagt das und graut
+damit die Resultate ihre Bedeutung behalten; die Seite sagt das und graut
 sie aus. Alles andere lässt sich weiterhin ändern: Name, Variante,
 Beschreibung, Barcode, die Schalter, Preise, Passennamen, Namen, Werte und
 Limiten der Auszeichnungen. Alterskategorien und Auszeichnungen können
-**hinzugefügt**, aber nicht entfernt werden. Bei einem Programm in Gebrauch
-geht ausserdem:
+**hinzugefügt**, aber nicht entfernt werden.
+
+Der Abschnitt **Einsatz** eines gespeicherten Programms wird bei jeder
+Änderung sofort gespeichert, auch wenn schon Schützen angemeldet sind:
 
 - **Aktiv**: Inaktive Programme lassen sich für neue Anmeldungen nicht
   wählen; bestehende behalten sie.
 - **Kombinierbar mit**: das Programm, dessen Passen dieses bei der Anmeldung
-  übernehmen darf.
+  übernehmen darf (nicht bei Programmen mit mehreren Durchgängen).
 - **Schiessstand** (Anlässe auf mehreren Ständen): der Stand, auf dem das
   Programm geschossen wird, z. B. *Pistole 50 m*; die Anmeldung bietet dann
   nur seine Scheiben an, und Kiosk-Bildschirme gruppieren die Ranglisten
@@ -65,9 +73,8 @@ geht ausserdem:
 - **Druckvorlage** (wenn der Verein [Druckvorlagen](print-forms.md) hat):
   die Vorlage, auf die die Resultate des Programms gedruckt werden; *keine*
   druckt keine Vorlage.
-- **Sonderpreise** (siehe unten).
 
-**Exportieren** lädt das Programm als Datei herunter; **Löschen** geht nur, solange niemand angemeldet ist.
+**Sonderpreise** (Baustein *Sonderpreise*, siehe unten) folgen als eigener Abschnitt. **Exportieren** oben auf der Seite lädt das Programm als Datei herunter; **Löschen** im Menü des Programms in der Liste geht nur, solange niemand angemeldet ist.
 
 ## Durchgänge {#attempts}
 
@@ -96,10 +103,15 @@ mehreren Durchgängen können nicht kombiniert werden.
 
 ## Sonderpreise {#special-prizes}
 
-**Sonderpreise** im Programmmenü zeichnet die besten Ränge jeder Alterskategorie aus, zum Beispiel die Ränge 1–3 in jeder Kategorie mit mindestens 10 Teilnehmern, wobei nur Schützen zählen, deren Verein mindestens 4 Teilnehmer in diesem Programm hat. Übersprungene Schützen machen dem nächsten Platz. Die genaue Regel steht in den [Wettkampfregeln](../reference/rules.md#special-prizes); die Gewinner stehen im Bericht *Sonderpreise* unter [Statistik](statistics-reports.md).
+Der Abschnitt **Sonderpreise** auf der Programmseite zeichnet die besten
+Ränge jeder Alterskategorie aus, zum Beispiel die Ränge 1–3 in jeder
+Kategorie mit mindestens 10 Teilnehmern, wobei nur Schützen zählen, deren
+Verein mindestens 4 Teilnehmer in diesem Programm hat. Übersprungene
+Schützen machen dem nächsten Platz. Die genaue Regel steht in den
+[Wettkampfregeln](../reference/rules.md#special-prizes); die Gewinner stehen
+im Bericht *Sonderpreise* unter [Statistik](statistics-reports.md).
 
-![Dialog Sonderpreise](../images/screenshots/special-prizes.png){
+![Sonderpreise eines Programms](../images/screenshots/special-prizes.png){
 .screenshot }
 
-Ränge 0 schaltet die Sonderpreise aus. Die Einstellungen lassen sich
-jederzeit ändern, auch nach dem Anlass.
+**Sonderpreise speichern** speichert sie; Ränge 0 schaltet die Sonderpreise aus. Die Einstellungen lassen sich jederzeit ändern, auch nach dem Anlass.

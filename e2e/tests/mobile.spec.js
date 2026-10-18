@@ -133,9 +133,8 @@ test.describe("phone", () => {
       if (s.length) found[u] = s;
     }
     await page.goto(`${e}/config/programmes`);
-    await page.getByRole("button", { name: /Actions for/ }).first().click();
-    await page.getByRole("menuitem", { name: "Edit" }).click();
-    await expect(page.locator("[role=dialog]")).toBeVisible();
+    await page.locator("table a").first().click();
+    await expect(page.getByRole("switch", { name: "Active: shooters can register for it" })).toBeVisible();
     const s = await sideways(page);
     if (s.length) found["programme editor"] = s;
     expect(found).toEqual({});

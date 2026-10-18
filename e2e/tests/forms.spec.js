@@ -137,6 +137,7 @@ test.describe("print forms", () => {
   test("prints the results onto the form of the programme", async ({ page }) => {
     await login(page, admin);
     await page.goto(`/t/${ids.tenant}/events/${ids.event}/config/programmes`);
+    await page.locator("table").getByRole("link", { name: "Obligatory", exact: true }).click();
     await page.getByLabel("Print form").selectOption({ label: "Army sheet" });
     await expect.poll(async () => (await api(page, "GET", `/api/tenants/${ids.tenant}/events/${ids.event}/programmes`))[0].layoutId).toBe(ids.layout);
 

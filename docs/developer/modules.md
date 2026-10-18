@@ -31,6 +31,7 @@ Every module has a folder `web/src/lib/modules/<key>/` with an `index.ts` that e
 | `operationPage` (+ `badge`) | `routes/…/events/[eventId]/[module]` | its own page in the operation sidebar, e.g. *Reservations*; renders its own `PageHeader` |
 | `settings` | the *Modules* page, under the module's switch | a few fields saved with `updateEvent` from `$lib/tenant` |
 | `rankingsSections`, `statisticsSections` | the rankings and statistics pages | panels after the core ones |
+| `programmeSections` | the programme page (`ProgrammeEditor`), `after` one of `basics`, `series`, `prices`, `usage` | sections that edit the `ProgrammeDraft` (`$lib/programme/draft.svelte.ts`) saved with the programme, or, after `usage`, save at once through their own endpoint (only for saved programmes); props `ProgrammeProps` |
 | `reports` | the statistics page's export list | report keys with their labels (the server checks `reportModules`) |
 
 `has(event, key)` tells whether a module is on; check it where the feature lives, not in the page around it. Static routes win over `[module]`, so a module key must not be `entry`, `rankings`, `statistics`, `config`, `modules`, `programmes` or `close`.

@@ -77,13 +77,14 @@ vale per tutti gli elementi; l’anteprima lo ignora.
 
 ## Usare un modello {#use}
 
-In **Configurazione** → **Programmi** della manifestazione scegli il
-**Modello di stampa** di un programma; funziona anche con tiratori già
-iscritti. Ogni programma concluso offre allora **Stampa sul modello** nei
-risultati: al desk, nella pagina **Registra risultati** e tramite i link per
-segretari al bersaglio (vedi [Aiutanti](helpers.md)). Con un agente di
-stampa e una stampante scelta per *Modelli di stampa* in **Stand di tiro →
-Stampa**, il foglio va a quella stampante (p. es. al suo alimentatore
-manuale), altrimenti si apre il PDF (vedi [Stampa](printing.md)).
+In **Configurazione** → **Programmi** della manifestazione apri un programma
+e scegli il suo **Modello di stampa** nella sezione **Utilizzo**; funziona
+anche con tiratori già iscritti. Ogni programma concluso offre allora
+**Stampa sul modello** nei risultati: al desk, nella pagina **Registra
+risultati** e tramite i link per segretari al bersaglio (vedi
+[Aiutanti](helpers.md)). Con un agente di stampa e una stampante scelta per
+*Modelli di stampa* in **Stand di tiro → Stampa**, il foglio va a quella
+stampante (p. es. al suo alimentatore manuale), altrimenti si apre il PDF
+(vedi [Stampa](printing.md)).
 
 **Esporta** scarica un modello come file e **Importa** lo rilegge, p. es. per condividere un modello con un’altra società.

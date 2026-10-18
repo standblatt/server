@@ -111,7 +111,7 @@
 						<a href={item.href} {...props}><item.icon /><span>{item.label}</span></a>
 					{/snippet}
 				</Sidebar.MenuButton>
-				{#if item.badge && event}<ModuleSlot load={item.badge} {tenantId} {event} />{/if}
+				{#if item.badge && event}<ModuleSlot load={item.badge} props={{ tenantId, event }} />{/if}
 			</Sidebar.MenuItem>
 		{/each}
 	</Sidebar.Menu>
