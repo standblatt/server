@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 11:31+0000\n"
+"POT-Creation-Date: 2026-10-18 11:49+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -359,7 +359,9 @@ msgstr ""
 msgid ""
 "![A new event and its kind](../images/screenshots/new-event.png)"
 "{ .screenshot }"
-msgstr "![Una nuova manifestazione e il suo tipo](../images/screenshots/new-event.png){ .screenshot }"
+msgstr ""
+"![Una nuova manifestazione e il suo tipo](../images/screenshots/new-"
+"event.png){ .screenshot }"
 
 #. type: Title ##
 #: ../src/help/en/getting-started/first-event.md:27
@@ -2455,10 +2457,11 @@ msgstr ""
 #: ../src/help/en/user-guide/dashboard.md:13
 msgid ""
 "**Waiting**: registrations without a lane (for example when all lanes are "
-"taken)."
-msgstr ""
-"**In attesa**: iscrizioni senza bersaglio (per esempio quando tutti i "
-"bersagli sono occupati)."
+"taken). Without [lane assignment](events.md#modules) (or without a range) "
+"there are no lanes and no *Shooting*: the list is called **Registered** and "
+"offers **Results**, **Edit** and **Finish**; a registration leaves it once "
+"its results are complete."
+msgstr "**In attesa**: iscrizioni senza bersaglio (per esempio quando tutti i bersagli sono occupati). Senza [assegnazione dei bersagli](events.md#modules) (o senza stand) non ci sono bersagli né *Al tiro*: l’elenco si chiama allora **Iscritti** e offre **Risultati**, **Modifica** e **Termina**; un’iscrizione lo lascia appena i suoi risultati sono completi."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/dashboard.md:13
@@ -2733,7 +2736,9 @@ msgstr ""
 #: ../src/help/en/user-guide/events.md:38
 msgid ""
 "![The modules of an event](../images/screenshots/modules.png){ .screenshot }"
-msgstr "![I moduli di una manifestazione](../images/screenshots/modules.png){ .screenshot }"
+msgstr ""
+"![I moduli di una manifestazione](../images/screenshots/modules.png)"
+"{ .screenshot }"
 
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:52
@@ -2946,7 +2951,9 @@ msgstr ""
 msgid ""
 "![New event with the kinds and a template of the club](../images/screenshots/"
 "new-event.png){ .screenshot }"
-msgstr "![Nuova manifestazione con i tipi e un modello della società](../images/screenshots/new-event.png){ .screenshot }"
+msgstr ""
+"![Nuova manifestazione con i tipi e un modello della società](../images/"
+"screenshots/new-event.png){ .screenshot }"
 
 #. type: Title ##
 #: ../src/help/en/user-guide/events.md:91
@@ -3506,7 +3513,9 @@ msgstr ""
 msgid ""
 "![Print forms with the built-in forms and the image library](../images/"
 "screenshots/print-forms.png){ .screenshot }"
-msgstr "![Modelli di stampa con i modelli integrati e la biblioteca di immagini](../images/screenshots/print-forms.png){ .screenshot }"
+msgstr ""
+"![Modelli di stampa con i modelli integrati e la biblioteca di immagini](../"
+"images/screenshots/print-forms.png){ .screenshot }"
 
 #. type: Title ##
 #: ../src/help/en/user-guide/print-forms.md:36
@@ -3552,7 +3561,9 @@ msgstr ""
 msgid ""
 "![Certificates from a ranking](../images/screenshots/certificates.png)"
 "{ .screenshot }"
-msgstr "![Diplomi da una classifica](../images/screenshots/certificates.png){ .screenshot }"
+msgstr ""
+"![Diplomi da una classifica](../images/screenshots/certificates.png)"
+"{ .screenshot }"
 
 #. type: Title ##
 #: ../src/help/en/user-guide/print-forms.md:44
@@ -5394,6 +5405,13 @@ msgstr ""
 "panel.md). Una password dimenticata si reimposta con **Password dimenticata?"
 "** nella pagina di accesso se l’account ha un indirizzo e-mail confermato, "
 "altrimenti lo fa il gestore."
+
+#~ msgid ""
+#~ "**Waiting**: registrations without a lane (for example when all lanes are "
+#~ "taken)."
+#~ msgstr ""
+#~ "**In attesa**: iscrizioni senza bersaglio (per esempio quando tutti i "
+#~ "bersagli sono occupati)."
 
 #, no-wrap
 #~ msgid "The editor"

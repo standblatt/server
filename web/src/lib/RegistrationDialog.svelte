@@ -142,7 +142,7 @@
 		const where = laneLabel(r) || $t`the waiting list`;
 		const ok = await ask(
 			kind === 'finish'
-				? { title: $t`Finish shooting?`, description: $t`${name} leaves ${where}.`, action: $t`Finish` }
+				? { title: $t`Finish shooting?`, description: r.lane || event.data?.modules.includes('lanes') ? $t`${name} leaves ${where}.` : $t`${name} is marked as finished.`, action: $t`Finish` }
 				: { title: $t`Delete registration?`, description: $t`The registration of ${name} and its results are deleted.`, action: $t`Delete`, destructive: true }
 		);
 		if (!ok) return;

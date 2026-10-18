@@ -11,7 +11,11 @@ quale bersaglio, chi aspetta, chi ha finito.
   consegnate e poi lo mostra un badge verde *munizione* (vedi
   [Aiutanti](helpers.md)).
 - **In attesa**: iscrizioni senza bersaglio (per esempio quando tutti i
-  bersagli sono occupati).
+  bersagli sono occupati). Senza [assegnazione dei
+  bersagli](events.md#modules) (o senza stand) non ci sono bersagli né *Al
+  tiro*: l’elenco si chiama allora **Iscritti** e offre **Risultati**,
+  **Modifica** e **Termina**; un’iscrizione lo lascia appena i suoi
+  risultati sono completi.
 - **Terminati**: iscrizioni i cui programmi hanno tutti i risultati, con il
   badge *distinzioni da consegnare*, che apre il dialogo dei risultati per
   la consegna, o poi *distinzioni consegnate* (vedi

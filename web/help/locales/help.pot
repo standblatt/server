@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-18 11:31+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-18 11:49+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
 #: ../src/help/en/getting-started/concepts.md:1
@@ -1578,7 +1578,7 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/dashboard.md:13
 #, markdown-text
-msgid "**Waiting**: registrations without a lane (for example when all lanes are taken)."
+msgid "**Waiting**: registrations without a lane (for example when all lanes are taken). Without [lane assignment](events.md#modules) (or without a range) there are no lanes and no *Shooting*: the list is called **Registered** and offers **Results**, **Edit** and **Finish**; a registration leaves it once its results are complete."
 msgstr ""
 
 #. type: Bullet: '- '

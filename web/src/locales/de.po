@@ -414,6 +414,11 @@ msgstr "{name} wird gelöscht. Schützen mit Anmeldungen können nicht gelöscht
 
 #: src/lib/EventDesk.svelte
 #: src/lib/RegistrationDialog.svelte
+msgid "{name} is marked as finished."
+msgstr "{name} wird als beendet markiert."
+
+#: src/lib/EventDesk.svelte
+#: src/lib/RegistrationDialog.svelte
 msgid "{name} leaves {where}."
 msgstr "{name} verlässt {where}."
 
@@ -3289,6 +3294,10 @@ msgid "Nobody has finished yet."
 msgstr "Noch niemand hat abgeschlossen."
 
 #: src/lib/EventDesk.svelte
+msgid "Nobody is registered."
+msgstr "Niemand ist angemeldet."
+
+#: src/lib/EventDesk.svelte
 msgid "Nobody is shooting."
 msgstr "Niemand schiesst."
 
@@ -3420,6 +3429,10 @@ msgstr "Nur die angekreuzten Alterskategorien dürfen dieses Programm schiessen.
 #: src/lib/modules/attempts/ProgrammeSection.svelte
 msgid "Only the counting attempt receives an award"
 msgstr "Nur der zählende Durchgang erhält eine Auszeichnung"
+
+#: src/lib/EventDesk.svelte
+msgid "open"
+msgstr "offen"
 
 #: src/lib/ProgrammeList.svelte
 #: src/routes/my/settings/+page.svelte
@@ -4040,6 +4053,10 @@ msgstr "{0} anmelden"
 #: src/lib/labels.ts
 msgid "registered"
 msgstr "angemeldet"
+
+#: src/lib/EventDesk.svelte
+msgid "Registered"
+msgstr "Angemeldet"
 
 #: src/lib/forms/Palette.svelte
 msgid "Registration"

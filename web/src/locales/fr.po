@@ -414,6 +414,11 @@ msgstr "{name} est supprimé. Les tireurs avec des inscriptions ne peuvent pas �
 
 #: src/lib/EventDesk.svelte
 #: src/lib/RegistrationDialog.svelte
+msgid "{name} is marked as finished."
+msgstr "{name} est marqué comme terminé."
+
+#: src/lib/EventDesk.svelte
+#: src/lib/RegistrationDialog.svelte
 msgid "{name} leaves {where}."
 msgstr "{name} quitte {where}."
 
@@ -3289,6 +3294,10 @@ msgid "Nobody has finished yet."
 msgstr "Personne n’a encore terminé."
 
 #: src/lib/EventDesk.svelte
+msgid "Nobody is registered."
+msgstr "Personne n’est inscrit."
+
+#: src/lib/EventDesk.svelte
 msgid "Nobody is shooting."
 msgstr "Personne ne tire."
 
@@ -3420,6 +3429,10 @@ msgstr "Seules les catégories d’âge cochées peuvent tirer ce programme. Les
 #: src/lib/modules/attempts/ProgrammeSection.svelte
 msgid "Only the counting attempt receives an award"
 msgstr "Seule la tentative qui compte reçoit une distinction"
+
+#: src/lib/EventDesk.svelte
+msgid "open"
+msgstr "ouvertes"
 
 #: src/lib/ProgrammeList.svelte
 #: src/routes/my/settings/+page.svelte
@@ -4040,6 +4053,10 @@ msgstr "Inscrire {0}"
 #: src/lib/labels.ts
 msgid "registered"
 msgstr "inscrit"
+
+#: src/lib/EventDesk.svelte
+msgid "Registered"
+msgstr "Inscrits"
 
 #: src/lib/forms/Palette.svelte
 msgid "Registration"

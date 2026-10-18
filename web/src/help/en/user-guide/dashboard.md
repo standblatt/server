@@ -5,7 +5,7 @@ The dashboard is the desk view of an event: who is shooting on which lane, who i
 ![Dashboard](../images/screenshots/dashboard.png){ .screenshot }
 
 - **Shooting**: registrations on a lane, with the time since they started, the buttons **Results**, **Edit** and **Finish**. When the module *Ammunition desk* is on, **Ammo** records that it was handed out and a green *ammo* badge shows it afterwards (see [Helpers](helpers.md)).
-- **Waiting**: registrations without a lane (for example when all lanes are taken).
+- **Waiting**: registrations without a lane (for example when all lanes are taken). Without [lane assignment](events.md#modules) (or without a range) there are no lanes and no *Shooting*: the list is called **Registered** and offers **Results**, **Edit** and **Finish**; a registration leaves it once its results are complete.
 - **Completed**: registrations whose programmes all have results, with an *awards to hand out* badge that opens the results dialog for the handout, or *awards handed out* afterwards (see [Results](results.md#handout)).
 - **Lanes**: every lane is *free*, *occupied* (with the shooter), *reserved* (with the reservation and its end) or *out of service*. A reservation shows from its lead time on. An event on several ranges shows one grid per range, and the registration dialog groups the lanes by range; a shooter who moves to another range is finished and registered again there.
 - The figures at the top count waiting, shooting and completed registrations.

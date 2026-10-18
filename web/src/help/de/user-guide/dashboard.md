@@ -11,7 +11,11 @@ Scheibe schiesst, wer wartet, wer fertig ist.
   wurde, und danach zeigt es ein grünes *Munition*-Abzeichen (siehe
   [Helfer](helpers.md)).
 - **Wartend**: Anmeldungen ohne Scheibe (zum Beispiel, wenn alle Scheiben
-  belegt sind).
+  belegt sind). Ohne [Scheibenzuteilung](events.md#modules) (oder ohne
+  Stand) gibt es keine Scheiben und kein *Am Schiessen*: Die Liste heisst
+  dann **Angemeldet** und bietet **Resultate**, **Bearbeiten** und
+  **Beenden**; eine Anmeldung verlässt sie, sobald ihre Resultate
+  vollständig sind.
 - **Beendet**: Anmeldungen, deren Programme alle Resultate haben, mit dem
   Abzeichen *Auszeichnungen abzugeben*, das den Resultatdialog für die
   Abgabe öffnet oder danach *Auszeichnungen abgegeben* (siehe

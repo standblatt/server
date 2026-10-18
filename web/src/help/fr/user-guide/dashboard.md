@@ -11,7 +11,10 @@ sur quelle cible, qui attend, qui a terminé.
   été remise et un badge vert *munition* le montre ensuite (voir
   [Aides](helpers.md)).
 - **En attente** : inscriptions sans cible (par exemple quand toutes les
-  cibles sont occupées).
+  cibles sont occupées). Sans [attribution des cibles](events.md#modules)
+  (ou sans stand), il n’y a ni cibles ni *En tir* : la liste s’appelle alors
+  **Inscrits** et propose **Résultats**, **Modifier** et **Terminer** ; une
+  inscription la quitte dès que ses résultats sont complets.
 - **Terminés** : inscriptions dont tous les programmes ont des résultats,
   avec le badge *distinctions à remettre*, qui ouvre le dialogue des
   résultats pour la remise, ou ensuite *distinctions remises* (voir

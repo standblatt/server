@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 11:31+0000\n"
+"POT-Creation-Date: 2026-10-18 11:49+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -361,7 +361,9 @@ msgstr ""
 msgid ""
 "![A new event and its kind](../images/screenshots/new-event.png)"
 "{ .screenshot }"
-msgstr "![Ein neuer Anlass und seine Art](../images/screenshots/new-event.png){ .screenshot }"
+msgstr ""
+"![Ein neuer Anlass und seine Art](../images/screenshots/new-event.png)"
+"{ .screenshot }"
 
 #. type: Title ##
 #: ../src/help/en/getting-started/first-event.md:27
@@ -2463,10 +2465,11 @@ msgstr ""
 #: ../src/help/en/user-guide/dashboard.md:13
 msgid ""
 "**Waiting**: registrations without a lane (for example when all lanes are "
-"taken)."
-msgstr ""
-"**Wartend**: Anmeldungen ohne Scheibe (zum Beispiel, wenn alle Scheiben "
-"belegt sind)."
+"taken). Without [lane assignment](events.md#modules) (or without a range) "
+"there are no lanes and no *Shooting*: the list is called **Registered** and "
+"offers **Results**, **Edit** and **Finish**; a registration leaves it once "
+"its results are complete."
+msgstr "**Wartend**: Anmeldungen ohne Scheibe (zum Beispiel, wenn alle Scheiben belegt sind). Ohne [Scheibenzuteilung](events.md#modules) (oder ohne Stand) gibt es keine Scheiben und kein *Am Schiessen*: Die Liste heisst dann **Angemeldet** und bietet **Resultate**, **Bearbeiten** und **Beenden**; eine Anmeldung verlässt sie, sobald ihre Resultate vollständig sind."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/dashboard.md:13
@@ -2740,7 +2743,9 @@ msgstr ""
 #: ../src/help/en/user-guide/events.md:38
 msgid ""
 "![The modules of an event](../images/screenshots/modules.png){ .screenshot }"
-msgstr "![Die Module eines Anlasses](../images/screenshots/modules.png){ .screenshot }"
+msgstr ""
+"![Die Module eines Anlasses](../images/screenshots/modules.png)"
+"{ .screenshot }"
 
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:52
@@ -2951,7 +2956,9 @@ msgstr ""
 msgid ""
 "![New event with the kinds and a template of the club](../images/screenshots/"
 "new-event.png){ .screenshot }"
-msgstr "![Neuer Anlass mit den Arten und einer Vorlage des Vereins](../images/screenshots/new-event.png){ .screenshot }"
+msgstr ""
+"![Neuer Anlass mit den Arten und einer Vorlage des Vereins](../images/"
+"screenshots/new-event.png){ .screenshot }"
 
 #. type: Title ##
 #: ../src/help/en/user-guide/events.md:91
@@ -3512,7 +3519,9 @@ msgstr ""
 msgid ""
 "![Print forms with the built-in forms and the image library](../images/"
 "screenshots/print-forms.png){ .screenshot }"
-msgstr "![Druckvorlagen mit den eingebauten Vorlagen und der Bildbibliothek](../images/screenshots/print-forms.png){ .screenshot }"
+msgstr ""
+"![Druckvorlagen mit den eingebauten Vorlagen und der Bildbibliothek](../"
+"images/screenshots/print-forms.png){ .screenshot }"
 
 #. type: Title ##
 #: ../src/help/en/user-guide/print-forms.md:36
@@ -3558,7 +3567,9 @@ msgstr ""
 msgid ""
 "![Certificates from a ranking](../images/screenshots/certificates.png)"
 "{ .screenshot }"
-msgstr "![Urkunden aus einer Rangliste](../images/screenshots/certificates.png){ .screenshot }"
+msgstr ""
+"![Urkunden aus einer Rangliste](../images/screenshots/certificates.png)"
+"{ .screenshot }"
 
 #. type: Title ##
 #: ../src/help/en/user-guide/print-forms.md:44
@@ -5402,6 +5413,13 @@ msgstr ""
 "(../admin-guide/admin-panel.md). Ein vergessenes Passwort setzt man mit "
 "**Passwort vergessen?** auf der Login-Seite zurück, wenn das Konto eine "
 "bestätigte E-Mail-Adresse hat, sonst der Betreiber."
+
+#~ msgid ""
+#~ "**Waiting**: registrations without a lane (for example when all lanes are "
+#~ "taken)."
+#~ msgstr ""
+#~ "**Wartend**: Anmeldungen ohne Scheibe (zum Beispiel, wenn alle Scheiben "
+#~ "belegt sind)."
 
 #, no-wrap
 #~ msgid "The editor"

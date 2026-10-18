@@ -50,6 +50,8 @@
 	);
 	const archived = $derived(!!event.data?.archivedAt);
 	const ammoIssue = $derived(!!event.data?.modules.includes('ammo'));
+	/** The event assigns lanes; without, registrations stay open until their results are complete. */
+	const lanesOn = $derived(!!event.data?.modules.includes('lanes'));
 	const laneSheet = $derived(!!event.data?.modules.includes('lane_sheet'));
 	const registrations = registrationsQuery(
 		() => tenantId,
@@ -180,7 +182,8 @@
 	async function finish(r: Registration) {
 		const name = `${r.shooter.firstname} ${r.shooter.lastname}`;
 		const where = whereOf(r);
-		if (!(await ask({ title: $t`Finish shooting?`, description: $t`${name} leaves ${where}.`, action: $t`Finish` }))) return;
+		const description = r.lane || lanesOn ? $t`${name} leaves ${where}.` : $t`${name} is marked as finished.`;
+		if (!(await ask({ title: $t`Finish shooting?`, description, action: $t`Finish` }))) return;
 		await call(api.POST('/api/tenants/{tenantId}/registrations/{registrationId}/finish', { params: { path: { tenantId, registrationId: r.id } } }));
 		await queryClient.invalidateQueries({ queryKey: keys.registrations(tenantId, eventId) });
 		toast.success($t`${name} finished`);
@@ -341,6 +344,7 @@
 			</div>
 		{/if}
 
+		{#if lanesOn}
 		<section class="overflow-hidden rounded-lg border bg-card">
 			{@render panel($t`Shooting`, shooting.length)}
 			<Table.Root>
@@ -378,10 +382,11 @@
 				</Table.Body>
 			</Table.Root>
 		</section>
+		{/if}
 
-		{#if can.waiting}
+		{#if can.waiting || (!lanesOn && can.results)}
 			<section class="overflow-hidden rounded-lg border bg-card">
-				{@render panel($t`Waiting`, waiting.length)}
+				{@render panel(lanesOn ? $t`Waiting` : $t`Registered`, waiting.length)}
 				<Table.Root>
 					<Table.Header>
 						<Table.Row>
@@ -394,7 +399,10 @@
 					</Table.Header>
 					<Table.Body>
 						{#each pageOf(waiting, waitingPage, pageSize) as r (r.id)}
-							<Table.Row class={can.assign ? 'cursor-pointer' : ''} onclick={() => can.assign && openRegistration(r.id)}>
+							<Table.Row
+								class={lanesOn ? (can.assign ? 'cursor-pointer' : '') : can.results || can.register ? 'cursor-pointer' : ''}
+								onclick={() => (lanesOn ? can.assign && openRegistration(r.id) : can.results ? openResults(r.id) : can.register && openRegistration(r.id))}
+							>
 								<Table.Cell class="whitespace-normal">{@render shooter(r)}</Table.Cell>
 								<Table.Cell class="hidden md:table-cell">{$t(ageCategoryLabel(r.ageCategory))}</Table.Cell>
 								<Table.Cell class="hidden whitespace-normal lg:table-cell">{programmeNames(r)}</Table.Cell>
@@ -403,12 +411,18 @@
 									<div class="flex items-center justify-end gap-1.5">
 										{@render ammo(r)}
 										{#if laneSheet && can.print && !can.register}<PrintButton {tenantId} target={{ document: 'lane_sheet', registrationId: r.id }} />{/if}
-										{#if can.assign}<Button size="sm" onclick={() => openRegistration(r.id)}>{$t`Assign lane`}</Button>{/if}
+										{#if lanesOn}
+											{#if can.assign}<Button size="sm" onclick={() => openRegistration(r.id)}>{$t`Assign lane`}</Button>{/if}
+										{:else}
+											{#if can.results}<Button size="sm" href="{base}?results={r.id}" data-sveltekit-noscroll data-sveltekit-keepfocus title={$t`Results`}><ListChecks /><span class="sr-only sm:not-sr-only">{$t`Results`}</span></Button>{/if}
+											{#if can.register}<Button size="sm" variant="outline" title={$t`Edit registration`} onclick={() => openRegistration(r.id)}><Pencil /><span class="sr-only xl:not-sr-only">{$t`Edit`}</span></Button>{/if}
+											{#if can.finish && !archived}<Button size="sm" variant="outline" title={$t`Finish shooting`} onclick={() => finish(r)}><Flag /><span class="sr-only xl:not-sr-only">{$t`Finish`}</span></Button>{/if}
+										{/if}
 									</div>
 								</Table.Cell>
 							</Table.Row>
 						{:else}
-							<Table.Row><Table.Cell colspan={5} class="py-6 text-center text-muted-foreground">{$t`Nobody is waiting.`}</Table.Cell></Table.Row>
+							<Table.Row><Table.Cell colspan={5} class="py-6 text-center text-muted-foreground">{lanesOn ? $t`Nobody is waiting.` : $t`Nobody is registered.`}</Table.Cell></Table.Row>
 						{/each}
 					</Table.Body>
 				</Table.Root>
@@ -454,8 +468,8 @@
 
 	<aside class="space-y-4">
 		{#if stats.data}
-			<section class="grid grid-cols-3 divide-x overflow-hidden rounded-lg border bg-card" aria-label={$t`Statistics`}>
-				{#each [[stats.data.registered, $t`waiting`], [stats.data.shooting, $t`shooting`], [stats.data.completed, $t`completed`]] as [n, label] (label)}
+			<section class="grid {lanesOn ? 'grid-cols-3' : 'grid-cols-2'} divide-x overflow-hidden rounded-lg border bg-card" aria-label={$t`Statistics`}>
+				{#each lanesOn ? [[stats.data.registered, $t`waiting`], [stats.data.shooting, $t`shooting`], [stats.data.completed, $t`completed`]] : [[stats.data.registered, $t`open`], [stats.data.completed, $t`completed`]] as [n, label] (label)}
 					<div class="px-3 py-3 text-center"><div class="text-2xl font-semibold tabular-nums">{n}</div><div class="text-xs text-muted-foreground">{label}</div></div>
 				{/each}
 			</section>

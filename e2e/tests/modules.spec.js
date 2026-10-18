@@ -96,6 +96,16 @@ test.describe("modules", () => {
     await page.goto(`/t/${ids.tenant}/events/${ev.id}/config/helpers`);
     await expect(page.locator("option[value=scorer]")).toHaveCount(0);
     expect(await api(page, "GET", `${base}/events/${ev.id}/lanes`)).toEqual([]);
+
+    const programme = await api(page, "POST", `${base}/events/${ev.id}/programmes`, { name: "Season", series: [{ shots: 10, maxPoints: 100 }], prices: [{ ageCategory: "elite", price: 0 }], awards: [] });
+    const sh = await api(page, "POST", `${base}/shooters`, { firstname: "Rita", lastname: "Rangeonly", birthday: "1990-01-01" });
+    await api(page, "POST", `${base}/events/${ev.id}/registrations`, { shooterId: sh.id, programmes: [{ programmeId: programme.id }] });
+    await page.goto(`/t/${ids.tenant}/events/${ev.id}`);
+    await expect(c(page, "h2", "Registered (1)")).toBeVisible();
+    const row = page.locator("tr", { hasText: "Rangeonly" });
+    await expect(row.getByRole("link", { name: "Results" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Assign lane" })).toHaveCount(0);
+    await expect(c(page, "h2", "Shooting")).toHaveCount(0);
   });
 
   test("saves an event as a template and starts a new event from it", async ({ page }) => {
