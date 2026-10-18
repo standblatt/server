@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Uploads larger than 8 KB (shooter and result imports, images, form scans) failed on pods with a read-only file system; they are now kept in memory (by @HB9HIL)
+
 ## [0.20.0] - 2026-10-18
 
 ### Added

@@ -56,6 +56,11 @@ type Server struct {
 	APIRateLimit int
 }
 
+// init keeps multipart uploads in memory: pods have a read-only file system, and MaxBodyBytes bounds every upload.
+func init() {
+	humago.MultipartMaxMemory = maxImportBytes
+}
+
 // Handler returns the root handler: /healthz, /readyz, /api/*, /admin and the SPA for every other path.
 func (s *Server) Handler() http.Handler {
 	mux := http.NewServeMux()

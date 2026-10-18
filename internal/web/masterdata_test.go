@@ -8,6 +8,7 @@ import (
 	"io"
 	"mime/multipart"
 	"net/http"
+	"strings"
 	"testing"
 
 	"github.com/standblatt/server/internal/store"
@@ -158,6 +159,11 @@ func TestShooterImport(t *testing.T) {
 
 	code, b = e.upload(admin, path, "city\nBern\n")
 	expect(t, "bad header", code, 422, b)
+
+	t.Setenv("TMPDIR", "/nonexistent")
+	big := "firstname;lastname\n" + strings.Repeat("Big;Import\n", 2000)
+	code, b = e.upload(admin, path, big)
+	expect(t, "import larger than 8 KB without a writable temp directory", code, 200, b)
 }
 
 func TestClubMatchAndMerge(t *testing.T) {
