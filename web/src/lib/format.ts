@@ -1,3 +1,5 @@
+import { intlLocale } from './locale.svelte';
+
 /** Formats an ISO date as dd.mm.yyyy. */
 export function formatDate(iso: string): string {
 	const [y, m, d] = iso.split('-');
@@ -64,3 +66,12 @@ export const pageOf = <T>(list: T[], page: number, size: number) => {
 	const p = Math.min(page, lastPage(list.length, size));
 	return list.slice(p * size, (p + 1) * size);
 };
+
+/** An amount in Swiss francs with two decimals. */
+export const chf = (v: number) => `CHF ${v.toLocaleString(intlLocale(), { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+/** Points as shown in rankings: whole numbers plain, others with one decimal. */
+export const points = (v: number) => (Number.isInteger(v) ? String(v) : v.toFixed(1));
+
+/** Badge colours of ranks 1 to 3 (gold, silver, bronze). */
+export const podium = ['bg-amber-400 text-amber-950', 'bg-slate-300 text-slate-900', 'bg-orange-300 text-orange-950'];

@@ -3,7 +3,7 @@
 	import { createQuery } from '@tanstack/svelte-query';
 	import { api, call } from '$lib/api';
 	import * as Table from '$lib/components/ui/table';
-	import { intlLocale } from '$lib/locale.svelte';
+	import { chf } from '$lib/format';
 	import PanelHead from '$lib/PanelHead.svelte';
 	import { keys } from '$lib/tenant';
 	import type { EventProps } from '..';
@@ -13,8 +13,6 @@
 		queryKey: [...keys.reports(tenantId, event.id), 'statistics'],
 		queryFn: () => call(api.GET('/api/tenants/{tenantId}/events/{eventId}/statistics', { params: { path: { tenantId, eventId: event.id } } }))
 	}));
-	/** Formats an amount in Swiss francs. */
-	const chf = (v: number) => `CHF ${v.toLocaleString(intlLocale(), { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 	/** Translated label of an award kind. */
 	const kind = (k: string) => (k === 'card' ? $t`Wreath card` : k === 'cash' ? $t`Cash prize` : $t`Prize in kind`);
 </script>

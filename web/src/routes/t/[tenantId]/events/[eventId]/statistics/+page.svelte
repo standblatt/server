@@ -7,8 +7,7 @@
 	import FileSpreadsheet from '@lucide/svelte/icons/file-spreadsheet';
 	import FileText from '@lucide/svelte/icons/file-text';
 	import { ageCategoryLabel } from '$lib/labels';
-	import { formatDate, programmeTitle } from '$lib/format';
-	import { intlLocale } from '$lib/locale.svelte';
+	import { chf, formatDate, programmeTitle } from '$lib/format';
 	import { Button } from '$lib/components/ui/button';
 	import * as Table from '$lib/components/ui/table';
 	import PageHeader from '$lib/PageHeader.svelte';
@@ -41,8 +40,6 @@
 	]);
 	/** Download URL of a report in the given format. */
 	const reportUrl = (id: string, format: string) => `/api/tenants/${tenantId}/events/${eventId}/reports/${id}?format=${format}`;
-	/** Formats an amount in Swiss francs. */
-	const chf = (v: number) => `CHF ${v.toLocaleString(intlLocale(), { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 	/** Key figures as [value, label] pairs. */
 	const figures = (s: NonNullable<typeof stats.data>) => [
 		[String(s.registered + s.shooting + s.completed), $t`registrations`],

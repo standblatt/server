@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { podium, points } from '$lib/format';
 	import { t } from 'lingui-for-svelte/macro';
 	import type { Snippet } from 'svelte';
 	import type { ClassificationRanking } from '$lib/api';
@@ -7,9 +8,6 @@
 
 	let { ranking, large = false, actions }: { ranking: ClassificationRanking; large?: boolean; actions?: Snippet } = $props();
 
-	const podium = ['bg-amber-400 text-amber-950', 'bg-slate-300 text-slate-900', 'bg-orange-300 text-orange-950'];
-	/** Formats a value without decimals when whole, else with one. */
-	const fmt = (v: number) => (Number.isInteger(v) ? String(v) : v.toFixed(1));
 </script>
 
 {#each ranking.classes as cl (cl.name)}
@@ -47,9 +45,9 @@
 						<Table.Cell class="hidden sm:table-cell">{ageCategoryShort[l.category]}</Table.Cell>
 						<Table.Cell class="hidden max-w-48 truncate sm:table-cell">{l.club}</Table.Cell>
 						{#each l.parts as p, i (i)}
-							<Table.Cell class="hidden text-right sm:table-cell {p.counted ? '' : 'text-muted-foreground line-through'}">{p.points !== undefined ? fmt(p.points) : '–'}</Table.Cell>
+							<Table.Cell class="hidden text-right sm:table-cell {p.counted ? '' : 'text-muted-foreground line-through'}">{p.points !== undefined ? points(p.points) : '–'}</Table.Cell>
 						{/each}
-						<Table.Cell class="text-right font-semibold">{fmt(l.total)}</Table.Cell>
+						<Table.Cell class="text-right font-semibold">{points(l.total)}</Table.Cell>
 					</Table.Row>
 				{:else}
 					<Table.Row><Table.Cell colspan={6 + ranking.parts.length} class="py-8 text-center text-muted-foreground">{$t`No results yet.`}</Table.Cell></Table.Row>

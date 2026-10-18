@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { podium, points } from '$lib/format';
 	import { plural, t } from 'lingui-for-svelte/macro';
 	import type { Snippet } from 'svelte';
 	import type { ProgrammeRanking } from './api';
@@ -7,9 +8,6 @@
 
 	let { ranking, large = false, actions }: { ranking: ProgrammeRanking; large?: boolean; actions?: Snippet } = $props();
 
-	const podium = ['bg-amber-400 text-amber-950', 'bg-slate-300 text-slate-900', 'bg-orange-300 text-orange-950'];
-	/** Formats a value without decimals when whole, else with one. */
-	const fmt = (v: number) => (Number.isInteger(v) ? String(v) : v.toFixed(1));
 </script>
 
 <section class="overflow-hidden rounded-lg border bg-card" aria-label={$t`Ranking ${ranking.title}`}>
@@ -45,8 +43,8 @@
 					<Table.Cell class="hidden sm:table-cell">{l.birthYear || '–'}</Table.Cell>
 					<Table.Cell class="hidden sm:table-cell">{ageCategoryShort[l.category]}</Table.Cell>
 					<Table.Cell class="hidden sm:table-cell max-w-48 truncate">{l.club}</Table.Cell>
-					{#each Array(ranking.seriesCount) as _, i (i)}<Table.Cell class="hidden sm:table-cell text-right text-muted-foreground">{l.series[i] !== undefined ? fmt(l.series[i]) : '–'}</Table.Cell>{/each}
-					<Table.Cell class="text-right font-semibold">{fmt(l.total)}</Table.Cell>
+					{#each Array(ranking.seriesCount) as _, i (i)}<Table.Cell class="hidden sm:table-cell text-right text-muted-foreground">{l.series[i] !== undefined ? points(l.series[i]) : '–'}</Table.Cell>{/each}
+					<Table.Cell class="text-right font-semibold">{points(l.total)}</Table.Cell>
 					{#if ranking.repeatable}<Table.Cell class="text-right text-muted-foreground" data-testid="attempt">{l.attempt}/{l.attempts}</Table.Cell>{/if}
 					{#if ranking.tracksMouches}<Table.Cell class="text-right">{l.mouches}</Table.Cell>{/if}
 				</Table.Row>
