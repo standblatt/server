@@ -70,8 +70,8 @@ func (s *Server) registerInvites(api huma.API) {
 		if err != nil {
 			return nil, err
 		}
-		if _, err := s.Store.GetRole(ctx, in.TenantID, in.Body.RoleID); err != nil {
-			return nil, notFound(err, "Role not found")
+		if err := s.roleWithin(ctx, in.TenantID, in.Body.RoleID); err != nil {
+			return nil, err
 		}
 		out := &inviteOut{Body: []InviteResult{}}
 		seen := map[string]bool{}
@@ -114,6 +114,9 @@ func (s *Server) registerInvites(api huma.API) {
 		if err != nil {
 			return nil, notFound(err, "Invitation not found")
 		}
+		if err := s.roleWithin(ctx, in.TenantID, inv.RoleID); err != nil {
+			return nil, err
+		}
 		tenant, err := s.Store.GetTenant(ctx, in.TenantID)
 		if err != nil {
 			return nil, err
@@ -127,6 +130,13 @@ func (s *Server) registerInvites(api huma.API) {
 		Summary: "Withdraw an invitation; its link stops working", DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *InvitationPath) (*struct{}, error) {
 		if _, _, err := s.access(ctx, in.TenantID); err != nil {
+			return nil, err
+		}
+		inv, err := s.Store.GetInvitation(ctx, in.TenantID, in.InvitationID)
+		if err != nil {
+			return nil, notFound(err, "Invitation not found")
+		}
+		if err := s.roleWithin(ctx, in.TenantID, inv.RoleID); err != nil {
 			return nil, err
 		}
 		return nil, notFound(s.Store.DeleteInvitation(ctx, in.TenantID, in.InvitationID), "Invitation not found")

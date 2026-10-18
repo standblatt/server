@@ -61,6 +61,12 @@ Jeder Verein startet mit vier Rollen:
 
 **Neue Rolle** fügt eine eigene Rolle hinzu, die nur die Anlässe sieht, bis du mehr anhakst. Der Stift benennt eine Rolle um (ein leerer Name behält den Vorgabenamen), der Papierkorb löscht sie, sobald niemand sie mehr hat. Die App zeigt jedem Mitglied nur die Seiten und Knöpfe, die seine Rolle erlaubt: Ein Mitglied ohne *Anlässe durchführen* öffnet einen Anlass bei seinen Ranglisten.
 
+Mitglieder mit *Benutzer und Verein*, aber ohne die Rolle Admin, bleiben
+innerhalb ihrer eigenen Rechte: Sie vergeben, ändern, entfernen und laden
+nur mit Rollen ein, deren Rechte sie selbst haben, und legen Rollen nur
+innerhalb davon an oder ändern sie. Nur Admins ernennen, ändern oder
+entfernen deshalb Admins.
+
 Konten sind global: Ein Konto löscht der Plattformbetreiber im
 [Admin-Panel](../admin-guide/admin-panel.md). Ein vergessenes Passwort setzt
 man mit **Passwort vergessen?** auf der Login-Seite zurück, wenn das Konto

@@ -43,4 +43,6 @@ Every club starts with four roles:
 
 **New role** adds a role of your own, which may only see the events until you tick more. The pencil renames a role (an empty name keeps the default name), the bin deletes it once nobody has it any more. The app shows each member only the pages and buttons their role allows: a member without *Run events* opens an event on its rankings.
 
+Members with *Users and club* but without the admin role stay within their own permissions: they give, change, remove and invite only with roles whose permissions they have themselves, and make or change roles only within them. So only admins make, change or remove admins.
+
 Accounts are global: deleting an account is done by the platform operator in the [admin panel](../admin-guide/admin-panel.md). A forgotten password is reset with **Forgot your password?** on the login page if the account has a confirmed email address, otherwise by the operator.

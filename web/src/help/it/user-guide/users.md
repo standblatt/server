@@ -60,6 +60,12 @@ Ogni società inizia con quattro ruoli:
 
 **Nuovo ruolo** aggiunge un ruolo proprio, che vede solo le manifestazioni finché non ne spunti di più. La matita rinomina un ruolo (un nome vuoto mantiene il nome predefinito), il cestino lo elimina quando nessuno lo ha più. L’app mostra a ogni membro solo le pagine e i pulsanti che il suo ruolo consente: un membro senza *Gestire le manifestazioni* apre una manifestazione sulle sue classifiche.
 
+I membri con *Utenti e società* ma senza il ruolo Admin restano entro i
+propri diritti: assegnano, modificano, rimuovono e invitano solo con ruoli
+di cui hanno essi stessi i diritti, e creano o modificano ruoli solo entro
+questi limiti. Solo gli admin nominano, modificano o rimuovono quindi degli
+admin.
+
 Gli account sono globali: un account viene eliminato dal gestore della
 piattaforma nel [pannello di
 amministrazione](../admin-guide/admin-panel.md). Una password dimenticata si

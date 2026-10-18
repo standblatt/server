@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-18 14:59+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-18 15:18+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
 #: ../src/help/en/getting-started/concepts.md:1
@@ -3420,7 +3420,13 @@ msgid "**New role** adds a role of your own, which may only see the events until
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/users.md:46
+#: ../src/help/en/user-guide/users.md:47
+#, markdown-text
+msgid "Members with *Users and club* but without the admin role stay within their own permissions: they give, change, remove and invite only with roles whose permissions they have themselves, and make or change roles only within them. So only admins make, change or remove admins."
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/users.md:48
 #, markdown-text
 msgid "Accounts are global: deleting an account is done by the platform operator in the [admin panel](../admin-guide/admin-panel.md). A forgotten password is reset with **Forgot your password?** on the login page if the account has a confirmed email address, otherwise by the operator."
 msgstr ""

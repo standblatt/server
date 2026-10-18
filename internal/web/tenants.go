@@ -350,8 +350,8 @@ func (s *Server) registerMembers(api huma.API) {
 		if err != nil {
 			return nil, err
 		}
-		if _, err := s.Store.GetRole(ctx, in.TenantID, in.Body.RoleID); err != nil {
-			return nil, notFound(err, "Role not found")
+		if err := s.roleWithin(ctx, in.TenantID, in.Body.RoleID); err != nil {
+			return nil, err
 		}
 		name := strings.ToLower(strings.TrimSpace(in.Body.Name))
 		target, err := s.Store.UserByName(ctx, name)
@@ -390,8 +390,11 @@ func (s *Server) registerMembers(api huma.API) {
 		if _, _, err := s.access(ctx, in.TenantID); err != nil {
 			return nil, err
 		}
-		if _, err := s.Store.MemberRole(ctx, in.TenantID, in.UserID); err != nil {
-			return nil, notFound(err, "User not found")
+		if err := s.memberWithin(ctx, in.TenantID, in.UserID); err != nil {
+			return nil, err
+		}
+		if err := s.roleWithin(ctx, in.TenantID, in.Body.RoleID); err != nil {
+			return nil, err
 		}
 		if err := s.keepOneAdmin(ctx, in.TenantID, in.UserID, in.Body.RoleID); err != nil {
 			return nil, err
@@ -404,6 +407,9 @@ func (s *Server) registerMembers(api huma.API) {
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *MemberPath) (*struct{}, error) {
 		if _, _, err := s.access(ctx, in.TenantID); err != nil {
+			return nil, err
+		}
+		if err := s.memberWithin(ctx, in.TenantID, in.UserID); err != nil {
 			return nil, err
 		}
 		if err := s.keepOneAdmin(ctx, in.TenantID, in.UserID, 0); err != nil {
@@ -448,6 +454,9 @@ func (s *Server) registerRoles(api huma.API) {
 		if in.Body.Name == "" {
 			return nil, invalid("Name is required")
 		}
+		if err := s.within(ctx, in.TenantID, in.Body.Permissions); err != nil {
+			return nil, err
+		}
 		id, err := s.Store.CreateRole(ctx, in.TenantID, in.Body)
 		if err != nil {
 			return nil, err
@@ -475,6 +484,9 @@ func (s *Server) registerRoles(api huma.API) {
 		if in.Body.Name == "" && r.Key == "" {
 			return nil, invalid("Name is required")
 		}
+		if err := s.within(ctx, in.TenantID, append(r.Permissions, in.Body.Permissions...)); err != nil {
+			return nil, err
+		}
 		return nil, notFound(s.Store.UpdateRole(ctx, in.TenantID, in.RoleID, in.Body), "Role not found")
 	})
 
@@ -486,16 +498,61 @@ func (s *Server) registerRoles(api huma.API) {
 			return nil, err
 		}
 		r, err := s.Store.GetRole(ctx, in.TenantID, in.RoleID)
-		switch {
-		case err != nil:
+		if err != nil {
 			return nil, notFound(err, "Role not found")
-		case r.Key == store.RoleAdmin:
+		}
+		if r.Key == store.RoleAdmin {
 			return nil, conflict("The admin role cannot be deleted")
-		case r.Members > 0:
+		}
+		if err := s.within(ctx, in.TenantID, r.Permissions); err != nil {
+			return nil, err
+		}
+		if r.Members > 0 {
 			return nil, conflict("Give the members of this role another role first")
 		}
 		return nil, notFound(s.Store.DeleteRole(ctx, in.TenantID, in.RoleID), "Role not found")
 	})
+}
+
+// within refuses with 403 when the caller is no admin and perms go beyond the caller's own permissions: members who
+// manage the club without the admin role give, change and take away only what their own role has. The admin role
+// has every permission, so only admins make, change or remove admins.
+func (s *Server) within(ctx context.Context, tenantID int64, perms []string) error {
+	u, err := currentUser(ctx)
+	if err != nil {
+		return err
+	}
+	me, err := s.Store.MemberRole(ctx, tenantID, u.ID)
+	if err != nil {
+		return notFound(err, "Club not found")
+	}
+	if me.Key == store.RoleAdmin {
+		return nil
+	}
+	for _, p := range perms {
+		if !slices.Contains(me.Permissions, p) {
+			return forbidden("Only admins give or change permissions your role does not have")
+		}
+	}
+	return nil
+}
+
+// roleWithin checks a role of the tenant with within; 404 for an unknown role.
+func (s *Server) roleWithin(ctx context.Context, tenantID, roleID int64) error {
+	r, err := s.Store.GetRole(ctx, tenantID, roleID)
+	if err != nil {
+		return notFound(err, "Role not found")
+	}
+	return s.within(ctx, tenantID, r.Permissions)
+}
+
+// memberWithin checks the role of a member of the tenant with within; 404 for a user who is no member.
+func (s *Server) memberWithin(ctx context.Context, tenantID, userID int64) error {
+	r, err := s.Store.MemberRole(ctx, tenantID, userID)
+	if err != nil {
+		return notFound(err, "User not found")
+	}
+	return s.within(ctx, tenantID, r.Permissions)
 }
 
 // keepOneAdmin returns a 409 when userID is the last admin of the tenant and is about to get the role newRoleID

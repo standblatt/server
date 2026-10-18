@@ -1,6 +1,7 @@
 package web_test
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"testing"
@@ -78,4 +79,79 @@ func TestRoles(t *testing.T) {
 	other := e.tenant("Other")
 	code, b = e.do(boss, "PUT", fmt.Sprintf("%s/users/%d", base, memberID), map[string]int64{"roleId": e.role(other, "staff")})
 	expect(t, "role of another club", code, 404, b)
+}
+
+// TestManagersStayWithinTheirPermissions checks that a role with club.manage but without the admin role cannot make,
+// change or remove admins, cannot take a stronger role and cannot give permissions it does not have.
+func TestManagersStayWithinTheirPermissions(t *testing.T) {
+	e, box := personalEnv(t, nil)
+	ctx := context.Background()
+	tid := e.tenant("Managed")
+	bossID := e.user("boss", tid, store.RoleAdmin)
+	helperID := e.user("helper", tid, store.RoleStaff)
+	memberID := e.user("mia", tid, store.RoleMember)
+	boss := e.login("boss")
+	base := fmt.Sprintf("/api/tenants/%d", tid)
+	code, b := e.do(boss, "POST", base+"/roles", store.RoleInput{Name: "Manager", Permissions: []string{permissions.ClubManage, permissions.EventsView}})
+	expect(t, "manager role", code, 201, b)
+	var manager store.Role
+	json.Unmarshal(b, &manager)
+	managerID := e.user("max", 0, "")
+	if err := e.st.SetMembership(ctx, tid, managerID, manager.ID); err != nil {
+		t.Fatal(err)
+	}
+	max := e.login("max")
+	admin, board, staff, member := e.role(tid, store.RoleAdmin), e.role(tid, store.RoleBoard), e.role(tid, store.RoleStaff), e.role(tid, store.RoleMember)
+	user := func(id int64) string { return fmt.Sprintf("%s/users/%d", base, id) }
+	role := func(id int64) string { return fmt.Sprintf("%s/roles/%d", base, id) }
+
+	for _, c := range []struct {
+		what, method, path string
+		body               any
+	}{
+		{"demote an admin", "PUT", user(bossID), map[string]int64{"roleId": member}},
+		{"remove an admin", "DELETE", user(bossID), nil},
+		{"make someone admin", "PUT", user(memberID), map[string]int64{"roleId": admin}},
+		{"take the admin role", "PUT", user(managerID), map[string]int64{"roleId": admin}},
+		{"take the board role", "PUT", user(managerID), map[string]int64{"roleId": board}},
+		{"change a stronger member", "PUT", user(helperID), map[string]int64{"roleId": member}},
+		{"remove a stronger member", "DELETE", user(helperID), nil},
+		{"add an admin", "POST", base + "/users", map[string]any{"name": "newadmin", "roleId": admin, "password": "long-enough-1"}},
+		{"invite an admin", "POST", base + "/invitations", map[string]any{"emails": []string{"a@example.org"}, "roleId": admin}},
+		{"make a stronger role", "POST", base + "/roles", store.RoleInput{Name: "Root", Permissions: []string{permissions.RangesManage}}},
+		{"extend the own role", "PUT", role(manager.ID), store.RoleInput{Name: "Manager", Permissions: []string{permissions.ClubManage, permissions.EventsView, permissions.EventsConfigure}}},
+		{"change a stronger role", "PUT", role(staff), store.RoleInput{Permissions: []string{permissions.EventsView}}},
+		{"delete a stronger role", "DELETE", role(board), nil},
+		{"rename the admin role", "PUT", role(admin), store.RoleInput{Name: "Chief", Permissions: []string{}}},
+	} {
+		for user, role := range map[int64]int64{bossID: admin, helperID: staff, memberID: member, managerID: manager.ID} {
+			if err := e.st.SetMembership(ctx, tid, user, role); err != nil {
+				t.Fatal(err)
+			}
+		}
+		if code, b := e.do(max, c.method, c.path, c.body); code != 403 {
+			t.Errorf("%s: got %d, want 403: %s", c.what, code, b)
+		}
+	}
+
+	code, b = e.do(boss, "POST", base+"/invitations", map[string]any{"emails": []string{"b@example.org"}, "roleId": admin})
+	expect(t, "admin invites an admin", code, 200, b)
+	box.next(t)
+	code, b = e.do(max, "GET", base+"/invitations", nil)
+	expect(t, "list invitations", code, 200, b)
+	var open []store.Invitation
+	json.Unmarshal(b, &open)
+	code, b = e.do(max, "DELETE", fmt.Sprintf("%s/invitations/%d", base, open[0].ID), nil)
+	expect(t, "withdraw an admin invitation", code, 403, b)
+
+	code, b = e.do(max, "PUT", user(memberID), map[string]int64{"roleId": member})
+	expect(t, "manage a member within the own permissions", code, 204, b)
+	code, b = e.do(max, "POST", base+"/roles", store.RoleInput{Name: "Viewer", Permissions: []string{permissions.EventsView}})
+	expect(t, "make a weaker role", code, 201, b)
+	code, b = e.do(max, "PUT", user(bossID), map[string]int64{"roleId": admin})
+	expect(t, "the admin itself is out of reach", code, 403, b)
+	code, b = e.do(boss, "PUT", user(helperID), map[string]int64{"roleId": admin})
+	expect(t, "admins make admins", code, 204, b)
+	code, b = e.do(boss, "DELETE", user(helperID), nil)
+	expect(t, "admins remove admins", code, 204, b)
 }

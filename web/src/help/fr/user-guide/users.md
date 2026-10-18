@@ -61,6 +61,12 @@ Chaque société commence avec quatre rôles :
 
 **Nouveau rôle** ajoute un rôle propre, qui ne voit que les manifestations tant que vous ne cochez pas davantage. Le crayon renomme un rôle (un nom vide garde le nom par défaut), la corbeille le supprime dès que plus personne ne l’a. L’application ne montre à chaque membre que les pages et boutons que son rôle permet : un membre sans *Gérer les manifestations* ouvre une manifestation sur ses classements.
 
+Les membres avec *Utilisateurs et société* mais sans le rôle Admin restent
+dans leurs propres droits : ils donnent, modifient, retirent et invitent
+seulement avec des rôles dont ils ont eux-mêmes les droits, et ne créent ou
+modifient des rôles que dans ces limites. Seuls les admins nomment,
+modifient ou retirent donc des admins.
+
 Les comptes sont globaux : un compte est supprimé par l’exploitant de la
 plateforme dans le [panneau
 d’administration](../admin-guide/admin-panel.md). Un mot de passe oublié se
