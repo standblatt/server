@@ -1,6 +1,6 @@
 # Modules
 
-Standblatt has a **core** that every event has (general settings, programmes with series and prices, registration, results, rankings, statistics, closing) and **modules**: building blocks a club switches on per event, such as online booking, kiosk displays or attempts. A new feature that not every event needs is a module. It plugs into fixed extension points and leaves the rest of the code alone.
+Standblatt has a **core** that every event has (general settings, programmes with series and prices, registration, results, rankings, statistics, closing) and **modules**: building blocks a club switches on per event, such as reservations, kiosk displays or attempts. A new feature that not every event needs is a module. It plugs into fixed extension points and leaves the rest of the code alone.
 
 ## The registry
 

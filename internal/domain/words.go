@@ -207,7 +207,7 @@ func AmountInWords(locale string, chf float64) string {
 	return strings.ToUpper(string(r[0])) + string(r[1:])
 }
 
-// PassesEntry describes one programme of a registration for the control strip.
+// PassesEntry describes one programme of a registration for the {{passes}} field of registration forms such as the control strip.
 type PassesEntry struct {
 	ProgrammeID      int64
 	Series           int

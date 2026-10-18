@@ -24,7 +24,7 @@ const (
 	TopicPrint         = "print"
 	// TopicHelpers tells helper pages that a link was revoked; they refetch and run into 401.
 	TopicHelpers = "helpers"
-	// TopicBooking tells the reservations and setup pages that booking requests or settings changed.
+	// TopicBooking tells the reservations pages that booking requests or settings changed.
 	TopicBooking = "booking"
 	TopicResync  = "resync"
 )

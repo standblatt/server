@@ -215,7 +215,7 @@ func (s *Store) RequeueStalePrintJobs(ctx context.Context, timeout time.Duration
 	return err
 }
 
-// DeleteOldPrintJobs removes finished jobs older than a week; the PDFs are only needed while printing.
+// DeleteOldPrintJobs removes jobs older than a week, printed or not; the PDFs are only needed while printing.
 func (s *Store) DeleteOldPrintJobs(ctx context.Context) error {
 	_, err := s.pool.Exec(ctx, `DELETE FROM print_jobs WHERE created_at < now() - interval '7 days'`)
 	return err

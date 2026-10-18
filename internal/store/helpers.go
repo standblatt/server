@@ -23,7 +23,7 @@ func (r HelperRole) Valid() bool {
 	return r == HelperScorer || r == HelperAmmunition || r == HelperResults
 }
 
-// HelperCode is a helper link of an event as listed in the setup.
+// HelperCode is a helper link of an event as listed on the configuration page of the helpers module.
 type HelperCode struct {
 	ID         int64      `json:"id"`
 	Name       string     `json:"name"`

@@ -108,8 +108,8 @@ func helperOf(ctx context.Context) *store.Helper {
 }
 
 // helperDocument allows helper links their documents from a request body: the ammunition desk the lane sheet,
-// scorers and results clerks the print form of an entry; the registration is checked the way the middleware
-// checks path parameters.
+// scorers and results clerks the print forms of an entry or a registration; the registration is checked the way the
+// middleware checks path parameters.
 func (s *Server) helperDocument(ctx context.Context, tenantID, registrationID, entryID int64, document string) error {
 	h := helperOf(ctx)
 	if h == nil {
