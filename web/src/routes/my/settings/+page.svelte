@@ -19,7 +19,6 @@
 	import { versionQuery } from '$lib/me';
 	import { disciplineName, myKey, myQuery, type Discipline, type Weapon } from '$lib/my.svelte';
 	import ThemeToggle from '$lib/ThemeToggle.svelte';
-	import ApiTokens from '$lib/my/ApiTokens.svelte';
 
 	const version = versionQuery();
 	const queryClient = useQueryClient();
@@ -219,7 +218,6 @@
 	{/if}
 </section>
 
-<ApiTokens />
 
 <section class="grid gap-3 rounded-xl border bg-card p-4 text-sm shadow-sm">
 	<h2 class="font-semibold">{$t`Your data`}</h2>

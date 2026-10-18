@@ -52,6 +52,8 @@ type Server struct {
 	TOTP bool
 	// Matomo is the web analytics the SPA reports page views to; a zero value turns it off.
 	Matomo Matomo
+	// APIRateLimit is how many requests one API token may make per five minutes; 0 means no limit.
+	APIRateLimit int
 }
 
 // Handler returns the root handler: /healthz, /readyz, /api/*, /admin and the SPA for every other path.

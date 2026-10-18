@@ -59,19 +59,23 @@ func TestModuleEnums(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	want := map[string][]string{"event": modules.Keys(modules.Event), "club": modules.Keys(modules.Club), "permission": permissions.Keys()}
+	want := map[string][]string{"event": modules.Keys(modules.Event), "club": modules.Keys(modules.Club), "permission": permissions.Keys(), "scope": permissions.Scopes()}
 	found := map[string]int{}
 	var walk func(v any)
 	walk = func(v any) {
 		switch v := v.(type) {
 		case map[string]any:
 			if list, ok := v["enum"].([]any); ok && len(list) > 0 {
+				matched := ""
 				for level, keys := range want {
-					if list[0] == keys[0] {
-						found[level]++
-						if got := fmt.Sprint(list); got != fmt.Sprint(keys) {
-							t.Errorf("enum %s, want the %s modules %v", got, level, keys)
-						}
+					if list[0] == keys[0] && (matched == "" || fmt.Sprint(list) == fmt.Sprint(keys)) {
+						matched = level
+					}
+				}
+				if matched != "" {
+					found[matched]++
+					if got, keys := fmt.Sprint(list), fmt.Sprint(want[matched]); got != keys {
+						t.Errorf("enum %s, want the %s list %s", got, matched, keys)
 					}
 				}
 			}
@@ -87,7 +91,7 @@ func TestModuleEnums(t *testing.T) {
 	var doc any
 	json.Unmarshal(spec, &doc)
 	walk(doc)
-	if found["event"] == 0 || found["club"] == 0 || found["permission"] == 0 {
+	if found["event"] == 0 || found["club"] == 0 || found["permission"] == 0 || found["scope"] == 0 {
 		t.Fatalf("no module enums found: %v", found)
 	}
 }

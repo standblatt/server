@@ -58,17 +58,35 @@ func (s *Server) access(ctx context.Context, tenantID int64, perms ...string) (s
 	if err != nil {
 		return u, nil, err
 	}
-	role, err := s.Store.MemberRole(ctx, tenantID, u.ID)
+	_, have, err := s.callerPermissions(ctx, tenantID, u.ID)
 	if errors.Is(err, store.ErrNotFound) {
 		return u, nil, missing("Club not found")
 	}
 	if err != nil {
 		return u, nil, err
 	}
-	if !permissions.Any(role.Permissions, perms...) {
-		return u, role.Permissions, forbidden("Not allowed for your role")
+	if !permissions.Any(have, perms...) {
+		return u, have, forbidden("Not allowed for your role")
 	}
-	return u, role.Permissions, nil
+	return u, have, nil
+}
+
+// callerPermissions returns the user's role in the tenant and the permissions the request may use: the role's,
+// cut down to the scopes of an API token. ErrNotFound when the user is no member or the token is not for this club.
+func (s *Server) callerPermissions(ctx context.Context, tenantID, userID int64) (store.Role, []string, error) {
+	role, err := s.Store.MemberRole(ctx, tenantID, userID)
+	if err != nil {
+		return role, nil, err
+	}
+	t := tokenOf(ctx)
+	if t == nil {
+		return role, role.Permissions, nil
+	}
+	if !slices.Contains(t.Tenants, tenantID) {
+		return role, nil, store.ErrNotFound
+	}
+	have := slices.DeleteFunc(slices.Clone(role.Permissions), func(p string) bool { return !slices.Contains(t.Scopes, p) })
+	return role, have, nil
 }
 
 // notFound turns ErrNotFound into a 404 with msg and returns other errors unchanged.
@@ -522,15 +540,15 @@ func (s *Server) within(ctx context.Context, tenantID int64, perms []string) err
 	if err != nil {
 		return err
 	}
-	me, err := s.Store.MemberRole(ctx, tenantID, u.ID)
+	me, have, err := s.callerPermissions(ctx, tenantID, u.ID)
 	if err != nil {
 		return notFound(err, "Club not found")
 	}
-	if me.Key == store.RoleAdmin {
+	if me.Key == store.RoleAdmin && tokenOf(ctx) == nil {
 		return nil
 	}
 	for _, p := range perms {
-		if !slices.Contains(me.Permissions, p) {
+		if !slices.Contains(have, p) {
 			return forbidden("Only admins give or change permissions your role does not have")
 		}
 	}

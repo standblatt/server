@@ -38,6 +38,18 @@ var All = []Permission{
 // Enum is the comma separated list of permission keys for huma enum tags.
 const Enum = "events.view,events.operate,events.configure,reports.view,shooters.view,shooters.edit,shooters.manage,ranges.manage,forms.manage,club.manage"
 
+// Scopes of API tokens beyond the permissions: the owner's own training log.
+const (
+	TrainingRead  = "training:read"
+	TrainingWrite = "training:write"
+)
+
+// ScopeEnum is the comma separated list of API token scopes for huma enum tags: the permissions and the training scopes.
+const ScopeEnum = Enum + ",training:read,training:write"
+
+// Scopes returns every API token scope: the permission keys and the training scopes.
+func Scopes() []string { return append(Keys(), TrainingRead, TrainingWrite) }
+
 // Keys returns every permission key.
 func Keys() []string {
 	out := make([]string, len(All))

@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Every API operation of a club declares its permissions, checked before the request is read; tests call every operation with and without them and keep the table of who may call what under review (by @HB9HIL)
 - Members who manage the club without the admin role stay within their own permissions: only admins make, change or remove admins, and nobody gives a role more than their own (by @HB9HIL)
 - The *Users* page shows members without the admin role only the roles, members, invitations and permissions they may give or change (by @HB9HIL)
+- **API tokens** moved from *My training* to the account and reach the whole API: a token gets permissions of the owner's role (and the training scopes) and the clubs it may use, never more than the role allows; presets for a website, a training app and read-only use; `GET /api/token` tells a script what its token may do; at most 600 requests per 5 minutes per token (`STANDBLATT_API_RATE_LIMIT`). Existing tokens stop working and need to be created again (by @HB9HIL)
 
 ### Removed
 - The redirect of the old setup page links (`setup?tab=`) to the configuration pages (by @HB9HIL)

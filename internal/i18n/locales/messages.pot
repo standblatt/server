@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 17:17+0200\n"
+"POT-Creation-Date: 2026-10-18 17:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -583,8 +583,27 @@ msgstr ""
 msgid "API token not found"
 msgstr ""
 
+#: internal/web/apitokens.go
+#, go-format
+msgid "Choose the clubs for %s"
+msgstr ""
+
 #: internal/web/apitokens.go internal/web/my.go
 msgid "Name is empty"
+msgstr ""
+
+#: internal/web/apitokens.go
+msgid "Send an API token"
+msgstr ""
+
+#: internal/web/apitokens.go
+#, go-format
+msgid "You are no member of club %d"
+msgstr ""
+
+#: internal/web/apitokens.go
+#, go-format
+msgid "Your role in the chosen clubs does not have %s"
 msgstr ""
 
 #: internal/web/auth.go

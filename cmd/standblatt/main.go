@@ -43,6 +43,7 @@ type config struct {
 	signup        bool
 	totp          bool
 	matomo        web.Matomo
+	apiRateLimit  int
 }
 
 // loadConfig reads and validates the configuration from the environment.
@@ -85,6 +86,9 @@ func loadConfig() (config, error) {
 	}
 	if c.matomo, err = loadMatomo(os.Getenv("STANDBLATT_MATOMO_URL"), os.Getenv("STANDBLATT_MATOMO_SITE_ID")); err != nil {
 		return c, err
+	}
+	if c.apiRateLimit, err = strconv.Atoi(envOr("STANDBLATT_API_RATE_LIMIT", "600")); err != nil || c.apiRateLimit < 0 {
+		return c, errors.New("STANDBLATT_API_RATE_LIMIT must be a number of requests, 0 for no limit")
 	}
 	if err := c.logLevel.UnmarshalText([]byte(envOr("STANDBLATT_LOG_LEVEL", "info"))); err != nil {
 		return c, errors.New("STANDBLATT_LOG_LEVEL must be debug, info, warn or error")
@@ -188,6 +192,8 @@ func run(ctx context.Context, cfg config, log *slog.Logger) error {
 		Signup:      cfg.signup,
 		TOTP:        cfg.totp,
 		Matomo:      cfg.matomo,
+
+		APIRateLimit: cfg.apiRateLimit,
 	}
 	if cfg.adminToken == "" {
 		log.Info("STANDBLATT_ADMIN_TOKEN not set, admin panel disabled")

@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"net/http"
 	"os"
 	"regexp"
 	"slices"
@@ -70,7 +71,7 @@ func TestPermissionLeaks(t *testing.T) {
 	e := newEnv(t)
 	ctx := context.Background()
 	tid := e.tenant("Leaks")
-	e.user("boss", tid, store.RoleAdmin)
+	bossID := e.user("boss", tid, store.RoleAdmin)
 	e.user("probe", tid, store.RoleMember)
 	probe := e.login("probe")
 	role := e.role(tid, store.RoleMember)
@@ -104,6 +105,43 @@ func TestPermissionLeaks(t *testing.T) {
 			if code, b := call(asProbe, op); strings.Contains(string(b), "Not allowed for your role") {
 				t.Errorf("%s %s refused with %s: %d", op.Method, op.Path, p, code)
 			}
+		}
+	}
+
+	set(permissions.Keys())
+	other := e.tenant("Elsewhere")
+	if err := e.st.SetMembership(ctx, other, bossID, e.role(other, store.RoleAdmin)); err != nil {
+		t.Fatal(err)
+	}
+	boss := e.login("boss")
+	token := func(scopes []string, tenant int64) *http.Client {
+		t.Helper()
+		code, b := e.do(boss, "POST", "/api/me/tokens", web.NewAPIToken{Name: "leak", Scopes: scopes, Tenants: []int64{tenant}})
+		expect(t, "token", code, 201, b)
+		var tok web.CreatedAPIToken
+		json.Unmarshal(b, &tok)
+		return withToken(tok.Token)
+	}
+	elsewhere := token(permissions.Keys(), other)
+	for _, op := range web.ClubOperationsForTest() {
+		with := func(c *http.Client) func(method, path string) (int, []byte) {
+			return func(method, path string) (int, []byte) {
+				var body any
+				if method != "GET" && method != "DELETE" {
+					body = map[string]any{}
+				}
+				return e.do(c, method, path, body)
+			}
+		}
+		others := slices.DeleteFunc(permissions.Keys(), func(p string) bool { return slices.Contains(op.Permissions, p) })
+		if code, b := call(with(token(others, tid)), op); code != 403 || !strings.Contains(string(b), "Not allowed for your role") {
+			t.Errorf("token without the scope: %s %s: %d %s", op.Method, op.Path, code, b)
+		}
+		if code, b := call(with(elsewhere), op); code != 404 {
+			t.Errorf("token for another club: %s %s: %d %s", op.Method, op.Path, code, b)
+		}
+		if code, b := call(with(token(op.Permissions[:1], tid)), op); strings.Contains(string(b), "Not allowed for your role") {
+			t.Errorf("token with %s refused: %s %s: %d", op.Permissions[0], op.Method, op.Path, code)
 		}
 	}
 

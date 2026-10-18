@@ -852,7 +852,7 @@ msgstr "Un’altra sessione"
 msgid "any"
 msgstr "qualsiasi"
 
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 msgid "API tokens"
 msgstr "Token API"
 
@@ -1171,6 +1171,10 @@ msgstr "Modificata; in attesa di una nuova conferma"
 msgid "Choose a club"
 msgstr "Scegli una società"
 
+#: src/lib/ApiTokens.svelte
+msgid "Choose a club to give the token permissions there."
+msgstr "Scegli una società per dare al token diritti in essa."
+
 #: src/routes/invite/[token]/+page.svelte
 msgid "Choose a password"
 msgstr "Scegli una password"
@@ -1183,7 +1187,7 @@ msgstr "Scegli un modello …"
 msgid "Choose an event …"
 msgstr "Scegli una manifestazione …"
 
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 msgid "Choose at least one permission."
 msgstr "Scegli almeno un’autorizzazione."
 
@@ -1344,6 +1348,7 @@ msgstr "Società salvata"
 msgid "Club that stays"
 msgstr "Società che resta"
 
+#: src/lib/ApiTokens.svelte
 #: src/lib/AppSidebar.svelte
 #: src/lib/ShooterSheet.svelte
 #: src/routes/t/[tenantId]/+layout.svelte
@@ -1461,7 +1466,7 @@ msgstr "Striscia di controllo (etichetta 90 × 29 mm)"
 msgid "Control strip sent to printer"
 msgstr "Striscia di controllo inviata alla stampante"
 
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Copied"
 msgstr "Copiato"
@@ -1479,8 +1484,8 @@ msgstr "Copia tutti i programmi della manifestazione scelta."
 msgid "copy"
 msgstr "copia"
 
+#: src/lib/ApiTokens.svelte
 #: src/lib/modules/reservations/Page.svelte
-#: src/lib/my/ApiTokens.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 #: src/routes/t/[tenantId]/forms/+page.svelte
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
@@ -1530,7 +1535,7 @@ msgstr "Copia la manifestazione per l'anno prossimo, chiudila quando è finita o
 msgid "Copy the rows from Excel or a text file: last name, first name, birthday (e.g. 01.05.1990), licence. One shooter per line."
 msgstr "Copia le righe da Excel o da un file di testo: cognome, nome, data di nascita (p. es. 01.05.1990), licenza. Un tiratore per riga."
 
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 msgid "Copy your token now"
 msgstr "Copia ora il tuo token"
 
@@ -1608,7 +1613,7 @@ msgstr "Crea link chiosco"
 msgid "Create new club “{name}”"
 msgstr "Crea la nuova società «{name}»"
 
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 msgid "Create token"
 msgstr "Crea token"
 
@@ -1868,7 +1873,7 @@ msgstr "Documento"
 msgid "Documents"
 msgstr "Documenti"
 
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 msgid "does not expire"
 msgstr "non scade"
 
@@ -1910,9 +1915,9 @@ msgstr "dy (mm)"
 msgid "e.g. 5 or 1, 5, 7-10"
 msgstr "p. es. 5 o 1, 5, 7-10"
 
-#: src/lib/my/ApiTokens.svelte
-msgid "e.g. import script"
-msgstr "p. es. script di importazione"
+#: src/lib/ApiTokens.svelte
+msgid "e.g. rankings on our website"
+msgstr "p. es. classifiche sul nostro sito web"
 
 #: src/routes/my/settings/+page.svelte
 msgid "e.g. Steyr EVO 10"
@@ -2129,17 +2134,17 @@ msgstr "Tutto quanto segue è facoltativo, ma rende la tua analisi davvero intel
 msgid "Existing accounts are added by name; new accounts need a password."
 msgstr "Gli account esistenti vengono aggiunti per nome; i nuovi account necessitano di una password."
 
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 #: src/routes/t/[tenantId]/users/+page.svelte
 msgid "expired"
 msgstr "scaduto"
 
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 msgid "Expires"
 msgstr "Scade"
 
 #. placeholder {0}: formatDate(tok.expiresAt)
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 msgid "expires {0}"
 msgstr "scade il {0}"
 
@@ -2252,9 +2257,9 @@ msgstr "Per manifestazioni che durano settimane o mesi, come il Tiro in campagna
 msgid "For example equipment, conditions or what you worked on. Progress compares your results by tag."
 msgstr "Per esempio attrezzatura, condizioni o su cosa hai lavorato. I progressi confrontano i tuoi risultati per tag."
 
-#: src/lib/my/ApiTokens.svelte
-msgid "For your own scripts and tools: a token lets them read or log sessions through the API, without your password."
-msgstr "Per i tuoi script e strumenti: un token permette di leggere o registrare sessioni tramite l’API, senza la tua password."
+#: src/lib/ApiTokens.svelte
+msgid "For your own scripts and tools: a token lets them use the API with the permissions you choose, without your password."
+msgstr "Per i tuoi script e strumenti: un token permette loro di usare l’API con i diritti che scegli, senza la tua password."
 
 #: src/routes/forgot-password/+page.svelte
 #: src/routes/login/+page.svelte
@@ -2502,15 +2507,15 @@ msgstr "Importati: {0} nuovi, {1} aggiornati, {2} nuove società, {3} assegnazio
 msgid "Imported: {0} results, {1} new shooters."
 msgstr "Importati: {0} risultati, {1} nuovi tiratori."
 
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 msgid "in 30 days"
 msgstr "tra 30 giorni"
 
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 msgid "in 90 days"
 msgstr "tra 90 giorni"
 
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 msgid "in a year"
 msgstr "tra un anno"
 
@@ -2556,7 +2561,7 @@ msgstr "Inviti"
 msgid "Invite by email"
 msgstr "Invita via e-mail"
 
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 msgid "It is shown only this once. Send it as \"Authorization: Bearer <token>\"."
 msgstr "Viene mostrato solo questa volta. Invialo come «Authorization: Bearer <token>»."
 
@@ -2766,7 +2771,7 @@ msgid "last seen {0}"
 msgstr "visto l'ultima volta {0}"
 
 #. placeholder {0}: formatDate(tok.lastUsedAt)
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 msgid "last used {0}"
 msgstr "usato l’ultima volta il {0}"
 
@@ -2904,9 +2909,9 @@ msgstr "Caricamento…"
 msgid "Log"
 msgstr "Diario"
 
-#: src/lib/my/ApiTokens.svelte
-msgid "Log and change sessions"
-msgstr "Registrare e modificare sessioni"
+#: src/lib/ApiTokens.svelte
+msgid "Log and change my training sessions"
+msgstr "Registrare e modificare le mie sessioni di allenamento"
 
 #: src/routes/invite/[token]/+page.svelte
 #: src/routes/login/+page.svelte
@@ -3093,12 +3098,12 @@ msgstr "Sposta tutto quando la stampante stampa fuori posizione; verificalo con 
 msgid "My training"
 msgstr "Il mio allenamento"
 
+#: src/lib/ApiTokens.svelte
 #: src/lib/EventForm.svelte
 #: src/lib/forms/Palette.svelte
 #: src/lib/modules/awards/ProgrammeSection.svelte
 #: src/lib/modules/classifications/Classifications.svelte
 #: src/lib/modules/classifications/ClassificationTable.svelte
-#: src/lib/my/ApiTokens.svelte
 #: src/lib/programme/Basics.svelte
 #: src/lib/programme/Series.svelte
 #: src/lib/RankingTable.svelte
@@ -3139,7 +3144,7 @@ msgstr "Richiede uno stand con bersagli."
 msgid "needs both"
 msgstr "servono entrambi"
 
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 msgid "never"
 msgstr "mai"
 
@@ -3147,9 +3152,9 @@ msgstr "mai"
 msgid "never connected"
 msgstr "mai collegato"
 
+#: src/lib/ApiTokens.svelte
 #: src/lib/modules/helpers/HelperCodes.svelte
 #: src/lib/modules/kiosk/KioskTokens.svelte
-#: src/lib/my/ApiTokens.svelte
 msgid "never used"
 msgstr "mai usato"
 
@@ -3157,7 +3162,7 @@ msgstr "mai usato"
 msgid "new"
 msgstr "nuovo"
 
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 msgid "New API token"
 msgstr "Nuovo token API"
 
@@ -3240,7 +3245,7 @@ msgstr "Nuovo tiratore"
 msgid "New tag"
 msgstr "Nuovo tag"
 
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 msgid "New token"
 msgstr "Nuovo token"
 
@@ -3674,7 +3679,7 @@ msgstr "Periodo (stagione)"
 msgid "Permission"
 msgstr "Diritto"
 
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 msgid "Permissions"
 msgstr "Autorizzazioni"
 
@@ -4107,6 +4112,10 @@ msgstr "Classifica {0}"
 msgid "Rankings"
 msgstr "Classifiche"
 
+#: src/lib/ApiTokens.svelte
+msgid "Rankings for a website"
+msgstr "Classifiche per un sito web"
+
 #: src/lib/modules/classifications/Classifications.svelte
 msgid "Rankings over several programmes or attempts, e.g. a section or club championship."
 msgstr "Classifiche su più programmi o tentativi, p. es. un campionato di sezione o di società."
@@ -4123,9 +4132,13 @@ msgstr "Ranghi per categoria"
 msgid "reached"
 msgstr "raggiunto"
 
-#: src/lib/my/ApiTokens.svelte
-msgid "Read sessions"
-msgstr "Leggere le sessioni"
+#: src/lib/ApiTokens.svelte
+msgid "Read my training log"
+msgstr "Leggere il mio diario di allenamento"
+
+#: src/lib/ApiTokens.svelte
+msgid "Read only"
+msgstr "Solo lettura"
 
 #: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Reason"
@@ -4446,19 +4459,19 @@ msgstr "Incassi per programma e categoria d'età"
 msgid "revoke"
 msgstr "revoca"
 
+#: src/lib/ApiTokens.svelte
 #: src/lib/modules/helpers/HelperCodes.svelte
 #: src/lib/modules/kiosk/KioskTokens.svelte
-#: src/lib/my/ApiTokens.svelte
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Revoke"
 msgstr "Revoca"
 
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 msgid "Revoke \"{tokenName}\"?"
 msgstr "Revocare «{tokenName}»?"
 
 #. placeholder {0}: tok.name
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 msgid "Revoke {0}"
 msgstr "Revoca {0}"
 
@@ -4599,7 +4612,7 @@ msgstr "Marcatore"
 msgid "Scorers, ammunition desk and results clerk work through a link without an account."
 msgstr "Marcatori, distribuzione munizioni e registrazione risultati lavorano tramite un link senza account."
 
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 msgid "Scripts using this token stop working at once."
 msgstr "Gli script che usano questo token smettono subito di funzionare."
 
@@ -5286,6 +5299,10 @@ msgstr "L'iscrizione di {name} e i suoi risultati vengono eliminati."
 msgid "The shooting range with its number of lanes. Events without lanes, such as an annual programme, need none."
 msgstr "Lo stand di tiro con il numero di bersagli. Le manifestazioni senza bersagli, come un programma annuale, non ne hanno bisogno."
 
+#: src/lib/ApiTokens.svelte
+msgid "The token may do what you choose here, and never more than your role in the club."
+msgstr "Il token può fare ciò che scegli qui, e mai più del tuo ruolo nella società."
+
 #: src/routes/t/[tenantId]/users/+page.svelte
 msgid "The user loses access to this club. The account itself stays."
 msgstr "L'utente perde l'accesso a questa società. L'account rimane."
@@ -5409,7 +5426,7 @@ msgstr "Oggi"
 msgid "Toggle Sidebar"
 msgstr "Mostra/nascondi barra laterale"
 
-#: src/lib/my/ApiTokens.svelte
+#: src/lib/ApiTokens.svelte
 msgid "Token revoked"
 msgstr "Token revocato"
 
@@ -5448,6 +5465,10 @@ msgstr "Registra le mouches nella serie {0}"
 #: src/routes/my/train/+page.svelte
 msgid "Training"
 msgstr "Allenamento"
+
+#: src/lib/ApiTokens.svelte
+msgid "Training app"
+msgstr "App di allenamento"
 
 #: src/routes/my/+page.svelte
 #: src/routes/my/progress/+page.svelte

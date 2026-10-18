@@ -118,10 +118,10 @@ func secureRequest(r *http.Request) bool {
 func (s *Server) withSession(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		ctx := context.WithValue(r.Context(), requestKey, requestInfo{ip: s.clientIP(r), secure: secureRequest(r), host: r.Host, lang: acceptLang(r.Header.Get("Accept-Language"))})
-		if token := bearerToken(r); strings.HasPrefix(token, apiTokenPrefix) && (r.URL.Path == "/api/my" || strings.HasPrefix(r.URL.Path, "/api/my/")) {
-			u, ok := s.tokenUser(ctx, w, r, token)
-			if ok {
-				next.ServeHTTP(w, r.WithContext(context.WithValue(ctx, userKey, u)))
+		if token := bearerToken(r); strings.HasPrefix(token, apiTokenPrefix) {
+			if a, ok := s.tokenRequest(ctx, w, r, token); ok {
+				ctx = context.WithValue(context.WithValue(ctx, userKey, a.User), tokenKey, &a)
+				next.ServeHTTP(w, r.WithContext(ctx))
 			}
 			return
 		}

@@ -212,11 +212,12 @@ test.describe("personal training log", () => {
 
   test("creates an API token, uses it and revokes it", async ({ page, playwright }) => {
     await login(page, email);
-    await page.goto("/my/settings");
+    await page.goto("/account");
     await c(page, "button", "New token").click();
     const dialog = page.locator("[role=dialog]");
     await dialog.locator("input[name=tokenName]").fill("import script");
-    await c(dialog, "label", "Log and change sessions").locator("input").check();
+    await c(dialog, "button", "Training app").click();
+    await expect(dialog.getByRole("checkbox", { name: "Log and change my training sessions" })).toBeChecked();
     await c(dialog, "button", "Create token").click();
     const token = await dialog.locator("[data-testid=api-token-secret]").innerText();
     expect(token).toMatch(/^sb_[0-9a-f]{40}$/);
@@ -225,7 +226,8 @@ test.describe("personal training log", () => {
 
     const client = await playwright.request.newContext({ baseURL: new URL(page.url()).origin, extraHTTPHeaders: { Authorization: `Bearer ${token}` } });
     expect((await client.get("/api/my/trainings")).status()).toBe(200);
-    expect((await client.get("/api/my/tokens")).status()).toBe(403);
+    expect((await client.get("/api/me/tokens")).status()).toBe(403);
+    expect((await client.get("/api/token")).status()).toBe(200);
     await page.reload();
     await expect(c(page, "[data-testid=api-token]", "import script")).toContainText("last used");
 
@@ -233,6 +235,30 @@ test.describe("personal training log", () => {
     await c(page.locator("[role=alertdialog]"), "button", "Revoke").click();
     await expect(page.locator("[data-testid=api-token]")).toHaveCount(0);
     expect((await client.get("/api/my/trainings")).status()).toBe(401);
+    await client.dispose();
+  });
+
+  test("makes a club token from a preset that reaches only its club and scopes", async ({ page, playwright }) => {
+    await login(page, clubAdmin);
+    await page.goto("/account");
+    await c(page, "button", "New token").click();
+    const dialog = page.locator("[role=dialog]");
+    await dialog.locator("input[name=tokenName]").fill("website");
+    await expect(dialog.getByRole("checkbox", { name: club })).toBeChecked();
+    await c(dialog, "button", "Rankings for a website").click();
+    await expect(dialog.getByRole("checkbox", { name: /See events and rankings/ })).toBeChecked();
+    await c(dialog, "button", "Create token").click();
+    const token = await dialog.locator("[data-testid=api-token-secret]").innerText();
+    await page.keyboard.press("Escape");
+    await expect(c(page, "[data-testid=api-token]", "website")).toContainText(club);
+
+    const client = await playwright.request.newContext({ baseURL: new URL(page.url()).origin, extraHTTPHeaders: { Authorization: `Bearer ${token}` } });
+    expect((await client.get(`/api/tenants/${ids.tenant}/events`)).status()).toBe(200);
+    expect((await client.get(`/api/tenants/${ids.tenant}/shooters`)).status()).toBe(403);
+    expect((await client.get("/api/tenants/999999/events")).status()).toBe(404);
+    expect((await client.get("/api/me")).status()).toBe(403);
+    const info = await (await client.get("/api/token")).json();
+    expect(info.clubs.map((x) => x.name)).toEqual([club]);
     await client.dispose();
   });
 

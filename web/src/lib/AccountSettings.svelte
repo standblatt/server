@@ -5,6 +5,7 @@
 	import Trash from '@lucide/svelte/icons/trash-2';
 	import { toast } from 'svelte-sonner';
 	import { api, call } from './api';
+	import ApiTokens from './ApiTokens.svelte';
 	import { Button } from './components/ui/button';
 	import * as Dialog from './components/ui/dialog';
 	import { Input } from './components/ui/input';
@@ -127,6 +128,7 @@
 	</section>
 
 	<TwoFactor />
+	<ApiTokens />
 
 	<section class="grid gap-3 rounded-xl border bg-card p-4 text-sm shadow-sm">
 		<h2 class="font-semibold">{$t`Delete account`}</h2>

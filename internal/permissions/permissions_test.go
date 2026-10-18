@@ -10,6 +10,9 @@ func TestRegistry(t *testing.T) {
 	if got := strings.Join(Keys(), ","); got != Enum {
 		t.Fatalf("Enum = %q, want %q", Enum, got)
 	}
+	if got := strings.Join(Scopes(), ","); got != ScopeEnum {
+		t.Fatalf("ScopeEnum = %q, want %q", ScopeEnum, got)
+	}
 	for _, d := range Defaults {
 		for _, p := range d.Permissions {
 			if !Known(p) {

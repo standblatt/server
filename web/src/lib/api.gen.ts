@@ -393,6 +393,41 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/me/tokens": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Personal API tokens */
+        get: operations["list-api-tokens"];
+        put?: never;
+        /** Create a personal API token; the secret is only returned here */
+        post: operations["create-api-token"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/me/tokens/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** Revoke a personal API token */
+        delete: operations["delete-api-token"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/me/totp": {
         parameters: {
             query?: never;
@@ -662,41 +697,6 @@ export interface paths {
         put?: never;
         post?: never;
         delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/my/tokens": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Personal API tokens */
-        get: operations["list-my-api-tokens"];
-        put?: never;
-        /** Create a personal API token; the secret is only returned here */
-        post: operations["create-my-api-token"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/my/tokens/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post?: never;
-        /** Revoke a personal API token */
-        delete: operations["delete-my-api-token"];
         options?: never;
         head?: never;
         patch?: never;
@@ -2197,6 +2197,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/token": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** The API token of the request: name, owner, scopes, clubs and expiry */
+        get: operations["token-info"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/version": {
         parameters: {
             query?: never;
@@ -2229,6 +2246,8 @@ export interface components {
             lastUsedAt: string | null;
             name: string;
             scopes: string[];
+            /** @description The clubs the token may use */
+            tenants: number[];
         };
         AcceptBody: {
             /** @description Sets the password of the new account when nobody is logged in and no account has the address */
@@ -2706,6 +2725,8 @@ export interface components {
             lastUsedAt: string | null;
             name: string;
             scopes: string[];
+            /** @description The clubs the token may use */
+            tenants: number[];
             token: string;
         };
         DayStat: {
@@ -3327,7 +3348,10 @@ export interface components {
              */
             expiresInDays?: 0 | 30 | 90 | 365;
             name: string;
-            scopes: ("training:read" | "training:write")[];
+            /** @description Permissions of the owner's role in the chosen clubs, and training:read/write for the own training log */
+            scopes: ("events.view" | "events.operate" | "events.configure" | "reports.view" | "shooters.view" | "shooters.edit" | "shooters.manage" | "ranges.manage" | "forms.manage" | "club.manage" | "training:read" | "training:write")[];
+            /** @description The clubs the token may use; the owner must be a member */
+            tenants?: number[];
         };
         PartScore: {
             /** @description The part counts towards the total (see best) */
@@ -3959,6 +3983,21 @@ export interface components {
             position: number;
             /** Format: double */
             value: number;
+        };
+        TokenClub: {
+            /** Format: int64 */
+            id: number;
+            name: string;
+        };
+        TokenInfo: {
+            clubs: components["schemas"]["TokenClub"][];
+            /** Format: date-time */
+            expiresAt?: string;
+            /** Format: int64 */
+            id: number;
+            name: string;
+            owner: string;
+            scopes: string[];
         };
         TokenInputBody: {
             token: string;
@@ -4962,6 +5001,97 @@ export interface operations {
             };
         };
     };
+    "list-api-tokens": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["APIToken"][];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "create-api-token": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["NewAPIToken"];
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CreatedAPIToken"];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "delete-api-token": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
     "totp-enable": {
         parameters: {
             query?: never;
@@ -5509,97 +5639,6 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["MyStats"];
                 };
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    "list-my-api-tokens": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIToken"][];
-                };
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    "create-my-api-token": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["NewAPIToken"];
-            };
-        };
-        responses: {
-            /** @description Created */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["CreatedAPIToken"];
-                };
-            };
-            /** @description Error */
-            default: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/problem+json": components["schemas"]["ErrorModel"];
-                };
-            };
-        };
-    };
-    "delete-my-api-token": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description No Content */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
             };
             /** @description Error */
             default: {
@@ -10065,6 +10104,35 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "token-info": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TokenInfo"];
+                };
             };
             /** @description Error */
             default: {
