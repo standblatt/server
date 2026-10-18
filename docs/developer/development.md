@@ -7,6 +7,7 @@ make dev      # PostgreSQL, Mailpit, backend and Vite in the foreground, app on 
 make prepare  # before a commit: OpenAPI spec and TS types, PO catalogs, gofmt, go vet, doc comments, svelte-check
 make test     # Go unit and integration tests against the compose PostgreSQL, then the Playwright e2e specs
 make docs     # help: update the PO catalogs, write the translated pages, regenerate the screenshots
+make clean    # stop the containers, remove node_modules and build output (keeps .env and the database volume)
 ```
 
 `make dev` also sets `git config core.hooksPath .githooks`: the pre-commit hook runs `make prepare` and stops the commit when it changed files (new strings in the catalogs, a regenerated `api.gen.ts`); review and stage them, then commit again. `git commit --no-verify` skips it. The image is built by `docker build -f docker/Dockerfile .`, the print agent by `CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -o standblatt-print-agent ./cmd/print-agent`.

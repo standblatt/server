@@ -10,7 +10,7 @@ PLAYWRIGHT_IMAGE := mcr.microsoft.com/playwright:v$(shell sed -n 's/.*"@playwrig
 PLAYWRIGHT := docker run --rm --network host --ipc=host --user $$(id -u):$$(id -g) -e HOME=/tmp -v $(CURDIR)/e2e:/e2e -w /e2e
 PO4A_IMAGE := debian:trixie-slim
 
-.PHONY: dev prepare test docs
+.PHONY: dev prepare test docs clean
 
 .env:
 	cp .env.example .env
@@ -84,3 +84,9 @@ docs:
 	$(PLAYWRIGHT) -v $(CURDIR)/web/static/help/screenshots:/shots -e SHOTS=/shots $(PLAYWRIGHT_IMAGE) \
 		sh -c 'npm ci --no-audit --no-fund && npx playwright test --project=docs'; \
 		status=$$?; $(COMPOSE) --profile e2e rm --stop --force e2e e2e-db e2e-mail; exit $$status
+
+# Stops the compose containers and removes build output and installed packages; keeps .env, database_seeds and the
+# database volume (docker compose -f docker/compose.yaml down -v drops that too).
+clean:
+	-$(COMPOSE) --profile e2e down --remove-orphans
+	rm -rf bin internal/webui/dist tmp web/node_modules web/.svelte-kit web/build web/src/locales/*.ts e2e/node_modules e2e/test-results

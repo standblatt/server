@@ -21,6 +21,7 @@ make dev      # PostgreSQL, Mailpit, backend and Vite; app on http://localhost:5
 make prepare  # before a commit (also the pre-commit hook): API types, catalogs, gofmt, vet, svelte-check
 make test     # Go tests, then the Playwright e2e specs
 make docs     # help translations and screenshots
+make clean    # containers down, node_modules and build output removed
 ```
 
 More in [docs/developer/development.md](docs/developer/development.md).
