@@ -3492,6 +3492,10 @@ msgstr "not an email address"
 msgid "not confirmed"
 msgstr "not confirmed"
 
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "not connected"
+msgstr "not connected"
+
 #: src/lib/RegistrationForm.svelte
 msgid "not for this age category"
 msgstr "not for this age category"

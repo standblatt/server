@@ -125,6 +125,7 @@ test.describe("documents and printing", () => {
     const entry = c(page, "li", "Stopped PC");
     await expect(entry).toContainText("online");
     await page.clock.fastForward(70_000);
+    await expect(entry).toContainText("not connected");
     await expect(entry).toContainText("last seen");
   });
 

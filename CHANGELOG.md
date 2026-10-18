@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The button to a range's printers on *Ranges* is called *Set up the printers* instead of *Printing* (by @HB9HIL)
 
 ### Fixed
-- *Ranges → Set up the printers* shows a print agent that stops calling in as no longer online after a minute, without reloading the page (by @HB9HIL)
+- *Ranges → Set up the printers* shows a print agent that stops calling in as *not connected* in red, with when it was last seen, after a minute and without reloading the page (by @HB9HIL)
 
 ## [0.21.0] - 2026-10-18
 

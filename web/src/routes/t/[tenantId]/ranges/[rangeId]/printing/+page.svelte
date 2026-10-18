@@ -183,9 +183,12 @@
 					<Server class="size-4 text-muted-foreground" />
 					<span class="font-medium">{a.name}</span>
 					{#if a.version}<span class="text-xs text-muted-foreground">{a.version} · {a.os}</span>{/if}
-					<Badge variant="outline" class={online(a) ? 'border-emerald-500/50 text-emerald-700 dark:text-emerald-400' : ''}>
-						{online(a) ? $t`online` : a.lastSeenAt ? $t`last seen ${new Date(a.lastSeenAt).toLocaleString(intlLocale())}` : $t`never connected`}
+					<Badge variant="outline" class={online(a) ? 'border-emerald-500/50 text-emerald-700 dark:text-emerald-400' : 'border-destructive/50 text-destructive'}>
+						{online(a) ? $t`online` : a.lastSeenAt ? $t`not connected` : $t`never connected`}
 					</Badge>
+					{#if !online(a) && a.lastSeenAt}
+						<span class="text-xs text-muted-foreground">{$t`last seen ${new Date(a.lastSeenAt).toLocaleString(intlLocale())}`}</span>
+					{/if}
 					<span class="text-xs text-muted-foreground">{$plural(a.printers.length, { one: '# printer', other: '# printers' })}</span>
 					<Button variant="ghost" size="sm" class="ml-auto text-destructive" onclick={() => revoke(a)}>{$t`revoke`}</Button>
 				</li>
