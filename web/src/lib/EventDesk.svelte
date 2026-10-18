@@ -24,6 +24,7 @@
 	import NewShooterDialog from './NewShooterDialog.svelte';
 	import PrintButton from './PrintButton.svelte';
 	import RegistrationDialog from './RegistrationDialog.svelte';
+	import { has } from './modules';
 	import ResultsDialog from './ResultsDialog.svelte';
 	import { eventQuery, keys, lanesQuery, programmesQuery, registrationsQuery } from './tenant';
 
@@ -49,10 +50,10 @@
 		() => eventId
 	);
 	const archived = $derived(!!event.data?.archivedAt);
-	const ammoIssue = $derived(!!event.data?.modules.includes('ammo'));
+	const ammoIssue = $derived(has(event.data, 'ammo'));
 	/** The event assigns lanes; without, registrations stay open until their results are complete. */
-	const lanesOn = $derived(!!event.data?.modules.includes('lanes'));
-	const laneSheet = $derived(!!event.data?.modules.includes('lane_sheet'));
+	const lanesOn = $derived(has(event.data, 'lanes'));
+	const laneSheet = $derived(has(event.data, 'lane_sheet'));
 	const registrations = registrationsQuery(
 		() => tenantId,
 		() => eventId

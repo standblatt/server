@@ -7,7 +7,7 @@
 	import { toast } from 'svelte-sonner';
 	import { api, call, helperCode, type ProgrammeChoice } from './api';
 	import { membershipOf, meQuery } from './me';
-	import { hasClub } from './modules';
+	import { has, hasClub } from './modules';
 	import { ageCategoryLabel, registrationStatus } from './labels';
 	import { Badge } from './components/ui/badge';
 	import { Button } from './components/ui/button';
@@ -93,8 +93,8 @@
 	const registrationForms = $derived(
 		forms ? (layouts.data ?? []).filter((l) => l.source === 'registration' && l.id !== event.data?.settings.controlStripFormId) : []
 	);
-	const laneSheet = $derived(!!event.data?.modules.includes('lane_sheet'));
-	const controlStrip = $derived(!!event.data?.modules.includes('control_strip'));
+	const laneSheet = $derived(has(event.data, 'lane_sheet'));
+	const controlStrip = $derived(has(event.data, 'control_strip'));
 
 	const archived = $derived(!!event.data?.archivedAt);
 	const person = $derived(registration.data?.shooter ?? shooter.data);
@@ -141,7 +141,7 @@
 		const where = laneLabel(r) || $t`the waiting list`;
 		const ok = await ask(
 			kind === 'finish'
-				? { title: $t`Finish shooting?`, description: r.lane || event.data?.modules.includes('lanes') ? $t`${name} leaves ${where}.` : $t`${name} is marked as finished.`, action: $t`Finish` }
+				? { title: $t`Finish shooting?`, description: r.lane || has(event.data, 'lanes') ? $t`${name} leaves ${where}.` : $t`${name} is marked as finished.`, action: $t`Finish` }
 				: { title: $t`Delete registration?`, description: $t`The registration of ${name} and its results are deleted.`, action: $t`Delete`, destructive: true }
 		);
 		if (!ok) return;
