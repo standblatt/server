@@ -5,7 +5,7 @@
 	import { useQueryClient } from '@tanstack/svelte-query';
 	import { toast } from 'svelte-sonner';
 	import { api, call } from '$lib/api';
-	import { meKey, meQuery } from '$lib/me';
+	import { meKey, membershipOf, meQuery } from '$lib/me';
 	import { clubModuleUI, hasClub, modulesQuery, type ClubModuleKey } from '$lib/modules';
 	import ModuleCards from '$lib/modules/ModuleCards.svelte';
 	import PageHeader from '$lib/PageHeader.svelte';
@@ -13,7 +13,7 @@
 	const tenantId = $derived(Number(page.params.tenantId));
 	const queryClient = useQueryClient();
 	const me = meQuery();
-	const club = $derived(me.data?.tenants.find((m) => m.tenantId === tenantId));
+	const club = $derived(membershipOf(me.data, tenantId));
 	const modules = modulesQuery();
 	const list = $derived((modules.data ?? []).filter((m) => m.level === 'club').map((m) => m.key as ClubModuleKey));
 

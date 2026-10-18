@@ -6,7 +6,7 @@
 	import Trash from '@lucide/svelte/icons/trash-2';
 	import { toast } from 'svelte-sonner';
 	import { api, call, helperCode, type ProgrammeChoice } from './api';
-	import { meQuery } from './me';
+	import { membershipOf, meQuery } from './me';
 	import { hasClub } from './modules';
 	import { ageCategoryLabel, registrationStatus } from './labels';
 	import { Badge } from './components/ui/badge';
@@ -84,7 +84,7 @@
 	let printLaneSheet = $state(true);
 	let printControlStrip = $state(true);
 	const me = meQuery(() => !helperCode());
-	const forms = $derived(!helperCode() && hasClub(me.data?.tenants.find((m) => m.tenantId === tenantId), 'forms'));
+	const forms = $derived(!helperCode() && hasClub(membershipOf(me.data, tenantId), 'forms'));
 	const layouts = layoutsQuery(
 		() => tenantId,
 		() => forms

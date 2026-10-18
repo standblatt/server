@@ -16,7 +16,7 @@
 	import { formatDate, programmeTitle } from '$lib/format';
 	import FormError from '$lib/FormError.svelte';
 	import FormField from '$lib/FormField.svelte';
-	import { meQuery } from '$lib/me';
+	import { membershipOf, meQuery } from '$lib/me';
 	import NewShooterDialog from '$lib/NewShooterDialog.svelte';
 	import PageHeader from '$lib/PageHeader.svelte';
 	import PrintButton from '$lib/PrintButton.svelte';
@@ -36,7 +36,7 @@
 	const active = $derived((programmes.data ?? []).filter((p) => p.active));
 	const archived = $derived(!!event.data?.archivedAt);
 	const me = meQuery();
-	const isAdmin = $derived(me.data?.tenants.find((x) => x.tenantId === tenantId)?.role === 'admin');
+	const isAdmin = $derived(membershipOf(me.data, tenantId)?.role === 'admin');
 
 	let importing = $state(false);
 	let file = $state<FileList>();

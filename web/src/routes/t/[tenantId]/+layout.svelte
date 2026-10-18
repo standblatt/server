@@ -9,7 +9,7 @@
 	import * as Sidebar from '$lib/components/ui/sidebar';
 	import { eventLive, type Live } from '$lib/live.svelte';
 	import { liveLabel } from '$lib/labels';
-	import { meQuery, setMyLocale } from '$lib/me';
+	import { membershipOf, meQuery, setMyLocale } from '$lib/me';
 	import { logout as endSession } from '$lib/my.svelte';
 	import { eventsQuery } from '$lib/tenant';
 	import OfflineBanner from '$lib/OfflineBanner.svelte';
@@ -21,7 +21,7 @@
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const routeEventId = $derived(page.params.eventId ? Number(page.params.eventId) : undefined);
-	const membership = $derived(me.data?.tenants.find((t) => t.tenantId === tenantId));
+	const membership = $derived(membershipOf(me.data, tenantId));
 	const events = eventsQuery(() => tenantId);
 	const event = $derived(events.data?.find((e) => e.id === routeEventId));
 

@@ -22,14 +22,14 @@
 	import Pager from '$lib/Pager.svelte';
 	import { pageOf } from '$lib/format';
 	import Search from '@lucide/svelte/icons/search';
-	import { meQuery } from '$lib/me';
+	import { membershipOf, meQuery } from '$lib/me';
 	import { clubsQuery, keys } from '$lib/tenant';
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const queryClient = useQueryClient();
 	const me = meQuery();
 	const clubs = clubsQuery(() => tenantId);
-	const isAdmin = $derived(me.data?.tenants.find((t) => t.tenantId === tenantId)?.role === 'admin');
+	const isAdmin = $derived(membershipOf(me.data, tenantId)?.role === 'admin');
 
 	let filter = $state('');
 	const shown = $derived((clubs.data ?? []).filter((c) => c.name.toLowerCase().includes(filter.trim().toLowerCase())));

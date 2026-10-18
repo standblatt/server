@@ -5,7 +5,7 @@
 	import type { Event } from '../api';
 	import * as NativeSelect from '../components/ui/native-select';
 	import FormField from '../FormField.svelte';
-	import { meQuery } from '../me';
+	import { membershipOf, meQuery } from '../me';
 	import { hasClub } from '../modules';
 	import { layoutsQuery, updateEvent } from '../tenant';
 	import type { Source } from './editor.svelte';
@@ -19,7 +19,7 @@
 	}: { tenantId: number; event: Event; setting: 'wreathCardFormId' | 'controlStripFormId'; source: Source; label: string } = $props();
 	const queryClient = useQueryClient();
 	const me = meQuery();
-	const forms = $derived(hasClub(me.data?.tenants.find((m) => m.tenantId === tenantId), 'forms'));
+	const forms = $derived(hasClub(membershipOf(me.data, tenantId), 'forms'));
 	const layouts = layoutsQuery(
 		() => tenantId,
 		() => forms

@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
 	import { page } from '$app/state';
-	import { meQuery } from '$lib/me';
+	import { membershipOf, meQuery } from '$lib/me';
 	import { hasClub } from '$lib/modules';
 
 	let { children } = $props();
 	const me = meQuery();
 	const tenantId = $derived(Number(page.params.tenantId));
-	const club = $derived(me.data?.tenants.find((m) => m.tenantId === tenantId));
+	const club = $derived(membershipOf(me.data, tenantId));
 </script>
 
 {#if club}

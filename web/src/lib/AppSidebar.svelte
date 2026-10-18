@@ -19,7 +19,7 @@
 	import BadgeCheck from '@lucide/svelte/icons/badge-check';
 	import Dumbbell from '@lucide/svelte/icons/dumbbell';
 	import ShieldCheck from '@lucide/svelte/icons/shield-check';
-	import { authOptionsQuery, versionQuery } from '$lib/me';
+	import { authOptionsQuery, membershipOf, versionQuery } from '$lib/me';
 	import Archive from '@lucide/svelte/icons/archive';
 	import ArrowLeft from '@lucide/svelte/icons/arrow-left';
 	import ListChecks from '@lucide/svelte/icons/list-checks';
@@ -57,7 +57,7 @@
 
 	const options = authOptionsQuery();
 	const version = versionQuery();
-	const membership = $derived(me.tenants.find((t) => t.tenantId === tenantId)!);
+	const membership = $derived(membershipOf(me, tenantId)!);
 	const isAdmin = $derived(membership.role === 'admin');
 	const base = $derived(`/t/${tenantId}`);
 	const eventBase = $derived(`${base}/events/${event?.id}`);

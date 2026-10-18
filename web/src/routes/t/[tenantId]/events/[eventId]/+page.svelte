@@ -3,7 +3,7 @@
 	import { staffRights } from '$lib/desk';
 	import EventDesk from '$lib/EventDesk.svelte';
 	import SetupChecklist from '$lib/SetupChecklist.svelte';
-	import { meQuery } from '$lib/me';
+	import { membershipOf, meQuery } from '$lib/me';
 	import { eventQuery, programmesQuery } from '$lib/tenant';
 
 	const tenantId = $derived(Number(page.params.tenantId));
@@ -18,7 +18,7 @@
 		() => eventId
 	);
 	const me = meQuery();
-	const isAdmin = $derived(me.data?.tenants.find((t) => t.tenantId === tenantId)?.role === 'admin');
+	const isAdmin = $derived(membershipOf(me.data, tenantId)?.role === 'admin');
 	const unready = $derived(!!programmes.data && !programmes.data.some((p) => p.active));
 </script>
 

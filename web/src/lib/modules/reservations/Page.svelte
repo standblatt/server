@@ -24,14 +24,14 @@
 	import { keys } from '$lib/tenant';
 	import BookingRequests from './booking/BookingRequests.svelte';
 	import type { EventProps } from '..';
-	import { meQuery } from '$lib/me';
+	import { membershipOf, meQuery } from '$lib/me';
 
 	let { tenantId, event }: EventProps = $props();
 	const eventId = $derived(event.id);
 	const queryClient = useQueryClient();
 	const ranges = $derived(event.ranges);
 	const me = meQuery();
-	const isAdmin = $derived(me.data?.tenants.find((m) => m.tenantId === tenantId)?.role === 'admin');
+	const isAdmin = $derived(membershipOf(me.data, tenantId)?.role === 'admin');
 	let showPast = $state(false);
 	const key = $derived([...keys.reservations(tenantId, eventId), showPast, ranges.map((r) => r.id).join(',')]);
 	const reservations = createQuery(() => ({
