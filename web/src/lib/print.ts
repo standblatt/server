@@ -3,20 +3,36 @@ import { toast } from 'svelte-sonner';
 import { api, call, fetchFile, helperCode } from './api';
 import { i18n } from './locale.svelte';
 
+/** Certificates: one page per ranked shooter of a programme or classification (class) in ranks from to to. */
+export type CertificatesTarget = {
+	document: 'certificate';
+	eventId: number;
+	layoutId: number;
+	programmeId?: number;
+	classificationId?: number;
+	class?: string;
+	from: number;
+	to: number;
+};
+
 export type PrintTarget =
 	| { document: 'lane_sheet' | 'control_strip' | 'result_sheet'; registrationId: number }
-	| { document: 'wreath_card' | 'form'; entryId: number };
+	| { document: 'wreath_card' | 'form'; entryId: number }
+	| { document: 'form'; registrationId: number; layoutId: number }
+	| CertificatesTarget;
 
 /** API URL of the PDF for a print target. */
 export function pdfUrl(tenantId: number, t: PrintTarget): string {
-	switch (t.document) {
-		case 'wreath_card':
-			return `/api/tenants/${tenantId}/entries/${t.entryId}/wreath-card`;
-		case 'form':
-			return `/api/tenants/${tenantId}/entries/${t.entryId}/form`;
-		default:
-			return `/api/tenants/${tenantId}/registrations/${t.registrationId}/documents/${t.document}`;
+	if (t.document === 'certificate') {
+		const q = new URLSearchParams({ layout: String(t.layoutId), from: String(t.from), to: String(t.to) });
+		if (t.programmeId) q.set('programme', String(t.programmeId));
+		if (t.classificationId) q.set('classification', String(t.classificationId));
+		if (t.class) q.set('class', t.class);
+		return `/api/tenants/${tenantId}/events/${t.eventId}/certificates?${q}`;
 	}
+	if ('layoutId' in t) return `/api/tenants/${tenantId}/registrations/${t.registrationId}/forms/${t.layoutId}`;
+	if ('entryId' in t) return `/api/tenants/${tenantId}/entries/${t.entryId}/${t.document === 'wreath_card' ? 'wreath-card' : 'form'}`;
+	return `/api/tenants/${tenantId}/registrations/${t.registrationId}/documents/${t.document}`;
 }
 
 /** printDocument sends a document to the range's printer; without a printer or agent it opens the PDF instead. */

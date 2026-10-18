@@ -6,7 +6,7 @@
 	import { Button } from './components/ui/button';
 	import { pdfClick, pdfUrl, printDocument, type PrintTarget } from './print';
 
-	let { tenantId, target }: { tenantId: number; target: PrintTarget } = $props();
+	let { tenantId, target, label }: { tenantId: number; target: PrintTarget; /** Replaces the button text, e.g. with a form's name. */ label?: string } = $props();
 
 	const text = $derived(
 		{
@@ -14,7 +14,8 @@
 			control_strip: [$t`Print control strip`, $t`Control strip sent to printer`],
 			result_sheet: [$t`Print result sheet`, $t`Result sheet sent to printer`],
 			wreath_card: [$t`Print wreath card`, $t`Wreath card sent to printer`],
-			form: [$t`Print onto form`, $t`Form sent to printer`]
+			form: [$t`Print onto form`, $t`Form sent to printer`],
+			certificate: [$t`Print certificates`, $t`Certificates sent to printer`]
 		}[target.document]
 	);
 
@@ -29,6 +30,6 @@
 </script>
 
 <span class="inline-flex items-center">
-	<Button size="sm" variant="outline" class="rounded-r-none" onclick={print}><Printer />{text[0]}</Button>
+	<Button size="sm" variant="outline" class="rounded-r-none" onclick={print}><Printer />{label ?? text[0]}</Button>
 	<Button size="sm" variant="outline" class="-ml-px rounded-l-none" href={pdfUrl(tenantId, target)} target="_blank" onclick={pdfClick} title={$t`Open as PDF`}><FileText />PDF</Button>
 </span>

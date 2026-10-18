@@ -38,7 +38,7 @@ autre variante dans une inscription séparée.
 
 ## Impression
 
-*Imprimer la feuille de stand* et *Imprimer la bande de contrôle* sont cochés par défaut (ils n’apparaissent que tant que les modules *Feuille de stand* et *Bande de contrôle* sont activés, voir [Modules](events.md#modules)) : les documents s’impriment sur les imprimantes du stand juste après l’inscription, ou s’ouvrent en PDF si aucune imprimante n’est configurée (voir [Impression](printing.md)).
+*Imprimer la feuille de stand* et *Imprimer la bande de contrôle* sont cochés par défaut (ils n’apparaissent que tant que les modules *Feuille de stand* et *Bande de contrôle* sont activés, voir [Modules](events.md#modules)) : les documents s’impriment sur les imprimantes du stand juste après l’inscription, ou s’ouvrent en PDF si aucune imprimante n’est configurée (voir [Impression](printing.md)). Les [modèles d’impression](print-forms.md#certificates) de la société qui impriment une inscription, p. ex. une carte de participant, ajoutent chacun un bouton.
 
 ## Modifier et supprimer
 

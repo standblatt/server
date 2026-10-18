@@ -178,6 +178,28 @@ test.describe("print forms", () => {
     await expect(page.getByLabel("Print form of the control strips")).toHaveCount(0);
   });
 
+  test("prints registration forms and certificates", async ({ page }) => {
+    await login(page, admin);
+    const base = `/api/tenants/${ids.tenant}`;
+    const blank = (name, source, value) => api(page, "POST", `${base}/layouts`, { name, source, width: 148, height: 105, elements: [{ type: "text", x: 10, y: 10, value }] });
+    await blank("Participant card", "registration", "{{shooter.name}} {{programmes}}");
+    const cert = await blank("Certificate", "rank", "{{rank}}. {{shooter.name}}");
+
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}?registration=${ids.registration}`);
+    await expect(page.getByRole("dialog").getByRole("button", { name: "Participant card" })).toBeVisible();
+    const card = await page.request.get(`${base}/registrations/${ids.registration}/forms/${(await api(page, "GET", `${base}/layouts`)).find((l) => l.name === "Participant card").id}`);
+    expect(card.headers()["content-type"]).toBe("application/pdf");
+
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}/rankings`);
+    await page.getByRole("button", { name: "Certificates of Obligatory" }).click();
+    const dialog = page.getByRole("dialog");
+    await expect(dialog.getByLabel("Print form")).toHaveValue(String(cert.id));
+    const pdf = await dialog.getByRole("link", { name: "PDF" }).getAttribute("href");
+    expect(pdf).toContain(`layout=${cert.id}`);
+    const res = await page.request.get(pdf);
+    expect(res.headers()["content-type"]).toBe("application/pdf");
+  });
+
   test("places an image of the library and carries it in exports", async ({ page }) => {
     const logo = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAAAAABawyK/AAAADklEQVR4nGNoAAIGEAEAFAoEAeiOg+cAAAAASUVORK5CYII=", "base64");
     await login(page, admin);

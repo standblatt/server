@@ -66,6 +66,22 @@ das Logo des Vereins hinzuzufügen. Ein Anlass wählt sie dann unter
 *Kontrollstreifen*. Ohne Wahl, oder wenn die gewählte Vorlage gelöscht ist,
 druckt die eingebaute Vorlage.
 
+## Anmeldedokumente und Urkunden {#certificates}
+
+Eine Vorlage, die **Eine Anmeldung** druckt, erscheint neben dem
+Kontrollstreifen des Anlasses in der Anmeldung als Knopf mit ihrem eigenen
+Namen, z. B. eine Teilnehmerkarte oder eine Quittung; sie druckt auf dem
+Drucker der *Druckvorlagen*.
+
+Eine Vorlage, die **Ein Rang** druckt, macht Urkunden: **Urkunden** im Kopf
+jeder Rangliste und jeder Wertung unter **Ranglisten** fragt nach der
+Vorlage, der Klasse einer Wertung und den Rängen (1 bis 3, wenn nicht
+geändert) und druckt dann eine Seite pro rangiertem Schützen oder öffnet sie
+als ein PDF. Urkunden gehen an den Drucker der *Urkunden* unter
+**Schiessstände → Drucken**. Die Felder eines Rangs sind der Rang, das
+Total, die Rangliste (das Programm oder die Wertung) und die Klasse; die
+Urkunde eines Programms kennt auch seine Resultate.
+
 ## Elemente anordnen {#arrange}
 
 - Ein Element wird durch Ziehen **verschoben** und an seiner Ecke **in der

@@ -31,8 +31,9 @@ erscheint ein Hinweis mit dem Button **Teilen**.
    Stand einen Agenten hinzu und gib dem Agenten beide Tokens, durch Komma
    getrennt.
 2. Sobald der Agent online ist, meldet er seine Drucker. Wähle für jedes
-   Dokument den Drucker und seine Optionen (Fach, Papierformat, Medientyp,
-   weitere `lp`-Optionen wie `fit-to-page`).
+   Dokument den Drucker (*Urkunden* sind die Urkunden aus den Ranglisten,
+   *Druckvorlagen* alle anderen Vorlagen des Vereins) und seine Optionen
+   (Fach, Papierformat, Medientyp, weitere `lp`-Optionen wie `fit-to-page`).
 3. **Letzte Aufträge** zeigt, was gedruckt wurde und ob es geklappt hat.
 
 Ein Auftrag, den der Agent nicht innert zwei Minuten bestätigt, wird

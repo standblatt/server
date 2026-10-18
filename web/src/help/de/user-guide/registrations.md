@@ -36,7 +36,7 @@ andere Variante in einer separaten Anmeldung schiessen.
 
 ## Drucken
 
-*Standblatt drucken* und *Kontrollstreifen drucken* sind standardmässig angekreuzt (sie erscheinen nur, solange die Module *Standblatt* und *Kontrollstreifen* an sind, siehe [Module](events.md#modules)): Die Dokumente werden gleich nach der Anmeldung auf den Druckern des Schiessstands gedruckt oder öffnen sich als PDF, wenn kein Drucker eingerichtet ist (siehe [Drucken](printing.md)).
+*Standblatt drucken* und *Kontrollstreifen drucken* sind standardmässig angekreuzt (sie erscheinen nur, solange die Module *Standblatt* und *Kontrollstreifen* an sind, siehe [Module](events.md#modules)): Die Dokumente werden gleich nach der Anmeldung auf den Druckern des Schiessstands gedruckt oder öffnen sich als PDF, wenn kein Drucker eingerichtet ist (siehe [Drucken](printing.md)). [Druckvorlagen](print-forms.md#certificates) des Vereins, die eine Anmeldung drucken, z. B. eine Teilnehmerkarte, fügen je einen Knopf hinzu.
 
 ## Bearbeiten und löschen
 

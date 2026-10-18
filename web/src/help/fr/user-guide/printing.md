@@ -31,8 +31,10 @@ d’abord un autre toucher, une note avec le bouton **Partager** apparaît.
    ajoute un agent sur chaque stand et donne à l’agent les deux jetons,
    séparés par une virgule.
 2. Dès que l’agent est en ligne, il annonce ses imprimantes. Choisis pour
-   chaque document l’imprimante et ses options (bac, format de papier, type
-   de support, autres options `lp` comme `fit-to-page`).
+   chaque document l’imprimante (*Diplômes* sont les diplômes des
+   classements, *Modèles d’impression* tous les autres modèles de la
+   société) et ses options (bac, format de papier, type de support, autres
+   options `lp` comme `fit-to-page`).
 3. **Tâches récentes** montre ce qui a été imprimé et si cela a fonctionné.
 
 Une tâche que l’agent ne confirme pas dans les deux minutes est relancée ;

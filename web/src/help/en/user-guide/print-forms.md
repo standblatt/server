@@ -31,6 +31,12 @@ The source can be changed in the editor under **Form**; fields the new source do
 
 Standblatt prints the wreath card and the control strip with **built-in forms**, listed below the forms of the club. **Copy** turns one into a form of the club that can be changed like any other, e.g. to move the fields onto another pre-printed wreath card or to add the club's logo. An event then chooses it under **Configuration** → **Modules**: *Print form of the wreath cards* in the module *Awards*, *Print form of the control strips* in the module *Control strip*. Without a choice, or when the chosen form is deleted, the built-in form prints.
 
+## Registration documents and certificates {#certificates}
+
+A form that prints **A registration** besides the event's control strip, e.g. a participant card or a receipt, appears in the registration with a button of its own name; it prints on the printer of *Print forms*.
+
+A form that prints **A rank** makes certificates: **Certificates** in the header of every ranking and classification on **Rankings** asks for the form, the class of a classification and the ranks (1 to 3 unless changed), then prints one page per ranked shooter, or opens them as one PDF. Certificates go to the printer of *Certificates* under **Ranges → Printing**. The fields of a rank are the rank, the total, the ranking (the programme or classification) and the class; a programme's certificate knows its results too.
+
 ## Arrange the elements {#arrange}
 
 - **Move** an element by dragging it, **resize** it by its corner. The pink dot on the last box of a repeated element drags the spacing.

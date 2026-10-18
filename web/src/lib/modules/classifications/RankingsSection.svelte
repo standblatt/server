@@ -9,6 +9,7 @@
 	import { keys } from '$lib/tenant';
 	import { has, type EventProps } from '..';
 	import ClassificationTable from './ClassificationTable.svelte';
+	import CertificatesButton from '$lib/forms/CertificatesButton.svelte';
 
 	let { tenantId, event }: EventProps = $props();
 	const classifications = createQuery(() => ({
@@ -23,6 +24,7 @@
 		{#snippet actions()}
 			<div class="flex items-center gap-2">
 				{#if has(event, 'kiosk') && !c.public}<span class="rounded-full border px-2 py-0.5 text-xs text-muted-foreground" title={$t`Not shown on kiosk displays`}>{$t`not on kiosk`}</span>{/if}
+				<CertificatesButton {tenantId} {event} title={c.name} classificationId={c.id} classes={c.classes.map((x) => x.name).filter(Boolean)} />
 				<Button size="sm" variant="outline" href="{reportUrl}?format=pdf" target="_blank" onclick={pdfClick}><FileText />PDF</Button>
 				<Button size="sm" variant="outline" href="{reportUrl}?format=csv"><FileSpreadsheet />CSV</Button>
 			</div>

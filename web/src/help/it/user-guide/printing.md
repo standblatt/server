@@ -30,8 +30,10 @@ se il telefono chiede prima un altro tocco, appare un avviso con il pulsante
    stand, p. es. *Pistola 25 m* e *Pistola 50 m*: aggiungi un agente su ogni
    stand e dai all’agente entrambi i token, separati da una virgola.
 2. Appena l’agente è online, comunica le sue stampanti. Scegli per ogni
-   documento la stampante e le sue opzioni (cassetto, formato carta, tipo di
-   supporto, altre opzioni `lp` come `fit-to-page`).
+   documento la stampante (*Diplomi* sono i diplomi delle classifiche,
+   *Modelli di stampa* tutti gli altri modelli della società) e le sue
+   opzioni (cassetto, formato carta, tipo di supporto, altre opzioni `lp`
+   come `fit-to-page`).
 3. **Lavori recenti** mostra cosa è stato stampato e se ha funzionato.
 
 Un lavoro che l’agente non conferma entro due minuti viene ripetuto; dopo

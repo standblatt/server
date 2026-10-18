@@ -14,6 +14,9 @@
 - Les [classements généraux](classifications.md) suivent les programmes, un
   tableau par classe ; leur **PDF** et **CSV** sont le rapport *Classements
   généraux*.
+- **Diplômes** imprime des diplômes pour les meilleurs rangs sur un [modèle
+  d’impression](print-forms.md#certificates) de la société ; le bouton
+  apparaît dès que la société a un modèle qui imprime un rang.
 
 ## Écrans kiosque
 

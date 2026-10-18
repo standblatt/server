@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 10:20+0000\n"
+"POT-Creation-Date: 2026-10-18 10:31+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -3275,12 +3275,10 @@ msgstr ""
 #: ../src/help/en/user-guide/printing.md:25
 msgid ""
 "Once the agent is online, it reports its printers. Choose the printer for "
-"each document and its options (tray, paper size, media type, further `lp` "
-"options such as `fit-to-page`)."
-msgstr ""
-"Dès que l’agent est en ligne, il annonce ses imprimantes. Choisis pour "
-"chaque document l’imprimante et ses options (bac, format de papier, type de "
-"support, autres options `lp` comme `fit-to-page`)."
+"each document (*Certificates* are the certificates from the rankings, *Print "
+"forms* every other form of the club) and its options (tray, paper size, "
+"media type, further `lp` options such as `fit-to-page`)."
+msgstr "Dès que l’agent est en ligne, il annonce ses imprimantes. Choisis pour chaque document l’imprimante (*Diplômes* sont les diplômes des classements, *Modèles d’impression* tous les autres modèles de la société) et ses options (bac, format de papier, type de support, autres options `lp` comme `fit-to-page`)."
 
 #. type: Bullet: '3. '
 #: ../src/help/en/user-guide/printing.md:25
@@ -3332,8 +3330,7 @@ msgstr "Créer un modèle {#create}"
 #: ../src/help/en/user-guide/print-forms.md:8
 #, no-wrap
 msgid "**Print forms** (admins, in the club part of the sidebar) lists the forms of the club. **New print form** asks for a name, what the form **Prints** (see [Data source](#source)) and a paper size, then opens the editor. It has three columns:\n"
-msgstr ""
-"**Modèles d’impression** (admins, dans la partie société de la barre latérale) liste les modèles de la société. **Nouveau modèle d’impression** demande un nom, ce que le modèle **Imprime** (voir [Source de données](#source)) et un format de papier, puis ouvre l’éditeur. Il a trois colonnes :\n"
+msgstr "**Modèles d’impression** (admins, dans la partie société de la barre latérale) liste les modèles de la société. **Nouveau modèle d’impression** demande un nom, ce que le modèle **Imprime** (voir [Source de données](#source)) et un format de papier, puis ouvre l’éditeur. Il a trois colonnes :\n"
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/print-forms.md:15
@@ -3401,7 +3398,20 @@ msgid ""
 "printer offset and the **Scan of the empty form**: a PNG or JPEG of the "
 "whole sheet that appears behind the sheet so the fields can be placed onto "
 "the boxes of the form; it is never printed."
-msgstr "À droite, les **Propriétés** modifient précisément l’élément sélectionné : sa **Valeur** (les espaces réservés comme `{{shooter.name}}` sont remplis à l’impression), **x** et **y** en millimètres depuis le coin supérieur gauche, **Largeur** et **Hauteur** (avec une largeur de 0, le texte va jusqu’au bord droit), **Taille de police**, **Gras**, **Italique**, **Renvoyer à la ligne** (le texte se coupe en lignes dans la largeur, chacune aussi haute que la hauteur) et **Alignement**. **Répétition** l’imprime plusieurs fois, décalé chaque fois de **dx** et **dy** ; `#` dans un espace réservé compte 1, 2, 3, …. En dessous, le **Modèle** fixe le nom, la taille de la feuille, le décalage de l’imprimante et le **Scan du formulaire vide** : un PNG ou JPEG de toute la feuille qui apparaît derrière la feuille pour placer les champs sur les cases du formulaire ; il n’est jamais imprimé."
+msgstr ""
+"À droite, les **Propriétés** modifient précisément l’élément sélectionné : "
+"sa **Valeur** (les espaces réservés comme `{{shooter.name}}` sont remplis à "
+"l’impression), **x** et **y** en millimètres depuis le coin supérieur "
+"gauche, **Largeur** et **Hauteur** (avec une largeur de 0, le texte va "
+"jusqu’au bord droit), **Taille de police**, **Gras**, **Italique**, "
+"**Renvoyer à la ligne** (le texte se coupe en lignes dans la largeur, "
+"chacune aussi haute que la hauteur) et **Alignement**. **Répétition** "
+"l’imprime plusieurs fois, décalé chaque fois de **dx** et **dy** ; `#` dans "
+"un espace réservé compte 1, 2, 3, …. En dessous, le **Modèle** fixe le nom, "
+"la taille de la feuille, le décalage de l’imprimante et le **Scan du "
+"formulaire vide** : un PNG ou JPEG de toute la feuille qui apparaît derrière "
+"la feuille pour placer les champs sur les cases du formulaire ; il n’est "
+"jamais imprimé."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:17
@@ -3418,7 +3428,9 @@ msgstr "Source de données {#source}"
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:21
 msgid "What a form **Prints** decides its fields and where it is printed:"
-msgstr "Ce qu’un modèle **Imprime** détermine ses champs et l’endroit où il est imprimé :"
+msgstr ""
+"Ce qu’un modèle **Imprime** détermine ses champs et l’endroit où il est "
+"imprimé :"
 
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:27
@@ -3441,7 +3453,9 @@ msgstr ""
 msgid ""
 "The source can be changed in the editor under **Form**; fields the new "
 "source does not know print nothing."
-msgstr "La source peut être changée dans l’éditeur sous **Modèle** ; les champs que la nouvelle source ne connaît pas n’impriment rien."
+msgstr ""
+"La source peut être changée dans l’éditeur sous **Modèle** ; les champs que "
+"la nouvelle source ne connaît pas n’impriment rien."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/print-forms.md:30
@@ -3460,16 +3474,52 @@ msgid ""
 "cards* in the module *Awards*, *Print form of the control strips* in the "
 "module *Control strip*. Without a choice, or when the chosen form is "
 "deleted, the built-in form prints."
-msgstr "Standblatt imprime la carte-couronne et la bande de contrôle avec des **modèles intégrés**, listés sous les modèles de la société. **Copier** en fait un modèle de la société qui se modifie comme tout autre, p. ex. pour déplacer les champs sur une autre carte-couronne préimprimée ou pour ajouter le logo de la société. Une manifestation le choisit ensuite sous **Configuration** → **Modules** : *Modèle des cartes-couronnes* dans le module *Distinctions*, *Modèle des bandes de contrôle* dans le module *Bande de contrôle*. Sans choix, ou si le modèle choisi est supprimé, le modèle intégré imprime."
+msgstr ""
+"Standblatt imprime la carte-couronne et la bande de contrôle avec des "
+"**modèles intégrés**, listés sous les modèles de la société. **Copier** en "
+"fait un modèle de la société qui se modifie comme tout autre, p. ex. pour "
+"déplacer les champs sur une autre carte-couronne préimprimée ou pour ajouter "
+"le logo de la société. Une manifestation le choisit ensuite sous "
+"**Configuration** → **Modules** : *Modèle des cartes-couronnes* dans le "
+"module *Distinctions*, *Modèle des bandes de contrôle* dans le module *Bande "
+"de contrôle*. Sans choix, ou si le modèle choisi est supprimé, le modèle "
+"intégré imprime."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/print-forms.md:34
+#, no-wrap
+msgid "Registration documents and certificates {#certificates}"
+msgstr "Documents d’inscription et diplômes {#certificates}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:37
+msgid ""
+"A form that prints **A registration** besides the event's control strip, "
+"e.g. a participant card or a receipt, appears in the registration with a "
+"button of its own name; it prints on the printer of *Print forms*."
+msgstr "Un modèle qui imprime **Une inscription**, en plus de la bande de contrôle de la manifestation, p. ex. une carte de participant ou une quittance, apparaît dans l’inscription avec un bouton portant son propre nom ; il s’imprime sur l’imprimante des *Modèles d’impression*."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:39
+msgid ""
+"A form that prints **A rank** makes certificates: **Certificates** in the "
+"header of every ranking and classification on **Rankings** asks for the "
+"form, the class of a classification and the ranks (1 to 3 unless changed), "
+"then prints one page per ranked shooter, or opens them as one PDF. "
+"Certificates go to the printer of *Certificates* under **Ranges → "
+"Printing**. The fields of a rank are the rank, the total, the ranking (the "
+"programme or classification) and the class; a programme's certificate knows "
+"its results too."
+msgstr "Un modèle qui imprime **Un rang** produit des diplômes : **Diplômes** dans l’en-tête de chaque classement et de chaque classement général sous **Classements** demande le modèle, la classe d’un classement général et les rangs (1 à 3 sauf modification), puis imprime une page par tireur classé, ou les ouvre en un seul PDF. Les diplômes partent vers l’imprimante des *Diplômes* sous **Stands de tir → Impression**. Les champs d’un rang sont le rang, le total, le classement (le programme ou le classement général) et la classe ; le diplôme d’un programme connaît aussi ses résultats."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/print-forms.md:40
 #, no-wrap
 msgid "Arrange the elements {#arrange}"
 msgstr "Disposer les éléments {#arrange}"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:40
+#: ../src/help/en/user-guide/print-forms.md:46
 msgid ""
 "**Move** an element by dragging it, **resize** it by its corner. The pink "
 "dot on the last box of a repeated element drags the spacing."
@@ -3479,7 +3529,7 @@ msgstr ""
 "l’espacement."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:40
+#: ../src/help/en/user-guide/print-forms.md:46
 msgid ""
 "While moving, the element **snaps** to the edges and centres of the other "
 "elements and of the sheet, and a pink guide shows the line; elsewhere it "
@@ -3491,7 +3541,7 @@ msgstr ""
 "enfoncée, on le place librement."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:40
+#: ../src/help/en/user-guide/print-forms.md:46
 msgid ""
 "**Select several** with Shift or Ctrl and a click, or draw a frame around "
 "them on the empty sheet. Dragging moves them together; font size, bold and "
@@ -3502,7 +3552,7 @@ msgstr ""
 "taille de police, gras et alignement s’appliquent alors à tous."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:40
+#: ../src/help/en/user-guide/print-forms.md:46
 msgid ""
 "A **right click** opens the menu: *Duplicate*, *Bring to front*, *Align* "
 "(edges, centres, distribute evenly), *Centre on the sheet* and *Delete*."
@@ -3512,7 +3562,7 @@ msgstr ""
 "feuille* et *Supprimer*."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:51
+#: ../src/help/en/user-guide/print-forms.md:57
 #, no-wrap
 msgid ""
 "| Key | Does |\n"
@@ -3538,13 +3588,13 @@ msgstr ""
 "| Ctrl+molette | zoomer |\n"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:52
+#: ../src/help/en/user-guide/print-forms.md:58
 #, no-wrap
 msgid "Images {#images}"
 msgstr "Images {#images}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:55
+#: ../src/help/en/user-guide/print-forms.md:61
 msgid ""
 "Logos, letterheads and other pictures come from the club's image library "
 "below the list of **Print forms**: **Upload image** adds a PNG or JPEG of at "
@@ -3564,7 +3614,7 @@ msgstr ""
 "largeur. Une image peut être répétée comme tout autre élément."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:57
+#: ../src/help/en/user-guide/print-forms.md:63
 msgid ""
 "An image can be deleted only while no form shows it. **Export** puts the "
 "images of a form into its file, and **Import** adds them to the library, "
@@ -3576,13 +3626,13 @@ msgstr ""
 "société a déjà."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:58
+#: ../src/help/en/user-guide/print-forms.md:64
 #, no-wrap
 msgid "Calibrate the printer {#calibrate}"
 msgstr "Calibrer l’imprimante {#calibrate}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:61
+#: ../src/help/en/user-guide/print-forms.md:67
 msgid ""
 "Printers rarely print exactly where they should. Print a sheet with **Test "
 "print**, measure how far the values are off and enter it as **Printer offset "
@@ -3596,13 +3646,13 @@ msgstr ""
 "haut). Le décalage s’applique à tous les éléments ; l’aperçu l’ignore."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:62
+#: ../src/help/en/user-guide/print-forms.md:68
 #, no-wrap
 msgid "Use a form {#use}"
 msgstr "Utiliser un modèle {#use}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:65
+#: ../src/help/en/user-guide/print-forms.md:71
 msgid ""
 "Under **Configuration** → **Programmes** of the event, open a programme and "
 "choose its **Print form** in the section of the same name; this works while "
@@ -3625,7 +3675,7 @@ msgstr ""
 "(printing.md))."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:66
+#: ../src/help/en/user-guide/print-forms.md:72
 #, no-wrap
 msgid "**Export** downloads a form as a file, with its images, and **Import** reads it again, e.g. to share a form with another club.\n"
 msgstr "**Exporter** télécharge un modèle avec ses images sous forme de fichier et **Importer** le relit, p. ex. pour partager un modèle avec une autre société.\n"
@@ -4071,7 +4121,7 @@ msgid "![Rankings](../images/screenshots/rankings.png){ .screenshot }"
 msgstr "![Classements](../images/screenshots/rankings.png){ .screenshot }"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:12
+#: ../src/help/en/user-guide/rankings-kiosk.md:13
 msgid ""
 "**PDF** opens the ranking (A4) for printing or sharing, **CSV** downloads it "
 "for Excel. Rankings do not go to the range's printer."
@@ -4081,7 +4131,7 @@ msgstr ""
 "stand."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:12
+#: ../src/help/en/user-guide/rankings-kiosk.md:13
 msgid ""
 "Programmes switched off for kiosk displays are still ranked here and marked "
 "*not on kiosk*."
@@ -4090,7 +4140,7 @@ msgstr ""
 "ici et marqués *pas sur le kiosque*."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:12
+#: ../src/help/en/user-guide/rankings-kiosk.md:13
 msgid ""
 "[Classifications](classifications.md) follow the programmes, one table per "
 "class; their **PDF** and **CSV** are the report *Classifications*."
@@ -4099,14 +4149,22 @@ msgstr ""
 "tableau par classe ; leur **PDF** et **CSV** sont le rapport *Classements "
 "généraux*."
 
-#. type: Title ##
+#. type: Bullet: '- '
 #: ../src/help/en/user-guide/rankings-kiosk.md:13
+msgid ""
+"**Certificates** prints certificates for the best ranks onto a [print form]"
+"(print-forms.md#certificates) of the club; the button appears once the club "
+"has a form that prints a rank."
+msgstr "**Diplômes** imprime des diplômes pour les meilleurs rangs sur un [modèle d’impression](print-forms.md#certificates) de la société ; le bouton apparaît dès que la société a un modèle qui imprime un rang."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/rankings-kiosk.md:14
 #, no-wrap
 msgid "Kiosk screens"
 msgstr "Écrans kiosque"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/rankings-kiosk.md:16
+#: ../src/help/en/user-guide/rankings-kiosk.md:17
 msgid ""
 "A kiosk link shows the rankings of one event on a screen in the hall, "
 "without login. Switch on the module *Kiosk displays* under **Configuration** "
@@ -4118,7 +4176,7 @@ msgstr ""
 "dans la configuration :"
 
 #. type: Bullet: '1. '
-#: ../src/help/en/user-guide/rankings-kiosk.md:20
+#: ../src/help/en/user-guide/rankings-kiosk.md:21
 msgid ""
 "Enter a name for the screen (e.g. *Hall 1*), choose **Dark** or **Light** "
 "and optionally a language."
@@ -4127,24 +4185,24 @@ msgstr ""
 "**Clair** et, si besoin, une langue."
 
 #. type: Bullet: '2. '
-#: ../src/help/en/user-guide/rankings-kiosk.md:20
+#: ../src/help/en/user-guide/rankings-kiosk.md:21
 msgid "**Create kiosk link**; copy the link. It is shown only once."
 msgstr ""
 "**Créer un lien kiosque** ; copie le lien. Il n’est affiché qu’une fois."
 
 #. type: Bullet: '3. '
-#: ../src/help/en/user-guide/rankings-kiosk.md:20
+#: ../src/help/en/user-guide/rankings-kiosk.md:21
 msgid "Open the link in a browser on the screen, ideally in full screen."
 msgstr ""
 "Ouvre le lien dans un navigateur sur l’écran, idéalement en plein écran."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/rankings-kiosk.md:22
+#: ../src/help/en/user-guide/rankings-kiosk.md:23
 msgid "![Kiosk screen](../images/screenshots/kiosk.png){ .screenshot }"
 msgstr "![Écran kiosque](../images/screenshots/kiosk.png){ .screenshot }"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:26
+#: ../src/help/en/user-guide/rankings-kiosk.md:27
 msgid ""
 "The kiosk shows only programmes with *Show on kiosk displays* switched on, "
 "and the lane status if *Show lane status on the rankings* is on (on the same "
@@ -4155,7 +4213,7 @@ msgstr ""
 "classements* est activé (sur la même page)."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:26
+#: ../src/help/en/user-guide/rankings-kiosk.md:27
 msgid ""
 "The language is the event's language unless the link carries another one (`?"
 "language=de`, `fr`, `it`, `en`); the theme comes from `?theme=dark` or `?"
@@ -4170,7 +4228,7 @@ msgstr ""
 "ses cibles, ses programmes et les programmes sans stand."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:26
+#: ../src/help/en/user-guide/rankings-kiosk.md:27
 msgid ""
 "The screen updates live and reconnects by itself after a network "
 "interruption. When a new version of Standblatt is released, it reloads by "
@@ -4180,7 +4238,7 @@ msgstr ""
 "du réseau. À une nouvelle version de Standblatt, il se recharge tout seul."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:26
+#: ../src/help/en/user-guide/rankings-kiosk.md:27
 msgid ""
 "**revoke** in the list stops a link immediately. *last seen* tells when a "
 "screen last fetched data."
@@ -4410,8 +4468,9 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/registrations.md:29
 #, no-wrap
-msgid "*Print lane sheet* and *Print control strip* are ticked by default (they only appear while the modules *Lane sheet* and *Control strip* are on, see [Modules](events.md#modules)): the documents print on the range's printers right after registering, or open as PDF if no printer is set up (see [Printing](printing.md)).\n"
-msgstr "*Imprimer la feuille de stand* et *Imprimer la bande de contrôle* sont cochés par défaut (ils n’apparaissent que tant que les modules *Feuille de stand* et *Bande de contrôle* sont activés, voir [Modules](events.md#modules)) : les documents s’impriment sur les imprimantes du stand juste après l’inscription, ou s’ouvrent en PDF si aucune imprimante n’est configurée (voir [Impression](printing.md)).\n"
+msgid "*Print lane sheet* and *Print control strip* are ticked by default (they only appear while the modules *Lane sheet* and *Control strip* are on, see [Modules](events.md#modules)): the documents print on the range's printers right after registering, or open as PDF if no printer is set up (see [Printing](printing.md)). [Print forms](print-forms.md#certificates) of the club that print a registration, e.g. a participant card, add a button each.\n"
+msgstr ""
+"*Imprimer la feuille de stand* et *Imprimer la bande de contrôle* sont cochés par défaut (ils n’apparaissent que tant que les modules *Feuille de stand* et *Bande de contrôle* sont activés, voir [Modules](events.md#modules)) : les documents s’impriment sur les imprimantes du stand juste après l’inscription, ou s’ouvrent en PDF si aucune imprimante n’est configurée (voir [Impression](printing.md)). Les [modèles d’impression](print-forms.md#certificates) de la société qui impriment une inscription, p. ex. une carte de participant, ajoutent chacun un bouton.\n"
 
 #. type: Title ##
 #: ../src/help/en/user-guide/registrations.md:30

@@ -4,9 +4,11 @@ import { setLocale, type Locale } from './locale.svelte';
 
 export const meKey = ['me'];
 
-/** Query of the logged-in user; applies the user's saved locale. */
-export function meQuery() {
+/** Query of the logged-in user; applies the user's saved locale. Pass enabled false where no user is logged in,
+ * e.g. on helper links, since a 401 sends the browser to the login. */
+export function meQuery(enabled: () => boolean = () => true) {
 	return createQuery(() => ({
+		enabled: enabled(),
 		queryKey: meKey,
 		queryFn: async () => {
 			const me = await call(api.GET('/api/me'));

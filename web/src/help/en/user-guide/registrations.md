@@ -25,7 +25,7 @@ If the shooter is or was registered at this event before, a notice lists those r
 
 ## Printing
 
-*Print lane sheet* and *Print control strip* are ticked by default (they only appear while the modules *Lane sheet* and *Control strip* are on, see [Modules](events.md#modules)): the documents print on the range's printers right after registering, or open as PDF if no printer is set up (see [Printing](printing.md)).
+*Print lane sheet* and *Print control strip* are ticked by default (they only appear while the modules *Lane sheet* and *Control strip* are on, see [Modules](events.md#modules)): the documents print on the range's printers right after registering, or open as PDF if no printer is set up (see [Printing](printing.md)). [Print forms](print-forms.md#certificates) of the club that print a registration, e.g. a participant card, add a button each.
 
 ## Editing and deleting
 

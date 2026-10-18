@@ -296,11 +296,14 @@ func pdfOut(r rendered, err error) (*PDFOutput, error) {
 	return &PDFOutput{ContentType: "application/pdf", ContentDisposition: fmt.Sprintf(`inline; filename="%s"`, r.filename), Body: r.pdf}, nil
 }
 
-// PrintRequest names what to print: a registration document, or the wreath card or print form of an entry.
+// PrintRequest names what to print: a registration document, the wreath card or print form of an entry, a print
+// form of a registration (registrationId and layoutId) or certificates (eventId and the fields of Certificates).
 type PrintRequest struct {
-	Document       string `json:"document" enum:"lane_sheet,control_strip,result_sheet,wreath_card,form"`
+	Document       string `json:"document" enum:"lane_sheet,control_strip,result_sheet,wreath_card,form,certificate"`
 	RegistrationID int64  `json:"registrationId,omitempty" required:"false"`
 	EntryID        int64  `json:"entryId,omitempty" required:"false"`
+	EventID        int64  `json:"eventId,omitempty" required:"false"`
+	Certificates
 }
 
 // PrintResult tells whether the document went to a printer; if not, the client shows the PDF instead.
@@ -367,7 +370,13 @@ func (s *Server) registerDocuments(api huma.API) {
 		case store.DocWreathCard:
 			r, err = s.renderWreathCard(ctx, in.TenantID, in.Body.EntryID)
 		case store.DocForm:
-			r, err = s.renderForm(ctx, in.TenantID, in.Body.EntryID)
+			if in.Body.EntryID == 0 {
+				r, err = s.renderRegistrationForm(ctx, in.TenantID, in.Body.RegistrationID, in.Body.LayoutID)
+			} else {
+				r, err = s.renderForm(ctx, in.TenantID, in.Body.EntryID)
+			}
+		case store.DocCertificate:
+			r, err = s.renderCertificates(ctx, in.TenantID, in.Body.EventID, in.Body.Certificates)
 		default:
 			r, err = s.renderRegistrationDoc(ctx, in.TenantID, in.Body.RegistrationID, in.Body.Document)
 		}

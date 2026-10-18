@@ -9,6 +9,7 @@
 - **PDF** opens the ranking (A4) for printing or sharing, **CSV** downloads it for Excel. Rankings do not go to the range's printer.
 - Programmes switched off for kiosk displays are still ranked here and marked *not on kiosk*.
 - [Classifications](classifications.md) follow the programmes, one table per class; their **PDF** and **CSV** are the report *Classifications*.
+- **Certificates** prints certificates for the best ranks onto a [print form](print-forms.md#certificates) of the club; the button appears once the club has a form that prints a rank.
 
 ## Kiosk screens
 

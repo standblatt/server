@@ -13,6 +13,9 @@
 - Le [classifiche generali](classifications.md) seguono i programmi, una
   tabella per classe; il loro **PDF** e **CSV** sono il rapporto
   *Classifiche generali*.
+- **Diplomi** stampa diplomi per i migliori ranghi su un [modello di
+  stampa](print-forms.md#certificates) della società; il pulsante compare
+  non appena la società ha un modello che stampa un rango.
 
 ## Schermi chiosco
 

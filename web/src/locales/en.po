@@ -719,6 +719,10 @@ msgstr "Alignment"
 msgid "All"
 msgstr "All"
 
+#: src/lib/forms/CertificatesButton.svelte
+msgid "All classes"
+msgstr "All classes"
+
 #: src/routes/my/+layout.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "All clubs"
@@ -1083,6 +1087,23 @@ msgstr "Centre on the sheet horizontally"
 msgid "Centre on the sheet vertically"
 msgstr "Centre on the sheet vertically"
 
+#: src/lib/forms/CertificatesButton.svelte
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Certificates"
+msgstr "Certificates"
+
+#: src/lib/forms/CertificatesButton.svelte
+msgid "Certificates of {title}"
+msgstr "Certificates of {title}"
+
+#: src/lib/PrintButton.svelte
+msgid "Certificates sent to printer"
+msgstr "Certificates sent to printer"
+
+#: src/lib/forms/CertificatesButton.svelte
+msgid "Certificates: {title}"
+msgstr "Certificates: {title}"
+
 #: src/lib/AccountSettings.svelte
 #: src/routes/b/manage/[token]/+page.svelte
 #: src/routes/my/progress/+page.svelte
@@ -1131,6 +1152,7 @@ msgstr "Choose at least one slot."
 msgid "City"
 msgstr "City"
 
+#: src/lib/forms/CertificatesButton.svelte
 #: src/lib/forms/Palette.svelte
 msgid "Class"
 msgstr "Class"
@@ -2191,6 +2213,10 @@ msgstr "Free lanes are reserved for every slot. The announced shooters join this
 #: src/lib/modules/reservations/Page.svelte
 msgid "From"
 msgstr "From"
+
+#: src/lib/forms/CertificatesButton.svelte
+msgid "From rank"
+msgstr "From rank"
 
 #: src/lib/modules/booking/parts/BookingForm.svelte
 msgid "full"
@@ -3339,6 +3365,10 @@ msgstr "offline"
 msgid "On iPhone: tap Share and then \"Add to Home Screen\"."
 msgstr "On iPhone: tap Share and then \"Add to Home Screen\"."
 
+#: src/lib/forms/CertificatesButton.svelte
+msgid "One page per ranked shooter, printed onto a print form with the rank as data source."
+msgstr "One page per ranked shooter, printed onto a print form with the rank as data source."
+
 #: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "One range per distance, e.g. Pistol 25 m and Pistol 50 m, each with lanes from 1."
 msgstr "One range per distance, e.g. Pistol 25 m and Pistol 50 m, each with lanes from 1."
@@ -3626,10 +3656,15 @@ msgid "Print agents"
 msgstr "Print agents"
 
 #: src/lib/PrintButton.svelte
+msgid "Print certificates"
+msgstr "Print certificates"
+
+#: src/lib/PrintButton.svelte
 #: src/lib/RegistrationDialog.svelte
 msgid "Print control strip"
 msgstr "Print control strip"
 
+#: src/lib/forms/CertificatesButton.svelte
 #: src/lib/modules/forms/ProgrammeSection.svelte
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Print form"
@@ -5126,6 +5161,10 @@ msgstr "Tip: tap your hits on the target when you log a session and Standblatt s
 #: src/lib/modules/reservations/Page.svelte
 msgid "To"
 msgstr "To"
+
+#: src/lib/forms/CertificatesButton.svelte
+msgid "To rank"
+msgstr "To rank"
 
 #: src/lib/forms/Palette.svelte
 #: src/routes/my/+layout.svelte

@@ -15,10 +15,11 @@ const (
 	DocResultSheet  = "result_sheet"
 	DocWreathCard   = "wreath_card"
 	DocForm         = "form"
+	DocCertificate  = "certificate"
 )
 
 // Documents lists the printable documents.
-var Documents = []string{DocLaneSheet, DocControlStrip, DocResultSheet, DocWreathCard, DocForm}
+var Documents = []string{DocLaneSheet, DocControlStrip, DocResultSheet, DocWreathCard, DocForm, DocCertificate}
 
 // AgentOnline is how recently a print agent must have called in to count as online.
 const AgentOnline = 60 * time.Second
@@ -55,7 +56,7 @@ type AgentRef struct {
 
 // PrintSetting routes one document of a range to a printer with lp options.
 type PrintSetting struct {
-	Document string            `json:"document" enum:"lane_sheet,control_strip,result_sheet,wreath_card,form"`
+	Document string            `json:"document" enum:"lane_sheet,control_strip,result_sheet,wreath_card,form,certificate"`
 	Printer  string            `json:"printer"`
 	Options  map[string]string `json:"options"`
 }

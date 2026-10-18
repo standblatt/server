@@ -36,7 +36,7 @@ tiratore può comunque tirare un’altra variante in un’iscrizione separata.
 
 ## Stampa
 
-*Stampa foglio di stand* e *Stampa striscia di controllo* sono spuntati per default (compaiono solo finché i moduli *Foglio di stand* e *Striscia di controllo* sono attivi, vedi [Moduli](events.md#modules)): i documenti vengono stampati sulle stampanti dello stand subito dopo l’iscrizione, o si aprono come PDF se non è configurata alcuna stampante (vedi [Stampa](printing.md)).
+*Stampa foglio di stand* e *Stampa striscia di controllo* sono spuntati per default (compaiono solo finché i moduli *Foglio di stand* e *Striscia di controllo* sono attivi, vedi [Moduli](events.md#modules)): i documenti vengono stampati sulle stampanti dello stand subito dopo l’iscrizione, o si aprono come PDF se non è configurata alcuna stampante (vedi [Stampa](printing.md)). I [modelli di stampa](print-forms.md#certificates) della società che stampano un’iscrizione, p. es. una carta di partecipazione, aggiungono ciascuno un pulsante.
 
 ## Modificare ed eliminare
 

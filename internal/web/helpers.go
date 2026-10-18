@@ -31,8 +31,8 @@ var helperOps = func() map[store.HelperRole]map[string]bool {
 		return m
 	}
 	return map[store.HelperRole]map[string]bool{
-		store.HelperScorer:     set("save-results", "set-award", "finish-registration", "list-registrations", "print", "entry-form"),
-		store.HelperResults:    set("save-results", "set-award", "list-registrations", "issue-awards", "print", "entry-form"),
+		store.HelperScorer:     set("save-results", "set-award", "finish-registration", "list-registrations", "print", "entry-form", "registration-form"),
+		store.HelperResults:    set("save-results", "set-award", "list-registrations", "issue-awards", "print", "entry-form", "registration-form"),
 		store.HelperAmmunition: set("list-registrations", "update-registration", "issue-ammo", "print", "registration-document"),
 	}
 }()
@@ -119,7 +119,7 @@ func (s *Server) helperDocument(ctx context.Context, tenantID, registrationID, e
 	if !allowed {
 		return forbidden("Not allowed for this helper link")
 	}
-	if document == store.DocForm {
+	if document == store.DocForm && entryID != 0 {
 		e, err := s.Store.GetEntry(ctx, tenantID, entryID)
 		if err != nil {
 			return notFound(err, "Programme of the registration not found")

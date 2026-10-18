@@ -66,6 +66,22 @@ società. Una manifestazione lo sceglie poi in **Configurazione** →
 delle strisce di controllo* nel modulo *Striscia di controllo*. Senza
 scelta, o se il modello scelto è eliminato, stampa il modello integrato.
 
+## Documenti d’iscrizione e diplomi {#certificates}
+
+Un modello che stampa **Un'iscrizione**, oltre alla striscia di controllo
+della manifestazione, p. es. una carta di partecipazione o una ricevuta,
+compare nell’iscrizione con un pulsante con il proprio nome; viene stampato
+sulla stampante dei *Modelli di stampa*.
+
+Un modello che stampa **Un rango** produce diplomi: **Diplomi**
+nell’intestazione di ogni classifica e di ogni classifica generale in
+**Classifiche** chiede il modello, la classe di una classifica generale e i
+ranghi (da 1 a 3 se non modificati), poi stampa una pagina per tiratore
+classificato, oppure le apre in un unico PDF. I diplomi vanno alla stampante
+dei *Diplomi* in **Stand di tiro → Stampa**. I campi di un rango sono il
+rango, il totale, la classifica (il programma o la classifica generale) e la
+classe; il diploma di un programma conosce anche i suoi risultati.
+
 ## Disporre gli elementi {#arrange}
 
 - Un elemento si **sposta** trascinandolo e si **ridimensiona** dal suo

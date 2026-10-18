@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 12:12+0200\n"
+"POT-Creation-Date: 2026-10-18 12:26+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -634,8 +634,9 @@ msgstr "Hier kannst du die Anfrage prüfen, ändern oder stornieren:"
 msgid "Confirm or decline the request here:"
 msgstr "Hier bestätigst oder lehnst du die Anfrage ab:"
 
-#: internal/web/booking.go internal/web/classifications.go
-#: internal/web/helpers.go internal/web/programmes.go internal/web/rankings.go
+#: internal/web/booking.go internal/web/certificates.go
+#: internal/web/classifications.go internal/web/helpers.go
+#: internal/web/programmes.go internal/web/rankings.go
 #: internal/web/registrations.go internal/web/reports.go
 #: internal/web/resultimport.go internal/web/tenants.go
 msgid "Event not found"
@@ -719,6 +720,23 @@ msgstr "wir haben deine Anfrage für %s erhalten. Der Organisator bestätigt sie
 msgid "your lanes for %s are reserved:"
 msgstr "deine Scheiben für %s sind reserviert:"
 
+#: internal/web/certificates.go
+msgid "Choose a programme or a classification"
+msgstr "Wähle ein Programm oder eine Wertung"
+
+#: internal/web/certificates.go
+msgid "Nobody is ranked in these ranks"
+msgstr "In diesen Rängen ist niemand rangiert"
+
+#: internal/web/certificates.go internal/web/forms.go
+msgid "Print form not found"
+msgstr "Druckvorlage nicht gefunden"
+
+#: internal/web/certificates.go internal/web/forms.go
+#, go-format
+msgid "The print form %s prints another data source"
+msgstr "Die Vorlage %s druckt eine andere Datenquelle"
+
 #: internal/web/classifications.go
 msgid "Classification not found"
 msgstr "Wertung nicht gefunden"
@@ -796,17 +814,8 @@ msgid "Only print forms of results can print a programme"
 msgstr "Nur Vorlagen für Resultate können ein Programm drucken"
 
 #: internal/web/forms.go
-msgid "Print form not found"
-msgstr "Druckvorlage nicht gefunden"
-
-#: internal/web/forms.go
 msgid "Programme or print form not found"
 msgstr "Programm oder Druckvorlage nicht gefunden"
-
-#: internal/web/forms.go
-#, go-format
-msgid "The print form %s prints another data source"
-msgstr "Die Vorlage %s druckt eine andere Datenquelle"
 
 #: internal/web/forms.go
 msgid "The print form has no scan"

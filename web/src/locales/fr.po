@@ -719,6 +719,10 @@ msgstr "Alignement"
 msgid "All"
 msgstr "Tous"
 
+#: src/lib/forms/CertificatesButton.svelte
+msgid "All classes"
+msgstr "Toutes les classes"
+
 #: src/routes/my/+layout.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "All clubs"
@@ -1083,6 +1087,23 @@ msgstr "Centrer horizontalement sur la feuille"
 msgid "Centre on the sheet vertically"
 msgstr "Centrer verticalement sur la feuille"
 
+#: src/lib/forms/CertificatesButton.svelte
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Certificates"
+msgstr "Diplômes"
+
+#: src/lib/forms/CertificatesButton.svelte
+msgid "Certificates of {title}"
+msgstr "Diplômes de {title}"
+
+#: src/lib/PrintButton.svelte
+msgid "Certificates sent to printer"
+msgstr "Diplômes envoyés à l'imprimante"
+
+#: src/lib/forms/CertificatesButton.svelte
+msgid "Certificates: {title}"
+msgstr "Diplômes : {title}"
+
 #: src/lib/AccountSettings.svelte
 #: src/routes/b/manage/[token]/+page.svelte
 #: src/routes/my/progress/+page.svelte
@@ -1131,6 +1152,7 @@ msgstr "Choisis au moins un créneau."
 msgid "City"
 msgstr "Localité"
 
+#: src/lib/forms/CertificatesButton.svelte
 #: src/lib/forms/Palette.svelte
 msgid "Class"
 msgstr "Classe"
@@ -2191,6 +2213,10 @@ msgstr "Des cibles libres sont réservées pour chaque créneau. Les tireurs ann
 #: src/lib/modules/reservations/Page.svelte
 msgid "From"
 msgstr "De"
+
+#: src/lib/forms/CertificatesButton.svelte
+msgid "From rank"
+msgstr "Du rang"
 
 #: src/lib/modules/booking/parts/BookingForm.svelte
 msgid "full"
@@ -3339,6 +3365,10 @@ msgstr "hors ligne"
 msgid "On iPhone: tap Share and then \"Add to Home Screen\"."
 msgstr "Sur iPhone : touche « Partager » puis « Sur l’écran d’accueil »."
 
+#: src/lib/forms/CertificatesButton.svelte
+msgid "One page per ranked shooter, printed onto a print form with the rank as data source."
+msgstr "Une page par tireur classé, imprimée sur un modèle ayant le rang comme source de données."
+
 #: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "One range per distance, e.g. Pistol 25 m and Pistol 50 m, each with lanes from 1."
 msgstr "Un stand de tir par distance, p. ex. Pistolet 25 m et Pistolet 50 m, chacun avec des cibles à partir de 1."
@@ -3626,10 +3656,15 @@ msgid "Print agents"
 msgstr "Agents d’impression"
 
 #: src/lib/PrintButton.svelte
+msgid "Print certificates"
+msgstr "Imprimer les diplômes"
+
+#: src/lib/PrintButton.svelte
 #: src/lib/RegistrationDialog.svelte
 msgid "Print control strip"
 msgstr "Imprimer la bande de contrôle"
 
+#: src/lib/forms/CertificatesButton.svelte
 #: src/lib/modules/forms/ProgrammeSection.svelte
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Print form"
@@ -5126,6 +5161,10 @@ msgstr "Astuce : touche tes impacts sur la cible en enregistrant une séance et 
 #: src/lib/modules/reservations/Page.svelte
 msgid "To"
 msgstr "À"
+
+#: src/lib/forms/CertificatesButton.svelte
+msgid "To rank"
+msgstr "Au rang"
 
 #: src/lib/forms/Palette.svelte
 #: src/routes/my/+layout.svelte

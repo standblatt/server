@@ -13,6 +13,9 @@
   rangiert und als *nicht im Kiosk* markiert.
 - [Wertungen](classifications.md) folgen auf die Programme, eine Tabelle pro
   Klasse; ihr **PDF** und **CSV** ist der Bericht *Wertungen*.
+- **Urkunden** druckt Urkunden für die besten Ränge auf eine
+  [Druckvorlage](print-forms.md#certificates) des Vereins; der Knopf
+  erscheint, sobald der Verein eine Vorlage hat, die einen Rang druckt.
 
 ## Kiosk-Bildschirme
 

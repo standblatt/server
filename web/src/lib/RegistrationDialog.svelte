@@ -5,7 +5,9 @@
 	import ListChecks from '@lucide/svelte/icons/list-checks';
 	import Trash from '@lucide/svelte/icons/trash-2';
 	import { toast } from 'svelte-sonner';
-	import { api, call, type ProgrammeChoice } from './api';
+	import { api, call, helperCode, type ProgrammeChoice } from './api';
+	import { meQuery } from './me';
+	import { hasClub } from './modules';
 	import { ageCategoryLabel, registrationStatus } from './labels';
 	import { Badge } from './components/ui/badge';
 	import { Button } from './components/ui/button';
@@ -81,6 +83,17 @@
 
 	let printLaneSheet = $state(true);
 	let printControlStrip = $state(true);
+	const me = meQuery(() => !helperCode());
+	const forms = $derived(!helperCode() && hasClub(me.data?.tenants.find((m) => m.tenantId === tenantId), 'forms'));
+	const layouts = createQuery(() => ({
+		queryKey: ['tenants', tenantId, 'layouts'],
+		queryFn: () => call(api.GET('/api/tenants/{tenantId}/layouts', { params: { path: { tenantId } } })),
+		enabled: forms
+	}));
+	/** Print forms with the registration as data source, besides the event's control strip. */
+	const registrationForms = $derived(
+		forms ? (layouts.data ?? []).filter((l) => l.source === 'registration' && l.id !== event.data?.settings.controlStripFormId) : []
+	);
 	const laneSheet = $derived(!!event.data?.modules.includes('lane_sheet'));
 	const controlStrip = $derived(!!event.data?.modules.includes('control_strip'));
 
@@ -167,6 +180,7 @@
 					{/if}
 					{#if laneSheet}<PrintButton {tenantId} target={{ document: 'lane_sheet', registrationId: r.id }} />{/if}
 					{#if controlStrip && !lanesOnly}<PrintButton {tenantId} target={{ document: 'control_strip', registrationId: r.id }} />{/if}
+					{#each registrationForms as l (l.id)}<PrintButton {tenantId} target={{ document: 'form', registrationId: r.id, layoutId: l.id }} label={l.name} />{/each}
 					{#if !archived && !lanesOnly}<Button size="sm" variant="destructive" class="ml-auto" onclick={() => action('delete')}><Trash />{$t`Delete`}</Button>{/if}
 				</div>
 			{/if}

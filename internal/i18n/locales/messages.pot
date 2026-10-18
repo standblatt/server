@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 12:12+0200\n"
+"POT-Creation-Date: 2026-10-18 12:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -634,8 +634,9 @@ msgstr ""
 msgid "Confirm or decline the request here:"
 msgstr ""
 
-#: internal/web/booking.go internal/web/classifications.go
-#: internal/web/helpers.go internal/web/programmes.go internal/web/rankings.go
+#: internal/web/booking.go internal/web/certificates.go
+#: internal/web/classifications.go internal/web/helpers.go
+#: internal/web/programmes.go internal/web/rankings.go
 #: internal/web/registrations.go internal/web/reports.go
 #: internal/web/resultimport.go internal/web/tenants.go
 msgid "Event not found"
@@ -719,6 +720,23 @@ msgstr ""
 msgid "your lanes for %s are reserved:"
 msgstr ""
 
+#: internal/web/certificates.go
+msgid "Choose a programme or a classification"
+msgstr ""
+
+#: internal/web/certificates.go
+msgid "Nobody is ranked in these ranks"
+msgstr ""
+
+#: internal/web/certificates.go internal/web/forms.go
+msgid "Print form not found"
+msgstr ""
+
+#: internal/web/certificates.go internal/web/forms.go
+#, go-format
+msgid "The print form %s prints another data source"
+msgstr ""
+
 #: internal/web/classifications.go
 msgid "Classification not found"
 msgstr ""
@@ -796,16 +814,7 @@ msgid "Only print forms of results can print a programme"
 msgstr ""
 
 #: internal/web/forms.go
-msgid "Print form not found"
-msgstr ""
-
-#: internal/web/forms.go
 msgid "Programme or print form not found"
-msgstr ""
-
-#: internal/web/forms.go
-#, go-format
-msgid "The print form %s prints another data source"
 msgstr ""
 
 #: internal/web/forms.go

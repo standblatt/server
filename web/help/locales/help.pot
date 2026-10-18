@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-18 10:20+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-18 10:31+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
 #: ../src/help/en/getting-started/concepts.md:1
@@ -2041,7 +2041,7 @@ msgstr ""
 #. type: Bullet: '2. '
 #: ../src/help/en/user-guide/printing.md:25
 #, markdown-text
-msgid "Once the agent is online, it reports its printers. Choose the printer for each document and its options (tray, paper size, media type, further `lp` options such as `fit-to-page`)."
+msgid "Once the agent is online, it reports its printers. Choose the printer for each document (*Certificates* are the certificates from the rankings, *Print forms* every other form of the club) and its options (tray, paper size, media type, further `lp` options such as `fit-to-page`)."
 msgstr ""
 
 #. type: Bullet: '3. '
@@ -2161,83 +2161,101 @@ msgstr ""
 #. type: Title ##
 #: ../src/help/en/user-guide/print-forms.md:34
 #, markdown-text, no-wrap
+msgid "Registration documents and certificates {#certificates}"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:37
+#, markdown-text
+msgid "A form that prints **A registration** besides the event's control strip, e.g. a participant card or a receipt, appears in the registration with a button of its own name; it prints on the printer of *Print forms*."
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:39
+#, markdown-text
+msgid "A form that prints **A rank** makes certificates: **Certificates** in the header of every ranking and classification on **Rankings** asks for the form, the class of a classification and the ranks (1 to 3 unless changed), then prints one page per ranked shooter, or opens them as one PDF. Certificates go to the printer of *Certificates* under **Ranges → Printing**. The fields of a rank are the rank, the total, the ranking (the programme or classification) and the class; a programme's certificate knows its results too."
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/print-forms.md:40
+#, markdown-text, no-wrap
 msgid "Arrange the elements {#arrange}"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:40
+#: ../src/help/en/user-guide/print-forms.md:46
 #, markdown-text
 msgid "**Move** an element by dragging it, **resize** it by its corner. The pink dot on the last box of a repeated element drags the spacing."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:40
+#: ../src/help/en/user-guide/print-forms.md:46
 #, markdown-text
 msgid "While moving, the element **snaps** to the edges and centres of the other elements and of the sheet, and a pink guide shows the line; elsewhere it snaps to whole millimetres. Hold Alt to place it freely."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:40
+#: ../src/help/en/user-guide/print-forms.md:46
 #, markdown-text
 msgid "**Select several** with Shift or Ctrl and a click, or draw a frame around them on the empty sheet. Dragging moves them together; font size, bold and alignment then apply to all of them."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/print-forms.md:40
+#: ../src/help/en/user-guide/print-forms.md:46
 #, markdown-text
 msgid "A **right click** opens the menu: *Duplicate*, *Bring to front*, *Align* (edges, centres, distribute evenly), *Centre on the sheet* and *Delete*."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:51
+#: ../src/help/en/user-guide/print-forms.md:57
 #, markdown-text, no-wrap
 msgid "| Key | Does |\n|---|---|\n| Arrow keys | move the selection by 0.5 mm, with Shift by 5 mm |\n| Ctrl+Z / Ctrl+Y | undo / redo |\n| Ctrl+A | select everything |\n| Ctrl+D | duplicate |\n| Delete | delete the selection |\n| Esc | clear the selection |\n| Ctrl+S | save |\n| Ctrl+mouse wheel | zoom |\n"
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:52
+#: ../src/help/en/user-guide/print-forms.md:58
 #, markdown-text, no-wrap
 msgid "Images {#images}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:55
+#: ../src/help/en/user-guide/print-forms.md:61
 #, markdown-text
 msgid "Logos, letterheads and other pictures come from the club's image library below the list of **Print forms**: **Upload image** adds a PNG or JPEG of at most 2 MB, named after its file. In the editor, the group **Images** of the fields lists them; a click or a drag puts one onto the sheet, 30 mm wide with the image's own proportions. Its properties choose another **Image**, its position and size, and **Keep the aspect ratio** sets the height to match the width again. An image can be repeated like any other element."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:57
+#: ../src/help/en/user-guide/print-forms.md:63
 #, markdown-text
 msgid "An image can be deleted only while no form shows it. **Export** puts the images of a form into its file, and **Import** adds them to the library, reusing an image of the same name the club already has."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:58
+#: ../src/help/en/user-guide/print-forms.md:64
 #, markdown-text, no-wrap
 msgid "Calibrate the printer {#calibrate}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:61
+#: ../src/help/en/user-guide/print-forms.md:67
 #, markdown-text
 msgid "Printers rarely print exactly where they should. Print a sheet with **Test print**, measure how far the values are off and enter it as **Printer offset right** and **Printer offset down** (negative to move left or up). The offset applies to every element; the preview ignores it."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:62
+#: ../src/help/en/user-guide/print-forms.md:68
 #, markdown-text, no-wrap
 msgid "Use a form {#use}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:65
+#: ../src/help/en/user-guide/print-forms.md:71
 #, markdown-text
 msgid "Under **Configuration** → **Programmes** of the event, open a programme and choose its **Print form** in the section of the same name; this works while shooters are registered. Every completed programme then offers **Print onto form** in the results: at the desk, on the **Enter results** page and on scorer links at the lane (see [Helpers](helpers.md)). With a print agent and a printer chosen for *Print forms* under **Ranges → Printing**, the sheet goes to that printer (e.g. its manual feed), otherwise the PDF opens (see [Printing](printing.md))."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:66
+#: ../src/help/en/user-guide/print-forms.md:72
 #, markdown-text, no-wrap
 msgid "**Export** downloads a form as a file, with its images, and **Import** reads it again, e.g. to share a form with another club.\n"
 msgstr ""
@@ -2520,79 +2538,85 @@ msgid "![Rankings](../images/screenshots/rankings.png){ .screenshot }"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:12
+#: ../src/help/en/user-guide/rankings-kiosk.md:13
 #, markdown-text
 msgid "**PDF** opens the ranking (A4) for printing or sharing, **CSV** downloads it for Excel. Rankings do not go to the range's printer."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:12
+#: ../src/help/en/user-guide/rankings-kiosk.md:13
 #, markdown-text
 msgid "Programmes switched off for kiosk displays are still ranked here and marked *not on kiosk*."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:12
+#: ../src/help/en/user-guide/rankings-kiosk.md:13
 #, markdown-text
 msgid "[Classifications](classifications.md) follow the programmes, one table per class; their **PDF** and **CSV** are the report *Classifications*."
 msgstr ""
 
-#. type: Title ##
+#. type: Bullet: '- '
 #: ../src/help/en/user-guide/rankings-kiosk.md:13
+#, markdown-text
+msgid "**Certificates** prints certificates for the best ranks onto a [print form](print-forms.md#certificates) of the club; the button appears once the club has a form that prints a rank."
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/rankings-kiosk.md:14
 #, markdown-text, no-wrap
 msgid "Kiosk screens"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/rankings-kiosk.md:16
+#: ../src/help/en/user-guide/rankings-kiosk.md:17
 #, markdown-text
 msgid "A kiosk link shows the rankings of one event on a screen in the hall, without login. Switch on the module *Kiosk displays* under **Configuration** → **Modules**, then create one on **Kiosk displays** in the configuration:"
 msgstr ""
 
 #. type: Bullet: '1. '
-#: ../src/help/en/user-guide/rankings-kiosk.md:20
+#: ../src/help/en/user-guide/rankings-kiosk.md:21
 #, markdown-text
 msgid "Enter a name for the screen (e.g. *Hall 1*), choose **Dark** or **Light** and optionally a language."
 msgstr ""
 
 #. type: Bullet: '2. '
-#: ../src/help/en/user-guide/rankings-kiosk.md:20
+#: ../src/help/en/user-guide/rankings-kiosk.md:21
 #, markdown-text
 msgid "**Create kiosk link**; copy the link. It is shown only once."
 msgstr ""
 
 #. type: Bullet: '3. '
-#: ../src/help/en/user-guide/rankings-kiosk.md:20
+#: ../src/help/en/user-guide/rankings-kiosk.md:21
 #, markdown-text
 msgid "Open the link in a browser on the screen, ideally in full screen."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/rankings-kiosk.md:22
+#: ../src/help/en/user-guide/rankings-kiosk.md:23
 #, markdown-text
 msgid "![Kiosk screen](../images/screenshots/kiosk.png){ .screenshot }"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:26
+#: ../src/help/en/user-guide/rankings-kiosk.md:27
 #, markdown-text
 msgid "The kiosk shows only programmes with *Show on kiosk displays* switched on, and the lane status if *Show lane status on the rankings* is on (on the same page)."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:26
+#: ../src/help/en/user-guide/rankings-kiosk.md:27
 #, markdown-text
 msgid "The language is the event's language unless the link carries another one (`?language=de`, `fr`, `it`, `en`); the theme comes from `?theme=dark` or `?theme=light`. On an event with several ranges, `?range=<id>` (chosen when creating the link) limits the display to that range: its lanes, its programmes and the programmes without a range."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:26
+#: ../src/help/en/user-guide/rankings-kiosk.md:27
 #, markdown-text
 msgid "The screen updates live and reconnects by itself after a network interruption. When a new version of Standblatt is released, it reloads by itself."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/rankings-kiosk.md:26
+#: ../src/help/en/user-guide/rankings-kiosk.md:27
 #, markdown-text
 msgid "**revoke** in the list stops a link immediately. *last seen* tells when a screen last fetched data."
 msgstr ""
@@ -2756,7 +2780,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/registrations.md:29
 #, markdown-text, no-wrap
-msgid "*Print lane sheet* and *Print control strip* are ticked by default (they only appear while the modules *Lane sheet* and *Control strip* are on, see [Modules](events.md#modules)): the documents print on the range's printers right after registering, or open as PDF if no printer is set up (see [Printing](printing.md)).\n"
+msgid "*Print lane sheet* and *Print control strip* are ticked by default (they only appear while the modules *Lane sheet* and *Control strip* are on, see [Modules](events.md#modules)): the documents print on the range's printers right after registering, or open as PDF if no printer is set up (see [Printing](printing.md)). [Print forms](print-forms.md#certificates) of the club that print a registration, e.g. a participant card, add a button each.\n"
 msgstr ""
 
 #. type: Title ##

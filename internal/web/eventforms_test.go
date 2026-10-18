@@ -113,3 +113,71 @@ func TestEventForms(t *testing.T) {
 	code, b = e.do(c, "PUT", fmt.Sprintf("%s/programmes/%d/form", base, main), map[string]any{"layoutId": label})
 	expect(t, "registration form on a programme", code, 422, b)
 }
+
+// TestCertificates checks registration documents and certificates of a programme and of a classification class.
+func TestCertificates(t *testing.T) {
+	e := newEnv(t)
+	ctx := context.Background()
+	tid := e.tenant("Club")
+	e.user("boss", tid, store.RoleAdmin)
+	c := e.login("boss")
+	ev := e.event(tid, "Match")
+	main, _ := e.st.CreateProgramme(ctx, tid, ev, domain.ProgrammeDefinition{
+		Name: "Main", Series: []domain.Series{{Shots: 10, MaxPoints: 100}}, Prices: []domain.Price{{AgeCategory: domain.Elite, Price: 10}}, Awards: []domain.AwardTier{},
+	})
+	base := fmt.Sprintf("/api/tenants/%d", tid)
+	evPath := fmt.Sprintf("%s/events/%d", base, ev)
+	var regs []store.Registration
+	for i, name := range []string{"Gold", "Silver", "Bronze"} {
+		sh, _ := e.st.CreateShooter(ctx, tid, store.ShooterInput{Firstname: "Anna", Lastname: name, Birthday: "1990-01-01"}, nil)
+		code, b := e.do(c, "POST", evPath+"/registrations", web.RegistrationInput{ShooterID: sh, Programmes: []domain.ProgrammeChoice{{ProgrammeID: main}}})
+		expect(t, "register "+name, code, 201, b)
+		var reg store.Registration
+		json.Unmarshal(b, &reg)
+		regs = append(regs, reg)
+		code, b = e.do(c, "PUT", fmt.Sprintf("%s/entries/%d/results", base, reg.Entries[0].ID), map[string]any{"series": []map[string]any{{"points": 99 - i}}})
+		expect(t, "results "+name, code, 200, b)
+	}
+	form := func(name, source, text string) int64 {
+		code, b := e.do(c, "POST", base+"/layouts", map[string]any{"name": name, "width": 210, "height": 148, "source": source,
+			"elements": []map[string]any{{"type": "text", "x": 10, "y": 10, "value": text}}})
+		expect(t, "form "+name, code, 201, b)
+		var l store.Layout
+		json.Unmarshal(b, &l)
+		return l.ID
+	}
+	card := form("Participant card", "registration", "CARD {{shooter.lastname}} {{programmes}}")
+	cert := form("Certificate", "rank", "RANK {{rank}} {{shooter.lastname}} {{ranking}} {{class}}")
+
+	code, b := e.do(c, "GET", fmt.Sprintf("%s/registrations/%d/forms/%d", base, regs[0].ID, card), nil)
+	expect(t, "participant card", code, 200, b)
+	if txt := pdfWords(t, b); txt != "" && !strings.Contains(txt, "CARD Gold Main") {
+		t.Fatalf("participant card: %s", txt)
+	}
+	code, b = e.do(c, "GET", fmt.Sprintf("%s/registrations/%d/forms/%d", base, regs[0].ID, cert), nil)
+	expect(t, "rank form as registration document", code, 422, b)
+
+	code, b = e.do(c, "GET", fmt.Sprintf("%s/certificates?layout=%d&programme=%d&from=1&to=2", evPath, cert, main), nil)
+	expect(t, "certificates of a programme", code, 200, b)
+	if txt := pdfWords(t, b); txt != "" && (!strings.Contains(txt, "RANK 1 Gold Main") || !strings.Contains(txt, "RANK 2 Silver") || strings.Contains(txt, "Bronze")) {
+		t.Fatalf("certificates of ranks 1–2: %s", txt)
+	}
+	code, b = e.do(c, "GET", fmt.Sprintf("%s/certificates?layout=%d&programme=%d&from=5&to=9", evPath, cert, main), nil)
+	expect(t, "nobody ranked", code, 409, b)
+
+	code, b = e.do(c, "POST", evPath+"/classifications", map[string]any{"name": "Championship", "parts": []map[string]any{{"programmeId": main, "count": 1}},
+		"tieBreak": []string{"series"}, "classes": []map[string]any{{"name": "Adults", "categories": []string{"elite"}}}})
+	expect(t, "classification", code, 201, b)
+	var cl store.Classification
+	json.Unmarshal(b, &cl)
+	code, b = e.do(c, "GET", fmt.Sprintf("%s/certificates?layout=%d&classification=%d&class=Adults&to=1", evPath, cert, cl.ID), nil)
+	expect(t, "certificates of a class", code, 200, b)
+	if txt := pdfWords(t, b); txt != "" && !strings.Contains(txt, "RANK 1 Gold Championship Adults") {
+		t.Fatalf("classification certificate: %s", txt)
+	}
+
+	code, b = e.do(c, "POST", base+"/print", map[string]any{"document": "certificate", "eventId": ev, "layoutId": cert, "programmeId": main})
+	expect(t, "print certificates", code, 200, b)
+	code, b = e.do(c, "POST", base+"/print", map[string]any{"document": "form", "registrationId": regs[1].ID, "layoutId": card})
+	expect(t, "print a participant card", code, 200, b)
+}

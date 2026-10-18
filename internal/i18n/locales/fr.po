@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 12:12+0200\n"
+"POT-Creation-Date: 2026-10-18 12:26+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -634,8 +634,9 @@ msgstr "Vérifie, modifie ou annule ta demande ici :"
 msgid "Confirm or decline the request here:"
 msgstr "Confirme ou refuse la demande ici :"
 
-#: internal/web/booking.go internal/web/classifications.go
-#: internal/web/helpers.go internal/web/programmes.go internal/web/rankings.go
+#: internal/web/booking.go internal/web/certificates.go
+#: internal/web/classifications.go internal/web/helpers.go
+#: internal/web/programmes.go internal/web/rankings.go
 #: internal/web/registrations.go internal/web/reports.go
 #: internal/web/resultimport.go internal/web/tenants.go
 msgid "Event not found"
@@ -719,6 +720,23 @@ msgstr "nous avons reçu ta demande pour %s. L’organisateur la confirme par e-
 msgid "your lanes for %s are reserved:"
 msgstr "tes cibles pour %s sont réservées :"
 
+#: internal/web/certificates.go
+msgid "Choose a programme or a classification"
+msgstr "Choisissez un programme ou un classement général"
+
+#: internal/web/certificates.go
+msgid "Nobody is ranked in these ranks"
+msgstr "Personne n'est classé dans ces rangs"
+
+#: internal/web/certificates.go internal/web/forms.go
+msgid "Print form not found"
+msgstr "Modèle d’impression introuvable"
+
+#: internal/web/certificates.go internal/web/forms.go
+#, go-format
+msgid "The print form %s prints another data source"
+msgstr "Le modèle %s imprime une autre source de données"
+
 #: internal/web/classifications.go
 msgid "Classification not found"
 msgstr "Classement général introuvable"
@@ -796,17 +814,8 @@ msgid "Only print forms of results can print a programme"
 msgstr "Seuls les modèles de résultats peuvent imprimer un programme"
 
 #: internal/web/forms.go
-msgid "Print form not found"
-msgstr "Modèle d’impression introuvable"
-
-#: internal/web/forms.go
 msgid "Programme or print form not found"
 msgstr "Programme ou modèle d’impression introuvable"
-
-#: internal/web/forms.go
-#, go-format
-msgid "The print form %s prints another data source"
-msgstr "Le modèle %s imprime une autre source de données"
 
 #: internal/web/forms.go
 msgid "The print form has no scan"

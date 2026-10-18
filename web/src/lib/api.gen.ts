@@ -1042,6 +1042,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/tenants/{tenantId}/events/{eventId}/certificates": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Certificates: one page per ranked shooter of a programme or classification */
+        get: operations["certificates"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/tenants/{tenantId}/events/{eventId}/classification-rankings": {
         parameters: {
             query?: never;
@@ -1910,6 +1927,23 @@ export interface paths {
         get?: never;
         put?: never;
         post: operations["finish-registration"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/tenants/{tenantId}/registrations/{registrationId}/forms/{layoutId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** A registration printed onto a print form with the registration as data source */
+        get: operations["registration-form"];
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -3203,12 +3237,35 @@ export interface components {
             title: string;
         };
         PrintRequest: {
+            /** @description Only this class of the classification */
+            class?: string;
+            /** Format: int64 */
+            classificationId?: number;
             /** @enum {string} */
-            document: "lane_sheet" | "control_strip" | "result_sheet" | "wreath_card" | "form";
+            document: "lane_sheet" | "control_strip" | "result_sheet" | "wreath_card" | "form" | "certificate";
             /** Format: int64 */
             entryId?: number;
             /** Format: int64 */
+            eventId?: number;
+            /**
+             * Format: int64
+             * @description First rank, 1 when 0
+             */
+            from?: number;
+            /**
+             * Format: int64
+             * @description The print form; required for certificates and registration forms
+             */
+            layoutId?: number;
+            /** Format: int64 */
+            programmeId?: number;
+            /** Format: int64 */
             registrationId?: number;
+            /**
+             * Format: int64
+             * @description Last rank, 3 when 0
+             */
+            to?: number;
         };
         PrintResult: {
             /** Format: int64 */
@@ -3217,7 +3274,7 @@ export interface components {
         };
         PrintSetting: {
             /** @enum {string} */
-            document: "lane_sheet" | "control_strip" | "result_sheet" | "wreath_card" | "form";
+            document: "lane_sheet" | "control_strip" | "result_sheet" | "wreath_card" | "form" | "certificate";
             options: {
                 [key: string]: string;
             };
@@ -6418,6 +6475,51 @@ export interface operations {
             };
         };
     };
+    certificates: {
+        parameters: {
+            query?: {
+                /** @description The print form; required for certificates and registration forms */
+                layout?: number;
+                programme?: number;
+                classification?: number;
+                /** @description Only this class of the classification */
+                class?: string;
+                /** @description First rank, 1 when 0 */
+                from?: number;
+                /** @description Last rank, 3 when 0 */
+                to?: number;
+            };
+            header?: never;
+            path: {
+                tenantId: number;
+                eventId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description PDF */
+            200: {
+                headers: {
+                    "Content-Disposition"?: string;
+                    "Content-Type"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/pdf": unknown;
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
     "get-classification-rankings": {
         parameters: {
             query?: never;
@@ -8978,6 +9080,41 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "registration-form": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                registrationId: number;
+                layoutId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description PDF */
+            200: {
+                headers: {
+                    "Content-Disposition"?: string;
+                    "Content-Type"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/pdf": unknown;
+                };
             };
             /** @description Error */
             default: {

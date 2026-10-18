@@ -719,6 +719,10 @@ msgstr "Ausrichtung"
 msgid "All"
 msgstr "Alle"
 
+#: src/lib/forms/CertificatesButton.svelte
+msgid "All classes"
+msgstr "Alle Klassen"
+
 #: src/routes/my/+layout.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
 msgid "All clubs"
@@ -1083,6 +1087,23 @@ msgstr "Horizontal auf dem Blatt zentrieren"
 msgid "Centre on the sheet vertically"
 msgstr "Vertikal auf dem Blatt zentrieren"
 
+#: src/lib/forms/CertificatesButton.svelte
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Certificates"
+msgstr "Urkunden"
+
+#: src/lib/forms/CertificatesButton.svelte
+msgid "Certificates of {title}"
+msgstr "Urkunden von {title}"
+
+#: src/lib/PrintButton.svelte
+msgid "Certificates sent to printer"
+msgstr "Urkunden an den Drucker gesendet"
+
+#: src/lib/forms/CertificatesButton.svelte
+msgid "Certificates: {title}"
+msgstr "Urkunden: {title}"
+
 #: src/lib/AccountSettings.svelte
 #: src/routes/b/manage/[token]/+page.svelte
 #: src/routes/my/progress/+page.svelte
@@ -1131,6 +1152,7 @@ msgstr "Wähle mindestens einen Zeitblock."
 msgid "City"
 msgstr "Ort"
 
+#: src/lib/forms/CertificatesButton.svelte
 #: src/lib/forms/Palette.svelte
 msgid "Class"
 msgstr "Klasse"
@@ -2191,6 +2213,10 @@ msgstr "Für jeden Zeitblock werden freie Scheiben reserviert. Die angemeldeten 
 #: src/lib/modules/reservations/Page.svelte
 msgid "From"
 msgstr "Von"
+
+#: src/lib/forms/CertificatesButton.svelte
+msgid "From rank"
+msgstr "Ab Rang"
 
 #: src/lib/modules/booking/parts/BookingForm.svelte
 msgid "full"
@@ -3339,6 +3365,10 @@ msgstr "offline"
 msgid "On iPhone: tap Share and then \"Add to Home Screen\"."
 msgstr "Auf dem iPhone: Tippe auf «Teilen» und dann auf «Zum Home-Bildschirm»."
 
+#: src/lib/forms/CertificatesButton.svelte
+msgid "One page per ranked shooter, printed onto a print form with the rank as data source."
+msgstr "Eine Seite pro rangiertem Schützen, gedruckt auf eine Vorlage mit dem Rang als Datenquelle."
+
 #: src/routes/t/[tenantId]/ranges/+page.svelte
 msgid "One range per distance, e.g. Pistol 25 m and Pistol 50 m, each with lanes from 1."
 msgstr "Ein Schiessstand pro Distanz, z. B. Pistole 25 m und Pistole 50 m, je mit Scheiben ab 1."
@@ -3626,10 +3656,15 @@ msgid "Print agents"
 msgstr "Druck-Agents"
 
 #: src/lib/PrintButton.svelte
+msgid "Print certificates"
+msgstr "Urkunden drucken"
+
+#: src/lib/PrintButton.svelte
 #: src/lib/RegistrationDialog.svelte
 msgid "Print control strip"
 msgstr "Kontrollstreifen drucken"
 
+#: src/lib/forms/CertificatesButton.svelte
 #: src/lib/modules/forms/ProgrammeSection.svelte
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Print form"
@@ -5126,6 +5161,10 @@ msgstr "Tipp: Tippe beim Erfassen einer Einheit deine Treffer auf der Scheibe an
 #: src/lib/modules/reservations/Page.svelte
 msgid "To"
 msgstr "Bis"
+
+#: src/lib/forms/CertificatesButton.svelte
+msgid "To rank"
+msgstr "Bis Rang"
 
 #: src/lib/forms/Palette.svelte
 #: src/routes/my/+layout.svelte
