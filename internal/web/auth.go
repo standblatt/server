@@ -25,7 +25,6 @@ const (
 	sessionIdle      = 7 * 24 * time.Hour
 	sessionTTL       = 30 * 24 * time.Hour
 	rememberTTL      = 90 * 24 * time.Hour
-	bcryptCost       = 12
 	maxPasswordBytes = 72
 
 	loginWindow  = 15 * time.Minute
@@ -34,6 +33,9 @@ const (
 
 	dummyHash = "$2a$12$invalidinvalidinvalidinvalidinvalidinvalidinvalidinval"
 )
+
+// bcryptCost is the cost of new password hashes; tests lower it.
+var bcryptCost = 12
 
 type ctxKey int
 

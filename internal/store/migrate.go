@@ -2,8 +2,11 @@ package store
 
 import (
 	"context"
+	"crypto/sha256"
 	"embed"
+	"encoding/hex"
 	"fmt"
+	"io/fs"
 	"log/slog"
 	"sort"
 )
@@ -12,6 +15,18 @@ import (
 var migrations embed.FS
 
 const migrateLockKey = 5184227
+
+// MigrationsHash returns a short hash over the names and contents of the embedded migrations.
+func MigrationsHash() string {
+	h := sha256.New()
+	fs.WalkDir(migrations, "migrations", func(path string, _ fs.DirEntry, _ error) error {
+		b, _ := migrations.ReadFile(path)
+		h.Write([]byte(path))
+		h.Write(b)
+		return nil
+	})
+	return hex.EncodeToString(h.Sum(nil))[:12]
+}
 
 // Migrate applies all pending embedded migrations in name order. A session-level advisory lock
 // serialises concurrent starts, so several replicas can boot at the same time.
