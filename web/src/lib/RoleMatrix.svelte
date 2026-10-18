@@ -15,7 +15,7 @@
 	import FormError from './FormError.svelte';
 	import FormField from './FormField.svelte';
 	import { roleLabel } from './labels';
-	import { meKey, membershipOf, meQuery } from './me';
+	import { canGive, meKey, membershipOf, meQuery } from './me';
 	import { hasClub } from './modules';
 	import { permissionKeys, permissionUI } from './permissions';
 	import { keys, rolesQuery } from './tenant';
@@ -105,8 +105,8 @@
 						<Table.Head class="text-center">
 							<div class="flex items-center justify-center gap-0.5 whitespace-nowrap">
 								<span>{roleName(r)}</span>
-								<Button variant="ghost" size="icon" class="size-7" aria-label={$t`Rename ${roleName(r)}`} onclick={() => open(r)}><Pencil /></Button>
-								{#if r.key !== 'admin'}<Button variant="ghost" size="icon" class="size-7" aria-label={$t`Delete ${roleName(r)}`} onclick={() => remove(r)}><Trash /></Button>{/if}
+								{#if canGive(club, r.permissions)}<Button variant="ghost" size="icon" class="size-7" aria-label={$t`Rename ${roleName(r)}`} onclick={() => open(r)}><Pencil /></Button>{/if}
+								{#if r.key !== 'admin' && canGive(club, r.permissions)}<Button variant="ghost" size="icon" class="size-7" aria-label={$t`Delete ${roleName(r)}`} onclick={() => remove(r)}><Trash /></Button>{/if}
 							</div>
 							<div class="text-xs font-normal text-muted-foreground">{$plural(r.members, { one: '# member', other: '# members' })}</div>
 						</Table.Head>
@@ -127,7 +127,7 @@
 							<Table.Cell class="text-center">
 								<Checkbox
 									checked={r.permissions.includes(p)}
-									disabled={r.key === 'admin'}
+									disabled={r.key === 'admin' || !canGive(club, [...r.permissions, p])}
 									onCheckedChange={(v) => toggle(r, p, v)}
 									aria-label={$t`${$t(permissionUI[p].label)} for ${roleName(r)}`}
 								/>

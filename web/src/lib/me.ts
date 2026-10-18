@@ -7,6 +7,10 @@ export const meKey = ['me'];
 /** The user's membership in a club, undefined when the user is no member. */
 export const membershipOf = (me: Me | undefined, tenantId: number) => me?.tenants.find((m) => m.tenantId === tenantId);
 
+/** Whether a member may give, change or take away a role with these permissions: admins always, others only within their own (the API checks the same). */
+export const canGive = (membership: { roleKey?: string; permissions: Permission[] } | undefined, permissions: Permission[]) =>
+	!!membership && (membership.roleKey === 'admin' || permissions.every((p) => membership.permissions.includes(p)));
+
 /** Whether the role of a membership has a permission. */
 export const can = (membership: { permissions: Permission[] } | undefined, permission: Permission) => !!membership?.permissions.includes(permission);
 

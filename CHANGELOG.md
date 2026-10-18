@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Invitations** wait for an answer: the invited person accepts through the link in the mail, with a new account and password or, after logging in, with the account they have; the *Users* page lists open and expired invitations to send again or withdraw. Inviting no longer creates accounts (by @HB9HIL)
 - Every API operation of a club declares its permissions, checked before the request is read; tests call every operation with and without them and keep the table of who may call what under review (by @HB9HIL)
 - Members who manage the club without the admin role stay within their own permissions: only admins make, change or remove admins, and nobody gives a role more than their own (by @HB9HIL)
+- The *Users* page shows members without the admin role only the roles, members, invitations and permissions they may give or change (by @HB9HIL)
 
 ### Removed
 - The redirect of the old setup page links (`setup?tab=`) to the configuration pages (by @HB9HIL)

@@ -17,7 +17,7 @@
 	import FormField from '$lib/FormField.svelte';
 	import PageHeader from '$lib/PageHeader.svelte';
 	import RoleMatrix from '$lib/RoleMatrix.svelte';
-	import { meKey } from '$lib/me';
+	import { canGive, meKey, membershipOf, meQuery } from '$lib/me';
 	import { formatDate } from '$lib/format';
 	import { keys, rolesQuery, usersQuery } from '$lib/tenant';
 
@@ -31,8 +31,14 @@
 	}));
 	/** Name of a role: its own or the translated default name. */
 	const roleName = (r?: Role) => r?.name || $t(roleLabel(r?.key));
-	/** The helper role, preselected for new users. */
-	const helperRole = $derived(roles.data?.find((r) => r.key === 'staff')?.id ?? 0);
+	const me = meQuery();
+	const membership = $derived(membershipOf(me.data, tenantId));
+	/** The roles the user may give: all for admins, else those within the own permissions. */
+	const givable = $derived((roles.data ?? []).filter((r) => canGive(membership, r.permissions)));
+	/** Whether the user may change members, invitations or roles that have this role. */
+	const mayManage = (roleId: number) => givable.some((r) => r.id === roleId);
+	/** The role preselected for new users: helper, else member, else the first one the user may give. */
+	const helperRole = $derived((givable.find((r) => r.key === 'staff') ?? givable.find((r) => r.key === 'member') ?? givable[0])?.id ?? 0);
 
 	let name = $state('');
 	let role = $state(0);
@@ -165,11 +171,15 @@
 						{#if m.email && m.email !== m.name}<div class="text-xs text-muted-foreground">{m.email}</div>{/if}
 					</Table.Cell>
 					<Table.Cell>
-						<NativeSelect.Root size="sm" value={m.roleId} onchange={(e) => setRole(m, Number(e.currentTarget.value))} aria-label={$t`Role of ${m.name}`}>
-							{#each roles.data ?? [] as r (r.id)}<NativeSelect.Option value={r.id}>{roleName(r)}</NativeSelect.Option>{/each}
-						</NativeSelect.Root>
+						{#if mayManage(m.roleId)}
+							<NativeSelect.Root size="sm" value={m.roleId} onchange={(e) => setRole(m, Number(e.currentTarget.value))} aria-label={$t`Role of ${m.name}`}>
+								{#each givable as r (r.id)}<NativeSelect.Option value={r.id}>{roleName(r)}</NativeSelect.Option>{/each}
+							</NativeSelect.Root>
+						{:else}
+							<span class="text-sm">{roleName(roles.data?.find((r) => r.id === m.roleId))}</span>
+						{/if}
 					</Table.Cell>
-					<Table.Cell class="text-right"><Button variant="ghost" size="sm" class="text-destructive" onclick={() => remove(m)}>{$t`Remove`}</Button></Table.Cell>
+					<Table.Cell class="text-right">{#if mayManage(m.roleId)}<Button variant="ghost" size="sm" class="text-destructive" onclick={() => remove(m)}>{$t`Remove`}</Button>{/if}</Table.Cell>
 				</Table.Row>
 			{/each}
 		</Table.Body>
@@ -188,8 +198,10 @@
 							{roleName(roles.data?.find((r) => r.id === i.roleId))} · {i.expired ? $t`expired` : $t`sent on ${formatDate(i.createdAt.slice(0, 10))}`}
 						</div>
 					</div>
-					<Button variant="ghost" size="sm" onclick={() => resend(i)}>{$t`Send again`}</Button>
-					<Button variant="ghost" size="sm" class="text-destructive" onclick={() => withdraw(i)}>{$t`Withdraw`}</Button>
+					{#if mayManage(i.roleId)}
+						<Button variant="ghost" size="sm" onclick={() => resend(i)}>{$t`Send again`}</Button>
+						<Button variant="ghost" size="sm" class="text-destructive" onclick={() => withdraw(i)}>{$t`Withdraw`}</Button>
+					{/if}
 				</li>
 			{/each}
 		</ul>
@@ -210,7 +222,7 @@
 			</FormField>
 			<FormField label={$t`Role`}>
 				<NativeSelect.Root class="w-full" value={inviteRole || helperRole} onchange={(e) => (inviteRole = Number(e.currentTarget.value))}>
-					{#each roles.data ?? [] as r (r.id)}<NativeSelect.Option value={r.id}>{roleName(r)}</NativeSelect.Option>{/each}
+					{#each givable as r (r.id)}<NativeSelect.Option value={r.id}>{roleName(r)}</NativeSelect.Option>{/each}
 				</NativeSelect.Root>
 			</FormField>
 			{#if invited.length}
@@ -236,7 +248,7 @@
 			<FormField label={$t`User name`}><Input bind:value={name} autocomplete="off" required /></FormField>
 			<FormField label={$t`Role`}>
 				<NativeSelect.Root class="w-full" value={role || helperRole} onchange={(e) => (role = Number(e.currentTarget.value))}>
-					{#each roles.data ?? [] as r (r.id)}<NativeSelect.Option value={r.id}>{roleName(r)}</NativeSelect.Option>{/each}
+					{#each givable as r (r.id)}<NativeSelect.Option value={r.id}>{roleName(r)}</NativeSelect.Option>{/each}
 				</NativeSelect.Root>
 			</FormField>
 			<FormField label={$t`Password`} hint={$t`New users only, at least 10 characters`}><Input type="password" bind:value={password} autocomplete="new-password" /></FormField>

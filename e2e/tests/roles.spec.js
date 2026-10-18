@@ -61,4 +61,28 @@ test.describe("roles", () => {
     await expect(sidebar).toContainText("Statistics");
     await expect(sidebar).not.toContainText("Dashboard");
   });
+
+  test("shows a manager without the admin role only what it may give", async ({ page }) => {
+    await login(page, admin);
+    const base = `/api/tenants/${ids.tenant}`;
+    const manager = await api(page, "POST", `${base}/roles`, { name: "Manager", permissions: ["club.manage", "events.view"] });
+    const name = `manager-${run}`;
+    await api(page, "POST", `${base}/users`, { name, roleId: manager.id, password: "e2e-password-123" });
+
+    await login(page, name);
+    await page.goto(`/t/${ids.tenant}/users`);
+    const boss = c(page, "tr", admin);
+    await expect(boss).toContainText("Admin");
+    await expect(boss.locator("select")).toHaveCount(0);
+    await expect(boss.getByRole("button", { name: "Remove" })).toHaveCount(0);
+    const options = c(page, "tr", name).locator("select option");
+    await expect(options.filter({ hasText: "Member" })).toHaveCount(1);
+    await expect(options.filter({ hasText: /^Admin$/ })).toHaveCount(0);
+    await expect(options.filter({ hasText: "Board" })).toHaveCount(0);
+    const matrix = page.locator("section[aria-label=Roles]");
+    await expect(matrix.getByRole("button", { name: "Rename Admin" })).toHaveCount(0);
+    await expect(matrix.getByRole("button", { name: "Delete Board" })).toHaveCount(0);
+    await expect(matrix.getByRole("checkbox", { name: "Run events for Member" })).toBeDisabled();
+    await expect(matrix.getByRole("checkbox", { name: "See events and rankings for Member" })).toBeEnabled();
+  });
 });
