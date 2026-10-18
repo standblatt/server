@@ -29,12 +29,31 @@ se il telefono chiede prima un altro tocco, appare un avviso con il pulsante
    stampa](../admin-guide/print-agent.md)). Un computer può servire più
    stand, p. es. *Pistola 25 m* e *Pistola 50 m*: aggiungi un agente su ogni
    stand e dai all’agente entrambi i token, separati da una virgola.
-2. Appena l’agente è online, comunica le sue stampanti. Scegli per ogni
-   documento la stampante (*Diplomi* sono i diplomi delle classifiche,
-   *Modelli di stampa* tutti gli altri modelli della società) e le sue
-   opzioni (cassetto, formato carta, tipo di supporto, altre opzioni `lp`
-   come `fit-to-page`).
-3. **Lavori recenti** mostra cosa è stato stampato e se ha funzionato.
+2. Appena l’agente è online, comunica le sue stampanti e l’elenco mostra la
+   sua versione e il sistema operativo. Scegli per ogni documento la
+   stampante (*Diplomi* sono i diplomi delle classifiche, *Modelli di
+   stampa* tutti gli altri modelli della società) e le sue opzioni: quelle
+   che l’agente comunica per quella stampante (su Linux cassetto, formato
+   carta e tipo di supporto, più altre opzioni `lp` come `fit-to-page` nel
+   campo di testo; su Windows cassetto, carta, fronte retro,
+   ridimensionamento e colore).
+3. **Pagina di prova** stampa una piccola pagina (90 × 29 mm, le dimensioni
+   della striscia di controllo) sulla stampante di quella riga con le
+   opzioni scelte, anche prima di salvare: società, stand di tiro,
+   stampante, opzioni e ora. Una stampante di etichette la stampa come
+   etichetta, le altre stampanti in alto a sinistra sul foglio. Serve un
+   agente online.
+4. **Lavori recenti** mostra cosa è stato stampato e se ha funzionato.
 
 Un lavoro che l’agente non conferma entro due minuti viene ripetuto; dopo
 tre tentativi fallisce. **revoca** rimuove subito un agente.
+
+## Collegare un computer con un codice {#connect}
+
+L’app Standblatt su un computer vicino alle stampanti non ha bisogno di un
+token: mostra un codice come `K7QD-4MZP` e apre **Collegare un agente di
+stampa** nel browser. Accedi se richiesto, controlla il computer indicato,
+scegli società, stand di tiro e nome dell’agente e **Collega**. Solo i
+membri che possono gestire gli stand di tiro possono collegare un computer;
+un codice vale dieci minuti. L’app si collega poi da sola e l’agente compare
+in **Stand di tiro → Stampa** con la sua versione e il sistema operativo.

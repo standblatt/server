@@ -2095,7 +2095,7 @@ msgstr "Saisir les résultats"
 
 #: src/routes/connect/+page.svelte
 msgid "Enter the code the Standblatt app shows on the computer next to the printers."
-msgstr "Saisissez le code que l’application Standblatt affiche sur l’ordinateur près des imprimantes."
+msgstr "Saisis le code que l’application Standblatt affiche sur l’ordinateur près des imprimantes."
 
 #: src/routes/forgot-password/+page.svelte
 msgid "Enter your email address and we send you a link to choose a new one. Club accounts without email: ask your club admin."
@@ -2969,7 +2969,7 @@ msgstr "Se connecter"
 
 #: src/routes/connect/+page.svelte
 msgid "Log in to connect the computer with the code to a range of your club."
-msgstr "Connectez-vous pour relier l’ordinateur au code à un stand de tir de votre club."
+msgstr "Connecte-toi pour relier l’ordinateur au code à un stand de tir de ta société."
 
 #: src/routes/my/+page.svelte
 msgid "Log my first training"
@@ -5887,7 +5887,7 @@ msgstr "Tu rejoins en tant que {0}."
 
 #: src/routes/connect/+page.svelte
 msgid "You need the permission to manage ranges in a club to connect a print agent."
-msgstr "Pour connecter un agent d’impression, vous devez pouvoir gérer les stands de tir d’un club."
+msgstr "Pour connecter un agent d’impression, tu dois pouvoir gérer les stands de tir d’une société."
 
 #: src/lib/AccountSettings.svelte
 msgid "Your club manages this account. Ask your club admin to remove it."

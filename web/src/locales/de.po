@@ -2969,7 +2969,7 @@ msgstr "Anmelden"
 
 #: src/routes/connect/+page.svelte
 msgid "Log in to connect the computer with the code to a range of your club."
-msgstr "Melde dich an, um den Computer mit dem Code mit einem Schiessstand deines Clubs zu verbinden."
+msgstr "Melde dich an, um den Computer mit dem Code mit einem Schiessstand deines Vereins zu verbinden."
 
 #: src/routes/my/+page.svelte
 msgid "Log my first training"
@@ -5887,7 +5887,7 @@ msgstr "Du trittst als {0} bei."
 
 #: src/routes/connect/+page.svelte
 msgid "You need the permission to manage ranges in a club to connect a print agent."
-msgstr "Um einen Druck-Agent zu verbinden, brauchst du in einem Club die Berechtigung, Schiessstände zu verwalten."
+msgstr "Um einen Druck-Agent zu verbinden, brauchst du in einem Verein die Berechtigung, Schiessstände zu verwalten."
 
 #: src/lib/AccountSettings.svelte
 msgid "Your club manages this account. Ask your club admin to remove it."

@@ -2969,7 +2969,7 @@ msgstr "Accedi"
 
 #: src/routes/connect/+page.svelte
 msgid "Log in to connect the computer with the code to a range of your club."
-msgstr "Accedi per collegare il computer con il codice a uno stand di tiro del tuo club."
+msgstr "Accedi per collegare il computer con il codice a uno stand di tiro della tua società."
 
 #: src/routes/my/+page.svelte
 msgid "Log my first training"
@@ -5887,7 +5887,7 @@ msgstr "Entri come {0}."
 
 #: src/routes/connect/+page.svelte
 msgid "You need the permission to manage ranges in a club to connect a print agent."
-msgstr "Per collegare un agente di stampa ti serve il permesso di gestire gli stand di tiro di un club."
+msgstr "Per collegare un agente di stampa ti serve il permesso di gestire gli stand di tiro di una società."
 
 #: src/lib/AccountSettings.svelte
 msgid "Your club manages this account. Ask your club admin to remove it."

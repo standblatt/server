@@ -30,13 +30,34 @@ d’abord un autre toucher, une note avec le bouton **Partager** apparaît.
    servir plusieurs stands, p. ex. *Pistolet 25 m* et *Pistolet 50 m* :
    ajoute un agent sur chaque stand et donne à l’agent les deux jetons,
    séparés par une virgule.
-2. Dès que l’agent est en ligne, il annonce ses imprimantes. Choisis pour
-   chaque document l’imprimante (*Diplômes* sont les diplômes des
-   classements, *Modèles d’impression* tous les autres modèles de la
-   société) et ses options (bac, format de papier, type de support, autres
-   options `lp` comme `fit-to-page`).
-3. **Tâches récentes** montre ce qui a été imprimé et si cela a fonctionné.
+2. Dès que l’agent est en ligne, il annonce ses imprimantes et la liste
+   indique sa version et son système d’exploitation. Choisis pour chaque
+   document l’imprimante (*Diplômes* sont les diplômes des classements,
+   *Modèles d’impression* tous les autres modèles de la société) et ses
+   options : celles que l’agent annonce pour cette imprimante (sous Linux
+   bac, format de papier et type de support, plus d’autres options `lp`
+   comme `fit-to-page` dans le champ de texte ; sous Windows bac, papier,
+   recto verso, mise à l’échelle et couleur).
+3. **Page de test** imprime une petite page (90 × 29 mm, la taille de la
+   bande de contrôle) sur l’imprimante de cette ligne avec les options
+   choisies, même avant d’enregistrer : société, stand de tir, imprimante,
+   options et heure. Une imprimante d’étiquettes l’imprime comme étiquette,
+   les autres imprimantes en haut à gauche de la feuille. Un agent doit être
+   en ligne.
+4. **Tâches récentes** montre ce qui a été imprimé et si cela a fonctionné.
 
 Une tâche que l’agent ne confirme pas dans les deux minutes est relancée ;
 après trois tentatives, elle échoue. **révoquer** retire un agent
 immédiatement.
+
+## Connecter un ordinateur par code {#connect}
+
+L’application Standblatt sur un ordinateur près des imprimantes n’a pas
+besoin de jeton : elle affiche un code comme `K7QD-4MZP` et ouvre
+**Connecter un agent d’impression** dans le navigateur. Connecte-toi si
+nécessaire, vérifie l’ordinateur indiqué, choisis la société, le stand de
+tir et le nom de l’agent, puis **Connecter**. Seuls les membres qui peuvent
+gérer les stands de tir peuvent connecter un ordinateur ; un code est
+valable dix minutes. L’application se connecte ensuite d’elle-même, et
+l’agent apparaît sous **Stands de tir → Impression** avec sa version et son
+système d’exploitation.

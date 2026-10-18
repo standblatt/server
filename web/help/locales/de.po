@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 15:43+0000\n"
+"POT-Creation-Date: 2026-10-18 20:49+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -798,7 +798,11 @@ msgid ""
 "Want to import sessions from another app or analyse your log with your own "
 "script? Create a token in your account with the preset **Training app**; see "
 "[API tokens](../user-guide/login-language.md#api-tokens)."
-msgstr "Willst du Einheiten aus einer anderen App importieren oder dein Logbuch mit einem eigenen Skript auswerten? Erstelle in deinem Konto ein Token mit der Vorlage **Training-App**; siehe [API-Tokens](../user-guide/login-language.md#api-tokens)."
+msgstr ""
+"Willst du Einheiten aus einer anderen App importieren oder dein Logbuch mit "
+"einem eigenen Skript auswerten? Erstelle in deinem Konto ein Token mit der "
+"Vorlage **Training-App**; siehe [API-Tokens](../user-guide/login-"
+"language.md#api-tokens)."
 
 #. type: Title ##
 #: ../src/help/en/my-training/account.md:37
@@ -3125,7 +3129,10 @@ msgid ""
 "Want to show the rankings on the club website, import sessions from another "
 "app or analyse data with your own script? Create a token under **Account → "
 "API tokens** with **New token**:"
-msgstr "Willst du die Ranglisten auf der Vereinswebsite zeigen, Einheiten aus einer anderen App importieren oder Daten mit einem eigenen Skript auswerten? Erstelle ein Token unter **Konto → API-Tokens** mit **Neues Token**:"
+msgstr ""
+"Willst du die Ranglisten auf der Vereinswebsite zeigen, Einheiten aus einer "
+"anderen App importieren oder Daten mit einem eigenen Skript auswerten? "
+"Erstelle ein Token unter **Konto → API-Tokens** mit **Neues Token**:"
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/login-language.md:39
@@ -3137,12 +3144,15 @@ msgstr "einen **Namen**, an dem du später erkennst, was es verwendet,"
 msgid ""
 "a **preset** fills in the permissions for a common use: **Rankings for a "
 "website**, **Training app** or **Read only**,"
-msgstr "eine **Vorlage** setzt die Rechte für einen üblichen Zweck: **Ranglisten für eine Website**, **Training-App** oder **Nur lesen**,"
+msgstr ""
+"eine **Vorlage** setzt die Rechte für einen üblichen Zweck: **Ranglisten für "
+"eine Website**, **Training-App** oder **Nur lesen**,"
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/login-language.md:39
 msgid "the **clubs** the token may use (none: only your training log),"
-msgstr "die **Vereine**, die das Token nutzen darf (keiner: nur dein Trainingslog),"
+msgstr ""
+"die **Vereine**, die das Token nutzen darf (keiner: nur dein Trainingslog),"
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/login-language.md:39
@@ -3150,7 +3160,10 @@ msgid ""
 "the **permissions**: *Read my training log*, *Log and change my training "
 "sessions* and, for the chosen clubs, the [permissions of roles]"
 "(users.md#roles) your own role has there,"
-msgstr "die **Rechte**: *Mein Trainingslog lesen*, *Meine Trainings erfassen und ändern* und für die gewählten Vereine die [Rechte der Rollen](users.md#roles), die deine eigene Rolle dort hat,"
+msgstr ""
+"die **Rechte**: *Mein Trainingslog lesen*, *Meine Trainings erfassen und "
+"ändern* und für die gewählten Vereine die [Rechte der Rollen]"
+"(users.md#roles), die deine eigene Rolle dort hat,"
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/login-language.md:39
@@ -3168,7 +3181,16 @@ msgid ""
 "permissions and clubs. A token makes at most 600 requests in five minutes. "
 "The list shows when each token was last used; revoking one stops it at once. "
 "Developers find the endpoints under `/api/docs`."
-msgstr "Das Token (`sb_…`) wird nur einmal angezeigt; kopiere es sofort. Skripte senden es als `Authorization: Bearer sb_…` (oder `X-API-Key: sb_…`). Es darf, was du gewählt hast, und nie mehr als deine Rolle im Verein: Verlierst du ein Recht oder verlässt du den Verein, verliert es das Token sofort. Es erreicht nie dein Passwort, deine E-Mail, dein Konto oder andere Tokens. `GET /api/token` sagt einem Skript Name, Rechte und Vereine seines Tokens. Ein Token macht höchstens 600 Anfragen in fünf Minuten. Die Liste zeigt, wann jedes Token zuletzt benutzt wurde; Widerrufen stoppt es sofort. Entwickler finden die Endpunkte unter `/api/docs`."
+msgstr ""
+"Das Token (`sb_…`) wird nur einmal angezeigt; kopiere es sofort. Skripte "
+"senden es als `Authorization: Bearer sb_…` (oder `X-API-Key: sb_…`). Es "
+"darf, was du gewählt hast, und nie mehr als deine Rolle im Verein: Verlierst "
+"du ein Recht oder verlässt du den Verein, verliert es das Token sofort. Es "
+"erreicht nie dein Passwort, deine E-Mail, dein Konto oder andere Tokens. "
+"`GET /api/token` sagt einem Skript Name, Rechte und Vereine seines Tokens. "
+"Ein Token macht höchstens 600 Anfragen in fünf Minuten. Die Liste zeigt, "
+"wann jedes Token zuletzt benutzt wurde; Widerrufen stoppt es sofort. "
+"Entwickler finden die Endpunkte unter `/api/docs`."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/login-language.md:42
@@ -3313,7 +3335,7 @@ msgid "![Printing](../images/screenshots/printing.png){ .screenshot }"
 msgstr "![Drucken](../images/screenshots/printing.png){ .screenshot }"
 
 #. type: Bullet: '1. '
-#: ../src/help/en/user-guide/printing.md:25
+#: ../src/help/en/user-guide/printing.md:26
 msgid ""
 "**Add print agent**, give it a name and copy the token. Install the agent on "
 "a computer next to the printers (see [Print agent](../admin-guide/print-"
@@ -3328,25 +3350,46 @@ msgstr ""
 "einen Agenten hinzu und gib dem Agenten beide Tokens, durch Komma getrennt."
 
 #. type: Bullet: '2. '
-#: ../src/help/en/user-guide/printing.md:25
+#: ../src/help/en/user-guide/printing.md:26
 msgid ""
-"Once the agent is online, it reports its printers. Choose the printer for "
-"each document (*Certificates* are the certificates from the rankings, *Print "
-"forms* every other form of the club) and its options (tray, paper size, "
-"media type, further `lp` options such as `fit-to-page`)."
+"Once the agent is online, it reports its printers and the list shows its "
+"version and operating system. Choose the printer for each document "
+"(*Certificates* are the certificates from the rankings, *Print forms* every "
+"other form of the club) and its options: the options the agent reports for "
+"that printer (on Linux tray, paper size and media type, plus further `lp` "
+"options such as `fit-to-page` in the text field; on Windows tray, paper, two-"
+"sided, scaling and colour)."
 msgstr ""
-"Sobald der Agent online ist, meldet er seine Drucker. Wähle für jedes "
-"Dokument den Drucker (*Urkunden* sind die Urkunden aus den Ranglisten, "
-"*Druckvorlagen* alle anderen Vorlagen des Vereins) und seine Optionen (Fach, "
-"Papierformat, Medientyp, weitere `lp`-Optionen wie `fit-to-page`)."
+"Sobald der Agent online ist, meldet er seine Drucker, und die Liste zeigt "
+"seine Version und sein Betriebssystem. Wähle für jedes Dokument den Drucker "
+"(*Urkunden* sind die Urkunden aus den Ranglisten, *Druckvorlagen* alle "
+"anderen Vorlagen des Vereins) und seine Optionen: die Optionen, die der "
+"Agent für diesen Drucker meldet (unter Linux Fach, Papierformat und "
+"Medientyp, dazu weitere `lp`-Optionen wie `fit-to-page` im Textfeld; unter "
+"Windows Fach, Papier, beidseitig, Skalierung und Farbe)."
 
 #. type: Bullet: '3. '
-#: ../src/help/en/user-guide/printing.md:25
+#: ../src/help/en/user-guide/printing.md:26
+msgid ""
+"**Test page** prints a small page (90 × 29 mm, the size of the control "
+"strip) on the printer of that row with the options chosen there, also before "
+"saving: club, range, printer, options and the time. A label printer prints "
+"it as a label, other printers in the top-left corner of the sheet. It needs "
+"an online agent."
+msgstr ""
+"**Testseite** druckt eine kleine Seite (90 × 29 mm, so gross wie der "
+"Kontrollstreifen) auf dem Drucker dieser Zeile mit den dort gewählten "
+"Optionen, auch vor dem Speichern: Verein, Schiessstand, Drucker, Optionen "
+"und Uhrzeit. Ein Etikettendrucker druckt sie als Etikett, andere Drucker "
+"oben links auf dem Blatt. Dafür muss ein Agent online sein."
+
+#. type: Bullet: '4. '
+#: ../src/help/en/user-guide/printing.md:26
 msgid "**Recent jobs** shows what was printed and whether it worked."
 msgstr "**Letzte Aufträge** zeigt, was gedruckt wurde und ob es geklappt hat."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/printing.md:26
+#: ../src/help/en/user-guide/printing.md:28
 msgid ""
 "A job that the agent does not confirm within two minutes is retried; after "
 "three attempts it fails. **revoke** removes an agent immediately."
@@ -3354,6 +3397,32 @@ msgstr ""
 "Ein Auftrag, den der Agent nicht innert zwei Minuten bestätigt, wird "
 "wiederholt; nach drei Versuchen schlägt er fehl. **widerrufen** entfernt "
 "einen Agenten sofort."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/printing.md:29
+#, no-wrap
+msgid "Connecting a computer by code {#connect}"
+msgstr "Computer per Code verbinden {#connect}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/printing.md:31
+msgid ""
+"The Standblatt app on a computer next to the printers needs no token: it "
+"shows a code such as `K7QD-4MZP` and opens **Connect a print agent** in the "
+"browser. There, log in if asked, check the computer named on the page, "
+"choose the club and range and the agent's name, and **Connect**. Only "
+"members who may manage ranges can connect a computer; a code is valid for "
+"ten minutes. The app then connects by itself, and the agent appears under "
+"**Ranges → Printing** with its version and operating system."
+msgstr ""
+"Die Standblatt-App auf einem Computer bei den Druckern braucht kein Token: "
+"Sie zeigt einen Code wie `K7QD-4MZP` und öffnet **Druck-Agent verbinden** im "
+"Browser. Melde dich dort an, falls nötig, prüfe den angezeigten Computer, "
+"wähle Verein, Schiessstand und den Namen des Agenten und klicke "
+"**Verbinden**. Nur Mitglieder, die Schiessstände verwalten dürfen, können "
+"einen Computer verbinden; ein Code gilt zehn Minuten. Danach verbindet sich "
+"die App von selbst, und der Agent erscheint unter **Schiessstände → "
+"Drucken** mit seiner Version und seinem Betriebssystem."
 
 #. type: Title #
 #: ../src/help/en/user-guide/print-forms.md:1

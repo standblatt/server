@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-18 15:43+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-18 20:49+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
 #: ../src/help/en/getting-started/concepts.md:1
@@ -2081,27 +2081,45 @@ msgid "![Printing](../images/screenshots/printing.png){ .screenshot }"
 msgstr ""
 
 #. type: Bullet: '1. '
-#: ../src/help/en/user-guide/printing.md:25
+#: ../src/help/en/user-guide/printing.md:26
 #, markdown-text
 msgid "**Add print agent**, give it a name and copy the token. Install the agent on a computer next to the printers (see [Print agent](../admin-guide/print-agent.md)). One computer can serve several ranges, e.g. *Pistol 25 m* and *Pistol 50 m*: add an agent on each range and give the agent both tokens, separated by a comma."
 msgstr ""
 
 #. type: Bullet: '2. '
-#: ../src/help/en/user-guide/printing.md:25
+#: ../src/help/en/user-guide/printing.md:26
 #, markdown-text
-msgid "Once the agent is online, it reports its printers. Choose the printer for each document (*Certificates* are the certificates from the rankings, *Print forms* every other form of the club) and its options (tray, paper size, media type, further `lp` options such as `fit-to-page`)."
+msgid "Once the agent is online, it reports its printers and the list shows its version and operating system. Choose the printer for each document (*Certificates* are the certificates from the rankings, *Print forms* every other form of the club) and its options: the options the agent reports for that printer (on Linux tray, paper size and media type, plus further `lp` options such as `fit-to-page` in the text field; on Windows tray, paper, two-sided, scaling and colour)."
 msgstr ""
 
 #. type: Bullet: '3. '
-#: ../src/help/en/user-guide/printing.md:25
+#: ../src/help/en/user-guide/printing.md:26
+#, markdown-text
+msgid "**Test page** prints a small page (90 × 29 mm, the size of the control strip) on the printer of that row with the options chosen there, also before saving: club, range, printer, options and the time. A label printer prints it as a label, other printers in the top-left corner of the sheet. It needs an online agent."
+msgstr ""
+
+#. type: Bullet: '4. '
+#: ../src/help/en/user-guide/printing.md:26
 #, markdown-text
 msgid "**Recent jobs** shows what was printed and whether it worked."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/printing.md:26
+#: ../src/help/en/user-guide/printing.md:28
 #, markdown-text
 msgid "A job that the agent does not confirm within two minutes is retried; after three attempts it fails. **revoke** removes an agent immediately."
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/printing.md:29
+#, markdown-text, no-wrap
+msgid "Connecting a computer by code {#connect}"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/printing.md:31
+#, markdown-text
+msgid "The Standblatt app on a computer next to the printers needs no token: it shows a code such as `K7QD-4MZP` and opens **Connect a print agent** in the browser. There, log in if asked, check the computer named on the page, choose the club and range and the agent's name, and **Connect**. Only members who may manage ranges can connect a computer; a code is valid for ten minutes. The app then connects by itself, and the agent appears under **Ranges → Printing** with its version and operating system."
 msgstr ""
 
 #. type: Title #

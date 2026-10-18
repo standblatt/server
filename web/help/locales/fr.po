@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 15:43+0000\n"
+"POT-Creation-Date: 2026-10-18 20:49+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -805,7 +805,11 @@ msgid ""
 "Want to import sessions from another app or analyse your log with your own "
 "script? Create a token in your account with the preset **Training app**; see "
 "[API tokens](../user-guide/login-language.md#api-tokens)."
-msgstr "Tu veux importer des séances d’une autre app ou analyser ton journal avec ton propre script ? Crée un jeton dans ton compte avec le modèle **App d’entraînement** ; voir [Jetons API](../user-guide/login-language.md#api-tokens)."
+msgstr ""
+"Tu veux importer des séances d’une autre app ou analyser ton journal avec "
+"ton propre script ? Crée un jeton dans ton compte avec le modèle **App "
+"d’entraînement** ; voir [Jetons API](../user-guide/login-language.md#api-"
+"tokens)."
 
 #. type: Title ##
 #: ../src/help/en/my-training/account.md:37
@@ -3147,7 +3151,10 @@ msgid ""
 "Want to show the rankings on the club website, import sessions from another "
 "app or analyse data with your own script? Create a token under **Account → "
 "API tokens** with **New token**:"
-msgstr "Tu veux afficher les classements sur le site de la société, importer des séances d’une autre app ou analyser des données avec ton propre script ? Crée un jeton sous **Compte → Jetons API** avec **Nouveau jeton** :"
+msgstr ""
+"Tu veux afficher les classements sur le site de la société, importer des "
+"séances d’une autre app ou analyser des données avec ton propre script ? "
+"Crée un jeton sous **Compte → Jetons API** avec **Nouveau jeton** :"
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/login-language.md:39
@@ -3159,12 +3166,16 @@ msgstr "un **nom** qui te dira plus tard qui l’utilise,"
 msgid ""
 "a **preset** fills in the permissions for a common use: **Rankings for a "
 "website**, **Training app** or **Read only**,"
-msgstr "un **modèle** remplit les droits pour un usage courant : **Classements pour un site web**, **App d’entraînement** ou **Lecture seule**,"
+msgstr ""
+"un **modèle** remplit les droits pour un usage courant : **Classements pour "
+"un site web**, **App d’entraînement** ou **Lecture seule**,"
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/login-language.md:39
 msgid "the **clubs** the token may use (none: only your training log),"
-msgstr "les **sociétés** que le jeton peut utiliser (aucune : seulement ton journal d’entraînement),"
+msgstr ""
+"les **sociétés** que le jeton peut utiliser (aucune : seulement ton journal "
+"d’entraînement),"
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/login-language.md:39
@@ -3172,7 +3183,10 @@ msgid ""
 "the **permissions**: *Read my training log*, *Log and change my training "
 "sessions* and, for the chosen clubs, the [permissions of roles]"
 "(users.md#roles) your own role has there,"
-msgstr "les **droits** : *Lire mon journal d’entraînement*, *Saisir et modifier mes séances d’entraînement* et, pour les sociétés choisies, les [droits des rôles](users.md#roles) que ton propre rôle y a,"
+msgstr ""
+"les **droits** : *Lire mon journal d’entraînement*, *Saisir et modifier mes "
+"séances d’entraînement* et, pour les sociétés choisies, les [droits des "
+"rôles](users.md#roles) que ton propre rôle y a,"
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/login-language.md:39
@@ -3190,7 +3204,17 @@ msgid ""
 "permissions and clubs. A token makes at most 600 requests in five minutes. "
 "The list shows when each token was last used; revoking one stops it at once. "
 "Developers find the endpoints under `/api/docs`."
-msgstr "Le jeton (`sb_…`) n’est affiché qu’une fois ; copie-le tout de suite. Les scripts l’envoient comme `Authorization: Bearer sb_…` (ou `X-API-Key: sb_…`). Il peut faire ce que tu as choisi et jamais plus que ton rôle dans la société : si tu perds un droit ou quittes la société, le jeton le perd aussitôt. Il n’atteint jamais ton mot de passe, ton e-mail, ton compte ou d’autres jetons. `GET /api/token` indique à un script le nom, les droits et les sociétés de son jeton. Un jeton fait au plus 600 requêtes en cinq minutes. La liste montre quand chaque jeton a été utilisé pour la dernière fois ; le révoquer l’arrête aussitôt. Les développeurs trouvent les points d’accès sous `/api/docs`."
+msgstr ""
+"Le jeton (`sb_…`) n’est affiché qu’une fois ; copie-le tout de suite. Les "
+"scripts l’envoient comme `Authorization: Bearer sb_…` (ou `X-API-Key: sb_…"
+"`). Il peut faire ce que tu as choisi et jamais plus que ton rôle dans la "
+"société : si tu perds un droit ou quittes la société, le jeton le perd "
+"aussitôt. Il n’atteint jamais ton mot de passe, ton e-mail, ton compte ou "
+"d’autres jetons. `GET /api/token` indique à un script le nom, les droits et "
+"les sociétés de son jeton. Un jeton fait au plus 600 requêtes en cinq "
+"minutes. La liste montre quand chaque jeton a été utilisé pour la dernière "
+"fois ; le révoquer l’arrête aussitôt. Les développeurs trouvent les points "
+"d’accès sous `/api/docs`."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/login-language.md:42
@@ -3336,7 +3360,7 @@ msgid "![Printing](../images/screenshots/printing.png){ .screenshot }"
 msgstr "![Impression](../images/screenshots/printing.png){ .screenshot }"
 
 #. type: Bullet: '1. '
-#: ../src/help/en/user-guide/printing.md:25
+#: ../src/help/en/user-guide/printing.md:26
 msgid ""
 "**Add print agent**, give it a name and copy the token. Install the agent on "
 "a computer next to the printers (see [Print agent](../admin-guide/print-"
@@ -3352,27 +3376,48 @@ msgstr ""
 "virgule."
 
 #. type: Bullet: '2. '
-#: ../src/help/en/user-guide/printing.md:25
+#: ../src/help/en/user-guide/printing.md:26
 msgid ""
-"Once the agent is online, it reports its printers. Choose the printer for "
-"each document (*Certificates* are the certificates from the rankings, *Print "
-"forms* every other form of the club) and its options (tray, paper size, "
-"media type, further `lp` options such as `fit-to-page`)."
+"Once the agent is online, it reports its printers and the list shows its "
+"version and operating system. Choose the printer for each document "
+"(*Certificates* are the certificates from the rankings, *Print forms* every "
+"other form of the club) and its options: the options the agent reports for "
+"that printer (on Linux tray, paper size and media type, plus further `lp` "
+"options such as `fit-to-page` in the text field; on Windows tray, paper, two-"
+"sided, scaling and colour)."
 msgstr ""
-"Dès que l’agent est en ligne, il annonce ses imprimantes. Choisis pour "
-"chaque document l’imprimante (*Diplômes* sont les diplômes des classements, "
-"*Modèles d’impression* tous les autres modèles de la société) et ses options "
-"(bac, format de papier, type de support, autres options `lp` comme `fit-to-"
-"page`)."
+"Dès que l’agent est en ligne, il annonce ses imprimantes et la liste indique "
+"sa version et son système d’exploitation. Choisis pour chaque document "
+"l’imprimante (*Diplômes* sont les diplômes des classements, *Modèles "
+"d’impression* tous les autres modèles de la société) et ses options : celles "
+"que l’agent annonce pour cette imprimante (sous Linux bac, format de papier "
+"et type de support, plus d’autres options `lp` comme `fit-to-page` dans le "
+"champ de texte ; sous Windows bac, papier, recto verso, mise à l’échelle et "
+"couleur)."
 
 #. type: Bullet: '3. '
-#: ../src/help/en/user-guide/printing.md:25
+#: ../src/help/en/user-guide/printing.md:26
+msgid ""
+"**Test page** prints a small page (90 × 29 mm, the size of the control "
+"strip) on the printer of that row with the options chosen there, also before "
+"saving: club, range, printer, options and the time. A label printer prints "
+"it as a label, other printers in the top-left corner of the sheet. It needs "
+"an online agent."
+msgstr ""
+"**Page de test** imprime une petite page (90 × 29 mm, la taille de la bande "
+"de contrôle) sur l’imprimante de cette ligne avec les options choisies, même "
+"avant d’enregistrer : société, stand de tir, imprimante, options et heure. "
+"Une imprimante d’étiquettes l’imprime comme étiquette, les autres "
+"imprimantes en haut à gauche de la feuille. Un agent doit être en ligne."
+
+#. type: Bullet: '4. '
+#: ../src/help/en/user-guide/printing.md:26
 msgid "**Recent jobs** shows what was printed and whether it worked."
 msgstr ""
 "**Tâches récentes** montre ce qui a été imprimé et si cela a fonctionné."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/printing.md:26
+#: ../src/help/en/user-guide/printing.md:28
 msgid ""
 "A job that the agent does not confirm within two minutes is retried; after "
 "three attempts it fails. **revoke** removes an agent immediately."
@@ -3380,6 +3425,33 @@ msgstr ""
 "Une tâche que l’agent ne confirme pas dans les deux minutes est relancée ; "
 "après trois tentatives, elle échoue. **révoquer** retire un agent "
 "immédiatement."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/printing.md:29
+#, no-wrap
+msgid "Connecting a computer by code {#connect}"
+msgstr "Connecter un ordinateur par code {#connect}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/printing.md:31
+msgid ""
+"The Standblatt app on a computer next to the printers needs no token: it "
+"shows a code such as `K7QD-4MZP` and opens **Connect a print agent** in the "
+"browser. There, log in if asked, check the computer named on the page, "
+"choose the club and range and the agent's name, and **Connect**. Only "
+"members who may manage ranges can connect a computer; a code is valid for "
+"ten minutes. The app then connects by itself, and the agent appears under "
+"**Ranges → Printing** with its version and operating system."
+msgstr ""
+"L’application Standblatt sur un ordinateur près des imprimantes n’a pas "
+"besoin de jeton : elle affiche un code comme `K7QD-4MZP` et ouvre "
+"**Connecter un agent d’impression** dans le navigateur. Connecte-toi si "
+"nécessaire, vérifie l’ordinateur indiqué, choisis la société, le stand de "
+"tir et le nom de l’agent, puis **Connecter**. Seuls les membres qui peuvent "
+"gérer les stands de tir peuvent connecter un ordinateur ; un code est "
+"valable dix minutes. L’application se connecte ensuite d’elle-même, et "
+"l’agent apparaît sous **Stands de tir → Impression** avec sa version et son "
+"système d’exploitation."
 
 #. type: Title #
 #: ../src/help/en/user-guide/print-forms.md:1
