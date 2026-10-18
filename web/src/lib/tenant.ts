@@ -102,7 +102,7 @@ export function bookingRequestsQuery(tenantId: () => number, eventId: () => numb
 }
 
 /** The editable fields of an event, for an update that changes only some of them. */
-export const eventInput = (ev: Event): EventInput => ({
+const eventInput = (ev: Event): EventInput => ({
 	name: ev.name,
 	startsOn: ev.startsOn,
 	rangeIds: ev.ranges.map((r) => r.id),

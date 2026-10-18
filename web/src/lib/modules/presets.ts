@@ -3,7 +3,7 @@ import type { MessageDescriptor } from '@lingui/core';
 import type { ModuleKey } from './types';
 
 /** A starting point for a new event: only the modules it switches on, everything can be changed later. */
-export type Preset = { id: string; label: MessageDescriptor; description: MessageDescriptor; modules: ModuleKey[] };
+type Preset = { id: string; label: MessageDescriptor; description: MessageDescriptor; modules: ModuleKey[] };
 
 /** The presets offered when creating an event, the default first. */
 export const presets: Preset[] = [

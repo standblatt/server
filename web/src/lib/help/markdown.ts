@@ -21,7 +21,7 @@ function source(lang: string, slug: string): { key: string; lang: string; file: 
 }
 
 /** Whether a help page with this slug exists (in English at least). */
-export const pageExists = (slug: string) => slug === 'changelog' || !!source('en', slug);
+const pageExists = (slug: string) => slug === 'changelog' || !!source('en', slug);
 
 /** The slug of a page file: user-guide/results.md → user-guide/results, my-training/index.md → my-training. */
 const slugOf = (file: string) => file.replace(/\.md$/, '').replace(/(^|\/)index$/, '');

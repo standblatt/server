@@ -27,7 +27,7 @@ export function byDay<T extends { start: string }>(items: T[], timeZone: string)
 export const slotKey = (rangeId: number, start: string) => `${rangeId}|${new Date(start).toISOString()}`;
 
 /** Turns DD.MM.YYYY, D.M.YYYY or YYYY-MM-DD into YYYY-MM-DD; empty when it is none of them. */
-export function isoDate(text: string): string {
+function isoDate(text: string): string {
 	const s = text.trim();
 	if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
 	const m = /^(\d{1,2})\.(\d{1,2})\.(\d{4})$/.exec(s);

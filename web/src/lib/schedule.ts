@@ -1,7 +1,7 @@
 import type { Schedule } from './api';
 
 /** ISO weekday of a YYYY-MM-DD date: 1 = Monday … 7 = Sunday. */
-export const isoWeekday = (iso: string) => ((new Date(`${iso}T00:00:00Z`).getUTCDay() + 6) % 7) + 1;
+const isoWeekday = (iso: string) => ((new Date(`${iso}T00:00:00Z`).getUTCDay() + 6) % 7) + 1;
 
 /** The shooting days of a schedule plus the main day, sorted; mirrors domain.Schedule.Expand on the server. */
 export function shootingDays(s: Schedule, mainDay: string): string[] {

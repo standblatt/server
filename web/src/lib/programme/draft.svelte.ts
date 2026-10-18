@@ -2,7 +2,7 @@ import type { AgeCategory, ProgrammeDefinition } from '$lib/api';
 import { ageCategories } from '$lib/categories';
 
 /** An award tier as edited: limits are strings so a field can stay empty. */
-export type AwardDraft = { name: string; kind: 'natural' | 'card' | 'cash'; value: number; limits: Record<AgeCategory, string> };
+type AwardDraft = { name: string; kind: 'natural' | 'card' | 'cash'; value: number; limits: Record<AgeCategory, string> };
 
 /** Award limits with an empty value for every age category. */
 export function emptyLimits(): Record<AgeCategory, string> {

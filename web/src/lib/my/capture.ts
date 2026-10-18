@@ -4,7 +4,7 @@ import { localInput, uuid } from '$lib/my.svelte';
 export type Mode = 'totals' | 'shots' | 'target';
 export type Shot = { v: number; x?: number; y?: number };
 /** A series being captured: only a total, or every shot (values) with optional positions. */
-export type CaptureSeries = { shots: number; total: number | null; values: Shot[] | null };
+type CaptureSeries = { shots: number; total: number | null; values: Shot[] | null };
 
 export type Draft = {
 	clientId: string;

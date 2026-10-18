@@ -50,7 +50,7 @@ const pdfReady = msg`The PDF is ready.`;
 const shareLabel = msg`Share`;
 
 /** Opens a PDF: a new tab on a desktop, the share sheet (or a download) on a phone; helper links fetch it with their code. */
-export async function openPdf(url: string) {
+async function openPdf(url: string) {
 	if (!touch() && !helperCode()) {
 		window.open(url, '_blank');
 		return;
