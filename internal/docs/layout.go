@@ -24,8 +24,9 @@ func Fill(s string, values map[string]string, n int) string {
 }
 
 // RenderLayout prints the values onto a page of the layout's size. A preview draws background (a PNG or JPEG of
-// the empty form) under the elements and leaves out the printer offset; a print never shows the background.
-func RenderLayout(l domain.Layout, values map[string]string, background []byte, preview bool) ([]byte, error) {
+// the empty form) under the elements and leaves out the printer offset; a print never shows the background. Images
+// holds the PNG or JPEG of every image element by ID; an image element without one is left out.
+func RenderLayout(l domain.Layout, values map[string]string, background []byte, images map[int64][]byte, preview bool) ([]byte, error) {
 	d := newDoc("P", "", l.Width, l.Height)
 	if l.Width > l.Height {
 		d = newDoc("L", "", l.Height, l.Width)
@@ -35,12 +36,7 @@ func RenderLayout(l domain.Layout, values map[string]string, background []byte, 
 	if preview {
 		ox, oy = 0, 0
 		if len(background) > 0 {
-			kind := "PNG"
-			if http.DetectContentType(background) == "image/jpeg" {
-				kind = "JPG"
-			}
-			d.RegisterImageOptionsReader("background", fpdf.ImageOptions{ImageType: kind}, bytes.NewReader(background))
-			d.ImageOptions("background", 0, 0, l.Width, l.Height, false, fpdf.ImageOptions{ImageType: kind}, 0, "")
+			d.image("background", background, 0, 0, l.Width, l.Height)
 		}
 	}
 	d.SetLineWidth(0.2)
@@ -78,10 +74,26 @@ func RenderLayout(l domain.Layout, values map[string]string, background []byte, 
 				}
 			case "line":
 				d.Line(x, y, x+e.W, y+e.H)
+			case "image":
+				if img := images[e.Image]; len(img) > 0 && e.W > 0 {
+					d.image("image"+strconv.FormatInt(e.Image, 10), img, x, y, e.W, e.H)
+				}
 			}
 		}
 	}
 	return d.bytes()
+}
+
+// image draws a PNG or JPEG in w×h (h 0 keeps the aspect ratio), registering it once under name.
+func (d *doc) image(name string, data []byte, x, y, w, h float64) {
+	opt := fpdf.ImageOptions{ImageType: "PNG"}
+	if http.DetectContentType(data) == "image/jpeg" {
+		opt.ImageType = "JPG"
+	}
+	if d.GetImageInfo(name) == nil {
+		d.RegisterImageOptionsReader(name, opt, bytes.NewReader(data))
+	}
+	d.ImageOptions(name, x, y, w, h, false, opt, 0, "")
 }
 
 // SampleValues are made-up values for every placeholder, used for previews without a real result.

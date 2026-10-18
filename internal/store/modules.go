@@ -28,7 +28,7 @@ var eventUsage = map[string]string{
 
 // clubUsage is eventUsage for club modules, SQL over the alias t for tenants.
 var clubUsage = map[string]string{
-	modules.Forms: `EXISTS (SELECT 1 FROM layouts x WHERE x.tenant_id = t.id)`,
+	modules.Forms: `EXISTS (SELECT 1 FROM layouts x WHERE x.tenant_id = t.id) OR EXISTS (SELECT 1 FROM images x WHERE x.tenant_id = t.id)`,
 }
 
 // copiers copy the data of event modules that is not part of the programmes when an event is copied.

@@ -33,6 +33,12 @@ A print form puts results onto a pre-printed sheet, e.g. the lane sheets the arm
 | Ctrl+S | save |
 | Ctrl+mouse wheel | zoom |
 
+## Images {#images}
+
+Logos, letterheads and other pictures come from the club's image library below the list of **Print forms**: **Upload image** adds a PNG or JPEG of at most 2 MB, named after its file. In the editor, the group **Images** of the fields lists them; a click or a drag puts one onto the sheet, 30 mm wide with the image's own proportions. Its properties choose another **Image**, its position and size, and **Keep the aspect ratio** sets the height to match the width again. An image can be repeated like any other element.
+
+An image can be deleted only while no form shows it. **Export** puts the images of a form into its file, and **Import** adds them to the library, reusing an image of the same name the club already has.
+
 ## Calibrate the printer {#calibrate}
 
 Printers rarely print exactly where they should. Print a sheet with **Test print**, measure how far the values are off and enter it as **Printer offset right** and **Printer offset down** (negative to move left or up). The offset applies to every element; the preview ignores it.
@@ -41,4 +47,4 @@ Printers rarely print exactly where they should. Print a sheet with **Test print
 
 Under **Configuration** → **Programmes** of the event, open a programme and choose its **Print form** in the section of the same name; this works while shooters are registered. Every completed programme then offers **Print onto form** in the results: at the desk, on the **Enter results** page and on scorer links at the lane (see [Helpers](helpers.md)). With a print agent and a printer chosen for *Print forms* under **Ranges → Printing**, the sheet goes to that printer (e.g. its manual feed), otherwise the PDF opens (see [Printing](printing.md)).
 
-**Export** downloads a form as a file and **Import** reads it again, e.g. to share a form with another club.
+**Export** downloads a form as a file, with its images, and **Import** reads it again, e.g. to share a form with another club.

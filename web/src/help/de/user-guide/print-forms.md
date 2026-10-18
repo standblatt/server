@@ -67,6 +67,22 @@ ausschalten (siehe [Vereinsbausteine](events.md#club-modules)).
 | Ctrl+S | speichern |
 | Ctrl+Mausrad | zoomen |
 
+## Bilder {#images}
+
+Logos, Briefköpfe und andere Bilder kommen aus der Bildbibliothek des
+Vereins unter der Liste der **Druckvorlagen**: **Bild hochladen** fügt ein
+PNG oder JPEG von höchstens 2 MB hinzu, benannt nach seiner Datei. Im Editor
+listet die Gruppe **Bilder** der Felder sie auf; ein Klick oder Ziehen legt
+eines aufs Blatt, 30 mm breit in den Proportionen des Bildes. Seine
+Eigenschaften wählen ein anderes **Bild**, seine Position und Grösse, und
+**Seitenverhältnis beibehalten** passt die Höhe wieder an die Breite an. Ein
+Bild lässt sich wie jedes andere Element wiederholen.
+
+Ein Bild lässt sich erst löschen, wenn keine Vorlage es mehr
+zeigt. **Exportieren** nimmt die Bilder einer Vorlage in ihre Datei mit, und
+**Importieren** fügt sie der Bibliothek hinzu; ein Bild gleichen Namens, das
+der Verein schon hat, wird wiederverwendet.
+
 ## Den Drucker kalibrieren {#calibrate}
 
 Drucker drucken selten genau dort, wo sie sollen. Drucke ein Blatt mit
@@ -87,4 +103,4 @@ den Resultaten **Auf Vorlage drucken** an: am Desk, auf der Seite
 Drucker (z. B. an seinen manuellen Einzug), sonst öffnet sich das PDF (siehe
 [Drucken](printing.md)).
 
-**Exportieren** lädt eine Vorlage als Datei herunter und **Importieren** liest sie wieder ein, z. B. um eine Vorlage mit einem anderen Verein zu teilen.
+**Exportieren** lädt eine Vorlage mit ihren Bildern als Datei herunter und **Importieren** liest sie wieder ein, z. B. um eine Vorlage mit einem anderen Verein zu teilen.

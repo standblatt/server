@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 11:37+0200\n"
+"POT-Creation-Date: 2026-10-18 11:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -848,6 +848,36 @@ msgstr ""
 
 #: internal/web/helpers.go
 msgid "Unknown or revoked helper link"
+msgstr ""
+
+#: internal/web/images.go
+#, go-format
+msgid "An image named %s already exists"
+msgstr ""
+
+#: internal/web/images.go
+#, go-format
+msgid "Image %d not found"
+msgstr ""
+
+#: internal/web/images.go
+msgid "Image not found"
+msgstr ""
+
+#: internal/web/images.go
+msgid "Print forms use this image"
+msgstr ""
+
+#: internal/web/images.go
+msgid "The image is larger than 2 MB"
+msgstr ""
+
+#: internal/web/images.go
+msgid "The image must be a PNG or JPEG"
+msgstr ""
+
+#: internal/web/images.go
+msgid "The name must be 1 to 100 characters long"
 msgstr ""
 
 #: internal/web/invites.go

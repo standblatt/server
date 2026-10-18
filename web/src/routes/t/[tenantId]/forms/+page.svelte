@@ -18,6 +18,8 @@
 	import FormError from '$lib/FormError.svelte';
 	import FormField from '$lib/FormField.svelte';
 	import PageHeader from '$lib/PageHeader.svelte';
+	import ImageLibrary from '$lib/forms/ImageLibrary.svelte';
+	import { exportImages, imagesKey, imagesQuery, importImages, type ExportedImage } from '$lib/forms/images';
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const queryClient = useQueryClient();
@@ -27,6 +29,7 @@
 		queryFn: () => call(api.GET('/api/tenants/{tenantId}/layouts', { params: { path: { tenantId } } }))
 	}));
 
+	const images = imagesQuery(() => tenantId);
 	const sizes: Record<string, [number, number]> = { a5: [148, 210], a4: [210, 297], a6: [105, 148], a5l: [210, 148] };
 	let creating = $state(false);
 	let name = $state('');
@@ -58,8 +61,13 @@
 		const f = (e.currentTarget as HTMLInputElement).files?.[0];
 		if (!f) return;
 		try {
-			const l = JSON.parse(await f.text()) as LayoutInput;
-			await create({ name: l.name, width: l.width, height: l.height, offsetX: l.offsetX ?? 0, offsetY: l.offsetY ?? 0, elements: l.elements ?? [] });
+			const l = JSON.parse(await f.text()) as LayoutInput & { images?: ExportedImage[] };
+			const body: LayoutInput = { name: l.name, width: l.width, height: l.height, offsetX: l.offsetX ?? 0, offsetY: l.offsetY ?? 0, elements: l.elements ?? [] };
+			if (l.images?.length) {
+				await importImages(tenantId, body, l.images, new Map((images.data ?? []).map((i) => [i.name, i.id])));
+				await queryClient.invalidateQueries({ queryKey: imagesKey(tenantId) });
+			}
+			await create(body);
 		} catch (err) {
 			toast.error(err instanceof SyntaxError ? $t`The file is not a print form.` : (err as Error).message);
 		} finally {
@@ -67,9 +75,10 @@
 		}
 	}
 
-	/** Downloads a form as a JSON file to share it with another club. */
-	function exportForm(l: Layout) {
-		const body: LayoutInput = { name: l.name, width: l.width, height: l.height, offsetX: l.offsetX, offsetY: l.offsetY, elements: l.elements };
+	/** Downloads a form with the images it shows as a JSON file to share it with another club. */
+	async function exportForm(l: Layout) {
+		const form: LayoutInput = { name: l.name, width: l.width, height: l.height, offsetX: l.offsetX, offsetY: l.offsetY, elements: l.elements };
+		const body = { ...form, images: await exportImages(tenantId, form, new Map((images.data ?? []).map((i) => [i.id, i.name]))) };
 		const a = document.createElement('a');
 		a.href = URL.createObjectURL(new Blob([JSON.stringify(body, null, 2)], { type: 'application/json' }));
 		a.download = `${l.name.replace(/[^A-Za-z0-9]+/g, '_')}.json`;
@@ -121,6 +130,8 @@
 		</Table.Body>
 	</Table.Root>
 </div>
+
+<div class="mt-4"><ImageLibrary {tenantId} /></div>
 
 <Dialog.Root bind:open={creating}>
 	<Dialog.Content class="sm:max-w-md">

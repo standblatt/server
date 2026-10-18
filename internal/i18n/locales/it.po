@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 11:37+0200\n"
+"POT-Creation-Date: 2026-10-18 11:50+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -849,6 +849,36 @@ msgstr "Questo bersaglio non è il tuo"
 #: internal/web/helpers.go
 msgid "Unknown or revoked helper link"
 msgstr "Link aiutante sconosciuto o revocato"
+
+#: internal/web/images.go
+#, go-format
+msgid "An image named %s already exists"
+msgstr "Esiste già un'immagine di nome %s"
+
+#: internal/web/images.go
+#, go-format
+msgid "Image %d not found"
+msgstr "Immagine %d non trovata"
+
+#: internal/web/images.go
+msgid "Image not found"
+msgstr "Immagine non trovata"
+
+#: internal/web/images.go
+msgid "Print forms use this image"
+msgstr "Dei modelli di stampa usano questa immagine"
+
+#: internal/web/images.go
+msgid "The image is larger than 2 MB"
+msgstr "L'immagine supera 2 MB"
+
+#: internal/web/images.go
+msgid "The image must be a PNG or JPEG"
+msgstr "L'immagine deve essere un PNG o un JPEG"
+
+#: internal/web/images.go
+msgid "The name must be 1 to 100 characters long"
+msgstr "Il nome deve avere da 1 a 100 caratteri"
 
 #: internal/web/invites.go
 #, go-format

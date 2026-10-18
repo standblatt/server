@@ -1374,6 +1374,39 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/tenants/{tenantId}/images": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["list-images"];
+        put?: never;
+        /** Add a PNG or JPEG of at most 2 MB to the club's images */
+        post: operations["create-image"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/tenants/{tenantId}/images/{imageId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["get-image"];
+        put?: never;
+        post?: never;
+        delete: operations["delete-image"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/tenants/{tenantId}/invitations": {
         parameters: {
             query?: never;
@@ -2580,6 +2613,11 @@ export interface components {
              * @description Height; QR codes are W×W
              */
             h?: number;
+            /**
+             * Format: int64
+             * @description The image of the club's library an image element shows
+             */
+            image?: number;
             /** Format: int64 */
             repeat?: number;
             /**
@@ -2588,7 +2626,7 @@ export interface components {
              */
             size?: number;
             /** @enum {string} */
-            type: "text" | "qr" | "barcode" | "line";
+            type: "text" | "qr" | "barcode" | "line" | "image";
             value?: string;
             /**
              * Format: double
@@ -2841,6 +2879,22 @@ export interface components {
             rangeId?: number;
             /** @enum {string} */
             role: "scorer" | "ammunition" | "results";
+        };
+        Image: {
+            /** Format: date-time */
+            createdAt: string;
+            /** Format: int64 */
+            height: number;
+            /** Format: int64 */
+            id: number;
+            name: string;
+            /**
+             * Format: int64
+             * @description Bytes
+             */
+            size: number;
+            /** Format: int64 */
+            width: number;
         };
         "Import-my-competitionRequest": {
             /** Format: int64 */
@@ -7183,6 +7237,141 @@ export interface operations {
             path: {
                 tenantId: number;
                 codeId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "list-images": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Image"][];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "create-image": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "multipart/form-data": {
+                    /** Format: binary */
+                    file: string;
+                    name: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Image"];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "get-image": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                imageId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description PNG or JPEG */
+            200: {
+                headers: {
+                    "Cache-Control"?: string;
+                    "Content-Type"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "image/jpeg": unknown;
+                    "image/png": unknown;
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "delete-image": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                imageId: number;
             };
             cookie?: never;
         };

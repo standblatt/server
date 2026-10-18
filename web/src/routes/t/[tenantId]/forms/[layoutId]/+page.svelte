@@ -22,6 +22,7 @@
 	import Palette from '$lib/forms/Palette.svelte';
 	import Properties from '$lib/forms/Properties.svelte';
 	import Stage from '$lib/forms/Stage.svelte';
+	import { imagesQuery, imageUrl } from '$lib/forms/images';
 	import FormError from '$lib/FormError.svelte';
 	import FormField from '$lib/FormField.svelte';
 	import PageHeader from '$lib/PageHeader.svelte';
@@ -39,6 +40,7 @@
 		queryKey: ['tenants', tenantId, 'layouts', 'fields'],
 		queryFn: () => call(api.GET('/api/tenants/{tenantId}/layouts/fields', { params: { path: { tenantId } } }))
 	}));
+	const images = imagesQuery(() => tenantId);
 	const samples = $derived(Object.fromEntries((fields.data ?? []).map((f) => [f.key, f.example])));
 
 	const editor = new FormEditor();
@@ -180,7 +182,7 @@
 	<div class="grid gap-4 *:min-w-0 lg:grid-cols-[15rem_minmax(0,1fr)_17rem]">
 		<aside class="rounded-lg border bg-card p-3" aria-label={$t`Fields`}>
 			<h2 class="mb-2 text-sm font-semibold">{$t`Fields`}</h2>
-			<Palette {samples} onadd={add} />
+			<Palette {samples} images={images.data ?? []} library="/t/{tenantId}/forms" onadd={add} />
 		</aside>
 
 		<section class="grid content-start gap-2" aria-label={$t`Sheet`}>
@@ -194,13 +196,13 @@
 				<label class="flex items-center gap-2" title={$t`Saves unsaved changes every minute`}><Checkbox checked={autosave} onCheckedChange={setAutosave} />{$t`Save automatically`}</label>
 				<span class="ml-auto text-xs text-muted-foreground">{$t`Alt: no snapping · Shift: add to the selection`}</span>
 			</div>
-			<Stage {editor} {samples} {names} {zoom} onzoom={setZoom} background={layout.data.hasBackground ? `${base}/background?v=${version}` : undefined} />
+			<Stage {editor} {samples} {names} {zoom} onzoom={setZoom} imageUrl={(id) => imageUrl(tenantId, id)} background={layout.data.hasBackground ? `${base}/background?v=${version}` : undefined} />
 		</section>
 
 		<div class="grid content-start gap-4">
 			<aside class="rounded-lg border bg-card p-3" aria-label={$t`Properties`}>
 				<h2 class="mb-2 text-sm font-semibold">{$t`Properties`}</h2>
-				<Properties {editor} />
+				<Properties {editor} images={images.data ?? []} />
 			</aside>
 			<aside class="grid gap-3 rounded-lg border bg-card p-3" aria-label={$t`Form`}>
 				<h2 class="text-sm font-semibold">{$t`Form`}</h2>

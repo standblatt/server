@@ -119,7 +119,11 @@ func (s *Server) renderForm(ctx context.Context, tenantID, entryID int64) (rende
 	if err != nil {
 		return rendered{}, err
 	}
-	pdf, err := docs.RenderLayout(l.Layout, values, nil, false)
+	images, err := s.Store.ImagesByID(ctx, tenantID, l.ImageIDs())
+	if err != nil {
+		return rendered{}, err
+	}
+	pdf, err := docs.RenderLayout(l.Layout, values, nil, images, false)
 	name := values["shooter.name"]
 	return rendered{
 		pdf: pdf, filename: filename(l.Name, values["shooter.lastname"], values["shooter.firstname"]),
@@ -168,6 +172,9 @@ func (s *Server) registerForms(api huma.API) {
 			return nil, err
 		}
 		in.Body.Name = strings.TrimSpace(in.Body.Name)
+		if err := s.checkLayoutImages(ctx, in.TenantID, in.Body); err != nil {
+			return nil, err
+		}
 		id, err := s.Store.CreateLayout(ctx, in.TenantID, in.Body)
 		if err != nil {
 			return nil, layoutConflict(err)
@@ -198,6 +205,9 @@ func (s *Server) registerForms(api huma.API) {
 			return nil, err
 		}
 		in.Body.Name = strings.TrimSpace(in.Body.Name)
+		if err := s.checkLayoutImages(ctx, in.TenantID, in.Body); err != nil {
+			return nil, err
+		}
 		return nil, layoutConflict(s.Store.UpdateLayout(ctx, in.TenantID, in.LayoutID, in.Body))
 	})
 
@@ -300,7 +310,11 @@ func (s *Server) registerForms(api huma.API) {
 			if in.Print {
 				bg = nil
 			}
-			pdf, err := docs.RenderLayout(l.Layout, values, bg, !in.Print)
+			images, err := s.Store.ImagesByID(ctx, in.TenantID, l.ImageIDs())
+			if err != nil {
+				return nil, err
+			}
+			pdf, err := docs.RenderLayout(l.Layout, values, bg, images, !in.Print)
 			return pdfOut(rendered{pdf: pdf, filename: filename(l.Name, "preview")}, err)
 		})
 

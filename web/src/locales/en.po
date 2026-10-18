@@ -1574,6 +1574,7 @@ msgstr "declined"
 msgid "default ({0})"
 msgstr "default ({0})"
 
+#: src/lib/forms/ImageLibrary.svelte
 #: src/lib/forms/Properties.svelte
 #: src/lib/forms/Stage.svelte
 #: src/lib/modules/classifications/Classifications.svelte
@@ -1592,7 +1593,9 @@ msgid "Delete"
 msgstr "Delete"
 
 #. placeholder {0}: c.name
+#. placeholder {0}: img.name
 #. placeholder {0}: l.name
+#: src/lib/forms/ImageLibrary.svelte
 #: src/lib/modules/classifications/Classifications.svelte
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Delete {0}"
@@ -1619,6 +1622,11 @@ msgstr "Delete discipline \"{0}\"?"
 #: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Delete event?"
 msgstr "Delete event?"
+
+#. placeholder {0}: img.name
+#: src/lib/forms/ImageLibrary.svelte
+msgid "Delete image \"{0}\"?"
+msgstr "Delete image \"{0}\"?"
 
 #. placeholder {0}: l.name
 #: src/routes/t/[tenantId]/forms/+page.svelte
@@ -2270,6 +2278,24 @@ msgstr "How often a shooter may shoot the programme at this event, e.g. further 
 msgid "If an account uses {email}, we sent a link to choose a new password. Check your inbox."
 msgstr "If an account uses {email}, we sent a link to choose a new password. Check your inbox."
 
+#: src/lib/forms/Properties.svelte
+msgid "Image"
+msgstr "Image"
+
+#. placeholder {0}: img.name
+#: src/lib/forms/ImageLibrary.svelte
+msgid "Image \"{0}\" added"
+msgstr "Image \"{0}\" added"
+
+#: src/lib/forms/ImageLibrary.svelte
+msgid "Image deleted"
+msgstr "Image deleted"
+
+#: src/lib/forms/ImageLibrary.svelte
+#: src/lib/forms/Palette.svelte
+msgid "Images"
+msgstr "Images"
+
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 #: src/routes/t/[tenantId]/forms/+page.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
@@ -2382,6 +2408,10 @@ msgstr "Its sessions stay in your log, without a weapon."
 #: src/routes/t/[tenantId]/clubs/+page.svelte
 msgid "Its shooters and registrations, including those of closed events, then belong to \"{0}\". \"{1}\" is deleted."
 msgstr "Its shooters and registrations, including those of closed events, then belong to \"{0}\". \"{1}\" is deleted."
+
+#: src/lib/forms/Properties.svelte
+msgid "Keep the aspect ratio"
+msgstr "Keep the aspect ratio"
 
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Key figures"
@@ -2733,6 +2763,10 @@ msgstr "Logging in asks for a code from your authenticator app."
 #: src/lib/AccountSettings.svelte
 msgid "Login"
 msgstr "Login"
+
+#: src/lib/forms/ImageLibrary.svelte
+msgid "Logos and other images for print forms (PNG or JPEG, at most 2 MB)."
+msgstr "Logos and other images for print forms (PNG or JPEG, at most 2 MB)."
 
 #. Column header: mouches
 #. Column header: mouches
@@ -3087,6 +3121,11 @@ msgstr "No field matches."
 msgid "No helper links."
 msgstr "No helper links."
 
+#: src/lib/forms/ImageLibrary.svelte
+#: src/lib/forms/Palette.svelte
+msgid "No images yet."
+msgstr "No images yet."
+
 #: src/lib/modules/kiosk/KioskTokens.svelte
 msgid "No kiosk displays."
 msgstr "No kiosk displays."
@@ -3279,6 +3318,10 @@ msgstr "Online booking switched on"
 #: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Only possible as long as nobody is registered."
 msgstr "Only possible as long as nobody is registered."
+
+#: src/lib/forms/ImageLibrary.svelte
+msgid "Only possible while no print form shows it."
+msgstr "Only possible while no print form shows it."
 
 #: src/routes/t/[tenantId]/+page.svelte
 msgid "Only sets the modules; they can be changed any time under Configuration → Modules."
@@ -5098,6 +5141,14 @@ msgstr "Upcoming"
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Upload a scan"
 msgstr "Upload a scan"
+
+#: src/lib/forms/ImageLibrary.svelte
+msgid "Upload image"
+msgstr "Upload image"
+
+#: src/lib/forms/Palette.svelte
+msgid "Upload images"
+msgstr "Upload images"
 
 #: src/lib/ProgrammeEditor.svelte
 msgid "Use"

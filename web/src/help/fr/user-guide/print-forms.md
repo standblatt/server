@@ -68,6 +68,22 @@ société](events.md#club-modules)).
 | Ctrl+S | enregistrer |
 | Ctrl+molette | zoomer |
 
+## Images {#images}
+
+Les logos, en-têtes et autres images viennent de la bibliothèque d'images de
+la société, sous la liste des **Modèles d’impression** : **Téléverser une
+image** ajoute un PNG ou un JPEG de 2 Mo au plus, nommé d'après son
+fichier. Dans l'éditeur, le groupe **Images** des champs les liste ; un clic
+ou un glisser en pose une sur la feuille, large de 30 mm dans les
+proportions de l'image. Ses propriétés choisissent une autre **Image**, sa
+position et sa taille, et **Garder les proportions** ajuste à nouveau la
+hauteur à la largeur. Une image peut être répétée comme tout autre élément.
+
+Une image ne peut être supprimée que tant qu'aucun modèle ne
+l'affiche. **Exporter** met les images d'un modèle dans son fichier, et
+**Importer** les ajoute à la bibliothèque en réutilisant une image du même
+nom que la société a déjà.
+
 ## Calibrer l’imprimante {#calibrate}
 
 Les imprimantes impriment rarement exactement là où elles devraient. Imprime
@@ -88,4 +104,4 @@ imprimante choisie pour *Modèles d’impression* sous **Stands de tir →
 Impression**, la feuille part vers cette imprimante (p. ex. son alimentation
 manuelle), sinon le PDF s’ouvre (voir [Impression](printing.md)).
 
-**Exporter** télécharge un modèle sous forme de fichier et **Importer** le relit, p. ex. pour partager un modèle avec une autre société.
+**Exporter** télécharge un modèle avec ses images sous forme de fichier et **Importer** le relit, p. ex. pour partager un modèle avec une autre société.

@@ -19,6 +19,7 @@ export type Club = Schemas['Club'];
 export type Layout = Schemas['Layout'];
 export type LayoutInput = Schemas['LayoutInput'];
 export type LayoutElement = Schemas['Element'];
+export type LibraryImage = Schemas['Image'];
 export type Shooter = Schemas['Shooter'];
 export type ClubRef = Schemas['ClubRef'];
 export type ShooterInput = Schemas['ShooterInput'];

@@ -3,7 +3,7 @@
 	import Copy from '@lucide/svelte/icons/copy';
 	import MousePointer from '@lucide/svelte/icons/mouse-pointer-2';
 	import Trash from '@lucide/svelte/icons/trash-2';
-	import type { LayoutElement } from '../api';
+	import type { LayoutElement, LibraryImage } from '../api';
 	import { Button } from '../components/ui/button';
 	import { Checkbox } from '../components/ui/checkbox';
 	import { Input } from '../components/ui/input';
@@ -11,7 +11,7 @@
 	import FormField from '../FormField.svelte';
 	import type { FormEditor } from './editor.svelte';
 
-	let { editor }: { editor: FormEditor } = $props();
+	let { editor, images = [] }: { editor: FormEditor; images?: LibraryImage[] } = $props();
 
 	const sel = $derived(editor.selection);
 	const item = $derived(sel.length === 1 ? sel[0] : undefined);
@@ -23,6 +23,14 @@
 	function focusout() {
 		if (before !== null) editor.commit(before);
 		before = null;
+	}
+
+	/** Sets the height of an image element from its width and the image's aspect ratio. */
+	function keepRatio(it: LayoutElement) {
+		const img = images.find((i) => i.id === it.image);
+		if (!img) return;
+		editor.remember();
+		it.h = Math.round((Number(it.w) * img.height * 10) / img.width) / 10;
 	}
 
 	/** Sets a property on every selected element as one undo step. */
@@ -39,7 +47,20 @@
 			{$t`Select an element on the sheet, or add one from the fields. Right-click for more.`}
 		</p>
 	{:else}
-		{#if item}
+		{#if item?.type === 'image'}
+			<FormField label={$t`Image`}>
+				<NativeSelect.Root class="w-full" value={item.image} onchange={(e) => setAll('image', Number(e.currentTarget.value))}>
+					{#each images as img (img.id)}<NativeSelect.Option value={img.id}>{img.name}</NativeSelect.Option>{/each}
+				</NativeSelect.Root>
+			</FormField>
+			<div class="grid grid-cols-2 gap-2">
+				<FormField label={$t`x (mm)`}><Input type="number" step="0.1" bind:value={item.x} /></FormField>
+				<FormField label={$t`y (mm)`}><Input type="number" step="0.1" bind:value={item.y} /></FormField>
+				<FormField label={$t`Width (mm)`}><Input type="number" step="0.1" bind:value={item.w} /></FormField>
+				<FormField label={$t`Height (mm)`}><Input type="number" step="0.1" bind:value={item.h} /></FormField>
+			</div>
+			<Button variant="outline" size="sm" onclick={() => keepRatio(item)}>{$t`Keep the aspect ratio`}</Button>
+		{:else if item}
 			<FormField label={$t`Type`}>
 				<NativeSelect.Root class="w-full" value={item.type} onchange={(e) => setAll('type', e.currentTarget.value as LayoutElement['type'])}>
 					<NativeSelect.Option value="text">{$t`Text`}</NativeSelect.Option>

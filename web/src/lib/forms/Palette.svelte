@@ -1,10 +1,15 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
 	import Search from '@lucide/svelte/icons/search';
-	import type { LayoutElement } from '../api';
+	import type { LayoutElement, LibraryImage } from '../api';
 	import { Input } from '../components/ui/input';
 
-	let { samples, onadd }: { samples: Record<string, string>; onadd: (el: Partial<LayoutElement>) => void } = $props();
+	let {
+		samples,
+		images = [],
+		library,
+		onadd
+	}: { samples: Record<string, string>; images?: LibraryImage[]; library: string; onadd: (el: Partial<LayoutElement>) => void } = $props();
 
 	type Entry = { key: string; label: string; example: string; el: Partial<LayoutElement> };
 
@@ -73,13 +78,22 @@
 				const shots = Object.keys(samples).filter((k) => k.startsWith(`s${n}.shot`)).length;
 				return { key: `s${n}.shot#`, label: $t`Shots of series ${n}`, example: $t`${shots} boxes`, el: { type: 'text', value: `{{s${n}.shot#}}`, w: 7, size: 10, align: 'C', repeat: shots, dx: 8 } };
 			})
+		},
+		{
+			label: $t`Images`,
+			entries: images.map((i) => ({
+				key: `image-${i.id}`,
+				label: i.name,
+				example: `${i.width} × ${i.height} px`,
+				el: { type: 'image', image: i.id, w: 30, h: Math.round((300 * i.height) / i.width) / 10 }
+			}))
 		}
 	]);
 
 	const shown = $derived(
 		groups
 			.map((g) => ({ ...g, entries: g.entries.filter((e) => !q || `${e.label} ${e.key}`.toLowerCase().includes(q.trim().toLowerCase())) }))
-			.filter((g) => g.entries.length)
+			.filter((g) => g.entries.length || (g.label === $t`Images` && !q))
 	);
 
 	/** Puts the element of an entry into a drag, so the sheet can drop it where the pointer is. */
@@ -98,6 +112,9 @@
 		<details class="rounded-md border" open>
 			<summary class="cursor-pointer px-2.5 py-1.5 text-xs font-semibold text-muted-foreground uppercase">{g.label}</summary>
 			<div class="grid gap-0.5 p-1">
+				{#if g.label === $t`Images` && !g.entries.length}
+					<p class="px-2 py-1 text-xs text-muted-foreground">{$t`No images yet.`} <a class="underline" href={library}>{$t`Upload images`}</a></p>
+				{/if}
 				{#each g.entries as entry (entry.key)}
 					<button
 						type="button"

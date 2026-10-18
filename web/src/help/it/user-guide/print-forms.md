@@ -68,6 +68,22 @@ società** (vedi [Moduli della società](events.md#club-modules)).
 | Ctrl+S | salva |
 | Ctrl+rotellina | zoom |
 
+## Immagini {#images}
+
+Loghi, intestazioni e altre immagini vengono dalla biblioteca di immagini
+della società, sotto l'elenco dei **Modelli di stampa**: **Carica immagine**
+aggiunge un PNG o JPEG di al massimo 2 MB, con il nome del suo
+file. Nell'editor, il gruppo **Immagini** dei campi le elenca; un clic o un
+trascinamento ne mette una sul foglio, larga 30 mm nelle proporzioni
+dell'immagine. Le sue proprietà scelgono un'altra **Immagine**, la posizione
+e la dimensione, e **Mantieni le proporzioni** riadatta l'altezza alla
+larghezza. Un'immagine si può ripetere come ogni altro elemento.
+
+Un'immagine si può eliminare solo finché nessun modello la
+mostra. **Esporta** mette le immagini di un modello nel suo file, e
+**Importa** le aggiunge alla biblioteca riusando un'immagine con lo stesso
+nome che la società ha già.
+
 ## Calibrare la stampante {#calibrate}
 
 Le stampanti raramente stampano esattamente dove dovrebbero. Stampa un
@@ -88,4 +104,4 @@ un agente di stampa e una stampante scelta per *Modelli di stampa* in
 alimentatore manuale), altrimenti si apre il PDF (vedi
 [Stampa](printing.md)).
 
-**Esporta** scarica un modello come file e **Importa** lo rilegge, p. es. per condividere un modello con un’altra società.
+**Esporta** scarica un modello con le sue immagini come file e **Importa** lo rilegge, p. es. per condividere un modello con un’altra società.

@@ -9,8 +9,18 @@
 		names = false,
 		background,
 		zoom = 1,
-		onzoom
-	}: { editor: FormEditor; samples: Record<string, string>; names?: boolean; background?: string; zoom?: number; onzoom: (z: number) => void } = $props();
+		onzoom,
+		imageUrl
+	}: {
+		editor: FormEditor;
+		samples: Record<string, string>;
+		names?: boolean;
+		background?: string;
+		zoom?: number;
+		onzoom: (z: number) => void;
+		/** URL of an image of the club's library. */
+		imageUrl: (id: number) => string;
+	} = $props();
 
 	const scale = $derived(4 * zoom);
 	const mmPerPoint = 0.3528;
@@ -394,6 +404,7 @@
 										oncontextmenu={() => context(it)}
 									>
 										{#if it.type === 'text'}{fill(it.value, samples, c.k + 1, names)}{/if}
+										{#if it.type === 'image' && it.image}<img src={imageUrl(it.image)} alt="" draggable="false" class="pointer-events-none h-full w-full" />{/if}
 										{#if single === it && c.k === 0}
 											<span class="absolute -right-1 -bottom-1 size-2.5 cursor-nwse-resize bg-sky-600" role="presentation" onpointerdown={(e) => grab(e, it, 'size')}></span>
 										{/if}

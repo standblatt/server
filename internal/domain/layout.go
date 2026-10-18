@@ -1,5 +1,7 @@
 package domain
 
+import "slices"
+
 // Layout is a print form: values placed onto a pre-printed sheet. Sizes and positions are in millimetres;
 // the offset moves every element to make up for a printer that does not print exactly where it should.
 type Layout struct {
@@ -12,9 +14,9 @@ type Layout struct {
 
 // Element is one thing printed on a form. Value is text with placeholders like {{shooter.lastname}}; with Repeat
 // the element is printed that often, moved by DX/DY each time, and # inside a placeholder becomes the count from 1,
-// so {{s1.shot#}} with Repeat 10 prints the ten shots of series 1.
+// so {{s1.shot#}} with Repeat 10 prints the ten shots of series 1. An image shows Image of the club's library in W×H.
 type Element struct {
-	Type   string  `json:"type" enum:"text,qr,barcode,line"`
+	Type   string  `json:"type" enum:"text,qr,barcode,line,image"`
 	X      float64 `json:"x"`
 	Y      float64 `json:"y"`
 	W      float64 `json:"w" required:"false" doc:"Width; 0 lets text run to the right edge"`
@@ -26,4 +28,16 @@ type Element struct {
 	Repeat int     `json:"repeat" required:"false" minimum:"0" maximum:"100"`
 	DX     float64 `json:"dx" required:"false"`
 	DY     float64 `json:"dy" required:"false"`
+	Image  int64   `json:"image,omitempty" required:"false" doc:"The image of the club's library an image element shows"`
+}
+
+// ImageIDs returns the images the layout shows, each once.
+func (l Layout) ImageIDs() []int64 {
+	ids := []int64{}
+	for _, e := range l.Elements {
+		if e.Type == "image" && e.Image != 0 && !slices.Contains(ids, e.Image) {
+			ids = append(ids, e.Image)
+		}
+	}
+	return ids
 }

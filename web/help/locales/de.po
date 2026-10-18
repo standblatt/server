@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 09:39+0000\n"
+"POT-Creation-Date: 2026-10-18 09:58+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -2829,7 +2829,10 @@ msgstr "Vereinsbausteine {#club-modules}"
 msgid ""
 "Some modules belong to the club rather than to an event. **Club modules** in "
 "the club part of the sidebar (admins) switches them on and off:"
-msgstr "Manche Bausteine gehören zum Verein statt zu einem Anlass. **Vereinsbausteine** im Vereinsteil der Seitenleiste (Admins) schaltet sie ein und aus:"
+msgstr ""
+"Manche Bausteine gehören zum Verein statt zu einem Anlass. "
+"**Vereinsbausteine** im Vereinsteil der Seitenleiste (Admins) schaltet sie "
+"ein und aus:"
 
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:72
@@ -3282,7 +3285,13 @@ msgid ""
 "Filling in sheets by hand stays possible; print forms are optional and can "
 "be switched off under **Club modules** (see [Club modules](events.md#club-"
 "modules))."
-msgstr "Eine Druckvorlage bringt Resultate auf ein vorgedrucktes Blatt, z. B. die Standblätter, die die Armee für das Obligatorische Programm liefert: Die Schüsse werden an der Scheibe oder nachträglich erfasst, und das Blatt wird gedruckt statt von Hand ausgefüllt. Von Hand ausfüllen bleibt möglich; Druckvorlagen sind freiwillig und lassen sich unter **Vereinsbausteine** ausschalten (siehe [Vereinsbausteine](events.md#club-modules))."
+msgstr ""
+"Eine Druckvorlage bringt Resultate auf ein vorgedrucktes Blatt, z. B. die "
+"Standblätter, die die Armee für das Obligatorische Programm liefert: Die "
+"Schüsse werden an der Scheibe oder nachträglich erfasst, und das Blatt wird "
+"gedruckt statt von Hand ausgefüllt. Von Hand ausfüllen bleibt möglich; "
+"Druckvorlagen sind freiwillig und lassen sich unter **Vereinsbausteine** "
+"ausschalten (siehe [Vereinsbausteine](events.md#club-modules))."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/print-forms.md:5
@@ -3458,11 +3467,37 @@ msgstr ""
 #. type: Title ##
 #: ../src/help/en/user-guide/print-forms.md:36
 #, no-wrap
+msgid "Images {#images}"
+msgstr "Bilder {#images}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:39
+msgid ""
+"Logos, letterheads and other pictures come from the club's image library "
+"below the list of **Print forms**: **Upload image** adds a PNG or JPEG of at "
+"most 2 MB, named after its file. In the editor, the group **Images** of the "
+"fields lists them; a click or a drag puts one onto the sheet, 30 mm wide "
+"with the image's own proportions. Its properties choose another **Image**, "
+"its position and size, and **Keep the aspect ratio** sets the height to "
+"match the width again. An image can be repeated like any other element."
+msgstr "Logos, Briefköpfe und andere Bilder kommen aus der Bildbibliothek des Vereins unter der Liste der **Druckvorlagen**: **Bild hochladen** fügt ein PNG oder JPEG von höchstens 2 MB hinzu, benannt nach seiner Datei. Im Editor listet die Gruppe **Bilder** der Felder sie auf; ein Klick oder Ziehen legt eines aufs Blatt, 30 mm breit in den Proportionen des Bildes. Seine Eigenschaften wählen ein anderes **Bild**, seine Position und Grösse, und **Seitenverhältnis beibehalten** passt die Höhe wieder an die Breite an. Ein Bild lässt sich wie jedes andere Element wiederholen."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/print-forms.md:41
+msgid ""
+"An image can be deleted only while no form shows it. **Export** puts the "
+"images of a form into its file, and **Import** adds them to the library, "
+"reusing an image of the same name the club already has."
+msgstr "Ein Bild lässt sich erst löschen, wenn keine Vorlage es mehr zeigt. **Exportieren** nimmt die Bilder einer Vorlage in ihre Datei mit, und **Importieren** fügt sie der Bibliothek hinzu; ein Bild gleichen Namens, das der Verein schon hat, wird wiederverwendet."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/print-forms.md:42
+#, no-wrap
 msgid "Calibrate the printer {#calibrate}"
 msgstr "Den Drucker kalibrieren {#calibrate}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:39
+#: ../src/help/en/user-guide/print-forms.md:45
 msgid ""
 "Printers rarely print exactly where they should. Print a sheet with **Test "
 "print**, measure how far the values are off and enter it as **Printer offset "
@@ -3476,13 +3511,13 @@ msgstr ""
 "Vorschau ignoriert ihn."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/print-forms.md:40
+#: ../src/help/en/user-guide/print-forms.md:46
 #, no-wrap
 msgid "Use a form {#use}"
 msgstr "Eine Vorlage verwenden {#use}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:43
+#: ../src/help/en/user-guide/print-forms.md:49
 msgid ""
 "Under **Configuration** → **Programmes** of the event, open a programme and "
 "choose its **Print form** in the section of the same name; this works while "
@@ -3492,13 +3527,23 @@ msgid ""
 "a printer chosen for *Print forms* under **Ranges → Printing**, the sheet "
 "goes to that printer (e.g. its manual feed), otherwise the PDF opens (see "
 "[Printing](printing.md))."
-msgstr "Öffne unter **Konfiguration** → **Programme** des Anlasses ein Programm und wähle im gleichnamigen Abschnitt seine **Druckvorlage**; das geht auch, wenn schon Schützen angemeldet sind. Jedes abgeschlossene Programm bietet dann in den Resultaten **Auf Vorlage drucken** an: am Desk, auf der Seite **Resultate erfassen** und über Warner-Links an der Scheibe (siehe [Helfer](helpers.md)). Mit einem Druck-Agenten und einem Drucker für *Druckvorlagen* unter **Schiessstände → Drucken** geht das Blatt an diesen Drucker (z. B. an seinen manuellen Einzug), sonst öffnet sich das PDF (siehe [Drucken](printing.md))."
+msgstr ""
+"Öffne unter **Konfiguration** → **Programme** des Anlasses ein Programm und "
+"wähle im gleichnamigen Abschnitt seine **Druckvorlage**; das geht auch, wenn "
+"schon Schützen angemeldet sind. Jedes abgeschlossene Programm bietet dann in "
+"den Resultaten **Auf Vorlage drucken** an: am Desk, auf der Seite "
+"**Resultate erfassen** und über Warner-Links an der Scheibe (siehe [Helfer]"
+"(helpers.md)). Mit einem Druck-Agenten und einem Drucker für *Druckvorlagen* "
+"unter **Schiessstände → Drucken** geht das Blatt an diesen Drucker (z. B. an "
+"seinen manuellen Einzug), sonst öffnet sich das PDF (siehe [Drucken]"
+"(printing.md))."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/print-forms.md:44
+#: ../src/help/en/user-guide/print-forms.md:50
 #, no-wrap
-msgid "**Export** downloads a form as a file and **Import** reads it again, e.g. to share a form with another club.\n"
-msgstr "**Exportieren** lädt eine Vorlage als Datei herunter und **Importieren** liest sie wieder ein, z. B. um eine Vorlage mit einem anderen Verein zu teilen.\n"
+msgid "**Export** downloads a form as a file, with its images, and **Import** reads it again, e.g. to share a form with another club.\n"
+msgstr ""
+"**Exportieren** lädt eine Vorlage mit ihren Bildern als Datei herunter und **Importieren** liest sie wieder ein, z. B. um eine Vorlage mit einem anderen Verein zu teilen.\n"
 
 #. type: Title ##
 #: ../src/help/en/user-guide/programmes.md:1

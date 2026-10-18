@@ -1574,6 +1574,7 @@ msgstr "rifiutata"
 msgid "default ({0})"
 msgstr "predefinito ({0})"
 
+#: src/lib/forms/ImageLibrary.svelte
 #: src/lib/forms/Properties.svelte
 #: src/lib/forms/Stage.svelte
 #: src/lib/modules/classifications/Classifications.svelte
@@ -1592,7 +1593,9 @@ msgid "Delete"
 msgstr "Elimina"
 
 #. placeholder {0}: c.name
+#. placeholder {0}: img.name
 #. placeholder {0}: l.name
+#: src/lib/forms/ImageLibrary.svelte
 #: src/lib/modules/classifications/Classifications.svelte
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Delete {0}"
@@ -1619,6 +1622,11 @@ msgstr "Eliminare la disciplina «{0}»?"
 #: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Delete event?"
 msgstr "Eliminare la manifestazione?"
+
+#. placeholder {0}: img.name
+#: src/lib/forms/ImageLibrary.svelte
+msgid "Delete image \"{0}\"?"
+msgstr "Eliminare l'immagine «{0}»?"
 
 #. placeholder {0}: l.name
 #: src/routes/t/[tenantId]/forms/+page.svelte
@@ -2270,6 +2278,24 @@ msgstr "Quante volte un tiratore può tirare il programma in questa manifestazio
 msgid "If an account uses {email}, we sent a link to choose a new password. Check your inbox."
 msgstr "Se un account usa {email}, abbiamo inviato un link per scegliere una nuova password. Controlla la posta in arrivo."
 
+#: src/lib/forms/Properties.svelte
+msgid "Image"
+msgstr "Immagine"
+
+#. placeholder {0}: img.name
+#: src/lib/forms/ImageLibrary.svelte
+msgid "Image \"{0}\" added"
+msgstr "Immagine «{0}» aggiunta"
+
+#: src/lib/forms/ImageLibrary.svelte
+msgid "Image deleted"
+msgstr "Immagine eliminata"
+
+#: src/lib/forms/ImageLibrary.svelte
+#: src/lib/forms/Palette.svelte
+msgid "Images"
+msgstr "Immagini"
+
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 #: src/routes/t/[tenantId]/forms/+page.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
@@ -2382,6 +2408,10 @@ msgstr "Le sue sessioni restano nel tuo diario, senza arma."
 #: src/routes/t/[tenantId]/clubs/+page.svelte
 msgid "Its shooters and registrations, including those of closed events, then belong to \"{0}\". \"{1}\" is deleted."
 msgstr "I suoi tiratori e le sue iscrizioni, anche quelli delle manifestazioni chiuse, appartengono poi a «{0}». «{1}» viene eliminata."
+
+#: src/lib/forms/Properties.svelte
+msgid "Keep the aspect ratio"
+msgstr "Mantieni le proporzioni"
 
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Key figures"
@@ -2733,6 +2763,10 @@ msgstr "All’accesso viene richiesto un codice dalla tua app di autenticazione.
 #: src/lib/AccountSettings.svelte
 msgid "Login"
 msgstr "Accesso"
+
+#: src/lib/forms/ImageLibrary.svelte
+msgid "Logos and other images for print forms (PNG or JPEG, at most 2 MB)."
+msgstr "Loghi e altre immagini per i modelli di stampa (PNG o JPEG, al massimo 2 MB)."
 
 #. Column header: mouches
 #. Column header: mouches
@@ -3087,6 +3121,11 @@ msgstr "Nessun campo corrisponde."
 msgid "No helper links."
 msgstr "Nessun link aiutante."
 
+#: src/lib/forms/ImageLibrary.svelte
+#: src/lib/forms/Palette.svelte
+msgid "No images yet."
+msgstr "Ancora nessuna immagine."
+
 #: src/lib/modules/kiosk/KioskTokens.svelte
 msgid "No kiosk displays."
 msgstr "Nessun display chiosco."
@@ -3279,6 +3318,10 @@ msgstr "Prenotazione online attivata"
 #: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Only possible as long as nobody is registered."
 msgstr "Possibile solo finché nessuno è iscritto."
+
+#: src/lib/forms/ImageLibrary.svelte
+msgid "Only possible while no print form shows it."
+msgstr "Possibile solo finché nessun modello di stampa la mostra."
 
 #: src/routes/t/[tenantId]/+page.svelte
 msgid "Only sets the modules; they can be changed any time under Configuration → Modules."
@@ -5098,6 +5141,14 @@ msgstr "Prossime"
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Upload a scan"
 msgstr "Carica una scansione"
+
+#: src/lib/forms/ImageLibrary.svelte
+msgid "Upload image"
+msgstr "Carica immagine"
+
+#: src/lib/forms/Palette.svelte
+msgid "Upload images"
+msgstr "Carica immagini"
 
 #: src/lib/ProgrammeEditor.svelte
 msgid "Use"

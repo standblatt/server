@@ -70,6 +70,25 @@ func TestTenantIsolation(t *testing.T) {
 	if err := st.DeleteClassification(ctx, b, evA, clA); !errors.Is(err, store.ErrNotFound) {
 		t.Fatalf("DeleteClassification across tenants: %v", err)
 	}
+	imgA, err := st.CreateImage(ctx, a, "Logo", []byte("png"), 10, 5)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if list, err := st.ListImages(ctx, b); err != nil || len(list) != 0 {
+		t.Fatalf("tenant B sees images of A: %v %v", list, err)
+	}
+	if _, err := st.GetImage(ctx, b, imgA.ID); !errors.Is(err, store.ErrNotFound) {
+		t.Fatalf("GetImage across tenants: %v", err)
+	}
+	if got, _ := st.ImagesByID(ctx, b, []int64{imgA.ID}); len(got) != 0 {
+		t.Fatalf("ImagesByID across tenants: %v", got)
+	}
+	if missing, _ := st.MissingImages(ctx, b, []int64{imgA.ID}); len(missing) != 1 {
+		t.Fatalf("MissingImages across tenants: %v", missing)
+	}
+	if err := st.DeleteImage(ctx, b, imgA.ID); !errors.Is(err, store.ErrNotFound) {
+		t.Fatalf("DeleteImage across tenants: %v", err)
+	}
 	codeA, err := st.CreateHelperCode(ctx, a, evA, store.HelperCode{Name: "Office", Role: store.HelperResults}, "hash-a")
 	if err != nil {
 		t.Fatal(err)

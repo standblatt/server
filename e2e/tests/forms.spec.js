@@ -160,4 +160,40 @@ test.describe("print forms", () => {
     await page.waitForURL(/\/forms\/\d+$/);
     await expect(page.getByRole("application", { name: "Sheet" }).locator("[data-copy]")).toHaveCount(12);
   });
+
+  test("places an image of the library and carries it in exports", async ({ page }) => {
+    const logo = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAAAAABawyK/AAAADklEQVR4nGNoAAIGEAEAFAoEAeiOg+cAAAAASUVORK5CYII=", "base64");
+    await login(page, admin);
+    await page.goto(`/t/${ids.tenant}/forms`);
+    await page.getByLabel("Upload image").setInputFiles({ name: "logo.png", mimeType: "image/png", buffer: logo });
+    await expect(c(page, "[data-sonner-toast]", 'Image "logo" added')).toBeVisible();
+    await expect(c(page.locator("section[aria-label=Images]"), "li", "logo")).toContainText("4 × 2 px");
+
+    const card = await api(page, "POST", `/api/tenants/${ids.tenant}/layouts`, { name: "Logo card", width: 105, height: 74, elements: [] });
+    await page.goto(`/t/${ids.tenant}/forms/${card.id}`);
+    await c(page.getByRole("complementary", { name: "Fields" }), "button", "logo").click();
+    await expect(page.getByRole("application", { name: "Sheet" }).locator("img")).toHaveCount(1);
+    await page.getByRole("button", { name: /^Save/ }).click();
+    await expect(c(page, "[data-sonner-toast]", "Print form saved")).toBeVisible();
+    const saved = await api(page, "GET", `/api/tenants/${ids.tenant}/layouts/${card.id}`);
+    expect(saved.elements).toMatchObject([{ type: "image", w: 30, h: 15 }]);
+    const preview = await page.request.get(`/api/tenants/${ids.tenant}/layouts/${card.id}/preview`);
+    expect(preview.headers()["content-type"]).toBe("application/pdf");
+
+    await page.goto(`/t/${ids.tenant}/forms`);
+    await page.getByLabel("Delete logo", { exact: true }).click();
+    await c(page.locator("[role=alertdialog]"), "button", "Delete").click();
+    await expect(c(page, "[data-sonner-toast]", "Print forms use this image")).toBeVisible();
+
+    const download = page.waitForEvent("download");
+    await page.getByLabel("Export Logo card").click();
+    const file = JSON.parse(await readFile(await (await download).path(), "utf8"));
+    expect(file.images).toMatchObject([{ name: "logo" }]);
+    file.name = "Logo card copy";
+    await page.getByLabel("Import a print form").setInputFiles({ name: "card.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(file)) });
+    await page.waitForURL(/\/forms\/\d+$/);
+    const copy = await api(page, "GET", `/api/tenants/${ids.tenant}/layouts/${page.url().split("/").pop()}`);
+    expect(copy.elements[0].image).toBe(saved.elements[0].image);
+    expect(await api(page, "GET", `/api/tenants/${ids.tenant}/images`)).toHaveLength(1);
+  });
 });

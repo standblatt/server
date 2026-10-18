@@ -26,7 +26,7 @@ func TestRenderLayout(t *testing.T) {
 		{Type: "barcode", X: 20, Y: 180, W: 60, H: 10, Value: "{{shooter.license}}"},
 		{Type: "line", X: 20, Y: 60, W: 100},
 	}}
-	pdf, err := RenderLayout(l, SampleValues(), nil, false)
+	pdf, err := RenderLayout(l, SampleValues(), nil, nil, false)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -37,11 +37,23 @@ func TestRenderLayout(t *testing.T) {
 
 	var bg bytes.Buffer
 	png.Encode(&bg, image.NewGray(image.Rect(0, 0, 10, 14)))
-	preview, err := RenderLayout(l, SampleValues(), bg.Bytes(), true)
+	preview, err := RenderLayout(l, SampleValues(), bg.Bytes(), nil, true)
 	if err != nil {
 		t.Fatal(err)
 	}
 	if len(preview) <= len(pdf) {
 		t.Errorf("the preview should carry the background image")
+	}
+
+	var logo bytes.Buffer
+	png.Encode(&logo, image.NewGray(image.Rect(0, 0, 40, 20)))
+	l.Elements = append(l.Elements, domain.Element{Type: "image", Image: 7, X: 10, Y: 10, W: 30, H: 15, Repeat: 2, DX: 40}, domain.Element{Type: "image", Image: 8, X: 10, Y: 30, W: 30})
+	withLogo, err := RenderLayout(l, SampleValues(), nil, map[int64][]byte{7: logo.Bytes()}, false)
+	if err != nil {
+		t.Fatal(err)
+	}
+	before, after := bytes.Count(pdf, []byte("/Subtype /Image")), bytes.Count(withLogo, []byte("/Subtype /Image"))
+	if after != before+1 {
+		t.Errorf("the logo should be embedded once although it is drawn twice: %d images before, %d after", before, after)
 	}
 }

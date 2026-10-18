@@ -1574,6 +1574,7 @@ msgstr "refusée"
 msgid "default ({0})"
 msgstr "par défaut ({0})"
 
+#: src/lib/forms/ImageLibrary.svelte
 #: src/lib/forms/Properties.svelte
 #: src/lib/forms/Stage.svelte
 #: src/lib/modules/classifications/Classifications.svelte
@@ -1592,7 +1593,9 @@ msgid "Delete"
 msgstr "Supprimer"
 
 #. placeholder {0}: c.name
+#. placeholder {0}: img.name
 #. placeholder {0}: l.name
+#: src/lib/forms/ImageLibrary.svelte
 #: src/lib/modules/classifications/Classifications.svelte
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Delete {0}"
@@ -1619,6 +1622,11 @@ msgstr "Supprimer la discipline « {0} » ?"
 #: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Delete event?"
 msgstr "Supprimer la manifestation ?"
+
+#. placeholder {0}: img.name
+#: src/lib/forms/ImageLibrary.svelte
+msgid "Delete image \"{0}\"?"
+msgstr "Supprimer l'image « {0} » ?"
 
 #. placeholder {0}: l.name
 #: src/routes/t/[tenantId]/forms/+page.svelte
@@ -2270,6 +2278,24 @@ msgstr "Combien de fois un tireur peut tirer le programme lors de cette manifest
 msgid "If an account uses {email}, we sent a link to choose a new password. Check your inbox."
 msgstr "Si un compte utilise {email}, nous avons envoyé un lien pour choisir un nouveau mot de passe. Vérifie ta boîte de réception."
 
+#: src/lib/forms/Properties.svelte
+msgid "Image"
+msgstr "Image"
+
+#. placeholder {0}: img.name
+#: src/lib/forms/ImageLibrary.svelte
+msgid "Image \"{0}\" added"
+msgstr "Image « {0} » ajoutée"
+
+#: src/lib/forms/ImageLibrary.svelte
+msgid "Image deleted"
+msgstr "Image supprimée"
+
+#: src/lib/forms/ImageLibrary.svelte
+#: src/lib/forms/Palette.svelte
+msgid "Images"
+msgstr "Images"
+
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 #: src/routes/t/[tenantId]/forms/+page.svelte
 #: src/routes/t/[tenantId]/shooters/+page.svelte
@@ -2382,6 +2408,10 @@ msgstr "Ses séances restent dans ton journal, sans arme."
 #: src/routes/t/[tenantId]/clubs/+page.svelte
 msgid "Its shooters and registrations, including those of closed events, then belong to \"{0}\". \"{1}\" is deleted."
 msgstr "Ses tireurs et inscriptions, y compris ceux des manifestations clôturées, appartiennent ensuite à « {0} ». « {1} » est supprimée."
+
+#: src/lib/forms/Properties.svelte
+msgid "Keep the aspect ratio"
+msgstr "Garder les proportions"
 
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Key figures"
@@ -2733,6 +2763,10 @@ msgstr "La connexion demande un code de ton app d’authentification."
 #: src/lib/AccountSettings.svelte
 msgid "Login"
 msgstr "Connexion"
+
+#: src/lib/forms/ImageLibrary.svelte
+msgid "Logos and other images for print forms (PNG or JPEG, at most 2 MB)."
+msgstr "Logos et autres images pour les modèles d'impression (PNG ou JPEG, 2 Mo au plus)."
 
 #. Column header: mouches
 #. Column header: mouches
@@ -3087,6 +3121,11 @@ msgstr "Aucun champ ne correspond."
 msgid "No helper links."
 msgstr "Aucun lien d'aide."
 
+#: src/lib/forms/ImageLibrary.svelte
+#: src/lib/forms/Palette.svelte
+msgid "No images yet."
+msgstr "Pas encore d'images."
+
 #: src/lib/modules/kiosk/KioskTokens.svelte
 msgid "No kiosk displays."
 msgstr "Aucun affichage kiosque."
@@ -3279,6 +3318,10 @@ msgstr "Réservation en ligne activée"
 #: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
 msgid "Only possible as long as nobody is registered."
 msgstr "Possible seulement tant que personne n’est inscrit."
+
+#: src/lib/forms/ImageLibrary.svelte
+msgid "Only possible while no print form shows it."
+msgstr "Possible seulement tant qu'aucun modèle d'impression ne l'affiche."
 
 #: src/routes/t/[tenantId]/+page.svelte
 msgid "Only sets the modules; they can be changed any time under Configuration → Modules."
@@ -5098,6 +5141,14 @@ msgstr "À venir"
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Upload a scan"
 msgstr "Téléverser un scan"
+
+#: src/lib/forms/ImageLibrary.svelte
+msgid "Upload image"
+msgstr "Téléverser une image"
+
+#: src/lib/forms/Palette.svelte
+msgid "Upload images"
+msgstr "Téléverser des images"
 
 #: src/lib/ProgrammeEditor.svelte
 msgid "Use"
