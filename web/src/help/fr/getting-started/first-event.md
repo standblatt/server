@@ -36,7 +36,9 @@ active les [modules](../user-guide/events.md#modules) correspondants), puis
 nom, date, stand, organisateur et langue des documents et des écrans
 kiosque. Si tu as déjà organisé la manifestation l’an dernier, ouvre celle
 de l’an dernier et utilise plutôt **Copier pour l’année prochaine** : les
-réglages et tous les programmes sont repris.
+réglages et tous les programmes sont repris. Un [modèle de la
+société](../user-guide/events.md#templates) fait de même pour les
+manifestations qui reviennent sous différentes formes.
 
 ![Les manifestations d’une société](../images/screenshots/events.png){
 .screenshot }

@@ -37,7 +37,9 @@ schaltet die passenden [Module](../user-guide/events.md#modules) ein), dann
 Name, Datum, Schiessstand, Veranstalter und die Sprache von Dokumenten und
 Kiosk-Bildschirmen. Hast du den Anlass letztes Jahr schon durchgeführt,
 öffne den Anlass vom letzten Jahr und nutze stattdessen **Für nächstes Jahr
-kopieren**: Das übernimmt die Einstellungen und alle Programme.
+kopieren**: Das übernimmt die Einstellungen und alle Programme. Eine
+[Vorlage des Vereins](../user-guide/events.md#templates) tut dasselbe für
+Anlässe, die in verschiedener Form wiederkehren.
 
 ![Die Anlässe eines Vereins](../images/screenshots/events.png){ .screenshot
 }

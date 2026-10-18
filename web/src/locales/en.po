@@ -501,6 +501,10 @@ msgstr "A rank"
 msgid "A registration"
 msgstr "A registration"
 
+#: src/routes/t/[tenantId]/events/[eventId]/+layout.svelte
+msgid "A template of the club: new events start from it under Events → New event. It takes no registrations."
+msgstr "A template of the club: new events start from it under Events → New event. It takes no registrations."
+
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "A4 portrait (210 × 297 mm)"
 msgstr "A4 portrait (210 × 297 mm)"
@@ -3061,6 +3065,10 @@ msgstr "New club “{name}”"
 msgid "New event"
 msgstr "New event"
 
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
+msgid "New events of the club can start from it, with its modules, settings, ranges, programmes and classifications."
+msgstr "New events of the club can start from it, with its modules, settings, ranges, programmes and classifications."
+
 #: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "New link"
 msgstr "New link"
@@ -4355,6 +4363,10 @@ msgstr "S{0}"
 msgid "Save"
 msgstr "Save"
 
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
+msgid "Save as template"
+msgstr "Save as template"
+
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Save automatically"
 msgstr "Save automatically"
@@ -4378,6 +4390,10 @@ msgstr "Save session"
 #: src/lib/modules/special_prizes/ProgrammeSection.svelte
 msgid "Save special prizes"
 msgstr "Save special prizes"
+
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
+msgid "Save template"
+msgstr "Save template"
 
 #: src/lib/ProgrammeEditor.svelte
 msgid "Saved at once, also while shooters are registered."
@@ -4918,6 +4934,19 @@ msgstr "Target"
 #: src/routes/my/settings/+page.svelte
 msgid "Target face for tapping hits"
 msgstr "Target face for tapping hits"
+
+#. placeholder {0}: ev.name
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
+msgid "Template \"{0}\" saved"
+msgstr "Template \"{0}\" saved"
+
+#: src/routes/t/[tenantId]/+page.svelte
+msgid "Template of the club: modules, settings, ranges, programmes and classifications"
+msgstr "Template of the club: modules, settings, ranges, programmes and classifications"
+
+#: src/routes/t/[tenantId]/+page.svelte
+msgid "Templates"
+msgstr "Templates"
 
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Templates that print results onto pre-printed sheets, e.g. the army's lane sheets."

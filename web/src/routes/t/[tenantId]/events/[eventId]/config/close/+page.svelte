@@ -7,6 +7,7 @@
 	import Archive from '@lucide/svelte/icons/archive';
 	import ArchiveRestore from '@lucide/svelte/icons/archive-restore';
 	import CopyPlus from '@lucide/svelte/icons/copy-plus';
+	import LayoutTemplate from '@lucide/svelte/icons/layout-template';
 	import Trash from '@lucide/svelte/icons/trash-2';
 	import { toast } from 'svelte-sonner';
 	import { api, call } from '$lib/api';
@@ -44,7 +45,7 @@
 		toast.success(archived ? $t`Event closed` : $t`Event reopened`);
 	}
 
-	let copy = $state<{ name: string; startsOn: string } | null>(null);
+	let copy = $state<{ name: string; startsOn: string; template?: boolean } | null>(null);
 	let copyError = $state('');
 
 	/** Event name for next year: years and a leading edition number count up. */
@@ -52,6 +53,13 @@
 		name.replace(/\b(19|20)\d{2}\b/g, (y) => String(Number(y) + 1)).replace(/^(\d+)\./, (_, n) => `${Number(n) + 1}.`);
 	/** Same date one year later (YYYY-MM-DD). */
 	const nextYear = (date: string) => `${Number(date.slice(0, 4)) + 1}${date.slice(4)}`;
+
+	/** Opens the dialog that saves the event as a template of the club, named without its year. */
+	function openTemplate() {
+		copyError = '';
+		const name = (event.data?.name ?? '').replace(/\s*\b(19|20)\d{2}\b/g, '').trim();
+		copy = { name: name || (event.data?.name ?? ''), startsOn: event.data?.startsOn ?? '', template: true };
+	}
 
 	/** Opens the copy dialog with next year's name and date. */
 	function openCopy() {
@@ -66,7 +74,7 @@
 		try {
 			const ev = await call(api.POST('/api/tenants/{tenantId}/events/{eventId}/copy', { params: { path: { tenantId, eventId } }, body: copy }));
 			await queryClient.invalidateQueries({ queryKey: keys.events(tenantId) });
-			toast.success($t`Event "${ev.name}" created`);
+			toast.success(ev.template ? $t`Template "${ev.name}" saved` : $t`Event "${ev.name}" created`);
 			copy = null;
 			await goto(`/t/${tenantId}/events/${ev.id}/config`);
 		} catch (err) {
@@ -99,12 +107,16 @@
 
 {#snippet unarchive()}<Button variant="outline" onclick={() => setArchived(false)}><ArchiveRestore />{$t`Reopen`}</Button>{/snippet}
 {#snippet archiveButton()}<Button variant="outline" onclick={() => setArchived(true)}><Archive />{$t`Close event`}</Button>{/snippet}
+{#snippet templateButton()}<Button variant="outline" onclick={openTemplate}><LayoutTemplate />{$t`Save as template`}</Button>{/snippet}
 {#snippet copyButton()}<Button variant="outline" onclick={openCopy}><CopyPlus />{$t`Copy`}</Button>{/snippet}
 {#snippet deleteButton()}<Button variant="destructive" onclick={remove}><Trash />{$t`Delete`}</Button>{/snippet}
 
 {#if event.data}
 	<div class="max-w-3xl space-y-4">
-		{@render card($t`Copy for next year`, $t`A new event with the same settings, modules and programmes, without registrations.`, copyButton)}
+		{#if !event.data.template}
+			{@render card($t`Copy for next year`, $t`A new event with the same settings, modules and programmes, without registrations.`, copyButton)}
+			{@render card($t`Save as template`, $t`New events of the club can start from it, with its modules, settings, ranges, programmes and classifications.`, templateButton)}
+		{/if}
 		{#if event.data.archivedAt}
 			{@render card($t`Reopen this event`, $t`Registrations, results and settings can be changed again.`, unarchive)}
 		{:else}
@@ -118,14 +130,14 @@
 	<Dialog.Content class="sm:max-w-md">
 		{#if copy}
 			<Dialog.Header>
-				<Dialog.Title>{$t`Copy event`}</Dialog.Title>
+				<Dialog.Title>{copy.template ? $t`Save as template` : $t`Copy event`}</Dialog.Title>
 				<Dialog.Description>{$t`Range, organizer, language, settings, modules, all programmes with prices, awards, combinations and special prizes, and the classifications are copied. Registrations, results and kiosk links are not.`}</Dialog.Description>
 			</Dialog.Header>
 			<form class="grid gap-4" onsubmit={copyEvent}>
 				<FormField label={$t`Name`}><Input name="name" bind:value={copy.name} required maxlength={200} /></FormField>
-				<FormField label={$t`Date`}><Input name="startsOn" type="date" bind:value={copy.startsOn} required /></FormField>
+				{#if !copy.template}<FormField label={$t`Date`}><Input name="startsOn" type="date" bind:value={copy.startsOn} required /></FormField>{/if}
 				<FormError message={copyError} />
-				<Dialog.Footer><Button type="submit"><CopyPlus />{$t`Create copy`}</Button></Dialog.Footer>
+				<Dialog.Footer><Button type="submit"><CopyPlus />{copy.template ? $t`Save template` : $t`Create copy`}</Button></Dialog.Footer>
 			</form>
 		{/if}
 	</Dialog.Content>

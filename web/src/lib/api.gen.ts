@@ -2544,6 +2544,8 @@ export interface components {
             name: string;
             /** Format: date */
             startsOn: string;
+            /** @description Save the copy as a template of the club */
+            template?: boolean;
         };
         CopyInBody: {
             /** Format: int64 */
@@ -2821,6 +2823,8 @@ export interface components {
              * @description The main day: decides the age categories and sorts the events
              */
             startsOn: string;
+            /** @description A template of the club: no registrations, new events are copied from it */
+            template: boolean;
             timezone: string;
         };
         EventInput: {

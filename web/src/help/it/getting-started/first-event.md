@@ -37,7 +37,9 @@ In **Manifestazioni** crea la manifestazione: scegli di che tipo è (attiva i
 stand, organizzatore e lingua dei documenti e degli schermi chiosco. Se hai
 già organizzato la manifestazione l’anno scorso, apri quella dell’anno
 scorso e usa invece **Copia per l’anno prossimo**: riprende le impostazioni
-e tutti i programmi.
+e tutti i programmi. Un [modello della
+società](../user-guide/events.md#templates) fa lo stesso per le
+manifestazioni che ritornano in forme diverse.
 
 ![Le manifestazioni di una società](../images/screenshots/events.png){
 .screenshot }

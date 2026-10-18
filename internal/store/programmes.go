@@ -377,8 +377,9 @@ func (s *Store) CopyProgrammes(ctx context.Context, tenantID, fromEventID, toEve
 
 // CopyEvent creates a new event of the tenant with the ranges, schedule (dates shifted with the main day), organizer, timezone,
 // language, settings, chosen modules, booking hours (other days shifted, no deadline, booking off), all programmes and the
-// data of the module copiers of another event, but no registrations; the source may be archived.
-func (s *Store) CopyEvent(ctx context.Context, tenantID, fromEventID int64, name, startsOn string) (int64, error) {
+// data of the module copiers of another event, but no registrations; the source may be archived. With template the
+// copy is a template of the club, otherwise an ordinary event (also when the source is a template).
+func (s *Store) CopyEvent(ctx context.Context, tenantID, fromEventID int64, name, startsOn string, template bool) (int64, error) {
 	var id int64
 	err := pgx.BeginFunc(ctx, s.pool, func(tx pgx.Tx) error {
 		var sched domain.Schedule
@@ -388,12 +389,13 @@ func (s *Store) CopyEvent(ctx context.Context, tenantID, fromEventID int64, name
 			return err
 		}
 		sched = domain.NormalizeSchedule(sched.Shift(shift), startsOn)
-		if err := tx.QueryRow(ctx, `INSERT INTO events (tenant_id, name, starts_on, days, schedule, organizer, timezone, locale, settings, modules, booking)
-			SELECT tenant_id, $3, $4, $5::date[], $6, organizer, timezone, locale, settings, modules || `+eventUsed+`,
+		if err := tx.QueryRow(ctx, `INSERT INTO events (tenant_id, name, starts_on, days, schedule, organizer, timezone, locale, settings, modules, template, booking)
+			SELECT tenant_id, $3, $4, $5::date[], $6, organizer, timezone, locale, settings, modules || `+eventUsed+`, $7,
 				booking - 'deadline' - 'days' || coalesce((SELECT jsonb_build_object('days', jsonb_object_agg((k::date + ($4::date - starts_on))::text, v))
-					FROM jsonb_each(booking->'days') AS x(k, v)), '{}')
+					FROM jsonb_each(CASE WHEN jsonb_typeof(booking->'days') = 'object' THEN booking->'days' ELSE '{}' END) AS x(k, v)
+					HAVING count(*) > 0), '{}')
 			FROM events e WHERE tenant_id = $1 AND id = $2
-			RETURNING id`, tenantID, fromEventID, name, startsOn, sched.Dates(), sched).Scan(&id); err != nil {
+			RETURNING id`, tenantID, fromEventID, name, startsOn, sched.Dates(), sched, template).Scan(&id); err != nil {
 			return err
 		}
 		if _, err := tx.Exec(ctx, `INSERT INTO event_ranges (tenant_id, event_id, range_id, position)

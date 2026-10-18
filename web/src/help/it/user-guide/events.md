@@ -117,6 +117,18 @@ incrementato e la data un anno dopo; adatta entrambi se necessario.
 ![Copiare una manifestazione](../images/screenshots/copy-event.png){
 .screenshot }
 
+## Modelli {#templates}
+
+Una manifestazione ben configurata può diventare un **modello** della
+società: **Salva come modello** in **Copia e chiudi** ne crea una copia con
+i suoi moduli, impostazioni, stand, programmi e classifiche generali, con il
+nome della manifestazione senza l’anno. I modelli sono elencati sotto
+*Modelli* sotto le manifestazioni; un modello si apre nella sua
+configurazione e si modifica come una manifestazione, ma non accetta
+iscrizioni. **Nuova manifestazione** propone i modelli della società sotto i
+tipi integrati: scegline uno, poi dai alla nuova manifestazione il suo nome
+e la sua data. **Elimina** in **Copia e chiudi** del modello lo rimuove.
+
 ## Chiudere {#close}
 
 Quando la manifestazione è finita e le classifiche sono controllate,

@@ -42,6 +42,7 @@ type Event struct {
 	Settings   EventSettings   `json:"settings"`
 	ArchivedAt *time.Time      `json:"archivedAt,omitempty" doc:"Set when the event is archived: everything stays readable, nothing can be changed"`
 	Modules    []string        `json:"modules" enum:"lanes,reservations,lane_sheet,control_strip,ammo,attempts,awards,special_prizes,club_competition,classifications,kiosk,helpers" doc:"The modules that are on: the chosen ones, the ones with data and what they require"`
+	Template   bool            `json:"template" doc:"A template of the club: no registrations, new events are copied from it"`
 	InUse      []string        `json:"modulesInUse" enum:"lanes,reservations,lane_sheet,control_strip,ammo,attempts,awards,special_prizes,club_competition,classifications,kiosk,helpers" doc:"The modules with data; they cannot be switched off"`
 }
 
@@ -62,7 +63,7 @@ type EventInput struct {
 var eventCols = `e.id,
 	coalesce((SELECT json_agg(json_build_object('id', rg.id, 'name', rg.name, 'laneCount', rg.lane_count, 'disabledLanes', rg.disabled_lanes) ORDER BY er.position)
 		FROM event_ranges er JOIN ranges rg ON rg.id = er.range_id WHERE er.event_id = e.id), '[]'),
-	e.name, e.starts_on::text, e.days::text[], e.schedule, e.organizer, e.timezone, e.locale, e.settings, e.archived_at, e.modules, ` + eventUsed
+	e.name, e.starts_on::text, e.days::text[], e.schedule, e.organizer, e.timezone, e.locale, e.settings, e.archived_at, e.modules, e.template, ` + eventUsed
 
 // ErrRangeUsed is returned when a range with registrations or programmes is removed from an event.
 var ErrRangeUsed = errors.New("store: range has registrations or programmes")

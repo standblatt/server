@@ -120,6 +120,19 @@ copiés. Le dialogue propose le nom avec l’année (et un numéro en tête comm
 ![Copier une manifestation](../images/screenshots/copy-event.png){
 .screenshot }
 
+## Modèles {#templates}
+
+Une manifestation bien configurée peut devenir un **modèle** de la société :
+**Enregistrer comme modèle** sur **Copier & clôturer** en crée une copie
+avec ses modules, réglages, stands, programmes et classements généraux,
+nommée d’après la manifestation sans son année. Les modèles sont listés sous
+*Modèles* sous les manifestations ; un modèle s’ouvre dans sa configuration
+et se modifie comme une manifestation, mais il n’accepte pas
+d’inscriptions. **Nouvelle manifestation** propose les modèles de la société
+sous les genres intégrés : choisis-en un, puis donne à la nouvelle
+manifestation son nom et sa date. **Supprimer** sur **Copier & clôturer** du
+modèle le supprime.
+
 ## Clôturer {#close}
 
 Quand la manifestation est terminée et les classements vérifiés,

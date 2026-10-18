@@ -137,7 +137,7 @@ func TestClassificationsCopyAndCleanup(t *testing.T) {
 	if _, err := st.CreateClassification(ctx, tid, ev, c); err != nil {
 		t.Fatal(err)
 	}
-	copied, err := st.CopyEvent(ctx, tid, ev, "Next year", "2027-06-01")
+	copied, err := st.CopyEvent(ctx, tid, ev, "Next year", "2027-06-01", false)
 	if err != nil {
 		t.Fatal(err)
 	}

@@ -80,6 +80,10 @@ On **Copy & close** in the configuration, **Copy for next year** creates a new e
 
 ![Copy an event](../images/screenshots/copy-event.png){ .screenshot }
 
+## Templates {#templates}
+
+An event that is set up well can become a **template** of the club: **Save as template** on **Copy & close** stores a copy with its modules, settings, ranges, programmes and classifications, named after the event without its year. Templates are listed under *Templates* below the events; a template opens in its configuration and can be changed like an event, but it takes no registrations. **New event** offers the club's templates below the built-in kinds: choose one, then give the new event its name and date. **Delete** on the template's **Copy & close** removes it.
+
 ## Close {#close}
 
 When an event is over and the rankings are checked, **Close** it on **Copy & close** in the configuration. Closing releases the rankings: shooters with a [personal training log](../my-training/account.md#competitions) now find their results of this event, with their rank in the programme, and can add them to their log. Everything stays visible (dashboard, results, rankings, reports, documents), but registrations, results, awards, programmes and settings can no longer be changed. A banner on every page of the event says so. **Reopen** makes it editable again; results that shooters already added to their logs stay there. Copying a closed event for next year works.

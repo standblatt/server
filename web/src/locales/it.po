@@ -501,6 +501,10 @@ msgstr "Un rango"
 msgid "A registration"
 msgstr "Un'iscrizione"
 
+#: src/routes/t/[tenantId]/events/[eventId]/+layout.svelte
+msgid "A template of the club: new events start from it under Events → New event. It takes no registrations."
+msgstr "Un modello della società: le nuove manifestazioni partono da esso in Manifestazioni → Nuova manifestazione. Non accetta iscrizioni."
+
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "A4 portrait (210 × 297 mm)"
 msgstr "A4 verticale (210 × 297 mm)"
@@ -3061,6 +3065,10 @@ msgstr "Nuova società «{name}»"
 msgid "New event"
 msgstr "Nuova manifestazione"
 
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
+msgid "New events of the club can start from it, with its modules, settings, ranges, programmes and classifications."
+msgstr "Le nuove manifestazioni della società possono partire da essa, con i suoi moduli, impostazioni, stand, programmi e classifiche generali."
+
 #: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "New link"
 msgstr "Nuovo link"
@@ -4355,6 +4363,10 @@ msgstr "S{0}"
 msgid "Save"
 msgstr "Salva"
 
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
+msgid "Save as template"
+msgstr "Salva come modello"
+
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Save automatically"
 msgstr "Salva automaticamente"
@@ -4378,6 +4390,10 @@ msgstr "Salva sessione"
 #: src/lib/modules/special_prizes/ProgrammeSection.svelte
 msgid "Save special prizes"
 msgstr "Salva i premi speciali"
+
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
+msgid "Save template"
+msgstr "Salva il modello"
 
 #: src/lib/ProgrammeEditor.svelte
 msgid "Saved at once, also while shooters are registered."
@@ -4918,6 +4934,19 @@ msgstr "Bersaglio"
 #: src/routes/my/settings/+page.svelte
 msgid "Target face for tapping hits"
 msgstr "Bersaglio per toccare i colpi a segno"
+
+#. placeholder {0}: ev.name
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
+msgid "Template \"{0}\" saved"
+msgstr "Modello «{0}» salvato"
+
+#: src/routes/t/[tenantId]/+page.svelte
+msgid "Template of the club: modules, settings, ranges, programmes and classifications"
+msgstr "Modello della società: moduli, impostazioni, stand, programmi e classifiche generali"
+
+#: src/routes/t/[tenantId]/+page.svelte
+msgid "Templates"
+msgstr "Modelli"
 
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Templates that print results onto pre-printed sheets, e.g. the army's lane sheets."

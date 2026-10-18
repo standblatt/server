@@ -64,7 +64,7 @@
 	const path = $derived(page.url.pathname);
 
 	type NavItem = { href: string; label: string; icon: typeof Users; active?: boolean; badge?: Lazy };
-	const configuring = $derived(path.startsWith(`${eventBase}/config`));
+	const configuring = $derived(!!event?.template || path.startsWith(`${eventBase}/config`));
 	const modules = $derived(enabled(event));
 	const eventItems = $derived<NavItem[]>([
 		{ href: eventBase, label: $t`Dashboard`, icon: LayoutDashboard, active: path === eventBase },
@@ -75,7 +75,7 @@
 		...(isAdmin ? [{ href: `${eventBase}/config`, label: $t`Configuration`, icon: Settings }] : [])
 	]);
 	const configItems = $derived<NavItem[]>([
-		{ href: eventBase, label: $t`Back to the event`, icon: ArrowLeft, active: false },
+		...(event?.template ? [] : [{ href: eventBase, label: $t`Back to the event`, icon: ArrowLeft, active: false }]),
 		{ href: `${eventBase}/config`, label: $t`General`, icon: SlidersHorizontal, active: path === `${eventBase}/config` },
 		{ href: `${eventBase}/config/modules`, label: $t`Modules`, icon: Puzzle },
 		{ href: `${eventBase}/config/programmes`, label: $t`Programmes`, icon: ListChecks },

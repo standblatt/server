@@ -147,7 +147,7 @@ func TestBookingSettingsCopy(t *testing.T) {
 	if target, err := st.BookingByCode(ctx, "abc"); err != nil || target.Event.ID != ev || target.Settings.SlotMinutes != 45 {
 		t.Fatalf("by code: %+v %v", target, err)
 	}
-	copied, err := st.CopyEvent(ctx, tid, ev, "Feldschiessen 2028", "2028-06-03")
+	copied, err := st.CopyEvent(ctx, tid, ev, "Feldschiessen 2028", "2028-06-03", false)
 	if err != nil {
 		t.Fatal(err)
 	}

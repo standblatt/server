@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **Attempts**: a programme can be shot several times per event, a fixed number or unlimited (further attempts at a shooting festival, an annual programme); the best, first or last attempt counts in rankings, club competition, special prizes and My training, further attempts can have their own price, awards go to every attempt or only the counting one, and the registration takes several attempts at once (by @HB9HIL)
 - **Classifications**: rankings over several programmes or attempts of an event, e.g. a section championship as a sum of programmes or a club championship over the best three attempts; only the best programmes can count, incomplete shooters can be left unranked, the tie-break order is configurable (series, single shots, mouches, age) and classes rank age categories separately; shown on Rankings, kiosk displays and as a PDF/CSV report, copied for next year (by @HB9HIL)
+- **Event templates**: a club saves an event as a template (modules, settings, ranges, programmes, classifications) and starts new events from it; templates take no registrations and are edited like events (by @HB9HIL)
 - **Registration documents and certificates**: print forms that print a registration (e.g. a participant card) get a button in the registration; forms that print a rank make certificates from every ranking and classification, for a range of ranks and one class, as one PDF or on their own printer (by @HB9HIL)
 - **Wreath card and control strip as print forms**: both print with built-in print forms that a club can copy and change (fields, logo); an event chooses its forms in the modules *Awards* and *Control strip*. Print forms have a data source (results of a programme, a registration, a rank) that decides their fields, and text can be italic or wrap (by @HB9HIL)
 - **Images in print forms**: each club has an image library (PNG or JPEG) for logos and letterheads; the form editor places images like any other element, and exported forms carry their images (by @HB9HIL)
@@ -23,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - API: `EventSettings` lost `noLaneSheet`, `noControlStrip` and `ammoIssue`; events have `modules` and `modulesInUse` instead, `create-event` without `modules` switches on all but the ammunition desk and `GET /api/modules` lists them (by @HB9HIL)
 
 ### Fixed
+- Copying an event that was itself a copy failed when the first copy had no booking days (by @HB9HIL)
 - The German, French and Italian help of *Enter results* showed a paragraph of the CSV import instead of how results are saved (by @HB9HIL)
 
 ## [0.18.0] - 2026-10-18

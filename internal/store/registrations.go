@@ -87,6 +87,7 @@ type RangeRules struct {
 // EventRules is what registration checks need to know about an event.
 type EventRules struct {
 	StartsOn   string
+	Template   bool
 	Lanes      bool
 	Ranges     map[int64]RangeRules
 	RangeOrder []int64
@@ -111,8 +112,8 @@ func registrationErr(err error) error {
 func (s *Store) LoadEventRules(ctx context.Context, tenantID, eventID int64) (EventRules, error) {
 	r := EventRules{Ranges: map[int64]RangeRules{}, Programmes: map[int64]domain.ProgrammeInfo{}}
 	var chosen, used []string
-	err := s.pool.QueryRow(ctx, `SELECT e.starts_on::text, e.modules, `+eventUsed+` FROM events e WHERE e.tenant_id = $1 AND e.id = $2`,
-		tenantID, eventID).Scan(&r.StartsOn, &chosen, &used)
+	err := s.pool.QueryRow(ctx, `SELECT e.starts_on::text, e.template, e.modules, `+eventUsed+` FROM events e WHERE e.tenant_id = $1 AND e.id = $2`,
+		tenantID, eventID).Scan(&r.StartsOn, &r.Template, &chosen, &used)
 	if err != nil {
 		return r, mapErr(err)
 	}

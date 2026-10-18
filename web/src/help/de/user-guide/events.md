@@ -115,6 +115,18 @@ bei Bedarf an.
 ![Einen Anlass kopieren](../images/screenshots/copy-event.png){ .screenshot
 }
 
+## Vorlagen {#templates}
+
+Ein gut eingerichteter Anlass kann zu einer **Vorlage** des Vereins werden:
+**Als Vorlage speichern** auf **Kopieren & abschliessen** legt eine Kopie
+mit seinen Modulen, Einstellungen, Ständen, Programmen und Wertungen an,
+benannt nach dem Anlass ohne Jahreszahl. Vorlagen stehen unter *Vorlagen*
+unterhalb der Anlässe; eine Vorlage öffnet sich in ihrer Konfiguration und
+lässt sich wie ein Anlass ändern, nimmt aber keine Anmeldungen an. **Neuer
+Anlass** bietet die Vorlagen des Vereins unter den eingebauten Arten an:
+Wähle eine, dann gib dem neuen Anlass seinen Namen und sein
+Datum. **Löschen** auf **Kopieren & abschliessen** der Vorlage entfernt sie.
+
 ## Abschliessen {#close}
 
 Wenn der Anlass vorbei ist und die Ranglisten geprüft sind, **schliesst** du

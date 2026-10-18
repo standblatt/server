@@ -99,6 +99,9 @@ func (s *Server) register(ctx context.Context, tenantID, eventID int64, in Regis
 	if err != nil {
 		return 0, notFound(err, "Event not found")
 	}
+	if rules.Template {
+		return 0, conflict("A template takes no registrations")
+	}
 	sh, err := s.Store.GetShooter(ctx, tenantID, in.ShooterID)
 	if err != nil {
 		return 0, notFound(err, "Shooter not found")

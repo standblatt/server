@@ -240,6 +240,7 @@ func (s *Server) registerTenants(api huma.API) {
 		Body struct {
 			Name     string `json:"name" minLength:"1" maxLength:"200"`
 			StartsOn string `json:"startsOn" format:"date"`
+			Template bool   `json:"template,omitempty" required:"false" doc:"Save the copy as a template of the club"`
 		}
 	}
 	huma.Register(api, huma.Operation{
@@ -250,7 +251,7 @@ func (s *Server) registerTenants(api huma.API) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
 			return nil, err
 		}
-		id, err := s.Store.CopyEvent(ctx, in.TenantID, in.EventID, strings.TrimSpace(in.Body.Name), in.Body.StartsOn)
+		id, err := s.Store.CopyEvent(ctx, in.TenantID, in.EventID, strings.TrimSpace(in.Body.Name), in.Body.StartsOn, in.Body.Template)
 		if err != nil {
 			return nil, notFound(err, "Event not found")
 		}

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 10:54+0000\n"
+"POT-Creation-Date: 2026-10-18 11:27+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -342,14 +342,9 @@ msgid ""
 "name, date, range, organizer and the language of documents and kiosk "
 "screens. If you held the event last year, open last year's event and use "
 "**Copy for next year** instead: it takes over the settings and all "
-"programmes."
-msgstr ""
-"In **Manifestazioni** crea la manifestazione: scegli di che tipo è (attiva i "
-"[moduli](../user-guide/events.md#modules) corrispondenti), poi nome, data, "
-"stand, organizzatore e lingua dei documenti e degli schermi chiosco. Se hai "
-"già organizzato la manifestazione l’anno scorso, apri quella dell’anno "
-"scorso e usa invece **Copia per l’anno prossimo**: riprende le impostazioni "
-"e tutti i programmi."
+"programmes. A [template of the club](../user-guide/events.md#templates) does "
+"the same for events that recur in different forms."
+msgstr "In **Manifestazioni** crea la manifestazione: scegli di che tipo è (attiva i [moduli](../user-guide/events.md#modules) corrispondenti), poi nome, data, stand, organizzatore e lingua dei documenti e degli schermi chiosco. Se hai già organizzato la manifestazione l’anno scorso, apri quella dell’anno scorso e usa invece **Copia per l’anno prossimo**: riprende le impostazioni e tutti i programmi. Un [modello della società](../user-guide/events.md#templates) fa lo stesso per le manifestazioni che ritornano in forme diverse."
 
 #. type: Plain text
 #: ../src/help/en/getting-started/first-event.md:26
@@ -2859,7 +2854,16 @@ msgid ""
 "assignment, documents still print on the range's print agent and programmes "
 "can still be tied to the range; without a range, documents open as PDF, "
 "because print agents belong to a range."
-msgstr "Una manifestazione senza bersagli, p. es. un programma annuale o un Tiro in campagna i cui risultati arrivano su carta o dall’impianto di segnalazione, o non ha uno stand o disattiva il modulo *Assegnazione dei bersagli*. Allora non c’è la griglia dei bersagli, né prenotazioni né link per marcatori; i tiratori vengono iscritti senza bersaglio e i loro risultati si registrano come di consueto. Con uno stand ma senza assegnazione dei bersagli, i documenti si stampano ancora sull’agente di stampa dello stand e i programmi si possono ancora legare allo stand; senza stand, i documenti si aprono in PDF, perché gli agenti di stampa appartengono a uno stand."
+msgstr ""
+"Una manifestazione senza bersagli, p. es. un programma annuale o un Tiro in "
+"campagna i cui risultati arrivano su carta o dall’impianto di segnalazione, "
+"o non ha uno stand o disattiva il modulo *Assegnazione dei bersagli*. Allora "
+"non c’è la griglia dei bersagli, né prenotazioni né link per marcatori; i "
+"tiratori vengono iscritti senza bersaglio e i loro risultati si registrano "
+"come di consueto. Con uno stand ma senza assegnazione dei bersagli, i "
+"documenti si stampano ancora sull’agente di stampa dello stand e i programmi "
+"si possono ancora legare allo stand; senza stand, i documenti si aprono in "
+"PDF, perché gli agenti di stampa appartengono a uno stand."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/events.md:77
@@ -2899,11 +2903,30 @@ msgstr ""
 #. type: Title ##
 #: ../src/help/en/user-guide/events.md:83
 #, no-wrap
+msgid "Templates {#templates}"
+msgstr "Modelli {#templates}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:86
+msgid ""
+"An event that is set up well can become a **template** of the club: **Save "
+"as template** on **Copy & close** stores a copy with its modules, settings, "
+"ranges, programmes and classifications, named after the event without its "
+"year. Templates are listed under *Templates* below the events; a template "
+"opens in its configuration and can be changed like an event, but it takes no "
+"registrations. **New event** offers the club's templates below the built-in "
+"kinds: choose one, then give the new event its name and date. **Delete** on "
+"the template's **Copy & close** removes it."
+msgstr "Una manifestazione ben configurata può diventare un **modello** della società: **Salva come modello** in **Copia e chiudi** ne crea una copia con i suoi moduli, impostazioni, stand, programmi e classifiche generali, con il nome della manifestazione senza l’anno. I modelli sono elencati sotto *Modelli* sotto le manifestazioni; un modello si apre nella sua configurazione e si modifica come una manifestazione, ma non accetta iscrizioni. **Nuova manifestazione** propone i modelli della società sotto i tipi integrati: scegline uno, poi dai alla nuova manifestazione il suo nome e la sua data. **Elimina** in **Copia e chiudi** del modello lo rimuove."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/events.md:87
+#, no-wrap
 msgid "Close {#close}"
 msgstr "Chiudere {#close}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:86
+#: ../src/help/en/user-guide/events.md:90
 msgid ""
 "When an event is over and the rankings are checked, **Close** it on **Copy & "
 "close** in the configuration. Closing releases the rankings: shooters with a "
@@ -2929,13 +2952,13 @@ msgstr ""
 "funziona."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:87
+#: ../src/help/en/user-guide/events.md:91
 #, no-wrap
 msgid "Delete"
 msgstr "Eliminare"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:89
+#: ../src/help/en/user-guide/events.md:93
 #, no-wrap
 msgid "**Delete** (on **Copy & close**) removes an event, but only while nobody is registered for it.\n"
 msgstr "**Elimina** (in **Copia e chiudi**) rimuove una manifestazione, ma solo finché nessuno è iscritto.\n"
@@ -4291,7 +4314,11 @@ msgid ""
 "and, for a scorer, the range and the lanes (`1-5, 8`). One scorer usually "
 "looks after several lanes; scorers exist only while the event assigns lanes "
 "(module *Lane assignment*)."
-msgstr "Inserisci un nome (chi riceve il link, ad es. *Marcatore poligono A*), scegli il ruolo e, per un marcatore, il poligono e i bersagli (`1-5, 8`). Un marcatore di solito segue più bersagli. I marcatori esistono solo finché la manifestazione assegna bersagli (modulo *Assegnazione dei bersagli*)."
+msgstr ""
+"Inserisci un nome (chi riceve il link, ad es. *Marcatore poligono A*), "
+"scegli il ruolo e, per un marcatore, il poligono e i bersagli (`1-5, 8`). Un "
+"marcatore di solito segue più bersagli. I marcatori esistono solo finché la "
+"manifestazione assegna bersagli (modulo *Assegnazione dei bersagli*)."
 
 #. type: Bullet: '2. '
 #: ../src/help/en/user-guide/helpers.md:22

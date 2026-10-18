@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 10:54+0000\n"
+"POT-Creation-Date: 2026-10-18 11:27+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -344,14 +344,9 @@ msgid ""
 "name, date, range, organizer and the language of documents and kiosk "
 "screens. If you held the event last year, open last year's event and use "
 "**Copy for next year** instead: it takes over the settings and all "
-"programmes."
-msgstr ""
-"Sous **Manifestations**, crée la manifestation : choisis son genre (il "
-"active les [modules](../user-guide/events.md#modules) correspondants), puis "
-"nom, date, stand, organisateur et langue des documents et des écrans "
-"kiosque. Si tu as déjà organisé la manifestation l’an dernier, ouvre celle "
-"de l’an dernier et utilise plutôt **Copier pour l’année prochaine** : les "
-"réglages et tous les programmes sont repris."
+"programmes. A [template of the club](../user-guide/events.md#templates) does "
+"the same for events that recur in different forms."
+msgstr "Sous **Manifestations**, crée la manifestation : choisis son genre (il active les [modules](../user-guide/events.md#modules) correspondants), puis nom, date, stand, organisateur et langue des documents et des écrans kiosque. Si tu as déjà organisé la manifestation l’an dernier, ouvre celle de l’an dernier et utilise plutôt **Copier pour l’année prochaine** : les réglages et tous les programmes sont repris. Un [modèle de la société](../user-guide/events.md#templates) fait de même pour les manifestations qui reviennent sous différentes formes."
 
 #. type: Plain text
 #: ../src/help/en/getting-started/first-event.md:26
@@ -2883,7 +2878,16 @@ msgid ""
 "assignment, documents still print on the range's print agent and programmes "
 "can still be tied to the range; without a range, documents open as PDF, "
 "because print agents belong to a range."
-msgstr "Une manifestation sans cibles, p. ex. un programme annuel ou un Tir en campagne dont les résultats arrivent sur papier ou depuis l’installation de marquage, n’a soit pas de stand, soit désactive le module *Attribution des cibles*. Il n’y a alors ni grille des cibles, ni réservations, ni liens de cibarre ; les tireurs sont inscrits sans cible et leurs résultats sont saisis comme d’habitude. Avec un stand mais sans attribution des cibles, les documents s’impriment toujours sur l’agent d’impression du stand et les programmes peuvent toujours être liés au stand ; sans stand, les documents s’ouvrent en PDF, car les agents d’impression appartiennent à un stand."
+msgstr ""
+"Une manifestation sans cibles, p. ex. un programme annuel ou un Tir en "
+"campagne dont les résultats arrivent sur papier ou depuis l’installation de "
+"marquage, n’a soit pas de stand, soit désactive le module *Attribution des "
+"cibles*. Il n’y a alors ni grille des cibles, ni réservations, ni liens de "
+"cibarre ; les tireurs sont inscrits sans cible et leurs résultats sont "
+"saisis comme d’habitude. Avec un stand mais sans attribution des cibles, les "
+"documents s’impriment toujours sur l’agent d’impression du stand et les "
+"programmes peuvent toujours être liés au stand ; sans stand, les documents "
+"s’ouvrent en PDF, car les agents d’impression appartiennent à un stand."
 
 #. type: Title ##
 #: ../src/help/en/user-guide/events.md:77
@@ -2923,11 +2927,30 @@ msgstr ""
 #. type: Title ##
 #: ../src/help/en/user-guide/events.md:83
 #, no-wrap
+msgid "Templates {#templates}"
+msgstr "Modèles {#templates}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/events.md:86
+msgid ""
+"An event that is set up well can become a **template** of the club: **Save "
+"as template** on **Copy & close** stores a copy with its modules, settings, "
+"ranges, programmes and classifications, named after the event without its "
+"year. Templates are listed under *Templates* below the events; a template "
+"opens in its configuration and can be changed like an event, but it takes no "
+"registrations. **New event** offers the club's templates below the built-in "
+"kinds: choose one, then give the new event its name and date. **Delete** on "
+"the template's **Copy & close** removes it."
+msgstr "Une manifestation bien configurée peut devenir un **modèle** de la société : **Enregistrer comme modèle** sur **Copier & clôturer** en crée une copie avec ses modules, réglages, stands, programmes et classements généraux, nommée d’après la manifestation sans son année. Les modèles sont listés sous *Modèles* sous les manifestations ; un modèle s’ouvre dans sa configuration et se modifie comme une manifestation, mais il n’accepte pas d’inscriptions. **Nouvelle manifestation** propose les modèles de la société sous les genres intégrés : choisis-en un, puis donne à la nouvelle manifestation son nom et sa date. **Supprimer** sur **Copier & clôturer** du modèle le supprime."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/events.md:87
+#, no-wrap
 msgid "Close {#close}"
 msgstr "Clôturer {#close}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:86
+#: ../src/help/en/user-guide/events.md:90
 msgid ""
 "When an event is over and the rankings are checked, **Close** it on **Copy & "
 "close** in the configuration. Closing releases the rankings: shooters with a "
@@ -2954,13 +2977,13 @@ msgstr ""
 "prochaine fonctionne."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/events.md:87
+#: ../src/help/en/user-guide/events.md:91
 #, no-wrap
 msgid "Delete"
 msgstr "Supprimer"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/events.md:89
+#: ../src/help/en/user-guide/events.md:93
 #, no-wrap
 msgid "**Delete** (on **Copy & close**) removes an event, but only while nobody is registered for it.\n"
 msgstr "**Supprimer** (sous **Copier & clôturer**) retire une manifestation, mais seulement tant que personne n’y est inscrit.\n"
@@ -4337,7 +4360,11 @@ msgid ""
 "and, for a scorer, the range and the lanes (`1-5, 8`). One scorer usually "
 "looks after several lanes; scorers exist only while the event assigns lanes "
 "(module *Lane assignment*)."
-msgstr "Saisis un nom (qui reçoit le lien, p. ex. *Cibarre stand A*), choisis le rôle et, pour un cibarre, le stand et les cibles (`1-5, 8`). Un cibarre s’occupe généralement de plusieurs cibles. Les cibarres n’existent que tant que la manifestation attribue des cibles (module *Attribution des cibles*)."
+msgstr ""
+"Saisis un nom (qui reçoit le lien, p. ex. *Cibarre stand A*), choisis le "
+"rôle et, pour un cibarre, le stand et les cibles (`1-5, 8`). Un cibarre "
+"s’occupe généralement de plusieurs cibles. Les cibarres n’existent que tant "
+"que la manifestation attribue des cibles (module *Attribution des cibles*)."
 
 #. type: Bullet: '2. '
 #: ../src/help/en/user-guide/helpers.md:22

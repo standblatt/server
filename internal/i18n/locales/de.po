@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 12:52+0200\n"
+"POT-Creation-Date: 2026-10-18 13:22+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1155,6 +1155,10 @@ msgstr "Unbekannter oder widerrufener Kiosk-Token"
 #: internal/web/registrations.go
 msgid "A programme with results cannot be removed from the registration"
 msgstr "Ein Programm mit Resultaten kann nicht aus der Anmeldung entfernt werden"
+
+#: internal/web/registrations.go
+msgid "A template takes no registrations"
+msgstr "Eine Vorlage nimmt keine Anmeldungen an"
 
 #: internal/web/registrations.go
 msgid "Choose the range of the lane"

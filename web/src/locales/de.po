@@ -501,6 +501,10 @@ msgstr "Ein Rang"
 msgid "A registration"
 msgstr "Eine Anmeldung"
 
+#: src/routes/t/[tenantId]/events/[eventId]/+layout.svelte
+msgid "A template of the club: new events start from it under Events → New event. It takes no registrations."
+msgstr "Eine Vorlage des Vereins: Neue Anlässe starten unter Anlässe → Neuer Anlass daraus. Sie nimmt keine Anmeldungen an."
+
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "A4 portrait (210 × 297 mm)"
 msgstr "A4 hoch (210 × 297 mm)"
@@ -3061,6 +3065,10 @@ msgstr "Neuer Verein «{name}»"
 msgid "New event"
 msgstr "Neuer Anlass"
 
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
+msgid "New events of the club can start from it, with its modules, settings, ranges, programmes and classifications."
+msgstr "Neue Anlässe des Vereins können davon ausgehen, mit seinen Modulen, Einstellungen, Ständen, Programmen und Wertungen."
+
 #: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "New link"
 msgstr "Neuer Link"
@@ -4355,6 +4363,10 @@ msgstr "P{0}"
 msgid "Save"
 msgstr "Speichern"
 
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
+msgid "Save as template"
+msgstr "Als Vorlage speichern"
+
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Save automatically"
 msgstr "Automatisch speichern"
@@ -4378,6 +4390,10 @@ msgstr "Einheit speichern"
 #: src/lib/modules/special_prizes/ProgrammeSection.svelte
 msgid "Save special prizes"
 msgstr "Sonderpreise speichern"
+
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
+msgid "Save template"
+msgstr "Vorlage speichern"
 
 #: src/lib/ProgrammeEditor.svelte
 msgid "Saved at once, also while shooters are registered."
@@ -4918,6 +4934,19 @@ msgstr "Scheibe"
 #: src/routes/my/settings/+page.svelte
 msgid "Target face for tapping hits"
 msgstr "Scheibenbild zum Antippen der Treffer"
+
+#. placeholder {0}: ev.name
+#: src/routes/t/[tenantId]/events/[eventId]/config/close/+page.svelte
+msgid "Template \"{0}\" saved"
+msgstr "Vorlage «{0}» gespeichert"
+
+#: src/routes/t/[tenantId]/+page.svelte
+msgid "Template of the club: modules, settings, ranges, programmes and classifications"
+msgstr "Vorlage des Vereins: Module, Einstellungen, Stände, Programme und Wertungen"
+
+#: src/routes/t/[tenantId]/+page.svelte
+msgid "Templates"
+msgstr "Vorlagen"
 
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Templates that print results onto pre-printed sheets, e.g. the army's lane sheets."

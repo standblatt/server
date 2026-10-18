@@ -98,6 +98,34 @@ test.describe("modules", () => {
     expect(await api(page, "GET", `${base}/events/${ev.id}/lanes`)).toEqual([]);
   });
 
+  test("saves an event as a template and starts a new event from it", async ({ page }) => {
+    await login(page, admin);
+    const base = `/api/tenants/${ids.tenant}`;
+    const source = await api(page, "POST", `${base}/events`, { name: "Club championship 2027", startsOn: "2027-04-01", modules: ["attempts", "classifications"] });
+    await api(page, "POST", `${base}/events/${source.id}/programmes`, { name: "Series", series: [{ shots: 10, maxPoints: 100 }], prices: [{ ageCategory: "elite", price: 0 }], awards: [] });
+    await page.goto(`/t/${ids.tenant}/events/${source.id}/config/close`);
+    await c(page.locator("section", { hasText: "Save as template" }), "button", "Save as template").click();
+    const dialog = page.getByRole("dialog");
+    await expect(dialog.getByLabel("Name")).toHaveValue("Club championship");
+    await c(dialog, "button", "Save template").click();
+    await expect(c(page, "[data-sonner-toast]", 'Template "Club championship" saved')).toBeVisible();
+
+    await page.goto(`/t/${ids.tenant}`);
+    await c(page, "summary", "Templates").click();
+    await expect(page.getByRole("link", { name: "Club championship", exact: true })).toBeVisible();
+    await c(page, "button", "New event").click();
+    const create = page.getByRole("dialog");
+    await create.getByRole("radio", { name: /^Club championship Template of the club/ }).check();
+    await create.getByLabel("Name").fill("Club championship 2028");
+    await create.getByLabel("Date").fill("2028-04-06");
+    await c(create, "button", "Create").click();
+    await page.waitForURL(/\/events\/\d+$/);
+    const ev = await api(page, "GET", `${base}/events/${page.url().split("/").pop()}`);
+    expect(ev).toMatchObject({ name: "Club championship 2028", template: false, modules: ["attempts", "classifications"] });
+    const programmes = await api(page, "GET", `${base}/events/${ev.id}/programmes`);
+    expect(programmes.map((p) => p.name)).toEqual(["Series"]);
+  });
+
   test("keeps staff out of the configuration", async ({ page }) => {
     await login(page, staff);
     await page.goto(`${event()}/config`);

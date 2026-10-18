@@ -8,6 +8,7 @@ import (
 	"mime/multipart"
 	"net/http"
 	"net/url"
+	"strings"
 	"testing"
 
 	"github.com/standblatt/server/internal/domain"
@@ -256,4 +257,41 @@ func TestCopyEvent(t *testing.T) {
 	if regs, _ := e.st.ListRegistrations(ctx, tid, copied.ID, true); len(regs) != 0 {
 		t.Fatalf("registrations must not be copied: %+v", regs)
 	}
+}
+
+// TestEventTemplates checks saving an event as a template, creating an event from it and that a template takes no
+// registrations.
+func TestEventTemplates(t *testing.T) {
+	e := newEnv(t)
+	f := e.registrationFixture("Templates")
+	e.user("boss", f.tenant, store.RoleAdmin)
+	boss := e.login("boss")
+	base := fmt.Sprintf("/api/tenants/%d", f.tenant)
+	code, b := e.do(boss, "POST", fmt.Sprintf("%s/events/%d/copy", base, f.event), map[string]any{"name": "Indoor", "startsOn": "2026-11-20", "template": true})
+	expect(t, "save as template", code, 201, b)
+	var tpl store.Event
+	json.Unmarshal(b, &tpl)
+	if !tpl.Template {
+		t.Fatalf("not a template: %s", b)
+	}
+	code, b = e.do(boss, "POST", fmt.Sprintf("%s/events/%d/registrations", base, tpl.ID), web.RegistrationInput{ShooterID: f.shooter, Programmes: []domain.ProgrammeChoice{}})
+	expect(t, "register on a template", code, 409, b)
+
+	code, b = e.do(boss, "POST", fmt.Sprintf("%s/events/%d/copy", base, tpl.ID), map[string]any{"name": "Indoor 2027", "startsOn": "2027-11-19"})
+	expect(t, "event from the template", code, 201, b)
+	var ev store.Event
+	json.Unmarshal(b, &ev)
+	if ev.Template || ev.StartsOn != "2027-11-19" {
+		t.Fatalf("event from template: %s", b)
+	}
+	code, b = e.do(boss, "GET", fmt.Sprintf("%s/events/%d/programmes", base, ev.ID), nil)
+	expect(t, "programmes of the new event", code, 200, b)
+	if !strings.Contains(string(b), `"Main"`) {
+		t.Fatalf("programmes not copied: %s", b)
+	}
+
+	other := e.tenant("Other")
+	e.user("eve", other, store.RoleAdmin)
+	code, b = e.do(e.login("eve"), "POST", fmt.Sprintf("/api/tenants/%d/events/%d/copy", other, tpl.ID), map[string]any{"name": "Stolen", "startsOn": "2027-01-01"})
+	expect(t, "template of another club", code, 404, b)
 }
