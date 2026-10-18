@@ -102,6 +102,7 @@ test.describe("modules", () => {
     await api(page, "POST", `${base}/events/${ev.id}/registrations`, { shooterId: sh.id, programmes: [{ programmeId: programme.id }] });
     await page.goto(`/t/${ids.tenant}/events/${ev.id}`);
     await expect(c(page, "h2", "Registered (1)")).toBeVisible();
+    await expect(c(page, "th", "Registered since")).toBeVisible();
     const row = page.locator("tr", { hasText: "Rangeonly" });
     await expect(row.getByRole("link", { name: "Results" })).toBeVisible();
     await expect(page.getByRole("button", { name: "Assign lane" })).toHaveCount(0);

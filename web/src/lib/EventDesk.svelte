@@ -113,6 +113,14 @@
 		return s >= 3600 ? `${Math.floor(s / 3600)}:${pad2(Math.floor((s % 3600) / 60))}:${pad2(s % 60)}` : `${Math.floor(s / 60)}:${pad2(s % 60)}`;
 	}
 
+	/** When a registration was made: the time today, the date before. */
+	function registeredAt(iso: string) {
+		const d = new Date(iso);
+		return d.toDateString() === new Date().toDateString()
+			? d.toLocaleTimeString(intlLocale(), { hour: '2-digit', minute: '2-digit' })
+			: d.toLocaleDateString(intlLocale(), { day: '2-digit', month: '2-digit', year: 'numeric' });
+	}
+
 	/** Comma-separated programme names (with variant) of a registration's entries. */
 	function programmeNames(r: Registration) {
 		return r.entries
@@ -393,7 +401,7 @@
 							<Table.Head>{$t`Shooter`}</Table.Head>
 							<Table.Head class="hidden md:table-cell">{$t`Category`}</Table.Head>
 							<Table.Head class="hidden lg:table-cell">{$t`Programmes`}</Table.Head>
-							<Table.Head class="hidden sm:table-cell">{$t`Waiting`}</Table.Head>
+							<Table.Head class="hidden sm:table-cell">{lanesOn ? $t`Waiting` : $t`Registered since`}</Table.Head>
 							<Table.Head></Table.Head>
 						</Table.Row>
 					</Table.Header>
@@ -406,7 +414,7 @@
 								<Table.Cell class="whitespace-normal">{@render shooter(r)}</Table.Cell>
 								<Table.Cell class="hidden md:table-cell">{$t(ageCategoryLabel(r.ageCategory))}</Table.Cell>
 								<Table.Cell class="hidden whitespace-normal lg:table-cell">{programmeNames(r)}</Table.Cell>
-								<Table.Cell class="hidden text-muted-foreground tabular-nums sm:table-cell">{waitingFor(r.registeredAt)}</Table.Cell>
+								<Table.Cell class="hidden text-muted-foreground tabular-nums sm:table-cell">{lanesOn ? waitingFor(r.registeredAt) : registeredAt(r.registeredAt)}</Table.Cell>
 								<Table.Cell onclick={(e: MouseEvent) => e.stopPropagation()}>
 									<div class="flex items-center justify-end gap-1.5">
 										{@render ammo(r)}
