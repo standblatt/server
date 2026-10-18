@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 13:22+0200\n"
+"POT-Creation-Date: 2026-10-18 15:04+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1097,10 +1097,6 @@ msgid "Range not found"
 msgstr "Schiessstand nicht gefunden"
 
 #: internal/web/printing.go
-msgid "Unknown document"
-msgstr "Unbekanntes Dokument"
-
-#: internal/web/printing.go
 msgid "Unknown or revoked agent token"
 msgstr "Unbekannter oder widerrufener Agent-Token"
 
@@ -1990,6 +1986,9 @@ msgstr "Dieser Code wurde schon benutzt; warte auf den nächsten."
 #: internal/web/totp.go
 msgid "Wrong code."
 msgstr "Falscher Code."
+
+#~ msgid "Unknown document"
+#~ msgstr "Unbekanntes Dokument"
 
 #~ msgid "The shooter is already registered for one of these programmes at this event"
 #~ msgstr "Der Schütze ist an diesem Anlass bereits für eines dieser Programme angemeldet"

@@ -4,7 +4,6 @@ import (
 	"context"
 	"errors"
 	"net/http"
-	"slices"
 	"strings"
 	"time"
 
@@ -197,9 +196,6 @@ func (s *Server) registerPrinting(api huma.API) {
 	}, func(ctx context.Context, in *settingIn) (*struct{}, error) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
 			return nil, err
-		}
-		if !slices.Contains(store.Documents, in.Body.Document) {
-			return nil, invalid("Unknown document")
 		}
 		return nil, notFound(s.Store.SetPrintSetting(ctx, in.TenantID, in.RangeID, in.Body), "Range not found")
 	})

@@ -36,15 +36,6 @@ func (s *Store) CreateUser(ctx context.Context, name, passwordHash string) (int6
 	return id, mapErr(err)
 }
 
-// UpsertUser creates a user or sets a new password for an existing one.
-func (s *Store) UpsertUser(ctx context.Context, name, passwordHash string) (int64, error) {
-	var id int64
-	err := s.pool.QueryRow(ctx, `INSERT INTO users (name, password_hash) VALUES (lower($1), $2)
-		ON CONFLICT (name) DO UPDATE SET password_hash = EXCLUDED.password_hash, updated_at = now()
-		RETURNING id`, name, passwordHash).Scan(&id)
-	return id, mapErr(err)
-}
-
 // UserByName looks up a user by name.
 func (s *Store) UserByName(ctx context.Context, name string) (User, error) {
 	var u User

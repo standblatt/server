@@ -119,9 +119,6 @@ func (s *Server) registerTenants(api huma.API) {
 			return nil, err
 		}
 		list, err := s.Store.ListRanges(ctx, in.TenantID)
-		if list == nil {
-			list = []store.Range{}
-		}
 		return &rangesOut{Body: list}, err
 	})
 
@@ -190,9 +187,6 @@ func (s *Server) registerTenants(api huma.API) {
 			return nil, err
 		}
 		list, err := s.Store.ListEvents(ctx, in.TenantID)
-		if list == nil {
-			list = []store.Event{}
-		}
 		return &eventsOut{Body: list}, err
 	})
 

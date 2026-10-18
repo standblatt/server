@@ -106,7 +106,7 @@ func EligibleAwards(tiers []Tier, category AgeCategory, total float64) []Tier {
 			}
 		}
 	}
-	var out []Tier
+	out := []Tier{}
 	for _, t := range reached {
 		if t.Value >= best[t.Kind] {
 			out = append(out, t)

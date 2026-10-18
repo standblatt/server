@@ -111,9 +111,6 @@ func (s *Server) resultSheet(ctx context.Context, tenantID, registrationID int64
 				er.Award = &award
 			}
 		}
-		if er.EligibleAwards == nil {
-			er.EligibleAwards = []domain.Tier{}
-		}
 		sheet.Entries = append(sheet.Entries, er)
 	}
 	return sheet, nil

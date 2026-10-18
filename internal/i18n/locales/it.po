@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 13:22+0200\n"
+"POT-Creation-Date: 2026-10-18 15:04+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1097,10 +1097,6 @@ msgid "Range not found"
 msgstr "Stand di tiro non trovato"
 
 #: internal/web/printing.go
-msgid "Unknown document"
-msgstr "Documento sconosciuto"
-
-#: internal/web/printing.go
 msgid "Unknown or revoked agent token"
 msgstr "Token dell'agente sconosciuto o revocato"
 
@@ -1990,6 +1986,9 @@ msgstr "Questo codice è già stato usato; attendi il prossimo."
 #: internal/web/totp.go
 msgid "Wrong code."
 msgstr "Codice errato."
+
+#~ msgid "Unknown document"
+#~ msgstr "Documento sconosciuto"
 
 #~ msgid "The shooter is already registered for one of these programmes at this event"
 #~ msgstr "Il tiratore è già iscritto a uno di questi programmi in questa manifestazione"

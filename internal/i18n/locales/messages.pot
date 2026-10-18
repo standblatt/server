@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 13:22+0200\n"
+"POT-Creation-Date: 2026-10-18 15:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1094,10 +1094,6 @@ msgstr ""
 #: internal/web/printing.go internal/web/registrations.go
 #: internal/web/reservations.go internal/web/tenants.go
 msgid "Range not found"
-msgstr ""
-
-#: internal/web/printing.go
-msgid "Unknown document"
 msgstr ""
 
 #: internal/web/printing.go

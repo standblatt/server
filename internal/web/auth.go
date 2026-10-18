@@ -219,9 +219,6 @@ type LogoutOutput struct {
 // me returns the Me view of u: memberships, whether the personal log is set up and whether the second factor is on.
 func (s *Server) me(ctx context.Context, u store.User) (Me, error) {
 	ms, err := s.Store.Memberships(ctx, u.ID)
-	if ms == nil {
-		ms = []store.Membership{}
-	}
 	if err != nil {
 		return Me{}, err
 	}

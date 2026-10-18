@@ -18,9 +18,6 @@ const (
 	DocCertificate  = "certificate"
 )
 
-// Documents lists the printable documents.
-var Documents = []string{DocLaneSheet, DocControlStrip, DocResultSheet, DocWreathCard, DocForm, DocCertificate}
-
 // AgentOnline is how recently a print agent must have called in to count as online.
 const AgentOnline = 60 * time.Second
 
