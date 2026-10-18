@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Go tests copy a migrated template database and hash passwords cheaply, so they run in about 15 instead of 90 seconds (by @HB9HIL)
 - Print forms load the scan of the empty form only for the preview, not for every printout (by @HB9HIL)
+- The getting-started checklist no longer asks for a range once the club has an event, since events without lanes need none; the help group *Setup* is called *Configuration* like the app (by @HB9HIL)
 
 ### Fixed
 - A control strip or result sheet that failed to render was answered as an empty PDF instead of an error (by @HB9HIL)

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 11:49+0000\n"
+"POT-Creation-Date: 2026-10-18 13:15+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -89,15 +89,10 @@ msgid ""
 "An **event** (*Anlass*) is a competition on one or more ranges on one or "
 "more days (the date is the main day; further days cover pre-shooting and "
 "multi-day events). It has a language, which is used for printed documents "
-"and kiosk screens, and a few settings such as the club excluded from the "
-"club competition."
-msgstr ""
-"Ein **Anlass** (englisch *event*) ist ein Wettkampf auf einem oder mehreren "
-"Schiessständen an einem oder mehreren Tagen (das Datum ist der Haupttag; "
-"weitere Tage decken Vorschiessen und mehrtägige Anlässe ab). Er hat eine "
-"Sprache, die für gedruckte Dokumente und Kiosk-Bildschirme gilt, und einige "
-"Einstellungen wie den Verein, der von der Vereinskonkurrenz ausgeschlossen "
-"ist."
+"and kiosk screens, and [modules](../user-guide/events.md#modules) that "
+"switch on what it needs, such as lane assignment, awards or the club "
+"competition."
+msgstr "Ein **Anlass** (englisch *event*) ist ein Wettkampf auf einem oder mehreren Schiessständen an einem oder mehreren Tagen (das Datum ist der Haupttag; weitere Tage decken Vorschiessen und mehrtägige Anlässe ab). Er hat eine Sprache, die für gedruckte Dokumente und Kiosk-Bildschirme gilt, und [Module](../user-guide/events.md#modules), die einschalten, was er braucht, etwa die Scheibenzuteilung, Auszeichnungen oder die Vereinskonkurrenz."
 
 #. type: Plain text
 #: ../src/help/en/getting-started/concepts.md:23
@@ -2190,12 +2185,10 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/help/en/reference/rules.md:55
 msgid ""
-"The club excluded in the event settings (usually the host) keeps its place "
-"in the list but gets no rank (\"out of competition\")."
-msgstr ""
-"Der in den Einstellungen des Anlasses ausgeschlossene Verein (meist der "
-"Gastgeber) behält seinen Platz in der Liste, erhält aber keinen Rang "
-"(„ausser Konkurrenz“)."
+"The club excluded in the settings of the module *Club competition* (usually "
+"the host) keeps its place in the list but gets no rank (\"out of "
+"competition\")."
+msgstr "Der in den Einstellungen des Moduls *Vereinskonkurrenz* ausgeschlossene Verein (meist der Gastgeber) behält seinen Platz in der Liste, erhält aber keinen Rang („ausser Konkurrenz“)."
 
 #. type: Title ##
 #: ../src/help/en/reference/rules.md:56
@@ -2469,7 +2462,12 @@ msgid ""
 "there are no lanes and no *Shooting*: the list is called **Registered** and "
 "offers **Results**, **Edit** and **Finish**; a registration leaves it once "
 "its results are complete."
-msgstr "**Wartend**: Anmeldungen ohne Scheibe (zum Beispiel, wenn alle Scheiben belegt sind). Ohne [Scheibenzuteilung](events.md#modules) (oder ohne Stand) gibt es keine Scheiben und kein *Am Schiessen*: Die Liste heisst dann **Angemeldet** und bietet **Resultate**, **Bearbeiten** und **Beenden**; eine Anmeldung verlässt sie, sobald ihre Resultate vollständig sind."
+msgstr ""
+"**Wartend**: Anmeldungen ohne Scheibe (zum Beispiel, wenn alle Scheiben "
+"belegt sind). Ohne [Scheibenzuteilung](events.md#modules) (oder ohne Stand) "
+"gibt es keine Scheiben und kein *Am Schiessen*: Die Liste heisst dann "
+"**Angemeldet** und bietet **Resultate**, **Bearbeiten** und **Beenden**; "
+"eine Anmeldung verlässt sie, sobald ihre Resultate vollständig sind."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/dashboard.md:13

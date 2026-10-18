@@ -25,8 +25,10 @@ fuori servizio. Le stampanti e l’agente di stampa appartengono a uno stand.
 Una **manifestazione** (inglese *event*) è una gara su uno o più stand di
 tiro in uno o più giorni (la data è il giorno principale; gli altri giorni
 coprono il tiro anticipato e le manifestazioni di più giorni). Ha una
-lingua, usata per i documenti stampati e gli schermi chiosco, e alcune
-impostazioni come la società esclusa dal concorso di sezione.
+lingua, usata per i documenti stampati e gli schermi chiosco, e dei
+[moduli](../user-guide/events.md#modules) che attivano ciò di cui ha
+bisogno, come l’assegnazione dei bersagli, le distinzioni o il concorso di
+sezione.
 
 Una manifestazione offre **programmi**: ogni programma ha **serie** con un
 numero di colpi e un punteggio massimo, **prezzi** per categoria d’età e

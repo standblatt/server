@@ -87,9 +87,9 @@ solo i risultati conclusi di tiratori con una società.
   obbligatori × 1000⌋ / 1000, cioè troncato a tre decimali.
 - Parità: prima più partecipanti, poi i valori ordinati confrontati uno a
   uno.
-- La società esclusa nelle impostazioni della manifestazione (di solito
-  l’organizzatrice) mantiene il suo posto nell’elenco ma non riceve un rango
-  («fuori concorso»).
+- La società esclusa nelle impostazioni del modulo *Concorso di sezione* (di
+  solito l’organizzatrice) mantiene il suo posto nell’elenco ma non riceve
+  un rango («fuori concorso»).
 
 ## Premi speciali {#special-prizes}
 

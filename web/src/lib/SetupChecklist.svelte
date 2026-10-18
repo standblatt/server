@@ -25,13 +25,13 @@
 	const steps = $derived([
 		{
 			title: $t`Add a range`,
-			text: $t`The shooting range with its number of lanes.`,
-			done: !!ranges.data?.length,
+			text: $t`The shooting range with its number of lanes. Events without lanes, such as an annual programme, need none.`,
+			done: !!ranges.data?.length || !!events.data?.length,
 			action: { label: $t`Ranges`, href: `${base}/ranges` }
 		},
 		{
 			title: $t`Create an event`,
-			text: $t`The competition with its date, on one of your ranges.`,
+			text: $t`The competition with its dates and the modules it needs.`,
 			done: !!events.data?.length,
 			action: onnewevent ? { label: $t`New event`, onclick: onnewevent } : undefined
 		},

@@ -25,9 +25,9 @@ markieren. Drucker und der Druck-Agent gehören zu einem Schiessstand.
 Ein **Anlass** (englisch *event*) ist ein Wettkampf auf einem oder mehreren
 Schiessständen an einem oder mehreren Tagen (das Datum ist der Haupttag;
 weitere Tage decken Vorschiessen und mehrtägige Anlässe ab). Er hat eine
-Sprache, die für gedruckte Dokumente und Kiosk-Bildschirme gilt, und einige
-Einstellungen wie den Verein, der von der Vereinskonkurrenz ausgeschlossen
-ist.
+Sprache, die für gedruckte Dokumente und Kiosk-Bildschirme gilt, und
+[Module](../user-guide/events.md#modules), die einschalten, was er braucht,
+etwa die Scheibenzuteilung, Auszeichnungen oder die Vereinskonkurrenz.
 
 Ein Anlass bietet **Programme** (*Stiche*) an: Jedes Programm hat **Passen**
 mit einer Anzahl Schüsse und Höchstpunktzahl, **Preise** pro Alterskategorie

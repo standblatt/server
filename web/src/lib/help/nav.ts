@@ -20,7 +20,7 @@ export const nav: { label: MessageDescriptor; pages: string[] }[] = [
 		]
 	},
 	{
-		label: msg`Setup`,
+		label: msg`Configuration`,
 		pages: [
 			'user-guide/events',
 			'user-guide/online-booking',

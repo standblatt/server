@@ -1372,6 +1372,7 @@ msgid "Completed"
 msgstr "Completed"
 
 #: src/lib/AppSidebar.svelte
+#: src/lib/help/nav.ts
 #: src/routes/t/[tenantId]/+layout.svelte
 msgid "Configuration"
 msgstr "Configuration"
@@ -4603,10 +4604,6 @@ msgstr "Set up the authenticator app"
 msgid "Settings"
 msgstr "Settings"
 
-#: src/lib/help/nav.ts
-msgid "Setup"
-msgstr "Setup"
-
 #: src/routes/t/[tenantId]/users/+page.svelte
 msgid "Several addresses separated by commas or one per line."
 msgstr "Several addresses separated by commas or one per line."
@@ -5038,8 +5035,8 @@ msgid "The code does not match the registration"
 msgstr "The code does not match the registration"
 
 #: src/lib/SetupChecklist.svelte
-msgid "The competition with its date, on one of your ranges."
-msgstr "The competition with its date, on one of your ranges."
+msgid "The competition with its dates and the modules it needs."
+msgstr "The competition with its dates and the modules it needs."
 
 #: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "The current link stops working. Clubs that already asked keep their personal links."
@@ -5110,8 +5107,8 @@ msgid "The registration of {name} and its results are deleted."
 msgstr "The registration of {name} and its results are deleted."
 
 #: src/lib/SetupChecklist.svelte
-msgid "The shooting range with its number of lanes."
-msgstr "The shooting range with its number of lanes."
+msgid "The shooting range with its number of lanes. Events without lanes, such as an annual programme, need none."
+msgstr "The shooting range with its number of lanes. Events without lanes, such as an annual programme, need none."
 
 #: src/routes/t/[tenantId]/users/+page.svelte
 msgid "The user loses access to this club. The account itself stays."

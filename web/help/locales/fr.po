@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 11:49+0000\n"
+"POT-Creation-Date: 2026-10-18 13:15+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -91,15 +91,10 @@ msgid ""
 "An **event** (*Anlass*) is a competition on one or more ranges on one or "
 "more days (the date is the main day; further days cover pre-shooting and "
 "multi-day events). It has a language, which is used for printed documents "
-"and kiosk screens, and a few settings such as the club excluded from the "
-"club competition."
-msgstr ""
-"Une **manifestation** (anglais *event*) est un concours sur un ou plusieurs "
-"stands de tir, sur un ou plusieurs jours (la date est le jour principal ; "
-"les autres jours couvrent le tir anticipé et les manifestations sur "
-"plusieurs jours). Elle a une langue, utilisée pour les documents imprimés et "
-"les écrans kiosque, et quelques réglages comme la société exclue du concours "
-"de sections."
+"and kiosk screens, and [modules](../user-guide/events.md#modules) that "
+"switch on what it needs, such as lane assignment, awards or the club "
+"competition."
+msgstr "Une **manifestation** (anglais *event*) est un concours sur un ou plusieurs stands de tir, sur un ou plusieurs jours (la date est le jour principal ; les autres jours couvrent le tir anticipé et les manifestations sur plusieurs jours). Elle a une langue, utilisée pour les documents imprimés et les écrans kiosque, et des [modules](../user-guide/events.md#modules) qui activent ce dont elle a besoin, comme l’attribution des cibles, les distinctions ou le concours de sections."
 
 #. type: Plain text
 #: ../src/help/en/getting-started/concepts.md:23
@@ -2199,12 +2194,10 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/help/en/reference/rules.md:55
 msgid ""
-"The club excluded in the event settings (usually the host) keeps its place "
-"in the list but gets no rank (\"out of competition\")."
-msgstr ""
-"La société exclue dans les réglages de la manifestation (en général "
-"l’organisatrice) garde sa place dans la liste mais ne reçoit pas de rang "
-"(« hors concours »)."
+"The club excluded in the settings of the module *Club competition* (usually "
+"the host) keeps its place in the list but gets no rank (\"out of "
+"competition\")."
+msgstr "La société exclue dans les réglages du module *Concours de sections* (en général l’organisatrice) garde sa place dans la liste mais ne reçoit pas de rang (« hors concours »)."
 
 #. type: Title ##
 #: ../src/help/en/reference/rules.md:56
@@ -2481,7 +2474,12 @@ msgid ""
 "there are no lanes and no *Shooting*: the list is called **Registered** and "
 "offers **Results**, **Edit** and **Finish**; a registration leaves it once "
 "its results are complete."
-msgstr "**En attente** : inscriptions sans cible (par exemple quand toutes les cibles sont occupées). Sans [attribution des cibles](events.md#modules) (ou sans stand), il n’y a ni cibles ni *En tir* : la liste s’appelle alors **Inscrits** et propose **Résultats**, **Modifier** et **Terminer** ; une inscription la quitte dès que ses résultats sont complets."
+msgstr ""
+"**En attente** : inscriptions sans cible (par exemple quand toutes les "
+"cibles sont occupées). Sans [attribution des cibles](events.md#modules) (ou "
+"sans stand), il n’y a ni cibles ni *En tir* : la liste s’appelle alors "
+"**Inscrits** et propose **Résultats**, **Modifier** et **Terminer** ; une "
+"inscription la quitte dès que ses résultats sont complets."
 
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/dashboard.md:13

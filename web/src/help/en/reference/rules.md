@@ -51,7 +51,7 @@ Only programmes marked *counts for the club competition* take part, and only com
 - Of *n* participants the best *max(5, ⌊n/2⌋)* are mandatory, the rest are optional.
 - Result = ⌊(Σ mandatory + 0.02 × Σ optional) / number of mandatory × 1000⌋ / 1000, i.e. truncated to three decimals.
 - Ties: more participants first, then the sorted scores compared one by one.
-- The club excluded in the event settings (usually the host) keeps its place in the list but gets no rank ("out of competition").
+- The club excluded in the settings of the module *Club competition* (usually the host) keeps its place in the list but gets no rank ("out of competition").
 
 ## Special prizes {#special-prizes}
 

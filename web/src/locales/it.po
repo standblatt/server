@@ -1372,6 +1372,7 @@ msgid "Completed"
 msgstr "Concluso"
 
 #: src/lib/AppSidebar.svelte
+#: src/lib/help/nav.ts
 #: src/routes/t/[tenantId]/+layout.svelte
 msgid "Configuration"
 msgstr "Configurazione"
@@ -4603,10 +4604,6 @@ msgstr "Configura l’app di autenticazione"
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: src/lib/help/nav.ts
-msgid "Setup"
-msgstr "Configurazione"
-
 #: src/routes/t/[tenantId]/users/+page.svelte
 msgid "Several addresses separated by commas or one per line."
 msgstr "Più indirizzi separati da virgole o uno per riga."
@@ -5038,8 +5035,8 @@ msgid "The code does not match the registration"
 msgstr "Il codice non corrisponde all'iscrizione"
 
 #: src/lib/SetupChecklist.svelte
-msgid "The competition with its date, on one of your ranges."
-msgstr "La gara con la sua data, su uno dei tuoi stand di tiro."
+msgid "The competition with its dates and the modules it needs."
+msgstr "La gara con i suoi giorni e i moduli di cui ha bisogno."
 
 #: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "The current link stops working. Clubs that already asked keep their personal links."
@@ -5110,8 +5107,8 @@ msgid "The registration of {name} and its results are deleted."
 msgstr "L'iscrizione di {name} e i suoi risultati vengono eliminati."
 
 #: src/lib/SetupChecklist.svelte
-msgid "The shooting range with its number of lanes."
-msgstr "Lo stand di tiro con il numero di bersagli."
+msgid "The shooting range with its number of lanes. Events without lanes, such as an annual programme, need none."
+msgstr "Lo stand di tiro con il numero di bersagli. Le manifestazioni senza bersagli, come un programma annuale, non ne hanno bisogno."
 
 #: src/routes/t/[tenantId]/users/+page.svelte
 msgid "The user loses access to this club. The account itself stays."

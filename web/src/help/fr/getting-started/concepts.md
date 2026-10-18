@@ -28,8 +28,9 @@ Une **manifestation** (anglais *event*) est un concours sur un ou plusieurs
 stands de tir, sur un ou plusieurs jours (la date est le jour principal ;
 les autres jours couvrent le tir anticipé et les manifestations sur
 plusieurs jours). Elle a une langue, utilisée pour les documents imprimés et
-les écrans kiosque, et quelques réglages comme la société exclue du concours
-de sections.
+les écrans kiosque, et des [modules](../user-guide/events.md#modules) qui
+activent ce dont elle a besoin, comme l’attribution des cibles, les
+distinctions ou le concours de sections.
 
 Une manifestation propose des **programmes** : chaque programme a des
 **passes** avec un nombre de coups et un maximum de points, des **prix** par

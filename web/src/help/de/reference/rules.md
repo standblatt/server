@@ -90,9 +90,9 @@ abgeschlossene Resultate von Schützen mit Verein.
   1000, also auf drei Nachkommastellen abgeschnitten.
 - Gleichstand: mehr Teilnehmer zuerst, dann die sortierten Werte einzeln
   verglichen.
-- Der in den Einstellungen des Anlasses ausgeschlossene Verein (meist der
-  Gastgeber) behält seinen Platz in der Liste, erhält aber keinen Rang
-  („ausser Konkurrenz“).
+- Der in den Einstellungen des Moduls *Vereinskonkurrenz* ausgeschlossene
+  Verein (meist der Gastgeber) behält seinen Platz in der Liste, erhält aber
+  keinen Rang („ausser Konkurrenz“).
 
 ## Sonderpreise {#special-prizes}
 

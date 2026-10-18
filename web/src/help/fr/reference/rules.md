@@ -89,9 +89,9 @@ société.
   d’obligatoires × 1000⌋ / 1000, c.-à-d. tronqué à trois décimales.
 - Égalité : plus de participants d’abord, puis les valeurs triées comparées
   une à une.
-- La société exclue dans les réglages de la manifestation (en général
-  l’organisatrice) garde sa place dans la liste mais ne reçoit pas de rang
-  (« hors concours »).
+- La société exclue dans les réglages du module *Concours de sections* (en
+  général l’organisatrice) garde sa place dans la liste mais ne reçoit pas
+  de rang (« hors concours »).
 
 ## Prix spéciaux {#special-prizes}
 

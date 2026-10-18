@@ -17,7 +17,7 @@ A **range** (German *Stand*) is a shooting range of the club with a number of **
 
 ## Events and programmes
 
-An **event** (*Anlass*) is a competition on one or more ranges on one or more days (the date is the main day; further days cover pre-shooting and multi-day events). It has a language, which is used for printed documents and kiosk screens, and a few settings such as the club excluded from the club competition.
+An **event** (*Anlass*) is a competition on one or more ranges on one or more days (the date is the main day; further days cover pre-shooting and multi-day events). It has a language, which is used for printed documents and kiosk screens, and [modules](../user-guide/events.md#modules) that switch on what it needs, such as lane assignment, awards or the club competition.
 
 An event offers **programmes** (*Stiche*): each programme has **series** (*Passen*) with a number of shots and maximum points, **prices** per age category and **award tiers** (wreath cards or prizes in kind) with a minimum total per age category. Programmes with the same name are **variants** (for example *Sport* and *Supported*); a shooter shoots one variant. A programme can be **combinable** with another programme: it then takes some of its series from that programme instead of being shot separately.
 
