@@ -376,8 +376,8 @@ func (s *Store) CopyProgrammes(ctx context.Context, tenantID, fromEventID, toEve
 }
 
 // CopyEvent creates a new event of the tenant with the ranges, schedule (dates shifted with the main day), organizer, timezone,
-// language, settings, booking hours (other days shifted, no deadline, booking off), all programmes and classifications of
-// another event, but no registrations; the source may be archived.
+// language, settings, chosen modules, booking hours (other days shifted, no deadline, booking off), all programmes and the
+// data of the module copiers of another event, but no registrations; the source may be archived.
 func (s *Store) CopyEvent(ctx context.Context, tenantID, fromEventID int64, name, startsOn string) (int64, error) {
 	var id int64
 	err := pgx.BeginFunc(ctx, s.pool, func(tx pgx.Tx) error {
@@ -388,11 +388,11 @@ func (s *Store) CopyEvent(ctx context.Context, tenantID, fromEventID int64, name
 			return err
 		}
 		sched = domain.NormalizeSchedule(sched.Shift(shift), startsOn)
-		if err := tx.QueryRow(ctx, `INSERT INTO events (tenant_id, name, starts_on, days, schedule, organizer, timezone, locale, settings, booking)
-			SELECT tenant_id, $3, $4, $5::date[], $6, organizer, timezone, locale, settings,
+		if err := tx.QueryRow(ctx, `INSERT INTO events (tenant_id, name, starts_on, days, schedule, organizer, timezone, locale, settings, modules, booking)
+			SELECT tenant_id, $3, $4, $5::date[], $6, organizer, timezone, locale, settings, modules || `+eventUsed+`,
 				booking - 'deadline' - 'days' || coalesce((SELECT jsonb_build_object('days', jsonb_object_agg((k::date + ($4::date - starts_on))::text, v))
 					FROM jsonb_each(booking->'days') AS x(k, v)), '{}')
-			FROM events WHERE tenant_id = $1 AND id = $2
+			FROM events e WHERE tenant_id = $1 AND id = $2
 			RETURNING id`, tenantID, fromEventID, name, startsOn, sched.Dates(), sched).Scan(&id); err != nil {
 			return err
 		}
@@ -403,7 +403,12 @@ func (s *Store) CopyEvent(ctx context.Context, tenantID, fromEventID int64, name
 		if _, err := copyProgrammes(ctx, tx, tenantID, fromEventID, id); err != nil {
 			return err
 		}
-		return copyClassifications(ctx, tx, tenantID, fromEventID, id)
+		for _, copy := range copiers {
+			if err := copy(ctx, tx, tenantID, fromEventID, id); err != nil {
+				return err
+			}
+		}
+		return nil
 	})
 	return id, mapErr(err)
 }

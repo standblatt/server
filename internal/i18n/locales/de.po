@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 10:13+0200\n"
+"POT-Creation-Date: 2026-10-18 10:50+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -917,6 +917,42 @@ msgstr "Der Schütze hat Anmeldungen und kann nicht gelöscht werden"
 #: internal/web/masterdata.go
 msgid "This license number already exists"
 msgstr "Diese Lizenznummer gibt es bereits"
+
+#: internal/web/modules.go
+msgid "Delete the classifications first"
+msgstr "Lösche zuerst die Wertungen"
+
+#: internal/web/modules.go
+msgid "Delete the helper links first"
+msgstr "Lösche zuerst die Helfer-Links"
+
+#: internal/web/modules.go
+msgid "Delete the kiosk links first"
+msgstr "Lösche zuerst die Kiosk-Links"
+
+#: internal/web/modules.go
+msgid "Programmes with awards use this module"
+msgstr "Programme mit Auszeichnungen verwenden diesen Baustein"
+
+#: internal/web/modules.go
+msgid "Programmes with several attempts use this module"
+msgstr "Programme mit mehreren Durchgängen verwenden diesen Baustein"
+
+#: internal/web/modules.go
+msgid "Programmes with special prizes use this module"
+msgstr "Programme mit Sonderpreisen verwenden diesen Baustein"
+
+#: internal/web/modules.go
+msgid "Switch the online booking link off first"
+msgstr "Schalte zuerst den Link der Online-Buchung aus"
+
+#: internal/web/modules.go
+msgid "The module is in use"
+msgstr "Der Baustein wird verwendet"
+
+#: internal/web/modules.go
+msgid "This module is off for this event"
+msgstr "Dieser Baustein ist für diesen Anlass ausgeschaltet"
 
 #: internal/web/my.go
 msgid "Another account uses this email address."

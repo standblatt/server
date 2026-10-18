@@ -9,6 +9,7 @@ import (
 	"github.com/danielgtaylor/huma/v2"
 
 	"github.com/standblatt/server/internal/domain"
+	"github.com/standblatt/server/internal/modules"
 	"github.com/standblatt/server/internal/realtime"
 	"github.com/standblatt/server/internal/store"
 )
@@ -291,7 +292,7 @@ func (s *Server) registerProgrammes(api huma.API) {
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "set-special-prizes", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/programmes/{programmeId}/special-prizes", Tags: []string{"programmes"},
+		OperationID: "set-special-prizes", Metadata: modules.Metadata(modules.SpecialPrizes), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/programmes/{programmeId}/special-prizes", Tags: []string{"programmes"},
 		Summary:       "Set the special prize rules of a programme; allowed while shooters are registered",
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *prizesIn) (*struct{}, error) {

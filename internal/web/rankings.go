@@ -9,6 +9,7 @@ import (
 	"github.com/danielgtaylor/huma/v2"
 
 	"github.com/standblatt/server/internal/domain"
+	"github.com/standblatt/server/internal/modules"
 	"github.com/standblatt/server/internal/store"
 )
 
@@ -156,7 +157,7 @@ func (s *Server) registerRankings(api huma.API) {
 
 	type tokensOut struct{ Body []store.KioskToken }
 	huma.Register(api, huma.Operation{
-		OperationID: "list-kiosk-tokens", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/kiosk-tokens", Tags: []string{"kiosk"},
+		OperationID: "list-kiosk-tokens", Metadata: modules.Metadata(modules.Kiosk), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/kiosk-tokens", Tags: []string{"kiosk"},
 	}, func(ctx context.Context, in *EventPath) (*tokensOut, error) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
 			return nil, err
@@ -178,7 +179,7 @@ func (s *Server) registerRankings(api huma.API) {
 		}
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "create-kiosk-token", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/kiosk-tokens", Tags: []string{"kiosk"},
+		OperationID: "create-kiosk-token", Metadata: modules.Metadata(modules.Kiosk), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/kiosk-tokens", Tags: []string{"kiosk"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *createIn) (*createOut, error) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {

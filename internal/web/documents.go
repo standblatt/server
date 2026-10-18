@@ -13,6 +13,7 @@ import (
 	"github.com/standblatt/server/internal/docs"
 	"github.com/standblatt/server/internal/domain"
 	"github.com/standblatt/server/internal/i18n"
+	"github.com/standblatt/server/internal/modules"
 	"github.com/standblatt/server/internal/realtime"
 	"github.com/standblatt/server/internal/store"
 )
@@ -133,6 +134,11 @@ func (s *Server) renderRegistrationDoc(ctx context.Context, tenantID, registrati
 	reg, ev, programmes, err := s.registrationContext(ctx, tenantID, registrationID)
 	if err != nil {
 		return rendered{}, err
+	}
+	if k := documentModules[document]; k != "" {
+		if err := requireModule(ev, k); err != nil {
+			return rendered{}, err
+		}
 	}
 	byID := map[int64]store.Programme{}
 	for _, p := range programmes {
@@ -321,7 +327,7 @@ func (s *Server) registerDocuments(api huma.API) {
 			}
 			return pdfOut(s.renderRegistrationDoc(ctx, in.TenantID, in.RegistrationID, in.Document))
 		})
-	huma.Register(api, pdfOp("wreath-card", "/api/tenants/{tenantId}/entries/{entryId}/wreath-card"),
+	huma.Register(api, withModule(pdfOp("wreath-card", "/api/tenants/{tenantId}/entries/{entryId}/wreath-card"), modules.Awards),
 		func(ctx context.Context, in *EntryPath) (*PDFOutput, error) {
 			if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
 				return nil, err

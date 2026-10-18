@@ -101,12 +101,12 @@ func TestEventWithoutRange(t *testing.T) {
 
 	code, b := e.do(boss, "POST", base+"/events", map[string]any{"name": "Annual programme", "startsOn": "2027-03-01"})
 	expect(t, "create an event without a range", code, 201, b)
-	code, b = e.do(boss, "PUT", evPath, map[string]any{"name": "Indoor", "startsOn": "2026-11-20", "settings": store.EventSettings{NoLaneSheet: true}})
+	code, b = e.do(boss, "PUT", evPath, map[string]any{"name": "Indoor", "startsOn": "2026-11-20", "modules": []string{"control_strip", "booking"}})
 	expect(t, "drop the range", code, 204, b)
 	var ev store.Event
 	_, b = e.do(boss, "GET", evPath, nil)
 	json.Unmarshal(b, &ev)
-	if len(ev.Ranges) != 0 || !ev.Settings.NoLaneSheet || ev.Settings.NoControlStrip {
+	if len(ev.Ranges) != 0 || fmt.Sprint(ev.Modules) != "[control_strip]" {
 		t.Fatalf("event without a range: %s", b)
 	}
 	code, b = e.do(boss, "GET", evPath+"/lanes", nil)
@@ -118,4 +118,10 @@ func TestEventWithoutRange(t *testing.T) {
 	expect(t, "lane on an event without a range", code, 422, b)
 	code, b = e.do(boss, "POST", evPath+"/registrations", web.RegistrationInput{ShooterID: f.shooter, Programmes: []domain.ProgrammeChoice{{ProgrammeID: f.main}}})
 	expect(t, "register without a lane", code, 201, b)
+	var reg store.Registration
+	json.Unmarshal(b, &reg)
+	code, b = e.do(boss, "GET", fmt.Sprintf("%s/registrations/%d/documents/lane_sheet", base, reg.ID), nil)
+	expect(t, "lane sheet switched off", code, 404, b)
+	code, _ = e.do(boss, "GET", fmt.Sprintf("%s/registrations/%d/documents/control_strip", base, reg.ID), nil)
+	expect(t, "control strip", code, 200, nil)
 }

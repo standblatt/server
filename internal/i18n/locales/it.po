@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 10:13+0200\n"
+"POT-Creation-Date: 2026-10-18 10:50+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -917,6 +917,42 @@ msgstr "Il tiratore ha iscrizioni e non può essere eliminato"
 #: internal/web/masterdata.go
 msgid "This license number already exists"
 msgstr "Questo numero di licenza esiste già"
+
+#: internal/web/modules.go
+msgid "Delete the classifications first"
+msgstr "Elimina prima le classifiche generali"
+
+#: internal/web/modules.go
+msgid "Delete the helper links first"
+msgstr "Elimina prima i link aiutante"
+
+#: internal/web/modules.go
+msgid "Delete the kiosk links first"
+msgstr "Elimina prima i link kiosk"
+
+#: internal/web/modules.go
+msgid "Programmes with awards use this module"
+msgstr "Programmi con distinzioni usano questo modulo"
+
+#: internal/web/modules.go
+msgid "Programmes with several attempts use this module"
+msgstr "Programmi con più tentativi usano questo modulo"
+
+#: internal/web/modules.go
+msgid "Programmes with special prizes use this module"
+msgstr "Programmi con premi speciali usano questo modulo"
+
+#: internal/web/modules.go
+msgid "Switch the online booking link off first"
+msgstr "Disattiva prima il link della prenotazione online"
+
+#: internal/web/modules.go
+msgid "The module is in use"
+msgstr "Il modulo è in uso"
+
+#: internal/web/modules.go
+msgid "This module is off for this event"
+msgstr "Questo modulo è disattivato per questa manifestazione"
 
 #: internal/web/my.go
 msgid "Another account uses this email address."

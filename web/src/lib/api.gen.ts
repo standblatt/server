@@ -410,6 +410,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/modules": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** The modules a club or an event can switch on, with what they require */
+        get: operations["list-modules"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/my": {
         parameters: {
             query?: never;
@@ -2671,6 +2688,10 @@ export interface components {
              * @enum {string}
              */
             locale: "en" | "de" | "fr" | "it";
+            /** @description The modules that are on: the chosen ones, the ones with data and what they require */
+            modules: ("reservations" | "booking" | "lane_sheet" | "control_strip" | "ammo" | "attempts" | "awards" | "special_prizes" | "club_competition" | "classifications" | "kiosk" | "helpers")[];
+            /** @description The modules with data; they cannot be switched off */
+            modulesInUse: ("reservations" | "booking" | "lane_sheet" | "control_strip" | "ammo" | "attempts" | "awards" | "special_prizes" | "club_competition" | "classifications" | "kiosk" | "helpers")[];
             name: string;
             organizer: string;
             /** @description In the order shown; documents print on the first one */
@@ -2687,6 +2708,8 @@ export interface components {
         EventInput: {
             /** @enum {string} */
             locale?: "en" | "de" | "fr" | "it";
+            /** @description The modules to switch on; left out: all but the ammunition desk when creating, unchanged when updating */
+            modules?: ("reservations" | "booking" | "lane_sheet" | "control_strip" | "ammo" | "attempts" | "awards" | "special_prizes" | "club_competition" | "classifications" | "kiosk" | "helpers")[];
             name: string;
             organizer?: string;
             /** @description Empty for an event without lanes: results are entered afterwards */
@@ -2707,14 +2730,8 @@ export interface components {
             name: string;
         };
         EventSettings: {
-            /** @description The organizer hands out the ammunition; shows the Ammo button on the dashboard */
-            ammoIssue?: boolean;
             /** Format: int64 */
             excludedClubId?: number;
-            /** @description The event prints no control strips */
-            noControlStrip?: boolean;
-            /** @description The event prints no lane sheets */
-            noLaneSheet?: boolean;
             printAwardValue?: boolean;
             showLaneStatus?: boolean;
         };
@@ -2967,6 +2984,13 @@ export interface components {
              * @description The club that stays
              */
             intoId: number;
+        };
+        Module: {
+            key: string;
+            /** @enum {string} */
+            level: "club" | "event";
+            needsRange: boolean;
+            requires: string[];
         };
         MyOverview: {
             /**
@@ -4607,6 +4631,35 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["SetupOutBody"];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "list-modules": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Module"][];
                 };
             };
             /** @description Error */

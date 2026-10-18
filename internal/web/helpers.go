@@ -11,6 +11,7 @@ import (
 	"github.com/danielgtaylor/huma/v2"
 
 	"github.com/standblatt/server/internal/domain"
+	"github.com/standblatt/server/internal/modules"
 	"github.com/standblatt/server/internal/realtime"
 	"github.com/standblatt/server/internal/store"
 )
@@ -156,7 +157,7 @@ func sameProgrammes(entries []store.Entry, choices []domain.ProgrammeChoice) boo
 func (s *Server) registerHelpers(api huma.API) {
 	type listOut struct{ Body []store.HelperCode }
 	huma.Register(api, huma.Operation{
-		OperationID: "list-helper-codes", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/helper-codes", Tags: []string{"helpers"},
+		OperationID: "list-helper-codes", Metadata: modules.Metadata(modules.Helpers), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/helper-codes", Tags: []string{"helpers"},
 	}, func(ctx context.Context, in *EventPath) (*listOut, error) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
 			return nil, err
@@ -181,7 +182,7 @@ func (s *Server) registerHelpers(api huma.API) {
 		}
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "create-helper-code", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/helper-codes", Tags: []string{"helpers"},
+		OperationID: "create-helper-code", Metadata: modules.Metadata(modules.Helpers), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/helper-codes", Tags: []string{"helpers"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *createIn) (*createOut, error) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {

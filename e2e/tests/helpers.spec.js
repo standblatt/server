@@ -14,7 +14,7 @@ test.describe("helper links", () => {
     ids.tenant = await createClub(page, club, admin);
     const base = `/api/tenants/${ids.tenant}`;
     const range = await api(page, "POST", `${base}/ranges`, { name: "10m", laneCount: 6 });
-    ids.event = (await api(page, "POST", `${base}/events`, { rangeIds: [range.id], name: "Helper match", startsOn: "2026-11-20", settings: { ammoIssue: true } })).id;
+    ids.event = (await api(page, "POST", `${base}/events`, { rangeIds: [range.id], name: "Helper match", startsOn: "2026-11-20", modules: ["reservations", "lane_sheet", "control_strip", "ammo", "awards", "kiosk", "helpers"] })).id;
     ids.main = (await api(page, "POST", `${base}/events/${ids.event}/programmes`, {
       name: "Main", series: [{ shots: 10, maxPoints: 100 }, { shots: 10, maxPoints: 100 }], prices: [{ ageCategory: "elite", price: 10 }], awards: [],
     })).id;

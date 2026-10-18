@@ -14,6 +14,7 @@ The help for club admins, staff and shooters is part of the app under `/help` (s
 ## Development
 
 - [Architecture](developer/architecture.md)
+- [Modules](developer/modules.md)
 - [Development](developer/development.md)
 - [Database](developer/database.md)
 - [API](developer/api.md)

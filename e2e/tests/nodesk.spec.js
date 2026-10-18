@@ -52,7 +52,8 @@ test.describe("events without a desk", () => {
     await c(page, "button", "Save").click();
     await expect(page.locator("[data-sonner-toast]").first()).toBeVisible();
     const ev = await api(page, "GET", `/api/tenants/${ids.tenant}/events/${ids.event}`);
-    expect(ev.settings).toMatchObject({ noLaneSheet: true, noControlStrip: true });
+    expect(ev.modules).not.toContain("lane_sheet");
+    expect(ev.modules).not.toContain("control_strip");
 
     await page.goto(`/t/${ids.tenant}/events/${ids.event}?register=${ids.shooter}`);
     const reg = page.getByRole("dialog");

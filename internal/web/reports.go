@@ -16,6 +16,7 @@ import (
 	"github.com/standblatt/server/internal/docs"
 	"github.com/standblatt/server/internal/domain"
 	"github.com/standblatt/server/internal/i18n"
+	"github.com/standblatt/server/internal/modules"
 	"github.com/standblatt/server/internal/store"
 )
 
@@ -643,7 +644,7 @@ func (s *Server) registerReports(api huma.API) {
 
 	type clubOut struct{ Body ClubCompetitionView }
 	huma.Register(api, huma.Operation{
-		OperationID: "get-club-competition", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/club-competition", Tags: []string{"reports"},
+		OperationID: "get-club-competition", Metadata: modules.Metadata(modules.ClubCompetition), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/club-competition", Tags: []string{"reports"},
 	}, func(ctx context.Context, in *EventPath) (*clubOut, error) {
 		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
 			return nil, err
@@ -671,6 +672,11 @@ func (s *Server) registerReports(api huma.API) {
 		d, err := s.loadEventData(ctx, in.TenantID, in.EventID)
 		if err != nil {
 			return nil, err
+		}
+		if k := reportModules[in.Report]; k != "" {
+			if err := requireModule(d.event, k); err != nil {
+				return nil, err
+			}
 		}
 		if in.Report == ReportBookings {
 			if d.bookings, err = s.Store.ListBookingRequests(ctx, in.TenantID, in.EventID); err != nil {

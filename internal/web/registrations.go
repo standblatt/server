@@ -13,6 +13,7 @@ import (
 	"github.com/danielgtaylor/huma/v2"
 
 	"github.com/standblatt/server/internal/domain"
+	"github.com/standblatt/server/internal/modules"
 	"github.com/standblatt/server/internal/realtime"
 	"github.com/standblatt/server/internal/store"
 )
@@ -223,9 +224,9 @@ func (s *Server) registerRegistrations(api huma.API) {
 		return &regOut{Body: r}, err
 	})
 
-	change := func(op, method, suffix string, run func(ctx context.Context, tenantID, id int64) error) {
+	change := func(op, method, suffix, module string, run func(ctx context.Context, tenantID, id int64) error) {
 		huma.Register(api, huma.Operation{
-			OperationID: op, Method: method, Path: "/api/tenants/{tenantId}/registrations/{registrationId}" + suffix, Tags: []string{"registrations"},
+			OperationID: op, Metadata: modules.Metadata(module), Method: method, Path: "/api/tenants/{tenantId}/registrations/{registrationId}" + suffix, Tags: []string{"registrations"},
 			DefaultStatus: http.StatusNoContent,
 		}, func(ctx context.Context, in *RegistrationPath) (*struct{}, error) {
 			if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
@@ -242,12 +243,12 @@ func (s *Server) registerRegistrations(api huma.API) {
 			return nil, nil
 		})
 	}
-	change("finish-registration", http.MethodPost, "/finish", s.Store.FinishRegistration)
-	change("delete-registration", http.MethodDelete, "", s.Store.DeleteRegistration)
-	change("issue-ammo", http.MethodPost, "/ammo", s.Store.IssueAmmo)
-	change("issue-awards", http.MethodPost, "/awards-issued", s.Store.IssueAwards)
-	change("revoke-ammo", http.MethodDelete, "/ammo", s.Store.RevokeAmmo)
-	change("revoke-awards", http.MethodDelete, "/awards-issued", s.Store.RevokeAwards)
+	change("finish-registration", http.MethodPost, "/finish", "", s.Store.FinishRegistration)
+	change("delete-registration", http.MethodDelete, "", "", s.Store.DeleteRegistration)
+	change("issue-ammo", http.MethodPost, "/ammo", modules.Ammo, s.Store.IssueAmmo)
+	change("issue-awards", http.MethodPost, "/awards-issued", modules.Awards, s.Store.IssueAwards)
+	change("revoke-ammo", http.MethodDelete, "/ammo", modules.Ammo, s.Store.RevokeAmmo)
+	change("revoke-awards", http.MethodDelete, "/awards-issued", modules.Awards, s.Store.RevokeAwards)
 
 	type lanesOut struct{ Body []RangeLanes }
 	huma.Register(api, huma.Operation{

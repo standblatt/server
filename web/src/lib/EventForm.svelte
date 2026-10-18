@@ -35,7 +35,7 @@
 				schedule: {},
 				organizer: '',
 				locale: currentLocale(),
-				settings: { showLaneStatus: false, printAwardValue: true, ammoIssue: false }
+				settings: { showLaneStatus: false, printAwardValue: true }
 			}
 	);
 	let name = $state(start.name);
@@ -54,11 +54,19 @@
 	let organizer = $state(start.organizer ?? '');
 	let locale = $state<Locale>(start.locale ?? currentLocale());
 	let showLaneStatus = $state(start.settings?.showLaneStatus ?? false);
-	let ammoIssue = $state(start.settings?.ammoIssue ?? false);
+	const mods = start.modules;
+	let ammoIssue = $state(!!mods?.includes('ammo'));
 	let printAwardValue = $state(start.settings?.printAwardValue ?? true);
 	let excludedClubId = $state(start.settings?.excludedClubId ?? 0);
-	let laneSheet = $state(!start.settings?.noLaneSheet);
-	let controlStrip = $state(!start.settings?.noControlStrip);
+	let laneSheet = $state(!!mods?.includes('lane_sheet'));
+	let controlStrip = $state(!!mods?.includes('control_strip'));
+	/** The modules of an edited event with the switches of this form applied; undefined for a new event (server defaults). */
+	function modules() {
+		if (!mods) return undefined;
+		const set = new Set(mods);
+		for (const [k, on] of [['lane_sheet', laneSheet], ['control_strip', controlStrip], ['ammo', ammoIssue]] as const) on ? set.add(k) : set.delete(k);
+		return [...set];
+	}
 	let error = $state('');
 	let busy = $state(false);
 
@@ -76,7 +84,8 @@
 				organizer,
 				timezone: start.timezone,
 				locale,
-				settings: { showLaneStatus, printAwardValue, ammoIssue, excludedClubId: excludedClubId || undefined, noLaneSheet: !laneSheet, noControlStrip: !controlStrip }
+				settings: { showLaneStatus, printAwardValue, excludedClubId: excludedClubId || undefined },
+				modules: modules()
 			});
 		} catch (err) {
 			error = (err as Error).message;
@@ -114,11 +123,11 @@
 			{#each clubs as c (c.id)}<NativeSelect.Option value={c.id}>{c.name}</NativeSelect.Option>{/each}
 		</NativeSelect.Root>
 	</FormField>
-	<fieldset class="grid gap-1.5 rounded-md border p-3 sm:col-span-2">
+	{#if mods}<fieldset class="grid gap-1.5 rounded-md border p-3 sm:col-span-2">
 		<legend class="px-1 text-sm font-medium">{$t`Documents at registration`}</legend>
 		<label class="flex items-center gap-2 text-sm"><Checkbox bind:checked={laneSheet} />{$t`Lane sheet`}</label>
 		<label class="flex items-center gap-2 text-sm"><Checkbox bind:checked={controlStrip} />{$t`Control strip`}</label>
-	</fieldset>
+	</fieldset>{/if}
 	<label class="flex items-center justify-between gap-3 rounded-md border p-3 text-sm sm:col-span-2">
 		{$t`Show lane status on the rankings`}
 		<Switch bind:checked={showLaneStatus} />
@@ -127,10 +136,10 @@
 		{$t`Print the award value on wreath cards`}
 		<Switch bind:checked={printAwardValue} />
 	</label>
-	<label class="flex items-center justify-between gap-3 rounded-md border p-3 text-sm sm:col-span-2">
+	{#if mods}<label class="flex items-center justify-between gap-3 rounded-md border p-3 text-sm sm:col-span-2">
 		{$t`The organizer hands out the ammunition (Ammo button on the dashboard)`}
 		<Switch bind:checked={ammoIssue} />
-	</label>
+	</label>{/if}
 	<FormError message={error} class="sm:col-span-2" />
 	<div class="flex justify-end sm:col-span-2"><Button type="submit" disabled={busy}>{submitLabel}</Button></div>
 </form>

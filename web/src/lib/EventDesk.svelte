@@ -49,8 +49,8 @@
 		() => eventId
 	);
 	const archived = $derived(!!event.data?.archivedAt);
-	const ammoIssue = $derived(!!event.data?.settings.ammoIssue);
-	const laneSheet = $derived(!event.data?.settings.noLaneSheet);
+	const ammoIssue = $derived(!!event.data?.modules.includes('ammo'));
+	const laneSheet = $derived(!!event.data?.modules.includes('lane_sheet'));
 	const registrations = registrationsQuery(
 		() => tenantId,
 		() => eventId

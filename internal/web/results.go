@@ -8,6 +8,7 @@ import (
 	"github.com/danielgtaylor/huma/v2"
 
 	"github.com/standblatt/server/internal/domain"
+	"github.com/standblatt/server/internal/modules"
 	"github.com/standblatt/server/internal/realtime"
 	"github.com/standblatt/server/internal/store"
 )
@@ -330,7 +331,7 @@ func (s *Server) registerResults(api huma.API) {
 		}
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "set-award", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/entries/{entryId}/award", Tags: []string{"results"},
+		OperationID: "set-award", Metadata: modules.Metadata(modules.Awards), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/entries/{entryId}/award", Tags: []string{"results"},
 	}, func(ctx context.Context, in *awardIn) (*sheetOut, error) {
 		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
 			return nil, err

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 10:13+0200\n"
+"POT-Creation-Date: 2026-10-18 10:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -916,6 +916,42 @@ msgstr ""
 
 #: internal/web/masterdata.go
 msgid "This license number already exists"
+msgstr ""
+
+#: internal/web/modules.go
+msgid "Delete the classifications first"
+msgstr ""
+
+#: internal/web/modules.go
+msgid "Delete the helper links first"
+msgstr ""
+
+#: internal/web/modules.go
+msgid "Delete the kiosk links first"
+msgstr ""
+
+#: internal/web/modules.go
+msgid "Programmes with awards use this module"
+msgstr ""
+
+#: internal/web/modules.go
+msgid "Programmes with several attempts use this module"
+msgstr ""
+
+#: internal/web/modules.go
+msgid "Programmes with special prizes use this module"
+msgstr ""
+
+#: internal/web/modules.go
+msgid "Switch the online booking link off first"
+msgstr ""
+
+#: internal/web/modules.go
+msgid "The module is in use"
+msgstr ""
+
+#: internal/web/modules.go
+msgid "This module is off for this event"
 msgstr ""
 
 #: internal/web/my.go

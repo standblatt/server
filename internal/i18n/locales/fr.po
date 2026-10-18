@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 10:13+0200\n"
+"POT-Creation-Date: 2026-10-18 10:50+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -918,6 +918,42 @@ msgstr "Le tireur a des inscriptions et ne peut pas être supprimé"
 msgid "This license number already exists"
 msgstr "Ce numéro de licence existe déjà"
 
+#: internal/web/modules.go
+msgid "Delete the classifications first"
+msgstr "Supprimez d'abord les classements généraux"
+
+#: internal/web/modules.go
+msgid "Delete the helper links first"
+msgstr "Supprimez d'abord les liens d'aide"
+
+#: internal/web/modules.go
+msgid "Delete the kiosk links first"
+msgstr "Supprimez d'abord les liens kiosque"
+
+#: internal/web/modules.go
+msgid "Programmes with awards use this module"
+msgstr "Des programmes avec distinctions utilisent ce module"
+
+#: internal/web/modules.go
+msgid "Programmes with several attempts use this module"
+msgstr "Des programmes à plusieurs tentatives utilisent ce module"
+
+#: internal/web/modules.go
+msgid "Programmes with special prizes use this module"
+msgstr "Des programmes avec prix spéciaux utilisent ce module"
+
+#: internal/web/modules.go
+msgid "Switch the online booking link off first"
+msgstr "Désactivez d'abord le lien de réservation en ligne"
+
+#: internal/web/modules.go
+msgid "The module is in use"
+msgstr "Le module est utilisé"
+
+#: internal/web/modules.go
+msgid "This module is off for this event"
+msgstr "Ce module est désactivé pour cette manifestation"
+
 #: internal/web/my.go
 msgid "Another account uses this email address."
 msgstr "Un autre compte utilise cette adresse e-mail."
@@ -1412,7 +1448,7 @@ msgstr "Manifestations"
 
 #: internal/web/templates/admin_club.html
 msgid "Newest first. Archived events are read-only."
-msgstr "Les plus récentes d’abord. Les manifestations archivées sont en lecture seule."
+msgstr "Les plus récentes d'abord. Les manifestations archivées sont en lecture seule."
 
 #: internal/web/templates/admin_club.html
 msgid "No events yet"

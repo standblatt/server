@@ -8,6 +8,7 @@ import (
 	"github.com/jackc/pgx/v5"
 
 	"github.com/standblatt/server/internal/domain"
+	"github.com/standblatt/server/internal/modules"
 )
 
 // EventSettings are per-event options.
@@ -15,9 +16,6 @@ type EventSettings struct {
 	ExcludedClubID  *int64 `json:"excludedClubId,omitempty" required:"false"`
 	ShowLaneStatus  bool   `json:"showLaneStatus" required:"false"`
 	PrintAwardValue bool   `json:"printAwardValue" required:"false"`
-	AmmoIssue       bool   `json:"ammoIssue" required:"false" doc:"The organizer hands out the ammunition; shows the Ammo button on the dashboard"`
-	NoLaneSheet     bool   `json:"noLaneSheet" required:"false" doc:"The event prints no lane sheets"`
-	NoControlStrip  bool   `json:"noControlStrip" required:"false" doc:"The event prints no control strips"`
 }
 
 // EventRange is a range an event is shot on.
@@ -41,6 +39,8 @@ type Event struct {
 	Locale     string          `json:"locale" enum:"en,de,fr,it" doc:"Language of documents and kiosk displays"`
 	Settings   EventSettings   `json:"settings"`
 	ArchivedAt *time.Time      `json:"archivedAt,omitempty" doc:"Set when the event is archived: everything stays readable, nothing can be changed"`
+	Modules    []string        `json:"modules" enum:"reservations,booking,lane_sheet,control_strip,ammo,attempts,awards,special_prizes,club_competition,classifications,kiosk,helpers" doc:"The modules that are on: the chosen ones, the ones with data and what they require"`
+	InUse      []string        `json:"modulesInUse" enum:"reservations,booking,lane_sheet,control_strip,ammo,attempts,awards,special_prizes,club_competition,classifications,kiosk,helpers" doc:"The modules with data; they cannot be switched off"`
 }
 
 // EventInput holds the editable fields of an event.
@@ -54,12 +54,13 @@ type EventInput struct {
 	Timezone  string          `json:"timezone" required:"false"`
 	Locale    string          `json:"locale" required:"false" enum:"en,de,fr,it"`
 	Settings  EventSettings   `json:"settings" required:"false"`
+	Modules   []string        `json:"modules,omitempty" required:"false" enum:"reservations,booking,lane_sheet,control_strip,ammo,attempts,awards,special_prizes,club_competition,classifications,kiosk,helpers" doc:"The modules to switch on; left out: all but the ammunition desk when creating, unchanged when updating"`
 }
 
-const eventCols = `e.id,
+var eventCols = `e.id,
 	coalesce((SELECT json_agg(json_build_object('id', rg.id, 'name', rg.name, 'laneCount', rg.lane_count, 'disabledLanes', rg.disabled_lanes) ORDER BY er.position)
 		FROM event_ranges er JOIN ranges rg ON rg.id = er.range_id WHERE er.event_id = e.id), '[]'),
-	e.name, e.starts_on::text, e.days::text[], e.schedule, e.organizer, e.timezone, e.locale, e.settings, e.archived_at`
+	e.name, e.starts_on::text, e.days::text[], e.schedule, e.organizer, e.timezone, e.locale, e.settings, e.archived_at, e.modules, ` + eventUsed
 
 // ErrRangeUsed is returned when a range with registrations or programmes is removed from an event.
 var ErrRangeUsed = errors.New("store: range has registrations or programmes")
@@ -71,7 +72,16 @@ func (s *Store) ListEvents(ctx context.Context, tenantID int64) ([]Event, error)
 	if err != nil {
 		return nil, err
 	}
-	return pgx.CollectRows(rows, pgx.RowToStructByPos[Event])
+	list, err := pgx.CollectRows(rows, pgx.RowToStructByPos[Event])
+	for i := range list {
+		list[i].effective()
+	}
+	return list, err
+}
+
+// effective turns the chosen modules into the ones that are on.
+func (e *Event) effective() {
+	e.Modules = modules.Effective(modules.Event, e.Modules, e.InUse, len(e.Ranges) > 0)
 }
 
 // GetEvent returns one event of a tenant.
@@ -81,6 +91,7 @@ func (s *Store) GetEvent(ctx context.Context, tenantID, eventID int64) (Event, e
 		return Event{}, err
 	}
 	ev, err := pgx.CollectExactlyOneRow(rows, pgx.RowToStructByPos[Event])
+	ev.effective()
 	return ev, mapErr(err)
 }
 
@@ -89,10 +100,14 @@ func (s *Store) CreateEvent(ctx context.Context, tenantID int64, in EventInput) 
 	var id int64
 	in.Schedule = domain.NormalizeSchedule(in.Schedule, in.StartsOn)
 	in.Days = in.Schedule.Dates()
+	if in.Modules == nil {
+		in.Modules = modules.Defaults(modules.Event)
+	}
 	err := pgx.BeginFunc(ctx, s.pool, func(tx pgx.Tx) error {
-		if err := tx.QueryRow(ctx, `INSERT INTO events (tenant_id, name, starts_on, days, schedule, organizer, timezone, locale, settings)
-			VALUES ($1, $2, $3, $4::date[], $5, $6, $7, $8, $9) RETURNING id`,
-			tenantID, in.Name, in.StartsOn, in.Days, in.Schedule, in.Organizer, in.Timezone, in.Locale, in.Settings).Scan(&id); err != nil {
+		if err := tx.QueryRow(ctx, `INSERT INTO events (tenant_id, name, starts_on, days, schedule, organizer, timezone, locale, settings, modules)
+			VALUES ($1, $2, $3, $4::date[], $5, $6, $7, $8, $9, $10) RETURNING id`,
+			tenantID, in.Name, in.StartsOn, in.Days, in.Schedule, in.Organizer, in.Timezone, in.Locale, in.Settings,
+			modules.Effective(modules.Event, in.Modules, nil, true)).Scan(&id); err != nil {
 			return err
 		}
 		return setEventRanges(ctx, tx, tenantID, id, in.RangeIDs)
@@ -101,14 +116,25 @@ func (s *Store) CreateEvent(ctx context.Context, tenantID int64, in EventInput) 
 }
 
 // UpdateEvent changes an event of a tenant. ErrInUse when a range is unknown, ErrRangeUsed when a range
-// with registrations or programmes is dropped.
+// with registrations or programmes is dropped, ModuleUsedError when modules with data are switched off.
 func (s *Store) UpdateEvent(ctx context.Context, tenantID, eventID int64, in EventInput) error {
 	in.Schedule = domain.NormalizeSchedule(in.Schedule, in.StartsOn)
 	in.Days = in.Schedule.Dates()
 	err := pgx.BeginFunc(ctx, s.pool, func(tx pgx.Tx) error {
+		var chosen []string
+		if in.Modules != nil {
+			chosen = modules.Effective(modules.Event, in.Modules, nil, true)
+			var used []string
+			if err := tx.QueryRow(ctx, `SELECT `+eventUsed+` FROM events e WHERE e.tenant_id = $1 AND e.id = $2`, tenantID, eventID).Scan(&used); err != nil {
+				return err
+			}
+			if off := modules.Missing(used, chosen); len(off) > 0 {
+				return &ModuleUsedError{Keys: off}
+			}
+		}
 		tag, err := tx.Exec(ctx, `UPDATE events SET name = $3, starts_on = $4, days = $5::date[], schedule = $6, organizer = $7,
-			timezone = $8, locale = $9, settings = $10 WHERE tenant_id = $1 AND id = $2`,
-			tenantID, eventID, in.Name, in.StartsOn, in.Days, in.Schedule, in.Organizer, in.Timezone, in.Locale, in.Settings)
+			timezone = $8, locale = $9, settings = $10, modules = coalesce($11, modules) WHERE tenant_id = $1 AND id = $2`,
+			tenantID, eventID, in.Name, in.StartsOn, in.Days, in.Schedule, in.Organizer, in.Timezone, in.Locale, in.Settings, chosen)
 		if err != nil {
 			return err
 		}

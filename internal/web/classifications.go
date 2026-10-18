@@ -7,6 +7,7 @@ import (
 	"github.com/danielgtaylor/huma/v2"
 
 	"github.com/standblatt/server/internal/domain"
+	"github.com/standblatt/server/internal/modules"
 	"github.com/standblatt/server/internal/realtime"
 	"github.com/standblatt/server/internal/store"
 )
@@ -145,7 +146,7 @@ func (s *Server) checkClassification(ctx context.Context, tenantID, eventID int6
 func (s *Server) registerClassifications(api huma.API) {
 	type listOut struct{ Body []store.Classification }
 	huma.Register(api, huma.Operation{
-		OperationID: "list-classifications", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/classifications", Tags: []string{"classifications"},
+		OperationID: "list-classifications", Metadata: modules.Metadata(modules.Classifications), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/classifications", Tags: []string{"classifications"},
 	}, func(ctx context.Context, in *EventPath) (*listOut, error) {
 		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
 			return nil, err
@@ -160,7 +161,7 @@ func (s *Server) registerClassifications(api huma.API) {
 	}
 	type createOut struct{ Body store.Classification }
 	huma.Register(api, huma.Operation{
-		OperationID: "create-classification", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/classifications", Tags: []string{"classifications"},
+		OperationID: "create-classification", Metadata: modules.Metadata(modules.Classifications), Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/classifications", Tags: []string{"classifications"},
 		DefaultStatus: http.StatusCreated,
 	}, func(ctx context.Context, in *createIn) (*createOut, error) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
@@ -182,7 +183,7 @@ func (s *Server) registerClassifications(api huma.API) {
 		Body domain.ClassificationDefinition
 	}
 	huma.Register(api, huma.Operation{
-		OperationID: "update-classification", Method: http.MethodPut, Path: "/api/tenants/{tenantId}/events/{eventId}/classifications/{classificationId}", Tags: []string{"classifications"},
+		OperationID: "update-classification", Metadata: modules.Metadata(modules.Classifications), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/events/{eventId}/classifications/{classificationId}", Tags: []string{"classifications"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *updateIn) (*struct{}, error) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
@@ -199,7 +200,7 @@ func (s *Server) registerClassifications(api huma.API) {
 	})
 
 	huma.Register(api, huma.Operation{
-		OperationID: "delete-classification", Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/events/{eventId}/classifications/{classificationId}", Tags: []string{"classifications"},
+		OperationID: "delete-classification", Metadata: modules.Metadata(modules.Classifications), Method: http.MethodDelete, Path: "/api/tenants/{tenantId}/events/{eventId}/classifications/{classificationId}", Tags: []string{"classifications"},
 		DefaultStatus: http.StatusNoContent,
 	}, func(ctx context.Context, in *ClassificationPath) (*struct{}, error) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
@@ -214,7 +215,7 @@ func (s *Server) registerClassifications(api huma.API) {
 
 	type rankingsOut struct{ Body []ClassificationRanking }
 	huma.Register(api, huma.Operation{
-		OperationID: "get-classification-rankings", Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/classification-rankings", Tags: []string{"classifications"},
+		OperationID: "get-classification-rankings", Metadata: modules.Metadata(modules.Classifications), Method: http.MethodGet, Path: "/api/tenants/{tenantId}/events/{eventId}/classification-rankings", Tags: []string{"classifications"},
 	}, func(ctx context.Context, in *EventPath) (*rankingsOut, error) {
 		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
 			return nil, err

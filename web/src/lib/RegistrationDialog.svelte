@@ -81,8 +81,8 @@
 
 	let printLaneSheet = $state(true);
 	let printControlStrip = $state(true);
-	const laneSheet = $derived(!event.data?.settings.noLaneSheet);
-	const controlStrip = $derived(!event.data?.settings.noControlStrip);
+	const laneSheet = $derived(!!event.data?.modules.includes('lane_sheet'));
+	const controlStrip = $derived(!!event.data?.modules.includes('control_strip'));
 
 	const archived = $derived(!!event.data?.archivedAt);
 	const person = $derived(registration.data?.shooter ?? shooter.data);

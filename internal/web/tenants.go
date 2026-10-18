@@ -270,7 +270,10 @@ func (s *Server) registerTenants(api huma.API) {
 			return nil, err
 		}
 		err := s.Store.UpdateEvent(ctx, in.TenantID, in.EventID, in.Body)
+		var used *store.ModuleUsedError
 		switch {
+		case errors.As(err, &used):
+			return nil, moduleUsed(used)
 		case errors.Is(err, store.ErrInUse):
 			return nil, invalid("Range not found")
 		case errors.Is(err, store.ErrRangeUsed):

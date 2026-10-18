@@ -126,3 +126,42 @@ func TestEntriesBecomeFirstAttempts(t *testing.T) {
 		t.Fatalf("a second first attempt must collide, got %d entries", n)
 	}
 }
+
+func TestSettingsBecomeModules(t *testing.T) {
+	st := testdb.Bare(t)
+	ctx := context.Background()
+	if err := st.MigrateUntil(ctx, "0031_classifications.sql"); err != nil {
+		t.Fatal(err)
+	}
+	db := st.Pool()
+	var tid int64
+	if err := db.QueryRow(ctx, `INSERT INTO tenants (name) VALUES ('Club') RETURNING id`).Scan(&tid); err != nil {
+		t.Fatal(err)
+	}
+	insert := `INSERT INTO events (tenant_id, name, starts_on, days, settings, archived_at) VALUES ($1, $2, '2026-11-20', '{2026-11-20}', $3, $4)`
+	if _, err := db.Exec(ctx, insert, tid, "Plain", `{"showLaneStatus": true}`, nil); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := db.Exec(ctx, insert, tid, "Closed", `{"noLaneSheet": true, "noControlStrip": true, "ammoIssue": true}`, "2026-12-01T00:00:00Z"); err != nil {
+		t.Fatal(err)
+	}
+	if err := st.MigrateUntil(ctx, ""); err != nil {
+		t.Fatal(err)
+	}
+	got := map[string]string{}
+	rows, _ := db.Query(ctx, `SELECT name, array_to_string(modules, ','), settings::text FROM events`)
+	for rows.Next() {
+		var name, mods, settings string
+		rows.Scan(&name, &mods, &settings)
+		got[name] = mods + " " + settings
+	}
+	want := map[string]string{
+		"Plain":  `reservations,booking,attempts,awards,special_prizes,club_competition,classifications,kiosk,helpers,lane_sheet,control_strip {"showLaneStatus": true}`,
+		"Closed": `reservations,booking,attempts,awards,special_prizes,club_competition,classifications,kiosk,helpers,ammo {}`,
+	}
+	for k, v := range want {
+		if got[k] != v {
+			t.Errorf("%s: %s, want %s", k, got[k], v)
+		}
+	}
+}
