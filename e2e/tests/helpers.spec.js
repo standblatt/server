@@ -28,7 +28,7 @@ test.describe("helper links", () => {
     await page.close();
   });
 
-  test("creates a scorer link in the setup", async ({ page }) => {
+  test("creates a scorer link in the configuration", async ({ page }) => {
     await login(page, admin);
     await page.goto(`/t/${ids.tenant}/events/${ids.event}/config/helpers`);
     await page.locator("input[aria-label='Helper name']").fill("Scorer A");
