@@ -16,7 +16,7 @@ all’iscrizione.
 Un’iscrizione viene rifiutata quando:
 
 - un programma non appartiene alla manifestazione, è scelto due volte o non
-  è attivo;
+  è attivo, oppure sono scelti più tentativi di quanti ne consenta;
 - un programma non ha un prezzo per la categoria d’età del tiratore («non
   per questa categoria d’età»);
 - sono scelte due varianti dello stesso programma;
@@ -24,7 +24,8 @@ Un’iscrizione viene rifiutata quando:
   numero di serie scelte non corrisponde;
 - il bersaglio è occupato da un’altra iscrizione attiva o fuori servizio;
 - il tiratore è già iscritto a uno dei programmi di questa manifestazione
-  (un tiratore tira ogni programma una volta per manifestazione; un’altra
+  (un tiratore tira ogni programma una volta per manifestazione, salvo se
+  consente più [tentativi](../user-guide/programmes.md#attempts); un’altra
   variante in un’iscrizione separata è ammessa).
 
 Un bersaglio prenotato si può comunque usare dopo una conferma.

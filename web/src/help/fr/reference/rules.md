@@ -17,7 +17,7 @@ l’inscription.
 Une inscription est refusée quand :
 
 - un programme n’appartient pas à la manifestation, est choisi deux fois ou
-  n’est pas actif ;
+  n’est pas actif, ou plus de tentatives sont choisies qu’il n’en permet ;
 - un programme n’a pas de prix pour la catégorie d’âge du tireur (« pas pour
   cette catégorie d’âge ») ;
 - deux variantes du même programme sont choisies ;
@@ -25,8 +25,9 @@ Une inscription est refusée quand :
   ou le nombre de passes choisies ne correspond pas ;
 - la cible est occupée par une autre inscription active ou hors service ;
 - le tireur est déjà inscrit à l’un des programmes de cette manifestation
-  (un tireur tire chaque programme une fois par manifestation ; une autre
-  variante dans une inscription séparée est permise).
+  (un tireur tire chaque programme une fois par manifestation, sauf s’il
+  permet plusieurs [tentatives](../user-guide/programmes.md#attempts) ; une
+  autre variante dans une inscription séparée est permise).
 
 Une cible réservée peut quand même être utilisée après confirmation.
 

@@ -28,6 +28,7 @@
 				<Table.Head class="hidden sm:table-cell">{$t`Club`}</Table.Head>
 				{#each Array(ranking.seriesCount) as _, i (i)}<Table.Head class="hidden sm:table-cell text-right">{$t`S${i + 1}`}</Table.Head>{/each}
 				<Table.Head class="text-right">{$t`Total`}</Table.Head>
+				{#if ranking.repeatable}<Table.Head class="text-right" title={$t`Counting attempt of the shooter's attempts`}>{$t`Attempt`}</Table.Head>{/if}
 				{#if ranking.tracksMouches}<Table.Head class="text-right">{$t({ message: "M", comment: "Column header: mouches" })}</Table.Head>{/if}
 			</Table.Row>
 		</Table.Header>
@@ -46,10 +47,11 @@
 					<Table.Cell class="hidden sm:table-cell max-w-48 truncate">{l.club}</Table.Cell>
 					{#each Array(ranking.seriesCount) as _, i (i)}<Table.Cell class="hidden sm:table-cell text-right text-muted-foreground">{l.series[i] !== undefined ? fmt(l.series[i]) : '–'}</Table.Cell>{/each}
 					<Table.Cell class="text-right font-semibold">{fmt(l.total)}</Table.Cell>
+					{#if ranking.repeatable}<Table.Cell class="text-right text-muted-foreground" data-testid="attempt">{l.attempt}/{l.attempts}</Table.Cell>{/if}
 					{#if ranking.tracksMouches}<Table.Cell class="text-right">{l.mouches}</Table.Cell>{/if}
 				</Table.Row>
 			{:else}
-				<Table.Row><Table.Cell colspan={6 + ranking.seriesCount} class="py-8 text-center text-muted-foreground">{$t`No results yet.`}</Table.Cell></Table.Row>
+				<Table.Row><Table.Cell colspan={7 + ranking.seriesCount} class="py-8 text-center text-muted-foreground">{$t`No results yet.`}</Table.Cell></Table.Row>
 			{/each}
 		</Table.Body>
 	</Table.Root>

@@ -70,7 +70,9 @@
 		() => eventId
 	);
 	const previous = $derived(shooterId ? (eventRegistrations.data ?? []).filter((r) => r.shooter.id === shooterId) : []);
-	const taken = $derived(new Set(previous.flatMap((r) => r.entries.map((e) => e.programmeId))));
+	const used = $derived(
+		previous.flatMap((r) => r.entries).reduce((m, e) => m.set(e.programmeId, (m.get(e.programmeId) ?? 0) + 1), new Map<number, number>())
+	);
 	/** Name (with variant) of a programme by ID. */
 	const titleOf = (id: number) => {
 		const p = programmes.data?.find((x) => x.id === id);
@@ -201,7 +203,7 @@
 					programmes={programmes.data!}
 					lanes={lanes.data!}
 					initialClubId={clubId}
-					{taken}
+					{used}
 					submitLabel={$t`Register`}
 					onsubmit={register}
 				>

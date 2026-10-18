@@ -85,6 +85,7 @@ type eventData struct {
 	programmes map[int64]store.Programme
 	order      []store.Programme
 	facts      []store.EntryFact
+	counting   map[int64]bool
 	rankings   []ProgrammeRanking
 	bookings   []store.BookingRequest
 }
@@ -103,7 +104,10 @@ func (s *Server) loadEventData(ctx context.Context, tenantID, eventID int64) (ev
 	for _, p := range d.order {
 		d.programmes[p.ID] = p
 	}
-	d.facts, err = s.Store.ListEntryFacts(ctx, tenantID, eventID)
+	if d.facts, err = s.Store.ListEntryFacts(ctx, tenantID, eventID); err != nil {
+		return d, err
+	}
+	d.counting, err = s.Store.CountingEntries(ctx, tenantID, eventID)
 	return d, err
 }
 
@@ -205,7 +209,7 @@ func (d eventData) statistics() Statistics {
 	return st
 }
 
-// clubCompetition ranks the clubs by the first two series of completed entries in programmes that count for it.
+// clubCompetition ranks the clubs by the first two series of the counting attempts in programmes that count for it.
 func (d eventData) clubCompetition() ClubCompetitionView {
 	v := ClubCompetitionView{Programmes: []string{}, Ranked: []ClubCompetitionLine{}, Unranked: []ClubCompetitionLine{}}
 	for _, p := range d.order {
@@ -216,7 +220,7 @@ func (d eventData) clubCompetition() ClubCompetitionView {
 	names := map[int64][2]string{}
 	var scores []domain.ClubScore
 	for _, f := range d.facts {
-		if f.ClubID == nil || f.EntryStatus != "completed" || !d.programmes[f.ProgrammeID].CountsForClubCompetition {
+		if f.ClubID == nil || !d.counting[f.EntryID] || !d.programmes[f.ProgrammeID].CountsForClubCompetition {
 			continue
 		}
 		names[*f.ClubID] = [2]string{f.ClubName, f.ClubSSVNumber}
@@ -671,6 +675,10 @@ func (s *Server) registerReports(api huma.API) {
 			cols = append(cols, col(i18n.Tf(l, "S%d", i+1), 1, "R"))
 		}
 		cols = append(cols, col(i18n.T(l, "Total"), 1, "R"), col(i18n.T(l, "Mouches"), 1, "R"))
+		repeatable := p.AttemptLimit() != 1
+		if repeatable {
+			cols = append(cols, col(i18n.T(l, "Attempt"), 1, "C"), col(i18n.T(l, "Attempts"), 1, "C"))
+		}
 		sec := docs.Section{Columns: cols}
 		for _, r := range rankings {
 			if r.ProgrammeID != p.ID {
@@ -685,7 +693,11 @@ func (s *Server) registerReports(api huma.API) {
 					}
 					row = append(row, v)
 				}
-				sec.Rows = append(sec.Rows, append(row, docs.Points(line.Total), strconv.Itoa(line.Mouches)))
+				row = append(row, docs.Points(line.Total), strconv.Itoa(line.Mouches))
+				if repeatable {
+					row = append(row, strconv.Itoa(line.Attempt), strconv.Itoa(line.Attempts))
+				}
+				sec.Rows = append(sec.Rows, row)
 			}
 		}
 		title := programmeTitle(p.Name, p.Variant)

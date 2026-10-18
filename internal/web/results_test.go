@@ -331,3 +331,95 @@ func TestImportResults(t *testing.T) {
 		t.Fatalf("second import: %d %s", code, b)
 	}
 }
+
+func TestAttempts(t *testing.T) {
+	e := newEnv(t)
+	f := e.registrationFixture("Attempts")
+	e.user("boss", f.tenant, store.RoleAdmin)
+	boss := e.login("boss")
+	ctx := context.Background()
+	repeat := 4.0
+	def := domain.ProgrammeDefinition{Name: "Lucky", Attempts: 2, AwardCountingOnly: true,
+		Series: []domain.Series{{Shots: 5, MaxPoints: 100}}, Prices: []domain.Price{{AgeCategory: domain.Elite, Price: 10, RepeatPrice: &repeat}},
+		Awards: []domain.AwardTier{{Name: "Card", Kind: domain.AwardCard, Value: 5, Limits: []domain.AwardLimit{{AgeCategory: domain.Elite, Points: 50}}}}}
+	code, b := e.do(boss, "POST", fmt.Sprintf("/api/tenants/%d/events/%d/programmes", f.tenant, f.event), def)
+	expect(t, "create a programme with two attempts", code, 201, b)
+	var p store.Programme
+	json.Unmarshal(b, &p)
+
+	code, b = e.do(boss, "POST", fmt.Sprintf("/api/tenants/%d/events/%d/registrations", f.tenant, f.event),
+		web.RegistrationInput{ShooterID: f.shooter, Programmes: []domain.ProgrammeChoice{{ProgrammeID: p.ID, Count: 3}}})
+	expect(t, "more attempts than allowed", code, 422, b)
+	code, b = e.do(boss, "POST", fmt.Sprintf("/api/tenants/%d/events/%d/registrations", f.tenant, f.event),
+		web.RegistrationInput{ShooterID: f.shooter, Programmes: []domain.ProgrammeChoice{{ProgrammeID: p.ID, Count: 2}}})
+	expect(t, "register two attempts", code, 201, b)
+	var reg store.Registration
+	json.Unmarshal(b, &reg)
+	if len(reg.Entries) != 2 || reg.Entries[0].Attempt != 1 || reg.Entries[1].Attempt != 2 {
+		t.Fatalf("attempts: %s", b)
+	}
+	save := func(entry int64, points float64) web.ResultSheet {
+		t.Helper()
+		code, b := e.do(boss, "PUT", fmt.Sprintf("/api/tenants/%d/entries/%d/results", f.tenant, entry), map[string]any{"series": []map[string]any{{"points": points}}})
+		expect(t, "save results", code, 200, b)
+		var sheet web.ResultSheet
+		json.Unmarshal(b, &sheet)
+		return sheet
+	}
+	sheet := save(reg.Entries[0].ID, 60)
+	if sheet.Entries[0].Award == nil || sheet.Entries[0].Attempt != 1 || !sheet.Entries[0].Repeatable {
+		t.Fatalf("the only attempt counts and gets the card: %+v", sheet.Entries[0])
+	}
+	sheet = save(reg.Entries[1].ID, 80)
+	if sheet.Entries[0].Award != nil || len(sheet.Entries[0].EligibleAwards) != 0 || sheet.Entries[1].Award == nil {
+		t.Fatalf("the card moves to the better attempt: %+v", sheet.Entries)
+	}
+
+	code, b = e.do(boss, "POST", fmt.Sprintf("/api/tenants/%d/events/%d/results", f.tenant, f.event),
+		map[string]any{"shooterId": f.shooter, "programmeId": p.ID, "series": []map[string]any{{"points": 70}}})
+	expect(t, "no attempts left", code, 409, b)
+
+	code, b = e.do(boss, "GET", fmt.Sprintf("/api/tenants/%d/events/%d/rankings", f.tenant, f.event), nil)
+	expect(t, "rankings", code, 200, b)
+	var rankings []web.ProgrammeRanking
+	json.Unmarshal(b, &rankings)
+	for _, r := range rankings {
+		if r.ProgrammeID == p.ID && (!r.Repeatable || len(r.Lines) != 1 || r.Lines[0].Total != 80 || r.Lines[0].Attempt != 2 || r.Lines[0].Attempts != 2) {
+			t.Fatalf("ranking of the counting attempt: %+v", r)
+		}
+	}
+	facts, _ := e.st.ListEntryFacts(ctx, f.tenant, f.event)
+	revenue := 0.0
+	for _, fa := range facts {
+		if fa.ProgrammeID == p.ID {
+			revenue += fa.Price
+		}
+	}
+	if revenue != 14 {
+		t.Fatalf("price of the attempts: %v", revenue)
+	}
+
+	def.Attempts = 1
+	code, b = e.do(boss, "PUT", fmt.Sprintf("/api/tenants/%d/programmes/%d", f.tenant, p.ID), def)
+	expect(t, "fewer attempts than shot", code, 409, b)
+	code, b = e.do(boss, "PUT", fmt.Sprintf("/api/tenants/%d/programmes/%d/combination", f.tenant, f.main), map[string]any{"combinableWithId": p.ID})
+	expect(t, "combine with a repeatable programme", code, 409, b)
+
+	def.Attempts = 3
+	code, b = e.do(boss, "PUT", fmt.Sprintf("/api/tenants/%d/programmes/%d", f.tenant, p.ID), def)
+	expect(t, "a third attempt while in use", code, 204, b)
+	code, b = e.do(boss, "POST", fmt.Sprintf("/api/tenants/%d/events/%d/results", f.tenant, f.event),
+		map[string]any{"shooterId": f.shooter, "programmeId": p.ID, "series": []map[string]any{{"points": 90}}})
+	expect(t, "third attempt in a new registration", code, 200, b)
+	json.Unmarshal(b, &sheet)
+	if sheet.Registration.ID == reg.ID || sheet.Entries[0].Attempt != 3 || sheet.Entries[0].Award == nil {
+		t.Fatalf("third attempt: %s", b)
+	}
+	code, b = e.do(boss, "GET", fmt.Sprintf("/api/tenants/%d/registrations/%d/results", f.tenant, reg.ID), nil)
+	expect(t, "first registration", code, 200, b)
+	var first web.ResultSheet
+	json.Unmarshal(b, &first)
+	if first.Entries[1].Award != nil {
+		t.Fatalf("the card left the earlier registration: %+v", first.Entries[1])
+	}
+}

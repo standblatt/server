@@ -10,10 +10,13 @@ import (
 	"github.com/standblatt/server/internal/domain"
 )
 
-// RankingRow is a completed programme result of a shooter, before ranking.
+// RankingRow is a completed programme result of a shooter, before ranking. Attempts is set by CountingRows.
 type RankingRow struct {
 	ProgrammeID int64
 	EntryID     int64
+	ShooterID   int64
+	Attempt     int
+	Rule        domain.AttemptRule
 	Firstname   string
 	Lastname    string
 	Birthday    string
@@ -22,21 +25,24 @@ type RankingRow struct {
 	AwardName   string
 	Series      []float64
 	Mouches     int
+	Attempts    int
 }
 
 // ListRankingRows returns the completed results of all programmes of an event.
 func (s *Store) ListRankingRows(ctx context.Context, tenantID, eventID int64) ([]RankingRow, error) {
-	rows, err := s.pool.Query(ctx, `SELECT en.programme_id, en.id, sh.firstname, sh.lastname, coalesce(sh.birthday::text, ''),
-			coalesce(c.name, ''), r.age_category, coalesce(t.name, ''),
-			array_agg(re.points::float8 ORDER BY re.series_number), coalesce(sum(re.mouches), 0)
+	rows, err := s.pool.Query(ctx, `SELECT en.programme_id, en.id, en.shooter_id, en.attempt, p.attempt_rule,
+			sh.firstname, sh.lastname, coalesce(sh.birthday::text, ''), coalesce(c.name, ''), r.age_category, coalesce(t.name, ''),
+			array_agg(re.points::float8 ORDER BY re.series_number), coalesce(sum(re.mouches), 0), 0
 		FROM entries en
+		JOIN programmes p ON p.id = en.programme_id
 		JOIN registrations r ON r.id = en.registration_id
 		JOIN shooters sh ON sh.id = r.shooter_id
 		LEFT JOIN clubs c ON c.id = r.club_id
 		LEFT JOIN award_tiers t ON t.id = en.award_tier_id
 		JOIN results re ON re.entry_id = en.id
 		WHERE en.tenant_id = $1 AND en.event_id = $2 AND en.status = 'completed'
-		GROUP BY en.id, sh.id, c.name, r.age_category, t.name`, tenantID, eventID)
+		GROUP BY en.id, p.attempt_rule, sh.id, c.name, r.age_category, t.name
+		ORDER BY en.programme_id, en.shooter_id, en.attempt`, tenantID, eventID)
 	if err != nil {
 		return nil, err
 	}
@@ -90,12 +96,57 @@ type Placing struct {
 	Participants int
 }
 
-// Placings ranks every programme of an event with domain.Rank and returns the place of each completed entry.
-func (s *Store) Placings(ctx context.Context, tenantID, eventID int64) (map[int64]Placing, error) {
+// Entry turns a ranking row into the input of domain.Rank.
+func (r RankingRow) Entry() domain.RankingEntry {
+	total := 0.0
+	for _, v := range r.Series {
+		total += v
+	}
+	return domain.RankingEntry{Total: math.Round(total*100) / 100, Mouches: r.Mouches, Series: r.Series, Birthday: r.Birthday, Category: r.Category}
+}
+
+// CountingRows keeps the counting attempt of every shooter in every programme, by the programme's attempt rule, and
+// sets its Attempts to the number of completed attempts; rows must come in the order of ListRankingRows.
+func CountingRows(rows []RankingRow) []RankingRow {
+	out := []RankingRow{}
+	for start := 0; start < len(rows); {
+		end := start + 1
+		for end < len(rows) && rows[end].ProgrammeID == rows[start].ProgrammeID && rows[end].ShooterID == rows[start].ShooterID {
+			end++
+		}
+		group := rows[start:end]
+		entries := make([]domain.RankingEntry, len(group))
+		for i, r := range group {
+			entries[i] = r.Entry()
+		}
+		best := group[domain.Counting(group[0].Rule, entries, 1)[0]]
+		best.Attempts = len(group)
+		out = append(out, best)
+		start = end
+	}
+	return out
+}
+
+// CountingEntries returns the IDs of the counting attempts of an event (see CountingRows).
+func (s *Store) CountingEntries(ctx context.Context, tenantID, eventID int64) (map[int64]bool, error) {
 	rows, err := s.ListRankingRows(ctx, tenantID, eventID)
 	if err != nil {
 		return nil, err
 	}
+	out := map[int64]bool{}
+	for _, r := range CountingRows(rows) {
+		out[r.EntryID] = true
+	}
+	return out, nil
+}
+
+// Placings ranks every programme of an event with domain.Rank and returns the place of each counting attempt.
+func (s *Store) Placings(ctx context.Context, tenantID, eventID int64) (map[int64]Placing, error) {
+	all, err := s.ListRankingRows(ctx, tenantID, eventID)
+	if err != nil {
+		return nil, err
+	}
+	rows := CountingRows(all)
 	byProgramme := map[int64][]RankingRow{}
 	for _, r := range rows {
 		byProgramme[r.ProgrammeID] = append(byProgramme[r.ProgrammeID], r)
@@ -104,11 +155,7 @@ func (s *Store) Placings(ctx context.Context, tenantID, eventID int64) (map[int6
 	for _, list := range byProgramme {
 		entries := make([]domain.RankingEntry, len(list))
 		for i, r := range list {
-			total := 0.0
-			for _, v := range r.Series {
-				total += v
-			}
-			entries[i] = domain.RankingEntry{Total: math.Round(total*100) / 100, Mouches: r.Mouches, Series: r.Series, Birthday: r.Birthday, Category: r.Category}
+			entries[i] = r.Entry()
 		}
 		for rank, i := range domain.Rank(entries) {
 			out[list[i].EntryID] = Placing{Rank: rank + 1, Participants: len(list)}

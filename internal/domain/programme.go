@@ -28,7 +28,18 @@ type Series struct {
 type Price struct {
 	AgeCategory AgeCategory `json:"ageCategory" enum:"u10,u13,u15,u17,u19,u21,elite,senior,veteran,senior_veteran"`
 	Price       float64     `json:"price" minimum:"0"`
+	RepeatPrice *float64    `json:"repeatPrice,omitempty" required:"false" minimum:"0" doc:"Price of every further attempt (Nachdoppel); left out = the same price, 0 = paid once"`
 }
+
+// AttemptRule decides which attempt counts when a shooter shoots a programme several times.
+type AttemptRule string
+
+// Attempt rules: the best attempt by the ranking rules, the first or the last one.
+const (
+	AttemptBest  AttemptRule = "best"
+	AttemptFirst AttemptRule = "first"
+	AttemptLast  AttemptRule = "last"
+)
 
 // AwardLimit is the total a shooter of an age category needs for an award tier.
 type AwardLimit struct {
@@ -54,6 +65,10 @@ type ProgrammeDefinition struct {
 	Barcode                  string      `json:"barcode" maxLength:"50" required:"false"`
 	CountsForClubCompetition bool        `json:"countsForClubCompetition" required:"false"`
 	ShowOnRankings           bool        `json:"showOnRankings" required:"false"`
+	Attempts                 int         `json:"attempts,omitempty" required:"false" minimum:"0" maximum:"1000" doc:"How often a shooter may shoot the programme at the event; left out or 0 = once"`
+	UnlimitedAttempts        bool        `json:"unlimitedAttempts,omitempty" required:"false" doc:"Any number of attempts; Attempts is ignored"`
+	AttemptRule              AttemptRule `json:"attemptRule,omitempty" required:"false" enum:"best,first,last" doc:"Which attempt counts in the ranking; default best"`
+	AwardCountingOnly        bool        `json:"awardCountingOnly,omitempty" required:"false" doc:"Only the counting attempt receives an award, not every attempt"`
 	Series                   []Series    `json:"series"`
 	Prices                   []Price     `json:"prices"`
 	Awards                   []AwardTier `json:"awards"`
@@ -77,8 +92,30 @@ func (d ProgrammeDefinition) MaxPoints() int {
 	return n
 }
 
-// Normalize trims text fields and turns nil lists into empty ones.
+// AttemptLimit is how many attempts a shooter may shoot; 0 means unlimited.
+func (d ProgrammeDefinition) AttemptLimit() int {
+	if d.UnlimitedAttempts {
+		return 0
+	}
+	return max(d.Attempts, 1)
+}
+
+// Rule is the attempt rule, best when none is set.
+func (d ProgrammeDefinition) Rule() AttemptRule {
+	if d.AttemptRule == "" {
+		return AttemptBest
+	}
+	return d.AttemptRule
+}
+
+// Normalize trims text fields, fills the attempt defaults and turns nil lists into empty ones.
 func (d *ProgrammeDefinition) Normalize() {
+	if d.UnlimitedAttempts {
+		d.Attempts = 0
+	} else {
+		d.Attempts = max(d.Attempts, 1)
+	}
+	d.AttemptRule = d.Rule()
 	d.Name = strings.TrimSpace(d.Name)
 	d.Variant = strings.TrimSpace(d.Variant)
 	d.Barcode = strings.TrimSpace(d.Barcode)
@@ -113,6 +150,12 @@ func (d ProgrammeDefinition) Validate() []Problem {
 			errs = append(errs, Problemf("Series %d: shots and maximum points must be positive", i+1))
 		}
 	}
+	if d.AttemptRule != "" && d.AttemptRule != AttemptBest && d.AttemptRule != AttemptFirst && d.AttemptRule != AttemptLast {
+		errs = append(errs, Problemf("Unknown attempt rule %q", d.AttemptRule))
+	}
+	if d.Attempts < 0 || d.Attempts > 1000 {
+		errs = append(errs, Problemf("Attempts must be between 1 and 1000"))
+	}
 	seen := map[AgeCategory]bool{}
 	for _, p := range d.Prices {
 		switch {
@@ -120,7 +163,7 @@ func (d ProgrammeDefinition) Validate() []Problem {
 			errs = append(errs, Problemf("Unknown age category %q", p.AgeCategory))
 		case seen[p.AgeCategory]:
 			errs = append(errs, Problemf("Age category %s has more than one price", p.AgeCategory))
-		case p.Price < 0:
+		case p.Price < 0 || (p.RepeatPrice != nil && *p.RepeatPrice < 0):
 			errs = append(errs, Problemf("Price for %s must not be negative", p.AgeCategory))
 		}
 		seen[p.AgeCategory] = true

@@ -29,17 +29,39 @@ func (s *Store) GetEntry(ctx context.Context, tenantID, entryID int64) (EntryRef
 	return e, mapErr(err)
 }
 
-// FindEntry returns a shooter's entry for a programme of an event of a tenant and whether it has results;
-// ErrNotFound when the shooter has none.
+// FindEntry returns a shooter's first attempt without results at a programme of an event of a tenant, or else the
+// last attempt, and whether that one has results; ErrNotFound when the shooter has none.
 func (s *Store) FindEntry(ctx context.Context, tenantID, eventID, shooterID, programmeID int64) (EntryRef, bool, error) {
 	var e EntryRef
 	var done bool
 	err := s.pool.QueryRow(ctx, `SELECT en.id, en.registration_id, en.event_id, en.programme_id,
 			coalesce(en.combined_series, '{}'), r.age_category, en.status = 'completed'
 		FROM entries en JOIN registrations r ON r.id = en.registration_id
-		WHERE en.tenant_id = $1 AND en.event_id = $2 AND en.shooter_id = $3 AND en.programme_id = $4`, tenantID, eventID, shooterID, programmeID).
+		WHERE en.tenant_id = $1 AND en.event_id = $2 AND en.shooter_id = $3 AND en.programme_id = $4
+		ORDER BY en.status = 'completed', CASE WHEN en.status = 'completed' THEN -en.attempt ELSE en.attempt END LIMIT 1`, tenantID, eventID, shooterID, programmeID).
 		Scan(&e.ID, &e.RegistrationID, &e.EventID, &e.ProgrammeID, &e.CombinedSeries, &e.AgeCategory, &done)
 	return e, done, mapErr(err)
+}
+
+// CompletedAttempts counts a shooter's attempts with results at a programme of an event of a tenant.
+func (s *Store) CompletedAttempts(ctx context.Context, tenantID, eventID, shooterID, programmeID int64) (int, error) {
+	var n int
+	err := s.pool.QueryRow(ctx, `SELECT count(*) FROM entries WHERE tenant_id = $1 AND event_id = $2 AND shooter_id = $3
+		AND programme_id = $4 AND status = 'completed'`, tenantID, eventID, shooterID, programmeID).Scan(&n)
+	return n, err
+}
+
+// Attempts returns every attempt of the shooter at the programme of the given entry, in attempt order.
+func (s *Store) Attempts(ctx context.Context, tenantID, entryID int64) ([]EntryRef, error) {
+	rows, err := s.pool.Query(ctx, `SELECT o.id, o.registration_id, o.event_id, o.programme_id, coalesce(o.combined_series, '{}'), r.age_category
+		FROM entries e
+		JOIN entries o ON o.event_id = e.event_id AND o.shooter_id = e.shooter_id AND o.programme_id = e.programme_id
+		JOIN registrations r ON r.id = o.registration_id
+		WHERE e.tenant_id = $1 AND e.id = $2 ORDER BY o.attempt`, tenantID, entryID)
+	if err != nil {
+		return nil, err
+	}
+	return pgx.CollectRows(rows, pgx.RowToStructByPos[EntryRef])
 }
 
 // ListResults returns the series results of all entries of a registration, keyed by entry.

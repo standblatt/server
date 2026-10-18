@@ -36,8 +36,12 @@ Programme gehören zu einem Anlass und werden im Tab *Programme* seiner
   **Einzelschüsse** erfasst werden, pro Passe. Mit Einzelschüssen lässt sich
   jeder Schuss erfassen, und die Passe ist deren Summe, z. B. um sie auf ein
   Formular zu drucken; das Passentotal allein lässt sich weiterhin erfassen.
+- **Durchgänge** (siehe unten): wie oft ein Schütze das Programm am Anlass
+  schiessen darf.
 - **Preise (CHF)**: Nur die angekreuzten Alterskategorien dürfen das
-  Programm schiessen.
+  Programm schiessen. Bei mehreren Durchgängen ist ein zweites Feld pro
+  Kategorie der Preis jedes weiteren Durchgangs (*Nachdoppel*); leer heisst
+  gleicher Preis, 0 heisst, das Programm wird einmal bezahlt.
 - **Auszeichnungen**: Name, Art (Kranzkarte, Naturalgabe oder Geldpreis, der
   in bar ausbezahlt wird), Wert und das Mindesttotal pro Alterskategorie;
   lass eine Kategorie leer, wo die Auszeichnung nicht verfügbar ist.
@@ -65,6 +69,31 @@ geht ausserdem:
 - **Sonderpreise** (siehe unten).
 
 **Exportieren** lädt das Programm als Datei herunter; **Löschen** geht nur, solange niemand angemeldet ist.
+
+## Durchgänge {#attempts}
+
+Normalerweise schiesst ein Schütze ein Programm einmal pro
+Anlass. **Durchgänge pro Schütze** erlaubt mehr, z. B. 3 für einen
+Glücksstich mit Nachdoppel am Schützenfest, oder **Unbegrenzt** für ein
+Jahresprogramm über die ganze Saison.
+
+- **Zählender Durchgang** bestimmt, welcher Durchgang in Rangliste,
+  Vereinswettkampf, Sonderpreisen und *Mein Training* zählt: **Der beste**
+  (nach den Ranglistenregeln), **Der erste** oder **Der letzte**. Die
+  Rangliste zeigt ihn als *2/3*: Der zweite von drei Durchgängen zählt.
+- **Nur der zählende Durchgang erhält eine Auszeichnung**: ausgeschaltet
+  kann jeder Durchgang seine Auszeichnung erhalten (eine Kranzkarte pro
+  Nachdoppel); eingeschaltet erhält nur der zählende Durchgang eine, und die
+  Auszeichnung wandert, wenn ein besserer Durchgang geschossen wird.
+- Bei der Anmeldung zeigt ein Programm mit mehreren Durchgängen einen
+  Zähler: Zwei Durchgänge auf einmal sind zwei Resultatkarten, *Durchgang 1*
+  und *Durchgang 2*. Weitere Durchgänge lassen sich auch später in einer
+  neuen Anmeldung hinzufügen oder indem man unter **Resultate erfassen** ein
+  weiteres Resultat erfasst, bis der Schütze keine Durchgänge mehr hat.
+
+Die Anzahl Durchgänge lässt sich ändern, solange Schützen angemeldet sind,
+aber nicht unter die Durchgänge, die ein Schütze schon hat. Programme mit
+mehreren Durchgängen können nicht kombiniert werden.
 
 ## Sonderpreise {#special-prizes}
 

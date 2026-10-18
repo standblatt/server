@@ -23,8 +23,14 @@ lassen sie sich mischen:
 3. Tippe die Passen ein, oder die Einzelschüsse bei Passen, die sie erfassen
    (siehe [Programme](programmes.md)), und drücke ++enter++.
 
-Ein Schütze kann in einem Programm nur einmal Resultate haben; eine Zeile
-für schon vorhandene Resultate ist ein Fehler.
+Das Resultat wird sofort gespeichert, und der Schütze erscheint unter
+*Soeben erfasst* mit einem Link zu den Resultaten. War der Schütze am
+Schalter für dieses Programm angemeldet und hat noch keine Resultate, kommen
+die Resultate in diese Anmeldung; sonst wird eine Anmeldung ohne Scheibe
+erstellt, bereits abgeschlossen. Ein Schütze kann in einem Programm nur
+einmal Resultate haben, ausser das Programm erlaubt mehrere
+[Durchgänge](programmes.md#attempts): Dann ist jedes weitere Resultat ein
+neuer Durchgang, bis keiner mehr übrig ist.
 
 Auszeichnungen werden wie gewohnt gewählt: Die wertvollste erreichte
 Auszeichnung wird automatisch gesetzt und lässt sich in den Resultaten

@@ -41,5 +41,5 @@ license;firstname;lastname;birthday;club;programme;s1;s2;m2;s1_1;s1_2;s1_3
 | `m1`, `m2`, … | no | mouches per series |
 | `s1_1`, `s1_2`, … | no | single shots of series 1, for series that record them; the series is their sum |
 
-- A shooter can have results in a programme only once; a line for results that exist already is an error.
+- A shooter can have results in a programme only once; a line for results that exist already is an error. Programmes with several [attempts](../user-guide/programmes.md#attempts) take one line per attempt until the shooter has none left.
 - If the shooter is registered for the programme without results, the results go into that registration.

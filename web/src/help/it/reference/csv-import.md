@@ -50,6 +50,8 @@ license;firstname;lastname;birthday;club;programme;s1;s2;m2;s1_1;s1_2;s1_3
 | `s1_1`, `s1_2`, … | no | colpi singoli della serie 1, per le serie che li registrano; la serie ne è la somma |
 
 - Un tiratore può avere risultati in un programma una sola volta; una riga
-  per risultati già presenti è un errore.
+  per risultati già presenti è un errore. I programmi con più
+  [tentativi](../user-guide/programmes.md#attempts) prendono una riga per
+  tentativo, finché il tiratore non ne ha più.
 - Se il tiratore è iscritto al programma senza risultati, i risultati vanno
   in quell’iscrizione.

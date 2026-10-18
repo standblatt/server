@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 23:45+0200\n"
+"POT-Creation-Date: 2026-10-18 09:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -180,6 +180,10 @@ msgid "At least one series is required"
 msgstr ""
 
 #: internal/domain/programme.go
+msgid "Attempts must be between 1 and 1000"
+msgstr ""
+
+#: internal/domain/programme.go
 #, go-format
 msgid "Award %d: age category %s has more than one limit"
 msgstr ""
@@ -228,6 +232,11 @@ msgstr ""
 msgid "Unknown age category %q"
 msgstr ""
 
+#: internal/domain/programme.go
+#, go-format
+msgid "Unknown attempt rule %q"
+msgstr ""
+
 #: internal/domain/registration.go
 #, go-format
 msgid "%s and %s are shot on different ranges"
@@ -236,6 +245,16 @@ msgstr ""
 #: internal/domain/registration.go
 #, go-format
 msgid "%s and %s are variants of each other; choose one"
+msgstr ""
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s can be shot at most %d times"
+msgstr ""
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s can be shot only once"
 msgstr ""
 
 #: internal/domain/registration.go
@@ -271,6 +290,11 @@ msgstr ""
 #: internal/domain/registration.go
 #, go-format
 msgid "%s takes its series from %s, which is not chosen"
+msgstr ""
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s takes its series from another programme and can be shot only once"
 msgstr ""
 
 #: internal/domain/registration.go
@@ -952,6 +976,14 @@ msgid "Programme or event not found"
 msgstr ""
 
 #: internal/web/programmes.go
+msgid "Programmes with several attempts cannot be combined"
+msgstr ""
+
+#: internal/web/programmes.go
+msgid "Shooters already have more attempts at this programme than the new number allows"
+msgstr ""
+
+#: internal/web/programmes.go
 msgid "Shooters are registered for this programme: the series stay as they are, and age categories and awards can be added but not removed"
 msgstr ""
 
@@ -1007,7 +1039,7 @@ msgid "The lane is occupied"
 msgstr ""
 
 #: internal/web/registrations.go
-msgid "The shooter is already registered for one of these programmes at this event"
+msgid "The shooter is already registered for one of these programmes at this event and has no attempts left"
 msgstr ""
 
 #: internal/web/registrations.go
@@ -1026,6 +1058,14 @@ msgstr ""
 #: internal/web/reports.go
 #, go-format
 msgid "At least %d participants are required for a ranking."
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Attempt"
+msgstr ""
+
+#: internal/web/reports.go
+msgid "Attempts"
 msgstr ""
 
 #: internal/web/reports.go
@@ -1273,6 +1313,10 @@ msgstr ""
 
 #: internal/web/results.go
 msgid "The shooter already has results in this programme"
+msgstr ""
+
+#: internal/web/results.go
+msgid "The shooter has no attempts left in this programme"
 msgstr ""
 
 #: internal/web/results.go

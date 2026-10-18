@@ -29,9 +29,10 @@ für diese Alterskategorie*).
 
 Ist oder war der Schütze an diesem Anlass schon angemeldet, listet ein
 Hinweis diese Anmeldungen mit ihren Programmen und einem Link zum Öffnen
-auf. Bereits gebuchte Programme sind gesperrt (*bereits angemeldet*); ein
-Schütze darf trotzdem eine andere Variante in einer separaten Anmeldung
-schiessen.
+auf. Bereits gebuchte Programme sind gesperrt (*bereits angemeldet*, oder
+*keine Durchgänge mehr* bei Programmen mit mehreren
+[Durchgängen](programmes.md#attempts)); ein Schütze darf trotzdem eine
+andere Variante in einer separaten Anmeldung schiessen.
 
 ## Drucken
 

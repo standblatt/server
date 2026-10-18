@@ -48,10 +48,31 @@ func programmeErr(err error) error {
 		return conflict("The event already has a programme with this name and variant")
 	case errors.Is(err, store.ErrNotFound):
 		return missing("Programme or event not found")
+	case errors.Is(err, store.ErrAttemptsUsed):
+		return conflict("Shooters already have more attempts at this programme than the new number allows")
 	case errors.Is(err, store.ErrInUse):
 		return conflict("Shooters are registered for this programme: the series stay as they are, and age categories and awards can be added but not removed")
 	}
 	return err
+}
+
+// notCombined returns a 409 when the programme takes series from another one or another one takes series from it,
+// because such programmes are shot once.
+func (s *Server) notCombined(ctx context.Context, tenantID, programmeID int64) error {
+	p, err := s.Store.GetProgramme(ctx, tenantID, programmeID)
+	if err != nil {
+		return notFound(err, "Programme not found")
+	}
+	list, err := s.Store.ListProgrammes(ctx, tenantID, p.EventID)
+	if err != nil {
+		return err
+	}
+	for _, q := range list {
+		if p.CombinableWithID != nil || (q.CombinableWithID != nil && *q.CombinableWithID == p.ID) {
+			return conflict("Programmes with several attempts cannot be combined")
+		}
+	}
+	return nil
 }
 
 // registerProgrammes registers the programme endpoints of events and the library.
@@ -200,6 +221,11 @@ func (s *Server) registerProgrammes(api huma.API) {
 		if err := checkDefinition(&in.Body); err != nil {
 			return nil, err
 		}
+		if in.Body.AttemptLimit() != 1 {
+			if err := s.notCombined(ctx, in.TenantID, in.ProgrammeID); err != nil {
+				return nil, err
+			}
+		}
 		return nil, s.programmeChanged(ctx, in.TenantID, in.ProgrammeID, programmeErr(s.Store.UpdateProgramme(ctx, in.TenantID, in.ProgrammeID, in.Body)))
 	})
 
@@ -231,6 +257,13 @@ func (s *Server) registerProgrammes(api huma.API) {
 	}, func(ctx context.Context, in *combinationIn) (*struct{}, error) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
 			return nil, err
+		}
+		if in.Body.CombinableWithID != nil {
+			for _, id := range []int64{in.ProgrammeID, *in.Body.CombinableWithID} {
+				if p, err := s.Store.GetProgramme(ctx, in.TenantID, id); err == nil && p.AttemptLimit() != 1 {
+					return nil, conflict("Programmes with several attempts cannot be combined")
+				}
+			}
 		}
 		err := s.Store.SetCombination(ctx, in.TenantID, in.ProgrammeID, in.Body.CombinableWithID)
 		return nil, s.programmeChanged(ctx, in.TenantID, in.ProgrammeID, notFound(err, "Programme not found, or the other programme belongs to a different event"))

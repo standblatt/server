@@ -40,3 +40,25 @@ func TestRankComparesSeriesFromTheLast(t *testing.T) {
 		t.Fatalf("got %v", got)
 	}
 }
+
+func TestCounting(t *testing.T) {
+	attempts := []RankingEntry{{Total: 90}, {Total: 95}, {Total: 85}, {Total: 95, Mouches: 1}}
+	cases := []struct {
+		rule AttemptRule
+		n    int
+		want []int
+	}{
+		{AttemptBest, 1, []int{3}},
+		{AttemptBest, 3, []int{3, 1, 0}},
+		{AttemptFirst, 2, []int{0, 1}},
+		{AttemptLast, 1, []int{3}},
+		{AttemptLast, 2, []int{3, 2}},
+		{"", 1, []int{3}},
+		{AttemptBest, 9, []int{3, 1, 0, 2}},
+	}
+	for _, c := range cases {
+		if got := Counting(c.rule, attempts, c.n); !reflect.DeepEqual(got, c.want) {
+			t.Errorf("%s %d: got %v, want %v", c.rule, c.n, got, c.want)
+		}
+	}
+}

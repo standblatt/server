@@ -21,7 +21,7 @@ The programmes of the event with their price for the shooter's age category. Pro
 
 ## Shooter already registered
 
-If the shooter is or was registered at this event before, a notice lists those registrations with their programmes and a link to open them. Programmes already booked are locked (*already registered*); a shooter may still shoot another variant in a separate registration.
+If the shooter is or was registered at this event before, a notice lists those registrations with their programmes and a link to open them. Programmes already booked are locked (*already registered*, or *no attempts left* for programmes with several [attempts](programmes.md#attempts)); a shooter may still shoot another variant in a separate registration.
 
 ## Printing
 

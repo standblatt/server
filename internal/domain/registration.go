@@ -42,10 +42,17 @@ func AgeCategoryFor(birthday, eventDate string) AgeCategory {
 }
 
 // ProgrammeChoice is one programme a shooter registers for. CombinedSeries is set when the programme takes
-// these series (numbers, 1-based) of the programme it is combinable with.
+// these series (numbers, 1-based) of the programme it is combinable with. Count is the number of attempts
+// shot in this registration (default 1).
 type ProgrammeChoice struct {
 	ProgrammeID    int64 `json:"programmeId"`
 	CombinedSeries []int `json:"combinedSeries,omitempty" required:"false"`
+	Count          int   `json:"count,omitempty" required:"false" minimum:"0" maximum:"100" doc:"Attempts of the programme in this registration; left out = 1"`
+}
+
+// Attempts is the number of attempts of the choice, at least one.
+func (c ProgrammeChoice) Attempts() int {
+	return max(c.Count, 1)
 }
 
 // ProgrammeInfo is what the registration rules need to know about a programme of the event.
@@ -58,6 +65,7 @@ type ProgrammeInfo struct {
 	Categories       []AgeCategory
 	CombinableWithID *int64
 	RangeID          *int64
+	AttemptLimit     int
 }
 
 // title returns the programme name with its variant in parentheses, if any.
@@ -90,6 +98,11 @@ func CheckProgrammes(choices []ProgrammeChoice, programmes map[int64]ProgrammeIn
 			continue
 		}
 		chosen[c.ProgrammeID] = true
+		if c.Attempts() > 1 && p.AttemptLimit == 1 {
+			errs = append(errs, Problemf("%s can be shot only once", p.title()))
+		} else if p.AttemptLimit > 0 && c.Attempts() > p.AttemptLimit {
+			errs = append(errs, Problemf("%s can be shot at most %d times", p.title(), p.AttemptLimit))
+		}
 		if !p.Active && !keep[p.ID] {
 			errs = append(errs, Problemf("%s is not active", p.title()))
 		}
@@ -118,6 +131,10 @@ func CheckProgrammes(choices []ProgrammeChoice, programmes map[int64]ProgrammeIn
 		}
 		if p.CombinableWithID == nil {
 			errs = append(errs, Problemf("%s cannot be combined", p.title()))
+			continue
+		}
+		if c.Attempts() > 1 {
+			errs = append(errs, Problemf("%s takes its series from another programme and can be shot only once", p.title()))
 			continue
 		}
 		target := programmes[*p.CombinableWithID]

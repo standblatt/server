@@ -58,14 +58,19 @@
 	let barcode = $state(start.barcode ?? '');
 	let countsForClubCompetition = $state(start.countsForClubCompetition ?? false);
 	let showOnRankings = $state(start.showOnRankings ?? true);
+	let attempts = $state(start.unlimitedAttempts ? 2 : Math.max(start.attempts ?? 1, 1));
+	let unlimited = $state(start.unlimitedAttempts ?? false);
+	let attemptRule = $state(start.attemptRule ?? 'best');
+	let awardCountingOnly = $state(start.awardCountingOnly ?? false);
+	const repeatable = $derived(unlimited || Number(attempts) > 1);
 	let series = $state(start.series.map((s) => ({ shots: s.shots, maxPoints: s.maxPoints, name: s.name ?? '', trackMouches: s.trackMouches ?? false, trackShots: s.trackShots ?? false })));
 	let prices = $state(
 		Object.fromEntries(
 			ageCategories.map((c) => {
 				const p = start.prices.find((x) => x.ageCategory === c);
-				return [c, { enabled: !!p, price: p?.price ?? 0 }];
+				return [c, { enabled: !!p, price: p?.price ?? 0, repeat: p?.repeatPrice == null ? '' : String(p.repeatPrice) }];
 			})
-		) as Record<AgeCategory, { enabled: boolean; price: number }>
+		) as Record<AgeCategory, { enabled: boolean; price: number; repeat: string }>
 	);
 	let awards = $state<Award[]>(
 		start.awards.map((a) => {
@@ -106,8 +111,18 @@
 				barcode,
 				countsForClubCompetition,
 				showOnRankings,
+				attempts: unlimited ? 0 : Number(attempts) || 1,
+				unlimitedAttempts: unlimited,
+				attemptRule,
+				awardCountingOnly: repeatable && awardCountingOnly,
 				series: series.map((s) => ({ shots: Number(s.shots), maxPoints: Number(s.maxPoints), name: s.name, trackMouches: s.trackMouches, trackShots: s.trackShots })),
-				prices: ageCategories.filter((c) => prices[c].enabled).map((c) => ({ ageCategory: c, price: Number(prices[c].price) || 0 })),
+				prices: ageCategories
+					.filter((c) => prices[c].enabled)
+					.map((c) => ({
+						ageCategory: c,
+						price: Number(prices[c].price) || 0,
+						repeatPrice: repeatable && prices[c].repeat !== '' ? Number(prices[c].repeat) : undefined
+					})),
 				awards: awards.map((a) => ({
 					name: a.name,
 					kind: a.kind,
@@ -188,12 +203,45 @@
 		</section>
 
 		<section>
-			{@render section($t`Prices (CHF)`, $t`Only the checked age categories may shoot this programme.`)}
+			{@render section($t`Attempts`, $t`How often a shooter may shoot the programme at this event, e.g. further attempts at a shooting festival or an annual programme.`)}
+			<div class="grid items-end gap-4 sm:grid-cols-3">
+				<FormField label={$t`Attempts per shooter`}>
+					<Input type="number" min="1" max="1000" bind:value={attempts} disabled={unlimited} />
+				</FormField>
+				<label class="flex h-9 items-center gap-2 text-sm"><Checkbox bind:checked={unlimited} />{$t`Unlimited`}</label>
+				{#if repeatable}
+					<FormField label={$t`Counting attempt`}>
+						<NativeSelect.Root class="w-full" bind:value={attemptRule}>
+							<NativeSelect.Option value="best">{$t`The best`}</NativeSelect.Option>
+							<NativeSelect.Option value="first">{$t`The first`}</NativeSelect.Option>
+							<NativeSelect.Option value="last">{$t`The last`}</NativeSelect.Option>
+						</NativeSelect.Root>
+					</FormField>
+					<label class="flex items-center justify-between gap-3 text-sm sm:col-span-3">{$t`Only the counting attempt receives an award`} <Switch bind:checked={awardCountingOnly} /></label>
+				{/if}
+			</div>
+		</section>
+
+		<section>
+			{@render section($t`Prices (CHF)`, repeatable ? $t`Only the checked age categories may shoot this programme. Further attempts cost the same unless a price is given; 0 means paid once.` : $t`Only the checked age categories may shoot this programme.`)}
 			<div class="grid grid-cols-2 gap-3 *:min-w-0 sm:grid-cols-3 lg:grid-cols-5">
 				{#each ageCategories as c (c)}
 					<div class="grid min-w-0 gap-1.5 rounded-md border p-2.5 {prices[c].enabled ? '' : 'bg-muted/40'}">
 						<label class="flex items-center gap-2 text-sm font-medium"><Checkbox bind:checked={prices[c].enabled} disabled={locked && fixedPrices.has(c)} /><span class="min-w-0 break-words hyphens-auto">{$t(ageCategoryLabel(c))}</span></label>
 						<Input class="h-8" type="number" min="0" step="0.05" bind:value={prices[c].price} disabled={!prices[c].enabled} aria-label={$t`Price ${$t(ageCategoryLabel(c))}`} />
+						{#if repeatable}
+							<Input
+								class="h-8"
+								type="number"
+								min="0"
+								step="0.05"
+								bind:value={prices[c].repeat}
+								disabled={!prices[c].enabled}
+								placeholder={$t`Further: same`}
+								title={$t`Price of every further attempt`}
+								aria-label={$t`Further attempts ${$t(ageCategoryLabel(c))}`}
+							/>
+						{/if}
 					</div>
 				{/each}
 			</div>

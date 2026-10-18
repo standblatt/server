@@ -9,10 +9,11 @@ import (
 	"github.com/standblatt/server/internal/domain"
 )
 
-// EntryFact is one programme a shooter registered for at an event, with everything the reports need.
+// EntryFact is one attempt at a programme a shooter registered for at an event, with everything the reports need.
 type EntryFact struct {
 	EntryID            int64
 	ProgrammeID        int64
+	Attempt            int
 	RegistrationID     int64
 	RegistrationStatus string
 	RegisteredAt       time.Time
@@ -37,9 +38,9 @@ type EntryFact struct {
 
 // ListEntryFacts returns every entry of an event with price, award and result totals.
 func (s *Store) ListEntryFacts(ctx context.Context, tenantID, eventID int64) ([]EntryFact, error) {
-	rows, err := s.pool.Query(ctx, `SELECT en.id, en.programme_id, r.id, r.status::text, r.registered_at, en.status::text, sh.id, sh.firstname, sh.lastname,
+	rows, err := s.pool.Query(ctx, `SELECT en.id, en.programme_id, en.attempt, r.id, r.status::text, r.registered_at, en.status::text, sh.id, sh.firstname, sh.lastname,
 			r.age_category, r.club_id, coalesce(c.name, ''), coalesce(c.ssv_number, ''),
-			coalesce(pp.price, 0)::float8, en.award_tier_id, coalesce(t.name, ''), coalesce(t.kind::text, ''), coalesce(t.value, 0)::float8,
+			coalesce(CASE WHEN en.attempt > 1 THEN coalesce(pp.repeat_price, pp.price) ELSE pp.price END, 0)::float8, en.award_tier_id, coalesce(t.name, ''), coalesce(t.kind::text, ''), coalesce(t.value, 0)::float8,
 			coalesce(sum(re.points), 0)::float8, coalesce(sum(re.mouches), 0),
 			coalesce(sum(re.points) FILTER (WHERE re.series_number <= 2), 0)::float8, r.awards_issued_at
 		FROM entries en
@@ -50,7 +51,7 @@ func (s *Store) ListEntryFacts(ctx context.Context, tenantID, eventID int64) ([]
 		LEFT JOIN award_tiers t ON t.id = en.award_tier_id
 		LEFT JOIN results re ON re.entry_id = en.id
 		WHERE en.tenant_id = $1 AND en.event_id = $2
-		GROUP BY en.id, r.id, sh.id, c.id, pp.price, t.id
+		GROUP BY en.id, r.id, sh.id, c.id, pp.price, pp.repeat_price, t.id
 		ORDER BY sh.lastname, sh.firstname, en.id`, tenantID, eventID)
 	if err != nil {
 		return nil, err

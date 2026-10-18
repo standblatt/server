@@ -132,18 +132,20 @@ func (s *Server) helperDocument(ctx context.Context, tenantID, registrationID, e
 	return helperLane(h, reg)
 }
 
-// sameProgrammes reports whether an update keeps the programmes of a registration and their combined series (helpers may only move lanes).
+// sameProgrammes reports whether an update keeps the programmes of a registration, their attempts and combined series (helpers may only move lanes).
 func sameProgrammes(entries []store.Entry, choices []domain.ProgrammeChoice) bool {
-	if len(entries) != len(choices) {
-		return false
-	}
 	have := map[int64][]int{}
+	count := map[int64]int{}
 	for _, e := range entries {
 		have[e.ProgrammeID] = e.CombinedSeries
+		count[e.ProgrammeID]++
+	}
+	if len(count) != len(choices) {
+		return false
 	}
 	for _, c := range choices {
 		series, ok := have[c.ProgrammeID]
-		if !ok || !slices.Equal(series, c.CombinedSeries) {
+		if !ok || !slices.Equal(series, c.CombinedSeries) || count[c.ProgrammeID] != c.Attempts() {
 			return false
 		}
 	}

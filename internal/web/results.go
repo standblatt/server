@@ -23,6 +23,8 @@ type EntryResult struct {
 	EntryID        int64                 `json:"entryId"`
 	ProgrammeID    int64                 `json:"programmeId"`
 	Title          string                `json:"title"`
+	Attempt        int                   `json:"attempt" doc:"Number of the shooter's attempt at the programme"`
+	Repeatable     bool                  `json:"repeatable" doc:"The programme allows several attempts"`
 	Status         string                `json:"status" enum:"pending,completed"`
 	Series         []domain.Series       `json:"series"`
 	MaxPoints      int                   `json:"maxPoints"`
@@ -74,11 +76,20 @@ func (s *Server) resultSheet(ctx context.Context, tenantID, registrationID int64
 	if err != nil {
 		return ResultSheet{}, err
 	}
+	var counting map[int64]bool
+	for _, e := range reg.Entries {
+		if byID[e.ProgrammeID].AwardCountingOnly && counting == nil {
+			if counting, err = s.Store.CountingEntries(ctx, tenantID, reg.EventID); err != nil {
+				return ResultSheet{}, err
+			}
+		}
+	}
 	sheet := ResultSheet{Registration: reg, Entries: []EntryResult{}}
 	for _, e := range reg.Entries {
 		p := byID[e.ProgrammeID]
 		er := EntryResult{
 			EntryID: e.ID, ProgrammeID: p.ID, Title: programmeTitle(p.Name, p.Variant), Status: e.Status,
+			Attempt: e.Attempt, Repeatable: p.AttemptLimit() != 1,
 			Series: p.Series, MaxPoints: p.MaxPoints, CombinedSeries: e.CombinedSeries,
 			Results: results[e.ID], EligibleAwards: []domain.Tier{}, Form: p.LayoutID != nil,
 		}
@@ -90,7 +101,7 @@ func (s *Server) resultSheet(ctx context.Context, tenantID, registrationID int64
 			er.CombinedFrom = programmeTitle(t.Name, t.Variant)
 		}
 		er.Total, er.Mouches = domain.Totals(er.Results)
-		if e.Status == "completed" {
+		if e.Status == "completed" && (!p.AwardCountingOnly || counting[e.ID]) {
 			er.EligibleAwards = domain.EligibleAwards(tiers[p.ID], reg.AgeCategory, er.Total)
 		}
 		for _, t := range tiers[p.ID] {
@@ -115,17 +126,25 @@ type ResultLine struct {
 	Series      []domain.SeriesResult `json:"series"`
 }
 
-// enterResult saves a result line into the shooter's entry for the programme when it has no results yet, or into a
-// new registration without a lane; 409 when the entry already has results.
+// enterResult saves a result line into the shooter's first attempt at the programme without results, or into a
+// new attempt in a new registration without a lane; 409 when the shooter has no attempts left.
 func (s *Server) enterResult(ctx context.Context, tenantID, eventID int64, line ResultLine) (ResultSheet, error) {
 	e, done, err := s.Store.FindEntry(ctx, tenantID, eventID, line.ShooterID, line.ProgrammeID)
 	switch {
-	case err == nil && done:
-		return ResultSheet{}, conflict("The shooter already has results in this programme")
-	case errors.Is(err, store.ErrNotFound):
+	case err == nil && !done:
+	case err == nil || errors.Is(err, store.ErrNotFound):
 		p, err := s.Store.GetProgramme(ctx, tenantID, line.ProgrammeID)
 		if err != nil || p.EventID != eventID {
 			return ResultSheet{}, notFound(store.ErrNotFound, "Programme not found")
+		}
+		if done {
+			n, err := s.Store.CompletedAttempts(ctx, tenantID, eventID, line.ShooterID, line.ProgrammeID)
+			if err != nil {
+				return ResultSheet{}, err
+			}
+			if err := attemptsLeft(p, n); err != nil {
+				return ResultSheet{}, err
+			}
 		}
 		domain.NormalizeResults(line.Series)
 		if errs := domain.ValidateResults(p.Series, line.Series); len(errs) > 0 {
@@ -138,10 +157,21 @@ func (s *Server) enterResult(ctx context.Context, tenantID, eventID int64, line 
 		if e, _, err = s.Store.FindEntry(ctx, tenantID, eventID, line.ShooterID, line.ProgrammeID); err != nil {
 			return ResultSheet{}, err
 		}
-	case err != nil:
+	default:
 		return ResultSheet{}, err
 	}
 	return s.saveResults(ctx, tenantID, e, line.Series)
+}
+
+// attemptsLeft returns a 409 when a shooter with n completed attempts may not shoot the programme again.
+func attemptsLeft(p store.Programme, n int) error {
+	switch limit := p.AttemptLimit(); {
+	case limit == 1 && n > 0:
+		return conflict("The shooter already has results in this programme")
+	case limit > 0 && n >= limit:
+		return conflict("The shooter has no attempts left in this programme")
+	}
+	return nil
 }
 
 // saveResults replaces the results of an entry, keeps or picks the default award and tells the event's clients;
@@ -168,6 +198,11 @@ func (s *Server) saveResults(ctx context.Context, tenantID int64, e store.EntryR
 	}
 	if err := s.defaultAwards(ctx, tenantID, e, before); err != nil {
 		return ResultSheet{}, err
+	}
+	if p.AwardCountingOnly {
+		if err := s.moveAward(ctx, tenantID, e); err != nil {
+			return ResultSheet{}, err
+		}
 	}
 	topics := []string{realtime.TopicResults, realtime.TopicRegistrations}
 	if completed {
@@ -202,6 +237,36 @@ func (s *Server) defaultAwards(ctx context.Context, tenantID int64, e store.Entr
 		}
 		if err := s.Store.SetAward(ctx, tenantID, er.EntryID, &tier); err != nil {
 			return err
+		}
+	}
+	return nil
+}
+
+// moveAward keeps the award of a programme that awards only the counting attempt on that attempt: the shooter's
+// other attempts lose theirs, and the counting one in another registration gets the default award.
+func (s *Server) moveAward(ctx context.Context, tenantID int64, e store.EntryRef) error {
+	attempts, err := s.Store.Attempts(ctx, tenantID, e.ID)
+	if err != nil {
+		return err
+	}
+	counting, err := s.Store.CountingEntries(ctx, tenantID, e.EventID)
+	if err != nil {
+		return err
+	}
+	for _, a := range attempts {
+		switch {
+		case counting[a.ID] && a.RegistrationID != e.RegistrationID:
+			before, err := s.resultSheet(ctx, tenantID, a.RegistrationID)
+			if err != nil {
+				return err
+			}
+			if err := s.defaultAwards(ctx, tenantID, a, before); err != nil {
+				return err
+			}
+		case !counting[a.ID]:
+			if err := s.Store.SetAward(ctx, tenantID, a.ID, nil); err != nil {
+				return err
+			}
 		}
 	}
 	return nil
@@ -249,7 +314,7 @@ func (s *Server) registerResults(api huma.API) {
 	huma.Register(api, huma.Operation{
 		OperationID: "enter-result", Method: http.MethodPost, Path: "/api/tenants/{tenantId}/events/{eventId}/results", Tags: []string{"results"},
 		Summary:     "Enter the results of a shooter in a programme without the desk",
-		Description: "Fills the shooter's entry for the programme when it has no results yet, otherwise registers the shooter without a lane for that programme. 409 when the entry already has results.",
+		Description: "Fills the shooter's first attempt at the programme without results, otherwise registers the shooter without a lane for a new attempt. 409 when the shooter has no attempts left.",
 	}, func(ctx context.Context, in *enterIn) (*sheetOut, error) {
 		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
 			return nil, err

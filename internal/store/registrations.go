@@ -17,6 +17,7 @@ var (
 	ErrLaneTaken      = errors.New("store: lane is occupied")
 	ErrProgrammeTaken = errors.New("store: programme already registered for this shooter")
 	ErrHasResults     = errors.New("store: entry has results")
+	ErrAttemptsUsed   = errors.New("store: shooters already have more attempts")
 )
 
 // Registration statuses: waiting without a lane, shooting on a lane, completed.
@@ -26,10 +27,11 @@ const (
 	StatusCompleted  = "completed"
 )
 
-// Entry is one programme a registration shoots.
+// Entry is one attempt at a programme that a registration shoots.
 type Entry struct {
 	ID             int64  `json:"id"`
 	ProgrammeID    int64  `json:"programmeId"`
+	Attempt        int    `json:"attempt" doc:"Number of the shooter's attempt at the programme in this event, from 1"`
 	Status         string `json:"status" enum:"pending,completed"`
 	AwardTierID    *int64 `json:"awardTierId,omitempty"`
 	CombinedSeries []int  `json:"combinedSeries"`
@@ -124,7 +126,7 @@ func (s *Store) LoadEventRules(ctx context.Context, tenantID, eventID int64) (Ev
 	}); err != nil {
 		return r, err
 	}
-	rows, err = s.pool.Query(ctx, `SELECT p.id, p.name, p.variant, p.active, p.combinable_with_id, p.range_id,
+	rows, err = s.pool.Query(ctx, `SELECT p.id, p.name, p.variant, p.active, p.combinable_with_id, p.range_id, p.attempts,
 			(SELECT count(*) FROM programme_series s WHERE s.programme_id = p.id),
 			coalesce((SELECT array_agg(age_category::text) FROM programme_prices pp WHERE pp.programme_id = p.id), '{}')
 		FROM programmes p
@@ -134,7 +136,7 @@ func (s *Store) LoadEventRules(ctx context.Context, tenantID, eventID int64) (Ev
 	}
 	var p domain.ProgrammeInfo
 	var cats []string
-	_, err = pgx.ForEachRow(rows, []any{&p.ID, &p.Name, &p.Variant, &p.Active, &p.CombinableWithID, &p.RangeID, &p.Series, &cats}, func() error {
+	_, err = pgx.ForEachRow(rows, []any{&p.ID, &p.Name, &p.Variant, &p.Active, &p.CombinableWithID, &p.RangeID, &p.AttemptLimit, &p.Series, &cats}, func() error {
 		info := p
 		info.Categories = make([]domain.AgeCategory, len(cats))
 		for i, c := range cats {
@@ -149,7 +151,7 @@ func (s *Store) LoadEventRules(ctx context.Context, tenantID, eventID int64) (Ev
 const registrationCols = `r.id, r.event_id, sh.id, coalesce(sh.license_number, ''), sh.firstname, sh.lastname,
 	coalesce(sh.birthday::text, ''), r.club_id, coalesce(c.name, ''), r.age_category, r.range_id, r.lane, r.status,
 	r.registered_at, r.started_at, r.completed_at, r.ammo_issued_at, r.awards_issued_at,
-	coalesce((SELECT json_agg(json_build_object('id', en.id, 'programmeId', en.programme_id, 'status', en.status,
+	coalesce((SELECT json_agg(json_build_object('id', en.id, 'programmeId', en.programme_id, 'attempt', en.attempt, 'status', en.status,
 		'awardTierId', en.award_tier_id, 'combinedSeries', coalesce(en.combined_series, '{}')) ORDER BY en.id)
 		FROM entries en WHERE en.registration_id = r.id), '[]')`
 
@@ -194,12 +196,23 @@ func statusFor(lane *int) string {
 	return StatusRegistered
 }
 
-// insertEntries inserts one entry per chosen programme of a registration.
+// insertEntries inserts the attempts of every chosen programme of a registration, numbered after the shooter's
+// last attempt so the numbers stay in order; ErrProgrammeTaken when the shooter would have more attempts than allowed.
 func insertEntries(ctx context.Context, tx pgx.Tx, tenantID, registrationID, eventID, shooterID int64, choices []domain.ProgrammeChoice) error {
 	for _, c := range choices {
-		if _, err := tx.Exec(ctx, `INSERT INTO entries (tenant_id, registration_id, event_id, shooter_id, programme_id, combined_series)
-			VALUES ($1, $2, $3, $4, $5, $6)`, tenantID, registrationID, eventID, shooterID, c.ProgrammeID, nilIfEmpty(c.CombinedSeries)); err != nil {
-			return err
+		for range c.Attempts() {
+			tag, err := tx.Exec(ctx, `INSERT INTO entries (tenant_id, registration_id, event_id, shooter_id, programme_id, combined_series, attempt)
+				SELECT $1, $2, $3, $4, p.id, $6, n.next
+				FROM programmes p, LATERAL (SELECT coalesce(max(attempt), 0) + 1 AS next, count(*) AS used FROM entries
+					WHERE event_id = $3 AND shooter_id = $4 AND programme_id = p.id) n
+				WHERE p.id = $5 AND (p.attempts = 0 OR n.used < p.attempts)`,
+				tenantID, registrationID, eventID, shooterID, c.ProgrammeID, nilIfEmpty(c.CombinedSeries))
+			if err != nil {
+				return err
+			}
+			if tag.RowsAffected() == 0 {
+				return ErrProgrammeTaken
+			}
 		}
 	}
 	return nil
@@ -231,8 +244,9 @@ func (s *Store) CreateRegistration(ctx context.Context, tenantID int64, in NewRe
 }
 
 // UpdateRegistration changes lane and programmes of a registration. Entries of programmes that stay keep
-// their status and award; removed ones are deleted. The status follows the lane: shooting with one,
-// registered without.
+// their status and award; removed ones are deleted, and so are surplus attempts when the count goes down,
+// those without results from the last one (ErrHasResults when results would be lost). The status follows the
+// lane: shooting with one, registered without.
 func (s *Store) UpdateRegistration(ctx context.Context, tenantID int64, current Registration, rangeID *int64, lane *int, choices []domain.ProgrammeChoice) error {
 	err := pgx.BeginFunc(ctx, s.pool, func(tx pgx.Tx) error {
 		status := statusFor(lane)
@@ -248,21 +262,41 @@ func (s *Store) UpdateRegistration(ctx context.Context, tenantID int64, current 
 			keep[c.ProgrammeID] = c
 		}
 		var added []domain.ProgrammeChoice
-		have := map[int64]bool{}
+		have := map[int64]int{}
+		surplus := map[int64]int{}
 		for _, e := range current.Entries {
-			have[e.ProgrammeID] = true
-			c, ok := keep[e.ProgrammeID]
-			if !ok {
-				var scored bool
-				if err := tx.QueryRow(ctx, `SELECT EXISTS (SELECT 1 FROM results WHERE entry_id = $1)`, e.ID).Scan(&scored); err != nil {
-					return err
+			have[e.ProgrammeID]++
+		}
+		for id, n := range have {
+			surplus[id] = n - keep[id].Attempts()
+			if _, ok := keep[id]; !ok {
+				surplus[id] = n
+			}
+		}
+		entries := slices.Clone(current.Entries)
+		slices.SortStableFunc(entries, func(a, b Entry) int { return b.Attempt - a.Attempt })
+		var scoredIDs []int64
+		if err := tx.QueryRow(ctx, `SELECT coalesce(array_agg(DISTINCT entry_id), '{}') FROM results WHERE entry_id = ANY($1)`,
+			entryIDs(entries)).Scan(&scoredIDs); err != nil {
+			return err
+		}
+		for _, pass := range []bool{false, true} {
+			for _, e := range entries {
+				if surplus[e.ProgrammeID] <= 0 || slices.Contains(scoredIDs, e.ID) != pass {
+					continue
 				}
-				if scored && len(e.CombinedSeries) == 0 {
+				if pass && len(e.CombinedSeries) == 0 {
 					return ErrHasResults
 				}
 				if _, err := tx.Exec(ctx, `DELETE FROM entries WHERE id = $1`, e.ID); err != nil {
 					return err
 				}
+				surplus[e.ProgrammeID]--
+			}
+		}
+		for _, e := range current.Entries {
+			c, ok := keep[e.ProgrammeID]
+			if !ok {
 				continue
 			}
 			if _, err := tx.Exec(ctx, `UPDATE entries SET combined_series = $2 WHERE id = $1`, e.ID, nilIfEmpty(c.CombinedSeries)); err != nil {
@@ -275,7 +309,8 @@ func (s *Store) UpdateRegistration(ctx context.Context, tenantID int64, current 
 			}
 		}
 		for _, c := range choices {
-			if !have[c.ProgrammeID] {
+			if n := c.Attempts() - have[c.ProgrammeID]; n > 0 {
+				c.Count = n
 				added = append(added, c)
 			}
 		}
@@ -339,4 +374,13 @@ func (s *Store) GetEventStats(ctx context.Context, tenantID, eventID int64) (Eve
 		FROM registrations WHERE tenant_id = $1 AND event_id = $2`, tenantID, eventID).
 		Scan(&st.Registered, &st.Shooting, &st.Completed)
 	return st, err
+}
+
+// entryIDs returns the IDs of the entries.
+func entryIDs(entries []Entry) []int64 {
+	ids := make([]int64, len(entries))
+	for i, e := range entries {
+		ids[i] = e.ID
+	}
+	return ids
 }

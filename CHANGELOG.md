@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Attempts**: a programme can be shot several times per event, a fixed number or unlimited (further attempts at a shooting festival, an annual programme); the best, first or last attempt counts in rankings, club competition, special prizes and My training, further attempts can have their own price, awards go to every attempt or only the counting one, and the registration takes several attempts at once (by @HB9HIL)
+
+### Fixed
+- The German, French and Italian help of *Enter results* showed a paragraph of the CSV import instead of how results are saved (by @HB9HIL)
+
 ## [0.18.0] - 2026-10-18
 
 ### Added

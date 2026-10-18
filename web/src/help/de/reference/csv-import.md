@@ -51,6 +51,8 @@ license;firstname;lastname;birthday;club;programme;s1;s2;m2;s1_1;s1_2;s1_3
 | `s1_1`, `s1_2`, … | nein | Einzelschüsse der Passe 1, für Passen, die sie erfassen; die Passe ist deren Summe |
 
 - Ein Schütze kann in einem Programm nur einmal Resultate haben; eine Zeile
-  für schon vorhandene Resultate ist ein Fehler.
+  für schon vorhandene Resultate ist ein Fehler. Programme mit mehreren
+  [Durchgängen](../user-guide/programmes.md#attempts) nehmen eine Zeile pro
+  Durchgang, bis der Schütze keinen mehr übrig hat.
 - Ist der Schütze ohne Resultate für das Programm angemeldet, gehen die
   Resultate in diese Anmeldung.

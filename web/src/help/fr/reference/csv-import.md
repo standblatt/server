@@ -51,6 +51,8 @@ license;firstname;lastname;birthday;club;programme;s1;s2;m2;s1_1;s1_2;s1_3
 | `s1_1`, `s1_2`, … | non | coups individuels de la passe 1, pour les passes qui les saisissent ; la passe en est la somme |
 
 - Un tireur ne peut avoir des résultats qu’une fois par programme ; une
-  ligne pour des résultats déjà présents est une erreur.
+  ligne pour des résultats déjà présents est une erreur. Les programmes à
+  plusieurs [tentatives](../user-guide/programmes.md#attempts) prennent une
+  ligne par tentative, jusqu’à ce que le tireur n’en ait plus.
 - Si le tireur est inscrit au programme sans résultats, les résultats vont
   dans cette inscription.

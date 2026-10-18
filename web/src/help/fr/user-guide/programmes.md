@@ -38,8 +38,12 @@ programmes](../images/screenshots/setup.png){ .screenshot }
   chaque coup peut être saisi et la passe en est la somme, p. ex. pour les
   imprimer sur un formulaire ; le total de la passe seul peut toujours être
   saisi.
+- **Tentatives** (voir plus bas) : combien de fois un tireur peut tirer le
+  programme lors de la manifestation.
 - **Prix (CHF)** : seules les catégories d’âge cochées peuvent tirer le
-  programme.
+  programme. Avec plusieurs tentatives, un second champ par catégorie est le
+  prix de chaque tentative supplémentaire (*rachat*) ; vide signifie le même
+  prix, 0 signifie que le programme est payé une fois.
 - **Distinctions** : nom, type (carte-couronne, prix en nature ou prix en
   espèces versé en argent), valeur et total minimal par catégorie d’âge ;
   laisse une catégorie vide là où la distinction n’est pas disponible.
@@ -67,6 +71,33 @@ cours :
 - **Prix spéciaux** (voir ci-dessous).
 
 **Exporter** télécharge le programme en fichier ; **Supprimer** n’est possible que tant que personne n’est inscrit.
+
+## Tentatives {#attempts}
+
+Par défaut, un tireur tire un programme une fois par
+manifestation. **Tentatives par tireur** en permet davantage, p. ex. 3 pour
+une cible chance avec rachats à une fête de tir, ou **Illimité** pour un
+programme annuel tiré sur toute la saison.
+
+- **Tentative qui compte** détermine quelle tentative compte pour le
+  classement, le concours de sections, les prix spéciaux et *Mon
+  entraînement* : **La meilleure** (selon les règles du classement), **La
+  première** ou **La dernière**. Le classement l’affiche comme *2/3* : la
+  deuxième de trois tentatives compte.
+- **Seule la tentative qui compte reçoit une distinction** : désactivé,
+  chaque tentative peut recevoir sa distinction (une carte-couronne par
+  rachat) ; activé, seule la tentative qui compte en reçoit une, et la
+  distinction passe à une meilleure tentative dès qu’elle est tirée.
+- À l’inscription, un programme à plusieurs tentatives affiche un compteur :
+  deux tentatives à la fois donnent deux cartes de résultats, *Tentative 1*
+  et *Tentative 2*. D’autres tentatives peuvent aussi être ajoutées plus
+  tard dans une nouvelle inscription, ou en saisissant un autre résultat
+  sous **Saisir les résultats**, jusqu’à ce que le tireur n’ait plus de
+  tentatives.
+
+Le nombre de tentatives peut être modifié pendant que des tireurs sont
+inscrits, mais pas en dessous des tentatives qu’un tireur a déjà. Les
+programmes à plusieurs tentatives ne peuvent pas être combinés.
 
 ## Prix spéciaux {#special-prizes}
 

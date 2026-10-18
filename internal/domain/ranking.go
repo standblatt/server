@@ -90,3 +90,25 @@ func Rank(entries []RankingEntry) []int {
 	})
 	return order
 }
+
+// Counting returns the indexes of the n attempts that count under the rule, the best or earliest counting one
+// first; attempts must be given in attempt order. Fewer are returned when there are fewer attempts.
+func Counting(rule AttemptRule, attempts []RankingEntry, n int) []int {
+	n = min(n, len(attempts))
+	switch rule {
+	case AttemptFirst:
+		out := make([]int, n)
+		for i := range out {
+			out[i] = i
+		}
+		return out
+	case AttemptLast:
+		out := make([]int, n)
+		for i := range out {
+			out[i] = len(attempts) - 1 - i
+		}
+		return out
+	default:
+		return Rank(attempts)[:n]
+	}
+}

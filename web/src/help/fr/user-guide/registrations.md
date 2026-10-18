@@ -31,8 +31,10 @@ cette catégorie d’âge*).
 
 Si le tireur est ou était déjà inscrit à cette manifestation, une note liste
 ces inscriptions avec leurs programmes et un lien pour les ouvrir. Les
-programmes déjà réservés sont verrouillés (*déjà inscrit*) ; un tireur peut
-quand même tirer une autre variante dans une inscription séparée.
+programmes déjà réservés sont verrouillés (*déjà inscrit*, ou *plus de
+tentatives* pour les programmes à plusieurs
+[tentatives](programmes.md#attempts)) ; un tireur peut quand même tirer une
+autre variante dans une inscription séparée.
 
 ## Impression
 

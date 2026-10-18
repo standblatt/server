@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 23:45+0200\n"
+"POT-Creation-Date: 2026-10-18 09:50+0200\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -180,6 +180,10 @@ msgid "At least one series is required"
 msgstr "Mindestens eine Passe ist erforderlich"
 
 #: internal/domain/programme.go
+msgid "Attempts must be between 1 and 1000"
+msgstr "Durchgänge müssen zwischen 1 und 1000 liegen"
+
+#: internal/domain/programme.go
 #, go-format
 msgid "Award %d: age category %s has more than one limit"
 msgstr "Auszeichnung %d: die Alterskategorie %s hat mehr als eine Limite"
@@ -228,6 +232,11 @@ msgstr "Passe %d: Schüsse und Maximalpunkte müssen positiv sein"
 msgid "Unknown age category %q"
 msgstr "Unbekannte Alterskategorie %q"
 
+#: internal/domain/programme.go
+#, go-format
+msgid "Unknown attempt rule %q"
+msgstr "Unbekannte Regel für Durchgänge %q"
+
 #: internal/domain/registration.go
 #, go-format
 msgid "%s and %s are shot on different ranges"
@@ -237,6 +246,16 @@ msgstr "%s und %s werden auf verschiedenen Ständen geschossen"
 #, go-format
 msgid "%s and %s are variants of each other; choose one"
 msgstr "%s und %s sind Varianten voneinander; wähle eine"
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s can be shot at most %d times"
+msgstr "%s kann höchstens %d-mal geschossen werden"
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s can be shot only once"
+msgstr "%s kann nur einmal geschossen werden"
 
 #: internal/domain/registration.go
 #, go-format
@@ -272,6 +291,11 @@ msgstr "%s braucht genau %d Passen von %s"
 #, go-format
 msgid "%s takes its series from %s, which is not chosen"
 msgstr "%s übernimmt die Passen von %s, das nicht gewählt ist"
+
+#: internal/domain/registration.go
+#, go-format
+msgid "%s takes its series from another programme and can be shot only once"
+msgstr "%s übernimmt seine Passen aus einem anderen Programm und kann nur einmal geschossen werden"
 
 #: internal/domain/registration.go
 #, go-format
@@ -952,6 +976,14 @@ msgid "Programme or event not found"
 msgstr "Programm oder Anlass nicht gefunden"
 
 #: internal/web/programmes.go
+msgid "Programmes with several attempts cannot be combined"
+msgstr "Programme mit mehreren Durchgängen können nicht kombiniert werden"
+
+#: internal/web/programmes.go
+msgid "Shooters already have more attempts at this programme than the new number allows"
+msgstr "Schützen haben in diesem Programm bereits mehr Durchgänge, als die neue Anzahl erlaubt"
+
+#: internal/web/programmes.go
 msgid "Shooters are registered for this programme: the series stay as they are, and age categories and awards can be added but not removed"
 msgstr "Für dieses Programm sind Schützen angemeldet: Die Passen bleiben wie sie sind, Alterskategorien und Auszeichnungen können hinzugefügt, aber nicht entfernt werden"
 
@@ -1007,8 +1039,8 @@ msgid "The lane is occupied"
 msgstr "Die Scheibe ist besetzt"
 
 #: internal/web/registrations.go
-msgid "The shooter is already registered for one of these programmes at this event"
-msgstr "Der Schütze ist an diesem Anlass bereits für eines dieser Programme angemeldet"
+msgid "The shooter is already registered for one of these programmes at this event and has no attempts left"
+msgstr "Der Schütze ist an diesem Anlass bereits für eines dieser Programme angemeldet und hat keine Durchgänge mehr"
 
 #: internal/web/registrations.go
 msgid "The shooter is not a member of this club"
@@ -1027,6 +1059,14 @@ msgstr "(kein Verein)"
 #, go-format
 msgid "At least %d participants are required for a ranking."
 msgstr "Für eine Rangierung sind mindestens %d Teilnehmer nötig."
+
+#: internal/web/reports.go
+msgid "Attempt"
+msgstr "Durchgang"
+
+#: internal/web/reports.go
+msgid "Attempts"
+msgstr "Durchgänge"
 
 #: internal/web/reports.go
 msgid "Award"
@@ -1274,6 +1314,10 @@ msgstr "Die Reservation endet in der Vergangenheit"
 #: internal/web/results.go
 msgid "The shooter already has results in this programme"
 msgstr "Der Schütze hat in diesem Programm schon Resultate"
+
+#: internal/web/results.go
+msgid "The shooter has no attempts left in this programme"
+msgstr "Der Schütze hat in diesem Programm keine Durchgänge mehr"
 
 #: internal/web/results.go
 msgid "This award has not been reached"
@@ -1789,6 +1833,9 @@ msgstr "Dieser Code wurde schon benutzt; warte auf den nächsten."
 #: internal/web/totp.go
 msgid "Wrong code."
 msgstr "Falscher Code."
+
+#~ msgid "The shooter is already registered for one of these programmes at this event"
+#~ msgstr "Der Schütze ist an diesem Anlass bereits für eines dieser Programme angemeldet"
 
 #~ msgid "Choose at least one range"
 #~ msgstr "Wähle mindestens einen Stand"

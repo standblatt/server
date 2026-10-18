@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
+	import Minus from '@lucide/svelte/icons/minus';
+	import Plus from '@lucide/svelte/icons/plus';
 	import { untrack, type Snippet } from 'svelte';
 	import type { ClubRef, LaneState, Programme, ProgrammeChoice, RangeLanes, Registration, Shooter } from './api';
 	import { ageCategoryFor } from './categories';
@@ -19,7 +21,7 @@
 		lanes,
 		initial,
 		initialClubId,
-		taken,
+		used,
 		readonly = false,
 		lanesOnly = false,
 		submitLabel,
@@ -32,7 +34,8 @@
 		lanes: RangeLanes[];
 		initial?: Registration;
 		initialClubId?: number;
-		taken?: Set<number>;
+		/** Attempts the shooter already has per programme in other registrations of the event. */
+		used?: Map<number, number>;
 		readonly?: boolean;
 		/** Only the lane may change (ammunition desk): programmes stay as they are. */
 		lanesOnly?: boolean;
@@ -50,6 +53,13 @@
 	let selected = $state<Record<number, boolean>>(untrack(() => Object.fromEntries((initial?.entries ?? []).map((e) => [e.programmeId, true]))));
 	let combine = $state<Record<number, boolean>>(
 		untrack(() => Object.fromEntries((initial?.entries ?? []).filter((e) => e.combinedSeries.length > 0).map((e) => [e.programmeId, true])))
+	);
+	let counts = $state<Record<number, number>>(
+		untrack(() => {
+			const out: Record<number, number> = {};
+			for (const e of initial?.entries ?? []) out[e.programmeId] = (out[e.programmeId] ?? 0) + 1;
+			return out;
+		})
 	);
 	let series = $state<Record<number, number[]>>(untrack(() => Object.fromEntries((initial?.entries ?? []).map((e) => [e.programmeId, e.combinedSeries]))));
 	let error = $state('');
@@ -69,13 +79,27 @@
 
 	/** Price of a programme for the shooter's age category, undefined when not offered. */
 	const price = (p: Programme) => p.prices.find((x) => x.ageCategory === category)?.price;
-	/** Whether the programme can be chosen: offered for the category, not already shot, not lanes-only. */
-	const allowed = (p: Programme) => !lanesOnly && price(p) !== undefined && !taken?.has(p.id);
+	/** Whether a shooter may shoot the programme more than once. */
+	const repeatable = (p: Programme) => !!p.unlimitedAttempts || (p.attempts ?? 1) > 1;
+	/** Attempts the shooter may still register for the programme. */
+	const left = (p: Programme) => (p.unlimitedAttempts ? Infinity : Math.max(p.attempts ?? 1, 1)) - (used?.get(p.id) ?? 0);
+	/** Attempts of the programme in this registration. */
+	const count = (p: Programme) => Math.max(counts[p.id] ?? 1, 1);
+	/** Price of n attempts after the shooter's earlier ones: further attempts cost the repeat price, if any. */
+	function cost(p: Programme, n: number) {
+		const first = price(p) ?? 0;
+		const repeat = p.prices.find((x) => x.ageCategory === category)?.repeatPrice ?? first;
+		let sum = 0;
+		for (let i = 0; i < n; i++) sum += (used?.get(p.id) ?? 0) + i === 0 ? first : repeat;
+		return sum;
+	}
+	/** Whether the programme can be chosen: offered for the category, attempts left, not lanes-only. */
+	const allowed = (p: Programme) => !lanesOnly && price(p) !== undefined && left(p) > 0;
 	/** Reason a programme cannot be chosen. */
-	const unavailable = (p: Programme) => (taken?.has(p.id) ? $t`already registered` : $t`not for this age category`);
+	const unavailable = (p: Programme) => (left(p) > 0 ? $t`not for this age category` : repeatable(p) ? $t`no attempts left` : $t`already registered`);
 	/** Programme by ID. */
 	const byId = (id: number) => programmes.find((p) => p.id === id);
-	const total = $derived(programmes.filter((p) => selected[p.id]).reduce((n, p) => n + (price(p) ?? 0), 0));
+	const total = $derived(programmes.filter((p) => selected[p.id]).reduce((n, p) => n + cost(p, repeatable(p) ? count(p) : 1), 0));
 	/** Range the chosen programmes are tied to, if any; the lane picker then shows only that range. */
 	const requiredRange = $derived(programmes.find((p) => selected[p.id] && p.rangeId)?.rangeId);
 	const shownLanes = $derived(requiredRange ? lanes.filter((r) => r.rangeId === requiredRange) : lanes);
@@ -143,7 +167,7 @@
 				lane: lane || undefined,
 				programmes: programmes
 					.filter((p) => selected[p.id])
-					.map((p) => ({ programmeId: p.id, combinedSeries: combine[p.id] ? (series[p.id] ?? []) : [] }))
+					.map((p) => ({ programmeId: p.id, combinedSeries: combine[p.id] ? (series[p.id] ?? []) : [], count: repeatable(p) ? count(p) : undefined }))
 			});
 		} catch (err) {
 			error = (err as Error).message;
@@ -236,6 +260,14 @@
 									<span class="ml-auto text-muted-foreground tabular-nums">{allowed(p) ? `CHF ${price(p)?.toFixed(2)}` : unavailable(p)}</span>
 								</label>
 							{/if}
+							{#each g.items.filter((p) => selected[p.id] && repeatable(p)) as p (p.id)}
+								<div class="mt-2 ml-6 flex items-center gap-2 text-sm">
+									<span class="text-muted-foreground">{$t`Attempts`}</span>
+									<Button variant="outline" size="icon-sm" aria-label={$t`Fewer attempts of ${programmeTitle(p)}`} disabled={count(p) <= 1} onclick={() => (counts[p.id] = count(p) - 1)}><Minus /></Button>
+									<span class="w-6 text-center font-medium tabular-nums" data-testid="attempts">{count(p)}</span>
+									<Button variant="outline" size="icon-sm" aria-label={$t`More attempts of ${programmeTitle(p)}`} disabled={count(p) >= left(p)} onclick={() => (counts[p.id] = count(p) + 1)}><Plus /></Button>
+								</div>
+							{/each}
 							{#each g.items.filter((p) => selected[p.id] && p.combinableWithId) as p (p.id)}
 								{@const target = byId(p.combinableWithId!)}
 								{#if target}

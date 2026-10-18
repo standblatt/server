@@ -30,8 +30,9 @@ del tiratore. I programmi senza prezzo per quella categoria sono in grigio
 
 Se il tiratore è o era già iscritto a questa manifestazione, un avviso
 elenca quelle iscrizioni con i loro programmi e un link per aprirle. I
-programmi già prenotati sono bloccati (*già iscritto*); un tiratore può
-comunque tirare un’altra variante in un’iscrizione separata.
+programmi già prenotati sono bloccati (*già iscritto*, o *nessun tentativo
+rimasto* per i programmi con più [tentativi](programmes.md#attempts)); un
+tiratore può comunque tirare un’altra variante in un’iscrizione separata.
 
 ## Stampa
 

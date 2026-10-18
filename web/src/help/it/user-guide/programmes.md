@@ -35,8 +35,12 @@ programmi](../images/screenshots/setup.png){ .screenshot }
   registrano i **Colpi singoli**, per serie. Con i colpi singoli si può
   registrare ogni colpo e la serie ne è la somma, p. es. per stamparli su un
   modulo; il totale della serie da solo si può ancora registrare.
-- **Prezzi (CHF)**: solo le categorie d’età spuntate possono tirare il
-  programma.
+- **Tentativi** (vedi sotto): quante volte un tiratore può tirare il
+  programma nella manifestazione.
+- **Prezzi (CHF)**: solo le categorie d’età selezionate possono tirare il
+  programma. Con più tentativi, un secondo campo per categoria è il prezzo
+  di ogni tentativo supplementare (*rachat*); vuoto significa lo stesso
+  prezzo, 0 significa che il programma è pagato una volta.
 - **Distinzioni**: nome, tipo (carta corona, premio in natura o premio in
   denaro pagato in contanti), valore e totale minimo per categoria d’età;
   lascia vuota una categoria dove la distinzione non è disponibile.
@@ -64,6 +68,32 @@ disponibile:
 - **Premi speciali** (vedi sotto).
 
 **Esporta** scarica il programma come file; **Elimina** è possibile solo finché nessuno è iscritto.
+
+## Tentativi {#attempts}
+
+Di norma un tiratore tira un programma una volta per
+manifestazione. **Tentativi per tiratore** ne consente di più, p. es. 3 per
+un bersaglio fortuna con rachat a una festa di tiro, o **Illimitato** per un
+programma annuale tirato durante tutta la stagione.
+
+- **Tentativo che conta** decide quale tentativo conta per la classifica, la
+  gara delle società, i premi speciali e *Il mio allenamento*: **Il
+  migliore** (secondo le regole della classifica), **Il primo** o
+  **L’ultimo**. La classifica lo mostra come *2/3*: conta il secondo di tre
+  tentativi.
+- **Solo il tentativo che conta riceve una distinzione**: disattivato, ogni
+  tentativo può ricevere la sua distinzione (una carta corona per rachat);
+  attivato, solo il tentativo che conta ne riceve una, e la distinzione
+  passa a un tentativo migliore appena viene tirato.
+- All’iscrizione, un programma con più tentativi mostra un contatore: due
+  tentativi insieme danno due schede di risultati, *Tentativo 1* e
+  *Tentativo 2*. Altri tentativi si possono aggiungere anche più tardi in
+  una nuova iscrizione, o registrando un altro risultato in **Registra
+  risultati**, finché il tiratore non ha più tentativi.
+
+Il numero di tentativi può essere modificato mentre ci sono tiratori
+iscritti, ma non al di sotto dei tentativi che un tiratore ha già. I
+programmi con più tentativi non possono essere combinati.
 
 ## Premi speciali {#special-prizes}
 

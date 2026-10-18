@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-17 22:32+0000\n"
+"POT-Creation-Date: 2026-10-18 08:00+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -1789,10 +1789,10 @@ msgstr ""
 #: ../src/help/en/reference/csv-import.md:45
 msgid ""
 "A shooter can have results in a programme only once; a line for results that "
-"exist already is an error."
-msgstr ""
-"Un tireur ne peut avoir des résultats qu’une fois par programme ; une ligne "
-"pour des résultats déjà présents est une erreur."
+"exist already is an error. Programmes with several [attempts](../user-guide/"
+"programmes.md#attempts) take one line per attempt until the shooter has none "
+"left."
+msgstr "Un tireur ne peut avoir des résultats qu’une fois par programme ; une ligne pour des résultats déjà présents est une erreur. Les programmes à plusieurs [tentatives](../user-guide/programmes.md#attempts) prennent une ligne par tentative, jusqu’à ce que le tireur n’en ait plus."
 
 #. type: Bullet: '- '
 #: ../src/help/en/reference/csv-import.md:45
@@ -1953,10 +1953,9 @@ msgstr "Une inscription est refusée quand :"
 #. type: Bullet: '- '
 #: ../src/help/en/reference/rules.md:19
 msgid ""
-"a programme does not belong to the event, is chosen twice or is not active;"
-msgstr ""
-"un programme n’appartient pas à la manifestation, est choisi deux fois ou "
-"n’est pas actif ;"
+"a programme does not belong to the event, is chosen twice or is not active, "
+"or more attempts are chosen than it allows;"
+msgstr "un programme n’appartient pas à la manifestation, est choisi deux fois ou n’est pas actif, ou plus de tentatives sont choisies qu’il n’en permet ;"
 
 #. type: Bullet: '- '
 #: ../src/help/en/reference/rules.md:19
@@ -1991,12 +1990,10 @@ msgstr ""
 #: ../src/help/en/reference/rules.md:19
 msgid ""
 "the shooter is already registered for one of the programmes at this event (a "
-"shooter shoots each programme once per event; another variant in a separate "
-"registration is fine)."
-msgstr ""
-"le tireur est déjà inscrit à l’un des programmes de cette manifestation (un "
-"tireur tire chaque programme une fois par manifestation ; une autre variante "
-"dans une inscription séparée est permise)."
+"shooter shoots each programme once per event unless it allows several "
+"[attempts](../user-guide/programmes.md#attempts); another variant in a "
+"separate registration is fine)."
+msgstr "le tireur est déjà inscrit à l’un des programmes de cette manifestation (un tireur tire chaque programme une fois par manifestation, sauf s’il permet plusieurs [tentatives](../user-guide/programmes.md#attempts) ; une autre variante dans une inscription séparée est permise)."
 
 #. type: Plain text
 #: ../src/help/en/reference/rules.md:21
@@ -2188,7 +2185,7 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/help/en/reference/rules.md:56
-#: ../src/help/en/user-guide/programmes.md:35
+#: ../src/help/en/user-guide/programmes.md:46
 #, no-wrap
 msgid "Special prizes {#special-prizes}"
 msgstr "Prix spéciaux {#special-prizes}"
@@ -3105,8 +3102,7 @@ msgstr ""
 #: ../src/help/en/user-guide/print-forms.md:17
 #, no-wrap
 msgid "**Save** stores the form; a dot on the button shows unsaved changes, and leaving the page with them asks first. With **Save automatically** (on unless you switch it off; the browser remembers it) unsaved changes are stored every minute. **PDF preview** opens the form exactly as the PDF renders it, which can differ slightly from the sheet in the browser.\n"
-msgstr ""
-"**Enregistrer** enregistre le modèle ; un point sur le bouton signale des modifications non enregistrées, et quitter la page avec elles demande d’abord une confirmation. Avec **Enregistrer automatiquement** (activé tant qu’on ne le désactive pas ; le navigateur s’en souvient), les modifications non enregistrées sont enregistrées chaque minute. **Aperçu PDF** ouvre le modèle exactement tel que le PDF le rend, ce qui peut différer légèrement de la feuille dans le navigateur.\n"
+msgstr "**Enregistrer** enregistre le modèle ; un point sur le bouton signale des modifications non enregistrées, et quitter la page avec elles demande d’abord une confirmation. Avec **Enregistrer automatiquement** (activé tant qu’on ne le désactive pas ; le navigateur s’en souvient), les modifications non enregistrées sont enregistrées chaque minute. **Aperçu PDF** ouvre le modèle exactement tel que le PDF le rend, ce qui peut différer légèrement de la feuille dans le navigateur.\n"
 
 #. type: Title ##
 #: ../src/help/en/user-guide/print-forms.md:18
@@ -3319,7 +3315,7 @@ msgstr ""
 "{ .screenshot }"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:24
+#: ../src/help/en/user-guide/programmes.md:25
 msgid ""
 "**Name** and **Variant**: programmes with the same name are variants of each "
 "other; a shooter registers for one of them. The name field suggests the "
@@ -3334,7 +3330,7 @@ msgstr ""
 "avertit si le nom de variante est vide ou déjà pris."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:24
+#: ../src/help/en/user-guide/programmes.md:25
 msgid ""
 "**Barcode**: printed on the lane sheet for electronic scoring (see [Codes]"
 "(../reference/codes.md))."
@@ -3343,14 +3339,14 @@ msgstr ""
 "électronique (voir [Codes](../reference/codes.md))."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:24
+#: ../src/help/en/user-guide/programmes.md:25
 msgid "**Counts for the club competition** and **Show on kiosk displays**."
 msgstr ""
 "**Compte pour le concours de sections** et **Afficher sur les écrans "
 "kiosque**."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:24
+#: ../src/help/en/user-guide/programmes.md:25
 msgid ""
 "**Series**: shots, maximum points, whether mouches are tracked and whether "
 "**Single shots** are recorded, per series. With single shots, every shot can "
@@ -3364,15 +3360,23 @@ msgstr ""
 "saisi."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:24
+#: ../src/help/en/user-guide/programmes.md:25
 msgid ""
-"**Prices (CHF)**: only the ticked age categories may shoot the programme."
-msgstr ""
-"**Prix (CHF)** : seules les catégories d’âge cochées peuvent tirer le "
-"programme."
+"**Attempts** (see below): how often a shooter may shoot the programme at the "
+"event."
+msgstr "**Tentatives** (voir plus bas) : combien de fois un tireur peut tirer le programme lors de la manifestation."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:24
+#: ../src/help/en/user-guide/programmes.md:25
+msgid ""
+"**Prices (CHF)**: only the ticked age categories may shoot the programme. "
+"With several attempts, a second field per category is the price of every "
+"further attempt (*Nachdoppel*); empty means the same price, 0 means the "
+"programme is paid once."
+msgstr "**Prix (CHF)** : seules les catégories d’âge cochées peuvent tirer le programme. Avec plusieurs tentatives, un second champ par catégorie est le prix de chaque tentative supplémentaire (*rachat*) ; vide signifie le même prix, 0 signifie que le programme est payé une fois."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/programmes.md:25
 msgid ""
 "**Awards**: name, kind (wreath card, prize in kind or cash prize paid out in "
 "money), value and the minimum total per age category; leave a category empty "
@@ -3383,7 +3387,7 @@ msgstr ""
 "laisse une catégorie vide là où la distinction n’est pas disponible."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/programmes.md:26
+#: ../src/help/en/user-guide/programmes.md:27
 msgid ""
 "Once shooters are registered for a programme, the **series** are fixed so "
 "results keep their meaning; the editor says so and greys them out. "
@@ -3401,7 +3405,7 @@ msgstr ""
 "cours :"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:32
+#: ../src/help/en/user-guide/programmes.md:33
 msgid ""
 "**Active**: inactive programmes cannot be chosen for new registrations; "
 "existing ones keep them."
@@ -3410,7 +3414,7 @@ msgstr ""
 "nouvelles inscriptions ; les inscriptions existantes les gardent."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:32
+#: ../src/help/en/user-guide/programmes.md:33
 msgid ""
 "**Combinable with**: the programme whose series this one may take at "
 "registration."
@@ -3419,7 +3423,7 @@ msgstr ""
 "l’inscription."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:32
+#: ../src/help/en/user-guide/programmes.md:33
 msgid ""
 "**Range** (events on several ranges): the range the programme is shot on, "
 "e.g. *Pistol 50 m*; the registration then offers only its lanes and kiosk "
@@ -3433,7 +3437,7 @@ msgstr ""
 "différents demandent des inscriptions séparées."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:32
+#: ../src/help/en/user-guide/programmes.md:33
 msgid ""
 "**Print form** (when the club has [print forms](print-forms.md)): the form "
 "the results of the programme are printed onto; *none* prints no form."
@@ -3443,24 +3447,73 @@ msgstr ""
 "*aucun* n’imprime pas de modèle."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/programmes.md:32
+#: ../src/help/en/user-guide/programmes.md:33
 msgid "**Special prizes** (see below)."
 msgstr "**Prix spéciaux** (voir ci-dessous)."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/programmes.md:34
+#: ../src/help/en/user-guide/programmes.md:35
 #, no-wrap
 msgid "**Export** downloads the programme as a file; **Delete** is only possible while nobody is registered.\n"
 msgstr "**Exporter** télécharge le programme en fichier ; **Supprimer** n’est possible que tant que personne n’est inscrit.\n"
 
+#. type: Title ##
+#: ../src/help/en/user-guide/programmes.md:36
+#, no-wrap
+msgid "Attempts {#attempts}"
+msgstr "Tentatives {#attempts}"
+
 #. type: Plain text
-#: ../src/help/en/user-guide/programmes.md:38
+#: ../src/help/en/user-guide/programmes.md:39
+msgid ""
+"By default a shooter shoots a programme once per event. **Attempts per "
+"shooter** allows more, e.g. 3 for a lucky target with further attempts at a "
+"shooting festival, or **Unlimited** for an annual programme shot over the "
+"season."
+msgstr "Par défaut, un tireur tire un programme une fois par manifestation. **Tentatives par tireur** en permet davantage, p. ex. 3 pour une cible chance avec rachats à une fête de tir, ou **Illimité** pour un programme annuel tiré sur toute la saison."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/programmes.md:43
+msgid ""
+"**Counting attempt** decides which attempt the ranking, the club "
+"competition, special prizes and *My training* count: **The best** (by the "
+"ranking rules), **The first** or **The last**. The ranking shows it as "
+"*2/3*: the second of three attempts counts."
+msgstr "**Tentative qui compte** détermine quelle tentative compte pour le classement, le concours de sections, les prix spéciaux et *Mon entraînement* : **La meilleure** (selon les règles du classement), **La première** ou **La dernière**. Le classement l’affiche comme *2/3* : la deuxième de trois tentatives compte."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/programmes.md:43
+msgid ""
+"**Only the counting attempt receives an award**: off, every attempt can earn "
+"its award (a wreath card per further attempt); on, only the counting attempt "
+"gets one, and the award moves when a better attempt is shot."
+msgstr "**Seule la tentative qui compte reçoit une distinction** : désactivé, chaque tentative peut recevoir sa distinction (une carte-couronne par rachat) ; activé, seule la tentative qui compte en reçoit une, et la distinction passe à une meilleure tentative dès qu’elle est tirée."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/programmes.md:43
+msgid ""
+"At registration, a programme with several attempts shows a counter: two "
+"attempts at once are two result cards, *Attempt 1* and *Attempt 2*. Further "
+"attempts can also be added later in a new registration, or by entering "
+"another result on **Enter results**, until the shooter has no attempts left."
+msgstr "À l’inscription, un programme à plusieurs tentatives affiche un compteur : deux tentatives à la fois donnent deux cartes de résultats, *Tentative 1* et *Tentative 2*. D’autres tentatives peuvent aussi être ajoutées plus tard dans une nouvelle inscription, ou en saisissant un autre résultat sous **Saisir les résultats**, jusqu’à ce que le tireur n’ait plus de tentatives."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/programmes.md:45
+msgid ""
+"The number of attempts can be changed while shooters are registered, but not "
+"below the attempts a shooter already has. Programmes with several attempts "
+"cannot be combined."
+msgstr "Le nombre de tentatives peut être modifié pendant que des tireurs sont inscrits, mais pas en dessous des tentatives qu’un tireur a déjà. Les programmes à plusieurs tentatives ne peuvent pas être combinés."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/programmes.md:49
 #, no-wrap
 msgid "**Special prizes** in the programme menu awards the best ranks of every age category, for example ranks 1–3 in every category with at least 10 participants, counting only shooters whose club has at least 4 participants in this programme. Skipped shooters make room for the next one. The exact rule is in [Competition rules](../reference/rules.md#special-prizes); the winners are in the report *Special prizes* under [Statistics](statistics-reports.md).\n"
 msgstr "**Prix spéciaux** dans le menu du programme récompense les meilleurs rangs de chaque catégorie d’âge, par exemple les rangs 1 à 3 dans chaque catégorie d’au moins 10 participants, en ne comptant que les tireurs dont la société a au moins 4 participants dans ce programme. Les tireurs sautés laissent la place au suivant. La règle exacte figure dans les [règles de concours](../reference/rules.md#special-prizes) ; les gagnants sont dans le rapport *Prix spéciaux* sous [Statistiques](statistics-reports.md).\n"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/programmes.md:40
+#: ../src/help/en/user-guide/programmes.md:51
 msgid ""
 "![Special prizes dialog](../images/screenshots/special-prizes.png)"
 "{ .screenshot }"
@@ -3469,7 +3522,7 @@ msgstr ""
 "{ .screenshot }"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/programmes.md:41
+#: ../src/help/en/user-guide/programmes.md:52
 msgid ""
 "Ranks 0 turns special prizes off. The settings can be changed at any time, "
 "also after the event."
@@ -3882,13 +3935,10 @@ msgstr "Tireur déjà inscrit"
 msgid ""
 "If the shooter is or was registered at this event before, a notice lists "
 "those registrations with their programmes and a link to open them. "
-"Programmes already booked are locked (*already registered*); a shooter may "
-"still shoot another variant in a separate registration."
-msgstr ""
-"Si le tireur est ou était déjà inscrit à cette manifestation, une note liste "
-"ces inscriptions avec leurs programmes et un lien pour les ouvrir. Les "
-"programmes déjà réservés sont verrouillés (*déjà inscrit*) ; un tireur peut "
-"quand même tirer une autre variante dans une inscription séparée."
+"Programmes already booked are locked (*already registered*, or *no attempts "
+"left* for programmes with several [attempts](programmes.md#attempts)); a "
+"shooter may still shoot another variant in a separate registration."
+msgstr "Si le tireur est ou était déjà inscrit à cette manifestation, une note liste ces inscriptions avec leurs programmes et un lien pour les ouvrir. Les programmes déjà réservés sont verrouillés (*déjà inscrit*, ou *plus de tentatives* pour les programmes à plusieurs [tentatives](programmes.md#attempts)) ; un tireur peut quand même tirer une autre variante dans une inscription séparée."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/registrations.md:29
@@ -4469,10 +4519,10 @@ msgid ""
 "with a link to the results. If the shooter was registered at the desk for "
 "this programme and has no results yet, the results go into that "
 "registration; otherwise a registration without a lane is created, already "
-"completed. A shooter can have results in a programme only once."
-msgstr ""
-"Un tireur ne peut avoir des résultats qu’une fois par programme ; une ligne "
-"pour des résultats déjà présents est une erreur."
+"completed. A shooter can have results in a programme only once, unless the "
+"programme allows several [attempts](programmes.md#attempts): then every "
+"further result is a new attempt until none is left."
+msgstr "Le résultat est enregistré aussitôt, et le tireur apparaît sous *Saisis à l’instant* avec un lien vers les résultats. Si le tireur était inscrit au guichet pour ce programme et n’a pas encore de résultats, les résultats vont dans cette inscription ; sinon, une inscription sans cible est créée, déjà terminée. Un tireur ne peut avoir des résultats qu’une fois par programme, sauf si le programme permet plusieurs [tentatives](programmes.md#attempts) : chaque résultat supplémentaire est alors une nouvelle tentative, jusqu’à ce qu’il n’en reste plus."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/results-entry.md:18
@@ -4775,6 +4825,12 @@ msgstr ""
 "panel.md). Un mot de passe oublié se réinitialise avec **Mot de passe "
 "oublié ?** sur la page de connexion si le compte a une adresse e-mail "
 "confirmée, sinon par l’exploitant."
+
+#~ msgid ""
+#~ "**Prices (CHF)**: only the ticked age categories may shoot the programme."
+#~ msgstr ""
+#~ "**Prix (CHF)** : seules les catégories d’âge cochées peuvent tirer le "
+#~ "programme."
 
 #~ msgid "**Width** and **Height** of the sheet in millimetres."
 #~ msgstr "**Largeur** et **Hauteur** de la feuille en millimètres."

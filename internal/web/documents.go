@@ -257,10 +257,14 @@ func (s *Server) renderRanking(ctx context.Context, tenantID, programmeID int64)
 			continue
 		}
 		for _, l := range r.Lines {
-			list.Lines = append(list.Lines, docs.RankingLine{
+			line := docs.RankingLine{
 				Rank: l.Rank, Lastname: l.Lastname, Firstname: l.Firstname, BirthYear: l.BirthYear,
 				CategoryShort: categoryShort[l.Category], Club: l.Club, Series: l.Series, Total: l.Total,
-			})
+			}
+			if r.Repeatable {
+				line.Note = fmt.Sprintf("(%d/%d)", l.Attempt, l.Attempts)
+			}
+			list.Lines = append(list.Lines, line)
 		}
 	}
 	pdf, err := docs.RenderRankingList(list)

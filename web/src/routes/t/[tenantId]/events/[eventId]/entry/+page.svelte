@@ -92,7 +92,7 @@
 	/** An empty result card for the chosen programme; EntryCard fills it. */
 	const blank = $derived<EntryResult | null>(
 		programme
-			? { entryId: 0, programmeId: programme.id, title: programmeTitle(programme), status: 'pending', series: programme.series, maxPoints: programme.maxPoints, combinedSeries: [], results: [], total: 0, mouches: 0, eligibleAwards: [], form: false }
+			? { entryId: 0, programmeId: programme.id, title: programmeTitle(programme), attempt: 1, repeatable: false, status: 'pending', series: programme.series, maxPoints: programme.maxPoints, combinedSeries: [], results: [], total: 0, mouches: 0, eligibleAwards: [], form: false }
 			: null
 	);
 

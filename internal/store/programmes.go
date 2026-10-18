@@ -34,7 +34,7 @@ type ProgrammeTemplate struct {
 func loadProgrammes(ctx context.Context, q querier, where string, args ...any) ([]Programme, error) {
 	rows, err := q.Query(ctx, `SELECT id, event_id, active, combinable_with_id, range_id, layout_id, name, variant, description, barcode,
 			counts_for_club_competition, show_on_rankings, prize_ranks, prize_min_category, prize_min_club,
-			EXISTS (SELECT 1 FROM entries e WHERE e.programme_id = p.id)
+			EXISTS (SELECT 1 FROM entries e WHERE e.programme_id = p.id), attempts, attempt_rule, award_counting_only
 		FROM programmes p WHERE `+where+` ORDER BY lower(name), lower(variant), id`, args...)
 	if err != nil {
 		return nil, err
@@ -42,7 +42,9 @@ func loadProgrammes(ctx context.Context, q querier, where string, args ...any) (
 	list, err := pgx.CollectRows(rows, func(row pgx.CollectableRow) (Programme, error) {
 		var p Programme
 		err := row.Scan(&p.ID, &p.EventID, &p.Active, &p.CombinableWithID, &p.RangeID, &p.LayoutID, &p.Name, &p.Variant, &p.Description, &p.Barcode,
-			&p.CountsForClubCompetition, &p.ShowOnRankings, &p.SpecialPrizes.Ranks, &p.SpecialPrizes.MinCategory, &p.SpecialPrizes.MinClub, &p.InUse)
+			&p.CountsForClubCompetition, &p.ShowOnRankings, &p.SpecialPrizes.Ranks, &p.SpecialPrizes.MinCategory, &p.SpecialPrizes.MinClub, &p.InUse,
+			&p.Attempts, &p.AttemptRule, &p.AwardCountingOnly)
+		p.UnlimitedAttempts = p.Attempts == 0
 		return p, err
 	})
 	if err != nil || len(list) == 0 {
@@ -70,14 +72,15 @@ func loadProgrammes(ctx context.Context, q querier, where string, args ...any) (
 		return nil, err
 	}
 
-	rows, err = q.Query(ctx, `SELECT programme_id, age_category, price FROM programme_prices
+	rows, err = q.Query(ctx, `SELECT programme_id, age_category, price, repeat_price FROM programme_prices
 		WHERE programme_id = ANY($1) ORDER BY programme_id, age_category`, ids)
 	if err != nil {
 		return nil, err
 	}
 	var pr domain.Price
-	if _, err := pgx.ForEachRow(rows, []any{&pid, &pr.AgeCategory, &pr.Price}, func() error {
+	if _, err := pgx.ForEachRow(rows, []any{&pid, &pr.AgeCategory, &pr.Price, &pr.RepeatPrice}, func() error {
 		byID[pid].Prices = append(byID[pid].Prices, pr)
+		pr.RepeatPrice = nil
 		return nil
 	}); err != nil {
 		return nil, err
@@ -131,8 +134,8 @@ func insertDefinition(ctx context.Context, tx pgx.Tx, programmeID int64, d domai
 		}
 	}
 	for _, p := range d.Prices {
-		if _, err := tx.Exec(ctx, `INSERT INTO programme_prices (programme_id, age_category, price) VALUES ($1, $2, $3)`,
-			programmeID, p.AgeCategory, p.Price); err != nil {
+		if _, err := tx.Exec(ctx, `INSERT INTO programme_prices (programme_id, age_category, price, repeat_price) VALUES ($1, $2, $3, $4)`,
+			programmeID, p.AgeCategory, p.Price, p.RepeatPrice); err != nil {
 			return err
 		}
 	}
@@ -156,9 +159,10 @@ func insertDefinition(ctx context.Context, tx pgx.Tx, programmeID int64, d domai
 func createProgramme(ctx context.Context, tx pgx.Tx, tenantID, eventID int64, d domain.ProgrammeDefinition) (int64, error) {
 	var id int64
 	err := tx.QueryRow(ctx, `INSERT INTO programmes (tenant_id, event_id, name, variant, description, barcode,
-			counts_for_club_competition, show_on_rankings)
-		VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id`,
-		tenantID, eventID, d.Name, d.Variant, d.Description, d.Barcode, d.CountsForClubCompetition, d.ShowOnRankings).Scan(&id)
+			counts_for_club_competition, show_on_rankings, attempts, attempt_rule, award_counting_only)
+		VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING id`,
+		tenantID, eventID, d.Name, d.Variant, d.Description, d.Barcode, d.CountsForClubCompetition, d.ShowOnRankings,
+		d.AttemptLimit(), d.Rule(), d.AwardCountingOnly).Scan(&id)
 	if err != nil {
 		return 0, err
 	}
@@ -195,18 +199,25 @@ func (s *Store) CreateProgramme(ctx context.Context, tenantID, eventID int64, d 
 
 // UpdateProgramme replaces the definition of a programme. Once shooters are registered for it, the series must
 // stay as they are and age categories and awards can be added but not removed (ErrInUse otherwise), so results
-// and given awards keep their meaning.
+// and given awards keep their meaning. The attempts may change while in use, but not below the most attempts a
+// shooter already has (ErrAttemptsUsed).
 func (s *Store) UpdateProgramme(ctx context.Context, tenantID, programmeID int64, d domain.ProgrammeDefinition) error {
 	err := pgx.BeginFunc(ctx, s.pool, func(tx pgx.Tx) error {
 		var used bool
-		if err := tx.QueryRow(ctx, `SELECT EXISTS (SELECT 1 FROM entries WHERE tenant_id = $1 AND programme_id = $2)`,
-			tenantID, programmeID).Scan(&used); err != nil {
+		var most int
+		if err := tx.QueryRow(ctx, `SELECT count(*) > 0, coalesce(max(n), 0) FROM (SELECT count(*) AS n FROM entries
+				WHERE tenant_id = $1 AND programme_id = $2 GROUP BY shooter_id) a`,
+			tenantID, programmeID).Scan(&used, &most); err != nil {
 			return err
 		}
+		if limit := d.AttemptLimit(); limit > 0 && most > limit {
+			return ErrAttemptsUsed
+		}
 		tag, err := tx.Exec(ctx, `UPDATE programmes SET name = $3, variant = $4, description = $5, barcode = $6,
-				counts_for_club_competition = $7, show_on_rankings = $8
+				counts_for_club_competition = $7, show_on_rankings = $8, attempts = $9, attempt_rule = $10, award_counting_only = $11
 			WHERE tenant_id = $1 AND id = $2`,
-			tenantID, programmeID, d.Name, d.Variant, d.Description, d.Barcode, d.CountsForClubCompetition, d.ShowOnRankings)
+			tenantID, programmeID, d.Name, d.Variant, d.Description, d.Barcode, d.CountsForClubCompetition, d.ShowOnRankings,
+			d.AttemptLimit(), d.Rule(), d.AwardCountingOnly)
 		if err != nil {
 			return err
 		}
@@ -263,8 +274,9 @@ func updateDefinitionInUse(ctx context.Context, tx pgx.Tx, programmeID int64, d 
 		}
 	}
 	for _, p := range d.Prices {
-		if _, err := tx.Exec(ctx, `INSERT INTO programme_prices (programme_id, age_category, price) VALUES ($1, $2, $3)
-			ON CONFLICT (programme_id, age_category) DO UPDATE SET price = EXCLUDED.price`, programmeID, p.AgeCategory, p.Price); err != nil {
+		if _, err := tx.Exec(ctx, `INSERT INTO programme_prices (programme_id, age_category, price, repeat_price) VALUES ($1, $2, $3, $4)
+			ON CONFLICT (programme_id, age_category) DO UPDATE SET price = EXCLUDED.price, repeat_price = EXCLUDED.repeat_price`,
+			programmeID, p.AgeCategory, p.Price, p.RepeatPrice); err != nil {
 			return err
 		}
 	}

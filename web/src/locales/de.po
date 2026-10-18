@@ -330,6 +330,12 @@ msgstr "noch {0}"
 msgid "{0} until"
 msgstr "{0} bis"
 
+#. placeholder {0}: entry.title
+#. placeholder {1}: entry.attempt
+#: src/lib/EntryCard.svelte
+msgid "{0}, attempt {1}"
+msgstr "{0}, Durchgang {1}"
+
 #: src/lib/EventDesk.svelte
 msgid "{at} · click to take back"
 msgstr "{at} · Klick nimmt es zurück"
@@ -768,6 +774,24 @@ msgstr "Höchstens {0} Scheiben pro Zeitblock."
 #: src/lib/help/nav.ts
 msgid "At the event"
 msgstr "Am Anlass"
+
+#: src/lib/RankingTable.svelte
+msgid "Attempt"
+msgstr "Durchgang"
+
+#. placeholder {0}: entry.attempt
+#: src/lib/EntryCard.svelte
+msgid "Attempt {0}"
+msgstr "Durchgang {0}"
+
+#: src/lib/ProgrammeEditor.svelte
+#: src/lib/RegistrationForm.svelte
+msgid "Attempts"
+msgstr "Durchgänge"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Attempts per shooter"
+msgstr "Durchgänge pro Schütze"
 
 #: src/routes/my/progress/+page.svelte
 msgid "Average"
@@ -1295,6 +1319,14 @@ msgstr "Anzahl"
 #: src/routes/t/[tenantId]/events/[eventId]/statistics/+page.svelte
 msgid "Counted: {0}"
 msgstr "Gezählt: {0}"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Counting attempt"
+msgstr "Zählender Durchgang"
+
+#: src/lib/RankingTable.svelte
+msgid "Counting attempt of the shooter's attempts"
+msgstr "Zählender Durchgang von allen Durchgängen des Schützen"
 
 #: src/lib/ProgrammeEditor.svelte
 msgid "Counts for the club competition"
@@ -1839,6 +1871,11 @@ msgstr "Externe Vereine fragen über einen Link in deiner Einladung Scheiben an 
 msgid "failed"
 msgstr "fehlgeschlagen"
 
+#. placeholder {0}: programmeTitle(p)
+#: src/lib/RegistrationForm.svelte
+msgid "Fewer attempts of {0}"
+msgstr "Weniger Durchgänge {0}"
+
 #: src/routes/my/train/+page.svelte
 msgid "Fewer shots"
 msgstr "Weniger Schüsse"
@@ -1955,6 +1992,15 @@ msgstr "voll"
 msgid "Fullscreen"
 msgstr "Vollbild"
 
+#. placeholder {0}: _i18n._(ageCategoryLabel(c))
+#: src/lib/ProgrammeEditor.svelte
+msgid "Further attempts {0}"
+msgstr "Nachdoppel {0}"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Further: same"
+msgstr "Nachdoppel: gleich"
+
 #: src/lib/SetupChecklist.svelte
 msgid "Getting started"
 msgstr "Erste Schritte"
@@ -2048,6 +2094,10 @@ msgstr "Wie hat es sich angefühlt?"
 #: src/routes/b/[code]/+page.svelte
 msgid "How does this work?"
 msgstr "Wie funktioniert das?"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "How often a shooter may shoot the programme at this event, e.g. further attempts at a shooting festival or an annual programme."
+msgstr "Wie oft ein Schütze das Programm an diesem Anlass schiessen darf, z. B. Nachdoppel am Schützenfest oder ein Jahresprogramm."
 
 #: src/routes/forgot-password/+page.svelte
 msgid "If an account uses {email}, we sent a link to choose a new password. Check your inbox."
@@ -2576,6 +2626,11 @@ msgstr "fehlt"
 msgid "More"
 msgstr "Mehr"
 
+#. placeholder {0}: programmeTitle(p)
+#: src/lib/RegistrationForm.svelte
+msgid "More attempts of {0}"
+msgstr "Mehr Durchgänge {0}"
+
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "more lp options, e.g. fit-to-page"
 msgstr "weitere lp-Optionen, z. B. fit-to-page"
@@ -2757,6 +2812,10 @@ msgstr "Nächste Seite"
 #: src/routes/my/train/+page.svelte
 msgid "Next series"
 msgstr "Nächste Passe"
+
+#: src/lib/RegistrationForm.svelte
+msgid "no attempts left"
+msgstr "keine Durchgänge mehr"
 
 #: src/lib/EntryCard.svelte
 msgid "No award reached."
@@ -2989,6 +3048,14 @@ msgstr "Nur möglich, solange niemand angemeldet ist."
 msgid "Only the checked age categories may shoot this programme."
 msgstr "Nur die angekreuzten Alterskategorien dürfen dieses Programm schiessen."
 
+#: src/lib/ProgrammeEditor.svelte
+msgid "Only the checked age categories may shoot this programme. Further attempts cost the same unless a price is given; 0 means paid once."
+msgstr "Nur die angekreuzten Alterskategorien dürfen dieses Programm schiessen. Nachdoppel kosten gleich viel, ausser es ist ein Preis angegeben; 0 heisst einmal bezahlt."
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Only the counting attempt receives an award"
+msgstr "Nur der zählende Durchgang erhält eine Auszeichnung"
+
 #: src/routes/my/settings/+page.svelte
 msgid "Open"
 msgstr "Öffnen"
@@ -3204,6 +3271,10 @@ msgstr "Vorherige Seite"
 #: src/lib/ProgrammeEditor.svelte
 msgid "Price {0}"
 msgstr "Preis {0}"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Price of every further attempt"
+msgstr "Preis jedes weiteren Durchgangs"
 
 #: src/lib/ProgrammeList.svelte
 msgid "Prices"
@@ -4386,6 +4457,10 @@ msgstr "Die Auszeichnungen gelten wieder als offen."
 msgid "The awards of {name} count as open again."
 msgstr "Die Auszeichnungen von {name} gelten wieder als offen."
 
+#: src/lib/ProgrammeEditor.svelte
+msgid "The best"
+msgstr "Der beste"
+
 #: src/lib/ProgrammeList.svelte
 msgid "The best ranks of every age category get a special prize. Shooters whose club has too few participants in this programme are skipped. Can be changed while shooters are registered."
 msgstr "Die besten Ränge jeder Alterskategorie erhalten einen Sonderpreis. Schützen, deren Verein in diesem Programm zu wenige Teilnehmer hat, werden übersprungen. Kann auch nach Anmeldungen noch geändert werden."
@@ -4436,6 +4511,14 @@ msgstr "Die Datei ist keine Druckvorlage."
 #: src/lib/ProgrammeList.svelte
 msgid "The file is not valid JSON"
 msgstr "Die Datei ist kein gültiges JSON"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "The first"
+msgstr "Der erste"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "The last"
+msgstr "Der letzte"
 
 #: src/lib/BookingSettings.svelte
 msgid "The link stops working. Requests and confirmed reservations stay."
@@ -4638,6 +4721,10 @@ msgstr "Rückgängig"
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 msgid "Undo (Ctrl+Z)"
 msgstr "Rückgängig (Ctrl+Z)"
+
+#: src/lib/ProgrammeEditor.svelte
+msgid "Unlimited"
+msgstr "Unbegrenzt"
 
 #. placeholder {0}: l.reservedUntil ? new Date(l.reservedUntil).toLocaleTimeString(intlLocale(), { hour: '2-digit', minute: '2-digit' }) : ''
 #: src/lib/EventDesk.svelte

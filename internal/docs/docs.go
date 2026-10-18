@@ -347,7 +347,7 @@ func RenderWreathCard(c WreathCard) ([]byte, error) {
 	return d.bytes()
 }
 
-// RankingLine is one line of a printed ranking.
+// RankingLine is one line of a printed ranking; Note follows the name, e.g. the counting attempt.
 type RankingLine struct {
 	Rank          int
 	Lastname      string
@@ -357,6 +357,7 @@ type RankingLine struct {
 	Club          string
 	Series        []float64
 	Total         float64
+	Note          string
 }
 
 // RankingList is the ranking of one programme for printing.
@@ -452,7 +453,7 @@ func RenderRankingList(r RankingList) ([]byte, error) {
 				last := d.tr(l.Lastname)
 				d.CellFormat(d.GetStringWidth(last)+0.5, 4.5, last, "", 0, "L", false, 0, "")
 				d.SetFont("Helvetica", "", 7)
-				d.CellFormat(c.w-d.GetStringWidth(last)-1.5, 4.5, d.tr(" "+l.Firstname), "", 0, "L", false, 0, "")
+				d.CellFormat(c.w-d.GetStringWidth(last)-1.5, 4.5, d.tr(strings.TrimRight(" "+l.Firstname+" "+l.Note, " ")), "", 0, "L", false, 0, "")
 			}
 			x += c.w
 		}

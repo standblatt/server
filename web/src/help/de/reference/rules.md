@@ -16,7 +16,7 @@ festgelegt.
 Eine Anmeldung wird abgelehnt, wenn:
 
 - ein Programm nicht zum Anlass gehört, doppelt gewählt oder nicht aktiv
-  ist;
+  ist, oder mehr Durchgänge gewählt sind, als es erlaubt;
 - ein Programm keinen Preis für die Alterskategorie des Schützen hat („nicht
   für diese Alterskategorie“);
 - zwei Varianten desselben Programms gewählt sind;
@@ -25,7 +25,8 @@ Eine Anmeldung wird abgelehnt, wenn:
 - die Scheibe von einer anderen aktiven Anmeldung belegt oder ausser Betrieb
   ist;
 - der Schütze an diesem Anlass schon für eines der Programme angemeldet ist
-  (ein Schütze schiesst jedes Programm einmal pro Anlass; eine andere
+  (ein Schütze schiesst jedes Programm einmal pro Anlass, ausser es erlaubt
+  mehrere [Durchgänge](../user-guide/programmes.md#attempts); eine andere
   Variante in einer separaten Anmeldung ist erlaubt).
 
 Eine reservierte Scheibe lässt sich nach einer Bestätigung trotzdem

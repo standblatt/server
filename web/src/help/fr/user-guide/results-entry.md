@@ -23,8 +23,14 @@ d’une manifestation :
 3. Tape les passes, ou les coups individuels pour les passes qui les
    saisissent (voir [Programmes](programmes.md)), et appuie sur ++enter++.
 
-Un tireur ne peut avoir des résultats qu’une fois par programme ; une ligne
-pour des résultats déjà présents est une erreur.
+Le résultat est enregistré aussitôt, et le tireur apparaît sous *Saisis à
+l’instant* avec un lien vers les résultats. Si le tireur était inscrit au
+guichet pour ce programme et n’a pas encore de résultats, les résultats vont
+dans cette inscription ; sinon, une inscription sans cible est créée, déjà
+terminée. Un tireur ne peut avoir des résultats qu’une fois par programme,
+sauf si le programme permet plusieurs [tentatives](programmes.md#attempts) :
+chaque résultat supplémentaire est alors une nouvelle tentative, jusqu’à ce
+qu’il n’en reste plus.
 
 Les distinctions se choisissent comme d’habitude : la distinction atteinte
 la plus précieuse est fixée automatiquement et peut être changée dans les

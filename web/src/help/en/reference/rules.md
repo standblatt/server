@@ -10,12 +10,12 @@ The category follows from *event year − birth year*; see the table in [Concept
 
 A registration is refused when:
 
-- a programme does not belong to the event, is chosen twice or is not active;
+- a programme does not belong to the event, is chosen twice or is not active, or more attempts are chosen than it allows;
 - a programme has no price for the shooter's age category ("not open to the age category");
 - two variants of the same programme are chosen;
 - a programme takes series from another programme that is not chosen, or the number of picked series does not match;
 - the lane is taken by another active registration or is out of service;
-- the shooter is already registered for one of the programmes at this event (a shooter shoots each programme once per event; another variant in a separate registration is fine).
+- the shooter is already registered for one of the programmes at this event (a shooter shoots each programme once per event unless it allows several [attempts](../user-guide/programmes.md#attempts); another variant in a separate registration is fine).
 
 A reserved lane can still be used after a confirmation.
 

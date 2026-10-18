@@ -23,8 +23,14 @@ una manifestazione:
 3. Digita le serie, o i colpi singoli per le serie che li registrano (vedi
    [Programmi](programmes.md)), e premi ++enter++.
 
-Un tiratore può avere risultati in un programma una sola volta; una riga per
-risultati già presenti è un errore.
+Il risultato viene salvato subito e il tiratore appare sotto *Appena
+registrati* con un link ai risultati. Se il tiratore era iscritto allo
+sportello per questo programma e non ha ancora risultati, i risultati vanno
+in quell’iscrizione; altrimenti viene creata un’iscrizione senza bersaglio,
+già conclusa. Un tiratore può avere risultati in un programma una sola
+volta, salvo se il programma consente più
+[tentativi](programmes.md#attempts): ogni risultato successivo è allora un
+nuovo tentativo, finché non ne restano più.
 
 Le distinzioni si scelgono come di consueto: la distinzione raggiunta più
 preziosa viene impostata automaticamente e si può cambiare nei risultati.

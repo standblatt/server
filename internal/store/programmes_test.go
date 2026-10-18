@@ -43,6 +43,9 @@ func TestProgrammeRoundTrip(t *testing.T) {
 	ctx := context.Background()
 	tid, ev := eventFixture(t, st, "Club")
 	def := fieldMatch()
+	repeat := 12.0
+	def.Attempts, def.AttemptRule, def.AwardCountingOnly = 3, domain.AttemptLast, true
+	def.Prices[1].RepeatPrice = &repeat
 
 	id, err := st.CreateProgramme(ctx, tid, ev, def)
 	if err != nil {

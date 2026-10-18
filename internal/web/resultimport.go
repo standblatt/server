@@ -248,7 +248,7 @@ func (s *Server) registerResultImport(api huma.API) {
 			line      ResultLine
 		}
 		var plans []plan
-		seen := map[string]bool{}
+		seen := map[string]int{}
 		fail := func(line int, msg string) { errs = append(errs, ImportLineError{Line: line, Message: msg}) }
 		for _, row := range rows {
 			p, ok := findProgramme(programmes, row.title)
@@ -281,18 +281,26 @@ func (s *Server) registerResultImport(api huma.API) {
 				clubID = &m.Match.ID
 			}
 			key := fmt.Sprintf("%s|%d", newcomerKey(newcomer), p.ID)
+			completed := 0
 			if shooterID != 0 {
 				key = fmt.Sprintf("#%d|%d", shooterID, p.ID)
-				if _, done, err := s.Store.FindEntry(ctx, in.TenantID, in.EventID, shooterID, p.ID); err == nil && done {
-					fail(row.line, fmt.Sprintf("The shooter already has results in %s", programmeTitle(p.Name, p.Variant)))
-					continue
+				if completed, err = s.Store.CompletedAttempts(ctx, in.TenantID, in.EventID, shooterID, p.ID); err != nil {
+					return nil, err
 				}
 			}
-			if seen[key] {
+			limit := p.AttemptLimit()
+			switch {
+			case limit == 1 && completed > 0:
+				fail(row.line, fmt.Sprintf("The shooter already has results in %s", programmeTitle(p.Name, p.Variant)))
+				continue
+			case limit == 1 && seen[key] > 0:
 				fail(row.line, "The same shooter and programme appear twice in the file")
 				continue
+			case limit > 0 && completed+seen[key] >= limit:
+				fail(row.line, fmt.Sprintf("The shooter has no attempts left in %s", programmeTitle(p.Name, p.Variant)))
+				continue
 			}
-			seen[key] = true
+			seen[key]++
 			plans = append(plans, plan{row: row, shooterID: shooterID, newcomer: newcomer, clubID: clubID, line: ResultLine{ProgrammeID: p.ID, ClubID: clubID, Series: series}})
 		}
 		out := &importOut{Body: ResultImportReport{Errors: errs}}

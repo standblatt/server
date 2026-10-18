@@ -19,7 +19,8 @@ Programmes belong to an event and are managed on the *Programmes* tab of its **S
 - **Barcode**: printed on the lane sheet for electronic scoring (see [Codes](../reference/codes.md)).
 - **Counts for the club competition** and **Show on kiosk displays**.
 - **Series**: shots, maximum points, whether mouches are tracked and whether **Single shots** are recorded, per series. With single shots, every shot can be entered and the series is their sum, e.g. to print them onto a form; the series total alone can still be entered.
-- **Prices (CHF)**: only the ticked age categories may shoot the programme.
+- **Attempts** (see below): how often a shooter may shoot the programme at the event.
+- **Prices (CHF)**: only the ticked age categories may shoot the programme. With several attempts, a second field per category is the price of every further attempt (*Nachdoppel*); empty means the same price, 0 means the programme is paid once.
 - **Awards**: name, kind (wreath card, prize in kind or cash prize paid out in money), value and the minimum total per age category; leave a category empty where the award is not available.
 
 Once shooters are registered for a programme, the **series** are fixed so results keep their meaning; the editor says so and greys them out. Everything else can still be changed: name, variant, description, barcode, the flags, prices, series names, award names, values and limits. Age categories and awards can be **added** but not removed. Also available on a programme in use:
@@ -31,6 +32,16 @@ Once shooters are registered for a programme, the **series** are fixed so result
 - **Special prizes** (see below).
 
 **Export** downloads the programme as a file; **Delete** is only possible while nobody is registered.
+
+## Attempts {#attempts}
+
+By default a shooter shoots a programme once per event. **Attempts per shooter** allows more, e.g. 3 for a lucky target with further attempts at a shooting festival, or **Unlimited** for an annual programme shot over the season.
+
+- **Counting attempt** decides which attempt the ranking, the club competition, special prizes and *My training* count: **The best** (by the ranking rules), **The first** or **The last**. The ranking shows it as *2/3*: the second of three attempts counts.
+- **Only the counting attempt receives an award**: off, every attempt can earn its award (a wreath card per further attempt); on, only the counting attempt gets one, and the award moves when a better attempt is shot.
+- At registration, a programme with several attempts shows a counter: two attempts at once are two result cards, *Attempt 1* and *Attempt 2*. Further attempts can also be added later in a new registration, or by entering another result on **Enter results**, until the shooter has no attempts left.
+
+The number of attempts can be changed while shooters are registered, but not below the attempts a shooter already has. Programmes with several attempts cannot be combined.
 
 ## Special prizes {#special-prizes}
 

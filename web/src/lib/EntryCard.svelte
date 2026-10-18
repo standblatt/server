@@ -110,9 +110,9 @@
 	}
 </script>
 
-<section class="rounded-lg border bg-card" aria-label={entry.title}>
+<section class="rounded-lg border bg-card" aria-label={entry.repeatable ? $t`${entry.title}, attempt ${entry.attempt}` : entry.title}>
 	<div class="flex flex-wrap items-center gap-3 border-b px-4 py-2.5">
-		<h3 class="font-semibold">{entry.title}</h3>
+		<h3 class="font-semibold">{entry.title}{#if entry.repeatable}<span class="font-normal text-muted-foreground"> · {$t`Attempt ${entry.attempt}`}</span>{/if}</h3>
 		<Badge variant={entry.status === 'completed' ? 'default' : 'secondary'} class={entry.status === 'completed' ? 'bg-emerald-600 text-white' : ''}>
 			{entry.status === 'completed' ? $t`completed` : $t`pending`}
 		</Badge>

@@ -94,3 +94,30 @@ func TestCheckProgrammesRanges(t *testing.T) {
 		t.Fatalf("rifle and pistol together: %v", errs)
 	}
 }
+
+func TestCheckProgrammeAttempts(t *testing.T) {
+	cats := []AgeCategory{Elite}
+	target := int64(4)
+	programmes := map[int64]ProgrammeInfo{
+		1: {ID: 1, Name: "Once", Active: true, Series: 2, Categories: cats, AttemptLimit: 1},
+		2: {ID: 2, Name: "Three", Active: true, Series: 2, Categories: cats, AttemptLimit: 3},
+		3: {ID: 3, Name: "Season", Active: true, Series: 2, Categories: cats, AttemptLimit: 0},
+		4: {ID: 4, Name: "Main", Active: true, Series: 2, Categories: cats, AttemptLimit: 1},
+		5: {ID: 5, Name: "Combined", Active: true, Series: 1, Categories: cats, AttemptLimit: 1, CombinableWithID: &target},
+	}
+	cases := []struct {
+		choices []ProgrammeChoice
+		want    string
+	}{
+		{[]ProgrammeChoice{{ProgrammeID: 1}, {ProgrammeID: 2, Count: 3}, {ProgrammeID: 3, Count: 50}}, ""},
+		{[]ProgrammeChoice{{ProgrammeID: 1, Count: 2}}, "only once"},
+		{[]ProgrammeChoice{{ProgrammeID: 2, Count: 4}}, "at most 3 times"},
+		{[]ProgrammeChoice{{ProgrammeID: 4}, {ProgrammeID: 5, CombinedSeries: []int{1}, Count: 2}}, "only once"},
+	}
+	for _, c := range cases {
+		got := Join(CheckProgrammes(c.choices, programmes, Elite, nil, nil), "; ")
+		if c.want == "" && got != "" || !strings.Contains(got, c.want) {
+			t.Errorf("%+v: got %q, want %q", c.choices, got, c.want)
+		}
+	}
+}

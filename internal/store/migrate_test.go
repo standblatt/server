@@ -83,3 +83,46 @@ func TestRangeGroupsBecomeRanges(t *testing.T) {
 		}
 	}
 }
+
+func TestEntriesBecomeFirstAttempts(t *testing.T) {
+	st := testdb.Bare(t)
+	ctx := context.Background()
+	if err := st.MigrateUntil(ctx, "0029_layouts.sql"); err != nil {
+		t.Fatal(err)
+	}
+	db := st.Pool()
+	var tid, ev, shooter, prog, reg int64
+	scan := func(dst *int64, sql string, args ...any) {
+		t.Helper()
+		if err := db.QueryRow(ctx, sql, args...).Scan(dst); err != nil {
+			t.Fatalf("%s: %v", sql, err)
+		}
+	}
+	scan(&tid, `INSERT INTO tenants (name) VALUES ('Club') RETURNING id`)
+	scan(&ev, `INSERT INTO events (tenant_id, name, starts_on, days) VALUES ($1, 'Open', '2026-11-20', '{2026-11-20}') RETURNING id`, tid)
+	scan(&shooter, `INSERT INTO shooters (tenant_id, firstname, lastname) VALUES ($1, 'Anna', 'Muster') RETURNING id`, tid)
+	scan(&prog, `INSERT INTO programmes (tenant_id, event_id, name) VALUES ($1, $2, 'Main') RETURNING id`, tid, ev)
+	scan(&reg, `INSERT INTO registrations (tenant_id, event_id, shooter_id, age_category, status) VALUES ($1, $2, $3, 'elite', 'registered') RETURNING id`, tid, ev, shooter)
+	insert := `INSERT INTO entries (tenant_id, registration_id, event_id, shooter_id, programme_id) VALUES ($1, $2, $3, $4, $5)`
+	if _, err := db.Exec(ctx, insert, tid, reg, ev, shooter, prog); err != nil {
+		t.Fatal(err)
+	}
+	if err := st.MigrateUntil(ctx, ""); err != nil {
+		t.Fatal(err)
+	}
+	var attempt, limit int
+	if err := db.QueryRow(ctx, `SELECT e.attempt, p.attempts FROM entries e JOIN programmes p ON p.id = e.programme_id`).Scan(&attempt, &limit); err != nil {
+		t.Fatal(err)
+	}
+	if attempt != 1 || limit != 1 {
+		t.Fatalf("attempt %d, limit %d", attempt, limit)
+	}
+	if _, err := db.Exec(ctx, insert+` ON CONFLICT DO NOTHING`, tid, reg, ev, shooter, prog); err != nil {
+		t.Fatal(err)
+	}
+	var n int
+	db.QueryRow(ctx, `SELECT count(*) FROM entries`).Scan(&n)
+	if n != 1 {
+		t.Fatalf("a second first attempt must collide, got %d entries", n)
+	}
+}

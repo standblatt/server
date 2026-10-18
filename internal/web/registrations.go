@@ -129,7 +129,7 @@ func registrationConflict(err error, lane *int) error {
 	case errors.Is(err, store.ErrLaneTaken):
 		return conflict("The lane is occupied")
 	case errors.Is(err, store.ErrProgrammeTaken):
-		return conflict("The shooter is already registered for one of these programmes at this event")
+		return conflict("The shooter is already registered for one of these programmes at this event and has no attempts left")
 	case errors.Is(err, store.ErrHasResults):
 		return conflict("A programme with results cannot be removed from the registration")
 	}

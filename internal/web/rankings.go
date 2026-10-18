@@ -3,7 +3,6 @@ package web
 import (
 	"context"
 	"errors"
-	"math"
 	"net/http"
 	"strings"
 
@@ -26,6 +25,8 @@ type RankingLine struct {
 	Total     float64            `json:"total"`
 	Mouches   int                `json:"mouches"`
 	Award     string             `json:"award,omitempty"`
+	Attempt   int                `json:"attempt" doc:"The counting attempt"`
+	Attempts  int                `json:"attempts" doc:"Completed attempts of the shooter"`
 }
 
 // ProgrammeRanking is the ranking of one programme.
@@ -39,6 +40,7 @@ type ProgrammeRanking struct {
 	Public        bool          `json:"public" doc:"Shown on kiosk displays (the programme's showOnRankings)"`
 	RangeID       *int64        `json:"rangeId,omitempty"`
 	RangeName     string        `json:"rangeName,omitempty" doc:"Range the programme is shot on, when tied to one"`
+	Repeatable    bool          `json:"repeatable" doc:"Shooters may shoot several attempts; each line shows its counting one"`
 	Lines         []RankingLine `json:"lines"`
 }
 
@@ -78,7 +80,7 @@ func (s *Server) rankings(ctx context.Context, tenantID, eventID int64, publicOn
 		return nil, err
 	}
 	byProgramme := map[int64][]store.RankingRow{}
-	for _, r := range rows {
+	for _, r := range store.CountingRows(rows) {
 		byProgramme[r.ProgrammeID] = append(byProgramme[r.ProgrammeID], r)
 	}
 	out := []ProgrammeRanking{}
@@ -88,7 +90,7 @@ func (s *Server) rankings(ctx context.Context, tenantID, eventID int64, publicOn
 		}
 		pr := ProgrammeRanking{
 			ProgrammeID: p.ID, Title: programmeTitle(p.Name, p.Variant), Shots: p.Shots, MaxPoints: p.MaxPoints,
-			SeriesCount: len(p.Series), Public: p.ShowOnRankings, RangeID: p.RangeID, Lines: []RankingLine{},
+			SeriesCount: len(p.Series), Public: p.ShowOnRankings, RangeID: p.RangeID, Repeatable: p.AttemptLimit() != 1, Lines: []RankingLine{},
 		}
 		if p.RangeID != nil {
 			pr.RangeName = rangeNames[*p.RangeID]
@@ -99,18 +101,14 @@ func (s *Server) rankings(ctx context.Context, tenantID, eventID int64, publicOn
 		list := byProgramme[p.ID]
 		entries := make([]domain.RankingEntry, len(list))
 		for i, r := range list {
-			total := 0.0
-			for _, v := range r.Series {
-				total += v
-			}
-			total = math.Round(total*100) / 100
-			entries[i] = domain.RankingEntry{Total: total, Mouches: r.Mouches, Series: r.Series, Birthday: r.Birthday, Category: r.Category}
+			entries[i] = r.Entry()
 		}
 		for rank, i := range domain.Rank(entries) {
 			r := list[i]
 			line := RankingLine{
 				Rank: rank + 1, EntryID: r.EntryID, Firstname: r.Firstname, Lastname: r.Lastname, Category: r.Category,
 				Club: r.ClubName, Series: r.Series, Total: entries[i].Total, Mouches: r.Mouches, Award: r.AwardName,
+				Attempt: r.Attempt, Attempts: r.Attempts,
 			}
 			if len(r.Birthday) >= 4 {
 				line.BirthYear = r.Birthday[:4]

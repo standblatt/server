@@ -1216,7 +1216,7 @@ export interface paths {
         put?: never;
         /**
          * Enter the results of a shooter in a programme without the desk
-         * @description Fills the shooter's entry for the programme when it has no results yet, otherwise registers the shooter without a lane for that programme. 409 when the entry already has results.
+         * @description Fills the shooter's first attempt at the programme without results, otherwise registers the shooter without a lane for a new attempt. 409 when the shooter has no attempts left.
          */
         post: operations["enter-result"];
         delete?: never;
@@ -2420,6 +2420,11 @@ export interface components {
             secret: string;
         };
         Entry: {
+            /**
+             * Format: int64
+             * @description Number of the shooter's attempt at the programme in this event, from 1
+             */
+            attempt: number;
             /** Format: int64 */
             awardTierId?: number;
             combinedSeries: number[];
@@ -2431,6 +2436,11 @@ export interface components {
             status: "pending" | "completed";
         };
         EntryResult: {
+            /**
+             * Format: int64
+             * @description Number of the shooter's attempt at the programme
+             */
+            attempt: number;
             award?: components["schemas"]["Tier"];
             /** @description Programme the series are taken from */
             combinedFrom?: string;
@@ -2446,6 +2456,8 @@ export interface components {
             mouches: number;
             /** Format: int64 */
             programmeId: number;
+            /** @description The programme allows several attempts */
+            repeatable: boolean;
             results: components["schemas"]["SeriesResult"][];
             series: components["schemas"]["Series"][];
             /** @enum {string} */
@@ -2853,6 +2865,11 @@ export interface components {
             ageCategory: "u10" | "u13" | "u15" | "u17" | "u19" | "u21" | "elite" | "senior" | "veteran" | "senior_veteran";
             /** Format: double */
             price: number;
+            /**
+             * Format: double
+             * @description Price of every further attempt (Nachdoppel); left out = the same price, 0 = paid once
+             */
+            repeatPrice?: number;
         };
         PrintAgent: {
             /** Format: date-time */
@@ -2923,6 +2940,18 @@ export interface components {
         };
         Programme: {
             active: boolean;
+            /**
+             * @description Which attempt counts in the ranking; default best
+             * @enum {string}
+             */
+            attemptRule?: "best" | "first" | "last";
+            /**
+             * Format: int64
+             * @description How often a shooter may shoot the programme at the event; left out or 0 = once
+             */
+            attempts?: number;
+            /** @description Only the counting attempt receives an award, not every attempt */
+            awardCountingOnly?: boolean;
             awards: components["schemas"]["AwardTier"][];
             barcode?: string;
             /**
@@ -2957,14 +2986,33 @@ export interface components {
             shots: number;
             showOnRankings?: boolean;
             specialPrizes: components["schemas"]["SpecialPrizeRules"];
+            /** @description Any number of attempts; Attempts is ignored */
+            unlimitedAttempts?: boolean;
             variant?: string;
         };
         ProgrammeChoice: {
             combinedSeries?: number[];
+            /**
+             * Format: int64
+             * @description Attempts of the programme in this registration; left out = 1
+             */
+            count?: number;
             /** Format: int64 */
             programmeId: number;
         };
         ProgrammeDefinition: {
+            /**
+             * @description Which attempt counts in the ranking; default best
+             * @enum {string}
+             */
+            attemptRule?: "best" | "first" | "last";
+            /**
+             * Format: int64
+             * @description How often a shooter may shoot the programme at the event; left out or 0 = once
+             */
+            attempts?: number;
+            /** @description Only the counting attempt receives an award, not every attempt */
+            awardCountingOnly?: boolean;
             awards: components["schemas"]["AwardTier"][];
             barcode?: string;
             countsForClubCompetition?: boolean;
@@ -2973,6 +3021,8 @@ export interface components {
             prices: components["schemas"]["Price"][];
             series: components["schemas"]["Series"][];
             showOnRankings?: boolean;
+            /** @description Any number of attempts; Attempts is ignored */
+            unlimitedAttempts?: boolean;
             variant?: string;
         };
         ProgrammeExport: {
@@ -2997,6 +3047,8 @@ export interface components {
             rangeId?: number;
             /** @description Range the programme is shot on, when tied to one */
             rangeName?: string;
+            /** @description Shooters may shoot several attempts; each line shows its counting one */
+            repeatable: boolean;
             /** Format: int64 */
             seriesCount: number;
             /** Format: int64 */
@@ -3048,6 +3100,16 @@ export interface components {
             rangeName: string;
         };
         RankingLine: {
+            /**
+             * Format: int64
+             * @description The counting attempt
+             */
+            attempt: number;
+            /**
+             * Format: int64
+             * @description Completed attempts of the shooter
+             */
+            attempts: number;
             award?: string;
             birthYear: string;
             /** @enum {string} */
