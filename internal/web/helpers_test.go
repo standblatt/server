@@ -44,6 +44,10 @@ func TestHelperLinks(t *testing.T) {
 	e.user("helper", tid, store.RoleStaff)
 	admin, staff := e.login("boss"), e.login("helper")
 	ev := e.event(tid, "Match")
+	got, _ := e.st.GetEvent(ctx, tid, ev)
+	if err := e.st.UpdateEvent(ctx, tid, ev, store.EventInput{Name: got.Name, StartsOn: got.StartsOn, RangeIDs: []int64{got.Ranges[0].ID}, Timezone: got.Timezone, Modules: append(got.Modules, "ammo")}); err != nil {
+		t.Fatal(err)
+	}
 	other := e.event(tid, "Other match")
 	ranges, _ := e.st.ListRanges(ctx, tid)
 	rangeID := ranges[0].ID
