@@ -43,23 +43,29 @@ func scanLayout(row pgx.CollectableRow) (Layout, error) {
 	return l, err
 }
 
-// GetLayout returns a print form of a tenant with its background scan (nil without one).
-func (s *Store) GetLayout(ctx context.Context, tenantID, id int64) (Layout, []byte, error) {
-	var bg []byte
-	rows, err := s.pool.Query(ctx, `SELECT id, background IS NOT NULL, updated_at, name, definition, background FROM layouts
+// GetLayout returns a print form of a tenant, without its background scan.
+func (s *Store) GetLayout(ctx context.Context, tenantID, id int64) (Layout, error) {
+	rows, err := s.pool.Query(ctx, `SELECT id, background IS NOT NULL, updated_at, name, definition FROM layouts
 		WHERE tenant_id = $1 AND id = $2`, tenantID, id)
 	if err != nil {
-		return Layout{}, nil, err
+		return Layout{}, err
 	}
 	l, err := pgx.CollectExactlyOneRow(rows, func(row pgx.CollectableRow) (Layout, error) {
 		var l Layout
-		err := row.Scan(&l.ID, &l.HasBackground, &l.UpdatedAt, &l.Name, &l.Layout, &bg)
+		err := row.Scan(&l.ID, &l.HasBackground, &l.UpdatedAt, &l.Name, &l.Layout)
 		return l, err
 	})
 	if l.Elements == nil {
 		l.Elements = []domain.Element{}
 	}
-	return l, bg, mapErr(err)
+	return l, mapErr(err)
+}
+
+// LayoutBackground returns the background scan of a print form of a tenant (nil without one).
+func (s *Store) LayoutBackground(ctx context.Context, tenantID, id int64) ([]byte, error) {
+	var bg []byte
+	err := s.pool.QueryRow(ctx, `SELECT background FROM layouts WHERE tenant_id = $1 AND id = $2`, tenantID, id).Scan(&bg)
+	return bg, mapErr(err)
 }
 
 // CreateLayout adds a print form; ErrExists if the name is taken.

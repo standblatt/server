@@ -26,11 +26,12 @@ func TestLayouts(t *testing.T) {
 	if err := st.SetLayoutBackground(ctx, a, id, []byte{1, 2}); err != nil {
 		t.Fatal(err)
 	}
-	l, bg, err := st.GetLayout(ctx, a, id)
+	l, err := st.GetLayout(ctx, a, id)
+	bg, _ := st.LayoutBackground(ctx, a, id)
 	if err != nil || !l.HasBackground || len(bg) != 2 || l.Elements[0].Value != "{{total}}" {
 		t.Fatalf("layout: %+v %v %v", l, bg, err)
 	}
-	if _, _, err := st.GetLayout(ctx, b, id); !errors.Is(err, store.ErrNotFound) {
+	if _, err := st.GetLayout(ctx, b, id); !errors.Is(err, store.ErrNotFound) {
 		t.Fatalf("layout of another tenant: %v", err)
 	}
 	if err := st.UpdateLayout(ctx, b, id, in); !errors.Is(err, store.ErrNotFound) {

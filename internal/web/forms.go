@@ -130,7 +130,7 @@ func (s *Server) eventLayout(ctx context.Context, tenantID int64, chosen *int64,
 	if err != nil || !slices.Contains(on, modules.Forms) {
 		return def, nil, err
 	}
-	l, _, err := s.Store.GetLayout(ctx, tenantID, *chosen)
+	l, err := s.Store.GetLayout(ctx, tenantID, *chosen)
 	if errors.Is(err, store.ErrNotFound) || err == nil && l.DataSource() != def.DataSource() {
 		return def, nil, nil
 	}
@@ -151,7 +151,7 @@ func (s *Server) checkEventForms(ctx context.Context, tenantID int64, set store.
 		if c.id == nil {
 			continue
 		}
-		l, _, err := s.Store.GetLayout(ctx, tenantID, *c.id)
+		l, err := s.Store.GetLayout(ctx, tenantID, *c.id)
 		if err != nil {
 			return notFound(err, "Print form not found")
 		}
@@ -208,7 +208,7 @@ func (s *Server) renderForm(ctx context.Context, tenantID, entryID int64) (rende
 	if p.LayoutID == nil {
 		return rendered{}, conflict("This programme has no print form")
 	}
-	l, _, err := s.Store.GetLayout(ctx, tenantID, *p.LayoutID)
+	l, err := s.Store.GetLayout(ctx, tenantID, *p.LayoutID)
 	if err != nil {
 		return rendered{}, err
 	}
@@ -296,7 +296,7 @@ func (s *Server) registerForms(api huma.API) {
 		if err != nil {
 			return nil, layoutConflict(err)
 		}
-		l, _, err := s.Store.GetLayout(ctx, in.TenantID, id)
+		l, err := s.Store.GetLayout(ctx, in.TenantID, id)
 		return &layoutOut{Body: l}, err
 	})
 
@@ -306,7 +306,7 @@ func (s *Server) registerForms(api huma.API) {
 		if _, _, err := s.access(ctx, in.TenantID, false); err != nil {
 			return nil, err
 		}
-		l, _, err := s.Store.GetLayout(ctx, in.TenantID, in.LayoutID)
+		l, err := s.Store.GetLayout(ctx, in.TenantID, in.LayoutID)
 		return &layoutOut{Body: l}, notFound(err, "Print form not found")
 	})
 
@@ -388,7 +388,7 @@ func (s *Server) registerForms(api huma.API) {
 		if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
 			return nil, err
 		}
-		_, bg, err := s.Store.GetLayout(ctx, in.TenantID, in.LayoutID)
+		bg, err := s.Store.LayoutBackground(ctx, in.TenantID, in.LayoutID)
 		if err != nil {
 			return nil, notFound(err, "Print form not found")
 		}
@@ -414,9 +414,15 @@ func (s *Server) registerForms(api huma.API) {
 			if _, _, err := s.access(ctx, in.TenantID, true); err != nil {
 				return nil, err
 			}
-			l, bg, err := s.Store.GetLayout(ctx, in.TenantID, in.LayoutID)
+			l, err := s.Store.GetLayout(ctx, in.TenantID, in.LayoutID)
 			if err != nil {
 				return nil, notFound(err, "Print form not found")
+			}
+			var bg []byte
+			if !in.Print {
+				if bg, err = s.Store.LayoutBackground(ctx, in.TenantID, in.LayoutID); err != nil {
+					return nil, err
+				}
 			}
 			values := docs.SampleValues(l.DataSource())
 			if in.EntryID != 0 && l.DataSource() == domain.SourceResults {
@@ -425,9 +431,6 @@ func (s *Server) registerForms(api huma.API) {
 					return nil, err
 				}
 				values = f.values
-			}
-			if in.Print {
-				bg = nil
 			}
 			images, err := s.Store.ImagesByID(ctx, in.TenantID, l.ImageIDs())
 			if err != nil {
@@ -459,7 +462,7 @@ func (s *Server) registerForms(api huma.API) {
 			return nil, err
 		}
 		if in.Body.LayoutID != nil {
-			if l, _, err := s.Store.GetLayout(ctx, in.TenantID, *in.Body.LayoutID); err == nil && l.DataSource() != domain.SourceResults {
+			if l, err := s.Store.GetLayout(ctx, in.TenantID, *in.Body.LayoutID); err == nil && l.DataSource() != domain.SourceResults {
 				return nil, invalid("Only print forms of results can print a programme")
 			}
 		}

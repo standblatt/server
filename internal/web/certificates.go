@@ -27,7 +27,7 @@ type Certificates struct {
 
 // rankForm loads a print form of the club that must print the given data source, with its images.
 func (s *Server) rankForm(ctx context.Context, tenantID, layoutID int64, source string) (store.Layout, map[int64][]byte, error) {
-	l, _, err := s.Store.GetLayout(ctx, tenantID, layoutID)
+	l, err := s.Store.GetLayout(ctx, tenantID, layoutID)
 	if err != nil {
 		return l, nil, notFound(err, "Print form not found")
 	}
