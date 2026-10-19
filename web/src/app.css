@@ -124,6 +124,16 @@
 	* {
 		@apply border-border outline-ring/50;
 	}
+	/* iOS Safari gives date and time fields a minimum width and its own height: they overflowed their grid column and
+	   stood taller than the text fields next to them. The appearance reset only on iOS, where it keeps the native picker. */
+	input:is([type='date'], [type='datetime-local'], [type='time']) {
+		min-width: 0;
+	}
+	@supports (-webkit-touch-callout: none) {
+		input:is([type='date'], [type='datetime-local'], [type='time']) {
+			appearance: none;
+		}
+	}
 	html {
 		@apply antialiased dark:scheme-dark;
 	}
