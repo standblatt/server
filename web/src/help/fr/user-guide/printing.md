@@ -61,3 +61,8 @@ gérer les stands de tir peuvent connecter un ordinateur ; un code est
 valable dix minutes. L’application se connecte ensuite d’elle-même, et
 l’agent apparaît sous **Stands de tir → Configurer les imprimantes** avec sa version et son
 système d’exploitation.
+
+Si le navigateur de cet ordinateur n’est pas à portée de main, saisis le code
+plutôt sous **Stands de tir → Configurer les imprimantes** du stand, dans
+**Connecter par code** : l’ordinateur est connecté à ce stand sous son propre
+nom.

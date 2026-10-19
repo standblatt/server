@@ -57,3 +57,8 @@ scegli società, stand di tiro e nome dell’agente e **Collega**. Solo i
 membri che possono gestire gli stand di tiro possono collegare un computer;
 un codice vale dieci minuti. L’app si collega poi da sola e l’agente compare
 in **Stand di tiro → Configura le stampanti** con la sua versione e il sistema operativo.
+
+Se il browser di quel computer non è a portata di mano, inserisci invece il
+codice in **Stand di tiro → Configura le stampanti** dello stand, in
+**Collega con codice**: il computer viene collegato a quello stand con il suo
+nome.

@@ -1393,6 +1393,10 @@ msgstr "Code"
 msgid "Code from the app"
 msgstr "Code aus der App"
 
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Code from the Standblatt app"
+msgstr "Code aus der Standblatt-App"
+
 #: src/routes/login/+page.svelte
 msgid "Code from your authenticator app"
 msgstr "Code aus deiner Authenticator-App"
@@ -1477,11 +1481,20 @@ msgstr "Verbinden"
 msgid "Connect a print agent"
 msgstr "Druck-Agent verbinden"
 
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Connect by code"
+msgstr "Mit Code verbinden"
+
 #. placeholder {0}: connected.name
 #. placeholder {1}: range?.name ?? ''
 #: src/routes/connect/+page.svelte
 msgid "Connected. {0} now prints for {1}; the app shows it in a moment."
 msgstr "Verbunden. {0} druckt jetzt für {1}; die App zeigt es gleich an."
+
+#. placeholder {0}: pairing.name
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Connected. {0} now prints for this range."
+msgstr "Verbunden. {0} druckt jetzt für diesen Schiessstand."
 
 #: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 msgid "Contact person"

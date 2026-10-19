@@ -5,6 +5,7 @@
 	import { intlLocale } from '$lib/locale.svelte';
 	import { page } from '$app/state';
 	import { createQuery, useQueryClient } from '@tanstack/svelte-query';
+	import Link from '@lucide/svelte/icons/link';
 	import Plus from '@lucide/svelte/icons/plus';
 	import Server from '@lucide/svelte/icons/server';
 	import { toast } from 'svelte-sonner';
@@ -106,6 +107,7 @@
 	const range = $derived(ranges.data?.find((r) => r.id === rangeId));
 	let error = $state('');
 	let agentName = $state('');
+	let pairCode = $state('');
 	let secret = $state('');
 	let addingAgent = $state(false);
 
@@ -159,6 +161,16 @@
 		await queryClient.invalidateQueries({ queryKey: [...key, 'agents'] });
 	}
 
+	/** Connects the computer showing code in the Standblatt app to this range, named as the computer calls itself. */
+	async function connectByCode(e: SubmitEvent) {
+		e.preventDefault();
+		const pairing = await call(api.GET('/api/agent-pairings/{code}', { params: { path: { code: pairCode } } }));
+		await call(api.POST('/api/tenants/{tenantId}/ranges/{rangeId}/print-agents/pair', { ...p, body: { code: pairCode, name: pairing.name } }));
+		toast.success($t`Connected. ${pairing.name} now prints for this range.`);
+		pairCode = '';
+		await queryClient.invalidateQueries({ queryKey: [...key, 'agents'] });
+	}
+
 	/** Revokes a print agent after confirmation. */
 	async function revoke(a: PrintAgent) {
 		if (!(await ask({ title: $t`Revoke print agent "${a.name}"?`, description: $t`The agent can no longer fetch jobs.`, action: $t`Revoke`, destructive: true }))) return;
@@ -199,6 +211,18 @@
 		<form class="flex gap-2 border-t p-4" onsubmit={createAgent}>
 			<Input placeholder={$t`Agent name, e.g. Pi hall 1`} bind:value={agentName} required aria-label={$t`Agent name`} />
 			<Button type="submit" variant="outline"><Plus />{$t`Add print agent`}</Button>
+		</form>
+		<form class="flex gap-2 border-t p-4" onsubmit={connectByCode}>
+			<Input
+				placeholder="K7QD-4MZP"
+				bind:value={pairCode}
+				required
+				autocomplete="off"
+				autocapitalize="characters"
+				aria-label={$t`Code from the Standblatt app`}
+				class="font-mono tracking-widest uppercase"
+			/>
+			<Button type="submit" variant="outline"><Link />{$t`Connect by code`}</Button>
 		</form>
 	</section>
 

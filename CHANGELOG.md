@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- *Ranges → Set up the printers* has *Connect by code*: type the code the Standblatt app shows to connect that computer to the range, without the link from the app (by @HB9HIL)
+
 ## [0.22.0] - 2026-10-19
 
 ### Removed

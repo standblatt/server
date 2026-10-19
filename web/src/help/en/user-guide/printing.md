@@ -29,3 +29,5 @@ A job that the agent does not confirm within two minutes is retried; after three
 ## Connecting a computer by code {#connect}
 
 The Standblatt app on a computer next to the printers needs no token: it shows a code such as `K7QD-4MZP` and opens **Connect a print agent** in the browser. There, log in if asked, check the computer named on the page, choose the club and range and the agent's name, and **Connect**. Only members who may manage ranges can connect a computer; a code is valid for ten minutes. The app then connects by itself, and the agent appears under **Ranges → Set up the printers** with its version and operating system.
+
+If the browser on that computer is not at hand, type the code on **Ranges → Set up the printers** of the range in **Connect by code** instead: the computer is connected to that range under its own name.

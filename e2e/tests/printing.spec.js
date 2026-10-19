@@ -129,6 +129,18 @@ test.describe("documents and printing", () => {
     await expect(entry).toContainText("last seen");
   });
 
+  test("connects a computer by a code typed on the printing page", async ({ page }) => {
+    const pairing = await (await page.request.post("/api/agent/pair", { data: { name: "LAPTOP-HALL", os: "windows", version: "v0.2.0" } })).json();
+    await login(page, admin);
+    await page.goto(`/t/${ids.tenant}/ranges/${ids.range}/printing`);
+    await page.locator("input[aria-label='Code from the Standblatt app']").fill(pairing.code.toLowerCase().replace("-", ""));
+    await c(page, "button", "Connect by code").click();
+    await expect(c(page, "[data-sonner-toast]", "Connected. LAPTOP-HALL now prints for this range.")).toBeVisible();
+    await expect(c(page, "li", "LAPTOP-HALL")).toContainText("v0.2.0 · windows");
+    const status = await (await page.request.post("/api/agent/pair/status", { data: { secret: pairing.secret } })).json();
+    expect(status).toMatchObject({ status: "connected", club, range: "10m" });
+  });
+
   test("connects a computer by code on /connect", async ({ page }) => {
     const pairing = await (await page.request.post("/api/agent/pair", { data: { name: "DESKTOP-E2E", os: "windows", version: "v0.1.0" } })).json();
     await page.goto(`/connect?code=${pairing.code}`);

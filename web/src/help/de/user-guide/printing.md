@@ -58,3 +58,8 @@ wähle Verein, Schiessstand und den Namen des Agenten und klicke
 einen Computer verbinden; ein Code gilt zehn Minuten. Danach verbindet sich
 die App von selbst, und der Agent erscheint unter **Schiessstände →
 Drucker einrichten** mit seiner Version und seinem Betriebssystem.
+
+Ist der Browser auf diesem Computer nicht zur Hand, gib den Code stattdessen
+unter **Schiessstände → Drucker einrichten** des Schiessstands bei **Mit
+Code verbinden** ein: Der Computer wird unter seinem eigenen Namen mit diesem
+Schiessstand verbunden.

@@ -1393,6 +1393,10 @@ msgstr "Codice"
 msgid "Code from the app"
 msgstr "Codice dall’app"
 
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Code from the Standblatt app"
+msgstr "Codice dall’app Standblatt"
+
 #: src/routes/login/+page.svelte
 msgid "Code from your authenticator app"
 msgstr "Codice dalla tua app di autenticazione"
@@ -1477,11 +1481,20 @@ msgstr "Collega"
 msgid "Connect a print agent"
 msgstr "Collegare un agente di stampa"
 
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Connect by code"
+msgstr "Collega con codice"
+
 #. placeholder {0}: connected.name
 #. placeholder {1}: range?.name ?? ''
 #: src/routes/connect/+page.svelte
 msgid "Connected. {0} now prints for {1}; the app shows it in a moment."
 msgstr "Collegato. {0} ora stampa per {1}; l’app lo mostra tra un momento."
+
+#. placeholder {0}: pairing.name
+#: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
+msgid "Connected. {0} now prints for this range."
+msgstr "Collegato. {0} ora stampa per questo stand di tiro."
 
 #: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 msgid "Contact person"
