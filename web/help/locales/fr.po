@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 20:49+0000\n"
+"POT-Creation-Date: 2026-10-19 18:07+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -3351,8 +3351,8 @@ msgstr "Configurer les imprimantes"
 #. type: Plain text
 #: ../src/help/en/user-guide/printing.md:19
 #, no-wrap
-msgid "**Ranges → Printing** (admins):\n"
-msgstr "**Stands de tir → Impression** (admins) :\n"
+msgid "**Ranges → Set up the printers** (admins):\n"
+msgstr "**Stands de tir → Configurer les imprimantes** (admins) :\n"
 
 #. type: Plain text
 #: ../src/help/en/user-guide/printing.md:21
@@ -3362,18 +3362,22 @@ msgstr "![Impression](../images/screenshots/printing.png){ .screenshot }"
 #. type: Bullet: '1. '
 #: ../src/help/en/user-guide/printing.md:26
 msgid ""
-"**Add print agent**, give it a name and copy the token. Install the agent on "
-"a computer next to the printers (see [Print agent](../admin-guide/print-"
-"agent.md)). One computer can serve several ranges, e.g. *Pistol 25 m* and "
-"*Pistol 50 m*: add an agent on each range and give the agent both tokens, "
-"separated by a comma."
+"Connect a computer next to the printers: a Windows PC or a Mac with the "
+"[Standblatt Print Agent app](#app) by [code](#connect), or a Linux computer "
+"such as a Raspberry Pi with the [headless agent](../admin-guide/print-"
+"agent.md): **Add print agent**, give it a name and copy the token. One "
+"computer can serve several ranges, e.g. *Pistol 25 m* and *Pistol 50 m*: "
+"connect it to each range (the app with **Connect another range**, the "
+"headless agent with both tokens, separated by a comma)."
 msgstr ""
-"**Ajouter un agent d’impression**, donne-lui un nom et copie le jeton. "
-"Installe l’agent sur un ordinateur près des imprimantes (voir [Agent "
-"d’impression](../admin-guide/print-agent.md)). Un ordinateur peut servir "
-"plusieurs stands, p. ex. *Pistolet 25 m* et *Pistolet 50 m* : ajoute un "
-"agent sur chaque stand et donne à l’agent les deux jetons, séparés par une "
-"virgule."
+"Connecte un ordinateur près des imprimantes : un PC Windows ou un Mac avec "
+"l’[application Standblatt Print Agent](#app) par [code](#connect), ou un "
+"ordinateur Linux comme un Raspberry Pi avec l’[agent sans interface](../"
+"admin-guide/print-agent.md) : **Ajouter un agent d’impression**, donne-lui "
+"un nom et copie le jeton. Un ordinateur peut servir plusieurs stands, p. ex. "
+"*Pistolet 25 m* et *Pistolet 50 m* : connecte-le à chaque stand "
+"(l’application avec **Connecter un autre stand de tir**, l’agent sans "
+"interface avec les deux jetons, séparés par une virgule)."
 
 #. type: Bullet: '2. '
 #: ../src/help/en/user-guide/printing.md:26
@@ -3429,11 +3433,113 @@ msgstr ""
 #. type: Title ##
 #: ../src/help/en/user-guide/printing.md:29
 #, no-wrap
+msgid "The Standblatt Print Agent app {#app}"
+msgstr "L’application Standblatt Print Agent {#app}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/printing.md:32
+msgid ""
+"The app is the simple way for a laptop or PC next to the printers: no token "
+"and no settings to type."
+msgstr ""
+"L’application est la solution simple pour un portable ou un PC près des "
+"imprimantes : pas de jeton ni de réglages à saisir."
+
+#. type: Bullet: '1. '
+#: ../src/help/en/user-guide/printing.md:36
+msgid ""
+"Download it from the [latest release](https://github.com/standblatt/print-"
+"agent/releases/latest): `Standblatt-Print-Agent-Setup.exe` for Windows, "
+"`standblatt-print-agent-app-darwin-arm64.dmg` for a Mac with Apple silicon "
+"(`-amd64.dmg` for an Intel Mac), the `.deb` or `.rpm` for Linux."
+msgstr ""
+"Télécharge-la depuis la [dernière version](https://github.com/standblatt/"
+"print-agent/releases/latest) : `Standblatt-Print-Agent-Setup.exe` pour "
+"Windows, `standblatt-print-agent-app-darwin-arm64.dmg` pour un Mac avec puce "
+"Apple (`-amd64.dmg` pour un Mac Intel), le `.deb` ou le `.rpm` pour Linux."
+
+#. type: Bullet: '2. '
+#: ../src/help/en/user-guide/printing.md:36
+msgid ""
+"Install it. The app is not signed yet: Windows asks once, **More info → Run "
+"anyway**; on a Mac drag it into *Applications* and open it the first time "
+"with a right click → **Open**. On Windows it installs for the current user "
+"without admin rights, with a shortcut in the start menu and on the desktop, "
+"and starts with Windows."
+msgstr ""
+"Installe-la. L’application n’est pas encore signée : Windows demande une "
+"fois, **Informations complémentaires → Exécuter quand même** ; sur un Mac, "
+"glisse-la dans *Applications* et ouvre-la la première fois avec un clic "
+"droit → **Ouvrir**. Sous Windows, elle s’installe pour l’utilisateur actuel "
+"sans droits d’administrateur, avec un raccourci dans le menu Démarrer et sur "
+"le bureau, et démarre avec Windows."
+
+#. type: Bullet: '3. '
+#: ../src/help/en/user-guide/printing.md:36
+msgid ""
+"Click **Connect a range** and confirm the code in Standblatt (see [below]"
+"(#connect))."
+msgstr ""
+"Clique sur **Connecter un stand de tir** et confirme le code dans Standblatt "
+"(voir [plus bas](#connect))."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/printing.md:38
+msgid ""
+"![The Standblatt Print Agent app](../images/app/print-agent.png)"
+"{ .screenshot }"
+msgstr ""
+"![L’application Standblatt Print Agent](../images/app/print-agent.png)"
+"{ .screenshot }"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/printing.md:40
+msgid ""
+"The window shows for each range whether it prints, with its last jobs, and "
+"below the printers of the computer, each with a **Test page** that prints on "
+"that computer without Standblatt. **Advanced** has *Start with the "
+"computer*, the address of Standblatt (change it only for a test server) and "
+"removing a range. Closing the window keeps the app running in the system "
+"tray: the icon is green when every range prints, red otherwise."
+msgstr ""
+"La fenêtre montre pour chaque stand s’il imprime, avec ses dernières "
+"impressions, et en dessous les imprimantes de l’ordinateur, chacune avec une "
+"**Page de test** qui imprime sur cet ordinateur sans Standblatt. **Avancé** "
+"contient *Démarrer avec l’ordinateur*, l’adresse de Standblatt (à modifier "
+"seulement pour un serveur de test) et le retrait d’un stand. Si tu fermes la "
+"fenêtre, l’application continue dans la zone de notification : l’icône est "
+"verte quand chaque stand imprime, sinon rouge."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/printing.md:42
+msgid ""
+"On Windows and on a Mac the app tells when a new version is out; **Update "
+"now** installs it and restarts the app. To give up a computer, remove its "
+"range under **Advanced**, revoke its agent on **Ranges → Set up the "
+"printers** and uninstall the app (on Windows under *Settings → Apps*)."
+msgstr ""
+"Sous Windows et sur un Mac, l’application signale quand une nouvelle version "
+"est disponible ; **Mettre à jour maintenant** l’installe et redémarre "
+"l’application. Pour ne plus utiliser un ordinateur, retire son stand sous "
+"**Avancé**, révoque son agent sous **Stands de tir → Configurer les "
+"imprimantes** et désinstalle l’application (sous Windows dans *Paramètres → "
+"Applications*)."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/printing.md:43
+#, no-wrap
 msgid "Connecting a computer by code {#connect}"
 msgstr "Connecter un ordinateur par code {#connect}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/printing.md:31
+#: ../src/help/en/user-guide/printing.md:46
+msgid "![A code in the app](../images/app/print-agent-code.png){ .screenshot }"
+msgstr ""
+"![Un code dans l’application](../images/app/print-agent-code.png)"
+"{ .screenshot }"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/printing.md:48
 msgid ""
 "The Standblatt app on a computer next to the printers needs no token: it "
 "shows a code such as `K7QD-4MZP` and opens **Connect a print agent** in the "
@@ -3441,7 +3547,7 @@ msgid ""
 "choose the club and range and the agent's name, and **Connect**. Only "
 "members who may manage ranges can connect a computer; a code is valid for "
 "ten minutes. The app then connects by itself, and the agent appears under "
-"**Ranges → Printing** with its version and operating system."
+"**Ranges → Set up the printers** with its version and operating system."
 msgstr ""
 "L’application Standblatt sur un ordinateur près des imprimantes n’a pas "
 "besoin de jeton : elle affiche un code comme `K7QD-4MZP` et ouvre "
@@ -3450,8 +3556,20 @@ msgstr ""
 "tir et le nom de l’agent, puis **Connecter**. Seuls les membres qui peuvent "
 "gérer les stands de tir peuvent connecter un ordinateur ; un code est "
 "valable dix minutes. L’application se connecte ensuite d’elle-même, et "
-"l’agent apparaît sous **Stands de tir → Impression** avec sa version et son "
-"système d’exploitation."
+"l’agent apparaît sous **Stands de tir → Configurer les imprimantes** avec sa "
+"version et son système d’exploitation."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/printing.md:49
+msgid ""
+"If the browser on that computer is not at hand, type the code on **Ranges → "
+"Set up the printers** of the range in **Connect by code** instead: the "
+"computer is connected to that range under its own name."
+msgstr ""
+"Si le navigateur de cet ordinateur n’est pas à portée de main, saisis plutôt "
+"le code sous **Stands de tir → Configurer les imprimantes** du stand, dans "
+"**Connecter par code** : l’ordinateur est connecté à ce stand sous son "
+"propre nom."
 
 #. type: Title #
 #: ../src/help/en/user-guide/print-forms.md:1
@@ -4268,11 +4386,11 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/ranges.md:11
 msgid ""
-"**Printing** opens the printers and print agents of the range (see [Printing]"
-"(printing.md))."
+"**Set up the printers** opens the printers and print agents of the range "
+"(see [Printing](printing.md))."
 msgstr ""
-"**Impression** ouvre les imprimantes et agents d’impression du stand (voir "
-"[Impression](printing.md))."
+"**Configurer les imprimantes** ouvre les imprimantes et agents d’impression "
+"du stand (voir [Impression](printing.md))."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/ranges.md:12

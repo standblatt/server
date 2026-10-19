@@ -84,8 +84,8 @@ function prepare(md: string): string {
 		.replace(/<div class="([^"]*)"\s+markdown(?:="1")?>/g, (_, classes: string) => `<div class="${classes.split(/\s+/).map((c) => `help-${c}`).join(' ')}">`);
 }
 
-/** The URL of an image of the pages: everything lives in /help/screenshots/. */
-const imageSrc = (src: string) => (src.startsWith('http') ? src : `/help/screenshots/${src.split('/').pop()}`);
+/** The URL of an image of the pages: /help/<folder>/<file>, e.g. screenshots/ (written by make docs) or app/. */
+const imageSrc = (src: string) => (src.startsWith('http') ? src : `/help/${src.split('/').slice(-2).join('/')}`);
 
 /** A marked instance that resolves links relative to a page file and gives headings their ids. */
 function renderer(file: string, newTab: boolean) {

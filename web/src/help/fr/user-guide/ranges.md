@@ -14,8 +14,8 @@
   [Manifestations](events.md)), un programme peut être lié à l’un d’eux
   (voir [Programmes](programmes.md)) et un agent d’impression peut servir
   les deux (voir [Impression](printing.md)).
-- **Configurer les imprimantes** ouvre les imprimantes et agents d’impression du stand (voir
-  [Impression](printing.md)).
+- **Configurer les imprimantes** ouvre les imprimantes et agents
+  d’impression du stand (voir [Impression](printing.md)).
 
 Un stand avec des manifestations ne peut pas être supprimé. Les réservations
 de cibles appartiennent au stand et apparaissent dans toutes ses

@@ -24,12 +24,15 @@ d’abord un autre toucher, une note avec le bouton **Partager** apparaît.
 
 ![Impression](../images/screenshots/printing.png){ .screenshot }
 
-1. **Ajouter un agent d’impression**, donne-lui un nom et copie le
-   jeton. Installe l’agent sur un ordinateur près des imprimantes (voir
-   [Agent d’impression](../admin-guide/print-agent.md)). Un ordinateur peut
+1. Connecte un ordinateur près des imprimantes : un PC Windows ou un Mac
+   avec l’[application Standblatt Print Agent](#app) par [code](#connect),
+   ou un ordinateur Linux comme un Raspberry Pi avec l’[agent sans
+   interface](../admin-guide/print-agent.md) : **Ajouter un agent
+   d’impression**, donne-lui un nom et copie le jeton. Un ordinateur peut
    servir plusieurs stands, p. ex. *Pistolet 25 m* et *Pistolet 50 m* :
-   ajoute un agent sur chaque stand et donne à l’agent les deux jetons,
-   séparés par une virgule.
+   connecte-le à chaque stand (l’application avec **Connecter un autre stand
+   de tir**, l’agent sans interface avec les deux jetons, séparés par une
+   virgule).
 2. Dès que l’agent est en ligne, il annonce ses imprimantes et la liste
    indique sa version et son système d’exploitation. Choisis pour chaque
    document l’imprimante (*Diplômes* sont les diplômes des classements,
@@ -50,7 +53,47 @@ Une tâche que l’agent ne confirme pas dans les deux minutes est relancée ;
 après trois tentatives, elle échoue. **révoquer** retire un agent
 immédiatement.
 
+## L’application Standblatt Print Agent {#app}
+
+L’application est la solution simple pour un portable ou un PC près des
+imprimantes : pas de jeton ni de réglages à saisir.
+
+1. Télécharge-la depuis la [dernière
+   version](https://github.com/standblatt/print-agent/releases/latest) :
+   `Standblatt-Print-Agent-Setup.exe` pour Windows,
+   `standblatt-print-agent-app-darwin-arm64.dmg` pour un Mac avec puce Apple
+   (`-amd64.dmg` pour un Mac Intel), le `.deb` ou le `.rpm` pour Linux.
+2. Installe-la. L’application n’est pas encore signée : Windows demande une
+   fois, **Informations complémentaires → Exécuter quand même** ; sur un
+   Mac, glisse-la dans *Applications* et ouvre-la la première fois avec un
+   clic droit → **Ouvrir**. Sous Windows, elle s’installe pour l’utilisateur
+   actuel sans droits d’administrateur, avec un raccourci dans le menu
+   Démarrer et sur le bureau, et démarre avec Windows.
+3. Clique sur **Connecter un stand de tir** et confirme le code dans
+   Standblatt (voir [plus bas](#connect)).
+
+![L’application Standblatt Print Agent](../images/app/print-agent.png){
+.screenshot }
+
+La fenêtre montre pour chaque stand s’il imprime, avec ses dernières
+impressions, et en dessous les imprimantes de l’ordinateur, chacune avec une
+**Page de test** qui imprime sur cet ordinateur sans Standblatt. **Avancé**
+contient *Démarrer avec l’ordinateur*, l’adresse de Standblatt (à modifier
+seulement pour un serveur de test) et le retrait d’un stand. Si tu fermes la
+fenêtre, l’application continue dans la zone de notification : l’icône est
+verte quand chaque stand imprime, sinon rouge.
+
+Sous Windows et sur un Mac, l’application signale quand une nouvelle version
+est disponible ; **Mettre à jour maintenant** l’installe et redémarre
+l’application. Pour ne plus utiliser un ordinateur, retire son stand sous
+**Avancé**, révoque son agent sous **Stands de tir → Configurer les
+imprimantes** et désinstalle l’application (sous Windows dans *Paramètres →
+Applications*).
+
 ## Connecter un ordinateur par code {#connect}
+
+![Un code dans l’application](../images/app/print-agent-code.png){
+.screenshot }
 
 L’application Standblatt sur un ordinateur près des imprimantes n’a pas
 besoin de jeton : elle affiche un code comme `K7QD-4MZP` et ouvre
@@ -59,10 +102,10 @@ nécessaire, vérifie l’ordinateur indiqué, choisis la société, le stand de
 tir et le nom de l’agent, puis **Connecter**. Seuls les membres qui peuvent
 gérer les stands de tir peuvent connecter un ordinateur ; un code est
 valable dix minutes. L’application se connecte ensuite d’elle-même, et
-l’agent apparaît sous **Stands de tir → Configurer les imprimantes** avec sa version et son
-système d’exploitation.
+l’agent apparaît sous **Stands de tir → Configurer les imprimantes** avec sa
+version et son système d’exploitation.
 
-Si le navigateur de cet ordinateur n’est pas à portée de main, saisis le code
-plutôt sous **Stands de tir → Configurer les imprimantes** du stand, dans
-**Connecter par code** : l’ordinateur est connecté à ce stand sous son propre
-nom.
+Si le navigateur de cet ordinateur n’est pas à portée de main, saisis plutôt
+le code sous **Stands de tir → Configurer les imprimantes** du stand, dans
+**Connecter par code** : l’ordinateur est connecté à ce stand sous son
+propre nom.

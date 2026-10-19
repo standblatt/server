@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-18 20:49+0000\n"
+"POT-Creation-Date: 2026-10-19 18:07+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -3322,8 +3322,8 @@ msgstr "Configurare le stampanti"
 #. type: Plain text
 #: ../src/help/en/user-guide/printing.md:19
 #, no-wrap
-msgid "**Ranges → Printing** (admins):\n"
-msgstr "**Stand di tiro → Stampa** (admin):\n"
+msgid "**Ranges → Set up the printers** (admins):\n"
+msgstr "**Stand di tiro → Configura le stampanti** (admin):\n"
 
 #. type: Plain text
 #: ../src/help/en/user-guide/printing.md:21
@@ -3333,17 +3333,21 @@ msgstr "![Stampa](../images/screenshots/printing.png){ .screenshot }"
 #. type: Bullet: '1. '
 #: ../src/help/en/user-guide/printing.md:26
 msgid ""
-"**Add print agent**, give it a name and copy the token. Install the agent on "
-"a computer next to the printers (see [Print agent](../admin-guide/print-"
-"agent.md)). One computer can serve several ranges, e.g. *Pistol 25 m* and "
-"*Pistol 50 m*: add an agent on each range and give the agent both tokens, "
-"separated by a comma."
+"Connect a computer next to the printers: a Windows PC or a Mac with the "
+"[Standblatt Print Agent app](#app) by [code](#connect), or a Linux computer "
+"such as a Raspberry Pi with the [headless agent](../admin-guide/print-"
+"agent.md): **Add print agent**, give it a name and copy the token. One "
+"computer can serve several ranges, e.g. *Pistol 25 m* and *Pistol 50 m*: "
+"connect it to each range (the app with **Connect another range**, the "
+"headless agent with both tokens, separated by a comma)."
 msgstr ""
-"**Aggiungi agente di stampa**, dagli un nome e copia il token. Installa "
-"l’agente su un computer vicino alle stampanti (vedi [Agente di stampa](../"
-"admin-guide/print-agent.md)). Un computer può servire più stand, p. es. "
-"*Pistola 25 m* e *Pistola 50 m*: aggiungi un agente su ogni stand e dai "
-"all’agente entrambi i token, separati da una virgola."
+"Collega un computer vicino alle stampanti: un PC Windows o un Mac con l’[app "
+"Standblatt Print Agent](#app) tramite [codice](#connect), oppure un computer "
+"Linux come un Raspberry Pi con l’[agente senza interfaccia](../admin-guide/"
+"print-agent.md): **Aggiungi agente di stampa**, dagli un nome e copia il "
+"token. Un computer può servire più stand, p. es. *Pistola 25 m* e *Pistola "
+"50 m*: collegalo a ogni stand (l’app con **Collega un altro stand di tiro**, "
+"l’agente senza interfaccia con entrambi i token, separati da una virgola)."
 
 #. type: Bullet: '2. '
 #: ../src/help/en/user-guide/printing.md:26
@@ -3396,11 +3400,109 @@ msgstr ""
 #. type: Title ##
 #: ../src/help/en/user-guide/printing.md:29
 #, no-wrap
+msgid "The Standblatt Print Agent app {#app}"
+msgstr "L’app Standblatt Print Agent {#app}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/printing.md:32
+msgid ""
+"The app is the simple way for a laptop or PC next to the printers: no token "
+"and no settings to type."
+msgstr ""
+"L’app è la via semplice per un portatile o un PC vicino alle stampanti: "
+"nessun token e nessuna impostazione da digitare."
+
+#. type: Bullet: '1. '
+#: ../src/help/en/user-guide/printing.md:36
+msgid ""
+"Download it from the [latest release](https://github.com/standblatt/print-"
+"agent/releases/latest): `Standblatt-Print-Agent-Setup.exe` for Windows, "
+"`standblatt-print-agent-app-darwin-arm64.dmg` for a Mac with Apple silicon "
+"(`-amd64.dmg` for an Intel Mac), the `.deb` or `.rpm` for Linux."
+msgstr ""
+"Scaricala dall’[ultima versione](https://github.com/standblatt/print-agent/"
+"releases/latest): `Standblatt-Print-Agent-Setup.exe` per Windows, "
+"`standblatt-print-agent-app-darwin-arm64.dmg` per un Mac con chip Apple (`-"
+"amd64.dmg` per un Mac Intel), il `.deb` o il `.rpm` per Linux."
+
+#. type: Bullet: '2. '
+#: ../src/help/en/user-guide/printing.md:36
+msgid ""
+"Install it. The app is not signed yet: Windows asks once, **More info → Run "
+"anyway**; on a Mac drag it into *Applications* and open it the first time "
+"with a right click → **Open**. On Windows it installs for the current user "
+"without admin rights, with a shortcut in the start menu and on the desktop, "
+"and starts with Windows."
+msgstr ""
+"Installala. L’app non è ancora firmata: Windows chiede una volta, "
+"**Ulteriori informazioni → Esegui comunque**; su un Mac trascinala in "
+"*Applicazioni* e aprila la prima volta con un clic destro → **Apri**. Su "
+"Windows si installa per l’utente attuale senza diritti di amministratore, "
+"con un collegamento nel menu Start e sul desktop, e si avvia con Windows."
+
+#. type: Bullet: '3. '
+#: ../src/help/en/user-guide/printing.md:36
+msgid ""
+"Click **Connect a range** and confirm the code in Standblatt (see [below]"
+"(#connect))."
+msgstr ""
+"Fai clic su **Collega uno stand di tiro** e conferma il codice in Standblatt "
+"(vedi [sotto](#connect))."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/printing.md:38
+msgid ""
+"![The Standblatt Print Agent app](../images/app/print-agent.png)"
+"{ .screenshot }"
+msgstr ""
+"![L’app Standblatt Print Agent](../images/app/print-agent.png){ .screenshot }"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/printing.md:40
+msgid ""
+"The window shows for each range whether it prints, with its last jobs, and "
+"below the printers of the computer, each with a **Test page** that prints on "
+"that computer without Standblatt. **Advanced** has *Start with the "
+"computer*, the address of Standblatt (change it only for a test server) and "
+"removing a range. Closing the window keeps the app running in the system "
+"tray: the icon is green when every range prints, red otherwise."
+msgstr ""
+"La finestra mostra per ogni stand se stampa, con le ultime stampe, e sotto "
+"le stampanti del computer, ognuna con una **Pagina di prova** che stampa su "
+"quel computer senza Standblatt. **Avanzate** contiene *Avvia con il "
+"computer*, l’indirizzo di Standblatt (da cambiare solo per un server di "
+"prova) e la rimozione di uno stand. Se chiudi la finestra, l’app continua "
+"nell’area di notifica: l’icona è verde quando ogni stand stampa, altrimenti "
+"rossa."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/printing.md:42
+msgid ""
+"On Windows and on a Mac the app tells when a new version is out; **Update "
+"now** installs it and restarts the app. To give up a computer, remove its "
+"range under **Advanced**, revoke its agent on **Ranges → Set up the "
+"printers** and uninstall the app (on Windows under *Settings → Apps*)."
+msgstr ""
+"Su Windows e su un Mac l’app segnala quando c’è una nuova versione; "
+"**Aggiorna ora** la installa e riavvia l’app. Per dismettere un computer, "
+"rimuovi il suo stand in **Avanzate**, revoca il suo agente in **Stand di "
+"tiro → Configura le stampanti** e disinstalla l’app (su Windows in "
+"*Impostazioni → App*)."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/printing.md:43
+#, no-wrap
 msgid "Connecting a computer by code {#connect}"
 msgstr "Collegare un computer con un codice {#connect}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/printing.md:31
+#: ../src/help/en/user-guide/printing.md:46
+msgid "![A code in the app](../images/app/print-agent-code.png){ .screenshot }"
+msgstr ""
+"![Un codice nell’app](../images/app/print-agent-code.png){ .screenshot }"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/printing.md:48
 msgid ""
 "The Standblatt app on a computer next to the printers needs no token: it "
 "shows a code such as `K7QD-4MZP` and opens **Connect a print agent** in the "
@@ -3408,7 +3510,7 @@ msgid ""
 "choose the club and range and the agent's name, and **Connect**. Only "
 "members who may manage ranges can connect a computer; a code is valid for "
 "ten minutes. The app then connects by itself, and the agent appears under "
-"**Ranges → Printing** with its version and operating system."
+"**Ranges → Set up the printers** with its version and operating system."
 msgstr ""
 "L’app Standblatt su un computer vicino alle stampanti non ha bisogno di un "
 "token: mostra un codice come `K7QD-4MZP` e apre **Collegare un agente di "
@@ -3416,7 +3518,20 @@ msgstr ""
 "scegli società, stand di tiro e nome dell’agente e **Collega**. Solo i "
 "membri che possono gestire gli stand di tiro possono collegare un computer; "
 "un codice vale dieci minuti. L’app si collega poi da sola e l’agente compare "
-"in **Stand di tiro → Stampa** con la sua versione e il sistema operativo."
+"in **Stand di tiro → Configura le stampanti** con la sua versione e il "
+"sistema operativo."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/printing.md:49
+msgid ""
+"If the browser on that computer is not at hand, type the code on **Ranges → "
+"Set up the printers** of the range in **Connect by code** instead: the "
+"computer is connected to that range under its own name."
+msgstr ""
+"Se il browser di quel computer non è a portata di mano, inserisci invece il "
+"codice in **Stand di tiro → Configura le stampanti** dello stand, in "
+"**Collega con codice**: il computer viene collegato a quello stand con il "
+"suo nome."
 
 #. type: Title #
 #: ../src/help/en/user-guide/print-forms.md:1
@@ -4221,11 +4336,11 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/help/en/user-guide/ranges.md:11
 msgid ""
-"**Printing** opens the printers and print agents of the range (see [Printing]"
-"(printing.md))."
+"**Set up the printers** opens the printers and print agents of the range "
+"(see [Printing](printing.md))."
 msgstr ""
-"**Stampa** apre le stampanti e gli agenti di stampa dello stand (vedi "
-"[Stampa](printing.md))."
+"**Configura le stampanti** apre le stampanti e gli agenti di stampa dello "
+"stand (vedi [Stampa](printing.md))."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/ranges.md:12

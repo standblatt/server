@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Help: *Printing* describes the Standblatt Print Agent app for Windows, macOS and Linux (download, install, connect, the window, updates, removing it) with screenshots of the app (by @HB9HIL)
+
+### Fixed
+- The German, French and Italian help keeps the new button name *Set up the printers* and the code field when the help translations are regenerated (by @HB9HIL)
+
 ## [0.22.1] - 2026-10-19
 
 ### Added
