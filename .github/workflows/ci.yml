@@ -143,6 +143,7 @@ jobs:
       STANDBLATT_ADMIN_TOKEN: e2e-admin-token-e2e-admin-token-e2e
       STANDBLATT_METRICS_LISTEN: ""
       STANDBLATT_SIGNUP: "true"
+      STANDBLATT_PUBLIC_URL: http://localhost:8080
       STANDBLATT_SMTP_HOST: localhost
       STANDBLATT_SMTP_PORT: "1025"
       MAILPIT: http://localhost:8025

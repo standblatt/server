@@ -78,6 +78,9 @@ func loadConfig() (config, error) {
 	if c.smtp.Port, err = strconv.Atoi(envOr("STANDBLATT_SMTP_PORT", "587")); err != nil || c.smtp.Port < 1 || c.smtp.Port > 65535 {
 		return c, errors.New("STANDBLATT_SMTP_PORT must be a port number")
 	}
+	if c.smtp.Host != "" && c.publicURL == "" {
+		return c, errors.New("STANDBLATT_PUBLIC_URL is required with STANDBLATT_SMTP_HOST, so links in mails never come from the Host header")
+	}
 	if c.signup, err = envBool("STANDBLATT_SIGNUP", false); err != nil {
 		return c, err
 	}

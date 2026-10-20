@@ -10,7 +10,7 @@ Standblatt reads environment variables only.
 | `STANDBLATT_LOG_LEVEL` | `info` | `debug`, `info`, `warn`, `error`; JSON lines on stderr |
 | `STANDBLATT_TRUST_PROXY` | `false` | take the client address from `X-Forwarded-For` (only behind your own ingress); used for login rate limits |
 | `STANDBLATT_ADMIN_TOKEN` | empty | token for the [admin panel](admin-panel.md), at least 32 characters. Empty: the admin panel is disabled |
-| `STANDBLATT_PUBLIC_URL` | empty | base of the links in mails, e.g. `https://app.standblatt.ch`. Empty: scheme and host of the request |
+| `STANDBLATT_PUBLIC_URL` | empty | base of the links in mails, e.g. `https://app.standblatt.ch`. Required with `STANDBLATT_SMTP_HOST`; empty (mails only logged): scheme and host of the request |
 | `STANDBLATT_SMTP_HOST` | empty | mail server. Empty: mails are only logged |
 | `STANDBLATT_SMTP_PORT` | `587` | `465` uses implicit TLS, other ports STARTTLS when the server offers it |
 | `STANDBLATT_SMTP_USER`, `STANDBLATT_SMTP_PASSWORD` | empty | login at the mail server, if it needs one |

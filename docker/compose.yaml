@@ -52,6 +52,7 @@ services:
       STANDBLATT_ENVIRONMENT: ${E2E_ENVIRONMENT:-}
       STANDBLATT_METRICS_LISTEN: ""
       STANDBLATT_SIGNUP: "true"
+      STANDBLATT_PUBLIC_URL: http://localhost:3002
       STANDBLATT_SMTP_HOST: e2e-mail
       STANDBLATT_SMTP_PORT: "1025"
     ports:
