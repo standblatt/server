@@ -81,13 +81,13 @@ func (s *Server) Handler() http.Handler {
 
 	mux.Handle("/", s.spa())
 	withSession := s.withSession(mux)
-	return s.secureHeaders(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	return s.secureHeaders(http.NewCrossOriginProtection().Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if strings.HasPrefix(r.URL.Path, "/api/") {
 			withSession.ServeHTTP(w, r)
 			return
 		}
 		mux.ServeHTTP(w, r)
-	}))
+	})))
 }
 
 // OpenAPI returns the API description as JSON without needing a database.

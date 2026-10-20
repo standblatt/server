@@ -114,6 +114,38 @@ func TestShootersAndClubs(t *testing.T) {
 	expect(t, "delete club again", code, 404, b)
 }
 
+func TestCrossOriginUpload(t *testing.T) {
+	e := newEnv(t)
+	tid := e.tenant("Club")
+	e.user("boss", tid, store.RoleAdmin)
+	admin := e.login("boss")
+	for _, c := range []struct{ header, value string }{
+		{"Sec-Fetch-Site", "same-site"},
+		{"Sec-Fetch-Site", "cross-site"},
+		{"Origin", "https://www.example.org"},
+	} {
+		var buf bytes.Buffer
+		w := multipart.NewWriter(&buf)
+		part, _ := w.CreateFormFile("file", "shooters.csv")
+		part.Write([]byte("license;firstname;lastname\n13756;Sandra;Schwitter\n"))
+		w.Close()
+		req, _ := http.NewRequest("POST", fmt.Sprintf("%s/api/tenants/%d/shooters/import", e.srv.URL, tid), &buf)
+		req.Header.Set("Content-Type", w.FormDataContentType())
+		req.Header.Set(c.header, c.value)
+		resp, err := admin.Do(req)
+		if err != nil {
+			t.Fatal(err)
+		}
+		resp.Body.Close()
+		if resp.StatusCode != http.StatusForbidden {
+			t.Errorf("%s: %s answered %d, want 403", c.header, c.value, resp.StatusCode)
+		}
+	}
+	if n, err := e.st.SearchShooters(context.Background(), tid, "", 0, 10, 0); err != nil || len(n) != 0 {
+		t.Fatalf("cross-origin uploads imported shooters: %v, %v", n, err)
+	}
+}
+
 func TestShooterImport(t *testing.T) {
 	e := newEnv(t)
 	tid := e.tenant("Club")
