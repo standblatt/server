@@ -1,43 +1,119 @@
-# Your first event
+# Tutorial: your first event
 
-This walk-through takes a club from an empty account to a running competition. It assumes the platform operator has created the club and your account as its admin.
+In this tutorial you run a small competition from start to finish: you set up a range, create the *Hilltown Air Pistol Cup* with one programme, register two shooters on lanes, enter their results and see them in the ranking. It takes about 20 minutes.
 
-## 1. Log in
+You need an admin account of a club that has no events yet; the platform operator creates both. Use the data given in each step exactly as written, so that what you see matches this page. Nothing is printed in this tutorial.
 
-Open the app, log in with the account you were given and pick your language in the user menu at the bottom of the sidebar.
+## 1. Open your club
 
-As long as the club has no event, the **Events** page shows a **Getting started** checklist with the steps below; each open step has a button that takes you there. An event without active programmes shows the same checklist instead of its dashboard.
+Log in. On *Where to?*, click the card of your club.
 
-![Login](../images/screenshots/login.png){ .screenshot }
+The **Events** page opens with the **Getting started** checklist. Its four steps guide you through the first part of this tutorial.
 
-## 2. Set up the range
+## 2. Add the range
 
-Under **Ranges**, create the range with its number of lanes and mark lanes that are out of service. If you print at the range, add a print agent later (see [Printing](../user-guide/printing.md)).
+In the checklist, click **Ranges**, then **New range**. Enter:
 
-## 3. Load the shooters
+- **Name**: *Hall 10 m*
+- **Number of lanes**: *10* (already filled in)
 
-Under **Shooters**, import your shooter list as a CSV file (see [CSV import](../reference/csv-import.md)) or create shooters one by one. Shooters can also be created at the desk during the event.
+Click **Save**. You now see *Hall 10 m* in the list with 10 lanes.
+
+## 3. Add a shooter
+
+Click **Shooters** in the sidebar, then **New shooter**.
+
+1. In **Club**, type *SG Hilltown*. You see *“SG Hilltown” is not in the club list yet.* Click **Create new club “SG Hilltown”**.
+2. **First name**: *Lena*, **Last name**: *Keller*, **Birthday**: 12 May 1990. Leave the other fields empty.
+3. Click **Create**.
+
+Her details open at the side. Close them: *Keller Lena* is now in the list of shooters.
 
 ## 4. Create the event
 
-Under **Events**, create the event: choose what kind of event it is (it switches on the matching [modules](../user-guide/events.md#modules)), then name, date, range, organizer and the language of documents and kiosk screens. If you held the event last year, open last year's event and use **Copy for next year** instead: it takes over the settings and all programmes. A [template of the club](../user-guide/events.md#templates) does the same for events that recur in different forms.
+Click **Events** in the sidebar. In the checklist, *Add a range* and *Import shooters (optional)* are crossed out. Click **New event**.
 
-![A new event and its kind](../images/screenshots/new-event.png){ .screenshot }
+1. Under *What kind of event?*, choose **Custom selection**. You will switch on what the event needs in the next step.
+2. **Name**: *Hilltown Air Pistol Cup*. Leave **Date** at today.
+3. **Organizer**: *SG Hilltown*.
+4. Under **Ranges**, *Hall 10 m (10 lanes)* is already ticked.
+5. Click **Create**.
 
-## 5. Add the programmes
+The event opens. Its name is at the top of the sidebar, and the checklist now waits for step 3, *Set up programmes*.
 
-Open **Configuration** in the event's sidebar. Under **Modules**, switch on what the event uses (kiosk displays, helper links, awards …, see [Modules](../user-guide/events.md#modules)); then add the programmes under **Programmes**: from the editor, from the programme library, from a programme file or by copying them from an earlier event. Check prices, award tiers, variants and combinations, and set up [special prizes](../user-guide/programmes.md#special-prizes) if your event awards them.
+## 5. Switch on lanes and awards
 
-![The programmes of the event](../images/screenshots/setup.png){ .screenshot }
+Click **Configuration** in the sidebar, then **Modules**. Switch on:
 
-## 6. Kiosk screens and printers
+- **Lane assignment**, so that shooters get a lane;
+- **Awards**, so that the programme can hand out a wreath card.
 
-Still in the configuration, on **Kiosk displays**, create a kiosk link for each screen in the hall (see [Rankings and kiosk](../user-guide/rankings-kiosk.md)). Under **Ranges → Set up the printers**, assign a printer to each document (see [Printing](../user-guide/printing.md)).
+A message confirms each switch, for example *Lane assignment switched on*. What a module does is explained under [Modules](../explanation/modules.md).
 
-## 7. Run the event
+## 6. Create the programme
 
-On the **Dashboard**, press ++f4++, search the shooter, register them on a lane and let the lane sheet print. Enter the results when the shooter hands in the targets; the rankings and kiosk screens update immediately. See [Dashboard](../user-guide/dashboard.md), [Registrations](../user-guide/registrations.md) and [Results](../user-guide/results.md).
+Click **Programmes** in the sidebar, then **New programme**.
 
-## 8. After the event
+1. **Name**: *Championship*.
+2. Under **Series**, one series with 10 shots and 100 points is already there. Click **Add series** three times. The section is now called *Series (40 shots, max. 400 points)*.
+3. Under **Prices (CHF)**, tick **Elite** and enter *20*; tick **Senior** and enter *20*.
+4. Under **Awards**, click **Add award** and enter:
+    - **Name**: *Wreath card*, **Kind**: *Wreath card* (already chosen), **Value (CHF)**: *10*
+    - **Elite**: *360*, **Senior**: *355*
+5. Click **Create**.
 
-Under **Statistics**, download the reports (financial report, awards, club competition, special prizes …). When everything is settled, **close** the event under **Configuration** → **Copy & close**: the rankings are released to the shooters' personal training logs, and the event stays readable but can no longer be changed.
+You see the message *Programme "Championship" created*. Below the programme, the section **Use** shows *Active: shooters can register for it* ticked.
+
+## 7. Register Lena on lane 3
+
+Click **Back to the event** in the sidebar. The dashboard now shows the desk: a search field at the top and the grid of lanes 1 to 10, all *free*.
+
+1. Press **F4**. The cursor jumps into the search field.
+2. Type *Keller*. Next to *Keller Lena*, click **Register for SG Hilltown**.
+3. The registration opens: Lena is *Elite*. Under **Lane**, click **3**.
+4. Under **Programmes**, tick **Championship** (CHF 20.00). The total reads *Total: CHF 20.00*.
+5. Click **Register**.
+
+You see *Lena Keller registered on lane 3*. Lena is listed under **Shooting**, and lane 3 in the grid shows her name.
+
+## 8. Enter her results
+
+Under **Shooting**, click **Results** next to Lena. The cursor is already in the first series.
+
+Type *96*, *93*, *97* and *88*. After two digits the cursor jumps to the next series by itself. Press **Enter**.
+
+![The results of a shooter with a wreath card](../images/screenshots/results.png){ .screenshot }
+
+The programme is now *completed* with *Total 374 / 400*. Below it you see *Award: Wreath card*: 374 points reach the 360 an Elite shooter needs, so Standblatt gave her the card. At the top you see *All programmes have results.*
+
+Close the results. Lena has moved to **Completed** with the badge *awards to hand out*, and lane 3 is *free* again.
+
+## 9. Register a second shooter
+
+Marco is not in the shooter list yet, so you create him at the desk.
+
+1. Click **New shooter** next to the search field.
+2. **Club**: *SG Hilltown* (the list suggests it now). **First name**: *Marco*, **Last name**: *Brunner*, **Birthday**: 3 March 1975.
+3. Click **Create and register**. The registration opens: Marco is *Senior*.
+4. Click lane **4**, tick **Championship** and click **Register**.
+5. Under **Shooting**, click **Results** next to Marco, type *88*, *90*, *89* and *85* and press **Enter**.
+
+Marco's total is 352. You see *No award reached.*: a Senior needs 355 for the wreath card.
+
+## 10. See the ranking
+
+Click **Rankings** in the sidebar.
+
+![Rankings of an event with more shooters](../images/screenshots/rankings.png){ .screenshot }
+
+You see the table *Championship* with *40 shots · 2 shooters*: Lena on rank 1 with 374, Marco on rank 2 with 352, each with the four series and the total. The ranking updates by itself whenever a result is saved, on every computer that shows it.
+
+## What you have done
+
+You have set up a range, created an event with a programme, prices and an award, registered two shooters on lanes, entered their results and seen the live ranking. That is the work of a shooting day.
+
+## Next steps
+
+- Show the ranking on a screen in the hall: [Kiosk screens](../how-to/kiosk.md).
+- Print lane sheets, wreath cards and results at the range: [Connect a printer](../how-to/connect-printer.md).
+- When the event is over and the ranking is checked, close it: [Closing an event](../explanation/closing.md).

@@ -2,9 +2,24 @@
 
 This page describes the rules exactly as Standblatt implements them.
 
-## Age category
+## Age category {#age-categories}
 
-The category follows from *event year − birth year*; see the table in [Concepts](../getting-started/concepts.md#age-categories). Without a birthday a shooter counts as Elite. The category is fixed when the shooter registers.
+The category follows from *event year − birth year*. Without a birthday a shooter counts as Elite. The category is fixed when the shooter registers.
+
+| Category | Short | Age in the event year |
+|---|---|---|
+| U10 | U10 | up to 9 |
+| U13 | U13 | 10–12 |
+| U15 | U15 | 13–14 |
+| U17 | U17 | 15–16 |
+| U19 | U19 | 17–18 |
+| U21 | U21 | 19–20 |
+| Elite | E | 21–45 |
+| Senior | S | 46–59 |
+| Veteran | V | 60–69 |
+| Senior veteran | SV | 70 and older |
+
+The event year is the year of the event's main day, also for shooting days in another year.
 
 ## Registration
 
