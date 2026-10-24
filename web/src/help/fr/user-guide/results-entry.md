@@ -24,18 +24,23 @@ d’une manifestation :
    saisissent (voir [Programmes](programmes.md)), et appuie sur ++enter++.
 
 Le résultat est enregistré aussitôt, et le tireur apparaît sous *Saisis à
-l’instant* avec un lien vers les résultats. Si le tireur était inscrit au
-guichet pour ce programme et n’a pas encore de résultats, les résultats vont
-dans cette inscription ; sinon, une inscription sans cible est créée, déjà
-terminée. Un tireur ne peut avoir des résultats qu’une fois par programme,
-sauf si le programme permet plusieurs [tentatives](programmes.md#attempts) :
-chaque résultat supplémentaire est alors une nouvelle tentative, jusqu’à ce
-qu’il n’en reste plus.
+l’instant* avec un lien vers les résultats ; pour un programme avec un
+[modèle d’impression](print-forms.md), la ligne propose **Imprimer sur le
+modèle**. Si le tireur était inscrit à l’accueil pour ce programme et n’a
+pas encore de résultats, les résultats vont dans cette inscription ; sinon,
+une inscription sans cible est créée, déjà terminée. Un tireur ne peut avoir
+des résultats qu’une fois par programme, sauf si le programme permet
+plusieurs [tentatives](programmes.md#attempts) : chaque résultat
+supplémentaire est alors une nouvelle tentative, jusqu’à ce qu’il n’en reste
+plus.
 
 Les distinctions se choisissent comme d’habitude : la distinction atteinte
 la plus précieuse est fixée automatiquement et peut être changée dans les
 résultats.
 
+Touches et scanners : [Clavier et
+scanner](../reference/shortcuts.md#quick-entry).
+
 ## Import depuis un fichier {#import}
 
-**Importer un CSV** (admins) sous **Saisir les résultats** lit un fichier avec une ligne par tireur et programme, p. ex. exporté de l’installation de marquage ou saisi dans un tableur ; les colonnes sont décrites sous [Import CSV](../reference/csv-import.md#results). Chaque ligne est d’abord contrôlée : en cas d’erreur rien n’est importé et le dialogue liste les lignes à corriger. Les tireurs absents des données de base sont créés ; une société doit déjà figurer dans la liste.
+**Importer un CSV** (droit *Configurer les manifestations*) sous **Saisir les résultats** lit un fichier avec une ligne par tireur et programme, p. ex. exporté du système de marquage ou saisi dans un tableur ; les colonnes sont décrites sous [Import CSV](../reference/csv-import.md#results). Chaque ligne est d’abord contrôlée ; à la moindre erreur, rien n’est importé. Pas à pas et comment corriger les erreurs de ligne : [Importer les résultats du système de marquage](../how-to/import-results.md).

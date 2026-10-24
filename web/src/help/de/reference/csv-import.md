@@ -32,7 +32,9 @@ license;firstname;lastname;birthday;postalcode;city;club
 
 ## Resultate {#results}
 
-**CSV importieren** auf der Seite **Resultate erfassen** eines Anlasses liest Resultate (siehe [Resultate erfassen](../user-guide/results-entry.md#import)):
+Mitglieder mit dem Recht *Anlässe konfigurieren* importieren Resultate mit
+**CSV importieren** auf der Seite **Resultate erfassen** eines Anlasses
+(siehe [Resultate erfassen](../user-guide/results-entry.md#import)):
 
 ```text
 license;firstname;lastname;birthday;club;programme;s1;s2;m2;s1_1;s1_2;s1_3
@@ -42,7 +44,7 @@ license;firstname;lastname;birthday;club;programme;s1;s2;m2;s1_1;s1_2;s1_3
 
 | Spalte | Pflicht | Hinweise |
 |---|---|---|
-| `license` oder `firstname` + `lastname` | ja | der Schütze: über die Lizenz gefunden, sonst über den Namen (und `birthday`, wenn mehrere so heissen); angelegt, wenn nicht gefunden |
+| `license` oder `firstname` + `lastname` | ja | der Schütze: über die Lizenz gefunden, sonst über den Namen (und `birthday`, wenn mehrere so heissen); angelegt, wenn nicht gefunden, wofür es `firstname` und `lastname` braucht: eine Lizenz allein, die nicht gefunden wird, ist ein Zeilenfehler |
 | `birthday` | nein | `YYYY-MM-DD` oder `DD.MM.YYYY` |
 | `club` | nein | muss in der Vereinsliste stehen (ohne Rücksicht auf Gross-/Kleinschreibung und Leerzeichen); der Schütze kommt dazu |
 | `programme` | ja | Barcode, Name mit Variante wie `Championship (Sport)` oder der Name allein |
@@ -50,9 +52,13 @@ license;firstname;lastname;birthday;club;programme;s1;s2;m2;s1_1;s1_2;s1_3
 | `m1`, `m2`, … | nein | Mouchen pro Passe |
 | `s1_1`, `s1_2`, … | nein | Einzelschüsse der Passe 1, für Passen, die sie erfassen; die Passe ist deren Summe |
 
+- Jede Zeile wird zuerst geprüft; bei einem Zeilenfehler wird nichts
+  importiert.
 - Ein Schütze kann in einem Programm nur einmal Resultate haben; eine Zeile
   für schon vorhandene Resultate ist ein Fehler. Programme mit mehreren
   [Durchgängen](../user-guide/programmes.md#attempts) nehmen eine Zeile pro
   Durchgang, bis der Schütze keinen mehr übrig hat.
+- Bei Programmen mit mehreren Durchgängen fügt ein erneuter Import derselben
+  Datei ihre Zeilen als weitere Durchgänge hinzu.
 - Ist der Schütze ohne Resultate für das Programm angemeldet, gehen die
   Resultate in diese Anmeldung.

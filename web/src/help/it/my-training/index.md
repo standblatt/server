@@ -4,6 +4,9 @@ Il mio allenamento è un diario di tiro personale. Ogni tiratore può usarlo,
 che la sua società organizzi manifestazioni con Standblatt o no. Risponde a
 una domanda: **il mio allenamento funziona?**
 
+Nuovo qui? Inizia con [Tutorial: la tua prima sessione di
+allenamento](first-session.md).
+
 <div class="grid" markdown>
 
 ![Oggi su un telefono](../images/screenshots/my-today.png){ .screenshot

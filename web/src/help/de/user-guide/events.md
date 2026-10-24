@@ -22,7 +22,9 @@ in den Betrieb:
 | **Kopieren & abschliessen** | für nächstes Jahr kopieren, abschliessen, wiedereröffnen und löschen |
 
 Die Konfiguration braucht das Recht *Anlässe konfigurieren*, der Betrieb
-*Anlässe durchführen* (siehe [Rollen](users.md#roles)).
+*Anlässe durchführen* (siehe [Rollen](users.md#roles)). Warum beides
+getrennt ist: [Konfiguration und
+Betrieb](../explanation/modules.md#configuration).
 
 ## Einstellungen {#settings}
 
@@ -36,86 +38,66 @@ Die Konfiguration braucht das Recht *Anlässe konfigurieren*, der Betrieb
 | Veranstalter | wird auf Dokumente gedruckt |
 | Sprache der Dokumente und des Kiosks | Sprache von PDFs, CSV-Exporten und Kiosk-Bildschirmen, unabhängig von der Oberflächensprache der einzelnen Benutzer |
 
+Die Schiesszeiten geben auch der Online-Reservation ihre Zeitblöcke, ausser
+die Reservation legt für einen Tag andere Zeiten fest (siehe
+[Online-Reservation](online-booking.md)).
+
+Schritt für Schritt für eine Saison: [Ein Jahresprogramm über die Saison
+durchführen](../how-to/annual-programme.md), [Ein Feldschiessen über einen
+Zeitraum einrichten](../how-to/feldschiessen.md).
+
 ## Module {#modules}
 
-Nicht jeder Anlass braucht alles: Ein Schützenfest reserviert Scheiben und
-gibt Kranzkarten ab, ein Jahresprogramm sammelt nur Resultate. **Module**
-schaltet die Module des Anlasses ein und aus; was aus ist, verschwindet aus
-Seitenleiste, Dashboard, Programm-Editor, Ranglisten und Berichten.
+**Module** schaltet die Bausteine des Anlasses ein und aus; warum sich Anlässe nur durch ihre Module unterscheiden, erklärt [Module und Arten von Anlässen](../explanation/modules.md).
 
 ![Die Module eines Anlasses](../images/screenshots/modules.png){ .screenshot
 }
 
-| Modul | Was es bringt |
-|---|---|
-| Scheibenzuteilung | Schützen werden auf Scheiben angemeldet: das Scheibenraster im Dashboard, der Scheibenstatus auf Kiosk-Anzeigen und Warner-Links (braucht einen Stand; siehe unten) |
-| Reservationen | für Gruppen und Vereine reservierte Scheiben; seine Seite in der Konfiguration schaltet die [Online-Reservation](online-booking.md) ein, über die Vereine mit einem öffentlichen Link Scheiben anfragen (braucht einen Stand) |
-| Standblatt, Kontrollstreifen | die Dokumente, die bei der Anmeldung gedruckt werden; der Kontrollstreifen kann mit einer [Druckvorlage](print-forms.md#builtin) des Vereins drucken |
-| Munitionsausgabe | der Knopf **Munition** im Dashboard und für die Munitionsausgabe (siehe [Helfer](helpers.md#ammunition)); aus lassen, wo die Schützen ihre eigene mitbringen, z. B. Luftpistole und Luftgewehr |
-| Durchgänge | Programme, die mehrmals geschossen werden können (siehe [Programme](programmes.md#attempts)) |
-| Auszeichnungen | Kranzkarten, Naturalgaben und Geldpreise; seine Einstellung *Wert der Auszeichnung auf Kranzkarten drucken* setzt den Wert in Ziffern und Worten auf die Karte, *Vorlage der Kranzkarten* wählt eine [Druckvorlage](print-forms.md#builtin) des Vereins |
-| Sonderpreise | die besten Ränge jeder Alterskategorie (schaltet Auszeichnungen ein, siehe [Programme](programmes.md#special-prizes)) |
-| Vereinskonkurrenz | Vereine nach den Resultaten ihrer Schützen rangiert; seine Einstellung *Von der Vereinskonkurrenz ausgeschlossener Verein* ist meist der Gastgeberverein, aufgeführt als *ausser Konkurrenz* |
-| Wertungen | Ranglisten über mehrere Programme oder Durchgänge (siehe [Wertungen](classifications.md)) |
-| Kiosk-Anzeigen | Ranglisten auf Bildschirmen in der Halle (siehe [Ranglisten und Kiosk](rankings-kiosk.md)) |
-| Helferlinks | Warner, Munitionsausgabe und Resultaterfassung ohne Konto (siehe [Helfer](helpers.md)) |
+Jedes Modul ist eine Karte mit seinem Schalter; die Einstellungen eines
+Moduls, z. B. *Wert der Auszeichnung auf Kranzkarten drucken* bei
+*Auszeichnungen*, stehen auf seiner Karte. Was jedes Modul bringt, seine
+Einstellungen und wann es an bleibt:
+[Module](../reference/modules.md#event-modules).
 
 Beim Erstellen eines Anlasses wählst du, was für ein Anlass es ist; das
-schaltet nur Module ein:
+schaltet nur Module ein (siehe [Arten von
+Anlässen](../reference/modules.md#kinds)).
 
-| Art | Module |
-|---|---|
-| Schützenfest | Scheibenzuteilung, Reservationen, Standblatt, Kontrollstreifen, Auszeichnungen, Sonderpreise, Vereinskonkurrenz, Kiosk-Anzeigen, Helferlinks |
-| Jahresprogramm oder Training | Durchgänge, Wertungen |
-| Feldschiessen | Scheibenzuteilung, Auszeichnungen, Vereinskonkurrenz, Kiosk-Anzeigen, Helferlinks |
-| Vereinsmeisterschaft | Durchgänge, Wertungen, Kiosk-Anzeigen |
-| Eigene Auswahl | keine |
-
-Ein Modul mit Daten bleibt an: Den Kiosk schaltest du erst aus, wenn seine
-Kiosk-Links gelöscht sind, die Auszeichnungen erst, wenn kein Programm mehr
-Auszeichnungsstufen hat, und so weiter; die Karte sagt, warum ihr Schalter
-gesperrt ist; Reservationen bleiben an, solange der Link der
-Online-Reservation aktiv ist. Ein Modul, das ein anderes braucht
-(Auszeichnungen für Sonderpreise), bleibt an, solange jenes an ist.
-
-Die Schiesszeiten geben auch der Online-Reservation ihre Zeitblöcke, ausser
-die Reservation legt für einen Tag andere Zeiten fest (siehe
-[Online-Reservation](online-booking.md)).
+Ein Modul mit Daten bleibt an, und die Karte sagt, warum ihr Schalter
+gesperrt ist (siehe [Warum ein Modul mit Daten an
+bleibt](../explanation/modules.md#in-use)). Ein Modul, das ein anderes
+braucht, z. B. *Auszeichnungen* für *Sonderpreise* oder *Scheibenzuteilung*
+für *Reservationen*, bleibt an, solange das andere an ist.
 
 ### Vereinsmodule {#club-modules}
 
 Manche Module gehören zum Verein statt zu einem Anlass. **Vereinsmodule** im
 Vereinsteil der Seitenleiste (Recht *Benutzer und Verein*) schaltet sie ein
-und aus:
-
-| Modul | Was es bringt |
-|---|---|
-| Druckvorlagen | Vorlagen für vorgedruckte Blätter und der Abschnitt *Druckvorlage* jedes Programms (siehe [Druckvorlagen](print-forms.md)) |
+und aus; vorerst sind das die *Druckvorlagen* (siehe
+[Druckvorlagen](print-forms.md)). Was jedes bringt und wann es an bleibt:
+[Vereinsmodule](../reference/modules.md#club-modules); warum sie zum Verein
+gehören: [Vereinsmodule und
+Anlassmodule](../explanation/modules.md#club-modules).
 
 ## Anlässe ohne Scheiben {#no-lanes}
 
-Ein Anlass ohne Scheiben, z. B. ein Jahresprogramm oder ein Feldschiessen,
-dessen Resultate auf Papier oder aus der Trefferanzeige kommen, hat entweder
-keinen Stand oder schaltet das Modul *Scheibenzuteilung* aus. Dann gibt es
-kein Scheibenraster, keine Reservationen und keine Warner-Links; Schützen
-werden ohne Scheibe angemeldet, und ihre Resultate werden wie gewohnt
-erfasst. Mit Stand, aber ohne Scheibenzuteilung, drucken Dokumente weiterhin
-über den Druck-Agenten des Stands, und Programme lassen sich weiterhin an
-den Stand binden; ohne Stand öffnen sich Dokumente als PDF, weil
-Druck-Agenten zu einem Stand gehören.
+Ein Anlass ohne Scheiben hat keinen Schiessstand oder schaltet die
+*Scheibenzuteilung* aus; was jede Wahl bedeutet, erklärt [Anlässe mit und
+ohne Scheiben](../explanation/modules.md#lanes).
 
 ## Für nächstes Jahr kopieren {#copy}
 
-Auf **Kopieren & abschliessen** in der Konfiguration erstellt **Für nächstes
-Jahr kopieren** einen neuen Anlass mit denselben Ständen, Veranstalter,
-Sprache, Einstellungen, Modulen und allen Programmen, inklusive Preise,
-Auszeichnungen, Kombinationen und Sonderpreise, sowie den
-[Wertungen](classifications.md); die Schiesstage und der Zeitraum wandern
-mit dem Datum, wöchentliche Schiesszeiten bleiben auf ihren
-Wochentagen. Anmeldungen, Resultate und Kiosk-Links werden nicht
-kopiert. Der Dialog schlägt den Namen mit hochgezähltem Jahr (und einer
-führenden Nummer wie *42.*) und das Datum ein Jahr später vor; passe beides
-bei Bedarf an.
+Auf **Kopieren & abschliessen** in der Konfiguration erstellt **Kopieren**
+unter *Für nächstes Jahr kopieren* einen neuen Anlass mit denselben
+Schiessständen, Organisator, Sprache, Einstellungen, Modulen und allen
+Programmen, inklusive Preise, Auszeichnungen, Kombinationen und
+Sonderpreise, sowie den [Wertungen](classifications.md); die Schiesstage und
+der Zeitraum wandern mit dem Datum, wöchentliche Schiesszeiten bleiben auf
+ihren Wochentagen. Anmeldungen, Resultate, Kiosk-Links, Helferlinks und der
+Reservationslink werden nicht kopiert. Der Dialog *Anlass kopieren* schlägt
+den Namen und das Datum ein Jahr später vor; **Kopie erstellen** erstellt
+den Anlass. Schritt für Schritt: [Den Anlass des letzten Jahres
+übernehmen](../how-to/next-year.md#copy).
 
 ![Einen Anlass kopieren](../images/screenshots/copy-event.png){ .screenshot
 }
@@ -124,32 +106,27 @@ bei Bedarf an.
 
 Ein gut eingerichteter Anlass kann zu einer **Vorlage** des Vereins werden:
 **Als Vorlage speichern** auf **Kopieren & abschliessen** legt eine Kopie
-mit seinen Modulen, Einstellungen, Ständen, Programmen und Wertungen an,
-benannt nach dem Anlass ohne Jahreszahl. Vorlagen stehen unter *Vorlagen*
-unterhalb der Anlässe; eine Vorlage öffnet sich in ihrer Konfiguration und
-lässt sich wie ein Anlass ändern, nimmt aber keine Anmeldungen an. **Neuer
-Anlass** bietet die Vorlagen des Vereins unter den eingebauten Arten an:
-Wähle eine, dann gib dem neuen Anlass seinen Namen und sein
-Datum. **Löschen** auf **Kopieren & abschliessen** der Vorlage entfernt sie.
+mit seinen Modulen, Einstellungen, Schiessständen, Programmen und Wertungen
+an, benannt nach dem Anlass ohne Jahreszahl. Vorlagen stehen unter
+*Vorlagen* unterhalb der Anlässe; eine Vorlage öffnet sich in ihrer
+Konfiguration und lässt sich wie ein Anlass ändern, nimmt aber keine
+Anmeldungen an. **Neuer Anlass** listet die Vorlagen des Vereins unter den
+Arten auf (siehe [Mit einer Vorlage des Vereins
+starten](../how-to/next-year.md#template)). **Löschen** auf **Kopieren &
+abschliessen** der Vorlage entfernt sie.
 
 ![Neuer Anlass mit den Arten und einer Vorlage des
 Vereins](../images/screenshots/new-event.png){ .screenshot }
 
 ## Abschliessen {#close}
 
-Wenn der Anlass vorbei ist und die Ranglisten geprüft sind, **schliesst** du
-ihn auf **Kopieren & abschliessen** in der Konfiguration **ab** (**Anlass
-abschliessen**). Das Abschliessen gibt die Ranglisten frei: Schützen mit
-einem [persönlichen Trainingslog](../my-training/account.md#competitions)
-finden jetzt ihre Resultate dieses Anlasses mit ihrem Rang im Programm und
-können sie in ihr Log übernehmen. Alles bleibt sichtbar (Dashboard,
-Resultate, Ranglisten, Berichte, Dokumente), aber Anmeldungen, Resultate,
-Auszeichnungen, Programme und Einstellungen können nicht mehr geändert
-werden. Ein Banner auf jeder Seite des Anlasses weist darauf
-hin. **Wiedereröffnen** macht ihn wieder bearbeitbar; Resultate, die
-Schützen bereits in ihr Log übernommen haben, bleiben dort. Das Kopieren
-eines abgeschlossenen Anlasses für nächstes Jahr funktioniert.
+Wenn ein Anlass vorbei ist und die Ranglisten geprüft sind, schliesst ihn
+**Anlass abschliessen** auf **Kopieren & abschliessen** in der Konfiguration
+ab; ein Banner auf jeder Seite des Anlasses sagt das dann, und
+**Wiedereröffnen** macht ihn wieder bearbeitbar. Was das Abschliessen für
+die Ranglisten, Mein Training und Änderungen bedeutet: [Einen Anlass
+abschliessen](../explanation/closing.md).
 
 ## Löschen
 
-**Löschen** (auf **Kopieren & abschliessen**) entfernt einen Anlass, aber nur solange niemand dafür angemeldet ist.
+**Löschen** (auf **Kopieren & abschliessen**) entfernt einen Anlass, aber nur solange niemand dafür angemeldet ist. Ein abgeschlossener Anlass lässt sich nicht löschen; eröffne ihn zuerst wieder.

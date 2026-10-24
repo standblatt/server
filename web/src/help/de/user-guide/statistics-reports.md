@@ -14,21 +14,11 @@
 
 ## Berichte
 
-Jeder Bericht steht als **PDF** und **CSV** zur Verfügung (UTF-8 mit BOM,
-durch `;` getrennt, öffnet sich direkt in Excel). Die Texte folgen der
-Sprache des Anlasses.
-
-| Bericht | Inhalt |
-|---|---|
-| Finanzbericht | Einnahmen pro Programm, Auszeichnungen mit ihrem Wert |
-| Einnahmen nach Programm und Alterskategorie | Teilnehmer, Preis und Zwischensumme pro Programm und Kategorie |
-| Auszeichnungen | jede vergebene Auszeichnung mit Schütze, Verein, Programm, Wert und Resultat |
-| Vereinskonkurrenz | Rangliste, Vereine ausser Konkurrenz und nicht rangierte Vereine |
-| Vereinsteilnehmer | Teilnehmer pro Verein, Programm und Alterskategorie |
-| Sonderpreise | Gewinner pro Programm und Alterskategorie, übersprungene Schützen mit Grund (siehe [Programme](programmes.md#special-prizes)) |
-| Wertungen | jede [Wertung](classifications.md) pro Klasse, mit den Punkten pro Programm; nicht zählende Teile stehen in Klammern |
-| Abzugebende Auszeichnungen | noch nicht abgeholte Auszeichnungen mit Schütze, Verein, Programm, Art und Wert, dazu das noch auszuzahlende Geld (siehe [Resultate](results.md#handout)) |
-| Scheibenreservationen | die Vereine, die über die [Online-Reservation](online-booking.md) Scheiben angefragt haben, bestätigt oder noch offen, mit Kontakt, Zeitblöcken, Scheibennummern und angemeldeten Schützen |
+Jeder Bericht steht als **PDF** und **CSV** zur Verfügung; welche Berichte
+es gibt und was sie enthalten:
+[Berichte](../reference/documents.md#reports). Noch abzuholende
+Auszeichnungen: [Sehen, was noch offen
+ist](../how-to/hand-out-awards.md#open).
 
 Unter den Berichten lässt sich die Rangliste jedes Programms als PDF oder
 CSV herunterladen.

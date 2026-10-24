@@ -7,9 +7,12 @@ invece di essere compilato a mano. Compilare a mano resta possibile; i
 modelli sono facoltativi e si possono disattivare in **Moduli della
 società** (vedi [Moduli della società](events.md#club-modules)).
 
+Perché e come funzionano i modelli di stampa: [Modelli di stampa su fogli
+prestampati](../explanation/printing.md#forms).
+
 ## Creare un modello {#create}
 
-**Modelli di stampa** (admin, nella parte società della barra laterale) elenca i modelli della società. **Nuovo modello di stampa** chiede un nome, ciò che il modello **Stampa** (vedi [Fonte di dati](#source)) e un formato di carta, poi apre l’editor. Ha tre colonne:
+**Modelli di stampa** (permesso *Modelli di stampa*, nella parte società della barra laterale) elenca i modelli della società. **Nuovo modello di stampa** chiede un nome, ciò che il modello **Stampa** (vedi [Fonte di dati](#source)) e un formato di carta, poi apre l’editor. Ha tre colonne:
 
 - A sinistra i **Campi**: tutto ciò che un modello può stampare, in gruppi,
   ognuno con un esempio, e una ricerca. Un clic aggiunge il campo sotto
@@ -40,7 +43,7 @@ società** (vedi [Moduli della società](events.md#club-modules)).
   foglio per posizionare i campi sulle caselle del modulo; non viene mai
   stampato.
 
-**Salva** salva il modello; un punto sul pulsante indica modifiche non salvate, e lasciando la pagina con esse viene chiesta prima una conferma. Con **Salva automaticamente** (attivo finché non lo si disattiva; il browser lo ricorda) le modifiche non salvate vengono salvate ogni minuto. **Anteprima PDF** apre il modello esattamente come lo rende il PDF, che può differire leggermente dal foglio nel browser.
+**Salva** salva il modello; un punto sul pulsante indica modifiche non salvate, e lasciando la pagina con esse viene chiesta prima una conferma. Con **Salva automaticamente** (attivo finché non lo si disattiva; il browser lo ricorda) le modifiche non salvate vengono salvate ogni minuto. **Anteprima PDF** apre il modello salvato esattamente come lo rende il PDF, che può differire leggermente dal foglio nel browser.
 
 ## Fonte di dati {#source}
 
@@ -54,6 +57,9 @@ Ciò che un modello **Stampa** ne determina i campi e dove viene stampato:
 
 La fonte si può cambiare nell’editor sotto **Modello**; i campi che la nuova
 fonte non conosce non stampano nulla.
+
+Ogni segnaposto: [Segnaposto dei
+modelli](../reference/form-placeholders.md).
 
 ## Modelli integrati {#builtin}
 
@@ -72,19 +78,14 @@ immagini](../images/screenshots/print-forms.png){ .screenshot }
 ## Documenti d’iscrizione e diplomi {#certificates}
 
 Un modello che stampa **Un'iscrizione**, oltre alla striscia di controllo
-della manifestazione, p. es. una carta di partecipazione o una ricevuta,
+della manifestazione, p. es. una tessera di partecipazione o una ricevuta,
 compare nell’iscrizione con un pulsante con il proprio nome; viene stampato
-sulla stampante dei *Modelli di stampa*.
+sulla stampante dei *Modelli di stampa (prestampati)*.
 
-Un modello che stampa **Un rango** produce diplomi: **Diplomi**
-nell’intestazione di ogni classifica e di ogni classifica generale in
-**Classifiche** chiede il modello, la classe di una classifica generale e i
-ranghi (da 1 a 3 se non modificati), poi stampa una pagina per tiratore
-classificato, oppure le apre in un unico PDF. I diplomi vanno alla stampante
-dei *Diplomi* in **Stand di tiro → Configura le stampanti**. I campi di un
-rango sono il rango, il totale, la classifica (il programma o la classifica
-generale) e la classe; il diploma di un programma conosce anche i suoi
-risultati.
+Un modello che stampa **Un rango** crea diplomi tramite **Diplomi** in
+**Classifiche**, stampati sulla stampante dei *Diplomi* del primo stand
+della manifestazione; vedi [Stampare i diplomi per i migliori
+ranghi](../how-to/certificates.md).
 
 ![Diplomi da una classifica](../images/screenshots/certificates.png){
 .screenshot }
@@ -106,16 +107,8 @@ risultati.
   *Allineamento* (bordi, centri, distribuire uniformemente), *Centra sul
   foglio* ed *Elimina*.
 
-| Tasto | Effetto |
-|---|---|
-| Frecce | spostano la selezione di 0.5 mm, con Maiusc di 5 mm |
-| Ctrl+Z / Ctrl+Y | annulla / ripeti |
-| Ctrl+A | seleziona tutto |
-| Ctrl+D | duplica |
-| Canc | elimina la selezione |
-| Esc | annulla la selezione |
-| Ctrl+S | salva |
-| Ctrl+rotellina | zoom |
+Tasti: [Editor dei modelli di
+stampa](../reference/shortcuts.md#print-forms).
 
 ## Immagini {#images}
 
@@ -135,22 +128,18 @@ nome che la società ha già.
 
 ## Calibrare la stampante {#calibrate}
 
-Le stampanti raramente stampano esattamente dove dovrebbero. Stampa un
-foglio con **Stampa di prova**, misura di quanto i valori sono spostati e
-inseriscilo come **Spostamento della stampante a destra** e **Spostamento
-della stampante in basso** (negativo per sinistra o alto). Lo spostamento
-vale per tutti gli elementi; l’anteprima lo ignora.
+**Spostamento della stampante a destra (mm)** e **Spostamento della stampante in basso (mm)** in **Modello** spostano ogni elemento (negativo per spostare a sinistra o in alto). **Stampa di prova** apre il modello salvato con lo spostamento e senza la scansione; l’anteprima ignora lo spostamento. Perché: [La calibrazione in linea di principio](../explanation/printing.md#calibration). Passi: [Stampare i risultati sui fogli di stand dell’esercito](../how-to/army-sheet.md#calibrate).
 
 ## Usare un modello {#use}
 
-In **Configurazione** → **Programmi** della manifestazione apri un programma
-e scegli il suo **Modello di stampa** nella sezione omonima; funziona anche
-con tiratori già iscritti. Ogni programma concluso offre allora **Stampa sul
-modello** nei risultati: al desk, nella pagina **Registra risultati** e
-tramite i link per segretari al bersaglio (vedi [Aiutanti](helpers.md)). Con
-un agente di stampa e una stampante scelta per *Modelli di stampa* in
-**Stand di tiro → Configura le stampanti**, il foglio va a quella stampante
-(p. es. al suo alimentatore manuale), altrimenti si apre il PDF (vedi
-[Stampa](printing.md)).
+Un programma sceglie il suo modello nella sezione **Modello di stampa**
+della sua pagina del programma, anche con tiratori già iscritti. I risultati
+completi offrono allora **Stampa sul modello**: nei risultati
+all’accoglienza, in *Appena registrati* in **Registra risultati** e sui link
+aiutante di marcatori e registrazione risultati (vedi
+[Aiutanti](helpers.md)). Viene stampato sulla stampante dei *Modelli di
+stampa (prestampati)* dello stand dell’iscrizione, altrimenti si apre il PDF
+(vedi [Stampa](printing.md)). Passi: [Stampare i risultati sui fogli di
+stand dell’esercito](../how-to/army-sheet.md).
 
 **Esporta** scarica un modello con le sue immagini come file e **Importa** lo rilegge, p. es. per condividere un modello con un’altra società.

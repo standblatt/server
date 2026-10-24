@@ -12,11 +12,10 @@ Handy](../images/screenshots/helper-scorer.png){ .screenshot .phone }
 
 ## Rollen {#roles}
 
-| Rolle | Sieht | Darf |
-|---|---|---|
-| **Warner** | das Scheibenraster der eigenen Scheiben, die Schützen darauf | Resultate und Auszeichnungen erfassen, einen Schützen **Beenden** |
-| **Munitionsausgabe** | das Suchfeld, die Warteliste, die Schützen auf allen Scheiben | die Munition als ausgegeben markieren (**Munition**), einem wartenden Schützen eine Scheibe zuteilen, das Standblatt drucken |
-| **Resultaterfassung** | das Suchfeld, die Schützen auf allen Scheiben, die Liste der Beendeten | Resultate und Auszeichnungen auf jeder Scheibe erfassen |
+Ein Link ist ein **Warner** (seine eigenen Scheiben), die
+**Munitionsausgabe** oder eine **Resultaterfassung** (alle Scheiben). Was
+jede Rolle sieht und kann:
+[Helferlinks](../reference/permissions.md#helper-links).
 
 Alles andere bleibt bei den Benutzern des Vereins: Schützen anmelden,
 Programme bearbeiten, Ranglisten, Statistik, Löschen.
@@ -30,8 +29,8 @@ Programme bearbeiten, Ranglisten, Statistik, Löschen.
 2. **Helferlink erstellen**; kopiere den Link und schicke ihn dem Helfer
    (z. B. per Messenger). Er wird nur einmal angezeigt.
 3. Der Helfer öffnet den Link; er gilt, bis er widerrufen oder der Anlass
-   gelöscht wird. `?language=de` (`fr`, `it`, `en`) übersteuert die Sprache
-   des Anlasses.
+   gelöscht wird. Seine Sprache lässt sich im Link ändern (siehe
+   [URL-Parameter](../reference/links.md#parameters)).
 
 **widerrufen** in der Liste stoppt einen Link sofort; *zuletzt gesehen* sagt, wann er zuletzt benutzt wurde. Ein Warner, der einen Schützen auf einer anderen Scheibe öffnet, bekommt *Diese Scheibe gehört nicht zu dir*.
 

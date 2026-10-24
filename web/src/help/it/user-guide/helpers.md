@@ -12,11 +12,10 @@ telefono](../images/screenshots/helper-scorer.png){ .screenshot .phone }
 
 ## Ruoli {#roles}
 
-| Ruolo | Vede | Può |
-|---|---|---|
-| **Marcatore** | la griglia dei propri bersagli, i tiratori su di essi | registrare risultati e distinzioni, **Terminare** un tiratore |
-| **Distribuzione munizioni** | il campo di ricerca, la lista d’attesa, i tiratori su tutti i bersagli | segnare le munizioni come consegnate (**Munizione**), assegnare un bersaglio a un tiratore in attesa, stampare il foglio di stand |
-| **Registrazione risultati** | il campo di ricerca, i tiratori su tutti i bersagli, l’elenco dei terminati | registrare risultati e distinzioni su ogni bersaglio |
+Un link è un **Marcatore** (i propri bersagli), la **Distribuzione
+munizioni** o una **Registrazione risultati** (tutti i bersagli). Cosa vede
+e può fare ogni ruolo: [Link
+aiutante](../reference/permissions.md#helper-links).
 
 Tutto il resto resta agli utenti della società: iscrivere tiratori,
 modificare programmi, classifiche, statistiche, eliminare.
@@ -31,8 +30,8 @@ modificare programmi, classifiche, statistiche, eliminare.
 2. **Crea link aiutante**; copia il link e mandalo all’aiutante (ad es. via
    messaggistica). Viene mostrato una sola volta.
 3. L’aiutante apre il link; resta valido finché non viene revocato o la
-   manifestazione eliminata. `?language=de` (`fr`, `it`, `en`) sovrascrive
-   la lingua della manifestazione.
+   manifestazione eliminata. La sua lingua si può cambiare nel link (vedi
+   [Parametri dell’URL](../reference/links.md#parameters)).
 
 **revoca** nell’elenco ferma subito un link; *visto l’ultima volta* indica quando è stato usato l’ultima volta. Un marcatore che apre un tiratore su un altro bersaglio riceve *Questo bersaglio non è il tuo*.
 

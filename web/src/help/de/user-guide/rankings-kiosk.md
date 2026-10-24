@@ -4,6 +4,10 @@
 
 **Ranglisten** zeigt eine Live-Rangliste pro Programm, geordnet nach den [Regeln des SSV](../reference/rules.md#ranking). Die ersten drei Ränge sind hervorgehoben.
 
+Wie Programm-Ranglisten, Wertungen, Vereinskonkurrenz und Sonderpreise
+zusammenhängen: [Wie die Ranglisten
+zusammenhängen](../explanation/rankings.md).
+
 ![Ranglisten](../images/screenshots/rankings.png){ .screenshot }
 
 - **PDF** öffnet die Rangliste (A4) zum Drucken oder Teilen, **CSV** lädt
@@ -14,33 +18,27 @@
 - [Wertungen](classifications.md) folgen auf die Programme, eine Tabelle pro
   Klasse; ihr **PDF** und **CSV** ist der Bericht *Wertungen*.
 - **Urkunden** druckt Urkunden für die besten Ränge auf eine
-  [Druckvorlage](print-forms.md#certificates) des Vereins; der Knopf
+  [Druckvorlage](print-forms.md#certificates) des Vereins (siehe [Urkunden
+  für die besten Ränge drucken](../how-to/certificates.md)); der Knopf
   erscheint, sobald der Verein eine Vorlage hat, die einen Rang druckt.
 
 ## Kiosk-Bildschirme
 
 Ein Kiosk-Link zeigt die Ranglisten eines Anlasses auf einem Bildschirm in
-der Halle, ohne Anmeldung. Schalte das Modul *Kiosk-Anzeigen* unter
-**Konfiguration** → **Module** ein und erstelle dann einen auf
-**Kiosk-Anzeigen** in der Konfiguration:
+der Halle, ohne Anmeldung; einrichten mit [Die Ranglisten auf einem
+Bildschirm in der Halle zeigen](../how-to/kiosk.md).
 
-1. Gib einen Namen für den Bildschirm ein (z. B. *Halle 1*), wähle
-   **Dunkel** oder **Hell** und wahlweise eine Sprache.
-2. **Kiosk-Link erstellen**; kopiere den Link. Er wird nur einmal angezeigt.
-3. Öffne den Link in einem Browser auf dem Bildschirm, am besten im
-   Vollbild.
+**Kiosk-Anzeigen** in der Konfiguration (Modul *Kiosk-Anzeigen*) listet die Links. Ein neuer braucht einen Namen, **Dunkel** oder **Hell**, eine Sprache und, bei einem Anlass mit mehreren Schiessständen, einen Schiessstand; **Kiosk-Link erstellen** zeigt den Link nur einmal.
 
 ![Kiosk-Bildschirm](../images/screenshots/kiosk.png){ .screenshot }
 
-- Der Kiosk zeigt nur Programme mit eingeschaltetem *Auf Kiosk-Anzeigen
-  zeigen*, und den Scheibenstatus, wenn *Scheibenstatus auf den Ranglisten
-  zeigen* an ist (auf derselben Seite).
-- Die Sprache ist die Sprache des Anlasses, sofern der Link keine andere
-  trägt (`?language=de`, `fr`, `it`, `en`); das Farbschema kommt von
-  `?theme=dark` oder `?theme=light`. Bei einem Anlass auf mehreren Ständen
-  beschränkt `?range=<id>` (beim Erstellen des Links gewählt) die Anzeige
-  auf diesen Stand: seine Scheiben, seine Programme und die Programme ohne
-  Stand.
+- Der Kiosk zeigt nur Programme und Wertungen mit eingeschaltetem *Auf
+  Kiosk-Anzeigen zeigen* und, mit dem Modul *Scheibenzuteilung*, den
+  Scheibenstatus, wenn *Scheibenstatus auf den Ranglisten zeigen* unter
+  **Kiosk-Anzeigen** an ist.
+- Der Link legt Design, Sprache und Schiessstand fest (siehe
+  [URL-Parameter](../reference/links.md#parameters)).
+- Der Knopf **Vollbild** oben rechts schaltet den Bildschirm ins Vollbild.
 - Der Bildschirm aktualisiert sich live und verbindet sich nach einem
   Netzunterbruch selbst wieder. Bei einer neuen Version von Standblatt lädt
   er sich selbst neu.

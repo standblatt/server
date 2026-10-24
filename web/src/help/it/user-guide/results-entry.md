@@ -24,17 +24,21 @@ una manifestazione:
    [Programmi](programmes.md)), e premi ++enter++.
 
 Il risultato viene salvato subito e il tiratore appare sotto *Appena
-registrati* con un link ai risultati. Se il tiratore era iscritto allo
-sportello per questo programma e non ha ancora risultati, i risultati vanno
-in quell’iscrizione; altrimenti viene creata un’iscrizione senza bersaglio,
-già conclusa. Un tiratore può avere risultati in un programma una sola
-volta, salvo se il programma consente più
+registrati* con un link ai risultati; per un programma con un [modello di
+stampa](print-forms.md), la riga offre **Stampa sul modello**. Se il
+tiratore era iscritto all’accoglienza per questo programma e non ha ancora
+risultati, i risultati vanno in quell’iscrizione; altrimenti viene creata
+un’iscrizione senza bersaglio, già conclusa. Un tiratore può avere risultati
+in un programma una sola volta, salvo se il programma consente più
 [tentativi](programmes.md#attempts): ogni risultato successivo è allora un
 nuovo tentativo, finché non ne restano più.
 
 Le distinzioni si scelgono come di consueto: la distinzione raggiunta più
 preziosa viene impostata automaticamente e si può cambiare nei risultati.
 
+Tasti e scanner: [Tastiera e
+scanner](../reference/shortcuts.md#quick-entry).
+
 ## Importazione da un file {#import}
 
-**Importa CSV** (admin) in **Registra risultati** legge un file con una riga per tiratore e programma, p. es. esportato dall’impianto di segnalazione o digitato in un foglio di calcolo; le colonne sono descritte in [Importazione CSV](../reference/csv-import.md#results). Ogni riga viene controllata prima: con un errore non viene importato nulla e il dialogo elenca le righe da correggere. I tiratori che non sono nei dati di base vengono creati; una società deve già essere nell’elenco.
+**Importa CSV** (permesso *Configurare le manifestazioni*) in **Registra risultati** legge un file con una riga per tiratore e programma, p. es. esportato dal sistema di punteggio o digitato in un foglio di calcolo; le colonne sono descritte in [Importazione CSV](../reference/csv-import.md#results). Ogni riga viene controllata prima; con un qualsiasi errore non viene importato nulla. Passo per passo e come correggere gli errori di riga: [Importare i risultati dal sistema di punteggio](../how-to/import-results.md).

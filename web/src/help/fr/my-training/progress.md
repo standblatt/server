@@ -17,7 +17,7 @@ coup font 465 sur 50 coups.
 : points par coup sur toutes les séances des 30 derniers jours. La flèche montre l’évolution par rapport aux 30 jours précédents.
 
 **Record personnel**
-: le total le plus élevé parmi les séances avec le nombre de coups standard de la discipline, p. ex. 60 au pistolet à air. Touche-le pour ouvrir la séance.
+: le total le plus élevé parmi les séances avec le nombre de coups standard de la discipline, p. ex. 50 au pistolet à air. Touche-le pour ouvrir la séance.
 
 **Séances**
 : nombre de séances et de coups saisis dans cette discipline.

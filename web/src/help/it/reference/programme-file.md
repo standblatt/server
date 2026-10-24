@@ -33,8 +33,15 @@
 
 - `ageCategory` è uno tra `u10`, `u13`, `u15`, `u17`, `u19`, `u21`, `elite`,
   `senior`, `veteran`, `senior_veteran`.
-- `kind` è `card` (carta corona, stampata) o `natural` (premio in natura).
+- `kind` è `card` (carta corona, stampata), `natural` (premio in natura) o
+  `cash` (premio in denaro).
 - `showOnRankings` è l’interruttore *Mostra sugli schermi chiosco*.
+- Campi facoltativi: `attempts` (0 o omesso = una volta),
+  `unlimitedAttempts`, `attemptRule` (`best`, `first` o `last`) e
+  `awardCountingOnly` per i
+  [tentativi](../user-guide/programmes.md#attempts); `repeatPrice` in un
+  prezzo (omesso = lo stesso prezzo, 0 = pagato una volta); `trackShots` in
+  una serie per i colpi singoli.
 - Combinazioni e premi speciali sono impostazioni del programma all’interno
   di una manifestazione e non fanno parte del file; copiare i programmi da
   una manifestazione precedente li mantiene.

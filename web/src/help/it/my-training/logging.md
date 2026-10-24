@@ -31,8 +31,9 @@ le ultime due.
 ![Toccare i colpi sul bersaglio](../images/screenshots/my-train-target.png){
 .screenshot .phone }
 
-Al computer puoi digitare le cifre, **Backspace** e **Invio** sulla
-tastiera.
+Su un computer puoi digitare le cifre, **Backspace** e **Invio** sulla
+tastiera; in **Colpi** con punteggio intero fino a 10 funzionano solo i
+pulsanti (vedi [Tastiera](../reference/shortcuts.md#my-training)).
 
 ## Salvare
 
@@ -62,7 +63,7 @@ Dopo il salvataggio Standblatt ti dice subito:
 - di quanti punti per colpo è sopra o sotto la media dei **30 giorni
   precedenti**.
 
-## Sessioni incompiute e offline
+## Sessioni incompiute e offline {#unfinished-sessions-and-offline}
 
 La sessione viene conservata sul dispositivo mentre digiti. Se chiudi il
 browser o il telefono si blocca, torna la prossima volta che avvii una
@@ -83,6 +84,9 @@ una sessione serve una connessione.
 
 Dopo aver aperto l’app online una volta, si apre anche senza connessione e
 mostra i tuoi ultimi dati.
+
+Perché il lavoro della società richiede una connessione e Il mio allenamento
+no: [Offline](../explanation/data.md#offline).
 
 ## Modificare o eliminare una sessione
 

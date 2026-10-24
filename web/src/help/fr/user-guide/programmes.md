@@ -55,10 +55,11 @@ ou **Enregistrer** en bas les enregistre ensemble.
   disponible.
 
 Dès que des tireurs sont inscrits à un programme, les **passes** sont figées
-pour que les résultats gardent leur sens ; la page l'indique et les
+(voir [Pourquoi les passes sont
+verrouillées](../explanation/rankings.md#locked)) ; la page l’indique et les
 grise. Tout le reste reste modifiable : nom, variante, description,
 code-barres, les options, prix, noms des passes, noms, valeurs et limites
-des distinctions. Les catégories d'âge et les distinctions peuvent être
+des distinctions. Les catégories d’âge et les distinctions peuvent être
 **ajoutées** mais pas retirées.
 
 La section **Utilisation** d’un programme enregistré est enregistrée
@@ -90,7 +91,8 @@ programme annuel tiré sur toute la saison.
   classement, le concours de sections, les prix spéciaux et *Mon
   entraînement* : **La meilleure** (selon les règles du classement), **La
   première** ou **La dernière**. Le classement l’affiche comme *2/3* : la
-  deuxième de trois tentatives compte.
+  deuxième de trois tentatives compte (voir [Les tentatives et la tentative
+  qui compte](../explanation/rankings.md#attempts)).
 - **Seule la tentative qui compte reçoit une distinction** : désactivé,
   chaque tentative peut recevoir sa distinction (une carte-couronne par
   rachat) ; activé, seule la tentative qui compte en reçoit une, et la
@@ -106,6 +108,9 @@ Le nombre de tentatives peut être modifié pendant que des tireurs sont
 inscrits, mais pas en dessous des tentatives qu’un tireur a déjà. Les
 programmes à plusieurs tentatives ne peuvent pas être combinés.
 
+Pas à pas pour une saison : [Organiser un programme annuel sur la
+saison](../how-to/annual-programme.md).
+
 ## Prix spéciaux {#special-prizes}
 
 La section **Prix spéciaux** de la page du programme récompense les
@@ -119,4 +124,4 @@ le rapport *Prix spéciaux* sous [Statistiques](statistics-reports.md).
 ![Prix spéciaux d’un programme](../images/screenshots/special-prizes.png){
 .screenshot }
 
-**Enregistrer les prix spéciaux** les enregistre ; rangs 0 désactive les prix spéciaux. Les réglages peuvent être modifiés à tout moment, même après la manifestation.
+**Enregistrer les prix spéciaux** les enregistre ; rangs 0 désactive les prix spéciaux. Les réglages peuvent être modifiés à tout moment jusqu’à la clôture de la manifestation.

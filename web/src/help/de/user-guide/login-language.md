@@ -66,7 +66,8 @@ Erstelle ein Token unter **Konto → API-Tokens** mit **Neues Token**:
 
 - einen **Namen**, an dem du später erkennst, was es verwendet,
 - eine **Vorlage** setzt die Rechte für einen üblichen Zweck: **Ranglisten
-  für eine Website**, **Training-App** oder **Nur lesen**,
+  für eine Website**, **Training-App** oder **Nur lesen** (siehe
+  [Vorlagen](../reference/permissions.md#presets)),
 - die **Vereine**, die das Token nutzen darf (keiner: nur dein
   Trainingslog),
 - die **Rechte**: *Mein Trainingslog lesen*, *Meine Trainings erfassen und
@@ -74,25 +75,21 @@ Erstelle ein Token unter **Konto → API-Tokens** mit **Neues Token**:
   Rollen](users.md#roles), die deine eigene Rolle dort hat,
 - wann es **abläuft**: in 30 oder 90 Tagen, in einem Jahr oder nie.
 
-Das Token (`sb_…`) wird nur einmal angezeigt; kopiere es sofort. Skripte
-senden es als `Authorization: Bearer sb_…` (oder `X-API-Key: sb_…`). Es
-darf, was du gewählt hast, und nie mehr als deine Rolle im Verein: Verlierst
-du ein Recht oder verlässt du den Verein, verliert es das Token sofort. Es
-erreicht nie dein Passwort, deine E-Mail, dein Konto oder andere
-Tokens. `GET /api/token` sagt einem Skript Name, Rechte und Vereine seines
-Tokens. Ein Token macht höchstens 600 Anfragen in fünf Minuten. Die Liste
-zeigt, wann jedes Token zuletzt benutzt wurde; Widerrufen stoppt es
-sofort. Entwickler finden die Endpunkte unter `/api/docs`.
+Das Token (`sb_…`) wird nur einmal angezeigt; kopiere es sofort. Es darf,
+was du gewählt hast, und nie mehr als deine Rolle im Verein: Verlierst du
+ein Recht oder verlässt du den Verein, verliert es das Token sofort. Es
+erreicht nie dein Passwort, deine E-Mail, dein Konto oder andere Tokens. Die
+Liste zeigt, wann jedes Token zuletzt benutzt wurde; Widerrufen stoppt es
+sofort. Wie Skripte es senden, was es erreicht und seine Grenzen: [Ein Token
+verwenden](../reference/permissions.md#token-use).
 
 ## Zweiter Faktor {#totp}
 
-Eine Authenticator-App (Google Authenticator, Aegis, 1Password und ähnliche)
-kann deine Anmeldung schützen: nach dem Passwort verlangt Standblatt den
-sechsstelligen Code, den die App anzeigt. Einrichten unter
-[Konto](#account): **Einrichten**, QR-Code scannen, aktuellen Code eingeben,
-**Einschalten**. **Ausschalten** verlangt dein Passwort. Handy verloren? Der
-Betreiber kann den zweiten Faktor im Admin-Panel zurücksetzen. Der Betreiber
-kann die Funktion auch für den ganzen Server ausschalten.
+Eine Authenticator-App kann deine Anmeldung nach dem Passwort mit einem
+sechsstelligen Code schützen; zum Einrichten, Ausschalten oder wenn das
+Handy verloren ist, siehe [Die Anmeldung mit einem zweiten Faktor
+schützen](../how-to/two-factor.md). Der Betreiber kann die Funktion auch für
+den ganzen Server ausschalten.
 
 ## Sprache
 

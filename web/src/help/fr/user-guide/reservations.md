@@ -1,14 +1,21 @@
 # Réservations
 
-**Réservations** bloque des cibles du stand de la manifestation pour une durée, par exemple pour un entraînement ou un groupe.
+**Réservations** bloque des cibles du stand de la manifestation pour une durée, par exemple pour un entraînement ou un groupe. C’est la page du module *Réservations*, qui nécessite un stand et *Attribution des cibles*.
 
 ![Réservations](../images/screenshots/reservations.png){ .screenshot }
 
+**Nouvelle réservation** demande :
+
+- **Description** et, sur plusieurs stands, le **Stand de tir**.
 - **Cibles** : une liste comme `5` ou `1, 5, 7-10`.
 - **De** et **À** : la période. Les réservations sur la même cible ne
   peuvent pas se chevaucher ; à la suite, c’est possible.
 - **Afficher comme réservée (minutes avant)** : délai à partir duquel les
   cibles apparaissent réservées dans le tableau de bord et le kiosque.
+
+La liste marque chaque réservation comme *prévue*, *actif* ou *terminée* ;
+**afficher les passées** ajoute celles qui sont terminées. Son menu propose
+**Modifier**, **copier** et **Supprimer**.
 
 Les réservations appartiennent au stand et apparaissent donc dans chaque
 manifestation sur ce stand. Les cibles réservées peuvent quand même être

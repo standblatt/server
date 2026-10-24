@@ -36,27 +36,10 @@ diritto.
 
 ![Ruoli](../images/screenshots/roles.png){ .screenshot }
 
-| Diritto | Permette |
-|---|---|
-| **Vedere manifestazioni e classifiche** | manifestazioni, programmi, classifiche e classifiche generali |
-| **Gestire le manifestazioni** | iscrizioni, risultati, distinzioni, prenotazioni, documenti e stampa |
-| **Configurare le manifestazioni** | creare, configurare, copiare, chiudere ed eliminare manifestazioni, con programmi, classifiche generali, link chiosco e aiutante e prenotazione online |
-| **Statistiche e rapporti** | statistiche, rapporti con importi e classifiche in CSV |
-| **Vedere tiratori e società** | i dati personali dei dati di base |
-| **Modificare tiratori e società** | registrare e modificare tiratori e società |
-| **Gestire i dati di base** | importare tiratori, rinominare, unire ed eliminare società, eliminare tiratori |
-| **Stand e stampanti** | stand di tiro, agenti di stampa e impostazioni delle stampanti |
-| **Modelli di stampa** | modelli di stampa e immagini (solo finché il modulo della società è attivo) |
-| **Utenti e società** | utenti, ruoli, inviti e moduli della società |
-
-Ogni società inizia con quattro ruoli:
-
-| Ruolo | Diritti |
-|---|---|
-| **Admin** | tutti; la colonna non si può modificare e il ruolo non si può eliminare |
-| **Comitato** | tutti tranne *Stand e stampanti* e *Utenti e società* |
-| **Aiutante** | vedere e gestire le manifestazioni, statistiche, vedere e modificare tiratori e società |
-| **Membro** | vedere manifestazioni e classifiche |
+Ogni autorizzazione e cosa permette:
+[Autorizzazioni](../reference/permissions.md#permissions). Ogni società
+parte con i ruoli **Admin**, **Comitato**, **Aiutante** e **Membro** (vedi
+[Ruoli predefiniti](../reference/permissions.md#default-roles)).
 
 **Nuovo ruolo** aggiunge un ruolo proprio, che vede solo le manifestazioni finché non ne spunti di più. La matita rinomina un ruolo (un nome vuoto mantiene il nome predefinito), il cestino lo elimina quando nessuno lo ha più. L’app mostra a ogni membro solo le pagine e i pulsanti che il suo ruolo consente: un membro senza *Gestire le manifestazioni* apre una manifestazione sulle sue classifiche.
 
@@ -66,6 +49,7 @@ di cui hanno essi stessi i diritti, e creano o modificano ruoli solo entro
 questi limiti. Solo gli admin nominano, modificano o rimuovono quindi degli
 admin.
 
-Gli account sono globali: un account viene eliminato dal gestore della
-piattaforma nel pannello di amministrazione. Per una password dimenticata
-vedi [Password dimenticata](login-language.md#password).
+Gli account sono globali (vedi [Un account, un ruolo per
+società](../explanation/data.md#accounts)): un account viene eliminato dal
+gestore della piattaforma nel pannello di amministrazione. Per una password
+dimenticata vedi [Password dimenticata](login-language.md#password).

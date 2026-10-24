@@ -33,8 +33,15 @@
 
 - `ageCategory` ist eines von `u10`, `u13`, `u15`, `u17`, `u19`, `u21`,
   `elite`, `senior`, `veteran`, `senior_veteran`.
-- `kind` ist `card` (Kranzkarte, gedruckt) oder `natural` (Naturalgabe).
+- `kind` ist `card` (Kranzkarte, gedruckt), `natural` (Naturalgabe) oder
+  `cash` (Geldpreis).
 - `showOnRankings` ist der Schalter *Auf Kiosk-Anzeigen zeigen*.
+- Optionale Felder: `attempts` (0 oder weggelassen = einmal),
+  `unlimitedAttempts`, `attemptRule` (`best`, `first` oder `last`) und
+  `awardCountingOnly` für
+  [Durchgänge](../user-guide/programmes.md#attempts); `repeatPrice` in einem
+  Preis (weggelassen = gleicher Preis, 0 = einmal bezahlt); `trackShots` in
+  einer Passe für Einzelschüsse.
 - Kombinationen und Sonderpreise sind Einstellungen des Programms innerhalb
   eines Anlasses und gehören nicht zur Datei; das Kopieren von Programmen
   aus einem früheren Anlass behält sie.

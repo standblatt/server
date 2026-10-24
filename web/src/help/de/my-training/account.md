@@ -9,9 +9,9 @@ Seitenleiste oder **Einstellungen → Konto** öffnet.
 
 ## Registrieren
 
-Öffne auf der Login-Seite **Konto erstellen**. Du brauchst deinen Namen,
-deine E-Mail-Adresse und ein Passwort mit mindestens 10 Zeichen. Du bist
-sofort angemeldet.
+Öffne auf der Login-Seite **Konto erstellen**. Du brauchst deinen Vor- und
+Nachnamen, deine E-Mail-Adresse und ein Passwort mit mindestens 10
+Zeichen. Du bist sofort angemeldet.
 
 ![Registrierung](../images/screenshots/my-signup.png){ .screenshot .phone }
 
@@ -25,8 +25,9 @@ vergessen](../user-guide/login-language.md#password). Angemeldet änderst du
 das Passwort unter [Konto](../user-guide/login-language.md#account).
 
 Konten, die ein Vereins-Admin angelegt hat, melden sich mit ihrem
-Benutzernamen statt einer E-Mail an; sie können unter **Einstellungen →
-E-Mail** eine E-Mail-Adresse hinzufügen.
+Benutzernamen statt einer E-Mail an; sie können auf der Seite
+[Konto](../user-guide/login-language.md#account) unter **Anmeldung** eine
+E-Mail-Adresse hinzufügen.
 
 ## Profil und Wettkampfresultate {#competitions}
 
@@ -39,6 +40,9 @@ sobald die Rangliste endgültig ist. Jedes Resultat trägt deinen **Rang** im
 Programm (zum Beispiel *Rang 12 von 87*). Wähle die Disziplin und tippe auf
 **Hinzufügen** oder **Alle hinzufügen**. Hinzugefügte Resultate werden zu
 Wettkampf-Sessions mit ihren Serien und behalten den Rang.
+
+Warum nur abgeschlossene Anlässe und wie der Abgleich funktioniert: [Die
+Verbindung zu Mein Training](../explanation/closing.md#my-training).
 
 ## Eigene Disziplinen
 
@@ -83,6 +87,8 @@ bietet *Training starten* an.
 
 - **Alle Einheiten exportieren (CSV)** lädt jede Passe jeder Einheit
   herunter.
-- **Konto löschen** entfernt das Konto mit allen Einheiten, Zielen und
-  Einstellungen, nachdem du dein Passwort eingegeben hast. Konten, die zu
-  einem Verein gehören, muss zuerst dessen Admin aus dem Verein entfernen.
+- **Konto löschen** auf der Seite
+  [Konto](../user-guide/login-language.md#account) entfernt das Konto mit
+  allen Einheiten, Zielen und Einstellungen, nachdem du dein Passwort
+  eingegeben hast. Konten, die zu einem Verein gehören, muss zuerst dessen
+  Admin aus dem Verein entfernen.

@@ -8,9 +8,12 @@ possible ; les modèles sont facultatifs et peuvent être désactivés sous
 **Modules de la société** (voir [Modules de la
 société](events.md#club-modules)).
 
+Pourquoi et comment fonctionnent les modèles d’impression : [Modèles
+d’impression sur feuilles préimprimées](../explanation/printing.md#forms).
+
 ## Créer un modèle {#create}
 
-**Modèles d’impression** (admins, dans la partie société de la barre latérale) liste les modèles de la société. **Nouveau modèle d’impression** demande un nom, ce que le modèle **Imprime** (voir [Source de données](#source)) et un format de papier, puis ouvre l’éditeur. Il a trois colonnes :
+**Modèles d’impression** (droit *Modèles d’impression*, dans la partie société de la barre latérale) liste les modèles de la société. **Nouveau modèle d’impression** demande un nom, ce que le modèle **Imprime** (voir [Source de données](#source)) et un format de papier, puis ouvre l’éditeur. Il a trois colonnes :
 
 - À gauche, les **Champs** : tout ce qu’un modèle peut imprimer, par
   groupes, chacun avec un exemple, et une recherche. Un clic ajoute le champ
@@ -41,7 +44,7 @@ société](events.md#club-modules)).
   derrière la feuille pour placer les champs sur les cases du formulaire ;
   il n’est jamais imprimé.
 
-**Enregistrer** enregistre le modèle ; un point sur le bouton signale des modifications non enregistrées, et quitter la page avec elles demande d’abord une confirmation. Avec **Enregistrer automatiquement** (activé tant qu’on ne le désactive pas ; le navigateur s’en souvient), les modifications non enregistrées sont enregistrées chaque minute. **Aperçu PDF** ouvre le modèle exactement tel que le PDF le rend, ce qui peut différer légèrement de la feuille dans le navigateur.
+**Enregistrer** enregistre le modèle ; un point sur le bouton signale des modifications non enregistrées, et quitter la page avec elles demande d’abord une confirmation. Avec **Enregistrer automatiquement** (activé tant qu’on ne le désactive pas ; le navigateur s’en souvient), les modifications non enregistrées sont enregistrées chaque minute. **Aperçu PDF** ouvre le modèle enregistré exactement tel que le PDF le rend, ce qui peut différer légèrement de la feuille dans le navigateur.
 
 ## Source de données {#source}
 
@@ -56,6 +59,9 @@ imprimé :
 
 La source peut être changée dans l’éditeur sous **Modèle** ; les champs que
 la nouvelle source ne connaît pas n’impriment rien.
+
+Chaque espace réservé : [Champs des
+modèles](../reference/form-placeholders.md).
 
 ## Modèles intégrés {#builtin}
 
@@ -77,17 +83,12 @@ d'images](../images/screenshots/print-forms.png){ .screenshot }
 Un modèle qui imprime **Une inscription**, en plus de la bande de contrôle
 de la manifestation, p. ex. une carte de participant ou une quittance,
 apparaît dans l’inscription avec un bouton portant son propre nom ; il
-s’imprime sur l’imprimante des *Modèles d’impression*.
+s’imprime sur l’imprimante des *Modèles d’impression (préimprimés)*.
 
-Un modèle qui imprime **Un rang** produit des diplômes : **Diplômes** dans
-l’en-tête de chaque classement et de chaque classement général sous
-**Classements** demande le modèle, la classe d’un classement général et les
-rangs (1 à 3 sauf modification), puis imprime une page par tireur classé, ou
-les ouvre en un seul PDF. Les diplômes partent vers l’imprimante des
-*Diplômes* sous **Stands de tir → Configurer les imprimantes**. Les champs
-d’un rang sont le rang, le total, le classement (le programme ou le
-classement général) et la classe ; le diplôme d’un programme connaît aussi
-ses résultats.
+Un modèle qui imprime **Un rang** crée des diplômes par **Diplômes** sous
+**Classements**, imprimés sur l’imprimante des *Diplômes* du premier stand
+de la manifestation ; voir [Imprimer des diplômes pour les meilleurs
+rangs](../how-to/certificates.md).
 
 ![Diplômes depuis un classement](../images/screenshots/certificates.png){
 .screenshot }
@@ -108,16 +109,8 @@ ses résultats.
   *Alignement* (bords, centres, répartir uniformément), *Centrer sur la
   feuille* et *Supprimer*.
 
-| Touche | Effet |
-|---|---|
-| Flèches | déplacent la sélection de 0.5 mm, avec Maj de 5 mm |
-| Ctrl+Z / Ctrl+Y | annuler / rétablir |
-| Ctrl+A | tout sélectionner |
-| Ctrl+D | dupliquer |
-| Suppr | supprimer la sélection |
-| Échap | annuler la sélection |
-| Ctrl+S | enregistrer |
-| Ctrl+molette | zoomer |
+Touches : [Éditeur de modèles
+d’impression](../reference/shortcuts.md#print-forms).
 
 ## Images {#images}
 
@@ -137,23 +130,18 @@ nom que la société a déjà.
 
 ## Calibrer l’imprimante {#calibrate}
 
-Les imprimantes impriment rarement exactement là où elles devraient. Imprime
-une feuille avec **Impression d’essai**, mesure de combien les valeurs sont
-décalées et saisis-le comme **Décalage de l’imprimante vers la droite** et
-**Décalage de l’imprimante vers le bas** (négatif pour la gauche ou le
-haut). Le décalage s’applique à tous les éléments ; l’aperçu l’ignore.
+**Décalage de l’imprimante vers la droite (mm)** et **Décalage de l’imprimante vers le bas (mm)** sous **Modèle** déplacent chaque élément (en négatif pour déplacer vers la gauche ou vers le haut). **Impression d’essai** ouvre le modèle enregistré avec le décalage et sans le scan ; l’aperçu ignore le décalage. Pourquoi : [Le calibrage en principe](../explanation/printing.md#calibration). Étapes : [Imprimer les résultats sur les feuilles de stand de l’armée](../how-to/army-sheet.md#calibrate).
 
 ## Utiliser un modèle {#use}
 
-Sous **Configuration** → **Programmes** de la manifestation, ouvre un
-programme et choisis son **Modèle d’impression** dans la section du même nom
-; cela fonctionne aussi quand des tireurs sont inscrits. Chaque programme
-terminé propose alors **Imprimer sur le modèle** dans les résultats : au
-desk, sur la page **Saisir les résultats** et par les liens de secrétaire à
-la cible (voir [Aides](helpers.md)). Avec un agent d’impression et une
-imprimante choisie pour *Modèles d’impression* sous **Stands de tir →
-Configurer les imprimantes**, la feuille part vers cette imprimante
-(p. ex. son alimentation manuelle), sinon le PDF s’ouvre (voir
-[Impression](printing.md)).
+Un programme choisit son modèle dans la section **Modèle d’impression** de
+sa page de programme, même quand des tireurs sont inscrits. Les résultats
+complets proposent alors **Imprimer sur le modèle** : dans les résultats à
+l’accueil, dans *Saisis à l’instant* sous **Saisir les résultats** et sur
+les liens d’aide des cibarres et du bureau des résultats (voir
+[Aides](helpers.md)). Il s’imprime sur l’imprimante des *Modèles
+d’impression (préimprimés)* du stand de l’inscription, sinon le PDF s’ouvre
+(voir [Impression](printing.md)). Étapes : [Imprimer les résultats sur les
+feuilles de stand de l’armée](../how-to/army-sheet.md).
 
 **Exporter** télécharge un modèle avec ses images sous forme de fichier et **Importer** le relit, p. ex. pour partager un modèle avec une autre société.

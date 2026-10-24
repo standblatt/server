@@ -9,9 +9,9 @@ ed eliminazione dell’account si trovano nella pagina
 
 ## Registrarsi
 
-Apri **Crea un account** nella pagina di accesso. Ti servono il tuo nome, il
-tuo indirizzo e-mail e una password di almeno 10 caratteri. Sei subito
-connesso.
+Apri **Crea un account** nella pagina di accesso. Ti servono il tuo nome e
+cognome, il tuo indirizzo e-mail e una password di almeno 10 caratteri. Sei
+subito connesso.
 
 ![Registrazione](../images/screenshots/my-signup.png){ .screenshot .phone }
 
@@ -24,8 +24,8 @@ dimenticata](../user-guide/login-language.md#password). Da connesso cambi la
 password sotto [Account](../user-guide/login-language.md#account).
 
 Gli account creati da un admin della società accedono con il loro nome
-utente invece di un’e-mail; possono aggiungere un indirizzo e-mail in
-**Impostazioni → E-mail**.
+utente invece di un’e-mail; possono aggiungere un indirizzo e-mail nella
+pagina [Account](../user-guide/login-language.md#account) in **Accesso**.
 
 ## Profilo e risultati di gara {#competitions}
 
@@ -38,6 +38,9 @@ classifica è definitiva. Ogni risultato riporta il tuo **rango** nel
 programma (per esempio *Rango 12 di 87*). Scegli la disciplina e tocca
 **Aggiungi** oppure **Aggiungi tutti**. I risultati aggiunti diventano
 sessioni di gara con le loro serie e mantengono il rango.
+
+Perché solo manifestazioni chiuse e come funziona il confronto: [Il legame
+con Il mio allenamento](../explanation/closing.md#my-training).
 
 ## Discipline personalizzate
 
@@ -80,7 +83,8 @@ Installata, si avvia a schermo intero. Una pressione lunga sull’icona offre
 ## I tuoi dati
 
 - **Esporta tutte le sessioni (CSV)** scarica ogni serie di ogni sessione.
-- **Elimina account** rimuove l’account con tutte le sessioni, gli obiettivi
-  e le impostazioni dopo che hai inserito la password. Gli account che
-  appartengono a una società devono prima essere rimossi dalla società dal
-  suo admin.
+- **Elimina account** nella pagina
+  [Account](../user-guide/login-language.md#account) rimuove l’account con
+  tutte le sessioni, gli obiettivi e le impostazioni dopo che hai inserito
+  la password. Gli account che appartengono a una società devono prima
+  essere rimossi dalla società dal suo admin.

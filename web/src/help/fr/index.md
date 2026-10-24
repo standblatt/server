@@ -40,15 +40,26 @@ secondes, voir la tendance, la meilleure passe et où se situe le groupement.
 
 <div class="grid cards" markdown>
 
+- **[Tutoriel : ta première manifestation](getting-started/first-event.md)**
+  : configurer un stand, une manifestation et un programme, inscrire deux
+  tireurs et voir le classement.
+- **[Tutoriel : ta première séance
+  d’entraînement](my-training/first-session.md)** : saisir une séance sur le
+  téléphone et la voir dans ta progression.
+- **[Guides pratiques](how-to/next-year.md)** : un objectif pas à pas,
+  p. ex. reprendre la manifestation de l’année passée ou connecter une
+  imprimante.
 - **[Notions](getting-started/concepts.md)** : les mots qu’utilise
   Standblatt et comment ils s’articulent.
-- **[Ta première manifestation](getting-started/first-event.md)** : d’une
-  société vide à un concours en cours.
+- **[Contexte](explanation/modules.md)** : pourquoi Standblatt fonctionne
+  comme il fonctionne : modules, classements, clôture, impression et
+  données.
+- **[Guide d’utilisation](user-guide/dashboard.md)** : chaque page de
+  l’application et ce qu’elle propose.
+- **[Référence](reference/rules.md)** : les règles de concours telles
+  qu’elles sont implémentées, les modules, les droits, les documents, les
+  touches et les formats de fichier.
 - **[Mon entraînement](my-training/index.md)** : le journal d’entraînement
   personnel de chaque tireur.
-- **[Guide d’utilisation](user-guide/dashboard.md)** : le travail quotidien
-  des admins de société et du personnel.
-- **[Référence](reference/rules.md)** : les règles de concours telles
-  qu’elles sont implémentées.
 
 </div>

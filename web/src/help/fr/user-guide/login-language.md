@@ -69,7 +69,8 @@ Crée un jeton sous **Compte → Jetons API** avec **Nouveau jeton** :
 
 - un **nom** qui te dira plus tard qui l’utilise,
 - un **modèle** remplit les droits pour un usage courant : **Classements
-  pour un site web**, **App d’entraînement** ou **Lecture seule**,
+  pour un site web**, **App d’entraînement** ou **Lecture seule** (voir
+  [Modèles prédéfinis](../reference/permissions.md#presets)),
 - les **sociétés** que le jeton peut utiliser (aucune : seulement ton
   journal d’entraînement),
 - les **droits** : *Lire mon journal d’entraînement*, *Saisir et modifier
@@ -77,26 +78,22 @@ Crée un jeton sous **Compte → Jetons API** avec **Nouveau jeton** :
   des rôles](users.md#roles) que ton propre rôle y a,
 - quand il **expire** : dans 30 ou 90 jours, dans un an ou jamais.
 
-Le jeton (`sb_…`) n’est affiché qu’une fois ; copie-le tout de suite. Les
-scripts l’envoient comme `Authorization: Bearer sb_…` (ou `X-API-Key:
-sb_…`). Il peut faire ce que tu as choisi et jamais plus que ton rôle dans
-la société : si tu perds un droit ou quittes la société, le jeton le perd
-aussitôt. Il n’atteint jamais ton mot de passe, ton e-mail, ton compte ou
-d’autres jetons. `GET /api/token` indique à un script le nom, les droits et
-les sociétés de son jeton. Un jeton fait au plus 600 requêtes en cinq
-minutes. La liste montre quand chaque jeton a été utilisé pour la dernière
-fois ; le révoquer l’arrête aussitôt. Les développeurs trouvent les points
-d’accès sous `/api/docs`.
+Le jeton (`sb_…`) n’est affiché qu’une fois ; copie-le tout de suite. Il
+peut faire ce que tu as choisi et jamais plus que ton rôle dans la société :
+si tu perds un droit ou quittes la société, le jeton le perd aussitôt. Il
+n’atteint jamais ton mot de passe, ton e-mail, ton compte ou d’autres
+jetons. La liste montre quand chaque jeton a été utilisé pour la dernière
+fois ; le révoquer l’arrête aussitôt. Comment les scripts l’envoient, ce
+qu’il atteint et ses limites : [Utiliser un
+jeton](../reference/permissions.md#token-use).
 
 ## Deuxième facteur {#totp}
 
-Une app d’authentification (Google Authenticator, Aegis, 1Password et
-autres) peut protéger ta connexion : après le mot de passe, Standblatt
-demande le code à six chiffres affiché par l’app. Configure-la sous
-[Compte](#account) : **Configurer**, scanner le code QR, saisir le code
-actuel, **Activer**. **Désactiver** demande ton mot de passe. Téléphone
-perdu ? L’exploitant peut réinitialiser le deuxième facteur dans le panneau
-d’administration. Il peut aussi désactiver la fonction pour tout le serveur.
+Une app d’authentification peut protéger ta connexion avec un code à six
+chiffres après le mot de passe ; pour l’activer, la désactiver ou t’en
+sortir après la perte du téléphone, voir [Protéger ta connexion par un
+deuxième facteur](../how-to/two-factor.md). L’exploitant peut aussi
+désactiver la fonction pour tout le serveur.
 
 ## Langue
 

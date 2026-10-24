@@ -17,7 +17,7 @@ Schüsse. 9.30 pro Schuss sind 465 bei 50 Schüssen.
 : Punkte pro Schuss über alle Einheiten der letzten 30 Tage. Der Pfeil zeigt die Veränderung gegenüber den 30 Tagen davor.
 
 **Bestleistung**
-: das höchste Total unter den Einheiten mit der Standard-Schusszahl der Disziplin, z. B. 60 bei der Luftpistole. Tippe darauf, um die Einheit zu öffnen.
+: das höchste Total unter den Einheiten mit der Standard-Schusszahl der Disziplin, z. B. 50 bei der Luftpistole. Tippe darauf, um die Einheit zu öffnen.
 
 **Einheiten**
 : Anzahl Einheiten und Schüsse, die in dieser Disziplin erfasst sind.

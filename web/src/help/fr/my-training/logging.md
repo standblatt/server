@@ -33,7 +33,9 @@ et chaque coup pour les deux dernières.
 cible](../images/screenshots/my-train-target.png){ .screenshot .phone }
 
 Sur un ordinateur, tu peux taper les chiffres, **Retour arrière** et
-**Entrée** au clavier.
+**Entrée** au clavier ; dans **Coups** avec un comptage entier jusqu’à 10,
+seuls les boutons fonctionnent (voir
+[Clavier](../reference/shortcuts.md#my-training)).
 
 ## Enregistrer
 
@@ -63,7 +65,7 @@ Après l’enregistrement, Standblatt t’indique immédiatement :
 - de combien de points par coup elle se situe au-dessus ou au-dessous de la
   moyenne des **30 jours précédents**.
 
-## Séances inachevées et hors ligne
+## Séances inachevées et hors ligne {#unfinished-sessions-and-offline}
 
 La séance est conservée sur l’appareil pendant la saisie. Si tu fermes le
 navigateur ou si le téléphone se verrouille, elle revient la prochaine fois
@@ -84,6 +86,9 @@ nécessite une connexion.
 
 Une fois l’app ouverte en ligne, elle s’ouvre aussi sans connexion et
 affiche tes dernières données.
+
+Pourquoi le travail de la société a besoin d’une connexion et Mon
+entraînement non : [Hors ligne](../explanation/data.md#offline).
 
 ## Modifier ou supprimer une séance
 

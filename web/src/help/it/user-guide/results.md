@@ -7,9 +7,8 @@ dashboard o scansionando il codice sul foglio di stand.
 
 ## Registrare le serie
 
-- Il cursore parte dalla prima serie vuota. Appena un’altra cifra
-  supererebbe il massimo della serie, passa al campo successivo, così una
-  sequenza come `96 93 97 88` si digita senza mouse.
+- Il cursore parte nella prima serie vuota e avanza da solo (vedi [Tastiera
+  e scanner](../reference/shortcuts.md#results)).
 - Le serie che contano le mouche hanno un secondo campo.
 - Le serie con colpi singoli mostrano un campo per colpo sotto la serie; la
   serie diventa la loro somma. Registra ogni colpo o nessuno: senza colpi,
@@ -21,6 +20,9 @@ dashboard o scansionando il codice sul foglio di stand.
 
 Un programma combinato mostra quali serie prende dal suo programma sorgente
 e si riempie automaticamente appena la sorgente ha risultati.
+
+Un programma concluso con un [modello di stampa](print-forms.md) mostra
+**Stampa sul modello**, che stampa i suoi risultati sul foglio prestampato.
 
 Quando ogni programma ha risultati, l’iscrizione è conclusa e il suo
 bersaglio di nuovo libero. **Stampa foglio dei risultati** stampa un
@@ -40,16 +42,4 @@ valore della distinzione sulle carte corona* della manifestazione è attiva
 
 ## Consegnare le distinzioni {#handout}
 
-Quando il tiratore ritira carte corona, premi e denaro allo sportello, premi
-**Distinzioni consegnate** nel dialogo dei risultati, che elenca le
-distinzioni di ogni programma; il badge *distinzioni da consegnare*
-nell’elenco *Terminati* della dashboard apre questo dialogo. L’iscrizione
-porta allora l’ora della consegna e un badge verde *distinzioni consegnate*;
-fino ad allora mostra *distinzioni da consegnare*. Un clic sbagliato si
-annulla con **Annulla** nel dialogo dei risultati o cliccando sul badge
-verde nella dashboard (solo membri della società, non i link aiutante); lo
-stesso vale per il badge *munizione*. Il rapporto **Distinzioni da
-consegnare** (vedi [Statistiche e rapporti](statistics-reports.md)) elenca
-ciò che è ancora aperto e il denaro da versare. Anche la registrazione
-risultati con un [link aiutante](helpers.md) può segnare le distinzioni come
-consegnate.
+**Distinzioni consegnate** nel dialogo dei risultati registra la consegna; l’iscrizione mostra poi un badge verde *distinzioni consegnate*, fino ad allora *distinzioni da consegnare*. **Annulla** la annulla. Passi e il rapporto delle distinzioni aperte: [Consegnare distinzioni e premi in denaro](../how-to/hand-out-awards.md).

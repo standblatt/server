@@ -4,6 +4,10 @@
 
 **Classifiche** mostra una classifica in diretta per programma, ordinata secondo le [regole della FST](../reference/rules.md#ranking). I primi tre ranghi sono evidenziati.
 
+Come si collegano classifiche dei programmi, classifiche generali, concorso
+di sezione e premi speciali: [Come si combinano le
+classifiche](../explanation/rankings.md).
+
 ![Classifiche](../images/screenshots/rankings.png){ .screenshot }
 
 - **PDF** apre la classifica (A4) per stamparla o condividerla, **CSV** la
@@ -14,31 +18,28 @@
   tabella per classe; il loro **PDF** e **CSV** sono il rapporto
   *Classifiche generali*.
 - **Diplomi** stampa diplomi per i migliori ranghi su un [modello di
-  stampa](print-forms.md#certificates) della società; il pulsante compare
-  non appena la società ha un modello che stampa un rango.
+  stampa](print-forms.md#certificates) della società (vedi [Stampare i
+  diplomi per i migliori ranghi](../how-to/certificates.md)); il pulsante
+  compare non appena la società ha un modello che stampa un rango.
 
 ## Schermi chiosco
 
 Un link chiosco mostra le classifiche di una manifestazione su uno schermo
-della sala, senza accesso. Attiva il modulo *Display chiosco* in
-**Configurazione** → **Moduli**, poi creane uno in **Display chiosco** nella
-configurazione:
+della sala, senza accesso; configuralo con [Mostrare le classifiche su uno
+schermo nella sala](../how-to/kiosk.md).
 
-1. Inserisci un nome per lo schermo (p. es. *Sala 1*), scegli **Scuro** o
-   **Chiaro** e, se vuoi, una lingua.
-2. **Crea link chiosco**; copia il link. Viene mostrato una sola volta.
-3. Apri il link in un browser sullo schermo, idealmente a schermo intero.
+**Display chiosco** nella configurazione (modulo *Display chiosco*) elenca i link. Uno nuovo riceve un nome, **Scuro** o **Chiaro**, una lingua e, in una manifestazione con più stand, uno stand; **Crea link chiosco** mostra il link una sola volta.
 
 ![Schermo chiosco](../images/screenshots/kiosk.png){ .screenshot }
 
-- Il chiosco mostra solo i programmi con *Mostra sugli schermi chiosco*
-  attivo, e lo stato dei bersagli se *Mostra lo stato dei bersagli sulle
-  classifiche* è attivo (nella stessa pagina).
-- La lingua è quella della manifestazione, salvo che il link ne indichi
-  un’altra (`?language=de`, `fr`, `it`, `en`); il tema viene da
-  `?theme=dark` o `?theme=light`. Per una manifestazione su più stand,
-  `?range=<id>` (scelto alla creazione del link) limita la visualizzazione a
-  quello stand: i suoi bersagli, i suoi programmi e i programmi senza stand.
+- Il chiosco mostra solo i programmi e le classifiche generali con *Mostra
+  sugli schermi chiosco* attivo, e, con il modulo *Assegnazione dei
+  bersagli*, lo stato dei bersagli se *Mostra lo stato dei bersagli sulle
+  classifiche* è attivo in **Display chiosco**.
+- Il link imposta tema, lingua e stand (vedi [Parametri
+  dell’URL](../reference/links.md#parameters)).
+- Il pulsante **Schermo intero** in alto a destra porta lo schermo a schermo
+  intero.
 - Lo schermo si aggiorna in diretta e si ricollega da solo dopo
   un’interruzione di rete. A una nuova versione di Standblatt si ricarica da
   solo.

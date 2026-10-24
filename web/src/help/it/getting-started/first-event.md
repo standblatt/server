@@ -1,84 +1,168 @@
-# La tua prima manifestazione
+# Tutorial: la tua prima manifestazione
 
-Questa guida porta una società da un account vuoto a una gara in
-corso. Presuppone che il gestore della piattaforma abbia creato la società e
-il tuo account come admin.
+In questo tutorial organizzi una piccola gara dall’inizio alla fine:
+configuri uno stand di tiro, crei la *Hilltown Air Pistol Cup* con un
+programma, iscrivi due tiratori su bersagli, registri i loro risultati e li
+vedi nella classifica. Ci vogliono circa 20 minuti.
 
-## 1. Accedere
+Ti serve un account admin di una società che non ha ancora manifestazioni;
+il gestore della piattaforma crea entrambi. Usa i dati indicati in ogni
+passo esattamente come sono scritti, così ciò che vedi corrisponde a questa
+pagina. In questo tutorial non si stampa nulla.
 
-Apri l’app, accedi con l’account ricevuto e scegli la tua lingua nel menu
-utente in fondo alla barra laterale.
+## 1. Aprire la tua società
 
-Finché la società non ha manifestazioni, la pagina **Manifestazioni** mostra
-una lista **Primi passi** con i passi qui sotto; ogni passo aperto ha un
-pulsante che ti ci porta. Una manifestazione senza programmi attivi mostra
-la stessa lista invece della sua dashboard.
+Accedi. In *Dove vuoi andare?*, clicca sulla scheda della tua società.
 
-![Login](../images/screenshots/login.png){ .screenshot }
+Si apre la pagina **Manifestazioni** con la lista **Primi passi**. I suoi
+quattro passi ti guidano nella prima parte di questo tutorial.
 
-## 2. Configurare lo stand di tiro
+## 2. Aggiungere lo stand di tiro
 
-In **Stand di tiro** crea lo stand con il suo numero di bersagli e segna i
-bersagli fuori servizio. Se stampi allo stand, aggiungi più tardi un agente
-di stampa (vedi [Stampa](../user-guide/printing.md)).
+Nella lista clicca **Stand di tiro**, poi **Nuovo stand di
+tiro**. Inserisci:
 
-## 3. Caricare i tiratori
+- **Nome**: *Hall 10 m*
+- **Numero di bersagli**: *10* (già compilato)
 
-In **Tiratori** importa la tua lista di tiratori come file CSV (vedi
-[Importazione CSV](../reference/csv-import.md)) o crea i tiratori uno per
-uno. I tiratori si possono anche registrare all’accoglienza durante la
-manifestazione.
+Clicca **Salva**. Ora vedi *Hall 10 m* nell’elenco con 10 bersagli.
+
+## 3. Aggiungere un tiratore
+
+Clicca **Tiratori** nella barra laterale, poi **Nuovo tiratore**.
+
+1. In **Società** digita *SG Hilltown*. Vedi *«SG Hilltown» non è ancora
+   nell’elenco delle società.* Clicca **Crea la nuova società «SG
+   Hilltown»**.
+2. **Nome**: *Lena*, **Cognome**: *Keller*, **Data di nascita**: 12 maggio
+   1990. Lascia vuoti gli altri campi.
+3. Clicca **Crea**.
+
+I suoi dati si aprono di lato. Chiudili: *Keller Lena* è ora nell’elenco dei
+tiratori.
 
 ## 4. Creare la manifestazione
 
-In **Manifestazioni** crea la manifestazione: scegli di che tipo è (attiva i
-[moduli](../user-guide/events.md#modules) corrispondenti), poi nome, data,
-stand, organizzatore e lingua dei documenti e degli schermi chiosco. Se hai
-già organizzato la manifestazione l’anno scorso, apri quella dell’anno
-scorso e usa invece **Copia per l’anno prossimo**: riprende le impostazioni
-e tutti i programmi. Un [modello della
-società](../user-guide/events.md#templates) fa lo stesso per le
-manifestazioni che ritornano in forme diverse.
+Clicca **Manifestazioni** nella barra laterale. Nella lista, *Aggiungere uno
+stand di tiro* e *Importare i tiratori (facoltativo)* sono barrati. Clicca
+**Nuova manifestazione**.
 
-![Una nuova manifestazione e il suo
-tipo](../images/screenshots/new-event.png){ .screenshot }
+1. In *Che tipo di manifestazione?* scegli **Selezione
+   personalizzata**. Attiverai ciò che serve alla manifestazione nel passo
+   successivo.
+2. **Nome**: *Hilltown Air Pistol Cup*. Lascia **Data** su oggi.
+3. **Organizzatore**: *SG Hilltown*.
+4. In **Stand di tiro**, *Hall 10 m (10 bersagli)* è già spuntato.
+5. Clicca **Crea**.
 
-## 5. Aggiungere i programmi
+La manifestazione si apre. Il suo nome è in cima alla barra laterale, e la
+lista aspetta ora il passo 3, *Configurare i programmi*.
 
-Apri **Configurazione** nella barra laterale della manifestazione. In
-**Moduli** attiva ciò che la manifestazione usa (display chiosco, link
-aiutante, distinzioni …, vedi [Moduli](../user-guide/events.md#modules));
-poi aggiungi i programmi in **Programmi**: con l’editor, dalla biblioteca
-dei programmi, da un file di programma o copiandoli da una manifestazione
-precedente. Controlla prezzi, livelli di distinzione, varianti e
-combinazioni, e imposta i [premi
-speciali](../user-guide/programmes.md#special-prizes) se la tua
-manifestazione ne assegna.
+## 5. Attivare bersagli e distinzioni
 
-![I programmi della manifestazione](../images/screenshots/setup.png){
-.screenshot }
+Clicca **Configurazione** nella barra laterale, poi **Moduli**. Attiva:
 
-## 6. Schermi chiosco e stampanti
+- **Assegnazione dei bersagli**, affinché i tiratori ricevano un bersaglio;
+- **Distinzioni**, affinché il programma possa consegnare una carta corona.
 
-Sempre nella configurazione, in **Display chiosco**, crea un link chiosco
-per ogni schermo della sala (vedi [Classifiche e
-chiosco](../user-guide/rankings-kiosk.md)). In **Stand di tiro → Configura
-le stampanti** assegna una stampante a ogni documento (vedi
-[Stampa](../user-guide/printing.md)).
+Un messaggio conferma ogni attivazione, per esempio *Assegnazione dei
+bersagli attivato*. Cosa fa un modulo è spiegato in
+[Moduli](../explanation/modules.md).
 
-## 7. Condurre la manifestazione
+## 6. Creare il programma
 
-Nella **Dashboard** premi ++f4++, cerca il tiratore, iscrivilo su un
-bersaglio e lascia stampare il foglio di stand. Registra i risultati quando
-il tiratore consegna i bersagli; classifiche e schermi chiosco si aggiornano
-subito. Vedi [Dashboard](../user-guide/dashboard.md),
-[Iscrizioni](../user-guide/registrations.md) e
-[Risultati](../user-guide/results.md).
+Clicca **Programmi** nella barra laterale, poi **Nuovo programma**.
 
-## 8. Dopo la manifestazione
+1. **Nome**: *Championship*.
+2. In **Serie** c’è già una serie con 10 colpi e 100 punti. Clicca tre volte
+   **Aggiungi serie**. La sezione si chiama ora *Serie (40 colpi, max. 400
+   punti)*.
+3. In **Prezzi (CHF)** spunta **Élite** e inserisci *20*; spunta **Seniori**
+   e inserisci *20*.
+4. In **Distinzioni** clicca **Aggiungi distinzione** e inserisci:
+    - **Nome**: *Carta corona*, **Tipo**: *Carta corona* (già scelto),
+      **Valore (CHF)**: *10*
+    - **Élite**: *360*, **Seniori**: *355*
+5. Clicca **Crea**.
 
-In **Statistiche** scarichi i rapporti (rapporto finanziario, distinzioni,
-gara di società, premi speciali …). Quando tutto è sistemato, **chiudi** la
-manifestazione in **Configurazione** → **Copia e chiudi**: le classifiche
-vengono pubblicate nel diario di allenamento personale dei tiratori e la
-manifestazione resta leggibile ma non può più essere modificata.
+Vedi il messaggio *Programma «Championship» creato*. Sotto il programma, la
+sezione **Utilizzo** mostra *Attivo: i tiratori possono iscriversi*
+spuntato.
+
+## 7. Iscrivere Lena al bersaglio 3
+
+Clicca **Torna alla manifestazione** nella barra laterale. La dashboard
+mostra ora l’accoglienza: un campo di ricerca in alto e la griglia dei
+bersagli da 1 a 10, tutti *libero*.
+
+1. Premi **F4**. Il cursore salta nel campo di ricerca.
+2. Digita *Keller*. Accanto a *Keller Lena* clicca **Iscrivi SG Hilltown**.
+3. Si apre l’iscrizione: Lena è *Élite*. In **Bersaglio** clicca **3**.
+4. In **Programmi** spunta **Championship** (CHF 20.00). Il totale indica
+   *Totale: CHF 20.00*.
+5. Clicca **Iscrivi**.
+
+Vedi *Lena Keller iscritto al bersaglio 3*. Lena è elencata in **Al tiro**,
+e il bersaglio 3 nella griglia mostra il suo nome.
+
+## 8. Registrare i suoi risultati
+
+In **Al tiro** clicca **Risultati** accanto a Lena. Il cursore è già nella
+prima serie.
+
+Digita *96*, *93*, *97* e *88*. Dopo due cifre il cursore salta da solo alla
+serie successiva. Premi **Invio**.
+
+![I risultati di un tiratore con una carta
+corona](../images/screenshots/results.png){ .screenshot }
+
+Il programma è ora *concluso* con *Totale 374 / 400*. Sotto vedi
+*Distinzione: Carta corona*: 374 punti raggiungono i 360 che servono a un
+tiratore Élite, così Standblatt le ha dato la carta. In alto vedi *Tutti i
+programmi hanno risultati.*
+
+Chiudi i risultati. Lena è passata a **Concluso** con il badge *distinzioni
+da consegnare*, e il bersaglio 3 è di nuovo *libero*.
+
+## 9. Iscrivere un secondo tiratore
+
+Marco non è ancora nell’elenco dei tiratori, quindi lo crei all’accoglienza.
+
+1. Clicca **Nuovo tiratore** accanto al campo di ricerca.
+2. **Società**: *SG Hilltown* (ora l’elenco la propone). **Nome**: *Marco*,
+   **Cognome**: *Brunner*, **Data di nascita**: 3 marzo 1975.
+3. Clicca **Crea e iscrivi**. Si apre l’iscrizione: Marco è *Seniori*.
+4. Clicca il bersaglio **4**, spunta **Championship** e clicca **Iscrivi**.
+5. In **Al tiro** clicca **Risultati** accanto a Marco, digita *88*, *90*,
+   *89* e *85* e premi **Invio**.
+
+Il totale di Marco è 352. Vedi *Nessuna distinzione raggiunta.*: a un
+Seniore servono 355 per la carta corona.
+
+## 10. Vedere la classifica
+
+Clicca **Classifiche** nella barra laterale.
+
+![Classifiche di una manifestazione con più
+tiratori](../images/screenshots/rankings.png){ .screenshot }
+
+Vedi la tabella *Championship* con *40 colpi · 2 tiratori*: Lena al rango 1
+con 374, Marco al rango 2 con 352, ognuno con le quattro serie e il
+totale. La classifica si aggiorna da sola ogni volta che un risultato viene
+salvato, su ogni computer che la mostra.
+
+## Cosa hai fatto
+
+Hai configurato uno stand di tiro, creato una manifestazione con un
+programma, prezzi e una distinzione, iscritto due tiratori su bersagli,
+registrato i loro risultati e visto la classifica in diretta. È il lavoro di
+una giornata di tiro.
+
+## Prossimi passi
+
+- Mostrare la classifica su uno schermo nella sala: [Schermi
+  chiosco](../how-to/kiosk.md).
+- Stampare fogli di stand, carte corona e risultati allo stand: [Collegare
+  una stampante](../how-to/connect-printer.md).
+- Quando la manifestazione è finita e la classifica è controllata, chiudila:
+  [Chiudere una manifestazione](../explanation/closing.md).

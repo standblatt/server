@@ -12,11 +12,10 @@ téléphone](../images/screenshots/helper-scorer.png){ .screenshot .phone }
 
 ## Rôles {#roles}
 
-| Rôle | Voit | Peut |
-|---|---|---|
-| **Cibarre** | la grille de ses propres cibles, les tireurs qui s’y trouvent | saisir résultats et distinctions, **Terminer** un tireur |
-| **Distribution de munition** | le champ de recherche, la liste d’attente, les tireurs sur toutes les cibles | marquer la munition comme remise (**Munition**), attribuer une cible à un tireur en attente, imprimer la feuille de stand |
-| **Saisie des résultats** | le champ de recherche, les tireurs sur toutes les cibles, la liste des terminés | saisir résultats et distinctions sur toutes les cibles |
+Un lien est un **Cibarre** (ses propres cibles), la **Distribution de
+munition** ou une **Saisie des résultats** (toutes les cibles). Ce que
+chaque rôle voit et peut faire : [Liens
+d’aide](../reference/permissions.md#helper-links).
 
 Tout le reste reste aux utilisateurs de la société : inscrire des tireurs,
 modifier des programmes, classements, statistiques, supprimer.
@@ -31,8 +30,8 @@ modifier des programmes, classements, statistiques, supprimer.
 2. **Créer un lien d’aide** ; copie le lien et envoie-le à l’aide
    (p. ex. par messagerie). Il n’est affiché qu’une fois.
 3. L’aide ouvre le lien ; il reste valable jusqu’à sa révocation ou la
-   suppression de la manifestation. `?language=de` (`fr`, `it`, `en`)
-   remplace la langue de la manifestation.
+   suppression de la manifestation. Sa langue peut être changée dans le lien
+   (voir [Paramètres d’URL](../reference/links.md#parameters)).
 
 **révoquer** dans la liste arrête un lien immédiatement ; *vu la dernière fois* indique quand il a été utilisé pour la dernière fois. Un cibarre qui ouvre un tireur sur une autre cible obtient *Cette cible n’est pas la tienne*.
 

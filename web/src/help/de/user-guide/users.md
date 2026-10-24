@@ -37,27 +37,10 @@ gibt das Recht sofort.
 
 ![Rollen](../images/screenshots/roles.png){ .screenshot }
 
-| Recht | Erlaubt |
-|---|---|
-| **Anlässe und Ranglisten sehen** | Anlässe, Programme, Ranglisten und Wertungen |
-| **Anlässe durchführen** | Anmeldungen, Resultate, Auszeichnungen, Reservationen, Dokumente und Drucken |
-| **Anlässe konfigurieren** | Anlässe anlegen, konfigurieren, kopieren, abschliessen und löschen, mit Programmen, Wertungen, Kiosk- und Helferlinks und Online-Buchung |
-| **Statistik und Berichte** | Statistik, Berichte mit Beträgen und Ranglisten als CSV |
-| **Schützen und Vereine sehen** | die Personendaten der Stammdaten |
-| **Schützen und Vereine bearbeiten** | Schützen und Vereine erfassen und ändern |
-| **Stammdaten verwalten** | Schützen importieren, Vereine umbenennen, zusammenführen und löschen, Schützen löschen |
-| **Stände und Drucker** | Schiessstände, Druck-Agents und Druckereinstellungen |
-| **Druckvorlagen** | Druckvorlagen und Bilder (nur solange das Vereinsmodul eingeschaltet ist) |
-| **Benutzer und Verein** | Benutzer, Rollen, Einladungen und Vereinsmodule |
-
-Jeder Verein startet mit vier Rollen:
-
-| Rolle | Rechte |
-|---|---|
-| **Admin** | alle; die Spalte lässt sich nicht ändern und die Rolle nicht löschen |
-| **Vorstand** | alle ausser *Stände und Drucker* und *Benutzer und Verein* |
-| **Helfer** | Anlässe sehen und durchführen, Statistik, Schützen und Vereine sehen und bearbeiten |
-| **Mitglied** | Anlässe und Ranglisten sehen |
+Jedes Recht und was es erlaubt:
+[Rechte](../reference/permissions.md#permissions). Jeder Verein startet mit
+den Rollen **Admin**, **Vorstand**, **Helfer** und **Mitglied** (siehe
+[Standardrollen](../reference/permissions.md#default-roles)).
 
 **Neue Rolle** fügt eine eigene Rolle hinzu, die nur die Anlässe sieht, bis du mehr anhakst. Der Stift benennt eine Rolle um (ein leerer Name behält den Vorgabenamen), der Papierkorb löscht sie, sobald niemand sie mehr hat. Die App zeigt jedem Mitglied nur die Seiten und Knöpfe, die seine Rolle erlaubt: Ein Mitglied ohne *Anlässe durchführen* öffnet einen Anlass bei seinen Ranglisten.
 
@@ -67,6 +50,7 @@ nur mit Rollen ein, deren Rechte sie selbst haben, und legen Rollen nur
 innerhalb davon an oder ändern sie. Nur Admins ernennen, ändern oder
 entfernen deshalb Admins.
 
-Konten sind global: Ein Konto löscht der Plattformbetreiber im
-Admin-Panel. Für ein vergessenes Passwort siehe [Passwort
-vergessen](login-language.md#password).
+Konten sind global (siehe [Ein Konto, eine Rolle pro
+Verein](../explanation/data.md#accounts)): Ein Konto löscht der
+Plattformbetreiber im Admin-Panel. Für ein vergessenes Passwort siehe
+[Passwort vergessen](login-language.md#password).

@@ -54,11 +54,12 @@ insieme.
   disponibile.
 
 Non appena dei tiratori sono iscritti a un programma, le **serie** sono
-fisse perché i risultati mantengano il loro significato; la pagina lo
-segnala e le disattiva. Tutto il resto resta modificabile: nome, variante,
-descrizione, codice a barre, le opzioni, prezzi, nomi delle serie, nomi,
-valori e limiti delle distinzioni. Categorie d'età e distinzioni possono
-essere **aggiunte** ma non rimosse.
+fisse (vedi [Perché le serie sono
+bloccate](../explanation/rankings.md#locked)); la pagina lo segnala e le
+disattiva. Tutto il resto resta modificabile: nome, variante, descrizione,
+codice a barre, le opzioni, prezzi, nomi delle serie, nomi, valori e limiti
+delle distinzioni. Categorie d’età e distinzioni possono essere **aggiunte**
+ma non rimosse.
 
 La sezione **Utilizzo** di un programma salvato viene salvata subito a ogni
 modifica, anche con tiratori già iscritti:
@@ -85,11 +86,12 @@ manifestazione. **Tentativi per tiratore** ne consente di più, p. es. 3 per
 un bersaglio fortuna con rachat a una festa di tiro, o **Illimitato** per un
 programma annuale tirato durante tutta la stagione.
 
-- **Tentativo che conta** decide quale tentativo conta per la classifica, la
-  gara delle società, i premi speciali e *Il mio allenamento*: **Il
+- **Tentativo che conta** decide quale tentativo conta per la classifica, il
+  concorso di sezione, i premi speciali e *Il mio allenamento*: **Il
   migliore** (secondo le regole della classifica), **Il primo** o
   **L’ultimo**. La classifica lo mostra come *2/3*: conta il secondo di tre
-  tentativi.
+  tentativi (vedi [I tentativi e il tentativo che
+  conta](../explanation/rankings.md#attempts)).
 - **Solo il tentativo che conta riceve una distinzione**: disattivato, ogni
   tentativo può ricevere la sua distinzione (una carta corona per rachat);
   attivato, solo il tentativo che conta ne riceve una, e la distinzione
@@ -104,6 +106,9 @@ Il numero di tentativi può essere modificato mentre ci sono tiratori
 iscritti, ma non al di sotto dei tentativi che un tiratore ha già. I
 programmi con più tentativi non possono essere combinati.
 
+Passo per passo per una stagione: [Gestire un programma annuale durante la
+stagione](../how-to/annual-programme.md).
+
 ## Premi speciali {#special-prizes}
 
 La sezione **Premi speciali** della pagina del programma premia i migliori
@@ -117,4 +122,4 @@ gara](../reference/rules.md#special-prizes); i vincitori sono nel rapporto
 ![Premi speciali di un programma](../images/screenshots/special-prizes.png){
 .screenshot }
 
-**Salva i premi speciali** li salva; ranghi 0 disattiva i premi speciali. Le impostazioni si possono cambiare in qualsiasi momento, anche dopo la manifestazione.
+**Salva i premi speciali** li salva; ranghi 0 disattiva i premi speciali. Le impostazioni si possono cambiare in qualsiasi momento finché la manifestazione non è chiusa.

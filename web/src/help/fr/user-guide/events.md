@@ -22,8 +22,10 @@ liste alors ses pages, et *Retour à la manifestation* ramène au déroulement
 | Pages des modules | p. ex. **Réservations** (avec la réservation en ligne), **Classements généraux**, **Affichages kiosque**, **Liens d'aide**, seulement tant que le module est activé |
 | **Copier & clôturer** | copier pour l’année prochaine, clôturer, rouvrir et supprimer |
 
-La configuration demande le droit *Configurer les manifestations*,
-l’exploitation *Gérer les manifestations* (voir [Rôles](users.md#roles)).
+La configuration demande le droit *Configurer les manifestations*, le
+déroulement *Gérer les manifestations* (voir
+[Rôles](users.md#roles)). Pourquoi les deux sont séparés : [Configuration et
+déroulement](../explanation/modules.md#configuration).
 
 ## Réglages {#settings}
 
@@ -37,88 +39,67 @@ l’exploitation *Gérer les manifestations* (voir [Rôles](users.md#roles)).
 | Organisateur | imprimé sur les documents |
 | Langue des documents et du kiosque | langue des PDF, des exports CSV et des écrans kiosque, indépendamment de la langue d’interface de chaque utilisateur |
 
+Les heures de tir donnent aussi ses créneaux à la réservation en ligne, sauf
+si la réservation fixe d’autres horaires pour un jour (voir [réservation en
+ligne](online-booking.md)).
+
+Pas à pas pour une saison : [Organiser un programme annuel sur la
+saison](../how-to/annual-programme.md), [Organiser un tir en campagne sur
+une période](../how-to/feldschiessen.md).
+
 ## Modules {#modules}
 
-Toutes les manifestations n’ont pas besoin de tout : une fête de tir réserve
-des cibles et remet des cartes-couronnes, un programme annuel ne fait que
-réunir des résultats. **Modules** active et désactive les éléments de la
-manifestation ; ce qui est désactivé disparaît de la barre latérale, du
-tableau de bord, de l’éditeur de programmes, des classements et des
-rapports.
+**Modules** active et désactive les éléments de la manifestation ; pourquoi les manifestations ne diffèrent que par leurs modules est expliqué dans [Modules et genres de manifestations](../explanation/modules.md).
 
 ![Les modules d'une manifestation](../images/screenshots/modules.png){
 .screenshot }
 
-| Module | Ce qu’il ajoute |
-|---|---|
-| Attribution des cibles | les tireurs sont inscrits sur des cibles : la grille des cibles sur le tableau de bord, l’état des cibles sur les affichages kiosque et les liens de cibarre (nécessite un stand ; voir plus bas) |
-| Réservations | cibles réservées pour des groupes et des sociétés ; sa page dans la configuration active la [réservation en ligne](online-booking.md), par laquelle les sociétés demandent des cibles avec un lien public (nécessite un stand) |
-| Feuille de stand, Bande de contrôle | les documents imprimés à l’inscription ; la bande de contrôle peut s’imprimer avec un [modèle d’impression](print-forms.md#builtin) de la société |
-| Distribution de munition | le bouton **Munition** sur le tableau de bord et pour la distribution de munition (voir [Aides](helpers.md#ammunition)) ; laissez-le désactivé là où les tireurs apportent la leur, p. ex. pistolet et carabine à air |
-| Tentatives | des programmes qui peuvent être tirés plusieurs fois (voir [Programmes](programmes.md#attempts)) |
-| Distinctions | cartes-couronnes, prix en nature et prix en espèces ; son réglage *Imprimer la valeur de la distinction sur les cartes-couronnes* met la valeur en chiffres et en lettres sur la carte, *Modèle des cartes-couronnes* choisit un [modèle d’impression](print-forms.md#builtin) de la société |
-| Prix spéciaux | les meilleurs rangs de chaque catégorie d’âge (active Distinctions, voir [Programmes](programmes.md#special-prizes)) |
-| Concours de sections | les sociétés classées selon les résultats de leurs tireurs ; son réglage *Société exclue du concours de sections* est en général la société organisatrice, listée *hors concours* |
-| Classements généraux | classements sur plusieurs programmes ou tentatives (voir [Classements généraux](classifications.md)) |
-| Affichages kiosque | classements sur des écrans dans la halle (voir [Classements et kiosque](rankings-kiosk.md)) |
-| Liens d'aide | cibarres, distribution de munition et saisie des résultats sans compte (voir [Aides](helpers.md)) |
+Chaque module est une carte avec son interrupteur ; les réglages d’un
+module, p. ex. *Imprimer la valeur de la distinction sur les
+cartes-couronnes* de *Distinctions*, se trouvent sur sa carte. Ce que chaque
+module ajoute, ses réglages et quand il reste activé :
+[Modules](../reference/modules.md#event-modules).
 
-En créant une manifestation, choisissez son genre ; cela n'active que des
-modules :
+En créant une manifestation, choisis son genre ; cela n’active que des
+modules (voir [Genres de manifestations](../reference/modules.md#kinds)).
 
-| Genre | Modules |
-|---|---|
-| Tir de fête | Attribution des cibles, Réservations, Feuille de stand, Bande de contrôle, Distinctions, Prix spéciaux, Concours de sections, Affichages kiosque, Liens d'aide |
-| Programme annuel ou entraînement | Tentatives, Classements généraux |
-| Tir en campagne | Attribution des cibles, Distinctions, Concours de sections, Affichages kiosque, Liens d'aide |
-| Championnat de société | Tentatives, Classements généraux, Affichages kiosque |
-| Sélection personnalisée | aucun |
-
-Un module qui contient des données reste activé : désactivez le kiosque
-seulement après avoir supprimé ses liens kiosque, les distinctions seulement
-quand aucun programme n’a de niveaux de distinction, et ainsi de suite ; la
-carte indique pourquoi son interrupteur est bloqué ; Réservations reste
-activé tant que le lien de réservation en ligne est actif. Un module dont un
-autre a besoin (Distinctions pour Prix spéciaux) reste activé tant que
-celui-ci l’est.
-
-Les heures de tir donnent aussi ses créneaux à la réservation en ligne, sauf
-si la réservation fixe d’autres horaires pour un jour (voir [réservation en
-ligne](online-booking.md)).
+Un module qui contient des données reste activé, et la carte indique
+pourquoi son interrupteur est verrouillé (voir [Pourquoi un module qui
+contient des données reste activé](../explanation/modules.md#in-use)). Un
+module dont un autre a besoin, p. ex. *Distinctions* pour *Prix spéciaux* ou
+*Attribution des cibles* pour *Réservations*, reste activé tant que celui-ci
+l’est.
 
 ### Modules de la société {#club-modules}
 
 Certains modules appartiennent à la société plutôt qu’à une
 manifestation. **Modules de la société** dans la partie société de la barre
-latérale (droit *Utilisateurs et société*) les active et les désactive :
-
-| Module | Ce qu'il ajoute |
-|---|---|
-| Modèles d’impression | des modèles pour feuilles préimprimées et la section *Modèle d’impression* de chaque programme (voir [Modèles d’impression](print-forms.md)) |
+latérale (droit *Utilisateurs et société*) les active et les désactive ;
+pour l’instant, il s’agit de *Modèles d’impression* (voir [Modèles
+d’impression](print-forms.md)). Ce que chacun ajoute et quand il reste
+activé : [Modules de la société](../reference/modules.md#club-modules) ;
+pourquoi ils appartiennent à la société : [Modules de la société et modules
+de la manifestation](../explanation/modules.md#club-modules).
 
 ## Manifestations sans cibles {#no-lanes}
 
-Une manifestation sans cibles, p. ex. un programme annuel ou un Tir en
-campagne dont les résultats arrivent sur papier ou depuis l’installation de
-marquage, n’a soit pas de stand, soit désactive le module *Attribution des
-cibles*. Il n’y a alors ni grille des cibles, ni réservations, ni liens de
-cibarre ; les tireurs sont inscrits sans cible et leurs résultats sont
-saisis comme d’habitude. Avec un stand mais sans attribution des cibles, les
-documents s’impriment toujours sur l’agent d’impression du stand et les
-programmes peuvent toujours être liés au stand ; sans stand, les documents
-s’ouvrent en PDF, car les agents d’impression appartiennent à un stand.
+Une manifestation sans cibles n’a pas de stand, ou désactive *Attribution
+des cibles* ; ce que signifie chaque choix est expliqué dans [Manifestations
+avec et sans cibles](../explanation/modules.md#lanes).
 
 ## Copier pour l’année prochaine {#copy}
 
-Sous **Copier & clôturer** dans la configuration, **Copier pour l’année
-prochaine** crée une nouvelle manifestation avec les mêmes stands,
-organisateur, langue, réglages, modules et tous les programmes, y compris
-prix, distinctions, combinaisons et prix spéciaux, ainsi que les
+Sous **Copier & clôturer** dans la configuration, **copier** sous *Copier
+pour l’année prochaine* crée une nouvelle manifestation avec les mêmes
+stands, organisateur, langue, réglages, modules et tous les programmes, y
+compris prix, distinctions, combinaisons et prix spéciaux, ainsi que les
 [classements généraux](classifications.md) ; les jours de tir et la période
 suivent la date, les heures de tir hebdomadaires restent sur leurs jours de
-la semaine. Les inscriptions, les résultats et les liens kiosque ne sont pas
-copiés. Le dialogue propose le nom avec l’année (et un numéro en tête comme
-*42.*) incrémentée et la date un an plus tard ; adaptez les deux au besoin.
+la semaine. Les inscriptions, les résultats, les liens kiosque, les liens
+d’aide et le lien de réservation ne sont pas copiés. Le dialogue *Copier la
+manifestation* propose le nom et la date un an plus tard ; **Créer la
+copie** crée la manifestation. Pas à pas : [Reprendre la manifestation de
+l’année passée](../how-to/next-year.md#copy).
 
 ![Copier une manifestation](../images/screenshots/copy-event.png){
 .screenshot }
@@ -131,30 +112,23 @@ avec ses modules, réglages, stands, programmes et classements généraux,
 nommée d’après la manifestation sans son année. Les modèles sont listés sous
 *Modèles* sous les manifestations ; un modèle s’ouvre dans sa configuration
 et se modifie comme une manifestation, mais il n’accepte pas
-d’inscriptions. **Nouvelle manifestation** propose les modèles de la société
-sous les genres intégrés : choisis-en un, puis donne à la nouvelle
-manifestation son nom et sa date. **Supprimer** sur **Copier & clôturer** du
-modèle le supprime.
+d’inscriptions. **Nouvelle manifestation** liste les modèles de la société
+sous les genres (voir [Partir d’un modèle de la
+société](../how-to/next-year.md#template)). **Supprimer** sur **Copier &
+clôturer** du modèle le supprime.
 
 ![Nouvelle manifestation avec les genres et un modèle de la
 société](../images/screenshots/new-event.png){ .screenshot }
 
 ## Clôturer {#close}
 
-Quand la manifestation est terminée et les classements vérifiés,
-**clôturez**-la sous **Copier & clôturer** dans la configuration (**Clôturer
-la manifestation**). La clôture publie les classements : les tireurs
-disposant d’un [journal d’entraînement
-personnel](../my-training/account.md#competitions) trouvent alors leurs
-résultats de cette manifestation, avec leur rang dans le programme, et
-peuvent les ajouter à leur journal. Tout reste visible (tableau de bord,
-résultats, classements, rapports, documents), mais les inscriptions, les
-résultats, les distinctions, les programmes et les réglages ne peuvent plus
-être modifiés. Une bannière sur chaque page de la manifestation
-l’indique. **Rouvrir** la rend à nouveau modifiable ; les résultats déjà
-ajoutés par les tireurs à leur journal y restent. Copier une manifestation
-clôturée pour l’année prochaine fonctionne.
+Quand une manifestation est terminée et les classements vérifiés, **Clôturer
+la manifestation** sur **Copier & clôturer** dans la configuration la
+clôture ; un bandeau sur chaque page de la manifestation l’indique alors, et
+**Rouvrir** la rend de nouveau modifiable. Ce que la clôture signifie pour
+les classements, Mon entraînement et les modifications : [Clôturer une
+manifestation](../explanation/closing.md).
 
 ## Supprimer
 
-**Supprimer** (sous **Copier & clôturer**) retire une manifestation, mais seulement tant que personne n’y est inscrit.
+**Supprimer** (sous **Copier & clôturer**) retire une manifestation, mais seulement tant que personne n’y est inscrit. Une manifestation clôturée ne peut pas être supprimée ; rouvre-la d’abord.

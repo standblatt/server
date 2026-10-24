@@ -9,9 +9,9 @@ dans la barre latérale ou **Réglages → Compte**.
 
 ## S’inscrire
 
-Ouvre **Créer un compte** sur la page de connexion. Il te faut ton nom, ton
-adresse e-mail et un mot de passe d’au moins 10 caractères. Tu es connecté
-tout de suite.
+Ouvre **Créer un compte** sur la page de connexion. Il te faut ton prénom et
+ton nom, ton adresse e-mail et un mot de passe d’au moins 10 caractères. Tu
+es connecté tout de suite.
 
 ![Inscription](../images/screenshots/my-signup.png){ .screenshot .phone }
 
@@ -25,7 +25,8 @@ mot de passe sous [Compte](../user-guide/login-language.md#account).
 
 Les comptes créés par un admin de société se connectent avec leur nom
 d’utilisateur au lieu d’une adresse e-mail ; ils peuvent ajouter une adresse
-e-mail sous **Réglages → E-mail**.
+e-mail sur la page [Compte](../user-guide/login-language.md#account) sous
+**Connexion**.
 
 ## Profil et résultats de compétition {#competitions}
 
@@ -39,6 +40,10 @@ résultat porte ton **rang** dans le programme (par exemple *Rang 12 sur
 87*). Choisis la discipline et touche **Ajouter** ou **Tout ajouter**. Les
 résultats ajoutés deviennent des séances de compétition avec leurs séries et
 gardent le rang.
+
+Pourquoi seulement les manifestations clôturées et comment fonctionne
+l’appariement : [Le lien avec Mon
+entraînement](../explanation/closing.md#my-training).
 
 ## Disciplines personnalisées
 
@@ -82,7 +87,8 @@ Installée, elle démarre en plein écran. Un appui long sur l’icône propose
 
 - **Exporter toutes les séances (CSV)** télécharge chaque passe de chaque
   séance.
-- **Supprimer le compte** supprime le compte avec toutes les séances,
-  objectifs et réglages après la saisie de ton mot de passe. Les comptes qui
-  appartiennent à une société doivent d’abord être retirés de la société par
-  son admin.
+- **Supprimer le compte** sur la page
+  [Compte](../user-guide/login-language.md#account) supprime le compte avec
+  toutes les séances, objectifs et réglages après la saisie de ton mot de
+  passe. Les comptes qui appartiennent à une société doivent d’abord être
+  retirés de la société par son admin.

@@ -6,7 +6,9 @@ classe les tireurs sur plusieurs programmes ou sur plusieurs
 de section comme somme de trois programmes, ou un championnat de société sur
 les trois meilleures tentatives d’un programme annuel. Les classements
 généraux apparaissent sous **Classements**, sur les écrans kiosque et comme
-rapport ; ils ne modifient jamais les résultats ni les distinctions.
+rapport ; leur lien avec les classements de programme est expliqué dans
+[Comment les classements
+s’articulent](../explanation/rankings.md#classifications).
 
 ## Créer un classement général {#create}
 
@@ -42,8 +44,10 @@ dans la configuration (admins) ouvre l’éditeur :
 
 | Manifestation | Programmes | Réglages |
 |---|---|---|
-| Championnat de section | Programme obligatoire, Tir en campagne, Cible section | tentatives qui comptent 1 chacun, *Classer seulement les tireurs avec tous les résultats qui comptent* |
-| Championnat de société sur la saison | programme annuel à tentatives illimitées | tentatives qui comptent 3 |
-| Fête de tir, deux meilleures cibles | trois cibles | *Ne compter que les meilleurs programmes* 2 |
+| Tir de fête, les deux meilleurs programmes | trois programmes | *Ne compter que les meilleurs programmes* 2 |
+
+Pas à pas : [Classer un championnat de section sur plusieurs
+programmes](../how-to/section-championship.md) et [Organiser un programme
+annuel sur la saison](../how-to/annual-programme.md#classification).
 
 **Copier pour l’année prochaine** copie les classements généraux avec les programmes. Supprimer un programme le retire des classements généraux.

@@ -41,15 +41,25 @@ secondi, vedere la tendenza, la serie migliore e dove si trova il gruppo.
 
 <div class="grid cards" markdown>
 
+- **[Tutorial: la tua prima
+  manifestazione](getting-started/first-event.md)**: configurare uno stand,
+  una manifestazione e un programma, iscrivere due tiratori e vedere la
+  classifica.
+- **[Tutorial: la tua prima sessione di
+  allenamento](my-training/first-session.md)**: registrare una sessione sul
+  telefono e vederla nei tuoi progressi.
+- **[Guide pratiche](how-to/next-year.md)**: un obiettivo passo per passo,
+  p. es. riprendere la manifestazione dell’anno scorso o collegare una
+  stampante.
 - **[Concetti](getting-started/concepts.md)**: le parole che Standblatt usa
   e come si collegano.
-- **[La tua prima manifestazione](getting-started/first-event.md)**: da una
-  società vuota a una gara in corso.
+- **[Approfondimenti](explanation/modules.md)**: perché Standblatt funziona
+  come funziona: moduli, classifiche, chiusura, stampa e dati.
+- **[Guida per l’utente](user-guide/dashboard.md)**: ogni pagina dell’app e
+  cosa offre.
+- **[Riferimento](reference/rules.md)**: le regole di gara come sono
+  implementate, moduli, autorizzazioni, documenti, tasti e formati di file.
 - **[Il mio allenamento](my-training/index.md)**: il diario di allenamento
   personale di ogni tiratore.
-- **[Guida per l’utente](user-guide/dashboard.md)**: il lavoro quotidiano di
-  admin e personale della società.
-- **[Riferimento](reference/rules.md)**: le regole di gara come sono
-  implementate.
 
 </div>

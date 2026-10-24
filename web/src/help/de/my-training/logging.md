@@ -33,8 +33,10 @@ für die letzten zwei.
 ![Treffer auf der Scheibe
 antippen](../images/screenshots/my-train-target.png){ .screenshot .phone }
 
-Am Computer kannst du die Ziffern, **Rücktaste** und **Enter** auf der
-Tastatur tippen.
+Auf einem Computer kannst du die Ziffern, **Backspace** und **Enter** auf
+der Tastatur tippen; bei **Schüsse** mit Ganzzahlwertung bis 10
+funktionieren nur die Knöpfe (siehe [Tastatur und
+Scanner](../reference/shortcuts.md#my-training)).
 
 ## Speichern
 
@@ -64,7 +66,7 @@ Nach dem Speichern sagt dir Standblatt sofort:
 - wie viele Punkte pro Schuss sie über oder unter dem Schnitt der **30 Tage
   davor** liegt.
 
-## Unfertige Einheiten und offline
+## Unfertige Einheiten und offline {#unfinished-sessions-and-offline}
 
 Die Einheit wird während des Tippens auf dem Gerät gehalten. Schliesst du
 den Browser oder sperrt sich das Handy, kommt sie beim nächsten Start einer
@@ -85,6 +87,9 @@ Einheit ändern braucht eine Verbindung.
 
 Hast du die App einmal online geöffnet, startet sie auch ohne Verbindung und
 zeigt deine letzten Daten.
+
+Warum Vereinsarbeit eine Verbindung braucht und Mein Training nicht:
+[Offline](../explanation/data.md#offline).
 
 ## Eine Einheit ändern oder löschen
 

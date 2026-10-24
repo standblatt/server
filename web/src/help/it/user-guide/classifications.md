@@ -3,10 +3,11 @@
 Una classifica di programma classifica un programma. Una **classifica
 generale** classifica i tiratori su più programmi o su più
 [tentativi](programmes.md#attempts) di un programma, p. es. un campionato di
-sezione come somma di tre programmi, o un campionato di società sui tre
+sezione come somma di tre programmi, o un campionato sociale sui tre
 migliori tentativi di un programma annuale. Le classifiche generali appaiono
-in **Classifiche**, sugli schermi chiosco e come rapporto; non modificano
-mai risultati o distinzioni.
+in **Classifiche**, sui display chiosco e come rapporto; come si collegano
+alle classifiche dei programmi è spiegato in [Come si combinano le
+classifiche](../explanation/rankings.md#classifications).
 
 ## Creare una classifica generale {#create}
 
@@ -41,8 +42,10 @@ configurazione (admin) apre l’editor:
 
 | Manifestazione | Programmi | Impostazioni |
 |---|---|---|
-| Campionato di sezione | Programma obbligatorio, Tiro in campagna, Bersaglio sezione | tentativi che contano 1 ciascuno, *Classificare solo i tiratori con tutti i risultati che contano* |
-| Campionato di società sulla stagione | programma annuale con tentativi illimitati | tentativi che contano 3 |
-| Festa di tiro, due migliori bersagli | tre bersagli | *Contare solo i programmi migliori* 2 |
+| Festa di tiro, i due migliori programmi | tre programmi | *Contare solo i programmi migliori* 2 |
+
+Passo per passo: [Classificare un campionato di sezione su più
+programmi](../how-to/section-championship.md) e [Gestire un programma
+annuale durante la stagione](../how-to/annual-programme.md#classification).
 
 **Copia per l’anno prossimo** copia le classifiche generali con i programmi. Eliminando un programma, questo scompare dalle classifiche generali.

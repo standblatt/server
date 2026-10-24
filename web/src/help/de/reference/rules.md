@@ -2,13 +2,27 @@
 
 Diese Seite beschreibt die Regeln genau so, wie Standblatt sie umsetzt.
 
-## Alterskategorie
+## Alterskategorie {#age-categories}
 
-Die Kategorie ergibt sich aus *Jahr des Anlasses − Geburtsjahr*; siehe die
-Tabelle unter
-[Begriffe](../getting-started/concepts.md#age-categories). Ohne Geburtsdatum
-zählt ein Schütze als Elite. Die Kategorie wird bei der Anmeldung
-festgelegt.
+Die Kategorie ergibt sich aus *Jahr des Anlasses − Jahrgang*. Ohne
+Geburtsdatum zählt ein Schütze als Elite. Die Kategorie wird bei der
+Anmeldung festgelegt.
+
+| Kategorie | Kurz | Alter im Jahr des Anlasses |
+|---|---|---|
+| U10 | U10 | bis 9 |
+| U13 | U13 | 10–12 |
+| U15 | U15 | 13–14 |
+| U17 | U17 | 15–16 |
+| U19 | U19 | 17–18 |
+| U21 | U21 | 19–20 |
+| Elite | E | 21–45 |
+| Senioren | S | 46–59 |
+| Veteranen | V | 60–69 |
+| Seniorveteranen | SV | 70 und älter |
+
+Das Jahr des Anlasses ist das Jahr seines Haupttags, auch für Schiesstage in
+einem anderen Jahr.
 
 ## Anmeldung
 

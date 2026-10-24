@@ -7,9 +7,8 @@ oder durch Scannen des Codes auf dem Standblatt.
 
 ## Passen erfassen
 
-- Der Cursor beginnt in der ersten leeren Passe. Sobald eine weitere Ziffer
-  das Passenmaximum überschreiten würde, springt er ins nächste Feld, so
-  lässt sich eine Folge wie `96 93 97 88` ohne Maus tippen.
+- Der Cursor beginnt in der ersten leeren Passe und springt von selbst
+  weiter (siehe [Tastatur und Scanner](../reference/shortcuts.md#results)).
 - Passen mit Mouchen haben dafür ein zweites Feld.
 - Passen mit Einzelschüssen zeigen unter der Passe ein Feld pro Schuss; die
   Passe wird deren Summe. Erfasse jeden Schuss oder keinen: Ohne Schüsse
@@ -21,6 +20,10 @@ oder durch Scannen des Codes auf dem Standblatt.
 
 Ein kombiniertes Programm zeigt, welche Passen es aus seinem Quellprogramm
 übernimmt, und füllt sich automatisch, sobald die Quelle Resultate hat.
+
+Ein abgeschlossenes Programm mit einer [Druckvorlage](print-forms.md) zeigt
+**Auf Vorlage drucken**, das seine Resultate auf das vorgedruckte Blatt
+druckt.
 
 Wenn jedes Programm Resultate hat, ist die Anmeldung abgeschlossen und ihre
 Scheibe wieder frei. **Resultatblatt drucken** druckt eine A5-Übersicht für
@@ -40,16 +43,4 @@ Ziffern und in Worten).
 
 ## Auszeichnungen abgeben {#handout}
 
-Holt der Schütze Kranzkarten, Preise und Geld am Schalter ab, drücke
-**Auszeichnungen abgegeben** im Resultatdialog, der die Auszeichnungen jedes
-Programms auflistet; das Abzeichen *Auszeichnungen abzugeben* in der Liste
-*Beendet* des Dashboards öffnet diesen Dialog. Die Anmeldung trägt dann die
-Zeit der Abgabe und ein grünes Abzeichen *Auszeichnungen abgegeben*; bis
-dahin zeigt sie *Auszeichnungen abzugeben*. Ein Fehlklick wird mit
-**Zurücknehmen** im Resultatdialog oder per Klick auf das grüne Abzeichen im
-Dashboard zurückgenommen (nur Vereinsmitglieder, keine Helferlinks);
-dasselbe gilt für das Abzeichen *Munition*. Der Bericht **Abzugebende
-Auszeichnungen** (siehe [Statistik und Berichte](statistics-reports.md))
-listet, was noch offen ist, und das auszuzahlende Geld. Auch die
-Resultaterfassung mit einem [Helferlink](helpers.md) darf Auszeichnungen als
-abgegeben markieren.
+**Auszeichnungen abgegeben** im Resultatdialog hält die Abgabe fest; die Anmeldung zeigt dann ein grünes Abzeichen *Auszeichnungen abgegeben*, bis dahin *Auszeichnungen abzugeben*. **Zurücknehmen** macht es rückgängig. Schritte und der Bericht der offenen Auszeichnungen: [Auszeichnungen und Geldpreise abgeben](../how-to/hand-out-awards.md).

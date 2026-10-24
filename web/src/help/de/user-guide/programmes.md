@@ -51,12 +51,12 @@ oder **Speichern** unten speichert sie zusammen.
   Mindesttotal pro Alterskategorie; lass eine Kategorie leer, wo die
   Auszeichnung nicht verfügbar ist.
 
-Sobald Schützen für ein Programm angemeldet sind, sind die **Passen** fest,
-damit die Resultate ihre Bedeutung behalten; die Seite sagt das und graut
-sie aus. Alles andere lässt sich weiterhin ändern: Name, Variante,
-Beschreibung, Barcode, die Schalter, Preise, Passennamen, Namen, Werte und
-Limiten der Auszeichnungen. Alterskategorien und Auszeichnungen können
-**hinzugefügt**, aber nicht entfernt werden.
+Sobald Schützen für ein Programm angemeldet sind, sind die **Passen** fest
+(siehe [Warum die Passen gesperrt sind](../explanation/rankings.md#locked));
+die Seite sagt das und graut sie aus. Alles andere lässt sich weiterhin
+ändern: Name, Variante, Beschreibung, Barcode, die Schalter, Preise,
+Passennamen, Namen, Werte und Limiten der Auszeichnungen. Alterskategorien
+und Auszeichnungen können **hinzugefügt**, aber nicht entfernt werden.
 
 Der Abschnitt **Einsatz** eines gespeicherten Programms wird bei jeder
 Änderung sofort gespeichert, auch wenn schon Schützen angemeldet sind:
@@ -84,9 +84,11 @@ Glücksstich mit Nachdoppel am Schützenfest, oder **Unbegrenzt** für ein
 Jahresprogramm über die ganze Saison.
 
 - **Zählender Durchgang** bestimmt, welcher Durchgang in Rangliste,
-  Vereinswettkampf, Sonderpreisen und *Mein Training* zählt: **Der beste**
+  Vereinskonkurrenz, Sonderpreisen und *Mein Training* zählt: **Der beste**
   (nach den Ranglistenregeln), **Der erste** oder **Der letzte**. Die
-  Rangliste zeigt ihn als *2/3*: Der zweite von drei Durchgängen zählt.
+  Rangliste zeigt ihn als *2/3*: Der zweite von drei Durchgängen zählt
+  (siehe [Durchgänge und der zählende
+  Durchgang](../explanation/rankings.md#attempts)).
 - **Nur der zählende Durchgang erhält eine Auszeichnung**: ausgeschaltet
   kann jeder Durchgang seine Auszeichnung erhalten (eine Kranzkarte pro
   Nachdoppel); eingeschaltet erhält nur der zählende Durchgang eine, und die
@@ -101,6 +103,9 @@ Die Anzahl Durchgänge lässt sich ändern, solange Schützen angemeldet sind,
 aber nicht unter die Durchgänge, die ein Schütze schon hat. Programme mit
 mehreren Durchgängen können nicht kombiniert werden.
 
+Schritt für Schritt für eine Saison: [Ein Jahresprogramm über die Saison
+durchführen](../how-to/annual-programme.md).
+
 ## Sonderpreise {#special-prizes}
 
 Der Abschnitt **Sonderpreise** auf der Programmseite zeichnet die besten
@@ -114,4 +119,4 @@ im Bericht *Sonderpreise* unter [Statistik](statistics-reports.md).
 ![Sonderpreise eines Programms](../images/screenshots/special-prizes.png){
 .screenshot }
 
-**Sonderpreise speichern** speichert sie; Ränge 0 schaltet die Sonderpreise aus. Die Einstellungen lassen sich jederzeit ändern, auch nach dem Anlass.
+**Sonderpreise speichern** speichert sie; Ränge 0 schaltet die Sonderpreise aus. Die Einstellungen lassen sich jederzeit ändern, bis der Anlass abgeschlossen ist.

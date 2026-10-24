@@ -4,6 +4,9 @@ Mein Training ist ein persönliches Schiesstagebuch. Jeder Schütze kann es
 nutzen, ob sein Verein Anlässe mit Standblatt durchführt oder nicht. Es
 beantwortet eine Frage: **Wirkt mein Training?**
 
+Neu hier? Beginne mit [Tutorial: deine erste
+Trainingseinheit](first-session.md).
+
 <div class="grid" markdown>
 
 ![Heute auf einem Handy](../images/screenshots/my-today.png){ .screenshot

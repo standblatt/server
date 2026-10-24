@@ -7,9 +7,12 @@ gedruckt statt von Hand ausgefüllt. Von Hand ausfüllen bleibt möglich;
 Druckvorlagen sind freiwillig und lassen sich unter **Vereinsmodule**
 ausschalten (siehe [Vereinsmodule](events.md#club-modules)).
 
+Warum und wie Druckvorlagen funktionieren: [Druckvorlagen auf vorgedruckten
+Blättern](../explanation/printing.md#forms).
+
 ## Eine Vorlage erstellen {#create}
 
-**Druckvorlagen** (Admins, im Vereinsteil der Seitenleiste) listet die Vorlagen des Vereins. **Neue Druckvorlage** fragt nach einem Namen, was die Vorlage **Druckt** (siehe [Datenquelle](#source)) und einem Papierformat und öffnet dann den Editor. Er hat drei Spalten:
+**Druckvorlagen** (Recht *Druckvorlagen*, im Vereinsteil der Seitenleiste) listet die Vorlagen des Vereins. **Neue Druckvorlage** fragt nach einem Namen, was die Vorlage **Druckt** (siehe [Datenquelle](#source)) und einem Papierformat und öffnet dann den Editor. Er hat drei Spalten:
 
 - Links die **Felder**: alles, was eine Vorlage drucken kann, in Gruppen, je
   mit einem Beispiel, und eine Suche. Ein Klick fügt das Feld unter dem
@@ -39,7 +42,7 @@ ausschalten (siehe [Vereinsmodule](events.md#club-modules)).
   Blatts, das hinter dem Blatt erscheint, damit die Felder auf die Kästchen
   des Formulars gesetzt werden können; es wird nie gedruckt.
 
-**Speichern** speichert die Vorlage; ein Punkt auf dem Knopf zeigt ungespeicherte Änderungen, und wer die Seite mit ihnen verlässt, wird zuerst gefragt. Mit **Automatisch speichern** (eingeschaltet, bis man es ausschaltet; der Browser merkt es sich) werden ungespeicherte Änderungen jede Minute gespeichert. **PDF-Vorschau** öffnet die Vorlage genau so, wie das PDF sie darstellt; das kann leicht vom Blatt im Browser abweichen.
+**Speichern** speichert die Vorlage; ein Punkt auf dem Knopf zeigt ungespeicherte Änderungen, und wer die Seite mit ihnen verlässt, wird zuerst gefragt. Mit **Automatisch speichern** (eingeschaltet, bis man es ausschaltet; der Browser merkt es sich) werden ungespeicherte Änderungen jede Minute gespeichert. **PDF-Vorschau** öffnet die gespeicherte Vorlage genau so, wie das PDF sie darstellt; das kann leicht vom Blatt im Browser abweichen.
 
 ## Datenquelle {#source}
 
@@ -53,6 +56,9 @@ Was eine Vorlage **Druckt**, bestimmt ihre Felder und wo sie gedruckt wird:
 
 Die Quelle lässt sich im Editor unter **Vorlage** ändern; Felder, die die
 neue Quelle nicht kennt, drucken nichts.
+
+Jeder Platzhalter: [Platzhalter in
+Vorlagen](../reference/form-placeholders.md).
 
 ## Eingebaute Vorlagen {#builtin}
 
@@ -74,16 +80,12 @@ Bildbibliothek](../images/screenshots/print-forms.png){ .screenshot }
 Eine Vorlage, die **Eine Anmeldung** druckt, erscheint neben dem
 Kontrollstreifen des Anlasses in der Anmeldung als Knopf mit ihrem eigenen
 Namen, z. B. eine Teilnehmerkarte oder eine Quittung; sie druckt auf dem
-Drucker der *Druckvorlagen*.
+Drucker der *Druckvorlagen (vorgedruckt)*.
 
-Eine Vorlage, die **Ein Rang** druckt, macht Urkunden: **Urkunden** im Kopf
-jeder Rangliste und jeder Wertung unter **Ranglisten** fragt nach der
-Vorlage, der Klasse einer Wertung und den Rängen (1 bis 3, wenn nicht
-geändert) und druckt dann eine Seite pro rangiertem Schützen oder öffnet sie
-als ein PDF. Urkunden gehen an den Drucker der *Urkunden* unter
-**Schiessstände → Drucker einrichten**. Die Felder eines Rangs sind der
-Rang, das Total, die Rangliste (das Programm oder die Wertung) und die
-Klasse; die Urkunde eines Programms kennt auch seine Resultate.
+Eine Vorlage, die **Ein Rang** druckt, erzeugt Urkunden über **Urkunden**
+unter **Ranglisten**, gedruckt auf dem Drucker der *Urkunden* des ersten
+Schiessstands des Anlasses; siehe [Urkunden für die besten Ränge
+drucken](../how-to/certificates.md).
 
 ![Urkunden aus einer Rangliste](../images/screenshots/certificates.png){
 .screenshot }
@@ -104,16 +106,7 @@ Klasse; die Urkunde eines Programms kennt auch seine Resultate.
   *Ausrichtung* (Kanten, Mitten, gleichmässig verteilen), *Auf dem Blatt
   zentrieren* und *Löschen*.
 
-| Taste | Wirkung |
-|---|---|
-| Pfeiltasten | verschieben die Auswahl um 0.5 mm, mit Shift um 5 mm |
-| Ctrl+Z / Ctrl+Y | rückgängig / wiederholen |
-| Ctrl+A | alles auswählen |
-| Ctrl+D | duplizieren |
-| Entf | Auswahl löschen |
-| Esc | Auswahl aufheben |
-| Ctrl+S | speichern |
-| Ctrl+Mausrad | zoomen |
+Tasten: [Editor für Druckvorlagen](../reference/shortcuts.md#print-forms).
 
 ## Bilder {#images}
 
@@ -133,22 +126,18 @@ der Verein schon hat, wird wiederverwendet.
 
 ## Den Drucker kalibrieren {#calibrate}
 
-Drucker drucken selten genau dort, wo sie sollen. Drucke ein Blatt mit
-**Testdruck**, miss, wie weit die Werte daneben liegen, und trage es als
-**Druckerversatz nach rechts** und **Druckerversatz nach unten** ein
-(negativ für links oder oben). Der Versatz gilt für alle Elemente; die
-Vorschau ignoriert ihn.
+**Druckerversatz nach rechts (mm)** und **Druckerversatz nach unten (mm)** unter **Vorlage** verschieben jedes Element (negativ, um nach links oder oben zu verschieben). **Testdruck** öffnet die gespeicherte Vorlage mit dem Versatz und ohne den Scan; die Vorschau ignoriert den Versatz. Warum: [Kalibrieren im Grundsatz](../explanation/printing.md#calibration). Schritte: [Resultate auf die Standblätter der Armee drucken](../how-to/army-sheet.md#calibrate).
 
 ## Eine Vorlage verwenden {#use}
 
-Öffne unter **Konfiguration** → **Programme** des Anlasses ein Programm und
-wähle im gleichnamigen Abschnitt seine **Druckvorlage**; das geht auch, wenn
-schon Schützen angemeldet sind. Jedes abgeschlossene Programm bietet dann in
-den Resultaten **Auf Vorlage drucken** an: am Desk, auf der Seite
-**Resultate erfassen** und über Warner-Links an der Scheibe (siehe
-[Helfer](helpers.md)). Mit einem Druck-Agenten und einem Drucker für
-*Druckvorlagen* unter **Schiessstände → Drucker einrichten** geht das Blatt
-an diesen Drucker (z. B. an seinen manuellen Einzug), sonst öffnet sich das
-PDF (siehe [Drucken](printing.md)).
+Ein Programm wählt seine Vorlage im Abschnitt **Druckvorlage** seiner
+Programmseite, auch wenn schon Schützen angemeldet sind. Abgeschlossene
+Resultate bieten dann **Auf Vorlage drucken** an: in den Resultaten am Desk,
+unter *Soeben erfasst* auf **Resultate erfassen** und auf Helferlinks von
+Warnern und der Resultaterfassung (siehe [Helfer](helpers.md)). Gedruckt
+wird auf dem Drucker der *Druckvorlagen (vorgedruckt)* des Schiessstands der
+Anmeldung, sonst öffnet sich das PDF (siehe
+[Drucken](printing.md)). Schritte: [Resultate auf die Standblätter der Armee
+drucken](../how-to/army-sheet.md).
 
 **Exportieren** lädt eine Vorlage mit ihren Bildern als Datei herunter und **Importieren** liest sie wieder ein, z. B. um eine Vorlage mit einem anderen Verein zu teilen.

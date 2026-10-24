@@ -40,15 +40,25 @@ erfassen, den Trend sehen, die beste Passe und wo die Trefferlage liegt.
 
 <div class="grid cards" markdown>
 
+- **[Tutorial: dein erster Anlass](getting-started/first-event.md)**: einen
+  Schiessstand, einen Anlass und ein Programm einrichten, zwei Schützen
+  anmelden und die Rangliste ansehen.
+- **[Tutorial: deine erste
+  Trainingseinheit](my-training/first-session.md)**: eine Einheit auf dem
+  Handy erfassen und sie in deinem Fortschritt sehen.
+- **[Anleitungen](how-to/next-year.md)**: ein Ziel Schritt für Schritt,
+  z. B. den Anlass des letzten Jahres übernehmen oder einen Drucker
+  verbinden.
 - **[Begriffe](getting-started/concepts.md)**: die Wörter, die Standblatt
   verwendet, und wie sie zusammenhängen.
-- **[Dein erster Anlass](getting-started/first-event.md)**: vom leeren
-  Verein bis zum laufenden Wettkampf.
+- **[Hintergrund](explanation/modules.md)**: warum Standblatt so
+  funktioniert, wie es funktioniert: Module, Ranglisten, Abschliessen,
+  Drucken und Daten.
+- **[Benutzerhandbuch](user-guide/dashboard.md)**: jede Seite der App und
+  was sie bietet.
+- **[Referenz](reference/rules.md)**: die Wettkampfregeln, wie sie umgesetzt
+  sind, Module, Rechte, Dokumente, Tasten und Dateiformate.
 - **[Mein Training](my-training/index.md)**: das persönliche
   Trainingslogbuch für jeden Schützen.
-- **[Benutzerhandbuch](user-guide/dashboard.md)**: die tägliche Arbeit für
-  Vereins-Admins und Personal.
-- **[Referenz](reference/rules.md)**: die Wettkampfregeln, wie sie umgesetzt
-  sind.
 
 </div>

@@ -63,8 +63,9 @@ un’altra app o analizzare dati con un tuo script? Crea un token sotto
 **Account → Token API** con **Nuovo token**:
 
 - un **nome** che ti dirà più tardi chi lo usa,
-- un **modello** imposta i diritti per un uso comune: **Classifiche per un
-  sito web**, **App di allenamento** o **Solo lettura**,
+- una **preimpostazione** imposta le autorizzazioni per un uso comune:
+  **Classifiche per un sito web**, **App di allenamento** o **Solo lettura**
+  (vedi [Preimpostazioni](../reference/permissions.md#presets)),
 - le **società** che il token può usare (nessuna: solo il tuo diario di
   allenamento),
 - i **diritti**: *Leggere il mio diario di allenamento*, *Registrare e
@@ -72,25 +73,21 @@ un’altra app o analizzare dati con un tuo script? Crea un token sotto
   [diritti dei ruoli](users.md#roles) che il tuo ruolo vi ha,
 - quando **scade**: tra 30 o 90 giorni, tra un anno o mai.
 
-Il token (`sb_…`) viene mostrato una sola volta; copialo subito. Gli script
-lo inviano come `Authorization: Bearer sb_…` (o `X-API-Key: sb_…`). Può fare
-ciò che hai scelto e mai più del tuo ruolo nella società: se perdi un
-diritto o lasci la società, il token lo perde subito. Non raggiunge mai la
-tua password, la tua e-mail, il tuo account o altri token. `GET /api/token`
-dice a uno script nome, diritti e società del suo token. Un token fa al
-massimo 600 richieste in cinque minuti. L’elenco mostra quando ogni token è
-stato usato l’ultima volta; revocarlo lo ferma subito. Gli sviluppatori
-trovano gli endpoint sotto `/api/docs`.
+Il token (`sb_…`) viene mostrato una sola volta; copialo subito. Può fare
+ciò che hai scelto e mai più del tuo ruolo nella società: se perdi
+un’autorizzazione o lasci la società, il token la perde subito. Non
+raggiunge mai la tua password, la tua e-mail, il tuo account o altri
+token. L’elenco mostra quando ogni token è stato usato l’ultima volta;
+revocarlo lo ferma subito. Come lo inviano gli script, cosa raggiunge e i
+suoi limiti: [Usare un token](../reference/permissions.md#token-use).
 
 ## Secondo fattore {#totp}
 
-Un’app di autenticazione (Google Authenticator, Aegis, 1Password e simili)
-può proteggere il tuo accesso: dopo la password, Standblatt chiede il codice
-a sei cifre mostrato dall’app. Configurala sotto [Account](#account):
-**Configura**, scansiona il codice QR, inserisci il codice attuale,
-**Attiva**. **Disattiva** chiede la tua password. Telefono perso? Il gestore
-può azzerare il secondo fattore nel pannello di amministrazione. Il gestore
-può anche disattivare la funzione per tutto il server.
+Un’app di autenticazione può proteggere il tuo accesso con un codice a sei
+cifre dopo la password; per configurarla, disattivarla o rimediare a un
+telefono perso vedi [Proteggere l’accesso con un secondo
+fattore](../how-to/two-factor.md). Il gestore può anche disattivare la
+funzione per l’intero server.
 
 ## Lingua
 

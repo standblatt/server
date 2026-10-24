@@ -21,8 +21,10 @@ sue pagine, e *Torna alla manifestazione* riporta allo svolgimento:
 | Pagine dei moduli | p. es. **Prenotazioni** (con la prenotazione online), **Classifiche generali**, **Display chiosco**, **Link aiutante**, solo finché il modulo è attivo |
 | **Copia e chiudi** | copiare per l’anno prossimo, chiudere, riaprire ed eliminare |
 
-La configurazione richiede il diritto *Configurare le manifestazioni*,
-l’esercizio *Gestire le manifestazioni* (vedi [Ruoli](users.md#roles)).
+La configurazione richiede il permesso *Configurare le manifestazioni*, lo
+svolgimento *Gestire le manifestazioni* (vedi
+[Ruoli](users.md#roles)). Perché le due cose sono separate: [Configurazione
+e svolgimento](../explanation/modules.md#configuration).
 
 ## Impostazioni {#settings}
 
@@ -36,86 +38,66 @@ l’esercizio *Gestire le manifestazioni* (vedi [Ruoli](users.md#roles)).
 | Organizzatore | stampato sui documenti |
 | Lingua dei documenti e del chiosco | lingua dei PDF, delle esportazioni CSV e degli schermi chiosco, indipendente dalla lingua d’interfaccia di ogni utente |
 
+Gli orari di tiro danno anche alla prenotazione online le sue fasce, a meno
+che la prenotazione fissi altri orari per un giorno (vedi [prenotazione
+online](online-booking.md)).
+
+Passo per passo per una stagione: [Gestire un programma annuale durante la
+stagione](../how-to/annual-programme.md), [Organizzare un Tiro in campagna
+su un periodo](../how-to/feldschiessen.md).
+
 ## Moduli {#modules}
 
-Non ogni manifestazione ha bisogno di tutto: una festa di tiro prenota
-bersagli e consegna carte corona, un programma annuale raccoglie solo
-risultati. **Moduli** attiva e disattiva gli elementi della manifestazione;
-ciò che è disattivato scompare dalla barra laterale, dalla dashboard,
-dall’editor dei programmi, dalle classifiche e dai rapporti.
+**Moduli** attiva e disattiva gli elementi costitutivi della manifestazione; perché le manifestazioni si distinguono solo per i loro moduli è spiegato in [Moduli e tipi di manifestazione](../explanation/modules.md).
 
 ![I moduli di una manifestazione](../images/screenshots/modules.png){
 .screenshot }
 
-| Modulo | Cosa aggiunge |
-|---|---|
-| Assegnazione dei bersagli | i tiratori vengono iscritti su bersagli: la griglia dei bersagli sulla dashboard, lo stato dei bersagli sui display chiosco e i link per marcatori (richiede uno stand; vedi sotto) |
-| Prenotazioni | bersagli riservati a gruppi e società; la sua pagina nella configurazione attiva la [prenotazione online](online-booking.md), con cui le società chiedono bersagli tramite un link pubblico (richiede uno stand) |
-| Foglio di stand, Striscia di controllo | i documenti stampati all’iscrizione; la striscia di controllo può stamparsi con un [modello di stampa](print-forms.md#builtin) della società |
-| Distribuzione munizioni | il pulsante **Munizione** sulla dashboard e per la distribuzione munizioni (vedi [Aiutanti](helpers.md#ammunition)); lascialo disattivato dove i tiratori portano le proprie, p. es. pistola e carabina ad aria compressa |
-| Tentativi | programmi che si possono sparare più volte (vedi [Programmi](programmes.md#attempts)) |
-| Distinzioni | carte corona, premi in natura e premi in denaro; la sua impostazione *Stampa il valore della distinzione sulle carte corona* mette il valore in cifre e lettere sulla carta, *Modello delle carte corona* sceglie un [modello di stampa](print-forms.md#builtin) della società |
-| Premi speciali | i migliori ranghi di ogni categoria d’età (attiva Distinzioni, vedi [Programmi](programmes.md#special-prizes)) |
-| Concorso di sezione | le società classificate secondo i risultati dei loro tiratori; la sua impostazione *Società esclusa dal concorso di sezione* è di solito la società organizzatrice, elencata *fuori concorso* |
-| Classifiche generali | classifiche su più programmi o tentativi (vedi [Classifiche generali](classifications.md)) |
-| Display chiosco | classifiche su schermi nella sala (vedi [Classifiche e chiosco](rankings-kiosk.md)) |
-| Link aiutante | marcatori, distribuzione munizioni e registrazione risultati senza account (vedi [Aiutanti](helpers.md)) |
+Ogni modulo è una scheda con il suo interruttore; le impostazioni di un
+modulo, p. es. *Stampa il valore della distinzione sulle carte corona* di
+*Distinzioni*, si trovano sulla sua scheda. Cosa aggiunge ogni modulo, le
+sue impostazioni e quando resta attivo:
+[Moduli](../reference/modules.md#event-modules).
 
 Quando crei una manifestazione, scegli di che tipo è; questo attiva solo dei
-moduli:
+moduli (vedi [Tipi di manifestazione](../reference/modules.md#kinds)).
 
-| Tipo | Moduli |
-|---|---|
-| Tiro di festa | Assegnazione dei bersagli, Prenotazioni, Foglio di stand, Striscia di controllo, Distinzioni, Premi speciali, Concorso di sezione, Display chiosco, Link aiutante |
-| Programma annuale o allenamento | Tentativi, Classifiche generali |
-| Tiro in campagna | Assegnazione dei bersagli, Distinzioni, Concorso di sezione, Display chiosco, Link aiutante |
-| Campionato sociale | Tentativi, Classifiche generali, Display chiosco |
-| Selezione personalizzata | nessuno |
-
-Un modulo che contiene dati resta attivo: disattiva il chiosco solo dopo
-averne eliminato i link chiosco, le distinzioni solo quando nessun programma
-ha livelli di distinzione, e così via; la scheda indica perché il suo
-interruttore è bloccato; Prenotazioni resta attivo finché il link della
-prenotazione online è attivo. Un modulo di cui un altro ha bisogno
-(Distinzioni per Premi speciali) resta attivo finché lo è quest’ultimo.
-
-Gli orari di tiro danno anche alla prenotazione online le sue fasce, a meno
-che la prenotazione fissi altri orari per un giorno (vedi [prenotazione
-online](online-booking.md)).
+Un modulo che contiene dati resta attivo, e la scheda dice perché il suo
+interruttore è bloccato (vedi [Perché un modulo che contiene dati resta
+attivo](../explanation/modules.md#in-use)). Un modulo richiesto da un altro,
+p. es. *Distinzioni* per *Premi speciali* o *Assegnazione dei bersagli* per
+*Prenotazioni*, resta attivo finché lo è l’altro.
 
 ### Moduli della società {#club-modules}
 
 Alcuni moduli appartengono alla società invece che a una
 manifestazione. **Moduli della società** nella parte società della barra
-laterale (diritto *Utenti e società*) li attiva e disattiva:
-
-| Modulo | Cosa aggiunge |
-|---|---|
-| Modelli di stampa | modelli per fogli prestampati e la sezione *Modello di stampa* di ogni programma (vedi [Modelli di stampa](print-forms.md)) |
+laterale (permesso *Utenti e società*) li attiva e disattiva; per ora si
+tratta di *Modelli di stampa* (vedi [Modelli di
+stampa](print-forms.md)). Cosa aggiunge ognuno e quando resta attivo:
+[Moduli della società](../reference/modules.md#club-modules); perché
+appartengono alla società: [Moduli della società e moduli della
+manifestazione](../explanation/modules.md#club-modules).
 
 ## Manifestazioni senza bersagli {#no-lanes}
 
-Una manifestazione senza bersagli, p. es. un programma annuale o un Tiro in
-campagna i cui risultati arrivano su carta o dall’impianto di segnalazione,
-o non ha uno stand o disattiva il modulo *Assegnazione dei bersagli*. Allora
-non c’è la griglia dei bersagli, né prenotazioni né link per marcatori; i
-tiratori vengono iscritti senza bersaglio e i loro risultati si registrano
-come di consueto. Con uno stand ma senza assegnazione dei bersagli, i
-documenti si stampano ancora sull’agente di stampa dello stand e i programmi
-si possono ancora legare allo stand; senza stand, i documenti si aprono in
-PDF, perché gli agenti di stampa appartengono a uno stand.
+Una manifestazione senza bersagli non ha stand, o disattiva *Assegnazione
+dei bersagli*; cosa significa ogni scelta è spiegato in [Manifestazioni con
+e senza bersagli](../explanation/modules.md#lanes).
 
 ## Copia per l’anno prossimo {#copy}
 
-In **Copia e chiudi** nella configurazione, **Copia per l’anno prossimo**
-crea una nuova manifestazione con gli stessi stand, organizzatore, lingua,
-impostazioni, moduli e tutti i programmi, compresi prezzi, distinzioni,
-combinazioni e premi speciali, e le [classifiche
+In **Copia e chiudi** nella configurazione, **copia** sotto *Copia per
+l’anno prossimo* crea una nuova manifestazione con gli stessi stand,
+organizzatore, lingua, impostazioni, moduli e tutti i programmi, compresi
+prezzi, distinzioni, combinazioni e premi speciali, e le [classifiche
 generali](classifications.md); i giorni di tiro e il periodo si spostano con
 la data, gli orari di tiro settimanali restano sui loro giorni della
-settimana. Iscrizioni, risultati e link chiosco non vengono copiati. La
-finestra propone il nome con l’anno (e un numero iniziale come *42.*)
-incrementato e la data un anno dopo; adatta entrambi se necessario.
+settimana. Iscrizioni, risultati, link chiosco, link aiutante e il link di
+prenotazione non vengono copiati. Il dialogo *Copia manifestazione* propone
+il nome e la data un anno dopo; **Crea copia** crea la manifestazione. Passo
+per passo: [Riprendere la manifestazione dell’anno
+scorso](../how-to/next-year.md#copy).
 
 ![Copiare una manifestazione](../images/screenshots/copy-event.png){
 .screenshot }
@@ -125,31 +107,25 @@ incrementato e la data un anno dopo; adatta entrambi se necessario.
 Una manifestazione ben configurata può diventare un **modello** della
 società: **Salva come modello** in **Copia e chiudi** ne crea una copia con
 i suoi moduli, impostazioni, stand, programmi e classifiche generali, con il
-nome della manifestazione senza l’anno. I modelli sono elencati sotto
-*Modelli* sotto le manifestazioni; un modello si apre nella sua
-configurazione e si modifica come una manifestazione, ma non accetta
-iscrizioni. **Nuova manifestazione** propone i modelli della società sotto i
-tipi integrati: scegline uno, poi dai alla nuova manifestazione il suo nome
-e la sua data. **Elimina** in **Copia e chiudi** del modello lo rimuove.
+nome della manifestazione senza l’anno. I modelli sono elencati in *Modelli*
+sotto le manifestazioni; un modello si apre nella sua configurazione e si
+modifica come una manifestazione, ma non accetta iscrizioni. **Nuova
+manifestazione** elenca i modelli della società sotto i tipi (vedi [Partire
+da un modello della società](../how-to/next-year.md#template)). **Elimina**
+in **Copia e chiudi** del modello lo rimuove.
 
 ![Nuova manifestazione con i tipi e un modello della
 società](../images/screenshots/new-event.png){ .screenshot }
 
 ## Chiudere {#close}
 
-Quando la manifestazione è finita e le classifiche sono controllate,
-**chiudila** in **Copia e chiudi** nella configurazione (**Chiudi la
-manifestazione**). La chiusura pubblica le classifiche: i tiratori con un
-[diario di allenamento personale](../my-training/account.md#competitions)
-trovano ora i loro risultati di questa manifestazione, con il rango nel
-programma, e possono aggiungerli al diario. Tutto resta visibile (dashboard,
-risultati, classifiche, rapporti, documenti), ma iscrizioni, risultati,
-distinzioni, programmi e impostazioni non possono più essere modificati. Un
-banner su ogni pagina della manifestazione lo segnala. **Riapri** la rende
-di nuovo modificabile; i risultati che i tiratori hanno già aggiunto al
-diario restano. Copiare una manifestazione chiusa per l’anno prossimo
-funziona.
+Quando una manifestazione è finita e le classifiche sono controllate,
+**Chiudi la manifestazione** in **Copia e chiudi** nella configurazione la
+chiude; un banner su ogni pagina della manifestazione lo indica, e
+**Riapri** la rende di nuovo modificabile. Cosa significa la chiusura per le
+classifiche, Il mio allenamento e le modifiche: [Chiudere una
+manifestazione](../explanation/closing.md).
 
 ## Eliminare
 
-**Elimina** (in **Copia e chiudi**) rimuove una manifestazione, ma solo finché nessuno è iscritto.
+**Elimina** (in **Copia e chiudi**) rimuove una manifestazione, ma solo finché nessuno è iscritto. Una manifestazione chiusa non può essere eliminata; riaprila prima.

@@ -31,13 +31,10 @@ Scheibe schiesst, wer wartet, wer fertig ist.
 - *Wartend* und *Abgeschlossen* zeigen 50 Anmeldungen pro Seite; die Pfeile
   unter der Liste blättern weiter.
 
-Alles aktualisiert sich live: Ein an einem anderen Computer erfasstes
-Resultat oder eine beginnende Reservation erscheint ohne Neuladen. Der Punkt
-neben **live** in der Kopfzeile zeigt die Verbindung; nach einem
-Netzunterbruch holt die Seite selbst auf. Ohne Verbindung weist ein roter
-Balken darauf hin; dann lässt sich nichts speichern, aber offene Dialoge
-behalten deine Eingaben, sodass du wieder speichern kannst, sobald du online
-bist.
+Alles aktualisiert sich live; der Punkt neben **live** im Kopf zeigt die
+Verbindung (siehe [Live-Aktualisierung](../explanation/data.md#live)). Ohne
+Verbindung sagt das ein roter Balken, und nichts lässt sich speichern (siehe
+[Offline](../explanation/data.md#offline)).
 
 ## Suchen und scannen
 
@@ -55,6 +52,8 @@ Drücke irgendwo im Dashboard ++f4++, um ins Suchfeld zu springen.
 - Ein Handscanner, der den [Anmeldecode](../reference/codes.md) auf einem
   Standblatt oder Kontrollstreifen liest, tippt den Code und Enter: Die
   Resultate dieser Anmeldung öffnen sich direkt.
+
+Alle Tasten: [Tastatur und Scanner](../reference/shortcuts.md#dashboard).
 
 ## Schiessen beenden
 

@@ -37,27 +37,10 @@ aussitôt.
 
 ![Rôles](../images/screenshots/roles.png){ .screenshot }
 
-| Droit | Permet |
-|---|---|
-| **Voir les manifestations et les classements** | manifestations, programmes, classements et classements généraux |
-| **Gérer les manifestations** | inscriptions, résultats, distinctions, réservations, documents et impression |
-| **Configurer les manifestations** | créer, configurer, copier, clôturer et supprimer des manifestations, avec programmes, classements généraux, liens kiosque et d’aide et réservation en ligne |
-| **Statistiques et rapports** | statistiques, rapports avec montants et classements en CSV |
-| **Voir les tireurs et les sociétés** | les données personnelles des données de base |
-| **Modifier les tireurs et les sociétés** | saisir et modifier des tireurs et des sociétés |
-| **Gérer les données de base** | importer des tireurs, renommer, fusionner et supprimer des sociétés, supprimer des tireurs |
-| **Stands et imprimantes** | stands de tir, agents d’impression et réglages des imprimantes |
-| **Modèles d’impression** | modèles d’impression et images (seulement tant que le module de la société est activé) |
-| **Utilisateurs et société** | utilisateurs, rôles, invitations et modules de la société |
-
-Chaque société commence avec quatre rôles :
-
-| Rôle | Droits |
-|---|---|
-| **Admin** | tous ; la colonne ne peut pas être modifiée et le rôle ne peut pas être supprimé |
-| **Comité** | tous sauf *Stands et imprimantes* et *Utilisateurs et société* |
-| **Aide** | voir et gérer les manifestations, statistiques, voir et modifier les tireurs et les sociétés |
-| **Membre** | voir les manifestations et les classements |
+Chaque droit et ce qu’il permet :
+[Droits](../reference/permissions.md#permissions). Chaque société commence
+avec les rôles **Admin**, **Comité**, **Aide** et **Membre** (voir [Rôles
+par défaut](../reference/permissions.md#default-roles)).
 
 **Nouveau rôle** ajoute un rôle propre, qui ne voit que les manifestations tant que vous ne cochez pas davantage. Le crayon renomme un rôle (un nom vide garde le nom par défaut), la corbeille le supprime dès que plus personne ne l’a. L’application ne montre à chaque membre que les pages et boutons que son rôle permet : un membre sans *Gérer les manifestations* ouvre une manifestation sur ses classements.
 
@@ -67,6 +50,7 @@ seulement avec des rôles dont ils ont eux-mêmes les droits, et ne créent ou
 modifient des rôles que dans ces limites. Seuls les admins nomment,
 modifient ou retirent donc des admins.
 
-Les comptes sont globaux : un compte est supprimé par l’exploitant de la
-plateforme dans le panneau d’administration. Pour un mot de passe oublié,
-voir [Mot de passe oublié](login-language.md#password).
+Les comptes sont globaux (voir [Un compte, un rôle par
+société](../explanation/data.md#accounts)) : un compte est supprimé par
+l’exploitant de la plateforme dans le panneau d’administration. Pour un mot
+de passe oublié, voir [Mot de passe oublié](login-language.md#password).

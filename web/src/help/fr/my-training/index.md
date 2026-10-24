@@ -5,6 +5,9 @@ l’utiliser, que sa société organise ou non des manifestations avec
 Standblatt. Il répond à une question : **mon entraînement porte-t-il ses
 fruits ?**
 
+Nouveau ici ? Commence par [Tutoriel : ta première séance
+d’entraînement](first-session.md).
+
 <div class="grid" markdown>
 
 ![Aujourd’hui sur un téléphone](../images/screenshots/my-today.png){

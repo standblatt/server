@@ -1,6 +1,6 @@
 # Stands de tir
 
-**Stands de tir** (admins) liste les stands de tir de la société.
+**Stands de tir** (droit *Stands et imprimantes*) liste les stands de tir de la société.
 
 ![Stands de tir](../images/screenshots/ranges.png){ .screenshot }
 
@@ -13,9 +13,13 @@
   cibles à partir de 1. Une manifestation peut se tirer sur les deux (voir
   [Manifestations](events.md)), un programme peut être lié à l’un d’eux
   (voir [Programmes](programmes.md)) et un agent d’impression peut servir
-  les deux (voir [Impression](printing.md)).
+  les deux (voir [Comment fonctionne
+  l’impression](../explanation/printing.md#range)).
 - **Configurer les imprimantes** ouvre les imprimantes et agents
   d’impression du stand (voir [Impression](printing.md)).
+
+Pour connecter une imprimante pas à pas : [Connecter une imprimante au
+stand](../how-to/connect-printer.md).
 
 Un stand avec des manifestations ne peut pas être supprimé. Les réservations
 de cibles appartiennent au stand et apparaissent dans toutes ses

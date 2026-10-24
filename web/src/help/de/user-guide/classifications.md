@@ -6,8 +6,9 @@ Schützen über mehrere Programme oder über mehrere
 Sektionsmeisterschaft als Summe von drei Programmen oder eine
 Vereinsmeisterschaft über die besten drei Durchgänge eines
 Jahresprogramms. Wertungen erscheinen unter **Ranglisten**, auf
-Kiosk-Anzeigen und als Bericht; sie ändern nie Resultate oder
-Auszeichnungen.
+Kiosk-Anzeigen und als Bericht; wie sie mit den Programm-Ranglisten
+zusammenhängen, erklärt [Wie die Ranglisten
+zusammenhängen](../explanation/rankings.md#classifications).
 
 ## Eine Wertung erstellen {#create}
 
@@ -43,8 +44,10 @@ Editor:
 
 | Anlass | Programme | Einstellungen |
 |---|---|---|
-| Sektionsmeisterschaft | Obligatorisch, Feldschiessen, Sektionsstich | je zählende Durchgänge 1, *Nur Schützen mit allen zählenden Resultaten rangieren* |
-| Vereinsmeisterschaft über die Saison | Jahresprogramm mit unbegrenzten Durchgängen | zählende Durchgänge 3 |
 | Schützenfest, beste zwei Stiche | drei Stiche | *Nur die besten Programme zählen* 2 |
+
+Schritt für Schritt: [Eine Sektionsmeisterschaft über mehrere Programme
+rangieren](../how-to/section-championship.md) und [Ein Jahresprogramm über
+die Saison durchführen](../how-to/annual-programme.md#classification).
 
 **Für nächstes Jahr kopieren** kopiert die Wertungen mit den Programmen. Wird ein Programm gelöscht, verschwindet es aus den Wertungen.

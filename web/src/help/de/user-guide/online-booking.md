@@ -8,9 +8,9 @@ meldet seine Schützen. Ein Admin bestätigt oder lehnt jede Anfrage ab.
 ## Einschalten {#setup}
 
 Die Online-Reservation ist Teil des Moduls *Reservationen* (es braucht einen
-Stand): Auf **Reservationen** in der Konfiguration genügt
-**Einschalten**. Die Seite zeigt dann den Link mit einem QR-Code für die
-Einladung und die angebotenen Zeitblöcke.
+Schiessstand und die *Scheibenzuteilung*): Auf **Reservationen** in der
+Konfiguration genügt **Einschalten**. Die Seite zeigt dann den Link mit
+einem QR-Code für die Einladung und die angebotenen Zeitblöcke.
 
 ![Online-Reservation in der
 Konfiguration](../images/screenshots/booking-setup.png){ .screenshot }

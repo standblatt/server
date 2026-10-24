@@ -24,18 +24,22 @@ lassen sie sich mischen:
    (siehe [Programme](programmes.md)), und drücke ++enter++.
 
 Das Resultat wird sofort gespeichert, und der Schütze erscheint unter
-*Soeben erfasst* mit einem Link zu den Resultaten. War der Schütze am
-Schalter für dieses Programm angemeldet und hat noch keine Resultate, kommen
-die Resultate in diese Anmeldung; sonst wird eine Anmeldung ohne Scheibe
-erstellt, bereits abgeschlossen. Ein Schütze kann in einem Programm nur
-einmal Resultate haben, ausser das Programm erlaubt mehrere
-[Durchgänge](programmes.md#attempts): Dann ist jedes weitere Resultat ein
-neuer Durchgang, bis keiner mehr übrig ist.
+*Soeben erfasst* mit einem Link zu den Resultaten; bei einem Programm mit
+[Druckvorlage](print-forms.md) bietet die Zeile **Auf Vorlage drucken**
+an. War der Schütze am Desk für dieses Programm angemeldet und hat noch
+keine Resultate, kommen die Resultate in diese Anmeldung; sonst wird eine
+Anmeldung ohne Scheibe erstellt, bereits abgeschlossen. Ein Schütze kann in
+einem Programm nur einmal Resultate haben, ausser das Programm erlaubt
+mehrere [Durchgänge](programmes.md#attempts): Dann ist jedes weitere
+Resultat ein neuer Durchgang, bis keiner mehr übrig ist.
 
 Auszeichnungen werden wie gewohnt gewählt: Die wertvollste erreichte
 Auszeichnung wird automatisch gesetzt und lässt sich in den Resultaten
 ändern.
 
+Tasten und Scanner: [Tastatur und
+Scanner](../reference/shortcuts.md#quick-entry).
+
 ## Import aus einer Datei {#import}
 
-**CSV importieren** (Admins) unter **Resultate erfassen** liest eine Datei mit einer Zeile pro Schütze und Programm, z. B. aus der Trefferanzeige exportiert oder in einer Tabellenkalkulation getippt; die Spalten stehen unter [CSV-Import](../reference/csv-import.md#results). Jede Zeile wird zuerst geprüft: Bei einem Fehler wird nichts importiert, und der Dialog listet die zu korrigierenden Zeilen. Schützen, die nicht in den Stammdaten sind, werden angelegt; ein Verein muss schon in der Vereinsliste stehen.
+**CSV importieren** (Recht *Anlässe konfigurieren*) unter **Resultate erfassen** liest eine Datei mit einer Zeile pro Schütze und Programm, z. B. aus der Trefferanzeige exportiert oder in einer Tabellenkalkulation getippt; die Spalten stehen unter [CSV-Import](../reference/csv-import.md#results). Jede Zeile wird zuerst geprüft; bei einem Fehler wird nichts importiert. Schritt für Schritt und wie man Zeilenfehler behebt: [Resultate aus der Trefferanzeige importieren](../how-to/import-results.md).

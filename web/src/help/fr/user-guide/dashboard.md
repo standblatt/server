@@ -30,13 +30,11 @@ sur quelle cible, qui attend, qui a terminé.
 - *En attente* et *Terminé* affichent 50 inscriptions par page ; les flèches
   sous la liste tournent les pages.
 
-Tout se met à jour en direct : un résultat saisi sur un autre ordinateur ou
-une réservation qui commence apparaît sans recharger. Le point à côté de
-**live** dans l’en-tête montre la connexion ; après une interruption du
-réseau, la page se met à jour d’elle-même. Sans connexion, une barre rouge
-le signale ; rien ne peut alors être enregistré, mais les dialogues ouverts
-gardent ce que tu as saisi, pour que tu puisses enregistrer à nouveau dès
-que tu es de retour en ligne.
+Tout se met à jour en direct ; le point à côté de **en direct** dans
+l’en-tête indique la connexion (voir [Mises à jour en
+direct](../explanation/data.md#live)). Sans connexion, une barre rouge le
+signale et rien ne peut être enregistré (voir [Hors
+ligne](../explanation/data.md#offline)).
 
 ## Rechercher et scanner
 
@@ -55,6 +53,9 @@ de recherche.
 - Un scanner manuel qui lit le [code d’inscription](../reference/codes.md)
   sur une feuille de stand ou une bande de contrôle tape le code et Entrée :
   les résultats de cette inscription s’ouvrent directement.
+
+Toutes les touches : [Clavier et
+scanner](../reference/shortcuts.md#dashboard).
 
 ## Terminer le tir
 

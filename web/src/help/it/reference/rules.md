@@ -2,13 +2,27 @@
 
 Questa pagina descrive le regole esattamente come Standblatt le implementa.
 
-## Categoria d’età
+## Categoria d’età {#age-categories}
 
-La categoria risulta da *anno della manifestazione − anno di nascita*; vedi
-la tabella in
-[Concetti](../getting-started/concepts.md#age-categories). Senza data di
-nascita un tiratore conta come élite. La categoria viene fissata
+La categoria risulta da *anno della manifestazione − anno di nascita*. Senza
+data di nascita un tiratore conta come Élite. La categoria viene fissata
 all’iscrizione.
+
+| Categoria | Abbr. | Età nell’anno della manifestazione |
+|---|---|---|
+| U10 | U10 | fino a 9 |
+| U13 | U13 | 10–12 |
+| U15 | U15 | 13–14 |
+| U17 | U17 | 15–16 |
+| U19 | U19 | 17–18 |
+| U21 | U21 | 19–20 |
+| Élite | E | 21–45 |
+| Seniori | S | 46–59 |
+| Veterani | V | 60–69 |
+| Seniori-veterani | SV | 70 e oltre |
+
+L’anno della manifestazione è l’anno del giorno principale della
+manifestazione, anche per giorni di tiro in un altro anno.
 
 ## Iscrizione
 

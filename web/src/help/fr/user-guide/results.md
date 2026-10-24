@@ -7,9 +7,8 @@ tableau de bord ou en scannant le code de la feuille de stand.
 
 ## Saisir les passes
 
-- Le curseur commence dans la première passe vide. Dès qu’un chiffre de plus
-  dépasserait le maximum de la passe, il passe au champ suivant, si bien
-  qu’une suite comme `96 93 97 88` se tape sans souris.
+- Le curseur commence dans la première passe vide et avance tout seul (voir
+  [Clavier et scanner](../reference/shortcuts.md#results)).
 - Les passes qui comptent les mouches ont un second champ pour elles.
 - Les passes avec coups individuels affichent un champ par coup sous la
   passe ; la passe en devient la somme. Saisis chaque coup ou aucun : sans
@@ -21,6 +20,10 @@ tableau de bord ou en scannant le code de la feuille de stand.
 
 Un programme combiné montre quelles passes il reprend de son programme
 source et se remplit automatiquement dès que la source a des résultats.
+
+Un programme terminé avec un [modèle d’impression](print-forms.md) affiche
+**Imprimer sur le modèle**, qui imprime ses résultats sur la feuille
+préimprimée.
 
 Quand chaque programme a des résultats, l’inscription est terminée et sa
 cible de nouveau libre. **Imprimer la feuille de résultats** imprime un
@@ -41,16 +44,4 @@ lettres).
 
 ## Remettre les distinctions {#handout}
 
-Quand le tireur retire cartes-couronnes, prix et espèces au guichet, appuie
-sur **Distinctions remises** dans le dialogue des résultats, qui liste les
-distinctions de chaque programme ; le badge *distinctions à remettre* dans
-la liste *Terminés* du tableau de bord ouvre ce dialogue. L’inscription
-porte alors l’heure de la remise et un badge vert *distinctions remises* ;
-jusque-là elle montre *distinctions à remettre*. Un clic malencontreux se
-reprend avec **Reprendre** dans le dialogue des résultats ou en cliquant sur
-le badge vert du tableau de bord (membres de la société seulement, pas les
-liens d’aide) ; il en va de même pour le badge *munition*. Le rapport
-**Distinctions à remettre** (voir [Statistiques et
-rapports](statistics-reports.md)) liste ce qui reste ouvert et les espèces à
-verser. La saisie des résultats avec un [lien d’aide](helpers.md) peut aussi
-marquer les distinctions comme remises.
+**Distinctions remises** dans le dialogue des résultats enregistre la remise ; l’inscription affiche alors un badge vert *distinctions remises*, jusque-là *distinctions à remettre*. **Reprendre** l’annule. Étapes et rapport des distinctions ouvertes : [Remettre les distinctions et les prix en espèces](../how-to/hand-out-awards.md).

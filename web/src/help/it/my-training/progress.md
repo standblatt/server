@@ -17,7 +17,7 @@ su 50 colpi.
 : punti per colpo su tutte le sessioni degli ultimi 30 giorni. La freccia mostra la variazione rispetto ai 30 giorni precedenti.
 
 **Record personale**
-: il totale più alto tra le sessioni con il numero di colpi standard della disciplina, p. es. 60 per la pistola ad aria. Toccalo per aprire la sessione.
+: il totale più alto tra le sessioni con il numero di colpi standard della disciplina, p. es. 50 per la pistola ad aria compressa. Toccalo per aprire la sessione.
 
 **Sessioni**
 : numero di sessioni e colpi registrati in questa disciplina.
