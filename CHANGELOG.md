@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Chore
+- Deps updates (by @dependabot)
+
 ### Fixed
 - On iPhones, date and time fields keep the width and height of the fields next to them instead of reaching into them, e.g. *When* and *Where* when saving a training session (by @HB9HIL)
 - The server refuses changing requests a browser sends from another origin, so a page on another subdomain can no longer submit a file upload (shooter or result import, images) with the session of a logged-in user (by @HB9HIL)
