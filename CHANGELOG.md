@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Refactored documentation (by @HB9HIL)
 
+### Fixed
+- The help shows keys such as F4 and Enter as keys and term lists as lines instead of their raw markup (by @HB9HIL)
+- The placeholder examples of print forms use an invented place instead of a real one (by @HB9HIL)
+- The German *Copy* button is capitalised (by @HB9HIL)
+
 ## [0.22.3] - 2026-10-24
 
 ### Chore
