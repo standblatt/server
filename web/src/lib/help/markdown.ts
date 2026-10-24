@@ -69,7 +69,8 @@ function sections(md: string): Section[] {
  * Turns the Zensical-flavoured markdown of the help pages into what marked understands: images with
  * { .screenshot } become <img> tags, `!!! kind "Title"` blocks become boxes, and `markdown` attributes of
  * raw <div> blocks are dropped and their classes get a help- prefix (marked parses markdown between block tags that
- * stand on their own lines; `grid` would otherwise be Tailwind's utility).
+ * stand on their own lines; `grid` would otherwise be Tailwind's utility), ++key++ becomes <kbd> and a
+ * `**Term**` line followed by `: text` becomes one line.
  */
 function prepare(md: string): string {
 	return md
@@ -81,7 +82,9 @@ function prepare(md: string): string {
 			const text = body.replace(/^ {4}/gm, '').trim();
 			return `<div class="admonition ${kind}">\n\n${title ? `**${title}**\n\n` : ''}${text}\n\n</div>\n\n`;
 		})
-		.replace(/<div class="([^"]*)"\s+markdown(?:="1")?>/g, (_, classes: string) => `<div class="${classes.split(/\s+/).map((c) => `help-${c}`).join(' ')}">`);
+		.replace(/<div class="([^"]*)"\s+markdown(?:="1")?>/g, (_, classes: string) => `<div class="${classes.split(/\s+/).map((c) => `help-${c}`).join(' ')}">`)
+		.replace(/\+\+(\w+)\+\+/g, (_, key: string) => `<kbd>${key.charAt(0).toUpperCase()}${key.slice(1)}</kbd>`)
+		.replace(/^(\*\*[^*\n]+\*\*)\n: /gm, '$1: ');
 }
 
 /** The URL of an image of the pages: /help/<folder>/<file>, e.g. screenshots/ (written by make docs) or app/. */

@@ -222,6 +222,9 @@ body::before {
 	.help-prose code {
 		@apply rounded bg-muted px-1 py-0.5 font-mono text-[0.85em];
 	}
+	.help-prose kbd {
+		@apply rounded border bg-muted px-1 py-0.5 font-mono text-[0.85em];
+	}
 	.help-prose pre {
 		@apply overflow-x-auto rounded-md bg-muted p-3 text-sm;
 	}
