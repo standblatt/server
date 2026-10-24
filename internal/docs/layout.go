@@ -118,7 +118,7 @@ func SampleValues(source string) map[string]string {
 	v := map[string]string{
 		"shooter.firstname": "Anna", "shooter.lastname": "Example", "shooter.name": "Example Anna",
 		"shooter.license": "123456", "shooter.birthday": "02.06.1985", "shooter.birthyear": "1985",
-		"shooter.postalcode": "9050", "shooter.city": "Appenzell",
+		"shooter.postalcode": "9999", "shooter.city": "Hilltown",
 		"club": "SG Hilltown", "club.ssv": "1.23.4.56",
 		"event.name": "Annual programme 2027", "event.date": "12.05.2027", "event.organizer": "SG Hilltown",
 		"category": "Elite", "today": "12.05.2027",
