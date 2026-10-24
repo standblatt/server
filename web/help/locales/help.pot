@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-19 18:07+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-24 19:22+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
 #: ../src/help/en/getting-started/concepts.md:1
@@ -22,7 +22,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/getting-started/concepts.md:6
 #, markdown-text
-msgid "A **club** is a tenant: everything in Standblatt belongs to exactly one club, and clubs never see each other's data. The platform operator creates clubs and user accounts in the [admin panel](../admin-guide/admin-panel.md)."
+msgid "A **club** is a tenant: everything in Standblatt belongs to exactly one club, and clubs never see each other's data. The platform operator creates clubs and user accounts in the admin panel."
 msgstr ""
 
 #. type: Plain text
@@ -136,7 +136,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/getting-started/first-event.md:4
 #, markdown-text
-msgid "This walk-through takes a club from an empty account to a running competition. It assumes the platform operator has created the club and your account as its admin (see [Admin panel](../admin-guide/admin-panel.md))."
+msgid "This walk-through takes a club from an empty account to a running competition. It assumes the platform operator has created the club and your account as its admin."
 msgstr ""
 
 #. type: Title ##
@@ -233,7 +233,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/getting-started/first-event.md:36
 #, markdown-text
-msgid "Still in the configuration, on **Kiosk displays**, create a kiosk link for each screen in the hall (see [Rankings and kiosk](../user-guide/rankings-kiosk.md)). Under Ranges → Printing, assign a printer to each document (see [Printing](../user-guide/printing.md))."
+msgid "Still in the configuration, on **Kiosk displays**, create a kiosk link for each screen in the hall (see [Rankings and kiosk](../user-guide/rankings-kiosk.md)). Under **Ranges → Set up the printers**, assign a printer to each document (see [Printing](../user-guide/printing.md))."
 msgstr ""
 
 #. type: Title ##
@@ -419,7 +419,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/my-training/account.md:14
 #, markdown-text
-msgid "Forgot your password? Use **Forgot your password?** on the login page. You get a link that is valid for one hour. Setting a new password logs you out everywhere. Logged in, you change the password under [Account](../user-guide/login-language.md#account)."
+msgid "Forgot your password? See [Forgotten password](../user-guide/login-language.md#password). Logged in, you change the password under [Account](../user-guide/login-language.md#account)."
 msgstr ""
 
 #. type: Plain text
@@ -1061,7 +1061,7 @@ msgstr ""
 #. type: Fenced code block (text)
 #: ../src/help/en/reference/csv-import.md:5
 #, no-wrap
-msgid "license;firstname;lastname;birthday;postalcode;city;club\n100100;Sandra;Example;1969-06-02;9050;Appenzell;PS Example\n"
+msgid "license;firstname;lastname;birthday;postalcode;city;club\n100100;Sandra;Example;1969-06-02;9999;Hilltown;PS Example\n"
 msgstr ""
 
 #. type: Plain text
@@ -1181,7 +1181,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/reference/rules.md:4
 #, markdown-text
-msgid "This page describes the rules exactly as Standblatt implements them. They live in `internal/domain` and are covered by unit tests."
+msgid "This page describes the rules exactly as Standblatt implements them."
 msgstr ""
 
 #. type: Title ##
@@ -1325,7 +1325,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/reference/rules.md:44
 #, markdown-text
-msgid "Ranks are consecutive (1, 2, 3, … even on equal results). The same ranking feeds the staff pages, kiosk screens, the ranking PDF and CSV, and special prizes. It was checked against the published rankings of the 2026 Appenzell air pistol championship: identical on all 260 lines."
+msgid "Ranks are consecutive (1, 2, 3, … even on equal results). The same ranking feeds the staff pages, kiosk screens, the ranking PDF and CSV, and special prizes."
 msgstr ""
 
 #. type: Title ##
@@ -1416,7 +1416,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/reference/rules.md:68
 #, markdown-text, no-wrap
-msgid "!!! example \"Appenzell air pistol championship\"\n    The brochure says: *\"In every category, ranks 1–3 receive a special prize, provided the category has at least 10 participants and the shooter's club at least 4.\"* That is ranks 3, category minimum 10, club minimum 4. Applied to the 2026 results, the rule reproduces the hand-made winner list.\n"
+msgid "!!! example \"From the brochure to the settings\"\n    A brochure says: *\"In every category, ranks 1–3 receive a special prize, provided the category has at least 10 participants and the shooter's club at least 4.\"* That is ranks 3, category minimum 10, club minimum 4.\n"
 msgstr ""
 
 #. type: Title ##
@@ -1630,27 +1630,9 @@ msgid "Finish shooting"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/dashboard.md:30
+#: ../src/help/en/user-guide/dashboard.md:29
 #, markdown-text, no-wrap
 msgid "**Finish** ends a registration before all results are in, for example when a shooter gives up or hands in the targets later. The registration moves to *Completed* and its lane becomes free; missing results can still be entered.\n"
-msgstr ""
-
-#. type: Title ##
-#: ../src/help/en/user-guide/dashboard.md:31
-#, markdown-text, no-wrap
-msgid "Dark mode"
-msgstr ""
-
-#. type: Plain text
-#: ../src/help/en/user-guide/dashboard.md:34
-#, markdown-text
-msgid "The sun/moon button in the header switches between light and dark mode; the choice is kept in the browser."
-msgstr ""
-
-#. type: Plain text
-#: ../src/help/en/user-guide/dashboard.md:35
-#, markdown-text
-msgid "![Dashboard in dark mode](../images/screenshots/dashboard-dark.png){ .screenshot }"
 msgstr ""
 
 #. type: Title #
@@ -1866,7 +1848,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/login-language.md:6
 #, markdown-text
-msgid "Log in with your email address (or user name) and password: you chose the password when you accepted the invitation of your club, or you received it from your club admin or the platform operator. Club accounts are not created by sign-up; only [My training](../my-training/account.md) has its own sign-up. Forgot your password? If your account has a confirmed email address, use **Forgot your password?** on the login page; otherwise ask the operator to set a new password in the [admin panel](../admin-guide/admin-panel.md). Logged in, you change it yourself under [Account](#account)."
+msgid "Log in with your email address (or user name) and password: you chose the password when you accepted the invitation of your club, or you received it from your club admin or the platform operator. Club accounts are not created by sign-up; only [My training](../my-training/account.md) has its own sign-up. Logged in, you change your password yourself under [Account](#account)."
 msgstr ""
 
 #. type: Plain text
@@ -1896,143 +1878,173 @@ msgstr ""
 #. type: Title ##
 #: ../src/help/en/user-guide/login-language.md:17
 #, markdown-text, no-wrap
-msgid "Account {#account}"
+msgid "Forgotten password {#password}"
 msgstr ""
 
 #. type: Plain text
 #: ../src/help/en/user-guide/login-language.md:20
+#, markdown-text
+msgid "If your account has a confirmed email address, use **Forgot your password?** on the login page. You get a link that is valid for one hour. Setting a new password logs you out everywhere. Without a confirmed email address, ask the operator to set a new password in the admin panel."
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/login-language.md:21
+#, markdown-text, no-wrap
+msgid "Account {#account}"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:24
 #, markdown-text, no-wrap
 msgid "**Account** in the user menu (bottom of the sidebar), on the start page and in My training's sidebar opens your account settings:\n"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:27
+#: ../src/help/en/user-guide/login-language.md:31
 #, markdown-text
 msgid "**Login**: your user name (it cannot be changed) and your email address. **Add** or **Change** asks for your password and sends a confirmation link; until you confirm, the address counts as *not confirmed* and **Send again** sends a new link. A confirmed address lets you reset a forgotten password yourself."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:27
+#: ../src/help/en/user-guide/login-language.md:31
 #, markdown-text
 msgid "**Password**: enter the current and the new password (at least 10 characters). Other devices are logged out, the one you are on stays."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:27
+#: ../src/help/en/user-guide/login-language.md:31
 #, markdown-text
 msgid "**Language and theme**: the interface language of your account and light or dark mode."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:27
+#: ../src/help/en/user-guide/login-language.md:31
 #, markdown-text
 msgid "**Second factor**: see below."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:27
+#: ../src/help/en/user-guide/login-language.md:31
 #, markdown-text
 msgid "**API tokens**: see below."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:27
+#: ../src/help/en/user-guide/login-language.md:31
 #, markdown-text
 msgid "**Delete account**: only for accounts that belong to no club; the training log, goals and settings are deleted for good. Club accounts are removed by the club admin."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:29
+#: ../src/help/en/user-guide/login-language.md:33
 #, markdown-text
 msgid "![Account](../images/screenshots/account.png){ .screenshot }"
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/login-language.md:30
+#: ../src/help/en/user-guide/login-language.md:34
 #, markdown-text, no-wrap
 msgid "API tokens {#api-tokens}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:33
+#: ../src/help/en/user-guide/login-language.md:37
 #, markdown-text
 msgid "Want to show the rankings on the club website, import sessions from another app or analyse data with your own script? Create a token under **Account → API tokens** with **New token**:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:39
+#: ../src/help/en/user-guide/login-language.md:43
 #, markdown-text
 msgid "a **name** that tells you later what uses it,"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:39
+#: ../src/help/en/user-guide/login-language.md:43
 #, markdown-text
 msgid "a **preset** fills in the permissions for a common use: **Rankings for a website**, **Training app** or **Read only**,"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:39
+#: ../src/help/en/user-guide/login-language.md:43
 #, markdown-text
 msgid "the **clubs** the token may use (none: only your training log),"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:39
+#: ../src/help/en/user-guide/login-language.md:43
 #, markdown-text
 msgid "the **permissions**: *Read my training log*, *Log and change my training sessions* and, for the chosen clubs, the [permissions of roles](users.md#roles) your own role has there,"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:39
+#: ../src/help/en/user-guide/login-language.md:43
 #, markdown-text
 msgid "when it **expires**: in 30 or 90 days, in a year, or never."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:41
+#: ../src/help/en/user-guide/login-language.md:45
 #, markdown-text
 msgid "The token (`sb_…`) is shown only once; copy it right away. Scripts send it as `Authorization: Bearer sb_…` (or `X-API-Key: sb_…`). It may do what you chose and never more than your role in the club: if you lose a permission or leave the club, the token loses it at once. It never reaches your password, email, account or other tokens. `GET /api/token` tells a script its name, permissions and clubs. A token makes at most 600 requests in five minutes. The list shows when each token was last used; revoking one stops it at once. Developers find the endpoints under `/api/docs`."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/login-language.md:42
+#: ../src/help/en/user-guide/login-language.md:46
 #, markdown-text, no-wrap
 msgid "Second factor {#totp}"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:45
+#: ../src/help/en/user-guide/login-language.md:49
 #, markdown-text
-msgid "An authenticator app (Google Authenticator, Aegis, 1Password and the like) can protect your login: after the password, Standblatt asks for the six-digit code the app shows. Set it up under [Account](#account): **Set up**, scan the QR code, enter the current code, **Switch on**. **Switch off** asks for your password. Lost the phone? The operator can reset the second factor in the [admin panel](../admin-guide/admin-panel.md). The operator can also switch the feature off for the whole server."
+msgid "An authenticator app (Google Authenticator, Aegis, 1Password and the like) can protect your login: after the password, Standblatt asks for the six-digit code the app shows. Set it up under [Account](#account): **Set up**, scan the QR code, enter the current code, **Switch on**. **Switch off** asks for your password. Lost the phone? The operator can reset the second factor in the admin panel. The operator can also switch the feature off for the whole server."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/login-language.md:46
+#: ../src/help/en/user-guide/login-language.md:50
 #, markdown-text, no-wrap
 msgid "Language"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:49
+#: ../src/help/en/user-guide/login-language.md:53
 #, markdown-text
 msgid "The interface is available in English, German, French and Italian. Without a choice, Standblatt follows the browser's language. **Language** in the user menu (bottom of the sidebar) sets it for your account on every device."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:51
+#: ../src/help/en/user-guide/login-language.md:55
 #, markdown-text
 msgid "Printed documents, CSV exports and kiosk screens do not follow your choice but the language of the event, so that every printout of an event looks the same (see [Events](events.md#settings))."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/login-language.md:52
+#: ../src/help/en/user-guide/login-language.md:56
+#, markdown-text, no-wrap
+msgid "Dark mode"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:59
+#, markdown-text
+msgid "The sun/moon button in the header switches between light and dark mode; the choice is kept in the browser."
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:61
+#, markdown-text
+msgid "![Dashboard in dark mode](../images/screenshots/dashboard-dark.png){ .screenshot }"
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/login-language.md:62
 #, markdown-text, no-wrap
 msgid "Version"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:54
+#: ../src/help/en/user-guide/login-language.md:64
 #, markdown-text
 msgid "The bottom of the sidebar shows the version of the server, which helps when reporting a problem; in My training on a phone it is under **Settings**. When a new version is released, open pages offer **Reload** within a minute and load it on the next page change at the latest."
 msgstr ""
@@ -2083,7 +2095,7 @@ msgstr ""
 #. type: Bullet: '1. '
 #: ../src/help/en/user-guide/printing.md:26
 #, markdown-text
-msgid "Connect a computer next to the printers: a Windows PC or a Mac with the [Standblatt Print Agent app](#app) by [code](#connect), or a Linux computer such as a Raspberry Pi with the [headless agent](../admin-guide/print-agent.md): **Add print agent**, give it a name and copy the token. One computer can serve several ranges, e.g. *Pistol 25 m* and *Pistol 50 m*: connect it to each range (the app with **Connect another range**, the headless agent with both tokens, separated by a comma)."
+msgid "Connect a computer next to the printers: a Windows PC or a Mac with the [Standblatt Print Agent app](#app) by [code](#connect), or a Linux computer such as a Raspberry Pi with the [headless agent](https://github.com/standblatt/print-agent): **Add print agent**, give it a name and copy the token. One computer can serve several ranges, e.g. *Pistol 25 m* and *Pistol 50 m*: connect it to each range (the app with **Connect another range**, the headless agent with both tokens, separated by a comma)."
 msgstr ""
 
 #. type: Bullet: '2. '
@@ -2305,7 +2317,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:41
 #, markdown-text
-msgid "A form that prints **A rank** makes certificates: **Certificates** in the header of every ranking and classification on **Rankings** asks for the form, the class of a classification and the ranks (1 to 3 unless changed), then prints one page per ranked shooter, or opens them as one PDF. Certificates go to the printer of *Certificates* under **Ranges → Printing**. The fields of a rank are the rank, the total, the ranking (the programme or classification) and the class; a programme's certificate knows its results too."
+msgid "A form that prints **A rank** makes certificates: **Certificates** in the header of every ranking and classification on **Rankings** asks for the form, the class of a classification and the ranks (1 to 3 unless changed), then prints one page per ranked shooter, or opens them as one PDF. Certificates go to the printer of *Certificates* under **Ranges → Set up the printers**. The fields of a rank are the rank, the total, the ranking (the programme or classification) and the class; a programme's certificate knows its results too."
 msgstr ""
 
 #. type: Plain text
@@ -2389,7 +2401,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:75
 #, markdown-text
-msgid "Under **Configuration** → **Programmes** of the event, open a programme and choose its **Print form** in the section of the same name; this works while shooters are registered. Every completed programme then offers **Print onto form** in the results: at the desk, on the **Enter results** page and on scorer links at the lane (see [Helpers](helpers.md)). With a print agent and a printer chosen for *Print forms* under **Ranges → Printing**, the sheet goes to that printer (e.g. its manual feed), otherwise the PDF opens (see [Printing](printing.md))."
+msgid "Under **Configuration** → **Programmes** of the event, open a programme and choose its **Print form** in the section of the same name; this works while shooters are registered. Every completed programme then offers **Print onto form** in the results: at the desk, on the **Enter results** page and on scorer links at the lane (see [Helpers](helpers.md)). With a print agent and a printer chosen for *Print forms* under **Ranges → Set up the printers**, the sheet goes to that printer (e.g. its manual feed), otherwise the PDF opens (see [Printing](printing.md))."
 msgstr ""
 
 #. type: Plain text
@@ -3536,5 +3548,5 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/users.md:48
 #, markdown-text
-msgid "Accounts are global: deleting an account is done by the platform operator in the [admin panel](../admin-guide/admin-panel.md). A forgotten password is reset with **Forgot your password?** on the login page if the account has a confirmed email address, otherwise by the operator."
+msgid "Accounts are global: deleting an account is done by the platform operator in the admin panel. For a forgotten password see [Forgotten password](login-language.md#password)."
 msgstr ""

@@ -4,8 +4,7 @@
 
 Ein **Verein** ist ein Mandant: Alles in Standblatt gehört zu genau einem
 Verein, und Vereine sehen die Daten der anderen nie. Der Plattformbetreiber
-legt Vereine und Benutzerkonten im
-[Admin-Panel](../admin-guide/admin-panel.md) an.
+legt Vereine und Benutzerkonten im Admin-Panel an.
 
 **Benutzer** sind persönliche Konten. Ein Konto kann zu mehreren Vereinen gehören, mit einer Rolle pro Verein. Eine Rolle ist eine Sammlung von Rechten wie *Anlässe durchführen* oder *Anlässe konfigurieren*; jeder Verein startet mit den Rollen *Admin*, *Vorstand*, *Helfer* und *Mitglied* und kann sie ändern oder eigene hinzufügen (siehe [Rollen](../user-guide/users.md#roles)). Vereine laden Personen per E-Mail ein; die eingeladene Person tritt bei, indem sie den Link annimmt.
 

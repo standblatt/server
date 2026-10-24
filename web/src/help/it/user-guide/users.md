@@ -67,7 +67,5 @@ questi limiti. Solo gli admin nominano, modificano o rimuovono quindi degli
 admin.
 
 Gli account sono globali: un account viene eliminato dal gestore della
-piattaforma nel [pannello di
-amministrazione](../admin-guide/admin-panel.md). Una password dimenticata si
-reimposta con **Password dimenticata?** nella pagina di accesso se l’account
-ha un indirizzo e-mail confermato, altrimenti lo fa il gestore.
+piattaforma nel pannello di amministrazione. Per una password dimenticata
+vedi [Password dimenticata](login-language.md#password).

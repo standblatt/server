@@ -59,11 +59,3 @@ de recherche.
 ## Terminer le tir
 
 **Terminer** clôt une inscription avant que tous les résultats soient là, par exemple quand un tireur abandonne ou rend ses cibles plus tard. L’inscription passe à *Terminé* et sa cible se libère ; les résultats manquants peuvent toujours être saisis.
-
-## Mode sombre
-
-Le bouton soleil/lune dans l’en-tête bascule entre mode clair et sombre ; le
-choix est conservé dans le navigateur.
-
-![Tableau de bord en mode sombre](../images/screenshots/dashboard-dark.png){
-.screenshot }

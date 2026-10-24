@@ -27,11 +27,11 @@ se il telefono chiede prima un altro tocco, appare un avviso con il pulsante
 1. Collega un computer vicino alle stampanti: un PC Windows o un Mac con
    l’[app Standblatt Print Agent](#app) tramite [codice](#connect), oppure
    un computer Linux come un Raspberry Pi con l’[agente senza
-   interfaccia](../admin-guide/print-agent.md): **Aggiungi agente di
-   stampa**, dagli un nome e copia il token. Un computer può servire più
-   stand, p. es. *Pistola 25 m* e *Pistola 50 m*: collegalo a ogni stand
-   (l’app con **Collega un altro stand di tiro**, l’agente senza interfaccia
-   con entrambi i token, separati da una virgola).
+   interfaccia](https://github.com/standblatt/print-agent): **Aggiungi
+   agente di stampa**, dagli un nome e copia il token. Un computer può
+   servire più stand, p. es. *Pistola 25 m* e *Pistola 50 m*: collegalo a
+   ogni stand (l’app con **Collega un altro stand di tiro**, l’agente senza
+   interfaccia con entrambi i token, separati da una virgola).
 2. Appena l’agente è online, comunica le sue stampanti e l’elenco mostra la
    sua versione e il sistema operativo. Scegli per ogni documento la
    stampante (*Diplomi* sono i diplomi delle classifiche, *Modelli di

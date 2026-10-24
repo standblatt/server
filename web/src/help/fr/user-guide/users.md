@@ -68,7 +68,5 @@ modifient des rôles que dans ces limites. Seuls les admins nomment,
 modifient ou retirent donc des admins.
 
 Les comptes sont globaux : un compte est supprimé par l’exploitant de la
-plateforme dans le [panneau
-d’administration](../admin-guide/admin-panel.md). Un mot de passe oublié se
-réinitialise avec **Mot de passe oublié ?** sur la page de connexion si le
-compte a une adresse e-mail confirmée, sinon par l’exploitant.
+plateforme dans le panneau d’administration. Pour un mot de passe oublié,
+voir [Mot de passe oublié](login-language.md#password).

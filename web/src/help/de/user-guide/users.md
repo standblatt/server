@@ -68,6 +68,5 @@ innerhalb davon an oder ändern sie. Nur Admins ernennen, ändern oder
 entfernen deshalb Admins.
 
 Konten sind global: Ein Konto löscht der Plattformbetreiber im
-[Admin-Panel](../admin-guide/admin-panel.md). Ein vergessenes Passwort setzt
-man mit **Passwort vergessen?** auf der Login-Seite zurück, wenn das Konto
-eine bestätigte E-Mail-Adresse hat, sonst der Betreiber.
+Admin-Panel. Für ein vergessenes Passwort siehe [Passwort
+vergessen](login-language.md#password).

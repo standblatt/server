@@ -4,13 +4,11 @@
 
 Melde dich mit deiner E-Mail-Adresse (oder deinem Benutzernamen) und deinem
 Passwort an: Das Passwort hast du beim Annehmen der Einladung deines Vereins
-gewählt oder von deinem Vereins-Admin oder dem Plattformbetreiber
+gewählt, oder du hast es von deinem Vereinsadmin oder vom Plattformbetreiber
 erhalten. Vereinskonten entstehen nicht durch Registrierung; nur [Mein
-Training](../my-training/account.md) hat eine eigene Registrierung. Passwort
-vergessen? Hat dein Konto eine bestätigte E-Mail-Adresse, nutze **Passwort
-vergessen?** auf der Login-Seite; sonst bitte den Betreiber, im
-[Admin-Panel](../admin-guide/admin-panel.md) ein neues Passwort zu
-setzen. Angemeldet änderst du es selbst unter [Konto](#account).
+Training](../my-training/account.md) hat eine eigene
+Registrierung. Angemeldet änderst du dein Passwort selbst unter
+[Konto](#account).
 
 Nach dem Login landest du auf der Startseite mit einer Karte für jeden
 Verein, dem du angehörst, und einer für [Mein
@@ -30,6 +28,13 @@ Adresse eine Weile gesperrt.
 Gehört dein Konto zu mehreren Vereinen, wählst du den Verein nach dem
 Anmelden; **Verein wechseln** im Benutzermenü führt zu dieser Auswahl
 zurück.
+
+## Passwort vergessen {#password}
+
+Hat dein Konto eine bestätigte E-Mail-Adresse, nutze **Passwort vergessen?**
+auf der Login-Seite. Du bekommst einen Link, der eine Stunde gültig ist. Ein
+neues Passwort meldet dich überall ab. Ohne bestätigte E-Mail-Adresse bitte
+den Betreiber, im Admin-Panel ein neues Passwort zu setzen.
 
 ## Konto {#account}
 
@@ -86,8 +91,7 @@ kann deine Anmeldung schützen: nach dem Passwort verlangt Standblatt den
 sechsstelligen Code, den die App anzeigt. Einrichten unter
 [Konto](#account): **Einrichten**, QR-Code scannen, aktuellen Code eingeben,
 **Einschalten**. **Ausschalten** verlangt dein Passwort. Handy verloren? Der
-Betreiber kann den zweiten Faktor im
-[Admin-Panel](../admin-guide/admin-panel.md) zurücksetzen. Der Betreiber
+Betreiber kann den zweiten Faktor im Admin-Panel zurücksetzen. Der Betreiber
 kann die Funktion auch für den ganzen Server ausschalten.
 
 ## Sprache
@@ -100,6 +104,14 @@ für dein Konto auf jedem Gerät.
 Gedruckte Dokumente, CSV-Exporte und Kiosk-Bildschirme folgen nicht deiner
 Wahl, sondern der Sprache des Anlasses, damit jeder Ausdruck eines Anlasses
 gleich aussieht (siehe [Anlässe](events.md#settings)).
+
+## Dunkles Design
+
+Der Sonne/Mond-Knopf in der Kopfzeile wechselt zwischen hellem und dunklem
+Design; die Wahl bleibt im Browser gespeichert.
+
+![Dashboard im dunklen Design](../images/screenshots/dashboard-dark.png){
+.screenshot }
 
 ## Version
 

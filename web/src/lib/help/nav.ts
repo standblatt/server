@@ -4,7 +4,7 @@ import { loadPage, type HelpPage } from './markdown';
 
 /** The help sidebar: groups of page slugs, in reading order. */
 export const nav: { label: MessageDescriptor; pages: string[] }[] = [
-	{ label: msg`Start`, pages: ['', 'getting-started/concepts', 'getting-started/first-event', 'changelog'] },
+	{ label: msg`Start`, pages: ['', 'getting-started/concepts', 'getting-started/first-event'] },
 	{ label: msg`My training`, pages: ['my-training', 'my-training/logging', 'my-training/progress', 'my-training/account'] },
 	{
 		label: msg`At the event`,
@@ -34,7 +34,7 @@ export const nav: { label: MessageDescriptor; pages: string[] }[] = [
 			'user-guide/login-language'
 		]
 	},
-	{ label: msg`Reference`, pages: ['reference/rules', 'reference/csv-import', 'reference/programme-file', 'reference/codes'] }
+	{ label: msg`Reference`, pages: ['reference/rules', 'reference/csv-import', 'reference/programme-file', 'reference/codes', 'changelog'] }
 ];
 
 const cache = new Map<string, Promise<HelpPage[]>>();

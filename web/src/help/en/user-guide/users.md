@@ -45,4 +45,4 @@ Every club starts with four roles:
 
 Members with *Users and club* but without the admin role stay within their own permissions: they give, change, remove and invite only with roles whose permissions they have themselves, and make or change roles only within them. So only admins make, change or remove admins.
 
-Accounts are global: deleting an account is done by the platform operator in the [admin panel](../admin-guide/admin-panel.md). A forgotten password is reset with **Forgot your password?** on the login page if the account has a confirmed email address, otherwise by the operator.
+Accounts are global: deleting an account is done by the platform operator in the admin panel. For a forgotten password see [Forgotten password](login-language.md#password).

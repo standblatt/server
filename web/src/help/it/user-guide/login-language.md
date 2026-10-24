@@ -6,12 +6,8 @@ Accedi con il tuo indirizzo e-mail (o nome utente) e la tua password: la
 password l’hai scelta accettando l’invito della tua società, oppure l’hai
 ricevuta dall’admin della tua società o dal gestore della piattaforma. Gli
 account della società non nascono da una registrazione; solo [Il mio
-allenamento](../my-training/account.md) ha una sua registrazione. Password
-dimenticata? Se il tuo account ha un indirizzo e-mail confermato, usa
-**Password dimenticata?** nella pagina di accesso; altrimenti chiedi al
-gestore di impostare una nuova password nel [pannello di
-amministrazione](../admin-guide/admin-panel.md). Da connesso la cambi da
-solo sotto [Account](#account).
+allenamento](../my-training/account.md) ha una sua registrazione. Da
+connesso cambi la password da solo sotto [Account](#account).
 
 Dopo l’accesso arrivi alla pagina iniziale con una scheda per ogni società a
 cui appartieni e una per [Il mio allenamento](../my-training/index.md), che
@@ -29,6 +25,14 @@ indirizzo vengono bloccati per un po’.
 
 Se il tuo account appartiene a più società, scegli la società dopo
 l’accesso; **Cambia società** nel menu utente riporta a questa scelta.
+
+## Password dimenticata {#password}
+
+Se il tuo account ha un indirizzo e-mail confermato, usa **Password
+dimenticata?** nella pagina di accesso. Ricevi un link valido
+un’ora. Impostare una nuova password ti disconnette ovunque. Senza un
+indirizzo e-mail confermato chiedi al gestore di impostare una nuova
+password nel pannello di amministrazione.
 
 ## Account {#account}
 
@@ -85,9 +89,8 @@ può proteggere il tuo accesso: dopo la password, Standblatt chiede il codice
 a sei cifre mostrato dall’app. Configurala sotto [Account](#account):
 **Configura**, scansiona il codice QR, inserisci il codice attuale,
 **Attiva**. **Disattiva** chiede la tua password. Telefono perso? Il gestore
-può azzerare il secondo fattore nel [pannello di
-amministrazione](../admin-guide/admin-panel.md). Il gestore può anche
-disattivare la funzione per tutto il server.
+può azzerare il secondo fattore nel pannello di amministrazione. Il gestore
+può anche disattivare la funzione per tutto il server.
 
 ## Lingua
 
@@ -100,6 +103,14 @@ I documenti stampati, le esportazioni CSV e gli schermi chiosco non seguono
 la tua scelta ma la lingua della manifestazione, così ogni stampa di una
 manifestazione ha lo stesso aspetto (vedi
 [Manifestazioni](events.md#settings)).
+
+## Tema scuro
+
+Il pulsante sole/luna nell’intestazione passa dal tema chiaro a quello
+scuro; la scelta resta salvata nel browser.
+
+![Dashboard con tema scuro](../images/screenshots/dashboard-dark.png){
+.screenshot }
 
 ## Versione
 

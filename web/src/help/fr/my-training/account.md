@@ -19,10 +19,9 @@ Standblatt t’envoie un lien pour confirmer ton adresse e-mail. Tant que tu
 ne l’as pas confirmée, une note sur la page Aujourd’hui te le rappelle ;
 **Renvoyer** envoie un nouveau lien. Le lien est valable sept jours.
 
-Mot de passe oublié ? Utilise **Mot de passe oublié ?** sur la page de
-connexion. Tu reçois un lien valable une heure. Définir un nouveau mot de
-passe te déconnecte partout. Connecté, tu changes le mot de passe sous
-[Compte](../user-guide/login-language.md#account).
+Mot de passe oublié ? Voir [Mot de passe
+oublié](../user-guide/login-language.md#password). Connecté, tu changes le
+mot de passe sous [Compte](../user-guide/login-language.md#account).
 
 Les comptes créés par un admin de société se connectent avec leur nom
 d’utilisateur au lieu d’une adresse e-mail ; ils peuvent ajouter une adresse

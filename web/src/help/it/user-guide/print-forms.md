@@ -81,9 +81,10 @@ nell’intestazione di ogni classifica e di ogni classifica generale in
 **Classifiche** chiede il modello, la classe di una classifica generale e i
 ranghi (da 1 a 3 se non modificati), poi stampa una pagina per tiratore
 classificato, oppure le apre in un unico PDF. I diplomi vanno alla stampante
-dei *Diplomi* in **Stand di tiro → Stampa**. I campi di un rango sono il
-rango, il totale, la classifica (il programma o la classifica generale) e la
-classe; il diploma di un programma conosce anche i suoi risultati.
+dei *Diplomi* in **Stand di tiro → Configura le stampanti**. I campi di un
+rango sono il rango, il totale, la classifica (il programma o la classifica
+generale) e la classe; il diploma di un programma conosce anche i suoi
+risultati.
 
 ![Diplomi da una classifica](../images/screenshots/certificates.png){
 .screenshot }
@@ -148,8 +149,8 @@ con tiratori già iscritti. Ogni programma concluso offre allora **Stampa sul
 modello** nei risultati: al desk, nella pagina **Registra risultati** e
 tramite i link per segretari al bersaglio (vedi [Aiutanti](helpers.md)). Con
 un agente di stampa e una stampante scelta per *Modelli di stampa* in
-**Stand di tiro → Stampa**, il foglio va a quella stampante (p. es. al suo
-alimentatore manuale), altrimenti si apre il PDF (vedi
+**Stand di tiro → Configura le stampanti**, il foglio va a quella stampante
+(p. es. al suo alimentatore manuale), altrimenti si apre il PDF (vedi
 [Stampa](printing.md)).
 
 **Esporta** scarica un modello con le sue immagini come file e **Importa** lo rilegge, p. es. per condividere un modello con un’altra società.

@@ -2,8 +2,7 @@
 
 Diese Anleitung führt einen Verein vom leeren Konto bis zum laufenden
 Wettkampf. Sie setzt voraus, dass der Plattformbetreiber den Verein und dein
-Konto als dessen Admin angelegt hat (siehe
-[Admin-Panel](../admin-guide/admin-panel.md)).
+Konto als dessen Admin angelegt hat.
 
 ## 1. Anmelden
 
@@ -63,8 +62,8 @@ Anlass welche vergibt.
 
 Erstelle, immer noch in der Konfiguration, auf **Kiosk-Anzeigen** einen
 Kiosk-Link für jeden Bildschirm in der Halle (siehe [Ranglisten und
-Kiosk](../user-guide/rankings-kiosk.md)). Weise unter Schiessstände →
-Drucken jedem Dokument einen Drucker zu (siehe
+Kiosk](../user-guide/rankings-kiosk.md)). Weise unter **Schiessstände →
+Drucker einrichten** jedem Dokument einen Drucker zu (siehe
 [Drucken](../user-guide/printing.md)).
 
 ## 7. Den Anlass durchführen

@@ -27,9 +27,9 @@ d’abord un autre toucher, une note avec le bouton **Partager** apparaît.
 1. Connecte un ordinateur près des imprimantes : un PC Windows ou un Mac
    avec l’[application Standblatt Print Agent](#app) par [code](#connect),
    ou un ordinateur Linux comme un Raspberry Pi avec l’[agent sans
-   interface](../admin-guide/print-agent.md) : **Ajouter un agent
-   d’impression**, donne-lui un nom et copie le jeton. Un ordinateur peut
-   servir plusieurs stands, p. ex. *Pistolet 25 m* et *Pistolet 50 m* :
+   interface](https://github.com/standblatt/print-agent) : **Ajouter un
+   agent d’impression**, donne-lui un nom et copie le jeton. Un ordinateur
+   peut servir plusieurs stands, p. ex. *Pistolet 25 m* et *Pistolet 50 m* :
    connecte-le à chaque stand (l’application avec **Connecter un autre stand
    de tir**, l’agent sans interface avec les deux jetons, séparés par une
    virgule).

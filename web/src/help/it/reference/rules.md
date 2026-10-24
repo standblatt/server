@@ -1,7 +1,6 @@
 # Regole di gara
 
-Questa pagina descrive le regole esattamente come Standblatt le
-implementa. Si trovano in `internal/domain` e sono coperte da test unitari.
+Questa pagina descrive le regole esattamente come Standblatt le implementa.
 
 ## Categoria d’età
 
@@ -70,9 +69,7 @@ Tutti i risultati di un programma sono ordinati per:
 
 I ranghi sono consecutivi (1, 2, 3, … anche a parità di risultato). La
 stessa classifica alimenta le pagine del personale, gli schermi chiosco, il
-PDF e il CSV della classifica e i premi speciali. È stata verificata con le
-classifiche pubblicate del campionato appenzellese di pistola ad aria 2026:
-identica su tutte le 260 righe.
+PDF e il CSV della classifica e i premi speciali.
 
 ## Concorso di sezione {#club-competition}
 
@@ -108,8 +105,8 @@ successivo. I tiratori senza società non sono ammessi, salvo che il minimo
 per società sia 0. Il rapporto elenca sia i vincitori sia i tiratori saltati
 con il motivo.
 
-!!! example "Campionato appenzellese di pistola ad aria"
-    Il bando dice: *«In ogni categoria i ranghi 1–3 ricevono un premio speciale, purché la categoria abbia almeno 10 partecipanti e la società del tiratore almeno 4.»* Cioè ranghi 3, minimo di categoria 10, minimo di società 4. Applicata ai risultati 2026, la regola riproduce la lista dei vincitori fatta a mano.
+!!! example "Dal bando alle impostazioni"
+    Un bando dice: *«In ogni categoria i ranghi 1–3 ricevono un premio speciale, purché la categoria abbia almeno 10 partecipanti e la società del tiratore almeno 4.»* Cioè ranghi 3, minimo di categoria 10, minimo di società 4.
 
 ## Elenchi di bersagli
 

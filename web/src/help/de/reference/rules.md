@@ -1,7 +1,6 @@
 # Wettkampfregeln
 
-Diese Seite beschreibt die Regeln genau so, wie Standblatt sie umsetzt. Sie
-liegen in `internal/domain` und sind mit Unit-Tests abgedeckt.
+Diese Seite beschreibt die Regeln genau so, wie Standblatt sie umsetzt.
 
 ## Alterskategorie
 
@@ -72,9 +71,7 @@ Alle Resultate eines Programms werden geordnet nach:
 
 Die Ränge sind fortlaufend (1, 2, 3, … auch bei gleichen
 Resultaten). Dieselbe Rangierung speist die Seiten des Personals, die
-Kiosk-Bildschirme, das Ranglisten-PDF und -CSV sowie die Sonderpreise. Sie
-wurde mit den veröffentlichten Ranglisten der Appenzeller
-Luftpistolenmeisterschaft 2026 geprüft: identisch auf allen 260 Zeilen.
+Kiosk-Bildschirme, das Ranglisten-PDF und -CSV sowie die Sonderpreise.
 
 ## Vereinskonkurrenz {#club-competition}
 
@@ -111,8 +108,8 @@ nach. Schützen ohne Verein sind nicht berechtigt, ausser das Vereinsminimum
 ist 0. Der Bericht listet sowohl die Gewinner als auch die übersprungenen
 Schützen mit dem Grund.
 
-!!! example "Appenzeller Luftpistolenmeisterschaft"
-    In der Ausschreibung steht: *„In jeder Kategorie erhalten die Ränge 1–3 einen Sonderpreis, sofern die Kategorie mindestens 10 Teilnehmer und der Verein des Schützen mindestens 4 hat.“* Das sind Ränge 3, Kategorie-Minimum 10, Vereins-Minimum 4. Auf die Resultate 2026 angewandt, ergibt die Regel genau die von Hand erstellte Gewinnerliste.
+!!! example "Von der Ausschreibung zu den Einstellungen"
+    In einer Ausschreibung steht: *„In jeder Kategorie erhalten die Ränge 1–3 einen Sonderpreis, sofern die Kategorie mindestens 10 Teilnehmer und der Verein des Schützen mindestens 4 hat.“* Das sind Ränge 3, Kategorie-Minimum 10, Vereins-Minimum 4.
 
 ## Scheibenlisten
 

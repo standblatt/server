@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-19 18:07+0000\n"
+"POT-Creation-Date: 2026-10-24 19:22+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -33,12 +33,11 @@ msgstr "Vereine, Benutzer und Rollen {#clubs-users-and-roles}"
 msgid ""
 "A **club** is a tenant: everything in Standblatt belongs to exactly one "
 "club, and clubs never see each other's data. The platform operator creates "
-"clubs and user accounts in the [admin panel](../admin-guide/admin-panel.md)."
+"clubs and user accounts in the admin panel."
 msgstr ""
 "Ein **Verein** ist ein Mandant: Alles in Standblatt gehört zu genau einem "
 "Verein, und Vereine sehen die Daten der anderen nie. Der Plattformbetreiber "
-"legt Vereine und Benutzerkonten im [Admin-Panel](../admin-guide/admin-"
-"panel.md) an."
+"legt Vereine und Benutzerkonten im Admin-Panel an."
 
 #. type: Plain text
 #: ../src/help/en/getting-started/concepts.md:8
@@ -241,12 +240,11 @@ msgstr "Dein erster Anlass"
 msgid ""
 "This walk-through takes a club from an empty account to a running "
 "competition. It assumes the platform operator has created the club and your "
-"account as its admin (see [Admin panel](../admin-guide/admin-panel.md))."
+"account as its admin."
 msgstr ""
 "Diese Anleitung führt einen Verein vom leeren Konto bis zum laufenden "
 "Wettkampf. Sie setzt voraus, dass der Plattformbetreiber den Verein und dein "
-"Konto als dessen Admin angelegt hat (siehe [Admin-Panel](../admin-guide/"
-"admin-panel.md))."
+"Konto als dessen Admin angelegt hat."
 
 #. type: Title ##
 #: ../src/help/en/getting-started/first-event.md:5
@@ -397,13 +395,14 @@ msgstr "6. Kiosk-Bildschirme und Drucker"
 msgid ""
 "Still in the configuration, on **Kiosk displays**, create a kiosk link for "
 "each screen in the hall (see [Rankings and kiosk](../user-guide/rankings-"
-"kiosk.md)). Under Ranges → Printing, assign a printer to each document (see "
-"[Printing](../user-guide/printing.md))."
+"kiosk.md)). Under **Ranges → Set up the printers**, assign a printer to each "
+"document (see [Printing](../user-guide/printing.md))."
 msgstr ""
 "Erstelle, immer noch in der Konfiguration, auf **Kiosk-Anzeigen** einen "
 "Kiosk-Link für jeden Bildschirm in der Halle (siehe [Ranglisten und Kiosk]"
-"(../user-guide/rankings-kiosk.md)). Weise unter Schiessstände → Drucken "
-"jedem Dokument einen Drucker zu (siehe [Drucken](../user-guide/printing.md))."
+"(../user-guide/rankings-kiosk.md)). Weise unter **Schiessstände → Drucker "
+"einrichten** jedem Dokument einen Drucker zu (siehe [Drucken](../user-guide/"
+"printing.md))."
 
 #. type: Title ##
 #: ../src/help/en/getting-started/first-event.md:37
@@ -683,15 +682,13 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/my-training/account.md:14
 msgid ""
-"Forgot your password? Use **Forgot your password?** on the login page. You "
-"get a link that is valid for one hour. Setting a new password logs you out "
-"everywhere. Logged in, you change the password under [Account](../user-guide/"
-"login-language.md#account)."
+"Forgot your password? See [Forgotten password](../user-guide/login-"
+"language.md#password). Logged in, you change the password under [Account](../"
+"user-guide/login-language.md#account)."
 msgstr ""
-"Passwort vergessen? Nutze **Passwort vergessen?** auf der Login-Seite. Du "
-"bekommst einen Link, der eine Stunde gültig ist. Ein neues Passwort meldet "
-"dich überall ab. Angemeldet änderst du das Passwort unter [Konto](../user-"
-"guide/login-language.md#account)."
+"Passwort vergessen? Siehe [Passwort vergessen](../user-guide/login-"
+"language.md#password). Angemeldet änderst du das Passwort unter [Konto](../"
+"user-guide/login-language.md#account)."
 
 #. type: Plain text
 #: ../src/help/en/my-training/account.md:16
@@ -1630,10 +1627,10 @@ msgstr ""
 #, no-wrap
 msgid ""
 "license;firstname;lastname;birthday;postalcode;city;club\n"
-"100100;Sandra;Example;1969-06-02;9050;Appenzell;PS Example\n"
+"100100;Sandra;Example;1969-06-02;9999;Hilltown;PS Example\n"
 msgstr ""
 "license;firstname;lastname;birthday;postalcode;city;club\n"
-"100100;Sandra;Example;1969-06-02;9050;Appenzell;PS Example\n"
+"100100;Sandra;Example;1969-06-02;9999;Hilltown;PS Example\n"
 
 #. type: Plain text
 #: ../src/help/en/reference/csv-import.md:18
@@ -1873,12 +1870,9 @@ msgstr "Wettkampfregeln"
 
 #. type: Plain text
 #: ../src/help/en/reference/rules.md:4
-msgid ""
-"This page describes the rules exactly as Standblatt implements them. They "
-"live in `internal/domain` and are covered by unit tests."
+msgid "This page describes the rules exactly as Standblatt implements them."
 msgstr ""
-"Diese Seite beschreibt die Regeln genau so, wie Standblatt sie umsetzt. Sie "
-"liegen in `internal/domain` und sind mit Unit-Tests abgedeckt."
+"Diese Seite beschreibt die Regeln genau so, wie Standblatt sie umsetzt."
 
 #. type: Title ##
 #: ../src/help/en/reference/rules.md:5
@@ -2080,14 +2074,11 @@ msgstr ""
 msgid ""
 "Ranks are consecutive (1, 2, 3, … even on equal results). The same ranking "
 "feeds the staff pages, kiosk screens, the ranking PDF and CSV, and special "
-"prizes. It was checked against the published rankings of the 2026 Appenzell "
-"air pistol championship: identical on all 260 lines."
+"prizes."
 msgstr ""
 "Die Ränge sind fortlaufend (1, 2, 3, … auch bei gleichen Resultaten). "
 "Dieselbe Rangierung speist die Seiten des Personals, die Kiosk-Bildschirme, "
-"das Ranglisten-PDF und -CSV sowie die Sonderpreise. Sie wurde mit den "
-"veröffentlichten Ranglisten der Appenzeller Luftpistolenmeisterschaft 2026 "
-"geprüft: identisch auf allen 260 Zeilen."
+"das Ranglisten-PDF und -CSV sowie die Sonderpreise."
 
 #. type: Title ##
 #: ../src/help/en/reference/rules.md:45
@@ -2206,11 +2197,11 @@ msgstr ""
 #: ../src/help/en/reference/rules.md:68
 #, no-wrap
 msgid ""
-"!!! example \"Appenzell air pistol championship\"\n"
-"    The brochure says: *\"In every category, ranks 1–3 receive a special prize, provided the category has at least 10 participants and the shooter's club at least 4.\"* That is ranks 3, category minimum 10, club minimum 4. Applied to the 2026 results, the rule reproduces the hand-made winner list.\n"
+"!!! example \"From the brochure to the settings\"\n"
+"    A brochure says: *\"In every category, ranks 1–3 receive a special prize, provided the category has at least 10 participants and the shooter's club at least 4.\"* That is ranks 3, category minimum 10, club minimum 4.\n"
 msgstr ""
-"!!! example \"Appenzeller Luftpistolenmeisterschaft\"\n"
-"    In der Ausschreibung steht: *„In jeder Kategorie erhalten die Ränge 1–3 einen Sonderpreis, sofern die Kategorie mindestens 10 Teilnehmer und der Verein des Schützen mindestens 4 hat.“* Das sind Ränge 3, Kategorie-Minimum 10, Vereins-Minimum 4. Auf die Resultate 2026 angewandt, ergibt die Regel genau die von Hand erstellte Gewinnerliste.\n"
+"!!! example \"Von der Ausschreibung zu den Einstellungen\"\n"
+"    In einer Ausschreibung steht: *„In jeder Kategorie erhalten die Ränge 1–3 einen Sonderpreis, sofern die Kategorie mindestens 10 Teilnehmer und der Verein des Schützen mindestens 4 hat.“* Das sind Ränge 3, Kategorie-Minimum 10, Vereins-Minimum 4.\n"
 
 #. type: Title ##
 #: ../src/help/en/reference/rules.md:69
@@ -2555,34 +2546,10 @@ msgid "Finish shooting"
 msgstr "Schiessen beenden"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/dashboard.md:30
+#: ../src/help/en/user-guide/dashboard.md:29
 #, no-wrap
 msgid "**Finish** ends a registration before all results are in, for example when a shooter gives up or hands in the targets later. The registration moves to *Completed* and its lane becomes free; missing results can still be entered.\n"
 msgstr "**Beenden** schliesst eine Anmeldung ab, bevor alle Resultate da sind, zum Beispiel wenn ein Schütze aufgibt oder die Scheiben später abgibt. Die Anmeldung wechselt zu *Abgeschlossen* und ihre Scheibe wird frei; fehlende Resultate lassen sich weiterhin erfassen.\n"
-
-#. type: Title ##
-#: ../src/help/en/user-guide/dashboard.md:31
-#, no-wrap
-msgid "Dark mode"
-msgstr "Dunkles Design"
-
-#. type: Plain text
-#: ../src/help/en/user-guide/dashboard.md:34
-msgid ""
-"The sun/moon button in the header switches between light and dark mode; the "
-"choice is kept in the browser."
-msgstr ""
-"Der Sonne/Mond-Knopf in der Kopfzeile wechselt zwischen hellem und dunklem "
-"Design; die Wahl bleibt im Browser gespeichert."
-
-#. type: Plain text
-#: ../src/help/en/user-guide/dashboard.md:35
-msgid ""
-"![Dashboard in dark mode](../images/screenshots/dashboard-dark.png)"
-"{ .screenshot }"
-msgstr ""
-"![Dashboard im dunklen Design](../images/screenshots/dashboard-dark.png)"
-"{ .screenshot }"
 
 #. type: Title #
 #: ../src/help/en/user-guide/events.md:1
@@ -2990,20 +2957,14 @@ msgid ""
 "password when you accepted the invitation of your club, or you received it "
 "from your club admin or the platform operator. Club accounts are not created "
 "by sign-up; only [My training](../my-training/account.md) has its own sign-"
-"up. Forgot your password? If your account has a confirmed email address, use "
-"**Forgot your password?** on the login page; otherwise ask the operator to "
-"set a new password in the [admin panel](../admin-guide/admin-panel.md). "
-"Logged in, you change it yourself under [Account](#account)."
+"up. Logged in, you change your password yourself under [Account](#account)."
 msgstr ""
 "Melde dich mit deiner E-Mail-Adresse (oder deinem Benutzernamen) und deinem "
 "Passwort an: Das Passwort hast du beim Annehmen der Einladung deines Vereins "
-"gewählt oder von deinem Vereins-Admin oder dem Plattformbetreiber erhalten. "
-"Vereinskonten entstehen nicht durch Registrierung; nur [Mein Training](../my-"
-"training/account.md) hat eine eigene Registrierung. Passwort vergessen? Hat "
-"dein Konto eine bestätigte E-Mail-Adresse, nutze **Passwort vergessen?** auf "
-"der Login-Seite; sonst bitte den Betreiber, im [Admin-Panel](../admin-guide/"
-"admin-panel.md) ein neues Passwort zu setzen. Angemeldet änderst du es "
-"selbst unter [Konto](#account)."
+"gewählt, oder du hast es von deinem Vereinsadmin oder vom Plattformbetreiber "
+"erhalten. Vereinskonten entstehen nicht durch Registrierung; nur [Mein "
+"Training](../my-training/account.md) hat eine eigene Registrierung. "
+"Angemeldet änderst du dein Passwort selbst unter [Konto](#account)."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/login-language.md:8
@@ -3049,17 +3010,36 @@ msgstr ""
 #. type: Title ##
 #: ../src/help/en/user-guide/login-language.md:17
 #, no-wrap
+msgid "Forgotten password {#password}"
+msgstr "Passwort vergessen {#password}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:20
+msgid ""
+"If your account has a confirmed email address, use **Forgot your password?** "
+"on the login page. You get a link that is valid for one hour. Setting a new "
+"password logs you out everywhere. Without a confirmed email address, ask the "
+"operator to set a new password in the admin panel."
+msgstr ""
+"Hat dein Konto eine bestätigte E-Mail-Adresse, nutze **Passwort vergessen?** "
+"auf der Login-Seite. Du bekommst einen Link, der eine Stunde gültig ist. Ein "
+"neues Passwort meldet dich überall ab. Ohne bestätigte E-Mail-Adresse bitte "
+"den Betreiber, im Admin-Panel ein neues Passwort zu setzen."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/login-language.md:21
+#, no-wrap
 msgid "Account {#account}"
 msgstr "Konto {#account}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:20
+#: ../src/help/en/user-guide/login-language.md:24
 #, no-wrap
 msgid "**Account** in the user menu (bottom of the sidebar), on the start page and in My training's sidebar opens your account settings:\n"
 msgstr "**Konto** im Benutzermenü (unten in der Seitenleiste), auf der Startseite und in der Seitenleiste von Mein Training öffnet deine Kontoeinstellungen:\n"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:27
+#: ../src/help/en/user-guide/login-language.md:31
 msgid ""
 "**Login**: your user name (it cannot be changed) and your email address. "
 "**Add** or **Change** asks for your password and sends a confirmation link; "
@@ -3074,7 +3054,7 @@ msgstr ""
 "bestätigten Adresse kannst du ein vergessenes Passwort selbst zurücksetzen."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:27
+#: ../src/help/en/user-guide/login-language.md:31
 msgid ""
 "**Password**: enter the current and the new password (at least 10 "
 "characters). Other devices are logged out, the one you are on stays."
@@ -3083,7 +3063,7 @@ msgstr ""
 "Andere Geräte werden abgemeldet, das aktuelle bleibt angemeldet."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:27
+#: ../src/help/en/user-guide/login-language.md:31
 msgid ""
 "**Language and theme**: the interface language of your account and light or "
 "dark mode."
@@ -3092,17 +3072,17 @@ msgstr ""
 "oder dunkler Modus."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:27
+#: ../src/help/en/user-guide/login-language.md:31
 msgid "**Second factor**: see below."
 msgstr "**Zweiter Faktor**: siehe unten."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:27
+#: ../src/help/en/user-guide/login-language.md:31
 msgid "**API tokens**: see below."
 msgstr "**API-Tokens**: siehe unten."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:27
+#: ../src/help/en/user-guide/login-language.md:31
 msgid ""
 "**Delete account**: only for accounts that belong to no club; the training "
 "log, goals and settings are deleted for good. Club accounts are removed by "
@@ -3113,18 +3093,18 @@ msgstr ""
 "Admin."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:29
+#: ../src/help/en/user-guide/login-language.md:33
 msgid "![Account](../images/screenshots/account.png){ .screenshot }"
 msgstr "![Konto](../images/screenshots/account.png){ .screenshot }"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/login-language.md:30
+#: ../src/help/en/user-guide/login-language.md:34
 #, no-wrap
 msgid "API tokens {#api-tokens}"
 msgstr "API-Tokens {#api-tokens}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:33
+#: ../src/help/en/user-guide/login-language.md:37
 msgid ""
 "Want to show the rankings on the club website, import sessions from another "
 "app or analyse data with your own script? Create a token under **Account → "
@@ -3135,12 +3115,12 @@ msgstr ""
 "Erstelle ein Token unter **Konto → API-Tokens** mit **Neues Token**:"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:39
+#: ../src/help/en/user-guide/login-language.md:43
 msgid "a **name** that tells you later what uses it,"
 msgstr "einen **Namen**, an dem du später erkennst, was es verwendet,"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:39
+#: ../src/help/en/user-guide/login-language.md:43
 msgid ""
 "a **preset** fills in the permissions for a common use: **Rankings for a "
 "website**, **Training app** or **Read only**,"
@@ -3149,13 +3129,13 @@ msgstr ""
 "eine Website**, **Training-App** oder **Nur lesen**,"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:39
+#: ../src/help/en/user-guide/login-language.md:43
 msgid "the **clubs** the token may use (none: only your training log),"
 msgstr ""
 "die **Vereine**, die das Token nutzen darf (keiner: nur dein Trainingslog),"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:39
+#: ../src/help/en/user-guide/login-language.md:43
 msgid ""
 "the **permissions**: *Read my training log*, *Log and change my training "
 "sessions* and, for the chosen clubs, the [permissions of roles]"
@@ -3166,12 +3146,12 @@ msgstr ""
 "(users.md#roles), die deine eigene Rolle dort hat,"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:39
+#: ../src/help/en/user-guide/login-language.md:43
 msgid "when it **expires**: in 30 or 90 days, in a year, or never."
 msgstr "wann es **abläuft**: in 30 oder 90 Tagen, in einem Jahr oder nie."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:41
+#: ../src/help/en/user-guide/login-language.md:45
 msgid ""
 "The token (`sb_…`) is shown only once; copy it right away. Scripts send it "
 "as `Authorization: Bearer sb_…` (or `X-API-Key: sb_…`). It may do what you "
@@ -3193,39 +3173,38 @@ msgstr ""
 "Entwickler finden die Endpunkte unter `/api/docs`."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/login-language.md:42
+#: ../src/help/en/user-guide/login-language.md:46
 #, no-wrap
 msgid "Second factor {#totp}"
 msgstr "Zweiter Faktor {#totp}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:45
+#: ../src/help/en/user-guide/login-language.md:49
 msgid ""
 "An authenticator app (Google Authenticator, Aegis, 1Password and the like) "
 "can protect your login: after the password, Standblatt asks for the six-"
 "digit code the app shows. Set it up under [Account](#account): **Set up**, "
 "scan the QR code, enter the current code, **Switch on**. **Switch off** asks "
 "for your password. Lost the phone? The operator can reset the second factor "
-"in the [admin panel](../admin-guide/admin-panel.md). The operator can also "
-"switch the feature off for the whole server."
+"in the admin panel. The operator can also switch the feature off for the "
+"whole server."
 msgstr ""
 "Eine Authenticator-App (Google Authenticator, Aegis, 1Password und ähnliche) "
 "kann deine Anmeldung schützen: nach dem Passwort verlangt Standblatt den "
 "sechsstelligen Code, den die App anzeigt. Einrichten unter [Konto]"
 "(#account): **Einrichten**, QR-Code scannen, aktuellen Code eingeben, "
 "**Einschalten**. **Ausschalten** verlangt dein Passwort. Handy verloren? Der "
-"Betreiber kann den zweiten Faktor im [Admin-Panel](../admin-guide/admin-"
-"panel.md) zurücksetzen. Der Betreiber kann die Funktion auch für den ganzen "
-"Server ausschalten."
+"Betreiber kann den zweiten Faktor im Admin-Panel zurücksetzen. Der Betreiber "
+"kann die Funktion auch für den ganzen Server ausschalten."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/login-language.md:46
+#: ../src/help/en/user-guide/login-language.md:50
 #, no-wrap
 msgid "Language"
 msgstr "Sprache"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:49
+#: ../src/help/en/user-guide/login-language.md:53
 msgid ""
 "The interface is available in English, German, French and Italian. Without a "
 "choice, Standblatt follows the browser's language. **Language** in the user "
@@ -3237,7 +3216,7 @@ msgstr ""
 "Gerät."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:51
+#: ../src/help/en/user-guide/login-language.md:55
 msgid ""
 "Printed documents, CSV exports and kiosk screens do not follow your choice "
 "but the language of the event, so that every printout of an event looks the "
@@ -3248,13 +3227,37 @@ msgstr ""
 "gleich aussieht (siehe [Anlässe](events.md#settings))."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/login-language.md:52
+#: ../src/help/en/user-guide/login-language.md:56
+#, no-wrap
+msgid "Dark mode"
+msgstr "Dunkles Design"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:59
+msgid ""
+"The sun/moon button in the header switches between light and dark mode; the "
+"choice is kept in the browser."
+msgstr ""
+"Der Sonne/Mond-Knopf in der Kopfzeile wechselt zwischen hellem und dunklem "
+"Design; die Wahl bleibt im Browser gespeichert."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:61
+msgid ""
+"![Dashboard in dark mode](../images/screenshots/dashboard-dark.png)"
+"{ .screenshot }"
+msgstr ""
+"![Dashboard im dunklen Design](../images/screenshots/dashboard-dark.png)"
+"{ .screenshot }"
+
+#. type: Title ##
+#: ../src/help/en/user-guide/login-language.md:62
 #, no-wrap
 msgid "Version"
 msgstr "Version"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:54
+#: ../src/help/en/user-guide/login-language.md:64
 msgid ""
 "The bottom of the sidebar shows the version of the server, which helps when "
 "reporting a problem; in My training on a phone it is under **Settings**. "
@@ -3339,20 +3342,20 @@ msgstr "![Drucken](../images/screenshots/printing.png){ .screenshot }"
 msgid ""
 "Connect a computer next to the printers: a Windows PC or a Mac with the "
 "[Standblatt Print Agent app](#app) by [code](#connect), or a Linux computer "
-"such as a Raspberry Pi with the [headless agent](../admin-guide/print-"
-"agent.md): **Add print agent**, give it a name and copy the token. One "
-"computer can serve several ranges, e.g. *Pistol 25 m* and *Pistol 50 m*: "
-"connect it to each range (the app with **Connect another range**, the "
+"such as a Raspberry Pi with the [headless agent](https://github.com/"
+"standblatt/print-agent): **Add print agent**, give it a name and copy the "
+"token. One computer can serve several ranges, e.g. *Pistol 25 m* and *Pistol "
+"50 m*: connect it to each range (the app with **Connect another range**, the "
 "headless agent with both tokens, separated by a comma)."
 msgstr ""
 "Verbinde einen Computer bei den Druckern: einen Windows-PC oder einen Mac "
 "mit der [App Standblatt Print Agent](#app) per [Code](#connect), oder einen "
-"Linux-Computer wie einen Raspberry Pi mit dem [Agenten ohne Oberfläche](../"
-"admin-guide/print-agent.md): **Druck-Agent hinzufügen**, gib ihm einen Namen "
-"und kopiere das Token. Ein Computer kann mehrere Stände bedienen, z. B. "
-"*Pistole 25 m* und *Pistole 50 m*: Verbinde ihn mit jedem Stand (die App mit "
-"**Weiteren Schiessstand verbinden**, den Agenten ohne Oberfläche mit beiden "
-"Tokens, durch Komma getrennt)."
+"Linux-Computer wie einen Raspberry Pi mit dem [Agenten ohne Oberfläche]"
+"(https://github.com/standblatt/print-agent): **Druck-Agent hinzufügen**, gib "
+"ihm einen Namen und kopiere das Token. Ein Computer kann mehrere Stände "
+"bedienen, z. B. *Pistole 25 m* und *Pistole 50 m*: Verbinde ihn mit jedem "
+"Stand (die App mit **Weiteren Schiessstand verbinden**, den Agenten ohne "
+"Oberfläche mit beiden Tokens, durch Komma getrennt)."
 
 #. type: Bullet: '2. '
 #: ../src/help/en/user-guide/printing.md:26
@@ -3761,8 +3764,8 @@ msgid ""
 "header of every ranking and classification on **Rankings** asks for the "
 "form, the class of a classification and the ranks (1 to 3 unless changed), "
 "then prints one page per ranked shooter, or opens them as one PDF. "
-"Certificates go to the printer of *Certificates* under **Ranges → "
-"Printing**. The fields of a rank are the rank, the total, the ranking (the "
+"Certificates go to the printer of *Certificates* under **Ranges → Set up the "
+"printers**. The fields of a rank are the rank, the total, the ranking (the "
 "programme or classification) and the class; a programme's certificate knows "
 "its results too."
 msgstr ""
@@ -3771,9 +3774,9 @@ msgstr ""
 "Vorlage, der Klasse einer Wertung und den Rängen (1 bis 3, wenn nicht "
 "geändert) und druckt dann eine Seite pro rangiertem Schützen oder öffnet sie "
 "als ein PDF. Urkunden gehen an den Drucker der *Urkunden* unter "
-"**Schiessstände → Drucken**. Die Felder eines Rangs sind der Rang, das "
-"Total, die Rangliste (das Programm oder die Wertung) und die Klasse; die "
-"Urkunde eines Programms kennt auch seine Resultate."
+"**Schiessstände → Drucker einrichten**. Die Felder eines Rangs sind der "
+"Rang, das Total, die Rangliste (das Programm oder die Wertung) und die "
+"Klasse; die Urkunde eines Programms kennt auch seine Resultate."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:43
@@ -3931,9 +3934,9 @@ msgid ""
 "shooters are registered. Every completed programme then offers **Print onto "
 "form** in the results: at the desk, on the **Enter results** page and on "
 "scorer links at the lane (see [Helpers](helpers.md)). With a print agent and "
-"a printer chosen for *Print forms* under **Ranges → Printing**, the sheet "
-"goes to that printer (e.g. its manual feed), otherwise the PDF opens (see "
-"[Printing](printing.md))."
+"a printer chosen for *Print forms* under **Ranges → Set up the printers**, "
+"the sheet goes to that printer (e.g. its manual feed), otherwise the PDF "
+"opens (see [Printing](printing.md))."
 msgstr ""
 "Öffne unter **Konfiguration** → **Programme** des Anlasses ein Programm und "
 "wähle im gleichnamigen Abschnitt seine **Druckvorlage**; das geht auch, wenn "
@@ -3941,9 +3944,9 @@ msgstr ""
 "den Resultaten **Auf Vorlage drucken** an: am Desk, auf der Seite "
 "**Resultate erfassen** und über Warner-Links an der Scheibe (siehe [Helfer]"
 "(helpers.md)). Mit einem Druck-Agenten und einem Drucker für *Druckvorlagen* "
-"unter **Schiessstände → Drucken** geht das Blatt an diesen Drucker (z. B. an "
-"seinen manuellen Einzug), sonst öffnet sich das PDF (siehe [Drucken]"
-"(printing.md))."
+"unter **Schiessstände → Drucker einrichten** geht das Blatt an diesen "
+"Drucker (z. B. an seinen manuellen Einzug), sonst öffnet sich das PDF (siehe "
+"[Drucken](printing.md))."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:76
@@ -5735,14 +5738,12 @@ msgstr ""
 #: ../src/help/en/user-guide/users.md:48
 msgid ""
 "Accounts are global: deleting an account is done by the platform operator in "
-"the [admin panel](../admin-guide/admin-panel.md). A forgotten password is "
-"reset with **Forgot your password?** on the login page if the account has a "
-"confirmed email address, otherwise by the operator."
+"the admin panel. For a forgotten password see [Forgotten password](login-"
+"language.md#password)."
 msgstr ""
-"Konten sind global: Ein Konto löscht der Plattformbetreiber im [Admin-Panel]"
-"(../admin-guide/admin-panel.md). Ein vergessenes Passwort setzt man mit "
-"**Passwort vergessen?** auf der Login-Seite zurück, wenn das Konto eine "
-"bestätigte E-Mail-Adresse hat, sonst der Betreiber."
+"Konten sind global: Ein Konto löscht der Plattformbetreiber im Admin-Panel. "
+"Für ein vergessenes Passwort siehe [Passwort vergessen](login-"
+"language.md#password)."
 
 #~ msgid ""
 #~ "the **permissions**: *Read sessions* and/or *Log and change sessions*,"

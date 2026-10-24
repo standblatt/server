@@ -58,11 +58,3 @@ ricerca.
 ## Terminare il tiro
 
 **Termina** chiude un’iscrizione prima che tutti i risultati siano presenti, per esempio quando un tiratore rinuncia o consegna i bersagli più tardi. L’iscrizione passa a *Concluso* e il suo bersaglio si libera; i risultati mancanti si possono ancora registrare.
-
-## Tema scuro
-
-Il pulsante sole/luna nell’intestazione passa dal tema chiaro a quello
-scuro; la scelta resta salvata nel browser.
-
-![Dashboard con tema scuro](../images/screenshots/dashboard-dark.png){
-.screenshot }

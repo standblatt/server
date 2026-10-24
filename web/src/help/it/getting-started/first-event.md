@@ -2,8 +2,7 @@
 
 Questa guida porta una società da un account vuoto a una gara in
 corso. Presuppone che il gestore della piattaforma abbia creato la società e
-il tuo account come admin (vedi [pannello di
-amministrazione](../admin-guide/admin-panel.md)).
+il tuo account come admin.
 
 ## 1. Accedere
 
@@ -63,8 +62,8 @@ manifestazione ne assegna.
 
 Sempre nella configurazione, in **Display chiosco**, crea un link chiosco
 per ogni schermo della sala (vedi [Classifiche e
-chiosco](../user-guide/rankings-kiosk.md)). In Stand di tiro → Stampa
-assegna una stampante a ogni documento (vedi
+chiosco](../user-guide/rankings-kiosk.md)). In **Stand di tiro → Configura
+le stampanti** assegna una stampante a ogni documento (vedi
 [Stampa](../user-guide/printing.md)).
 
 ## 7. Condurre la manifestazione

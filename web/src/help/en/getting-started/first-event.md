@@ -1,6 +1,6 @@
 # Your first event
 
-This walk-through takes a club from an empty account to a running competition. It assumes the platform operator has created the club and your account as its admin (see [Admin panel](../admin-guide/admin-panel.md)).
+This walk-through takes a club from an empty account to a running competition. It assumes the platform operator has created the club and your account as its admin.
 
 ## 1. Log in
 
@@ -32,7 +32,7 @@ Open **Configuration** in the event's sidebar. Under **Modules**, switch on what
 
 ## 6. Kiosk screens and printers
 
-Still in the configuration, on **Kiosk displays**, create a kiosk link for each screen in the hall (see [Rankings and kiosk](../user-guide/rankings-kiosk.md)). Under Ranges → Printing, assign a printer to each document (see [Printing](../user-guide/printing.md)).
+Still in the configuration, on **Kiosk displays**, create a kiosk link for each screen in the hall (see [Rankings and kiosk](../user-guide/rankings-kiosk.md)). Under **Ranges → Set up the printers**, assign a printer to each document (see [Printing](../user-guide/printing.md)).
 
 ## 7. Run the event
 

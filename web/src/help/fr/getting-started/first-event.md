@@ -2,8 +2,7 @@
 
 Ce guide mène une société d’un compte vide à un concours en cours. Il
 suppose que l’exploitant de la plateforme a créé la société et ton compte
-comme admin (voir [panneau
-d’administration](../admin-guide/admin-panel.md)).
+comme admin.
 
 ## 1. Se connecter
 
@@ -62,9 +61,9 @@ si ta manifestation en décerne.
 
 Toujours dans la configuration, sur **Affichages kiosque**, crée un lien
 kiosque pour chaque écran de la halle (voir [Classements et
-kiosque](../user-guide/rankings-kiosk.md)). Sous Stands de tir → Impression,
-attribue une imprimante à chaque document (voir
-[Impression](../user-guide/printing.md)).
+kiosque](../user-guide/rankings-kiosk.md)). Sous **Stands de tir →
+Configurer les imprimantes**, attribue une imprimante à chaque document
+(voir [Impression](../user-guide/printing.md)).
 
 ## 7. Conduire la manifestation
 

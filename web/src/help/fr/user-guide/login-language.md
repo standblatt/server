@@ -6,12 +6,9 @@ Connecte-toi avec ton adresse e-mail (ou ton nom d’utilisateur) et ton mot
 de passe : tu as choisi le mot de passe en acceptant l’invitation de ta
 société, ou tu l’as reçu de l’admin de ta société ou de l’exploitant de la
 plateforme. Les comptes de société ne se créent pas par inscription ; seul
-[Mon entraînement](../my-training/account.md) a sa propre inscription. Mot
-de passe oublié ? Si ton compte a une adresse e-mail confirmée, utilise
-**Mot de passe oublié ?** sur la page de connexion ; sinon demande à
-l’exploitant de définir un nouveau mot de passe dans le [panneau
-d’administration](../admin-guide/admin-panel.md). Connecté, tu le changes
-toi-même sous [Compte](#account).
+[Mon entraînement](../my-training/account.md) a sa propre
+inscription. Connecté, tu changes ton mot de passe toi-même sous
+[Compte](#account).
 
 Après la connexion, tu arrives sur la page d’accueil avec une carte pour
 chaque société dont tu fais partie et une pour [Mon
@@ -31,6 +28,14 @@ bloquées un moment.
 Si ton compte appartient à plusieurs sociétés, tu choisis la société après
 la connexion ; **Changer de société** dans le menu utilisateur ramène à ce
 choix.
+
+## Mot de passe oublié {#password}
+
+Si ton compte a une adresse e-mail confirmée, utilise **Mot de passe oublié
+?** sur la page de connexion. Tu reçois un lien valable une heure. Définir
+un nouveau mot de passe te déconnecte partout. Sans adresse e-mail
+confirmée, demande à l’exploitant de définir un nouveau mot de passe dans le
+panneau d’administration.
 
 ## Compte {#account}
 
@@ -90,9 +95,8 @@ autres) peut protéger ta connexion : après le mot de passe, Standblatt
 demande le code à six chiffres affiché par l’app. Configure-la sous
 [Compte](#account) : **Configurer**, scanner le code QR, saisir le code
 actuel, **Activer**. **Désactiver** demande ton mot de passe. Téléphone
-perdu ? L’exploitant peut réinitialiser le deuxième facteur dans le [panneau
-d’administration](../admin-guide/admin-panel.md). Il peut aussi désactiver
-la fonction pour tout le serveur.
+perdu ? L’exploitant peut réinitialiser le deuxième facteur dans le panneau
+d’administration. Il peut aussi désactiver la fonction pour tout le serveur.
 
 ## Langue
 
@@ -105,6 +109,14 @@ Les documents imprimés, les exports CSV et les écrans kiosque ne suivent pas
 ton choix mais la langue de la manifestation, pour que chaque impression
 d’une manifestation soit identique (voir
 [Manifestations](events.md#settings)).
+
+## Mode sombre
+
+Le bouton soleil/lune dans l’en-tête bascule entre mode clair et sombre ; le
+choix est conservé dans le navigateur.
+
+![Tableau de bord en mode sombre](../images/screenshots/dashboard-dark.png){
+.screenshot }
 
 ## Version
 

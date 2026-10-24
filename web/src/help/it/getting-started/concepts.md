@@ -4,8 +4,8 @@
 
 Una **società** è un mandante: tutto in Standblatt appartiene esattamente a
 una società, e le società non vedono mai i dati delle altre. Il gestore
-della piattaforma crea società e account utente nel [pannello di
-amministrazione](../admin-guide/admin-panel.md).
+della piattaforma crea società e account utente nel pannello di
+amministrazione.
 
 Gli **utenti** sono account personali. Un account può appartenere a più società, con un ruolo per società. Un ruolo è un insieme di diritti come *Gestire le manifestazioni* o *Configurare le manifestazioni*; ogni società inizia con i ruoli *Admin*, *Comitato*, *Aiutante* e *Membro* e può modificarli o aggiungerne di propri (vedi [Ruoli](../user-guide/users.md#roles)). Le società invitano le persone via e-mail; la persona invitata entra accettando il link.
 

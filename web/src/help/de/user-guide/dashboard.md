@@ -59,11 +59,3 @@ Drücke irgendwo im Dashboard ++f4++, um ins Suchfeld zu springen.
 ## Schiessen beenden
 
 **Beenden** schliesst eine Anmeldung ab, bevor alle Resultate da sind, zum Beispiel wenn ein Schütze aufgibt oder die Scheiben später abgibt. Die Anmeldung wechselt zu *Abgeschlossen* und ihre Scheibe wird frei; fehlende Resultate lassen sich weiterhin erfassen.
-
-## Dunkles Design
-
-Der Sonne/Mond-Knopf in der Kopfzeile wechselt zwischen hellem und dunklem
-Design; die Wahl bleibt im Browser gespeichert.
-
-![Dashboard im dunklen Design](../images/screenshots/dashboard-dark.png){
-.screenshot }

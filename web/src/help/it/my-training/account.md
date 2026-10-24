@@ -19,10 +19,9 @@ Standblatt ti invia un link per confermare il tuo indirizzo e-mail. Finché
 non lo confermi, un avviso nella pagina Oggi te lo ricorda; **Invia di
 nuovo** invia un nuovo link. Il link è valido sette giorni.
 
-Password dimenticata? Usa **Password dimenticata?** nella pagina di
-accesso. Ricevi un link valido un’ora. Impostare una nuova password ti
-disconnette ovunque. Da connesso cambi la password sotto
-[Account](../user-guide/login-language.md#account).
+Password dimenticata? Vedi [Password
+dimenticata](../user-guide/login-language.md#password). Da connesso cambi la
+password sotto [Account](../user-guide/login-language.md#account).
 
 Gli account creati da un admin della società accedono con il loro nome
 utente invece di un’e-mail; possono aggiungere un indirizzo e-mail in

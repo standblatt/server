@@ -2,7 +2,7 @@
 
 ## Logging in
 
-Log in with your email address (or user name) and password: you chose the password when you accepted the invitation of your club, or you received it from your club admin or the platform operator. Club accounts are not created by sign-up; only [My training](../my-training/account.md) has its own sign-up. Forgot your password? If your account has a confirmed email address, use **Forgot your password?** on the login page; otherwise ask the operator to set a new password in the [admin panel](../admin-guide/admin-panel.md). Logged in, you change it yourself under [Account](#account).
+Log in with your email address (or user name) and password: you chose the password when you accepted the invitation of your club, or you received it from your club admin or the platform operator. Club accounts are not created by sign-up; only [My training](../my-training/account.md) has its own sign-up. Logged in, you change your password yourself under [Account](#account).
 
 After the login you land on the start page with a card for every club you belong to and one for [My training](../my-training/index.md), which every user has; **Account** and **Log out** are below the cards. Without a club membership the start page takes you straight to My training.
 
@@ -13,6 +13,10 @@ After the login you land on the start page with a card for every club you belong
 A login stays valid for seven days of inactivity and at most 30 days; with **Stay logged in for 90 days** ticked, it lasts 90 days on that device. After too many failed attempts, logins from the same address are blocked for a while.
 
 If your account belongs to several clubs, you choose the club after logging in; **Switch club** in the user menu goes back to that choice.
+
+## Forgotten password {#password}
+
+If your account has a confirmed email address, use **Forgot your password?** on the login page. You get a link that is valid for one hour. Setting a new password logs you out everywhere. Without a confirmed email address, ask the operator to set a new password in the admin panel.
 
 ## Account {#account}
 
@@ -41,13 +45,19 @@ The token (`sb_…`) is shown only once; copy it right away. Scripts send it as 
 
 ## Second factor {#totp}
 
-An authenticator app (Google Authenticator, Aegis, 1Password and the like) can protect your login: after the password, Standblatt asks for the six-digit code the app shows. Set it up under [Account](#account): **Set up**, scan the QR code, enter the current code, **Switch on**. **Switch off** asks for your password. Lost the phone? The operator can reset the second factor in the [admin panel](../admin-guide/admin-panel.md). The operator can also switch the feature off for the whole server.
+An authenticator app (Google Authenticator, Aegis, 1Password and the like) can protect your login: after the password, Standblatt asks for the six-digit code the app shows. Set it up under [Account](#account): **Set up**, scan the QR code, enter the current code, **Switch on**. **Switch off** asks for your password. Lost the phone? The operator can reset the second factor in the admin panel. The operator can also switch the feature off for the whole server.
 
 ## Language
 
 The interface is available in English, German, French and Italian. Without a choice, Standblatt follows the browser's language. **Language** in the user menu (bottom of the sidebar) sets it for your account on every device.
 
 Printed documents, CSV exports and kiosk screens do not follow your choice but the language of the event, so that every printout of an event looks the same (see [Events](events.md#settings)).
+
+## Dark mode
+
+The sun/moon button in the header switches between light and dark mode; the choice is kept in the browser.
+
+![Dashboard in dark mode](../images/screenshots/dashboard-dark.png){ .screenshot }
 
 ## Version
 

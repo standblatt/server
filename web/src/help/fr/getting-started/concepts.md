@@ -5,8 +5,7 @@
 Une **société** est un mandant : tout dans Standblatt appartient à
 exactement une société, et les sociétés ne voient jamais les données des
 autres. L’exploitant de la plateforme crée les sociétés et les comptes
-d’utilisateur dans le [panneau
-d’administration](../admin-guide/admin-panel.md).
+d’utilisateur dans le panneau d’administration.
 
 Les **utilisateurs** sont des comptes personnels. Un compte peut appartenir à plusieurs sociétés, avec un rôle par société. Un rôle est un ensemble de droits comme *Gérer les manifestations* ou *Configurer les manifestations* ; chaque société commence avec les rôles *Admin*, *Comité*, *Aide* et *Membre* et peut les modifier ou ajouter les siens (voir [Rôles](../user-guide/users.md#roles)). Les sociétés invitent des personnes par e-mail ; la personne invitée rejoint la société en acceptant le lien.
 

@@ -84,9 +84,10 @@ l’en-tête de chaque classement et de chaque classement général sous
 **Classements** demande le modèle, la classe d’un classement général et les
 rangs (1 à 3 sauf modification), puis imprime une page par tireur classé, ou
 les ouvre en un seul PDF. Les diplômes partent vers l’imprimante des
-*Diplômes* sous **Stands de tir → Impression**. Les champs d’un rang sont le
-rang, le total, le classement (le programme ou le classement général) et la
-classe ; le diplôme d’un programme connaît aussi ses résultats.
+*Diplômes* sous **Stands de tir → Configurer les imprimantes**. Les champs
+d’un rang sont le rang, le total, le classement (le programme ou le
+classement général) et la classe ; le diplôme d’un programme connaît aussi
+ses résultats.
 
 ![Diplômes depuis un classement](../images/screenshots/certificates.png){
 .screenshot }
@@ -151,7 +152,8 @@ terminé propose alors **Imprimer sur le modèle** dans les résultats : au
 desk, sur la page **Saisir les résultats** et par les liens de secrétaire à
 la cible (voir [Aides](helpers.md)). Avec un agent d’impression et une
 imprimante choisie pour *Modèles d’impression* sous **Stands de tir →
-Impression**, la feuille part vers cette imprimante (p. ex. son alimentation
-manuelle), sinon le PDF s’ouvre (voir [Impression](printing.md)).
+Configurer les imprimantes**, la feuille part vers cette imprimante
+(p. ex. son alimentation manuelle), sinon le PDF s’ouvre (voir
+[Impression](printing.md)).
 
 **Exporter** télécharge un modèle avec ses images sous forme de fichier et **Importer** le relit, p. ex. pour partager un modèle avec une autre société.

@@ -27,9 +27,3 @@ Press ++f4++ anywhere on the dashboard to jump into the search field.
 ## Finish shooting
 
 **Finish** ends a registration before all results are in, for example when a shooter gives up or hands in the targets later. The registration moves to *Completed* and its lane becomes free; missing results can still be entered.
-
-## Dark mode
-
-The sun/moon button in the header switches between light and dark mode; the choice is kept in the browser.
-
-![Dashboard in dark mode](../images/screenshots/dashboard-dark.png){ .screenshot }

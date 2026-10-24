@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-10-19 18:07+0000\n"
+"POT-Creation-Date: 2026-10-24 19:22+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -33,12 +33,12 @@ msgstr "Società, utenti e ruoli {#clubs-users-and-roles}"
 msgid ""
 "A **club** is a tenant: everything in Standblatt belongs to exactly one "
 "club, and clubs never see each other's data. The platform operator creates "
-"clubs and user accounts in the [admin panel](../admin-guide/admin-panel.md)."
+"clubs and user accounts in the admin panel."
 msgstr ""
 "Una **società** è un mandante: tutto in Standblatt appartiene esattamente a "
 "una società, e le società non vedono mai i dati delle altre. Il gestore "
-"della piattaforma crea società e account utente nel [pannello di "
-"amministrazione](../admin-guide/admin-panel.md)."
+"della piattaforma crea società e account utente nel pannello di "
+"amministrazione."
 
 #. type: Plain text
 #: ../src/help/en/getting-started/concepts.md:8
@@ -240,12 +240,11 @@ msgstr "La tua prima manifestazione"
 msgid ""
 "This walk-through takes a club from an empty account to a running "
 "competition. It assumes the platform operator has created the club and your "
-"account as its admin (see [Admin panel](../admin-guide/admin-panel.md))."
+"account as its admin."
 msgstr ""
 "Questa guida porta una società da un account vuoto a una gara in corso. "
 "Presuppone che il gestore della piattaforma abbia creato la società e il tuo "
-"account come admin (vedi [pannello di amministrazione](../admin-guide/admin-"
-"panel.md))."
+"account come admin."
 
 #. type: Title ##
 #: ../src/help/en/getting-started/first-event.md:5
@@ -397,13 +396,13 @@ msgstr "6. Schermi chiosco e stampanti"
 msgid ""
 "Still in the configuration, on **Kiosk displays**, create a kiosk link for "
 "each screen in the hall (see [Rankings and kiosk](../user-guide/rankings-"
-"kiosk.md)). Under Ranges → Printing, assign a printer to each document (see "
-"[Printing](../user-guide/printing.md))."
+"kiosk.md)). Under **Ranges → Set up the printers**, assign a printer to each "
+"document (see [Printing](../user-guide/printing.md))."
 msgstr ""
 "Sempre nella configurazione, in **Display chiosco**, crea un link chiosco "
 "per ogni schermo della sala (vedi [Classifiche e chiosco](../user-guide/"
-"rankings-kiosk.md)). In Stand di tiro → Stampa assegna una stampante a ogni "
-"documento (vedi [Stampa](../user-guide/printing.md))."
+"rankings-kiosk.md)). In **Stand di tiro → Configura le stampanti** assegna "
+"una stampante a ogni documento (vedi [Stampa](../user-guide/printing.md))."
 
 #. type: Title ##
 #: ../src/help/en/getting-started/first-event.md:37
@@ -683,15 +682,13 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/my-training/account.md:14
 msgid ""
-"Forgot your password? Use **Forgot your password?** on the login page. You "
-"get a link that is valid for one hour. Setting a new password logs you out "
-"everywhere. Logged in, you change the password under [Account](../user-guide/"
-"login-language.md#account)."
+"Forgot your password? See [Forgotten password](../user-guide/login-"
+"language.md#password). Logged in, you change the password under [Account](../"
+"user-guide/login-language.md#account)."
 msgstr ""
-"Password dimenticata? Usa **Password dimenticata?** nella pagina di accesso. "
-"Ricevi un link valido un’ora. Impostare una nuova password ti disconnette "
-"ovunque. Da connesso cambi la password sotto [Account](../user-guide/login-"
-"language.md#account)."
+"Password dimenticata? Vedi [Password dimenticata](../user-guide/login-"
+"language.md#password). Da connesso cambi la password sotto [Account](../user-"
+"guide/login-language.md#account)."
 
 #. type: Plain text
 #: ../src/help/en/my-training/account.md:16
@@ -1626,10 +1623,10 @@ msgstr ""
 #, no-wrap
 msgid ""
 "license;firstname;lastname;birthday;postalcode;city;club\n"
-"100100;Sandra;Example;1969-06-02;9050;Appenzell;PS Example\n"
+"100100;Sandra;Example;1969-06-02;9999;Hilltown;PS Example\n"
 msgstr ""
 "license;firstname;lastname;birthday;postalcode;city;club\n"
-"100100;Sandra;Example;1969-06-02;9050;Appenzell;PS Example\n"
+"100100;Sandra;Example;1969-06-02;9999;Hilltown;PS Example\n"
 
 #. type: Plain text
 #: ../src/help/en/reference/csv-import.md:18
@@ -1869,12 +1866,9 @@ msgstr "Regole di gara"
 
 #. type: Plain text
 #: ../src/help/en/reference/rules.md:4
-msgid ""
-"This page describes the rules exactly as Standblatt implements them. They "
-"live in `internal/domain` and are covered by unit tests."
+msgid "This page describes the rules exactly as Standblatt implements them."
 msgstr ""
-"Questa pagina descrive le regole esattamente come Standblatt le implementa. "
-"Si trovano in `internal/domain` e sono coperte da test unitari."
+"Questa pagina descrive le regole esattamente come Standblatt le implementa."
 
 #. type: Title ##
 #: ../src/help/en/reference/rules.md:5
@@ -2073,14 +2067,11 @@ msgstr ""
 msgid ""
 "Ranks are consecutive (1, 2, 3, … even on equal results). The same ranking "
 "feeds the staff pages, kiosk screens, the ranking PDF and CSV, and special "
-"prizes. It was checked against the published rankings of the 2026 Appenzell "
-"air pistol championship: identical on all 260 lines."
+"prizes."
 msgstr ""
 "I ranghi sono consecutivi (1, 2, 3, … anche a parità di risultato). La "
 "stessa classifica alimenta le pagine del personale, gli schermi chiosco, il "
-"PDF e il CSV della classifica e i premi speciali. È stata verificata con le "
-"classifiche pubblicate del campionato appenzellese di pistola ad aria 2026: "
-"identica su tutte le 260 righe."
+"PDF e il CSV della classifica e i premi speciali."
 
 #. type: Title ##
 #: ../src/help/en/reference/rules.md:45
@@ -2198,11 +2189,11 @@ msgstr ""
 #: ../src/help/en/reference/rules.md:68
 #, no-wrap
 msgid ""
-"!!! example \"Appenzell air pistol championship\"\n"
-"    The brochure says: *\"In every category, ranks 1–3 receive a special prize, provided the category has at least 10 participants and the shooter's club at least 4.\"* That is ranks 3, category minimum 10, club minimum 4. Applied to the 2026 results, the rule reproduces the hand-made winner list.\n"
+"!!! example \"From the brochure to the settings\"\n"
+"    A brochure says: *\"In every category, ranks 1–3 receive a special prize, provided the category has at least 10 participants and the shooter's club at least 4.\"* That is ranks 3, category minimum 10, club minimum 4.\n"
 msgstr ""
-"!!! example \"Campionato appenzellese di pistola ad aria\"\n"
-"    Il bando dice: *«In ogni categoria i ranghi 1–3 ricevono un premio speciale, purché la categoria abbia almeno 10 partecipanti e la società del tiratore almeno 4.»* Cioè ranghi 3, minimo di categoria 10, minimo di società 4. Applicata ai risultati 2026, la regola riproduce la lista dei vincitori fatta a mano.\n"
+"!!! example \"Dal bando alle impostazioni\"\n"
+"    Un bando dice: *«In ogni categoria i ranghi 1–3 ricevono un premio speciale, purché la categoria abbia almeno 10 partecipanti e la società del tiratore almeno 4.»* Cioè ranghi 3, minimo di categoria 10, minimo di società 4.\n"
 
 #. type: Title ##
 #: ../src/help/en/reference/rules.md:69
@@ -2546,34 +2537,10 @@ msgid "Finish shooting"
 msgstr "Terminare il tiro"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/dashboard.md:30
+#: ../src/help/en/user-guide/dashboard.md:29
 #, no-wrap
 msgid "**Finish** ends a registration before all results are in, for example when a shooter gives up or hands in the targets later. The registration moves to *Completed* and its lane becomes free; missing results can still be entered.\n"
 msgstr "**Termina** chiude un’iscrizione prima che tutti i risultati siano presenti, per esempio quando un tiratore rinuncia o consegna i bersagli più tardi. L’iscrizione passa a *Concluso* e il suo bersaglio si libera; i risultati mancanti si possono ancora registrare.\n"
-
-#. type: Title ##
-#: ../src/help/en/user-guide/dashboard.md:31
-#, no-wrap
-msgid "Dark mode"
-msgstr "Tema scuro"
-
-#. type: Plain text
-#: ../src/help/en/user-guide/dashboard.md:34
-msgid ""
-"The sun/moon button in the header switches between light and dark mode; the "
-"choice is kept in the browser."
-msgstr ""
-"Il pulsante sole/luna nell’intestazione passa dal tema chiaro a quello "
-"scuro; la scelta resta salvata nel browser."
-
-#. type: Plain text
-#: ../src/help/en/user-guide/dashboard.md:35
-msgid ""
-"![Dashboard in dark mode](../images/screenshots/dashboard-dark.png)"
-"{ .screenshot }"
-msgstr ""
-"![Dashboard con tema scuro](../images/screenshots/dashboard-dark.png)"
-"{ .screenshot }"
 
 #. type: Title #
 #: ../src/help/en/user-guide/events.md:1
@@ -2983,21 +2950,14 @@ msgid ""
 "password when you accepted the invitation of your club, or you received it "
 "from your club admin or the platform operator. Club accounts are not created "
 "by sign-up; only [My training](../my-training/account.md) has its own sign-"
-"up. Forgot your password? If your account has a confirmed email address, use "
-"**Forgot your password?** on the login page; otherwise ask the operator to "
-"set a new password in the [admin panel](../admin-guide/admin-panel.md). "
-"Logged in, you change it yourself under [Account](#account)."
+"up. Logged in, you change your password yourself under [Account](#account)."
 msgstr ""
 "Accedi con il tuo indirizzo e-mail (o nome utente) e la tua password: la "
 "password l’hai scelta accettando l’invito della tua società, oppure l’hai "
 "ricevuta dall’admin della tua società o dal gestore della piattaforma. Gli "
 "account della società non nascono da una registrazione; solo [Il mio "
-"allenamento](../my-training/account.md) ha una sua registrazione. Password "
-"dimenticata? Se il tuo account ha un indirizzo e-mail confermato, usa "
-"**Password dimenticata?** nella pagina di accesso; altrimenti chiedi al "
-"gestore di impostare una nuova password nel [pannello di amministrazione](../"
-"admin-guide/admin-panel.md). Da connesso la cambi da solo sotto [Account]"
-"(#account)."
+"allenamento](../my-training/account.md) ha una sua registrazione. Da "
+"connesso cambi la password da solo sotto [Account](#account)."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/login-language.md:8
@@ -3042,17 +3002,37 @@ msgstr ""
 #. type: Title ##
 #: ../src/help/en/user-guide/login-language.md:17
 #, no-wrap
+msgid "Forgotten password {#password}"
+msgstr "Password dimenticata {#password}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:20
+msgid ""
+"If your account has a confirmed email address, use **Forgot your password?** "
+"on the login page. You get a link that is valid for one hour. Setting a new "
+"password logs you out everywhere. Without a confirmed email address, ask the "
+"operator to set a new password in the admin panel."
+msgstr ""
+"Se il tuo account ha un indirizzo e-mail confermato, usa **Password "
+"dimenticata?** nella pagina di accesso. Ricevi un link valido un’ora. "
+"Impostare una nuova password ti disconnette ovunque. Senza un indirizzo e-"
+"mail confermato chiedi al gestore di impostare una nuova password nel "
+"pannello di amministrazione."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/login-language.md:21
+#, no-wrap
 msgid "Account {#account}"
 msgstr "Account {#account}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:20
+#: ../src/help/en/user-guide/login-language.md:24
 #, no-wrap
 msgid "**Account** in the user menu (bottom of the sidebar), on the start page and in My training's sidebar opens your account settings:\n"
 msgstr "**Account** nel menu utente (in fondo alla barra laterale), nella pagina iniziale e nella barra laterale di Il mio allenamento apre le impostazioni del tuo account:\n"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:27
+#: ../src/help/en/user-guide/login-language.md:31
 msgid ""
 "**Login**: your user name (it cannot be changed) and your email address. "
 "**Add** or **Change** asks for your password and sends a confirmation link; "
@@ -3067,7 +3047,7 @@ msgstr ""
 "di reimpostare da solo una password dimenticata."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:27
+#: ../src/help/en/user-guide/login-language.md:31
 msgid ""
 "**Password**: enter the current and the new password (at least 10 "
 "characters). Other devices are logged out, the one you are on stays."
@@ -3077,7 +3057,7 @@ msgstr ""
 "usando resta connesso."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:27
+#: ../src/help/en/user-guide/login-language.md:31
 msgid ""
 "**Language and theme**: the interface language of your account and light or "
 "dark mode."
@@ -3086,17 +3066,17 @@ msgstr ""
 "modalità chiara o scura."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:27
+#: ../src/help/en/user-guide/login-language.md:31
 msgid "**Second factor**: see below."
 msgstr "**Secondo fattore**: vedi sotto."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:27
+#: ../src/help/en/user-guide/login-language.md:31
 msgid "**API tokens**: see below."
 msgstr "**Token API**: vedi sotto."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:27
+#: ../src/help/en/user-guide/login-language.md:31
 msgid ""
 "**Delete account**: only for accounts that belong to no club; the training "
 "log, goals and settings are deleted for good. Club accounts are removed by "
@@ -3107,18 +3087,18 @@ msgstr ""
 "società li rimuove l’admin della società."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:29
+#: ../src/help/en/user-guide/login-language.md:33
 msgid "![Account](../images/screenshots/account.png){ .screenshot }"
 msgstr "![Account](../images/screenshots/account.png){ .screenshot }"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/login-language.md:30
+#: ../src/help/en/user-guide/login-language.md:34
 #, no-wrap
 msgid "API tokens {#api-tokens}"
 msgstr "Token API {#api-tokens}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:33
+#: ../src/help/en/user-guide/login-language.md:37
 msgid ""
 "Want to show the rankings on the club website, import sessions from another "
 "app or analyse data with your own script? Create a token under **Account → "
@@ -3129,12 +3109,12 @@ msgstr ""
 "**Account → Token API** con **Nuovo token**:"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:39
+#: ../src/help/en/user-guide/login-language.md:43
 msgid "a **name** that tells you later what uses it,"
 msgstr "un **nome** che ti dirà più tardi chi lo usa,"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:39
+#: ../src/help/en/user-guide/login-language.md:43
 msgid ""
 "a **preset** fills in the permissions for a common use: **Rankings for a "
 "website**, **Training app** or **Read only**,"
@@ -3143,14 +3123,14 @@ msgstr ""
 "sito web**, **App di allenamento** o **Solo lettura**,"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:39
+#: ../src/help/en/user-guide/login-language.md:43
 msgid "the **clubs** the token may use (none: only your training log),"
 msgstr ""
 "le **società** che il token può usare (nessuna: solo il tuo diario di "
 "allenamento),"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:39
+#: ../src/help/en/user-guide/login-language.md:43
 msgid ""
 "the **permissions**: *Read my training log*, *Log and change my training "
 "sessions* and, for the chosen clubs, the [permissions of roles]"
@@ -3161,12 +3141,12 @@ msgstr ""
 "[diritti dei ruoli](users.md#roles) che il tuo ruolo vi ha,"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/login-language.md:39
+#: ../src/help/en/user-guide/login-language.md:43
 msgid "when it **expires**: in 30 or 90 days, in a year, or never."
 msgstr "quando **scade**: tra 30 o 90 giorni, tra un anno o mai."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:41
+#: ../src/help/en/user-guide/login-language.md:45
 msgid ""
 "The token (`sb_…`) is shown only once; copy it right away. Scripts send it "
 "as `Authorization: Bearer sb_…` (or `X-API-Key: sb_…`). It may do what you "
@@ -3188,39 +3168,38 @@ msgstr ""
 "trovano gli endpoint sotto `/api/docs`."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/login-language.md:42
+#: ../src/help/en/user-guide/login-language.md:46
 #, no-wrap
 msgid "Second factor {#totp}"
 msgstr "Secondo fattore {#totp}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:45
+#: ../src/help/en/user-guide/login-language.md:49
 msgid ""
 "An authenticator app (Google Authenticator, Aegis, 1Password and the like) "
 "can protect your login: after the password, Standblatt asks for the six-"
 "digit code the app shows. Set it up under [Account](#account): **Set up**, "
 "scan the QR code, enter the current code, **Switch on**. **Switch off** asks "
 "for your password. Lost the phone? The operator can reset the second factor "
-"in the [admin panel](../admin-guide/admin-panel.md). The operator can also "
-"switch the feature off for the whole server."
+"in the admin panel. The operator can also switch the feature off for the "
+"whole server."
 msgstr ""
 "Un’app di autenticazione (Google Authenticator, Aegis, 1Password e simili) "
 "può proteggere il tuo accesso: dopo la password, Standblatt chiede il codice "
 "a sei cifre mostrato dall’app. Configurala sotto [Account](#account): "
 "**Configura**, scansiona il codice QR, inserisci il codice attuale, "
 "**Attiva**. **Disattiva** chiede la tua password. Telefono perso? Il gestore "
-"può azzerare il secondo fattore nel [pannello di amministrazione](../admin-"
-"guide/admin-panel.md). Il gestore può anche disattivare la funzione per "
-"tutto il server."
+"può azzerare il secondo fattore nel pannello di amministrazione. Il gestore "
+"può anche disattivare la funzione per tutto il server."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/login-language.md:46
+#: ../src/help/en/user-guide/login-language.md:50
 #, no-wrap
 msgid "Language"
 msgstr "Lingua"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:49
+#: ../src/help/en/user-guide/login-language.md:53
 msgid ""
 "The interface is available in English, German, French and Italian. Without a "
 "choice, Standblatt follows the browser's language. **Language** in the user "
@@ -3232,7 +3211,7 @@ msgstr ""
 "dispositivo."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:51
+#: ../src/help/en/user-guide/login-language.md:55
 msgid ""
 "Printed documents, CSV exports and kiosk screens do not follow your choice "
 "but the language of the event, so that every printout of an event looks the "
@@ -3244,13 +3223,37 @@ msgstr ""
 "(events.md#settings))."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/login-language.md:52
+#: ../src/help/en/user-guide/login-language.md:56
+#, no-wrap
+msgid "Dark mode"
+msgstr "Tema scuro"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:59
+msgid ""
+"The sun/moon button in the header switches between light and dark mode; the "
+"choice is kept in the browser."
+msgstr ""
+"Il pulsante sole/luna nell’intestazione passa dal tema chiaro a quello "
+"scuro; la scelta resta salvata nel browser."
+
+#. type: Plain text
+#: ../src/help/en/user-guide/login-language.md:61
+msgid ""
+"![Dashboard in dark mode](../images/screenshots/dashboard-dark.png)"
+"{ .screenshot }"
+msgstr ""
+"![Dashboard con tema scuro](../images/screenshots/dashboard-dark.png)"
+"{ .screenshot }"
+
+#. type: Title ##
+#: ../src/help/en/user-guide/login-language.md:62
 #, no-wrap
 msgid "Version"
 msgstr "Versione"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/login-language.md:54
+#: ../src/help/en/user-guide/login-language.md:64
 msgid ""
 "The bottom of the sidebar shows the version of the server, which helps when "
 "reporting a problem; in My training on a phone it is under **Settings**. "
@@ -3335,19 +3338,20 @@ msgstr "![Stampa](../images/screenshots/printing.png){ .screenshot }"
 msgid ""
 "Connect a computer next to the printers: a Windows PC or a Mac with the "
 "[Standblatt Print Agent app](#app) by [code](#connect), or a Linux computer "
-"such as a Raspberry Pi with the [headless agent](../admin-guide/print-"
-"agent.md): **Add print agent**, give it a name and copy the token. One "
-"computer can serve several ranges, e.g. *Pistol 25 m* and *Pistol 50 m*: "
-"connect it to each range (the app with **Connect another range**, the "
+"such as a Raspberry Pi with the [headless agent](https://github.com/"
+"standblatt/print-agent): **Add print agent**, give it a name and copy the "
+"token. One computer can serve several ranges, e.g. *Pistol 25 m* and *Pistol "
+"50 m*: connect it to each range (the app with **Connect another range**, the "
 "headless agent with both tokens, separated by a comma)."
 msgstr ""
 "Collega un computer vicino alle stampanti: un PC Windows o un Mac con l’[app "
 "Standblatt Print Agent](#app) tramite [codice](#connect), oppure un computer "
-"Linux come un Raspberry Pi con l’[agente senza interfaccia](../admin-guide/"
-"print-agent.md): **Aggiungi agente di stampa**, dagli un nome e copia il "
-"token. Un computer può servire più stand, p. es. *Pistola 25 m* e *Pistola "
-"50 m*: collegalo a ogni stand (l’app con **Collega un altro stand di tiro**, "
-"l’agente senza interfaccia con entrambi i token, separati da una virgola)."
+"Linux come un Raspberry Pi con l’[agente senza interfaccia](https://"
+"github.com/standblatt/print-agent): **Aggiungi agente di stampa**, dagli un "
+"nome e copia il token. Un computer può servire più stand, p. es. *Pistola 25 "
+"m* e *Pistola 50 m*: collegalo a ogni stand (l’app con **Collega un altro "
+"stand di tiro**, l’agente senza interfaccia con entrambi i token, separati "
+"da una virgola)."
 
 #. type: Bullet: '2. '
 #: ../src/help/en/user-guide/printing.md:26
@@ -3751,8 +3755,8 @@ msgid ""
 "header of every ranking and classification on **Rankings** asks for the "
 "form, the class of a classification and the ranks (1 to 3 unless changed), "
 "then prints one page per ranked shooter, or opens them as one PDF. "
-"Certificates go to the printer of *Certificates* under **Ranges → "
-"Printing**. The fields of a rank are the rank, the total, the ranking (the "
+"Certificates go to the printer of *Certificates* under **Ranges → Set up the "
+"printers**. The fields of a rank are the rank, the total, the ranking (the "
 "programme or classification) and the class; a programme's certificate knows "
 "its results too."
 msgstr ""
@@ -3761,9 +3765,10 @@ msgstr ""
 "**Classifiche** chiede il modello, la classe di una classifica generale e i "
 "ranghi (da 1 a 3 se non modificati), poi stampa una pagina per tiratore "
 "classificato, oppure le apre in un unico PDF. I diplomi vanno alla stampante "
-"dei *Diplomi* in **Stand di tiro → Stampa**. I campi di un rango sono il "
-"rango, il totale, la classifica (il programma o la classifica generale) e la "
-"classe; il diploma di un programma conosce anche i suoi risultati."
+"dei *Diplomi* in **Stand di tiro → Configura le stampanti**. I campi di un "
+"rango sono il rango, il totale, la classifica (il programma o la classifica "
+"generale) e la classe; il diploma di un programma conosce anche i suoi "
+"risultati."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:43
@@ -3921,9 +3926,9 @@ msgid ""
 "shooters are registered. Every completed programme then offers **Print onto "
 "form** in the results: at the desk, on the **Enter results** page and on "
 "scorer links at the lane (see [Helpers](helpers.md)). With a print agent and "
-"a printer chosen for *Print forms* under **Ranges → Printing**, the sheet "
-"goes to that printer (e.g. its manual feed), otherwise the PDF opens (see "
-"[Printing](printing.md))."
+"a printer chosen for *Print forms* under **Ranges → Set up the printers**, "
+"the sheet goes to that printer (e.g. its manual feed), otherwise the PDF "
+"opens (see [Printing](printing.md))."
 msgstr ""
 "In **Configurazione** → **Programmi** della manifestazione apri un programma "
 "e scegli il suo **Modello di stampa** nella sezione omonima; funziona anche "
@@ -3931,9 +3936,9 @@ msgstr ""
 "modello** nei risultati: al desk, nella pagina **Registra risultati** e "
 "tramite i link per segretari al bersaglio (vedi [Aiutanti](helpers.md)). Con "
 "un agente di stampa e una stampante scelta per *Modelli di stampa* in "
-"**Stand di tiro → Stampa**, il foglio va a quella stampante (p. es. al suo "
-"alimentatore manuale), altrimenti si apre il PDF (vedi [Stampa]"
-"(printing.md))."
+"**Stand di tiro → Configura le stampanti**, il foglio va a quella stampante "
+"(p. es. al suo alimentatore manuale), altrimenti si apre il PDF (vedi "
+"[Stampa](printing.md))."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/print-forms.md:76
@@ -5722,15 +5727,12 @@ msgstr ""
 #: ../src/help/en/user-guide/users.md:48
 msgid ""
 "Accounts are global: deleting an account is done by the platform operator in "
-"the [admin panel](../admin-guide/admin-panel.md). A forgotten password is "
-"reset with **Forgot your password?** on the login page if the account has a "
-"confirmed email address, otherwise by the operator."
+"the admin panel. For a forgotten password see [Forgotten password](login-"
+"language.md#password)."
 msgstr ""
 "Gli account sono globali: un account viene eliminato dal gestore della "
-"piattaforma nel [pannello di amministrazione](../admin-guide/admin-"
-"panel.md). Una password dimenticata si reimposta con **Password dimenticata?"
-"** nella pagina di accesso se l’account ha un indirizzo e-mail confermato, "
-"altrimenti lo fa il gestore."
+"piattaforma nel pannello di amministrazione. Per una password dimenticata "
+"vedi [Password dimenticata](login-language.md#password)."
 
 #~ msgid ""
 #~ "the **permissions**: *Read sessions* and/or *Log and change sessions*,"

@@ -1,6 +1,6 @@
 # Competition rules
 
-This page describes the rules exactly as Standblatt implements them. They live in `internal/domain` and are covered by unit tests.
+This page describes the rules exactly as Standblatt implements them.
 
 ## Age category
 
@@ -40,7 +40,7 @@ All results of a programme are ordered by:
 3. more mouches;
 4. age: among juniors (U10–U21) the younger shooter first, among the others the older shooter first; non-juniors rank before juniors.
 
-Ranks are consecutive (1, 2, 3, … even on equal results). The same ranking feeds the staff pages, kiosk screens, the ranking PDF and CSV, and special prizes. It was checked against the published rankings of the 2026 Appenzell air pistol championship: identical on all 260 lines.
+Ranks are consecutive (1, 2, 3, … even on equal results). The same ranking feeds the staff pages, kiosk screens, the ranking PDF and CSV, and special prizes.
 
 ## Club competition {#club-competition}
 
@@ -63,8 +63,8 @@ A programme can award special prizes to the best ranks of every age category. Th
 
 Per age category with enough participants, the first shooters in ranking order whose club has enough participants win; shooters whose club has too few are skipped and the next one moves up. Shooters without a club are not eligible unless the club minimum is 0. The report lists both the winners and the skipped shooters with the reason.
 
-!!! example "Appenzell air pistol championship"
-    The brochure says: *"In every category, ranks 1–3 receive a special prize, provided the category has at least 10 participants and the shooter's club at least 4."* That is ranks 3, category minimum 10, club minimum 4. Applied to the 2026 results, the rule reproduces the hand-made winner list.
+!!! example "From the brochure to the settings"
+    A brochure says: *"In every category, ranks 1–3 receive a special prize, provided the category has at least 10 participants and the shooter's club at least 4."* That is ranks 3, category minimum 10, club minimum 4.
 
 ## Lane lists
 

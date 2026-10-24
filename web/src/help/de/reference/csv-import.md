@@ -6,7 +6,7 @@ oder `,`) wird daraus übernommen.
 
 ```text
 license;firstname;lastname;birthday;postalcode;city;club
-100100;Sandra;Example;1969-06-02;9050;Appenzell;PS Example
+100100;Sandra;Example;1969-06-02;9999;Hilltown;PS Example
 ```
 
 | Spalte | Pflicht | Hinweise |

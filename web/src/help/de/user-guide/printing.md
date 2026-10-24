@@ -27,11 +27,12 @@ erscheint ein Hinweis mit dem Button **Teilen**.
 1. Verbinde einen Computer bei den Druckern: einen Windows-PC oder einen Mac
    mit der [App Standblatt Print Agent](#app) per [Code](#connect), oder
    einen Linux-Computer wie einen Raspberry Pi mit dem [Agenten ohne
-   Oberfläche](../admin-guide/print-agent.md): **Druck-Agent hinzufügen**,
-   gib ihm einen Namen und kopiere das Token. Ein Computer kann mehrere
-   Stände bedienen, z. B. *Pistole 25 m* und *Pistole 50 m*: Verbinde ihn
-   mit jedem Stand (die App mit **Weiteren Schiessstand verbinden**, den
-   Agenten ohne Oberfläche mit beiden Tokens, durch Komma getrennt).
+   Oberfläche](https://github.com/standblatt/print-agent): **Druck-Agent
+   hinzufügen**, gib ihm einen Namen und kopiere das Token. Ein Computer
+   kann mehrere Stände bedienen, z. B. *Pistole 25 m* und *Pistole 50 m*:
+   Verbinde ihn mit jedem Stand (die App mit **Weiteren Schiessstand
+   verbinden**, den Agenten ohne Oberfläche mit beiden Tokens, durch Komma
+   getrennt).
 2. Sobald der Agent online ist, meldet er seine Drucker, und die Liste zeigt
    seine Version und sein Betriebssystem. Wähle für jedes Dokument den
    Drucker (*Urkunden* sind die Urkunden aus den Ranglisten, *Druckvorlagen*

@@ -81,9 +81,9 @@ jeder Rangliste und jeder Wertung unter **Ranglisten** fragt nach der
 Vorlage, der Klasse einer Wertung und den Rängen (1 bis 3, wenn nicht
 geändert) und druckt dann eine Seite pro rangiertem Schützen oder öffnet sie
 als ein PDF. Urkunden gehen an den Drucker der *Urkunden* unter
-**Schiessstände → Drucken**. Die Felder eines Rangs sind der Rang, das
-Total, die Rangliste (das Programm oder die Wertung) und die Klasse; die
-Urkunde eines Programms kennt auch seine Resultate.
+**Schiessstände → Drucker einrichten**. Die Felder eines Rangs sind der
+Rang, das Total, die Rangliste (das Programm oder die Wertung) und die
+Klasse; die Urkunde eines Programms kennt auch seine Resultate.
 
 ![Urkunden aus einer Rangliste](../images/screenshots/certificates.png){
 .screenshot }
@@ -147,8 +147,8 @@ schon Schützen angemeldet sind. Jedes abgeschlossene Programm bietet dann in
 den Resultaten **Auf Vorlage drucken** an: am Desk, auf der Seite
 **Resultate erfassen** und über Warner-Links an der Scheibe (siehe
 [Helfer](helpers.md)). Mit einem Druck-Agenten und einem Drucker für
-*Druckvorlagen* unter **Schiessstände → Drucken** geht das Blatt an diesen
-Drucker (z. B. an seinen manuellen Einzug), sonst öffnet sich das PDF (siehe
-[Drucken](printing.md)).
+*Druckvorlagen* unter **Schiessstände → Drucker einrichten** geht das Blatt
+an diesen Drucker (z. B. an seinen manuellen Einzug), sonst öffnet sich das
+PDF (siehe [Drucken](printing.md)).
 
 **Exportieren** lädt eine Vorlage mit ihren Bildern als Datei herunter und **Importieren** liest sie wieder ein, z. B. um eine Vorlage mit einem anderen Verein zu teilen.

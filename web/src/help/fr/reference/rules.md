@@ -1,8 +1,6 @@
 # Règles de concours
 
-Cette page décrit les règles exactement comme Standblatt les
-implémente. Elles se trouvent dans `internal/domain` et sont couvertes par
-des tests unitaires.
+Cette page décrit les règles exactement comme Standblatt les implémente.
 
 ## Catégorie d’âge
 
@@ -71,9 +69,7 @@ Tous les résultats d’un programme sont ordonnés par :
 
 Les rangs sont consécutifs (1, 2, 3, … même à résultat égal). Le même
 classement alimente les pages du personnel, les écrans kiosque, le PDF et le
-CSV du classement ainsi que les prix spéciaux. Il a été vérifié avec les
-classements publiés du championnat appenzellois au pistolet à air 2026 :
-identique sur les 260 lignes.
+CSV du classement ainsi que les prix spéciaux.
 
 ## Concours de sections {#club-competition}
 
@@ -110,8 +106,8 @@ monte. Les tireurs sans société ne sont pas éligibles, sauf si le minimum de
 société est 0. Le rapport liste les gagnants et les tireurs sautés avec la
 raison.
 
-!!! example "Championnat appenzellois au pistolet à air"
-    Le programme dit : *« Dans chaque catégorie, les rangs 1 à 3 reçoivent un prix spécial, pour autant que la catégorie compte au moins 10 participants et la société du tireur au moins 4. »* Cela donne rangs 3, minimum de catégorie 10, minimum de société 4. Appliquée aux résultats 2026, la règle reproduit la liste des gagnants établie à la main.
+!!! example "Du programme aux réglages"
+    Un programme dit : *« Dans chaque catégorie, les rangs 1 à 3 reçoivent un prix spécial, pour autant que la catégorie compte au moins 10 participants et la société du tireur au moins 4. »* Cela donne rangs 3, minimum de catégorie 10, minimum de société 4.
 
 ## Listes de cibles
 

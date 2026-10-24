@@ -20,10 +20,9 @@ bestätigen. Bis du sie bestätigst, erinnert dich ein Hinweis auf der Seite
 Heute; **Erneut senden** schickt einen neuen Link. Der Link ist sieben Tage
 gültig.
 
-Passwort vergessen? Nutze **Passwort vergessen?** auf der Login-Seite. Du
-bekommst einen Link, der eine Stunde gültig ist. Ein neues Passwort meldet
-dich überall ab. Angemeldet änderst du das Passwort unter
-[Konto](../user-guide/login-language.md#account).
+Passwort vergessen? Siehe [Passwort
+vergessen](../user-guide/login-language.md#password). Angemeldet änderst du
+das Passwort unter [Konto](../user-guide/login-language.md#account).
 
 Konten, die ein Vereins-Admin angelegt hat, melden sich mit ihrem
 Benutzernamen statt einer E-Mail an; sie können unter **Einstellungen →

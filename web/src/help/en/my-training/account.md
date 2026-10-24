@@ -10,7 +10,7 @@ Open **Create an account** on the login page. You need your name, your email add
 
 Standblatt sends you a link to confirm your email address. Until you confirm it, a note on the Today page reminds you; **Send again** sends a new link. The link is valid for seven days.
 
-Forgot your password? Use **Forgot your password?** on the login page. You get a link that is valid for one hour. Setting a new password logs you out everywhere. Logged in, you change the password under [Account](../user-guide/login-language.md#account).
+Forgot your password? See [Forgotten password](../user-guide/login-language.md#password). Logged in, you change the password under [Account](../user-guide/login-language.md#account).
 
 Accounts created by a club admin log in with their user name instead of an email; they can add an email address under **Settings → Email**.
 
