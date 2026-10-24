@@ -46,7 +46,7 @@ test.describe("classifications", () => {
     await sheet.getByRole("checkbox", { name: "U21 in class 2" }).click();
     await c(sheet, "button", /^Create$/).click();
     await expect(c(page, "[data-sonner-toast]", "Classification \"Section championship\" saved")).toBeVisible();
-    await expect(c(page, "li", "Section championship")).toContainText("Field match + Section stich");
+    await expect(c(page, "li:not([data-sonner-toast])", "Section championship")).toContainText("Field match + Section stich");
 
     const [saved] = await api(page, "GET", `/api/tenants/${ids.tenant}/events/${ids.event}/classifications`);
     expect(saved).toMatchObject({ name: "Section championship", tieBreak: ["series", "mouches", "age"], showOnKiosk: true,
