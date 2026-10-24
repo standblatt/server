@@ -1545,7 +1545,7 @@ msgstr "kopieren"
 #: src/routes/t/[tenantId]/forms/+page.svelte
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Copy"
-msgstr "kopieren"
+msgstr "Kopieren"
 
 #. placeholder {0}: builtinNames[b.key]
 #: src/routes/t/[tenantId]/forms/+page.svelte
