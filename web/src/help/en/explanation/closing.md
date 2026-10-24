@@ -1,6 +1,6 @@
 # Closing an event
 
-While an event runs, everything in it can still change: a result is corrected, a registration moves, a programme gets a new price. At some point the organizer has to say *this is the result*. That is what **Close** does: it turns a running event into a finished one.
+While an event runs, everything in it can still change: a result is corrected, a registration moves, a programme gets a new price. At some point the organizer has to say *this is the result*. That is what **Close event** does: it turns a running event into a finished one.
 
 ## What closing means {#meaning}
 
