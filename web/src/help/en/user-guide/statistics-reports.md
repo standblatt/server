@@ -10,18 +10,6 @@
 
 ## Reports
 
-Every report is available as **PDF** and **CSV** (UTF-8 with BOM, `;` separated, opens directly in Excel). Texts follow the language of the event.
-
-| Report | Content |
-|---|---|
-| Financial report | revenue per programme, awards with their value |
-| Revenue by programme and age category | participants, price and subtotal per programme and category |
-| Awards | every award given, with shooter, club, programme, value and result |
-| Club competition | ranking, out of competition and not ranked clubs |
-| Club participants | participants per club, programme and age category |
-| Special prizes | winners per programme and age category, skipped shooters with the reason (see [Programmes](programmes.md#special-prizes)) |
-| Classifications | every [classification](classifications.md) per class, with the points per programme; parts that do not count are in parentheses |
-| Awards to hand out | awards not yet collected, with shooter, club, programme, kind and value, plus the cash still to pay out (see [Results](results.md#handout)) |
-| Lane bookings | the clubs that asked for lanes through [online booking](online-booking.md), confirmed or still waiting, with contact, slots, lane numbers and announced shooters |
+Every report is available as **PDF** and **CSV**; which reports there are and what they contain: [Reports](../reference/documents.md#reports). Awards still to collect: [See what is still open](../how-to/hand-out-awards.md#open).
 
 Below the reports, the ranking of every programme can be downloaded as PDF or CSV.

@@ -2,6 +2,8 @@
 
 My training is a personal shooting diary. Every shooter can use it, whether or not their club runs events with Standblatt. It answers one question: **does my training work?**
 
+New here? Start with [Tutorial: your first training session](first-session.md).
+
 <div class="grid" markdown>
 
 ![Today on a phone](../images/screenshots/my-today.png){ .screenshot .phone }

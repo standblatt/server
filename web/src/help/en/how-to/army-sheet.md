@@ -38,4 +38,4 @@ How to move, align and snap elements is in [Print forms](../user-guide/print-for
 
 ## 5. Print the sheets {#print}
 
-Once all series of the programme are in, its results show **Print onto form**: in the results at the desk and on scorer links at the lane (see [Helpers](../user-guide/helpers.md)). On **Enter results**, the shooter's name under *Entered now* opens these results. Put a sheet into the printer and click it. Without an online print agent, the PDF opens and is printed from the browser.
+Once all series of the programme are in, its results show **Print onto form**: in the results at the desk and on scorer links at the lane (see [Helpers](../user-guide/helpers.md)). On **Enter results**, every line under *Entered now* has its own print button. Put a sheet into the printer and click it. Without an online print agent, the PDF opens and is printed from the browser.

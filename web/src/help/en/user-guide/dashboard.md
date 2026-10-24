@@ -11,7 +11,7 @@ The dashboard is the desk view of an event: who is shooting on which lane, who i
 - The figures at the top count waiting, shooting and completed registrations.
 - *Waiting* and *Completed* show 50 registrations per page; the arrows below the list turn the pages.
 
-Everything updates live: a result entered at another computer or a reservation that starts appears without reloading. The dot next to **live** in the header shows the connection; after a network interruption the page catches up by itself. Without a connection a red bar says so; nothing can be saved then, but open dialogs keep what you typed, so you can save again once you are back online.
+Everything updates live; the dot next to **live** in the header shows the connection (see [Live updates](../explanation/data.md#live)). Without a connection a red bar says so and nothing can be saved (see [Offline](../explanation/data.md#offline)).
 
 ## Search and scan
 
@@ -23,6 +23,8 @@ Press ++f4++ anywhere on the dashboard to jump into the search field.
 - Each hit offers **Register for &lt;club&gt;** for every club of the shooter, or **Open registration** if the shooter is currently registered.
 - **New shooter** creates a shooter and opens the registration right away.
 - A hand scanner reading the [registration code](../reference/codes.md) on a lane sheet or control strip types the code and Enter: the results of that registration open directly.
+
+All keys: [Keyboard and scanner](../reference/shortcuts.md#dashboard).
 
 ## Finish shooting
 

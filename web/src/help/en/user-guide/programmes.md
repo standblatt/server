@@ -25,7 +25,7 @@ A click on a programme in the list opens its page. It has the sections of the pr
 - **Prices (CHF)**: only the ticked age categories may shoot the programme. With several attempts, a second field per category is the price of every further attempt (*Nachdoppel*); empty means the same price, 0 means the programme is paid once.
 - **Awards** (module *Awards*): name, kind (wreath card, prize in kind or cash prize paid out in money), value and the minimum total per age category; leave a category empty where the award is not available.
 
-Once shooters are registered for a programme, the **series** are fixed so results keep their meaning; the page says so and greys them out. Everything else can still be changed: name, variant, description, barcode, the flags, prices, series names, award names, values and limits. Age categories and awards can be **added** but not removed.
+Once shooters are registered for a programme, the **series** are fixed (see [Why the series are locked](../explanation/rankings.md#locked)); the page says so and greys them out. Everything else can still be changed: name, variant, description, barcode, the flags, prices, series names, award names, values and limits. Age categories and awards can be **added** but not removed.
 
 The section **Use** of a saved programme is saved at once with every change, also while shooters are registered:
 
@@ -40,11 +40,13 @@ The section **Use** of a saved programme is saved at once with every change, als
 
 By default a shooter shoots a programme once per event. **Attempts per shooter** allows more, e.g. 3 for a lucky target with further attempts at a shooting festival, or **Unlimited** for an annual programme shot over the season.
 
-- **Counting attempt** decides which attempt the ranking, the club competition, special prizes and *My training* count: **The best** (by the ranking rules), **The first** or **The last**. The ranking shows it as *2/3*: the second of three attempts counts.
+- **Counting attempt** decides which attempt the ranking, the club competition, special prizes and *My training* count: **The best** (by the ranking rules), **The first** or **The last**. The ranking shows it as *2/3*: the second of three attempts counts (see [Attempts and the counting attempt](../explanation/rankings.md#attempts)).
 - **Only the counting attempt receives an award**: off, every attempt can earn its award (a wreath card per further attempt); on, only the counting attempt gets one, and the award moves when a better attempt is shot.
 - At registration, a programme with several attempts shows a counter: two attempts at once are two result cards, *Attempt 1* and *Attempt 2*. Further attempts can also be added later in a new registration, or by entering another result on **Enter results**, until the shooter has no attempts left.
 
 The number of attempts can be changed while shooters are registered, but not below the attempts a shooter already has. Programmes with several attempts cannot be combined.
+
+Step by step for a season: [Run an annual programme over the season](../how-to/annual-programme.md).
 
 ## Special prizes {#special-prizes}
 
@@ -52,4 +54,4 @@ The section **Special prizes** on the programme page awards the best ranks of ev
 
 ![Special prizes of a programme](../images/screenshots/special-prizes.png){ .screenshot }
 
-**Save special prizes** stores them; ranks 0 turns special prizes off. The settings can be changed at any time, also after the event.
+**Save special prizes** stores them; ranks 0 turns special prizes off. The settings can be changed at any time until the event is closed.

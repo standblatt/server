@@ -19,30 +19,10 @@ What a member may do depends on the role. The matrix under **Roles** has a colum
 
 ![Roles](../images/screenshots/roles.png){ .screenshot }
 
-| Permission | Allows |
-|---|---|
-| **See events and rankings** | events, programmes, rankings and classifications |
-| **Run events** | registrations, results, awards, reservations, documents and printing |
-| **Configure events** | create, configure, copy, close and delete events with programmes, classifications, kiosk and helper links and online booking |
-| **Statistics and reports** | statistics, reports with amounts and ranking CSV files |
-| **See shooters and clubs** | the personal data of the master data |
-| **Edit shooters and clubs** | add and change shooters and clubs |
-| **Manage master data** | import shooters, rename, merge and delete clubs, delete shooters |
-| **Ranges and printers** | ranges, print agents and printer settings |
-| **Print forms** | print forms and images (only while the club module is on) |
-| **Users and club** | users, roles, invitations and club modules |
-
-Every club starts with four roles:
-
-| Role | Permissions |
-|---|---|
-| **Admin** | all; the column cannot be changed and the role cannot be deleted |
-| **Board** | all but *Ranges and printers* and *Users and club* |
-| **Helper** | see and run events, statistics, see and edit shooters and clubs |
-| **Member** | see events and rankings |
+Every permission and what it allows: [Permissions](../reference/permissions.md#permissions). Every club starts with the roles **Admin**, **Board**, **Helper** and **Member** (see [Default roles](../reference/permissions.md#default-roles)).
 
 **New role** adds a role of your own, which may only see the events until you tick more. The pencil renames a role (an empty name keeps the default name), the bin deletes it once nobody has it any more. The app shows each member only the pages and buttons their role allows: a member without *Run events* opens an event on its rankings.
 
 Members with *Users and club* but without the admin role stay within their own permissions: they give, change, remove and invite only with roles whose permissions they have themselves, and make or change roles only within them. So only admins make, change or remove admins.
 
-Accounts are global: deleting an account is done by the platform operator in the admin panel. For a forgotten password see [Forgotten password](login-language.md#password).
+Accounts are global (see [One account, a role per club](../explanation/data.md#accounts)): deleting an account is done by the platform operator in the admin panel. For a forgotten password see [Forgotten password](login-language.md#password).

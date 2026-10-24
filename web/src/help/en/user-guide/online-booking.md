@@ -4,7 +4,7 @@ With **online booking**, external clubs ask for lanes themselves. The organizer 
 
 ## Switching it on {#setup}
 
-The online booking is part of the module *Reservations* (it needs a range): on **Reservations** in the configuration, **Switch on** is all it takes. The page then shows the link with a QR code for the invitation and the slots it offers.
+The online booking is part of the module *Reservations* (it needs a range and *Lane assignment*): on **Reservations** in the configuration, **Switch on** is all it takes. The page then shows the link with a QR code for the invitation and the slots it offers.
 
 ![Online booking in the configuration](../images/screenshots/booking-setup.png){ .screenshot }
 

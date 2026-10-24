@@ -12,7 +12,7 @@ Some modules need others: *Special prizes* switch on *Awards*, because a special
 
 ## Kinds of events are only a starting point {#kinds}
 
-**New event** asks what kind of event it is: shooting festival, annual programme or training, Feldschiessen, club championship or a custom selection. The kind only switches on a set of modules (the list is under [Modules](../user-guide/events.md#modules)); the event does not remember it. Afterwards, the modules can be changed like those of any other event, so a Feldschiessen that also wants classifications switches them on, and a shooting festival without a desk switches lane assignment off.
+**New event** asks what kind of event it is: shooting festival, annual programme or training, Feldschiessen, club championship or a custom selection. The kind only switches on a set of modules (the list is under [Event kinds](../reference/modules.md#kinds)); the event does not remember it. Afterwards, the modules can be changed like those of any other event, so a Feldschiessen that also wants classifications switches them on, and a shooting festival without a desk switches lane assignment off.
 
 This is why a new kind of event needs no new feature: if a combination of modules covers it, it can be run today. A club that holds an event every year in the same form saves it as a [template](../user-guide/events.md#templates) instead; a template is an event with modules, programmes and classifications, not a kind.
 

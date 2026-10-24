@@ -6,11 +6,7 @@ Helpers at the event (scorers, the ammunition desk, the results office) work wit
 
 ## Roles {#roles}
 
-| Role | Sees | Can |
-|---|---|---|
-| **Scorer** | the lane grid of their own lanes, the shooters on them | enter results and awards, **Finish** a shooter |
-| **Ammunition desk** | the search box, the waiting list, the shooters on all lanes | mark the ammunition as issued (**Ammo**), assign a lane to a waiting shooter, print the lane sheet |
-| **Results clerk** | the search box, the shooters on all lanes, the completed list | enter results and awards on every lane |
+A link is a **Scorer** (their own lanes), the **Ammunition desk** or a **Results clerk** (all lanes). What each role sees and can do: [Helper links](../reference/permissions.md#helper-links).
 
 Everything else stays with the club's users: registering shooters, editing programmes, rankings, statistics, deleting.
 
@@ -18,7 +14,7 @@ Everything else stays with the club's users: registering shooters, editing progr
 
 1. Enter a name (who gets the link, e.g. *Scorer range A*), choose the role and, for a scorer, the range and the lanes (`1-5, 8`). One scorer usually looks after several lanes; scorers exist only while the event assigns lanes (module *Lane assignment*).
 2. **Create helper link**; copy the link and send it to the helper (e.g. by messenger). It is shown only once.
-3. The helper opens the link; it stays valid until it is revoked or the event is deleted. `?language=de` (`fr`, `it`, `en`) overrides the event's language.
+3. The helper opens the link; it stays valid until it is revoked or the event is deleted. Its language can be changed in the link (see [URL parameters](../reference/links.md#parameters)).
 
 **revoke** in the list stops a link immediately; *last seen* tells when it was last used. A scorer who opens a shooter on another lane gets *This lane is not yours*.
 

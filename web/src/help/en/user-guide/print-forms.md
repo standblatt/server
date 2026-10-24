@@ -2,9 +2,11 @@
 
 A print form puts results onto a pre-printed sheet, e.g. the lane sheets the army supplies for the obligatory programme: the shots are entered at the lane or afterwards, and the sheet is printed instead of filled in by hand. Filling in sheets by hand stays possible; print forms are optional and can be switched off under **Club modules** (see [Club modules](events.md#club-modules)).
 
+Why and how print forms work: [Print forms on pre-printed sheets](../explanation/printing.md#forms).
+
 ## Create a form {#create}
 
-**Print forms** (admins, in the club part of the sidebar) lists the forms of the club. **New print form** asks for a name, what the form **Prints** (see [Data source](#source)) and a paper size, then opens the editor. It has three columns:
+**Print forms** (permission *Print forms*, in the club part of the sidebar) lists the forms of the club. **New print form** asks for a name, what the form **Prints** (see [Data source](#source)) and a paper size, then opens the editor. It has three columns:
 
 - **Fields** on the left: everything a form can print, in groups, with an example each and a search. A click adds the field below the lowest element; dragging it onto the sheet puts it where you drop it.
   - *Own text* prints fixed text, *QR code* and *Barcode* print their value as a code, *Line* draws a line.
@@ -13,7 +15,7 @@ A print form puts results onto a pre-printed sheet, e.g. the lane sheets the arm
 - The **Sheet** in the middle shows the form true to scale over the scan, with made-up values; **Show field names** shows the placeholders instead. Rulers in millimetres run along the top and the left, the zoom goes from 50 to 200 %.
 - **Properties** on the right edit the selected element exactly: its **Value** (placeholders such as `{{shooter.name}}` are filled in when printing), **x** and **y** in millimetres from the top left corner, **Width** and **Height** (a width of 0 lets text run to the right edge), **Font size**, **Bold**, **Italic**, **Wrap text** (the text breaks into lines within the width, each as high as the height) and **Alignment**. **Repeat** prints it several times, moved by **dx** and **dy** each time; `#` in a placeholder counts 1, 2, 3, …. Below, the **Form** sets the name, the size of the sheet, the printer offset and the **Scan of the empty form**: a PNG or JPEG of the whole sheet that appears behind the sheet so the fields can be placed onto the boxes of the form; it is never printed.
 
-**Save** stores the form; a dot on the button shows unsaved changes, and leaving the page with them asks first. With **Save automatically** (on unless you switch it off; the browser remembers it) unsaved changes are stored every minute. **PDF preview** opens the form exactly as the PDF renders it, which can differ slightly from the sheet in the browser.
+**Save** stores the form; a dot on the button shows unsaved changes, and leaving the page with them asks first. With **Save automatically** (on unless you switch it off; the browser remembers it) unsaved changes are stored every minute. **PDF preview** opens the saved form exactly as the PDF renders it, which can differ slightly from the sheet in the browser.
 
 ## Data source {#source}
 
@@ -27,6 +29,8 @@ What a form **Prints** decides its fields and where it is printed:
 
 The source can be changed in the editor under **Form**; fields the new source does not know print nothing.
 
+Every placeholder: [Form placeholders](../reference/form-placeholders.md).
+
 ## Built-in forms {#builtin}
 
 Standblatt prints the wreath card and the control strip with **built-in forms**, listed below the forms of the club. **Copy** turns one into a form of the club that can be changed like any other, e.g. to move the fields onto another pre-printed wreath card or to add the club's logo. An event then chooses it under **Configuration** → **Modules**: *Print form of the wreath cards* in the module *Awards*, *Print form of the control strips* in the module *Control strip*. Without a choice, or when the chosen form is deleted, the built-in form prints.
@@ -35,9 +39,9 @@ Standblatt prints the wreath card and the control strip with **built-in forms**,
 
 ## Registration documents and certificates {#certificates}
 
-A form that prints **A registration** besides the event's control strip, e.g. a participant card or a receipt, appears in the registration with a button of its own name; it prints on the printer of *Print forms*.
+A form that prints **A registration** besides the event's control strip, e.g. a participant card or a receipt, appears in the registration with a button of its own name; it prints on the printer of *Print forms (pre-printed)*.
 
-A form that prints **A rank** makes certificates: **Certificates** in the header of every ranking and classification on **Rankings** asks for the form, the class of a classification and the ranks (1 to 3 unless changed), then prints one page per ranked shooter, or opens them as one PDF. Certificates go to the printer of *Certificates* under **Ranges → Set up the printers**. The fields of a rank are the rank, the total, the ranking (the programme or classification) and the class; a programme's certificate knows its results too.
+A form that prints **A rank** makes certificates through **Certificates** on **Rankings**, printed on the printer of *Certificates* of the event's first range; see [Print certificates for the best ranks](../how-to/certificates.md).
 
 ![Certificates from a ranking](../images/screenshots/certificates.png){ .screenshot }
 
@@ -48,16 +52,7 @@ A form that prints **A rank** makes certificates: **Certificates** in the header
 - **Select several** with Shift or Ctrl and a click, or draw a frame around them on the empty sheet. Dragging moves them together; font size, bold and alignment then apply to all of them.
 - A **right click** opens the menu: *Duplicate*, *Bring to front*, *Align* (edges, centres, distribute evenly), *Centre on the sheet* and *Delete*.
 
-| Key | Does |
-|---|---|
-| Arrow keys | move the selection by 0.5 mm, with Shift by 5 mm |
-| Ctrl+Z / Ctrl+Y | undo / redo |
-| Ctrl+A | select everything |
-| Ctrl+D | duplicate |
-| Delete | delete the selection |
-| Esc | clear the selection |
-| Ctrl+S | save |
-| Ctrl+mouse wheel | zoom |
+Keys: [Print form editor](../reference/shortcuts.md#print-forms).
 
 ## Images {#images}
 
@@ -67,10 +62,10 @@ An image can be deleted only while no form shows it. **Export** puts the images 
 
 ## Calibrate the printer {#calibrate}
 
-Printers rarely print exactly where they should. Print a sheet with **Test print**, measure how far the values are off and enter it as **Printer offset right** and **Printer offset down** (negative to move left or up). The offset applies to every element; the preview ignores it.
+**Printer offset right (mm)** and **Printer offset down (mm)** under **Form** move every element (negative to move left or up). **Test print** opens the saved form with the offset and without the scan; the preview ignores the offset. Why: [Calibration in principle](../explanation/printing.md#calibration). Steps: [Print results onto the army's lane sheets](../how-to/army-sheet.md#calibrate).
 
 ## Use a form {#use}
 
-Under **Configuration** → **Programmes** of the event, open a programme and choose its **Print form** in the section of the same name; this works while shooters are registered. Every completed programme then offers **Print onto form** in the results: at the desk, on the **Enter results** page and on scorer links at the lane (see [Helpers](helpers.md)). With a print agent and a printer chosen for *Print forms* under **Ranges → Set up the printers**, the sheet goes to that printer (e.g. its manual feed), otherwise the PDF opens (see [Printing](printing.md)).
+A programme chooses its form in the section **Print form** of its programme page, also while shooters are registered. Completed results then offer **Print onto form**: in the results at the desk, in *Entered now* on **Enter results** and on helper links of scorers and results clerks (see [Helpers](helpers.md)). It prints on the printer of *Print forms (pre-printed)* of the registration's range, otherwise the PDF opens (see [Printing](printing.md)). Steps: [Print results onto the army's lane sheets](../how-to/army-sheet.md).
 
 **Export** downloads a form as a file, with its images, and **Import** reads it again, e.g. to share a form with another club.

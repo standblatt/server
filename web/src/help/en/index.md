@@ -20,10 +20,13 @@ With [My training](my-training/index.md) every shooter also gets a personal shoo
 
 <div class="grid cards" markdown>
 
+- **[Tutorial: your first event](getting-started/first-event.md)**: set up a range, an event and a programme, register two shooters and see the ranking.
+- **[Tutorial: your first training session](my-training/first-session.md)**: log a session on the phone and see it in your progress.
+- **[How-to guides](how-to/next-year.md)**: one goal step by step, e.g. taking over last year's event or connecting a printer.
 - **[Concepts](getting-started/concepts.md)**: the words Standblatt uses and how they fit together.
-- **[Your first event](getting-started/first-event.md)**: from an empty club to a running competition.
+- **[Background](explanation/modules.md)**: why Standblatt works the way it does: modules, rankings, closing, printing and data.
+- **[User guide](user-guide/dashboard.md)**: every page of the app and what it offers.
+- **[Reference](reference/rules.md)**: the competition rules as implemented, modules, permissions, documents, keys and file formats.
 - **[My training](my-training/index.md)**: the personal training log for every shooter.
-- **[User guide](user-guide/dashboard.md)**: day-to-day work for club admins and staff.
-- **[Reference](reference/rules.md)**: the competition rules as implemented.
 
 </div>

@@ -6,7 +6,7 @@ In short: a **club** has **ranges**, **shooters** and **users**. It runs **event
 
 ## Clubs, users and roles {#clubs-users-and-roles}
 
-A **club** is a tenant: everything in Standblatt belongs to exactly one club, and clubs never see each other's data. The platform operator creates clubs and user accounts in the admin panel.
+A **club** is a tenant: everything in Standblatt belongs to exactly one club, and clubs never see each other's data. Only the platform operator creates clubs, in the admin panel. Accounts come from an invitation of a club, from the sign-up of [My training](../my-training/account.md), from **Add user** on a club's users page or from the operator.
 
 **Users** are personal accounts. One account can belong to several clubs, with one role per club. A role is a set of permissions such as *Run events* or *Configure events*; every club starts with the roles *Admin*, *Board*, *Helper* and *Member* and can change them or add its own (see [Roles](../user-guide/users.md#roles)). Clubs invite people by email; the invited person joins by accepting the link.
 

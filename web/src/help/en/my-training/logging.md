@@ -21,7 +21,7 @@ Choose the input for the current series at the top right. You can mix them in on
 
 ![Tapping hits on the target](../images/screenshots/my-train-target.png){ .screenshot .phone }
 
-On a computer you can type the digits, **Backspace** and **Enter** on the keyboard.
+On a computer you can type the digits, **Backspace** and **Enter** on the keyboard; in **Shots** with whole-number scoring up to 10 only the buttons work (see [Keyboard](../reference/shortcuts.md#my-training)).
 
 ## Save
 
@@ -40,7 +40,7 @@ After saving Standblatt tells you right away:
 - whether the session is a **new personal best**, or which place it takes among your sessions with the same number of shots;
 - how many points per shot it is above or below the average of the **30 days before**.
 
-## Unfinished sessions and offline
+## Unfinished sessions and offline {#unfinished-sessions-and-offline}
 
 The session is kept on the device while you type. If you close the browser or the phone locks, it comes back the next time you start a session.
 
@@ -49,6 +49,8 @@ If there is no connection when you save, the session is kept on the device and u
 Waiting sessions belong to the account that typed them. If your login expired in the meantime, log in again and they are uploaded; another person logging in on the same device does not get them. If the server refuses one, for example because its discipline was deleted, a note shows the reason and you can **Discard** it. Only new sessions can be saved offline; changing a session needs a connection.
 
 Once you opened the app online, it also opens without a connection and shows your last data.
+
+Why club work needs a connection and My training does not: [Offline](../explanation/data.md#offline).
 
 ## Changing or deleting a session
 

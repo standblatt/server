@@ -23,7 +23,7 @@ license;firstname;lastname;birthday;postalcode;city;club
 
 ## Results {#results}
 
-**Import CSV** on an event's **Enter results** page reads results (see [Enter results](../user-guide/results-entry.md#import)):
+Members with the permission *Configure events* import results with **Import CSV** on an event's **Enter results** page (see [Enter results](../user-guide/results-entry.md#import)):
 
 ```text
 license;firstname;lastname;birthday;club;programme;s1;s2;m2;s1_1;s1_2;s1_3
@@ -33,7 +33,7 @@ license;firstname;lastname;birthday;club;programme;s1;s2;m2;s1_1;s1_2;s1_3
 
 | Column | Required | Notes |
 |---|---|---|
-| `license` or `firstname` + `lastname` | yes | the shooter: found by licence, else by name (and `birthday`, if several have the name); created when not found |
+| `license` or `firstname` + `lastname` | yes | the shooter: found by licence, else by name (and `birthday`, if several have the name); created when not found, which needs `firstname` and `lastname`: a licence alone that is not found is a line error |
 | `birthday` | no | `YYYY-MM-DD` or `DD.MM.YYYY` |
 | `club` | no | must be in the club list (regardless of upper case and spaces); the shooter joins it |
 | `programme` | yes | barcode, name with variant like `Championship (Sport)`, or the name alone |
@@ -41,5 +41,7 @@ license;firstname;lastname;birthday;club;programme;s1;s2;m2;s1_1;s1_2;s1_3
 | `m1`, `m2`, … | no | mouches per series |
 | `s1_1`, `s1_2`, … | no | single shots of series 1, for series that record them; the series is their sum |
 
+- Every line is checked first; with any line error nothing is imported.
 - A shooter can have results in a programme only once; a line for results that exist already is an error. Programmes with several [attempts](../user-guide/programmes.md#attempts) take one line per attempt until the shooter has none left.
+- For programmes with several attempts, importing the same file again adds its lines as further attempts.
 - If the shooter is registered for the programme without results, the results go into that registration.

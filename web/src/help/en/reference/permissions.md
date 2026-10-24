@@ -80,7 +80,7 @@ A preset only fills in the permissions the chosen clubs allow.
 | Expires | in 30 or 90 days, in a year, or never |
 | Endpoints | `/api/tenants/…` (club data, by permission), `/api/my/…` (training log, by scope), `GET /api/token`, `/api/version`, `/api/auth/options`; with *Configure events* also `/api/modules` and `/api/programme-templates`; everything else answers 403 |
 | `GET /api/token` | the token's name, scopes and clubs |
-| Rate limit | 600 requests per token in five minutes (set by the server operator), then 429 |
+| Rate limit | by default 600 requests per token in five minutes, then 429; the operator changes it with `STANDBLATT_API_RATE_LIMIT` (0 = no limit) |
 | Unknown tokens | after 20 unknown or revoked tokens from one address in 15 minutes, 429 |
 | API description | `/api/docs` |
 | Never reachable | password, email, account settings, other tokens |

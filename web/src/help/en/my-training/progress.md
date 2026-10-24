@@ -14,7 +14,7 @@ Sessions differ in length: a 50-shot match, two series after work, a 40-shot com
 : points per shot over all sessions of the last 30 days. The arrow shows the change against the 30 days before.
 
 **Personal best**
-: the highest total among sessions with the standard number of shots of the discipline, e.g. 60 for air pistol. Tap it to open the session.
+: the highest total among sessions with the standard number of shots of the discipline, e.g. 50 for air pistol. Tap it to open the session.
 
 **Sessions**
 : number of sessions and shots logged in this discipline.

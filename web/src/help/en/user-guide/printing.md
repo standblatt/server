@@ -1,38 +1,30 @@
 # Printing
 
-Standblatt renders all documents as PDF:
+Standblatt renders all documents as PDF. Every document with its format, content and printer setting: [Documents](../reference/documents.md#documents).
 
-| Document | Format | When |
-|---|---|---|
-| Lane sheet | A5 | at registration, with QR code and programme barcodes |
-| Control strip | label 90 × 29 mm | at registration, stuck on the target card |
-| Result sheet | A5 | when all programmes have results |
-| Wreath card | A6, printed onto pre-printed cards | after choosing a wreath card award |
-| Print form | any size, printed onto pre-printed sheets | for programmes with a [print form](print-forms.md), once the results are in |
-| Ranking | A4 | from the rankings page, as PDF only (not sent to the range's printer) |
+Every Print button prints on the range's printer if one is set up and its print agent is online; otherwise the PDF opens (see [When there is no printer](../explanation/printing.md#fallback)).
 
-Every Print button prints on the range's printer if one is set up and its print agent is online; otherwise the PDF opens in the browser and can be printed from there. On a phone or tablet the PDF goes to the share sheet instead (print, save to files, send), so the app stays open; if the phone asks for another tap first, a note with a **Share** button appears.
+Why a print agent and how it works: [How printing works](../explanation/printing.md).
 
 ## Setting up printers
 
-**Ranges → Set up the printers** (admins):
+**Ranges → Set up the printers** (permission *Ranges and printers*) has three parts:
 
 ![Printing](../images/screenshots/printing.png){ .screenshot }
 
-1. Connect a computer next to the printers: a Windows PC or a Mac with the [Standblatt Print Agent app](#app) by [code](#connect), or a Linux computer such as a Raspberry Pi with the [headless agent](https://github.com/standblatt/print-agent): **Add print agent**, give it a name and copy the token. One computer can serve several ranges, e.g. *Pistol 25 m* and *Pistol 50 m*: connect it to each range (the app with **Connect another range**, the headless agent with both tokens, separated by a comma).
-2. Once the agent is online, it reports its printers and the list shows its version and operating system. Choose the printer for each document (*Certificates* are the certificates from the rankings, *Print forms* every other form of the club) and its options: the options the agent reports for that printer (on Linux tray, paper size and media type, plus further `lp` options such as `fit-to-page` in the text field; on Windows tray, paper, two-sided, scaling and colour).
-3. **Test page** prints a small page (90 × 29 mm, the size of the control strip) on the printer of that row with the options chosen there, also before saving: club, range, printer, options and the time. A label printer prints it as a label, other printers in the top-left corner of the sheet. It needs an online agent.
-4. **Recent jobs** shows what was printed and whether it worked.
+- **Print agents**: the computers that print for this range, each with its version and operating system, *online* or when it was last seen, and its number of printers. **Add print agent** adds a headless agent and shows its token once, **Connect by code** connects the [app](#app) by its [code](#connect), **revoke** removes an agent immediately.
+- **Documents**: per document the printer (*browser (PDF)* keeps opening the PDF) and the options the agent reports for that printer; on Linux further `lp` options such as `fit-to-page` go in the text field. *Certificates* are the certificates from the rankings, *Print forms (pre-printed)* every other form of the club. **Save** stores the row. **Test page** prints a small page (90 × 29 mm) with club, range, printer, options and the time on the printer of that row, also before saving; it needs an online agent.
+- **Recent jobs** shows what was printed and whether it worked.
 
-A job that the agent does not confirm within two minutes is retried; after three attempts it fails. **revoke** removes an agent immediately.
+A job that the agent does not confirm within two minutes is retried; after three attempts it fails.
+
+Step by step: [Connect a printer at the range](../how-to/connect-printer.md).
 
 ## The Standblatt Print Agent app {#app}
 
 The app is the simple way for a laptop or PC next to the printers: no token and no settings to type.
 
-1. Download it from the [latest release](https://github.com/standblatt/print-agent/releases/latest): `Standblatt-Print-Agent-Setup.exe` for Windows, `standblatt-print-agent-app-darwin-arm64.dmg` for a Mac with Apple silicon (`-amd64.dmg` for an Intel Mac), the `.deb` or `.rpm` for Linux.
-2. Install it. The app is not signed yet: Windows asks once, **More info → Run anyway**; on a Mac drag it into *Applications* and open it the first time with a right click → **Open**. On Windows it installs for the current user without admin rights, with a shortcut in the start menu and on the desktop, and starts with Windows.
-3. Click **Connect a range** and confirm the code in Standblatt (see [below](#connect)).
+Download, install and connect it: [Connect a printer at the range](../how-to/connect-printer.md#app).
 
 ![The Standblatt Print Agent app](../images/app/print-agent.png){ .screenshot }
 
@@ -44,6 +36,4 @@ On Windows and on a Mac the app tells when a new version is out; **Update now** 
 
 ![A code in the app](../images/app/print-agent-code.png){ .screenshot }
 
-The Standblatt app on a computer next to the printers needs no token: it shows a code such as `K7QD-4MZP` and opens **Connect a print agent** in the browser. There, log in if asked, check the computer named on the page, choose the club and range and the agent's name, and **Connect**. Only members who may manage ranges can connect a computer; a code is valid for ten minutes. The app then connects by itself, and the agent appears under **Ranges → Set up the printers** with its version and operating system.
-
-If the browser on that computer is not at hand, type the code on **Ranges → Set up the printers** of the range in **Connect by code** instead: the computer is connected to that range under its own name.
+**Connect a print agent** (opened by the app with a code such as `K7QD-4MZP`) shows the computer and asks for club, range and name; only members who may manage ranges can connect a computer, and a code is valid for ten minutes. **Connect by code** on **Ranges → Set up the printers** connects it to that range under its own name. Steps: [Connect a printer at the range](../how-to/connect-printer.md#app).

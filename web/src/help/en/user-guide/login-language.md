@@ -36,16 +36,16 @@ If your account has a confirmed email address, use **Forgot your password?** on 
 Want to show the rankings on the club website, import sessions from another app or analyse data with your own script? Create a token under **Account → API tokens** with **New token**:
 
 - a **name** that tells you later what uses it,
-- a **preset** fills in the permissions for a common use: **Rankings for a website**, **Training app** or **Read only**,
+- a **preset** fills in the permissions for a common use: **Rankings for a website**, **Training app** or **Read only** (see [Presets](../reference/permissions.md#presets)),
 - the **clubs** the token may use (none: only your training log),
 - the **permissions**: *Read my training log*, *Log and change my training sessions* and, for the chosen clubs, the [permissions of roles](users.md#roles) your own role has there,
 - when it **expires**: in 30 or 90 days, in a year, or never.
 
-The token (`sb_…`) is shown only once; copy it right away. Scripts send it as `Authorization: Bearer sb_…` (or `X-API-Key: sb_…`). It may do what you chose and never more than your role in the club: if you lose a permission or leave the club, the token loses it at once. It never reaches your password, email, account or other tokens. `GET /api/token` tells a script its name, permissions and clubs. A token makes at most 600 requests in five minutes. The list shows when each token was last used; revoking one stops it at once. Developers find the endpoints under `/api/docs`.
+The token (`sb_…`) is shown only once; copy it right away. It may do what you chose and never more than your role in the club: if you lose a permission or leave the club, the token loses it at once. It never reaches your password, email, account or other tokens. The list shows when each token was last used; revoking one stops it at once. How scripts send it, what it reaches and its limits: [Using a token](../reference/permissions.md#token-use).
 
 ## Second factor {#totp}
 
-An authenticator app (Google Authenticator, Aegis, 1Password and the like) can protect your login: after the password, Standblatt asks for the six-digit code the app shows. Set it up under [Account](#account): **Set up**, scan the QR code, enter the current code, **Switch on**. **Switch off** asks for your password. Lost the phone? The operator can reset the second factor in the admin panel. The operator can also switch the feature off for the whole server.
+An authenticator app can protect your login with a six-digit code after the password; to set it up, switch it off or recover from a lost phone see [Protect your login with a second factor](../how-to/two-factor.md). The operator can also switch the feature off for the whole server.
 
 ## Language
 
