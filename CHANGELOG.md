@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- A bare `make` lists the targets instead of starting `make dev`, so the Go analysis of CodeQL no longer hangs (by @HB9HIL)
+
 ## [0.23.0] - 2026-10-24
 
 ### Changed

@@ -10,7 +10,13 @@ PLAYWRIGHT_IMAGE := mcr.microsoft.com/playwright:v$(shell sed -n 's/.*"@playwrig
 PLAYWRIGHT := docker run --rm --network host --ipc=host --user $$(id -u):$$(id -g) -e HOME=/tmp -v $(CURDIR)/e2e:/e2e -w /e2e
 PO4A_IMAGE := debian:trixie-slim
 
-.PHONY: dev prepare test docs clean
+.PHONY: help dev prepare test docs clean
+
+# A bare `make` only lists the targets: CodeQL's Go autobuilder runs it, and `dev` never ends.
+.DEFAULT_GOAL := help
+
+help:
+	@echo "make dev | prepare | test | docs | clean"
 
 .env:
 	cp .env.example .env
