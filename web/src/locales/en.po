@@ -996,6 +996,10 @@ msgstr "Back to the event"
 msgid "Back to the log"
 msgstr "Back to the log"
 
+#: src/lib/help/nav.ts
+msgid "Background"
+msgstr "Background"
+
 #: src/lib/forms/Palette.svelte
 #: src/lib/forms/Properties.svelte
 #: src/lib/programme/Basics.svelte
@@ -2481,6 +2485,10 @@ msgstr "How does this work?"
 #: src/lib/modules/attempts/ProgrammeSection.svelte
 msgid "How often a shooter may shoot the programme at this event, e.g. further attempts at a shooting festival or an annual programme."
 msgstr "How often a shooter may shoot the programme at this event, e.g. further attempts at a shooting festival or an annual programme."
+
+#: src/lib/help/nav.ts
+msgid "How-to guides"
+msgstr "How-to guides"
 
 #: src/routes/forgot-password/+page.svelte
 msgid "If an account uses {email}, we sent a link to choose a new password. Check your inbox."

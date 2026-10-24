@@ -4,8 +4,24 @@ import { loadPage, type HelpPage } from './markdown';
 
 /** The help sidebar: groups of page slugs, in reading order. */
 export const nav: { label: MessageDescriptor; pages: string[] }[] = [
-	{ label: msg`Start`, pages: ['', 'getting-started/concepts', 'getting-started/first-event'] },
-	{ label: msg`My training`, pages: ['my-training', 'my-training/logging', 'my-training/progress', 'my-training/account'] },
+	{ label: msg`Start`, pages: ['', 'getting-started/first-event', 'getting-started/concepts'] },
+	{ label: msg`My training`, pages: ['my-training', 'my-training/first-session', 'my-training/logging', 'my-training/progress', 'my-training/account'] },
+	{
+		label: msg`How-to guides`,
+		pages: [
+			'how-to/next-year',
+			'how-to/annual-programme',
+			'how-to/section-championship',
+			'how-to/feldschiessen',
+			'how-to/import-results',
+			'how-to/kiosk',
+			'how-to/connect-printer',
+			'how-to/army-sheet',
+			'how-to/certificates',
+			'how-to/hand-out-awards',
+			'how-to/two-factor'
+		]
+	},
 	{
 		label: msg`At the event`,
 		pages: [
@@ -34,7 +50,27 @@ export const nav: { label: MessageDescriptor; pages: string[] }[] = [
 			'user-guide/login-language'
 		]
 	},
-	{ label: msg`Reference`, pages: ['reference/rules', 'reference/csv-import', 'reference/programme-file', 'reference/codes', 'changelog'] }
+	{
+		label: msg`Background`,
+		pages: ['explanation/modules', 'explanation/rankings', 'explanation/closing', 'explanation/printing', 'explanation/data']
+	},
+	{
+		label: msg`Reference`,
+		pages: [
+			'reference/rules',
+			'reference/modules',
+			'reference/permissions',
+			'reference/documents',
+			'reference/shortcuts',
+			'reference/links',
+			'reference/form-placeholders',
+			'reference/csv-import',
+			'reference/programme-file',
+			'reference/codes',
+			'reference/glossary',
+			'changelog'
+		]
+	}
 ];
 
 const cache = new Map<string, Promise<HelpPage[]>>();

@@ -996,6 +996,10 @@ msgstr "Torna alla manifestazione"
 msgid "Back to the log"
 msgstr "Torna al diario"
 
+#: src/lib/help/nav.ts
+msgid "Background"
+msgstr "Approfondimenti"
+
 #: src/lib/forms/Palette.svelte
 #: src/lib/forms/Properties.svelte
 #: src/lib/programme/Basics.svelte
@@ -2481,6 +2485,10 @@ msgstr "Come funziona?"
 #: src/lib/modules/attempts/ProgrammeSection.svelte
 msgid "How often a shooter may shoot the programme at this event, e.g. further attempts at a shooting festival or an annual programme."
 msgstr "Quante volte un tiratore può tirare il programma in questa manifestazione, p. es. rachat a una festa di tiro o un programma annuale."
+
+#: src/lib/help/nav.ts
+msgid "How-to guides"
+msgstr "Guide pratiche"
 
 #: src/routes/forgot-password/+page.svelte
 msgid "If an account uses {email}, we sent a link to choose a new password. Check your inbox."
