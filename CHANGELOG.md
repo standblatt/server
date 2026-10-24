@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - On iPhones, date and time fields keep the width and height of the fields next to them instead of reaching into them, e.g. *When* and *Where* when saving a training session (by @HB9HIL)
 - The server refuses changing requests a browser sends from another origin, so a page on another subdomain can no longer submit a file upload (shooter or result import, images) with the session of a logged-in user (by @HB9HIL)
 - The server no longer starts with `STANDBLATT_SMTP_HOST` but without `STANDBLATT_PUBLIC_URL`, so links in mails (password reset, invitations) never take the host from a forged request (by @HB9HIL)
+- Built with Go 1.27.3, which distrusts compromised intermediate certificates in `crypto/x509` (GO-2026-6809) when sending mails over TLS (by @HB9HIL)
 
 ## [0.22.2] - 2026-10-19
 
