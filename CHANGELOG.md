@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.24.2] - 2026-11-01
+
 ### Fixed
 - The main day of an event can have shooting times like the other shooting days (by @HB9HIL)
 
