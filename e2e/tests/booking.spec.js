@@ -108,9 +108,16 @@ test.describe("online booking", () => {
     await expect(c(page, "tr", "Gast")).toContainText(`${guest} 1920`);
   });
 
-  test("the club cancels through its manage link", async ({ browser }) => {
+  test("the club adds a shooter and cancels through its manage link", async ({ browser }) => {
     const page = await browser.newPage({ baseURL });
     await page.goto(await manageLink(page, email));
+    await expect(c(page, "section", "Your request")).toContainText("confirmed");
+    await c(page, "button", "Add shooter").click();
+    await page.getByLabel("Last name of shooter 2").fill("Gast");
+    await page.getByLabel("First name of shooter 2").fill("Gina");
+    await page.getByLabel("Birthday of shooter 2").fill("1987-06-12");
+    await c(page, "button", "Save changes").click();
+    await expect(c(page, "[data-sonner-toast]", "Request saved")).toBeVisible();
     await expect(c(page, "section", "Your request")).toContainText("confirmed");
     await c(page, "button", "Cancel request").click();
     await c(page, "[role=alertdialog] button", "Cancel request").click();

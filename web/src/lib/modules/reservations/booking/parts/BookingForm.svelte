@@ -101,7 +101,8 @@
 		}
 		busy = true;
 		try {
-			await onsubmit({ club: form.club, contact: form.contact, email: form.email, phone: form.phone, note: form.note, items, shooters: form.shooters });
+			const shooters = form.shooters.map(({ lastname, firstname, birthday, licenseNumber }) => ({ lastname, firstname, birthday, licenseNumber }));
+			await onsubmit({ club: form.club, contact: form.contact, email: form.email, phone: form.phone, note: form.note, items, shooters });
 			if (draftKey && !initial) {
 				try {
 					localStorage.removeItem(draftKey);
