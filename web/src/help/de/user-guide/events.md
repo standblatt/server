@@ -33,7 +33,7 @@ Betrieb](../explanation/modules.md#configuration).
 | Einstellung | Bedeutung |
 |---|---|
 | Name, Datum, Schiessstände | das Datum ist der Haupttag; sein Jahr bestimmt die Alterskategorien (SSV: Wettkampfjahr minus Jahrgang, der Tag selbst spielt keine Rolle, was für Vorschiesstage im Dezember vor einem Anlass im Januar zählt); jeden Stand ankreuzen, auf dem der Anlass geschossen wird; oder keinen für einen Anlass ohne Scheiben (siehe unten) |
-| Schiesstage | einzelne Tage mit optionalen Schiesszeiten, für Vorschiesstage und mehrtägige Anlässe (Anmeldungen zählen am Tag, an dem sie gemacht werden); der Haupttag ist immer einer |
+| Schiesstage | einzelne Tage mit optionalen Schiesszeiten, für Vorschiesstage und mehrtägige Anlässe (Anmeldungen zählen am Tag, an dem sie gemacht werden); der Haupttag ist immer einer und steht zuoberst, mit eigenen Schiesszeiten |
 | Zeitraum (Saison) | für Anlässe über Wochen oder Monate, z. B. das Feldschiessen von der Öffnung des Schützenhauses bis 31. August: erster und letzter Tag, dazu die Wochentage mit ihren Schiesszeiten; kein Wochentag angekreuzt heisst jeder Tag. Einzelne Tage, z. B. das offizielle Wochenende, ergänzen den Zeitraum oder ersetzen an diesem Datum seine Zeiten |
 | Veranstalter | wird auf Dokumente gedruckt |
 | Sprache der Dokumente und des Kiosks | Sprache von PDFs, CSV-Exporten und Kiosk-Bildschirmen, unabhängig von der Oberflächensprache der einzelnen Benutzer |

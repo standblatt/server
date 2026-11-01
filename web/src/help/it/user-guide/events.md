@@ -33,7 +33,7 @@ e svolgimento](../explanation/modules.md#configuration).
 | Impostazione | Significato |
 |---|---|
 | Nome, data, stand | la data è il giorno principale; il suo anno fissa le categorie d’età (FST: anno della gara meno anno di nascita, il giorno in sé non conta, il che vale per il tiro anticipato di dicembre prima di una manifestazione di gennaio); spuntare ogni stand su cui si tira la manifestazione; o nessuno per una manifestazione senza bersagli (vedi sotto) |
-| Giorni di tiro | singoli giorni con orari di tiro facoltativi, per il tiro anticipato e le manifestazioni di più giorni (le iscrizioni contano il giorno in cui vengono fatte); il giorno principale è sempre uno di essi |
+| Giorni di tiro | singoli giorni con orari di tiro facoltativi, per il tiro anticipato e le manifestazioni di più giorni (le iscrizioni contano il giorno in cui vengono fatte); il giorno principale è sempre uno di essi e viene per primo, con i propri orari di tiro |
 | Periodo (stagione) | per manifestazioni di settimane o mesi, p. es. il Tiro in campagna dall’apertura dello stand fino al 31 agosto: primo e ultimo giorno, più i giorni della settimana con i loro orari di tiro; nessun giorno spuntato significa ogni giorno. I singoli giorni, p. es. il fine settimana ufficiale, si aggiungono al periodo o ne sostituiscono gli orari in quella data |
 | Organizzatore | stampato sui documenti |
 | Lingua dei documenti e del chiosco | lingua dei PDF, delle esportazioni CSV e degli schermi chiosco, indipendente dalla lingua d’interfaccia di ogni utente |

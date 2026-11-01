@@ -3034,6 +3034,10 @@ msgstr "M"
 msgid "Main"
 msgstr "Hauptnavigation"
 
+#: src/lib/ScheduleEditor.svelte
+msgid "Main day"
+msgstr "Haupttag"
+
 #: src/lib/permissions.ts
 msgid "Manage master data"
 msgstr "Stammdaten verwalten"

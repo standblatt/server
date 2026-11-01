@@ -14,6 +14,7 @@
 
 	let {
 		mainDay,
+		mainTimes = $bindable(),
 		days = $bindable(),
 		period = $bindable(),
 		from = $bindable(),
@@ -21,6 +22,7 @@
 		weekly = $bindable()
 	}: {
 		mainDay: string;
+		mainTimes: ShootingTimes[];
 		days: ScheduleDay[];
 		period: boolean;
 		from: string;
@@ -57,6 +59,10 @@
 
 <FormField label={$t`Shooting days`} class="sm:col-span-2" hint={$t`Single days with optional shooting times, e.g. pre-shooting days or the official weekend. The main day is always a shooting day.`}>
 	<div class="grid gap-2">
+		<div class="flex flex-wrap items-center gap-2">
+			<Input type="date" class="w-40" value={mainDay} disabled aria-label={$t`Main day`} />
+			{@render timesEditor(mainTimes, mainDay)}
+		</div>
 		{#each days as day, i (i)}
 			<div class="flex flex-wrap items-center gap-2">
 				<Input type="date" class="w-40" bind:value={day.date} required aria-label={$t`Shooting day`} />

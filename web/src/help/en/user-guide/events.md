@@ -25,7 +25,7 @@ The configuration needs the permission *Configure events*, the operation *Run ev
 | Setting | Meaning |
 |---|---|
 | Name, Date, Ranges | the date is the main day; its year sets the age categories (SSV: competition year minus year of birth, the day itself does not matter, which counts for pre-shooting days in December before a January event); tick every range the event is shot on, or none for an event without lanes (see below) |
-| Shooting days | single days with optional shooting times, for pre-shooting days and multi-day events (registrations count on the day they are made); the main day is always one |
+| Shooting days | single days with optional shooting times, for pre-shooting days and multi-day events (registrations count on the day they are made); the main day is always one and comes first, with its own shooting times |
 | Period (season) | for events over weeks or months, e.g. the Feldschiessen from the opening of the range until 31 August: first and last day, plus the weekdays with their shooting times; no weekday ticked means every day. Single days, e.g. the official weekend, add to the period or replace its times on that date |
 | Organizer | printed on documents |
 | Language of documents and kiosk | language of PDFs, CSV exports and kiosk screens, independent of each user's interface language |

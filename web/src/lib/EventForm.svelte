@@ -39,7 +39,8 @@
 	let startsOn = $state(start.startsOn);
 	let rangeIds = $state<number[]>(untrack(() => [...(start.rangeIds ?? [])]));
 	const sched = untrack(() => $state.snapshot(start.schedule ?? {}));
-	let days = $state((sched.days ?? []).filter((d) => d.date !== start.startsOn || d.times?.length).map((d) => ({ ...d, times: d.times ?? [] })));
+	let mainTimes = $state(sched.days?.find((d) => d.date === start.startsOn)?.times ?? []);
+	let days = $state((sched.days ?? []).filter((d) => d.date !== start.startsOn).map((d) => ({ ...d, times: d.times ?? [] })));
 	let period = $state(!!sched.from);
 	let from = $state(sched.from ?? '');
 	let to = $state(sched.to ?? '');
@@ -53,6 +54,12 @@
 	let error = $state('');
 	let busy = $state(false);
 
+	/** The single days, with the main day first when it has shooting times (else a period keeps its weekly times there). */
+	function scheduleDays() {
+		const rest = $state.snapshot(days);
+		return mainTimes.length ? [{ date: startsOn, times: $state.snapshot(mainTimes) }, ...rest] : rest;
+	}
+
 	/** Collects the form into an EventInput and passes it to onsubmit. */
 	async function submit(e: SubmitEvent) {
 		e.preventDefault();
@@ -63,7 +70,7 @@
 				name,
 				startsOn,
 				rangeIds: ranges.filter((r) => rangeIds.includes(r.id)).map((r) => r.id),
-				schedule: period ? { days: $state.snapshot(days), from, to, weekly: $state.snapshot(weekly) } : { days: $state.snapshot(days) },
+				schedule: period ? { days: scheduleDays(), from, to, weekly: $state.snapshot(weekly) } : { days: scheduleDays() },
 				organizer,
 				timezone: start.timezone,
 				locale,
@@ -93,7 +100,7 @@
 			{/each}
 		</div>
 	</FormField>
-	<ScheduleEditor mainDay={startsOn} bind:days bind:period bind:from bind:to bind:weekly />
+	<ScheduleEditor mainDay={startsOn} bind:mainTimes bind:days bind:period bind:from bind:to bind:weekly />
 	<FormField label={$t`Language of documents and kiosk`}>
 		<NativeSelect.Root class="w-full" bind:value={locale}>
 			{#each Object.entries(localeNames) as [value, label] (value)}<NativeSelect.Option {value}>{label}</NativeSelect.Option>{/each}

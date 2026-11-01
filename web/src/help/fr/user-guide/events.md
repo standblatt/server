@@ -34,7 +34,7 @@ déroulement](../explanation/modules.md#configuration).
 | Réglage | Signification |
 |---|---|
 | Nom, date, stands | la date est le jour principal ; son année fixe les catégories d’âge (FST : année du concours moins année de naissance, le jour lui-même ne compte pas, ce qui importe pour le tir anticipé de décembre avant une manifestation de janvier) ; cocher chaque stand sur lequel la manifestation se tire ; ou aucun pour une manifestation sans cibles (voir plus bas) |
-| Jours de tir | jours isolés avec heures de tir facultatives, pour le tir anticipé et les manifestations sur plusieurs jours (les inscriptions comptent le jour où elles sont faites) ; le jour principal en fait toujours partie |
+| Jours de tir | jours isolés avec heures de tir facultatives, pour le tir anticipé et les manifestations sur plusieurs jours (les inscriptions comptent le jour où elles sont faites) ; le jour principal en fait toujours partie et vient en premier, avec ses propres heures de tir |
 | Période (saison) | pour les manifestations sur des semaines ou des mois, p. ex. le Tir en campagne de l’ouverture du stand jusqu’au 31 août : premier et dernier jour, plus les jours de la semaine avec leurs heures de tir ; aucun jour coché signifie chaque jour. Les jours isolés, p. ex. le week-end officiel, s’ajoutent à la période ou remplacent ses heures à cette date |
 | Organisateur | imprimé sur les documents |
 | Langue des documents et du kiosque | langue des PDF, des exports CSV et des écrans kiosque, indépendamment de la langue d’interface de chaque utilisateur |

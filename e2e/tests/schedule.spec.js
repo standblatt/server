@@ -26,6 +26,10 @@ test.describe("seasons and distances", () => {
     await c(page, "button", "New event").click();
     const dialog = page.getByRole("dialog");
     await dialog.getByLabel("Name").fill("Feldschiessen");
+    await expect(dialog.getByLabel("Main day", { exact: true })).toHaveValue(day(0));
+    await dialog.getByRole("button", { name: "Time", exact: true }).click();
+    await dialog.getByLabel(`${day(0)} from`).fill("08:00");
+    await dialog.getByLabel(`${day(0)} until`).fill("12:00");
     await dialog.locator("label", { hasText: "Period (season)" }).getByRole("switch").click();
     await dialog.getByLabel("First day").fill(day(-30));
     await dialog.getByLabel("Last day").fill(day(30));
@@ -42,6 +46,7 @@ test.describe("seasons and distances", () => {
     const id = Number(page.url().split("/").pop());
     const ev = await api(page, "GET", `/api/tenants/${ids.tenant}/events/${id}`);
     expect(ev.schedule.weekly).toEqual([{ weekday: 3, times: [{ from: "17:30", to: "19:30" }] }]);
+    expect(ev.schedule.days).toContainEqual({ date: day(0), times: [{ from: "08:00", to: "12:00" }] });
     expect(ev.days.length).toBeGreaterThan(7);
     await page.goto(`/t/${ids.tenant}`);
     await expect(page.locator("section", { has: c(page, "h2", "Today") }).getByText("Feldschiessen")).toBeVisible();

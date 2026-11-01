@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-10-24 20:03+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-11-01 17:56+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
 #: ../src/help/en/explanation/closing.md:1
@@ -4879,7 +4879,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/events.md:32
 #, markdown-text, no-wrap
-msgid "| Setting | Meaning |\n|---|---|\n| Name, Date, Ranges | the date is the main day; its year sets the age categories (SSV: competition year minus year of birth, the day itself does not matter, which counts for pre-shooting days in December before a January event); tick every range the event is shot on, or none for an event without lanes (see below) |\n| Shooting days | single days with optional shooting times, for pre-shooting days and multi-day events (registrations count on the day they are made); the main day is always one |\n| Period (season) | for events over weeks or months, e.g. the Feldschiessen from the opening of the range until 31 August: first and last day, plus the weekdays with their shooting times; no weekday ticked means every day. Single days, e.g. the official weekend, add to the period or replace its times on that date |\n| Organizer | printed on documents |\n| Language of documents and kiosk | language of PDFs, CSV exports and kiosk screens, independent of each user's interface language |\n"
+msgid "| Setting | Meaning |\n|---|---|\n| Name, Date, Ranges | the date is the main day; its year sets the age categories (SSV: competition year minus year of birth, the day itself does not matter, which counts for pre-shooting days in December before a January event); tick every range the event is shot on, or none for an event without lanes (see below) |\n| Shooting days | single days with optional shooting times, for pre-shooting days and multi-day events (registrations count on the day they are made); the main day is always one and comes first, with its own shooting times |\n| Period (season) | for events over weeks or months, e.g. the Feldschiessen from the opening of the range until 31 August: first and last day, plus the weekdays with their shooting times; no weekday ticked means every day. Single days, e.g. the official weekend, add to the period or replace its times on that date |\n| Organizer | printed on documents |\n| Language of documents and kiosk | language of PDFs, CSV exports and kiosk screens, independent of each user's interface language |\n"
 msgstr ""
 
 #. type: Plain text
