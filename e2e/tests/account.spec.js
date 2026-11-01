@@ -57,8 +57,9 @@ test.describe("account page", () => {
     await page.locator("[role=dialog] input[name=password]").fill(newPassword);
     await c(page, "[role=dialog] button", "Send confirmation link").click();
     await expect(c(page, "dd", email)).toContainText("not confirmed");
-    const mails = await (await page.request.get(`${mailpit}/api/v1/search?query=${encodeURIComponent(`to:${email}`)}`)).json();
-    expect(mails.messages.length).toBeGreaterThan(0);
+    await expect
+      .poll(async () => (await (await page.request.get(`${mailpit}/api/v1/search?query=${encodeURIComponent(`to:${email}`)}`)).json()).messages.length)
+      .toBeGreaterThan(0);
     await expect(page.getByText("Your club manages this account").first()).toBeVisible();
     await expect(c(page, "button", "Delete account")).toHaveCount(0);
   });
