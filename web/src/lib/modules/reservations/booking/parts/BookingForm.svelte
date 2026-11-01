@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { plural, t } from 'lingui-for-svelte/macro';
+	import Minus from '@lucide/svelte/icons/minus';
+	import Plus from '@lucide/svelte/icons/plus';
 	import type { BookingInfo, BookingRequestInput, BookingShooter } from '$lib/api';
 	import { byDay, slotKey, slotTime } from '../booking';
+	import { Badge } from '$lib/components/ui/badge';
 	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
 	import { Textarea } from '$lib/components/ui/textarea';
@@ -60,9 +63,28 @@
 	const days = $derived(byDay(info.slots, info.timezone));
 	const multi = $derived(info.ranges.length > 1);
 	const chosen = $derived(Object.values(form.lanes).reduce((n, v) => n + (Number(v) > 0 ? 1 : 0), 0));
+	const total = $derived(Object.values(form.lanes).reduce((n, v) => n + (Number(v) || 0), 0));
 
 	/** Most lanes a club can ask for in a slot: what is free, capped by the organizer's limit. */
 	const most = (free: number) => (info.maxLanes > 0 ? Math.min(free, info.maxLanes) : free);
+
+	/** Lanes chosen in a slot on a range. */
+	const lanesAt = (rangeId: number, start: string) => Number(form.lanes[slotKey(rangeId, start)]) || 0;
+
+	/** Free lanes of a range in a slot. */
+	const freeAt = (sl: BookingInfo['slots'][number], rangeId: number) => sl.free.find((f) => f.rangeId === rangeId)?.free ?? 0;
+
+	/** Chosen slots of a day, counted per range like the total. */
+	const chosenIn = (slots: BookingInfo['slots']) => slots.reduce((n, sl) => n + info.ranges.filter((r) => lanesAt(r.id, sl.start) > 0).length, 0);
+
+	// Open at first: every day of a short event, else the days with a choice; then the club decides.
+	// svelte-ignore state_referenced_locally
+	const opened = new Set(days.filter(([, slots]) => days.length <= 2 || chosenIn(slots) > 0).map(([d]) => d));
+
+	/** Changes the lanes of a slot by one, between 0 and the most allowed. */
+	function step(key: string, by: number, max: number) {
+		form.lanes[key] = Math.max(0, Math.min(max, (Number(form.lanes[key]) || 0) + by));
+	}
 
 	/** Builds the request from the form and hands it to the page. */
 	async function submit(e: SubmitEvent) {
@@ -103,8 +125,12 @@
 			{#if info.maxLanes > 0}{$t`At most ${info.maxLanes} lanes per slot.`}{/if}
 		</p>
 		{#each days as [day, slots] (day)}
-			<section class="overflow-hidden rounded-lg border bg-card">
-				<h3 class="border-b px-4 py-2 text-sm font-semibold">{day}</h3>
+			{@const n = chosenIn(slots)}
+			<details class="group overflow-hidden rounded-lg border bg-card" open={opened.has(day)}>
+				<summary class="cursor-pointer px-4 py-2 text-sm font-semibold group-open:border-b">
+					{day}
+					{#if n > 0}<Badge variant="secondary" class="ml-2">{$plural(n, { one: '# slot chosen', other: '# slots chosen' })}</Badge>{/if}
+				</summary>
 				<table class="w-full text-sm">
 					{#if multi}
 						<thead class="text-left text-xs text-muted-foreground">
@@ -116,26 +142,44 @@
 					{/if}
 					<tbody class="divide-y">
 						{#each slots as sl (sl.start)}
-							<tr>
-								<td class="w-32 px-4 py-1.5 font-medium tabular-nums">{slotTime(sl.start, info.timezone)}–{slotTime(sl.end, info.timezone)}</td>
+							{@const time = slotTime(sl.start, info.timezone)}
+							{@const picked = info.ranges.some((r) => lanesAt(r.id, sl.start) > 0)}
+							{@const full = info.ranges.every((r) => freeAt(sl, r.id) === 0)}
+							<tr class={[picked && 'bg-primary/5', full && !picked && 'text-muted-foreground']}>
+								<td class={['w-32 px-4 py-1.5 tabular-nums', picked ? 'font-semibold' : 'font-medium']}>{time}–{slotTime(sl.end, info.timezone)}</td>
 								{#each info.ranges as r (r.id)}
-									{@const free = sl.free.find((f) => f.rangeId === r.id)?.free ?? 0}
+									{@const free = freeAt(sl, r.id)}
 									{@const key = slotKey(r.id, sl.start)}
+									{@const max = most(free)}
 									<td class="px-2 py-1.5">
 										{#if free === 0 && !form.lanes[key]}
 											<span class="text-muted-foreground">{$t`full`}</span>
 										{:else}
-											<span class="flex items-center gap-2">
+											<span class="flex items-center gap-1">
+												<Button
+													variant="outline"
+													size="icon-sm"
+													disabled={lanesAt(r.id, sl.start) === 0}
+													aria-label={$t`Fewer lanes on ${r.name} at ${time}`}
+													onclick={() => step(key, -1, max)}><Minus /></Button
+												>
 												<Input
-													class="w-20"
+													class="w-16 text-center"
 													type="number"
 													min="0"
-													max={most(free)}
+													{max}
 													placeholder="0"
 													bind:value={form.lanes[key]}
-													aria-label={$t`Lanes on ${r.name} at ${slotTime(sl.start, info.timezone)}`}
+													aria-label={$t`Lanes on ${r.name} at ${time}`}
 												/>
-												<span class="text-xs whitespace-nowrap text-muted-foreground">{$t`${free} free`}</span>
+												<Button
+													variant="outline"
+													size="icon-sm"
+													disabled={lanesAt(r.id, sl.start) >= max}
+													aria-label={$t`More lanes on ${r.name} at ${time}`}
+													onclick={() => step(key, 1, max)}><Plus /></Button
+												>
+												<span class={['ml-1 text-xs whitespace-nowrap', free <= r.laneCount / 4 ? 'text-amber-700 dark:text-amber-400' : 'text-muted-foreground']}>{$t`${free} free`}</span>
 											</span>
 										{/if}
 									</td>
@@ -144,9 +188,8 @@
 						{/each}
 					</tbody>
 				</table>
-			</section>
+			</details>
 		{/each}
-		<p class="text-sm text-muted-foreground">{$plural(chosen, { one: '# slot chosen', other: '# slots chosen' })}</p>
 	</fieldset>
 
 	<fieldset class="grid gap-4 sm:grid-cols-2" disabled={readonly}>
@@ -165,5 +208,10 @@
 	</fieldset>
 
 	<FormError message={error} />
-	{#if !readonly}<div><Button type="submit" disabled={busy}>{submitLabel}</Button></div>{/if}
+	{#if !readonly}
+		<div class="sticky bottom-0 -mx-4 flex flex-wrap items-center gap-3 border-t bg-background/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur">
+			<span class="text-sm text-muted-foreground">{$plural(chosen, { one: '# slot chosen', other: '# slots chosen' })} · {$plural(total, { one: '# lane', other: '# lanes' })}</span>
+			<Button type="submit" class="ml-auto" disabled={busy}>{submitLabel}</Button>
+		</div>
+	{/if}
 </form>

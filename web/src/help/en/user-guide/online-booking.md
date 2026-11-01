@@ -4,7 +4,7 @@ With **online booking**, external clubs ask for lanes themselves. The organizer 
 
 ## Switching it on {#setup}
 
-The online booking is part of the module *Reservations* (it needs a range and *Lane assignment*): on **Reservations** in the configuration, **Switch on** is all it takes. The page then shows the link with a QR code for the invitation and the slots it offers.
+The online booking is part of the module *Reservations* (it needs a range and *Lane assignment*): on **Reservations** in the configuration, **Switch on** is all it takes. The page then shows the link with a QR code for the invitation, whether clubs can ask right now (*Opens on*, *Open until* or *Deadline passed*) and the slots it offers, each day with the start of every slot and its breaks.
 
 ![Online booking in the configuration](../images/screenshots/booking-setup.png){ .screenshot }
 
@@ -22,13 +22,13 @@ Without changes, every day of the event is open during its shooting times (see [
 
 ## What a club sees {#club}
 
-The link opens a page without login. It shows the event, the deadline and every slot that starts in more than two hours with the lanes still free on each range. Before the opening day it only says from when the booking is open. Only confirmed reservations count; names of other clubs are never shown.
+The link opens a page without login. It explains the process in three steps and shows every slot that starts in more than two hours with the lanes still free on each range. Before the opening day it only says from when the booking is open. Only confirmed reservations count; names of other clubs are never shown. With more than two days, each day is folded and shows how many slots the club chose on it.
 
 ![The booking page of a club](../images/screenshots/booking-public.png){ .screenshot }
 
-The club enters the number of lanes per slot, its name, a contact person, email and phone, and its **Shooters**: last name, first name, birthday and optionally the licence. **Paste list** takes rows copied from Excel (last name, first name, birthday, licence). The shooter list can follow later; programmes are chosen at the range as usual.
+The club sets the number of lanes per slot with − and + or by typing it and enters its name, a contact person, email and phone, and its **Shooters**: last name, first name, birthday and optionally the licence. **Paste list** takes rows copied from Excel (last name, first name, birthday, licence). The shooter list can follow later; programmes are chosen at the range as usual.
 
-After **Send request**, the club gets a mail with a personal link. Through it, it can check the status, change the request or cancel it until the deadline. Changing the slots of a confirmed request releases its lanes and the request waits for a new confirmation; adding shooters keeps it confirmed.
+A bar at the bottom of the screen counts the chosen slots and lanes and holds **Send request**. Afterwards the club gets a mail with a personal link. Through it, it can check the status, change the request or cancel it until the deadline. Changing the slots of a confirmed request releases its lanes and the request waits for a new confirmation; adding shooters keeps it confirmed.
 
 ## Confirming requests {#confirm}
 

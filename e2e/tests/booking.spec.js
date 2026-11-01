@@ -53,7 +53,7 @@ test.describe("online booking", () => {
     await page.getByLabel("Booking opens").fill(opens);
     await page.locator("details").getByRole("button", { name: "Save" }).click();
     await expect(c(page, "[data-sonner-toast]", "Booking settings saved")).toBeVisible();
-    await expect(c(page, "section", "Slots")).toContainText("Requests from");
+    await expect(page.getByText(/^Opens on /)).toBeVisible();
 
     const club = await browser.newPage({ baseURL });
     await club.goto(ids.link);
@@ -63,7 +63,7 @@ test.describe("online booking", () => {
     await page.locator("summary", { hasText: "Adjust" }).click();
     await page.getByLabel("Booking opens").fill("");
     await page.locator("details").getByRole("button", { name: "Save" }).click();
-    await expect(c(page, "section", "Slots")).not.toContainText("Requests from");
+    await expect(page.getByText(/^Open until /)).toBeVisible();
     await club.reload();
     await expect(c(club, "button", "Send request")).toBeVisible();
     await club.close();

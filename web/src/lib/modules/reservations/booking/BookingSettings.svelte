@@ -8,6 +8,7 @@
 	import { toast } from 'svelte-sonner';
 	import { api, call, type BookingConfig, type Event } from '$lib/api';
 	import { byDay, deadlineDay, slotDay, slotTime } from './booking';
+	import { Badge } from '$lib/components/ui/badge';
 	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
 	import { ask } from '$lib/confirm.svelte';
@@ -48,15 +49,25 @@
 		toast.success($t`Link copied`);
 	}
 
-	/** One line per day: first start, last end and number of slots. */
+	/** One line per day: first start, last end, number of slots and the slot starts with a gap mark before each break. */
 	const preview = $derived(
 		byDay(config.data?.slots ?? [], event.timezone).map(([day, slots]) => ({
 			day,
 			from: slotTime(slots[0].start, event.timezone),
 			to: slotTime(slots[slots.length - 1].end, event.timezone),
-			count: slots.length
+			count: slots.length,
+			starts: slots.map((sl, i) => ({ time: slotTime(sl.start, event.timezone), gap: i > 0 && new Date(sl.start).getTime() !== new Date(slots[i - 1].end).getTime() }))
 		}))
 	);
+
+	/** Where the booking window stands today, as text and badge colours. */
+	function windowState(c: BookingConfig) {
+		if (c.opens && new Date(c.opens) > new Date())
+			return { text: $t`Opens on ${slotDay(c.opens, event.timezone)}`, tone: 'border-amber-500/50 bg-amber-500/10 text-amber-700 dark:text-amber-400' };
+		if (new Date(c.deadline) > new Date())
+			return { text: $t`Open until ${deadlineDay(c.deadline, event.timezone)}`, tone: 'border-emerald-500/50 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400' };
+		return { text: $t`Deadline passed`, tone: 'text-muted-foreground' };
+	}
 </script>
 
 {#if config.data}
@@ -71,8 +82,9 @@
 				<Button onclick={() => newCode(false)}><Power />{$t`Switch on`}</Button>
 			</section>
 		{:else}
+			{@const win = windowState(c)}
 			<section class="grid gap-3 rounded-lg border bg-card p-4">
-				<div class="text-sm font-medium">{$t`Link for the invitation`}</div>
+				<div class="flex flex-wrap items-center gap-2 text-sm font-medium">{$t`Link for the invitation`}<Badge variant="outline" class={win.tone}>{win.text}</Badge></div>
 				<div class="flex flex-wrap items-start gap-4">
 					<img src={c.qr} alt={$t`QR code of the booking link`} class="size-28 rounded border bg-white p-1" />
 					<div class="grid min-w-0 flex-1 gap-2">
@@ -93,15 +105,18 @@
 		<section class="grid gap-2 rounded-lg border bg-card p-4 text-sm">
 			<div class="font-medium">{$t`Slots`}</div>
 			{#each preview as p (p.day)}
-				<div class="flex flex-wrap gap-x-3"><span class="w-56">{p.day}</span><span class="tabular-nums">{p.from}–{p.to}</span><span class="text-muted-foreground">{$plural(p.count, { one: '# slot', other: '# slots' })}</span></div>
+				<div class="grid gap-1.5">
+					<div class="flex flex-wrap gap-x-3"><span class="w-56">{p.day}</span><span class="tabular-nums">{p.from}–{p.to}</span><span class="text-muted-foreground">{$plural(p.count, { one: '# slot', other: '# slots' })}</span></div>
+					<div class="flex flex-wrap gap-1">
+						{#each p.starts as s (s.time)}
+							{#if s.gap}<span class="px-1 text-xs text-muted-foreground">{$t`Break`}</span>{/if}
+							<span class="rounded border px-1.5 text-xs tabular-nums">{s.time}</span>
+						{/each}
+					</div>
+				</div>
 			{:else}
 				<p class="text-muted-foreground">{$t`No slots: check the hours.`}</p>
 			{/each}
-			{#if c.opens}
-				<p class="text-muted-foreground">{$t`Requests from ${slotDay(c.opens, event.timezone)}, requests and changes until ${deadlineDay(c.deadline, event.timezone)}.`}</p>
-			{:else}
-				<p class="text-muted-foreground">{$t`Requests and changes until ${deadlineDay(c.deadline, event.timezone)}.`}</p>
-			{/if}
 		</section>
 
 		{#key c.settings}<BookingHoursForm {tenantId} {event} settings={c.settings} onsaved={store} />{/key}

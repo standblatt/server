@@ -417,6 +417,13 @@ msgstr "{label} bis"
 msgid "{min} min"
 msgstr "{min} Min."
 
+#. js-lingui:icu=%7Bn%2C+plural%2C+one+%7B%23+slot+chosen%7D+other+%7B%23+slots+chosen%7D%7D&pluralize_on=n
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
+msgid "# slot chosen"
+msgid_plural "# slots chosen"
+msgstr[0] "# Zeitblock gewählt"
+msgstr[1] "# Zeitblöcke gewählt"
+
 #: src/routes/t/[tenantId]/users/+page.svelte
 msgid "{name} added"
 msgstr "{name} hinzugefügt"
@@ -467,6 +474,13 @@ msgstr "{shots} Kästchen"
 #: src/routes/my/progress/+page.svelte
 msgid "{standard} shots"
 msgstr "{standard} Schuss"
+
+#. js-lingui:icu=%7Btotal%2C+plural%2C+one+%7B%23+lane%7D+other+%7B%23+lanes%7D%7D&pluralize_on=total
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
+msgid "# lane"
+msgid_plural "# lanes"
+msgstr[0] "# Scheibe"
+msgstr[1] "# Scheiben"
 
 #. js-lingui:icu=%7Bwaiting%2C+plural%2C+one+%7BTake+over+%23+shooter%7D+other+%7BTake+over+%23+shooters%7D%7D&pluralize_on=waiting
 #: src/lib/modules/reservations/booking/BookingRequests.svelte
@@ -871,11 +885,6 @@ msgstr "API-Tokens"
 msgid "App"
 msgstr "App"
 
-#. placeholder {0}: deadlineDay(ev.deadline, ev.timezone)
-#: src/routes/b/[code]/+page.svelte
-msgid "Ask for lanes until {0}. The organizer confirms your request by mail."
-msgstr "Scheiben anfragen bis {0}. Der Organisator bestätigt deine Anfrage per Mail."
-
 #: src/lib/EventDesk.svelte
 msgid "Assign lane"
 msgstr "Scheibe zuweisen"
@@ -1060,6 +1069,10 @@ msgstr "Einstellungen der Online-Reservation gespeichert"
 msgid "born {0}"
 msgstr "geb. {0}"
 
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
+msgid "Break"
+msgstr "Pause"
+
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Break from"
 msgstr "Pause von"
@@ -1217,6 +1230,11 @@ msgstr "Wähle mindestens eine Berechtigung."
 #: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 msgid "Choose at least one slot."
 msgstr "Wähle mindestens einen Zeitblock."
+
+#. placeholder {0}: deadlineDay(ev.deadline, ev.timezone)
+#: src/routes/b/[code]/+page.svelte
+msgid "Choose the lanes you need per slot, until {0}."
+msgstr "Wähle bis {0}, wie viele Scheiben du pro Zeitblock brauchst."
 
 #: src/lib/forms/Palette.svelte
 #: src/lib/ShooterForm.svelte
@@ -1724,6 +1742,10 @@ msgstr "Tage mit anderen Zeiten"
 msgid "Deadline"
 msgstr "Anmeldeschluss"
 
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
+msgid "Deadline passed"
+msgstr "Anmeldeschluss vorbei"
+
 #: src/routes/t/[tenantId]/forms/[layoutId]/+page.svelte
 #: src/routes/t/[tenantId]/forms/+page.svelte
 msgid "Decides the fields and where the form is printed."
@@ -2122,6 +2144,10 @@ msgstr "Resultate erfassen"
 msgid "Enter the code the Standblatt app shows on the computer next to the printers."
 msgstr "Gib den Code ein, den die Standblatt-App auf dem Computer bei den Druckern anzeigt."
 
+#: src/routes/b/[code]/+page.svelte
+msgid "Enter your club, a contact person and your shooters; the shooters can follow later."
+msgstr "Gib deinen Verein, eine Kontaktperson und deine Schützen an; die Schützen können auch später folgen."
+
 #: src/routes/forgot-password/+page.svelte
 msgid "Enter your email address and we send you a link to choose a new one. Club accounts without email: ask your club admin."
 msgstr "Gib deine E-Mail-Adresse ein, wir senden dir einen Link zum Festlegen eines neuen Passworts. Vereinskonten ohne E-Mail: Frag deinen Vereinsadmin."
@@ -2250,6 +2276,11 @@ msgstr "Feldschiessen"
 #: src/lib/RegistrationForm.svelte
 msgid "Fewer attempts of {0}"
 msgstr "Weniger Durchgänge {0}"
+
+#. placeholder {0}: r.name
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
+msgid "Fewer lanes on {0} at {time}"
+msgstr "Weniger Scheiben auf {0} um {time}"
 
 #: src/routes/my/train/+page.svelte
 msgid "Fewer shots"
@@ -2767,10 +2798,9 @@ msgid "lanes {0}"
 msgstr "Scheiben {0}"
 
 #. placeholder {0}: r.name
-#. placeholder {1}: slotTime(sl.start, info.timezone)
 #: src/lib/modules/reservations/booking/parts/BookingForm.svelte
-msgid "Lanes on {0} at {1}"
-msgstr "Scheiben auf {0} um {1}"
+msgid "Lanes on {0} at {time}"
+msgstr "Scheiben auf {0} um {time}"
 
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Lanes per slot and club"
@@ -3123,6 +3153,11 @@ msgstr "Mehr"
 #: src/lib/RegistrationForm.svelte
 msgid "More attempts of {0}"
 msgstr "Mehr Durchgänge {0}"
+
+#. placeholder {0}: r.name
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
+msgid "More lanes on {0} at {time}"
+msgstr "Mehr Scheiben auf {0} um {time}"
 
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "more lp options, e.g. fit-to-page"
@@ -3670,6 +3705,16 @@ msgstr "Ganze Hilfe öffnen"
 #: src/lib/EventDesk.svelte
 msgid "Open the results to see and hand out the awards"
 msgstr "Resultate öffnen, um die Auszeichnungen zu sehen und abzugeben"
+
+#. placeholder {0}: deadlineDay(c.deadline, event.timezone)
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
+msgid "Open until {0}"
+msgstr "Offen bis {0}"
+
+#. placeholder {0}: slotDay(c.opens, event.timezone)
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
+msgid "Opens on {0}"
+msgstr "Öffnet am {0}"
 
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Options"
@@ -4460,17 +4505,6 @@ msgstr "Anfrage eingegangen"
 #: src/routes/b/manage/[token]/+page.svelte
 msgid "Request saved"
 msgstr "Anfrage gespeichert"
-
-#. placeholder {0}: deadlineDay(c.deadline, event.timezone)
-#: src/lib/modules/reservations/booking/BookingSettings.svelte
-msgid "Requests and changes until {0}."
-msgstr "Anfragen und Änderungen bis {0}."
-
-#. placeholder {0}: slotDay(c.opens, event.timezone)
-#. placeholder {1}: deadlineDay(c.deadline, event.timezone)
-#: src/lib/modules/reservations/booking/BookingSettings.svelte
-msgid "Requests from {0}, requests and changes until {1}."
-msgstr "Anfragen ab {0}, Anfragen und Änderungen bis {1}."
 
 #. placeholder {0}: r.description
 #: src/lib/modules/reservations/Page.svelte
@@ -5396,6 +5430,10 @@ msgstr "Der Link funktioniert nicht mehr. Anfragen und bestätigte Reservationen
 #: src/lib/EventForm.svelte
 msgid "The main day. Age categories follow the SSV rule: competition year minus year of birth, so only the year of this date matters."
 msgstr "Der Haupttag. Die Alterskategorien folgen der SSV-Regel: Wettkampfjahr minus Jahrgang, es zählt also nur das Jahr dieses Datums."
+
+#: src/routes/b/[code]/+page.svelte
+msgid "The organizer confirms by mail. Your personal link lets you change or cancel the request until the deadline."
+msgstr "Der Organisator bestätigt per Mail. Mit deinem persönlichen Link kannst du die Anfrage bis zum Anmeldeschluss ändern oder stornieren."
 
 #: src/lib/modules/ammo/index.ts
 msgid "The organizer hands out the ammunition: an Ammo button on the dashboard and a helper role."
