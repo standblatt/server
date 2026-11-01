@@ -91,13 +91,13 @@ func TestOnlineBooking(t *testing.T) {
 	expect(t, "request", code, 204, b)
 
 	clubMail := box.mailTo(t, "ida@example.org")
-	m := manageRe.FindStringSubmatch(clubMail.Body)
-	if m == nil || !strings.Contains(clubMail.Body, "Lanes: 3") {
+	m := manageRe.FindStringSubmatch(clubMail.Text())
+	if m == nil || !strings.Contains(clubMail.Text(), "Lanes: 3") {
 		t.Fatalf("club mail: %+v", clubMail)
 	}
 	secret := m[1]
 	adminMail := box.mailTo(t, "boss@example.org")
-	if !strings.Contains(adminMail.Body, "SV Gäste") || !strings.Contains(adminMail.Body, fmt.Sprintf("/t/%d/events/%d/reservations", tid, ev)) {
+	if !strings.Contains(adminMail.Text(), "SV Gäste") || !strings.Contains(adminMail.Text(), fmt.Sprintf("/t/%d/events/%d/reservations", tid, ev)) {
 		t.Fatalf("admin mail: %+v", adminMail)
 	}
 
@@ -134,7 +134,7 @@ func TestOnlineBooking(t *testing.T) {
 	if sh, _ := e.st.GetShooter(context.Background(), tid, *confirmed.Shooters[0].ShooterID); len(sh.Clubs) != 1 || sh.Clubs[0].ID != home {
 		t.Fatalf("shooter not in the chosen club: %+v", sh.Clubs)
 	}
-	if msg := box.mailTo(t, "ida@example.org"); !strings.Contains(msg.Body, "Lanes: 3 (1-3)") {
+	if msg := box.mailTo(t, "ida@example.org"); !strings.Contains(msg.Text(), "Lanes: 3 (1-3)") {
 		t.Fatalf("confirmation mail: %+v", msg)
 	}
 	code, b = e.do(anon, "GET", public, nil)
@@ -187,7 +187,7 @@ func TestOnlineBooking(t *testing.T) {
 	expect(t, "confirm a full slot", code, 409, b)
 	code, b = e.do(admin, "POST", reqPath+"/decline", map[string]string{"reason": "Fully booked"})
 	expect(t, "decline", code, 200, b)
-	if msg := box.mailTo(t, "ida@example.org"); !strings.Contains(msg.Body, "Fully booked") {
+	if msg := box.mailTo(t, "ida@example.org"); !strings.Contains(msg.Text(), "Fully booked") {
 		t.Fatalf("decline mail: %+v", msg)
 	}
 	code, b = e.helper("PUT", "/api/booking-manage", secret, request)
@@ -200,7 +200,7 @@ func TestOnlineBooking(t *testing.T) {
 	cancelled.Items = []domain.BookingItem{{RangeID: rng.ID, Start: first.Start, End: first.End, Lanes: 1}}
 	code, b = e.do(anon, "POST", public+"/requests", cancelled)
 	expect(t, "second request", code, 204, b)
-	m = manageRe.FindStringSubmatch(box.mailTo(t, "jo@example.org").Body)
+	m = manageRe.FindStringSubmatch(box.mailTo(t, "jo@example.org").Text())
 	if m == nil {
 		t.Fatal("no manage link for the second request")
 	}

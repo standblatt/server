@@ -35,9 +35,9 @@ var tokenRe = regexp.MustCompile(`token=([A-Za-z0-9_-]+)`)
 func (m mailbox) token(t *testing.T) string {
 	t.Helper()
 	msg := m.next(t)
-	match := tokenRe.FindStringSubmatch(msg.Body)
+	match := tokenRe.FindStringSubmatch(msg.Text())
 	if match == nil {
-		t.Fatalf("no token in %q", msg.Body)
+		t.Fatalf("no token in %q", msg.Text())
 	}
 	return match[1]
 }

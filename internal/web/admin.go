@@ -550,12 +550,12 @@ func (s *Server) sendPasswordLink(r *http.Request, userID int64) error {
 	if u.Locale != "" {
 		l = i18n.Get(u.Locale)
 	}
-	s.mail(tlmail.Message{To: a.Email, Subject: i18n.T(l, "Set your Standblatt password"), Body: strings.Join([]string{
-		greeting(l, s.firstname(ctx, userID)), "",
-		i18n.T(l, "an administrator created a link for you to set the password of your Standblatt account:"), "",
-		s.link(ctx, "/reset-password?token="+token), "",
-		i18n.Tf(l, "The link is valid for seven days. Your user name is %s.", u.Name),
-	}, "\n")})
+	s.mail(tlmail.Message{To: a.Email, Subject: i18n.T(l, "Set your Standblatt password"), Parts: []tlmail.Part{
+		tlmail.P(greeting(l, s.firstname(ctx, userID))),
+		tlmail.P(i18n.T(l, "an administrator created a link for you to set the password of your Standblatt account:")),
+		tlmail.Button(i18n.T(l, "Set password"), s.link(ctx, "/reset-password?token="+token)),
+		tlmail.P(i18n.Tf(l, "The link is valid for seven days. Your user name is %s.", u.Name)),
+	}})
 	s.adminLog(r, "password link sent", strconv.FormatInt(userID, 10))
 	return nil
 }

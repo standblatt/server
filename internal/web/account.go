@@ -80,12 +80,12 @@ func (s *Server) sendVerification(ctx context.Context, userID int64, email, name
 	if err := s.Store.CreateUserToken(ctx, sessionID(token), userID, "verify", time.Now().Add(verifyTTL)); err != nil {
 		return err
 	}
-	s.mail(mail.Message{To: email, Subject: i18n.T(l, "Confirm your email address"), Body: strings.Join([]string{
-		greeting(l, name), "",
-		i18n.T(l, "please confirm your email address for Standblatt:"), "",
-		s.link(ctx, "/verify?token="+token), "",
-		i18n.T(l, "The link is valid for 7 days. If you did not create an account, ignore this mail."),
-	}, "\n")})
+	s.mail(mail.Message{To: email, Subject: i18n.T(l, "Confirm your email address"), Parts: []mail.Part{
+		mail.P(greeting(l, name)),
+		mail.P(i18n.T(l, "please confirm your email address for Standblatt:")),
+		mail.Button(i18n.T(l, "Confirm email address"), s.link(ctx, "/verify?token="+token)),
+		mail.P(i18n.T(l, "The link is valid for 7 days. If you did not create an account, ignore this mail.")),
+	}})
 	return nil
 }
 
@@ -307,11 +307,11 @@ func (s *Server) forgot(ctx context.Context, in *ForgotInput) (*struct{}, error)
 	if p, err := s.Store.GetProfile(ctx, u.ID); err == nil {
 		name = p.Firstname
 	}
-	s.mail(mail.Message{To: strings.ToLower(strings.TrimSpace(in.Body.Email)), Subject: i18n.T(l, "Reset your Standblatt password"), Body: strings.Join([]string{
-		greeting(l, name), "",
-		i18n.T(l, "someone, hopefully you, asked to reset the password of your Standblatt account. Choose a new password here:"), "",
-		s.link(ctx, "/reset-password?token="+token), "",
-		i18n.T(l, "The link is valid for one hour. If you did not ask for it, ignore this mail; your password stays the same."),
-	}, "\n")})
+	s.mail(mail.Message{To: strings.ToLower(strings.TrimSpace(in.Body.Email)), Subject: i18n.T(l, "Reset your Standblatt password"), Parts: []mail.Part{
+		mail.P(greeting(l, name)),
+		mail.P(i18n.T(l, "someone, hopefully you, asked to reset the password of your Standblatt account. Choose a new password here:")),
+		mail.Button(i18n.T(l, "Choose a new password"), s.link(ctx, "/reset-password?token="+token)),
+		mail.P(i18n.T(l, "The link is valid for one hour. If you did not ask for it, ignore this mail; your password stays the same.")),
+	}})
 	return nil, nil
 }

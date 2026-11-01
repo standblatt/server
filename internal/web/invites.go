@@ -265,11 +265,11 @@ func (s *Server) invite(ctx context.Context, tenantID int64, club, email string,
 		return "", notFound(err, "Role not found")
 	}
 	l := mailLang(ctx, "")
-	s.mail(tlmail.Message{To: email, Subject: i18n.Tf(l, "%s invites you to Standblatt", club), Body: strings.Join([]string{
-		i18n.T(l, "Hello,"), "",
-		i18n.Tf(l, "%s uses Standblatt for its shooting events and invites you to join. Accept the invitation with this link:", club), "",
-		s.link(ctx, "/invite/"+token), "",
-		i18n.T(l, "The link is valid for seven days."),
-	}, "\n")})
+	s.mail(tlmail.Message{To: email, Subject: i18n.Tf(l, "%s invites you to Standblatt", club), Parts: []tlmail.Part{
+		tlmail.P(i18n.T(l, "Hello,")),
+		tlmail.P(i18n.Tf(l, "%s uses Standblatt for its shooting events and invites you to join. Accept the invitation with this link:", club)),
+		tlmail.Button(i18n.T(l, "Accept invitation"), s.link(ctx, "/invite/"+token)),
+		tlmail.P(i18n.T(l, "The link is valid for seven days.")),
+	}})
 	return "invited", nil
 }

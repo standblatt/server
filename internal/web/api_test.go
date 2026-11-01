@@ -450,10 +450,10 @@ func TestAdminPanel(t *testing.T) {
 		t.Fatalf("password link: %d %s", code, body)
 	}
 	m := box.next(t)
-	if m.To != "xaver@example.org" || !strings.Contains(m.Body, "/reset-password?token=") {
+	if m.To != "xaver@example.org" || !strings.Contains(m.Text(), "/reset-password?token=") {
 		t.Fatalf("password link mail: %+v", m)
 	}
-	code, b2 := e.do(e.client(), "POST", "/api/auth/reset", map[string]string{"token": tokenRe.FindStringSubmatch(m.Body)[1], "password": "xaver-new-password"})
+	code, b2 := e.do(e.client(), "POST", "/api/auth/reset", map[string]string{"token": tokenRe.FindStringSubmatch(m.Text())[1], "password": "xaver-new-password"})
 	expect(t, "reset with the admin link", code, 204, b2)
 
 	code, b2 = e.do(e.client(), "POST", "/api/auth/login", map[string]string{"name": "xaver", "password": "xaver-new-password"})

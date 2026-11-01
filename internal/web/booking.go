@@ -239,37 +239,40 @@ func slotText(start, end time.Time, loc *time.Location) string {
 	return start.In(loc).Format("02.01.2006 15:04") + "–" + end.In(loc).Format("15:04")
 }
 
-// bookingSummary lists the slots of a request for a mail, with the assigned lanes once confirmed.
-func bookingSummary(l i18n.Lang, ev store.Event, req store.BookingRequest) []string {
+// bookingSummary lists the slots of a request for a mail as a table, with the assigned lanes once confirmed.
+func bookingSummary(l i18n.Lang, ev store.Event, req store.BookingRequest) []mail.Part {
 	names := map[int64]string{}
 	for _, r := range ev.Ranges {
 		names[r.ID] = r.Name
 	}
 	loc := eventLoc(ev.Timezone)
-	lines := []string{}
+	rows := [][]string{}
 	for _, it := range req.Items {
-		line := "- " + slotText(it.Start, it.End, loc) + ", " + names[it.RangeID] + ", " + i18n.T(l, "Lanes") + ": " + strconv.Itoa(it.Lanes)
+		lanes := strconv.Itoa(it.Lanes)
 		if len(it.Assigned) > 0 {
-			line += " (" + domain.FormatLanes(it.Assigned) + ")"
+			lanes += " (" + domain.FormatLanes(it.Assigned) + ")"
 		}
-		lines = append(lines, line)
+		rows = append(rows, []string{slotText(it.Start, it.End, loc), names[it.RangeID], lanes})
 	}
+	parts := []mail.Part{mail.Table([]string{i18n.T(l, "Time"), i18n.T(l, "Range"), i18n.T(l, "Lanes")}, rows...)}
 	if n := len(req.Shooters); n > 0 {
-		lines = append(lines, i18n.Tf(l, "Shooters announced: %d", n))
+		parts = append(parts, mail.P(i18n.Tf(l, "Shooters announced: %d", n)))
 	}
-	return lines
+	return parts
 }
 
 // mailClub sends a mail about a request to the club's contact in the event's language.
 func (s *Server) mailClub(ctx context.Context, ev store.Event, req store.BookingRequest, subject string, intro []string, manageLink string) {
 	l := i18n.Get(ev.Locale)
-	body := append([]string{greeting(l, req.Contact), ""}, intro...)
-	body = append(body, "")
-	body = append(body, bookingSummary(l, ev, req)...)
-	if manageLink != "" {
-		body = append(body, "", i18n.T(l, "Check, change or cancel your request here:"), manageLink)
+	parts := []mail.Part{mail.P(greeting(l, req.Contact))}
+	for _, p := range intro {
+		parts = append(parts, mail.P(p))
 	}
-	s.mail(mail.Message{To: req.Email, Subject: subject, Body: strings.Join(body, "\n")})
+	parts = append(parts, bookingSummary(l, ev, req)...)
+	if manageLink != "" {
+		parts = append(parts, mail.P(i18n.T(l, "Check, change or cancel your request here:")), mail.Button(i18n.T(l, "Open your request"), manageLink))
+	}
+	s.mail(mail.Message{To: req.Email, Subject: subject, Parts: parts})
 }
 
 // mailAdmins tells every admin of the club with an email about a request that needs a look.
@@ -285,10 +288,10 @@ func (s *Server) mailAdmins(ctx context.Context, tenantID int64, ev store.Event,
 		if !permissions.Any(m.Permissions, permissions.EventsConfigure) || m.Email == "" {
 			continue
 		}
-		body := append([]string{greeting(l, ""), "", i18n.Tf(l, "%s (%s, %s) asks for lanes at %s:", req.Club, req.Contact, req.Email, ev.Name), ""},
+		parts := append([]mail.Part{mail.P(greeting(l, "")), mail.P(i18n.Tf(l, "%s (%s, %s) asks for lanes at %s:", req.Club, req.Contact, req.Email, ev.Name))},
 			bookingSummary(l, ev, req)...)
-		body = append(body, "", i18n.T(l, "Confirm or decline the request here:"), link)
-		s.mail(mail.Message{To: m.Email, Subject: subject, Body: strings.Join(body, "\n")})
+		parts = append(parts, mail.P(i18n.T(l, "Confirm or decline the request here:")), mail.Button(i18n.T(l, "Open the requests"), link))
+		s.mail(mail.Message{To: m.Email, Subject: subject, Parts: parts})
 	}
 }
 
@@ -612,7 +615,7 @@ func (s *Server) registerBookingAdmin(api huma.API) {
 			l := i18n.Get(ev.Locale)
 			intro := []string{i18n.Tf(l, "unfortunately the organizer of %s cannot give you these lanes.", ev.Name)}
 			if reason != "" {
-				intro = append(intro, "", reason)
+				intro = append(intro, reason)
 			}
 			s.mailClub(ctx, ev, req, i18n.Tf(l, "Lane request for %s declined", ev.Name), intro, "")
 			s.notifyBooking(ctx, tenantID, ev, req.Status == store.BookingConfirmed)

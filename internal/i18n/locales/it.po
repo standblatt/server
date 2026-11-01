@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 20:19+0100\n"
+"POT-Creation-Date: 2026-11-01 21:14+0100\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -481,6 +481,14 @@ msgid "An account with this email exists already. Log in or reset your password.
 msgstr "Esiste già un account con questo indirizzo e-mail. Accedi o reimposta la password."
 
 #: internal/web/account.go
+msgid "Choose a new password"
+msgstr "Scegli una nuova password"
+
+#: internal/web/account.go
+msgid "Confirm email address"
+msgstr "Conferma l’indirizzo e-mail"
+
+#: internal/web/account.go
 msgid "Confirm your email address"
 msgstr "Conferma il tuo indirizzo e-mail"
 
@@ -575,6 +583,10 @@ msgstr "Non trovato"
 #: internal/web/admin.go
 msgid "Session expired. Enter the token again."
 msgstr "Sessione scaduta. Inserisci di nuovo il token."
+
+#: internal/web/admin.go
+msgid "Set password"
+msgstr "Imposta password"
 
 #: internal/web/admin.go
 msgid "Set your Standblatt password"
@@ -726,6 +738,18 @@ msgid "Only %d lanes are free at %s; move a reservation or decline the request."
 msgstr "Solo %d bersagli liberi il %s; sposta una prenotazione o rifiuta la richiesta."
 
 #: internal/web/booking.go
+msgid "Open the requests"
+msgstr "Apri le richieste"
+
+#: internal/web/booking.go
+msgid "Open your request"
+msgstr "Apri la tua richiesta"
+
+#: internal/web/booking.go internal/web/reports.go
+msgid "Range"
+msgstr "Poligono"
+
+#: internal/web/booking.go
 msgid "Request not found"
 msgstr "Richiesta non trovata"
 
@@ -753,6 +777,10 @@ msgstr "Questo link di prenotazione non è valido."
 #: internal/web/booking.go
 msgid "This link is not valid."
 msgstr "Questo link non è valido."
+
+#: internal/web/booking.go internal/web/reports.go
+msgid "Time"
+msgstr "Ora"
 
 #: internal/web/booking.go
 #, go-format
@@ -964,6 +992,10 @@ msgstr "%s ti invita su Standblatt"
 #, go-format
 msgid "%s uses Standblatt for its shooting events and invites you to join. Accept the invitation with this link:"
 msgstr "%s usa Standblatt per le sue manifestazioni di tiro e ti invita a unirti. Accetta l’invito con questo link:"
+
+#: internal/web/invites.go
+msgid "Accept invitation"
+msgstr "Accetta l’invito"
 
 #: internal/web/invites.go
 msgid "An account with this address exists: log in to accept"
@@ -1436,10 +1468,6 @@ msgid "Programmes sold"
 msgstr "Programmi venduti"
 
 #: internal/web/reports.go
-msgid "Range"
-msgstr "Poligono"
-
-#: internal/web/reports.go
 msgid "Ranking"
 msgstr "Classifica"
 
@@ -1497,10 +1525,6 @@ msgstr "Subtotale"
 #: internal/web/reports.go
 msgid "The event has no classifications."
 msgstr "La manifestazione non ha classifiche generali."
-
-#: internal/web/reports.go
-msgid "Time"
-msgstr "Ora"
 
 #: internal/web/reports.go
 msgid "Unknown report"
@@ -1907,10 +1931,6 @@ msgstr "Salva"
 #: internal/web/templates/admin_user.html
 msgid "Send password link"
 msgstr "Invia link per la password"
-
-#: internal/web/templates/admin_user.html
-msgid "Set password"
-msgstr "Imposta password"
 
 #: internal/web/templates/admin_user.html
 msgid "Sets the password directly; prefer the password link when the user has an email address."

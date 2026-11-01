@@ -19,7 +19,7 @@ var inviteRe = regexp.MustCompile(`/invite/(inv_[A-Za-z0-9_-]+)`)
 func (m mailbox) inviteToken(t *testing.T, to string) string {
 	t.Helper()
 	msg := m.next(t)
-	match := inviteRe.FindStringSubmatch(msg.Body)
+	match := inviteRe.FindStringSubmatch(msg.Text())
 	if msg.To != to || match == nil {
 		t.Fatalf("invitation to %s: %+v", to, msg)
 	}

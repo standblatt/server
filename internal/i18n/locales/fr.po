@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 20:19+0100\n"
+"POT-Creation-Date: 2026-11-01 21:14+0100\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -481,6 +481,14 @@ msgid "An account with this email exists already. Log in or reset your password.
 msgstr "Un compte existe déjà avec cette adresse e-mail. Connectez-vous ou réinitialisez votre mot de passe."
 
 #: internal/web/account.go
+msgid "Choose a new password"
+msgstr "Choisir un nouveau mot de passe"
+
+#: internal/web/account.go
+msgid "Confirm email address"
+msgstr "Confirmer l’adresse e-mail"
+
+#: internal/web/account.go
 msgid "Confirm your email address"
 msgstr "Confirme ton adresse e-mail"
 
@@ -575,6 +583,10 @@ msgstr "Introuvable"
 #: internal/web/admin.go
 msgid "Session expired. Enter the token again."
 msgstr "Session expirée. Saisissez à nouveau le jeton."
+
+#: internal/web/admin.go
+msgid "Set password"
+msgstr "Définir le mot de passe"
 
 #: internal/web/admin.go
 msgid "Set your Standblatt password"
@@ -726,6 +738,18 @@ msgid "Only %d lanes are free at %s; move a reservation or decline the request."
 msgstr "Seulement %d cibles libres le %s ; déplace une réservation ou refuse la demande."
 
 #: internal/web/booking.go
+msgid "Open the requests"
+msgstr "Ouvrir les demandes"
+
+#: internal/web/booking.go
+msgid "Open your request"
+msgstr "Ouvrir ta demande"
+
+#: internal/web/booking.go internal/web/reports.go
+msgid "Range"
+msgstr "Stand"
+
+#: internal/web/booking.go
 msgid "Request not found"
 msgstr "Demande introuvable"
 
@@ -753,6 +777,10 @@ msgstr "Ce lien de réservation n’est pas valable."
 #: internal/web/booking.go
 msgid "This link is not valid."
 msgstr "Ce lien n’est pas valable."
+
+#: internal/web/booking.go internal/web/reports.go
+msgid "Time"
+msgstr "Heure"
 
 #: internal/web/booking.go
 #, go-format
@@ -964,6 +992,10 @@ msgstr "%s t’invite sur Standblatt"
 #, go-format
 msgid "%s uses Standblatt for its shooting events and invites you to join. Accept the invitation with this link:"
 msgstr "%s utilise Standblatt pour ses manifestations de tir et t’invite à la rejoindre. Accepte l’invitation avec ce lien :"
+
+#: internal/web/invites.go
+msgid "Accept invitation"
+msgstr "Accepter l’invitation"
 
 #: internal/web/invites.go
 msgid "An account with this address exists: log in to accept"
@@ -1436,10 +1468,6 @@ msgid "Programmes sold"
 msgstr "Programmes vendus"
 
 #: internal/web/reports.go
-msgid "Range"
-msgstr "Stand"
-
-#: internal/web/reports.go
 msgid "Ranking"
 msgstr "Classement"
 
@@ -1497,10 +1525,6 @@ msgstr "Sous-total"
 #: internal/web/reports.go
 msgid "The event has no classifications."
 msgstr "La manifestation n’a pas de classements généraux."
-
-#: internal/web/reports.go
-msgid "Time"
-msgstr "Heure"
 
 #: internal/web/reports.go
 msgid "Unknown report"
@@ -1907,10 +1931,6 @@ msgstr "Enregistrer"
 #: internal/web/templates/admin_user.html
 msgid "Send password link"
 msgstr "Envoyer le lien de mot de passe"
-
-#: internal/web/templates/admin_user.html
-msgid "Set password"
-msgstr "Définir le mot de passe"
 
 #: internal/web/templates/admin_user.html
 msgid "Sets the password directly; prefer the password link when the user has an email address."
