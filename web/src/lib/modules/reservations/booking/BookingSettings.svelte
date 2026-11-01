@@ -4,6 +4,7 @@
 	import Copy from '@lucide/svelte/icons/copy';
 	import Power from '@lucide/svelte/icons/power';
 	import RefreshCw from '@lucide/svelte/icons/refresh-cw';
+	import ExternalLink from '@lucide/svelte/icons/external-link';
 	import { toast } from 'svelte-sonner';
 	import { api, call, type BookingConfig, type Event } from '$lib/api';
 	import { byDay, deadlineDay, slotDay, slotTime } from './booking';
@@ -78,6 +79,7 @@
 						<div class="flex gap-2">
 							<Input readonly value={c.link} aria-label={$t`Booking link`} />
 							<Button variant="outline" size="icon" aria-label={$t`Copy link`} onclick={() => copy(c.link)}><Copy /></Button>
+							<Button variant="outline" size="icon" aria-label={$t`Open link`} onclick={() => window.open(c.link, '_blank')}><ExternalLink /></Button>
 						</div>
 						<div class="flex flex-wrap gap-2">
 							<Button variant="outline" size="sm" onclick={() => newCode(true)}><RefreshCw />{$t`New link`}</Button>

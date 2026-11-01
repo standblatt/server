@@ -3650,6 +3650,10 @@ msgstr "Öffnen"
 msgid "Open as PDF"
 msgstr "Als PDF öffnen"
 
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
+msgid "Open link"
+msgstr "Link öffnen"
+
 #: src/routes/verify/+page.svelte
 msgid "Open my log"
 msgstr "Mein Logbuch öffnen"

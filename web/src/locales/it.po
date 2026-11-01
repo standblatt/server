@@ -3650,6 +3650,10 @@ msgstr "Apri"
 msgid "Open as PDF"
 msgstr "Apri come PDF"
 
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
+msgid "Open link"
+msgstr "Apri il link"
+
 #: src/routes/verify/+page.svelte
 msgid "Open my log"
 msgstr "Apri il mio diario"

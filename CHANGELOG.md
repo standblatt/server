@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Online booking: an opening day; before it the booking link only says from when requests are accepted (by @HB9HIL)
+- Added link button to open the booking link in a new tab (by @HB9HIL)
 
 ### Fixed
 - Online booking: slots can only be asked for until two hours before they start, and the deadline is at the latest the last shooting day (by @HB9HIL)
