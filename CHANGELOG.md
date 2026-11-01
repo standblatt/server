@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.24.1] - 2026-11-01
+
 ### Fixed
 - Release images show the tag as version: a tag run no longer reuses the image the master run built for the same commit before the tag existed (by @HB9HIL)
 
