@@ -32,7 +32,7 @@ A bar at the bottom of the screen counts the chosen slots and lanes and holds **
 
 ## Confirming requests {#confirm}
 
-Every admin with an email gets a mail for each new, changed or cancelled request. The requests are listed at the top of **Reservations**; the sidebar shows how many are waiting.
+Every admin with an email gets a mail for each new, changed or cancelled request. The requests are listed at the top of **Reservations**, open ones first and within each status in the order they came in; the sidebar shows how many are waiting. Each request shows when it was received, to the second, and an open one also when the club last changed it, so when two clubs want the same lanes, the first one can get them.
 
 ![Booking requests on the reservations page](../images/screenshots/booking-requests.png){ .screenshot }
 

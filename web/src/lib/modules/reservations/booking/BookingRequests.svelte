@@ -8,6 +8,7 @@
 	import { api, call, type BookingRequest, type Club, type Event } from '$lib/api';
 	import { slotDay, slotTime } from './booking';
 	import { formatLanes } from '$lib/format';
+	import { intlLocale } from '$lib/locale.svelte';
 	import BookingStatus from './parts/BookingStatus.svelte';
 	import ClubSelect from '$lib/ClubSelect.svelte';
 	import { Button } from '$lib/components/ui/button';
@@ -24,10 +25,12 @@
 		() => event.id
 	);
 	const order = { pending: 0, confirmed: 1, declined: 2, cancelled: 3 };
-	const sorted = $derived([...(requests.data ?? [])].sort((a, b) => order[a.status] - order[b.status]));
+	const sorted = $derived([...(requests.data ?? [])].sort((a, b) => order[a.status] - order[b.status] || Date.parse(a.createdAt) - Date.parse(b.createdAt)));
 	/** Name of a range of the event. */
 	const rangeName = (id: number) => event.ranges.find((r) => r.id === id)?.name ?? '';
 	const tz = $derived(event.timezone);
+	/** Date and time to the second in the event's time zone, so the order of requests is plain. */
+	const moment = (iso: string) => new Date(iso).toLocaleString(intlLocale(), { dateStyle: 'medium', timeStyle: 'medium', timeZone: tz });
 	const clubs = clubsQuery(() => tenantId);
 	/** Name of a club of the master data. */
 	const clubName = (id: number) => clubs.data?.find((c) => c.id === id)?.name ?? '';
@@ -125,6 +128,9 @@
 						</div>
 					{/if}
 				</div>
+				<p class="text-muted-foreground">
+					{$t`Received ${moment(r.createdAt)}`}{#if r.status === 'pending' && r.updatedAt !== r.createdAt}{' · '}{$t`changed ${moment(r.updatedAt)}`}{/if}
+				</p>
 				{#if r.clubId && clubName(r.clubId) !== r.club}<p class="text-muted-foreground">{$t`Club in the master data: ${clubName(r.clubId)}`}</p>{/if}
 				{#if r.note}<p class="rounded-md bg-muted px-3 py-2">{r.note}</p>{/if}
 				<ul class="grid gap-1">

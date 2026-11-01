@@ -1199,6 +1199,11 @@ msgstr "Changer de manifestation"
 msgid "Change password"
 msgstr "Changer le mot de passe"
 
+#. placeholder {0}: moment(r.updatedAt)
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
+msgid "changed {0}"
+msgstr "modifiée : {0}"
+
 #: src/routes/b/manage/[token]/+page.svelte
 msgid "Changed; waiting for a new confirmation"
 msgstr "Modifiée ; en attente d’une nouvelle confirmation"
@@ -4299,6 +4304,11 @@ msgstr "Motif (facultatif)"
 #: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Reason: {0}"
 msgstr "Motif : {0}"
+
+#. placeholder {0}: moment(r.createdAt)
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
+msgid "Received {0}"
+msgstr "Reçue : {0}"
 
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Recent jobs"

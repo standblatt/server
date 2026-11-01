@@ -92,6 +92,7 @@ test.describe("online booking", () => {
     await expect(page.getByLabel("1 open request")).toBeVisible();
     const request = page.locator(`[aria-label='Request of ${guest}']`);
     await expect(request).toContainText("waiting for confirmation");
+    await expect(request).toContainText("Received");
     await c(request, "summary", "1 shooter announced").click();
     await expect(request).toContainText("new");
     await api(page, "POST", `/api/tenants/${ids.tenant}/clubs`, { name: `${guest} 1920` });

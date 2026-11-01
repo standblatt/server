@@ -1199,6 +1199,11 @@ msgstr "Anlass wechseln"
 msgid "Change password"
 msgstr "Passwort ändern"
 
+#. placeholder {0}: moment(r.updatedAt)
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
+msgid "changed {0}"
+msgstr "geändert: {0}"
+
 #: src/routes/b/manage/[token]/+page.svelte
 msgid "Changed; waiting for a new confirmation"
 msgstr "Geändert, wartet auf neue Bestätigung"
@@ -4299,6 +4304,11 @@ msgstr "Begründung (optional)"
 #: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Reason: {0}"
 msgstr "Begründung: {0}"
+
+#. placeholder {0}: moment(r.createdAt)
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
+msgid "Received {0}"
+msgstr "Eingegangen: {0}"
 
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Recent jobs"
