@@ -8,7 +8,7 @@
 	import Plus from '@lucide/svelte/icons/plus';
 	import Trash from '@lucide/svelte/icons/trash-2';
 	import { toast } from 'svelte-sonner';
-	import { localInput } from '$lib/format';
+	import { fromZonedInput, zonedInput } from '$lib/format';
 	import { api, call, type ReservationView } from '$lib/api';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Button } from '$lib/components/ui/button';
@@ -30,6 +30,7 @@
 	const eventId = $derived(event.id);
 	const queryClient = useQueryClient();
 	const ranges = $derived(event.ranges);
+	const tz = $derived(event.timezone);
 	const me = meQuery();
 	const isAdmin = $derived(can(membershipOf(me.data, tenantId), 'events.configure'));
 	let showPast = $state(false);
@@ -62,16 +63,16 @@
 	function open(r?: ReservationView, copy = false) {
 		error = '';
 		if (r) {
-			form = { id: copy ? 0 : r.id, rangeId: r.rangeId, lanes: r.lanesText, start: localInput(new Date(r.startsAt)), end: localInput(new Date(r.endsAt)), lead: r.leadMinutes, description: r.description };
+			form = { id: copy ? 0 : r.id, rangeId: r.rangeId, lanes: r.lanesText, start: zonedInput(new Date(r.startsAt), tz), end: zonedInput(new Date(r.endsAt), tz), lead: r.leadMinutes, description: r.description };
 		} else {
 			const start = nextQuarter();
-			form = { id: 0, rangeId: ranges[0]?.id ?? 0, lanes: '', start: localInput(start), end: localInput(new Date(start.getTime() + 3600000)), lead: 30, description: '' };
+			form = { id: 0, rangeId: ranges[0]?.id ?? 0, lanes: '', start: zonedInput(start, tz), end: zonedInput(new Date(start.getTime() + 3600000), tz), lead: 30, description: '' };
 		}
 	}
 
 	/** Sets the end one hour after the new start. */
 	function startChanged() {
-		if (form) form.end = localInput(new Date(new Date(form.start).getTime() + 3600000));
+		if (form) form.end = zonedInput(new Date(fromZonedInput(form.start, tz).getTime() + 3600000), tz);
 	}
 
 	/** Creates or updates the reservation from the form. */
@@ -81,8 +82,8 @@
 		error = '';
 		const body = {
 			lanes: form.lanes,
-			startsAt: new Date(form.start).toISOString(),
-			endsAt: new Date(form.end).toISOString(),
+			startsAt: fromZonedInput(form.start, tz).toISOString(),
+			endsAt: fromZonedInput(form.end, tz).toISOString(),
 			leadMinutes: Number(form.lead),
 			description: form.description
 		};
@@ -115,12 +116,12 @@
 	}
 	/** Translated label of a reservation status. */
 	const statusLabel = (st: string) => (st === 'finished' ? $t`finished` : st === 'active' ? $t`active` : $t`planned`);
-	/** Formats a timestamp as local hours and minutes. */
-	const time = (iso: string) => new Date(iso).toLocaleTimeString(intlLocale(), { hour: '2-digit', minute: '2-digit' });
+	/** Formats a timestamp as hours and minutes in the event's time zone. */
+	const time = (iso: string) => new Date(iso).toLocaleTimeString(intlLocale(), { hour: '2-digit', minute: '2-digit', timeZone: tz });
 	const byDay = $derived.by(() => {
 		const days = new Map<string, Row[]>();
 		for (const r of [...(reservations.data ?? [])].sort((a, b) => a.startsAt.localeCompare(b.startsAt))) {
-			const day = new Date(r.startsAt).toLocaleDateString(intlLocale(), { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' });
+			const day = new Date(r.startsAt).toLocaleDateString(intlLocale(), { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric', timeZone: tz });
 			days.set(day, [...(days.get(day) ?? []), r]);
 		}
 		return [...days.entries()];

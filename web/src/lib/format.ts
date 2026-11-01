@@ -28,6 +28,21 @@ export function localInput(d: Date): string {
 	return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}T${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
 }
 
+/** Date and time of a moment in a time zone for an <input type="datetime-local">. */
+export function zonedInput(d: Date, timeZone: string): string {
+	const f = new Intl.DateTimeFormat('en-CA', { timeZone, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+	const p = Object.fromEntries(f.formatToParts(d).map((x) => [x.type, x.value]));
+	return `${p.year}-${p.month}-${p.day}T${p.hour}:${p.minute}`;
+}
+
+/** The moment an <input type="datetime-local"> value means in a time zone; a second pass settles DST changes. */
+export function fromZonedInput(local: string, timeZone: string): Date {
+	const wall = Date.parse(`${local}Z`);
+	/** How far the zone is ahead of UTC at a moment, in ms. */
+	const offset = (t: number) => Date.parse(`${zonedInput(new Date(t), timeZone)}Z`) - t;
+	return new Date(wall - offset(wall - offset(wall)));
+}
+
 /** Prefixes a lane text with the range name when the event has several ranges: "300m · Lane 4". */
 export function withRange(ranges: { id: number; name: string }[], rangeId: number | undefined, laneText: string): string {
 	if (ranges.length < 2) return laneText;

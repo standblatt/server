@@ -5694,7 +5694,7 @@ msgstr "Annulla (Ctrl+Z)"
 msgid "Unlimited"
 msgstr "Illimitato"
 
-#. placeholder {0}: l.reservedUntil ? new Date(l.reservedUntil).toLocaleTimeString(intlLocale(), { hour: '2-digit', minute: '2-digit' }) : ''
+#. placeholder {0}: l.reservedUntil ? new Date(l.reservedUntil).toLocaleTimeString(intlLocale(), { hour: '2-digit', minute: '2-digit', timeZone: event.data?.timezone }) : ''
 #: src/lib/EventDesk.svelte
 msgid "until {0}"
 msgstr "fino alle {0}"

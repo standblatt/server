@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Online booking: saving a request through the club's link failed with "validation failed" once it had shooters (by @HB9HIL)
+- Reservations: times are shown and entered in the event's time zone instead of the browser's, so a browser elsewhere no longer shifts them (by @HB9HIL)
 
 ## [0.25.0] - 2026-11-01
 

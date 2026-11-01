@@ -498,7 +498,7 @@
 							<div class="lane lane-reserved" aria-label={$t`Lane ${l.lane}: reserved`} title={l.reservation}>
 								<span class="text-base font-bold">{l.lane}</span>
 								<span class="truncate">{l.reservation}</span>
-								<span class="opacity-70">{$t`until ${l.reservedUntil ? new Date(l.reservedUntil).toLocaleTimeString(intlLocale(), { hour: '2-digit', minute: '2-digit' }) : ''}`}</span>
+								<span class="opacity-70">{$t`until ${l.reservedUntil ? new Date(l.reservedUntil).toLocaleTimeString(intlLocale(), { hour: '2-digit', minute: '2-digit', timeZone: event.data?.timezone }) : ''}`}</span>
 							</div>
 						{:else}
 							<div class="lane {l.state === 'disabled' ? 'lane-disabled' : 'lane-free'}" aria-label={$t`Lane ${l.lane}: ${l.state === 'disabled' ? $t`out of service` : $t`free`}`}>
