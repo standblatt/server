@@ -50,7 +50,6 @@
 		{:else}
 			<p class="text-sm">
 				{$t`Ask for lanes until ${deadlineDay(ev.deadline, ev.timezone)}. The organizer confirms your request by mail.`}
-				<a href="/help/user-guide/online-booking#club" target="_blank" rel="noopener" class="underline">{$t`How does this work?`}</a>
 			</p>
 			<BookingForm info={ev} submitLabel={$t`Send request`} draftKey={`standblatt-booking-${code}`} onsubmit={send} />
 		{/if}

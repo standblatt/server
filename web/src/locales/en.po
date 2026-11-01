@@ -2478,10 +2478,6 @@ msgstr "Hits of this session"
 msgid "How did it feel?"
 msgstr "How did it feel?"
 
-#: src/routes/b/[code]/+page.svelte
-msgid "How does this work?"
-msgstr "How does this work?"
-
 #: src/lib/modules/attempts/ProgrammeSection.svelte
 msgid "How often a shooter may shoot the programme at this event, e.g. further attempts at a shooting festival or an annual programme."
 msgstr "How often a shooter may shoot the programme at this event, e.g. further attempts at a shooting festival or an annual programme."

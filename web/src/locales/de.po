@@ -2478,10 +2478,6 @@ msgstr "Treffer dieser Einheit"
 msgid "How did it feel?"
 msgstr "Wie hat es sich angefühlt?"
 
-#: src/routes/b/[code]/+page.svelte
-msgid "How does this work?"
-msgstr "Wie funktioniert das?"
-
 #: src/lib/modules/attempts/ProgrammeSection.svelte
 msgid "How often a shooter may shoot the programme at this event, e.g. further attempts at a shooting festival or an annual programme."
 msgstr "Wie oft ein Schütze das Programm an diesem Anlass schiessen darf, z. B. Nachdoppel am Schützenfest oder ein Jahresprogramm."

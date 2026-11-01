@@ -2478,10 +2478,6 @@ msgstr "Impacts de cette séance"
 msgid "How did it feel?"
 msgstr "Comment ça s’est passé ?"
 
-#: src/routes/b/[code]/+page.svelte
-msgid "How does this work?"
-msgstr "Comment ça marche ?"
-
 #: src/lib/modules/attempts/ProgrammeSection.svelte
 msgid "How often a shooter may shoot the programme at this event, e.g. further attempts at a shooting festival or an annual programme."
 msgstr "Combien de fois un tireur peut tirer le programme lors de cette manifestation, p. ex. des rachats à une fête de tir ou un programme annuel."
