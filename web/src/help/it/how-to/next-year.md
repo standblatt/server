@@ -53,8 +53,8 @@ aiutante non vengono copiati. Prima della prima iscrizione, controlla:
 4. **Display chiosco** e **Link aiutante**: crea nuovi link e inviali.
 5. **Prenotazioni**: riattiva la [prenotazione
    online](../user-guide/online-booking.md); la copia riprende i suoi orari,
-   ma non il link né il termine. Le prenotazioni appartengono allo stand e
-   non vengono copiate.
+   ma né il link, né l’apertura delle iscrizioni, né il termine. Le
+   prenotazioni appartengono allo stand e non vengono copiate.
 
 Cosa viene copiato esattamente è elencato in
 [Manifestazioni](../user-guide/events.md#copy).

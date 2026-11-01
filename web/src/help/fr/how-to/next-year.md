@@ -56,8 +56,8 @@ la première inscription, vérifie :
    envoie-les.
 5. **Réservations** : réactive la [réservation en
    ligne](../user-guide/online-booking.md) ; la copie reprend ses horaires,
-   mais ni le lien ni le délai. Les réservations appartiennent au stand et
-   ne sont pas copiées.
+   mais ni le lien, ni l’ouverture des inscriptions, ni le délai. Les
+   réservations appartiennent au stand et ne sont pas copiées.
 
 Ce qui est copié exactement est listé dans
 [Manifestations](../user-guide/events.md#copy).

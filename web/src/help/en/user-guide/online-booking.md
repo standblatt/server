@@ -8,20 +8,21 @@ The online booking is part of the module *Reservations* (it needs a range and *L
 
 ![Online booking in the configuration](../images/screenshots/booking-setup.png){ .screenshot }
 
-Without changes, every day of the event is open during its shooting times (see [Events](events.md#settings)), or from 08:00 to 17:00 when it has none, in slots of 30 minutes, and requests are accepted until 14 days before the first day. **Adjust** changes this:
+Without changes, every day of the event is open during its shooting times (see [Events](events.md#settings)), or from 08:00 to 17:00 when it has none, in slots of 30 minutes, and requests are accepted right away until 14 days before the first day. A slot can be asked for until two hours before it starts. **Adjust** changes this:
 
 - **Shooting from** and **Shooting until**: the hours of every day without shooting times.
 - **Break from** and **Break until**: an optional break, e.g. for lunch.
 - **Slot length (minutes)**: how long one slot is.
 - **Lanes per slot and club**: a limit per request; empty means no limit.
-- **Deadline**: the last day clubs can ask or change their request.
+- **Booking opens**: the first day clubs can ask; until then the link only says from when.
+- **Deadline**: the last day clubs can ask or change their request, at the latest the last shooting day.
 - **Days with other hours**: one line per day of the event, e.g. Friday 17:00–20:00. The days come from the event and follow it when you add or remove one.
 
-**New link** replaces the link; the old one stops working. **Switch off** closes the booking; requests and confirmed reservations stay. *Copy for next year* takes the hours along, but not the link and not the deadline.
+**New link** replaces the link; the old one stops working. **Switch off** closes the booking; requests and confirmed reservations stay. *Copy for next year* takes the hours along, but not the link, the opening day and the deadline.
 
 ## What a club sees {#club}
 
-The link opens a page without login. It shows the event, the deadline and every slot with the lanes still free on each range. Only confirmed reservations count; names of other clubs are never shown.
+The link opens a page without login. It shows the event, the deadline and every slot that starts in more than two hours with the lanes still free on each range. Before the opening day it only says from when the booking is open. Only confirmed reservations count; names of other clubs are never shown.
 
 ![The booking page of a club](../images/screenshots/booking-public.png){ .screenshot }
 

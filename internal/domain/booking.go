@@ -13,6 +13,8 @@ const (
 	BookingSlotMinutes  = 30
 	BookingDeadlineDays = 14
 	MaxBookingShooters  = 200
+	// BookingLeadTime is how long before its start a slot can still be asked for.
+	BookingLeadTime = 2 * time.Hour
 )
 
 // BookingHours are the shooting hours of one day as HH:MM.
@@ -28,7 +30,8 @@ type BookingSettings struct {
 	BreakFrom   string                  `json:"breakFrom,omitempty" required:"false" pattern:"^([0-2][0-9]:[0-5][0-9])?$" doc:"Optional break of every day"`
 	BreakTo     string                  `json:"breakTo,omitempty" required:"false" pattern:"^([0-2][0-9]:[0-5][0-9])?$"`
 	SlotMinutes int                     `json:"slotMinutes,omitempty" required:"false" minimum:"0" maximum:"480" doc:"Length of a slot; default 30"`
-	Deadline    string                  `json:"deadline,omitempty" required:"false" doc:"Last day clubs can ask or change (YYYY-MM-DD); default 14 days before the first day"`
+	Opens       string                  `json:"opens,omitempty" required:"false" doc:"First day clubs can ask (YYYY-MM-DD); empty = right away"`
+	Deadline    string                  `json:"deadline,omitempty" required:"false" doc:"Last day clubs can ask or change (YYYY-MM-DD), at the latest the last day of the event; default 14 days before the first day"`
 	MaxLanes    int                     `json:"maxLanes,omitempty" required:"false" minimum:"0" doc:"Lanes per slot and request; 0 = no limit"`
 	Days        map[string]BookingHours `json:"days,omitempty" required:"false" doc:"Days with other hours, by date"`
 }
@@ -74,6 +77,15 @@ func ValidateBookingSettings(s BookingSettings, days []string) []Problem {
 	if s.Deadline != "" {
 		if _, err := time.Parse(time.DateOnly, s.Deadline); err != nil {
 			errs = append(errs, Problemf("Deadline: not a date"))
+		} else if len(days) > 0 && s.Deadline > slices.Max(days) {
+			errs = append(errs, Problemf("The deadline is after the last shooting day"))
+		}
+	}
+	if s.Opens != "" {
+		if opens, err := time.Parse(time.DateOnly, s.Opens); err != nil {
+			errs = append(errs, Problemf("Booking opens: not a date"))
+		} else if !opens.Before(BookingDeadline(days, s, time.UTC)) {
+			errs = append(errs, Problemf("Booking opens after the deadline"))
 		}
 	}
 	for day, h := range s.Days {
@@ -152,6 +164,15 @@ func BookingDeadline(days []string, s BookingSettings, loc *time.Location) time.
 		}
 	}
 	return day.AddDate(0, 0, 1)
+}
+
+// BookingOpens returns the start of the first day clubs can ask, the zero time when booking is open right away.
+func BookingOpens(s BookingSettings, loc *time.Location) time.Time {
+	day, err := time.ParseInLocation(time.DateOnly, s.Opens, loc)
+	if err != nil {
+		return time.Time{}
+	}
+	return day
 }
 
 // FreeLanes returns the lanes of a range that are neither disabled nor busy, in order.

@@ -17,8 +17,9 @@ Konfiguration](../images/screenshots/booking-setup.png){ .screenshot }
 
 Ohne Änderungen ist jeder Tag des Anlasses während seiner Schiesszeiten
 offen (siehe [Anlässe](events.md#settings)), ohne Schiesszeiten von 08:00
-bis 17:00, in Zeitblöcken von 30 Minuten, und Anfragen sind bis 14 Tage vor
-dem ersten Tag möglich. **Anpassen** ändert das:
+bis 17:00, in Zeitblöcken von 30 Minuten, und Anfragen sind ab sofort bis 14
+Tage vor dem ersten Tag möglich. Ein Zeitblock kann bis zwei Stunden vor
+Beginn angefragt werden. **Anpassen** ändert das:
 
 - **Schiessen von** und **Schiessen bis**: die Zeiten jedes Tages ohne
   Schiesszeiten.
@@ -26,20 +27,23 @@ dem ersten Tag möglich. **Anpassen** ändert das:
 - **Länge eines Zeitblocks (Minuten)**: wie lange ein Zeitblock dauert.
 - **Scheiben pro Zeitblock und Verein**: eine Grenze pro Anfrage; leer
   heisst keine Grenze.
+- **Anmeldung ab**: der erste Tag, an dem Vereine anfragen können; bis dahin
+  sagt der Link nur, ab wann.
 - **Anmeldeschluss**: der letzte Tag, an dem Vereine anfragen oder ihre
-  Anfrage ändern können.
+  Anfrage ändern können, spätestens der letzte Schiesstag.
 - **Tage mit anderen Zeiten**: eine Zeile pro Tag des Anlasses,
   z. B. Freitag 17:00–20:00. Die Tage kommen aus dem Anlass und folgen ihm,
   wenn du einen hinzufügst oder entfernst.
 
-**Neuer Link** ersetzt den Link; der alte funktioniert nicht mehr. **Ausschalten** schliesst die Online-Reservation; Anfragen und bestätigte Reservationen bleiben. *Für nächstes Jahr kopieren* nimmt die Zeiten mit, aber weder den Link noch den Anmeldeschluss.
+**Neuer Link** ersetzt den Link; der alte funktioniert nicht mehr. **Ausschalten** schliesst die Online-Reservation; Anfragen und bestätigte Reservationen bleiben. *Für nächstes Jahr kopieren* nimmt die Zeiten mit, aber weder den Link noch den Anmeldebeginn noch den Anmeldeschluss.
 
 ## Was ein Verein sieht {#club}
 
 Der Link öffnet eine Seite ohne Login. Sie zeigt den Anlass, den
-Anmeldeschluss und jeden Zeitblock mit den noch freien Scheiben pro
-Stand. Nur bestätigte Reservationen zählen; Namen anderer Vereine werden nie
-angezeigt.
+Anmeldeschluss und jeden Zeitblock, der in mehr als zwei Stunden beginnt,
+mit den noch freien Scheiben pro Stand. Vor dem Anmeldebeginn sagt sie nur,
+ab wann die Reservation offen ist. Nur bestätigte Reservationen zählen;
+Namen anderer Vereine werden nie angezeigt.
 
 ![Die Reservationsseite eines
 Vereins](../images/screenshots/booking-public.png){ .screenshot }

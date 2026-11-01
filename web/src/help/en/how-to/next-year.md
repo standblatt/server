@@ -27,6 +27,6 @@ The copy takes over the ranges, organizer, language, settings, modules, programm
 2. **Programmes**: prices, award tiers and limits, and which programmes are active. Changes are easiest now, before shooters are registered.
 3. **Modules**: what this year's event needs.
 4. **Kiosk displays** and **Helper links**: create new links and send them out.
-5. **Reservations**: switch the [online booking](../user-guide/online-booking.md) on again; the copy takes over its hours, but not the link and not the deadline. Reservations belong to the range and are not copied.
+5. **Reservations**: switch the [online booking](../user-guide/online-booking.md) on again; the copy takes over its hours, but not the link, the opening day and the deadline. Reservations belong to the range and are not copied.
 
 What exactly is copied is listed in [Events](../user-guide/events.md#copy).

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 22:44+0200\n"
+"POT-Creation-Date: 2026-11-01 20:19+0100\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -153,6 +153,14 @@ msgid "At most %d shooters"
 msgstr "Höchstens %d Schützen"
 
 #: internal/domain/booking.go
+msgid "Booking opens after the deadline"
+msgstr "Die Anmeldung öffnet nach dem Anmeldeschluss"
+
+#: internal/domain/booking.go
+msgid "Booking opens: not a date"
+msgstr "Anmeldung ab: kein Datum"
+
+#: internal/domain/booking.go
 msgid "Break: the end must be after the start"
 msgstr "Pause: das Ende muss nach dem Beginn liegen"
 
@@ -187,6 +195,10 @@ msgstr "Schütze %d: Name und Vorname sind nötig"
 #: internal/domain/booking.go
 msgid "Shooting hours: the end must be after the start"
 msgstr "Schiesszeit: das Ende muss nach dem Beginn liegen"
+
+#: internal/domain/booking.go
+msgid "The deadline is after the last shooting day"
+msgstr "Der Anmeldeschluss liegt nach dem letzten Schiesstag"
 
 #: internal/domain/classification.go
 #, go-format
@@ -698,6 +710,10 @@ msgstr "Scheiben für %s bestätigt"
 #, go-format
 msgid "New lane request from %s"
 msgstr "Neue Scheibenreservation von %s"
+
+#: internal/web/booking.go
+msgid "Online booking is not open yet."
+msgstr "Die Online-Reservation ist noch nicht offen."
 
 #: internal/web/booking.go
 #, go-format

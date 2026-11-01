@@ -6,7 +6,7 @@
 	import RefreshCw from '@lucide/svelte/icons/refresh-cw';
 	import { toast } from 'svelte-sonner';
 	import { api, call, type BookingConfig, type Event } from '$lib/api';
-	import { byDay, deadlineDay, slotTime } from './booking';
+	import { byDay, deadlineDay, slotDay, slotTime } from './booking';
 	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
 	import { ask } from '$lib/confirm.svelte';
@@ -95,7 +95,11 @@
 			{:else}
 				<p class="text-muted-foreground">{$t`No slots: check the hours.`}</p>
 			{/each}
-			<p class="text-muted-foreground">{$t`Requests and changes until ${deadlineDay(c.deadline, event.timezone)}.`}</p>
+			{#if c.opens}
+				<p class="text-muted-foreground">{$t`Requests from ${slotDay(c.opens, event.timezone)}, requests and changes until ${deadlineDay(c.deadline, event.timezone)}.`}</p>
+			{:else}
+				<p class="text-muted-foreground">{$t`Requests and changes until ${deadlineDay(c.deadline, event.timezone)}.`}</p>
+			{/if}
 		</section>
 
 		{#key c.settings}<BookingHoursForm {tenantId} {event} settings={c.settings} onsaved={store} />{/key}

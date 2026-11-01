@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 22:44+0200\n"
+"POT-Creation-Date: 2026-11-01 20:19+0100\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -153,6 +153,14 @@ msgid "At most %d shooters"
 msgstr "Al massimo %d tiratori"
 
 #: internal/domain/booking.go
+msgid "Booking opens after the deadline"
+msgstr "Le iscrizioni aprono dopo il termine"
+
+#: internal/domain/booking.go
+msgid "Booking opens: not a date"
+msgstr "Iscrizioni dal: non è una data"
+
+#: internal/domain/booking.go
 msgid "Break: the end must be after the start"
 msgstr "Pausa: la fine deve essere dopo l’inizio"
 
@@ -187,6 +195,10 @@ msgstr "Tiratore %d: nome e cognome sono obbligatori"
 #: internal/domain/booking.go
 msgid "Shooting hours: the end must be after the start"
 msgstr "Orari di tiro: la fine deve essere dopo l’inizio"
+
+#: internal/domain/booking.go
+msgid "The deadline is after the last shooting day"
+msgstr "Il termine è dopo l’ultimo giorno di tiro"
 
 #: internal/domain/classification.go
 #, go-format
@@ -698,6 +710,10 @@ msgstr "Bersagli confermati per %s"
 #, go-format
 msgid "New lane request from %s"
 msgstr "Nuova richiesta di bersagli da %s"
+
+#: internal/web/booking.go
+msgid "Online booking is not open yet."
+msgstr "La prenotazione online non è ancora aperta."
 
 #: internal/web/booking.go
 #, go-format

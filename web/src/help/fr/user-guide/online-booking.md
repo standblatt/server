@@ -18,8 +18,9 @@ configuration](../images/screenshots/booking-setup.png){ .screenshot }
 
 Sans modification, chaque jour de la manifestation est ouvert pendant ses
 heures de tir (voir [Manifestations](events.md#settings)), sinon de 08:00 à
-17:00, en créneaux de 30 minutes, et les demandes sont acceptées jusqu’à 14
-jours avant le premier jour. **Adapter** change cela :
+17:00, en créneaux de 30 minutes, et les demandes sont acceptées tout de
+suite jusqu’à 14 jours avant le premier jour. Un créneau peut être demandé
+jusqu’à deux heures avant son début. **Adapter** change cela :
 
 - **Tir de** et **Tir jusqu’à** : les horaires de chaque jour sans heures de
   tir.
@@ -27,18 +28,22 @@ jours avant le premier jour. **Adapter** change cela :
 - **Durée d’un créneau (minutes)** : la durée d’un créneau.
 - **Cibles par créneau et société** : une limite par demande ; vide signifie
   sans limite.
+- **Ouverture des inscriptions** : le premier jour où les sociétés peuvent
+  demander ; jusque-là, le lien indique seulement à partir de quand.
 - **Délai d’inscription** : le dernier jour où les sociétés peuvent demander
-  ou modifier leur demande.
+  ou modifier leur demande, au plus tard le dernier jour de tir.
 - **Jours avec d’autres horaires** : une ligne par jour de la manifestation,
   p. ex. vendredi 17:00–20:00. Les jours viennent de la manifestation et la
   suivent quand tu en ajoutes ou en retires un.
 
-**Nouveau lien** remplace le lien ; l’ancien ne fonctionne plus. **Désactiver** ferme la réservation ; les demandes et les réservations confirmées restent. *Copier pour l’année prochaine* reprend les horaires, mais ni le lien ni le délai.
+**Nouveau lien** remplace le lien ; l’ancien ne fonctionne plus. **Désactiver** ferme la réservation ; les demandes et les réservations confirmées restent. *Copier pour l’année prochaine* reprend les horaires, mais ni le lien, ni l’ouverture des inscriptions, ni le délai.
 
 ## Ce que voit une société {#club}
 
 Le lien ouvre une page sans connexion. Elle montre la manifestation, le
-délai et chaque créneau avec les cibles encore libres par stand. Seules les
+délai et chaque créneau qui commence dans plus de deux heures avec les
+cibles encore libres par stand. Avant l’ouverture des inscriptions, elle
+indique seulement à partir de quand la réservation est ouverte. Seules les
 réservations confirmées comptent ; les noms des autres sociétés ne sont
 jamais affichés.
 

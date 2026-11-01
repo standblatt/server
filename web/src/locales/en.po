@@ -1043,6 +1043,10 @@ msgstr "Book lanes"
 msgid "Booking link"
 msgstr "Booking link"
 
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
+msgid "Booking opens"
+msgstr "Booking opens"
+
 #: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Booking requests"
 msgstr "Booking requests"
@@ -2073,8 +2077,8 @@ msgid "Email, password, language, second factor."
 msgstr "Email, password, language, second factor."
 
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
-msgid "Empty: 14 days before the first day"
-msgstr "Empty: 14 days before the first day"
+msgid "Empty: 14 days before the first day; at the latest the last shooting day"
+msgstr "Empty: 14 days before the first day; at the latest the last shooting day"
 
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Empty: no break"
@@ -2083,6 +2087,10 @@ msgstr "Empty: no break"
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Empty: no limit"
 msgstr "Empty: no limit"
+
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
+msgid "Empty: right away"
+msgstr "Empty: right away"
 
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Empty: the shooting times of the day, else 08:00"
@@ -3592,6 +3600,11 @@ msgstr "online"
 msgid "Online booking"
 msgstr "Online booking"
 
+#. placeholder {0}: slotDay(ev.opens, ev.timezone)
+#: src/routes/b/[code]/+page.svelte
+msgid "Online booking opens on {0}."
+msgstr "Online booking opens on {0}."
+
 #: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "Online booking switched off"
 msgstr "Online booking switched off"
@@ -4448,6 +4461,12 @@ msgstr "Request saved"
 #: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "Requests and changes until {0}."
 msgstr "Requests and changes until {0}."
+
+#. placeholder {0}: slotDay(c.opens, event.timezone)
+#. placeholder {1}: deadlineDay(c.deadline, event.timezone)
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
+msgid "Requests from {0}, requests and changes until {1}."
+msgstr "Requests from {0}, requests and changes until {1}."
 
 #. placeholder {0}: r.description
 #: src/lib/modules/reservations/Page.svelte

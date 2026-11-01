@@ -252,3 +252,86 @@ func TestOnlineBookingRateLimit(t *testing.T) {
 	code, b = e.do(anon, "POST", "/api/booking/"+cfg.Code+"/requests", in)
 	expect(t, "sixth request of the same email", code, 429, b)
 }
+
+func TestOnlineBookingWindow(t *testing.T) {
+	e, _ := personalEnv(t, nil)
+	ctx := context.Background()
+	tid := e.tenant("Host club")
+	e.user("boss", tid, store.RoleAdmin)
+	admin, anon := e.login("boss"), e.client()
+	rng, _ := e.st.CreateRange(ctx, tid, store.RangeInput{Name: "10m", LaneCount: 4})
+	zurich, _ := time.LoadLocation("Europe/Zurich")
+	day := func(n int) string { return time.Now().In(zurich).AddDate(0, 0, n).Format(time.DateOnly) }
+	ev, err := e.st.CreateEvent(ctx, tid, store.EventInput{RangeIDs: []int64{rng.ID}, Name: "Lupi", StartsOn: day(0),
+		Schedule: domain.Schedule{Days: []domain.ScheduleDay{{Date: day(10)}}}, Timezone: "Europe/Zurich", Locale: "en"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	base := fmt.Sprintf("/api/tenants/%d/events/%d/booking", tid, ev)
+	hours := domain.BookingSettings{From: "00:00", To: "23:30", SlotMinutes: 30, Deadline: day(10)}
+
+	late := hours
+	late.Deadline = day(11)
+	code, b := e.do(admin, "PUT", base, late)
+	expect(t, "deadline after the last shooting day", code, 422, b)
+	late.Deadline, late.Opens = day(5), day(6)
+	code, b = e.do(admin, "PUT", base, late)
+	expect(t, "opens after the deadline", code, 422, b)
+
+	upcoming := hours
+	upcoming.Opens = day(1)
+	code, b = e.do(admin, "PUT", base, upcoming)
+	expect(t, "opens tomorrow", code, 200, b)
+	code, b = e.do(admin, "POST", base+"/code", nil)
+	expect(t, "switch on", code, 200, b)
+	var cfg web.BookingConfig
+	json.Unmarshal(b, &cfg)
+	if cfg.Opens == nil {
+		t.Fatalf("config without opening: %s", b)
+	}
+	public := "/api/booking/" + cfg.Code
+	code, b = e.do(anon, "GET", public, nil)
+	expect(t, "public info", code, 200, b)
+	var info web.BookingInfo
+	json.Unmarshal(b, &info)
+	if info.Open || info.Opens == nil || info.Opens.Format(time.DateOnly) != day(1) {
+		t.Fatalf("not open yet: %s", b)
+	}
+	later := info.Slots[len(info.Slots)-1].Slot
+	request := store.BookingRequestInput{
+		Club: "SV Gäste", Contact: "Ida Muster", Email: "ida@example.org",
+		Items:    []domain.BookingItem{{RangeID: rng.ID, Start: later.Start, End: later.End, Lanes: 1}},
+		Shooters: []domain.BookingShooter{{Firstname: "Ida", Lastname: "Muster", Birthday: "1990-05-01"}},
+	}
+	code, b = e.do(anon, "POST", public+"/requests", request)
+	expect(t, "request before the opening", code, 409, b)
+
+	now := time.Now()
+	code, b = e.do(admin, "PUT", base, hours)
+	expect(t, "open right away", code, 200, b)
+	code, b = e.do(anon, "GET", public, nil)
+	expect(t, "public info", code, 200, b)
+	info = web.BookingInfo{}
+	json.Unmarshal(b, &info)
+	if !info.Open || info.Opens != nil {
+		t.Fatalf("open: %s", b)
+	}
+	for _, sl := range info.Slots {
+		if sl.Start.Before(now.Add(domain.BookingLeadTime)) {
+			t.Fatalf("slot within the lead time offered: %v", sl.Start)
+		}
+	}
+	midnight, _ := time.ParseInLocation(time.DateOnly, day(0), zurich)
+	past := domain.BookingItem{RangeID: rng.ID, Start: midnight, End: midnight.Add(30 * time.Minute), Lanes: 1}
+	request.Items = []domain.BookingItem{past}
+	code, b = e.do(anon, "POST", public+"/requests", request)
+	expect(t, "request for a past slot", code, 422, b)
+
+	// A request that already holds a past slot can still be changed.
+	if _, err := e.st.CreateBookingRequest(ctx, tid, ev, request, web.SessionIDForTest("bk_held")); err != nil {
+		t.Fatal(err)
+	}
+	request.Shooters = append(request.Shooters, domain.BookingShooter{Firstname: "Max", Lastname: "Neu", Birthday: "2001-01-01"})
+	code, b = e.helper("PUT", "/api/booking-manage", "bk_held", request)
+	expect(t, "add a shooter to a request with a past slot", code, 200, b)
+}

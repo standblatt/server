@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 22:44+0200\n"
+"POT-Creation-Date: 2026-11-01 20:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -153,6 +153,14 @@ msgid "At most %d shooters"
 msgstr ""
 
 #: internal/domain/booking.go
+msgid "Booking opens after the deadline"
+msgstr ""
+
+#: internal/domain/booking.go
+msgid "Booking opens: not a date"
+msgstr ""
+
+#: internal/domain/booking.go
 msgid "Break: the end must be after the start"
 msgstr ""
 
@@ -186,6 +194,10 @@ msgstr ""
 
 #: internal/domain/booking.go
 msgid "Shooting hours: the end must be after the start"
+msgstr ""
+
+#: internal/domain/booking.go
+msgid "The deadline is after the last shooting day"
 msgstr ""
 
 #: internal/domain/classification.go
@@ -697,6 +709,10 @@ msgstr ""
 #: internal/web/booking.go
 #, go-format
 msgid "New lane request from %s"
+msgstr ""
+
+#: internal/web/booking.go
+msgid "Online booking is not open yet."
 msgstr ""
 
 #: internal/web/booking.go

@@ -45,6 +45,30 @@ test.describe("online booking", () => {
     await expect(c(page, "section", "Slots")).toContainText("18 slots");
   });
 
+  test("before the opening day the link only says from when", async ({ page, browser }) => {
+    const opens = new Date(Date.now() + 10 * 86400000).toISOString().slice(0, 10);
+    await login(page, admin);
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}/config/reservations`);
+    await page.locator("summary", { hasText: "Adjust" }).click();
+    await page.getByLabel("Booking opens").fill(opens);
+    await page.locator("details").getByRole("button", { name: "Save" }).click();
+    await expect(c(page, "[data-sonner-toast]", "Booking settings saved")).toBeVisible();
+    await expect(c(page, "section", "Slots")).toContainText("Requests from");
+
+    const club = await browser.newPage({ baseURL });
+    await club.goto(ids.link);
+    await expect(club.getByText(/^Online booking opens on .+\.$/)).toBeVisible();
+    await expect(c(club, "button", "Send request")).toHaveCount(0);
+
+    await page.locator("summary", { hasText: "Adjust" }).click();
+    await page.getByLabel("Booking opens").fill("");
+    await page.locator("details").getByRole("button", { name: "Save" }).click();
+    await expect(c(page, "section", "Slots")).not.toContainText("Requests from");
+    await club.reload();
+    await expect(c(club, "button", "Send request")).toBeVisible();
+    await club.close();
+  });
+
   test("a club asks for lanes and announces a shooter", async ({ browser }) => {
     const page = await browser.newPage({ baseURL });
     await page.goto(ids.link);

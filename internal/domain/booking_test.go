@@ -71,6 +71,29 @@ func TestBookingSettingsAndDeadline(t *testing.T) {
 	if d.Format("2006-01-02 15:04") != "2027-03-02 00:00" {
 		t.Fatalf("deadline %v", d)
 	}
+
+	for _, c := range []struct {
+		s    BookingSettings
+		want int
+	}{
+		{BookingSettings{Deadline: "2027-03-13"}, 0},
+		{BookingSettings{Deadline: "2027-03-14"}, 1},
+		{BookingSettings{Opens: "2027-02-01"}, 0},
+		{BookingSettings{Opens: "2027-02-27"}, 1},
+		{BookingSettings{Opens: "2027-03-01", Deadline: "2027-03-01"}, 0},
+		{BookingSettings{Opens: "2027-03-02", Deadline: "2027-03-01"}, 1},
+		{BookingSettings{Opens: "soon"}, 1},
+	} {
+		if errs := ValidateBookingSettings(c.s, days); len(errs) != c.want {
+			t.Errorf("%+v: want %d problems, got %v", c.s, c.want, errs)
+		}
+	}
+	if o := BookingOpens(BookingSettings{}, zurich); !o.IsZero() {
+		t.Fatalf("opens without a date %v", o)
+	}
+	if o := BookingOpens(BookingSettings{Opens: "2027-02-01"}, zurich); o.Format("2006-01-02 15:04 MST") != "2027-02-01 00:00 CET" {
+		t.Fatalf("opens %v", o)
+	}
 }
 
 func TestLanes(t *testing.T) {

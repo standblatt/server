@@ -19,6 +19,7 @@
 			to: s.to ?? '',
 			breakFrom: s.breakFrom ?? '',
 			breakTo: s.breakTo ?? '',
+			opens: s.opens ?? '',
 			deadline: s.deadline ?? '',
 			slotMinutes: (s.slotMinutes || null) as number | null,
 			maxLanes: (s.maxLanes || null) as number | null,
@@ -42,6 +43,7 @@
 			to: form.to,
 			breakFrom: form.breakFrom,
 			breakTo: form.breakTo,
+			opens: form.opens,
 			deadline: form.deadline,
 			slotMinutes: Number(form.slotMinutes) || 0,
 			maxLanes: Number(form.maxLanes) || 0,
@@ -68,7 +70,8 @@
 		<FormField label={$t`Break until`}><Input type="time" bind:value={form.breakTo} /></FormField>
 		<FormField label={$t`Slot length (minutes)`}><Input type="number" min="5" max="480" bind:value={form.slotMinutes} placeholder="30" /></FormField>
 		<FormField label={$t`Lanes per slot and club`} hint={$t`Empty: no limit`}><Input type="number" min="1" bind:value={form.maxLanes} /></FormField>
-		<FormField label={$t`Deadline`} hint={$t`Empty: 14 days before the first day`}><Input type="date" bind:value={form.deadline} /></FormField>
+		<FormField label={$t`Booking opens`} hint={$t`Empty: right away`}><Input type="date" bind:value={form.opens} /></FormField>
+		<FormField label={$t`Deadline`} hint={$t`Empty: 14 days before the first day; at the latest the last shooting day`}><Input type="date" bind:value={form.deadline} max={event.days.at(-1)} /></FormField>
 		<div class="grid gap-2 sm:col-span-2">
 			<div class="text-sm font-medium">{$t`Days with other hours`}</div>
 			{#each event.days as d (d)}

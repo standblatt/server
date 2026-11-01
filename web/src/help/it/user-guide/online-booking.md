@@ -17,8 +17,9 @@ configurazione](../images/screenshots/booking-setup.png){ .screenshot }
 
 Senza modifiche, ogni giorno della manifestazione è aperto durante i suoi
 orari di tiro (vedi [Manifestazioni](events.md#settings)), altrimenti dalle
-08:00 alle 17:00, in fasce di 30 minuti, e le richieste sono accettate fino
-a 14 giorni prima del primo giorno. **Adatta** lo cambia:
+08:00 alle 17:00, in fasce di 30 minuti, e le richieste sono accettate da
+subito fino a 14 giorni prima del primo giorno. Una fascia oraria può essere
+richiesta fino a due ore prima dell’inizio. **Adatta** lo cambia:
 
 - **Tiro dalle** e **Tiro fino alle**: gli orari di ogni giorno senza orari
   di tiro.
@@ -27,20 +28,24 @@ a 14 giorni prima del primo giorno. **Adatta** lo cambia:
 - **Durata di una fascia oraria (minuti)**: quanto dura una fascia oraria.
 - **Bersagli per fascia oraria e società**: un limite per richiesta; vuoto
   significa nessun limite.
+- **Iscrizioni dal**: il primo giorno in cui le società possono richiedere;
+  fino ad allora il link indica solo da quando.
 - **Termine d’iscrizione**: l’ultimo giorno in cui le società possono
-  richiedere o modificare la richiesta.
+  richiedere o modificare la richiesta, al più tardi l’ultimo giorno di
+  tiro.
 - **Giorni con altri orari**: una riga per giorno della manifestazione,
   p. es. venerdì 17:00–20:00. I giorni vengono dalla manifestazione e la
   seguono quando ne aggiungi o togli uno.
 
-**Nuovo link** sostituisce il link; quello vecchio smette di funzionare. **Disattiva** chiude la prenotazione; le richieste e le prenotazioni confermate restano. *Copia per l’anno prossimo* riprende gli orari, ma né il link né il termine.
+**Nuovo link** sostituisce il link; quello vecchio smette di funzionare. **Disattiva** chiude la prenotazione; le richieste e le prenotazioni confermate restano. *Copia per l’anno prossimo* riprende gli orari, ma né il link, né l’apertura delle iscrizioni, né il termine.
 
 ## Cosa vede una società {#club}
 
 Il link apre una pagina senza login. Mostra la manifestazione, il termine e
-ogni fascia oraria con i bersagli ancora liberi per poligono. Contano solo
-le prenotazioni confermate; i nomi delle altre società non vengono mai
-mostrati.
+ogni fascia oraria che inizia tra più di due ore con i bersagli ancora
+liberi per poligono. Prima dell’apertura delle iscrizioni indica solo da
+quando la prenotazione è aperta. Contano solo le prenotazioni confermate; i
+nomi delle altre società non vengono mai mostrati.
 
 ![La pagina di prenotazione di una
 società](../images/screenshots/booking-public.png){ .screenshot }

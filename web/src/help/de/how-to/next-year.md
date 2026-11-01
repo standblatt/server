@@ -55,7 +55,8 @@ Helferlinks werden nicht kopiert. Prüfe vor der ersten Anmeldung:
    verschicken.
 5. **Reservationen**: Schalte die
    [Online-Reservation](../user-guide/online-booking.md) wieder ein; die
-   Kopie übernimmt ihre Zeiten, aber nicht den Link und nicht die
-   Frist. Reservationen gehören zum Schiessstand und werden nicht kopiert.
+   Kopie übernimmt ihre Zeiten, aber weder den Link noch den Anmeldebeginn
+   noch die Frist. Reservationen gehören zum Schiessstand und werden nicht
+   kopiert.
 
 Was genau kopiert wird, steht unter [Anlässe](../user-guide/events.md#copy).

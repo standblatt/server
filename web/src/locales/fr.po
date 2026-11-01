@@ -1043,6 +1043,10 @@ msgstr "Réserver des cibles"
 msgid "Booking link"
 msgstr "Lien de réservation"
 
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
+msgid "Booking opens"
+msgstr "Ouverture des inscriptions"
+
 #: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Booking requests"
 msgstr "Demandes de réservation"
@@ -2073,8 +2077,8 @@ msgid "Email, password, language, second factor."
 msgstr "E-mail, mot de passe, langue, deuxième facteur."
 
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
-msgid "Empty: 14 days before the first day"
-msgstr "Vide : 14 jours avant le premier jour"
+msgid "Empty: 14 days before the first day; at the latest the last shooting day"
+msgstr "Vide : 14 jours avant le premier jour ; au plus tard le dernier jour de tir"
 
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Empty: no break"
@@ -2083,6 +2087,10 @@ msgstr "Vide : pas de pause"
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Empty: no limit"
 msgstr "Vide : sans limite"
+
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
+msgid "Empty: right away"
+msgstr "Vide : tout de suite"
 
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Empty: the shooting times of the day, else 08:00"
@@ -3592,6 +3600,11 @@ msgstr "connecté"
 msgid "Online booking"
 msgstr "Réservation en ligne"
 
+#. placeholder {0}: slotDay(ev.opens, ev.timezone)
+#: src/routes/b/[code]/+page.svelte
+msgid "Online booking opens on {0}."
+msgstr "La réservation en ligne ouvre le {0}."
+
 #: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "Online booking switched off"
 msgstr "Réservation en ligne désactivée"
@@ -4448,6 +4461,12 @@ msgstr "Demande enregistrée"
 #: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "Requests and changes until {0}."
 msgstr "Demandes et modifications jusqu’au {0}."
+
+#. placeholder {0}: slotDay(c.opens, event.timezone)
+#. placeholder {1}: deadlineDay(c.deadline, event.timezone)
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
+msgid "Requests from {0}, requests and changes until {1}."
+msgstr "Demandes dès le {0}, demandes et modifications jusqu’au {1}."
 
 #. placeholder {0}: r.description
 #: src/lib/modules/reservations/Page.svelte

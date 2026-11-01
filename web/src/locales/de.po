@@ -1043,6 +1043,10 @@ msgstr "Scheiben reservieren"
 msgid "Booking link"
 msgstr "Reservationslink"
 
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
+msgid "Booking opens"
+msgstr "Anmeldung ab"
+
 #: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "Booking requests"
 msgstr "Reservationsanfragen"
@@ -2073,8 +2077,8 @@ msgid "Email, password, language, second factor."
 msgstr "E-Mail, Passwort, Sprache, zweiter Faktor."
 
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
-msgid "Empty: 14 days before the first day"
-msgstr "Leer: 14 Tage vor dem ersten Tag"
+msgid "Empty: 14 days before the first day; at the latest the last shooting day"
+msgstr "Leer: 14 Tage vor dem ersten Tag; spätestens der letzte Schiesstag"
 
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Empty: no break"
@@ -2083,6 +2087,10 @@ msgstr "Leer: keine Pause"
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Empty: no limit"
 msgstr "Leer: keine Begrenzung"
+
+#: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
+msgid "Empty: right away"
+msgstr "Leer: sofort"
 
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Empty: the shooting times of the day, else 08:00"
@@ -3592,6 +3600,11 @@ msgstr "verbunden"
 msgid "Online booking"
 msgstr "Online-Reservation"
 
+#. placeholder {0}: slotDay(ev.opens, ev.timezone)
+#: src/routes/b/[code]/+page.svelte
+msgid "Online booking opens on {0}."
+msgstr "Die Online-Reservation öffnet am {0}."
+
 #: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "Online booking switched off"
 msgstr "Online-Reservation ausgeschaltet"
@@ -4448,6 +4461,12 @@ msgstr "Anfrage gespeichert"
 #: src/lib/modules/reservations/booking/BookingSettings.svelte
 msgid "Requests and changes until {0}."
 msgstr "Anfragen und Änderungen bis {0}."
+
+#. placeholder {0}: slotDay(c.opens, event.timezone)
+#. placeholder {1}: deadlineDay(c.deadline, event.timezone)
+#: src/lib/modules/reservations/booking/BookingSettings.svelte
+msgid "Requests from {0}, requests and changes until {1}."
+msgstr "Anfragen ab {0}, Anfragen und Änderungen bis {1}."
 
 #. placeholder {0}: r.description
 #: src/lib/modules/reservations/Page.svelte

@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"slices"
 	"strconv"
 	"strings"
 	"time"
@@ -56,6 +57,7 @@ type BookingInfo struct {
 	Locale    string         `json:"locale"`
 	Ranges    []BookingRange `json:"ranges"`
 	Slots     []BookingSlot  `json:"slots"`
+	Opens     *time.Time     `json:"opens,omitempty" doc:"Requests are accepted from this moment; none = right away"`
 	Deadline  time.Time      `json:"deadline" doc:"Requests and changes are accepted before this moment"`
 	Open      bool           `json:"open"`
 	MaxLanes  int            `json:"maxLanes" doc:"Lanes per slot and request; 0 = no limit"`
@@ -68,6 +70,7 @@ type BookingConfig struct {
 	Link     string                 `json:"link" doc:"The public link for the invitation; empty when off"`
 	QR       string                 `json:"qr" doc:"PNG data URL of a QR code of the link; empty when off"`
 	Settings domain.BookingSettings `json:"settings"`
+	Opens    *time.Time             `json:"opens,omitempty" doc:"Requests are accepted from this moment; none = right away"`
 	Deadline time.Time              `json:"deadline" doc:"The effective deadline"`
 	Slots    []domain.Slot          `json:"slots" doc:"The slots the settings give"`
 }
@@ -105,16 +108,33 @@ func bookingRanges(ev store.Event) []BookingRange {
 	return out
 }
 
-// bookingInfo builds the public view of an event's booking: slots with the lanes still free per range, counting
-// only confirmed reservations; those of exceptRequest are left out because changing it would free them.
-func (s *Server) bookingInfo(ctx context.Context, t store.BookingTarget, exceptRequest int64) (BookingInfo, error) {
+// bookingOpens returns the opening of the booking, nil when it is open right away.
+func bookingOpens(s domain.BookingSettings, loc *time.Location) *time.Time {
+	if o := domain.BookingOpens(s, loc); !o.IsZero() {
+		return &o
+	}
+	return nil
+}
+
+// bookingInfo builds the public view of an event's booking: the slots that start after the lead time with the lanes
+// still free per range, counting only confirmed reservations. The reservations of except are left out because
+// changing it would free them, and its own slots stay offered so it can still be changed.
+func (s *Server) bookingInfo(ctx context.Context, t store.BookingTarget, except store.BookingRequest) (BookingInfo, error) {
 	ev := t.Event
 	loc := eventLoc(ev.Timezone)
-	slots := domain.BookingSlots(ev.Days, ev.Schedule.Times(), t.Settings, loc)
+	now := time.Now()
+	slots := slices.DeleteFunc(domain.BookingSlots(ev.Days, ev.Schedule.Times(), t.Settings, loc), func(sl domain.Slot) bool {
+		held := slices.ContainsFunc(except.Items, func(it store.BookingItemView) bool { return it.Start.Equal(sl.Start) })
+		return !held && sl.Start.Before(now.Add(domain.BookingLeadTime))
+	})
 	deadline := domain.BookingDeadline(ev.Days, t.Settings, loc)
 	info := BookingInfo{
 		Event: ev.Name, Organizer: ev.Organizer, Days: ev.Days, Timezone: ev.Timezone, Locale: ev.Locale,
-		Ranges: bookingRanges(ev), Slots: []BookingSlot{}, Deadline: deadline, Open: time.Now().Before(deadline), MaxLanes: t.Settings.MaxLanes,
+		Ranges: bookingRanges(ev), Slots: []BookingSlot{}, Opens: bookingOpens(t.Settings, loc), Deadline: deadline,
+		Open: now.Before(deadline), MaxLanes: t.Settings.MaxLanes,
+	}
+	if info.Opens != nil && now.Before(*info.Opens) {
+		info.Open = false
 	}
 	if len(slots) == 0 {
 		return info, nil
@@ -123,7 +143,7 @@ func (s *Server) bookingInfo(ctx context.Context, t store.BookingTarget, exceptR
 	for _, r := range ev.Ranges {
 		rangeIDs = append(rangeIDs, r.ID)
 	}
-	res, err := s.Store.ReservationsBetween(ctx, t.TenantID, rangeIDs, slots[0].Start, slots[len(slots)-1].End, exceptRequest)
+	res, err := s.Store.ReservationsBetween(ctx, t.TenantID, rangeIDs, slots[0].Start, slots[len(slots)-1].End, except.ID)
 	if err != nil {
 		return info, err
 	}
@@ -146,6 +166,9 @@ func (s *Server) bookingInfo(ctx context.Context, t store.BookingTarget, exceptR
 // checkBooking validates a request against the event's slots and the lanes free now (info leaves out the lanes the
 // request already holds).
 func checkBooking(info BookingInfo, in store.BookingRequestInput) error {
+	if info.Opens != nil && time.Now().Before(*info.Opens) {
+		return conflict("Online booking is not open yet.")
+	}
 	if !info.Open {
 		return conflict("The deadline for online booking has passed. Contact the organizer.")
 	}
@@ -302,7 +325,7 @@ func (s *Server) registerBooking(api huma.API) {
 		if err != nil {
 			return nil, err
 		}
-		info, err := s.bookingInfo(ctx, t, 0)
+		info, err := s.bookingInfo(ctx, t, store.BookingRequest{})
 		return &struct{ Body BookingInfo }{Body: info}, err
 	})
 
@@ -325,7 +348,7 @@ func (s *Server) registerBooking(api huma.API) {
 		if err := s.rateLimited(ctx, "booking:email:"+in.Body.Email, bookingWindow, bookingEmailMax); err != nil {
 			return nil, err
 		}
-		info, err := s.bookingInfo(ctx, t, 0)
+		info, err := s.bookingInfo(ctx, t, store.BookingRequest{})
 		if err != nil {
 			return nil, err
 		}
@@ -366,7 +389,7 @@ func (s *Server) registerBooking(api huma.API) {
 		}
 		out := &manageOut{}
 		out.Body.Request = req
-		out.Body.Info, err = s.bookingInfo(ctx, t, req.ID)
+		out.Body.Info, err = s.bookingInfo(ctx, t, req)
 		return out, err
 	})
 
@@ -386,7 +409,7 @@ func (s *Server) registerBooking(api huma.API) {
 			return nil, bookingErr(t.Event, store.ErrNotPending)
 		}
 		trimBooking(&in.Body)
-		info, err := s.bookingInfo(ctx, t, req.ID)
+		info, err := s.bookingInfo(ctx, t, req)
 		if err != nil {
 			return nil, err
 		}
@@ -443,7 +466,7 @@ func (s *Server) registerBookingAdmin(api huma.API) {
 		}
 		loc := eventLoc(ev.Timezone)
 		c := BookingConfig{Enabled: code != "", Code: code, Settings: set,
-			Deadline: domain.BookingDeadline(ev.Days, set, loc), Slots: domain.BookingSlots(ev.Days, ev.Schedule.Times(), set, loc)}
+			Opens: bookingOpens(set, loc), Deadline: domain.BookingDeadline(ev.Days, set, loc), Slots: domain.BookingSlots(ev.Days, ev.Schedule.Times(), set, loc)}
 		if code != "" {
 			c.Link = s.link(ctx, "/b/"+code)
 			if c.QR, err = qrDataURL(c.Link); err != nil {

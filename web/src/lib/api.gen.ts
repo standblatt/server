@@ -2415,6 +2415,11 @@ export interface components {
             enabled: boolean;
             /** @description The public link for the invitation; empty when off */
             link: string;
+            /**
+             * Format: date-time
+             * @description Requests are accepted from this moment; none = right away
+             */
+            opens?: string;
             /** @description PNG data URL of a QR code of the link; empty when off */
             qr: string;
             settings: components["schemas"]["BookingSettings"];
@@ -2440,6 +2445,11 @@ export interface components {
              */
             maxLanes: number;
             open: boolean;
+            /**
+             * Format: date-time
+             * @description Requests are accepted from this moment; none = right away
+             */
+            opens?: string;
             organizer: string;
             ranges: components["schemas"]["BookingRange"][];
             slots: components["schemas"]["BookingSlot"][];
@@ -2522,7 +2532,7 @@ export interface components {
             days?: {
                 [key: string]: components["schemas"]["BookingHours"];
             };
-            /** @description Last day clubs can ask or change (YYYY-MM-DD); default 14 days before the first day */
+            /** @description Last day clubs can ask or change (YYYY-MM-DD), at the latest the last day of the event; default 14 days before the first day */
             deadline?: string;
             /** @description Shooting hours of every day; default 08:00–17:00 */
             from?: string;
@@ -2531,6 +2541,8 @@ export interface components {
              * @description Lanes per slot and request; 0 = no limit
              */
             maxLanes?: number;
+            /** @description First day clubs can ask (YYYY-MM-DD); empty = right away */
+            opens?: string;
             /**
              * Format: int64
              * @description Length of a slot; default 30

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-11-01 17:56+0000\n"
+"POT-Creation-Date: 2026-11-01 19:20+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -3771,12 +3771,14 @@ msgstr "**Display chiosco** e **Link aiutante**: crea nuovi link e inviali."
 #: ../src/help/en/how-to/next-year.md:31
 msgid ""
 "**Reservations**: switch the [online booking](../user-guide/online-"
-"booking.md) on again; the copy takes over its hours, but not the link and "
-"not the deadline. Reservations belong to the range and are not copied."
+"booking.md) on again; the copy takes over its hours, but not the link, the "
+"opening day and the deadline. Reservations belong to the range and are not "
+"copied."
 msgstr ""
 "**Prenotazioni**: riattiva la [prenotazione online](../user-guide/online-"
-"booking.md); la copia riprende i suoi orari, ma non il link né il termine. "
-"Le prenotazioni appartengono allo stand e non vengono copiate."
+"booking.md); la copia riprende i suoi orari, ma né il link, né l’apertura "
+"delle iscrizioni, né il termine. Le prenotazioni appartengono allo stand e "
+"non vengono copiate."
 
 #. type: Plain text
 #: ../src/help/en/how-to/next-year.md:32
@@ -6179,7 +6181,7 @@ msgid ""
 "|---|---|---|---|\n"
 "| Kiosk link `/kiosk/<secret>` | **Create kiosk link** on **Kiosk displays** in the configuration | the live rankings of the event: programmes and classifications with *Show on kiosk displays*, and the lane status with *Show lane status on the rankings* | until **revoke** or the event is deleted |\n"
 "| Helper link `/h/<secret>` | **Create helper link** on **Helper links** in the configuration | a reduced desk of the event for one [helper role](permissions.md#helper-links) | until **revoke** or the event is deleted |\n"
-"| Booking link `/b/<code>` | **Switch on** on **Reservations** in the configuration | the slots of the event with the free lanes per range, and the request form | until **New link** or **Switch off**; requests only until the deadline |\n"
+"| Booking link `/b/<code>` | **Switch on** on **Reservations** in the configuration | the slots of the event with the free lanes per range, and the request form | until **New link** or **Switch off**; requests only from the opening day until the deadline |\n"
 "| Booking manage link `/b/manage/<secret>` | mailed to the club after **Send request** | the status of the club's request; change or cancel it | changes and cancelling until the deadline |\n"
 "| Invitation link `/invite/<secret>` | **Invite by email** on **Users** | the club and the role; accept with an account or a new password | seven days; ends when accepted, withdrawn or sent again |\n"
 "| Connect page `/connect?code=<code>` | opened by the Standblatt Print Agent app | the computer of the code; club, range and name of the agent | the code: ten minutes; needs a login with *Ranges and printers* |\n"
@@ -6190,7 +6192,7 @@ msgstr ""
 "|---|---|---|---|\n"
 "| Link chiosco `/kiosk/<secret>` | **Crea link chiosco** in **Display chiosco** nella configurazione | le classifiche in diretta della manifestazione: programmi e classifiche generali con *Mostra sugli schermi chiosco*, e lo stato dei bersagli con *Mostra lo stato dei bersagli sulle classifiche* | fino a **revoca** o all’eliminazione della manifestazione |\n"
 "| Link aiutante `/h/<secret>` | **Crea link aiutante** in **Link aiutante** nella configurazione | un’accoglienza ridotta della manifestazione per un [ruolo aiutante](permissions.md#helper-links) | fino a **revoca** o all’eliminazione della manifestazione |\n"
-"| Link di prenotazione `/b/<code>` | **Attiva** in **Prenotazioni** nella configurazione | le fasce orarie della manifestazione con i bersagli liberi per stand, e il modulo di richiesta | fino a **Nuovo link** o **Disattiva**; richieste solo fino al termine |\n"
+"| Link di prenotazione `/b/<code>` | **Attiva** in **Prenotazioni** nella configurazione | le fasce orarie della manifestazione con i bersagli liberi per stand, e il modulo di richiesta | fino a **Nuovo link** o **Disattiva**; richieste solo dall’apertura delle iscrizioni fino al termine |\n"
 "| Link di gestione della prenotazione `/b/manage/<secret>` | inviato via e-mail alla società dopo **Invia la richiesta** | lo stato della richiesta della società; modificarla o annullarla | modifiche e annullamento fino al termine |\n"
 "| Link d’invito `/invite/<secret>` | **Invita via e-mail** in **Utenti** | la società e il ruolo; accettare con un account o una nuova password | sette giorni; termina quando accettato, ritirato o inviato di nuovo |\n"
 "| Pagina di collegamento `/connect?code=<code>` | aperta dall’app Standblatt Print Agent | il computer del codice; società, stand e nome dell’agente | il codice: dieci minuti; richiede un accesso con *Stand e stampanti* |\n"
@@ -8636,16 +8638,18 @@ msgstr ""
 msgid ""
 "Without changes, every day of the event is open during its shooting times "
 "(see [Events](events.md#settings)), or from 08:00 to 17:00 when it has none, "
-"in slots of 30 minutes, and requests are accepted until 14 days before the "
-"first day. **Adjust** changes this:"
+"in slots of 30 minutes, and requests are accepted right away until 14 days "
+"before the first day. A slot can be asked for until two hours before it "
+"starts. **Adjust** changes this:"
 msgstr ""
 "Senza modifiche, ogni giorno della manifestazione è aperto durante i suoi "
 "orari di tiro (vedi [Manifestazioni](events.md#settings)), altrimenti dalle "
-"08:00 alle 17:00, in fasce di 30 minuti, e le richieste sono accettate fino "
-"a 14 giorni prima del primo giorno. **Adatta** lo cambia:"
+"08:00 alle 17:00, in fasce di 30 minuti, e le richieste sono accettate da "
+"subito fino a 14 giorni prima del primo giorno. Una fascia oraria può essere "
+"richiesta fino a due ore prima dell’inizio. **Adatta** lo cambia:"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:19
+#: ../src/help/en/user-guide/online-booking.md:20
 msgid ""
 "**Shooting from** and **Shooting until**: the hours of every day without "
 "shooting times."
@@ -8654,34 +8658,45 @@ msgstr ""
 "tiro."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:19
+#: ../src/help/en/user-guide/online-booking.md:20
 msgid "**Break from** and **Break until**: an optional break, e.g. for lunch."
 msgstr ""
 "**Pausa dalle** e **Pausa fino alle**: una pausa facoltativa, p. es. a "
 "mezzogiorno."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:19
+#: ../src/help/en/user-guide/online-booking.md:20
 msgid "**Slot length (minutes)**: how long one slot is."
 msgstr ""
 "**Durata di una fascia oraria (minuti)**: quanto dura una fascia oraria."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:19
+#: ../src/help/en/user-guide/online-booking.md:20
 msgid "**Lanes per slot and club**: a limit per request; empty means no limit."
 msgstr ""
 "**Bersagli per fascia oraria e società**: un limite per richiesta; vuoto "
 "significa nessun limite."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:19
-msgid "**Deadline**: the last day clubs can ask or change their request."
+#: ../src/help/en/user-guide/online-booking.md:20
+msgid ""
+"**Booking opens**: the first day clubs can ask; until then the link only "
+"says from when."
 msgstr ""
-"**Termine d’iscrizione**: l’ultimo giorno in cui le società possono "
-"richiedere o modificare la richiesta."
+"**Iscrizioni dal**: il primo giorno in cui le società possono richiedere; "
+"fino ad allora il link indica solo da quando."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:19
+#: ../src/help/en/user-guide/online-booking.md:20
+msgid ""
+"**Deadline**: the last day clubs can ask or change their request, at the "
+"latest the last shooting day."
+msgstr ""
+"**Termine d’iscrizione**: l’ultimo giorno in cui le società possono "
+"richiedere o modificare la richiesta, al più tardi l’ultimo giorno di tiro."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/online-booking.md:20
 msgid ""
 "**Days with other hours**: one line per day of the event, e.g. Friday 17:00–"
 "20:00. The days come from the event and follow it when you add or remove one."
@@ -8691,31 +8706,34 @@ msgstr ""
 "quando ne aggiungi o togli uno."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/online-booking.md:21
+#: ../src/help/en/user-guide/online-booking.md:22
 #, no-wrap
-msgid "**New link** replaces the link; the old one stops working. **Switch off** closes the booking; requests and confirmed reservations stay. *Copy for next year* takes the hours along, but not the link and not the deadline.\n"
-msgstr "**Nuovo link** sostituisce il link; quello vecchio smette di funzionare. **Disattiva** chiude la prenotazione; le richieste e le prenotazioni confermate restano. *Copia per l’anno prossimo* riprende gli orari, ma né il link né il termine.\n"
+msgid "**New link** replaces the link; the old one stops working. **Switch off** closes the booking; requests and confirmed reservations stay. *Copy for next year* takes the hours along, but not the link, the opening day and the deadline.\n"
+msgstr "**Nuovo link** sostituisce il link; quello vecchio smette di funzionare. **Disattiva** chiude la prenotazione; le richieste e le prenotazioni confermate restano. *Copia per l’anno prossimo* riprende gli orari, ma né il link, né l’apertura delle iscrizioni, né il termine.\n"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/online-booking.md:22
+#: ../src/help/en/user-guide/online-booking.md:23
 #, no-wrap
 msgid "What a club sees {#club}"
 msgstr "Cosa vede una società {#club}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/online-booking.md:25
+#: ../src/help/en/user-guide/online-booking.md:26
 msgid ""
 "The link opens a page without login. It shows the event, the deadline and "
-"every slot with the lanes still free on each range. Only confirmed "
-"reservations count; names of other clubs are never shown."
+"every slot that starts in more than two hours with the lanes still free on "
+"each range. Before the opening day it only says from when the booking is "
+"open. Only confirmed reservations count; names of other clubs are never "
+"shown."
 msgstr ""
 "Il link apre una pagina senza login. Mostra la manifestazione, il termine e "
-"ogni fascia oraria con i bersagli ancora liberi per poligono. Contano solo "
-"le prenotazioni confermate; i nomi delle altre società non vengono mai "
-"mostrati."
+"ogni fascia oraria che inizia tra più di due ore con i bersagli ancora "
+"liberi per poligono. Prima dell’apertura delle iscrizioni indica solo da "
+"quando la prenotazione è aperta. Contano solo le prenotazioni confermate; i "
+"nomi delle altre società non vengono mai mostrati."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/online-booking.md:27
+#: ../src/help/en/user-guide/online-booking.md:28
 msgid ""
 "![The booking page of a club](../images/screenshots/booking-public.png)"
 "{ .screenshot }"
@@ -8724,7 +8742,7 @@ msgstr ""
 "public.png){ .screenshot }"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/online-booking.md:29
+#: ../src/help/en/user-guide/online-booking.md:30
 msgid ""
 "The club enters the number of lanes per slot, its name, a contact person, "
 "email and phone, and its **Shooters**: last name, first name, birthday and "
@@ -8740,7 +8758,7 @@ msgstr ""
 "poligono come sempre."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/online-booking.md:31
+#: ../src/help/en/user-guide/online-booking.md:32
 msgid ""
 "After **Send request**, the club gets a mail with a personal link. Through "
 "it, it can check the status, change the request or cancel it until the "
@@ -8754,13 +8772,13 @@ msgstr ""
 "aggiungere tiratori la lascia confermata."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/online-booking.md:32
+#: ../src/help/en/user-guide/online-booking.md:33
 #, no-wrap
 msgid "Confirming requests {#confirm}"
 msgstr "Confermare le richieste {#confirm}"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/online-booking.md:35
+#: ../src/help/en/user-guide/online-booking.md:36
 msgid ""
 "Every admin with an email gets a mail for each new, changed or cancelled "
 "request. The requests are listed at the top of **Reservations**; the sidebar "
@@ -8771,7 +8789,7 @@ msgstr ""
 "la barra laterale indica quante sono in attesa."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/online-booking.md:37
+#: ../src/help/en/user-guide/online-booking.md:38
 msgid ""
 "![Booking requests on the reservations page](../images/screenshots/booking-"
 "requests.png){ .screenshot }"
@@ -8780,7 +8798,7 @@ msgstr ""
 "screenshots/booking-requests.png){ .screenshot }"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:42
+#: ../src/help/en/user-guide/online-booking.md:43
 msgid ""
 "**Confirm** gives each slot free lanes of its range, neighbours where "
 "possible, as an ordinary reservation named after the club, and mails the "
@@ -8794,7 +8812,7 @@ msgstr ""
 "sposta una prenotazione o rifiuta."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:42
+#: ../src/help/en/user-guide/online-booking.md:43
 msgid ""
 "**Confirm** first asks which **Club** of the master data the request belongs "
 "to, because the club typed its name itself: the club with the same name is "
@@ -8807,7 +8825,7 @@ msgstr ""
 "*Nuova società* la crea. La richiesta mostra poi la società attribuita."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:42
+#: ../src/help/en/user-guide/online-booking.md:43
 msgid ""
 "**Confirm** also takes the shooters into the master data, in that club: a "
 "shooter is found by licence, else by name and birthday, and created "
@@ -8824,7 +8842,7 @@ msgstr ""
 "conferma si riprendono con **Riprendi tiratori**."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:42
+#: ../src/help/en/user-guide/online-booking.md:43
 msgid ""
 "**Decline** asks for an optional reason, which goes to the club by mail. "
 "Lanes the request held are free again."
@@ -8833,7 +8851,7 @@ msgstr ""
 "I bersagli occupati dalla richiesta tornano liberi."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/online-booking.md:43
+#: ../src/help/en/user-guide/online-booking.md:44
 msgid ""
 "The reserved lanes are ordinary [reservations](reservations.md): change "
 "their lane numbers there if needed. At the event, the shooters are found "

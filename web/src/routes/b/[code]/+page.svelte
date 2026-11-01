@@ -4,7 +4,7 @@
 	import { createQuery } from '@tanstack/svelte-query';
 	import CircleCheck from '@lucide/svelte/icons/circle-check';
 	import { api, call, type BookingRequestInput } from '$lib/api';
-	import { deadlineDay } from '$lib/modules/reservations/booking/booking';
+	import { deadlineDay, slotDay } from '$lib/modules/reservations/booking/booking';
 	import BookingForm from '$lib/modules/reservations/booking/parts/BookingForm.svelte';
 	import PublicShell from '$lib/PublicShell.svelte';
 	import { formatDays } from '$lib/format';
@@ -45,6 +45,8 @@
 					<p>{$t`We sent a confirmation to ${sentTo} with a link to check, change or cancel your request. The lanes are reserved once the organizer confirms them.`}</p>
 				</div>
 			</div>
+		{:else if !ev.open && ev.opens && new Date(ev.opens) > new Date()}
+			<p class="rounded-lg border border-dashed p-6 text-center text-muted-foreground">{$t`Online booking opens on ${slotDay(ev.opens, ev.timezone)}.`}</p>
 		{:else if !ev.open}
 			<p class="rounded-lg border border-dashed p-6 text-center text-muted-foreground">{$t`The deadline for online booking has passed. Contact the organizer.`}</p>
 		{:else}

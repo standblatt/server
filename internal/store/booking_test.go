@@ -136,7 +136,7 @@ func TestBookingSettingsCopy(t *testing.T) {
 	ev, _ := st.CreateEvent(ctx, tid, store.EventInput{RangeIDs: []int64{rng.ID}, Name: "Feldschiessen", StartsOn: "2027-05-29",
 		Schedule: domain.Schedule{From: "2027-04-01", To: "2027-08-31", Weekly: []domain.WeeklyTimes{{Weekday: 3}},
 			Days: []domain.ScheduleDay{{Date: "2027-05-28", Times: []domain.BookingHours{{From: "17:00", To: "19:00"}}}}}, Timezone: "Europe/Zurich"})
-	set := domain.BookingSettings{From: "09:00", SlotMinutes: 45, Deadline: "2027-05-01",
+	set := domain.BookingSettings{From: "09:00", SlotMinutes: 45, Opens: "2027-04-01", Deadline: "2027-05-01",
 		Days: map[string]domain.BookingHours{"2027-05-28": {From: "17:00", To: "20:00"}}}
 	if err := st.SetBookingSettings(ctx, tid, ev, set); err != nil {
 		t.Fatal(err)
@@ -152,7 +152,7 @@ func TestBookingSettingsCopy(t *testing.T) {
 		t.Fatal(err)
 	}
 	code, got, err := st.BookingConfig(ctx, tid, copied)
-	if err != nil || code != "" || got.Deadline != "" || got.From != "09:00" || got.SlotMinutes != 45 || got.Days["2028-06-02"].From != "17:00" || len(got.Days) != 1 {
+	if err != nil || code != "" || got.Deadline != "" || got.Opens != "" || got.From != "09:00" || got.SlotMinutes != 45 || got.Days["2028-06-02"].From != "17:00" || len(got.Days) != 1 {
 		t.Fatalf("copied booking: %q %+v %v", code, got, err)
 	}
 	cev, err := st.GetEvent(ctx, tid, copied)

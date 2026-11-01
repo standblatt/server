@@ -6,7 +6,7 @@ These links open a page without logging in. Whoever has the link can use it, so 
 |---|---|---|---|
 | Kiosk link `/kiosk/<secret>` | **Create kiosk link** on **Kiosk displays** in the configuration | the live rankings of the event: programmes and classifications with *Show on kiosk displays*, and the lane status with *Show lane status on the rankings* | until **revoke** or the event is deleted |
 | Helper link `/h/<secret>` | **Create helper link** on **Helper links** in the configuration | a reduced desk of the event for one [helper role](permissions.md#helper-links) | until **revoke** or the event is deleted |
-| Booking link `/b/<code>` | **Switch on** on **Reservations** in the configuration | the slots of the event with the free lanes per range, and the request form | until **New link** or **Switch off**; requests only until the deadline |
+| Booking link `/b/<code>` | **Switch on** on **Reservations** in the configuration | the slots of the event with the free lanes per range, and the request form | until **New link** or **Switch off**; requests only from the opening day until the deadline |
 | Booking manage link `/b/manage/<secret>` | mailed to the club after **Send request** | the status of the club's request; change or cancel it | changes and cancelling until the deadline |
 | Invitation link `/invite/<secret>` | **Invite by email** on **Users** | the club and the role; accept with an account or a new password | seven days; ends when accepted, withdrawn or sent again |
 | Connect page `/connect?code=<code>` | opened by the Standblatt Print Agent app | the computer of the code; club, range and name of the agent | the code: ten minutes; needs a login with *Ranges and printers* |
