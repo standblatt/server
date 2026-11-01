@@ -197,17 +197,18 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      # Master and tag runs of one commit share its image, whichever builds first: a second build has
-      # different asset hashes, and pods of one tag would serve two SPA builds.
+      # Tag runs build their own image (the binary carries the tag as version) and leave the SHA tag
+      # alone: rebuilding it would change asset hashes under running pods.
       - run: |
           chmod +x bin/standblatt
-          sha="$IMAGE:${GITHUB_SHA::7}"
-          moving="$IMAGE:$([ "$GITHUB_REF_TYPE" = tag ] && echo latest || echo bleeding_edge)"
-          if docker manifest inspect "$sha" >/dev/null 2>&1; then docker pull "$sha"; else docker build -f docker/ci.Dockerfile -t "$sha" bin; fi
-          docker tag "$sha" "$moving"
-          docker push "$sha"
-          docker push "$moving"
-          if [ "$GITHUB_REF_TYPE" = tag ]; then docker tag "$sha" "$IMAGE:$GITHUB_REF_NAME" && docker push "$IMAGE:$GITHUB_REF_NAME"; fi
+          docker build -f docker/ci.Dockerfile -t image bin
+          if [ "$GITHUB_REF_TYPE" = tag ]; then
+            tags="latest $GITHUB_REF_NAME"
+          else
+            tags="bleeding_edge"
+            docker manifest inspect "$IMAGE:${GITHUB_SHA::7}" >/dev/null 2>&1 || tags="$tags ${GITHUB_SHA::7}"
+          fi
+          for t in $tags; do docker tag image "$IMAGE:$t" && docker push "$IMAGE:$t"; done
 
   # Flux pulls the chart from here (OCIRepository in the cluster's GitOps repo).
   chart:
