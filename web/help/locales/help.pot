@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-11-01 19:20+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-11-01 20:21+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
 #: ../src/help/en/explanation/closing.md:1
@@ -5323,7 +5323,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/online-booking.md:8
 #, markdown-text
-msgid "The online booking is part of the module *Reservations* (it needs a range and *Lane assignment*): on **Reservations** in the configuration, **Switch on** is all it takes. The page then shows the link with a QR code for the invitation and the slots it offers."
+msgid "The online booking is part of the module *Reservations* (it needs a range and *Lane assignment*): on **Reservations** in the configuration, **Switch on** is all it takes. The page then shows the link with a QR code for the invitation, whether clubs can ask right now (*Opens on*, *Open until* or *Deadline passed*) and the slots it offers, each day with the start of every slot and its breaks."
 msgstr ""
 
 #. type: Plain text
@@ -5395,7 +5395,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/online-booking.md:26
 #, markdown-text
-msgid "The link opens a page without login. It shows the event, the deadline and every slot that starts in more than two hours with the lanes still free on each range. Before the opening day it only says from when the booking is open. Only confirmed reservations count; names of other clubs are never shown."
+msgid "The link opens a page without login. It explains the process in three steps and shows every slot that starts in more than two hours with the lanes still free on each range. Before the opening day it only says from when the booking is open. Only confirmed reservations count; names of other clubs are never shown. With more than two days, each day is folded and shows how many slots the club chose on it."
 msgstr ""
 
 #. type: Plain text
@@ -5407,13 +5407,13 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/online-booking.md:30
 #, markdown-text
-msgid "The club enters the number of lanes per slot, its name, a contact person, email and phone, and its **Shooters**: last name, first name, birthday and optionally the licence. **Paste list** takes rows copied from Excel (last name, first name, birthday, licence). The shooter list can follow later; programmes are chosen at the range as usual."
+msgid "The club sets the number of lanes per slot with − and + or by typing it and enters its name, a contact person, email and phone, and its **Shooters**: last name, first name, birthday and optionally the licence. **Paste list** takes rows copied from Excel (last name, first name, birthday, licence). The shooter list can follow later; programmes are chosen at the range as usual."
 msgstr ""
 
 #. type: Plain text
 #: ../src/help/en/user-guide/online-booking.md:32
 #, markdown-text
-msgid "After **Send request**, the club gets a mail with a personal link. Through it, it can check the status, change the request or cancel it until the deadline. Changing the slots of a confirmed request releases its lanes and the request waits for a new confirmation; adding shooters keeps it confirmed."
+msgid "A bar at the bottom of the screen counts the chosen slots and lanes and holds **Send request**. Afterwards the club gets a mail with a personal link. Through it, it can check the status, change the request or cancel it until the deadline. Changing the slots of a confirmed request releases its lanes and the request waits for a new confirmation; adding shooters keeps it confirmed."
 msgstr ""
 
 #. type: Title ##
@@ -5425,7 +5425,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/online-booking.md:36
 #, markdown-text
-msgid "Every admin with an email gets a mail for each new, changed or cancelled request. The requests are listed at the top of **Reservations**; the sidebar shows how many are waiting."
+msgid "Every admin with an email gets a mail for each new, changed or cancelled request. The requests are listed at the top of **Reservations**, open ones first and within each status in the order they came in; the sidebar shows how many are waiting. Each request shows when it was received, to the second, and an open one also when the club last changed it, so when two clubs want the same lanes, the first one can get them."
 msgstr ""
 
 #. type: Plain text

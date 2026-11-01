@@ -11,7 +11,9 @@ demande.
 La réservation en ligne fait partie du module *Réservations* (il nécessite
 un stand et *Attribution des cibles*) : sur **Réservations** dans la
 configuration, **Activer** suffit. La page montre ensuite le lien avec un
-code QR pour l’invitation et les créneaux proposés.
+code QR pour l’invitation, si les sociétés peuvent faire une demande en ce
+moment (*Ouvre le*, *Ouvert jusqu’au* ou *Délai passé*) et les créneaux
+proposés, chaque jour avec le début de chaque créneau et ses pauses.
 
 ![Réservation en ligne dans la
 configuration](../images/screenshots/booking-setup.png){ .screenshot }
@@ -40,34 +42,41 @@ jusqu’à deux heures avant son début. **Adapter** change cela :
 
 ## Ce que voit une société {#club}
 
-Le lien ouvre une page sans connexion. Elle montre la manifestation, le
-délai et chaque créneau qui commence dans plus de deux heures avec les
-cibles encore libres par stand. Avant l’ouverture des inscriptions, elle
+Le lien ouvre une page sans connexion. Elle explique le déroulement en trois
+étapes et montre chaque créneau qui commence dans plus de deux heures avec
+les cibles encore libres par stand. Avant l’ouverture des inscriptions, elle
 indique seulement à partir de quand la réservation est ouverte. Seules les
 réservations confirmées comptent ; les noms des autres sociétés ne sont
-jamais affichés.
+jamais affichés. Avec plus de deux jours, chaque jour est replié et indique
+combien de créneaux la société y a choisis.
 
 ![La page de réservation d’une
 société](../images/screenshots/booking-public.png){ .screenshot }
 
-La société saisit le nombre de cibles par créneau, son nom, une personne de
-contact, l’e-mail et le téléphone, ainsi que ses **Tireurs** : nom, prénom,
-date de naissance et facultativement la licence. **Coller une liste**
-reprend des lignes copiées depuis Excel (nom, prénom, date de naissance,
-licence). La liste des tireurs peut suivre plus tard ; les programmes se
-choisissent au stand comme d’habitude.
+La société règle le nombre de cibles par créneau avec − et + ou en le
+tapant, puis saisit son nom, une personne de contact, l’e-mail et le
+téléphone, ainsi que ses **Tireurs** : nom, prénom, date de naissance et
+facultativement la licence. **Coller une liste** reprend des lignes copiées
+depuis Excel (nom, prénom, date de naissance, licence). La liste des tireurs
+peut suivre plus tard ; les programmes se choisissent au stand comme
+d’habitude.
 
-Après **Envoyer la demande**, la société reçoit un e-mail avec un lien
-personnel. Elle peut y voir le statut, modifier ou annuler la demande
-jusqu’au délai. Modifier les créneaux d’une demande confirmée libère ses
-cibles et la demande attend une nouvelle confirmation ; ajouter des tireurs
-la laisse confirmée.
+Une barre en bas de l’écran compte les créneaux et les cibles choisis et
+contient **Envoyer la demande**. Ensuite, la société reçoit un e-mail avec
+un lien personnel. Elle peut y voir le statut, modifier ou annuler la
+demande jusqu’au délai. Modifier les créneaux d’une demande confirmée libère
+ses cibles et la demande attend une nouvelle confirmation ; ajouter des
+tireurs la laisse confirmée.
 
 ## Confirmer les demandes {#confirm}
 
-Chaque admin avec un e-mail reçoit un message pour chaque demande nouvelle,
-modifiée ou annulée. Les demandes figurent en haut de **Réservations** ; la
-barre latérale indique combien attendent.
+Chaque admin avec un e-mail reçoit un mail pour chaque demande nouvelle,
+modifiée ou annulée. Les demandes figurent en haut de **Réservations**, les
+ouvertes d’abord et, pour chaque statut, dans l’ordre d’arrivée ; la barre
+latérale indique combien attendent. Chaque demande indique à la seconde près
+quand elle a été reçue, et une demande ouverte aussi quand la société l’a
+modifiée pour la dernière fois. Si deux sociétés veulent les mêmes cibles,
+la première peut ainsi les obtenir.
 
 ![Demandes de réservation sur la page des
 réservations](../images/screenshots/booking-requests.png){ .screenshot }

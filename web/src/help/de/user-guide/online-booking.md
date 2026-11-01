@@ -10,7 +10,9 @@ meldet seine Schützen. Ein Admin bestätigt oder lehnt jede Anfrage ab.
 Die Online-Reservation ist Teil des Moduls *Reservationen* (es braucht einen
 Schiessstand und die *Scheibenzuteilung*): Auf **Reservationen** in der
 Konfiguration genügt **Einschalten**. Die Seite zeigt dann den Link mit
-einem QR-Code für die Einladung und die angebotenen Zeitblöcke.
+einem QR-Code für die Einladung, ob Vereine gerade anfragen können (*Öffnet
+am*, *Offen bis* oder *Anmeldeschluss vorbei*), und die angebotenen
+Zeitblöcke, pro Tag mit dem Beginn jedes Zeitblocks und den Pausen.
 
 ![Online-Reservation in der
 Konfiguration](../images/screenshots/booking-setup.png){ .screenshot }
@@ -39,32 +41,40 @@ Beginn angefragt werden. **Anpassen** ändert das:
 
 ## Was ein Verein sieht {#club}
 
-Der Link öffnet eine Seite ohne Login. Sie zeigt den Anlass, den
-Anmeldeschluss und jeden Zeitblock, der in mehr als zwei Stunden beginnt,
+Der Link öffnet eine Seite ohne Login. Sie erklärt den Ablauf in drei
+Schritten und zeigt jeden Zeitblock, der in mehr als zwei Stunden beginnt,
 mit den noch freien Scheiben pro Stand. Vor dem Anmeldebeginn sagt sie nur,
 ab wann die Reservation offen ist. Nur bestätigte Reservationen zählen;
-Namen anderer Vereine werden nie angezeigt.
+Namen anderer Vereine werden nie angezeigt. Bei mehr als zwei Tagen ist
+jeder Tag zugeklappt und zeigt, wie viele Zeitblöcke der Verein darin
+gewählt hat.
 
 ![Die Reservationsseite eines
 Vereins](../images/screenshots/booking-public.png){ .screenshot }
 
-Der Verein gibt die Anzahl Scheiben pro Zeitblock ein, seinen Namen, eine
-Kontaktperson, E-Mail und Telefon sowie seine **Schützen**: Name, Vorname,
-Geburtsdatum und optional die Lizenz. **Liste einfügen** übernimmt Zeilen
-aus Excel (Name, Vorname, Geburtsdatum, Lizenz). Die Schützenliste kann
-später folgen; die Programme werden wie gewohnt am Stand gewählt.
+Der Verein stellt die Anzahl Scheiben pro Zeitblock mit − und + ein oder
+tippt sie ein und gibt seinen Namen, eine Kontaktperson, E-Mail und Telefon
+sowie seine **Schützen** an: Name, Vorname, Geburtsdatum und optional die
+Lizenz. **Liste einfügen** übernimmt Zeilen aus Excel (Name, Vorname,
+Geburtsdatum, Lizenz). Die Schützenliste kann später folgen; die Programme
+werden wie gewohnt am Stand gewählt.
 
-Nach **Anfrage senden** erhält der Verein eine Mail mit einem persönlichen
-Link. Darüber kann er bis zum Anmeldeschluss den Status sehen, die Anfrage
-ändern oder stornieren. Ändert er die Zeitblöcke einer bestätigten Anfrage,
-werden ihre Scheiben frei und die Anfrage wartet auf eine neue Bestätigung;
-neue Schützen lassen sie bestätigt.
+Eine Leiste am unteren Bildschirmrand zählt die gewählten Zeitblöcke und
+Scheiben und enthält **Anfrage senden**. Danach erhält der Verein eine Mail
+mit einem persönlichen Link. Darüber kann er bis zum Anmeldeschluss den
+Status sehen, die Anfrage ändern oder stornieren. Ändert er die Zeitblöcke
+einer bestätigten Anfrage, werden ihre Scheiben frei und die Anfrage wartet
+auf eine neue Bestätigung; neue Schützen lassen sie bestätigt.
 
 ## Anfragen bestätigen {#confirm}
 
 Jeder Admin mit E-Mail erhält zu jeder neuen, geänderten oder stornierten
-Anfrage eine Mail. Die Anfragen stehen zuoberst unter **Reservationen**; die
-Seitenleiste zeigt, wie viele warten.
+Anfrage eine Mail. Die Anfragen stehen oben auf **Reservationen**, offene
+zuerst und innerhalb jedes Status in der Reihenfolge ihres Eingangs; die
+Seitenleiste zeigt, wie viele warten. Jede Anfrage zeigt auf die Sekunde,
+wann sie eingegangen ist, eine offene auch, wann der Verein sie zuletzt
+geändert hat. Wollen zwei Vereine dieselben Scheiben, kann so der erste sie
+bekommen.
 
 ![Reservationsanfragen auf der Seite
 Reservationen](../images/screenshots/booking-requests.png){ .screenshot }

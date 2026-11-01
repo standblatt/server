@@ -10,7 +10,9 @@ annuncia i suoi tiratori. Un admin conferma o rifiuta ogni richiesta.
 La prenotazione online fa parte del modulo *Prenotazioni* (richiede uno
 stand e *Assegnazione dei bersagli*): in **Prenotazioni** nella
 configurazione basta **Attiva**. La pagina mostra poi il link con un codice
-QR per l’invito e le fasce orarie offerte.
+QR per l’invito, se le società possono fare richiesta in questo momento
+(*Apre il*, *Aperta fino al* o *Termine scaduto*) e le fasce orarie offerte,
+per ogni giorno con l’inizio di ogni fascia oraria e le pause.
 
 ![Prenotazione online nella
 configurazione](../images/screenshots/booking-setup.png){ .screenshot }
@@ -41,23 +43,25 @@ richiesta fino a due ore prima dell’inizio. **Adatta** lo cambia:
 
 ## Cosa vede una società {#club}
 
-Il link apre una pagina senza login. Mostra la manifestazione, il termine e
-ogni fascia oraria che inizia tra più di due ore con i bersagli ancora
-liberi per poligono. Prima dell’apertura delle iscrizioni indica solo da
-quando la prenotazione è aperta. Contano solo le prenotazioni confermate; i
-nomi delle altre società non vengono mai mostrati.
+Il link apre una pagina senza login. Spiega la procedura in tre passi e
+mostra ogni fascia oraria che inizia tra più di due ore con i bersagli
+ancora liberi per poligono. Prima dell’apertura delle iscrizioni indica solo
+da quando la prenotazione è aperta. Contano solo le prenotazioni confermate;
+i nomi delle altre società non vengono mai mostrati. Con più di due giorni,
+ogni giorno è chiuso e mostra quante fasce orarie la società vi ha scelto.
 
 ![La pagina di prenotazione di una
 società](../images/screenshots/booking-public.png){ .screenshot }
 
-La società inserisce il numero di bersagli per fascia oraria, il suo nome,
-una persona di contatto, e-mail e telefono, e i suoi **Tiratori**: cognome,
-nome, data di nascita e facoltativamente la licenza. **Incolla lista**
-riprende righe copiate da Excel (cognome, nome, data di nascita,
-licenza). La lista dei tiratori può seguire più tardi; i programmi si
-scelgono al poligono come sempre.
+La società imposta il numero di bersagli per fascia oraria con − e + o
+digitandolo e inserisce il suo nome, una persona di contatto, e-mail e
+telefono, e i suoi **Tiratori**: cognome, nome, data di nascita e
+facoltativamente la licenza. **Incolla lista** riprende righe copiate da
+Excel (cognome, nome, data di nascita, licenza). La lista dei tiratori può
+seguire più tardi; i programmi si scelgono al poligono come sempre.
 
-Dopo **Invia la richiesta** la società riceve un’e-mail con un link
+Una barra in fondo allo schermo conta le fasce orarie e i bersagli scelti e
+contiene **Invia la richiesta**. Poi la società riceve un’e-mail con un link
 personale. Tramite questo può vedere lo stato, modificare o annullare la
 richiesta fino al termine. Cambiare le fasce orarie di una richiesta
 confermata libera i suoi bersagli e la richiesta attende una nuova conferma;
@@ -65,9 +69,13 @@ aggiungere tiratori la lascia confermata.
 
 ## Confermare le richieste {#confirm}
 
-Ogni admin con un’e-mail riceve un messaggio per ogni richiesta nuova,
-modificata o annullata. Le richieste compaiono in cima a **Prenotazioni**;
-la barra laterale indica quante sono in attesa.
+Ogni admin con un’e-mail riceve una mail per ogni richiesta nuova,
+modificata o annullata. Le richieste sono elencate in alto in
+**Prenotazioni**, prima quelle aperte e per ogni stato nell’ordine di
+arrivo; la barra laterale mostra quante sono in attesa. Ogni richiesta
+mostra al secondo quando è stata ricevuta e, se aperta, anche quando la
+società l’ha modificata l’ultima volta. Se due società vogliono gli stessi
+bersagli, la prima può così ottenerli.
 
 ![Richieste di prenotazione sulla pagina delle
 prenotazioni](../images/screenshots/booking-requests.png){ .screenshot }
