@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.26.0] - 2026-11-01
+
 ### Changed
 - Online booking: the booking page explains the process in three steps, chooses lanes with −/+ buttons, folds long events by day and keeps the choice and the send button at the bottom of the screen; the configuration shows whether the booking is open and every slot (by @HB9HIL)
 - Online booking: requests show when they were received (and changed) and are listed first come, first served (by @HB9HIL)
