@@ -73,7 +73,7 @@ test.describe("online booking", () => {
     const page = await browser.newPage({ baseURL });
     await page.goto(ids.link);
     await expect(c(page, "h1", "Lupi Cup")).toBeVisible();
-    await page.getByLabel("Lanes on 10m at 08:00").fill("2");
+    await page.getByLabel("Lanes on 10m at 08:00", { exact: true }).fill("2");
     await c(page, "label", "Club").locator("input").fill(guest);
     await c(page, "label", "Contact person").locator("input").fill("Gina Gast");
     await c(page, "label", "Email").locator("input").fill(email);

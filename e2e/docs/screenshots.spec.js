@@ -285,7 +285,7 @@ test.describe("documentation screenshots", () => {
     await shot(page, "booking-requests");
     await page.context().clearCookies();
     await visit(page, `/b/${code}`);
-    await page.getByLabel("Lanes on Air pistol 10m at 09:00").fill("2");
+    await page.getByLabel("Lanes on Air pistol 10m at 09:00", { exact: true }).fill("2");
     await c(page, "label", "Club").locator("input").fill("SV Riverbank");
     await c(page, "label", "Contact person").locator("input").fill("Rosa Placeholder");
     await c(page, "label", "Email").locator("input").fill("rosa@example.org");
