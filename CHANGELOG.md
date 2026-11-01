@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.25.0] - 2026-11-01
+
 ### Added
 - Online booking: an opening day; before it the booking link only says from when requests are accepted (by @HB9HIL)
 - Added link button to open the booking link in a new tab (by @HB9HIL)
