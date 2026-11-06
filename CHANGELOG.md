@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- CI runs always finish; a newer push no longer cancels the running one, and only the newest commit moves `:bleeding_edge` (by @HB9HIL)
+
 ## [0.26.1] - 2026-11-06
 
 ### Added

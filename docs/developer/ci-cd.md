@@ -25,6 +25,6 @@ The image version is `git describe --tags --always` (e.g. `v0.3.0` or `v0.3.0-2-
 
 - `docker-image` does not compile anything: it packs the binary from the job `binary`, the same one `e2e` tested, into a distroless image (`docker/ci.Dockerfile`). Master and tag runs of one commit reuse the image of the SHA tag, so both serve the same SPA build. `docker/Dockerfile` builds everything from source (`docker build -f docker/Dockerfile .`).
 - Go and npm downloads are cached by `actions/setup-go` and `actions/setup-node`.
-- A newer push to the same branch cancels the running workflow; tag runs always finish.
+- Every run finishes; a newer push does not cancel the running one. Only the run of the branch's newest commit moves `:bleeding_edge`.
 - CodeQL runs as GitHub's *default setup* (no workflow file) for Go, JavaScript/TypeScript and the workflows; findings are under *Security → Code scanning*. Dependabot security alerts are on.
 - Dependabot (`.github/dependabot.yml`) proposes weekly updates for Go modules, both npm projects, the workflow actions and the Docker images; the pinned major versions (Go 1.27, Node 26, PostgreSQL 18, SvelteKit 2, TypeScript 6) are ignore rules there.
