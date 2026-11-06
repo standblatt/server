@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.26.1] - 2026-11-06
+
 ### Added
 
 - Registering a shooter for a club they are not in yet; the club is added to the shooter (by @HB9HIL)
