@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 21:14+0100\n"
+"POT-Creation-Date: 2026-11-06 11:02+0100\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1279,6 +1279,10 @@ msgstr "Un modèle n'accepte pas d'inscriptions"
 #: internal/web/registrations.go
 msgid "Choose the range of the lane"
 msgstr "Choisissez le stand de la cible"
+
+#: internal/web/registrations.go
+msgid "Give either a club or a club name"
+msgstr "Indiquez soit une société, soit un nom de société"
 
 #: internal/web/registrations.go
 #, go-format

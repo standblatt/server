@@ -71,6 +71,7 @@ type NewRegistration struct {
 	EventID     int64
 	ShooterID   int64
 	ClubID      *int64
+	ClubName    string
 	AgeCategory domain.AgeCategory
 	RangeID     *int64
 	Lane        *int
@@ -232,11 +233,24 @@ func nilIfEmpty(s []int) []int {
 	return s
 }
 
-// CreateRegistration inserts a registration with its entries. ErrLaneTaken or ErrProgrammeTaken when another
+// CreateRegistration inserts a registration with its entries. A ClubName is created if needed and added to the
+// shooter's clubs in the same transaction and replaces ClubID. ErrLaneTaken or ErrProgrammeTaken when another
 // registration holds the lane or the programme.
 func (s *Store) CreateRegistration(ctx context.Context, tenantID int64, in NewRegistration) (int64, error) {
 	var id int64
 	err := pgx.BeginFunc(ctx, s.pool, func(tx pgx.Tx) error {
+		if in.ClubName != "" {
+			clubID, _, err := ensureClub(ctx, tx, tenantID, in.ClubName)
+			if err != nil {
+				return err
+			}
+			if _, err := tx.Exec(ctx, `INSERT INTO shooter_clubs (tenant_id, shooter_id, club_id)
+				SELECT $1, sh.id, $3 FROM shooters sh WHERE sh.tenant_id = $1 AND sh.id = $2
+				ON CONFLICT DO NOTHING`, tenantID, in.ShooterID, clubID); err != nil {
+				return err
+			}
+			in.ClubID = &clubID
+		}
 		status := statusFor(in.Lane)
 		err := tx.QueryRow(ctx, `INSERT INTO registrations (tenant_id, event_id, shooter_id, club_id, age_category, range_id, lane, status, started_at)
 			VALUES ($1, $2, $3, $4, $5, $6, $7, $8::registration_status, CASE WHEN $8::registration_status = 'shooting' THEN now() END) RETURNING id`,

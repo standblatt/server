@@ -111,8 +111,12 @@
 	const laneLabel = (reg: { rangeId?: number; lane?: number }) => (reg.lane ? withRange(event.data?.ranges ?? [], reg.rangeId, $t`Lane ${reg.lane}`) : '');
 
 	/** Registers the shooter, prints the chosen documents and closes the dialog. */
-	async function register(r: { clubId?: number; rangeId?: number; lane?: number; programmes: ProgrammeChoice[] }) {
+	async function register(r: { clubId?: number; clubName?: string; rangeId?: number; lane?: number; programmes: ProgrammeChoice[] }) {
 		const reg = await call(api.POST('/api/tenants/{tenantId}/events/{eventId}/registrations', { params: { path: { tenantId, eventId } }, body: { shooterId: shooterId!, ...r } }));
+		if (r.clubName) {
+			await queryClient.invalidateQueries({ queryKey: keys.clubs(tenantId) });
+			await queryClient.invalidateQueries({ queryKey: keys.shooters(tenantId) });
+		}
 		if (laneSheet && printLaneSheet) await printDocument(tenantId, { document: 'lane_sheet', registrationId: reg.id });
 		if (controlStrip && printControlStrip) await printDocument(tenantId, { document: 'control_strip', registrationId: reg.id });
 		await refresh();
@@ -216,6 +220,7 @@
 					programmes={programmes.data!}
 					lanes={lanes.data!}
 					initialClubId={clubId}
+					{tenantId}
 					{used}
 					submitLabel={$t`Register`}
 					onsubmit={register}

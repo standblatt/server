@@ -5,6 +5,15 @@ auf eine Scheibe. Öffne sie über die Suche im Dashboard (**… anmelden**).
 
 ![Anmeldedialog](../images/screenshots/registration.png){ .screenshot }
 
+## Verein {#club}
+
+Die Anmeldung zählt für einen der Vereine des Schützen oder für keinen. Für
+einen Verein, in dem der Schütze noch nicht ist (ein Gast, ein
+Vereinswechsel), wählst du **Anderer Verein…** und gibst den Namen ein:
+Bestehende Vereine werden vorgeschlagen, ein neuer wird angelegt, nachdem du
+ihn bestätigt hast. Der Verein wird zu den Vereinen des Schützen hinzugefügt
+und steht beim nächsten Mal in der Liste.
+
 ## Scheibe
 
 Wähle eine freie Scheibe im Raster oder lass sie leer: Der Schütze wartet

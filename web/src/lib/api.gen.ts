@@ -3841,6 +3841,8 @@ export interface components {
              * @description One of the shooter's clubs
              */
             clubId?: number;
+            /** @description Club by name instead of clubId, created if needed and added to the shooter's clubs */
+            clubName?: string;
             /** Format: int64 */
             lane?: number;
             programmes: components["schemas"]["ProgrammeChoice"][];

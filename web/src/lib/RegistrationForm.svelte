@@ -11,6 +11,7 @@
 	import { Checkbox } from './components/ui/checkbox';
 	import * as Dialog from './components/ui/dialog';
 	import * as NativeSelect from './components/ui/native-select';
+	import ClubPicker from './ClubPicker.svelte';
 	import { ask } from './confirm.svelte';
 	import { formatDate, programmeTitle, withRange } from './format';
 
@@ -21,6 +22,7 @@
 		lanes,
 		initial,
 		initialClubId,
+		tenantId,
 		used,
 		readonly = false,
 		lanesOnly = false,
@@ -34,13 +36,15 @@
 		lanes: RangeLanes[];
 		initial?: Registration;
 		initialClubId?: number;
+		/** Offers a club the shooter is not in yet (new registrations). */
+		tenantId?: number;
 		/** Attempts the shooter already has per programme in other registrations of the event. */
 		used?: Map<number, number>;
 		readonly?: boolean;
 		/** Only the lane may change (ammunition desk): programmes stay as they are. */
 		lanesOnly?: boolean;
 		submitLabel: string;
-		onsubmit: (r: { clubId?: number; rangeId?: number; lane?: number; programmes: ProgrammeChoice[] }) => Promise<void>;
+		onsubmit: (r: { clubId?: number; clubName?: string; rangeId?: number; lane?: number; programmes: ProgrammeChoice[] }) => Promise<void>;
 		footer?: Snippet;
 	} = $props();
 
@@ -48,6 +52,8 @@
 	const kept = untrack(() => new Set(initial?.entries.map((e) => e.programmeId) ?? []));
 
 	let clubId = $state(untrack(() => initial?.clubId ?? initialClubId ?? shooter.clubs?.[0]?.id ?? 0));
+	let clubName = $state('');
+	let clubReady = $state(true);
 	let lane = $state(untrack(() => initial?.lane ?? 0));
 	let rangeId = $state(untrack(() => initial?.rangeId ?? (lanes.length === 1 ? lanes[0].rangeId : 0)));
 	let selected = $state<Record<number, boolean>>(untrack(() => Object.fromEntries((initial?.entries ?? []).map((e) => [e.programmeId, true]))));
@@ -156,13 +162,15 @@
 		busy = true;
 		error = '';
 		try {
+			if (clubId === -1 && (!clubName.trim() || !clubReady)) throw new Error($t`Pick an existing club or confirm the new one.`);
 			const chosen = programmes.filter((p) => selected[p.id]);
 			for (const p of chosen) {
 				const target = p.combinableWithId ? byId(p.combinableWithId) : undefined;
 				if (combine[p.id] && target && !selected[target.id]) selected[target.id] = true;
 			}
 			await onsubmit({
-				clubId: clubId || undefined,
+				clubId: clubId > 0 ? clubId : undefined,
+				clubName: clubId === -1 ? clubName.trim() : undefined,
 				rangeId: lane ? rangeId || undefined : undefined,
 				lane: lane || undefined,
 				programmes: programmes
@@ -194,7 +202,12 @@
 						<NativeSelect.Root class="w-full" bind:value={clubId}>
 							<NativeSelect.Option value={0}>{$t`none`}</NativeSelect.Option>
 							{#each shooter.clubs as c (c.id)}<NativeSelect.Option value={c.id}>{c.name}</NativeSelect.Option>{/each}
+							{#if tenantId}<NativeSelect.Option value={-1}>{$t`Other club…`}</NativeSelect.Option>{/if}
 						</NativeSelect.Root>
+						{#if clubId === -1 && tenantId}
+							<ClubPicker {tenantId} id="registration-club" bind:value={clubName} bind:ready={clubReady} required />
+							<span class="text-xs text-muted-foreground">{$t`The club is added to the shooter's clubs.`}</span>
+						{/if}
 					</label>
 				{/if}
 

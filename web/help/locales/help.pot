@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-11-01 20:21+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-11-06 10:04+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
 #: ../src/help/en/explanation/closing.md:1
@@ -5688,7 +5688,7 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/help/en/user-guide/printing.md:1
-#: ../src/help/en/user-guide/registrations.md:26
+#: ../src/help/en/user-guide/registrations.md:30
 #, markdown-text, no-wrap
 msgid "Printing"
 msgstr ""
@@ -5803,7 +5803,7 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/help/en/user-guide/programmes.md:1
-#: ../src/help/en/user-guide/registrations.md:14
+#: ../src/help/en/user-guide/registrations.md:18
 #, markdown-text, no-wrap
 msgid "Programmes"
 msgstr ""
@@ -6189,77 +6189,89 @@ msgstr ""
 #. type: Title ##
 #: ../src/help/en/user-guide/registrations.md:7
 #, markdown-text, no-wrap
-msgid "Lane"
+msgid "Club {#club}"
 msgstr ""
 
 #. type: Plain text
 #: ../src/help/en/user-guide/registrations.md:10
 #, markdown-text
+msgid "The registration counts for one of the shooter's clubs, or for none. For a club the shooter is not in yet (a guest, a change of club), pick **Other club…** and type its name: an existing club is suggested, a new one is created after you confirm it. The club is added to the shooter's clubs, so it appears in the list the next time."
+msgstr ""
+
+#. type: Title ##
+#: ../src/help/en/user-guide/registrations.md:11
+#, markdown-text, no-wrap
+msgid "Lane"
+msgstr ""
+
+#. type: Plain text
+#: ../src/help/en/user-guide/registrations.md:14
+#, markdown-text
 msgid "Pick a free lane in the grid, or leave it empty: the shooter then waits until you assign a lane by editing the registration."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/registrations.md:13
+#: ../src/help/en/user-guide/registrations.md:17
 #, markdown-text
 msgid "Occupied and out-of-service lanes cannot be picked."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/registrations.md:13
+#: ../src/help/en/user-guide/registrations.md:17
 #, markdown-text
 msgid "A reserved lane asks for confirmation before it is used."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/registrations.md:17
+#: ../src/help/en/user-guide/registrations.md:21
 #, markdown-text
 msgid "The programmes of the event with their price for the shooter's age category. Programmes without a price for that category are greyed out (*not for this age category*)."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/registrations.md:21
+#: ../src/help/en/user-guide/registrations.md:25
 #, markdown-text
 msgid "**Variants** (same programme name) appear as a choice of one."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/registrations.md:21
+#: ../src/help/en/user-guide/registrations.md:25
 #, markdown-text
 msgid "A **combinable** programme offers *take N series from …*: tick it and pick exactly N series of the other programme. The other programme is added automatically if it is not chosen yet."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/registrations.md:21
+#: ../src/help/en/user-guide/registrations.md:25
 #, markdown-text
 msgid "The **total** at the bottom adds up the prices."
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/registrations.md:22
+#: ../src/help/en/user-guide/registrations.md:26
 #, markdown-text, no-wrap
 msgid "Shooter already registered"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/registrations.md:25
+#: ../src/help/en/user-guide/registrations.md:29
 #, markdown-text
 msgid "If the shooter is or was registered at this event before, a notice lists those registrations with their programmes and a link to open them. Programmes already booked are locked (*already registered*, or *no attempts left* for programmes with several [attempts](programmes.md#attempts)); a shooter may still shoot another variant in a separate registration."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/registrations.md:29
+#: ../src/help/en/user-guide/registrations.md:33
 #, markdown-text, no-wrap
 msgid "*Print lane sheet* and *Print control strip* are ticked by default (they only appear while the modules *Lane sheet* and *Control strip* are on, see [Modules](events.md#modules)): the documents print on the range's printers right after registering, or open as PDF if no printer is set up (see [Printing](printing.md)). [Print forms](print-forms.md#certificates) of the club that print a registration, e.g. a participant card, add a button each.\n"
 msgstr ""
 
 #. type: Title ##
-#: ../src/help/en/user-guide/registrations.md:30
+#: ../src/help/en/user-guide/registrations.md:34
 #, markdown-text, no-wrap
 msgid "Editing and deleting"
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/registrations.md:32
+#: ../src/help/en/user-guide/registrations.md:36
 #, markdown-text
 msgid "Open a registration from the dashboard (**Edit**) or from the results (*Edit registration*) to change the lane or the programmes. Programmes that already have results cannot be removed; changing the picked series of a combination copies the new series. **Delete** removes the registration with its results after a confirmation."
 msgstr ""

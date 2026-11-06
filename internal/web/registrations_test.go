@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"slices"
 	"strings"
 	"testing"
 	"time"
@@ -81,6 +82,8 @@ func TestRegistrations(t *testing.T) {
 		"category not allowed":  {web.RegistrationInput{ShooterID: f.youth, Programmes: []domain.ProgrammeChoice{{ProgrammeID: f.section}}}, 422, "not open to the age category u21"},
 		"programme twice":       {web.RegistrationInput{ShooterID: f.shooter, Programmes: []domain.ProgrammeChoice{{ProgrammeID: f.main}}}, 409, "already registered"},
 		"club of someone else":  {web.RegistrationInput{ShooterID: f.youth, ClubID: &f.club, Programmes: []domain.ProgrammeChoice{{ProgrammeID: f.junior}}}, 422, "not a member"},
+		"club and club name":    {web.RegistrationInput{ShooterID: f.shooter, ClubID: &f.club, ClubName: "Guests", Programmes: []domain.ProgrammeChoice{{ProgrammeID: f.junior}}}, 422, "either a club or a club name"},
+		"new club, lane taken":  {web.RegistrationInput{ShooterID: f.youth, ClubName: "Ghosts", Lane: lane(2), Programmes: []domain.ProgrammeChoice{{ProgrammeID: f.junior}}}, 409, "Lane 2 is occupied"},
 		"combination too short": {web.RegistrationInput{ShooterID: f.youth, Programmes: []domain.ProgrammeChoice{{ProgrammeID: f.main}, {ProgrammeID: f.section, CombinedSeries: []int{1}}}}, 422, "needs exactly 2 series"},
 	} {
 		code, b := e.do(staff, "POST", evPath+"/registrations", c.body)
@@ -89,12 +92,18 @@ func TestRegistrations(t *testing.T) {
 		}
 	}
 
-	code, b = e.do(staff, "POST", evPath+"/registrations", web.RegistrationInput{ShooterID: f.youth, Programmes: []domain.ProgrammeChoice{{ProgrammeID: f.junior}}})
-	expect(t, "register youth without lane", code, 201, b)
+	code, b = e.do(staff, "POST", evPath+"/registrations", web.RegistrationInput{ShooterID: f.youth, ClubName: " home ", Programmes: []domain.ProgrammeChoice{{ProgrammeID: f.junior}}})
+	expect(t, "register youth without lane for an existing club", code, 201, b)
 	var youth store.Registration
 	json.Unmarshal(b, &youth)
-	if youth.Status != "registered" || youth.AgeCategory != domain.U21 || youth.Lane != nil {
+	if youth.Status != "registered" || youth.AgeCategory != domain.U21 || youth.Lane != nil || youth.ClubName != "Home" {
 		t.Fatalf("youth registration: %+v", youth)
+	}
+	if sh, _ := e.st.GetShooter(context.Background(), f.tenant, f.youth); !slices.ContainsFunc(sh.Clubs, func(c store.ClubRef) bool { return c.ID == f.club }) {
+		t.Fatalf("club not added to the shooter: %+v", sh.Clubs)
+	}
+	if clubs, _ := e.st.ListClubs(context.Background(), f.tenant); slices.ContainsFunc(clubs, func(c store.Club) bool { return c.Name == "Ghosts" }) {
+		t.Fatal("refused registration left its new club")
 	}
 
 	code, b = e.do(staff, "PUT", regPath, web.RegistrationUpdate{Lane: lane(3), Programmes: []domain.ProgrammeChoice{{ProgrammeID: f.main}}})

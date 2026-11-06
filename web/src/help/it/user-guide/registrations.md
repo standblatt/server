@@ -6,6 +6,15 @@ tira. Aprila dalla ricerca nella dashboard (**Iscrivi …**).
 ![Finestra d’iscrizione](../images/screenshots/registration.png){
 .screenshot }
 
+## Società {#club}
+
+L’iscrizione vale per una delle società del tiratore o per nessuna. Per una
+società di cui il tiratore non fa ancora parte (un ospite, un cambio di
+società), scegliere **Altra società…** e digitarne il nome: una società
+esistente viene proposta, una nuova viene creata dopo la conferma. La
+società viene aggiunta alle società del tiratore e compare nell’elenco la
+volta successiva.
+
 ## Bersaglio
 
 Scegli un bersaglio libero nella griglia o lascia vuoto: il tiratore aspetta

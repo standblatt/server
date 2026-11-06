@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Registering a shooter for a club they are not in yet; the club is added to the shooter (by @HB9HIL)
+
 ### Changed
 
 - `.env.example` sets `STANDBLATT_ENVIRONMENT=development`, so local runs show the environment banner (by @HB9HIL)

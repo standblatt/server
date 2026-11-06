@@ -4,6 +4,10 @@ A registration puts a shooter on a lane with the programmes they shoot. Open it 
 
 ![Registration dialog](../images/screenshots/registration.png){ .screenshot }
 
+## Club {#club}
+
+The registration counts for one of the shooter's clubs, or for none. For a club the shooter is not in yet (a guest, a change of club), pick **Other club…** and type its name: an existing club is suggested, a new one is created after you confirm it. The club is added to the shooter's clubs, so it appears in the list the next time.
+
 ## Lane
 
 Pick a free lane in the grid, or leave it empty: the shooter then waits until you assign a lane by editing the registration.

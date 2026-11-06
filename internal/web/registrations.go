@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"slices"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/coder/websocket"
@@ -29,6 +30,7 @@ type RegistrationPath struct {
 type RegistrationInput struct {
 	ShooterID  int64                    `json:"shooterId"`
 	ClubID     *int64                   `json:"clubId,omitempty" required:"false" doc:"One of the shooter's clubs"`
+	ClubName   string                   `json:"clubName,omitempty" required:"false" doc:"Club by name instead of clubId, created if needed and added to the shooter's clubs"`
 	RangeID    *int64                   `json:"rangeId,omitempty" required:"false" doc:"Range of the lane; may be left out when the event has one range"`
 	Lane       *int                     `json:"lane,omitempty" required:"false"`
 	Programmes []domain.ProgrammeChoice `json:"programmes"`
@@ -93,8 +95,8 @@ func checkLane(rangeID *int64, lane *int, rules store.EventRules) (*int64, error
 	return rangeID, nil
 }
 
-// register checks and stores a new registration: the club must be one of the shooter's, the age category follows
-// the event date, the lane must exist and be free and the programmes must suit the shooter and the lane's range.
+// register checks and stores a new registration: the club must be one of the shooter's, or a club name that is
+// created if needed and added to the shooter's clubs, the age category follows the event date, the lane must exist and be free and the programmes must suit the shooter and the lane's range.
 func (s *Server) register(ctx context.Context, tenantID, eventID int64, in RegistrationInput) (int64, error) {
 	rules, err := s.Store.LoadEventRules(ctx, tenantID, eventID)
 	if err != nil {
@@ -110,6 +112,10 @@ func (s *Server) register(ctx context.Context, tenantID, eventID int64, in Regis
 	if in.ClubID != nil && !slices.ContainsFunc(sh.Clubs, func(c store.ClubRef) bool { return c.ID == *in.ClubID }) {
 		return 0, invalid("The shooter is not a member of this club")
 	}
+	clubName := strings.TrimSpace(in.ClubName)
+	if in.ClubID != nil && clubName != "" {
+		return 0, invalid("Give either a club or a club name")
+	}
 	category := domain.AgeCategoryFor(sh.Birthday, rules.StartsOn)
 	rangeID, err := checkLane(in.RangeID, in.Lane, rules)
 	if err != nil {
@@ -119,7 +125,7 @@ func (s *Server) register(ctx context.Context, tenantID, eventID int64, in Regis
 		return 0, invalidList(errs)
 	}
 	id, err := s.Store.CreateRegistration(ctx, tenantID, store.NewRegistration{
-		EventID: eventID, ShooterID: sh.ID, ClubID: in.ClubID, AgeCategory: category,
+		EventID: eventID, ShooterID: sh.ID, ClubID: in.ClubID, ClubName: clubName, AgeCategory: category,
 		RangeID: rangeID, Lane: in.Lane, Programmes: in.Programmes,
 	})
 	if err != nil {

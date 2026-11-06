@@ -3,6 +3,7 @@ package store_test
 import (
 	"context"
 	"errors"
+	"slices"
 	"testing"
 	"time"
 
@@ -118,6 +119,18 @@ func TestTenantIsolation(t *testing.T) {
 		t.Fatalf("ConfirmBooking across tenants: %v", err)
 	}
 	clubB, _ := st.EnsureClub(ctx, b, "Club of B")
+	shooterB, err := st.CreateShooter(ctx, b, store.ShooterInput{Firstname: "Bea", Lastname: "Other"}, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := st.CreateRegistration(ctx, a, store.NewRegistration{EventID: evA, ShooterID: shooterB, ClubName: "Guest club", AgeCategory: domain.Elite}); err == nil {
+		t.Fatal("CreateRegistration with a shooter of another tenant")
+	}
+	for _, tenant := range []int64{a, b} {
+		if clubs, _ := st.ListClubs(ctx, tenant); slices.ContainsFunc(clubs, func(c store.Club) bool { return c.Name == "Guest club" }) {
+			t.Fatalf("failed registration left the club in tenant %d", tenant)
+		}
+	}
 	if err := st.ConfirmBooking(ctx, a, reqA, &clubB); !errors.Is(err, store.ErrNotFound) {
 		t.Fatalf("ConfirmBooking with a club of another tenant: %v", err)
 	}

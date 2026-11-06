@@ -6,6 +6,15 @@ tire. Ouvre-la depuis la recherche du tableau de bord (**Inscrire …**).
 ![Fenêtre d’inscription](../images/screenshots/registration.png){
 .screenshot }
 
+## Société {#club}
+
+L’inscription compte pour l’une des sociétés du tireur, ou pour aucune. Pour
+une société dont le tireur ne fait pas encore partie (un invité, un
+changement de société), choisissez **Autre société…** et saisissez son nom :
+une société existante est proposée, une nouvelle est créée après
+confirmation. La société est ajoutée aux sociétés du tireur et figure dans
+la liste la prochaine fois.
+
 ## Cible
 
 Choisis une cible libre dans la grille ou laisse vide : le tireur attend

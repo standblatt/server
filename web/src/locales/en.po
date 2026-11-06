@@ -3731,6 +3731,10 @@ msgstr "Options"
 msgid "Organizer"
 msgstr "Organizer"
 
+#: src/lib/RegistrationForm.svelte
+msgid "Other club…"
+msgstr "Other club…"
+
 #: src/lib/ClubSelect.svelte
 msgid "Other clubs"
 msgstr "Other clubs"
@@ -3844,6 +3848,7 @@ msgid "Phone"
 msgstr "Phone"
 
 #: src/lib/NewShooterDialog.svelte
+#: src/lib/RegistrationForm.svelte
 #: src/lib/ShooterSheet.svelte
 msgid "Pick an existing club or confirm the new one."
 msgstr "Pick an existing club or confirm the new one."
@@ -5380,6 +5385,10 @@ msgstr "The chosen programmes are shot on {0}."
 #: src/lib/modules/reservations/booking/BookingRequests.svelte
 msgid "The club gets a mail with your reason. Lanes already reserved for it are free again."
 msgstr "The club gets a mail with your reason. Lanes already reserved for it are free again."
+
+#: src/lib/RegistrationForm.svelte
+msgid "The club is added to the shooter's clubs."
+msgstr "The club is added to the shooter's clubs."
 
 #: src/lib/EventDesk.svelte
 msgid "The code belongs to another event"

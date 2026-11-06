@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-11-01 20:21+0000\n"
+"POT-Creation-Date: 2026-11-06 10:04+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -9263,7 +9263,7 @@ msgstr "**Esporta** scarica un modello con le sue immagini come file e **Importa
 
 #. type: Title ##
 #: ../src/help/en/user-guide/printing.md:1
-#: ../src/help/en/user-guide/registrations.md:26
+#: ../src/help/en/user-guide/registrations.md:30
 #, no-wrap
 msgid "Printing"
 msgstr "Stampa"
@@ -9448,7 +9448,7 @@ msgstr "**Collegare un agente di stampa** (aperto dall’app con un codice come 
 
 #. type: Title ##
 #: ../src/help/en/user-guide/programmes.md:1
-#: ../src/help/en/user-guide/registrations.md:14
+#: ../src/help/en/user-guide/registrations.md:18
 #, no-wrap
 msgid "Programmes"
 msgstr "Programmi"
@@ -10052,11 +10052,27 @@ msgstr ""
 #. type: Title ##
 #: ../src/help/en/user-guide/registrations.md:7
 #, no-wrap
+msgid "Club {#club}"
+msgstr "Società {#club}"
+
+#. type: Plain text
+#: ../src/help/en/user-guide/registrations.md:10
+msgid ""
+"The registration counts for one of the shooter's clubs, or for none. For a "
+"club the shooter is not in yet (a guest, a change of club), pick **Other "
+"club…** and type its name: an existing club is suggested, a new one is "
+"created after you confirm it. The club is added to the shooter's clubs, so "
+"it appears in the list the next time."
+msgstr "L’iscrizione vale per una delle società del tiratore o per nessuna. Per una società di cui il tiratore non fa ancora parte (un ospite, un cambio di società), scegliere **Altra società…** e digitarne il nome: una società esistente viene proposta, una nuova viene creata dopo la conferma. La società viene aggiunta alle società del tiratore e compare nell’elenco la volta successiva."
+
+#. type: Title ##
+#: ../src/help/en/user-guide/registrations.md:11
+#, no-wrap
 msgid "Lane"
 msgstr "Bersaglio"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/registrations.md:10
+#: ../src/help/en/user-guide/registrations.md:14
 msgid ""
 "Pick a free lane in the grid, or leave it empty: the shooter then waits "
 "until you assign a lane by editing the registration."
@@ -10065,17 +10081,17 @@ msgstr ""
 "allora che tu gli assegni un bersaglio modificando l’iscrizione."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/registrations.md:13
+#: ../src/help/en/user-guide/registrations.md:17
 msgid "Occupied and out-of-service lanes cannot be picked."
 msgstr "I bersagli occupati e quelli fuori servizio non si possono scegliere."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/registrations.md:13
+#: ../src/help/en/user-guide/registrations.md:17
 msgid "A reserved lane asks for confirmation before it is used."
 msgstr "Un bersaglio prenotato chiede una conferma prima di essere usato."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/registrations.md:17
+#: ../src/help/en/user-guide/registrations.md:21
 msgid ""
 "The programmes of the event with their price for the shooter's age category. "
 "Programmes without a price for that category are greyed out (*not for this "
@@ -10086,13 +10102,13 @@ msgstr ""
 "(*non per questa categoria d’età*)."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/registrations.md:21
+#: ../src/help/en/user-guide/registrations.md:25
 msgid "**Variants** (same programme name) appear as a choice of one."
 msgstr ""
 "Le **varianti** (stesso nome di programma) compaiono come scelta singola."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/registrations.md:21
+#: ../src/help/en/user-guide/registrations.md:25
 msgid ""
 "A **combinable** programme offers *take N series from …*: tick it and pick "
 "exactly N series of the other programme. The other programme is added "
@@ -10103,18 +10119,18 @@ msgstr ""
 "automaticamente se non è ancora scelto."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/registrations.md:21
+#: ../src/help/en/user-guide/registrations.md:25
 msgid "The **total** at the bottom adds up the prices."
 msgstr "Il **totale** in basso somma i prezzi."
 
 #. type: Title ##
-#: ../src/help/en/user-guide/registrations.md:22
+#: ../src/help/en/user-guide/registrations.md:26
 #, no-wrap
 msgid "Shooter already registered"
 msgstr "Tiratore già iscritto"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/registrations.md:25
+#: ../src/help/en/user-guide/registrations.md:29
 msgid ""
 "If the shooter is or was registered at this event before, a notice lists "
 "those registrations with their programmes and a link to open them. "
@@ -10129,19 +10145,19 @@ msgstr ""
 "tiratore può comunque tirare un’altra variante in un’iscrizione separata."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/registrations.md:29
+#: ../src/help/en/user-guide/registrations.md:33
 #, no-wrap
 msgid "*Print lane sheet* and *Print control strip* are ticked by default (they only appear while the modules *Lane sheet* and *Control strip* are on, see [Modules](events.md#modules)): the documents print on the range's printers right after registering, or open as PDF if no printer is set up (see [Printing](printing.md)). [Print forms](print-forms.md#certificates) of the club that print a registration, e.g. a participant card, add a button each.\n"
 msgstr "*Stampa foglio di stand* e *Stampa striscia di controllo* sono spuntati per default (compaiono solo finché i moduli *Foglio di stand* e *Striscia di controllo* sono attivi, vedi [Moduli](events.md#modules)): i documenti vengono stampati sulle stampanti dello stand subito dopo l’iscrizione, o si aprono come PDF se non è configurata alcuna stampante (vedi [Stampa](printing.md)). I [modelli di stampa](print-forms.md#certificates) della società che stampano un’iscrizione, p. es. una carta di partecipazione, aggiungono ciascuno un pulsante.\n"
 
 #. type: Title ##
-#: ../src/help/en/user-guide/registrations.md:30
+#: ../src/help/en/user-guide/registrations.md:34
 #, no-wrap
 msgid "Editing and deleting"
 msgstr "Modificare ed eliminare"
 
 #. type: Plain text
-#: ../src/help/en/user-guide/registrations.md:32
+#: ../src/help/en/user-guide/registrations.md:36
 msgid ""
 "Open a registration from the dashboard (**Edit**) or from the results (*Edit "
 "registration*) to change the lane or the programmes. Programmes that already "

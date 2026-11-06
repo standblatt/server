@@ -34,6 +34,7 @@ test.describe("registration and dashboard", () => {
       licenseNumber: "200001", firstname: "Anna", lastname: "Adult", birthday: "1990-01-01", clubNames: ["Home"],
     })).id;
     ids.yves = (await api(page, "POST", `${base}/shooters`, { firstname: "Yves", lastname: "Young", birthday: "2007-03-03" })).id;
+    await api(page, "POST", `${base}/shooters`, { firstname: "Gina", lastname: "Guest", birthday: "1985-05-05", clubNames: ["Home"] });
     await page.close();
   });
 
@@ -112,5 +113,23 @@ test.describe("registration and dashboard", () => {
     await expect(main.locator("[role=checkbox]")).toBeDisabled();
     await c(previous, "button", "Open registration").click();
     await expect(page).toHaveURL((u) => /^\?registration=\d+$/.test(u.search));
+  });
+
+  test("registers a shooter for a club they are not in yet", async ({ page }) => {
+    await login(page, admin);
+    await page.goto(`/t/${ids.tenant}/events/${ids.event}`);
+    await page.locator("input[aria-label='Search shooter']").fill("guest");
+    await c(page, "button", "Register for Home").click();
+    const dialog = page.getByRole("dialog");
+    await dialog.locator("select").first().selectOption({ label: "Other club…" });
+    await dialog.getByPlaceholder("Club").fill("Visitors");
+    await c(dialog, "button", "Create new club “Visitors”").click();
+    await c(dialog, "label", "Main").locator("[role=checkbox]").click();
+    await c(dialog, "button", /^Register$/).click();
+
+    await expect(c(page, "[data-sonner-toast]", "Gina Guest registered")).toBeVisible();
+    await expect(c(page, "tr", "Guest Gina")).toContainText("Visitors");
+    await page.locator("input[aria-label='Search shooter']").fill("guest");
+    await expect(c(page, "button", "Register for Visitors")).toBeVisible();
   });
 });
