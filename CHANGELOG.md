@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- `make dev` no longer ends with "Error 130" when stopped with Ctrl-C (by @HB9HIL)
+
 ## [0.26.0] - 2026-11-01
 
 ### Changed

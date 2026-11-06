@@ -26,7 +26,7 @@ dev: .env web/node_modules internal/webui/dist/index.html
 	go build -ldflags="-X main.version=$(VERSION)" -o bin/standblatt-dev ./cmd/standblatt
 	@$(COMPOSE) up -d --wait db mail
 	@set -a; . ./.env; set +a; ./bin/standblatt-dev & pid=$$!; \
-		trap 'kill $$pid 2>/dev/null; $(COMPOSE) stop db mail' EXIT INT TERM; \
+		trap 'kill $$pid 2>/dev/null; $(COMPOSE) stop db mail' EXIT; trap 'exit 0' INT TERM; \
 		for i in $$(seq 30); do curl -sf -o /dev/null http://localhost:8080/healthz && break; sleep 0.5; done; \
 		$(COMPOSE) exec -T db psql -q -U standblatt -d standblatt < docker/dev-seed.sql >/dev/null; \
 		echo "App: http://localhost:5173  login dev / devpassword, admin panel http://localhost:5173/admin (token in .env), mails http://localhost:8025"; \
