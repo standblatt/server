@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- `.env.example` sets `STANDBLATT_ENVIRONMENT=development`, so local runs show the environment banner (by @HB9HIL)
+
 ### Fixed
 
 - `make dev` no longer ends with "Error 130" when stopped with Ctrl-C (by @HB9HIL)
