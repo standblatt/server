@@ -7,22 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Changed
+## [0.26.2] - 2026-11-09
 
+### Changed
 - CI runs always finish; a newer push no longer cancels the running one, and only the newest commit moves `:bleeding_edge` (by @HB9HIL)
+
+### Chore
+- Deps updated (by @dependabot)
 
 ## [0.26.1] - 2026-11-06
 
 ### Added
-
 - Registering a shooter for a club they are not in yet; the club is added to the shooter (by @HB9HIL)
 
 ### Changed
-
 - `.env.example` sets `STANDBLATT_ENVIRONMENT=development`, so local runs show the environment banner (by @HB9HIL)
 
 ### Fixed
-
 - `make dev` no longer ends with "Error 130" when stopped with Ctrl-C (by @HB9HIL)
 
 ## [0.26.0] - 2026-11-01
