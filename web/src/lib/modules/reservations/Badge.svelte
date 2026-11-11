@@ -12,4 +12,4 @@
 	const pending = $derived((requests.data ?? []).filter((r) => r.status === 'pending').length);
 </script>
 
-{#if pending}<Sidebar.MenuBadge aria-label={$plural(pending, { one: '# open request', other: '# open requests' })}>{pending}</Sidebar.MenuBadge>{/if}
+{#if pending}<Sidebar.MenuBadge class="rounded-full bg-red-600 text-white peer-hover/menu-button:text-white peer-data-active/menu-button:text-white" aria-label={$plural(pending, { one: '# open request', other: '# open requests' })}>{pending}</Sidebar.MenuBadge>{/if}

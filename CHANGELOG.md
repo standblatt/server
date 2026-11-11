@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Confirmed lane bookings show as reserved one slot before they start (by @HB9HIL)
+- The number of open booking requests in the sidebar is a red counter (by @HB9HIL)
 
 ## [0.26.2] - 2026-11-09
 
