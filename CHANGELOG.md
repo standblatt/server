@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Built with Go 1.27.4, which fixes a crash of the HTTP/1 server caused by a race in `MaxBytesReader` (GO-2026-6859) (by @HB9HIL)
+
 ## [0.27.0] - 2026-11-11
 
 ### Added
