@@ -140,7 +140,7 @@
 							<span class="w-28 tabular-nums">{slotTime(it.start, tz)}–{slotTime(it.end, tz)}</span>
 							{#if event.ranges.length > 1}<span>{rangeName(it.rangeId)}</span>{/if}
 							<span class="font-medium">{$plural(it.lanes, { one: '# lane', other: '# lanes' })}</span>
-							{#if it.assigned.length > 0}<span class="text-muted-foreground">{$t`lanes ${formatLanes(it.assigned)}`}</span>{/if}
+							{#if it.assigned.length > 0}<span class="text-muted-foreground">{$t`lanes ${formatLanes(it.assigned)}`}</span>{:else if it.wanted?.length}<span class="text-muted-foreground">{$t`wanted ${formatLanes(it.wanted)}`}</span>{/if}
 						</li>
 					{/each}
 				</ul>

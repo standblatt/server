@@ -133,6 +133,19 @@ func (s *Store) ReservationsBetween(ctx context.Context, tenantID int64, rangeID
 	return pgx.CollectRows(rows, pgx.RowToStructByPos[Reservation])
 }
 
+// PendingWanted lists the items with wanted lanes of the pending requests on the given ranges of a tenant that
+// overlap [from, to), leaving out those of the request exceptRequest (0 = none).
+func (s *Store) PendingWanted(ctx context.Context, tenantID int64, rangeIDs []int64, from, to time.Time, exceptRequest int64) ([]domain.BookingItem, error) {
+	rows, err := s.pool.Query(ctx, `SELECT i.range_id, i.starts_at, i.ends_at, i.lanes, i.wanted FROM booking_items i
+		JOIN booking_requests r ON r.id = i.request_id AND r.tenant_id = i.tenant_id
+		WHERE i.tenant_id = $1 AND i.range_id = ANY($2) AND i.starts_at < $4 AND i.ends_at > $3
+			AND r.status = 'pending' AND r.id <> $5 AND i.wanted <> '{}'`, tenantID, rangeIDs, from, to, exceptRequest)
+	if err != nil {
+		return nil, err
+	}
+	return pgx.CollectRows(rows, pgx.RowToStructByPos[domain.BookingItem])
+}
+
 // CreateBookingRequest stores a new pending request of an event with its items and shooters.
 func (s *Store) CreateBookingRequest(ctx context.Context, tenantID, eventID int64, in BookingRequestInput, manageHash string) (int64, error) {
 	var id int64
@@ -153,8 +166,8 @@ func (s *Store) CreateBookingRequest(ctx context.Context, tenantID, eventID int6
 // insertBookingItems adds the items of a request.
 func insertBookingItems(ctx context.Context, tx pgx.Tx, tenantID, requestID int64, items []domain.BookingItem) error {
 	for _, it := range items {
-		if _, err := tx.Exec(ctx, `INSERT INTO booking_items (tenant_id, request_id, range_id, starts_at, ends_at, lanes)
-			VALUES ($1, $2, $3, $4, $5, $6)`, tenantID, requestID, it.RangeID, it.Start, it.End, it.Lanes); err != nil {
+		if _, err := tx.Exec(ctx, `INSERT INTO booking_items (tenant_id, request_id, range_id, starts_at, ends_at, lanes, wanted)
+			VALUES ($1, $2, $3, $4, $5, $6, coalesce($7::integer[], '{}'))`, tenantID, requestID, it.RangeID, it.Start, it.End, it.Lanes, it.Wanted); err != nil {
 			return err
 		}
 	}
@@ -213,7 +226,7 @@ func syncBookingShooters(ctx context.Context, tx pgx.Tx, tenantID, requestID int
 
 const bookingRequestCols = `r.id, r.event_id, r.club, r.club_id, r.contact, r.email, r.phone, r.note, r.status, r.decline_reason,
 	r.created_at, r.updated_at, r.decided_at,
-	coalesce((SELECT json_agg(json_build_object('rangeId', i.range_id, 'start', i.starts_at, 'end', i.ends_at, 'lanes', i.lanes,
+	coalesce((SELECT json_agg(json_build_object('rangeId', i.range_id, 'start', i.starts_at, 'end', i.ends_at, 'lanes', i.lanes, 'wanted', i.wanted,
 		'assigned', coalesce((SELECT array_agg(l ORDER BY l) FROM reservations rv, unnest(rv.lanes) l WHERE rv.booking_item_id = i.id), '{}'))
 		ORDER BY i.starts_at, i.range_id) FROM booking_items i WHERE i.request_id = r.id), '[]'),
 	coalesce((SELECT json_agg(json_build_object('firstname', b.firstname, 'lastname', b.lastname, 'birthday', b.birthday,
@@ -253,8 +266,9 @@ func (s *Store) BookingRequestByHash(ctx context.Context, hash string) (int64, B
 	return tenantID, r, err
 }
 
-// UpdateBookingRequest replaces contact data, items and shooters of a pending or confirmed request. When the items
-// change, their reservations go with them and a confirmed request is pending again; it returns whether that happened.
+// UpdateBookingRequest replaces contact data, items and shooters of a pending or confirmed request. An item without
+// wanted lanes keeps those of the same slot with as many lanes. When the items change, their reservations go with
+// them and a confirmed request is pending again; it returns whether that happened.
 func (s *Store) UpdateBookingRequest(ctx context.Context, tenantID, id int64, in BookingRequestInput) (bool, error) {
 	reopened := false
 	err := pgx.BeginFunc(ctx, s.pool, func(tx pgx.Tx) error {
@@ -266,12 +280,19 @@ func (s *Store) UpdateBookingRequest(ctx context.Context, tenantID, id int64, in
 			return ErrNotPending
 		}
 		var items []domain.BookingItem
-		rows, err := tx.Query(ctx, `SELECT range_id, starts_at, ends_at, lanes FROM booking_items WHERE tenant_id = $1 AND request_id = $2`, tenantID, id)
+		rows, err := tx.Query(ctx, `SELECT range_id, starts_at, ends_at, lanes, wanted FROM booking_items WHERE tenant_id = $1 AND request_id = $2`, tenantID, id)
 		if err != nil {
 			return err
 		}
 		if items, err = pgx.CollectRows(rows, pgx.RowToStructByPos[domain.BookingItem]); err != nil {
 			return err
+		}
+		for i, it := range in.Items {
+			for _, old := range items {
+				if len(it.Wanted) == 0 && old.RangeID == it.RangeID && old.Start.Equal(it.Start) && old.End.Equal(it.End) && old.Lanes == it.Lanes {
+					in.Items[i].Wanted = old.Wanted
+				}
+			}
 		}
 		if !domain.SameBookingItems(items, in.Items) {
 			if _, err := tx.Exec(ctx, `DELETE FROM booking_items WHERE tenant_id = $1 AND request_id = $2`, tenantID, id); err != nil {
@@ -331,11 +352,12 @@ func (s *Store) closeBooking(ctx context.Context, tenantID, id int64, status Boo
 	return mapErr(err)
 }
 
-// ConfirmBooking confirms a pending request: every item gets free lanes of its range (neighbours preferred) as a
-// reservation described with the club, and the shooters are taken into the master data with clubID, or without
-// one with the club of the request's name (regardless of case and spaces, created if missing). The ranges are locked
-// like SaveReservation does; a *FullSlotError names the first item that found too few lanes, and nothing is stored
-// then. ErrNotFound if the request or the club is not the tenant's.
+// ConfirmBooking confirms a pending request: every item gets free lanes of its range (the wanted ones if free, else
+// neighbours preferred) as a reservation described with the club and shown as reserved one slot before its start, and
+// the item then wants exactly those lanes. The shooters are taken into the master data with clubID, or without one
+// with the club of the request's name (regardless of case and spaces, created if missing). The ranges are locked like
+// SaveReservation does; a *FullSlotError names the first item that found too few lanes, and nothing is stored then.
+// ErrNotFound if the request or the club is not the tenant's.
 func (s *Store) ConfirmBooking(ctx context.Context, tenantID, id int64, clubID *int64) error {
 	err := pgx.BeginFunc(ctx, s.pool, func(tx pgx.Tx) error {
 		var status BookingStatus
@@ -347,7 +369,7 @@ func (s *Store) ConfirmBooking(ctx context.Context, tenantID, id int64, clubID *
 		if status != BookingPending {
 			return ErrNotPending
 		}
-		rows, err := tx.Query(ctx, `SELECT i.id, i.range_id, i.starts_at, i.ends_at, i.lanes, rg.lane_count, rg.disabled_lanes
+		rows, err := tx.Query(ctx, `SELECT i.id, i.range_id, i.starts_at, i.ends_at, i.lanes, i.wanted, rg.lane_count, rg.disabled_lanes
 			FROM booking_items i JOIN ranges rg ON rg.id = i.range_id
 			WHERE i.tenant_id = $1 AND i.request_id = $2 ORDER BY i.range_id, i.starts_at`, tenantID, id)
 		if err != nil {
@@ -361,7 +383,7 @@ func (s *Store) ConfirmBooking(ctx context.Context, tenantID, id int64, clubID *
 		}
 		items, err := pgx.CollectRows(rows, func(r pgx.CollectableRow) (item, error) {
 			var x item
-			err := r.Scan(&x.ID, &x.Item.RangeID, &x.Item.Start, &x.Item.End, &x.Item.Lanes, &x.Count, &x.Disabled)
+			err := r.Scan(&x.ID, &x.Item.RangeID, &x.Item.Start, &x.Item.End, &x.Item.Lanes, &x.Item.Wanted, &x.Count, &x.Disabled)
 			return x, err
 		})
 		if err != nil {
@@ -381,12 +403,16 @@ func (s *Store) ConfirmBooking(ctx context.Context, tenantID, id int64, clubID *
 				return err
 			}
 			free := domain.FreeLanes(it.Count, it.Disabled, busy)
-			lanes, ok := domain.AssignLanes(free, it.Item.Lanes)
+			lanes, ok := domain.PickLanes(free, it.Item.Wanted, it.Item.Lanes)
 			if !ok {
 				return &FullSlotError{Item: it.Item, Free: len(free)}
 			}
-			if _, err := tx.Exec(ctx, `INSERT INTO reservations (tenant_id, range_id, lanes, starts_at, ends_at, description, booking_item_id)
-				VALUES ($1, $2, $3, $4, $5, $6, $7)`, tenantID, it.Item.RangeID, lanes, it.Item.Start, it.Item.End, club, it.ID); err != nil {
+			lead := min(int(it.Item.End.Sub(it.Item.Start).Minutes()), 1440)
+			if _, err := tx.Exec(ctx, `INSERT INTO reservations (tenant_id, range_id, lanes, starts_at, ends_at, lead_minutes, description, booking_item_id)
+				VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`, tenantID, it.Item.RangeID, lanes, it.Item.Start, it.Item.End, lead, club, it.ID); err != nil {
+				return err
+			}
+			if _, err := tx.Exec(ctx, `UPDATE booking_items SET wanted = $2 WHERE id = $1`, it.ID, lanes); err != nil {
 				return err
 			}
 		}

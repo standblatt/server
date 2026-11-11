@@ -397,10 +397,6 @@ msgid_plural "# shooting days"
 msgstr[0] "# giorno di tiro"
 msgstr[1] "# giorni di tiro"
 
-#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
-msgid "{free} free"
-msgstr "{free} liberi"
-
 #: src/lib/Pager.svelte
 msgid "{from}–{to} of {total}"
 msgstr "{from}–{to} di {total}"
@@ -885,6 +881,10 @@ msgstr "Token API"
 msgid "App"
 msgstr "App"
 
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
+msgid "asked for by another club"
+msgstr "richiesto da un’altra società"
+
 #: src/lib/EventDesk.svelte
 msgid "Assign lane"
 msgstr "Assegna bersaglio"
@@ -1235,11 +1235,6 @@ msgstr "Scegli almeno un’autorizzazione."
 #: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 msgid "Choose at least one slot."
 msgstr "Scegli almeno una fascia oraria."
-
-#. placeholder {0}: deadlineDay(ev.deadline, ev.timezone)
-#: src/routes/b/[code]/+page.svelte
-msgid "Choose the lanes you need per slot, until {0}."
-msgstr "Scegli entro il {0} quanti bersagli ti servono per fascia oraria."
 
 #: src/lib/forms/Palette.svelte
 #: src/lib/ShooterForm.svelte
@@ -2135,10 +2130,6 @@ msgstr "Inserire tutte le serie"
 msgid "Enter at least one series."
 msgstr "Inserisci almeno una serie."
 
-#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
-msgid "Enter how many lanes you need in each slot. The organizer assigns the lane numbers when confirming."
-msgstr "Indica quanti bersagli ti servono per fascia oraria. L’organizzatore assegna i numeri dei bersagli alla conferma."
-
 #: src/lib/AppSidebar.svelte
 #: src/routes/t/[tenantId]/+layout.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
@@ -2282,11 +2273,6 @@ msgstr "Tiro in campagna"
 msgid "Fewer attempts of {0}"
 msgstr "Meno tentativi {0}"
 
-#. placeholder {0}: r.name
-#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
-msgid "Fewer lanes on {0} at {time}"
-msgstr "Meno bersagli su {0} alle {time}"
-
 #: src/routes/my/train/+page.svelte
 msgid "Fewer shots"
 msgstr "Meno colpi"
@@ -2386,6 +2372,7 @@ msgid "Found by your license number and birthday in closed competitions run with
 msgstr "Trovati tramite il tuo numero di licenza e la data di nascita nelle gare chiuse svolte con Standblatt."
 
 #: src/lib/EventDesk.svelte
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 #: src/lib/RegistrationForm.svelte
 #: src/routes/kiosk/[token]/+page.svelte
 msgid "free"
@@ -2402,10 +2389,6 @@ msgstr "Da"
 #: src/lib/forms/CertificatesButton.svelte
 msgid "From rank"
 msgstr "Dal rango"
-
-#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
-msgid "full"
-msgstr "pieno"
 
 #: src/routes/kiosk/[token]/+page.svelte
 msgid "Fullscreen"
@@ -2759,6 +2742,11 @@ msgstr "Bersaglio {0}: prenotato"
 msgid "Lane {lane}"
 msgstr "Bersaglio {lane}"
 
+#. placeholder {0}: r.name
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
+msgid "Lane {lane} on {0} at {time}"
+msgstr "Bersaglio {lane} su {0} alle {time}"
+
 #: src/lib/modules/lanes/index.ts
 msgid "Lane assignment"
 msgstr "Assegnazione dei bersagli"
@@ -2801,11 +2789,6 @@ msgstr "Bersagli"
 #: src/lib/modules/reservations/Page.svelte
 msgid "lanes {0}"
 msgstr "bersagli {0}"
-
-#. placeholder {0}: r.name
-#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
-msgid "Lanes on {0} at {time}"
-msgstr "Bersagli su {0} alle {time}"
 
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Lanes per slot and club"
@@ -3158,11 +3141,6 @@ msgstr "Altro"
 #: src/lib/RegistrationForm.svelte
 msgid "More attempts of {0}"
 msgstr "Più tentativi {0}"
-
-#. placeholder {0}: r.name
-#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
-msgid "More lanes on {0} at {time}"
-msgstr "Più bersagli su {0} alle {time}"
 
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "more lp options, e.g. fit-to-page"
@@ -3852,6 +3830,11 @@ msgstr "Telefono"
 #: src/lib/ShooterSheet.svelte
 msgid "Pick an existing club or confirm the new one."
 msgstr "Scegli una società esistente o conferma quella nuova."
+
+#. placeholder {0}: deadlineDay(ev.deadline, ev.timezone)
+#: src/routes/b/[code]/+page.svelte
+msgid "Pick the lanes you want per slot, until {0}."
+msgstr "Scegliete i bersagli desiderati per fascia oraria, entro il {0}."
 
 #: src/lib/my.svelte.ts
 msgid "Pistol 25 m"
@@ -5282,6 +5265,10 @@ msgstr "Annullare la consegna delle munizioni?"
 msgid "Take the awards handout back?"
 msgstr "Annullare la consegna delle distinzioni?"
 
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
+msgid "taken"
+msgstr "occupato"
+
 #. placeholder {0}: entry.combinedSeries.join(', ')
 #. placeholder {1}: entry.combinedFrom ?? ''
 #: src/lib/EntryCard.svelte
@@ -5291,6 +5278,10 @@ msgstr "Riprende la serie {0} di {1}."
 #: src/routes/my/+page.svelte
 msgid "Tap the + after your next training."
 msgstr "Tocca il + dopo il tuo prossimo allenamento."
+
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
+msgid "Tap the lanes you want in each slot. The organizer confirms them or assigns others if they are taken by then."
+msgstr "Toccate i bersagli desiderati in ogni fascia oraria. L’organizzatore li conferma o ne assegna altri se nel frattempo sono occupati."
 
 #: src/routes/my/train/+page.svelte
 msgid "Tap where the shot hit"
@@ -5575,7 +5566,6 @@ msgstr "Spunta ogni stand su cui si tira la manifestazione. Senza stand: una man
 msgid "Tie-break"
 msgstr "Spareggio"
 
-#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 #: src/lib/ScheduleEditor.svelte
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Time"
@@ -5821,6 +5811,11 @@ msgstr "in attesa di conferma"
 msgid "Waiting for the results of {0}."
 msgstr "In attesa dei risultati di {0}."
 
+#. placeholder {0}: formatLanes(it.wanted)
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
+msgid "wanted {0}"
+msgstr "desiderati {0}"
+
 #: src/lib/AccountSettings.svelte
 msgid "We sent a confirmation link to {email}."
 msgstr "Abbiamo inviato un link di conferma a {email}."
@@ -5993,6 +5988,10 @@ msgstr "Entri come {0}."
 #: src/routes/connect/+page.svelte
 msgid "You need the permission to manage ranges in a club to connect a print agent."
 msgstr "Per collegare un agente di stampa ti serve il permesso di gestire gli stand di tiro di una società."
+
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
+msgid "your choice"
+msgstr "la vostra scelta"
 
 #: src/lib/AccountSettings.svelte
 msgid "Your club manages this account. Ask your club admin to remove it."

@@ -2464,6 +2464,8 @@ export interface components {
             rangeId: number;
             /** Format: date-time */
             start: string;
+            /** @description Lane numbers the club picked, as many as lanes; empty = any */
+            wanted?: number[];
         };
         BookingItemView: {
             /** @description Lanes reserved for it; empty until confirmed */
@@ -2476,6 +2478,8 @@ export interface components {
             rangeId: number;
             /** Format: date-time */
             start: string;
+            /** @description Lane numbers the club picked, as many as lanes; empty = any */
+            wanted?: number[];
         };
         BookingRange: {
             /** Format: int64 */
@@ -2485,6 +2489,8 @@ export interface components {
              * @description Lanes in service
              */
             laneCount: number;
+            /** @description Numbers of the lanes in service */
+            lanes: number[];
             name: string;
         };
         BookingRequest: {
@@ -4054,8 +4060,12 @@ export interface components {
         SlotFree: {
             /** Format: int64 */
             free: number;
+            /** @description Numbers of the free lanes */
+            lanes: number[];
             /** Format: int64 */
             rangeId: number;
+            /** @description Free lanes other clubs asked for in requests not confirmed yet */
+            requested: number[];
         };
         SpecialPrizeRules: {
             /**

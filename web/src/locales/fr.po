@@ -397,10 +397,6 @@ msgid_plural "# shooting days"
 msgstr[0] "# jour de tir"
 msgstr[1] "# jours de tir"
 
-#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
-msgid "{free} free"
-msgstr "{free} libres"
-
 #: src/lib/Pager.svelte
 msgid "{from}–{to} of {total}"
 msgstr "{from}–{to} sur {total}"
@@ -885,6 +881,10 @@ msgstr "Jetons API"
 msgid "App"
 msgstr "Appli"
 
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
+msgid "asked for by another club"
+msgstr "demandée par une autre société"
+
 #: src/lib/EventDesk.svelte
 msgid "Assign lane"
 msgstr "Attribuer une cible"
@@ -1235,11 +1235,6 @@ msgstr "Choisis au moins une autorisation."
 #: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 msgid "Choose at least one slot."
 msgstr "Choisis au moins un créneau."
-
-#. placeholder {0}: deadlineDay(ev.deadline, ev.timezone)
-#: src/routes/b/[code]/+page.svelte
-msgid "Choose the lanes you need per slot, until {0}."
-msgstr "Choisis jusqu’au {0} combien de cibles il te faut par créneau."
 
 #: src/lib/forms/Palette.svelte
 #: src/lib/ShooterForm.svelte
@@ -2135,10 +2130,6 @@ msgstr "Saisir toutes les passes"
 msgid "Enter at least one series."
 msgstr "Saisis au moins une passe."
 
-#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
-msgid "Enter how many lanes you need in each slot. The organizer assigns the lane numbers when confirming."
-msgstr "Indique combien de cibles il te faut par créneau. L’organisateur attribue les numéros de cible lors de la confirmation."
-
 #: src/lib/AppSidebar.svelte
 #: src/routes/t/[tenantId]/+layout.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
@@ -2282,11 +2273,6 @@ msgstr "Tir en campagne"
 msgid "Fewer attempts of {0}"
 msgstr "Moins de tentatives {0}"
 
-#. placeholder {0}: r.name
-#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
-msgid "Fewer lanes on {0} at {time}"
-msgstr "Moins de cibles sur {0} à {time}"
-
 #: src/routes/my/train/+page.svelte
 msgid "Fewer shots"
 msgstr "Moins de coups"
@@ -2386,6 +2372,7 @@ msgid "Found by your license number and birthday in closed competitions run with
 msgstr "Trouvés grâce à ton numéro de licence et ta date de naissance dans les compétitions clôturées organisées avec Standblatt."
 
 #: src/lib/EventDesk.svelte
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 #: src/lib/RegistrationForm.svelte
 #: src/routes/kiosk/[token]/+page.svelte
 msgid "free"
@@ -2402,10 +2389,6 @@ msgstr "De"
 #: src/lib/forms/CertificatesButton.svelte
 msgid "From rank"
 msgstr "Du rang"
-
-#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
-msgid "full"
-msgstr "complet"
 
 #: src/routes/kiosk/[token]/+page.svelte
 msgid "Fullscreen"
@@ -2759,6 +2742,11 @@ msgstr "Cible {0} : réservée"
 msgid "Lane {lane}"
 msgstr "Cible {lane}"
 
+#. placeholder {0}: r.name
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
+msgid "Lane {lane} on {0} at {time}"
+msgstr "Cible {lane} sur {0} à {time}"
+
 #: src/lib/modules/lanes/index.ts
 msgid "Lane assignment"
 msgstr "Attribution des cibles"
@@ -2801,11 +2789,6 @@ msgstr "Cibles"
 #: src/lib/modules/reservations/Page.svelte
 msgid "lanes {0}"
 msgstr "cibles {0}"
-
-#. placeholder {0}: r.name
-#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
-msgid "Lanes on {0} at {time}"
-msgstr "Cibles sur {0} à {time}"
 
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Lanes per slot and club"
@@ -3158,11 +3141,6 @@ msgstr "Plus"
 #: src/lib/RegistrationForm.svelte
 msgid "More attempts of {0}"
 msgstr "Plus de tentatives {0}"
-
-#. placeholder {0}: r.name
-#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
-msgid "More lanes on {0} at {time}"
-msgstr "Plus de cibles sur {0} à {time}"
 
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "more lp options, e.g. fit-to-page"
@@ -3852,6 +3830,11 @@ msgstr "Téléphone"
 #: src/lib/ShooterSheet.svelte
 msgid "Pick an existing club or confirm the new one."
 msgstr "Choisis une société existante ou confirme la nouvelle."
+
+#. placeholder {0}: deadlineDay(ev.deadline, ev.timezone)
+#: src/routes/b/[code]/+page.svelte
+msgid "Pick the lanes you want per slot, until {0}."
+msgstr "Choisissez les cibles souhaitées par créneau, jusqu’au {0}."
 
 #: src/lib/my.svelte.ts
 msgid "Pistol 25 m"
@@ -5282,6 +5265,10 @@ msgstr "Reprendre la remise de munition ?"
 msgid "Take the awards handout back?"
 msgstr "Reprendre la remise des distinctions ?"
 
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
+msgid "taken"
+msgstr "occupée"
+
 #. placeholder {0}: entry.combinedSeries.join(', ')
 #. placeholder {1}: entry.combinedFrom ?? ''
 #: src/lib/EntryCard.svelte
@@ -5291,6 +5278,10 @@ msgstr "Reprend la passe {0} de {1}."
 #: src/routes/my/+page.svelte
 msgid "Tap the + after your next training."
 msgstr "Touche le + après ton prochain entraînement."
+
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
+msgid "Tap the lanes you want in each slot. The organizer confirms them or assigns others if they are taken by then."
+msgstr "Touchez les cibles souhaitées dans chaque créneau. L’organisateur les confirme ou en attribue d’autres si elles sont occupées entre-temps."
 
 #: src/routes/my/train/+page.svelte
 msgid "Tap where the shot hit"
@@ -5575,7 +5566,6 @@ msgstr "Coche chaque stand sur lequel se tire la manifestation. Sans stand : une
 msgid "Tie-break"
 msgstr "Départage"
 
-#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 #: src/lib/ScheduleEditor.svelte
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Time"
@@ -5821,6 +5811,11 @@ msgstr "en attente de confirmation"
 msgid "Waiting for the results of {0}."
 msgstr "En attente des résultats de {0}."
 
+#. placeholder {0}: formatLanes(it.wanted)
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
+msgid "wanted {0}"
+msgstr "souhaitées {0}"
+
 #: src/lib/AccountSettings.svelte
 msgid "We sent a confirmation link to {email}."
 msgstr "Nous avons envoyé un lien de confirmation à {email}."
@@ -5993,6 +5988,10 @@ msgstr "Tu rejoins en tant que {0}."
 #: src/routes/connect/+page.svelte
 msgid "You need the permission to manage ranges in a club to connect a print agent."
 msgstr "Pour connecter un agent d’impression, tu dois pouvoir gérer les stands de tir d’une société."
+
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
+msgid "your choice"
+msgstr "votre choix"
 
 #: src/lib/AccountSettings.svelte
 msgid "Your club manages this account. Ask your club admin to remove it."

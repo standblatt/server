@@ -116,7 +116,14 @@ func TestLanes(t *testing.T) {
 func TestValidateBooking(t *testing.T) {
 	zurich, _ := time.LoadLocation("Europe/Zurich")
 	slots := BookingSlots([]string{"2027-03-13"}, nil, BookingSettings{}, zurich)
-	counts := map[int64]int{7: 10, 8: 4}
+	lanes := func(n int) []int {
+		out := []int{}
+		for l := 1; l <= n; l++ {
+			out = append(out, l)
+		}
+		return out
+	}
+	counts := map[int64][]int{7: lanes(10), 8: lanes(4)}
 	item := func(rangeID int64, slot, lanes int) BookingItem {
 		return BookingItem{RangeID: rangeID, Start: slots[slot].Start, End: slots[slot].End, Lanes: lanes}
 	}
@@ -140,5 +147,38 @@ func TestValidateBooking(t *testing.T) {
 	}
 	if !SameBookingItems(ok, []BookingItem{ok[2], ok[0], ok[1]}) || SameBookingItems(ok, ok[:2]) || SameBookingItems(ok, []BookingItem{ok[0], ok[1], item(7, 1, 3)}) {
 		t.Fatal("SameBookingItems")
+	}
+	picked := item(7, 0, 2)
+	picked.Wanted = []int{4, 3}
+	if errs := ValidateBooking([]BookingItem{picked}, nil, slots, counts, 0); len(errs) != 0 {
+		t.Fatalf("wanted lanes: %v", errs)
+	}
+	for _, w := range [][]int{{3}, {3, 3}, {3, 11}} {
+		p := picked
+		p.Wanted = w
+		if errs := ValidateBooking([]BookingItem{p}, nil, slots, counts, 0); len(errs) != 1 {
+			t.Errorf("wanted %v: %v", w, errs)
+		}
+	}
+	other := picked
+	other.Wanted = []int{3, 5}
+	if !SameBookingItems([]BookingItem{picked}, []BookingItem{{RangeID: 7, Start: picked.Start, End: picked.End, Lanes: 2, Wanted: []int{3, 4}}}) ||
+		SameBookingItems([]BookingItem{picked}, []BookingItem{other}) {
+		t.Fatal("SameBookingItems with wanted lanes")
+	}
+}
+
+func TestPickLanes(t *testing.T) {
+	free := []int{2, 4, 5, 7, 8, 9, 10}
+	for _, c := range []struct {
+		wanted []int
+		n      int
+		want   string
+		ok     bool
+	}{{[]int{8, 9}, 2, "[8 9]", true}, {[]int{1, 2}, 2, "[2 4]", true}, {nil, 2, "[4 5]", true}, {[]int{9}, 3, "[4 5 9]", true}, {[]int{2}, 8, "[]", false}} {
+		got, ok := PickLanes(free, c.wanted, c.n)
+		if ok != c.ok || (ok && fmt.Sprint(got) != c.want) {
+			t.Errorf("pick %v of %d: %v %v", c.wanted, c.n, got, ok)
+		}
 	}
 }

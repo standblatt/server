@@ -126,6 +126,36 @@ func TestBookingConfirm(t *testing.T) {
 	if _, err := st.UpdateBookingRequest(ctx, tid, other, in); !errors.Is(err, store.ErrNotPending) {
 		t.Fatalf("update cancelled: %v", err)
 	}
+
+	// Wanted lanes: the free ones are kept, a taken one is replaced; the reservation shows one slot before.
+	if _, err := st.SaveReservation(ctx, tid, store.Reservation{RangeID: rng.ID, Lanes: []int{4}, StartsAt: at(10), EndsAt: at(11), Description: "Members"}); err != nil {
+		t.Fatal(err)
+	}
+	picked := slot(10, 2)
+	picked.Wanted = []int{4, 6}
+	third, err := st.CreateBookingRequest(ctx, tid, ev, store.BookingRequestInput{Club: "Third", Contact: "Eva", Email: "eva@example.org", Items: []domain.BookingItem{picked}}, "hash-3")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if wanted, _ := st.PendingWanted(ctx, tid, []int64{rng.ID}, at(0), at(23), 0); len(wanted) != 1 || fmt.Sprint(wanted[0].Wanted) != "[4 6]" {
+		t.Fatalf("pending wanted: %+v", wanted)
+	}
+	if wanted, _ := st.PendingWanted(ctx, tid, []int64{rng.ID}, at(0), at(23), third); len(wanted) != 0 {
+		t.Fatalf("pending wanted of the request itself: %+v", wanted)
+	}
+	if err := st.ConfirmBooking(ctx, tid, third, nil); err != nil {
+		t.Fatal(err)
+	}
+	req, _ = st.GetBookingRequest(ctx, tid, third)
+	if fmt.Sprint(req.Items[0].Assigned) != "[1 6]" || fmt.Sprint(req.Items[0].Wanted) != "[1 6]" {
+		t.Fatalf("wanted lanes: %+v", req.Items[0])
+	}
+	list, _ := st.ReservationsBetween(ctx, tid, []int64{rng.ID}, at(10), at(11), 0)
+	for _, r := range list {
+		if r.Description == "Third" && r.LeadMinutes != 30 {
+			t.Fatalf("lead minutes: %+v", r)
+		}
+	}
 }
 
 func TestBookingSettingsCopy(t *testing.T) {

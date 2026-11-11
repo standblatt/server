@@ -1,9 +1,9 @@
 # Prenotazione online
 
-Con la **prenotazione online** le società esterne richiedono da sé i
+Con la **prenotazione online**, le società esterne richiedono da sole i
 bersagli. L’organizzatore inserisce un link nell’invito; una società sceglie
-le fasce orarie desiderate, indica quanti bersagli le servono in ciascuna e
-annuncia i suoi tiratori. Un admin conferma o rifiuta ogni richiesta.
+i bersagli desiderati in ogni fascia oraria e annuncia i suoi tiratori. Un
+admin conferma o rifiuta ogni richiesta.
 
 ## Attivare {#setup}
 
@@ -44,21 +44,26 @@ richiesta fino a due ore prima dell’inizio. **Adatta** lo cambia:
 ## Cosa vede una società {#club}
 
 Il link apre una pagina senza login. Spiega la procedura in tre passi e
-mostra ogni fascia oraria che inizia tra più di due ore con i bersagli
-ancora liberi per poligono. Prima dell’apertura delle iscrizioni indica solo
-da quando la prenotazione è aperta. Contano solo le prenotazioni confermate;
-i nomi delle altre società non vengono mai mostrati. Con più di due giorni,
-ogni giorno è chiuso e mostra quante fasce orarie la società vi ha scelto.
+mostra ogni fascia oraria che inizia tra più di due ore con i bersagli di
+ogni stand come pulsanti numerati: verde è libero, giallo è libero ma
+richiesto da un’altra società la cui richiesta non è ancora confermata,
+rosso sbiadito è occupato, e la scelta della società è scura con una cornice
+verde. Prima del giorno di apertura indica solo da quando la prenotazione è
+aperta. Solo le prenotazioni confermate occupano un bersaglio; i nomi delle
+altre società non vengono mai mostrati. Con più di due giorni, ogni giorno è
+chiuso e mostra quante fasce orarie la società vi ha scelto.
 
 ![La pagina di prenotazione di una
 società](../images/screenshots/booking-public.png){ .screenshot }
 
-La società imposta il numero di bersagli per fascia oraria con − e + o
-digitandolo e inserisce il suo nome, una persona di contatto, e-mail e
-telefono, e i suoi **Tiratori**: cognome, nome, data di nascita e
-facoltativamente la licenza. **Incolla lista** riprende righe copiate da
-Excel (cognome, nome, data di nascita, licenza). La lista dei tiratori può
-seguire più tardi; i programmi si scelgono al poligono come sempre.
+La società tocca i bersagli desiderati in ogni fascia oraria (un secondo
+tocco ne toglie uno; con un limite per fascia oraria gli altri pulsanti si
+bloccano appena è raggiunto) e inserisce il suo nome, una persona di
+contatto, e-mail e telefono, e i suoi **Tiratori**: cognome, nome, data di
+nascita e facoltativamente la licenza. **Incolla elenco** riprende righe
+copiate da Excel (cognome, nome, data di nascita, licenza). L’elenco dei
+tiratori può seguire più tardi; i programmi si scelgono allo stand come al
+solito.
 
 Una barra in fondo allo schermo conta le fasce orarie e i bersagli scelti e
 contiene **Invia la richiesta**. Poi la società riceve un’e-mail con un link
@@ -69,22 +74,26 @@ aggiungere tiratori la lascia confermata.
 
 ## Confermare le richieste {#confirm}
 
-Ogni admin con un’e-mail riceve una mail per ogni richiesta nuova,
-modificata o annullata. Le richieste sono elencate in alto in
-**Prenotazioni**, prima quelle aperte e per ogni stato nell’ordine di
-arrivo; la barra laterale mostra quante sono in attesa. Ogni richiesta
-mostra al secondo quando è stata ricevuta e, se aperta, anche quando la
-società l’ha modificata l’ultima volta. Se due società vogliono gli stessi
-bersagli, la prima può così ottenerli.
+Ogni admin con un’e-mail riceve un messaggio per ogni richiesta nuova,
+modificata o annullata. Le richieste sono elencate in cima a
+**Prenotazioni**, prima quelle aperte e, per ogni stato, nell’ordine di
+arrivo; la barra laterale mostra con un contatore rosso quante sono in
+attesa. Una richiesta aperta indica i bersagli desiderati dalla
+società. Ogni richiesta mostra al secondo quando è stata ricevuta, una
+aperta anche quando la società l’ha modificata l’ultima volta; così, quando
+due società vogliono gli stessi bersagli, la prima può ottenerli.
 
 ![Richieste di prenotazione sulla pagina delle
 prenotazioni](../images/screenshots/booking-requests.png){ .screenshot }
 
-- **Conferma** assegna a ogni fascia oraria bersagli liberi del suo
-  poligono, possibilmente vicini, come prenotazione ordinaria a nome della
-  società, e invia i numeri dei bersagli alla società. Se una fascia ha
-  troppo pochi bersagli liberi non viene riservato nulla e il messaggio
-  indica la fascia; sposta una prenotazione o rifiuta.
+- **Conferma** assegna a ogni fascia oraria i bersagli scelti dalla società,
+  come prenotazione ordinaria con il nome della società che appare come
+  riservata una fascia oraria prima dell’inizio, e invia i numeri dei
+  bersagli alla società per e-mail. Un bersaglio scelto che nel frattempo è
+  occupato viene sostituito da un altro bersaglio libero dello stand, se
+  possibile vicino. Se una fascia oraria ha troppo pochi bersagli liberi,
+  non viene prenotato nulla e il messaggio indica la fascia; spostate una
+  prenotazione o rifiutate.
 - **Conferma** chiede prima a quale **Società** dei dati di base appartiene
   la richiesta, perché la società ha digitato il nome da sé: la società con
   lo stesso nome è già scelta, le società con un nome simile vengono

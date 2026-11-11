@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-06 11:02+0100\n"
+"POT-Creation-Date: 2026-11-11 13:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -132,6 +132,10 @@ msgstr ""
 
 #: internal/docs/testpage.go
 msgid "default"
+msgstr ""
+
+#: internal/domain/booking.go
+msgid "A chosen lane is not offered"
 msgstr ""
 
 #: internal/domain/booking.go
@@ -702,6 +706,11 @@ msgstr ""
 #: internal/web/registrations.go internal/web/reports.go
 #: internal/web/resultimport.go internal/web/tenants.go
 msgid "Event not found"
+msgstr ""
+
+#: internal/web/booking.go
+#, go-format
+msgid "Lane %d is taken at %s"
 msgstr ""
 
 #: internal/web/booking.go

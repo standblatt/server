@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Online booking: clubs pick their lanes per slot from numbered, coloured buttons; lanes other clubs asked for show in amber (by @HB9HIL)
+
+### Changed
+- Confirmed lane bookings show as reserved one slot before they start (by @HB9HIL)
+
 ## [0.26.2] - 2026-11-09
 
 ### Changed

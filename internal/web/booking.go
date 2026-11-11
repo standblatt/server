@@ -34,12 +34,15 @@ type BookingRange struct {
 	ID        int64  `json:"id"`
 	Name      string `json:"name"`
 	LaneCount int    `json:"laneCount" doc:"Lanes in service"`
+	Lanes     []int  `json:"lanes" doc:"Numbers of the lanes in service"`
 }
 
 // SlotFree is how many lanes of a range are still free in a slot.
 type SlotFree struct {
-	RangeID int64 `json:"rangeId"`
-	Free    int   `json:"free"`
+	RangeID   int64 `json:"rangeId"`
+	Free      int   `json:"free"`
+	Lanes     []int `json:"lanes" doc:"Numbers of the free lanes"`
+	Requested []int `json:"requested" doc:"Free lanes other clubs asked for in requests not confirmed yet"`
 }
 
 // BookingSlot is a slot with the free lanes per range.
@@ -103,7 +106,8 @@ func eventLoc(timezone string) *time.Location {
 func bookingRanges(ev store.Event) []BookingRange {
 	out := []BookingRange{}
 	for _, r := range ev.Ranges {
-		out = append(out, BookingRange{ID: r.ID, Name: r.Name, LaneCount: r.LaneCount - len(r.DisabledLanes)})
+		lanes := domain.FreeLanes(r.LaneCount, r.DisabledLanes, nil)
+		out = append(out, BookingRange{ID: r.ID, Name: r.Name, LaneCount: len(lanes), Lanes: lanes})
 	}
 	return out
 }
@@ -117,7 +121,7 @@ func bookingOpens(s domain.BookingSettings, loc *time.Location) *time.Time {
 }
 
 // bookingInfo builds the public view of an event's booking: the slots that start after the lead time with the lanes
-// still free per range, counting only confirmed reservations. The reservations of except are left out because
+// still free per range, counting only confirmed reservations, and the free lanes pending requests of other clubs want. The reservations of except are left out because
 // changing it would free them, and its own slots stay offered so it can still be changed.
 func (s *Server) bookingInfo(ctx context.Context, t store.BookingTarget, except store.BookingRequest) (BookingInfo, error) {
 	ev := t.Event
@@ -143,7 +147,12 @@ func (s *Server) bookingInfo(ctx context.Context, t store.BookingTarget, except 
 	for _, r := range ev.Ranges {
 		rangeIDs = append(rangeIDs, r.ID)
 	}
-	res, err := s.Store.ReservationsBetween(ctx, t.TenantID, rangeIDs, slots[0].Start, slots[len(slots)-1].End, except.ID)
+	from, to := slots[0].Start, slots[len(slots)-1].End
+	res, err := s.Store.ReservationsBetween(ctx, t.TenantID, rangeIDs, from, to, except.ID)
+	if err != nil {
+		return info, err
+	}
+	pending, err := s.Store.PendingWanted(ctx, t.TenantID, rangeIDs, from, to, except.ID)
 	if err != nil {
 		return info, err
 	}
@@ -156,7 +165,19 @@ func (s *Server) bookingInfo(ctx context.Context, t store.BookingTarget, except 
 					busy = append(busy, x.Lanes...)
 				}
 			}
-			bs.Free = append(bs.Free, SlotFree{RangeID: r.ID, Free: len(domain.FreeLanes(r.LaneCount, r.DisabledLanes, busy))})
+			free := domain.FreeLanes(r.LaneCount, r.DisabledLanes, busy)
+			requested := []int{}
+			for _, p := range pending {
+				if p.RangeID == r.ID && p.Start.Before(sl.End) && p.End.After(sl.Start) {
+					for _, l := range p.Wanted {
+						if slices.Contains(free, l) && !slices.Contains(requested, l) {
+							requested = append(requested, l)
+						}
+					}
+				}
+			}
+			slices.Sort(requested)
+			bs.Free = append(bs.Free, SlotFree{RangeID: r.ID, Free: len(free), Lanes: free, Requested: requested})
 		}
 		info.Slots = append(info.Slots, bs)
 	}
@@ -172,15 +193,15 @@ func checkBooking(info BookingInfo, in store.BookingRequestInput) error {
 	if !info.Open {
 		return conflict("The deadline for online booking has passed. Contact the organizer.")
 	}
-	counts := map[int64]int{}
+	lanes := map[int64][]int{}
 	for _, r := range info.Ranges {
-		counts[r.ID] = r.LaneCount
+		lanes[r.ID] = r.Lanes
 	}
 	slots := make([]domain.Slot, len(info.Slots))
 	for i, sl := range info.Slots {
 		slots[i] = sl.Slot
 	}
-	if errs := domain.ValidateBooking(in.Items, in.Shooters, slots, counts, info.MaxLanes); len(errs) > 0 {
+	if errs := domain.ValidateBooking(in.Items, in.Shooters, slots, lanes, info.MaxLanes); len(errs) > 0 {
 		return invalidList(errs)
 	}
 	for _, it := range in.Items {
@@ -189,8 +210,17 @@ func checkBooking(info BookingInfo, in store.BookingRequestInput) error {
 				continue
 			}
 			for _, f := range sl.Free {
-				if f.RangeID == it.RangeID && it.Lanes > f.Free {
-					return invalid("Only %d lanes are free at %s", f.Free, sl.Start.In(eventLoc(info.Timezone)).Format("02.01.2006 15:04"))
+				if f.RangeID != it.RangeID {
+					continue
+				}
+				at := sl.Start.In(eventLoc(info.Timezone)).Format("02.01.2006 15:04")
+				if it.Lanes > f.Free {
+					return invalid("Only %d lanes are free at %s", f.Free, at)
+				}
+				for _, l := range it.Wanted {
+					if !slices.Contains(f.Lanes, l) {
+						return invalid("Lane %d is taken at %s", l, at)
+					}
 				}
 			}
 		}
@@ -251,6 +281,8 @@ func bookingSummary(l i18n.Lang, ev store.Event, req store.BookingRequest) []mai
 		lanes := strconv.Itoa(it.Lanes)
 		if len(it.Assigned) > 0 {
 			lanes += " (" + domain.FormatLanes(it.Assigned) + ")"
+		} else if len(it.Wanted) > 0 {
+			lanes += " (" + domain.FormatLanes(slices.Sorted(slices.Values(it.Wanted))) + ")"
 		}
 		rows = append(rows, []string{slotText(it.Start, it.End, loc), names[it.RangeID], lanes})
 	}

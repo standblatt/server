@@ -1,9 +1,9 @@
 # Online-Reservation
 
 Mit der **Online-Reservation** fragen externe Vereine selbst Scheiben
-an. Der Organisator setzt einen Link in die Einladung; ein Verein wählt die
-gewünschten Zeitblöcke, gibt an, wie viele Scheiben er jeweils braucht, und
-meldet seine Schützen. Ein Admin bestätigt oder lehnt jede Anfrage ab.
+an. Der Organisator setzt einen Link in die Einladung; ein Verein wählt in
+jedem Zeitblock die gewünschten Scheiben und meldet seine Schützen. Ein
+Admin bestätigt oder lehnt jede Anfrage ab.
 
 ## Einschalten {#setup}
 
@@ -43,21 +43,24 @@ Beginn angefragt werden. **Anpassen** ändert das:
 
 Der Link öffnet eine Seite ohne Login. Sie erklärt den Ablauf in drei
 Schritten und zeigt jeden Zeitblock, der in mehr als zwei Stunden beginnt,
-mit den noch freien Scheiben pro Stand. Vor dem Anmeldebeginn sagt sie nur,
-ab wann die Reservation offen ist. Nur bestätigte Reservationen zählen;
-Namen anderer Vereine werden nie angezeigt. Bei mehr als zwei Tagen ist
-jeder Tag zugeklappt und zeigt, wie viele Zeitblöcke der Verein darin
-gewählt hat.
+mit den Scheiben jedes Standes als nummerierte Knöpfe: grün ist frei, gelb
+ist frei, aber von einem anderen Verein angefragt, dessen Anfrage noch nicht
+bestätigt ist, blassrot ist belegt, und die eigene Wahl ist dunkel mit
+grünem Rahmen. Vor dem Anmeldebeginn sagt sie nur, ab wann die Reservation
+offen ist. Nur bestätigte Reservationen belegen eine Scheibe; Namen anderer
+Vereine werden nie angezeigt. Bei mehr als zwei Tagen ist jeder Tag
+zugeklappt und zeigt, wie viele Zeitblöcke der Verein darin gewählt hat.
 
 ![Die Reservationsseite eines
 Vereins](../images/screenshots/booking-public.png){ .screenshot }
 
-Der Verein stellt die Anzahl Scheiben pro Zeitblock mit − und + ein oder
-tippt sie ein und gibt seinen Namen, eine Kontaktperson, E-Mail und Telefon
-sowie seine **Schützen** an: Name, Vorname, Geburtsdatum und optional die
-Lizenz. **Liste einfügen** übernimmt Zeilen aus Excel (Name, Vorname,
-Geburtsdatum, Lizenz). Die Schützenliste kann später folgen; die Programme
-werden wie gewohnt am Stand gewählt.
+Der Verein tippt in jedem Zeitblock die gewünschten Scheiben an (ein zweiter
+Tipp nimmt eine wieder heraus; mit einer Grenze pro Zeitblock sperren sich
+die übrigen Knöpfe, sobald sie erreicht ist) und gibt seinen Namen, eine
+Kontaktperson, E-Mail und Telefon sowie seine **Schützen** an: Name,
+Vorname, Geburtsdatum und optional die Lizenz. **Liste einfügen** übernimmt
+Zeilen aus Excel (Name, Vorname, Geburtsdatum, Lizenz). Die Schützenliste
+kann später folgen; die Programme werden wie gewohnt am Stand gewählt.
 
 Eine Leiste am unteren Bildschirmrand zählt die gewählten Zeitblöcke und
 Scheiben und enthält **Anfrage senden**. Danach erhält der Verein eine Mail
@@ -71,19 +74,23 @@ auf eine neue Bestätigung; neue Schützen lassen sie bestätigt.
 Jeder Admin mit E-Mail erhält zu jeder neuen, geänderten oder stornierten
 Anfrage eine Mail. Die Anfragen stehen oben auf **Reservationen**, offene
 zuerst und innerhalb jedes Status in der Reihenfolge ihres Eingangs; die
-Seitenleiste zeigt, wie viele warten. Jede Anfrage zeigt auf die Sekunde,
-wann sie eingegangen ist, eine offene auch, wann der Verein sie zuletzt
-geändert hat. Wollen zwei Vereine dieselben Scheiben, kann so der erste sie
-bekommen.
+Seitenleiste zeigt mit einem roten Zähler, wie viele warten. Eine offene
+Anfrage nennt die Scheiben, die der Verein wünscht. Jede Anfrage zeigt auf
+die Sekunde, wann sie eingegangen ist, eine offene auch, wann der Verein sie
+zuletzt geändert hat. Wollen zwei Vereine dieselben Scheiben, kann so der
+erste sie bekommen.
 
 ![Reservationsanfragen auf der Seite
 Reservationen](../images/screenshots/booking-requests.png){ .screenshot }
 
-- **Bestätigen** gibt jedem Zeitblock freie Scheiben seines Standes, wenn
-  möglich nebeneinander, als gewöhnliche Reservation mit dem Namen des
-  Vereins, und schickt dem Verein die Scheibennummern per Mail. Hat ein
-  Zeitblock zu wenige freie Scheiben, wird nichts reserviert und die Meldung
-  nennt den Zeitblock; verschiebe eine Reservation oder lehne ab.
+- **Bestätigen** gibt jedem Zeitblock die Scheiben, die der Verein gewählt
+  hat, als gewöhnliche Reservation mit dem Namen des Vereins, die einen
+  Zeitblock vor Beginn als reserviert erscheint, und schickt dem Verein die
+  Scheibennummern per Mail. Ist eine gewählte Scheibe inzwischen belegt,
+  tritt eine andere freie Scheibe des Standes an ihre Stelle, wenn möglich
+  nebeneinander. Hat ein Zeitblock zu wenige freie Scheiben, wird nichts
+  reserviert und die Meldung nennt den Zeitblock; verschiebe eine
+  Reservation oder lehne ab.
 - **Bestätigen** fragt zuerst, zu welchem **Verein** der Stammdaten die
   Anfrage gehört, weil der Verein seinen Namen selbst eingetippt hat: Der
   Verein mit gleichem Namen ist schon ausgewählt, Vereine mit ähnlichem

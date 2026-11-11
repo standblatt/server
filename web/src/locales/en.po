@@ -397,10 +397,6 @@ msgid_plural "# shooting days"
 msgstr[0] "# shooting day"
 msgstr[1] "# shooting days"
 
-#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
-msgid "{free} free"
-msgstr "{free} free"
-
 #: src/lib/Pager.svelte
 msgid "{from}–{to} of {total}"
 msgstr "{from}–{to} of {total}"
@@ -885,6 +881,10 @@ msgstr "API tokens"
 msgid "App"
 msgstr "App"
 
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
+msgid "asked for by another club"
+msgstr "asked for by another club"
+
 #: src/lib/EventDesk.svelte
 msgid "Assign lane"
 msgstr "Assign lane"
@@ -1235,11 +1235,6 @@ msgstr "Choose at least one permission."
 #: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 msgid "Choose at least one slot."
 msgstr "Choose at least one slot."
-
-#. placeholder {0}: deadlineDay(ev.deadline, ev.timezone)
-#: src/routes/b/[code]/+page.svelte
-msgid "Choose the lanes you need per slot, until {0}."
-msgstr "Choose the lanes you need per slot, until {0}."
 
 #: src/lib/forms/Palette.svelte
 #: src/lib/ShooterForm.svelte
@@ -2135,10 +2130,6 @@ msgstr "Enter all series"
 msgid "Enter at least one series."
 msgstr "Enter at least one series."
 
-#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
-msgid "Enter how many lanes you need in each slot. The organizer assigns the lane numbers when confirming."
-msgstr "Enter how many lanes you need in each slot. The organizer assigns the lane numbers when confirming."
-
 #: src/lib/AppSidebar.svelte
 #: src/routes/t/[tenantId]/+layout.svelte
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
@@ -2282,11 +2273,6 @@ msgstr "Feldschiessen"
 msgid "Fewer attempts of {0}"
 msgstr "Fewer attempts of {0}"
 
-#. placeholder {0}: r.name
-#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
-msgid "Fewer lanes on {0} at {time}"
-msgstr "Fewer lanes on {0} at {time}"
-
 #: src/routes/my/train/+page.svelte
 msgid "Fewer shots"
 msgstr "Fewer shots"
@@ -2386,6 +2372,7 @@ msgid "Found by your license number and birthday in closed competitions run with
 msgstr "Found by your license number and birthday in closed competitions run with Standblatt."
 
 #: src/lib/EventDesk.svelte
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 #: src/lib/RegistrationForm.svelte
 #: src/routes/kiosk/[token]/+page.svelte
 msgid "free"
@@ -2402,10 +2389,6 @@ msgstr "From"
 #: src/lib/forms/CertificatesButton.svelte
 msgid "From rank"
 msgstr "From rank"
-
-#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
-msgid "full"
-msgstr "full"
 
 #: src/routes/kiosk/[token]/+page.svelte
 msgid "Fullscreen"
@@ -2759,6 +2742,11 @@ msgstr "Lane {0}: reserved"
 msgid "Lane {lane}"
 msgstr "Lane {lane}"
 
+#. placeholder {0}: r.name
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
+msgid "Lane {lane} on {0} at {time}"
+msgstr "Lane {lane} on {0} at {time}"
+
 #: src/lib/modules/lanes/index.ts
 msgid "Lane assignment"
 msgstr "Lane assignment"
@@ -2801,11 +2789,6 @@ msgstr "Lanes"
 #: src/lib/modules/reservations/Page.svelte
 msgid "lanes {0}"
 msgstr "lanes {0}"
-
-#. placeholder {0}: r.name
-#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
-msgid "Lanes on {0} at {time}"
-msgstr "Lanes on {0} at {time}"
 
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
 msgid "Lanes per slot and club"
@@ -3158,11 +3141,6 @@ msgstr "More"
 #: src/lib/RegistrationForm.svelte
 msgid "More attempts of {0}"
 msgstr "More attempts of {0}"
-
-#. placeholder {0}: r.name
-#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
-msgid "More lanes on {0} at {time}"
-msgstr "More lanes on {0} at {time}"
 
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "more lp options, e.g. fit-to-page"
@@ -3852,6 +3830,11 @@ msgstr "Phone"
 #: src/lib/ShooterSheet.svelte
 msgid "Pick an existing club or confirm the new one."
 msgstr "Pick an existing club or confirm the new one."
+
+#. placeholder {0}: deadlineDay(ev.deadline, ev.timezone)
+#: src/routes/b/[code]/+page.svelte
+msgid "Pick the lanes you want per slot, until {0}."
+msgstr "Pick the lanes you want per slot, until {0}."
 
 #: src/lib/my.svelte.ts
 msgid "Pistol 25 m"
@@ -5282,6 +5265,10 @@ msgstr "Take the ammunition issue back?"
 msgid "Take the awards handout back?"
 msgstr "Take the awards handout back?"
 
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
+msgid "taken"
+msgstr "taken"
+
 #. placeholder {0}: entry.combinedSeries.join(', ')
 #. placeholder {1}: entry.combinedFrom ?? ''
 #: src/lib/EntryCard.svelte
@@ -5291,6 +5278,10 @@ msgstr "Takes series {0} of {1}."
 #: src/routes/my/+page.svelte
 msgid "Tap the + after your next training."
 msgstr "Tap the + after your next training."
+
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
+msgid "Tap the lanes you want in each slot. The organizer confirms them or assigns others if they are taken by then."
+msgstr "Tap the lanes you want in each slot. The organizer confirms them or assigns others if they are taken by then."
 
 #: src/routes/my/train/+page.svelte
 msgid "Tap where the shot hit"
@@ -5575,7 +5566,6 @@ msgstr "Tick every range the event is shot on. No range: an event without lanes,
 msgid "Tie-break"
 msgstr "Tie-break"
 
-#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
 #: src/lib/ScheduleEditor.svelte
 #: src/routes/t/[tenantId]/ranges/[rangeId]/printing/+page.svelte
 msgid "Time"
@@ -5821,6 +5811,11 @@ msgstr "waiting for confirmation"
 msgid "Waiting for the results of {0}."
 msgstr "Waiting for the results of {0}."
 
+#. placeholder {0}: formatLanes(it.wanted)
+#: src/lib/modules/reservations/booking/BookingRequests.svelte
+msgid "wanted {0}"
+msgstr "wanted {0}"
+
 #: src/lib/AccountSettings.svelte
 msgid "We sent a confirmation link to {email}."
 msgstr "We sent a confirmation link to {email}."
@@ -5993,6 +5988,10 @@ msgstr "You join as {0}."
 #: src/routes/connect/+page.svelte
 msgid "You need the permission to manage ranges in a club to connect a print agent."
 msgstr "You need the permission to manage ranges in a club to connect a print agent."
+
+#: src/lib/modules/reservations/booking/parts/BookingForm.svelte
+msgid "your choice"
+msgstr "your choice"
 
 #: src/lib/AccountSettings.svelte
 msgid "Your club manages this account. Ask your club admin to remove it."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: standblatt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-06 11:02+0100\n"
+"POT-Creation-Date: 2026-11-11 13:44+0100\n"
 "PO-Revision-Date: 2026-10-14 19:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -133,6 +133,10 @@ msgstr "Pagina di prova Standblatt"
 #: internal/docs/testpage.go
 msgid "default"
 msgstr "predefinite"
+
+#: internal/domain/booking.go
+msgid "A chosen lane is not offered"
+msgstr "Un bersaglio scelto non è offerto"
 
 #: internal/domain/booking.go
 msgid "A chosen slot is not offered"
@@ -703,6 +707,11 @@ msgstr "Conferma o rifiuta la richiesta qui:"
 #: internal/web/resultimport.go internal/web/tenants.go
 msgid "Event not found"
 msgstr "Manifestazione non trovata"
+
+#: internal/web/booking.go
+#, go-format
+msgid "Lane %d is taken at %s"
+msgstr "Il bersaglio %d è occupato il %s"
 
 #: internal/web/booking.go
 #, go-format

@@ -37,8 +37,8 @@
 	/** Saves the changed request; a confirmed one with other slots needs a new confirmation. */
 	async function save(input: BookingRequestInput) {
 		const r = data.data!.request;
-		const before = JSON.stringify(r.items.map((i) => [i.rangeId, new Date(i.start).toISOString(), i.lanes]).sort());
-		const after = JSON.stringify(input.items.map((i) => [i.rangeId, new Date(i.start).toISOString(), i.lanes]).sort());
+		const before = JSON.stringify(r.items.map((i) => [i.rangeId, new Date(i.start).toISOString(), i.lanes, (i.wanted ?? []).join()]).sort());
+		const after = JSON.stringify(input.items.map((i) => [i.rangeId, new Date(i.start).toISOString(), i.lanes, (i.wanted ?? []).join()]).sort());
 		if (
 			r.status === 'confirmed' &&
 			before !== after &&

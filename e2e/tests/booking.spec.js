@@ -73,7 +73,8 @@ test.describe("online booking", () => {
     const page = await browser.newPage({ baseURL });
     await page.goto(ids.link);
     await expect(c(page, "h1", "Lupi Cup")).toBeVisible();
-    await page.getByLabel("Lanes on 10m at 08:00", { exact: true }).fill("2");
+    for (const lane of [3, 4]) await page.getByLabel(`Lane ${lane} on 10m at 08:00`, { exact: true }).click();
+    await expect(page.getByLabel("Lane 3 on 10m at 08:00", { exact: true })).toHaveAttribute("aria-pressed", "true");
     await c(page, "label", "Club").locator("input").fill(guest);
     await c(page, "label", "Contact person").locator("input").fill("Gina Gast");
     await c(page, "label", "Email").locator("input").fill(email);
@@ -86,6 +87,14 @@ test.describe("online booking", () => {
     await page.close();
   });
 
+  test("another club sees the lanes as asked for", async ({ browser }) => {
+    const page = await browser.newPage({ baseURL });
+    await page.goto(ids.link);
+    await expect(page.getByLabel("Lane 3 on 10m at 08:00", { exact: true })).toHaveClass(/bg-yellow-400/);
+    await expect(page.getByLabel("Lane 5 on 10m at 08:00", { exact: true })).toHaveClass(/bg-green-500/);
+    await page.close();
+  });
+
   test("admin confirms the request", async ({ page }) => {
     await login(page, admin);
     await page.goto(`/t/${ids.tenant}/events/${ids.event}/reservations`);
@@ -93,6 +102,7 @@ test.describe("online booking", () => {
     const request = page.locator(`[aria-label='Request of ${guest}']`);
     await expect(request).toContainText("waiting for confirmation");
     await expect(request).toContainText("Received");
+    await expect(request).toContainText("wanted 3, 4");
     await c(request, "summary", "1 shooter announced").click();
     await expect(request).toContainText("new");
     await api(page, "POST", `/api/tenants/${ids.tenant}/clubs`, { name: `${guest} 1920` });
@@ -102,8 +112,8 @@ test.describe("online booking", () => {
     await c(dialog, "button", "Confirm").click();
     await expect(request).toContainText("confirmed");
     await expect(request).toContainText(`Club in the master data: ${guest} 1920`);
-    await expect(request).toContainText("lanes 1, 2");
-    await expect(page.locator(`[aria-label='Reservation ${guest}']`)).toContainText("lanes 1, 2");
+    await expect(request).toContainText("lanes 3, 4");
+    await expect(page.locator(`[aria-label='Reservation ${guest}']`)).toContainText("lanes 3, 4");
     await page.goto(`/t/${ids.tenant}/shooters`);
     await page.getByPlaceholder("License number or name").fill("Gino Gast");
     await expect(c(page, "tr", "Gast")).toContainText(`${guest} 1920`);
@@ -113,6 +123,7 @@ test.describe("online booking", () => {
     const page = await browser.newPage({ baseURL });
     await page.goto(await manageLink(page, email));
     await expect(c(page, "section", "Your request")).toContainText("confirmed");
+    await expect(page.getByLabel("Lane 4 on 10m at 08:00", { exact: true })).toHaveAttribute("aria-pressed", "true");
     await c(page, "button", "Add shooter").click();
     await page.getByLabel("Last name of shooter 2").fill("Gast");
     await page.getByLabel("First name of shooter 2").fill("Gina");

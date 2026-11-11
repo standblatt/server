@@ -1,6 +1,6 @@
 # Online booking
 
-With **online booking**, external clubs ask for lanes themselves. The organizer puts a link into the invitation; a club picks the time slots it wants, says how many lanes it needs in each and announces its shooters. An admin confirms or declines every request.
+With **online booking**, external clubs ask for lanes themselves. The organizer puts a link into the invitation; a club picks the lanes it wants in each time slot and announces its shooters. An admin confirms or declines every request.
 
 ## Switching it on {#setup}
 
@@ -22,21 +22,21 @@ Without changes, every day of the event is open during its shooting times (see [
 
 ## What a club sees {#club}
 
-The link opens a page without login. It explains the process in three steps and shows every slot that starts in more than two hours with the lanes still free on each range. Before the opening day it only says from when the booking is open. Only confirmed reservations count; names of other clubs are never shown. With more than two days, each day is folded and shows how many slots the club chose on it.
+The link opens a page without login. It explains the process in three steps and shows every slot that starts in more than two hours with the lanes of each range as numbered buttons: green is free, yellow is free but asked for by another club whose request is not confirmed yet, faded red is taken, and the club's own choice is dark with a green frame. Before the opening day it only says from when the booking is open. Only confirmed reservations make a lane taken; names of other clubs are never shown. With more than two days, each day is folded and shows how many slots the club chose on it.
 
 ![The booking page of a club](../images/screenshots/booking-public.png){ .screenshot }
 
-The club sets the number of lanes per slot with − and + or by typing it and enters its name, a contact person, email and phone, and its **Shooters**: last name, first name, birthday and optionally the licence. **Paste list** takes rows copied from Excel (last name, first name, birthday, licence). The shooter list can follow later; programmes are chosen at the range as usual.
+The club taps the lanes it wants in each slot (a second tap takes one out again; with a limit per slot the other buttons lock once it is reached) and enters its name, a contact person, email and phone, and its **Shooters**: last name, first name, birthday and optionally the licence. **Paste list** takes rows copied from Excel (last name, first name, birthday, licence). The shooter list can follow later; programmes are chosen at the range as usual.
 
 A bar at the bottom of the screen counts the chosen slots and lanes and holds **Send request**. Afterwards the club gets a mail with a personal link. Through it, it can check the status, change the request or cancel it until the deadline. Changing the slots of a confirmed request releases its lanes and the request waits for a new confirmation; adding shooters keeps it confirmed.
 
 ## Confirming requests {#confirm}
 
-Every admin with an email gets a mail for each new, changed or cancelled request. The requests are listed at the top of **Reservations**, open ones first and within each status in the order they came in; the sidebar shows how many are waiting. Each request shows when it was received, to the second, and an open one also when the club last changed it, so when two clubs want the same lanes, the first one can get them.
+Every admin with an email gets a mail for each new, changed or cancelled request. The requests are listed at the top of **Reservations**, open ones first and within each status in the order they came in; the sidebar shows how many are waiting as a red counter. An open request lists the lanes the club wants. Each request shows when it was received, to the second, and an open one also when the club last changed it, so when two clubs want the same lanes, the first one can get them.
 
 ![Booking requests on the reservations page](../images/screenshots/booking-requests.png){ .screenshot }
 
-- **Confirm** gives each slot free lanes of its range, neighbours where possible, as an ordinary reservation named after the club, and mails the lane numbers to the club. When a slot has too few free lanes, nothing is reserved and the message names the slot; move a reservation or decline.
+- **Confirm** gives each slot the lanes the club picked, as an ordinary reservation named after the club that shows as reserved one slot before it starts, and mails the lane numbers to the club. A picked lane that is taken by then is replaced by another free lane of the range, neighbours where possible. When a slot has too few free lanes, nothing is reserved and the message names the slot; move a reservation or decline.
 - **Confirm** first asks which **Club** of the master data the request belongs to, because the club typed its name itself: the club with the same name is chosen already, clubs with a similar name are suggested, and *New club* creates it. The request then shows the club it was matched to.
 - **Confirm** also takes the shooters into the master data, in that club: a shooter is found by licence, else by name and birthday, and created otherwise. Existing shooters are never overwritten, because the list comes from a public form; only a missing birthday or licence is filled in. Shooters added after the confirmation are taken over with **Take over shooters**.
 - **Decline** asks for an optional reason, which goes to the club by mail. Lanes the request held are free again.

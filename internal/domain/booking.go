@@ -200,12 +200,53 @@ func AssignLanes(free []int, n int) ([]int, bool) {
 	return slices.Clone(free[:n]), true
 }
 
+// PickLanes picks n of the free lanes (ascending): the wanted ones that are free, the rest by AssignLanes from the
+// other free lanes; false when fewer than n are free.
+func PickLanes(free, wanted []int, n int) ([]int, bool) {
+	if n <= 0 || len(free) < n {
+		return nil, false
+	}
+	var keep, other []int
+	for _, l := range free {
+		if slices.Contains(wanted, l) && len(keep) < n {
+			keep = append(keep, l)
+		} else {
+			other = append(other, l)
+		}
+	}
+	if len(keep) < n {
+		rest, _ := AssignLanes(other, n-len(keep))
+		keep = append(keep, rest...)
+	}
+	slices.Sort(keep)
+	return keep, true
+}
+
 // BookingItem asks for a number of lanes of a range in one slot.
 type BookingItem struct {
 	RangeID int64     `json:"rangeId"`
 	Start   time.Time `json:"start"`
 	End     time.Time `json:"end"`
 	Lanes   int       `json:"lanes" minimum:"1"`
+	Wanted  []int     `json:"wanted,omitempty" required:"false" maxItems:"500" doc:"Lane numbers the club picked, as many as lanes; empty = any"`
+}
+
+// bookingKey identifies the slot of an item on its range, with its lanes when withLanes is set.
+type bookingKey struct {
+	RangeID    int64
+	Start, End time.Time
+	Lanes      int
+	Wanted     string
+}
+
+// key returns the comparable key of an item; withLanes adds the lane count and the wanted lanes.
+func (it BookingItem) key(withLanes bool) bookingKey {
+	k := bookingKey{RangeID: it.RangeID, Start: it.Start.UTC(), End: it.End.UTC()}
+	if withLanes {
+		w := slices.Sorted(slices.Values(it.Wanted))
+		k.Lanes, k.Wanted = it.Lanes, FormatLanes(w)
+	}
+	return k
 }
 
 // BookingShooter is a shooter a club announces with its request.
@@ -216,18 +257,20 @@ type BookingShooter struct {
 	LicenseNumber string `json:"licenseNumber,omitempty" required:"false" maxLength:"20"`
 }
 
-// ValidateBooking checks a request against the slots and lane counts (range ID → lanes) of the event: every item
-// a slot of a range of the event, each at most once, between 1 and the limit of lanes; shooters with names and a
-// birthday, at most MaxBookingShooters. Lanes per item are capped by maxLanes when it is above 0.
-func ValidateBooking(items []BookingItem, shooters []BookingShooter, slots []Slot, laneCounts map[int64]int, maxLanes int) []Problem {
+// ValidateBooking checks a request against the slots and the lanes in service (range ID → lane numbers) of the
+// event: every item a slot of a range of the event, each at most once, between 1 and the limit of lanes, wanted lanes
+// (if any) as many as lanes, distinct and in service; shooters with names and a birthday, at most MaxBookingShooters.
+// Lanes per item are capped by maxLanes when it is above 0.
+func ValidateBooking(items []BookingItem, shooters []BookingShooter, slots []Slot, rangeLanes map[int64][]int, maxLanes int) []Problem {
 	var errs []Problem
 	if len(items) == 0 {
 		errs = append(errs, Problemf("Choose at least one slot"))
 	}
-	seen := map[BookingItem]bool{}
+	seen := map[bookingKey]bool{}
 	for _, it := range items {
-		key := BookingItem{RangeID: it.RangeID, Start: it.Start.UTC(), End: it.End.UTC()}
-		count, ok := laneCounts[it.RangeID]
+		key := it.key(false)
+		inService, ok := rangeLanes[it.RangeID]
+		count := len(inService)
 		inSlot := slices.ContainsFunc(slots, func(s Slot) bool { return s.Start.Equal(it.Start) && s.End.Equal(it.End) })
 		switch {
 		case !ok || !inSlot:
@@ -238,6 +281,8 @@ func ValidateBooking(items []BookingItem, shooters []BookingShooter, slots []Slo
 			errs = append(errs, Problemf("Lanes: between 1 and %d", count))
 		case maxLanes > 0 && it.Lanes > maxLanes:
 			errs = append(errs, Problemf("At most %d lanes per slot", maxLanes))
+		case len(it.Wanted) > 0 && !wantedOK(it, inService):
+			errs = append(errs, Problemf("A chosen lane is not offered"))
 		}
 		seen[key] = true
 	}
@@ -255,20 +300,27 @@ func ValidateBooking(items []BookingItem, shooters []BookingShooter, slots []Slo
 	return errs
 }
 
-// SameBookingItems reports whether two requests ask for the same lanes in the same slots, in any order.
+// wantedOK reports whether the wanted lanes of an item are as many as its lanes, distinct and in service.
+func wantedOK(it BookingItem, inService []int) bool {
+	w := slices.Sorted(slices.Values(it.Wanted))
+	if len(w) != it.Lanes || len(slices.Compact(slices.Clone(w))) != len(w) {
+		return false
+	}
+	return !slices.ContainsFunc(w, func(l int) bool { return !slices.Contains(inService, l) })
+}
+
+// SameBookingItems reports whether two requests ask for the same lanes (count and wanted numbers) in the same slots,
+// in any order.
 func SameBookingItems(a, b []BookingItem) bool {
 	if len(a) != len(b) {
 		return false
 	}
-	norm := func(it BookingItem) BookingItem {
-		return BookingItem{RangeID: it.RangeID, Start: it.Start.UTC(), End: it.End.UTC(), Lanes: it.Lanes}
-	}
-	have := map[BookingItem]int{}
+	have := map[bookingKey]int{}
 	for _, it := range a {
-		have[norm(it)]++
+		have[it.key(true)]++
 	}
 	for _, it := range b {
-		k := norm(it)
+		k := it.key(true)
 		if have[k] == 0 {
 			return false
 		}

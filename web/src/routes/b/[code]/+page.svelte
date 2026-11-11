@@ -51,7 +51,7 @@
 			<p class="rounded-lg border border-dashed p-6 text-center text-muted-foreground">{$t`The deadline for online booking has passed. Contact the organizer.`}</p>
 		{:else}
 			<ol class="grid list-inside list-decimal gap-1 rounded-lg border bg-card p-4 text-sm">
-				<li>{$t`Choose the lanes you need per slot, until ${deadlineDay(ev.deadline, ev.timezone)}.`}</li>
+				<li>{$t`Pick the lanes you want per slot, until ${deadlineDay(ev.deadline, ev.timezone)}.`}</li>
 				<li>{$t`Enter your club, a contact person and your shooters; the shooters can follow later.`}</li>
 				<li>{$t`The organizer confirms by mail. Your personal link lets you change or cancel the request until the deadline.`}</li>
 			</ol>

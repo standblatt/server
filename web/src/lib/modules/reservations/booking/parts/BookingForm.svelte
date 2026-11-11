@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { plural, t } from 'lingui-for-svelte/macro';
-	import Minus from '@lucide/svelte/icons/minus';
-	import Plus from '@lucide/svelte/icons/plus';
 	import type { BookingInfo, BookingRequestInput, BookingShooter } from '$lib/api';
 	import { byDay, slotKey, slotTime } from '../booking';
 	import { Badge } from '$lib/components/ui/badge';
@@ -28,18 +26,22 @@
 		onsubmit: (input: BookingRequestInput) => Promise<void>;
 	} = $props();
 
-	type Draft = { club: string; contact: string; email: string; phone: string; note: string; lanes: Record<string, number>; shooters: BookingShooter[] };
+	type Draft = { club: string; contact: string; email: string; phone: string; note: string; lanes: Record<string, number[]>; shooters: BookingShooter[] };
 
 	/** The form state from the request being changed, a saved draft or empty. */
 	function start(): Draft {
 		if (initial) {
-			const lanes: Record<string, number> = {};
-			for (const it of initial.items) lanes[slotKey(it.rangeId, it.start)] = it.lanes;
+			const lanes: Record<string, number[]> = {};
+			for (const it of initial.items) lanes[slotKey(it.rangeId, it.start)] = it.wanted ?? [];
 			return { club: initial.club, contact: initial.contact, email: initial.email, phone: initial.phone ?? '', note: initial.note ?? '', lanes, shooters: initial.shooters ?? [] };
 		}
 		try {
 			const saved = draftKey && localStorage.getItem(draftKey);
-			if (saved) return JSON.parse(saved);
+			if (saved) {
+				const draft: Draft = JSON.parse(saved);
+				for (const [k, v] of Object.entries(draft.lanes)) if (!Array.isArray(v)) delete draft.lanes[k];
+				return draft;
+			}
 		} catch {
 			/* no storage: start empty */
 		}
@@ -62,29 +64,36 @@
 
 	const days = $derived(byDay(info.slots, info.timezone));
 	const multi = $derived(info.ranges.length > 1);
-	const chosen = $derived(Object.values(form.lanes).reduce((n, v) => n + (Number(v) > 0 ? 1 : 0), 0));
-	const total = $derived(Object.values(form.lanes).reduce((n, v) => n + (Number(v) || 0), 0));
-
-	/** Most lanes a club can ask for in a slot: what is free, capped by the organizer's limit. */
-	const most = (free: number) => (info.maxLanes > 0 ? Math.min(free, info.maxLanes) : free);
+	const chosen = $derived(Object.values(form.lanes).filter((v) => v.length > 0).length);
+	const total = $derived(Object.values(form.lanes).reduce((n, v) => n + v.length, 0));
 
 	/** Lanes chosen in a slot on a range. */
-	const lanesAt = (rangeId: number, start: string) => Number(form.lanes[slotKey(rangeId, start)]) || 0;
+	const lanesAt = (rangeId: number, start: string) => form.lanes[slotKey(rangeId, start)] ?? [];
 
-	/** Free lanes of a range in a slot. */
-	const freeAt = (sl: BookingInfo['slots'][number], rangeId: number) => sl.free.find((f) => f.rangeId === rangeId)?.free ?? 0;
+	/** Free and requested lanes of a range in a slot. */
+	const freeAt = (sl: BookingInfo['slots'][number], rangeId: number) => sl.free.find((f) => f.rangeId === rangeId) ?? { lanes: [] as number[], requested: [] as number[] };
 
 	/** Chosen slots of a day, counted per range like the total. */
-	const chosenIn = (slots: BookingInfo['slots']) => slots.reduce((n, sl) => n + info.ranges.filter((r) => lanesAt(r.id, sl.start) > 0).length, 0);
+	const chosenIn = (slots: BookingInfo['slots']) => slots.reduce((n, sl) => n + info.ranges.filter((r) => lanesAt(r.id, sl.start).length > 0).length, 0);
 
 	// Open at first: every day of a short event, else the days with a choice; then the club decides.
 	// svelte-ignore state_referenced_locally
 	const opened = new Set(days.filter(([, slots]) => days.length <= 2 || chosenIn(slots) > 0).map(([d]) => d));
 
-	/** Changes the lanes of a slot by one, between 0 and the most allowed. */
-	function step(key: string, by: number, max: number) {
-		form.lanes[key] = Math.max(0, Math.min(max, (Number(form.lanes[key]) || 0) + by));
+	/** Adds a lane to the choice of a slot or takes it out. */
+	function toggle(key: string, lane: number) {
+		const mine = form.lanes[key] ?? [];
+		form.lanes[key] = mine.includes(lane) ? mine.filter((l) => l !== lane) : [...mine, lane].sort((a, b) => a - b);
 	}
+
+	/** Colours of a lane button (traffic light): chosen, free, asked for by another club or taken. */
+	const laneClass = (state: 'chosen' | 'free' | 'requested' | 'taken') =>
+		({
+			chosen: 'border-[3px] border-green-500 bg-brand-900 text-white hover:bg-brand-800 hover:text-white dark:bg-brand-100 dark:text-brand-950 dark:hover:bg-white dark:hover:text-brand-950',
+			free: 'border-green-600 bg-green-500 text-white hover:bg-green-600 hover:text-white dark:border-green-500 dark:bg-green-600 dark:text-green-50 dark:hover:bg-green-500',
+			requested: 'border-yellow-500 bg-yellow-400 text-yellow-950 hover:bg-yellow-500 hover:text-yellow-950 dark:bg-yellow-600 dark:text-yellow-50 dark:hover:bg-yellow-500',
+			taken: 'border-red-600 bg-red-500 text-white opacity-55 disabled:opacity-55 dark:bg-red-700 dark:text-red-100 dark:opacity-50 dark:disabled:opacity-50'
+		})[state];
 
 	/** Builds the request from the form and hands it to the page. */
 	async function submit(e: SubmitEvent) {
@@ -92,7 +101,10 @@
 		error = '';
 		const items = info.slots.flatMap((sl) =>
 			info.ranges
-				.map((r) => ({ rangeId: r.id, start: sl.start, end: sl.end, lanes: Number(form.lanes[slotKey(r.id, sl.start)] ?? 0) }))
+				.map((r) => {
+					const wanted = lanesAt(r.id, sl.start);
+					return { rangeId: r.id, start: sl.start, end: sl.end, lanes: wanted.length, wanted };
+				})
 				.filter((it) => it.lanes > 0)
 		);
 		if (items.length === 0) {
@@ -122,9 +134,15 @@
 	<fieldset class="grid gap-3" disabled={readonly}>
 		<legend class="mb-1 text-base font-semibold">{$t`Lanes`}</legend>
 		<p class="text-sm text-muted-foreground">
-			{$t`Enter how many lanes you need in each slot. The organizer assigns the lane numbers when confirming.`}
+			{$t`Tap the lanes you want in each slot. The organizer confirms them or assigns others if they are taken by then.`}
 			{#if info.maxLanes > 0}{$t`At most ${info.maxLanes} lanes per slot.`}{/if}
 		</p>
+		<div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
+			<span class="flex items-center gap-1.5"><span class={['size-4 rounded border', laneClass('free')]}></span>{$t`free`}</span>
+			<span class="flex items-center gap-1.5"><span class={['size-4 rounded border', laneClass('requested')]}></span>{$t`asked for by another club`}</span>
+			<span class="flex items-center gap-1.5"><span class={['size-4 rounded border', laneClass('taken')]}></span>{$t`taken`}</span>
+			<span class="flex items-center gap-1.5"><span class={['size-4 rounded border', laneClass('chosen')]}></span>{$t`your choice`}</span>
+		</div>
 		{#each days as [day, slots] (day)}
 			{@const n = chosenIn(slots)}
 			<details class="group overflow-hidden rounded-lg border bg-card" open={opened.has(day)}>
@@ -132,63 +150,41 @@
 					{day}
 					{#if n > 0}<Badge variant="secondary" class="ml-2">{$plural(n, { one: '# slot chosen', other: '# slots chosen' })}</Badge>{/if}
 				</summary>
-				<table class="w-full text-sm">
-					{#if multi}
-						<thead class="text-left text-xs text-muted-foreground">
-							<tr>
-								<th class="px-4 py-1.5 font-medium">{$t`Time`}</th>
-								{#each info.ranges as r (r.id)}<th class="px-2 py-1.5 font-medium">{r.name}</th>{/each}
-							</tr>
-						</thead>
-					{/if}
-					<tbody class="divide-y">
-						{#each slots as sl (sl.start)}
-							{@const time = slotTime(sl.start, info.timezone)}
-							{@const picked = info.ranges.some((r) => lanesAt(r.id, sl.start) > 0)}
-							{@const full = info.ranges.every((r) => freeAt(sl, r.id) === 0)}
-							<tr class={[picked && 'bg-primary/5', full && !picked && 'text-muted-foreground']}>
-								<td class={['w-32 px-4 py-1.5 tabular-nums', picked ? 'font-semibold' : 'font-medium']}>{time}–{slotTime(sl.end, info.timezone)}</td>
+				<div class="divide-y text-sm">
+					{#each slots as sl (sl.start)}
+						{@const time = slotTime(sl.start, info.timezone)}
+						{@const picked = info.ranges.some((r) => lanesAt(r.id, sl.start).length > 0)}
+						<div class={['grid gap-2 px-4 py-2 sm:grid-cols-[8rem_1fr]', picked && 'bg-primary/5']}>
+							<span class={['pt-1 tabular-nums', picked ? 'font-semibold' : 'font-medium']}>{time}–{slotTime(sl.end, info.timezone)}</span>
+							<div class="grid gap-2">
 								{#each info.ranges as r (r.id)}
-									{@const free = freeAt(sl, r.id)}
+									{@const f = freeAt(sl, r.id)}
 									{@const key = slotKey(r.id, sl.start)}
-									{@const max = most(free)}
-									<td class="px-2 py-1.5">
-										{#if free === 0 && !form.lanes[key]}
-											<span class="text-muted-foreground">{$t`full`}</span>
-										{:else}
-											<span class="flex items-center gap-1">
+									{@const mine = lanesAt(r.id, sl.start)}
+									{@const atMost = info.maxLanes > 0 && mine.length >= info.maxLanes}
+									<div class="grid gap-1">
+										{#if multi}<span class="text-xs text-muted-foreground">{r.name}</span>{/if}
+										<div class="flex flex-wrap gap-1">
+											{#each r.lanes as lane (lane)}
+												{@const on = mine.includes(lane)}
+												{@const state = on ? 'chosen' : !f.lanes.includes(lane) ? 'taken' : f.requested.includes(lane) ? 'requested' : 'free'}
 												<Button
 													variant="outline"
-													size="icon-sm"
-													disabled={lanesAt(r.id, sl.start) === 0}
-													aria-label={$t`Fewer lanes on ${r.name} at ${time}`}
-													onclick={() => step(key, -1, max)}><Minus /></Button
+													size="sm"
+													class={['h-8 w-9 px-0 tabular-nums disabled:opacity-100', laneClass(state)]}
+													disabled={!on && (state === 'taken' || atMost)}
+													aria-pressed={on}
+													aria-label={$t`Lane ${lane} on ${r.name} at ${time}`}
+													onclick={() => toggle(key, lane)}>{lane}</Button
 												>
-												<Input
-													class="w-16 text-center"
-													type="number"
-													min="0"
-													{max}
-													placeholder="0"
-													bind:value={form.lanes[key]}
-													aria-label={$t`Lanes on ${r.name} at ${time}`}
-												/>
-												<Button
-													variant="outline"
-													size="icon-sm"
-													disabled={lanesAt(r.id, sl.start) >= max}
-													aria-label={$t`More lanes on ${r.name} at ${time}`}
-													onclick={() => step(key, 1, max)}><Plus /></Button
-												>
-												<span class={['ml-1 text-xs whitespace-nowrap', free <= r.laneCount / 4 ? 'text-amber-700 dark:text-amber-400' : 'text-muted-foreground']}>{$t`${free} free`}</span>
-											</span>
-										{/if}
-									</td>
+											{/each}
+										</div>
+									</div>
 								{/each}
-							</tr>
-						{/each}
-					</tbody>
-				</table>
+							</div>
+						</div>
+					{/each}
+				</div>
 			</details>
 		{/each}
 	</fieldset>
