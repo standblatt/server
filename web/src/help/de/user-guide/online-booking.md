@@ -72,13 +72,15 @@ auf eine neue Bestätigung; neue Schützen lassen sie bestätigt.
 ## Anfragen bestätigen {#confirm}
 
 Jeder Admin mit E-Mail erhält zu jeder neuen, geänderten oder stornierten
-Anfrage eine Mail. Die Anfragen stehen oben auf **Reservationen**, offene
-zuerst und innerhalb jedes Status in der Reihenfolge ihres Eingangs; die
-Seitenleiste zeigt mit einem roten Zähler, wie viele warten. Eine offene
-Anfrage nennt die Scheiben, die der Verein wünscht. Jede Anfrage zeigt auf
-die Sekunde, wann sie eingegangen ist, eine offene auch, wann der Verein sie
-zuletzt geändert hat. Wollen zwei Vereine dieselben Scheiben, kann so der
-erste sie bekommen.
+Anfrage eine Mail. Auf **Reservationen** steht jeder Zeitblock einer offenen
+Anfrage als Zeile mit der Markierung *angefragt* zwischen den Reservationen
+seines Tages, mit den Scheiben, die der Verein wünscht; die Seitenleiste
+zeigt mit einem roten Zähler, wie viele Anfragen warten. Ein Klick auf den
+Namen des Vereins öffnet die Anfrage mit Kontakt, Zeitblöcken und
+Schützen. Sie zeigt auf die Sekunde, wann sie eingegangen ist, eine offene
+auch, wann der Verein sie zuletzt geändert hat. Wollen zwei Vereine
+dieselben Scheiben, kann so der erste sie bekommen. Abgelehnte und
+stornierte Anfragen sind unter der Liste eingeklappt.
 
 ![Reservationsanfragen auf der Seite
 Reservationen](../images/screenshots/booking-requests.png){ .screenshot }
@@ -103,11 +105,15 @@ Reservationen](../images/screenshots/booking-requests.png){ .screenshot }
   ein fehlendes Geburtsdatum oder eine fehlende Lizenz wird
   ergänzt. Schützen, die nach der Bestätigung dazukommen, übernimmt
   **Schützen übernehmen**.
+- **Bestätigen** und **Ablehnen** stehen in der Zeile einer offenen Anfrage
+  und in der Anfrage selbst, **Schützen übernehmen** nur in der Anfrage.
 - **Ablehnen** fragt nach einer optionalen Begründung, die der Verein per
   Mail erhält. Scheiben, die die Anfrage hatte, sind wieder frei.
 
-Die reservierten Scheiben sind gewöhnliche [Reservationen](reservations.md):
-ändere dort bei Bedarf die Scheibennummern. Am Anlass findet die Anmeldung
-die Schützen mit der normalen Suche. Der Bericht *Scheibenreservationen*
-unter [Statistik](statistics-reports.md) listet jeden Verein mit seinen
+Die reservierten Scheiben sind gewöhnliche [Reservationen](reservations.md)
+mit der Markierung *Online-Reservation*: ändere dort bei Bedarf die
+Scheibennummern und öffne die Anfrage wieder über ihren Namen oder **Details
+der Anfrage** in ihrem Menü. Am Anlass findet die Anmeldung die Schützen mit
+der normalen Suche. Der Bericht *Scheibenreservationen* unter
+[Statistik](statistics-reports.md) listet jeden Verein mit seinen
 Zeitblöcken, Scheiben und Schützen.

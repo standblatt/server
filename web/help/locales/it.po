@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-11-11 13:36+0000\n"
+"POT-Creation-Date: 2026-11-14 13:37+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -8732,7 +8732,16 @@ msgid ""
 "only says from when the booking is open. Only confirmed reservations make a "
 "lane taken; names of other clubs are never shown. With more than two days, "
 "each day is folded and shows how many slots the club chose on it."
-msgstr "Il link apre una pagina senza login. Spiega la procedura in tre passi e mostra ogni fascia oraria che inizia tra più di due ore con i bersagli di ogni stand come pulsanti numerati: verde è libero, giallo è libero ma richiesto da un’altra società la cui richiesta non è ancora confermata, rosso sbiadito è occupato, e la scelta della società è scura con una cornice verde. Prima del giorno di apertura indica solo da quando la prenotazione è aperta. Solo le prenotazioni confermate occupano un bersaglio; i nomi delle altre società non vengono mai mostrati. Con più di due giorni, ogni giorno è chiuso e mostra quante fasce orarie la società vi ha scelto."
+msgstr ""
+"Il link apre una pagina senza login. Spiega la procedura in tre passi e "
+"mostra ogni fascia oraria che inizia tra più di due ore con i bersagli di "
+"ogni stand come pulsanti numerati: verde è libero, giallo è libero ma "
+"richiesto da un’altra società la cui richiesta non è ancora confermata, "
+"rosso sbiadito è occupato, e la scelta della società è scura con una cornice "
+"verde. Prima del giorno di apertura indica solo da quando la prenotazione è "
+"aperta. Solo le prenotazioni confermate occupano un bersaglio; i nomi delle "
+"altre società non vengono mai mostrati. Con più di due giorni, ogni giorno è "
+"chiuso e mostra quante fasce orarie la società vi ha scelto."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/online-booking.md:28
@@ -8789,21 +8798,25 @@ msgstr "Confermare le richieste {#confirm}"
 #: ../src/help/en/user-guide/online-booking.md:36
 msgid ""
 "Every admin with an email gets a mail for each new, changed or cancelled "
-"request. The requests are listed at the top of **Reservations**, open ones "
-"first and within each status in the order they came in; the sidebar shows "
-"how many are waiting as a red counter. An open request lists the lanes the "
-"club wants. Each request shows when it was received, to the second, and an "
-"open one also when the club last changed it, so when two clubs want the same "
-"lanes, the first one can get them."
+"request. On **Reservations**, every slot of an open request is a line marked "
+"*requested* among the reservations of its day, with the lanes the club "
+"wants; the sidebar shows how many requests are waiting as a red counter. A "
+"click on the club's name opens the request with its contact, slots and "
+"shooters. It shows when the request was received, to the second, and an open "
+"one also when the club last changed it, so when two clubs want the same "
+"lanes, the first one can get them. Declined and cancelled requests are "
+"folded away below the list."
 msgstr ""
 "Ogni admin con un’e-mail riceve un messaggio per ogni richiesta nuova, "
-"modificata o annullata. Le richieste sono elencate in cima a "
-"**Prenotazioni**, prima quelle aperte e, per ogni stato, nell’ordine di "
-"arrivo; la barra laterale mostra con un contatore rosso quante sono in "
-"attesa. Una richiesta aperta indica i bersagli desiderati dalla società. "
-"Ogni richiesta mostra al secondo quando è stata ricevuta, una aperta anche "
-"quando la società l’ha modificata l’ultima volta; così, quando due società "
-"vogliono gli stessi bersagli, la prima può ottenerli."
+"modificata o annullata. In **Prenotazioni** ogni fascia oraria di una "
+"richiesta aperta è una riga segnata *richiesta* tra le prenotazioni del suo "
+"giorno, con i bersagli desiderati dalla società; la barra laterale mostra "
+"con un contatore rosso quante richieste sono in attesa. Un clic sul nome "
+"della società apre la richiesta con il contatto, le fasce orarie e i "
+"tiratori. Mostra al secondo quando è stata ricevuta, una aperta anche quando "
+"la società l’ha modificata l’ultima volta; così, quando due società vogliono "
+"gli stessi bersagli, la prima può ottenerli. Le richieste rifiutate e "
+"annullate sono raccolte sotto l’elenco."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/online-booking.md:38
@@ -8815,7 +8828,7 @@ msgstr ""
 "screenshots/booking-requests.png){ .screenshot }"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:43
+#: ../src/help/en/user-guide/online-booking.md:44
 msgid ""
 "**Confirm** gives each slot the lanes the club picked, as an ordinary "
 "reservation named after the club that shows as reserved one slot before it "
@@ -8834,7 +8847,7 @@ msgstr ""
 "rifiutate."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:43
+#: ../src/help/en/user-guide/online-booking.md:44
 msgid ""
 "**Confirm** first asks which **Club** of the master data the request belongs "
 "to, because the club typed its name itself: the club with the same name is "
@@ -8847,7 +8860,7 @@ msgstr ""
 "*Nuova società* la crea. La richiesta mostra poi la società attribuita."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:43
+#: ../src/help/en/user-guide/online-booking.md:44
 msgid ""
 "**Confirm** also takes the shooters into the master data, in that club: a "
 "shooter is found by licence, else by name and birthday, and created "
@@ -8864,7 +8877,16 @@ msgstr ""
 "conferma si riprendono con **Riprendi tiratori**."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:43
+#: ../src/help/en/user-guide/online-booking.md:44
+msgid ""
+"**Confirm** and **Decline** are on the line of an open request and in the "
+"request itself; **Take over shooters** only in the request."
+msgstr ""
+"**Conferma** e **Rifiuta** si trovano sulla riga di una richiesta aperta e "
+"nella richiesta stessa, **Riprendi tiratori** solo nella richiesta."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/online-booking.md:44
 msgid ""
 "**Decline** asks for an optional reason, which goes to the club by mail. "
 "Lanes the request held are free again."
@@ -8873,19 +8895,22 @@ msgstr ""
 "I bersagli occupati dalla richiesta tornano liberi."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/online-booking.md:44
+#: ../src/help/en/user-guide/online-booking.md:45
 msgid ""
-"The reserved lanes are ordinary [reservations](reservations.md): change "
-"their lane numbers there if needed. At the event, the shooters are found "
-"with the normal search at the registration desk. The report *Lane bookings* "
-"under [Statistics and reports](statistics-reports.md) lists every club with "
-"its slots, lanes and shooters."
+"The reserved lanes are ordinary [reservations](reservations.md) marked "
+"*online booking*: change their lane numbers there if needed, and open the "
+"request again through their name or **Request details** in their menu. At "
+"the event, the shooters are found with the normal search at the registration "
+"desk. The report *Lane bookings* under [Statistics and reports](statistics-"
+"reports.md) lists every club with its slots, lanes and shooters."
 msgstr ""
-"I bersagli riservati sono normali [prenotazioni](reservations.md): modifica "
-"lì i numeri dei bersagli se serve. Durante la manifestazione l’iscrizione "
-"trova i tiratori con la ricerca normale. Il rapporto *Prenotazioni di "
-"bersagli* in [Statistiche e rapporti](statistics-reports.md) elenca ogni "
-"società con le sue fasce orarie, i bersagli e i tiratori."
+"I bersagli riservati sono normali [prenotazioni](reservations.md) segnate "
+"*prenotazione online*: modifica lì i numeri dei bersagli se serve e riapri "
+"la richiesta dal loro nome o con **Dettagli della richiesta** nel loro menu. "
+"Durante la manifestazione l’iscrizione trova i tiratori con la ricerca "
+"normale. Il rapporto *Prenotazioni di bersagli* in [Statistiche e rapporti]"
+"(statistics-reports.md) elenca ogni società con le sue fasce orarie, i "
+"bersagli e i tiratori."
 
 #. type: Title #
 #: ../src/help/en/user-guide/print-forms.md:1
@@ -10237,13 +10262,17 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/reservations.md:15
 msgid ""
-"The list marks every reservation *planned*, *active* or *finished*; **show "
+"The list shows one block per day in the order of time. It marks every "
+"reservation *planned*, *active* or *finished*, and a strip of small boxes "
+"shows which lanes of the range it takes (from tablet width on); **show "
 "past** adds the finished ones. Its menu offers **Edit**, **Copy** and "
 "**Delete**."
 msgstr ""
-"L’elenco segna ogni prenotazione come *pianificata*, *attivo* o *conclusa*; "
-"**mostra passate** aggiunge quelle concluse. Il suo menu offre **Modifica**, "
-"**copia** ed **Elimina**."
+"L’elenco mostra un blocco per giorno in ordine di tempo. Segna ogni "
+"prenotazione come *pianificata*, *attivo* o *conclusa*, e una striscia di "
+"piccole caselle mostra quali bersagli del poligono occupa (dalla larghezza "
+"di un tablet); **mostra passate** aggiunge quelle concluse. Il suo menu "
+"offre **Modifica**, **copia** ed **Elimina**."
 
 #. type: Plain text
 #: ../src/help/en/user-guide/reservations.md:17
@@ -10261,13 +10290,18 @@ msgstr ""
 #. type: Plain text
 #: ../src/help/en/user-guide/reservations.md:18
 msgid ""
-"Requests that external clubs send through [online booking](online-"
-"booking.md) are listed above the reservations; once confirmed, they become "
-"ordinary reservations named after the club."
+"Open requests that external clubs send through [online booking](online-"
+"booking.md) appear in the same list, one line per slot marked *requested*, "
+"with the wanted lanes in amber. Once confirmed, they become ordinary "
+"reservations named after the club and marked *online booking*; declined and "
+"cancelled requests are folded away below the list."
 msgstr ""
-"Le richieste che le società esterne inviano tramite la [prenotazione online]"
-"(online-booking.md) compaiono sopra le prenotazioni; una volta confermate "
-"diventano prenotazioni ordinarie a nome della società."
+"Le richieste aperte che le società esterne inviano tramite la [prenotazione "
+"online](online-booking.md) compaiono nello stesso elenco, una riga per "
+"fascia oraria segnata *richiesta*, con i bersagli desiderati in ambra. Una "
+"volta confermate diventano prenotazioni ordinarie a nome della società, "
+"segnate *prenotazione online*; le richieste rifiutate e annullate sono "
+"raccolte sotto l’elenco."
 
 #. type: Title #
 #: ../src/help/en/user-guide/results-entry.md:1

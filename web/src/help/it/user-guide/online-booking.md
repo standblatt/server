@@ -75,13 +75,15 @@ aggiungere tiratori la lascia confermata.
 ## Confermare le richieste {#confirm}
 
 Ogni admin con un’e-mail riceve un messaggio per ogni richiesta nuova,
-modificata o annullata. Le richieste sono elencate in cima a
-**Prenotazioni**, prima quelle aperte e, per ogni stato, nell’ordine di
-arrivo; la barra laterale mostra con un contatore rosso quante sono in
-attesa. Una richiesta aperta indica i bersagli desiderati dalla
-società. Ogni richiesta mostra al secondo quando è stata ricevuta, una
-aperta anche quando la società l’ha modificata l’ultima volta; così, quando
-due società vogliono gli stessi bersagli, la prima può ottenerli.
+modificata o annullata. In **Prenotazioni** ogni fascia oraria di una
+richiesta aperta è una riga segnata *richiesta* tra le prenotazioni del suo
+giorno, con i bersagli desiderati dalla società; la barra laterale mostra
+con un contatore rosso quante richieste sono in attesa. Un clic sul nome
+della società apre la richiesta con il contatto, le fasce orarie e i
+tiratori. Mostra al secondo quando è stata ricevuta, una aperta anche quando
+la società l’ha modificata l’ultima volta; così, quando due società vogliono
+gli stessi bersagli, la prima può ottenerli. Le richieste rifiutate e
+annullate sono raccolte sotto l’elenco.
 
 ![Richieste di prenotazione sulla pagina delle
 prenotazioni](../images/screenshots/booking-requests.png){ .screenshot }
@@ -105,11 +107,15 @@ prenotazioni](../images/screenshots/booking-requests.png){ .screenshot }
   non vengono mai sovrascritti, perché la lista viene da un modulo pubblico;
   si completa solo una data di nascita o una licenza mancante. I tiratori
   aggiunti dopo la conferma si riprendono con **Riprendi tiratori**.
+- **Conferma** e **Rifiuta** si trovano sulla riga di una richiesta aperta e
+  nella richiesta stessa, **Riprendi tiratori** solo nella richiesta.
 - **Rifiuta** chiede un motivo facoltativo, che la società riceve via
   e-mail. I bersagli occupati dalla richiesta tornano liberi.
 
-I bersagli riservati sono normali [prenotazioni](reservations.md): modifica
-lì i numeri dei bersagli se serve. Durante la manifestazione l’iscrizione
-trova i tiratori con la ricerca normale. Il rapporto *Prenotazioni di
-bersagli* in [Statistiche e rapporti](statistics-reports.md) elenca ogni
-società con le sue fasce orarie, i bersagli e i tiratori.
+I bersagli riservati sono normali [prenotazioni](reservations.md) segnate
+*prenotazione online*: modifica lì i numeri dei bersagli se serve e riapri
+la richiesta dal loro nome o con **Dettagli della richiesta** nel loro
+menu. Durante la manifestazione l’iscrizione trova i tiratori con la ricerca
+normale. Il rapporto *Prenotazioni di bersagli* in [Statistiche e
+rapporti](statistics-reports.md) elenca ogni società con le sue fasce
+orarie, i bersagli e i tiratori.

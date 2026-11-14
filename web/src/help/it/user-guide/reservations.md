@@ -13,15 +13,20 @@
 - **Mostra come prenotato (minuti prima)**: anticipo a partire dal quale i
   bersagli compaiono prenotati nella dashboard e nel chiosco.
 
-L’elenco segna ogni prenotazione come *pianificata*, *attivo* o *conclusa*;
-**mostra passate** aggiunge quelle concluse. Il suo menu offre **Modifica**,
-**copia** ed **Elimina**.
+L’elenco mostra un blocco per giorno in ordine di tempo. Segna ogni
+prenotazione come *pianificata*, *attivo* o *conclusa*, e una striscia di
+piccole caselle mostra quali bersagli del poligono occupa (dalla larghezza
+di un tablet); **mostra passate** aggiunge quelle concluse. Il suo menu
+offre **Modifica**, **copia** ed **Elimina**.
 
 Le prenotazioni appartengono allo stand e compaiono quindi in ogni
 manifestazione su quello stand. I bersagli prenotati si possono comunque
 assegnare a un tiratore dopo una conferma. Il server annuncia da sé inizio e
 fine delle prenotazioni, così gli schermi cambiano senza ricaricare.
 
-Le richieste che le società esterne inviano tramite la [prenotazione
-online](online-booking.md) compaiono sopra le prenotazioni; una volta
-confermate diventano prenotazioni ordinarie a nome della società.
+Le richieste aperte che le società esterne inviano tramite la [prenotazione
+online](online-booking.md) compaiono nello stesso elenco, una riga per
+fascia oraria segnata *richiesta*, con i bersagli desiderati in ambra. Una
+volta confermate diventano prenotazioni ordinarie a nome della società,
+segnate *prenotazione online*; le richieste rifiutate e annullate sono
+raccolte sotto l’elenco.

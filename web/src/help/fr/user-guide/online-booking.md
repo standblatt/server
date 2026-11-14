@@ -74,13 +74,15 @@ tireurs la laisse confirmée.
 ## Confirmer les demandes {#confirm}
 
 Chaque admin avec un e-mail reçoit un mail pour chaque demande nouvelle,
-modifiée ou annulée. Les demandes figurent en haut de **Réservations**, les
-ouvertes d’abord et, dans chaque statut, dans l’ordre d’arrivée ; la barre
-latérale indique par un compteur rouge combien attendent. Une demande
-ouverte indique les cibles souhaitées par la société. Chaque demande indique
-à la seconde près quand elle a été reçue, une demande ouverte aussi quand la
-société l’a modifiée pour la dernière fois ; ainsi, quand deux sociétés
-veulent les mêmes cibles, la première peut les obtenir.
+modifiée ou annulée. Sur **Réservations**, chaque créneau d’une demande
+ouverte est une ligne marquée *demandée* parmi les réservations de son jour,
+avec les cibles souhaitées par la société ; la barre latérale indique par un
+compteur rouge combien de demandes attendent. Un clic sur le nom de la
+société ouvre la demande avec son contact, ses créneaux et ses tireurs. Elle
+indique à la seconde près quand elle a été reçue, une demande ouverte aussi
+quand la société l’a modifiée pour la dernière fois ; ainsi, quand deux
+sociétés veulent les mêmes cibles, la première peut les obtenir. Les
+demandes refusées et annulées sont repliées sous la liste.
 
 ![Demandes de réservation sur la page des
 réservations](../images/screenshots/booking-requests.png){ .screenshot }
@@ -103,11 +105,16 @@ réservations](../images/screenshots/booking-requests.png){ .screenshot }
   écrasés, car la liste vient d’un formulaire public ; seule une date de
   naissance ou une licence manquante est complétée. Les tireurs ajoutés
   après la confirmation sont repris avec **Reprendre des tireurs**.
+- **Confirmer** et **Refuser** se trouvent sur la ligne d’une demande
+  ouverte et dans la demande elle-même, **Reprendre des tireurs** seulement
+  dans la demande.
 - **Refuser** demande un motif facultatif, que la société reçoit par
   e-mail. Les cibles que la demande occupait sont de nouveau libres.
 
-Les cibles réservées sont des [réservations](reservations.md) ordinaires :
-modifie-y les numéros de cible au besoin. Pendant la manifestation,
-l’inscription trouve les tireurs avec la recherche habituelle. Le rapport
-*Réservations de cibles* sous [Statistiques](statistics-reports.md) liste
-chaque société avec ses créneaux, cibles et tireurs.
+Les cibles réservées sont des [réservations](reservations.md) ordinaires
+marquées *réservation en ligne* : modifie-y les numéros de cible au besoin
+et rouvre la demande par leur nom ou par **Détails de la demande** dans leur
+menu. Pendant la manifestation, l’inscription trouve les tireurs avec la
+recherche habituelle. Le rapport *Réservations de cibles* sous
+[Statistiques](statistics-reports.md) liste chaque société avec ses
+créneaux, cibles et tireurs.
