@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.28.0] - 2026-11-14
+
 ### Added
 - Online booking: admins correct the announced shooters of a request in its side sheet (by @HB9HIL)
 
