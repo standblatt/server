@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Online booking: saving a request through the manage link without changing anything no longer mails the admins or marks the request as changed (by @HB9HIL)
+- Updated `@sveltejs/adapter-static` to 3.0.11 (GHSA-jf9x-2fg2-hx4w; only affects Vercel deployments, so not this app) (by @HB9HIL)
 
 ## [0.27.1] - 2026-11-11
 
