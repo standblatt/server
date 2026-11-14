@@ -172,13 +172,15 @@
 								class="min-w-20 justify-center {st === 'active' ? 'border-amber-500/50 bg-amber-500/10 text-amber-700 dark:text-amber-400' : st === 'planned' ? 'border-sky-500/50 text-sky-700 dark:text-sky-400' : ''}">{statusLabel(st)}</Badge
 							>
 							<span class="w-28 font-medium tabular-nums">{time(r.startsAt)}–{time(r.endsAt)}</span>
-							{#if r.bookingRequestId}
-								{@const qid = r.bookingRequestId}
-								<button type="button" class="font-semibold hover:underline" onclick={() => (requestId = qid)}>{r.description}</button>
-								<span class="text-xs text-muted-foreground">{$t`online booking`}</span>
-							{:else}
-								<span class="font-semibold">{r.description}</span>
-							{/if}
+							<span class="flex min-w-0 items-baseline gap-2 sm:w-64">
+								{#if r.bookingRequestId}
+									{@const qid = r.bookingRequestId}
+									<button type="button" class="truncate font-semibold hover:underline" onclick={() => (requestId = qid)}>{r.description}</button>
+									<span class="shrink-0 text-xs text-muted-foreground">{$t`online booking`}</span>
+								{:else}
+									<span class="truncate font-semibold">{r.description}</span>
+								{/if}
+							</span>
 							{#if range}<LaneStrip count={range.laneCount} lanes={r.lanes} disabled={range.disabledLanes} />{/if}
 							<span class="text-muted-foreground">{ranges.length > 1 ? `${r.rangeName} · ` : ''}{$t`lanes ${r.lanesText}`}</span>
 							{#if r.leadMinutes}<span class="text-xs text-muted-foreground">{$t`shown ${r.leadMinutes} min before`}</span>{/if}
@@ -205,7 +207,7 @@
 						<li class="flex flex-wrap items-center gap-x-4 gap-y-1 bg-amber-500/5 px-4 py-2.5 text-sm" aria-label={$t`Request of ${q.club}`}>
 							<Badge variant="outline" class="min-w-20 justify-center border-amber-500/50 bg-amber-500/10 text-amber-700 dark:text-amber-400">{$t`requested`}</Badge>
 							<span class="w-28 font-medium tabular-nums">{time(it.start)}–{time(it.end)}</span>
-							<button type="button" class="font-semibold hover:underline" onclick={() => (requestId = q.id)}>{q.club}</button>
+							<span class="flex min-w-0 items-baseline gap-2 sm:w-64"><button type="button" class="truncate font-semibold hover:underline" onclick={() => (requestId = q.id)}>{q.club}</button></span>
 							{#if range}<LaneStrip count={range.laneCount} lanes={it.wanted ?? []} disabled={range.disabledLanes} pending />{/if}
 							<span class="text-muted-foreground">
 								{ranges.length > 1 ? `${range?.name ?? ''} · ` : ''}{$plural(it.lanes, { one: '# lane', other: '# lanes' })}{#if it.wanted?.length}{' · '}{$t`wanted ${formatLanes(it.wanted)}`}{/if}
