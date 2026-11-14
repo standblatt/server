@@ -3882,6 +3882,8 @@ export interface components {
             startsAt: string;
         };
         ReservationView: {
+            /** Format: int64 */
+            bookingRequestId?: number;
             description: string;
             /** Format: date-time */
             endsAt: string;

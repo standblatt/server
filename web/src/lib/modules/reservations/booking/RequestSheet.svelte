@@ -13,21 +13,21 @@
 	import ClubSelect from '$lib/ClubSelect.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import * as Dialog from '$lib/components/ui/dialog';
+	import * as Sheet from '$lib/components/ui/sheet';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import FormError from '$lib/FormError.svelte';
 	import { bookingRequestsQuery, clubsQuery, keys } from '$lib/tenant';
 
-	let { tenantId, event, isAdmin }: { tenantId: number; event: Event; isAdmin: boolean } = $props();
+	let { tenantId, event, isAdmin, requestId = $bindable(null) }: { tenantId: number; event: Event; isAdmin: boolean; requestId?: number | null } = $props();
 
 	const queryClient = useQueryClient();
 	const requests = bookingRequestsQuery(
 		() => tenantId,
 		() => event.id
 	);
-	const order = { pending: 0, confirmed: 1, declined: 2, cancelled: 3 };
-	const sorted = $derived([...(requests.data ?? [])].sort((a, b) => order[a.status] - order[b.status] || Date.parse(a.createdAt) - Date.parse(b.createdAt)));
+	const r = $derived(requests.data?.find((x) => x.id === requestId));
 	/** Name of a range of the event. */
-	const rangeName = (id: number) => event.ranges.find((r) => r.id === id)?.name ?? '';
+	const rangeName = (id: number) => event.ranges.find((x) => x.id === id)?.name ?? '';
 	const tz = $derived(event.timezone);
 	/** Date and time to the second in the event's time zone, so the order of requests is plain. */
 	const moment = (iso: string) => new Date(iso).toLocaleString(intlLocale(), { dateStyle: 'medium', timeStyle: 'medium', timeZone: tz });
@@ -58,12 +58,18 @@
 	let clubChoice = $state('');
 
 	/** Opens the confirmation with the club of the master data that matches the request, or the similar ones. */
-	async function openConfirm(r: BookingRequest) {
+	export async function openConfirm(r: BookingRequest) {
 		error = '';
 		const m = await call(api.GET('/api/tenants/{tenantId}/clubs/similar', { params: { path: { tenantId }, query: { name: r.club } } }));
 		suggested = [...(m.match ? [m.match] : []), ...m.similar];
 		clubChoice = m.match ? String(m.match.id) : m.similar.length ? '' : 'new';
 		confirming = r;
+	}
+
+	/** Opens the dialog that declines the request. */
+	export function openDecline(r: BookingRequest) {
+		error = '';
+		declining = r;
 	}
 
 	/** Confirms the request in the dialog with the chosen club. */
@@ -104,40 +110,29 @@
 	}
 </script>
 
-{#if sorted.length > 0}
-	<section class="grid gap-3" aria-label={$t`Booking requests`}>
-		<h2 class="text-base font-semibold">{$t`Booking requests`}</h2>
-		{#each sorted as r (r.id)}
+<Sheet.Root open={!!r} onOpenChange={(o) => !o && (requestId = null)}>
+	<Sheet.Content class="gap-0 overflow-y-auto p-0 data-[side=right]:w-full data-[side=right]:sm:max-w-xl">
+		{#if r}
 			{@const waiting = r.shooters.filter((s) => !s.shooterId).length}
-			<article class="grid gap-3 rounded-lg border bg-card p-4 text-sm" class:opacity-60={r.status === 'declined' || r.status === 'cancelled'} aria-label={$t`Request of ${r.club}`}>
-				<div class="flex flex-wrap items-center gap-3">
-					<span class="text-base font-semibold">{r.club}</span>
+			<Sheet.Header class="border-b px-6 py-4">
+				<Sheet.Title class="text-lg">{r.club}</Sheet.Title>
+				<Sheet.Description>{r.contact} · <a class="underline" href="mailto:{r.email}">{r.email}</a>{r.phone ? ` · ${r.phone}` : ''}</Sheet.Description>
+			</Sheet.Header>
+			<div class="grid gap-4 px-6 py-4 text-sm">
+				<div class="flex flex-wrap items-center gap-2">
 					<BookingStatus status={r.status} />
-					<span class="text-muted-foreground">{r.contact} · <a class="underline" href="mailto:{r.email}">{r.email}</a>{r.phone ? ` · ${r.phone}` : ''}</span>
-					{#if isAdmin}
-						<div class="ml-auto flex flex-wrap gap-2">
-							{#if r.status === 'pending'}
-								<Button size="sm" onclick={() => openConfirm(r)}><Check />{$t`Confirm`}</Button>
-							{/if}
-							{#if r.status === 'confirmed' && waiting > 0}
-								<Button size="sm" variant="outline" onclick={() => adopt(r)}><UserPlus />{$plural(waiting, { one: 'Take over # shooter', other: 'Take over # shooters' })}</Button>
-							{/if}
-							{#if r.status === 'pending' || r.status === 'confirmed'}
-								<Button size="sm" variant="outline" onclick={() => ((declining = r), (error = ''))}><X />{$t`Decline`}</Button>
-							{/if}
-						</div>
-					{/if}
+					<span class="text-muted-foreground">
+						{$t`Received ${moment(r.createdAt)}`}{#if r.status === 'pending' && r.updatedAt !== r.createdAt}{' · '}{$t`changed ${moment(r.updatedAt)}`}{/if}
+					</span>
 				</div>
-				<p class="text-muted-foreground">
-					{$t`Received ${moment(r.createdAt)}`}{#if r.status === 'pending' && r.updatedAt !== r.createdAt}{' · '}{$t`changed ${moment(r.updatedAt)}`}{/if}
-				</p>
 				{#if r.clubId && clubName(r.clubId) !== r.club}<p class="text-muted-foreground">{$t`Club in the master data: ${clubName(r.clubId)}`}</p>{/if}
 				{#if r.note}<p class="rounded-md bg-muted px-3 py-2">{r.note}</p>{/if}
+				{#if r.status === 'declined' && r.declineReason}<p class="text-muted-foreground">{$t`Reason: ${r.declineReason}`}</p>{/if}
 				<ul class="grid gap-1">
 					{#each r.items as it (`${it.rangeId}-${it.start}`)}
 						<li class="flex flex-wrap gap-x-3">
-							<span class="w-64">{slotDay(it.start, tz)}</span>
-							<span class="w-28 tabular-nums">{slotTime(it.start, tz)}–{slotTime(it.end, tz)}</span>
+							<span>{slotDay(it.start, tz)}</span>
+							<span class="tabular-nums">{slotTime(it.start, tz)}–{slotTime(it.end, tz)}</span>
 							{#if event.ranges.length > 1}<span>{rangeName(it.rangeId)}</span>{/if}
 							<span class="font-medium">{$plural(it.lanes, { one: '# lane', other: '# lanes' })}</span>
 							{#if it.assigned.length > 0}<span class="text-muted-foreground">{$t`lanes ${formatLanes(it.assigned)}`}</span>{:else if it.wanted?.length}<span class="text-muted-foreground">{$t`wanted ${formatLanes(it.wanted)}`}</span>{/if}
@@ -145,9 +140,9 @@
 					{/each}
 				</ul>
 				{#if r.shooters.length > 0}
-					<details>
-						<summary class="cursor-pointer">{$plural(r.shooters.length, { one: '# shooter announced', other: '# shooters announced' })}</summary>
-						<ul class="mt-2 grid gap-1 sm:grid-cols-2">
+					<section class="grid gap-2">
+						<h3 class="font-semibold">{$plural(r.shooters.length, { one: '# shooter announced', other: '# shooters announced' })}</h3>
+						<ul class="grid gap-1">
 							{#each r.shooters as s, i (i)}
 								<li class="flex gap-2">
 									<span>{s.lastname} {s.firstname}</span>
@@ -158,13 +153,23 @@
 								</li>
 							{/each}
 						</ul>
-					</details>
+					</section>
 				{/if}
-				{#if r.status === 'declined' && r.declineReason}<p class="text-muted-foreground">{$t`Reason: ${r.declineReason}`}</p>{/if}
-			</article>
-		{/each}
-	</section>
-{/if}
+				{#if isAdmin && (r.status === 'pending' || r.status === 'confirmed')}
+					<div class="flex flex-wrap gap-2 border-t pt-4">
+						{#if r.status === 'pending'}
+							<Button size="sm" onclick={() => openConfirm(r)}><Check />{$t`Confirm`}</Button>
+						{/if}
+						{#if r.status === 'confirmed' && waiting > 0}
+							<Button size="sm" variant="outline" onclick={() => adopt(r)}><UserPlus />{$plural(waiting, { one: 'Take over # shooter', other: 'Take over # shooters' })}</Button>
+						{/if}
+						<Button size="sm" variant="outline" onclick={() => openDecline(r)}><X />{$t`Decline`}</Button>
+					</div>
+				{/if}
+			</div>
+		{/if}
+	</Sheet.Content>
+</Sheet.Root>
 
 <Dialog.Root open={declining !== null} onOpenChange={(o) => !o && (declining = null)}>
 	<Dialog.Content class="sm:max-w-md">

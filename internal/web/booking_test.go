@@ -137,6 +137,9 @@ func TestOnlineBooking(t *testing.T) {
 	if msg := box.mailTo(t, "ida@example.org"); !strings.Contains(msg.Text(), "Lanes: 3 (1-3)") {
 		t.Fatalf("confirmation mail: %+v", msg)
 	}
+	if rs, _ := e.st.ListReservations(context.Background(), tid, confirmed.Items[0].RangeID, false); len(rs) == 0 || rs[0].BookingRequestID == nil || *rs[0].BookingRequestID != confirmed.ID {
+		t.Fatalf("reservation of the request: %+v", rs)
+	}
 	code, b = e.do(anon, "GET", public, nil)
 	expect(t, "get", code, 200, b)
 	json.Unmarshal(b, &info)

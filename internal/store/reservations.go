@@ -20,9 +20,12 @@ type Reservation struct {
 	EndsAt      time.Time `json:"endsAt"`
 	LeadMinutes int       `json:"leadMinutes"`
 	Description string    `json:"description"`
+	// BookingRequestID is the online booking request the reservation was made for.
+	BookingRequestID *int64 `json:"bookingRequestId,omitempty" required:"false"`
 }
 
-const reservationCols = `id, range_id, lanes, starts_at, ends_at, lead_minutes, description`
+const reservationCols = `id, range_id, lanes, starts_at, ends_at, lead_minutes, description,
+	(SELECT request_id FROM booking_items WHERE id = booking_item_id)`
 
 // ListReservations lists the reservations of a range ordered by start; past ones only with all.
 func (s *Store) ListReservations(ctx context.Context, tenantID, rangeID int64, all bool) ([]Reservation, error) {

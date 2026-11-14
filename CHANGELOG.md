@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Reservations: one list per day for reservations and open booking requests, with a strip of the lanes each one takes; request details open in a side sheet, declined and cancelled requests are folded away, and a confirmed request no longer shows twice (by @HB9HIL)
+
 ### Fixed
 - Online booking: saving a request through the manage link without changing anything no longer mails the admins or marks the request as changed (by @HB9HIL)
 

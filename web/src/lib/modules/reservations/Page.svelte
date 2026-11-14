@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t } from 'lingui-for-svelte/macro';
+	import { plural, t } from 'lingui-for-svelte/macro';
 	import { intlLocale } from '$lib/locale.svelte';
 	import { createQuery, useQueryClient } from '@tanstack/svelte-query';
 	import Copy from '@lucide/svelte/icons/copy';
@@ -8,8 +8,8 @@
 	import Plus from '@lucide/svelte/icons/plus';
 	import Trash from '@lucide/svelte/icons/trash-2';
 	import { toast } from 'svelte-sonner';
-	import { fromZonedInput, zonedInput } from '$lib/format';
-	import { api, call, type ReservationView } from '$lib/api';
+	import { formatLanes, fromZonedInput, zonedInput } from '$lib/format';
+	import { api, call, type BookingRequest, type ReservationView } from '$lib/api';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Button } from '$lib/components/ui/button';
 	import * as Dialog from '$lib/components/ui/dialog';
@@ -21,8 +21,14 @@
 	import FormError from '$lib/FormError.svelte';
 	import FormField from '$lib/FormField.svelte';
 	import PageHeader from '$lib/PageHeader.svelte';
-	import { keys } from '$lib/tenant';
-	import BookingRequests from './booking/BookingRequests.svelte';
+	import { bookingRequestsQuery, keys } from '$lib/tenant';
+	import Info from '@lucide/svelte/icons/info';
+	import Check from '@lucide/svelte/icons/check';
+	import X from '@lucide/svelte/icons/x';
+	import BookingStatus from './booking/parts/BookingStatus.svelte';
+	import RequestSheet from './booking/RequestSheet.svelte';
+	import { byDay } from './booking/booking';
+	import LaneStrip from './LaneStrip.svelte';
 	import type { EventProps } from '..';
 	import { can, membershipOf, meQuery } from '$lib/me';
 
@@ -118,14 +124,29 @@
 	const statusLabel = (st: string) => (st === 'finished' ? $t`finished` : st === 'active' ? $t`active` : $t`planned`);
 	/** Formats a timestamp as hours and minutes in the event's time zone. */
 	const time = (iso: string) => new Date(iso).toLocaleTimeString(intlLocale(), { hour: '2-digit', minute: '2-digit', timeZone: tz });
-	const byDay = $derived.by(() => {
-		const days = new Map<string, Row[]>();
-		for (const r of [...(reservations.data ?? [])].sort((a, b) => a.startsAt.localeCompare(b.startsAt))) {
-			const day = new Date(r.startsAt).toLocaleDateString(intlLocale(), { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric', timeZone: tz });
-			days.set(day, [...(days.get(day) ?? []), r]);
-		}
-		return [...days.entries()];
-	});
+	const requests = bookingRequestsQuery(
+		() => tenantId,
+		() => eventId
+	);
+	type BookingItem = BookingRequest['items'][number];
+	type Line = { key: string; start: string; end: string; rangeId: number; reservation?: Row; request?: BookingRequest; item?: BookingItem };
+	/** Reservations and the slots of open requests, grouped by day; confirmed requests show through their reservations. */
+	const days = $derived(
+		byDay<Line>(
+			[
+				...(reservations.data ?? []).map((r) => ({ key: `r${r.id}`, start: r.startsAt, end: r.endsAt, rangeId: r.rangeId, reservation: r })),
+				...(requests.data ?? [])
+					.filter((q) => q.status === 'pending')
+					.flatMap((q) => q.items.map((it, i) => ({ key: `q${q.id}-${i}`, start: it.start, end: it.end, rangeId: it.rangeId, request: q, item: it })))
+			],
+			tz
+		)
+	);
+	const closed = $derived((requests.data ?? []).filter((q) => q.status === 'declined' || q.status === 'cancelled'));
+	/** The range of the event with that ID. */
+	const rangeOf = (id: number) => ranges.find((r) => r.id === id);
+	let requestId = $state<number | null>(null);
+	let sheet: RequestSheet;
 </script>
 
 <PageHeader help="user-guide/reservations" title={$t`Reservations`} description={$t`Lanes reserved for trainings or groups; they show as reserved from the lead time on.`}>
@@ -136,41 +157,90 @@
 </PageHeader>
 
 <div class="space-y-4">
-	<BookingRequests {tenantId} {event} {isAdmin} />
-	{#each byDay as [day, list] (day)}
+	{#each days as [day, list] (day)}
 		<section class="overflow-hidden rounded-lg border bg-card">
 			<div class="border-b px-4 py-2.5"><h2 class="text-sm font-semibold">{day}</h2></div>
 			<ul class="divide-y">
-				{#each list as r (r.id)}
-					{@const st = status(r)}
-					<li class="flex flex-wrap items-center gap-x-4 gap-y-1 px-4 py-2.5 text-sm" class:opacity-50={st === 'finished'} aria-label={$t`Reservation ${r.description}`}>
-						<Badge
-							variant="outline"
-							class="w-20 justify-center {st === 'active' ? 'border-amber-500/50 bg-amber-500/10 text-amber-700 dark:text-amber-400' : st === 'planned' ? 'border-sky-500/50 text-sky-700 dark:text-sky-400' : ''}">{statusLabel(st)}</Badge
-						>
-						<span class="w-28 font-medium tabular-nums">{time(r.startsAt)}–{time(r.endsAt)}</span>
-						<span class="font-semibold">{r.description}</span>
-						<span class="text-muted-foreground">{ranges.length > 1 ? `${r.rangeName} · ` : ''}{$t`lanes ${r.lanesText}`}</span>
-						{#if r.leadMinutes}<span class="text-xs text-muted-foreground">{$t`shown ${r.leadMinutes} min before`}</span>{/if}
-						<DropdownMenu.Root>
-							<DropdownMenu.Trigger>
-								{#snippet child({ props })}<Button variant="ghost" size="icon-sm" class="ml-auto" aria-label={$t`Actions for ${r.description}`} {...props}><MoreHorizontal /></Button>{/snippet}
-							</DropdownMenu.Trigger>
-							<DropdownMenu.Content align="end">
-								<DropdownMenu.Item onSelect={() => open(r)}><Pencil />{$t`Edit`}</DropdownMenu.Item>
-								<DropdownMenu.Item onSelect={() => open(r, true)}><Copy />{$t`Copy`}</DropdownMenu.Item>
-								<DropdownMenu.Separator />
-								<DropdownMenu.Item variant="destructive" onSelect={() => remove(r)}><Trash />{$t`Delete`}</DropdownMenu.Item>
-							</DropdownMenu.Content>
-						</DropdownMenu.Root>
-					</li>
+				{#each list as l (l.key)}
+					{@const range = rangeOf(l.rangeId)}
+					{#if l.reservation}
+						{@const r = l.reservation}
+						{@const st = status(r)}
+						<li class="flex flex-wrap items-center gap-x-4 gap-y-1 px-4 py-2.5 text-sm" class:opacity-50={st === 'finished'} aria-label={$t`Reservation ${r.description}`}>
+							<Badge
+								variant="outline"
+								class="min-w-20 justify-center {st === 'active' ? 'border-amber-500/50 bg-amber-500/10 text-amber-700 dark:text-amber-400' : st === 'planned' ? 'border-sky-500/50 text-sky-700 dark:text-sky-400' : ''}">{statusLabel(st)}</Badge
+							>
+							<span class="w-28 font-medium tabular-nums">{time(r.startsAt)}–{time(r.endsAt)}</span>
+							{#if r.bookingRequestId}
+								{@const qid = r.bookingRequestId}
+								<button type="button" class="font-semibold hover:underline" onclick={() => (requestId = qid)}>{r.description}</button>
+								<span class="text-xs text-muted-foreground">{$t`online booking`}</span>
+							{:else}
+								<span class="font-semibold">{r.description}</span>
+							{/if}
+							{#if range}<LaneStrip count={range.laneCount} lanes={r.lanes} disabled={range.disabledLanes} />{/if}
+							<span class="text-muted-foreground">{ranges.length > 1 ? `${r.rangeName} · ` : ''}{$t`lanes ${r.lanesText}`}</span>
+							{#if r.leadMinutes}<span class="text-xs text-muted-foreground">{$t`shown ${r.leadMinutes} min before`}</span>{/if}
+							<DropdownMenu.Root>
+								<DropdownMenu.Trigger>
+									{#snippet child({ props })}<Button variant="ghost" size="icon-sm" class="ml-auto" aria-label={$t`Actions for ${r.description}`} {...props}><MoreHorizontal /></Button>{/snippet}
+								</DropdownMenu.Trigger>
+								<DropdownMenu.Content align="end">
+									{#if r.bookingRequestId}
+										{@const qid = r.bookingRequestId}
+										<DropdownMenu.Item onSelect={() => (requestId = qid)}><Info />{$t`Request details`}</DropdownMenu.Item>
+										<DropdownMenu.Separator />
+									{/if}
+									<DropdownMenu.Item onSelect={() => open(r)}><Pencil />{$t`Edit`}</DropdownMenu.Item>
+									<DropdownMenu.Item onSelect={() => open(r, true)}><Copy />{$t`Copy`}</DropdownMenu.Item>
+									<DropdownMenu.Separator />
+									<DropdownMenu.Item variant="destructive" onSelect={() => remove(r)}><Trash />{$t`Delete`}</DropdownMenu.Item>
+								</DropdownMenu.Content>
+							</DropdownMenu.Root>
+						</li>
+					{:else if l.request && l.item}
+						{@const q = l.request}
+						{@const it = l.item}
+						<li class="flex flex-wrap items-center gap-x-4 gap-y-1 bg-amber-500/5 px-4 py-2.5 text-sm" aria-label={$t`Request of ${q.club}`}>
+							<Badge variant="outline" class="min-w-20 justify-center border-amber-500/50 bg-amber-500/10 text-amber-700 dark:text-amber-400">{$t`requested`}</Badge>
+							<span class="w-28 font-medium tabular-nums">{time(it.start)}–{time(it.end)}</span>
+							<button type="button" class="font-semibold hover:underline" onclick={() => (requestId = q.id)}>{q.club}</button>
+							{#if range}<LaneStrip count={range.laneCount} lanes={it.wanted ?? []} disabled={range.disabledLanes} pending />{/if}
+							<span class="text-muted-foreground">
+								{ranges.length > 1 ? `${range?.name ?? ''} · ` : ''}{$plural(it.lanes, { one: '# lane', other: '# lanes' })}{#if it.wanted?.length}{' · '}{$t`wanted ${formatLanes(it.wanted)}`}{/if}
+							</span>
+							{#if isAdmin}
+								<div class="ml-auto flex gap-2">
+									<Button size="sm" onclick={() => sheet.openConfirm(q)}><Check />{$t`Confirm`}</Button>
+									<Button size="sm" variant="outline" onclick={() => sheet.openDecline(q)}><X />{$t`Decline`}</Button>
+								</div>
+							{/if}
+						</li>
+					{/if}
 				{/each}
 			</ul>
 		</section>
 	{:else}
 		<div class="rounded-lg border border-dashed py-12 text-center text-sm text-muted-foreground">{$t`No reservations.`}</div>
 	{/each}
+	{#if closed.length > 0}
+		<details class="text-sm">
+			<summary class="cursor-pointer text-muted-foreground">{$plural(closed.length, { one: '# declined or cancelled request', other: '# declined or cancelled requests' })}</summary>
+			<ul class="mt-2 divide-y rounded-lg border bg-card">
+				{#each closed as q (q.id)}
+					<li class="flex flex-wrap items-center gap-x-4 gap-y-1 px-4 py-2">
+						<BookingStatus status={q.status} />
+						<button type="button" class="font-semibold hover:underline" onclick={() => (requestId = q.id)}>{q.club}</button>
+						{#if q.declineReason}<span class="text-muted-foreground">{q.declineReason}</span>{/if}
+					</li>
+				{/each}
+			</ul>
+		</details>
+	{/if}
 </div>
+
+<RequestSheet bind:this={sheet} bind:requestId {tenantId} {event} {isAdmin} />
 
 <Dialog.Root open={form !== null} onOpenChange={(o) => !o && (form = null)}>
 	<Dialog.Content class="sm:max-w-lg">
