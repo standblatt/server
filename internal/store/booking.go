@@ -158,7 +158,8 @@ func (s *Store) CreateBookingRequest(ctx context.Context, tenantID, eventID int6
 		if err := insertBookingItems(ctx, tx, tenantID, id, in.Items); err != nil {
 			return err
 		}
-		return syncBookingShooters(ctx, tx, tenantID, id, in.Shooters)
+		_, err := syncBookingShooters(ctx, tx, tenantID, id, in.Shooters)
+		return err
 	})
 	return id, mapErr(err)
 }
@@ -182,11 +183,11 @@ func shooterKey(b domain.BookingShooter) string {
 
 // syncBookingShooters makes the shooter list of a request equal to list: unchanged rows keep their master data
 // link, removed ones are deleted, new ones are added without a link.
-func syncBookingShooters(ctx context.Context, tx pgx.Tx, tenantID, requestID int64, list []domain.BookingShooter) error {
+func syncBookingShooters(ctx context.Context, tx pgx.Tx, tenantID, requestID int64, list []domain.BookingShooter) (bool, error) {
 	rows, err := tx.Query(ctx, `SELECT id, firstname, lastname, birthday::text, license_number FROM booking_shooters
 		WHERE tenant_id = $1 AND request_id = $2`, tenantID, requestID)
 	if err != nil {
-		return err
+		return false, err
 	}
 	type row struct {
 		id int64
@@ -198,8 +199,9 @@ func syncBookingShooters(ctx context.Context, tx pgx.Tx, tenantID, requestID int
 		return x, err
 	})
 	if err != nil {
-		return err
+		return false, err
 	}
+	changed := false
 	keep := map[string][]int64{}
 	for _, h := range have {
 		keep[shooterKey(h.BookingShooter)] = append(keep[shooterKey(h.BookingShooter)], h.id)
@@ -213,15 +215,16 @@ func syncBookingShooters(ctx context.Context, tx pgx.Tx, tenantID, requestID int
 		if _, err := tx.Exec(ctx, `INSERT INTO booking_shooters (tenant_id, request_id, firstname, lastname, birthday, license_number)
 			VALUES ($1, $2, $3, $4, $5, $6)`, tenantID, requestID, strings.TrimSpace(b.Firstname), strings.TrimSpace(b.Lastname),
 			b.Birthday, domain.NormalizeLicense(b.LicenseNumber)); err != nil {
-			return err
+			return false, err
 		}
+		changed = true
 	}
 	var drop []int64
 	for _, ids := range keep {
 		drop = append(drop, ids...)
 	}
 	_, err = tx.Exec(ctx, `DELETE FROM booking_shooters WHERE tenant_id = $1 AND id = ANY($2)`, tenantID, drop)
-	return err
+	return changed || len(drop) > 0, err
 }
 
 const bookingRequestCols = `r.id, r.event_id, r.club, r.club_id, r.contact, r.email, r.phone, r.note, r.status, r.decline_reason,
@@ -268,14 +271,17 @@ func (s *Store) BookingRequestByHash(ctx context.Context, hash string) (int64, B
 
 // UpdateBookingRequest replaces contact data, items and shooters of a pending or confirmed request. An item without
 // wanted lanes keeps those of the same slot with as many lanes. When the items change, their reservations go with
-// them and a confirmed request is pending again; it returns whether that happened.
-func (s *Store) UpdateBookingRequest(ctx context.Context, tenantID, id int64, in BookingRequestInput) (bool, error) {
-	reopened := false
-	err := pgx.BeginFunc(ctx, s.pool, func(tx pgx.Tx) error {
+// them and a confirmed request is pending again. It returns whether that happened and whether anything changed at
+// all; an unchanged request is not touched, so its update time stays.
+func (s *Store) UpdateBookingRequest(ctx context.Context, tenantID, id int64, in BookingRequestInput) (reopened, changed bool, err error) {
+	err = pgx.BeginFunc(ctx, s.pool, func(tx pgx.Tx) error {
 		var status BookingStatus
-		if err := tx.QueryRow(ctx, `SELECT status FROM booking_requests WHERE tenant_id = $1 AND id = $2 FOR UPDATE`, tenantID, id).Scan(&status); err != nil {
+		var old BookingRequestInput
+		if err := tx.QueryRow(ctx, `SELECT status, club, contact, email, phone, note FROM booking_requests WHERE tenant_id = $1 AND id = $2 FOR UPDATE`,
+			tenantID, id).Scan(&status, &old.Club, &old.Contact, &old.Email, &old.Phone, &old.Note); err != nil {
 			return err
 		}
+		changed = old.Club != in.Club || old.Contact != in.Contact || old.Email != in.Email || old.Phone != in.Phone || old.Note != in.Note
 		if status != BookingPending && status != BookingConfirmed {
 			return ErrNotPending
 		}
@@ -303,15 +309,19 @@ func (s *Store) UpdateBookingRequest(ctx context.Context, tenantID, id int64, in
 			}
 			reopened = status == BookingConfirmed
 			status = BookingPending
+			changed = true
 		}
-		if _, err := tx.Exec(ctx, `UPDATE booking_requests SET club = $3, contact = $4, email = $5, phone = $6, note = $7, status = $8::booking_status,
-			decided_at = CASE WHEN $8::booking_status = 'pending' THEN NULL ELSE decided_at END, updated_at = now() WHERE tenant_id = $1 AND id = $2`,
-			tenantID, id, in.Club, in.Contact, in.Email, in.Phone, in.Note, status); err != nil {
+		shooters, err := syncBookingShooters(ctx, tx, tenantID, id, in.Shooters)
+		if err != nil || !(changed || shooters) {
 			return err
 		}
-		return syncBookingShooters(ctx, tx, tenantID, id, in.Shooters)
+		changed = true
+		_, err = tx.Exec(ctx, `UPDATE booking_requests SET club = $3, contact = $4, email = $5, phone = $6, note = $7, status = $8::booking_status,
+			decided_at = CASE WHEN $8::booking_status = 'pending' THEN NULL ELSE decided_at END, updated_at = now() WHERE tenant_id = $1 AND id = $2`,
+			tenantID, id, in.Club, in.Contact, in.Email, in.Phone, in.Note, status)
+		return err
 	})
-	return reopened, mapErr(err)
+	return reopened, changed, mapErr(err)
 }
 
 // CancelBookingRequest cancels a pending or confirmed request and frees its reservations.

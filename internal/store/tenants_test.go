@@ -137,7 +137,7 @@ func TestTenantIsolation(t *testing.T) {
 	if err := st.DeclineBookingRequest(ctx, b, reqA, ""); !errors.Is(err, store.ErrNotFound) {
 		t.Fatalf("DeclineBookingRequest across tenants: %v", err)
 	}
-	if _, err := st.UpdateBookingRequest(ctx, b, reqA, booking); !errors.Is(err, store.ErrNotFound) {
+	if _, _, err := st.UpdateBookingRequest(ctx, b, reqA, booking); !errors.Is(err, store.ErrNotFound) {
 		t.Fatalf("UpdateBookingRequest across tenants: %v", err)
 	}
 	if err := st.AdoptBookingShooters(ctx, b, reqA); !errors.Is(err, store.ErrNotFound) {

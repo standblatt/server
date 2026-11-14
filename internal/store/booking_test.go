@@ -78,10 +78,16 @@ func TestBookingConfirm(t *testing.T) {
 
 	// Only shooters added: still confirmed, the new one waits for adoption.
 	in.Shooters = append(in.Shooters, domain.BookingShooter{Firstname: "Dora", Lastname: "Spät", Birthday: "1970-07-07"})
-	if reopened, err := st.UpdateBookingRequest(ctx, tid, id, in); err != nil || reopened {
-		t.Fatalf("update shooters: %v %v", reopened, err)
+	if reopened, changed, err := st.UpdateBookingRequest(ctx, tid, id, in); err != nil || reopened || !changed {
+		t.Fatalf("update shooters: %v %v %v", reopened, changed, err)
 	}
 	req, _ = st.GetBookingRequest(ctx, tid, id)
+	if reopened, changed, err := st.UpdateBookingRequest(ctx, tid, id, in); err != nil || reopened || changed {
+		t.Fatalf("unchanged update: %v %v %v", reopened, changed, err)
+	}
+	if again, _ := st.GetBookingRequest(ctx, tid, id); !again.UpdatedAt.Equal(req.UpdatedAt) {
+		t.Fatalf("unchanged update touched the request: %v → %v", req.UpdatedAt, again.UpdatedAt)
+	}
 	if req.Status != store.BookingConfirmed || req.Shooters[0].ShooterID == nil || req.Shooters[3].ShooterID != nil {
 		t.Fatalf("after adding a shooter: %+v", req)
 	}
@@ -102,8 +108,8 @@ func TestBookingConfirm(t *testing.T) {
 
 	// Changing the slots of a confirmed request frees its lanes and reopens it.
 	in.Items = []domain.BookingItem{slot(8, 1)}
-	if reopened, err := st.UpdateBookingRequest(ctx, tid, id, in); err != nil || !reopened {
-		t.Fatalf("update items: %v %v", reopened, err)
+	if reopened, changed, err := st.UpdateBookingRequest(ctx, tid, id, in); err != nil || !reopened || !changed {
+		t.Fatalf("update items: %v %v %v", reopened, changed, err)
 	}
 	if err := st.ConfirmBooking(ctx, tid, other, &guests); err != nil {
 		t.Fatalf("lanes not freed: %v", err)
@@ -123,7 +129,7 @@ func TestBookingConfirm(t *testing.T) {
 	if err := st.CancelBookingRequest(ctx, tid, other); !errors.Is(err, store.ErrNotPending) {
 		t.Fatalf("cancel twice: %v", err)
 	}
-	if _, err := st.UpdateBookingRequest(ctx, tid, other, in); !errors.Is(err, store.ErrNotPending) {
+	if _, _, err := st.UpdateBookingRequest(ctx, tid, other, in); !errors.Is(err, store.ErrNotPending) {
 		t.Fatalf("update cancelled: %v", err)
 	}
 

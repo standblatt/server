@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Online booking: saving a request through the manage link without changing anything no longer mails the admins or marks the request as changed (by @HB9HIL)
+
 ## [0.27.1] - 2026-11-11
 
 ### Fixed

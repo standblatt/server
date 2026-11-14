@@ -451,13 +451,13 @@ func (s *Server) registerBooking(api huma.API) {
 		if err := checkBooking(info, in.Body); err != nil {
 			return nil, err
 		}
-		reopened, err := s.Store.UpdateBookingRequest(ctx, t.TenantID, req.ID, in.Body)
+		reopened, changed, err := s.Store.UpdateBookingRequest(ctx, t.TenantID, req.ID, in.Body)
 		if err != nil {
 			return nil, bookingErr(t.Event, err)
 		}
 		updated, err := s.Store.GetBookingRequest(ctx, t.TenantID, req.ID)
-		if err != nil {
-			return nil, err
+		if err != nil || !changed {
+			return &struct{ Body store.BookingRequest }{Body: updated}, err
 		}
 		l := i18n.Get(t.Event.Locale)
 		s.mailAdmins(ctx, t.TenantID, t.Event, updated, i18n.Tf(l, "%s changed the lane request", updated.Club))
