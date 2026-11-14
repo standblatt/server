@@ -122,6 +122,12 @@ test.describe("online booking", () => {
     await expect(sheet).toContainText("confirmed");
     await expect(sheet).toContainText(`Club in the master data: ${guest} 1920`);
     await expect(sheet).toContainText("lanes 3, 4");
+    await c(sheet, "button", "Edit").click();
+    await sheet.getByLabel("Licence of shooter 1").fill("123456");
+    await c(sheet, "button", "Save").click();
+    await expect(c(page, "[data-sonner-toast]", "Shooters saved")).toBeVisible();
+    await expect(c(sheet, "button", "Take over 1 shooter")).toBeVisible();
+    await page.keyboard.press("Escape");
     await page.goto(`/t/${ids.tenant}/shooters`);
     await page.getByPlaceholder("License number or name").fill("Gino Gast");
     await expect(c(page, "tr", "Gast")).toContainText(`${guest} 1920`);

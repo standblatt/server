@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-11-14 13:37+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: standblatt-help VERSION\nPOT-Creation-Date: 2026-11-14 13:49+0000\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
 #: ../src/help/en/explanation/closing.md:1
@@ -5435,37 +5435,43 @@ msgid "![Booking requests on the reservations page](../images/screenshots/bookin
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:44
+#: ../src/help/en/user-guide/online-booking.md:45
 #, markdown-text
 msgid "**Confirm** gives each slot the lanes the club picked, as an ordinary reservation named after the club that shows as reserved one slot before it starts, and mails the lane numbers to the club. A picked lane that is taken by then is replaced by another free lane of the range, neighbours where possible. When a slot has too few free lanes, nothing is reserved and the message names the slot; move a reservation or decline."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:44
+#: ../src/help/en/user-guide/online-booking.md:45
 #, markdown-text
 msgid "**Confirm** first asks which **Club** of the master data the request belongs to, because the club typed its name itself: the club with the same name is chosen already, clubs with a similar name are suggested, and *New club* creates it. The request then shows the club it was matched to."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:44
+#: ../src/help/en/user-guide/online-booking.md:45
 #, markdown-text
 msgid "**Confirm** also takes the shooters into the master data, in that club: a shooter is found by licence, else by name and birthday, and created otherwise. Existing shooters are never overwritten, because the list comes from a public form; only a missing birthday or licence is filled in. Shooters added after the confirmation are taken over with **Take over shooters**."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:44
+#: ../src/help/en/user-guide/online-booking.md:45
 #, markdown-text
 msgid "**Confirm** and **Decline** are on the line of an open request and in the request itself; **Take over shooters** only in the request."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:44
+#: ../src/help/en/user-guide/online-booking.md:45
+#, markdown-text
+msgid "**Edit** next to the announced shooters corrects the list of an open or confirmed request, for example a typo or a missing licence. Shooters taken over already keep their link to the master data; a changed one counts as new and is taken over again with **Take over shooters**."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/online-booking.md:45
 #, markdown-text
 msgid "**Decline** asks for an optional reason, which goes to the club by mail. Lanes the request held are free again."
 msgstr ""
 
 #. type: Plain text
-#: ../src/help/en/user-guide/online-booking.md:45
+#: ../src/help/en/user-guide/online-booking.md:46
 #, markdown-text
 msgid "The reserved lanes are ordinary [reservations](reservations.md) marked *online booking*: change their lane numbers there if needed, and open the request again through their name or **Request details** in their menu. At the event, the shooters are found with the normal search at the registration desk. The report *Lane bookings* under [Statistics and reports](statistics-reports.md) lists every club with its slots, lanes and shooters."
 msgstr ""

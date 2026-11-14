@@ -286,6 +286,12 @@ func ValidateBooking(items []BookingItem, shooters []BookingShooter, slots []Slo
 		}
 		seen[key] = true
 	}
+	return append(errs, ValidateBookingShooters(shooters)...)
+}
+
+// ValidateBookingShooters checks the announced shooters: names and a birthday each, at most MaxBookingShooters.
+func ValidateBookingShooters(shooters []BookingShooter) []Problem {
+	var errs []Problem
 	if len(shooters) > MaxBookingShooters {
 		errs = append(errs, Problemf("At most %d shooters", MaxBookingShooters))
 	}

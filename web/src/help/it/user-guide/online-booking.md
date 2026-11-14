@@ -109,6 +109,11 @@ prenotazioni](../images/screenshots/booking-requests.png){ .screenshot }
   aggiunti dopo la conferma si riprendono con **Riprendi tiratori**.
 - **Conferma** e **Rifiuta** si trovano sulla riga di una richiesta aperta e
   nella richiesta stessa, **Riprendi tiratori** solo nella richiesta.
+- **Modifica** accanto ai tiratori annunciati corregge l’elenco di una
+  richiesta aperta o confermata, per esempio un errore di battitura o una
+  licenza mancante. I tiratori già ripresi mantengono il loro collegamento
+  con i dati di base; uno modificato conta come nuovo e viene ripreso di
+  nuovo con **Riprendi tiratori**.
 - **Rifiuta** chiede un motivo facoltativo, che la società riceve via
   e-mail. I bersagli occupati dalla richiesta tornano liberi.
 

@@ -884,7 +884,8 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
-        put?: never;
+        /** Correct the announced shooters of an open or confirmed request */
+        put: operations["update-booking-shooters"];
         /** Take shooters added after the confirmation into the master data */
         post: operations["adopt-booking-shooters"];
         delete?: never;
@@ -4044,6 +4045,9 @@ export interface components {
             licenseNumber?: string;
             postalcode?: string;
         };
+        ShootersInBody: {
+            shooters: components["schemas"]["BookingShooter"][];
+        };
         SignupInputBody: {
             /** Format: email */
             email: string;
@@ -6253,6 +6257,42 @@ export interface operations {
         requestBody?: {
             content: {
                 "application/json": components["schemas"]["Decision"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BookingRequest"];
+                };
+            };
+            /** @description Error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/problem+json": components["schemas"]["ErrorModel"];
+                };
+            };
+        };
+    };
+    "update-booking-shooters": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                tenantId: number;
+                requestId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ShootersInBody"];
             };
         };
         responses: {

@@ -870,6 +870,10 @@ msgstr "An administrator of your club still has to finish these steps."
 msgid "Announce your shooters so they are found quickly at the registration desk. Programmes are chosen at the range."
 msgstr "Announce your shooters so they are found quickly at the registration desk. Programmes are chosen at the range."
 
+#: src/lib/modules/reservations/booking/RequestSheet.svelte
+msgid "Announced shooters"
+msgstr "Announced shooters"
+
 #: src/lib/modules/presets.ts
 msgid "Annual programme or training"
 msgstr "Annual programme or training"
@@ -1120,6 +1124,7 @@ msgid "Can be changed to any size in millimetres later."
 msgstr "Can be changed to any size in millimetres later."
 
 #: src/lib/ConfirmHost.svelte
+#: src/lib/modules/reservations/booking/RequestSheet.svelte
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -2024,6 +2029,7 @@ msgid "Earlier event"
 msgstr "Earlier event"
 
 #: src/lib/EventDesk.svelte
+#: src/lib/modules/reservations/booking/RequestSheet.svelte
 #: src/lib/modules/reservations/Page.svelte
 #: src/lib/ProgrammeList.svelte
 #: src/routes/my/log/[id]/+page.svelte
@@ -4692,6 +4698,7 @@ msgstr "S{0}"
 #: src/lib/EntryCard.svelte
 #: src/lib/modules/classifications/Classifications.svelte
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
+#: src/lib/modules/reservations/booking/RequestSheet.svelte
 #: src/lib/modules/reservations/Page.svelte
 #: src/lib/RegistrationDialog.svelte
 #: src/lib/RoleMatrix.svelte
@@ -5013,6 +5020,10 @@ msgstr "Shooters are registered on lanes: lane grid on the dashboard, lane statu
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 msgid "Shooters found"
 msgstr "Shooters found"
+
+#: src/lib/modules/reservations/booking/RequestSheet.svelte
+msgid "Shooters saved"
+msgstr "Shooters saved"
 
 #: src/lib/modules/reservations/booking/RequestSheet.svelte
 msgid "Shooters taken over"

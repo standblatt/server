@@ -870,6 +870,10 @@ msgstr "Un amministratore della tua società deve ancora completare questi passi
 msgid "Announce your shooters so they are found quickly at the registration desk. Programmes are chosen at the range."
 msgstr "Annuncia i tuoi tiratori perché vengano trovati subito all’iscrizione. I programmi si scelgono al poligono."
 
+#: src/lib/modules/reservations/booking/RequestSheet.svelte
+msgid "Announced shooters"
+msgstr "Tiratori annunciati"
+
 #: src/lib/modules/presets.ts
 msgid "Annual programme or training"
 msgstr "Programma annuale o allenamento"
@@ -1120,6 +1124,7 @@ msgid "Can be changed to any size in millimetres later."
 msgstr "Si può cambiare in seguito in qualsiasi formato in millimetri."
 
 #: src/lib/ConfirmHost.svelte
+#: src/lib/modules/reservations/booking/RequestSheet.svelte
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -2024,6 +2029,7 @@ msgid "Earlier event"
 msgstr "Manifestazione precedente"
 
 #: src/lib/EventDesk.svelte
+#: src/lib/modules/reservations/booking/RequestSheet.svelte
 #: src/lib/modules/reservations/Page.svelte
 #: src/lib/ProgrammeList.svelte
 #: src/routes/my/log/[id]/+page.svelte
@@ -4692,6 +4698,7 @@ msgstr "S{0}"
 #: src/lib/EntryCard.svelte
 #: src/lib/modules/classifications/Classifications.svelte
 #: src/lib/modules/reservations/booking/parts/BookingHoursForm.svelte
+#: src/lib/modules/reservations/booking/RequestSheet.svelte
 #: src/lib/modules/reservations/Page.svelte
 #: src/lib/RegistrationDialog.svelte
 #: src/lib/RoleMatrix.svelte
@@ -5013,6 +5020,10 @@ msgstr "I tiratori sono iscritti su bersagli: griglia dei bersagli sulla dashboa
 #: src/routes/t/[tenantId]/events/[eventId]/entry/+page.svelte
 msgid "Shooters found"
 msgstr "Tiratori trovati"
+
+#: src/lib/modules/reservations/booking/RequestSheet.svelte
+msgid "Shooters saved"
+msgstr "Tiratori salvati"
 
 #: src/lib/modules/reservations/booking/RequestSheet.svelte
 msgid "Shooters taken over"

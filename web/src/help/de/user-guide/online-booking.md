@@ -107,6 +107,11 @@ Reservationen](../images/screenshots/booking-requests.png){ .screenshot }
   **Schützen übernehmen**.
 - **Bestätigen** und **Ablehnen** stehen in der Zeile einer offenen Anfrage
   und in der Anfrage selbst, **Schützen übernehmen** nur in der Anfrage.
+- **Bearbeiten** neben den gemeldeten Schützen korrigiert die Liste einer
+  offenen oder bestätigten Anfrage, zum Beispiel einen Tippfehler oder eine
+  fehlende Lizenz. Bereits übernommene Schützen behalten ihre Verknüpfung
+  mit den Stammdaten; ein geänderter gilt als neu und wird mit **Schützen
+  übernehmen** erneut übernommen.
 - **Ablehnen** fragt nach einer optionalen Begründung, die der Verein per
   Mail erhält. Scheiben, die die Anfrage hatte, sind wieder frei.
 

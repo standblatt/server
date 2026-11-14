@@ -1,6 +1,7 @@
 POST   /api/tenants/{tenantId}/booking-requests/{requestId}/confirm                   events.configure
 POST   /api/tenants/{tenantId}/booking-requests/{requestId}/decline                   events.configure
 POST   /api/tenants/{tenantId}/booking-requests/{requestId}/shooters                  events.configure
+PUT    /api/tenants/{tenantId}/booking-requests/{requestId}/shooters                  events.configure
 GET    /api/tenants/{tenantId}/clubs                                                  shooters.view | events.operate
 POST   /api/tenants/{tenantId}/clubs                                                  shooters.edit | events.operate
 GET    /api/tenants/{tenantId}/clubs/similar                                          shooters.view | events.operate

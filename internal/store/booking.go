@@ -324,6 +324,26 @@ func (s *Store) UpdateBookingRequest(ctx context.Context, tenantID, id int64, in
 	return reopened, changed, mapErr(err)
 }
 
+// SetBookingShooters replaces the announced shooters of a pending or confirmed request, as the organizer corrects
+// them; unchanged rows keep their master data link, changed ones wait for adoption again.
+func (s *Store) SetBookingShooters(ctx context.Context, tenantID, id int64, list []domain.BookingShooter) error {
+	err := pgx.BeginFunc(ctx, s.pool, func(tx pgx.Tx) error {
+		var status BookingStatus
+		if err := tx.QueryRow(ctx, `SELECT status FROM booking_requests WHERE tenant_id = $1 AND id = $2 FOR UPDATE`, tenantID, id).Scan(&status); err != nil {
+			return err
+		}
+		if status != BookingPending && status != BookingConfirmed {
+			return ErrNotPending
+		}
+		_, err := syncBookingShooters(ctx, tx, tenantID, id, list)
+		return err
+	})
+	if errors.Is(err, ErrNotPending) {
+		return err
+	}
+	return mapErr(err)
+}
+
 // CancelBookingRequest cancels a pending or confirmed request and frees its reservations.
 func (s *Store) CancelBookingRequest(ctx context.Context, tenantID, id int64) error {
 	return s.closeBooking(ctx, tenantID, id, BookingCancelled, "")

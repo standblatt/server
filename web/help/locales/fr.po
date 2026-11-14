@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: standblatt-docs\n"
-"POT-Creation-Date: 2026-11-14 13:37+0000\n"
+"POT-Creation-Date: 2026-11-14 13:49+0000\n"
 "PO-Revision-Date: 2026-10-15 16:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -8925,7 +8925,7 @@ msgstr ""
 "screenshots/booking-requests.png){ .screenshot }"
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:44
+#: ../src/help/en/user-guide/online-booking.md:45
 msgid ""
 "**Confirm** gives each slot the lanes the club picked, as an ordinary "
 "reservation named after the club that shows as reserved one slot before it "
@@ -8943,7 +8943,7 @@ msgstr ""
 "une réservation ou refusez."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:44
+#: ../src/help/en/user-guide/online-booking.md:45
 msgid ""
 "**Confirm** first asks which **Club** of the master data the request belongs "
 "to, because the club typed its name itself: the club with the same name is "
@@ -8956,7 +8956,7 @@ msgstr ""
 "*Nouvelle société* la crée. La demande affiche ensuite la société attribuée."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:44
+#: ../src/help/en/user-guide/online-booking.md:45
 msgid ""
 "**Confirm** also takes the shooters into the master data, in that club: a "
 "shooter is found by licence, else by name and birthday, and created "
@@ -8973,7 +8973,7 @@ msgstr ""
 "confirmation sont repris avec **Reprendre des tireurs**."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:44
+#: ../src/help/en/user-guide/online-booking.md:45
 msgid ""
 "**Confirm** and **Decline** are on the line of an open request and in the "
 "request itself; **Take over shooters** only in the request."
@@ -8983,7 +8983,21 @@ msgstr ""
 "demande."
 
 #. type: Bullet: '- '
-#: ../src/help/en/user-guide/online-booking.md:44
+#: ../src/help/en/user-guide/online-booking.md:45
+msgid ""
+"**Edit** next to the announced shooters corrects the list of an open or "
+"confirmed request, for example a typo or a missing licence. Shooters taken "
+"over already keep their link to the master data; a changed one counts as new "
+"and is taken over again with **Take over shooters**."
+msgstr ""
+"**Modifier** à côté des tireurs annoncés corrige la liste d’une demande "
+"ouverte ou confirmée, par exemple une faute de frappe ou une licence "
+"manquante. Les tireurs déjà repris gardent leur lien avec les données de "
+"base ; un tireur modifié compte comme nouveau et est repris à nouveau avec "
+"**Reprendre des tireurs**."
+
+#. type: Bullet: '- '
+#: ../src/help/en/user-guide/online-booking.md:45
 msgid ""
 "**Decline** asks for an optional reason, which goes to the club by mail. "
 "Lanes the request held are free again."
@@ -8992,7 +9006,7 @@ msgstr ""
 "Les cibles que la demande occupait sont de nouveau libres."
 
 #. type: Plain text
-#: ../src/help/en/user-guide/online-booking.md:45
+#: ../src/help/en/user-guide/online-booking.md:46
 msgid ""
 "The reserved lanes are ordinary [reservations](reservations.md) marked "
 "*online booking*: change their lane numbers there if needed, and open the "

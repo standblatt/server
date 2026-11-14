@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/http"
 	"regexp"
+	"slices"
 	"strings"
 	"testing"
 	"time"
@@ -167,6 +168,23 @@ func TestOnlineBooking(t *testing.T) {
 	if found, _ := e.st.SearchShooters(ctx, tid, "Max Neu", 0, 5, 0); len(found) != 1 {
 		t.Fatalf("adopted shooter missing: %+v", found)
 	}
+
+	// The organizer corrects a typo: the corrected shooter waits for adoption again, the others keep their link.
+	fixed := slices.Clone(request.Shooters)
+	fixed[len(fixed)-1].Lastname = "Neumann"
+	code, b = e.do(staff, "PUT", reqPath+"/shooters", map[string]any{"shooters": fixed})
+	expect(t, "staff corrects shooters", code, 403, b)
+	code, b = e.do(admin, "PUT", reqPath+"/shooters", map[string]any{"shooters": []domain.BookingShooter{{Firstname: "X"}}})
+	expect(t, "shooter without a birthday", code, 422, b)
+	code, b = e.do(admin, "PUT", reqPath+"/shooters", map[string]any{"shooters": fixed})
+	expect(t, "correct shooters", code, 200, b)
+	var corrected store.BookingRequest
+	json.Unmarshal(b, &corrected)
+	if len(corrected.Shooters) != len(fixed) || corrected.Shooters[0].ShooterID == nil ||
+		!slices.ContainsFunc(corrected.Shooters, func(s store.BookingShooterView) bool { return s.Lastname == "Neumann" && s.ShooterID == nil }) {
+		t.Fatalf("corrected shooters: %s", b)
+	}
+	request.Shooters = fixed
 
 	request.Items = []domain.BookingItem{{RangeID: rng.ID, Start: second.Start, End: second.End, Lanes: 4}}
 	code, b = e.helper("PUT", "/api/booking-manage", secret, request)

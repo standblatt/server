@@ -108,6 +108,11 @@ réservations](../images/screenshots/booking-requests.png){ .screenshot }
 - **Confirmer** et **Refuser** se trouvent sur la ligne d’une demande
   ouverte et dans la demande elle-même, **Reprendre des tireurs** seulement
   dans la demande.
+- **Modifier** à côté des tireurs annoncés corrige la liste d’une demande
+  ouverte ou confirmée, par exemple une faute de frappe ou une licence
+  manquante. Les tireurs déjà repris gardent leur lien avec les données de
+  base ; un tireur modifié compte comme nouveau et est repris à nouveau avec
+  **Reprendre des tireurs**.
 - **Refuser** demande un motif facultatif, que la société reçoit par
   e-mail. Les cibles que la demande occupait sont de nouveau libres.
 

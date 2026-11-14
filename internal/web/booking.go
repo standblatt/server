@@ -654,6 +654,38 @@ func (s *Server) registerBookingAdmin(api huma.API) {
 			return nil
 		})
 
+	type shootersIn struct {
+		BookingRequestPath
+		Body struct {
+			Shooters []domain.BookingShooter `json:"shooters" maxItems:"200"`
+		}
+	}
+	huma.Register(api, huma.Operation{
+		OperationID: "update-booking-shooters", Metadata: needs("", permissions.EventsConfigure), Method: http.MethodPut, Path: "/api/tenants/{tenantId}/booking-requests/{requestId}/shooters", Tags: []string{"booking"},
+		Summary: "Correct the announced shooters of an open or confirmed request",
+	}, func(ctx context.Context, in *shootersIn) (*struct{ Body store.BookingRequest }, error) {
+		if _, _, err := s.access(ctx, in.TenantID); err != nil {
+			return nil, err
+		}
+		req, err := s.Store.GetBookingRequest(ctx, in.TenantID, in.RequestID)
+		if err != nil {
+			return nil, notFound(err, "Request not found")
+		}
+		ev, err := s.Store.GetEvent(ctx, in.TenantID, req.EventID)
+		if err != nil {
+			return nil, err
+		}
+		if errs := domain.ValidateBookingShooters(in.Body.Shooters); len(errs) > 0 {
+			return nil, invalidList(errs)
+		}
+		if err := s.Store.SetBookingShooters(ctx, in.TenantID, req.ID, in.Body.Shooters); err != nil {
+			return nil, bookingErr(ev, err)
+		}
+		s.notify(ctx, in.TenantID, ev.ID, realtime.TopicBooking)
+		req, err = s.Store.GetBookingRequest(ctx, in.TenantID, in.RequestID)
+		return &struct{ Body store.BookingRequest }{Body: req}, err
+	})
+
 	decide("adopt-booking-shooters", "shooters", "Take shooters added after the confirmation into the master data",
 		func(ctx context.Context, tenantID int64, req store.BookingRequest, ev store.Event, _ decision) error {
 			if err := s.Store.AdoptBookingShooters(ctx, tenantID, req.ID); err != nil {
