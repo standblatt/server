@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
 	import ArrowLeft from '@lucide/svelte/icons/arrow-left';
-	import AccountSettings from '$lib/AccountSettings.svelte';
-	import Wordmark from '$lib/Wordmark.svelte';
+	import AccountSettings from '#lib/AccountSettings.svelte';
+	import Wordmark from '#lib/Wordmark.svelte';
 </script>
 
 <svelte:head><title>{$t`Account`} · Standblatt</title></svelte:head>

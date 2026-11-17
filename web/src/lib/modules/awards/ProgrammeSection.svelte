@@ -2,14 +2,14 @@
 	import { t } from 'lingui-for-svelte/macro';
 	import Plus from '@lucide/svelte/icons/plus';
 	import Trash from '@lucide/svelte/icons/trash-2';
-	import { ageCategories } from '$lib/categories';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import * as NativeSelect from '$lib/components/ui/native-select';
-	import FormField from '$lib/FormField.svelte';
-	import { ageCategoryLabel } from '$lib/labels';
-	import { emptyLimits } from '$lib/programme/draft.svelte';
-	import Section from '$lib/programme/Section.svelte';
+	import { ageCategories } from '#lib/categories';
+	import { Button } from '#lib/components/ui/button';
+	import { Input } from '#lib/components/ui/input';
+	import * as NativeSelect from '#lib/components/ui/native-select';
+	import FormField from '#lib/FormField.svelte';
+	import { ageCategoryLabel } from '#lib/labels';
+	import { emptyLimits } from '#lib/programme/draft.svelte';
+	import Section from '#lib/programme/Section.svelte';
 	import type { ProgrammeProps } from '..';
 
 	let { draft, locked }: ProgrammeProps = $props();

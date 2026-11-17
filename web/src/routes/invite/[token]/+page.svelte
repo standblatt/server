@@ -3,14 +3,14 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import { createQuery, useQueryClient } from '@tanstack/svelte-query';
-	import { api, call } from '$lib/api';
-	import AuthShell from '$lib/AuthShell.svelte';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import FormError from '$lib/FormError.svelte';
-	import FormField from '$lib/FormField.svelte';
-	import { roleLabel } from '$lib/labels';
-	import { meKey, meQuery } from '$lib/me';
+	import { api, call } from '#lib/api';
+	import AuthShell from '#lib/AuthShell.svelte';
+	import { Button } from '#lib/components/ui/button';
+	import { Input } from '#lib/components/ui/input';
+	import FormError from '#lib/FormError.svelte';
+	import FormField from '#lib/FormField.svelte';
+	import { roleLabel } from '#lib/labels';
+	import { meKey, meQuery } from '#lib/me';
 
 	const token = $derived(page.params.token ?? '');
 	const queryClient = useQueryClient();

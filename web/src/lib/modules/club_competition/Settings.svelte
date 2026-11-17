@@ -2,9 +2,9 @@
 	import { t } from 'lingui-for-svelte/macro';
 	import { useQueryClient } from '@tanstack/svelte-query';
 	import { toast } from 'svelte-sonner';
-	import * as NativeSelect from '$lib/components/ui/native-select';
-	import FormField from '$lib/FormField.svelte';
-	import { clubsQuery, updateEvent } from '$lib/tenant';
+	import * as NativeSelect from '#lib/components/ui/native-select';
+	import FormField from '#lib/FormField.svelte';
+	import { clubsQuery, updateEvent } from '#lib/tenant';
 	import type { EventProps } from '..';
 
 	let { tenantId, event }: EventProps = $props();

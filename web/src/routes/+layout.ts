@@ -1,4 +1,4 @@
-import { preferredLocale, setLocale } from '$lib/locale.svelte';
+import { preferredLocale, setLocale } from '#lib/locale.svelte';
 
 export const ssr = false;
 export const prerender = false;

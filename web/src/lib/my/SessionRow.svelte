@@ -2,7 +2,7 @@
 	import { t } from 'lingui-for-svelte/macro';
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
 	import Trophy from '@lucide/svelte/icons/trophy';
-	import { disciplineName, fmt, fmtDay, fmtTotal, myQuery, type Discipline, type TrainingSession } from '$lib/my.svelte';
+	import { disciplineName, fmt, fmtDay, fmtTotal, myQuery, type Discipline, type TrainingSession } from '#lib/my.svelte';
 
 	let { session, discipline }: { session: TrainingSession; discipline?: Discipline } = $props();
 

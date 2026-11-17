@@ -1,8 +1,8 @@
 import { setupI18n } from '@lingui/core';
-import { messages as de } from '$locales/de';
-import { messages as en } from '$locales/en';
-import { messages as fr } from '$locales/fr';
-import { messages as it } from '$locales/it';
+import { messages as de } from '../locales/de';
+import { messages as en } from '../locales/en';
+import { messages as fr } from '../locales/fr';
+import { messages as it } from '../locales/it';
 
 export const localeNames = { en: 'English', de: 'Deutsch', fr: 'Français', it: 'Italiano' } as const;
 export type Locale = keyof typeof localeNames;

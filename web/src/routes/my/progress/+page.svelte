@@ -7,17 +7,17 @@
 	import ArrowDownRight from '@lucide/svelte/icons/arrow-down-right';
 	import ArrowUpRight from '@lucide/svelte/icons/arrow-up-right';
 	import Target from '@lucide/svelte/icons/target';
-	import { api, call } from '$lib/api';
-	import Bars from '$lib/Bars.svelte';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { formatDate } from '$lib/format';
-	import FormField from '$lib/FormField.svelte';
-	import GroupInfo from '$lib/my/GroupInfo.svelte';
-	import { disciplineName, fmt, fmtDay, fmtTotal, myKey, myQuery, projected, statsQuery } from '$lib/my.svelte';
-	import TargetFace from '$lib/TargetFace.svelte';
-	import { targets } from '$lib/targets';
-	import TrendChart from '$lib/TrendChart.svelte';
+	import { api, call } from '#lib/api';
+	import Bars from '#lib/Bars.svelte';
+	import { Button } from '#lib/components/ui/button';
+	import { Input } from '#lib/components/ui/input';
+	import { formatDate } from '#lib/format';
+	import FormField from '#lib/FormField.svelte';
+	import GroupInfo from '#lib/my/GroupInfo.svelte';
+	import { disciplineName, fmt, fmtDay, fmtTotal, myKey, myQuery, projected, statsQuery } from '#lib/my.svelte';
+	import TargetFace from '#lib/TargetFace.svelte';
+	import { targets } from '#lib/targets';
+	import TrendChart from '#lib/TrendChart.svelte';
 
 	const queryClient = useQueryClient();
 	const my = myQuery();
@@ -84,7 +84,7 @@
 
 	/** Shows the progress of a discipline and weapon (0 = all weapons). */
 	function show(d: number, w: number) {
-		goto(`/my/progress?d=${d}${w ? `&w=${w}` : ''}`, { replaceState: true, noScroll: true });
+		goto(`/my/progress?d=${d}${w ? `&w=${w}` : ''}`, { replace: true, reset: false });
 	}
 </script>
 

@@ -10,15 +10,15 @@
 	import LayoutTemplate from '@lucide/svelte/icons/layout-template';
 	import Trash from '@lucide/svelte/icons/trash-2';
 	import { toast } from 'svelte-sonner';
-	import { api, call } from '$lib/api';
-	import { Button } from '$lib/components/ui/button';
-	import * as Dialog from '$lib/components/ui/dialog';
-	import { Input } from '$lib/components/ui/input';
-	import FormError from '$lib/FormError.svelte';
-	import FormField from '$lib/FormField.svelte';
-	import { ask } from '$lib/confirm.svelte';
-	import PageHeader from '$lib/PageHeader.svelte';
-	import { eventQuery, keys } from '$lib/tenant';
+	import { api, call } from '#lib/api';
+	import { Button } from '#lib/components/ui/button';
+	import * as Dialog from '#lib/components/ui/dialog';
+	import { Input } from '#lib/components/ui/input';
+	import FormError from '#lib/FormError.svelte';
+	import FormField from '#lib/FormField.svelte';
+	import { ask } from '#lib/confirm.svelte';
+	import PageHeader from '#lib/PageHeader.svelte';
+	import { eventQuery, keys } from '#lib/tenant';
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const eventId = $derived(Number(page.params.eventId));

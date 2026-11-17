@@ -3,14 +3,14 @@
 	import { untrack } from 'svelte';
 	import { useQueryClient } from '@tanstack/svelte-query';
 	import { toast } from 'svelte-sonner';
-	import { api, call } from '$lib/api';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import FormError from '$lib/FormError.svelte';
-	import FormField from '$lib/FormField.svelte';
-	import { programmeTitle } from '$lib/format';
-	import Section from '$lib/programme/Section.svelte';
-	import { keys } from '$lib/tenant';
+	import { api, call } from '#lib/api';
+	import { Button } from '#lib/components/ui/button';
+	import { Input } from '#lib/components/ui/input';
+	import FormError from '#lib/FormError.svelte';
+	import FormField from '#lib/FormField.svelte';
+	import { programmeTitle } from '#lib/format';
+	import Section from '#lib/programme/Section.svelte';
+	import { keys } from '#lib/tenant';
 	import type { ProgrammeProps } from '..';
 
 	let { tenantId, event, programme }: ProgrammeProps = $props();

@@ -6,17 +6,17 @@
 	import Dumbbell from '@lucide/svelte/icons/dumbbell';
 	import LogOut from '@lucide/svelte/icons/log-out';
 	import UserCog from '@lucide/svelte/icons/user-cog';
-	import { roleLabel } from '$lib/labels';
-	import { meQuery } from '$lib/me';
-	import { logout } from '$lib/my.svelte';
-	import Wordmark from '$lib/Wordmark.svelte';
+	import { roleLabel } from '#lib/labels';
+	import { meQuery } from '#lib/me';
+	import { logout } from '#lib/my.svelte';
+	import Wordmark from '#lib/Wordmark.svelte';
 
 	const me = meQuery();
 	const queryClient = useQueryClient();
 
 	$effect(() => {
 		// Without a club there is only the training log, so go there straight away.
-		if (me.data?.tenants.length === 0) goto('/my', { replaceState: true });
+		if (me.data?.tenants.length === 0) goto('/my', { replace: true });
 	});
 </script>
 

@@ -3,11 +3,11 @@
 	import { page } from '$app/state';
 	import { useQueryClient } from '@tanstack/svelte-query';
 	import { toast } from 'svelte-sonner';
-	import { has, moduleUI, modulesQuery, type ModuleKey } from '$lib/modules';
-	import ModuleCards from '$lib/modules/ModuleCards.svelte';
-	import ModuleSlot from '$lib/modules/ModuleSlot.svelte';
-	import PageHeader from '$lib/PageHeader.svelte';
-	import { eventQuery, updateEvent } from '$lib/tenant';
+	import { has, moduleUI, modulesQuery, type ModuleKey } from '#lib/modules';
+	import ModuleCards from '#lib/modules/ModuleCards.svelte';
+	import ModuleSlot from '#lib/modules/ModuleSlot.svelte';
+	import PageHeader from '#lib/PageHeader.svelte';
+	import { eventQuery, updateEvent } from '#lib/tenant';
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const queryClient = useQueryClient();

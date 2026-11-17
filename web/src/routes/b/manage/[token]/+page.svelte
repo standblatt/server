@@ -5,16 +5,16 @@
 	import { createQuery, useQueryClient } from '@tanstack/svelte-query';
 	import Ban from '@lucide/svelte/icons/ban';
 	import { toast } from 'svelte-sonner';
-	import { call, type BookingRequestInput } from '$lib/api';
-	import type { paths } from '$lib/api.gen';
-	import { deadlineDay } from '$lib/modules/reservations/booking/booking';
-	import BookingForm from '$lib/modules/reservations/booking/parts/BookingForm.svelte';
-	import PublicShell from '$lib/PublicShell.svelte';
-	import BookingStatus from '$lib/modules/reservations/booking/parts/BookingStatus.svelte';
-	import { Button } from '$lib/components/ui/button';
-	import { ask } from '$lib/confirm.svelte';
-	import { currentLocale } from '$lib/locale.svelte';
-	import { formatDays } from '$lib/format';
+	import { call, type BookingRequestInput } from '#lib/api';
+	import type { paths } from '#lib/api.gen';
+	import { deadlineDay } from '#lib/modules/reservations/booking/booking';
+	import BookingForm from '#lib/modules/reservations/booking/parts/BookingForm.svelte';
+	import PublicShell from '#lib/PublicShell.svelte';
+	import BookingStatus from '#lib/modules/reservations/booking/parts/BookingStatus.svelte';
+	import { Button } from '#lib/components/ui/button';
+	import { ask } from '#lib/confirm.svelte';
+	import { currentLocale } from '#lib/locale.svelte';
+	import { formatDays } from '#lib/format';
 
 	const token = page.params.token ?? '';
 	const client = createClient<paths>({ baseUrl: '', headers: { Authorization: `Bearer ${token}` } });

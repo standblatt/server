@@ -5,8 +5,8 @@
 	import CloudOff from '@lucide/svelte/icons/cloud-off';
 	import Medal from '@lucide/svelte/icons/medal';
 	import Trophy from '@lucide/svelte/icons/trophy';
-	import { Button } from '$lib/components/ui/button';
-	import { disciplineName, fmt, fmtTotal, type Discipline, type TrainingSaved } from '$lib/my.svelte';
+	import { Button } from '#lib/components/ui/button';
+	import { disciplineName, fmt, fmtTotal, type Discipline, type TrainingSaved } from '#lib/my.svelte';
 
 	let { result, discipline, onagain }: { result: TrainingSaved | 'offline'; discipline?: Discipline; onagain: () => void } = $props();
 </script>

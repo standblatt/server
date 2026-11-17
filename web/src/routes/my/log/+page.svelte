@@ -4,13 +4,13 @@
 	import { toast } from 'svelte-sonner';
 	import Download from '@lucide/svelte/icons/download';
 	import Trophy from '@lucide/svelte/icons/trophy';
-	import { api, call } from '$lib/api';
-	import { Button } from '$lib/components/ui/button';
-	import { formatDate } from '$lib/format';
-	import SessionRow from '$lib/my/SessionRow.svelte';
-	import { disciplineName, fmtTotal, myKey, myQuery, type TrainingSession } from '$lib/my.svelte';
-	import { intlLocale } from '$lib/locale.svelte';
-	import PageHeader from '$lib/PageHeader.svelte';
+	import { api, call } from '#lib/api';
+	import { Button } from '#lib/components/ui/button';
+	import { formatDate } from '#lib/format';
+	import SessionRow from '#lib/my/SessionRow.svelte';
+	import { disciplineName, fmtTotal, myKey, myQuery, type TrainingSession } from '#lib/my.svelte';
+	import { intlLocale } from '#lib/locale.svelte';
+	import PageHeader from '#lib/PageHeader.svelte';
 
 	const queryClient = useQueryClient();
 	const my = myQuery();

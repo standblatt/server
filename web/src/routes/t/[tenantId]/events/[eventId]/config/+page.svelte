@@ -3,10 +3,10 @@
 	import { page } from '$app/state';
 	import { useQueryClient } from '@tanstack/svelte-query';
 	import { toast } from 'svelte-sonner';
-	import type { EventInput } from '$lib/api';
-	import EventForm from '$lib/EventForm.svelte';
-	import PageHeader from '$lib/PageHeader.svelte';
-	import { eventQuery, keys, rangesQuery, updateEvent } from '$lib/tenant';
+	import type { EventInput } from '#lib/api';
+	import EventForm from '#lib/EventForm.svelte';
+	import PageHeader from '#lib/PageHeader.svelte';
+	import { eventQuery, keys, rangesQuery, updateEvent } from '#lib/tenant';
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const eventId = $derived(Number(page.params.eventId));

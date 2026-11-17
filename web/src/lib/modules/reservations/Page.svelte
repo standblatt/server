@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { plural, t } from 'lingui-for-svelte/macro';
-	import { intlLocale } from '$lib/locale.svelte';
+	import { intlLocale } from '#lib/locale.svelte';
 	import { createQuery, useQueryClient } from '@tanstack/svelte-query';
 	import Copy from '@lucide/svelte/icons/copy';
 	import MoreHorizontal from '@lucide/svelte/icons/ellipsis';
@@ -8,20 +8,20 @@
 	import Plus from '@lucide/svelte/icons/plus';
 	import Trash from '@lucide/svelte/icons/trash-2';
 	import { toast } from 'svelte-sonner';
-	import { formatLanes, fromZonedInput, zonedInput } from '$lib/format';
-	import { api, call, type BookingRequest, type ReservationView } from '$lib/api';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
-	import * as Dialog from '$lib/components/ui/dialog';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-	import { Input } from '$lib/components/ui/input';
-	import * as NativeSelect from '$lib/components/ui/native-select';
-	import { Switch } from '$lib/components/ui/switch';
-	import { ask } from '$lib/confirm.svelte';
-	import FormError from '$lib/FormError.svelte';
-	import FormField from '$lib/FormField.svelte';
-	import PageHeader from '$lib/PageHeader.svelte';
-	import { bookingRequestsQuery, keys } from '$lib/tenant';
+	import { formatLanes, fromZonedInput, zonedInput } from '#lib/format';
+	import { api, call, type BookingRequest, type ReservationView } from '#lib/api';
+	import { Badge } from '#lib/components/ui/badge';
+	import { Button } from '#lib/components/ui/button';
+	import * as Dialog from '#lib/components/ui/dialog';
+	import * as DropdownMenu from '#lib/components/ui/dropdown-menu';
+	import { Input } from '#lib/components/ui/input';
+	import * as NativeSelect from '#lib/components/ui/native-select';
+	import { Switch } from '#lib/components/ui/switch';
+	import { ask } from '#lib/confirm.svelte';
+	import FormError from '#lib/FormError.svelte';
+	import FormField from '#lib/FormField.svelte';
+	import PageHeader from '#lib/PageHeader.svelte';
+	import { bookingRequestsQuery, keys } from '#lib/tenant';
 	import Info from '@lucide/svelte/icons/info';
 	import Check from '@lucide/svelte/icons/check';
 	import X from '@lucide/svelte/icons/x';
@@ -30,7 +30,7 @@
 	import { byDay } from './booking/booking';
 	import LaneStrip from './LaneStrip.svelte';
 	import type { EventProps } from '..';
-	import { can, membershipOf, meQuery } from '$lib/me';
+	import { can, membershipOf, meQuery } from '#lib/me';
 
 	let { tenantId, event }: EventProps = $props();
 	const eventId = $derived(event.id);

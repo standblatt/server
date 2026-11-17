@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
 	import MoreHorizontalIcon from '@lucide/svelte/icons/more-horizontal';
-	import { cn, type WithElementRef, type WithoutChildren } from "$lib/utils.js";
+	import { cn, type WithElementRef, type WithoutChildren } from "#lib/utils.js";
 	import type { HTMLAttributes } from "svelte/elements";
 
 	let {

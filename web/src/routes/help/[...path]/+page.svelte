@@ -2,11 +2,11 @@
 	import { t } from 'lingui-for-svelte/macro';
 	import { page } from '$app/state';
 	import ListTree from '@lucide/svelte/icons/list-tree';
-	import { Button } from '$lib/components/ui/button';
-	import HelpArticle from '$lib/help/HelpArticle.svelte';
-	import HelpNav from '$lib/help/HelpNav.svelte';
-	import { currentLocale, localeNames, setLocale, type Locale } from '$lib/locale.svelte';
-	import PublicShell from '$lib/PublicShell.svelte';
+	import { Button } from '#lib/components/ui/button';
+	import HelpArticle from '#lib/help/HelpArticle.svelte';
+	import HelpNav from '#lib/help/HelpNav.svelte';
+	import { currentLocale, localeNames, setLocale, type Locale } from '#lib/locale.svelte';
+	import PublicShell from '#lib/PublicShell.svelte';
 
 	const wanted = page.url.searchParams.get('lang');
 	if (wanted && wanted in localeNames) setLocale(wanted as Locale, false);

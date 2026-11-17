@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
-	import { Checkbox } from '$lib/components/ui/checkbox';
-	import { Input } from '$lib/components/ui/input';
-	import * as NativeSelect from '$lib/components/ui/native-select';
-	import { Switch } from '$lib/components/ui/switch';
-	import FormField from '$lib/FormField.svelte';
-	import Section from '$lib/programme/Section.svelte';
+	import { Checkbox } from '#lib/components/ui/checkbox';
+	import { Input } from '#lib/components/ui/input';
+	import * as NativeSelect from '#lib/components/ui/native-select';
+	import { Switch } from '#lib/components/ui/switch';
+	import FormField from '#lib/FormField.svelte';
+	import Section from '#lib/programme/Section.svelte';
 	import type { ProgrammeProps } from '..';
 
 	let { draft }: ProgrammeProps = $props();

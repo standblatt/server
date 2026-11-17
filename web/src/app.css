@@ -186,7 +186,7 @@ body::before {
 		@apply border-border bg-muted text-muted-foreground;
 	}
 
-	/* Help pages (markdown rendered by $lib/help/markdown.ts). */
+	/* Help pages (markdown rendered by #lib/help/markdown.ts). */
 	.help-prose {
 		@apply max-w-3xl text-[0.95rem] leading-7;
 	}

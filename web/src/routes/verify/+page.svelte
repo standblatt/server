@@ -3,10 +3,10 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/state';
 	import { useQueryClient } from '@tanstack/svelte-query';
-	import { api, call } from '$lib/api';
-	import AuthShell from '$lib/AuthShell.svelte';
-	import { Button } from '$lib/components/ui/button';
-	import { myKey } from '$lib/my.svelte';
+	import { api, call } from '#lib/api';
+	import AuthShell from '#lib/AuthShell.svelte';
+	import { Button } from '#lib/components/ui/button';
+	import { myKey } from '#lib/my.svelte';
 
 	const queryClient = useQueryClient();
 	let state = $state<'busy' | 'done' | string>('busy');

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
 	import { page } from '$app/state';
-	import PageHeader from '$lib/PageHeader.svelte';
-	import ProgrammeList from '$lib/ProgrammeList.svelte';
-	import { eventQuery } from '$lib/tenant';
+	import PageHeader from '#lib/PageHeader.svelte';
+	import ProgrammeList from '#lib/ProgrammeList.svelte';
+	import { eventQuery } from '#lib/tenant';
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const eventId = $derived(Number(page.params.eventId));

@@ -2,17 +2,17 @@
 	import { t } from 'lingui-for-svelte/macro';
 	import { page } from '$app/state';
 	import { createQuery, useQueryClient } from '@tanstack/svelte-query';
-	import { api, call } from '$lib/api';
-	import { helperRights } from '$lib/desk';
-	import EventDesk from '$lib/EventDesk.svelte';
-	import OfflineBanner from '$lib/OfflineBanner.svelte';
-	import { formatDays } from '$lib/format';
-	import { helperRoleLabel, liveLabel } from '$lib/labels';
-	import { eventLive, type Live } from '$lib/live.svelte';
-	import { localeNames, setLocale, type Locale } from '$lib/locale.svelte';
-	import Logo from '$lib/Logo.svelte';
-	import { eventQuery } from '$lib/tenant';
-	import ThemeToggle from '$lib/ThemeToggle.svelte';
+	import { api, call } from '#lib/api';
+	import { helperRights } from '#lib/desk';
+	import EventDesk from '#lib/EventDesk.svelte';
+	import OfflineBanner from '#lib/OfflineBanner.svelte';
+	import { formatDays } from '#lib/format';
+	import { helperRoleLabel, liveLabel } from '#lib/labels';
+	import { eventLive, type Live } from '#lib/live.svelte';
+	import { localeNames, setLocale, type Locale } from '#lib/locale.svelte';
+	import Logo from '#lib/Logo.svelte';
+	import { eventQuery } from '#lib/tenant';
+	import ThemeToggle from '#lib/ThemeToggle.svelte';
 
 	const code = $derived(page.params.code ?? '');
 	const base = $derived(`/h/${code}`);

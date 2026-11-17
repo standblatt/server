@@ -3,11 +3,11 @@
 	import { toast } from 'svelte-sonner';
 	import CloudOff from '@lucide/svelte/icons/cloud-off';
 	import Mail from '@lucide/svelte/icons/mail';
-	import { api, call } from '$lib/api';
-	import { Button } from '$lib/components/ui/button';
+	import { api, call } from '#lib/api';
+	import { Button } from '#lib/components/ui/button';
 	import TriangleAlert from '@lucide/svelte/icons/triangle-alert';
-	import { ask } from '$lib/confirm.svelte';
-	import { discardFailed, outbox, type MyOverview } from '$lib/my.svelte';
+	import { ask } from '#lib/confirm.svelte';
+	import { discardFailed, outbox, type MyOverview } from '#lib/my.svelte';
 
 	let { my }: { my: MyOverview } = $props();
 

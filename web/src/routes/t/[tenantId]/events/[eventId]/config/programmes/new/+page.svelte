@@ -4,11 +4,11 @@
 	import { page } from '$app/state';
 	import { useQueryClient } from '@tanstack/svelte-query';
 	import { toast } from 'svelte-sonner';
-	import { api, call, type ProgrammeDefinition } from '$lib/api';
-	import PageHeader from '$lib/PageHeader.svelte';
-	import ProgrammeEditor from '$lib/ProgrammeEditor.svelte';
-	import { ProgrammeDraft } from '$lib/programme/draft.svelte';
-	import { eventQuery, keys, programmesQuery } from '$lib/tenant';
+	import { api, call, type ProgrammeDefinition } from '#lib/api';
+	import PageHeader from '#lib/PageHeader.svelte';
+	import ProgrammeEditor from '#lib/ProgrammeEditor.svelte';
+	import { ProgrammeDraft } from '#lib/programme/draft.svelte';
+	import { eventQuery, keys, programmesQuery } from '#lib/tenant';
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const eventId = $derived(Number(page.params.eventId));
@@ -28,7 +28,7 @@
 		const p = await call(api.POST('/api/tenants/{tenantId}/events/{eventId}/programmes', { params: { path: { tenantId, eventId } }, body: d }));
 		await queryClient.invalidateQueries({ queryKey: keys.programmes(tenantId, eventId) });
 		toast.success($t`Programme "${d.name}" created`);
-		await goto(`/t/${tenantId}/events/${eventId}/config/programmes/${p.id}`, { replaceState: true });
+		await goto(`/t/${tenantId}/events/${eventId}/config/programmes/${p.id}`, { replace: true });
 	}
 </script>
 

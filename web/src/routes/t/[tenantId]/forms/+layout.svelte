@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
 	import { page } from '$app/state';
-	import { membershipOf, meQuery } from '$lib/me';
-	import { hasClub } from '$lib/modules';
-	import RequirePermission from '$lib/RequirePermission.svelte';
+	import { membershipOf, meQuery } from '#lib/me';
+	import { hasClub } from '#lib/modules';
+	import RequirePermission from '#lib/RequirePermission.svelte';
 
 	let { children } = $props();
 	const me = meQuery();

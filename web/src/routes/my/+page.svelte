@@ -5,11 +5,11 @@
 	import Flame from '@lucide/svelte/icons/flame';
 	import Plus from '@lucide/svelte/icons/plus';
 	import Trophy from '@lucide/svelte/icons/trophy';
-	import { Button } from '$lib/components/ui/button';
-	import SessionRow from '$lib/my/SessionRow.svelte';
-	import { meQuery } from '$lib/me';
-	import { disciplineName, fmt, fmtTotal, myQuery, projected, statsQuery } from '$lib/my.svelte';
-	import TrendChart from '$lib/TrendChart.svelte';
+	import { Button } from '#lib/components/ui/button';
+	import SessionRow from '#lib/my/SessionRow.svelte';
+	import { meQuery } from '#lib/me';
+	import { disciplineName, fmt, fmtTotal, myQuery, projected, statsQuery } from '#lib/my.svelte';
+	import TrendChart from '#lib/TrendChart.svelte';
 
 	const my = myQuery();
 	const me = meQuery();

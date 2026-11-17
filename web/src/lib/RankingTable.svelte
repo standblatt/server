@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { podium, points } from '$lib/format';
+	import { podium, points } from '#lib/format';
 	import { plural, t } from 'lingui-for-svelte/macro';
 	import type { Snippet } from 'svelte';
 	import type { ProgrammeRanking } from './api';

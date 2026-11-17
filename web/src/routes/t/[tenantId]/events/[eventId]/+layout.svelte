@@ -4,8 +4,8 @@
 	import { page } from '$app/state';
 	import Archive from '@lucide/svelte/icons/archive';
 	import LayoutTemplate from '@lucide/svelte/icons/layout-template';
-	import { intlLocale } from '$lib/locale.svelte';
-	import { eventQuery } from '$lib/tenant';
+	import { intlLocale } from '#lib/locale.svelte';
+	import { eventQuery } from '#lib/tenant';
 
 	let { children } = $props();
 	const event = eventQuery(
@@ -14,7 +14,7 @@
 	);
 	$effect(() => {
 		const base = `/t/${page.params.tenantId}/events/${page.params.eventId}`;
-		if (event.data?.template && !page.url.pathname.startsWith(`${base}/config`)) goto(`${base}/config`, { replaceState: true });
+		if (event.data?.template && !page.url.pathname.startsWith(`${base}/config`)) goto(`${base}/config`, { replace: true });
 	});
 </script>
 

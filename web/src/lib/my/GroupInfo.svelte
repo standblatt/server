@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
-	import { fmt } from '$lib/my.svelte';
-	import { direction } from '$lib/targets';
+	import { fmt } from '#lib/my.svelte';
+	import { direction } from '#lib/targets';
 
 	let { group }: { group: { x: number; y: number; radius: number; shots: number } } = $props();
 

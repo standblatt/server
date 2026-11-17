@@ -2,11 +2,12 @@
 /// <reference no-default-lib="true"/>
 /// <reference lib="esnext" />
 /// <reference lib="webworker" />
-import { build, files, version } from '$service-worker';
+import { version } from '$app/env';
+import { assets as files, immutable } from '$app/manifest';
 
 const sw = self as unknown as ServiceWorkerGlobalScope;
 const cache = `standblatt-${version}`;
-const assets = [...build, ...files.filter((f) => !f.endsWith('.webmanifest'))];
+const assets = [...immutable, ...files].map((f) => `/${f.path}`).filter((f) => !f.endsWith('.webmanifest'));
 
 sw.addEventListener('install', (e) => {
 	e.waitUntil(

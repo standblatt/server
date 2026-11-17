@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
-	import { api, call } from '$lib/api';
-	import AuthShell from '$lib/AuthShell.svelte';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import FormError from '$lib/FormError.svelte';
-	import FormField from '$lib/FormField.svelte';
+	import { api, call } from '#lib/api';
+	import AuthShell from '#lib/AuthShell.svelte';
+	import { Button } from '#lib/components/ui/button';
+	import { Input } from '#lib/components/ui/input';
+	import FormError from '#lib/FormError.svelte';
+	import FormField from '#lib/FormField.svelte';
 
 	let email = $state('');
 	let sent = $state(false);

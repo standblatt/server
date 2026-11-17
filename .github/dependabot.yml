@@ -19,11 +19,6 @@ updates:
       web:
         update-types: [minor, patch]
     ignore:
-      # Kit 3 treats every file under a path containing /server/ as server-only.
-      - dependency-name: "@sveltejs/kit"
-        versions: [">= 3"]
-      - dependency-name: "@sveltejs/adapter-static"
-        versions: [">= 4"]
       # svelte-check supports TypeScript up to 6.
       - dependency-name: typescript
         versions: [">= 7"]

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
 	import { onMount } from 'svelte';
-	import { dev } from '$app/environment';
+	import { dev } from '$app/env';
 	import { page } from '$app/state';
 	import { useQueryClient } from '@tanstack/svelte-query';
 	import Building from '@lucide/svelte/icons/building-2';
@@ -11,13 +11,13 @@
 	import Plus from '@lucide/svelte/icons/plus';
 	import Settings from '@lucide/svelte/icons/settings';
 	import TrendingUp from '@lucide/svelte/icons/trending-up';
-	import Wordmark from '$lib/Wordmark.svelte';
-	import { meQuery, versionQuery } from '$lib/me';
+	import Wordmark from '#lib/Wordmark.svelte';
+	import { meQuery, versionQuery } from '#lib/me';
 	import UserCog from '@lucide/svelte/icons/user-cog';
 	import CircleHelp from '@lucide/svelte/icons/circle-help';
-	import Notices from '$lib/my/Notices.svelte';
-	import { flushOutbox, logout, myQuery } from '$lib/my.svelte';
-	import ThemeToggle from '$lib/ThemeToggle.svelte';
+	import Notices from '#lib/my/Notices.svelte';
+	import { flushOutbox, logout, myQuery } from '#lib/my.svelte';
+	import ThemeToggle from '#lib/ThemeToggle.svelte';
 
 	let { children } = $props();
 	const queryClient = useQueryClient();

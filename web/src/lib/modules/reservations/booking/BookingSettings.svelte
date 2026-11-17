@@ -6,14 +6,14 @@
 	import RefreshCw from '@lucide/svelte/icons/refresh-cw';
 	import ExternalLink from '@lucide/svelte/icons/external-link';
 	import { toast } from 'svelte-sonner';
-	import { api, call, type BookingConfig, type Event } from '$lib/api';
+	import { api, call, type BookingConfig, type Event } from '#lib/api';
 	import { byDay, deadlineDay, slotDay, slotTime } from './booking';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { ask } from '$lib/confirm.svelte';
+	import { Badge } from '#lib/components/ui/badge';
+	import { Button } from '#lib/components/ui/button';
+	import { Input } from '#lib/components/ui/input';
+	import { ask } from '#lib/confirm.svelte';
 	import BookingHoursForm from './parts/BookingHoursForm.svelte';
-	import { keys } from '$lib/tenant';
+	import { keys } from '#lib/tenant';
 
 	let { tenantId, event }: { tenantId: number; event: Event } = $props();
 

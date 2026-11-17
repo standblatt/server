@@ -2,18 +2,18 @@
 	import { t } from 'lingui-for-svelte/macro';
 	import { page } from '$app/state';
 	import { createQuery } from '@tanstack/svelte-query';
-	import { api, call } from '$lib/api';
+	import { api, call } from '#lib/api';
 	import FileSpreadsheet from '@lucide/svelte/icons/file-spreadsheet';
 	import FileText from '@lucide/svelte/icons/file-text';
-	import { Button } from '$lib/components/ui/button';
-	import PageHeader from '$lib/PageHeader.svelte';
-	import { pdfClick } from '$lib/print';
-	import ModuleSlot from '$lib/modules/ModuleSlot.svelte';
-	import { enabled, has } from '$lib/modules';
-	import RankingTable from '$lib/RankingTable.svelte';
-	import CertificatesButton from '$lib/forms/CertificatesButton.svelte';
-	import { can, membershipOf, meQuery } from '$lib/me';
-	import { eventQuery, keys } from '$lib/tenant';
+	import { Button } from '#lib/components/ui/button';
+	import PageHeader from '#lib/PageHeader.svelte';
+	import { pdfClick } from '#lib/print';
+	import ModuleSlot from '#lib/modules/ModuleSlot.svelte';
+	import { enabled, has } from '#lib/modules';
+	import RankingTable from '#lib/RankingTable.svelte';
+	import CertificatesButton from '#lib/forms/CertificatesButton.svelte';
+	import { can, membershipOf, meQuery } from '#lib/me';
+	import { eventQuery, keys } from '#lib/tenant';
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const eventId = $derived(Number(page.params.eventId));

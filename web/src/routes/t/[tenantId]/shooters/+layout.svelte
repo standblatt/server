@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import RequirePermission from '$lib/RequirePermission.svelte';
+	import RequirePermission from '#lib/RequirePermission.svelte';
 
 	let { children } = $props();
 </script>

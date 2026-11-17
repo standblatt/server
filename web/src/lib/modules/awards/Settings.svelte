@@ -2,9 +2,9 @@
 	import { t } from 'lingui-for-svelte/macro';
 	import { useQueryClient } from '@tanstack/svelte-query';
 	import { toast } from 'svelte-sonner';
-	import { Switch } from '$lib/components/ui/switch';
-	import { updateEvent } from '$lib/tenant';
-	import EventFormChoice from '$lib/forms/EventFormChoice.svelte';
+	import { Switch } from '#lib/components/ui/switch';
+	import { updateEvent } from '#lib/tenant';
+	import EventFormChoice from '#lib/forms/EventFormChoice.svelte';
 	import type { EventProps } from '..';
 
 	let { tenantId, event }: EventProps = $props();

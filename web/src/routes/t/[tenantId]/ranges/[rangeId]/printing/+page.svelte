@@ -1,25 +1,25 @@
 <script lang="ts">
 	import { untrack } from 'svelte';
 	import { plural, t } from 'lingui-for-svelte/macro';
-	import { jobStatus } from '$lib/labels';
-	import { intlLocale } from '$lib/locale.svelte';
+	import { jobStatus } from '#lib/labels';
+	import { intlLocale } from '#lib/locale.svelte';
 	import { page } from '$app/state';
 	import { createQuery, useQueryClient } from '@tanstack/svelte-query';
 	import Link from '@lucide/svelte/icons/link';
 	import Plus from '@lucide/svelte/icons/plus';
 	import Server from '@lucide/svelte/icons/server';
 	import { toast } from 'svelte-sonner';
-	import { api, call, type PrintAgent, type PrintSetting, type Printer } from '$lib/api';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
-	import * as Dialog from '$lib/components/ui/dialog';
-	import { Input } from '$lib/components/ui/input';
-	import * as NativeSelect from '$lib/components/ui/native-select';
-	import * as Table from '$lib/components/ui/table';
-	import { ask } from '$lib/confirm.svelte';
-	import FormError from '$lib/FormError.svelte';
-	import PageHeader from '$lib/PageHeader.svelte';
-	import { rangesQuery } from '$lib/tenant';
+	import { api, call, type PrintAgent, type PrintSetting, type Printer } from '#lib/api';
+	import { Badge } from '#lib/components/ui/badge';
+	import { Button } from '#lib/components/ui/button';
+	import * as Dialog from '#lib/components/ui/dialog';
+	import { Input } from '#lib/components/ui/input';
+	import * as NativeSelect from '#lib/components/ui/native-select';
+	import * as Table from '#lib/components/ui/table';
+	import { ask } from '#lib/confirm.svelte';
+	import FormError from '#lib/FormError.svelte';
+	import PageHeader from '#lib/PageHeader.svelte';
+	import { rangesQuery } from '#lib/tenant';
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const rangeId = $derived(Number(page.params.rangeId));

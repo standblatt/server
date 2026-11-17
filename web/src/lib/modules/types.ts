@@ -1,8 +1,8 @@
 import type { MessageDescriptor } from '@lingui/core';
 import type { Component } from 'svelte';
 import type Users from '@lucide/svelte/icons/users';
-import type { Event, Me, Permission, Programme } from '$lib/api';
-import type { ProgrammeDraft } from '$lib/programme/draft.svelte';
+import type { Event, Me, Permission, Programme } from '#lib/api';
+import type { ProgrammeDraft } from '#lib/programme/draft.svelte';
 
 /** Key of an event module, as the API names it. */
 export type ModuleKey = Event['modules'][number];

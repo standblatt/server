@@ -10,15 +10,15 @@
 	import Smartphone from '@lucide/svelte/icons/smartphone';
 	import Trash from '@lucide/svelte/icons/trash-2';
 	import UserCog from '@lucide/svelte/icons/user-cog';
-	import { api, call } from '$lib/api';
-	import { Button } from '$lib/components/ui/button';
-	import * as Dialog from '$lib/components/ui/dialog';
-	import { Input } from '$lib/components/ui/input';
-	import { ask } from '$lib/confirm.svelte';
-	import FormField from '$lib/FormField.svelte';
-	import { versionQuery } from '$lib/me';
-	import { disciplineName, myKey, myQuery, type Discipline, type Weapon } from '$lib/my.svelte';
-	import ThemeToggle from '$lib/ThemeToggle.svelte';
+	import { api, call } from '#lib/api';
+	import { Button } from '#lib/components/ui/button';
+	import * as Dialog from '#lib/components/ui/dialog';
+	import { Input } from '#lib/components/ui/input';
+	import { ask } from '#lib/confirm.svelte';
+	import FormField from '#lib/FormField.svelte';
+	import { versionQuery } from '#lib/me';
+	import { disciplineName, myKey, myQuery, type Discipline, type Weapon } from '#lib/my.svelte';
+	import ThemeToggle from '#lib/ThemeToggle.svelte';
 
 	const version = versionQuery();
 	const queryClient = useQueryClient();

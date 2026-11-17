@@ -1,18 +1,18 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
-	import { intlLocale } from '$lib/locale.svelte';
+	import { intlLocale } from '#lib/locale.svelte';
 	import { createQuery, useQueryClient } from '@tanstack/svelte-query';
 	import Copy from '@lucide/svelte/icons/copy';
 	import HandHelping from '@lucide/svelte/icons/hand-helping';
 	import { toast } from 'svelte-sonner';
-	import { api, call, type HelperCode } from '$lib/api';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import * as NativeSelect from '$lib/components/ui/native-select';
-	import { ask } from '$lib/confirm.svelte';
-	import FormError from '$lib/FormError.svelte';
-	import { helperRoleLabel } from '$lib/labels';
-	import { keys } from '$lib/tenant';
+	import { api, call, type HelperCode } from '#lib/api';
+	import { Button } from '#lib/components/ui/button';
+	import { Input } from '#lib/components/ui/input';
+	import * as NativeSelect from '#lib/components/ui/native-select';
+	import { ask } from '#lib/confirm.svelte';
+	import FormError from '#lib/FormError.svelte';
+	import { helperRoleLabel } from '#lib/labels';
+	import { keys } from '#lib/tenant';
 	import { has, type EventProps } from '..';
 
 	let { tenantId, event }: EventProps = $props();

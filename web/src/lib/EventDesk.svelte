@@ -229,7 +229,7 @@
 		return null;
 	});
 	/** Navigates to the desk with the given query string, keeping scroll and focus. */
-	const show = (query: string) => goto(`${base}${query}`, { noScroll: true, keepFocus: true });
+	const show = (query: string) => goto(`${base}${query}`, { reset: false });
 	/** Opens the results dialog of a registration through the URL query parameter. */
 	const openResults = (id: number) => show(`?results=${id}`);
 	/** Opens the registration dialog through the URL query parameter. */
@@ -242,7 +242,7 @@
 		show(`?register=${shooterId}${clubId ? `&club=${clubId}` : ''}`);
 	};
 	/** Closes any dialog by dropping the query parameters. */
-	const close = () => goto(base, { noScroll: true, keepFocus: true, replaceState: true });
+	const close = () => goto(base, { reset: false, replace: true });
 	let newShooter = $state(false);
 </script>
 

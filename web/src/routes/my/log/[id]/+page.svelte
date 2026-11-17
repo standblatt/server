@@ -12,14 +12,14 @@
 	import Pencil from '@lucide/svelte/icons/pencil';
 	import Trash from '@lucide/svelte/icons/trash-2';
 	import Trophy from '@lucide/svelte/icons/trophy';
-	import { api, call } from '$lib/api';
-	import Bars from '$lib/Bars.svelte';
-	import { Button } from '$lib/components/ui/button';
-	import { ask } from '$lib/confirm.svelte';
-	import GroupInfo from '$lib/my/GroupInfo.svelte';
-	import { disciplineName, fmt, fmtDateTime, fmtTotal, kindLabel, myKey, myQuery } from '$lib/my.svelte';
-	import TargetFace from '$lib/TargetFace.svelte';
-	import { targets } from '$lib/targets';
+	import { api, call } from '#lib/api';
+	import Bars from '#lib/Bars.svelte';
+	import { Button } from '#lib/components/ui/button';
+	import { ask } from '#lib/confirm.svelte';
+	import GroupInfo from '#lib/my/GroupInfo.svelte';
+	import { disciplineName, fmt, fmtDateTime, fmtTotal, kindLabel, myKey, myQuery } from '#lib/my.svelte';
+	import TargetFace from '#lib/TargetFace.svelte';
+	import { targets } from '#lib/targets';
 
 	const queryClient = useQueryClient();
 	const id = $derived(Number(page.params.id));

@@ -3,13 +3,13 @@
 	import { createQuery } from '@tanstack/svelte-query';
 	import FileSpreadsheet from '@lucide/svelte/icons/file-spreadsheet';
 	import FileText from '@lucide/svelte/icons/file-text';
-	import { api, call } from '$lib/api';
-	import { Button } from '$lib/components/ui/button';
-	import { pdfClick } from '$lib/print';
-	import { keys } from '$lib/tenant';
+	import { api, call } from '#lib/api';
+	import { Button } from '#lib/components/ui/button';
+	import { pdfClick } from '#lib/print';
+	import { keys } from '#lib/tenant';
 	import { has, type EventProps } from '..';
 	import ClassificationTable from './ClassificationTable.svelte';
-	import CertificatesButton from '$lib/forms/CertificatesButton.svelte';
+	import CertificatesButton from '#lib/forms/CertificatesButton.svelte';
 
 	let { tenantId, event }: EventProps = $props();
 	const classifications = createQuery(() => ({

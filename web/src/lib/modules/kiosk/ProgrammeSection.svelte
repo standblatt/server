@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
-	import { Switch } from '$lib/components/ui/switch';
+	import { Switch } from '#lib/components/ui/switch';
 	import type { ProgrammeProps } from '..';
 
 	let { draft }: ProgrammeProps = $props();

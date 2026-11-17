@@ -3,6 +3,10 @@
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
+	"imports": {
+		"#lib": "./src/lib",
+		"#lib/*": "./src/lib/*"
+	},
 	"scripts": {
 		"dev": "lingui compile --typescript && vite dev",
 		"build": "lingui extract --clean && lingui compile --typescript && vite build",
@@ -19,8 +23,8 @@
 		"@lingui/core": "^6.9.1",
 		"@lingui/format-po-gettext": "^6.12.0",
 		"@lucide/svelte": "^1.72.0",
-		"@sveltejs/adapter-static": "^3.0.11",
-		"@sveltejs/kit": "^2.70.4",
+		"@sveltejs/adapter-static": "^4.0.1",
+		"@sveltejs/kit": "^3.1.1",
 		"@sveltejs/vite-plugin-svelte": "^7.2.0",
 		"@tailwindcss/vite": "^4.3.5",
 		"@tanstack/svelte-query": "^6.4.1",
@@ -48,6 +52,8 @@
 		"openapi-typescript": {
 			"typescript": "$typescript"
 		},
-		"cookie": "^0.7.2"
+		"runed": {
+			"@sveltejs/kit": "$@sveltejs/kit"
+		}
 	}
 }

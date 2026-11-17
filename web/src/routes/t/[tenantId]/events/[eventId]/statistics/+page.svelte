@@ -1,20 +1,20 @@
 <script lang="ts">
-	import { pdfClick } from '$lib/print';
+	import { pdfClick } from '#lib/print';
 	import { t } from 'lingui-for-svelte/macro';
 	import { page } from '$app/state';
 	import { createQuery } from '@tanstack/svelte-query';
-	import { api, call } from '$lib/api';
+	import { api, call } from '#lib/api';
 	import FileSpreadsheet from '@lucide/svelte/icons/file-spreadsheet';
 	import FileText from '@lucide/svelte/icons/file-text';
-	import { ageCategoryLabel } from '$lib/labels';
-	import { chf, formatDate, programmeTitle } from '$lib/format';
-	import { Button } from '$lib/components/ui/button';
-	import * as Table from '$lib/components/ui/table';
-	import PageHeader from '$lib/PageHeader.svelte';
-	import PanelHead from '$lib/PanelHead.svelte';
-	import ModuleSlot from '$lib/modules/ModuleSlot.svelte';
-	import { enabled, has } from '$lib/modules';
-	import { eventQuery, keys, programmesQuery } from '$lib/tenant';
+	import { ageCategoryLabel } from '#lib/labels';
+	import { chf, formatDate, programmeTitle } from '#lib/format';
+	import { Button } from '#lib/components/ui/button';
+	import * as Table from '#lib/components/ui/table';
+	import PageHeader from '#lib/PageHeader.svelte';
+	import PanelHead from '#lib/PanelHead.svelte';
+	import ModuleSlot from '#lib/modules/ModuleSlot.svelte';
+	import { enabled, has } from '#lib/modules';
+	import { eventQuery, keys, programmesQuery } from '#lib/tenant';
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const eventId = $derived(Number(page.params.eventId));

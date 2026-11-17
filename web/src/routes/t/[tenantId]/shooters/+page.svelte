@@ -6,21 +6,21 @@
 	import FileUp from '@lucide/svelte/icons/file-up';
 	import Search from '@lucide/svelte/icons/search';
 	import UserPlus from '@lucide/svelte/icons/user-plus';
-	import { api, call, type ImportReport } from '$lib/api';
-	import { Button } from '$lib/components/ui/button';
-	import * as Dialog from '$lib/components/ui/dialog';
-	import { Input } from '$lib/components/ui/input';
-	import * as NativeSelect from '$lib/components/ui/native-select';
-	import * as Table from '$lib/components/ui/table';
-	import { formatDate } from '$lib/format';
-	import FormError from '$lib/FormError.svelte';
-	import { can, membershipOf, meQuery } from '$lib/me';
-	import NewShooterDialog from '$lib/NewShooterDialog.svelte';
-	import Pager from '$lib/Pager.svelte';
-	import PageHeader from '$lib/PageHeader.svelte';
-	import ClubSelect from '$lib/ClubSelect.svelte';
-	import ShooterSheet from '$lib/ShooterSheet.svelte';
-	import { clubsQuery, keys } from '$lib/tenant';
+	import { api, call, type ImportReport } from '#lib/api';
+	import { Button } from '#lib/components/ui/button';
+	import * as Dialog from '#lib/components/ui/dialog';
+	import { Input } from '#lib/components/ui/input';
+	import * as NativeSelect from '#lib/components/ui/native-select';
+	import * as Table from '#lib/components/ui/table';
+	import { formatDate } from '#lib/format';
+	import FormError from '#lib/FormError.svelte';
+	import { can, membershipOf, meQuery } from '#lib/me';
+	import NewShooterDialog from '#lib/NewShooterDialog.svelte';
+	import Pager from '#lib/Pager.svelte';
+	import PageHeader from '#lib/PageHeader.svelte';
+	import ClubSelect from '#lib/ClubSelect.svelte';
+	import ShooterSheet from '#lib/ShooterSheet.svelte';
+	import { clubsQuery, keys } from '#lib/tenant';
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const queryClient = useQueryClient();
@@ -59,9 +59,9 @@
 	let importing = $state(false);
 	const selected = $derived(Number(page.url.searchParams.get('shooter')) || 0);
 	/** Opens the shooter sheet. */
-	const openShooter = (id: number) => goto(`?shooter=${id}`, { noScroll: true, keepFocus: true });
+	const openShooter = (id: number) => goto(`?shooter=${id}`, { reset: false });
 	/** Closes the shooter sheet. */
-	const closeShooter = () => goto(page.url.pathname, { noScroll: true, keepFocus: true, replaceState: true });
+	const closeShooter = () => goto(page.url.pathname, { reset: false, replace: true });
 
 	let file = $state<FileList>();
 	let report = $state<ImportReport | null>(null);

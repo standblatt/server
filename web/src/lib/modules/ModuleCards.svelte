@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
 	import type { Snippet } from 'svelte';
-	import { Switch } from '$lib/components/ui/switch';
-	import HelpButton from '$lib/help/HelpButton.svelte';
+	import { Switch } from '#lib/components/ui/switch';
+	import HelpButton from '#lib/help/HelpButton.svelte';
 	import type { ModuleUI } from './types';
 
 	/** A module as a card: whether it is on, why its switch is locked (blocked) or what switching does besides (note). */

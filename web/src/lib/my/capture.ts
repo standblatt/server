@@ -1,5 +1,5 @@
-import type { Discipline, TrainingInput, TrainingSession } from '$lib/my.svelte';
-import { localInput, uuid } from '$lib/my.svelte';
+import type { Discipline, TrainingInput, TrainingSession } from '#lib/my.svelte';
+import { localInput, uuid } from '#lib/my.svelte';
 
 export type Mode = 'totals' | 'shots' | 'target';
 export type Shot = { v: number; x?: number; y?: number };

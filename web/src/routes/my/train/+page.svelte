@@ -13,15 +13,15 @@
 	import X from '@lucide/svelte/icons/x';
 	import ZoomIn from '@lucide/svelte/icons/zoom-in';
 	import ZoomOut from '@lucide/svelte/icons/zoom-out';
-	import { api, call, ApiError } from '$lib/api';
-	import { Button } from '$lib/components/ui/button';
-	import { ask } from '$lib/confirm.svelte';
-	import { complete, filled, fromSession, newDraft, seriesTotal, toInput, totals, typeKey, typeShot, type Draft, type Mode } from '$lib/my/capture';
-	import Finish from '$lib/my/Finish.svelte';
-	import Result from '$lib/my/Result.svelte';
-	import { disciplineName, fmt, fmtTotal, flushOutbox, isOffline, maxShot, myKey, myQuery, queueOffline, type Discipline, type TrainingSaved } from '$lib/my.svelte';
-	import TargetFace from '$lib/TargetFace.svelte';
-	import { score, targets } from '$lib/targets';
+	import { api, call, ApiError } from '#lib/api';
+	import { Button } from '#lib/components/ui/button';
+	import { ask } from '#lib/confirm.svelte';
+	import { complete, filled, fromSession, newDraft, seriesTotal, toInput, totals, typeKey, typeShot, type Draft, type Mode } from '#lib/my/capture';
+	import Finish from '#lib/my/Finish.svelte';
+	import Result from '#lib/my/Result.svelte';
+	import { disciplineName, fmt, fmtTotal, flushOutbox, isOffline, maxShot, myKey, myQuery, queueOffline, type Discipline, type TrainingSaved } from '#lib/my.svelte';
+	import TargetFace from '#lib/TargetFace.svelte';
+	import { score, targets } from '#lib/targets';
 
 	const draftKey = 'standblatt-draft';
 	const queryClient = useQueryClient();

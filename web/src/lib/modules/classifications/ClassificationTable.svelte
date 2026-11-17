@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { podium, points } from '$lib/format';
+	import { podium, points } from '#lib/format';
 	import { t } from 'lingui-for-svelte/macro';
 	import type { Snippet } from 'svelte';
-	import type { ClassificationRanking } from '$lib/api';
-	import { ageCategoryShort } from '$lib/categories';
-	import * as Table from '$lib/components/ui/table';
+	import type { ClassificationRanking } from '#lib/api';
+	import { ageCategoryShort } from '#lib/categories';
+	import * as Table from '#lib/components/ui/table';
 
 	let { ranking, large = false, actions }: { ranking: ClassificationRanking; large?: boolean; actions?: Snippet } = $props();
 

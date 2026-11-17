@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
-	import { Input } from '$lib/components/ui/input';
-	import { Textarea } from '$lib/components/ui/textarea';
-	import FormField from '$lib/FormField.svelte';
+	import { Input } from '#lib/components/ui/input';
+	import { Textarea } from '#lib/components/ui/textarea';
+	import FormField from '#lib/FormField.svelte';
 	import type { ProgrammeDraft } from './draft.svelte';
 
 	let { draft, others }: { draft: ProgrammeDraft; others: { name: string; variant?: string }[] } = $props();

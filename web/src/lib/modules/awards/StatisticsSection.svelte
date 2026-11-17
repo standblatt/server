@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
 	import { createQuery } from '@tanstack/svelte-query';
-	import { api, call } from '$lib/api';
-	import * as Table from '$lib/components/ui/table';
-	import { chf } from '$lib/format';
-	import PanelHead from '$lib/PanelHead.svelte';
-	import { keys } from '$lib/tenant';
+	import { api, call } from '#lib/api';
+	import * as Table from '#lib/components/ui/table';
+	import { chf } from '#lib/format';
+	import PanelHead from '#lib/PanelHead.svelte';
+	import { keys } from '#lib/tenant';
 	import type { EventProps } from '..';
 
 	let { tenantId, event }: EventProps = $props();

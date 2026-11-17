@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
 	import { page } from '$app/state';
-	import { has, moduleUI, type ModuleKey } from '$lib/modules';
-	import ModuleSlot from '$lib/modules/ModuleSlot.svelte';
-	import PageHeader from '$lib/PageHeader.svelte';
-	import { eventQuery } from '$lib/tenant';
+	import { has, moduleUI, type ModuleKey } from '#lib/modules';
+	import ModuleSlot from '#lib/modules/ModuleSlot.svelte';
+	import PageHeader from '#lib/PageHeader.svelte';
+	import { eventQuery } from '#lib/tenant';
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const event = eventQuery(

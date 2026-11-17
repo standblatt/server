@@ -6,19 +6,19 @@
 	import UserPlus from '@lucide/svelte/icons/user-plus';
 	import X from '@lucide/svelte/icons/x';
 	import { toast } from 'svelte-sonner';
-	import { api, call, type BookingRequest, type BookingShooter, type Club, type Event } from '$lib/api';
+	import { api, call, type BookingRequest, type BookingShooter, type Club, type Event } from '#lib/api';
 	import { slotDay, slotTime } from './booking';
-	import { formatLanes } from '$lib/format';
-	import { intlLocale } from '$lib/locale.svelte';
+	import { formatLanes } from '#lib/format';
+	import { intlLocale } from '#lib/locale.svelte';
 	import BookingStatus from './parts/BookingStatus.svelte';
 	import ShooterList from './parts/ShooterList.svelte';
-	import ClubSelect from '$lib/ClubSelect.svelte';
-	import { Button } from '$lib/components/ui/button';
-	import * as Dialog from '$lib/components/ui/dialog';
-	import * as Sheet from '$lib/components/ui/sheet';
-	import { Textarea } from '$lib/components/ui/textarea';
-	import FormError from '$lib/FormError.svelte';
-	import { bookingRequestsQuery, clubsQuery, keys } from '$lib/tenant';
+	import ClubSelect from '#lib/ClubSelect.svelte';
+	import { Button } from '#lib/components/ui/button';
+	import * as Dialog from '#lib/components/ui/dialog';
+	import * as Sheet from '#lib/components/ui/sheet';
+	import { Textarea } from '#lib/components/ui/textarea';
+	import FormError from '#lib/FormError.svelte';
+	import { bookingRequestsQuery, clubsQuery, keys } from '#lib/tenant';
 
 	let { tenantId, event, isAdmin, requestId = $bindable(null) }: { tenantId: number; event: Event; isAdmin: boolean; requestId?: number | null } = $props();
 

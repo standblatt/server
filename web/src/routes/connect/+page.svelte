@@ -2,15 +2,15 @@
 	import { t } from 'lingui-for-svelte/macro';
 	import { page } from '$app/state';
 	import { createQuery } from '@tanstack/svelte-query';
-	import { api, call, type PrintAgent } from '$lib/api';
-	import AuthShell from '$lib/AuthShell.svelte';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import * as NativeSelect from '$lib/components/ui/native-select';
-	import FormError from '$lib/FormError.svelte';
-	import FormField from '$lib/FormField.svelte';
-	import { can, meQuery } from '$lib/me';
-	import { rangesQuery } from '$lib/tenant';
+	import { api, call, type PrintAgent } from '#lib/api';
+	import AuthShell from '#lib/AuthShell.svelte';
+	import { Button } from '#lib/components/ui/button';
+	import { Input } from '#lib/components/ui/input';
+	import * as NativeSelect from '#lib/components/ui/native-select';
+	import FormError from '#lib/FormError.svelte';
+	import FormField from '#lib/FormField.svelte';
+	import { can, meQuery } from '#lib/me';
+	import { rangesQuery } from '#lib/tenant';
 
 	const me = meQuery();
 	const clubs = $derived((me.data?.tenants ?? []).filter((m) => can(m, 'ranges.manage')));

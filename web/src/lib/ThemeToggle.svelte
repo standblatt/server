@@ -4,7 +4,7 @@
 	import Monitor from '@lucide/svelte/icons/monitor';
 	import Moon from '@lucide/svelte/icons/moon';
 	import Sun from '@lucide/svelte/icons/sun';
-	import { Button } from '$lib/components/ui/button';
+	import { Button } from '#lib/components/ui/button';
 
 	const next = { system: 'light', light: 'dark', dark: 'system' } as const;
 	const label = $derived({ system: $t`System theme`, light: $t`Light theme`, dark: $t`Dark theme` });

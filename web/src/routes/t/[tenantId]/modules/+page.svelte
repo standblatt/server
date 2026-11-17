@@ -4,11 +4,11 @@
 	import { page } from '$app/state';
 	import { useQueryClient } from '@tanstack/svelte-query';
 	import { toast } from 'svelte-sonner';
-	import { api, call } from '$lib/api';
-	import { can, meKey, membershipOf, meQuery } from '$lib/me';
-	import { clubModuleUI, hasClub, modulesQuery, type ClubModuleKey } from '$lib/modules';
-	import ModuleCards from '$lib/modules/ModuleCards.svelte';
-	import PageHeader from '$lib/PageHeader.svelte';
+	import { api, call } from '#lib/api';
+	import { can, meKey, membershipOf, meQuery } from '#lib/me';
+	import { clubModuleUI, hasClub, modulesQuery, type ClubModuleKey } from '#lib/modules';
+	import ModuleCards from '#lib/modules/ModuleCards.svelte';
+	import PageHeader from '#lib/PageHeader.svelte';
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const queryClient = useQueryClient();
@@ -18,7 +18,7 @@
 	const list = $derived((modules.data ?? []).filter((m) => m.level === 'club').map((m) => m.key as ClubModuleKey));
 
 	$effect(() => {
-		if (club && !can(club, 'club.manage')) goto(`/t/${tenantId}`, { replaceState: true });
+		if (club && !can(club, 'club.manage')) goto(`/t/${tenantId}`, { replace: true });
 	});
 
 	/** Switches a club module on or off. */

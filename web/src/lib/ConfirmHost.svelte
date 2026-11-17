@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
-	import * as AlertDialog from '$lib/components/ui/alert-dialog';
-	import { buttonVariants } from '$lib/components/ui/button';
+	import * as AlertDialog from '#lib/components/ui/alert-dialog';
+	import { buttonVariants } from '#lib/components/ui/button';
 	import { confirmState } from './confirm.svelte';
 
 	const p = $derived(confirmState.pending);

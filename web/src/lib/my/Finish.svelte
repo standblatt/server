@@ -7,14 +7,14 @@
 	import Smile from '@lucide/svelte/icons/smile';
 	import Plus from '@lucide/svelte/icons/plus';
 	import { useQueryClient } from '@tanstack/svelte-query';
-	import { api, call } from '$lib/api';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import * as Sheet from '$lib/components/ui/sheet';
-	import { Textarea } from '$lib/components/ui/textarea';
-	import FormField from '$lib/FormField.svelte';
-	import FormError from '$lib/FormError.svelte';
-	import { myKey, type Weapon } from '$lib/my.svelte';
+	import { api, call } from '#lib/api';
+	import { Button } from '#lib/components/ui/button';
+	import { Input } from '#lib/components/ui/input';
+	import * as Sheet from '#lib/components/ui/sheet';
+	import { Textarea } from '#lib/components/ui/textarea';
+	import FormField from '#lib/FormField.svelte';
+	import FormError from '#lib/FormError.svelte';
+	import { myKey, type Weapon } from '#lib/my.svelte';
 	import type { Draft } from './capture';
 
 	let {

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
-	import { ageCategories } from '$lib/categories';
-	import { Checkbox } from '$lib/components/ui/checkbox';
-	import { Input } from '$lib/components/ui/input';
-	import { ageCategoryLabel } from '$lib/labels';
+	import { ageCategories } from '#lib/categories';
+	import { Checkbox } from '#lib/components/ui/checkbox';
+	import { Input } from '#lib/components/ui/input';
+	import { ageCategoryLabel } from '#lib/labels';
 	import type { ProgrammeDraft } from './draft.svelte';
 
 	let { draft, locked }: { draft: ProgrammeDraft; locked: boolean } = $props();

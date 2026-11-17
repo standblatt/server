@@ -2,12 +2,12 @@
 	import { t } from 'lingui-for-svelte/macro';
 	import { useQueryClient } from '@tanstack/svelte-query';
 	import { toast } from 'svelte-sonner';
-	import { api, call } from '$lib/api';
-	import * as NativeSelect from '$lib/components/ui/native-select';
-	import FormField from '$lib/FormField.svelte';
-	import { programmeTitle } from '$lib/format';
-	import Section from '$lib/programme/Section.svelte';
-	import { keys, layoutsQuery } from '$lib/tenant';
+	import { api, call } from '#lib/api';
+	import * as NativeSelect from '#lib/components/ui/native-select';
+	import FormField from '#lib/FormField.svelte';
+	import { programmeTitle } from '#lib/format';
+	import Section from '#lib/programme/Section.svelte';
+	import { keys, layoutsQuery } from '#lib/tenant';
 	import type { ProgrammeProps } from '..';
 
 	let { tenantId, event, programme }: ProgrammeProps = $props();

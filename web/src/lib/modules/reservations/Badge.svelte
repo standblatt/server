@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { plural } from 'lingui-for-svelte/macro';
-	import * as Sidebar from '$lib/components/ui/sidebar';
-	import { bookingRequestsQuery } from '$lib/tenant';
+	import * as Sidebar from '#lib/components/ui/sidebar';
+	import { bookingRequestsQuery } from '#lib/tenant';
 	import type { EventProps } from '..';
 
 	let { tenantId, event }: EventProps = $props();

@@ -2,10 +2,10 @@
 	import { t } from 'lingui-for-svelte/macro';
 	import Plus from '@lucide/svelte/icons/plus';
 	import Trash from '@lucide/svelte/icons/trash-2';
-	import { Button } from '$lib/components/ui/button';
-	import { Checkbox } from '$lib/components/ui/checkbox';
-	import { Input } from '$lib/components/ui/input';
-	import * as Table from '$lib/components/ui/table';
+	import { Button } from '#lib/components/ui/button';
+	import { Checkbox } from '#lib/components/ui/checkbox';
+	import { Input } from '#lib/components/ui/input';
+	import * as Table from '#lib/components/ui/table';
 	import type { ProgrammeDraft } from './draft.svelte';
 
 	let { draft, locked }: { draft: ProgrammeDraft; locked: boolean } = $props();

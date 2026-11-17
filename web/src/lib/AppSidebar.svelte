@@ -19,25 +19,25 @@
 	import BadgeCheck from '@lucide/svelte/icons/badge-check';
 	import Dumbbell from '@lucide/svelte/icons/dumbbell';
 	import ShieldCheck from '@lucide/svelte/icons/shield-check';
-	import { authOptionsQuery, can, membershipOf, versionQuery } from '$lib/me';
+	import { authOptionsQuery, can, membershipOf, versionQuery } from '#lib/me';
 	import Archive from '@lucide/svelte/icons/archive';
 	import ArrowLeft from '@lucide/svelte/icons/arrow-left';
 	import ListChecks from '@lucide/svelte/icons/list-checks';
 	import Puzzle from '@lucide/svelte/icons/puzzle';
 	import SlidersHorizontal from '@lucide/svelte/icons/sliders-horizontal';
-	import ModuleSlot from '$lib/modules/ModuleSlot.svelte';
-	import { enabled, enabledClub, type Lazy } from '$lib/modules';
+	import ModuleSlot from '#lib/modules/ModuleSlot.svelte';
+	import { enabled, enabledClub, type Lazy } from '#lib/modules';
 	import Users from '@lucide/svelte/icons/users';
-	import type { Event, Me } from '$lib/api';
-	import { liveLabel, roleLabel } from '$lib/labels';
-	import * as Avatar from '$lib/components/ui/avatar';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-	import * as Sidebar from '$lib/components/ui/sidebar';
-	import { formatDays, rangeNames } from '$lib/format';
+	import type { Event, Me } from '#lib/api';
+	import { liveLabel, roleLabel } from '#lib/labels';
+	import * as Avatar from '#lib/components/ui/avatar';
+	import * as DropdownMenu from '#lib/components/ui/dropdown-menu';
+	import * as Sidebar from '#lib/components/ui/sidebar';
+	import { formatDays, rangeNames } from '#lib/format';
 	import Languages from '@lucide/svelte/icons/languages';
-	import { currentLocale, localeNames } from '$lib/locale.svelte';
-	import Logo from '$lib/Logo.svelte';
-	import Wordmark from '$lib/Wordmark.svelte';
+	import { currentLocale, localeNames } from '#lib/locale.svelte';
+	import Logo from '#lib/Logo.svelte';
+	import Wordmark from '#lib/Wordmark.svelte';
 
 	let {
 		me,

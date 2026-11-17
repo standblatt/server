@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
-	import EventFormChoice from '$lib/forms/EventFormChoice.svelte';
+	import EventFormChoice from '#lib/forms/EventFormChoice.svelte';
 	import type { EventProps } from '..';
 
 	let { tenantId, event }: EventProps = $props();

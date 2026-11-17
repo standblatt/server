@@ -10,7 +10,7 @@
 	const allowed = $derived(can(membership, permission));
 
 	$effect(() => {
-		if (membership && !allowed) goto(`/t/${tenantId}`, { replaceState: true });
+		if (membership && !allowed) goto(`/t/${tenantId}`, { replace: true });
 	});
 </script>
 

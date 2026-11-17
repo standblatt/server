@@ -3,11 +3,11 @@
 	import { page } from '$app/state';
 	import { createQuery } from '@tanstack/svelte-query';
 	import CircleCheck from '@lucide/svelte/icons/circle-check';
-	import { api, call, type BookingRequestInput } from '$lib/api';
-	import { deadlineDay, slotDay } from '$lib/modules/reservations/booking/booking';
-	import BookingForm from '$lib/modules/reservations/booking/parts/BookingForm.svelte';
-	import PublicShell from '$lib/PublicShell.svelte';
-	import { formatDays } from '$lib/format';
+	import { api, call, type BookingRequestInput } from '#lib/api';
+	import { deadlineDay, slotDay } from '#lib/modules/reservations/booking/booking';
+	import BookingForm from '#lib/modules/reservations/booking/parts/BookingForm.svelte';
+	import PublicShell from '#lib/PublicShell.svelte';
+	import { formatDays } from '#lib/format';
 
 	const code = $derived(page.params.code ?? '');
 	const info = createQuery(() => ({

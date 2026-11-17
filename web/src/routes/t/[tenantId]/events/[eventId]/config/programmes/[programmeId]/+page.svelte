@@ -4,13 +4,13 @@
 	import { createQuery, useQueryClient } from '@tanstack/svelte-query';
 	import Download from '@lucide/svelte/icons/download';
 	import { toast } from 'svelte-sonner';
-	import { api, call, type ProgrammeDefinition } from '$lib/api';
-	import { Button } from '$lib/components/ui/button';
-	import { programmeTitle } from '$lib/format';
-	import PageHeader from '$lib/PageHeader.svelte';
-	import ProgrammeEditor from '$lib/ProgrammeEditor.svelte';
-	import { ProgrammeDraft } from '$lib/programme/draft.svelte';
-	import { eventQuery, keys, programmesQuery } from '$lib/tenant';
+	import { api, call, type ProgrammeDefinition } from '#lib/api';
+	import { Button } from '#lib/components/ui/button';
+	import { programmeTitle } from '#lib/format';
+	import PageHeader from '#lib/PageHeader.svelte';
+	import ProgrammeEditor from '#lib/ProgrammeEditor.svelte';
+	import { ProgrammeDraft } from '#lib/programme/draft.svelte';
+	import { eventQuery, keys, programmesQuery } from '#lib/tenant';
 
 	const tenantId = $derived(Number(page.params.tenantId));
 	const eventId = $derived(Number(page.params.eventId));

@@ -3,14 +3,14 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import { useQueryClient } from '@tanstack/svelte-query';
-	import { api, call } from '$lib/api';
-	import AuthShell from '$lib/AuthShell.svelte';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import FormError from '$lib/FormError.svelte';
-	import FormField from '$lib/FormField.svelte';
-	import { currentLocale } from '$lib/locale.svelte';
-	import { authOptionsQuery, meKey } from '$lib/me';
+	import { api, call } from '#lib/api';
+	import AuthShell from '#lib/AuthShell.svelte';
+	import { Button } from '#lib/components/ui/button';
+	import { Input } from '#lib/components/ui/input';
+	import FormError from '#lib/FormError.svelte';
+	import FormField from '#lib/FormField.svelte';
+	import { currentLocale } from '#lib/locale.svelte';
+	import { authOptionsQuery, meKey } from '#lib/me';
 
 	const queryClient = useQueryClient();
 	const options = authOptionsQuery();
