@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"github.com/jackc/pgx/v5"
+	"github.com/jackc/pgx/v5/pgxpool"
 )
 
 // Channel is the PostgreSQL notification channel.
@@ -109,7 +110,12 @@ func (h *Hub) Run(ctx context.Context) {
 
 // listen opens a LISTEN connection, tells clients to resync and forwards notifications until the connection fails.
 func (h *Hub) listen(ctx context.Context) error {
-	conn, err := pgx.Connect(ctx, h.DatabaseURL)
+	// Parse like the pool does, so pool_* URL parameters are stripped instead of sent to the server.
+	cfg, err := pgxpool.ParseConfig(h.DatabaseURL)
+	if err != nil {
+		return err
+	}
+	conn, err := pgx.ConnectConfig(ctx, cfg.ConnConfig)
 	if err != nil {
 		return err
 	}
