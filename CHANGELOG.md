@@ -7,10 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.28.2] - 2026-11-19
+
+### Fixed
+- Live updates work again when `DATABASE_URL` carries pool parameters such as `pool_max_conns`; the listener connection sent them to PostgreSQL, which refused it (by @HB9HIL)
+
 ## [0.28.1] - 2026-11-17
 
 ### Changed
-
 - SvelteKit 3.1.1 and adapter-static 4 and some more dependency updates (by @HB9HIL and @dependabot)
 
 ## [0.28.0] - 2026-11-14
