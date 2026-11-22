@@ -5,6 +5,7 @@ const run = Date.now().toString(36);
 const user = `mobile-${run}`;
 const ids = {};
 const statusBar = 47;
+const day = new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10);
 
 test.describe.configure({ mode: "serial" });
 test.use({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
@@ -46,7 +47,7 @@ test.describe("phone", () => {
     const range = await api(page, "POST", `${base}/ranges`, { name: "Pistol range 25 m", laneCount: 6 });
     const range50 = await api(page, "POST", `${base}/ranges`, { name: "Pistol range 50 m", laneCount: 6 });
     ids.range = range.id;
-    const ev = await api(page, "POST", `${base}/events`, { rangeIds: [range.id, range50.id], name: "Autumn championship with a rather long name", startsOn: "2026-11-20" });
+    const ev = await api(page, "POST", `${base}/events`, { rangeIds: [range.id, range50.id], name: "Autumn championship with a rather long name", startsOn: day });
     ids.event = ev.id;
     const p = await api(page, "POST", `${base}/events/${ev.id}/programmes`, {
       name: "Supported elite programme", series: [{ shots: 10, maxPoints: 100 }, { shots: 10, maxPoints: 100 }, { shots: 10, maxPoints: 100 }],
@@ -63,7 +64,7 @@ test.describe("phone", () => {
       ids.regs.push(reg.id);
       if (i < 2) await api(page, "PUT", `${base}/entries/${reg.entries[0].id}/results`, { series: [{ points: 90 + i }, { points: 88 }, { points: 87 }] });
     }
-    await api(page, "POST", `${base}/ranges/${range.id}/reservations`, { lanes: "1-3", startsAt: "2026-11-20T09:00:00+01:00", endsAt: "2026-11-20T11:00:00+01:00", description: "Junior training" });
+    await api(page, "POST", `${base}/ranges/${range.id}/reservations`, { lanes: "1-3", startsAt: `${day}T09:00:00+01:00`, endsAt: `${day}T11:00:00+01:00`, description: "Junior training" });
     ids.helper = (await api(page, "POST", `${base}/events/${ev.id}/helper-codes`, { name: "Results desk", role: "results" })).secret;
     ids.kiosk = (await api(page, "POST", `${base}/events/${ev.id}/kiosk-tokens`, { name: "Hall display" })).secret;
     ids.ammo = (await api(page, "POST", `${base}/events/${ev.id}/helper-codes`, { name: "Ammunition", role: "ammunition" })).secret;
