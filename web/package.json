@@ -54,6 +54,12 @@
 		},
 		"runed": {
 			"@sveltejs/kit": "$@sveltejs/kit"
+		},
+		"lingui-for-svelte": {
+			"vite": "$vite"
+		},
+		"unplugin-lingui-macro": {
+			"vite": "$vite"
 		}
 	}
 }
