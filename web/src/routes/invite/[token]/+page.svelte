@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
-	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import { createQuery, useQueryClient } from '@tanstack/svelte-query';
 	import { api, call } from '#lib/api';
@@ -32,7 +31,7 @@
 			const body = me.data ? undefined : { password };
 			const updated = await call(api.POST('/api/invitations/{token}/accept', { params: { path: { token } }, body }));
 			queryClient.setQueryData(meKey, updated);
-			await goto('/');
+			location.assign('/');
 		} catch (err) {
 			error = (err as Error).message;
 		}

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
-	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import { useQueryClient } from '@tanstack/svelte-query';
 	import { api, call } from '#lib/api';
@@ -29,7 +28,7 @@
 		try {
 			const me = await call(api.POST('/api/auth/signup', { body: { firstname, lastname, email, password, locale: currentLocale() } }));
 			queryClient.setQueryData(meKey, me);
-			await goto('/my');
+			location.assign('/my');
 		} catch (err) {
 			error = (err as Error).message;
 		} finally {

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { t } from 'lingui-for-svelte/macro';
-	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import { useQueryClient } from '@tanstack/svelte-query';
 	import { api, call } from '#lib/api';
@@ -35,7 +34,7 @@
 			queryClient.removeQueries({ queryKey: myKey });
 			queryClient.setQueryData(meKey, me);
 			const next = page.url.searchParams.get('next') ?? '';
-			await goto(next.startsWith('/') && !next.startsWith('//') ? next : '/');
+			location.assign(next.startsWith('/') && !next.startsWith('//') ? next : '/');
 		} catch (err) {
 			if (err instanceof ApiError && err.status === 428) {
 				needCode = true;

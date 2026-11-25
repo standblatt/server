@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- The iPhone home-screen app no longer forgets the login when it is closed: logging in, signing up and accepting an invitation end with a full page load (by @HB9HIL)
+
 ## [0.28.4] - 2026-11-25
 
 ### Chore
